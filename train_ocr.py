@@ -70,7 +70,8 @@ for epoch in range(num_epochs):
             with torch.cuda.amp.autocast():
                 preds = model(imgs)
                 loss = criterion(preds.log_softmax(2), labels, input_lengths, target_lengths)
-            scaler.scale(loss).backward()
+            scaled_loss = scaler.scale(loss)
+            scaled_loss.backward()
             scaler.step(optimizer)
             scaler.update()
         else:

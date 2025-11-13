@@ -1,0 +1,28 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Checkpoints & datasets
+checkpoints/
+data/
+datasets/
+*.pth
+*.pt
+*.h5
+
+# Logs & outputs
+logs/
+*.log
+*.csv
+*.npy
+*.npz
+
+# IDE / system
+.DS_Store
+.vscode/
+.idea/

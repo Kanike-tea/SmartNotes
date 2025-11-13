@@ -2,16 +2,21 @@ import os
 import torch
 import numpy as np
 from tqdm import tqdm
+from typing import Optional, Any
 from torch.utils.data import DataLoader
 from ocr_dataloader import SmartNotesOCRDataset, collate_fn
 from ocr_model import CRNN
 
 # Optional LM decoding (pyctcdecode)
+HAS_LM = False
+decoder: Optional[Any] = None
+build_ctcdecoder = None
+
 try:
-    from pyctcdecode import build_ctcdecoder
+    from pyctcdecode.decoder import build_ctcdecoder as _build_ctcdecoder
+    build_ctcdecoder = _build_ctcdecoder
     HAS_LM = True
 except ImportError:
-    HAS_LM = False
     print("pyctcdecode not found — running greedy decoding only.\nInstall it via: pip install pyctcdecode kenlm\n")
 
 # ================================================================
@@ -32,7 +37,7 @@ print(f"Loaded {len(val_dataset.samples)} validation samples.")
 # 3. Model setup
 # ================================================================
 num_classes = len(val_dataset.tokenizer.chars)
-model = CRNN(num_classes=num_classes, reduce_height_to_one=True).to(device)
+model = CRNN(num_classes=num_classes).to(device)
 
 ckpt_path = "checkpoints/ocr_finetuned_stage2_best.pth"
 if not os.path.exists(ckpt_path):
@@ -46,6 +51,7 @@ print(f"Loaded model from {ckpt_path}")
 # 4. Optional LM Decoder
 # ================================================================
 if HAS_LM:
+    assert build_ctcdecoder is not None
     vocab = list(val_dataset.tokenizer.chars) + ["-"]
     decoder = build_ctcdecoder(labels=vocab)
     print("Language model decoder initialized (beam search mode).")
@@ -65,6 +71,7 @@ for imgs, labels in tqdm(val_loader, total=len(val_loader)):
 
         for i in range(len(labels)):
             if HAS_LM:
+                assert decoder is not None
                 pred_text = decoder.decode(np.log(probs[i] + 1e-8))
             else:
                 seq = torch.argmax(preds[i], dim=1).numpy()
