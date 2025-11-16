@@ -1,4 +1,4 @@
-# postprocess.py — (Anushka Future Work)
+# postprocess.py — (Future Work)
 
 def fix_spacing(text):
     text = text.replace(" .", ".").replace(" ,", ",")
