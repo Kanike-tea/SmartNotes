@@ -1,4 +1,4 @@
-# pipeline.py — (Anushka Backend)
+# pipeline.py 
 
 from .recognize import recognize_image
 from .subject_classifier import classify_subject
