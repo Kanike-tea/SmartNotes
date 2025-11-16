@@ -4,6 +4,8 @@ import numpy as np
 from tqdm import tqdm
 from typing import Optional, Any
 from torch.utils.data import DataLoader
+from decode_with_lm import decode_with_lm
+
 from ocr_dataloader import SmartNotesOCRDataset, collate_fn
 from ocr_model import CRNN
 
@@ -17,19 +19,20 @@ try:
     build_ctcdecoder = _build_ctcdecoder
     HAS_LM = True
 except ImportError:
-    print("pyctcdecode not found — running greedy decoding only.\nInstall it via: pip install pyctcdecode kenlm\n")
+    print("pyctcdecode not found — running greedy decoding only.\n"
+          "Install on Linux using: pip install pyctcdecode kenlm\n")
 
 # ================================================================
 # 1. Device setup
 # ================================================================
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Testing SmartNotes OCR on: {device}")
 
 # ================================================================
 # 2. Dataset setup
 # ================================================================
 val_dataset = SmartNotesOCRDataset(mode="val")
-val_dataset.samples = val_dataset.samples[:2000]  # limit for quick eval
+val_dataset.samples = val_dataset.samples[:2000]  # small eval set
 val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False, collate_fn=collate_fn)
 print(f"Loaded {len(val_dataset.samples)} validation samples.")
 
@@ -51,60 +54,61 @@ print(f"Loaded model from {ckpt_path}")
 # 4. Optional LM Decoder
 # ================================================================
 if HAS_LM:
-    assert build_ctcdecoder is not None
-    vocab = list(val_dataset.tokenizer.chars) + ["-"]
+    print("Initializing Language Model decoder...")
+    vocab = list(val_dataset.tokenizer.chars) + ["-"]  # CTC blank
     decoder = build_ctcdecoder(labels=vocab)
-    print("Language model decoder initialized (beam search mode).")
+    print("✓ LM decoder loaded (beam search mode).")
 else:
     decoder = None
 
 # ================================================================
-# 5. Evaluation
+# 5. Evaluation Loop
 # ================================================================
 results = []
 print("Evaluating:")
+
 for imgs, labels in tqdm(val_loader, total=len(val_loader)):
     imgs, labels = imgs.to(device), labels.to(device)
+
     with torch.no_grad():
-        preds = model(imgs).permute(1, 0, 2).cpu()  # (B, T, C)
-        probs = torch.softmax(preds, dim=2).numpy()
+        logits = model(imgs).permute(1, 0, 2)  # (B, T, C)
+        probs = torch.softmax(logits, dim=2).cpu().numpy()
 
         for i in range(len(labels)):
-            if HAS_LM:
-                assert decoder is not None
+
+            if HAS_LM:  # LM Decoding
                 pred_text = decoder.decode(np.log(probs[i] + 1e-8))
-            else:
-                seq = torch.argmax(preds[i], dim=1).numpy()
-                pred_text = val_dataset.tokenizer.decode(seq)
+            else:       # Greedy Decoding
+                pred_text = decode_with_lm(logits[i].cpu().numpy())
 
             gt_text = val_dataset.tokenizer.decode(labels[i].cpu().numpy())
 
-            # Compute CER and WER
+            # Compute CER
             if len(gt_text.strip()) == 0:
                 continue
+
             dist = sum(1 for a, b in zip(pred_text, gt_text) if a != b)
             cer = dist / max(len(gt_text), 1)
+
             wer = 1.0 if pred_text.strip() != gt_text.strip() else 0.0
 
             results.append((pred_text, gt_text, cer, wer))
 
 # ================================================================
-# 6. Summary metrics
+# 6. Summary
 # ================================================================
+import numpy as np
 cers = [r[2] for r in results]
 wers = [r[3] for r in results]
 
-avg_cer = np.mean(cers)
-avg_wer = np.mean(wers)
-
 print("\n================ Evaluation Summary ================")
 print(f"Total evaluated samples : {len(results)}")
-print(f"Average CER (Character Error Rate): {avg_cer:.4f}")
-print(f"Average WER (Word Error Rate): {avg_wer:.4f}")
+print(f"Average CER: {np.mean(cers):.4f}")
+print(f"Average WER: {np.mean(wers):.4f}")
 print("====================================================")
 
 # ================================================================
-# 7. Show sample predictions
+# 7. Show Samples
 # ================================================================
 print("\nSample Predictions:\n")
 for i in range(5):
@@ -115,7 +119,7 @@ for i in range(5):
     print("-" * 50)
 
 # ================================================================
-# 8. Save results
+# 8. Save Output
 # ================================================================
 import pandas as pd
 out_path = "ocr_stage2_predictions.csv"
