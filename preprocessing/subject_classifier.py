@@ -1,4 +1,4 @@
-# subject_classifier.py — (Anushka Backend)
+# subject_classifier.py 
 
 VTU_SUBJECT_KEYWORDS = {
     "Operating Systems (18CS44)": [
