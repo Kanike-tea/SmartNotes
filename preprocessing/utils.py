@@ -1,4 +1,4 @@
-# utils.py — (Anushka Backend)
+# utils.py
 
 import os
 
