@@ -1,4 +1,4 @@
-# recognize.py — (Anushka Backend)
+# recognize.py 
 
 import torch
 import cv2
