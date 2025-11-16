@@ -1,4 +1,4 @@
-# text_preprocess.py — (Anushka Future Work)
+# text_preprocess.py — (Future Work)
 
 import re
 
