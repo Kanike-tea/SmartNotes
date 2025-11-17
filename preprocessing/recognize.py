@@ -1,9 +1,12 @@
 # recognize.py 
 
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 import torch
 import cv2
 import numpy as np
-from pathlib import Path
 
 from src.model.ocr_model import CRNN
 from src.dataloader.ocr_dataloader import TextTokenizer
@@ -59,3 +62,18 @@ class OCRRecognizer:
 def recognize_image(image_path):
     recognizer = OCRRecognizer()
     return recognizer.predict(image_path)
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--image", type=str, required=True, help="Path to input image")
+    args = parser.parse_args()
+
+    recognizer = OCRRecognizer()
+    text = recognizer.predict(args.image)
+
+    print("\n===== OCR OUTPUT =====")
+    print(text)
+    print("======================\n")
+
