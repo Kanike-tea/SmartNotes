@@ -15,8 +15,9 @@ from src.dataloader.ocr_dataloader import TextTokenizer
 # Try LM support
 HAS_LM = False
 try:
-    from pyctcdecode.decoder import build_ctcdecoder
+    from pyctcdecode import build_ctcdecoder
     HAS_LM = True
+    print("[INFO] pyctcdecode detected — LM decoding available.")
 except ImportError:
     HAS_LM = False
     print("[INFO] pyctcdecode not installed — LM decoding disabled.")
