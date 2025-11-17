@@ -12,12 +12,15 @@ def process_note(image_path):
     3. Return clean structured dictionary
     """
     text = recognize_image(image_path)
-    subject = classify_subject(text)
+
+    # classify_subject returns: (subject, keywords, confidence)
+    subject_name, keywords, confidence = classify_subject(text)
 
     result = {
         "text": text,
-        "subject": subject,
-        "keywords_used": subject if subject != "Unknown Subject" else []
+        "subject": subject_name,
+        "keywords_used": keywords,
+        "confidence": confidence
     }
 
     return result
