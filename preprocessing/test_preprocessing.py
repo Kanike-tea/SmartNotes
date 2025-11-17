@@ -1,18 +1,18 @@
+import sys
+import os
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(ROOT_DIR)
+
+from preprocessing.pipeline import process_note
 import argparse
-from pipeline import process_note
 
-def main():
-    parser = argparse.ArgumentParser(description="Test SmartNotes preprocessing pipeline")
-    parser.add_argument("--image", type=str, required=True,
-                        help="Path to test image (JPG/PNG)")
+parser = argparse.ArgumentParser()
+parser.add_argument("--image", required=True)
+args = parser.parse_args()
 
-    args = parser.parse_args()
+print("Running preprocessing pipeline...\n")
+output = process_note(args.image)
 
-    print("\n=== Running preprocessing pipeline ===\n")
-    result = process_note(args.image)
-
-    print("\n=== Final Output ===")
-    print(result)
-
-if __name__ == "__main__":
-    main()
+print("\n===== OUTPUT =====")
+for k, v in output.items():
+    print(f"{k}: {v}")
