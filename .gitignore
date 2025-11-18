@@ -27,7 +27,10 @@ logs/
 .vscode/
 .idea/
 
-
-
 # Local testing images (not needed in repo)
 preprocessing/test_images/
+
+# allow .gitkeep inside ignored folders so placeholders can be committed
+!checkpoints/.gitkeep
+!lm/.gitkeep
+
