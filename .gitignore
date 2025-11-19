@@ -1,5 +1,3 @@
-# .gitignore
-
 # Python
 __pycache__/
 *.pyc
@@ -7,13 +5,7 @@ __pycache__/
 *.pyd
 .Python
 
-# Checkpoints & datasets
-checkpoints/
-data/
-datasets/
-*.pth
-*.pt
-*.h5
+
 
 # Logs & outputs
 logs/
@@ -27,7 +19,8 @@ logs/
 .vscode/
 .idea/
 
-
-
 # Local testing images (not needed in repo)
 preprocessing/test_images/
+
+# Virtual environment
+venv/
