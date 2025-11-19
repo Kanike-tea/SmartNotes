@@ -2,48 +2,67 @@ import sys
 import os
 import tempfile
 
-# Add project root to sys.path
+# ----------------------------
+# Fix imports for your folder
+# ----------------------------
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.append(project_root)
 
 import gradio as gr
 from PIL import Image
 
-# Import preprocessing function
+# Your pipeline
 from preprocessing.pipeline import process_note
+
 
 def ocr_image(img):
     """
-    Runs preprocessing on the uploaded image and returns a placeholder OCR output.
-    Handles OpenCV file path requirement and dictionary output.
+    Runs the full OCR + subject classifier pipeline.
     """
     try:
-        # Save PIL image temporarily
+        # Save PIL image to temp file so OpenCV can read it
         with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
             img.save(tmp.name)
             img_path = tmp.name
 
-        # Run preprocessing
-        processed = process_note(img_path)
+        # Run complete processing
+        result = process_note(img_path)
 
-        # If processed is a dict, show keys; otherwise show type
-        if isinstance(processed, dict):
-            processed_info = f"Processed keys: {list(processed.keys())}"
+        # Format output
+        if isinstance(result, dict):
+            text = result.get("text", "")
+            subject = result.get("subject", "Unknown")
+            keywords = result.get("keywords_used", [])
+            conf = result.get("confidence", None)
+
+            output = (
+                f"📄 **Extracted Text:**\n{text}\n\n"
+                f"📘 **Subject:** {subject}\n"
+                f"🔑 **Keywords:** {keywords}\n"
+            )
+
+            if conf is not None:
+                output += f"📊 **Confidence:** {conf:.2f}\n"
+
+            return output
+
         else:
-            processed_info = f"Processed type: {type(processed)}"
-
-        # Return info + placeholder OCR
-        return f"Image processed successfully!\n{processed_info}\nOCR output placeholder — replace with real model later"
+            return f"[Unexpected pipeline output]\nType = {type(result)}"
 
     except Exception as e:
-        return f"Error during preprocessing: {str(e)}"
+        return f"❌ Error: {str(e)}"
 
-# Gradio interface
+
+# ----------------------------
+# Gradio UI
+# ----------------------------
 demo = gr.Interface(
     fn=ocr_image,
     inputs=gr.Image(type="pil"),
     outputs="text",
-    title="SMART-OCR Demo (Preprocessing Enabled)"
+    title="SMART-NOTES OCR Demo",
+    description="Upload handwritten notes → OCR → Subject classification."
 )
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
