@@ -1,4 +1,13 @@
-# .gitignore
+# ============================
+# SmartNotes Gitignore (fixed)
+# ============================
+
+# Allow checkpoints inside src/model
+!src/model/checkpoints/
+!src/model/checkpoints/.gitkeep
+
+# IGNORE ONLY TOP-LEVEL checkpoints folder
+/checkpoints/
 
 # Python
 __pycache__/
@@ -7,15 +16,14 @@ __pycache__/
 *.pyd
 .Python
 
-# Checkpoints & datasets
-checkpoints/
-data/
+# Datasets
 datasets/
+data/
 *.pth
 *.pt
 *.h5
 
-# Logs & outputs
+# Logs
 logs/
 *.log
 *.csv
@@ -27,7 +35,5 @@ logs/
 .vscode/
 .idea/
 
-
-
-# Local testing images (not needed in repo)
+# Local testing images
 preprocessing/test_images/
