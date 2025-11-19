@@ -30,18 +30,24 @@ except ImportError:
 class OCRRecognizer:
     def __init__(
         self,
-        checkpoint_path=r"C:\Users\deepi\Downloads\SmartNotes1\SmartNotes\src\model\checkpoints\ocr_finetuned_stage2_best.pth"
+        checkpoint_path=None
     ):
         self.device = torch.device("cpu")
         self.tokenizer = TextTokenizer()
         self.num_classes = len(self.tokenizer.chars)
 
         # -----------------------------
+        # Default relative path to checkpoint
+        # -----------------------------
+        if checkpoint_path is None:
+            checkpoint_path = Path(__file__).resolve().parents[1] / "model" / "checkpoints" / "ocr_finetuned_stage2_best.pth"
+        else:
+            checkpoint_path = Path(checkpoint_path)
+
+        # -----------------------------
         # Load CRNN model
         # -----------------------------
         self.model = CRNN(num_classes=self.num_classes).to(self.device)
-
-        checkpoint_path = Path(checkpoint_path)
 
         if checkpoint_path.exists():
             self.model.load_state_dict(
@@ -51,7 +57,7 @@ class OCRRecognizer:
         else:
             print(f"[WARNING] Checkpoint NOT FOUND at:\n{checkpoint_path}")
             print("[WARNING] Using placeholder predictions!")
-        
+
         self.model.eval()
 
         # -----------------------------
@@ -147,11 +153,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--image", type=str, required=True)
-    parser.add_argument(
-        "--checkpoint",
-        type=str,
-        default=r"C:\Users\deepi\Downloads\SmartNotes1\SmartNotes\src\model\checkpoints\ocr_finetuned_stage2_best.pth"
-    )
+    parser.add_argument("--checkpoint", type=str, default=None)
     args = parser.parse_args()
 
     recognizer = OCRRecognizer(checkpoint_path=args.checkpoint)
