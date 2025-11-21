@@ -2,6 +2,7 @@
 
 import sys
 import platform
+import argparse
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
@@ -15,11 +16,12 @@ from preprocessing.line_segment import segment_lines
 
 # Try LM support
 HAS_LM = False
+build_ctcdecoder = None  # type: ignore
 try:
-    from pyctcdecode import build_ctcdecoder
+    from pyctcdecode.decoder import build_ctcdecoder
     HAS_LM = True
     print("[INFO] pyctcdecode detected — LM decoding available.")
-except ImportError:
+except (ImportError, AttributeError):
     print("[INFO] pyctcdecode not installed — LM decoding disabled.")
 
 
@@ -45,13 +47,13 @@ class OCRRecognizer:
         self.decoder = None
         self.use_lm = False
 
-        if platform.system() == "Windows" and HAS_LM:
+        if platform.system() == "Windows" and HAS_LM and build_ctcdecoder is not None:
             lm_path = Path("lm/smartnotes.arpa")
             vocab = list(self.tokenizer.chars) + ["-"]
 
             if lm_path.exists():
                 print("[OK] Loading LM decoder...")
-                self.decoder = build_ctcdecoder(
+                self.decoder = build_ctcdecoder(  # type: ignore
                     labels=vocab,
                     kenlm_model_path=str(lm_path)
                 )
@@ -81,9 +83,9 @@ class OCRRecognizer:
             probs = torch.softmax(preds, dim=2).numpy()
 
         # LM decoding
-        if self.use_lm:
+        if self.use_lm and self.decoder is not None:
             log_probs = np.log(probs[0] + 1e-9)
-            return self.decoder.decode(log_probs).strip()
+            return self.decoder.decode(log_probs).strip()  # type: ignore
 
         # Greedy decoding
         seq = torch.argmax(preds[0], dim=1).numpy()
@@ -117,7 +119,6 @@ def recognize_image(image_path):
 
 # CLI
 if __name__ == "__main__":
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--image", type=str, required=True)
     parser.add_argument("--checkpoint", default="checkpoints/ocr_finetuned_stage2_best.pth")
