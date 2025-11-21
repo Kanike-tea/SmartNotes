@@ -59,7 +59,7 @@ def ocr_image(img):
 demo = gr.Interface(
     fn=ocr_image,
     inputs=gr.Image(type="pil"),
-    outputs="text",
+    outputs=gr.Textbox(lines=30, label="Output"),   # ⬅⬅ ONLY CHANGE
     title="SMART-NOTES OCR Demo",
     description="Upload handwritten notes → OCR → Subject classification."
 )

@@ -9,8 +9,9 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import contextlib
 
-from ocr_dataloader import SmartNotesOCRDataset, collate_fn
-from ocr_model import CRNN
+from model.ocr_model import CRNN
+from dataloader.ocr_dataloader import SmartNotesOCRDataset, collate_fn
+
 
 # -----------------------------
 # 1. Device setup

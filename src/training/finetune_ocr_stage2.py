@@ -4,8 +4,9 @@ import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
 from torch.utils.data import DataLoader
-from ocr_model import CRNN
-from ocr_dataloader import SmartNotesOCRDataset, collate_fn
+from model.ocr_model import CRNN
+from dataloader.ocr_dataloader import SmartNotesOCRDataset, collate_fn
+
 
 # ================================================================
 # Configuration

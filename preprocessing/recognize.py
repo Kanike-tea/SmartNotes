@@ -40,7 +40,7 @@ class OCRRecognizer:
         # Default relative path to checkpoint
         # -----------------------------
         if checkpoint_path is None:
-            checkpoint_path = Path(__file__).resolve().parents[1] / "model" / "checkpoints" / "ocr_finetuned_stage2_best.pth"
+            checkpoint_path = Path(__file__).resolve().parents[1] / "src" / "model" / "checkpoints" / "ocr_finetuned_stage2_best.pth"
         else:
             checkpoint_path = Path(checkpoint_path)
 
