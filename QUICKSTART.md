@@ -177,7 +177,6 @@ device = get_device(use_cuda=True)  # Use GPU if available
 ## Next Steps
 
 - ✅ Read the [full README](README.md)
-- ✅ Check out [examples](examples/) directory
 - ✅ Run the [test suite](tests/)
 - ✅ Try [fine-tuning](src/training/finetune_ocr.py)
 - ✅ Build with [Gradio UI](src/inference/demo_gradio.py)
