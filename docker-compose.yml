@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # Production service: Training and inference
+  smartnotes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: smartnotes-ocr
+    volumes:
+      - ./datasets:/app/datasets
+      - ./checkpoints:/app/checkpoints
+      - ./results:/app/results
+      - ./lm:/app/lm
+      - ./smartnotes.log:/app/smartnotes.log
+    environment:
+      - PYTORCH_ENABLE_MPS_FALLBACK=1
+      - PYTHONUNBUFFERED=1
+    command: python src/training/train_ocr.py
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          memory: 8G
+
+  # Development service: With additional tools and bash shell
+  smartnotes-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: smartnotes-dev
+    volumes:
+      - .:/app
+      - ./datasets:/app/datasets
+      - ./checkpoints:/app/checkpoints
+      - ./results:/app/results
+      - ./lm:/app/lm
+    environment:
+      - PYTORCH_ENABLE_MPS_FALLBACK=1
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          memory: 8G
+
+  # Inference service: Runs inference on validation set
+  smartnotes-inference:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: smartnotes-inference
+    volumes:
+      - ./datasets:/app/datasets
+      - ./checkpoints:/app/checkpoints
+      - ./results:/app/results
+    environment:
+      - PYTORCH_ENABLE_MPS_FALLBACK=1
+      - PYTHONUNBUFFERED=1
+    command: python src/inference/test_ocr.py --mode val --num-samples 50
+    depends_on:
+      - smartnotes
+    profiles:
+      - inference
+
+  # Testing service: Runs test suite
+  smartnotes-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: smartnotes-test
+    volumes:
+      - .:/app
+      - ./datasets:/app/datasets
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: pytest tests/ -v --cov=src
+    profiles:
+      - test

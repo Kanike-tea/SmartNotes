@@ -6,6 +6,16 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
 
 # Checkpoints & datasets
 checkpoints/
@@ -21,16 +31,45 @@ logs/
 *.csv
 *.npy
 *.npz
+results/
+.coverage
+htmlcov/
 
 # IDE / system
 .DS_Store
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Testing
+.pytest_cache/
+.tox/
+pytest.ini
 
 # Local testing images (not needed in repo)
 preprocessing/test_images/
 
-# allow .gitkeep inside ignored folders so placeholders can be committed
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+.tmp/
+*.tmp
+
+# OS files
+Thumbs.db
+.AppleDouble
+
+# Allow .gitkeep inside ignored folders so placeholders can be committed
 !checkpoints/.gitkeep
 !lm/.gitkeep
+!results/.gitkeep
 
+# Docker
+.docker

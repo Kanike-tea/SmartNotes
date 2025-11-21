@@ -1,0 +1,1 @@
+"""SmartNotes test suite."""

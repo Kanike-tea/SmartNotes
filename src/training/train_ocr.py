@@ -1,6 +1,19 @@
+"""
+Training script for SmartNotes OCR model.
+
+This script handles the complete training pipeline including:
+- Data loading
+- Model initialization
+- Training loop with validation
+- Checkpoint saving
+- Metrics tracking and logging
+"""
+
 import os
-# Ensure MPS fallback for ops (like CTC) is enabled before importing torch
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+import sys
+from pathlib import Path
+from typing import Optional, Tuple
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -8,136 +21,355 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import contextlib
 
-from ocr_dataloader import SmartNotesOCRDataset, collate_fn
-from ocr_model import CRNN
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-# -----------------------------
-# 1. Device setup
-# -----------------------------
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"  # Allow CTC loss fallback to CPU
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-print(f"Training SmartNotes OCR on: {device}")
-if device.type == "mps":
-    print("Note: running on MPS. Some ops (e.g. CTC) may fall back to CPU if not implemented on MPS.")
+from config import Config, TrainingConfig
+from utils import get_logger, get_device, log_config, log_error, ensure_path_exists
+from src.dataloader.ocr_dataloader import SmartNotesOCRDataset, collate_fn
+from src.model.ocr_model import CRNN
 
-# -----------------------------
-# 2. Datasets and Dataloaders
-# -----------------------------
-train_dataset = SmartNotesOCRDataset(mode='train')
-val_dataset = SmartNotesOCRDataset(mode='val')
+logger = get_logger(__name__)
 
-# Use manageable subset for faster training
-train_dataset.samples = train_dataset.samples[:20000]
-val_dataset.samples = val_dataset.samples[:5000]
 
-train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True, collate_fn=collate_fn)
-val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False, collate_fn=collate_fn)
+class OCRTrainer:
+    """
+    Trainer class for OCR model.
+    
+    Handles the complete training process including:
+    - Device management
+    - Data loading
+    - Training and validation loops
+    - Checkpoint management
+    - Metrics tracking
+    """
+    
+    def __init__(
+        self,
+        config: Optional[TrainingConfig] = None,
+        resume_from: Optional[str] = None
+    ) -> None:
+        """
+        Initialize trainer.
+        
+        Args:
+            config: Training configuration object
+            resume_from: Path to checkpoint to resume from
+        """
+        self.config = config or Config.training
+        self.device = get_device(
+            use_cuda=self.config.USE_CUDA,
+            use_mps=self.config.USE_MPS,
+            force_cpu=False
+        )
+        
+        self.model = None
+        self.optimizer = None
+        self.scheduler = None
+        self.criterion = None
+        self.scaler = None
+        self.start_epoch = 0
+        
+        logger.info(f"Training config: {self.config.__dict__}")
+    
+    def setup(self, num_classes: int) -> None:
+        """
+        Setup model, optimizer, and loss function.
+        
+        Args:
+            num_classes: Number of output classes
+        """
+        logger.info(f"Setting up model with {num_classes} classes...")
+        
+        # Create model
+        self.model = CRNN(num_classes=num_classes).to(self.device)
+        logger.info(f"Model initialized on {self.device}")
+        
+        # Loss function
+        self.criterion = nn.CTCLoss(
+            blank=num_classes,
+            zero_infinity=self.config.CTC_ZERO_INFINITY
+        )
+        
+        # Optimizer
+        self.optimizer = optim.Adam(
+            self.model.parameters(),
+            lr=self.config.LEARNING_RATE,
+            weight_decay=self.config.WEIGHT_DECAY
+        )
+        
+        # Learning rate scheduler
+        self.scheduler = optim.lr_scheduler.StepLR(
+            self.optimizer,
+            step_size=self.config.LR_SCHEDULER_STEP_SIZE,
+            gamma=self.config.LR_SCHEDULER_GAMMA
+        )
+        
+        # Mixed precision training (CUDA only)
+        if torch.cuda.is_available():
+            self.scaler = torch.cuda.amp.GradScaler()
+        
+        logger.info("Setup complete")
+    
+    def train_epoch(self, train_loader: DataLoader) -> float:
+        """
+        Run one training epoch.
+        
+        Args:
+            train_loader: Training data loader
+            
+        Returns:
+            Average loss for the epoch
+        """
+        self.model.train()  # type: ignore
+        total_loss = 0.0
+        num_batches = 0
+        
+        pbar = tqdm(
+            train_loader,
+            desc=f"Training",
+            total=len(train_loader),
+            leave=True
+        )
+        
+        for batch_idx, (imgs, labels) in enumerate(pbar):
+            imgs = imgs.to(self.device)
+            labels = labels.to(self.device)
+            
+            try:
+                # Calculate input and target lengths
+                input_lengths = torch.full(
+                    (imgs.size(0),),
+                    imgs.size(3) // 4,
+                    dtype=torch.long,
+                    device=self.device
+                )
+                target_lengths = torch.tensor(
+                    [torch.count_nonzero(lbl).item() for lbl in labels],
+                    dtype=torch.long,
+                    device=self.device
+                )
+                
+                self.optimizer.zero_grad()  # type: ignore
+                
+                # Forward pass
+                if self.scaler and torch.cuda.is_available():
+                    with torch.cuda.amp.autocast():
+                        preds = self.model(imgs)  # type: ignore
+                        loss = self.criterion(  # type: ignore
+                            preds.log_softmax(2),
+                            labels,
+                            input_lengths,
+                            target_lengths
+                        )
+                    
+                    self.scaler.scale(loss).backward()
+                    self.scaler.step(self.optimizer)  # type: ignore
+                    self.scaler.update()
+                else:
+                    preds = self.model(imgs)  # type: ignore
+                    loss = self.criterion(  # type: ignore
+                        preds.log_softmax(2),
+                        labels,
+                        input_lengths,
+                        target_lengths
+                    )
+                    loss.backward()
+                    self.optimizer.step()  # type: ignore
+                
+                total_loss += loss.item()
+                num_batches += 1
+                
+                # Update progress bar
+                avg_loss = total_loss / num_batches
+                pbar.set_postfix({'loss': f'{avg_loss:.4f}'})
+            
+            except Exception as e:
+                log_error(logger, f"Error in batch {batch_idx}", e)
+                continue
+        
+        avg_loss = total_loss / num_batches if num_batches > 0 else 0.0
+        return avg_loss
+    
+    def validate(self, val_loader: DataLoader) -> float:
+        """
+        Run validation.
+        
+        Args:
+            val_loader: Validation data loader
+            
+        Returns:
+            Average loss for validation
+        """
+        self.model.eval()  # type: ignore
+        total_loss = 0.0
+        num_batches = 0
+        
+        with torch.no_grad():
+            for imgs, labels in tqdm(val_loader, desc="Validation", leave=False):
+                imgs = imgs.to(self.device)
+                labels = labels.to(self.device)
+                
+                try:
+                    input_lengths = torch.full(
+                        (imgs.size(0),),
+                        imgs.size(3) // 4,
+                        dtype=torch.long,
+                        device=self.device
+                    )
+                    target_lengths = torch.tensor(
+                        [torch.count_nonzero(lbl).item() for lbl in labels],
+                        dtype=torch.long,
+                        device=self.device
+                    )
+                    
+                    preds = self.model(imgs)  # type: ignore
+                    loss = self.criterion(  # type: ignore
+                        preds.log_softmax(2),
+                        labels,
+                        input_lengths,
+                        target_lengths
+                    )
+                    
+                    total_loss += loss.item()
+                    num_batches += 1
+                except Exception as e:
+                    log_error(logger, "Error during validation", e)
+                    continue
+        
+        avg_loss = total_loss / num_batches if num_batches > 0 else 0.0
+        return avg_loss
+    
+    def save_checkpoint(self, epoch: int, is_best: bool = False) -> None:
+        """
+        Save model checkpoint.
+        
+        Args:
+            epoch: Current epoch
+            is_best: Whether this is the best model so far
+        """
+        save_dir = Path(self.config.SAVE_DIR)
+        ensure_path_exists(str(save_dir))
+        
+        checkpoint = {
+            'epoch': epoch,
+            'model_state_dict': self.model.state_dict(),  # type: ignore
+            'optimizer_state_dict': self.optimizer.state_dict(),  # type: ignore
+            'scheduler_state_dict': self.scheduler.state_dict(),  # type: ignore
+        }
+        
+        # Regular checkpoint
+        checkpoint_path = save_dir / f"ocr_epoch_{epoch}.pth"
+        torch.save(checkpoint, checkpoint_path)
+        logger.info(f"Saved checkpoint: {checkpoint_path}")
+        
+        # Best checkpoint
+        if is_best:
+            best_path = save_dir / "ocr_best.pth"
+            torch.save(checkpoint, best_path)
+            logger.info(f"Saved best checkpoint: {best_path}")
+    
+    def train(
+        self,
+        train_loader: DataLoader,
+        val_loader: DataLoader,
+        num_epochs: Optional[int] = None
+    ) -> None:
+        """
+        Run complete training loop.
+        
+        Args:
+            train_loader: Training data loader
+            val_loader: Validation data loader
+            num_epochs: Number of epochs (uses config if None)
+        """
+        if num_epochs is None:
+            num_epochs = self.config.NUM_EPOCHS
+        
+        best_val_loss = float('inf')
+        
+        logger.info(f"Starting training for {num_epochs} epochs")
+        logger.info(f"Device: {self.device}")
+        
+        for epoch in range(self.start_epoch, num_epochs):
+            logger.info(f"\nEpoch [{epoch + 1}/{num_epochs}]")
+            
+            # Training
+            train_loss = self.train_epoch(train_loader)
+            logger.info(f"Training Loss: {train_loss:.4f}")
+            
+            # Validation
+            val_loss = self.validate(val_loader)
+            logger.info(f"Validation Loss: {val_loss:.4f}")
+            
+            # Learning rate step
+            self.scheduler.step()  # type: ignore
+            current_lr = self.optimizer.param_groups[0]['lr']  # type: ignore
+            logger.info(f"Learning Rate: {current_lr:.6f}")
+            
+            # Save checkpoint
+            if (epoch + 1) % self.config.SAVE_FREQUENCY == 0:
+                self.save_checkpoint(epoch + 1)
+            
+            # Save best checkpoint
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                self.save_checkpoint(epoch + 1, is_best=True)
+        
+        logger.info("\nTraining complete!")
 
-# -----------------------------
-# 3. Model, Loss, Optimizer
-# -----------------------------
-num_classes = len(train_dataset.tokenizer.chars)
-model = CRNN(num_classes=num_classes).to(device)
 
-criterion = nn.CTCLoss(blank=num_classes, zero_infinity=True)
-optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
-scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)
+def main():
+    """Main training function."""
+    try:
+        # Print configuration
+        Config.print_config()
+        
+        # Setup directories
+        ensure_path_exists(str(Config.training.SAVE_DIR))
+        
+        # Load datasets
+        logger.info("Loading datasets...")
+        train_dataset = SmartNotesOCRDataset(
+            mode='train'
+        )
+        val_dataset = SmartNotesOCRDataset(
+            mode='val'
+        )
+        
+        # Create dataloaders
+        train_loader = DataLoader(
+            train_dataset,
+            batch_size=Config.training.BATCH_SIZE,
+            shuffle=True,
+            collate_fn=collate_fn,
+            num_workers=Config.dataset.NUM_WORKERS
+        )
+        val_loader = DataLoader(
+            val_dataset,
+            batch_size=Config.training.BATCH_SIZE,
+            shuffle=False,
+            collate_fn=collate_fn,
+            num_workers=Config.dataset.NUM_WORKERS
+        )
+        
+        logger.info(f"Train samples: {len(train_dataset)}")
+        logger.info(f"Val samples: {len(val_dataset)}")
+        
+        # Initialize trainer
+        num_classes = len(train_dataset.tokenizer.chars)
+        trainer = OCRTrainer()
+        trainer.setup(num_classes)
+        
+        # Train
+        trainer.train(train_loader, val_loader)
+        
+        logger.info("Training completed successfully!")
+    
+    except Exception as e:
+        log_error(logger, "Fatal error during training", e)
+        raise
 
-# AMP scaler for CUDA; ignored for MPS
-scaler = torch.cuda.amp.GradScaler() if torch.cuda.is_available() else None
 
-# -----------------------------
-# 4. Training Loop
-# -----------------------------
-num_epochs = 20
-save_dir = "checkpoints"
-os.makedirs(save_dir, exist_ok=True)
-
-for epoch in range(num_epochs):
-    print(f"\nEpoch [{epoch + 1}/{num_epochs}] — Training...")
-    model.train()
-    total_loss = 0
-
-    for imgs, labels in tqdm(train_loader, total=len(train_loader)):
-        imgs, labels = imgs.to(device), labels.to(device)
-
-        input_lengths = torch.full((imgs.size(0),), imgs.size(3) // 4, dtype=torch.long)
-        target_lengths = torch.tensor([torch.count_nonzero(lbl).item() for lbl in labels], dtype=torch.long)
-
-        optimizer.zero_grad()
-
-        if scaler:
-            with torch.cuda.amp.autocast():
-                preds = model(imgs)
-                loss = criterion(preds.log_softmax(2), labels, input_lengths, target_lengths)
-            scaled_loss = scaler.scale(loss)
-            scaled_loss.backward()
-            scaler.step(optimizer)
-            scaler.update()
-        else:
-            preds = model(imgs)
-            loss = criterion(preds.log_softmax(2), labels, input_lengths, target_lengths)
-            loss.backward()
-            optimizer.step()
-
-        total_loss += loss.item()
-
-    avg_train_loss = total_loss / len(train_loader)
-    scheduler.step()
-
-    print(f"Epoch [{epoch + 1}/{num_epochs}] Training Loss: {avg_train_loss:.4f}")
-
-    # -----------------------------
-    # Validation
-    # -----------------------------
-    model.eval()
-    val_loss = 0
-    with torch.no_grad():
-        for imgs, labels in val_loader:
-            imgs, labels = imgs.to(device), labels.to(device)
-            input_lengths = torch.full((imgs.size(0),), imgs.size(3) // 4, dtype=torch.long)
-            target_lengths = torch.tensor([torch.count_nonzero(lbl).item() for lbl in labels], dtype=torch.long)
-
-            if torch.cuda.is_available():
-                autocast_ctx = torch.cuda.amp.autocast()
-            elif device.type == "mps" and hasattr(torch, "autocast"):
-                autocast_ctx = torch.autocast(device_type="mps")
-            else:
-                autocast_ctx = contextlib.nullcontext()
-
-            with autocast_ctx:
-                preds = model(imgs)
-                loss = criterion(preds.log_softmax(2), labels, input_lengths, target_lengths)
-
-            val_loss += loss.item()
-
-    avg_val_loss = val_loss / len(val_loader)
-    print(f"Validation Loss: {avg_val_loss:.4f}")
-
-    # -----------------------------
-    # Show Predictions
-    # -----------------------------
-    model.eval()
-    imgs, labels = next(iter(val_loader))
-    imgs, labels = imgs.to(device), labels.to(device)
-
-    with torch.no_grad():
-        preds = model(imgs)
-        preds = preds.permute(1, 0, 2).cpu()
-
-        print("\nSample Predictions:")
-        for i in range(3):
-            seq = torch.argmax(preds[i], dim=1).numpy()
-            pred_text = val_dataset.tokenizer.decode(seq)
-            gt_text = val_dataset.tokenizer.decode(labels[i].cpu().numpy())
-            print(f"Predicted: {pred_text}")
-            print(f"Ground Truth: {gt_text}")
-            print("----------------------------------------")
-
-    # Save every 5 epochs
-    if (epoch + 1) % 5 == 0:
-        ckpt_path = os.path.join(save_dir, f"ocr_epoch_{epoch + 1}.pth")
-        torch.save(model.state_dict(), ckpt_path)
-        print(f"Saved checkpoint: {ckpt_path}")
-
-print("\nTraining complete! Model ready for inference or fine-tuning.")
+if __name__ == "__main__":
+    main()
