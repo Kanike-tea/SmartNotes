@@ -1,6 +1,16 @@
-# SmartNotes Quick Start Guide
+# SmartNotes v2.0 Quick Start Guide
 
 Get SmartNotes up and running in 5 minutes!
+
+## 🚀 Fastest Start (2 minutes)
+
+```bash
+# Process your first PDF
+cd /Users/kanike/Desktop/SmartNotes/SmartNotes
+python3 smartnotes_cli.py --pdf my_document.pdf --output ./results/
+```
+
+Output: Automatically organized by subject (BCS501/, BCS502/, etc.)
 
 ## Installation
 
@@ -17,6 +27,9 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Optional: PDF support
+pip install pdf2image
 ```
 
 ### Option 2: Using Docker
@@ -32,22 +45,62 @@ docker run -v $(pwd)/datasets:/app/datasets -v $(pwd)/checkpoints:/app/checkpoin
 pip install -e ".[dev]"
 ```
 
-## Quick Test
-
-Verify installation:
+## ✅ Verify Installation
 
 ```bash
-python -c "from src.model.ocr_model import CRNN; print('✓ Installation successful')"
+python3 -c "
+from src.inference.recognize import OCRLMInference
+from src.inference.pdf_processor import PDFProcessor
+print('✓ OCRLMInference ready')
+print('✓ PDFProcessor ready')
+print('✓ Installation successful')
+"
 ```
+
+## 📖 Common Use Cases
+
+### Use Case 1: Process Single PDF
+```bash
+python3 smartnotes_cli.py --pdf my_notes.pdf --output results/
+```
+
+### Use Case 2: Batch Process Multiple PDFs
+```bash
+python3 smartnotes_cli.py --batch ./pdfs --output results/ --organize
+```
+
+### Use Case 3: Generate HTML Report
+```bash
+python3 smartnotes_cli.py --batch ./pdfs --output results/ --html --verbose
+```
+
+### Use Case 4: Disable Language Model (faster)
+```bash
+python3 smartnotes_cli.py --batch ./pdfs --output results/ --no-lm
+```
+
+### Use Case 5: Use Specific Device (GPU)
+```bash
+python3 smartnotes_cli.py --batch ./pdfs --output results/ --device cuda
+```
+
+## 📚 Next Steps
+
+- **For End Users**: Use `smartnotes_cli.py` as shown above
+- **For Developers**: See `SYSTEM_ARCHITECTURE.md` for technical details
+- **For Researchers**: Check `IMPLEMENTATION_SUMMARY.md` for implementation status
+- **For Full Docs**: Read `README.md`
 
 ## Run Inference (30 seconds)
 
-### With Pre-trained Model
+### With Pre-trained Model - CLI
 
 ```bash
-cd src/inference
-python test_ocr.py --num-samples 5
+python3 smartnotes_cli.py --help
 ```
+
+### Or Direct Test
+
 
 Expected output:
 ```
