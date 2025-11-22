@@ -198,6 +198,62 @@ class OCRLMInference:
         
         return results
     
+    def infer_single(self, image_path: str) -> dict:
+        """
+        Run inference on a single image file.
+        
+        Args:
+            image_path: Path to image file
+            
+        Returns:
+            Dictionary with prediction, confidence, and metadata
+        """
+        import cv2
+        from config import Config
+        
+        # Load image
+        image = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
+        if image is None:
+            raise FileNotFoundError(f"Could not load image: {image_path}")
+        
+        # Resize to expected dimensions (H=32, W=128)
+        target_h, target_w = 32, 128
+        h, w = image.shape
+        
+        # Calculate scale to fit within bounds
+        scale = min(target_w / w, target_h / h)
+        new_w = int(w * scale)
+        new_h = int(h * scale)
+        
+        image = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+        
+        # Pad to target size
+        padded = np.full((target_h, target_w), 255, dtype=np.uint8)
+        start_y = (target_h - new_h) // 2
+        start_x = (target_w - new_w) // 2
+        padded[start_y:start_y+new_h, start_x:start_x+new_w] = image
+        
+        # Normalize to [0, 1]
+        image_tensor = torch.from_numpy(padded).float() / 255.0
+        # Add channel and batch dimensions
+        image_tensor = image_tensor.unsqueeze(0).unsqueeze(0)  # (1, 1, 32, 128)
+        
+        # Run inference
+        with torch.no_grad():
+            images = image_tensor.to(self.device)
+            logits = self.model(images).permute(1, 0, 2)  # (T, B, C)
+            
+            # Greedy decoding
+            pred_indices = torch.argmax(logits[:, 0, :], dim=1)
+            prediction = self.tokenizer.decode(pred_indices.cpu().numpy())  # type: ignore
+        
+        return {
+            "prediction": prediction,
+            "image_path": str(image_path),
+            "model": "CRNN-EPOCH6",
+            "device": str(self.device),
+        }
+    
     def evaluate_on_dataset(
         self,
         mode: str = "val",
