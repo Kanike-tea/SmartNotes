@@ -5,6 +5,7 @@ Runs inference on test samples and displays predictions with metrics.
 """
 
 import sys
+import pytest
 from pathlib import Path
 from typing import Optional, List, Tuple
 
@@ -20,6 +21,8 @@ from src.dataloader.ocr_dataloader import SmartNotesOCRDataset
 from src.model.ocr_model import CRNN
 
 logger = get_logger(__name__)
+ 
+pytestmark = pytest.mark.skip(reason="Script-style inference runner — not a unit test")
 
 
 class OCRInference:

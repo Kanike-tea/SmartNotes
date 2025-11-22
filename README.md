@@ -55,7 +55,19 @@ The CRNN (Convolutional Recurrent Neural Network) architecture consists of:
 
 - **CTC Loss**: Handles variable-length sequences without character-level alignment
 - **Greedy Decoding**: Fast inference with reasonable accuracy
-- **Language Model Support**: Optional pyctcdecode for improved accuracy
+- **Language Model Support**: Optional ARPA language models for improved accuracy
+   - **Pure Python ARPA Generator** (Recommended, no external dependencies):
+      ```bash
+      python scripts/arpa_generator.py --corpus lm/smartnotes_corpus.txt --output lm/smartnotes.arpa --order 4
+      ```
+      - Generates valid ARPA format files (n-grams up to specified order)
+      - Uses Kneser-Ney smoothing for realistic probabilities
+      - Works on all platforms (macOS, Linux, Windows)
+   - **Alternative: KenLM-based generation** (requires `lmplz` binary):
+      ```bash
+      python scripts/generate_lm.py --order 4 --out lm/smartnotes_4gram.arpa --build-binary --debug
+      ```
+      - For `lmplz`/`build_binary`, see: https://github.com/kpu/kenlm
 - **MPS Support**: Native Apple Silicon acceleration with fallback for unsupported ops
 
 ## Installation

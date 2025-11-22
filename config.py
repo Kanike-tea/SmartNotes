@@ -110,8 +110,8 @@ class TrainingConfig:
 class InferenceConfig:
     """Configuration for inference."""
     
-    # Checkpoint to load
-    CHECKPOINT_PATH: str = str(CHECKPOINTS_DIR / "ocr_finetuned_stage2_best.pth")
+    # Checkpoint to load - Use epoch 6 model (strong performance, 4.65% CER)
+    CHECKPOINT_PATH: str = str(CHECKPOINTS_DIR / "ocr_epoch_6.pth")
     
     # Inference device
     USE_CPU: bool = False  # Force CPU usage
@@ -119,6 +119,8 @@ class InferenceConfig:
     # LM decoding
     USE_LM: bool = True
     LM_PATH: str = str(LM_DIR / "smartnotes.arpa")
+    LM_WEIGHT: float = 0.3  # Blend LM scores with OCR scores
+    BEAM_WIDTH: int = 5    # Beam search width for decoding
     
     # Output settings
     MAX_SAMPLES_TO_DISPLAY: int = 5

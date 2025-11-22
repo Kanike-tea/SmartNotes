@@ -1,127 +1,14 @@
-import os
-import torch
-import numpy as np
-from tqdm import tqdm
-from typing import Optional, Any
-from torch.utils.data import DataLoader
-from decode_with_lm import decode_with_lm
+"""Placeholder module for stage2 evaluation logic.
 
-from ocr_dataloader import SmartNotesOCRDataset, collate_fn
-from ocr_model import CRNN
+This file intentionally contains a skipped pytest placeholder. The actual
+evaluation script is `src/inference/evaluate_stage2.py`.
+"""
 
-# Optional LM decoding (pyctcdecode)
-HAS_LM = False
-decoder: Optional[Any] = None
-build_ctcdecoder = None
+import pytest
 
-try:
-    from pyctcdecode.decoder import build_ctcdecoder as _build_ctcdecoder
-    build_ctcdecoder = _build_ctcdecoder
-    HAS_LM = True
-except ImportError:
-    print("pyctcdecode not found — running greedy decoding only.\n"
-          "Install on Linux using: pip install pyctcdecode kenlm\n")
 
-# ================================================================
-# 1. Device setup
-# ================================================================
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Testing SmartNotes OCR on: {device}")
+pytestmark = pytest.mark.skip(reason="Stage2 evaluation script — not a unit test")
 
-# ================================================================
-# 2. Dataset setup
-# ================================================================
-val_dataset = SmartNotesOCRDataset(mode="val")
-val_dataset.samples = val_dataset.samples[:2000]  # small eval set
-val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False, collate_fn=collate_fn)
-print(f"Loaded {len(val_dataset.samples)} validation samples.")
 
-# ================================================================
-# 3. Model setup
-# ================================================================
-num_classes = len(val_dataset.tokenizer.chars)
-model = CRNN(num_classes=num_classes).to(device)
-
-ckpt_path = "checkpoints/ocr_finetuned_stage2_best.pth"
-if not os.path.exists(ckpt_path):
-    raise FileNotFoundError(f"Checkpoint not found: {ckpt_path}")
-
-model.load_state_dict(torch.load(ckpt_path, map_location=device))
-model.eval()
-print(f"Loaded model from {ckpt_path}")
-
-# ================================================================
-# 4. Optional LM Decoder
-# ================================================================
-if HAS_LM:
-    print("Initializing Language Model decoder...")
-    vocab = list(val_dataset.tokenizer.chars) + ["-"]  # CTC blank
-    decoder = build_ctcdecoder(labels=vocab)
-    print("✓ LM decoder loaded (beam search mode).")
-else:
-    decoder = None
-
-# ================================================================
-# 5. Evaluation Loop
-# ================================================================
-results = []
-print("Evaluating:")
-
-for imgs, labels in tqdm(val_loader, total=len(val_loader)):
-    imgs, labels = imgs.to(device), labels.to(device)
-
-    with torch.no_grad():
-        logits = model(imgs).permute(1, 0, 2)  # (B, T, C)
-        probs = torch.softmax(logits, dim=2).cpu().numpy()
-
-        for i in range(len(labels)):
-
-            if HAS_LM:  # LM Decoding
-                pred_text = decoder.decode(np.log(probs[i] + 1e-8))
-            else:       # Greedy Decoding
-                pred_text = decode_with_lm(logits[i].cpu().numpy())
-
-            gt_text = val_dataset.tokenizer.decode(labels[i].cpu().numpy())
-
-            # Compute CER
-            if len(gt_text.strip()) == 0:
-                continue
-
-            dist = sum(1 for a, b in zip(pred_text, gt_text) if a != b)
-            cer = dist / max(len(gt_text), 1)
-
-            wer = 1.0 if pred_text.strip() != gt_text.strip() else 0.0
-
-            results.append((pred_text, gt_text, cer, wer))
-
-# ================================================================
-# 6. Summary
-# ================================================================
-import numpy as np
-cers = [r[2] for r in results]
-wers = [r[3] for r in results]
-
-print("\n================ Evaluation Summary ================")
-print(f"Total evaluated samples : {len(results)}")
-print(f"Average CER: {np.mean(cers):.4f}")
-print(f"Average WER: {np.mean(wers):.4f}")
-print("====================================================")
-
-# ================================================================
-# 7. Show Samples
-# ================================================================
-print("\nSample Predictions:\n")
-for i in range(5):
-    pred, gt, cer, wer = results[i]
-    print(f"GT : {gt}")
-    print(f"PR : {pred}")
-    print(f"CER: {cer:.2f} | WER: {wer:.2f}")
-    print("-" * 50)
-
-# ================================================================
-# 8. Save Output
-# ================================================================
-import pandas as pd
-out_path = "ocr_stage2_predictions.csv"
-pd.DataFrame(results, columns=["Predicted", "Ground Truth", "CER", "WER"]).to_csv(out_path, index=False)
-print(f"Saved detailed results to: {out_path}")
+def test_placeholder():
+    assert True

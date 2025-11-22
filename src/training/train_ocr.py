@@ -331,9 +331,11 @@ def main():
         # Load datasets
         logger.info("Loading datasets...")
         train_dataset = SmartNotesOCRDataset(
+            root_dir=Config.dataset.ROOT_DIR,
             mode='train'
         )
         val_dataset = SmartNotesOCRDataset(
+            root_dir=Config.dataset.ROOT_DIR,
             mode='val'
         )
         
