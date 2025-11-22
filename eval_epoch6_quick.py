@@ -27,13 +27,19 @@ def evaluate(sample_size=5000):
     # Sample subset for quick evaluation
     if sample_size and full_size > sample_size:
         indices = np.random.choice(full_size, size=sample_size, replace=False)
-        val_dataset = Subset(val_dataset, indices)
+        val_dataset = Subset(val_dataset, indices.tolist())
         print(f"Sampling {sample_size} random samples for evaluation\n")
+    
+    # Get tokenizer reference before creating subset
+    if isinstance(val_dataset, SmartNotesOCRDataset):
+        tokenizer = val_dataset.tokenizer
+    else:
+        tokenizer = val_dataset.dataset.tokenizer  # type: ignore
     
     val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False, collate_fn=collate_fn)
 
     # Load model
-    num_classes = len(val_dataset.dataset.tokenizer.chars)
+    num_classes = len(tokenizer.chars)
     model = CRNN(num_classes=num_classes).to(device)
     
     ckpt_path = "checkpoints/ocr_epoch_6.pth"
@@ -62,10 +68,10 @@ def evaluate(sample_size=5000):
             logits = model(imgs).permute(1, 0, 2)
             
             for i in range(len(labels)):
-                pred_text = val_dataset.dataset.tokenizer.decode(
+                pred_text = tokenizer.decode(
                     np.argmax(logits[i].cpu().numpy(), axis=1)
                 )
-                gt_text = val_dataset.dataset.tokenizer.decode(labels[i].cpu().numpy())
+                gt_text = tokenizer.decode(labels[i].cpu().numpy())
                 
                 if len(gt_text.strip()) == 0:
                     continue

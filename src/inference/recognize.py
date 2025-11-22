@@ -82,12 +82,12 @@ class OCRLMInference:
     
     def _load_ocr_model(self, checkpoint_path: str) -> None:
         """Load OCR model from checkpoint."""
-        checkpoint_path = Path(checkpoint_path)
+        ckpt_path = Path(checkpoint_path)
         
-        if not checkpoint_path.exists():
-            raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
+        if not ckpt_path.exists():
+            raise FileNotFoundError(f"Checkpoint not found: {ckpt_path}")
         
-        logger.info(f"Loading OCR model from: {checkpoint_path}")
+        logger.info(f"Loading OCR model from: {ckpt_path}")
         
         # Initialize dataset to get tokenizer
         dataset = SmartNotesOCRDataset(mode="val")
@@ -98,7 +98,7 @@ class OCRLMInference:
         self.model = CRNN(num_classes=num_classes).to(self.device)
         
         # Load checkpoint
-        checkpoint = torch.load(checkpoint_path, map_location=self.device)
+        checkpoint = torch.load(str(ckpt_path), map_location=self.device)
         if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
             self.model.load_state_dict(checkpoint["model_state_dict"])
             epoch = checkpoint.get("epoch", "?")
@@ -111,16 +111,16 @@ class OCRLMInference:
     
     def _load_lm_model(self, lm_path: str) -> None:
         """Load language model."""
-        lm_path = Path(lm_path)
+        lm_file = Path(lm_path)
         
-        if not lm_path.exists():
+        if not lm_file.exists():
             logger.warning(f"LM not found: {lm_path}")
             self.use_lm = False
             return
         
         try:
             logger.info(f"Loading language model from: {lm_path}")
-            self.lm_model = kenlm.Model(str(lm_path))
+            self.lm_model = kenlm.Model(str(lm_file))  # type: ignore
             logger.info(f"LM order: {self.lm_model.order}")
             logger.info("Language model loaded successfully")
         except Exception as e:
@@ -150,7 +150,7 @@ class OCRLMInference:
         
         Args:
             image_batch: Batch of images (B, 1, H, W)
-            labels_batch: Optional ground truth labels
+            labels_batch: Optional ground truth labels (may be padded)
         
         Returns:
             List of (prediction, ground_truth, cer, wer) tuples
@@ -159,19 +159,30 @@ class OCRLMInference:
         
         with torch.no_grad():
             images = image_batch.to(self.device)
-            logits = self.model(images).permute(1, 0, 2)  # (T, B, C)
+            logits = self.model(images).permute(1, 0, 2)  # type: ignore  # (T, B, C)
             
-            for i in range(logits.shape[1]):
-                # Greedy decoding
+            batch_size = logits.shape[1]
+            
+            for i in range(batch_size):
+                # Greedy decoding - argmax includes blank token handling
                 pred_indices = torch.argmax(logits[:, i, :], dim=1)
-                pred_text = self.tokenizer.decode(pred_indices.cpu().numpy())
+                pred_text = self.tokenizer.decode(pred_indices.cpu().numpy())  # type: ignore
                 
                 # Ground truth if provided
                 gt_text = None
                 cer, wer = None, None
                 
-                if labels_batch is not None:
-                    gt_text = self.tokenizer.decode(labels_batch[i].cpu().numpy())
+                if labels_batch is not None and i < len(labels_batch):
+                    # Get label and remove padding (zeros after valid content)
+                    label_seq = labels_batch[i].cpu().numpy()
+                    # Find the first zero padding
+                    nonzero_idx = np.where(label_seq != 0)[0]
+                    if len(nonzero_idx) > 0:
+                        # Trim to last valid non-zero index
+                        valid_end = int(nonzero_idx[-1]) + 1
+                        label_seq = label_seq[:valid_end]
+                    
+                    gt_text = self.tokenizer.decode(label_seq)  # type: ignore
                     
                     if len(gt_text.strip()) > 0:
                         # Calculate metrics
@@ -193,7 +204,7 @@ class OCRLMInference:
         num_samples: Optional[int] = None,
         batch_size: int = 16,
         display_samples: int = 5
-    ) -> Tuple[float, float]:
+    ) -> Tuple[Optional[float], Optional[float]]:
         """
         Evaluate on dataset.
         
@@ -214,14 +225,14 @@ class OCRLMInference:
         if num_samples and len(dataset) > num_samples:
             indices = np.random.choice(len(dataset), size=num_samples, replace=False)
             from torch.utils.data import Subset
-            dataset = Subset(dataset, indices)
+            dataset = Subset(dataset, indices.tolist())
             logger.info(f"Sampling {num_samples} random samples")
         
         dataloader = DataLoader(
             dataset,
-            batch_size=batch_size,
+            batch_size=1,  # Process one at a time to avoid padding issues
             shuffle=False,
-            collate_fn=collate_fn
+            collate_fn=None
         )
         
         all_cers = []
@@ -242,8 +253,8 @@ class OCRLMInference:
             logger.error("No valid results obtained")
             return None, None
         
-        avg_cer = np.mean(all_cers)
-        avg_wer = np.mean(all_wers)
+        avg_cer = float(np.mean(all_cers))
+        avg_wer = float(np.mean(all_wers))
         
         # Print results
         print("\n" + "="*70)
