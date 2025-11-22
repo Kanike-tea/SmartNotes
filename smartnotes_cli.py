@@ -205,8 +205,8 @@ class SmartNotesApp:
             output_dir: Directory containing results
             title: HTML page title
         """
-        output_dir = Path(output_dir)
-        metadata_file = output_dir / "processing_metadata.json"
+        output_dir_path = Path(output_dir)
+        metadata_file = output_dir_path / "processing_metadata.json"
         
         if not metadata_file.exists():
             self.logger.warning("No processing metadata found")
@@ -222,7 +222,7 @@ class SmartNotesApp:
         # Generate HTML
         html_content = self._generate_html_summary(metadata, title)
         
-        html_path = output_dir / "summary.html"
+        html_path = output_dir_path / "summary.html"
         with open(html_path, "w") as f:
             f.write(html_content)
         

@@ -7,6 +7,7 @@ import torch
 import numpy as np
 from pathlib import Path
 from tqdm import tqdm
+from typing import Optional
 
 sys.path.insert(0, '/Users/kanike/Desktop/SmartNotes/SmartNotes')
 
@@ -14,7 +15,7 @@ from src.model.ocr_model import CRNN
 from src.dataloader.ocr_dataloader import TextTokenizer
 import cv2
 
-def load_single_image(img_path: str) -> torch.Tensor:
+def load_single_image(img_path: str) -> Optional[torch.Tensor]:
     """Load and preprocess single image."""
     try:
         img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)

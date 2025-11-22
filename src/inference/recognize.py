@@ -239,6 +239,9 @@ class OCRLMInference:
         image_tensor = image_tensor.unsqueeze(0).unsqueeze(0)  # (1, 1, 32, 128)
         
         # Run inference
+        if self.model is None:
+            raise RuntimeError("Model not initialized")
+            
         with torch.no_grad():
             images = image_tensor.to(self.device)
             logits = self.model(images).permute(1, 0, 2)  # (T, B, C)

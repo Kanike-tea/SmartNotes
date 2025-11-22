@@ -3,9 +3,6 @@
 ## ⚡ Get Started in 60 Seconds
 
 ### Step 1: Navigate to Project
-```bash
-cd /Users/kanike/Desktop/SmartNotes/SmartNotes
-```
 
 ### Step 2: Process Your First PDF
 ```bash
@@ -165,7 +162,6 @@ The system can classify notes into these subjects:
 | BCS515B | Artificial Intelligence |
 | BCS515C | Unix System Programming |
 | BCS515D | Distributed Systems |
-| BCS586 | Mini Project |
 | BRMK557 | Research Methodology and IPR |
 | BCS508 | Environmental Studies & E-waste |
 
@@ -268,5 +264,5 @@ python3 smartnotes_cli.py --batch ./my_pdfs --output ./organized --html
 ---
 
 **Version**: 2.0
-**Status**: ✅ Production Ready
-**Last Updated**: 2025-11-22
+**Status**: Production Ready
+**Last Updated**: 22-11-2025

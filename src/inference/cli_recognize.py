@@ -46,13 +46,13 @@ class OCRCLITool:
         Returns:
             Dictionary with prediction and metadata
         """
-        image_path = Path(image_path)
+        image_path_obj = Path(image_path)
         
-        if not image_path.exists():
+        if not image_path_obj.exists():
             raise FileNotFoundError(f"Image not found: {image_path}")
         
         # Load and preprocess image
-        img = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
+        img = cv2.imread(str(image_path_obj), cv2.IMREAD_GRAYSCALE)
         if img is None:
             raise ValueError(f"Failed to load image: {image_path}")
         
@@ -77,7 +77,7 @@ class OCRCLITool:
         self,
         input_dir: str,
         output_file: Optional[str] = None,
-        image_extensions: List[str] = None
+        image_extensions: Optional[List[str]] = None
     ) -> List[Dict[str, Any]]:
         """
         Recognize text from all images in directory.
