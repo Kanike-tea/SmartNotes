@@ -16,56 +16,90 @@ VTU_SUBJECT_KEYWORDS = {
         "software engineering", "software process", "sdlc", "requirement",
         "software design", "uml", "testing", "verification", "validation",
         "project management", "cost estimation", "cocomo", "risk management",
-        "version control", "agile", "waterfall", "maintenance"
+        "version control", "agile", "waterfall", "maintenance", "scrum",
+        "development", "deployment", "team", "planning"
     ],
     "BCS502 - Computer Networks": [
         "computer networks", "tcp", "udp", "routing", "ip", "switching",
         "osi model", "network layer", "transport layer", "congestion",
-        "arp", "dhcp", "dns", "mac", "ethernet", "socket", "udp", "tcp/ip",
-        "three-way handshake", "congestion control"
+        "arp", "dhcp", "dns", "mac", "ethernet", "socket", "tcp/ip",
+        "three-way handshake", "congestion control", "protocol", "bandwidth",
+        "gateway", "firewall", "vpn", "network security", "port"
     ],
     "BCS503 - Theory of Computation": [
         "automata", "finite automata", "dfa", "nfa", "regular expression",
         "regular languages", "context free grammar", "pushdown automata",
         "turing machine", "decidability", "reduction", "p vs np", "grammar",
-        "pumping lemma"
+        "pumping lemma", "complexity", "algorithm", "language", "computation",
+        "state machine", "transition"
     ],
     "BCSL504 - Web Technology Lab": [
         "html", "css", "javascript", "dom", "frontend", "http", "web",
         "rest", "ajax", "node", "flask", "php", "web api", "forms",
-        "responsive design", "bootstrap"
+        "responsive design", "bootstrap", "server", "client", "browser",
+        "markup", "styling", "scripting", "database"
     ],
     "BCS515A - Computer Graphics (Professional Elective)": [
         "computer graphics", "rasterization", "opengl", "transformations",
         "2d graphics", "3d graphics", "clipping", "modeling", "lighting",
-        "shading", "bezier", "bresenham", "projection"
+        "shading", "bezier", "bresenham", "projection", "rendering",
+        "animation", "texture", "polygon", "image"
     ],
     "BCS515B - Artificial Intelligence (Professional Elective)": [
         "artificial intelligence", "search", "a*", "heuristic", "knowledge",
         "prolog", "machine learning", "classification", "expert system",
-        "agents", "bayes", "neural network"
+        "agents", "bayes", "neural network", "deep learning", "ai",
+        "learning", "reasoning", "inference", "optimization"
     ],
     "BCS515C - Unix System Programming (Professional Elective)": [
         "unix", "system calls", "fork", "exec", "signals", "process",
         "interprocess communication", "pipes", "threads", "makefile",
-        "shell scripting", "file descriptors"
+        "shell scripting", "file descriptors", "linux", "operating system",
+        "kernel", "ipc", "semaphore", "mutex"
     ],
     "BCS515D - Distributed Systems (Professional Elective)": [
         "distributed system", "distributed algorithms", "rpc", "consensus",
         "lamport", "mutual exclusion", "replication", "distributed file system",
-        "clock synchronization", "cap theorem"
+        "clock synchronization", "cap theorem", "cluster", "parallel",
+        "message passing", "coordination", "fault tolerance"
     ],
     "BCS586 - Mini Project": [
         "mini project", "project", "prototype", "implementation",
-        "report", "presentation", "demo", "mini-project"
+        "report", "presentation", "demo", "mini-project", "development"
     ],
     "BRMK557 - Research Methodology and IPR": [
         "research methodology", "ipr", "patent", "literature review",
-        "research design", "ethics", "plagiarism", "citation", "bibliography"
+        "research design", "ethics", "plagiarism", "citation", "bibliography",
+        "research", "intellectual property", "publication"
     ],
     "BCS508 - Environmental Studies and E-waste Management": [
         "environmental studies", "e-waste", "sustainability", "pollution",
-        "waste management", "environment", "recycling", "hazardous waste"
+        "waste management", "environment", "recycling", "hazardous waste",
+        "ecology", "conservation", "climate", "green"
+    ],
+    # Adding common college subject patterns for better fallback
+    "Biology": [
+        "cell", "dna", "protein", "organism", "biology", "genetic", "mutation",
+        "evolution", "photosynthesis", "respiration", "reproduction", "enzyme",
+        "tissue", "organ", "system", "nervous", "digestive", "circulatory",
+        "metabolism", "taxonomy", "ecology", "biosphere", "ecosystem"
+    ],
+    "Chemistry": [
+        "atom", "molecule", "chemical", "reaction", "element", "compound",
+        "bonding", "periodic table", "acid", "base", "salt", "oxidation",
+        "reduction", "equilibrium", "kinetics", "thermodynamics", "organic",
+        "inorganic", "polymer", "solution"
+    ],
+    "Physics": [
+        "force", "energy", "motion", "wave", "quantum", "particle", "physics",
+        "velocity", "acceleration", "momentum", "work", "power", "heat",
+        "temperature", "light", "optics", "electricity", "magnetism",
+        "relativity", "gravity", "potential"
+    ],
+    "Mathematics": [
+        "equation", "calculus", "algebra", "geometry", "derivative", "integral",
+        "function", "limit", "series", "matrix", "vector", "trigonometry",
+        "probability", "statistics", "theorem", "proof", "number theory"
     ]
 }
 
