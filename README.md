@@ -20,6 +20,23 @@ A deep learning-powered Optical Character Recognition (OCR) system designed to a
 
 ## Quick Start (End-to-End)
 
+### Option 0: Interactive Web Interface (Recommended)
+
+Upload notes and get instant OCR + subject classification in your browser:
+
+```bash
+# Launch Gradio interface
+python scripts/launch_gradio.py
+```
+
+Then open **http://localhost:7860** in your browser
+
+**Features:**
+- 📷 Upload handwritten or printed notes
+- 🔤 Extract text with OCR (CRNN + BiLSTM)
+- 📚 Auto-classify subject
+- 📊 Show confidence score
+
 ### Option 1: Process a Single PDF
 
 ```bash

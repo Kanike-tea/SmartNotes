@@ -6,7 +6,6 @@ Get SmartNotes up and running in 5 minutes!
 
 ```bash
 # Process your first PDF
-cd /Users/kanike/Desktop/SmartNotes/SmartNotes
 python3 smartnotes_cli.py --pdf my_document.pdf --output ./results/
 ```
 

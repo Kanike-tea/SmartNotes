@@ -108,7 +108,19 @@ class PDFProcessor:
             )
         
         self.logger = logger or self._setup_logger()
-        self.ocr_inference = OCRLMInference(use_lm=use_lm, device=device)  # type: ignore
+        
+        # Convert device string to proper torch.device
+        if isinstance(device, str):
+            if device == "auto":
+                import torch
+                device_obj = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
+            else:
+                import torch
+                device_obj = torch.device(device)
+        else:
+            device_obj = device
+        
+        self.ocr_inference = OCRLMInference(use_lm=use_lm, device=device_obj)  # type: ignore
         self.save_images = save_images
         self.save_metadata = save_metadata
         
