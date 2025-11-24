@@ -1,0 +1,38 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Implementation of Circular Queue Operations
+
+When the array is viewed as a circle, each array position has a next and a previous
+position. The position next to MAX-QUEUE-SIZE -1 is 0, and the position that
+precedes 0 is MAX-QUEUE-SIZE -1.
+
+When the queue rear is at MAX_QUEUE_SIZE-1, the next element is inserted at
+position 0.
+
+In circular queue, the variables front and rear are moved from their current
+position to the next position in clockwise direction. This may be done using code
+
+if (rear =
+
+MAX_QUEUE_SIZE-1)
+rear =0;
+else rear++;
+
+Addition & Deletion
+
+To add an element, increment rear one position clockwise and. insert at the new
+position. Here the MAX_QUEUE_SIZE is 8 and if all 8 elements are added into
+queue and that can be represented in below figure (a).
+
+To delete an element, increment front one position clockwise. The element A is
+deleted from queue and if we perform 6 deletions from the queue of Figure (b) in
+this fashion, then queue becomes empty and that front =rear.
+
+If the element I is added into the queue as in figure (c), then rear needs to
+increment by | and the value of rear is 8. Since queue is circular, the next
+
+position should be 0 instead of 8.
+
+This can be done by using the modulus operator, which computes remainders.
+
+vtucode.in 7

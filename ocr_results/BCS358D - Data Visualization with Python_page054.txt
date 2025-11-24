@@ -1,0 +1,50 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 05 (a)
+
+5 a) Write a Python program to Demonstrate how to Draw a Histogram Plot using
+
+Matplotlib.
+
+Aim: Demonstration of how to draw a scatter plot using Matplotlib.
+
+PROGRAM EXPLANATION
+
+The below program demonstrates how to draw a scatter plot using Matplotlib. Make sure you
+have Matplotlib installed before running this code. You can install it using pip if you haven't
+
+already:
+pip install matplotlib
+
+This Python program uses the Matplotlib library to generate and display a histogram plot. Here's
+
+a step-by-step explanation of the program:
+
+1. Import necessary libraries: The program imports the Matplotlib library for creating plots
+and the NumPy library for generating random data.
+
+2. Generate random data for the histogram: The code uses NumPy's randn function to
+generate 1000 random data points sampled from a standard normal distribution (mean=0,
+standard deviation=1).
+
+3. Create a histogram plot: The hist function from Matplotlib is used to create a histogram
+plot. The parameters include:
+
+e data: The input data for which the histogram is computed.
+e bins: The number of bins in the histogram.
+
+e edgecolor: The color of the edges of the bins.
+
+e alpha: The transparency of the bars.
+
+4. Add labels and a title: The xlabel, ylabel, and title functions are used to add labels to the
+x-axis and y-axis, as well as a title to the plot.
+
+5. Show the plot: Finally, the show function is called to display the histogram plot. This
+function is necessary when running the script in a non-interactive environment (e.g., a
+script or a non-interactive Python environment like a Jupyter notebook). In an interactive
+environment, like a Jupyter notebook, the plot would be displayed automatically without
+
+the need for plt.show().
+
+Dept. of CSE 39 GSSSIETW, Mysuru

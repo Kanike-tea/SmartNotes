@@ -1,0 +1,52 @@
+22.1 Recovery Concepts
+
+3. Write a [checkpoint] record to the log, and force-write the log to disk.
+4. Resume executing transactions.
+
+As a consequence of step 2, a checkpoint record in the log may also include addi-
+tional information, such as a list of active transaction ids, and the locations
+(addresses) of the first and most recent (last) records in the log for each active
+transaction. This can facilitate undoing transaction operations in the event that a
+transaction must be rolled back.
+
+The time needed to force-write all modified memory buffers may delay transaction
+processing because of step 1, which is not acceptable in practice. To overcome this,
+it is common to use a technique called fuzzy checkpointing. In this technique, the
+system can resume transaction processing after a [begin_checkpoint] record is writ-
+ten to the log without having to wait for step 2 to finish. When step 2 is completed,
+an [end_checkpoint, ... ] record is written in the log with the relevant information
+collected during checkpointing. However, until step 2 is completed, the previous
+checkpoint record should remain valid. To accomplish this, the system maintains a
+file on disk that contains a pointer to the valid checkpoint, which continues to point
+to the previous checkpoint record in the log. Once step 2 is concluded, that pointer
+is changed to point to the new checkpoint in the log.
+
+22.1.5 Transaction Rollback and Cascading Rollback
+
+Ifa transaction fails for whatever reason after updating the database, but before the
+transaction commits, it may be necessary to roll back the transaction. If any data
+item values have been changed by the transaction and written to the database on
+disk, they must be restored to their previous values (BFIMs). The undo-type log
+entries are used to restore the old values of data items that must be rolled back.
+
+Ifa transaction T is rolled back, any transaction S that has, in the interim, read the
+value of some data item X written by T must also be rolled back. Similarly, once S is
+rolled back, any transaction R that has read the value of some data item Y written by
+S must also be rolled back; and so on. This phenomenon is called cascading
+rollback, and it can occur when the recovery protocol ensures recoverable schedules
+but does not ensure strict or cascadeless schedules (see Section 20.4.2). Understand-
+ably, cascading rollback can be complex and time-consuming. That is why almost all
+recovery mechanisms are designed so that cascading rollback is never required.
+
+Figure 22.1 shows an example where cascading rollback is required. The read and
+write operations of three individual transactions are shown in Figure 22.1(a). Fig-
+ure 22.1(b) shows the system log at the point of a system crash for a particular execution
+schedule of these transactions. The values of data items A, B, C, and D, which are used
+by the transactions, are shown to the right of the system log entries. We assume that the
+original item values, shown in the first line, are A = 30, B= 15, C= 40, and D= 20. At the
+point of system failure, transaction T; has not reached its conclusion and must be rolled
+back. The WRITE operations of T3, marked by a single * in Figure 22.1(b), are the T;
+operations that are undone during transaction rollback. Figure 22.1(c) graphically
+shows the operations of the different transactions along the time axis.
+
+819

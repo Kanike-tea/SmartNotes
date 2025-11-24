@@ -1,0 +1,52 @@
+4. Prefix coden an Weighted tree lw
+
+Accordingly, the code for the given word ENGINEERING is
+
+0110111001001011 100010111
+
+Obtain an optimal prefix code for the message LETTER RECEIVED. Indicate
+‘the code. ar
+p The given message consists of letters L, E, T, R, C, I, V, D with frequencies 1,5, 2,2, 1, 1,
+|, | respectively. Further, there is one blank space (2) between the two words of the message.
+
+First, we arrange the letters and © in the non-decreasing order of their weights (frequen-
+cies), Their representation as isolated vertices is shown below /
+
+e e e e
+I vp Oo T RE
+QM Ord’ a @ @ ©
+
+Figure 3.54 (i)
+
+°
+L
+(1)
+
+We now construct an optimal tree having these symbols as leaves by using the Huffman’s
+ure. The graphs obtained.in successive steps of the procedure are shown below in Fig-
+3,54(ii)-(ix) in the order of their oceurrence,, The labeled version of the final graph is
+
+n in Figure 3,55, d 6 .
+v4 (2)
+Qa) @) @) @) @ @ (5)
+L
+
+Cc
+Qa) ()
+Figure:3.54 (ii)
+
+@
+
+jf 102) /9v2)
+
+B88 & 5
+
+a a) @ @ (5)
+Lic v
+
+I
+ye,
+
+/
+
+Figure 3.54 (iii)

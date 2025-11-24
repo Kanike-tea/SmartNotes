@@ -1,0 +1,63 @@
+Data Structures and Applications (BCS304) Module III
+
+To determine satisfiability (x1,x2,x3) must take all possible combinations of true or false values and
+check the formula for each combination. For n variables ther are 2" possible combinations of true=t
+and false=f.
+
+Example: For n=3 the eight combinations are (t,t,t),(t.t,f),(t.f.0.(t£.,(ft.0, (£0, (£60.(66).
+
+The node structure for the satisfaibility problem is given as follows
+
+leftchild | Data | value | rightchild
+
+The node structure can be defined as follows
+
+typedef enum {not,and, or, true, false } logical;
+struct node
+
+{
+
+Struct node *leftchild;
+
+Logical data;
+
+Short int value;
+
+Structnode * rightchild;
+
+a
+Typedef struct node TNODE;
+
+Algorithm to determine satisfiability
+
+For (all 2" possible combinations)
+{
+Generate the next combination;
+Replace the variables by their values;
+Evaluate the root by traversing it in postorder;
+Tf (root->value)
+{
+Printf(<combination>);
+Return;
+
+}
+}
+
+Printf(“ No satisfiable combination”);
+
+Analysis: This algorithm will take O(g.2" ) or exponential time, where g is the time to substitute
+values for x1,x2.......... xn and evaluate the expression.
+
+Postorder Evaluation function: To evaluate an expression, the tree is traversed in postorder. When
+a node is visited the value of the expression represented by the left and right sub trees of a node are
+computed first. So the recursive postorder traversal algorithm is modified to obtain the function that
+evaluates the tree.
+
+Void postorderEval(TNODE *node)
+
+{
+Tf (node)
+
+{
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 21

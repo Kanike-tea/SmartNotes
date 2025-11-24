@@ -1,0 +1,52 @@
+2. Deletion can result in unused space/need for reorganization
+
+Sequential file organization:
+
+The most basic way to organize the collection of records in a file is to use sequential organization.
+Records of the file are stored in sequence by the primary key field values/ They are accessible only
+in the order stored i.e, in the primary key order. This kind is of file organization works well for tasks
+which need to access nearly every record in a file. Eg. Payroll.
+
+In a sequentially organized file records are written consecutively when the file is created and must
+be accessed consecutively when the file later used for input.
+
+A sequential file maintains the records in the logical sequence of its primary key values. Sequential
+file are inefficient for random access. And files can be stored on devices like magnetic tape that
+allow sequential access. As records are in sorted order it will use binary search technique to search
+for a record.
+
+Advantages of sequential file organization:
+e It is fast and efficient when dealing with large volumes of data that need to be processed
+periodically(batch system)
+Disadvantages of sequential file organization:
+e Requires that all new transactions be sorted into the proper sequence for sequential access
+processing
+¢ Locating, storing, modifying, deleting or adding records in the file require rearranging the
+file/
+¢ This method is too slow to handle application requiring immediate updating or responses.
+
+Indexed sequential file organization:
+It organized the file like a large dictionary, i.e, records are stored in order of the key, but an
+index is kept which also permits a type of direct access. The records are stored sequentially by
+primary key values and there is an index built over the primary key field.
+An index is a set of index value, address pairs. Indexing associates a set of objects to a set pf
+orderable quantities, that are usually smaller in number or their properties. Thus an index is a
+mechanism for faster search. Although the indices and the data blocks are kept physically, they
+are logically distinct.
+A sequential file that is indexed on its primary key is called an index sequential file. The index
+allows for random access to records, while the sequential storage of the records of the file
+provides easy access to the sequential records. An addition feature of this file system is the
+overflow area. The overflow area provides additional space for record addition without the need
+to create.
+
+Advantage of ISAM indexes:
+1. Because the whole structure is ordered to a large extent, partial (like ty%) and
+range(between 12 and 29) based retrievals can often benefit from the use of this type of
+index.
+2. ISAM is good for static tables because there are usually fewer index levels than B-tree
+3. In general there are fewer disk I/Os required to access data, provided there is no overflow.
+Disadvantage of ISAM indexes:
+
+1. ISAM is still not as quick as some in hash file organization
+
+2. Overflow can be a real problem in highly volatile table.

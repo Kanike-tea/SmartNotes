@@ -1,0 +1,45 @@
+1.3 Characteristics of the Database Approach
+
+banking database, or a company database—as long as the database definition is
+stored in the catalog.
+
+In traditional file processing, data definition is typically part of the application pro-
+grams themselves. Hence, these programs are constrained to work with only one
+specific database, whose structure is declared in the application programs. For
+example, an application program written in C++ may have struct or class declara-
+tions. Whereas file-processing software can access only specific databases, DBMS
+software can access diverse databases by extracting the database definitions from
+the catalog and using these definitions.
+
+For the example shown in Figure 1.2, the DBMS catalog will store the definitions of
+all the files shown. Figure 1.3 shows some entries in a database catalog. Whenever a
+request is made to access, say, the Name of a STUDENT record, the DBMS software
+refers to the catalog to determine the structure of the STUDENT file and the position
+and size of the Name data item within a STUDENT record. By contrast, in a typical
+file-processing application, the file structure and, in the extreme case, the exact
+location of Name within a STUDENT record are already coded within each program
+that accesses this data item.
+
+ant
+
+RELATIONS Figure 1.3
+Relation_name | No_of columns An example of a
+database catalog for
+STUDENT 4 the database in
+COURSE 4 Figure 1.2.
+SECTION 5
+GRADE_REPORT 3
+PREREQUISITE 2
+COLUMNS
+Column_name Data type Belongs_to_rélation
+Name Character (80) STUDENT
+Student_number Character (4) STUDENT
+Class Integer (1) STUDENT
+Major Major_type STUDENT
+Course_name Character (10) COURSE
+Course_number XXXXNNNN COURSE
+Prerequisite_number | _XXXXNNNN PREREQUISITE
+
+Note: Major_type is defined as an enumerated type with all known majors.
+
+XXXXNNNN is used to define a type with four alphabetic characters followed by four numeric digits.

@@ -1,0 +1,49 @@
+Data Structures and Applications (BCS304) Module III
+
+Evaluation of Expression Tree
+
+Example:
+
+Result = 3
+
+Additional Binary Tree operations
+44.1. Copying Binary Trees
+
+This function returns a pointer to an exact copy of the original tree.
+
+TreeNode* Copy(TreeNode *original)
+
+{
+
+TreeNode * temp;
+
+if (original!=NULL)
+
+{
+Temp=(TreeNode*)malloc(sizeof(TreeNode));
+Temp->leftchild= copy(original->leftchild);
+Temp->rightchild= copy(original->rightchild);
+Temp->data=original ->data;
+
+retrun temp;
+
+return Null;
+
+}
+
+Testing Equality
+e Equivalent Binary trees have the same structure and the same information in the
+corresponding nodes.
+e Same structure means every branch in one tree corresponds to a branch in the second tree that
+is the branching of the trees is identical.
+e This function returns true if the two trees are equivalent and false otherwise.
+
+int equal(TreeNode *first,TreeNode *second)
+
+{
+If (first==NULL && second==NULL)
+return true;
+
+if(first !=NULL && second!=NULL && first->data==second->data &&
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 19

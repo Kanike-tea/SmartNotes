@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+Database state or snapshot
+
+The distinction between database schema and database state is very important. When we define a
+
+new database, we specify its database schema only to the DBMS. At this point, the corresponding
+database state is the empty state with no data. We get the initial state of the database when the
+
+database is first populated or loaded with the initial data. From then on, every time an update
+
+Operation is applied to the database, we get another database state. At any point in time, the
+database has a current state.
+
+The DBMS is partly responsible for ensuring that every state of the database is a valid state—that
+
+is, a state that satisfies the structure and constraints specified in the schema. The
+
+DBMS stores the descriptions of the schema constructs.and_constraints—also called the meta-
+
+data—in the DBMS catalog so that DBMS software can refer to the schema whenever it needs to.
+The schema is sometimes called the intension, and a database state is called an extension of the
+
+schema.
+
+2.2 Three-Schema Architecture and Data Independence
+
+The goal of the three-schema architecture is to separate the user applications from the physical
+database. In this architecture, schemas can be defined at the following three levels:
+1. The internal level has an internal schema, which describes the physical storage
+structure of the database. The internal schema uses a physical data model and describes the
+complete details of data storage and access paths for the database.
+
+2. The conceptual level has a Conceptiallschemiay Which describes the structire of the! whole
+
+3. The external or view level includes a number of external schemas or user views. Each
+external schema describes the part of the database that a particular user group is interested
+
+in and hides the rest of the database from that user group. Each external schema is typically
+
+https://vtucode.in Page 20

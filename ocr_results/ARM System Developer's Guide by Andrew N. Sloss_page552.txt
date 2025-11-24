@@ -1,0 +1,50 @@
+EXAMPLE
+
+14.10
+
+14.10 Demonstration: A Small Virtual Memory System 539
+
+14.10.6.3 Activating a Page Table
+
+‘A page table can reside in memory and not be used by the MMU hardware. This happens
+when a task is dormant and its page tables are mapped out of active virtual memory.
+However, the task remains resident in physical memory, so it is immediately available for
+use when a context switch occurs to activate it.
+
+The third part in initializing the MMU is to activate the page tables needed to execute
+code located in the fixed regions.
+
+The routine mmuAttachPT either activates an L1 master page table by placing its address
+into the TTB in the CP15:c2:c0 register, or activates an L2 page table by placing its base
+address into an L1 master page table entry.
+
+It can be called using the following function prototype:
+
+int mmuAttachPT(Pagetable *pt);
+
+The procedure takes a single argument, a pointer to the Pagetab1e to activate and add
+new translations from virtual to physical virtual memory.
+
+int mmuAttachPT(Pagetable *pt) /* attach L2 PT to L1 master PT */
+
+{
+unsigned int *ttb, PTE, offset;
+
+ttb = (unsigned int *)pt->masterPtAddress;  /* read ttb from PT */
+offset = (pt->vAddress) >> 20; /* determine PTE from vAddress */
+
+switch (pt->type)
+{
+case MASTER:
+{
+__asm{ MCR p15, 0, ttb, c2, cO, 0} ;  /* TTB -> CP15:c2:c0 */
+break;
+}
+case COARSE:
+{
+/* PTE = addr L2 PT | domain | COARSE PT type*/
+PTE = (pt->ptAddress & Oxfffffc00);
+PTE |= pt->dom<<5;
+PTE |= 0x11;
+ttbloffset] = PTE;
+break;

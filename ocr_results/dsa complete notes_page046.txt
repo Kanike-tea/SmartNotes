@@ -1,0 +1,37 @@
+Data Structures and Applications(BCS304) Module 2
+
+Example
+Initially f=-1 r=-1 queue empty
+
+[Element
+lindex [0] (1) [2] (3] [4] (5]
+fe-1
+Insert 3
+[Element 3
+lindex [0] (1) [2] (3] [4] (5]
+w
+f=-1
+Insert 5
+Element 3 5
+index 0] (] [2] [3] [4] (5]
+r
+fe-1
+Insert 7
+[Element | 3 5 7
+Index (0] (1) [2] [3] [4] (5]
+r
+delete
+IElement 5) 7
+Index [0] (1) [2] (3] [4] (5]
+F r
+Deleted item =3
+C implementation of queues for an integer array: A queue can be represented by using an array to
+hold the elements of the array and to use two variables to hold the position of the first and lastelement
+
+of the queue.
+
+#define size 10
+int [size];
+int front=-1 ,rear=-1;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 2

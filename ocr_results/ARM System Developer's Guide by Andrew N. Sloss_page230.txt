@@ -1,0 +1,51 @@
+7.3 Division 217
+
+a repeated denominator), then you need access to very optimized division routines. This
+section provides some of these useful optimized routines.
+
+With aggressive optimization the Newton-Raphson division routines on an ARM9E run
+as fast as one bit per cycle hardware division implementations. Therefore ARM does not
+need the complexity of a hardware division implementation.
+
+This section describes the fastest division implementations that we know of. The sec-
+tion is unavoidably long as there are many different division techniques and precisions to
+consider. We will also prove that the routines actually work for all possible inputs. This is
+essential since we can’t try all possible input arguments for a 32-bit by 32-bit division! If
+you are not interested in the theoretical details, skip the proof and just lift the code from
+the text.
+
+Section 7.3.1 gives division implementations using trial subtraction, or binary search.
+Trial subtraction is useful when early termination is likely due to a small quotient, or on
+a processor core without a fast multiply instruction. Sections 7.3.2 and 7.3.3 give implemen-
+tations using Newton-Raphson iteration to converge to the answer. Use Newton-Raphson
+iteration when the worst-case performance is important, or fast multiply instructions are
+available. The Newton-Raphson implementations use the ARMvSTE extensions. Finally
+Section 7.3.4 looks at signed rather than unsigned division.
+
+We will need to distinguish between integer division and true mathematical division.
+Let’s fix the following notation:
+
+= n/d = the integer part of the result rounding towards zero (as in C)
+
+= nd = the integer remainder n — d(n/d) (as in C)
+
+= on//d =nd-!= 5 = the true mathematical result of n divided by d
+
+7.3.1. UNSIGNED DIVISION BY TRIAL SUBTRACTION
+
+Suppose we need to calculate the quotient q = n/d and remainder r= n % d for unsigned
+integers n and d. Suppose also that we know the quotient q fits into N bits so that n/d < 2,
+or equivalently n < (d < N). The trial subtraction algorithm calculates the N bits of q
+by trying to set each bit in turn, starting at the most significant bit, bit N — 1. This is
+equivalent to a binary search for the result. We can set bit k if we can subtract (d < k) from
+the current remainder without giving a negative result. The example udiv_simple gives
+a simple C implementation of this algorithm:
+
+unsigned udiv_simple(unsigned d, unsigned n, unsigned N)
+
+{
+
+unsigned q=0, r=n;
+
+do
+{ /* calculate next quotient bit */

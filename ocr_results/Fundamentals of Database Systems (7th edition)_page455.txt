@@ -1,0 +1,33 @@
+chapter 1 w
+
+XML: Extensible
+Markup Language
+
+Mi any Internet applications provide Web inter-
+faces to access information stored in one or
+
+more databases. These databases are often referred to as data sources. It is common
+to use the three-tier client/server architectures for Internet applications (see Sec-
+tion 2.5). Internet database applications are designed to interact with the user through
+Web interfaces that display Web pages on desktops, laptops, and mobile devices.
+The common method of specifying the contents and formatting of Web pages is
+through the use of hypertext documents. There are various languages for writing
+these documents, the most common being HTML (HyperText Markup Language).
+Although HTML is widely used for formatting and structuring Web documents, it
+is not suitable for specifying structured data that is extracted from databases. A new
+language—namely, XML (Extensible Markup Language)—has emerged as the stan-
+dard for structuring and exchanging data over the Web in text files. Another lan-
+guage that can be used for the same purpose is JSON (JavaScript Object Notation;
+see Section 11.4). XML can be used to provide information about the structure and
+meaning of the data in the Web pages rather than just specifying how the Web
+pages are formatted for display on the screen. Both XML and JSON documents
+provide descriptive information, such as attribute names, as well as the values of
+these attributes, in a text file; hence, they are known as self-describing documents.
+The formatting aspects of Web pages are specified separately—for example, by
+using a formatting language such as XSL (Extensible Stylesheet Language) or a
+transformation language such as XSLT (Extensible Stylesheet Language for Trans-
+formations or simply XSL Transformations). Recently, XML has also been pro-
+posed as a possible model for data storage and retrieval, although only a few
+experimental database systems based on XML have been developed so far.
+
+425

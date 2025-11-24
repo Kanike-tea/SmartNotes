@@ -1,0 +1,49 @@
+11.2 Example: Simple Little Operating System 399
+
+host = event]0DeviceOpen(&serial ,DEVICE_SERIAL_E7T,COM1) ;
+
+if (host==0)
+{
+/* ...error device driver not found...*/
+
+}
+
+switch (serial)
+
+{
+
+case DEVICE_IN_USE:
+
+case DEVICE_UNKNOWN:
+
+/* ...problem with device... */
+
+}
+
+‘The example shows a serial device being opened using the device driver framework.
+A set of macros translates the arguments into registers r1 to r3. These registers are then
+passed through the SWI mechanism to the device driver function. In the example, only the
+value pointed to by rl, &serial, is actually updated. This value is used to return the UID.
+If the value returned is zero, then an error has occurred.
+The following code shows how the macro event 10DeviceOpen is transformed into
+a single SWI instruction call:
+
+PRE r= Event_I0DeviceOpen (unsigned int)
+rl = &serial (UID *u)
+v2 = DEVICE_SERIAL_E7T (unsigned int major)
+r3 = COM1 (unsigned int minor)
+
+SWI 5075
+
+POST rl = The data pointed to by the UID pointer is updated
+
+‘The SWI interface is used as a method of changing to a privileged mode when the task
+executes in a nonprivileged mode. This allows the device driver to gain full access to the
+cpsr. Figure 11.5 shows the actual mode changes when a device driver function is called.
+You can see from the diagram that the device driver itself executes in system mode (which
+is privileged).
+
+Once an SWI instruction is executed, the processor enters SVC mode and IRQ interrupts
+are automatically disabled. Interrupts are only reenabled when the processor changes to
+system mode. The only exception to this is when a device driver function is called during
+the initialization phase; in this case, interrupts will remain disabled.

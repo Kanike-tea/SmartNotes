@@ -1,0 +1,40 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 10 (b)
+10 b) Write a Python program for creating Maps using Plotly Libraries.
+Aim: Demonstration of working for creating maps using plotly libraries
+PROGRAM EXPLANATION
+
+This Python program uses the Pandas library to read data from a CSV file and Plotly Express to
+create a choropleth map. Let's break down the program step by step:
+1. Import Libraries:
+The pandas library is used for data manipulation and analysis.
+The plotly.express module provides a high-level interface for creating various types of
+visualizations, including choropleth maps.
+2. Import Data: The program reads a CSV file named '2011_us_ag_exports.csv' from the
+specified path and stores it in a Pandas DataFrame called data.
+3. Create Choropleth Map:
+¢  px.choropleth is a function from Plotly Express used to create a choropleth map.
+e The data parameter is set to the DataFrame (data) containing the dataset.
+e locations='code': This specifies that the 'code' column in the DataFrame contains
+the spatial coordinates or identifiers for the states.
+e locationmode="USA-states": Indicates that the data is organized by USA state.
+¢ color='total exports': Specifies that the color of each state on the map should be
+based on the values in the 'total exports' column of the DataFrame.
+© scope="usa": Sets the map scope to the USA.
+4. Display the Map: This command displays the choropleth map using the specified
+configuration.
+Finally, the program reads agricultural export data for the USA from a CSV file, uses Plotly
+Express to create a choropleth map, and then displays the map. The color of each state on the
+
+map corresponds to the total exports value from the dataset.
+PROGRAM
+
+#import libraries
+import pandas as pd
+import plotly.express as px
+
+#import data
+data = pd.read_csv('D:\\dvwithpython_lab\\2011_us_ag_exports.csv')
+
+Dept. of CSE 73 GSSSIETW, Mysuru

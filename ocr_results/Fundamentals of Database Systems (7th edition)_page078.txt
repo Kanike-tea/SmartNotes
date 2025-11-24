@@ -1,0 +1,47 @@
+48 Chapter 2 Database System Concepts and Architecture
+
+Figure 2.5
+Logical two-tier
+client/server
+architecture.
+
+Client Client Client
+Network
+Print File DBMS.
+Server Server Server
+
+client/server architecture at the logical level; Figure 2.6 is a simplified diagram that
+shows the physical architecture. Some machines would be client sites only (for
+example, mobile devices or workstations/PCs that have only client software
+installed). Other machines would be dedicated servers, and others would have both
+client and server functionality.
+
+The concept of client/server architecture assumes an underlying framework that
+consists of many PCs/workstations and mobile devices as well as a smaller number
+of server machines, connected via wireless networks or LANs and other types of
+computer networks. A client in this framework is typically a user machine that pro-
+vides user interface capabilities and local processing. When a client requires access
+to additional functionality—such as database access—that does not exist at the cli-
+ent, it connects to a server that provides the needed functionality. A server is a sys-
+tem containing both hardware and software that can provide services to the client
+machines, such as file access, printing, archiving, or database access. In general,
+some machines install only client software, others only server software, and still
+others may include both client and server software, as illustrated in Figure 2.6.
+However, it is more common that client and server software usually run on separate
+
+Figure 2.6
+Physical two-tier
+client/server
+architecture.
+
+Diskless Client Server
+Client with Disk Server and Client
+
+Server ut Server
+
+Client Client Client
+
+Site 1 Site 2 Site 3 Site n
+
+Communication
+Network

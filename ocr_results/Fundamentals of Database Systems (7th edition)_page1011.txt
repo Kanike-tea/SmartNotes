@@ -1,0 +1,59 @@
+26.2 Temporal Database Concepts 981
+
+EMP_BT
+Name Sen Salary | Dno | Supervisor_ssn Vet Vet Tst Tet
+
+Smith | 128456789 | 25000 | 5 | 333445555 | 2002-06-15 | Now 2002-06-08, 18:05:58 | 2003-06-04,08:56:12
+Smith | 128456789 | 25000 | 5 | 333445555 | 2002-06-15 | 2003-05-31 | 2003-06-04, 08:56:12 | uc
+
+Smith | 128456789 | 30000 | 5 | 333445555 | 2003-06-01 | Now 2008-06-04, 08:56:12 | uc
+
+Wong | 383445555 | 25000 | 4 | 999887777 | 1999-08-20 | Now 1999-08-20, 11:18:23 | 2001-01-07,14:33:02
+Wong | 383445555 | 25000 | 4 | 999887777 | 1999-08-20 | 2001-01-31 | 2001-01-07, 14:38:02 | uc
+
+Wong | 333445555 | 30000| 5 | 999887777 | 2001-02-01 | Now 2001-01-07, 14:38:02 | 2002-03-28,09:23:57
+Wong | 333445555 | 30000 [ 5 | 999887777 | 2001-02-01 | 2002-03-31 | 2002-03-28, 09:23:57 | uc
+
+Wong | 383445555 | 40000 | 5 | 888667777 | 2002-04-01 | Now 2002-03-28, 09:23:57 | uc
+
+Brown | 222447777 | 28000 | 4 | 999887777 | 2001-05-01 | Now 2001-04-27, 16:22:05 | 2002-08-12,10:11:07
+Brown | 222447777 | 28000 | 4 | 999887777 | 2001-05-01 | 2002-08-10 | 2002-08-12, 10:11:07 | uc
+
+Narayan | 666884444| 3a000 | 5 | 333445555 | 2003-08-01 | Now 2008-07-28, 09:25:37 | uc
+DEPT_VT
+
+Dname | Dno | Manager_ssn Vat Vet Tat Tet
+
+Research | 5 | 888665555 | 2001-09-20 | Now 2001-09-15,14:52:12 | 2001-03-28,09:23:57
+
+Research | 5 | 888665555 | 2001-09-20 | 1997-08-31 | 2002-03-28,09:28:57 | uc
+
+Research | 5 | 383445555 | 2002-04-01 | Now 2002-03-28,09:23:57 | uc
+Figure 26.9
+
+Some tuple versions in the bitemporal relations EMP_BT and DEPT_BT.
+
+2. Make a copy V; of the current version V; set V3.Vst to VT, V3.Vet to now, V3.
+Salary to the new salary value, V3.Tst to TS(T), V3.Tet to uc, and insert V; in
+EMP_BT; V; represents the new current version.
+
+3. Set V.Tet to TS(T) since the current version is no longer representing correct
+information.
+
+As an illustration, consider the first three tuples V}, V2, and V3 in EMP_BT in Fig-
+ure 26.9. Before the update of Smith’s salary from 25000 to 30000, only V; was in
+EMP_BT and it was the current version and its Tet was uc. Then, a transaction T whose
+timestamp TS(T) is ‘2003-06-04,08:56:12’ updates the salary to 30000 with the effec-
+tive valid time of ‘2003-06-01’. The tuple V> is created, which is a copy of V, except
+that its Vet is set to ‘2003-05-31’, one day less than the new valid time, and its Tst is the
+timestamp of the updating transaction. The tuple V3 is also created, which has the
+new salary, its Vst is set to ‘2003-06-01’, and its Tst is also the timestamp of the updat-
+ing transaction. Finally, the Tet of Vj is set to the timestamp of the updating transac-
+tion, ‘2003-06-04,08:56:12’. Note that this is a retroactive update, since the updating
+transaction ran on June 4, 2003, but the salary change is effective on June 1, 2003.
+
+Similarly, when Wong’s salary and department are updated (at the same time) to
+30000 and 5, the updating transaction’s timestamp is ‘2001-01-07,14:33:02’ and the
+effective valid time for the update is ‘2001-02-01’. Hence, this is a proactive update
+because the transaction ran on January 7, 2001, but the effective date was Feb-
+ruary 1, 2001. In this case, tuple V4 is logically replaced by V; and V6.

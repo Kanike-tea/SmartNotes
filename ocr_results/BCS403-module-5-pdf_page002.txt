@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+= The lock_item and unlock_item operations must be implemented as indivisible units that
+is, no interleaving should be allowed once a lock or unlock operation is started until the
+operation terminates or the transaction waits
+= The wait command within the lock_item(X) operation is usually implemented by putting
+the transaction in a waiting queue for item X until X is unlocked and the transaction can
+be granted access to it
+= Other transactions that also want to access X are placed in the same queue.Hence, the
+wait command is considered to be outside the lock_item operation.
+= It is quite simple to implement a binary lock; all that is needed is a binary-valued
+variable, LOCK, associated with each data item X in the database
+= In its simplest form, each lock can be a record with three fields: <Data_item_name,
+LOCK, Locking_transaction> plus a queue for transactions that are waiting to access the
+item
+= If the simple binary locking scheme described here is used, every transaction must obey
+the following rules:
+1. A transaction T must issue the operation lock_item(X) before any
+read_item(X) or write_item(X) operations are performed in T.
+2. A transaction 7 must issue the operation unlock_item(X) after all
+read_item(X) and write_item(X) operations are completed in T.
+3. A transaction. T will not issue a lock_item(X) operation if it already holds the lock
+on item X.
+4. A transaction T will not issue an unlock_item(X) operation unless it already holds
+
+the lock on item. x.
+
+2. Shared/Exclusive (or Read/Write) Locks
+
+= binary locking scheme is too restrictive for database items because at most, one
+transaction can hold a lock on a given item
+
+= should allow several transactions to access the same item X if they all access X for
+reading purposes only
+
+= if a transaction is to write an item X, it must have exclusive access to X
+
+= For this purpose, a different type of lock called a multiple-mode lock is used
+
+= In this scheme—called shared/exclusive or read/write locks—there are three locking
+
+operations: read_lock(X), write_lock(X), and unlock(X).
+
+https://vtucode.in 24

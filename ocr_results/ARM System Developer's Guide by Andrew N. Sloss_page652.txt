@@ -1,0 +1,36 @@
+Table B.1 ARM instruction decode table.
+
+Instruction classes (indexed by op) 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 1312111098 765 43210
+on [rane (sec (asc cond 10 0.0 0| op |s Rn Rd shift_size |shift|0| Rm
+AND | EOR | SUB | RSB
+
+ADD | ADC | SBC | RSC cond |0 00 0} op |s Rn Rd Rs |0|shift\1] Rm
+MUL cond 000 0/00 08 Rd 0000 Rs 1/0 0{1| Rm
+MLA cond 000 0/00 158 Rd Rn Rs 1/0 0]1) Rm
+UMAAL cond 000 0/0 100 RdHi RdLo’ Rs 1/0 0{1| Rm
+UMULL | UMLAL | SMULL | SMLAL cond [0 0 0 0/1] op [S| RdHi RdLo Rs__[ifoo[if Rm
+STRH LDRH post cond 0 0 0 O/U 0 0 op Rn Rd 0.0.0 0/1/01 ]1) Rm
+STRH | LDRH post cond ]0 0 0 O|U 1 0 op] Rn Rd vm ifort me
+LDRD | STRD | LDRSB | LDRSH post cond [0 0 0 0[U 0 0 op| Rn Rd__|0 0 0 Ofi|iep|i| Rm
+LDRD | STRD | LDRSB | LDRSH post cond |0 0 0 0/U 1 0 op] Rn Rd ve Lop|1 me
+MRS Rd, cpsr MRS Rd, spsr cond 0 0 0 1/Ofop 0 0/1 111 Rd 0.0 0 0/0 00 j0/00 00
+MSR cpsr, Rm MSR spsr, Rm cond 0 0 0 1{Ofop 1 O}f s x cll _ 1 1 1/0 0 0 0/0 000) Rm
+BXJ cond 0.0 0 1/0J0 1 O0f1 11 fl tt tft ii ioo0llo Rm
+SMLAxy cond 0 0 0 1/0/0 00 Rd Rn Rs ly x{0}| Rm
+SMLAWy cond 0 0 0 1/0/0 10 Rd Rn Rs 1 y0{0}| Rm
+SMULWy cond 0 0 0 1/0/0 10 Rd 0000 Rs lyl {0} Rm
+SMLALxy cond 0 0 0 1/0/1 00 RdHi RdLo Rs ly x{0}| Rm
+SMULxy cond 0 0 0 1/0/11 10 Rd 0000 Rs 1 yx{0}| Rm
+TST | TEQ | CMP | CMN cond [0 0 0 1/0| op [1] Rn 0 0 0 0| shifi_size [shift |0| Rm
+ORR | BIC cond [0 0 0 1|1lop 0 S| Rn Rd shifi_size shift [O[ _Rm
+Mov | MVN cond [0 0 0 I[iloep 1 S[0 00 0 Rd shift_size_|shift [0] _Rm
+Bx BLX cond 0 0 0 1/0 0 1 Of1 11 141 1 1 1f1 1:1 1f0]0opl1} Rm
+CLZ cond ooo 1/0 1 10/1 1121 Rd 111 10/00 {1 Rm
+QADD | QSUB | QDADD | QDSUB cond [0 0 0 1/0] op [0| Rn Rd [0 00 ojojio|i| Rm
+BKPT 1110/0 00 1Jo0 10 immed( 15:4] oj afi me
+TST | TEQ | CMP | CMN cond [0 0 0 1/0] op [1] Rn 00 0 0] Rs [O|shif[i[ Rm
+ORR | BIC cond [0 0 0 1[1 op 0 S Rn Rd Rs___[O|shift[i]_Rm
+MOV MVN cond 0 0 0 1/1 op 1 S/O 000 Rd Rs O| shift}1] Rm
+SWP SWPB cond 0 0 0 1/0 op 00 Rn Rd 0.0 0 O/1/00]1]) Rm
+STREX cond ooo 1/1 000 Rn Rd 111 1{1{00{1| Rm
+LDREX cond ooo 1;/1 001 Rn Rd 111 iljoojijiiid

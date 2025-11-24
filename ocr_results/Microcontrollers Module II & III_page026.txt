@@ -1,0 +1,61 @@
+Microcontrollers — BCS402
+
+SWI number using the address of the executed instruction, which is calculated from the link
+
+register Ir.
+
+The SWI number is determined by SWI_Number = <SWI instruction> AND NOT
+(Oxff000000)
+
+Here the SWI instruction is the actual 32-bit SWI instruction executed by the processor.
+
+Example2: SWL handler
+
+; Store registers r0-r12 and the link register
+
+STMED sp!, {r0-r12, Ir}
+
+; Read the SWI instruction
+
+LDR
+
+rl0, [Ir, #-4]
+
+; Mask off top 8 bits
+
+BIC
+
+110, r10, 40x ff000000
+
+; 110 - contains the SWI number
+
+BL
+
+service_routine
+
+; return from SWI handler
+
+LDMED sp!, {r0-r12, pc}*
+The code fragment determines what SWI number is being called and places that number into
+register rl10. The load instruction first copies the complete SWI instruction into register r10.
+The BIC instruction masks off the top bits of the instruction, leaving the SWI number.
+
+Assume the SWI has been called from ARM state.
+
+The number in register rl10 is then used by the SWI handler to call the appropriate SWI
+
+service routine.
+5. Program Status Register Instructions
+
+The ARM instruction set provides two instructions to directly control a program status
+register (psr). The MRS instruction transfers the contents of either the cpsr or spsr into a
+register; in the reverse direction, the MSR instruction transfers the contents of a register into
+
+the cpsr or spsr. Together these instructions are used to read and write the cpsr and spsr.
+
+In the syntax you can see a label called fields. This can be any combination of control (c),
+extension (x), status (s), and flags (f). These fields relate to particular byte regions in a psr, as
+
+shown in Figure 9.
+
+Dept. of ECE, GSSSIETW Page 27

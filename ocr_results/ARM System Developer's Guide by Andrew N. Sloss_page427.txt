@@ -1,0 +1,50 @@
+414 Chapter 12. Caches
+
+The set of cache lines pointed to by the set index are set associative. A data or code
+block from main memory can be allocated to any of the four ways in a set without affecting
+program behavior; in other words the storing of data in cache lines within a set does not
+affect program execution. Two sequential blocks from main memory can be stored as cache
+lines in the same way or two different ways. The important thing to note is that the data or
+code blocks from a specific location in main memory can be stored in any cache line that
+is a member of a set. The placement of values within a set is exclusive to prevent the same
+code or data block from simultaneously occupying two cache lines in a set.
+
+The mapping of main memory to a cache changes in a four-way set associative cache.
+Figure 12.8 shows the differences. Any single location in main memory now maps to four
+different locations in the cache. Although Figures 12.5 and 12.8 both illustrate 4 KB caches,
+here are some differences worth noting.
+
+The bit field for the tag is now two bits larger, and the set index bit field is two bits
+smaller. This means four million main memory addresses now map to one set of four cache
+lines, instead of one million addresses mapping to one location.
+
+The size of the area of main memory that maps to cache is now | KB instead of 4 KB.
+This means that the likelihood of mapping cache line data blocks to the same set is now four
+times higher. This is offset by the fact that a cache line is one fourth less likely to be evicted.
+
+If the example code shown in Figure 12.6 were run in the four-way set associative cache
+shown in Figure 12.8, the incidence of thrashing would quickly settle down as routine A,
+routine B, and the data array would establish unique places in the four available locations
+ina set. This assumes that the size of each routine and the data are less than the new smaller
+1 KB area that maps from main memory.
+
+12.2.4.1 Increasing Set Associativity
+
+As the associativity of a cache controller goes up, the probability of thrashing goes down.
+The ideal goal would be to maximize the set associativity of a cache by designing it so
+any main memory location maps to any cache line. A cache that does this is known as a
+fully associative cache. However, as the associativity increases, so does the complexity of
+the hardware that supports it. One method used by hardware designers to increase the set
+associativity of a cache includes a content addressable memory (CAM).
+
+A CAM uses a set of comparators to compare the input tag address with a cache-tag
+stored in each valid cache line. A CAM works in the opposite way a RAM works. Where a
+RAM produces data when given an address value, a CAM produces an address if given data
+value exists in the memory. Using a CAM allows many more cache-tags to be compared
+simultaneously, thereby increasing the number of cache lines that can be included in a set.
+
+Using a CAM to locate cache-tags is the design choice ARM made in their ARM920T
+and ARM940T processor cores. The caches in the ARM920T and ARM940T are 64-way set
+associative. Figure 12.9 shows a block diagram of an ARM940T cache. The cache controller
+uses the address tag as the input to the CAM and the output selects the way containing the
+valid cache line.

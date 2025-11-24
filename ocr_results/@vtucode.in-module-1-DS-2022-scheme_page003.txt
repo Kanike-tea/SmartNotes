@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+2. Destroy: The Destroy operation destroys the memory space allocated for the specified
+data structure.
+
+3. Selection: The Selection operation deals with accessing a particular data within a data
+structure.
+
+4. Updating: The Update operation updates or modifies the data in the data structure.
+
+5. Searching: The Searching operation finds the presence of the desired data item in the
+
+list of data items.
+
+6. Sorting: Sorting is the process of arranging all the data items in the data structure in a
+particular order, say for example, either in ascending order or in descending order.
+7. Merging: Merging is a process of combing the data items of two different sorted list
+
+into a single list.
+
+REVIEW OF POINTERS AND DYNAMIC MEMORY ALLOCATION
+
+Pointers to data significantly improve performance for repetitive operations such as
+traversing strings, lookup tables, control tables and tree structures. In particular, it is often
+much cheaper in time and space to copy and dereference pointers than it is to copy and access
+the data to which the pointers point. Pointers are also used to hold the addresses of entry
+points for called subroutines in procedural programming and for run-time linking to dynamic
+link libraries (DLLs).
+
+Pointer: A pointer is a special variable which contains address of a memory location. Using
+this pointer, the data can be accessed. For example, assume that a program contains four
+occurrences of a constant 3.1459. During the compilation process, four copies of 3.1459 can
+
+be created as shown below:
+
+However, it is more efficient to use one copy of 3.1459 and three pointers referencing a
+single copy, since less space is required for a pointer when compared to floating point
+
+number. This can be represented pictorially as shown below:
+
+Bron
+
+vtucode.in 4

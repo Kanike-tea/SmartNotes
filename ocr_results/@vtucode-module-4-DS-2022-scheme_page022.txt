@@ -1,0 +1,38 @@
+BCS304
+
+5.2.3 Connected Components:
+
+_—
+void connected(void)
+
+{
+/* determine the connected components of a graph */
+int i;
+for (i = 0; i <n; i++)
+if(!visited[i]) {
+dfs(i);
+printf(*\n");
+)
+)
+
+—— ae
+
+Connected components
+5.2.4 Spanning Trees
+
+A spanning tree is any tree that consists solely of edges in G and that includes all the vertices
+in G.
+
+KX J QUS od
+
+A complete graph and three of its spanning trees
+
+we may use either dfs or bfs to create aspanning tree. When dfs is used, the resulting spanning
+tree is known as a depth first spanning tree. When bfs is used, the resulting spanning tree is
+called a breadth first spanning tree.
+
+ta) 2100) epermirg tree (h) ATED) epemeiog tree
+
+dfs and bfs spanning trees for graph of Figure 6.19
+
+23

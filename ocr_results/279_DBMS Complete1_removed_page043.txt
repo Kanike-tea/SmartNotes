@@ -1,0 +1,25 @@
+is one index entry in the index file for each block in the data file. Each index entry has the value of
+the primary key field for the first record in a block and a pointer to other block as its two fields
+values.
+
+The first record of each block of the data file is known as anchor record of the block.
+
+Primary index is an example of non dense index
+
+‘Abhay
+Primary Block ‘Amit
+key value pointes-——pAsit
+[Abhay
+[Bapi —>
+Bikash
+(William
+mi
+Wood
+
+(Primary indexes on the ordering key field)
+
+A major problem with primary index as with any ordered file- is insertion and deletion of records.
+With a primary Index, the problem is compounded because if we attempt to insert a record in its
+correct position in the data file, we not only have to move records to make space for the new record
+but also have to change some index entries because moving records will change the anchor records
+of some blocks.

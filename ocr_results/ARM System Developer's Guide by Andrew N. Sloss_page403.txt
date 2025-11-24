@@ -1,0 +1,37 @@
+390 Chapter 11 Embedded Operating Systems
+
+Figure 11.2
+
+Table 11.2
+
+Microcontroller
+registers
+0x03ff0000
+0x00080000 + SVC stack
+0x00040000 System/User/Taskl stack base
+y
+0x00020000 Task3 stack base
+’
+0x00010000 T Task2 stack base
+0x00009000 IRQ stack base
+Y
+WU), Code
+0x00000000
+Memory map.
+Exception assignment.
+Exception Purpose
+Reset initialize the operating system
+SWI mechanism to access device drivers
+IRQ mechanism to service events
+
+11.2.4.1 Reset Exception
+
+The reset vector is only called once during the initialization phase. In theory, it could
+be called again to reinitialize the system—for example, in response to a watchdog timer
+event resetting the processor. Watchdog timers are used to reset a system when prolonged
+inactivity occurs.
+
+11.2.4.2 SWI Exception
+
+Whenever a device driver is called from an application, the call goes through the SWI handler
+mechanism. The SWI instruction forces the processor to change from user to SVC mode.

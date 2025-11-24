@@ -1,0 +1,51 @@
+322 Chapter 9 Exception and Interrupt Handling
+
+both IRQ and FIQ exceptions on entry into the FIQ handler. Thus, no external source can
+interrupt the processor unless the IRQ and/or FIQ exceptions are reenabled by software. It
+is desirable that the FIQ handler (and also the abort, SWI, and IRQ handlers) is carefully
+designed to service the exception efficiently.
+
+An Interrupt Request (IRQ) exception occurs when an external peripheral sets the IRQ
+pin to nIRQ. An IRQ exception is the second-highest priority interrupt. The IRQ handler
+will be entered if neither an FIQ exception nor Data Abort exception occurs. On entry to
+the IRQ handler, the IRQ exceptions are disabled and should remain disabled until the
+current interrupt source has been cleared.
+
+A Prefetch Abort exception occurs when an attempt to fetch an instruction results
+in a memory fault. This exception is raised when the instruction is in the execute stage
+of the pipeline and if none of the higher exceptions have been raised. On entry to the
+handler, IRQ exceptions will be disabled, but the FIQ exceptions will remain unchanged.
+If FIQ is enabled and an FIQ exception occurs, it can be taken while servicing the Prefetch
+Abort.
+
+A Software Interrupt (SWI) exception occurs when the SWI instruction is executed and
+none of the other higher-priority exceptions have been flagged. On entry to the handler,
+the cpsr will be set to supervisor mode.
+
+If the system uses nested SWI calls, the link register rl4 and spsr must be stored away
+before branching to the nested SWI to avoid possible corruption of the link register and
+the spsr.
+
+An Undefined Instruction exception occurs when an instruction not in the ARM or
+Thumb instruction set reaches the execute stage of the pipeline and none of the other
+exceptions have been flagged. The ARM processor “asks” the coprocessors if they can
+handle this as a coprocessor instruction. Since coprocessors follow the pipeline, instruction
+identification can take place in the execute stage of the core. If none of the coprocessors
+claims the instruction, an Undefined Instruction exception is raised.
+
+Both the SWI instruction and Undefined Instruction have the same level of priority,
+since they cannot occur at the same time (in other words, the instruction being executed
+cannot both be an SWI instruction and an undefined instruction).
+
+9.1.4 LINK REGISTER OFFSETS
+
+When an exception occurs, the link register is set to a specific address based on the current
+pc. For instance, when an IRQ exception is raised, the link register Ir points to the last
+executed instruction plus 8. Care has to be taken to make sure the exception handler does
+not corrupt /r because /r is used to return from an exception handler. The IRQ exception
+is taken only after the current instruction is executed, so the return address has to point to
+the next instruction, or Ir — 4. Table 9.4 provides a list of useful addresses for the different
+exceptions.
+
+The next three examples show different methods of returning from an IRQ or FIQ
+exception handler.

@@ -1,0 +1,40 @@
+NOR Implementation
+
+The NOR operation is the dual of the NAND operation. Therefore, all procedures and rules for NOR
+logic are the duals of the corresponding procedures and rules developed for NAND logic. The NOR gate
+is another universal gate that can be used to implement any Boolean function. The implementation of
+the complement, OR, and AND operations with NOR gates is shown in Fig. The complement operation
+is obtained from a oneLlinput NOR gate that behaves exactly like an inverter. The OR operation requires
+
+two NOR gates, and the AND operation is obtained with a NOR gate that has inverters in each input.
+
+Inverter x fo x’
+
+OR ‘—) > [>o x+y
+: ——_>o—
+
+The two graphic symbols for the mixed notation are shown in Fig. The OR-invert symbol defines the
+
+NOR operation as an OR followed by a complement. The invert-AND symbol complements each input
+
+and then performs an AND operation. The two symbols designate the same NOR operation and are
+logically identical because of DeMorgan’s theorem.
+
+x ’
+y (x+y+z) x'y'z' =(x+y+z)'
+
+(a) OR-invert (b) Invert-AND
+
+nee
+
+A two-level implementation with NOR gates requires that the function be simplified into product-of-
+sums form. Remember that the simplified product-of-sums expression is obtained from the map by
+combining the 0’s and complementing. A product-of-sums expression is implemented with a first level
+of OR gates that produce the sum terms followed by a second-level AND gate to produce the product.
+The transformation from the OR-AND diagram to a NOR diagram is achieved by changing the OR gates
+to NOR gates with OR-invert graphic symbols and the AND gate to a NOR gate with an invert-AND
+graphic symbol. A single literal term going into the second-level gate must be complemented. Fig shows
+
+the NOR implementation of a function expressed as a product of sums:
+
+F=(A+B)(C+D)E

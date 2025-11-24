@@ -1,0 +1,51 @@
+19.2 Choice of Query Execution Plans
+
+In the above nested query, there is a query block inside an outer query block.
+Evaluation of this query involves executing the nested query first, which yields a
+single value of the maximum salary M in the EMPLOYEE relation; then the
+outer block is simply executed with the selection condition Salary = M. The max-
+imum salary could be obtained just from the highest value in the index on salary
+(if one exists) or from the catalog if it is up-to-date. The outer query is evaluated
+based on the same index. If no index exists, then linear search would be needed
+for both.
+
+We discussed correlated nested SQL queries in Section 7.1.3. In a correlated sub-
+query, the inner query contains a reference to the outer query via one or more vari-
+ables. The subquery acts as a function that returns a set of values for each value of
+this variable or combination of variables.
+
+Suppose in the database of Figure 5.5, we modify the DEPARTMENT relation as:
+DEPARTMENT (Dnumber, Dname, Mgr_ssn, Mgr_start_date, Zipcode)
+Consider the query:
+
+SELECT Fname, Lname, Salary
+FROM EMPLOYEE E
+WHERE EXISTS ( SELECT *
+FROM DEPARTMENT D
+WHERE D.Dnumber = E.Dno AND D.Zipcode=30332);
+
+In the above, the nested subquery takes the E.Dno, the department where the
+employee works, as a parameter and returns a true or false value as a function
+depending on whether the department is located in zip code 30332. The naive strat-
+egy for evaluating the query is to evaluate the inner nested subquery for every tuple
+of the outer relation, which is inefficient. Wherever possible, SQL optimizer tries to
+convert queries with nested subqueries into a join operation. The join can then be
+evaluated with one of the options we considered in Section 18.4. The above query
+would be converted to
+
+SELECT Fname, Lname, Salary
+FROM EMPLOYEE E, DEPARTMENT D
+WHERE WHERE D.Dnumber = E.Dno AND D.Zipcode=30332
+
+The process of removing the nested query and converting the outer and inner
+query into one block is called unnesting. Here inner join is used, since
+D.Dnumber is unique and the join is an equi-join; this guarantees that a tuple
+from relation Employee will match with at most one tuple from relation
+Department. We showed in Chapter 7 that the query Q16, which has a subquery
+connected with the IN connector, was also unnested into a single block query
+involving a join. In general, queries involving a nested subquery connected by
+IN or ANY connector in SQL can always be converted into a single block query.
+Other techniques used include creation of temporary result tables from sub-
+queries and using them in joins.
+
+703

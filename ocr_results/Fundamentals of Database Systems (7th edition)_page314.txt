@@ -1,0 +1,89 @@
+284 Chapter 8 The Relational Algebra and Relational Calculus
+
+8.24.
+
+8.25.
+
+b.
+
+c
+
+Print the Ssns of salespeople who took trips to Honolulu.
+
+Print the total trip expenses incurred by the salesperson with SSN =
+‘234-56-7890'.
+
+. Specify the following queries in relational algebra on the database schema
+
+given in Exercise 5.16:
+
+a.
+
+List the number of courses taken by all students named John Smith in
+Winter 2009 (i.e., Quarter=W09).
+
+. Produce a list of textbooks (include Course#, Book_isbn, Book_title) for
+
+courses offered by the ‘CS’ department that have used more than two books.
+
+. List any department that has all its adopted books published by ‘Pearson
+
+Publishing’.
+
+. Consider the two tables T1 and T2 shown in Figure 8.15. Show the results of
+
+the following operations:
+
+a.
+b.
+
+c
+
+2
+
+cy
+
+TIM 7 p=1.a T2
+T1>47.Q=12,8 12
+TI 7 poma 12
+
+. TL 7.Q=12p T2
+
+TIUT2
+
+T1>4 (7) p= 72.4 AND TLR= 12.) 12
+
+. Specify the following queries in relational algebra on the database schema in
+
+Exercise 5.17:
+
+a.
+
+For the salesperson named ‘Jane Doe’, list the following information for
+all the cars she sold: Serial#, Manufacturer, Sale_price.
+
+. List the Serial# and Model of cars that have no options.
+. Consider the NATURAL JOIN operation between SALESPERSON and
+
+SALE. What is the meaning of a left outer join for these tables (do not
+change the order of relations)? Explain with an example.
+
+. Write a query in relational algebra involving selection and one set opera-
+
+tion and say in words what the query does.
+
+Specify queries a, b, c, e, f, i, and j of Exercise 8.16 in both tuple and domain
+relational calculus.
+
+Specify queries a, b, c, and d of Exercise 8.17 in both tuple and domain rela-
+tional calculus.
+
+Figure 8.15
+A database state for the
+relations 71 and 72.
+
+TABLE T1 TABLE T2
+P/|Q/|R A|BIC
+10 a 5 10 b 6
+15 b 8 2 c 3
+25 a 6 10 b 5

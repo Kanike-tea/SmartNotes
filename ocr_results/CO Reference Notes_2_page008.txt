@@ -1,0 +1,56 @@
+* The Store operation transfers the information from the register to the specified memory-location.
+This will destroy the original contents of that memory-location.
+
+* Steps for Store operation are:
+
+ssor sends the address of the memory-location where it wants to store data.
+
+r issues ,,write’ signal to memory to store the data.
+
+3) Content of register(MDR) is written into the specified memory-location
+
+INSTRUCTIONS & INSTRUCTION SEQUENCING
++ A computer must have instructions capable of performing 4 types of operations:
+1) Data transfers between the memory and the registers (MOV, PUSH, POP, XCHG).
+2) Arithmetic and logic operations on data (ADD, SUB, MUL, DIV, AND, OR, NOT).
+3) Program sequencing and control (CALL.RET, LOOP, INT).
+4) V/O transfers (IN, OUT).
+
+REGISTER TRANSFER NOTATION (RTN)
+The possible locations in which transfer of information occurs are:
+
+1) Memory-location 2) Processor register 3) Registers in I/O device.
+Location Hardware Binary Example Description
+Address
+
+Memory LOC, PLACE, NUM RI € [LOC] Contents of memory-location LOC
+are transferred into register R1.
+
+Processor RO,R1 .R2 [R3] € [R1]+[R2] Add the contents of register RI &R2
+and places their sum into R3.
+
+I/O Registers DATAIN, DATAOUT | RI € DATAIN Contents of I/O register DATAIN are
+transferred into register R1.
+
+ASSEMBLY LANGUAGE NOTATION
+To represent machine instructions and programs, assembly language format is used.
+Assembly Language Format Description
+Move LOC, R1 Transfer data from memory-location LOC to register R1. The
+contents of LOC
+are unchanged by the execution of this instruction, but the
+old contents of register R1 are overwritten.
+Add R1, R2, R3 Add the contents of registers R1 and R2, and places their sum into
+register R3.
+
+BASIC INSTRUCTION TYPES
+
+Instruction Syntax Example] Description Instructions
+Type for
+Operation
+C<-[A]+[B]
+Three Opcode Add Add the contents — of
+Address Sourcel Source2,Destination | A,B,C memory-locations A & B.
+Then, place the result into
+location C.
+
+Page9

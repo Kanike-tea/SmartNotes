@@ -1,0 +1,50 @@
+7.2. Specifying Constraints as Assertions and Actions as Triggers
+
+particular types of queries. Another problem is that it may be more efficient to
+execute a query specified in one way than the same query specified in an alterna-
+tive way. Ideally, this should not be the case: The DBMS should process the same
+query in the same way regardless of how the query is specified. But this is quite
+difficult in practice, since each DBMS has different methods for processing queries
+specified in different ways. Thus, an additional burden on the user is to determine
+which of the alternative specifications is the most efficient to execute. Ideally, the
+user should worry only about specifying the query correctly, whereas the DBMS
+would determine how to execute the query efficiently. In practice, however, it
+helps if the user is aware of which types of constructs in a query are more expen-
+sive to process than others.
+
+7.2 Specifying Constraints as Assertions
+and Actions as Triggers
+
+In this section, we introduce two additional features of SQL: the CREATE ASSERTION
+statement and the CREATE TRIGGER statement. Section 7.2.1 discusses CREATE
+ASSERTION, which can be used to specify additional types of constraints that are
+outside the scope of the built-in relational model constraints (primary and unique
+keys, entity integrity, and referential integrity) that we presented in Section 5.2.
+These built-in constraints can be specified within the CREATE TABLE statement of
+SQL (see Sections 6.1 and 6.2).
+
+In Section 7.2.2 we introduce CREATE TRIGGER, which can be used to specify auto-
+matic actions that the database system will perform when certain events and condi-
+tions occur. This type of functionality is generally referred to as active databases.
+We only introduce the basics of triggers in this chapter, and present a more com-
+plete discussion of active databases in Section 26.1.
+
+7.2.1 Specifying General Constraints as Assertions in SQL
+
+In SQL, users can specify general constraints—those that do not fall into any of the
+categories described in Sections 6.1 and 6.2— via declarative assertions, using the
+CREATE ASSERTION statement. Each assertion is given a constraint name and is
+specified via a condition similar to the WHERE clause of an SQL query. For exam-
+ple, to specify the constraint that the salary of an employee must not be greater than
+the salary of the manager of the department that the employee works for in SQL, we
+can write the following assertion:
+
+CREATE ASSERTION SALARY_CONSTRAINT
+CHECK (NOTEXISTS (SELECT *
+FROM EMPLOYEE E, EMPLOYEE M,
+DEPARTMENT D
+WHERE _E.Salary>M.Salary
+AND E.Dno=D.Dnumber
+AND —_D.Mgr_ssn=M.Ssn) );
+
+225

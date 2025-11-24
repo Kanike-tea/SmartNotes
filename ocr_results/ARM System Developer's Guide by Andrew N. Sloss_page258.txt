@@ -1,0 +1,53 @@
+7.5. Transcendental Functions: log, exp, sin, cos 245
+
+LOR gy [t, gq, LSL#2] 5 q = exp2(a) at Q31
+ADDS ry dy ry ASR#L 3 r= ded*2/2+d%3/6 at Q32
+UMULL t, r, qr 3 r= exp2(a)*r at Q31 if r<0
+
+RSB n,n, #31
+ADDPL ry r, q
+Mov ny r, LSRn
+Mov pc, Ir
+negative
+Mov ro, #0
+Mov pe, Ir
+uexp2_table
+; table[i]=round(231*exp2(a)) where a=(i+0.5)/32
+DCD 0x8164d1f4, 0x843a28c4, 0x8716197, 0x8a14d575
+DCD Ox8dladf5b, 0x9031dc43, Ox935a2b2f, 0x96942d37
+DCD 0x99e04593, Ox9d3ed9a7, Oxa0b05110, 0xa43515ae
+DCD Oxa7cd93b5, Oxab7a39b6, Oxaf3b78ad, Oxb311c413
+DCD Oxb6fd91e3, Oxbaff5ab2, Oxbf1799b6, Oxc346ccda
+DCD Oxc78d74c9, Oxcbecl4ff, Oxd06333db, Oxd4f35aac
+DCD Oxd99d15c2, Oxde60F482, Oxe338973, 0xe8396a50
+DCD Oxed4f301f, Oxf281773c, Oxf7d0df73, Oxfd3e0cOd
+
+31-(integer part of exponent)
+correct if r>0
+result at QO
+
+24(-ve)=0
+
+7.5.3. TRIGONOMETRIC OPERATIONS
+
+Ifyou need low-precision trigonometric operations (typically the case when generating sine
+waves and other audio signals, or for graphics processing), use a lookup table. For high-
+precision graphics or global positioning, greater precision may be required. The routines
+we look at here generate sine and cosine accurate to 32 bits.
+
+The standard C library functions sin and cos specify the angle in radians. Radians are
+an awkward choice of units when dealing with optimized fixed-point functions. First, on
+any angle addition you need to perform arithmetic modulo 2x. Second, it requires range
+checking involving 7 to find out which quadrant of the circle an angle lies in. Rather than
+operate modulo 27, we will operate modulo 2°”, a very easy operation on any processor.
+
+Let’s define new base-two trigonometric functions s and c, where the angle is specified
+ona scale such that 2°? is one revolution (27 radians or 360 degrees). To add these angles
+we use standard modular integer addition:
+
+s(x) = sin(2x2~3?) = sin(wx273!) and —c(x) = cos(x2~7!) (7.51)
+
+In this form, x is the Q32 representation of the proportion of a revolution represented
+by the angle. The top two bits of x tell us which quadrant of the circle the angle lies in.
+First we use the top three bits of x to reduce s(x) or c(x) to the sine or cosine of an angle
+between zero and one eighth of a revolution. Then we choose an approximation a to xand

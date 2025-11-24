@@ -1,0 +1,55 @@
+15.9. Why can we not guarantee that BCNF relation schemas will be produced by
+dependency-preserving decompositions of non-BCNF relation schemas?
+Give a counterexample to illustrate this point.
+
+15.10. What is the lossless (or nonadditive) join property of a decomposition? Why
+is it important?
+
+15.11. Between the properties of dependency preservation and losslessness, which
+one must definitely be satisfied? Why?
+
+15.12. Discuss the NULL value and dangling tuple problems.
+
+15.13. Illustrate how the process of creating first normal form relations may lead to
+multivalued dependencies. How should the first normalization be done
+properly so that MVDs are avoided?
+
+15.14. What types of constraints are inclusion dependencies meant to represent?
+
+15.15. How do template dependencies differ from the other types of dependencies
+we discussed?
+
+15.16. Why is the domain-key normal form (DKNF) known as the ultimate nor-
+mal form?
+
+Exercises
+
+15.17. Show that the relation schemas produced by Algorithm 15.4 are in 3NF.
+
+15.18. Show that, if the matrix S resulting from Algorithm 15.3 does not have a row
+that is all a symbols, projecting S on the decomposition and joining it back
+will always produce at least one spurious tuple.
+
+15.19. Show that the relation schemas produced by Algorithm 15.5 are in BCNF.
+
+15.20. Write programs that implement Algorithms 15.4 and 15.5.
+
+15.21. Consider the relation REFRIG(Model#, Year, Price, Manuf_plant, Color), which
+is abbreviated as REFRIG(M, Y, P, MP, C), and the following set F of functional
+dependencies: F = {M— MP, {M, Y} + P, MP > C}
+
+a. Evaluate each of the following as a candidate key for REFRIG, giving rea-
+sons why it can or cannot be a key: {M}, {M, Y}, {M, C}.
+b. Based on the above key determination, state whether the relation REFRIG
+is in 3NF and in BCNF, and provide proper reasons.
+c. Consider the decomposition of REFRIG into D = {R,(M, Y, P),
+R,(M, MP, C)}. Is this decomposition lossless? Show why. (You may
+consult the test under Property NJB in Section 14.5.1.)
+15.22. Specify all the inclusion dependencies for the relational schema in Figure 5.5.
+15.23. Prove that a functional dependency satisfies the formal definition of multi-
+
+valued dependency.
+
+Exercises
+
+535

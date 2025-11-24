@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+There are no data processing instructions that directly manipulate data in memory. Thus, data
+processing is carried out solely in registers.
+
+Data items are placed in the register file—a storage bank made up of 32-bit registers. Since
+the ARM core is a 32-bit processor, most instructions treat the registers as holding signed or
+unsigned 32-bit values. The sign extend hardware converts signed 8-bit and 16-bit numbers to
+32-bit values as they are read from memory and placed in a register.
+
+ARM instructions typically have two source registers, Rn and Rm, and a single result or
+destination register; Rd. Source operands are read from the register file using the internal
+buses A and B, respectively.
+
+The ALU (arithmetic logic unit) or MAC (multiply-accumulate unit) takes the register values
+Rn and Rm from the A and B buses and computes a result. Data processing instructions write
+the result in Rd directly to the register file. Load and store instructions use the ALU to
+generate an address to be held in the address register and broadcast on the Address bus.
+
+One important feature of the ARM is that register Rm alternatively can be preprocessed in the
+
+barrel shifter before it enters the ALU. Together the barrel shifter and ALU can calculate a
+
+wide range of expressions and addres:
+After passing through the functional units, the result in Rd is written back to the register file
+using the Result bus. For load and store instructions the incrementer updates the address
+register before the core reads or writes the next register value from or to the next sequential
+memory location.
+
+The processor continues executing instructions until an exception or interrupt changes the
+
+normal execution flow.
+
+2. Registers
+
+General-purpose registers hold either data or an address. Figure 2 shows the active registers
+available in user mode which is a protected mode normally used when executing applications.
+The processor can operate in seven different modes. All the registers shown are 32 bits in
+size.
+
+There are up to 18 active registers: 16 data registers and 2 processor status registers. The data
+registers are visible to the programmer as r0 to r15.
+
+The ARM processor has three registers assigned to a particular task or special function:
+r13,rl4,andr15.
+
+Dept. of ECE, GSSSIETW Page 16

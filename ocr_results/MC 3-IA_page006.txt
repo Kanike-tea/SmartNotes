@@ -1,0 +1,59 @@
+2.1. Basic Architecture of a Cache Memory
+A simple cache memory is shown on the right side of Figure 4. It has three main parts:
+
+e A directory store
+eA data section
+
+Status information.
+
+All three parts of the cache memory are present for each cache line. The cache must know where
+the information stored in a cache line originates from in main memory. It uses a directory store to
+hold the address identifying where the cache line was copied from main memory. The directory
+
+entry is known as a cache-tag.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 34
+
+Microcontrollers - BCS402
+
+Address issued Cache
+controller
+
+by processor
+
+315 Miss
+Status Data
+A x
+Tag yy
+v|d] word3] word2| word! | wordd |] _} Cache
+v [| word3 | word2 | word! | word0 line
+ra Cache-tag | v[d | word3 | word2 | word! | word0
+u °
+| ~
+et ' Cachetag |v [a] word] word? | word] | word)
+index v[d| word3 | word? [word! | word0 |] Address/data
+| ¥[d| word3 | word2 [word | word) |! bus
+z ¥ [4] word3 | word2 [word! | wordO
+7 V|d] word3 | word2 | word! | word0
+Data q
+index L J
+o 5
+
+Fig 4: A 4 KB cache consisting of 256 cache lines of four 32-bit words
+
+A cache memory must also store the data read from main memory. This information is held in
+
+the data section.
+
+The size of a cache is defined as the actual code or data the cache can store from main memory.
+
+Not included in the cache size is the cache memory required to support cache-tags or status bit
+
+There are als
+
+status bits in cache memory to maintain state information. Two common status
+bits are the valid bit and dirty bit. A valid bit marks a cache line as active, meaning it contains
+live data originally taken from main memory and is currently available to the processor core on
+demand. A dirty bit defines whether or not a cache line contains data that is different from the
+
+value it represents in main memory.

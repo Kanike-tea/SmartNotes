@@ -1,0 +1,59 @@
+144
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4.29.
+
+each course he or she teaches, the instructor specifies the minimum number
+of points required in order to earn letter grades A, B, C, D, and F. For exam-
+ple, 90 points for an A, 80 points for a B, 70 points for a C, and so forth.
+
+= Students are enrolled in each course taught by the instructor.
+
+= Each course has a number of grading components (such as midterm
+
+exam, final exam, project, and so forth). Each grading component has a
+maximum number of points (such as 100 or 50) and a weight (such as
+20% or 10%). The weights of all the grading components of a course usu-
+ally total 100.
+
+Finally, the instructor records the points earned by each student in each of
+the grading components in each of the courses. For example, student 1234
+earns 84 points for the midterm exam grading component of the section 2
+course CSc2310 in the fall term of 2009. The midterm exam grading com-
+ponent may have been defined to have a maximum of 100 points and a
+weight of 20% of the course grade.
+
+Design an enhanced entity-relationship diagram for the grade book data-
+base and build the design using a data modeling tool such as ERwin or
+Rational Rose.
+
+Consider an ONLINE_AUCTION database system in which members (buyers
+and sellers) participate in the sale of items. The data requirements for this
+system are summarized as follows:
+
+The online site has members, each of whom is identified by a unique
+member number and is described by an e-mail address, name, password,
+home address, and phone number.
+
+A member may be a buyer or a seller. A buyer has a shipping address
+recorded in the database. A seller has a bank account number and routing
+number recorded in the database.
+
+Items are placed by a seller for sale and are identified by a unique item
+number assigned by the system. Items are also described by an item title,
+a description, starting bid price, bidding increment, the start date of the
+auction, and the end date of the auction.
+
+Items are also categorized based on a fixed classification hierarchy (for
+example, a modem may be classified as COMPUTER > HARDWARE >
+MODEM).
+
+Buyers make bids for items they are interested in. Bid price and time of
+bid are recorded. The bidder at the end of the auction with the highest bid
+price is declared the winner, and a transaction between buyer and seller
+may then proceed.
+
+The buyer and seller may record feedback regarding their completed
+transactions. Feedback contains a rating of the other party participating
+in the transaction (1-10) and a comment.

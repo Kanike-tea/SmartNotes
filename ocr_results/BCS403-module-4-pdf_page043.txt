@@ -1,0 +1,35 @@
+Database Management System [BCS403]
+
+= Precedence graph for schedule E
+
+Equivalent serial schedules
+None
+Reason
+
+cycle X(T, *T,), (Te -#7%)
+cycle X(T +72), ¥2Z(T2 Ta), (Tg +7)
+
+= Precedence graph for schedule F
+
+Equivalent serial schedules
+
+ly — 1 > hh
+
+5.7 Transaction Support in SQL
+
+= The basic definition of an SQL transaction is, it is a logical unit of work and is guaranteed
+to be atomic
+
+=A single SQL statement is always considered to be atomic—either it completes
+execution without an error or it fails and leaves the database unchanged
+
+= With SQbk, there is no explicit Begin_Transaction statement. Transaction initiation is
+done implicitly when particular SQL statements are encountered
+
+= Every transaction must have an explicit end statement, which is either a COMMIT or a
+ROLLBACK
+
+= Every transaction has certain characteristics attributed to it and are specified by a SET
+TRANSACTION statement in SQL
+
+https://vtucode.in 19

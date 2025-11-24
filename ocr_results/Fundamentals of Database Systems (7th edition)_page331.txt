@@ -1,0 +1,55 @@
+9.2 Mapping EER Model Constructs to Relations
+
+Each type field t; can have a domain {yes, no}, where a value of yes indicates that the
+tuple is a member of subclass S;. If we use this option for the EER specialization in
+Figure 4.4, we would include three type attributes—Is_a_secretary, ls_a_engineer, and
+Is_a_technician—instead of the Job_type attribute in Figure 9.5(c). Figure 9.5(d)
+shows the mapping of the specialization from Figure 4.5 using option 8D.
+
+For a multilevel specialization (or generalization) hierarchy or lattice, we do not have
+to follow the same mapping option for all the specializations. Instead, we can use one
+mapping option for part of the hierarchy or lattice and other options for other parts.
+Figure 9.6 shows one possible mapping into relations for the EER lattice in Figure 4.6.
+Here we used option 8A for PERSON/{EMPLOYEE, ALUMNUS, STUDENT}, and option
+8C for EMPLOYEE/{STAFF, FACULTY, STUDENT_ASSISTANT} by including the
+type attribute Employee_type. We then used the single-table option 8D for
+STUDENT_ASSISTANT/{RESEARCH_ASSISTANT, TEACHING_ASSISTANT} by including
+the type attributes Ta_flag and Ra_flag in EMPLOYEE. We also used option 8D for
+STUDENT/STUDENT_ASSISTANT by including the type attributes Student_assist_flag
+in STUDENT, and for STUDENT/{GRADUATE_STUDENT, UNDERGRADUATE_STUDENT}
+by including the type attributes Grad_flag and Undergrad_flag in STUDENT. In Figure 9.6,
+all attributes whose names end with type or flag are type fields.
+
+9.2.2 Mapping of Shared Subclasses (Multiple Inheritance)
+
+A shared subclass, such as ENGINEERING_MANAGER in Figure 4.6, is a subclass of
+several superclasses, indicating multiple inheritance. These classes must all have the
+same key attribute; otherwise, the shared subclass would be modeled as a category
+(union type) as we discussed in Section 4.4. We can apply any of the options dis-
+cussed in step 8 to a shared subclass, subject to the restrictions discussed in step 8 of
+the mapping algorithm. In Figure 9.6, options 8C and 8D are used for the shared
+subclass STUDENT_ASSISTANT. Option 8C is used in the EMPLOYEE relation
+(Employee_type attribute) and option 8D is used in the STUDENT relation
+(Student_assist_flag attribute).
+
+301
+
+PERSON Figure 9.6
+Ssn | Name | Birth date] Sex | Address
+
+EMPLOYEE
+
+Mapping the EER specialization
+lattice in Figure 4.8 using
+_4 multiple options.
+
+Ssn | Salary | Employee_type | Position | Rank | Percent_time | Ra_flag | Ta_flag | Project
+
+Course
+
+ALUMNUS ALUMNUS DEGREES
+
+Ssn Ssn | Year | Degree | Major
+STUDENT
+
+_[ Ssn | Major dept] Grad_filag | Undergrad flag | Degree program] Class | Student_assist_flag

@@ -1,0 +1,54 @@
+5.1 Relational Model Concepts
+
+t=< (Name, Dick Davidson),(Ssn, 422-1 1-2320),(Home_phone, NULL),(Address, 3452 Elgin Road),
+
+(Office_phone, (817)749-1253),(Age, 25),(Gpa, 3.53)>
+
+< (Address, 3452 Elgin Road),(Name, Dick Davidson),(Ssn, 422-1 1-2320),(Age, 25),
+(Office_phone, (817)749-1253),(Gpa, 3.53), (Home_phone, NULL)>
+
+Figure 5.3
+Two identical tuples when the order of attributes and values is not part of relation definition.
+
+155
+
+two tuples shown in Figure 5.3 are identical. This makes sense at an abstract level,
+since there really is no reason to prefer having one attribute value appear before
+another in a tuple. When the attribute name and value are included together in a
+tuple, it is known as self-describing data, because the description of each value
+(attribute name) is included in the tuple.
+
+We will mostly use the first definition of relation, where the attributes are ordered
+in the relation schema and the values within tuples are similarly ordered, because it
+simplifies much of the notation. However, the alternative definition given here is
+more general.>
+
+Values and NULLs in the Tuples. Each value in a tuple is an atomic value; that
+is, it is not divisible into components within the framework of the basic relational
+model. Hence, composite and multivalued attributes (see Chapter 3) are not
+allowed. This model is sometimes called the flat relational model. Much of the
+theory behind the relational model was developed with this assumption in mind,
+which is called the first normal form assumption.® Hence, multivalued attributes
+must be represented by separate relations, and composite attributes are represented
+only by their simple component attributes in the basic relational model.”
+
+An important concept is that of NULL values, which are used to represent the values of
+attributes that may be unknown or may not apply to a tuple. A special value, called
+NULL, is used in these cases. For example, in Figure 5.1, some STUDENT tuples have
+NULL for their office phones because they do not have an office (that is, office phone
+does not apply to these students). Another student has a NULL for home phone, presum-
+ably because either he does not have a home phone or he has one but we do not know it
+(value is unknown). In general, we can have several meanings for NULL values, such as
+value unknown, value exists but is not available, or attribute does not apply to this tuple
+(also known as value undefined). An example of the last type of NULL will occur if we
+add an attribute Visa_status to the STUDENT relation that applies only to tuples repre-
+senting foreign students. It is possible to devise different codes for different meanings of
+
+5We will use the alternative definition of relation when we discuss query processing and optimization in
+Chapter 18.
+
+®We discuss this assumption in more detail in Chapter 14.
+
+Extensions of the relational model remove these restrictions. For example, object-relational systems
+(Chapter 12) allow complex-structured attributes, as do the non-first normal form or nested relational
+models.

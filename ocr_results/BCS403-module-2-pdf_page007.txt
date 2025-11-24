@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+Primary key
+It is common to designate one of the candidate keys as the primary key of the relation. This
+is the candidate key whose values are used to identify tuples in the relation.We use the
+convention that the attributes that form the primary key of a relation schema are underlined.
+
+Other candidate keys are designated as unique keys and are not underlined
+
+Another constraint on attributes specifies whether NULL values are or are not permitted. For
+example, if every STUDENT tuple must have a valid, non-NULL value for the Name attribute, then
+Name of STUDENT is constrained to be NOT NULL.
+
+1.2.3 Relational Databases and Relational Database Schemas
+A Relational database schema S is a set of relation schemas S = {R1, Ro, .., Rm} anda s et
+of integrity constraints IC.
+Example of relational database schema:
+COMPANY = {EMPLOYEE, DEPARTMENT, DEPT _LOCATIONS, PROJECT,
+WORKS_ON, DEPENDENT}
+
+EMPLOYEE
+
+Fname | Minit | Lname | Ssn | Bdatey| Address [ersder| Salary | Super_ssn|] Dno
+DEPARTMENT
+
+Dname | Dnumber | Mgr_ssn | Mgfastart_date|
+
+DEPT_LOCATIONS
+
+Pname |, Pnumber | Plocation | Dnum
+
+WORKS_ON
+Essa. | Pno | Hours
+
+DEPENDENT
+Essn | Dependent_name | sender] Bdate l Relationship
+
+Figure1.2.3 (a): Schema diagram for the COMPANY relational database schema.
+
+The underlined attributes represent primary keys
+
+A Relational database state is a set of relation states DB = {r1, r2, ..., rm}-Each ri is a state of
+
+R and such that the 1; relation states satisfy integrity constraints specified in IC.
+
+https://vtucode.in Page 8

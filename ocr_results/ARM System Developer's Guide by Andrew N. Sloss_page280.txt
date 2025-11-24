@@ -1,0 +1,44 @@
+8.1 Representing a Digital Signal 267
+
+EXAMPLE Suppose X[t] is a 16-bit signed representation for an audio signal x[t]. Suppose we need to
+8.1 reduce the power of the signal by a half. To do this we must scale each sample by 1/(V2),
+so ¢{t] = 2~°5 = 0.70710678....
+Since we are using a 16-bit representation for X(t], a 16-bit multiply will suffice. The
+largest power of two that we can multiply c[t] by and have it remain a 16-bit integer is 15.
+So take n = d, m= 15, and C[¢] = 2!5/(/2) = 23,710 = 0x5A82. Therefore we can scale
+using the integer operation
+
+X[t] = (X[t] * 0x5A82) >> 15;
+
+8.1.5 DIVISION OF FIXED-POINT SIGNALS
+
+The general case is to convert the signal equation
+
+x(t]
+= 8.15
+yit] Ty (8.15)
+into fixed point format; that is, approximately:
+24x{t] X(t]
+Y(t] = 2¢y[t] = = dont 8.16
+[¢] yt] ctl Cli (8.16)
+
+or in integer C:
+
+Y[t] = (X[t] <<(d-n+m)) / C[t];
+Again a negative left shift indicates a right shift. You must take care that the left shift does
+not cause an overflow. In typical applications, n = m. Then the preceding operation gives
+a Qd result accurate to d places of binary fraction:
+
+Y[t] = (x[t] <<d) / C[t];
+
+See Section 7.3.3 for efficient implementations of fixed-point division.
+
+8.1.6 SQUARE ROOT OF A FIXED-POINT SIGNAL
+
+The general case is to convert the signal equation
+
+yitl = V x1] (8.17)
+
+into fixed point format; that is, approximately:
+
+Y(t] = 24yfe] = 24° xt] = V224-"X{ A] (8.18)

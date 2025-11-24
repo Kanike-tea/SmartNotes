@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+Value sets are not displayed in ER diagrams, and are specified using the basic data types
+available in most programming languages, such as integer, string, Boolean, float, enumerated type,
+subrange, and so on.
+
+Mathematically, an attribute A of entity set E whose value set is V can be defined as a function
+from E to the power set P(V) of V: A : E > P(V).We refer to the value of attribute A for entity e
+as A(e).A NULL value is represented by the empty set.
+
+3.3 A Sample Database Application
+
+Miniworld : COMPANY database keeps track of a company’s employees, departments, and
+
+projects.
+
+» After the requirements collection and analysis phase, the database designers provide the
+following description of the miniworld:
+
+= The company is organized into departments.
+
+« Each department has a unique name, a unique number, and a particular employee who
+manages the department.We keep track of the start date when that employee began
+managing the department. A department may have several locations.
+
+= A department controls a number of projects; each of which has a unique name, a unique
+number, and a single location.
+
+= We store each employee’s name, Social Security number, address, salary, gender, and birth
+date.
+
+« An-employee is assigned to one department, but may work on several projects, which are
+not necessarily controlled by the same department.
+
+= We keep track of the current number of hours per week that an employee works on each
+project. We also keep track of the direct supervisor of each employee (who is another
+employee).
+
+= We want to keep track of the dependents of each employee for insurance purposes. We
+
+keep each dependent’s first name, gender, birth date, and relationship to the employee.
+
+https://vtucode.in Page 40

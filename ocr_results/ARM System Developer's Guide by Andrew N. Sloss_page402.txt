@@ -1,0 +1,48 @@
+11.2 Example: Simple Little Operating System 389
+
+int C_Entry(void)
+
+{
+cinit_init();
+eventTickStart ();
+_asm
+
+{
+MSR cpsr_c,#0x50
+
+}
+
+C_EntryTask1();
+return 0;
+
+If everything is working correctly, the return at the end of C_Entry routine will never
+be executed. At this point all initialization is complete and the operating system is fully
+functional.
+
+The results of executing all the C initialization code are the following:
+
+= The device drivers are initialized.
+
+= The services are initialized.
+
+= The periodic timer tick is initialized and started.
+= The IRQ interrupts are enabled in the cpsr.
+
+= The processor is placed in user mode.
+
+= The entry point to task 1 is called (ie., C_EntryTask1).
+
+11.22.35 MEMORY MODEL
+
+We have adopted a simple memory model for SLOS. Figure 11.2 shows that the code portion
+of SLOS, including the tasks, are located in low memory, and the stacks for the IRQ and
+for each task are located in higher memory. The SVC stack is set at the top of memory. The
+arrows in the memory map show the direction of stack growth.
+
+11.2.4 INTERRUPTS AND EXCEPTIONS HANDLING
+
+In this implementation of the operating system only three exceptions are actually used. The
+other exceptions are ignored by going to specific dummy handlers, which for safety reasons
+are implemented as infinite loops. For a complete implementation these dummy handlers
+should be replaced with full handlers. Table 11.2 shows the three exceptions and how they
+are used within the operating system.

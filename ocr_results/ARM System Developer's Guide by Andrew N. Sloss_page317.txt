@@ -1,0 +1,49 @@
+304 Chapter 8 Digital Signal Processing
+
+Equation (8.42) reduces the N-point DFT to S sets of R-point DFTs, N multiplications
+
+by coefficients of the form w?, and R sets of S-point DFTs. Specifically, if we set in turn:
+(u[sR}, u[sR + 1], ..., ulsR + R — 1]) = DFT al xfs}, x[s + S],.-..xLs + (R — ISI)
+(8.43)
+
+v[sR + m] = wy u[sR + m] (8.44)
+
+S=1
+Then y[nR + m] = }° wév[sR + ml], and so
+s=0
+
+(yim), y[R + m],...,y(S — 1)R + m)) = DFT s(v[m], v[R + m],...,v[(S — 1)R + m))
+(8.45)
+
+In practice we then repeat this process to calculate the R- and S-point DFTs efficiently. This
+works well when N has many small factors. The most useful case is when N is a power of 2.
+
+8.5.1.1 The Radix-2 Fast Fourier Transform
+
+Suppose N = 2°. Take R = 2°! and S = 2 and apply the reduction of the DFT. Since
+DET >(v[m], v[R + m]) = (v[m] + v[R + m], v[m] — v[R + m]), we have
+
+yl] = ulm] + wyul[R+m] and y[R+m]=ulm]—wiu[R+m] (8.46)
+
+This pair of operations is called the decimation-in-time radix-2 butterfly. The N-point DFT
+reduces to two R-point DFTs followed by N/2 butterfly operations. We repeat the process
+decomposing R = 2°? x 2, and so on for each factor of 2. The result is an algorithm
+consisting of a stages, each stage calculating N/2 butterflies.
+
+You will notice that the data order must be changed when we calculate u[sR + m] from
+x[rS +]. We can avoid this if we store x[t] in a transposed order. For a radix-2 Fast Fourier
+Transform, all the butterfly operations may be performed in place provided that the input
+array x[t] is stored in bit-reversed order—store x[t] at x[s], where the a bits of the index s
+are the reverse of the a bits of the index t.
+
+There is another way to apply the FFT reduction. We could choose R = 2 and $ = 2°~!
+and iterate by decomposing the second factor instead. This generates the decimation-
+in-frequency radix-2 transform. For the decimation-in-frequency transformation, the
+butterfly is
+
+v[2s] = xfs] +x[S+s] and v[2s +1] = wy(x[s] — x[S + s]) (8.47)
+
+From an ARM optimization point of view, the important difference is the position of the
+complex multiply. The decimation-in-time algorithm multiplies by w%” before the addition
+and subtraction. The decimation-in-frequency algorithm multiplies by wi, after the addi-
+tion and subtraction. A fixed-point multiply involves a multiply followed by a right shift.

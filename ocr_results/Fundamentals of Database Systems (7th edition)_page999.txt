@@ -1,0 +1,53 @@
+26.1 Active Database Concepts and Triggers
+
+1. Immediate consideration. The condition is evaluated as part of the same
+transaction as the triggering event and is evaluated immediately. This case
+can be further categorized into three options:
+
+© Evaluate the condition before executing the triggering event.
+© Evaluate the condition after executing the triggering event.
+© Evaluate the condition instead of executing the triggering event.
+
+2. Deferred consideration. The condition is evaluated at the end of the trans-
+action that included the triggering event. In this case, there could be many
+triggered rules waiting to have their conditions evaluated.
+
+3. Detached consideration. The condition is evaluated as a separate transac-
+tion, spawned from the triggering transaction.
+
+The next set of options concerns the relationship between evaluating the rule
+condition and executing the rule action. Here, again, three options are possible:
+immediate, deferred, or detached execution. Most active systems use the first
+option. That is, as soon as the condition is evaluated, if it returns true, the action
+is immediately executed.
+
+The Oracle system (see Section 26.1.1) uses the immediate consideration model, but
+it allows the user to specify for each rule whether the before or after option is to be
+used with immediate condition evaluation. It also uses the immediate execution
+model. The STARBURST system (see Section 26.1.3) uses the deferred consider-
+ation option, meaning that all rules triggered by a transaction wait until the trigger-
+ing transaction reaches its end and issues its COMMIT WORK command before the
+rule conditions are evaluated.”
+
+Another issue concerning active database rules is the distinction between row-level
+rules and statement-level rules. Because SQL update statements (which act as trig-
+gering events) can specify a set of tuples, one must distinguish between whether the
+rule should be considered once for the whole statement or whether it should be
+considered separately for each row (that is, tuple) affected by the statement. The
+SQL-99 standard (see Section 26.1.5) and the Oracle system (see Section 26.1.1)
+allow the user to choose which of the options is to be used for each rule, whereas
+STARBURST uses statement-level semantics only. We will give examples of how
+statement-level triggers can be specified in Section 26.1.3.
+
+One of the difficulties that may have limited the widespread use of active rules, in
+spite of their potential to simplify database and software development, is that there
+are no easy-to-use techniques for designing, writing, and verifying rules. For exam-
+ple, it is difficult to verify that a set of rules is consistent, meaning that two or more
+rules in the set do not contradict one another. It is also difficult to guarantee
+termination of a set of rules under all circumstances. To illustrate the termination
+problem briefly, consider the rules in Figure 26.4. Here, rule R1 is triggered by an
+INSERT event on TABLE1 and its action includes an update event on Attribute1 of
+
+TSTARBURST also allows the user to start rule consideration explicitly via a PROCESS RULES command.
+
+969

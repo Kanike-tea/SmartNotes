@@ -1,0 +1,44 @@
+770 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+Figure 20.8 (continued)
+Another example of serializability testing. (d) Precedence graph for schedule E. (e) Precedence graph for
+schedule F. (f) Precedence graph with two equivalent serial schedules.
+
+(d)
+
+(e)
+
+(0)
+
+Yy Equivalent serial schedules
+-® > ms
+
+x } Reason
+y vz Cycle X(T, = T»),Y(T> -m T,)
+G@)- Cycle X(T, - T»), YZ (T. T,),Y(T3 + T;)
+XY Equivalent serial schedules
+
+>) G4 T= 1, th
+
+Equivalent serial schedules
+
+-®) O=,  wenen
+Tz > T,-> T,
+
+that has two equivalent serial schedules. To find an equivalent serial schedule, start
+with a node that does not have any incoming edges, and then make sure that the
+node order for every edge is not violated.
+
+20.5.3 How Serializability Is Used for Concurrency Control
+
+As we discussed earlier, saying that a schedule S is (conflict) serializable—that is, S
+is (conflict) equivalent to a serial schedule—is tantamount to saying that S is cor-
+rect. Being serializable is distinct from being serial, however. A serial schedule rep-
+resents inefficient processing because no interleaving of operations from different
+transactions is permitted. This can lead to low CPU utilization while a transaction
+waits for disk I/O, or for a long transaction to delay other transactions, thus slowing
+down transaction processing considerably. A serializable schedule gives the benefits
+of concurrent execution without giving up any correctness. In practice, it is difficult
+to test for the serializability of a schedule. The interleaving of operations from con-
+current transactions—which are usually executed as processes by the operating
+system—is typically determined by the operating system scheduler, which allocates

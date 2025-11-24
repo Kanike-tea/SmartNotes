@@ -1,0 +1,52 @@
+22.1 Recovery Concepts
+
+and the information needed for REDO. A REDO-type log entry includes the new
+value (AFIM) of the item written by the operation since this is needed to redo the
+effect of the operation from the log (by setting the item value in the database on
+disk to its AFIM). The UNDO-type log entries include the old value (BFIM) of the
+item since this is needed to undo the effect of the operation from the log (by setting
+the item value in the database back to its BFIM). In an UNDO/REDO algorithm, both
+BFIM and AFIM are recorded into a single log entry. Additionally, when cascading
+rollback (see Section 22.1.5) is possible, read_item entries in the log are considered to
+be UNDO-type entries.
+
+As mentioned, the DBMS cache holds the cached database disk blocks in main
+memory buffers. The DBMS cache includes not only data file blocks, but also index
+file blocks and log file blocks from the disk. When a log record is written, it is stored
+in the current log buffer in the DBMS cache. The log is simply a sequential (append-
+only) disk file, and the DBMS cache may contain several log blocks in main mem-
+ory buffers (typically, the last n log blocks of the log file). When an update to a data
+block—stored in the DBMS cache—is made, an associated log record is written to
+the last log buffer in the DBMS cache. With the write-ahead logging approach, the
+log buffers (blocks) that contain the associated log records for a particular data
+block update must first be written to disk before the data block itself can be written
+back to disk from its main memory buffer.
+
+Standard DBMS recovery terminology includes the terms steal/no-steal and
+force/no-force, which specify the rules that govern when a page from the database
+cache can be written to disk:
+
+1. Ifa cache buffer page updated by a transaction cannot be written to disk before
+the transaction commits, the recovery method is called a no-steal approach.
+The pin-unpin bit will be set to 1 (pin) to indicate that a cache buffer cannot be
+written back to disk. On the other hand, if the recovery protocol allows writing
+an updated buffer before the transaction commits, it is called steal. Steal is
+used when the DBMS cache (buffer) manager needs a buffer frame for another
+transaction and the buffer manager replaces an existing page that had been
+updated but whose transaction has not committed. The no-steal rule means
+that UNDO will never be needed during recovery, since a committed transac-
+tion will not have any of its updates on disk before it commits.
+
+2. If all pages updated by a transaction are immediately written to disk before
+the transaction commits, the recovery approach is called a force approach.
+Otherwise, it is called no-force. The force rule means that REDO will never
+be needed during recovery, since any committed transaction will have all its
+updates on disk before it is committed.
+
+The deferred update (NO-UNDO) recovery scheme discussed in Section 22.2 follows
+a no-steal approach. However, typical database systems employ a steal/no-force
+(UNDO/REDO) strategy. The advantage of steal is that it avoids the need for a very
+large buffer space to store all updated pages in memory. The advantage of no-force
+is that an updated page of a committed transaction may still be in the buffer when
+
+817

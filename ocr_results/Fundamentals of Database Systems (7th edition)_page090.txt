@@ -1,0 +1,50 @@
+60
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Object modeling methodologies such as the Unified Modeling Language (UML)
+are becoming increasingly popular in both database and software design. These
+methodologies go beyond database design to specify detailed design of software
+modules and their interactions using various types of diagrams. An important part
+of these methodologies—namely, class diagrams'—is similar in many ways to the
+ER diagrams. In class diagrams, operations on objects are specified, in addition to
+specifying the database schema structure. Operations can be used to specify the
+functional requirements during database design, as we will discuss in Section 3.1.
+We present some of the UML notation and concepts for class diagrams that are
+particularly relevant to database design in Section 3.8, and we briefly compare these
+to ER notation and concepts. Additional UML notation and concepts are presented
+in Section 4.6.
+
+This chapter is organized as follows: Section 3.1 discusses the role of high-level con-
+ceptual data models in database design. We introduce the requirements for a sam-
+ple database application in Section 3.2 to illustrate the use of concepts from the ER
+model. This sample database is used throughout the text. In Section 3.3 we present
+the concepts of entities and attributes, and we gradually introduce the diagram-
+matic technique for displaying an ER schema. In Section 3.4 we introduce the con-
+cepts of binary relationships and their roles and structural constraints. Section 3.5
+introduces weak entity types. Section 3.6 shows how a schema design is refined to
+include relationships. Section 3.7 reviews the notation for ER diagrams, summa-
+rizes the issues and common pitfalls that occur in schema design, and discusses
+how to choose the names for database schema constructs such as entity types and
+relationship types. Section 3.8 introduces some UML class diagram concepts, com-
+pares them to ER model concepts, and applies them to the same COMPANY data-
+base example. Section 3.9 discusses more complex types of relationships. Sec-
+tion 3.10 summarizes the chapter.
+
+The material in Sections 3.8 and 3.9 may be excluded from an introductory course. If
+amore thorough coverage of data modeling concepts and conceptual database design
+is desired, the reader should continue to Chapter 4, where we describe extensions to
+the ER model that lead to the enhanced-ER (EER) model, which includes concepts
+such as specialization, generalization, inheritance, and union types (categories).
+
+3.1 Using High-Level Conceptual Data Models
+for Database Design
+
+Figure 3.1 shows a simplified overview of the database design process. The first step
+shown is requirements collection and analysis. During this step, the database
+designers interview prospective database users to understand and document their
+data requirements. The result of this step is a concisely written set of users’ require-
+ments. These requirements should be specified in as detailed and complete a form
+as possible. In parallel with specifying the data requirements, it is useful to specify
+
+'A class is similar to an entity type in many ways.

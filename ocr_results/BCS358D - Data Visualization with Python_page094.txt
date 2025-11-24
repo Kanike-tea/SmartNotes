@@ -1,0 +1,51 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+Program 03: Write a python program to visualize the monthly temperature
+
+variation over a year.
+
+ALGORITHM
+1. Import Libraries:
+e Import the necessary libraries: matplotlib.pyplot for creating visualizations and
+numpy as np for numerical operations.
+2. Create Sample Data:
+e Define sample data for months and corresponding temperatures.
+e months is created using np.arange(1, 13) to represent the 12 months.
+¢ temperature is a list containing temperature values for each month.
+e This step is for demonstration purposes. Replace this sample data with your actual
+dataset.
+3. Create Line Chart:
+e Use plt.plot() to create a line chart.
+= Set months as the x-axis variable.
+= Set temperature as the y-axis variable.
+= Use a red line (color='red').
+= Display markers at data points using circles (marker='o').
+).
+e Set the x-axis label using plt.xlabel('Months').
+
+* Use a solid line (linestyle='
+
+e Set the y-axis label using plt.ylabel('Temperature (°C)').
+e Set the plot title using plt.title(Monthly Temperature Variation’).
+
+4. Display the Plot: Use plt.show() to display the generated line chart.
+
+PROGRAM
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+months = np.arange(1, 13)
+temperature = [20, 25, 30, 28, 35, 32, 30, 28, 25, 22, 18, 15]
+
+# Create a line chart
+
+plt.plot (months, temperature, marker='0', linestyle='-', color='red')
+plt.xlabel ('Months')
+
+plt.ylabel('Temperature (°C)')
+
+plt.title('Monthly Temperature Variation')
+
+Dept. of CSE 79 GSSSIETW, Mysuru

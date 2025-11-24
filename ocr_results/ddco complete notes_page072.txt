@@ -1,0 +1,54 @@
+Digital Design and Computer Organization (BCS302) Module 3
+
+>
+
+>
+
+Output Unit
+co The output unit is the counterpart of the input unit.
+o. Its function is to send processed results to the outside world.
+o A familiar example of such a device is a printer.
+
+o Most printers employ either photocopying techniques, as in laser printers,
+
+or ink jetstreams.
+o Such printers may generate output at speeds of 20 or more pages per minute.
+
+o However, printers are mechanical devices, and as such are quite slow
+
+compared tothe electronic speed of a processor.
+
+o Some units, such as graphic displays, provide both an output function, showing text
+
+o and graphics, and an input function, through touchscreen capability.
+
+Control Unit
+
+The memory, arithmetic and logic, and I/O units store and process information and
+
+perform input and output operations.
+The operation of these units must be coordinated in some way.
+This is the responsibility of the control unit.
+
+The control unit is effectively the nerve center that sends control signals to
+
+other units and senses their states.
+
+J/O transfers, consisting of input and output operations, are controlled by
+program instructions that identify the devices involved and the information to
+
+be transferred.
+
+Control circuits are responsible for generating the timing signals that govern the
+
+transfers and determine when a given action is to take place.
+
+Data transfers between the processor and the memory are also managed by the
+
+control unit through timing signals.
+
+A large set of control lines (wires) carries the signals used
+
+for timing and synchronization of events in all units.
+
+Dr. Ajay V G, Dept. of CSE, SVIT

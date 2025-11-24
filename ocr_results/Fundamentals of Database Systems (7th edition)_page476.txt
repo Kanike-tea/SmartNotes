@@ -1,0 +1,54 @@
+446
+
+Chapter 13. XML: Extensible Markup Language
+
+ranges over elements that satisfy the path expression $d/company/employee.
+Hence, $x ranges over projectWorker elements for workers who work in proj-
+ect 5, whereas $y ranges over employee elements.
+
+3. The WHERE clause specifies additional conditions on the selection of items.
+In this example, the first condition selects only those projectWorker elements
+that satisfy the condition (hours gt 20.0). The second condition specifies a
+join condition that combines an employee with a projectWorker only if they
+have the same ssn value.
+
+4. The ORDER BY clause specifies that the result elements will be ordered by the
+value of the hours per week they work on the project in ascending value of hours.
+
+5. Finally, the RETURN clause specifies which elements or attributes should be
+retrieved from the items that satisfy the query conditions. In this example, it
+will return a sequence of elements each containing <firstName, lastName, hours>
+for employees who work more that 20 hours per week on project number 5.
+
+Figure 13.7 includes some additional examples of queries in XQuery that can be
+specified on an XML instance documents that follow the XML schema document
+in Figure 13.5. The first query retrieves the first and last names of employees who
+earn more than $70,000. The variable $x is bound to each employeeName element
+that is a child of an employee element, but only for employee elements that satisfy
+the qualifier that their employeeSalary value is greater than $70,000. The result
+retrieves the firstName and lastName child elements of the selected employeeName
+elements. The second query is an alternative way of retrieving the same elements
+retrieved by the first query.
+
+The third query illustrates how a join operation can be performed by using more
+than one variable. Here, the $x variable is bound to each projectWorker element that
+is a child of project number 5, whereas the $y variable is bound to each employee
+element. The join condition matches ssn values in order to retrieve the employee
+names. Notice that this is an alternative way of specifying the same query in our
+earlier example, but without the LET clause.
+
+XQuery has very powerful constructs to specify complex queries. In particular, it can
+specify universal and existential quantifiers in the conditions of a query, aggregate
+functions, ordering of query results, selection based on position in a sequence, and
+even conditional branching. Hence, in some ways, it qualifies as a full-fledged pro-
+gramming language.
+
+This concludes our brief introduction to XQuery. The interested reader is referred to
+www.w3.org, which contains documents describing the latest standards related to
+XML and XQuery. The next section briefly discusses some additional languages and
+protocols related to XML.
+
+13.5.3 Other Languages and Protocols Related to XML
+
+There are several other languages and protocols related to XML technology.
+The long-term goal of these and other languages and protocols is to provide the

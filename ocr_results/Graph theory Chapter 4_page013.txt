@@ -1,0 +1,31 @@
+|
+greet See
+other than e and g which corresponds to the smallest entry is d or f. Let us choose d and
+ect d to the edge {e, g} at e.*
+Let us now examine the d—row and note that a'smallest entry, 2, corresponds to f. Thus.
+the edge (fd). i oe
+At this stage, all vertices, except c, are included in the edges. Among the edges having c
+as an end vertex, the edges {c, e} and {c, g} have equal minimum weight, 3. We can consider
+either of these edges. We stop the process, because we have exhausted all vertices.
+According to this process the six edges that form a minimal spanning tree of the given
+graph are (4, b}, {b, e}, fe, 8}, {d, e}, (f, d} and either {c, e} or {c, g}. In the first case, the minimal
+ing tree is the same as that got in Example 3 (by the Kruskal’s method) and is shown
+Figure 4.8. In the second case, the minimal spanning tree is as shown in Figure 4.197.
+
+Exercises
+
+_—
+
+1. Using the Kruskal’s algorithm, find two minimal spanning trees for the following weighted graph.
+
+4 5
+
+Figure 4.20
+
+Mead can choose f instead of d. In that case we obtain a different minimal spanning tree.
+
+Minimal spanning tree is not unique, the two methods (— Kruskal’s and Prim’s) may
+trees,
+
+give different mini-
+mal ‘Panning

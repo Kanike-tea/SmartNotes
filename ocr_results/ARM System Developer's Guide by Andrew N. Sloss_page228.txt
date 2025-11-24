@@ -1,0 +1,58 @@
+7.2, Integer Normalization and Count Leading Zeros
+
+unorm_arm7m_hash
+ORR shift, x, x, LSR#1
+ORR shift, shift, shift,
+ORR shift, shift, shift,
+ORR shift, shift, shift,
+
+LSR#2
+LSR#4
+LSR#8
+
+BIC shift, shift, shift, LSR#16
+RSB shift, shift, shift, LSL#9 3 *(2%9-1)
+RSB_ shift, shift, shift, LSL#11 3 *(2%11-1)
+RSB_ shift, shift, shift, LSL#14 3 *(2%14-1)
+ADR table, unorm_arm7m_hash_table
+
+LORB shift, [table, shift
+MOV x, x, LSL shift
+MOV pc, Ir
+
+unorm_arm?m_hash_table
+
+, LSR#26]
+
+DCB 0x20, Ox14, 0x13, Oxff, Oxff, 0x12, Oxff, 0x07
+DCB OxOa, Ox11, Oxff, Oxff, OxOe, Oxff, 0x06, Oxtf
+DCB Oxf, 0x09, Oxff, 0x10, Oxff, Oxff, 0x01, Oxla
+DCB Oxf, OxOd, Oxff, Oxff, 0x18, 0x05, Oxff, Oxtf
+DCB Oxf, 0x15, Oxff, 0x08, OxOb, Oxff, Oxf, Oxtf
+DCB Oxf, Oxf, Oxff, 0x02, Ox1b, 0x00, 0x19, Oxtf
+DCB 0x16, Oxff, Ox0c, Oxff, Oxf, 0x03, Oxlc, Oxtf
+DCB Ox17, Oxff, 0x04, Oxld, Oxff, Oxff, Oxle, Oxlf
+
+7.2.3. COUNTING TRAILING ZEROS
+
+Figure 7.2
+
+215
+
+Count trailing zeros is a related operation to count leading zeros. It counts the number of
+zeros below the least significant set bit in an integer. Equivalently, this detects the highest
+power of two that divides the integer. Therefore you can count trailing zeros to express an
+integer as a product of a power of two and an odd integer. If the integer is zero, then there
+is no lowest bit so the count trailing zeros returns 32.
+
+There is a trick to finding the highest power of two dividing an integer n, for nonzero n.
+The trick is to see that the expression (n & (—n)) has a single bit set in position of the lowest
+
+bit set in n. Figure 7.2 shows how this works. The x represents wildcard bits.
+
+N= XXXXXXXXXXXXXXXXXX 10000000000000
+
+—n = yyyyyyyyyyyyyyyyyyy 10000000000000 where y = 1 — x
+n & (—n) = 0000000000000000010000000000000
+
+Identifying the least significant bit.

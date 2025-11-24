@@ -1,0 +1,53 @@
+23.6 Types of Distributed Database Systems
+
+a third an object DBMS (such as Object Design’s ObjectStore) or hierarchical
+DBMS (such as IBM’s IMS); in such a case, it is necessary to have a canonical system
+language and to include language translators to translate subqueries from the
+canonical language to the language of each server.
+
+We briefly discuss the issues affecting the design of FDBSs next.
+
+23.6.1 Federated Database Management Systems Issues
+
+The type of heterogeneity present in FDBSs may arise from several sources. We
+discuss these sources first and then point out how the different types of autonomies
+contribute to a semantic heterogeneity that must be resolved in a heterogeneous
+FDBS.
+
+= Differences in data models. Databases in an organization come from a vari-
+ety of data models, including the so-called legacy models (hierarchical and
+network), the relational data model, the object data model, and even files.
+The modeling capabilities of the models vary. Hence, to deal with them uni-
+formly via a single global schema or to process them in a single language is
+challenging. Even if two databases are both from the RDBMS environment,
+the same information may be represented as an attribute name, as a relation
+name, or as a value in different databases. This calls for an intelligent query-
+processing mechanism that can relate information based on metadata.
+
+= Differences in constraints. Constraint facilities for specification and imple-
+mentation vary from system to system. There are comparable features that
+must be reconciled in the construction of a global schema. For example, the
+relationships from ER models are represented as referential integrity con-
+straints in the relational model. Triggers may have to be used to implement
+certain constraints in the relational model. The global schema must also deal
+with potential conflicts among constraints.
+
+= Differences in query languages. Even with the same data model, the lan-
+guages and their versions vary. For example, SQL has multiple versions like
+SQL-89, SQL-92, SQL-99, and SQL:2008, and each system has its own set of
+data types, comparison operators, string manipulation features, and so on.
+
+Semantic Heterogeneity. Semantic heterogeneity occurs when there are differ-
+ences in the meaning, interpretation, and intended use of the same or related data.
+Semantic heterogeneity among component database systems (DBSs) creates the
+biggest hurdle in designing global schemas of heterogeneous databases. The design
+autonomy of component DBSs refers to their freedom of choosing the following
+design parameters; the design parameters in turn affect the eventual complexity of
+the FDBS:
+
+= The universe of discourse from which the data is drawn. For example, for
+two customer accounts, databases in the federation may be from the United
+States and Japan and have entirely different sets of attributes about customer
+accounts required by the accounting practices. Currency rate fluctuations
+
+867

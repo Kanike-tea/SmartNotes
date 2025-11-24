@@ -1,0 +1,61 @@
+}
+
+void delete()
+
+{
+char item;
+if(front == -1)
+{
+printf("\n\nCircular Queue Underflow");
+3
+else
+{
+item = cq[front];
+printf("\n\nDeleted element from the queue is: %c "item );
+if(front == rear) //only one element
+front = rear = -1;
+else
+front = (front+1)%MAX;
+}
+i
+void display ()
+{
+inti;
+if(front == -1)
+{
+printf("\n\nCircular Queue Empty");
+else
+{
+printf("\nCircular Queue contents are:\n");
+for(i = front; i != rear ; i = (i+ 1)%MAX)
+{
+printf(" Yc", eq[i]);
+}
+printf(" Yc", cq[i]);
+3
+i
+Output:
+Main Menu
+
+1. Insertion and Overflow
+2. Deletion and Underflow
+3. Display
+
+4. Exit
+Enter Your Choice: 1
+
+Enter the element to be inserted: A
+
+Main Menu
+
+1. Insertion and Overflow
+
+2. Deletion and Underflow
+
+3. Display
+
+4. Exit
+Enter Your Choice: 1
+Enter the element to be inserted: B
+
+21

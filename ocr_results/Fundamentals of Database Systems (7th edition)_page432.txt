@@ -1,0 +1,85 @@
+402
+
+Chapter 12 Object and Object-Relational Databases
+
+Figure 12.10
+Possible ODL schema for the UNIVERSITY database in Figure 12.8(b).
+
+class PERSON
+
+(extent PERSONS
+key Ssn )
+{attribute struct Pname { string Fname,
+string Mname,
+string Lname } Name;
+attribute string Ssn;
+attribute date Birth_date;
+attribute enum Gender{M, F} Sex;
+attribute struct Address { short No,
+string Street,
+short Apt_no,
+string City,
+string State,
+short Zip } Address;
+short Age(); };
+class FACULTY extends PERSON
+(extent FACULTY )
+{attribute string Rank;
+attribute float Salary;
+attribute string Office;
+attribute string Phone;
+relationship DEPARTMENT Works _in inverse DEPARTMENT::Has faculty;
+relationship set<GRAD_STUDENT> Advises inverse GRAD_STUDENT::Advisor;
+relationship set<GRAD_STUDENT> On_committee_of inverse GRAD_STUDENT::Committee;
+void give_raise(in float raise);
+void promote(in string new rank); };
+class GRADE
+(extent GRADES )
+{
+
+attribute
+relationship
+
+relationship STUDENT Student inverse STUDENT::
+
+enum GradeValues(A,B,C,D,F,|, P} Grade;
+SECTION Section inverse SECTION::Students;
+ompleted_sections; };
+
+class STUDENT extends PERSON
+
+(
+{
+
+extent
+attribute
+attribute
+relationship
+relationship
+relationship
+void
+
+float
+
+void
+
+void
+
+STUDENTS )
+string Class;
+Department Minors_in;
+
+Department Majors_in inverse DEPARTMENT::Has_majors;
+
+set<GRADE> Completed_sections inverse GRADE::Student;
+
+set<CURR_SECTION> Registered_in INVERSE CURR_SECTION::Registered_students;
+
+change_major(in string dname) raises(dname_not_valid);
+
+gpa();
+
+register(in short secno) raises(section_not_valid);
+
+assign_grade(in short secno; IN GradeValue grade)
+raises(section_not_valid,grade_not_valid); };

@@ -1,0 +1,49 @@
+5.2 BasicC Data Types 111
+
+5.2.2 FUNCTION ARGUMENT TYPES
+
+We saw in Section 5.2.1 that converting local variables from types char or short to type
+int increases performance and reduces code size. The same holds for function arguments.
+Consider the following simple function, which adds two 16-bit values, halving the second,
+and returns a 16-bit sum:
+
+short add_vl(short a, short b)
+{
+return a + (b>>1);
+
+}
+
+This function is a little artificial, but it is a useful test case to illustrate the problems
+faced by the compiler. The input values a, b, and the return value will be passed in 32-bit
+ARM registers. Should the compiler assume that these 32-bit values are in the range of
+a short type, that is, —32,768 to +32,767? Or should the compiler force values to be in
+this range by sign-extending the lowest 16 bits to fill the 32-bit register? The compiler must
+make compatible decisions for the function caller and callee. Either the caller or callee must
+perform the cast to a short type.
+
+We say that function arguments are passed wide if they are not reduced to the range
+of the type and narrow if they are. You can tell which decision the compiler has made by
+looking at the assembly output for add_v1. If the compiler passes arguments wide, then
+the callee must reduce function arguments to the correct range. If the compiler passes
+arguments narrow, then the caller must reduce the range. If the compiler returns values
+wide, then the caller must reduce the return value to the correct range. If the compiler
+returns values narrow, then the callee must reduce the range before returning the value.
+
+For armcc in ADS, function arguments are passed narrow and values returned narrow.
+In other words, the caller casts argument values and the callee casts return values. The
+compiler uses the ANSI prototype of the function to determine the datatypes of the function
+arguments.
+
+The armcc output for add_v1 shows that the compiler casts the return value to a short
+type, but does not cast the input values. It assumes that the caller has already ensured that
+the 32-bit values r0 and r1 are in the range of the short type. This shows narrow passing
+of arguments and return value.
+
+add_v1
+ADD 10,10,r1,ASR #1 3 r0 = (int)a + ((int)b>>1)
+MoV 10,r0,LSL #16
+MoV 10,r0,ASR #16 3 r0 = (short) r0
+MoV pe, rl4 3 return r0
+
+The gcc compiler we used is more cautious and makes no assumptions about the range
+of argument value. This version of the compiler reduces the input arguments to the range

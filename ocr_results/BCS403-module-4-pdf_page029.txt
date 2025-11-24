@@ -1,0 +1,38 @@
+Database Management System [8CS403)
+
+5.2.2 Transactions, Database Items, Read and Write Operations, and DBMS
+
+Buffers
+= A Transaction an executing program that forms a logical unit of database processing
+= It includes one or more DB access operations such as insertion, deletion, modification or
+retrieval operation.
+= It can be either embedded within an application program using begin transaction and
+end transaction statements Or specified interactively via a high level query language
+such as SQL
+= Transaction which do not update database are known as read only transactions.
+= Transaction which do update database are known as read write transactions.
+= A database is basically represented as a collection of named data items The size of a
+data item is called its granularity.
+= A data item can be a database record, but it can also be a larger unit such as a whole
+disk block, or even a smaller unit such as an individual field (attribute) value of some
+record in the database
+= Each data item has a unique name
+= Basic DB access operations that a transaction can include are:
++ read_item(X): Reads a DB item named.X into a program variable.
++ write_item(X): Writes the value of a program variable into the DB item named X
+= Executing read_item(X) include the following steps:
+1. Find the address of the disk block that contains item X
+2. Copy the block into a buffer in main memory
+3. Copy the item X from the buffer to program variable named X.
+= Executing write_item(X) include the following steps:
+1. Find the address of the disk block that contains item X
+2. Copy the disk block into a buffer in main memory
+3. Copy item X from program variable named X into its correct location in buffer.
+4. Store the updated disk block from buffer back to disk (either immediately or later).
+= Decision of when to store a modified disk block is handled by recovery manager of the
+DBMS in cooperation with operating system.
+= ADB cache includes a number of data buffers.
+= When the buffers are all occupied a buffer replacement policy is used to choose one of
+the buffers to be replaced. EG: LRU
+
+https://vtucode.in 5

@@ -1,0 +1,52 @@
+364
+
+Chapter 12 Object and Object-Relational Databases
+
+Another reason for the creation of object-oriented databases is the vast increase in
+the use of object-oriented programming languages for developing software applica-
+tions. Databases are fundamental components in many software systems, and tradi-
+tional databases are sometimes difficult to use with software applications that are
+developed in an object-oriented programming language such as C++ or Java. Object
+databases are designed so they can be directly—or seamlessly—integrated with soft-
+ware that is developed using object-oriented programming languages.
+
+Relational DBMS (RDBMS) vendors have also recognized the need for incorporat-
+ing features that were proposed for object databases, and newer versions of rela-
+tional systems have incorporated many of these features. This has led to database
+systems that are characterized as object-relational or ORDBMSs. A recent version
+of the SQL standard (2008) for RDBMSs, known as SQL/Foundation, includes
+many of these features, which were originally known as SQL/Object and have now
+been merged into the main SQL specification.
+
+Although many experimental prototypes and commercial object-oriented database
+systems have been created, they have not found widespread use because of the pop-
+ularity of relational and object-relational systems. The experimental prototypes
+included the Orion system developed at MCC, OpenOODB at Texas Instruments,
+the Iris system at Hewlett-Packard laboratories, the Ode system at AT&T Bell Labs,
+and the ENCORE/ObServer project at Brown University. Commercially available
+systems included GemStone Object Server of GemStone Systems, ONTOS DB
+of Ontos, Objectivity/DB of Objectivity Inc., Versant Object Database and
+FastObjects by Versant Corporation (and Poet), ObjectStore of Object Design, and
+Ardent Database of Ardent.
+
+As commercial object DBMSs became available, the need for a standard model and
+language was recognized. Because the formal procedure for approval of standards
+normally takes a number of years, a consortium of object DBMS vendors and users,
+called ODMG, proposed a standard whose current specification is known as the
+ODMG 3.0 standard.
+
+Object-oriented databases have adopted many of the concepts that were developed
+originally for object-oriented programming languages.’ In Section 12.1, we describe
+the key concepts utilized in many object database systems and that were later incor-
+porated into object-relational systems and the SQL standard. These include object
+identity, object structure and type constructors, encapsulation of operations, and the
+definition of methods as part of class declarations, mechanisms for storing objects
+in a database by making them persistent, and type and class hierarchies and inheri-
+tance. Then, in Section 12.2 we see how these concepts have been incorporated into
+the latest SQL standards, leading to object-relational databases. Object features
+were originally introduced in SQL:1999, and then updated in SQL:2008. In Sec-
+tion 12.3, we turn our attention to “pure” object database standards by presenting
+features of the object database standard ODMG 3.0 and the object definition
+
+3Similar concepts were also developed in the fields of semantic data modeling and knowledge
+representation.

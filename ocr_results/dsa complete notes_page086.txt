@@ -1,0 +1,63 @@
+Data Structures and Applications (BCS304) Module III
+
+Binary Trees
+The Abstract Data type
+
+Definition: A binary tree is a finite set of nodes that is either empty or consists of a root and two
+disjoint binary trees called the left subtree and the right subtree.
+
+Objects: a finite set of nodes either empty or consisting of a root node, left Binary_Tree, and right
+Binary_Tree.
+
+Functions: for all bt,bt1,bt2 € BinTree, item € element
+
+BinTree Create() ::= creates an empty binary tree
+
+Boolean IsEmpty(bt) ::= if (bt == empty binary tree)
+return TRUE else return FALSE
+
+BinTree MakeBT(bt1, item,bt2) return a binary tree whose left
+
+n= subtree is bt], whose right
+
+subtree is bt2, and whose root
+
+node contains the data item.
+
+if (IsEmpty(bt)) return error else
+return the left subtree of bt.
+Element Data(bt) ::= if (IsEmpty(bt)) return error else
+return the data in the root node ofbt.
+if (IsEmpty(bt)) return error else
+return the right subtree of bt
+
+BinTree Lchild(bt) ::
+
+BinTree Rchild(bt) ::
+
+Difference between binary tree and tree.
+
+Binary tree Tree
+Empty tree exist No tree exist with zero nodes
+Order of the child is considered Order of the child is not considered
+Each node can be partitioned to only two Each node can be partitioned to T1,T2.....Tn
+disjoint subtrees disjoint subtrees
+
+Properties of Binary Tree
+Lemma |: [Maximum number of nodes]
+
+1. The maximum number of nodes on level i of a binary tree is 2 i>.
+Proof:
+The proof is by induction on i.
+
+Induction Base: The root is the only node on level i = 1. Hence, the maximum number of
+nodes
+on level i= 1 is2*!=2°=1.
+
+Induction Hypothesis: Let i be an arbitrary positive integer greater than 1. Assume that the
+maximum number of nodes on level i - 1 is 2'?.
+
+Induction Step:
+The maximum number of nodes on level i - | is 2‘? by the induction hypothesis
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 11

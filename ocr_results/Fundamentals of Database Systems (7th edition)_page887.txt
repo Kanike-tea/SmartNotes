@@ -1,0 +1,51 @@
+23.4 Overview of Transaction Management in Distributed Databases
+
+example, suppose that site X sends a message to site Y and expects a response from
+Y but does not receive it. There are several possible explanations:
+
+= The message was not delivered to Y because of communication failure.
+= Site Y is down and could not respond.
+= Site Y is running and sent a response, but the response was not delivered.
+
+Without additional information or the sending of additional messages, it is difficult
+to determine what actually happened.
+
+Another problem with distributed recovery is distributed commit. When a transac-
+tion is updating data at several sites, it cannot commit until it is sure that the effect
+of the transaction on every site cannot be lost. This means that every site must first
+have recorded the local effects of the transactions permanently in the local site log
+on disk. The two-phase commit protocol is often used to ensure the correctness of
+distributed commit (see Section 21.6).
+
+23.4 Overview of Transaction Management
+in Distributed Databases
+
+The global and local transaction management software modules, along with the
+concurrency control and recovery manager of a DDBMS, collectively guarantee the
+ACID properties of transactions (see Chapter 20).
+
+An additional component called the global transaction manager is introduced for
+supporting distributed transactions. The site where the transaction originated can
+temporarily assume the role of global transaction manager and coordinate the exe-
+cution of database operations with transaction managers across multiple sites.
+Transaction managers export their functionality as an interface to the application
+programs. The operations exported by this interface are similar to those covered in
+Section 20.2.1, namely BEGIN_TRANSACTION, READ or WRITE, END_TRANSACTION,
+COMMIT_TRANSACTION, and ROLLBACK (or ABORT). The manager stores book-
+keeping information related to each transaction, such as a unique identifier, origi-
+nating site, name, and so on. For READ operations, it returns a local copy if valid and
+available. For WRITE operations, it ensures that updates are visible across all sites
+containing copies (replicas) of the data item. For ABORT operations, the manager
+ensures that no effects of the transaction are reflected in any site of the distributed
+database. For COMMIT operations, it ensures that the effects of a write are persistently
+recorded on all databases containing copies of the data item. Atomic termination
+(COMMIT/ ABORT) of distributed transactions is commonly implemented using the
+two-phase commit protocol (see Section 22.6).
+
+The transaction manager passes to the concurrency controller module the database
+operations and associated information. The controller is responsible for acquisition
+and release of associated locks. If the transaction requires access to a locked
+resource, it is blocked until the lock is acquired. Once the lock is acquired, the oper-
+ation is sent to the runtime processor, which handles the actual execution of the
+
+857

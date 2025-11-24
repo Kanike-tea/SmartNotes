@@ -1,0 +1,50 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+Program 05: Imagine you have a dataset with the salaries of employees in different
+departments. Create a box plot to compare the salary distributions across different
+
+departments. write a python program.
+
+ALGORITHM
+1. Import Libraries: Import the necessary libraries: pandas for data manipulation, seaborn
+
+for statis
+
+cal data visualization, and matplotlib.pyplot for additional customization of
+plots.
+2. Create Sample Dataset:
+¢ Define a sample dataset with two columns: 'Department' and 'Salary'.
+e This step is for demonstration purposes. Replace this sample data with your actual
+dataset.
+3. Create DataFrame: Use the pd.DataFrame() function to create a DataFrame (df) from the
+sample data.
+4. Generate Box Plot:
+e Create a figure with a specified size using plt.figure(figsize=(10, 6)).
+e Use sns.boxplot() to create a box plot.
+= Set 'Department' as the x-axis variable (x='Department’).
+= Set 'Salary' as the y-axis variable (y='Salary').
+= Use the 'Set2' color palette (palette='Set2') for better visualization.
+¢ Customize the plot title using plt.title(Salary Distribution Across Departments’).
+
+5. Display the Plot: Use plt.show() to display the generated box plot.
+
+PROGRAM
+
+import pandas as pd
+
+import seaborn as sns
+
+import matplotlib.pyplot as plt
+
+# Generate a sample dataset (replace this with your actual dataset)
+data = {
+"Department': ['HR', 'IT', 'Finance', 'Sales', 'Marketing'],
+"Salary': [50000, 60000, 75000, 70000, 55000],
+
+# Create a DataFrame from the sample data
+df = pd.DataFrame (data)
+
+# Create a box plot using seaborn
+plt.figure(figsize=(10, 6))
+
+Dept. of CSE 83 GSSSIETW, Mysuru

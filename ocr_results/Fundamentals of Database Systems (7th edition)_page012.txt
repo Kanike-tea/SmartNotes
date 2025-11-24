@@ -1,0 +1,51 @@
+xii
+
+Preface
+
+Guidelines for Using This Book
+
+There are many different ways to teach a database course. The chapters in Parts 1
+through 7 can be used in an introductory course on database systems in the order
+that they are given or in the preferred order of individual instructors. Selected chap-
+ters and sections may be left out and the instructor can add other chapters from the
+rest of the book, depending on the emphasis of the course. At the end of the open-
+ing section of some of the book’s chapters, we list sections that are candidates for
+being left out whenever a less-detailed discussion of the topic is desired. We suggest
+covering up to Chapter 15 in an introductory database course and including selected
+parts of other chapters, depending on the background of the students and the
+desired coverage. For an emphasis on system implementation techniques, chapters
+from Parts 7, 8, and 9 should replace some of the earlier chapters.
+
+Chapters 3 and 4, which cover conceptual modeling using the ER and EER models,
+are important for a good conceptual understanding of databases. However, they
+may be partially covered, covered later in a course, or even left out if the emphasis
+is on DBMS implementation. Chapters 16 and 17 on file organizations and indexing
+may also be covered early, later, or even left out if the emphasis is on database mod-
+els and languages. For students who have completed a course on file organization,
+parts of these chapters can be assigned as reading material or some exercises can be
+assigned as a review for these concepts.
+
+If the emphasis of a course is on database design, then the instructor should cover
+Chapters 3 and 4 early on, followed by the presentation of relational databases. A
+total life-cycle database design and implementation project would cover conceptual
+design (Chapters 3 and 4), relational databases (Chapters 5, 6, and 7), data model
+mapping (Chapter 9), normalization (Chapter 14), and application programs
+implementation with SQL (Chapter 10). Chapter 11 also should be covered if the
+emphasis is on Web database programming and applications. Additional documen-
+tation on the specific programming languages and RDBMS used would be required.
+The book is written so that it is possible to cover topics in various sequences. The
+following chapter dependency chart shows the major dependencies among chap-
+ters. As the diagram illustrates, it is possible to start with several different topics
+following the first two introductory chapters. Although the chart may seem com-
+plex, it is important to note that if the chapters are covered in order, the dependen-
+cies are not lost. The chart can be consulted by instructors wishing to use an
+alternative order of presentation.
+
+For a one-semester course based on this book, selected chapters can be assigned as
+reading material. The book also can be used for a two-semester course sequence.
+The first course, Introduction to Database Design and Database Systems, at the
+sophomore, junior, or senior level, can cover most of Chapters 1 through 15. The
+second course, Database Models and Implementation Techniques, at the senior or
+first-year graduate level, can cover most of Chapters 16 through 30. The two-
+semester sequence can also be designed in various other ways, depending on the
+preferences of the instructors.

@@ -1,0 +1,49 @@
+12.2 Cache Architecture 417
+
+The efficiency of the write buffer depends on the ratio of main memory writes to the
+number of instructions executed. Over a given time interval, if the number of writes to
+main memory is low or sufficiently spaced between other processing instructions, the write
+buffer will rarely fill. If the write buffer does not fill, the running program continues
+to execute out of cache memory using registers for processing, cache memory for reads
+and writes, and the write buffer for holding evicted cache lines while they drain to main
+memory.
+
+A write buffer also improves cache performance; the improvement occurs during cache
+line evictions. If the cache controller evicts a dirty cache line, it writes the cache line to the
+write buffer instead of main memory. Thus the new cache line data will be available sooner,
+and the processor can continue operating from cache memory.
+
+Data written to the write buffer is not available for reading until it has exited the write
+buffer to main memory. The same holds true for an evicted cache line: it too cannot be
+read while it is in the write buffer. This is one of the reasons that the FIFO depth of a write
+buffer is usually quite small, only a few cache lines deep.
+
+Some write buffers are not strictly FIFO buffers. The ARM10 family, for example,
+supports coalescing—the merging of write operations into a single cache line. The write
+buffer will merge the new value into an existing cache line in the write buffer if they
+represent the same data block in main memory. Coalescing is also known as write merging,
+write collapsing, or write combining.
+
+12.2.6 MEASURING CACHE EFFICIENCY
+
+There are two terms used to characterize the cache efficiency of a program: the cache
+hit rate and the cache miss rate. The hit rate is the number of cache hits divided by the
+total number of memory requests over a given time interval. The value is expressed as
+a percentage:
+
+. cache hits
+hit rate = | ——————_} x 100
+memory requests
+
+The miss rate is similar in form: the total cache misses divided by the total number of
+memory requests expressed as a percentage over a time interval. Note that the miss rate also
+equals 100 minus the hit rate.
+
+The hit rate and miss rate can measure reads, writes, or both, which means that the
+terms can be used to describe performance information in several ways. For example,
+there is a hit rate for reads, a hit rate for writes, and other measures of hit and miss
+rates.
+
+Two other terms used in cache performance measurement are the hit time—the time it
+takes to access a memory location in the cache and the miss penalty—the time it takes to
+load a cache line from main memory into cache.

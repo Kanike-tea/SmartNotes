@@ -1,0 +1,57 @@
+312 Chapter 8 Digital Signal Processing
+
+MOVS S, N, LSR#4
+LDMEQFD sp!, {r4-r11, pc}
+ADR cc, fft_table_arme
+next_stage_arm9e
+3 S = the number of blocks
+; R = the number of samples in each block
+STMFD sp!, {x, S}
+ADD tO, R, R, LSL#1
+ADD x, x, tO
+SUB S, S, #1<<16
+next_block_arm9e
+ADD S, S, R, LSL#(16-2)
+next_butterfly_arme
+; S=((number butterflies left-1) <<16)
+3 + (number of blocks left)
+LOR x2_r, [x], -R 3 packed data
+LOR x2_i, [c], #4 ; packed coefficients
+LOR xLr, [x], -R
+LOR xLi, [c], #4
+LOR x0_r, [x], -R
+LOR x0_i, [c], #4
+C_MUL9e x3, x2_r, x2_i
+C_MUL9e x2, xl_r, x1i
+C_MUL9e x1, xO_r, x0_i
+C_LOR x0, x, #0
+
+CFFTA 15 3 coefficients are Q15
+CSTR x0, x, R
+CSTR xl, x, R
+CSTR x2, x, R
+
+CSTR y3, x, #4
+SUBS S, S, #1<<16
+
+BGE —_next_butterfly_arm9e
+
+ADD tO, R, R, LSL#I
+
+ADD x, x, tO
+
+suB_ SS, S, #1
+
+MOVS tl, S, LSL#16
+
+SUBNE c, c, tO
+
+BNE next_block_arm9e
+
+LOMFD sp!, {x, S}
+
+MOV RR, LSL#2 —«;_ quadruple block size
+MOVS S, S, LSR#2 — ; quarter number of blocks
+BNE next_stage_arm9e
+
+LOMFD sp!, {r4-rl1, pc}

@@ -1,0 +1,54 @@
+700
+
+Chapter 19 Query Optimization
+
+Additional transformations discussed in Chapters 4, 5, and 6 are not repeated here.
+We discuss next how transformations can be used in heuristic optimization.
+
+Outline of a Heuristic Algebraic Optimization Algorithm. We can now out-
+line the steps of an algorithm that utilizes some of the above rules to transform an
+initial query tree into a final tree that is more efficient to execute (in most cases).
+The algorithm will lead to transformations similar to those discussed in our exam-
+ple in Figure 19.2. The steps of the algorithm are as follows:
+
+1. Using Rule 1, break up any SELECT operations with conjunctive conditions
+into a cascade of SELECT operations. This permits a greater degree of free-
+dom in moving SELECT operations down different branches of the tree.
+
+2. Using Rules 2, 4, 6, and 10, 13, 14 concerning the commutativity of SELECT
+with other operations, move each SELECT operation as far down the query
+tree as is permitted by the attributes involved in the select condition. If the
+condition involves attributes from only one table, which means that it repre-
+sents a selection condition, the operation is moved all the way to the leaf
+node that represents this table. If the condition involves attributes from two
+tables, which means that it represents a join condition, the condition is
+moved to a location down the tree after the two tables are combined.
+
+3. Using Rules 5 and 9 concerning commutativity and associativity of binary oper-
+ations, rearrange the leaf nodes of the tree using the following criteria. First,
+position the leaf node relations with the most restrictive SELECT operations so
+they are executed first in the query tree representation. The definition of most
+restrictive SELECT can mean either the ones that produce a relation with the
+fewest tuples or with the smallest absolute size.’ Another possibility is to define
+the most restrictive SELECT as the one with the smallest selectivity; this is more
+practical because estimates of selectivities are often available in the DBMS
+catalog. Second, make sure that the ordering of leaf nodes does not cause
+CARTESIAN PRODUCT operations; for example, if the two relations with the
+most restrictive SELECT do not have a direct join condition between them, it
+may be desirable to change the order of leaf nodes to avoid Cartesian products.>
+
+4. Using Rule 12, combine a CARTESIAN PRODUCT operation with a subse-
+quent SELECT operation in the tree into a JOIN operation, if the condition
+represents a join condition.
+
+5. Using Rules 3, 4, 7, and 11 concerning the cascading of PROJECT and the com-
+muting of PROJECT with other operations, break down and move lists of pro-
+jection attributes down the tree as far as possible by creating new PROJECT
+operations as needed. Only those attributes needed in the query result and in
+subsequent operations in the query tree should be kept after each PROJECT
+operation.
+
+“Either definition can be used, since these rules are heuristic.
+
+5Note that a CARTESIAN PRODUCT is acceptable in some cases—for example, if each relation has only
+a single tuple because each had a previous select condition on a key field.

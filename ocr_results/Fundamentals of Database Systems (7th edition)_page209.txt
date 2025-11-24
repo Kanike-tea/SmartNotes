@@ -1,0 +1,50 @@
+6.1 SQL Data Definition and Data Types
+
+specifying retrieval queries, and Section 6.4 describes the SQL commands for
+insertion, deletion, and update.
+
+In Chapter 7, we will describe more complex SQL retrieval queries, as well as the
+ALTER commands for changing the schema. We will also describe the CREATE
+ASSERTION statement, which allows the specification of more general constraints
+on the database, and the concept of triggers, which is presented in more detail in
+Chapter 26. We discuss the SQL facility for defining views on the database in Chap-
+ter 7. Views are also called virtual or derived tables because they present the user
+with what appear to be tables; however, the information in those tables is derived
+from previously defined tables.
+
+Section 6.5 lists some SQL features that are presented in other chapters of the book;
+these include object-oriented features in Chapter 12, XML in Chapter 13, transac-
+tion control in Chapter 20, active databases (triggers) in Chapter 26, online analyti-
+cal processing (OLAP) features in Chapter 29, and security/authorization in
+Chapter 30. Section 6.6 summarizes the chapter. Chapters 10 and 11 discuss the
+various database programming techniques for programming with SQL.
+
+6.1 SQL Data Definition and Data Types
+
+SQL uses the terms table, row, and column for the formal relational model terms
+relation, tuple, and attribute, respectively. We will use the corresponding terms
+interchangeably. The main SQL command for data definition is the CREATE state-
+ment, which can be used to create schemas, tables (relations), types, and domains,
+as well as other constructs such as views, assertions, and triggers. Before we describe
+the relevant CREATE statements, we discuss schema and catalog concepts in Sec-
+tion 6.1.1 to place our discussion in perspective. Section 6.1.2 describes how tables
+are created, and Section 6.1.3 describes the most important data types available for
+attribute specification. Because the SQL specification is very large, we give a descrip-
+tion of the most important features. Further details can be found in the various SQL.
+standards documents (see end-of-chapter bibliographic notes).
+
+6.1.1 Schema and Catalog Concepts in SQL
+
+Early versions of SQL did not include the concept of a relational database schema;
+all tables (relations) were considered part of the same schema. The concept of an
+SQL schema was incorporated starting with SQL2 in order to group together tables
+and other constructs that belong to the same database application (in some systems,
+a schema is called a database). An SQL schema is identified by a schema name and
+includes an authorization identifier to indicate the user or account who owns the
+schema, as well as descriptors for each element in the schema. Schema elements
+include tables, types, constraints, views, domains, and other constructs (such as
+authorization grants) that describe the schema. A schema is created via the CREATE
+SCHEMA statement, which can include all the schema elements’ definitions. Alter-
+natively, the schema can be assigned a name and authorization identifier, and the
+
+179

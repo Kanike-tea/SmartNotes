@@ -1,0 +1,55 @@
+Data Structures and Applications (BCS304) Module V
+
+Drawbacks of Linear Probing
+
+' Identifiers tend to cluster together
+' Adjacent cluster tend to coalesce
+' Increase the search time
+
+Example showing the drawback
+
+Insert acos, atoi,char,define,exp,ceil,cos, float, atol, floor , ctime into a 26 bucket hash table
+
+bucket x Bucket searched
+
+0 acos 1
+1 atoi 2
+2 char 1
+3 define 1
+4 exp 1
+5 ceil 4
+6 cos 5
+7 float 3
+8 atol 9
+9 floor 5
+10 ctime 9
+25
+
+We see the number of searches increasing and the keys clustering together
+
+Quadratic Probing
+= Quadratic probing uses a quadratic function of i as the increment
+= Suppose a record R with key k has the hash addres H(k)=h then instead of searching the
+locations with h,h+1, h+2,........... we linearly search locations with h,h+1,h+4,h+9,......... h+i?
+= Ifthe number m of locations in the table T is a prime number, then the above sequence will
+access half of the locations T
+
+Double hashing
+Here a second hash function H’ is used for resolving a collision, as follows.
+Suppose a record R with key k has the hash address H(k)=h and h’(k)=h’¥ m then we linearly search
+locations with addresses h, hth’ ,h=2h’.h+3h’,.........
+If m is a prime number then the above sequence will access all the locations in the table T.
+
+Note: One major disadvantage in any type of open addressing procedure is in the
+implementation of deletion.
+
+Suppose a record r is deleted from location T(r) , suppose we reach this location during a search, it
+does not mean the search is unsuccesssfull..
+
+Thus when deleting a record the location should be labeled to indicate that previously it did contain a
+record
+
+Chaining
+¢ Maintain one list per bucket
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 5

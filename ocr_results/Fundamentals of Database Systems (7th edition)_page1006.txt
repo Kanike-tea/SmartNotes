@@ -1,0 +1,53 @@
+976
+
+Chapter 26 Enhanced Data Models
+
+Event Information versus Duration (or State) Information. A temporal data-
+base will store information concerning when certain events occur, or when certain
+facts are considered to be true. There are several different types of temporal infor-
+mation. Point events or facts are typically associated in the database with a single
+time point in some granularity. For example, a bank deposit event may be associ-
+ated with the timestamp when the deposit was made, or the total monthly sales of a
+product (fact) may be associated with a particular month (say, February 2010).
+Note that even though such events or facts may have different granularities, each is
+still associated with a single time value in the database. This type of information is
+often represented as time series data, as we will discuss in Section 26.2.5. Duration
+events or facts, on the other hand, are associated with a specific time period in the
+database.!? For example, an employee may have worked in a company from Aug-
+ust 15, 2003 until November 20, 2008.
+
+A time period is represented by its start and end time points [START-TIME,
+ENDTIME]. For example, the above period is represented as [2003-08-15, 2008-11-20].
+Such a time period is often interpreted to mean the set of all time points from start-
+time to end-time, inclusive, in the specified granularity. Hence, assuming day gran-
+ularity, the period [2003-08-15, 2008-11-20] represents the set of all days from
+August 15, 2003, until November 20, 2008, inclusive.'*
+
+Valid Time and Transaction Time Dimensions. Given a particular event or
+fact that is associated with a particular time point or time period in the database, the
+association may be interpreted to mean different things. The most natural interpre-
+tation is that the associated time is the time that the event occurred, or the period
+during which the fact was considered to be true in the real world. If this interpreta-
+tion is used, the associated time is often referred to as the valid time. A temporal
+database using this interpretation is called a valid time database.
+
+However, a different interpretation can be used, where the associated time refers to
+the time when the information was actually stored in the database; that is, it is the
+value of the system time clock when the information is valid in the system.‘ In this
+case, the associated time is called the transaction time. A temporal database using
+this interpretation is called a transaction time database.
+
+Other interpretations can also be intended, but these are considered to be the most
+common ones, and they are referred to as time dimensions. In some applications,
+only one of the dimensions is needed and in other cases both time dimensions are
+required, in which case the temporal database is called a bitemporal database. If
+
+'2This is the same as an anchored duration. It has also been frequently called a time interval, but to avoid
+confusion we will use period to be consistent with SQL terminology.
+
+'8The representation [2003-08-15, 2008-1 1-20] is called a closed interval representation. One can
+also use an open interval, denoted [2003-08-15, 2008-11-21), where the set of points does not include
+the end point. Although the latter representation is sometimes more convenient, we shall use closed
+intervals except where indicated
+
+'4The explanation is more involved, as we will see in Section 26.2.3,

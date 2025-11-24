@@ -1,0 +1,52 @@
+Database Management System [BCS403]
+
+1.2 Specifying Constraints as Assertions and Actions as Triggers
+
+1.2.1 Specifying General Constraints as Assertions in SQL
+
+Assertions are used to specify additional types of constraints outside scope of built-in relational
+model constraints. In SQL, users can specify general constraints via declarative assertions, using
+the CREATE ASSERTION statement of the DDL.Each assertion is given a constraint name and is
+specified via a condition similar to the WHERE clause of an SQL query.
+
+General form :
+CREATE ASSERTION <Name_of_assertion> CHECK (<cond>)
+
+For the assertion to be satisfied, the condition specified after CHECK clause must return true:
+
+For example, to specify the constraint that the salary of an employee must not be greater than the
+salary of the manager of the department that the employee works for in SQL; we can write the
+following assertion:
+
+CREATE ASSERTION SALARY_CONSTRAINT
+
+CHECK ( NOT EXISTS ( SELECT * FROM EMPLOYEE E, EMPLOYEE M,
+
+DEPARTMENT D WHERE E.Salary>M.Salary AND
+
+E.Dno=D.Dnumber AND D.Mgr_ssn=M.Ssn‘) );
+
+The constraint name SALARY_CONSTRAINT is followed by the keyword CHECK, which is followed
+by a condition in parentheses that must hold true on every database state for the assertion to be
+satisfied. The constraint name can be.used later to refer to the constraint or to modify or drop it. Any
+WHERE <lause condition can be Used, but many constraints can be specified using the EXISTS and
+NOT EXISTS style of SQL conditions.
+
+By including this query inside a NOT EXISTS clause, the assertion will specify that the result of this
+query must be empty so that the condition will always be TRUE. Thus, the assertion is violated if the
+result of the query.is not empty
+Example: consider the bank database with the following tables
+
+e branch (branch _name, branch_city, assets)
+
+e customer (customer name, customer_street, customer_city)
+
+© account (account number, branch_name, balance)
+
+= Joan (lean_number, branch_name, amount)
+
+© depositor (customer name, account number)
+
+* borrower (customer_name, loan _number)
+
+https://vtucode.in page 32

@@ -1,0 +1,53 @@
+Database Management System [BCS403]
+
+= Concurrent access is possible because of Multiprogramming. Multiprogramming can
+be achieved by:
++ interleaved execution
++ Parallel Processing
+= Multiprogramming operating systems execute some commands from one process,
+then suspend that process and execute some commands from the next process, and so
+on
+= A process is resumed at the point where it was suspended whenever it gets its turn to
+use the CPU again
+= Hence, concurrent execution of processes is actually interleaved, as illustrated. in
+
+Figure 21.1
+
+1 Ad t A i Hl t i
+
+vod oe a ae H 4
+
+a | roa i c | CPU,
+
+3 i iv i “pos cPU, Figure 21.1
+
+| \ | — (> fal Interleaved process-
+ing versus parallel
+
+—_——
+f t f i Time processing of con-
+4 ts te current transactions.
+
+= Figure 21.1, shows two processes, A and B, executing concurrently in an interleaved
+fashion
+
+= Interleaving keeps the CPU busy when a process requires an input or output (I/O)
+operation, such as reading a block from disk
+
+= The CPU is switched to execute another process rather than remaining idle during I/O
+time
+
+= Interleaving also prevents a long process from delaying other processes.
+
+= If the computer system has multiple hardware processors (CPUs), parallel processing
+of multiple processes is possible, as illustrated by processes C and D in Figure 21.1
+
+= Most of the theory concerning concurrency control in databases is developed in terms of
+
+interleaved concurrency
+= In a multiuser DBMS, the stored data items are the primary resources that may be
+accessed concurrently by interactive users or application programs, which are constantly
+
+retrieving information from and modifying the database.
+
+https://vtucode.in

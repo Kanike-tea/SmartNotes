@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+1.1.2 Characteristics of Relations
+
+1. Ordering of Tuples in a Relation
+
+A relation is defined as a set of tuples. Mathematically, elements of a set have no order
+among them; hence, tuples in a relation do not have any particular order. Tuple ordering is
+not part of a relation definition because a relation attempts to represent facts at a logical or
+abstract level. Many tuple orders can be specified on the same relation.
+
+2. Ordering of Values within a Tuple and an Alternative Definition of a Relation
+The order of attributes and their values is not that important as long as the correspondence
+between attributes and values is maintained. An alternative definition of a relation can be
+given, making the ordering of values in a tuple unnecessary. In this definition Ajrélation
+schema R(Ai, Ag, ...,An), set of attributes and a relation state r(R)lis ‘4 finité set Of mappings
+r= {tl, t2, ..., tm}, where each tuple ti is a mapping from R toD)
+According to this definition of tuple as a mapping, @itupleicanibeyconsideredasialsetior
+(<attribute>, <value>) pairs, where each pair giveS/thé valle‘6f the mapping from an attribute
+AjitolavalieWiliromd6m(A}) .The ordering of attributes is not important, because the
+attribute name appears with its value.
+
+3. Values and NULLs in the Tuples
+Each value in a tuple is atomic. NULL values are used to represent the values of attributes
+that may be unknown or may not apply to a tuple. For example some STUDENT tuples have
+NULL for their_office phones because they do not have an office .Another student has a
+NULL for home phone In general, we can have several meanings for NULL values, such as
+value unknown, value exists but is not available, or attribute does not apply to this tuple
+(also known as value undefined).
+
+4. Interpretation (Meaning) of a Relation
+The relation schema can be interpreted as a declaration or a type of assertion. For example,
+the schema of the STUDENT relation of asserts that, in general, a student entity has a Name,
+Ssn, Home_phone, Address, Office_phone, Age, and Gpa. Each tuple in the relation can then
+be interpreted as a particular instance of the assertion.For example, the first tuple asserts the
+fact that there is a STUDENT whose Name is Benjamin Bayer, Ssn is 305-61-2435, Age is
+
+19, and so on.
+
+An alternative interpretation of a relation schema is as a predicate; in this case, the values in
+
+each tuple are interpreted as values that satisfy the predicate.
+
+https://vtucode.in Page 4

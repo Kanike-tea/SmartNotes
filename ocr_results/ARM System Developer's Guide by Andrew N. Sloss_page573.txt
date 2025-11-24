@@ -1,0 +1,50 @@
+560 Chapter 15 The Future of the Architecture
+
+15.2 SYSTEM AND MULTIPROCESSOR SUPPORT
+
+15.2.1
+
+ADDITIONS TO ARMV6
+
+As systems become more complicated, they incorporate multiple processors and processing
+engines. These engines may share different views of memory and even use different endi-
+annesses (byte order). To support communication in these systems, ARMv6 adds support
+for mixed-endian systems, fast exception processing, and new synchronization primitives.
+
+MIXED-ENDIANNESS SUPPORT
+
+Traditionally the ARM architecture has had a little-endian view of memory with a big-
+endian mode that could be switched at reset. This big-endian mode sets the memory system
+up as big-endian ordered instructions and data.
+
+As mentioned in the introduction to this chapter, ARM has found its cores integrated
+into very sophisticated system-on-chip devices dealing with mixed endianess, and often has
+to deal with both little- and big-endian data in software. ARMvé6 adds a new instruction
+to set the data endianness for large code sequences (see Table 15.12), and also some indi-
+vidual manipulation instructions to increase the efficiency of dealing with mixed-endian
+environments.
+
+The endian_specifier is either BE for big-endian or LE for little endian. A program
+would typically use SETEND when there is a considerable chunk of code that is carrying
+out operations on data with a particular endianness. Figure 15.3 shows individual byte
+manipulation instructions.
+
+Table 15.12 Setting data-endianness operation.
+
+15.2.2
+
+15.2.3
+
+SETEND <endian_specifier> Change the default data endianness based on the
+<endian_specifier> argument.
+
+EXCEPTION PROCESSING
+
+It is common for operating systems to save the return state of an interrupt or exception
+on a stack. ARMVv6 adds the instructions in Table 15.13 to improve the efficiency of this
+operation, which can occur very frequently in interrupt/scheduler driven systems.
+
+MULTIPROCESSING SYNCHRONIZATION PRIMITIVES
+
+As system-on-chip (SoC) architectures have become more sophisticated, ARM cores are
+now often found in devices with many processing units that compete for shared resources.

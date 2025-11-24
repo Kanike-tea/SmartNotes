@@ -1,0 +1,51 @@
+18.8 Parallel Algorithms for Query Processing
+
+18.8.2 Intraquery Parallelism
+
+We have discussed how each individual operation may be executed by distrib-
+uting the data among multiple processors and performing the operation in
+parallel on those processors. A query execution plan can be modeled as a graph
+of operations. To achieve a parallel execution of a query, one approach is to
+use a parallel algorithm for each operation involved in the query, with appro-
+priate partitioning of the data input to that operation. Another opportunity to
+parallelize comes from the evaluation of an operator tree where some of the
+operations may be executed in parallel because they do not depend on one
+another. These operations may be executed on separate processors. If the out-
+put of one of the operations can be generated tuple-by-tuple and fed into
+another operator, the result is pipelined parallelism. An operator that does
+not produce any output until it has consumed all its inputs is said to block the
+pipelining.
+
+18.8.3 Interquery Parallelism
+
+Interquery parallelism refers to the execution of multiple queries in parallel. In
+shared-nothing or shared-disk architectures, this is difficult to achieve. Activi-
+ties of locking, logging, and so on among processors (see the chapters in Part 9
+on Transaction Processing) must be coordinated, and simultaneous conflicting
+updates of the same data by multiple processors must be avoided. There must be
+cache coherency, which guarantees that the processor updating a page has the
+latest version of that page in the buffer. The cache-coherency and concurrency
+control protocols (see Chapter 21) must work in coordination as well.
+
+The main goal behind interquery parallelism is to scale up (i.e., to increase the
+overall rate at which queries or transactions can be processed by increasing the
+number of processors). Because single-processor multiuser systems themselves
+are designed to support concurrency control among transactions with the goal
+of increasing transaction throughput (see Chapter 21), database systems using
+shared memory parallel architecture can achieve this type of parallelism more
+easily without significant changes.
+
+From the above discussion it is clear that we can speed up the query execution by
+performing various operations, such as sorting, selection, projection, join, and
+aggregate operations, individually using their parallel execution. We may achieve
+further speed-up by executing parts of the query tree that are independent in
+parallel on different processors. However, it is difficult to achieve interquery
+parallelism in shared-nothing parallel architectures. One area where the shared-
+disk architecture has an edge is that it has a more general applicability, since it,
+unlike the shared-nothing architecture, does not require data to be stored in a
+partitioned manner. Current SAN- and NAS-based systems afford this advan-
+tage. A number of parameters—such as available number of processors and
+available buffer space—play a role in determining the overall speed-up. A
+detailed discussion of the effect of these parameters is outside our scope.
+
+687

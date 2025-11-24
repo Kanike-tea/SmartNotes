@@ -1,0 +1,57 @@
+8.6 The Tuple Relational Calculus
+
+8.6.1 Tuple Variables and Range Relations
+
+The tuple relational calculus is based on specifying a number of tuple variables.
+Each tuple variable usually ranges over a particular database relation, meaning that
+the variable may take as its value any individual tuple from that relation. A simple
+tuple relational calculus query is of the form:
+
+{t | COND(Z)}
+
+where f is a tuple variable and COND(t) is a conditional (Boolean) expression
+involving f that evaluates to either TRUE or FALSE for different assignments of
+tuples to the variable t. The result of such a query is the set of all tuples f that evalu-
+ate COND(f) to TRUE. These tuples are said to satisfy COND(t). For example, to find
+all employees whose salary is above $50,000, we can write the following tuple calcu-
+lus expression:
+
+{t | EMPLOYEE(?) AND £.Salary>50000}
+
+The condition EMPLOYEE(‘) specifies that the range relation of tuple variable t is
+EMPLOYEE. Each EMPLOYEE tuple ¢ that satisfies the condition f.Salary>50000 will
+be retrieved. Notice that f.Salary references attribute Salary of tuple variable ¢; this
+notation resembles how attribute names are qualified with relation names or aliases
+in SQL, as we saw in Chapter 6. In the notation of Chapter 5, t.Salary is the same as
+writing ¢{Salary].
+
+The previous query retrieves all attribute values for each selected EMPLOYEE tuple
+t. To retrieve only some of the attributes—say, the first and last names—we write
+
+t.Fname, t.Lname | EMPLOYEE(t) AND f.Salary>50000}
+
+Informally, we need to specify the following information in a tuple relational calcu-
+lus expression:
+
+= For each tuple variable f, the range relation R of t. This value is specified by
+a condition of the form R(t). If we do not specify a range relation, then the
+variable t will range over all possible tuples “in the universe” as it is not
+restricted to any one relation.
+
+= A condition to select particular combinations of tuples. As tuple variables
+range over their respective range relations, the condition is evaluated for
+every possible combination of tuples to identify the selected combinations
+for which the condition evaluates to TRUE.
+
+= A set of attributes to be retrieved, the requested attributes. The values of
+these attributes are retrieved for each selected combination of tuples.
+
+Before we discuss the formal syntax of tuple relational calculus, consider another query.
+
+Query 0. Retrieve the birth date and address of the employee (or employees)
+whose name is John B. Smith.
+
+Q0: {1.Bdate, f.Address | EMPLOYEE(s) AND f.Fname=‘John’ AND f.Minit="B’
+AND t.Lname=‘Smith’}
+
+269

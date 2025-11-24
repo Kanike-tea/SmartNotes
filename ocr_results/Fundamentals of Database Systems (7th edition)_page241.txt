@@ -1,0 +1,54 @@
+7.1 More Complex SQL Retrieval Queries
+
+Notice that this query can also be specified using the MAX aggregate function (see
+Section 7.1.7).
+
+In general, we can have several levels of nested queries. We can once again be faced
+with possible ambiguity among attribute names if attributes of the same name
+exist—one in a relation in the FROM clause of the outer query, and another ina rela-
+tion in the FROM clause of the nested query. The rule is that a reference to an
+unqualified attribute refers to the relation declared in the innermost nested query.
+For example, in the SELECT clause and WHERE clause of the first nested query of
+Q4A, a reference to any unqualified attribute of the PROJECT relation refers to the
+PROJECT relation specified in the FROM clause of the nested query. To refer to an
+attribute of the PROJECT relation specified in the outer query, we specify and refer
+to an alias (tuple variable) for that relation. These rules are similar to scope rules for
+program variables in most programming languages that allow nested procedures
+and functions. To illustrate the potential ambiguity of attribute names in nested
+queries, consider Query 16.
+
+Query 16. Retrieve the name of each employee who has a dependent with the
+same first name and is the same sex as the employee.
+
+Qi6: SELECT E.Fname, E.Lname
+
+FROM EMPLOYEE AS E
+WHERE E.Ssn IN ( SELECT D.Essn
+FROM DEPENDENT AS D
+
+WHERE —_—_E-Fname = D.Dependent_name
+AND E.Sex = D.Sex );
+
+In the nested query of Q16, we must qualify E.Sex because it refers to the Sex attri-
+bute of EMPLOYEE from the outer query, and DEPENDENT also has an attribute
+called Sex. If there were any unqualified references to Sex in the nested query, they
+would refer to the Sex attribute of DEPENDENT. However, we would not have to
+qualify the attributes Fname and Ssn of EMPLOYEE if they appeared in the nested
+query because the DEPENDENT relation does not have attributes called Fname and
+Ssn, so there is no ambiguity.
+
+It is generally advisable to create tuple variables (aliases) for all the tables referenced
+in an SQL query to avoid potential errors and ambiguities, as illustrated in Q16.
+
+7.1.3 Correlated Nested Queries
+
+Whenever a condition in the WHERE clause of a nested query references some attri-
+bute ofa relation declared in the outer query, the two queries are said to be correlated.
+We can understand a correlated query better by considering that the nested query is
+evaluated once for each tuple (or combination of tuples) in the outer query. For
+example, we can think of Q16 as follows: For each EMPLOYEE tuple, evaluate the
+nested query, which retrieves the Essn values for all DEPENDENT tuples with the
+same sex and name as that EMPLOYEE tuple; if the Ssn value of the EMPLOYEE tuple
+is in the result of the nested query, then select that EMPLOYEE tuple.
+
+211

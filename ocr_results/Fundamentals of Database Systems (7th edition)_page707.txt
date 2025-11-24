@@ -1,0 +1,51 @@
+18.5 Algorithms for PROJECT and Set Operations
+
+Set operations—UNION, INTERSECTION, SET DIFFERENCE, and CARTESIAN
+PRODUCT—are sometimes expensive to implement, since UNION,
+INTERSECTION, MINUS or SET DIFFERENCE are set operators and must always
+return distinct results.
+
+In particular, the CARTESIAN PRODUCT operation R x S is expensive because its
+result includes a record for each combination of records from R and S. Also, each
+record in the result includes all attributes of R and S. If R has n records and j attri-
+butes, and S has m records and k attributes, the result relation for R x S will have
+n* m records and each record will have j + k attributes. Hence, it is important to
+avoid the CARTESIAN PRODUCT operation and to substitute other operations such
+as join during query optimization. The other three set operations—UNION,
+INTERSECTION, and SET DIFFERENCE!°—apply only to type-compatible (or
+union-compatible) relations, which have the same number of attributes and the
+same attribute domains. The customary way to implement these operations is to
+use variations of the sort-merge technique: the two relations are sorted on the
+same attributes, and, after sorting, a single scan through each relation is sufficient
+to produce the result. For example, we can implement the UNION operation, R U S,
+by scanning and merging both sorted files concurrently, and whenever the
+same tuple exists in both relations, only one is kept in the merged result. For the
+INTERSECTION operation, R 4 S, we keep in the merged result only those tuples
+that appear in both sorted relations. Figure 18.3(c) to (e) sketches the implementa-
+tion of these operations by sorting and merging. Some of the details are not
+included in these algorithms.
+
+Hashing can also be used to implement UNION, INTERSECTION, and SET
+DIFFERENCE. One table is first scanned and then partitioned into an in-memory
+hash table with buckets, and the records in the other table are then scanned one at a
+time and used to probe the appropriate partition. For example, to implement R U S,
+first hash (partition) the records of R; then, hash (probe) the records of S, but do not
+insert duplicate records in the buckets. To implement R 1 S, first partition the
+records of R to the hash file. Then, while hashing each record of S, probe to check if
+an identical record from R is found in the bucket, and if so add the record to the
+result file. To implement R - S, first hash the records of R to the hash file buckets.
+While hashing (probing) each record of S, if an identical record is found in the
+bucket, remove that record from the bucket.
+
+18.5.1 Use of Anti-Join for SET DIFFERENCE
+(or EXCEPT or MINUS in SQL)
+
+The MINUS operator in SQL is transformed into an anti-join (which we introduced
+in Section 18.1) as follows. Suppose we want to find out which departments have no
+employees in the schema of Figure 5.5:
+
+Select Dnumber from DEPARTMENT MINUS Select Dno from EMPLOYEE;
+
+'8SET DIFFERENCE is called MINUS or EXCEPT in SQL.
+
+677

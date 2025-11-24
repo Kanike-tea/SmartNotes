@@ -1,0 +1,46 @@
+12.2 Cache Architecture 409
+
+Address issued Cache Cache
+by processor core controller memory
+31 Miss
+>) Directory ss
+Hit store Status Data
+ry AL AL
+Te [7 2( Compare | r ot tec
+ompare J--C ) [ Cache-tag |v [a | word3 | word? | wordl | wordo ||} Cache
+{ Cache-tagv [d | word3 | word2 | word! | word0 line
+2 Cache-tag [v|d| word3 | word2 [wordl | word
+uf ;
+Set \ Cache-tag |v | d] words | word? | word! | word
+index Cache-tag [v]d | word3 | word2 [word! | word0 || Address/data
+Cache-tag [v|d| word3 | word2 [wordl | word0 || bus
+5 4 Cache-tag [v [d | word3 | word2 [word! | word) |{ —>
+Cache-tag [vd] word | word2 | word! | word
+Data
+index [ )
+ol
+
+t
+
+Figure 12.4 A 4 KB cache consisting of 256 cache lines of four 32-bit words.
+
+processor core on demand. A dirty bit defines whether or not a cache line contains data
+that is different from the value it represents in main memory. We explain dirty bits in more
+detail in Section 12.3.1.
+
+12.2.2. BASIC OPERATION OF A CACHE CONTROLLER
+
+The cache controller is hardware that copies code or data from main memory to cache
+memory automatically. It performs this task automatically to conceal cache operation from
+the software it supports. Thus, the same application software can run unaltered on systems
+with and without a cache.
+
+The cache controller intercepts read and write memory requests before passing them on
+to the memory controller. It processes a request by dividing the address of the request into
+three fields, the tag field, the set index field, and the data index field. The three bit fields are
+shown in Figure 12.4.
+
+First, the controller uses the set index portion of the address to locate the cache line
+within the cache memory that might hold the requested code or data. This cache line
+contains the cache-tag and status bits, which the controller uses to determine the actual
+data stored there.

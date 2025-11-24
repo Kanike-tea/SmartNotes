@@ -1,0 +1,51 @@
+4.7 Data Abstraction, Knowledge Representation, and Ontology Concepts
+
+object. For example, we may have a tuple <‘Matthew Clarke’, ‘610618’, ‘376-9821’> in
+a PERSON relation and another tuple <“301-54-0836’, ‘CS’, 3.8> in a STUDENT rela-
+tion that happen to represent the same real-world entity. There is no way to identify
+the fact that these two database objects (tuples) represent the same real-world
+entity unless we make a provision at design time for appropriate cross-referencing to
+supply this identification. Hence, identification is needed at two levels:
+
+= To distinguish among database objects and classes
+= To identify database objects and to relate them to their real-world counterparts
+
+In the EER model, identification of schema constructs is based on a system of
+unique names for the constructs in a schema. For example, every class in an EER
+schema—whether it is an entity type, a subclass, a category, or a relationship type—
+must have a distinct name. The names of attributes of a particular class must also be
+distinct. Rules for unambiguously identifying attribute name references in a spe-
+cialization or generalization lattice or hierarchy are needed as well.
+
+At the object level, the values of key attributes are used to distinguish among enti-
+ties of a particular entity type. For weak entity types, entities are identified by a
+combination of their own partial key values and the entities they are related to in
+the owner entity type(s). Relationship instances are identified by some combination
+of the entities that they relate to, depending on the cardinality ratio specified.
+
+4.7.3 Specialization and Generalization
+
+Specialization is the process of classifying a class of objects into more specialized
+subclasses. Generalization is the inverse process of generalizing several classes into
+a higher-level abstract class that includes the objects in all these classes. Specializa-
+tion is conceptual refinement, whereas generalization is conceptual synthesis. Sub-
+classes are used in the EER model to represent specialization and generalization.
+We call the relationship between a subclass and its superclass an IS-A-SUBCLASS-OF
+relationship, or simply an IS-A relationship. This is the same as the IS-A relation-
+ship discussed earlier in Section 4.5.3.
+
+4.7.4 Aggregation and Association
+
+Aggregation is an abstraction concept for building composite objects from their
+component objects. There are three cases where this concept can be related to the
+EER model. The first case is the situation in which we aggregate attribute values of
+an object to form the whole object. The second case is when we represent an aggre-
+gation relationship as an ordinary relationship. The third case, which the EER
+model does not provide for explicitly, involves the possibility of combining objects
+that are related by a particular relationship instance into a higher-level aggregate
+object. This is sometimes useful when the higher-level aggregate object is itself to be
+related to another object. We call the relationship between the primitive objects and
+their aggregate object IS-A-PART-OF; the inverse is called Is-A-COMPONENT-OF.
+UML provides for all three types of aggregation.
+
+131

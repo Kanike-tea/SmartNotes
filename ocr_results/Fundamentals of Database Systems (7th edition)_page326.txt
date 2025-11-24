@@ -1,0 +1,54 @@
+296 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+to be part of the key of R; these attributes are similar to a partial key of a weak entity
+type that corresponds to the multivalued attribute (see Section 3.5).
+
+Figure 9.2 shows the COMPANY relational database schema obtained with steps 1
+through 6, and Figure 5.6 shows a sample database state. Notice that we did not yet
+discuss the mapping of n-ary relationship types (n > 2) because none exist in Fig-
+ure 9.1 ; these are mapped in a similar way to M:N relationship types by including
+the following additional step in the mapping algorithm.
+
+Step 7: Mapping of N-ary Relationship Types. We use the relationship
+relation option. For each n-ary relationship type R, where n > 2, create a new relation-
+ship relation S to represent R. Include as foreign key attributes in S the primary keys
+of the relations that represent the participating entity types. Also include any simple
+attributes of the n-ary relationship type (or simple components of composite attri-
+butes) as attributes of S. The primary key of S is usually a combination of all the
+foreign keys that reference the relations representing the participating entity types.
+However, if the cardinality constraints on any of the entity types E participating in
+R is 1, then the primary key of S should not include the foreign key attribute that
+references the relation E’ corresponding to E (see the discussion in Section 3.9.2
+concerning constraints on n-ary relationships).
+
+Consider the ternary relationship type SUPPLY in Figure 3.17, which relates a
+SUPPLIER s, PART p, and PROJECT j whenever s is currently supplying p to j; this
+can be mapped to the relation SUPPLY shown in Figure 9.4, whose primary key is the
+combination of the three foreign keys {Sname, Part_no, Proj_name}.
+
+9.1.2 Discussion and Summary of Mapping
+for ER Model Constructs
+
+Table 9.1 summarizes the correspondences between ER and relational model con-
+structs and constraints.
+
+Figure 9.4
+Mapping the n-ary
+relationship type
+SUPPLY from
+Figure 3.17(a).
+
+SUPPLIER
+
+Sname
+
+PROJECT
+Proj_name
+___4
+PART
+
+Part_no
+
+SUPPLY
+
+Sname | Proj_name| Part_no | Quantity

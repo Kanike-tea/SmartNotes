@@ -1,0 +1,48 @@
+* In between calls, operation has to maintain “state” so it knows what to return next
+* Each operation is implemented as an iterator implementing the following operations
+-  open()
+= E.g. file scan: initialize file scan, store pointer to beginning of file as
+state
+= E.g.merge join: sort relations and store pointers to beginning of sorted
+relations as state
+-  next()
+= E.g. for file scan: Output next tuple, and advance and store file
+pointer
+= E.g. for merge join: continue with merge from earlier state till
+next output tuple is found. Save pointers as iterator state.
+-  close()
+
+e In produce-driven or eager pipelining
+* Operators produce tuples eagerly and pass them up to their parents
+- Buffer maintained between operators, child puts tuples in buffer, parent
+removes tuples from buffer
+- if buffer is full, child waits till there is space in the buffer, and then generates
+more tuples
+* System schedules operations that have space in output buffer and can process more
+input tuples
+Evaluation Algorithms for Pipelining
+¢ Some algorithms are not able to output results even as they get input tuples
+* E.g. merge join, or hash join
+* These result in intermediate results being written to disk and then read back always
+e Algorithm variants are possible to generate (at least some) results on the fly, as input tuples are
+read in
+* E.g. hybrid hash join generates output tuples even as probe relation tuples in the in-
+memory partition (partition 0) are read in
+* Pipelined join technique: Hybrid hash join, modified to buffer partition 0 tuples of
+both relations in-memory, reading them as they become available, and output results
+of any matches between partition 0 tuples
+- When a new 1 tuple is found, match it with existing so tuples, output
+matches, and save it in ro
+- Symmetrically for so tuples
+Complex Joins
+e Join involving three relations: loan depositor customer
+e Strategy 1. Compute depositor customer; use result to compute loan (depositor
+customer)
+e Strategy 2. Computer loan depositor first, and then join the result with customer.
+e Strategy 3. Perform the pair of joins at once. Build and index on loan for loan-number, and on
+customer for customer-name.
+* For each tuple t in depositor, look up the corresponding tuples in customer and the
+corresponding tuples in loan.
+* Each tuple of deposit is examined exactly once.
+. Strategy 3 combines two operations into one special-purpose operation that is more
+efficient than implementing two joins of two relations.

@@ -1,0 +1,54 @@
+Digital Design and Computer Organization(BCS302)
+Consider, for example, the Boolean function F = A (CD + B) + BC'
+
+—_
+|)
+
+[ ym
+
+QDaykwon
+
+(a) AND-OR gates
+
+Ds
+BB;
+
+FIGURE 3.20
+Implementing F = A(CD + B) + BC
+
+Qwek& HO
+4
+
+(b) NAND gates
+
+> The AND-OR implementation is shown in Fig. 3.20(a). There are four
+levels of gating in the circuit. The first level has two AND gates. The
+second level has an OR gate followed by an AND gate in the third level
+and an OR gate in the fourth level.
+
+> A logic diagram with a pattern of alternating levels of AND and OR gates
+can easily be converted into a NAND circuit with the use of mixed
+notation, shown in Fig. 3.20(b).
+
+> The procedure is to change every AND gate to an AND-invert graphic
+symbol and every OR gate to an invert-OR graphic symbol. The NAND
+circuit performs the same logic as the AND-OR diagram as long as there
+are two bubbles along the same line.
+
+> The bubble associated with input B causes an extra comple- mentation,
+which must be compensated for by changing the input literal to B'.
+
+The general procedure for converting a multilevel AND-OR diagram into an all-NAND
+diagram using mixed notation is as follows:
+
+1. Convert all AND gates to NAND gates with AND-invert graphic symbols.
+2. Convert all OR gates to NAND gates with invert-OR graphic symbols.
+3. Check all the bubbles in the diagram. For every bubble that is not
+
+compensated by another small circle along the same line, insert an inverter (a one-
+input NAND gate) or complement the input literal.
+
+As another example, consider the multilevel Boolean function
+
+Page
+23

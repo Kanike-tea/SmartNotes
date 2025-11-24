@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+= In addition, the log is periodically backed up to archival storage (tape) to guard against
+such catastrophic failures
+= The following are the types of entries—called log records—that are written to the log file
+and the corresponding action for each log record.
+= In these entries, T refers to a unique transaction-id that is generated automatically by
+the system for each transaction and that is used to identify each transaction:
+1. [start_transaction, T]. Indicates that transaction T has started execution.
+2. [write_item, T, X, old_value, new_value]. Indicates that transaction T has changed
+the value of database item X from old_value to new_value.
+3. [read_item, T, X]. Indicates that transaction T has read the value of database item X.
+4. [commit, T]. Indicates that transaction T has completed successfully, and affirms that
+its effect can be committed (recorded permanently) to the database.
+5. [abort, T]. Indicates that transaction T has been aborted.
+
+5.3.3 Commit Point of a Transaction:
+= Definition a Commit Point:
+
+— A transaction T reaches its commit point when all its operations that access the
+database have beenexecuted successfully and the effect of all the transaction
+operations on the database has been recorded in the log.
+
+— Beyond the commit point, the transaction is said to be committed, and its effect is
+assumed to be permanently recorded in the database.
+
+— The transaction then writes an entry [commit,T] into the log.
+
+= Roll Back of transactions:
+— Needed for transactions that have a [start_transaction,T] entry into the log but no
+commit entry [commit,T] into the log.
+5.3.4 DBMS specific buffer Replacement policies
+Domain Separation(DS) method
++ DBMS cache is divided into separate domains, each handles one type of disk pages
+and replacements within each domain are handled via basic LRU page replacement.
++ LRU is a static algorithm and does not adopts to dynamically changing loads because
+the number of available buffers for each domain is predetermined.
++ Group LRU adds dynamically load balancing feature since it gives each domain a
+
+priority and selects pages from lower priority level domain first for replacement.
+
+https://vtucode.in 12

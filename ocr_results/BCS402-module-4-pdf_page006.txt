@@ -1,0 +1,60 @@
+MICROCONTROLLER(BCS402)
+
+The second type is a specific instruction that causes an exception—the
+
+SWI instruction.
+
+Both types suspend the normal flow of a program.
+
+4.2.1 Assigning Interrupts
+
+A system designer can decide which hardware peripheral can produce
+
+which interrupt request. This decision can be implemented in hardware or
+
+software (or both) and depends upon the embedded system being used.
+
+An interrupt controller unit is used to connects multiple external
+
+interrupts to one of the two ARM interrupt requests either IRQ or FIQ.
+
+The system designers will use a standard design practice to assigning
+
+interrupts.
+
+@ Software Interrupts are normally reserved to call privileged operating
+system routines. For example, an SWI instruction can be used to
+change a program running in user mode to a privileged mode.
+
+@ IRQ Requests are normally assigned for general-purpose interrupts.
+The IRQ exception has a lower priority and higher interrupt latency
+than the FIQ exception.
+
+@ Fast Interrupt Requests are normally reserved for a single interrupt
+source that requires a fast response time.
+
+@ In an embedded operating system design, the FIQ exception is used
+for a specific application and the IRQ exception are used for more
+general operating system activities.
+
+4.2.2 Interrupt Latency
+It is the time interval, from an external interrupt request signal being
+
+raised to the first fetch of an instruction of a specific interrupt service
+routine (ISR).
+Interrupt latency depends on a combination of hardware and software.
+System designer must balance the system design to handle multiple
+simultaneous interrupt sources and minimize interrupt latency.
+If the interrupts are not handled in a timely manner, then the system will
+exhibit slow response times.
+Software handlers have two main methods to minimize interrupt latency.
+1) Nested interrupt handler,
+2) Prioritization.
+Nested interrupt handler
+Nested interrupt handler allows other interrupts to occur even when it is
+currently servicing an existing interrupt.
+This is achieved by reenabling the interrupts as soon as the interrupt
+source has been serviced but before the interrupt handling is complete.
+Once a nested interrupt has been serviced, then control is relinquished to
+the original interrupt service routine. Fig 4.3 shows the three level nested
+interrupt,

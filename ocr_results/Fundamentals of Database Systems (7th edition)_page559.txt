@@ -1,0 +1,46 @@
+15.5 Further Discussion of Multivalued Dependencies and 4NF 529
+
+(a) EMP (b) EMP_PROJECTS
+Ename | Pname | Dname Ename | Pname
+Smith x John Smith Xx
+Smith Y Anna ‘Smith Y
+Smith x Anna Brown Ww
+Smith Y John Brown x
+Brown Ww Jim Brown Y
+Brown x Jim Brown Z
+Brown Y Jim
+Brown Z Jim EMP_DEPENDENTS
+Brown Ww Joan Ename | Dname.
+Brown x Joan Smith Anna
+Brown Y Joan Smith John
+Brown Z Joan Brown | Jim
+Brown Ww Bob Brown | Joan
+Brown x Bob Brown | Bob
+Brown Y Bob
+Brown Z Bob
+
+Figure 15.4
+
+Decomposing a relation state of EMP that is not in 4NF. (a) EMP relation with
+additional tuples. (b) Two corresponding 4NF relations EMP_PROJECTS and
+EMP_DEPENDENTS.
+
+insert any one of those, the relation violates the MVD and becomes inconsistent in
+that it incorrectly implies a relationship between project and dependent.
+
+If the relation has nontrivial MVDs, then insert, delete, and update operations on
+single tuples may cause additional tuples to be modified besides the one in ques-
+tion. If the update is handled incorrectly, the meaning of the relation may change.
+However, after normalization into 4NF, these update anomalies disappear. For
+example, to add the information that ‘Brown’ will be assigned to project ‘P’, only a
+single tuple need be inserted in the 4NF relation EMP_PROJECTS.
+
+The EMP relation in Figure 14.15(a) is not in 4NF because it represents two inde-
+pendent 1:N relationships—one between employees and the projects they work on
+and the other between employees and their dependents. We sometimes have a rela-
+tionship among three entities that is a legitimate three-way relationship and not a
+combination of two binary relationships among three participating entities, such as
+the SUPPLY relation shown in Figure 14.15(c). (Consider only the tuples in Fig-
+ure 14.5(c) above the dashed line for now.) In this case a tuple represents a supplier sup-
+plying a specific part to a particular project, so there are no nontrivial MVDs. Hence,
+the SUPPLY all-key relation is already in 4NF and should not be decomposed.

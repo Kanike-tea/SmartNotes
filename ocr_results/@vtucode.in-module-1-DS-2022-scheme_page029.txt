@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+SPARSE MATRIX REPRESENTATION
+« We can classify uniquely any element within a matrix by using the triple <row,col,value>.
+
+Therefore, we can use an array of triples to represent a sparse matrix
+
+SpareMatrix Create (maxRow,maxCol) ::=
+#define MAX TERMS 101
+typedef struct term
+{
+int col;
+int row;
+int value;
+} term;
+term a[MAX_TERMS];
+
+row col value row col value
+[  # of rows (columns)
++ of nonzero term:
+
+a[O] 56 6 8 bo] 66 8
+fl) 0 0 15 (1) 00 15
+(2] 03 2 2] o4 91
+{3] 0 5 -15 [3] Lean.
+[4] 1 1 11 Hanspose (4) aur 3
+[5] 1 2 3 [5] a Bs:
+[6] 23 6 [6] a
+[7] 40 91 [7] 3, 2-6
+[s] 5 2 28 [8] 50 -15
+
+(a) (b)
+row, column in ascenduig @rder
+
+Sparse matrix and its transpose stored as triples
++ a[0].row contains the number of rows;
+a[0].col contains number of columns and
+
+a[0].value contains the total number of nonzero entries.
+
+vtucode.in 30

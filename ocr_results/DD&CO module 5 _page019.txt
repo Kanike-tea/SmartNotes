@@ -1,0 +1,49 @@
+The time in thehorizontal axis is divided into steps of equal duration. The foursegments
+arerepresented in the diagram with an abbreviated symbol.
+1. F1 is the segment that fetches an instruction.
+2. DAis the segment that decodes the instruction and calculates theeffective address.
+3. Fo is the segment that fetches the operand.
+4, EXis the segment that executes the instruction.
+
+Step: 1 2 3 4 5 6 7 8 9 10 11} 12} 13
+
+1 FL) DA | FO| &X
+Instruction: 2 A DA | FO | &X
+(Branch) 3 FI | DA | FO | EX
+
+4 FI _ _- FL | DA | FO | &X
+5 _ _ _ FL DA |FO | EX
+6 FL DA | FO | EX
+7 FI |DA | FO| &X
+
+FI: the segment that fetches an instruction
+DA: the segment that decodes the instruction
+and calculate the effective address
+
+FO: the segment that fetches the operand
+
+EX: the segment that executes the instruction
+It is assumed that the processor has separate instruction and data memoriesso that the operation in F1
+and PC can proceed at the same time. In the absenceof a branch instruction, each segment operates on
+different instructions. Thus,in step 4, instruction
+1 is being executed in segment EX; the operand forinstruction 2 is being fetched in segment FO;
+instruction 3 is being decoded insegment DA; and instruction 4 is being fetched from memory in
+segment FI.
+
+Assume now that instruction 3 is a branch instruction. As soon as thisinstruction is
+decoded insegment DA in step 4, the transfer from F1 to DA ofthe other instructions is halted until
+the branch instruction is executed in step6. If the branch is taken, a new instruction is fetched in
+step 7. If the branchis not taken, the instruction fetched previously in step 4 can be used.
+Thepipeline then continues until.a new branch instruction is encountered.
+
+Another delay may occur in the pipeline if the EX segment needs to storethe result of the
+operation in the data memory while the FO segment needsto fetch an operand. In that case,
+segment FO must wait until segment EX hasfinished its operation.
+
+e — Ingeneral, there are three major difficulties that cause the instruction pipeline todeviate from its normal
+operation.
+o Resource conflicts caused by access to memory by two segments at the sametime.
+= Can be resolved by using separate instruction and data memories
+o Data dependency conflicts arise when an instruction depends on the result ofa previous instruction, but this
+result is not yet available.
+o Branch difficulties arise from branch and other instructions that change thevalue of PC.

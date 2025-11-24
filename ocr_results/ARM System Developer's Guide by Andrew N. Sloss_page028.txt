@@ -1,0 +1,47 @@
+1.5 Summary 15
+
+These two categories of operating system are not mutually exclusive: there are operat-
+ing systems that use an ARM core with a memory management unit and have real-time
+characteristics. ARM has developed a set of processor cores that specifically target each
+category.
+
+1.4.3. APPLICATIONS
+
+‘The operating system schedules applications—code dedicated to handling a particular task.
+An application implements a processing task; the operating system controls the environ-
+ment. An embedded system can have one active application or several applications running
+simultaneously.
+
+ARM processors are found in numerous market segments, including networking, auto-
+motive, mobile and consumer devices, mass storage, and imaging. Within each segment
+ARM processors can be found in multiple applications.
+
+For example, the ARM processor is found in networking applications like home
+gateways, DSL modems for high-speed Internet communication, and 802.11] wireless
+communication. The mobile device segment is the largest application area for ARM pro-
+cessors because of mobile phones. ARM processors are also found in mass storage devices
+such as hard drives and imaging products such as inkjet printers—applications that are cost
+sensitive and high volume.
+
+In contrast, ARM processors are not found in applications that require leading-edge
+high performance. Because these applications tend to be low volume and high cost, ARM.
+has decided not to focus designs on these types of applications.
+
+1.5 SUMMARY
+
+Pure RISC is aimed at high performance, but ARM uses a modified RISC design philosophy
+that also targets good code density and low power consumption. An embedded system
+consists of a processor core surrounded by caches, memory, and peripherals. The system is
+controlled by operating system software that manages application tasks.
+
+The key points in a RISC design philosophy are to improve performance by reducing
+the complexity of instructions, to speed up instruction processing by using a pipeline, to
+provide a large register set to store data near the core, and to use a load-store architecture.
+
+The ARM design philosophy also incorporates some non-RISC ideas:
+
+= It allows variable cycle execution on certain instructions to save power, area, and
+code size.
+= It adds a barrel shifter to expand the capability of certain instructions.
+
+= = It uses the Thumb 16-bit instruction set to improve code density.

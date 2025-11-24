@@ -1,0 +1,52 @@
+Figure 10.1
+
+10.2 Example: Sandstone 373
+
+[Sand]
+
+I I |
+makefile readme.txt [build] [payload]
+
+slos.bin
+
+Ty
+[src] [obj] [image] [log]
+
+sand.s
+
+Standstone directory layout.
+
+that we will continue to use in further chapters. The sandstone source file sand. is located
+under the sand/build/src directory.
+
+The object file produced by the assembler is placed under the build/obj directory.
+The object file is then linked, and the final Sandstone image is placed under the
+sand/build/image directory. This image includes both the Sandstone code and the pay-
+load. The payload image, the image that is loaded and booted by Sandstone, is found under
+the sand/pay1oad directory.
+
+For information about the Sandstone build procedure, take a look at the readme.txt
+file under the sand directory. This file contains a description of how to build the example
+binary image for the ARM Evaluator-7T.
+
+10.2.2. SANDSTONE CODE STRUCTURE
+
+Table 10.3
+
+Sandstone consists of a single assembly file. The file structure is broken down into a
+number of steps, where each step corresponds to a stage in the execution flow of Sandstone
+(see Table 10.3).
+
+Sandstone execution flow.
+
+Step Description
+
+1 Take the Reset exception
+
+2 Start initializing the hardware
+
+3 Remap memory
+
+4 Initialize communication hardware
+
+5 Bootloader—copy payload and relinquish control

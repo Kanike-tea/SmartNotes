@@ -1,0 +1,35 @@
+170
+
+Divide-and-Conquer
+
+problem | of size n
+
+subproblem 1
+of size n/2
+
+subpfoblem 2
+Of size\n/2
+
+y v
+solution to solution to
+subproblem 1 subproblem 2
+solution to
+
+the original problem
+
+FIGURE 5.1 Divide-and-conquer technique (typical case)
+
+small example of summing, say, four numbers by this algorithm, a formal analysis
+(which follows), and common sense (we do not normally compute sums this way,
+do we?) all lead to a negative answer to this question.!
+
+Thus, not every divide-and-conquer algorithm is necessarily more efficient
+than even a brute-force solution. But often our prayers to the Goddess of
+Algorithmics—see the chapter’s epigraph—are answered, and the time spent on
+executing the divide-and-conquer plan turns out to be significantly smaller than
+solving a problem by a different method. In fact, the divide-and-conquer approach
+yields some of the most important and efficient algorithms in computer science.
+We discuss a few classic examples of such algorithms in this chapter. Though we
+consider only sequential algorithms here, it is worth keeping in mind that the
+divide-and-conquer technique is ideally suited for parallel computations, in which
+each subproblem can be solved simultaneously by its own processor.

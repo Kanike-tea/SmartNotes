@@ -1,0 +1,37 @@
+19.1 Query Trees and Heuristics for Query Optimization 693
+
+(a) ™ P.Pnumber,P.Dnum,E.Lname,E.Address,E.Bdate
+
+(2) —
+* P_Dnum=D.Dnumber EMPLOYEE
+(1) —
+© P Plocation= ‘Stafford’ DEPARTMENT
+
+‘on PROJECT
+
+(b) "PPnumber, P.Dnum, E.Lname, E.Address, E.Bdate
+
+I
+° PDnum=D.Dnumber AND D.Mgr_ssn=E.Ssn AND PPlocation='Stafford’
+
+(©) [P.Pnumber, P.Dnum] [E.Lname, E.Address, E.Bdate]
+
+P.Dnum=D.Dnumber D.Mgr_ssn=E.Ssn
+(0) ()
+Nev]
+
+PPlocation='Stafford’
+
+Figure 19.1
+Two query trees for the query Q2. (a) Query tree corresponding to the relational algebra
+expression for Q2. (b) Initial (canonical) query tree for SQL query Q2. (c) Query graph for Q2.
+
+Figure 19.1(a) shows a query tree (the same as shown in Figure 6.9) for query Q2
+in Chapters 6 to 8: For every project located in ‘Stafford’, retrieve the project
+number, the controlling department number, and the department manager’s last
+name, address, and birthdate. This query is specified on the COMPANY rela-
+tional schema in Figure 5.5 and corresponds to the following relational algebra
+expression:
+
+TPnumber, Dnum, Lname, Address, Bdate (((Gplocation=‘Stafford’ (PROJECT)
+>4 Dnum=Dnumber(DEPARTMENT)) >4 mgr_ssn=Ssn(EMPLOYEE))

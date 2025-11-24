@@ -1,0 +1,49 @@
+Data Structures and Applications(BCS304) Module 2
+
+dasa link
+front rear
+i
+CT : | dlaua link i ;
+of }_of } gn +++ of 0)
+i ee ie og Oe eg a Lh |
+(b) Linked queue
+r o]
+Ll
+(a) Linked stack
+
+If we wish to represent n < MAX_STACKS stacks simultaneously, we begin with the
+declarations:
+
+#define MAX_STACKS 10 /* maximum number of stacks */struct
+Stack
+
+{
+
+int data;
+
+struct Stack * link;
+
+u
+
+typedef struct Stack stack stack *
+
+top[MAX_STACKS]
+
+We assume that the initial condition for the stacks is: top[i] = NULL, 0si << MAX_STACKS
+and the boundary condition is: top[i] = NULL if the ith stack is empty
+
+Function push creates a new NODE, temp, and inserts the NODE in front of the ith stack.
+
+void push(int i, int item)
+
+{/* add item to the ith stack */ stack *
+temp; temp=(stack*)malloc(sizeof(stack))
+temp—data = item;
+
+temp—link = top[i];top[i] =
+
+temp;
+
+}
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 23

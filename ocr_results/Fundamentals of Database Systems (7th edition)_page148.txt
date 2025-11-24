@@ -1,0 +1,52 @@
+118
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4. Students are further classified as either graduate or undergraduate, with
+the specific attributes degree program (M.S., Ph.D., M.B.A., and so on)
+for graduate students and class (freshman, sophomore, and so on) for
+undergraduates.
+
+In Figure 4.7, all person entities represented in the database are members of
+the PERSON entity type, which is specialized into the subclasses (EMPLOYEE,
+ALUMNUS, STUDENT}. This specialization is overlapping; for example, an alum-
+nus may also be an employee and a student pursuing an advanced degree. The
+subclass STUDENT is the superclass for the specialization {GRADUATE_STUDENT,
+UNDERGRADUATE_STUDENT}, whereas EMPLOYEE is the superclass for the
+specialization {STUDENT_ASSISTANT, FACULTY, STAFF}. Notice that
+STUDENT_ASSISTANT is also a subclass of STUDENT. Finally, STUDENT_ASSISTANT
+is the superclass for the specialization into {RESEARCH_ASSISTANT,
+TEACHING_ASSISTANT}.
+
+In such a specialization lattice or hierarchy, a subclass inherits the attributes not
+only of its direct superclass, but also of all its predecessor superclasses all the way to
+the root of the hierarchy or lattice if necessary. For example, an entity in
+GRADUATE_STUDENT inherits all the attributes of that entity as a STUDENT and asa
+PERSON. Notice that an entity may exist in several leaf nodes of the hierarchy,
+where a leaf node is a class that has no subclasses of its own. For example, a member
+of GRADUATE_STUDENT may also be a member of RESEARCH_ASSISTANT.
+
+A subclass with more than one superclass is called a shared subclass, such as
+ENGINEERING MANAGER in Figure 4.6. This leads to the concept known as
+multiple inheritance, where the shared subclass ENGINEERING_MANAGER
+directly inherits attributes and relationships from multiple superclasses. Notice
+that the existence of at least one shared subclass leads to a lattice (and hence to
+multiple inheritance); if no shared subclasses existed, we would have a hierarchy
+rather than a lattice and only single inheritance would exist. An important rule
+related to multiple inheritance can be illustrated by the example of the shared
+subclass STUDENT_ASSISTANT in Figure 4.7, which inherits attributes from
+both EMPLOYEE and STUDENT. Here, both EMPLOYEE and STUDENT inherit the
+same attributes from PERSON. The rule states that if an attribute (or relation-
+ship) originating in the same superclass (PERSON) is inherited more than once
+via different paths (EMPLOYEE and STUDENT) in the lattice, then it should be
+included only once in the shared subclass (STUDENT_ASSISTANT). Hence, the
+attributes of PERSON are inherited only once in the STUDENT_ASSISTANT sub-
+class in Figure 4.7.
+
+It is important to note here that some models and languages are limited to single
+inheritance and do not allow multiple inheritance (shared subclasses). It is also
+important to note that some models do not allow an entity to have multiple
+types, and hence an entity can be a member of only one leaf class.* In such a
+model, it is necessary to create additional subclasses as leaf nodes to cover all
+
+8In some models, the class is further restricted to be a leaf node in the hierarchy or lattice.

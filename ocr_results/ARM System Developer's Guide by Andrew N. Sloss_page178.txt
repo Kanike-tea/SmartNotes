@@ -1,0 +1,55 @@
+Figure 6.1
+
+EXAMPLE
+
+6.5
+
+EXAMPLE
+
+6.6
+
+6.3 Instruction Scheduling 165
+
+Instruction address Pe pe-4_—_pe-8__pe-12_pe-l6
+Action Fetch | Decode} ALU Ls1 Ls2
+
+ARM9TDMI pipeline executing in ARM state.
+
+= LSI: Load or store the data specified by a load or store instruction. If the instruction is
+not a load or store, then this stage has no effect.
+
+= LS2: Extract and zero- or sign-extend the data loaded by a byte or halfword load
+instruction. If the instruction is not a load of an 8-bit byte or 16-bit halfword item,
+then this stage has no effect.
+
+Figure 6.1 shows a simplified functional view of the five-stage ARM9TDMI pipeline.
+Note that multiply and register shift operations are not shown in the figure.
+
+After an instruction has completed the five stages of the pipeline, the core writes the
+result to the register file. Note that pc points to the address of the instruction being fetched.
+The ALU is executing the instruction that was originally fetched from address pce — 8 in
+parallel with fetching the instruction at address pe.
+
+How does the pipeline affect the timing of instructions? Consider the following
+examples. These examples show how the cycle timings change because an earlier instruc-
+tion must complete a stage before the current instruction can progress down the pipeline.
+To work out how many cycles a block of code will take, use the tables in Appendix D that
+summarize the cycle timings and interlock cycles for a range of ARM cores.
+
+If an instruction requires the result of a previous instruction that is not available, then
+the processor stalls. This is called a pipeline hazard or pipeline interlock.
+
+This example shows the case where there is no interlock.
+
+ADD 0, r0, rl
+ADD 0, r0, r2
+
+This instruction pair takes two cycles. The ALU calculates r0 + rl in one cycle. Therefore
+this result is available for the ALU to calculate r0 + r2 in the second cycle.
+This example shows a one-cycle interlock caused by load use.
+
+LOR rl, [r2, #4]
+ADD 0, r0, rl
+
+This instruction pair takes three cycles. The ALU calculates the address r2 + 4 in the first
+cycle while decoding the ADD instruction in parallel. However, the ADD cannot proceed on

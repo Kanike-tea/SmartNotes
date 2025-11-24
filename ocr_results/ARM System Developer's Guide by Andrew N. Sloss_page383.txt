@@ -1,0 +1,52 @@
+370 Chapter 10 Firmware
+
+that the firmware has knowledge of the underlying filing system format, which gives the
+firmware the ability to read the filing system, find the file that contains the image, and copy
+the image into memory. Similarly, if the image is on the network, then the firmware must
+also understand the network protocol as well as the Ethernet hardware.
+
+The load process has to take into account the image format. The most basic image format
+is plain binary. A plain binary image does not contain any header or debug information.
+A popular image format for ARM-based systems is Executable and Linking Format (ELF).
+This format was originally developed for UNIX systems and replaced the older format
+called Common Object File Format (COFF). ELF files come in three forms: relocatable,
+executable, and shared object.
+
+Most firmware systems must deal with the executable form. Loading an ELF image
+involves deciphering the standard ELF header information (that is, execution address, type,
+size, and so on). The image may also be encrypted or compressed, in which case the load
+process would involve performing decryption or decompression on the image.
+
+The fourth stage is to relinquish control. This is where the firmware hands over control
+of the platform to an operating system or application. Note that not all firmware hands
+over control; instead the firmware can remain the controlling software on the platform.
+
+Firmware designed to pass control to an operating system may become inactive once
+the operating system has control. Alternatively, the Machine Independent Layer (MIL)
+or Hardware Abstraction Layer (HAL) part of the firmware can remain active. This layer
+exposes, through the SWI mechanism, a standard application interface for specific hardware
+devices.
+
+Relinquishing control on an ARM system means updating the vector table and modify-
+ing the pe. Updating the vector table involves modifying particular exception and interrupt
+vectors so that they point to specialized operating system handlers. The pchas to be modified
+so that it points to the operating system entry point address.
+
+For more sophisticated operating systems, such as Linux, relinquishing control requires
+that a standard data structure be passed to the kernel. This data structure explains the
+environment that the kernel will be running in. For example, one field may include the
+amount of available RAM on the platform, while another field includes the type of MMU
+being used.
+
+We use these definitions to describe two common firmware suites.
+
+10.1.1 ARM FIRMWARE SUITE
+
+ARM has developed a firmware package called the ARM Firmware Suite (AFS). AFS is
+designed purely for ARM-based embedded systems. It provides support for a number of
+boards and processors including the Intel XScale and StrongARM processors. The pack-
+age includes two major pieces of technology, a Hardware Abstraction Layer called »HAL
+(pronounced micro-HAL) and a debug monitor called Angel.
+
+HAL provides a low-level device driver framework that allows it to operate over dif-
+ferent communication devices (for example, USB, Ethernet, or serial). It also provides a

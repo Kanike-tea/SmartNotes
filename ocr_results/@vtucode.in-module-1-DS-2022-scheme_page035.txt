@@ -1,0 +1,33 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Pattern Matching
+
+Assume that we have two strings, string and pat, where pat is a pattern to be searched for in
+string. The easiest way to determine if pat is in string is to use the built-in function strstr. If
+we have the following declarations:
+
+char pat [MAX-SIZE], string[MAX-SIZE], *t;
+then we use the following statements to determine if pat is in string:
+
+if (t = strstr(string, pat) )
+printf("The string from strstr is: %s\n",t);
+else
+printf ("The pattern was not found with strstr\n");
+The call (t = strstr(string pat)) returns a null pointer if pat is not in string.
+If pat is in string, t holds a pointer to the start of pat in string. The entire string beginning at
+position t is printed out.
+Although strstr seems ideally suited to pattern matching, there are two reasons why we may
+want to develop our own pattern matching function:
+
+e The function strstr is new to ANSI C.Therefore, it may not be available with the
+compiler we are using.
+
+e There are several different methods for implementing a pattern matching function.
+The easiest but least efficient method sequentially examines each character of the
+string until it finds the pattern or it reaches the end of the string. If pat is not in string,
+this method has a computing time of O(n . m) where n is the length of pat and w is the
+length of string. We can do much better than this, if we create our own pattern
+
+matching function.
+
+vtucode.in 36

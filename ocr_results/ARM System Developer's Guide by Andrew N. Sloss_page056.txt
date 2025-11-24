@@ -1,0 +1,50 @@
+2.8 Summary 43
+
+2.7.4 ARM11 FAMILY
+
+The ARM1136J-S, announced in 2003, was designed for high performance and power-
+efficient applications. ARM1136J-S was the first processor implementation to execute
+architecture ARMvV6 instructions. It incorporates an eight-stage pipeline with separate load-
+store and arithmetic pipelines. Included in the ARMv6 instructions are single instruction
+multiple data (SIMD) extensions for media processing, specifically designed to increase
+video processing performance.
+
+The ARM1136JE-S is an ARM1136J-S with the addition of the vector floating-point unit
+for fast floating-point operations.
+
+2.7.5 SPECIALIZED PROCESSORS
+
+StrongARM was originally co-developed by Digital Semiconductor and is now exclusively
+licensed by Intel Corporation. It is has been popular for PDAs and applications that require
+performance with low power consumption. It isa Harvard architecture with separate D+ I
+caches. StrongARM was the first high-performance ARM processor to include a five-stage
+pipeline, but it does not support the Thumb instruction set.
+
+Intel’s XScale is a follow-on product to the StrongARM and offers dramatic increases in
+performance. At the time of writing, XScale was quoted as being able to run up to 1 GHz.
+XScale executes architecture v5TE instructions. It is a Harvard architecture and is similar
+to the StrongARM, as it also includes an MMU.
+
+SC100 is at the other end of the performance spectrum. It is designed specifically
+for low-power security applications. The $C100 is the first SecurCore and is based on
+an ARM7TDMI core with an MPU. This core is small and has low voltage and current
+requirements, which makes it attractive for smart card applications.
+
+2.8 SUMMARY
+
+In this chapter we focused on the hardware fundamentals of the actual ARM processor.
+The ARM processor can be abstracted into eight components—ALU, barrel shifter, MAC,
+register file, instruction decoder, address register, incrementer, and sign extend.
+
+ARM has three instruction sets—ARM, Thumb, and Jazelle. The register file contains
+37 registers, but only 17 or 18 registers are accessible at any point in time; the rest are
+banked according to processor mode. The current processor mode is stored in the cpsr. It
+holds the current status of the processor core as well interrupt masks, condition flags, and
+state. The state determines which instruction set is being executed.
+
+An ARM processor comprises a core plus the surrounding components that interface it
+with a bus. The core extensions include the following:
+
+= Caches are used to improve the overall system performance.
+
+= TCMsare used to improve deterministic real-time response.

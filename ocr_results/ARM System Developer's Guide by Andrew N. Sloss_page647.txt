@@ -1,0 +1,43 @@
+634 Appendix A ARM and Thumb Assembler Instructions
+
+.ifndef <symbol>
+Include a block of code if <symbo1> is not defined. End the block with . endif.
+
+-include "<filename>"
+
+Includes the indicated source file. Similar to INCLUDE in armasm or #include in C.
+
+-irp <param> {,<val_1>} {,<val_2>} ...
+
+Repeats a block of code, once for each value in the value list. Mark the end of the block using
+
+a .endr directive. In the repeated code block, use \<param> to substitute the associated
+value in the value list.
+
+-macro <name> {<arg_1>} {,<arg_1>} ... {,<arg_k>}
+
+Defines an assembler macro called <name> with k parameters. The macro definition must
+end with .endm. To escape from the macro at an earlier point, use .exitm. These directives
+are similar to MACRO, MEND, and MEXIT in armasm. You must precede the dummy macro
+parameters by \. For example:
+
+-macro SHIFTLEFT a, b
+-if \b<0
+MOV \a, \a, ASR #-\b
+-exitm
+-endif
+MOV \a, \a, LSL #\b
+-endm
+
+-rept <number_of_times>
+Repeats a block of code the given number of times. End the block with .endr.
+<register_name> .req <register_name>
+
+This directive names a register. It is similar to the RN directive in armasm except that you
+must supply a name rather than a number on the right. For example, acc .req r0.
+
+«section <section_name> {,"<flags>"}
+Starts a new code or data section. Usually you should call a code section . text, an initialized
+
+data section .data, and an uninitialized data section .bss . These have default flags,
+and the linker understands these default names. The directive is similar to the armasm

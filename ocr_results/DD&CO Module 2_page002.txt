@@ -1,0 +1,32 @@
+00 1 1 00 1 1
+
+B
+
+x= B'C+ B'D+BC'D' w=A+ BC+ BD
+
+The logic diagram that implements these expressions is shown in Fig below. Note that the OR gate
+whose output is C + D has been used to implement partially each of three outputs. Not counting input
+inverters, the implementation in sum-of-products form requires seven AND gates and three OR gates.
+The implementation of Fig. requires four AND gates, four OR gates, and one inverter. Thus, the three-
+level logic circuit requires fewer gates, all of which in turn require no more than two inputs.
+
+Binary Adder — Subtractor
+
+Digital computers perform a variety of information-processing tasks. Among the functions encountered
+are the various arithmetic operations. The most basic arithmetic operation is the addition of two binary
+digits. This simple addition consists of four possible elementary operations:
+
+0+0=0,0+1=1,1+0=1,and1+1=10
+
+The first three operations produce a sum of one digit, but when both augend and addend bits are equal
+to 1, the binary sum consists of two digits. The higher significant bit of this result is called a carry. When
+the augend and addend numbers contain more significant digits, the carry obtained from the addition of
+two bits is added to the next higher order pair of significant bits. A combinational circuit that performs
+the addition of two bits is called a half adder. One that performs the addition of three bits (two significant
+bits and a previous carry) is a full adder. The names of the circuits stem from the fact that two half adders
+can be employed to implement a full adder.
+
+Half Adder
+
+From the verbal explanation of a half adder, we find that this circuit needs two binary inputs and two
+binary outputs. The input variables designate the augend and addend bits; the output variables produce

@@ -1,0 +1,53 @@
+12.5 The Object Query Language OOL
+
+For example, the following view V1 defines a named query Has_minors to retrieve
+the set of objects for students minoring in a given department:
+
+V1: define Has_minors(Dept_name) as
+select S
+from = Sin STUDENTS
+where — S.Minors_in.Dname = Dept_name;
+
+Because the ODL schema in Figure 12.10 only provided a unidirectional Minors_in
+attribute for a STUDENT, we can use the above view to represent its inverse without
+having to explicitly define a relationship. This type of view can be used to represent
+inverse relationships that are not expected to be used frequently. The user can now
+utilize the above view to write queries such as
+
+Has_minors(‘Computer Science’);
+
+which would return a bag of students minoring in the Computer Science depart-
+ment. Note that in Figure 12.10, we defined Has_majors as an explicit relationship,
+presumably because it is expected to be used more often.
+
+Extracting Single Elements from Singleton Collections. An OQL query will,
+in general, return a collection as its result, such as a bag, set (if distinct is specified), or
+list (if the order by clause is used). If the user requires that a query only return a sin-
+gle element, there is an element operator in OQL that is guaranteed to return a
+single element E from a singleton collection C that contains only one element. If C
+contains more than one element or if C is empty, then the element operator raises
+an exception. For example, Q6 returns the single object reference to the Computer
+Science department:
+
+Q6: element (select D
+from Din DEPARTMENTS
+where D.Dname = ‘Computer Science’ );
+
+Since a department name is unique across all departments, the result should be one
+department. The type of the result is D:DEPARTMENT.
+
+Collection Operators (Aggregate Functions, Quantifiers). Because many
+query expressions specify collections as their result, a number of operators have been
+defined that are applied to such collections. These include aggregate operators as
+well as membership and quantification (universal and existential) over a collection.
+
+The aggregate operators (min, max, count, sum, avg) operate over a collection.*! The
+operator count returns an integer type. The remaining aggregate operators (min,
+max, sum, avg) return the same type as the type of the operand collection. Two
+examples follow. The query Q7 returns the number of students minoring in Com-
+puter Science and Q8 returns the average GPA of all seniors majoring in Computer
+Science.
+
+4\These correspond to aggregate functions in SQL.
+
+413

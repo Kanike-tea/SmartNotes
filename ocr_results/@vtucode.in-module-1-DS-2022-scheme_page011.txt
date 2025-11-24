@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+4.TOWER OF HANOI
+Problem description
+Suppose three pegs, labeled A, Band C, are given, and suppose on peg A a finite number
+n of disks with decreasing size are placed.
+The objective of the game is to move the disks from peg A to peg C using peg B as an
+
+auxiliary. The rules of the game are as follows:
+
+1. Only one disk may be moved at a time. Only the top disk on any peg may be
+moved to
+any other peg.
+
+2. At no time can a larger disk be placed on a smaller disk.
+
+A B Cc
+
+a :
+
+Initial Setup of Towers\ of Hanoi within = 6
+We write A—B to denote the instruction "Move top disk from peg A to peg B"
+
+Example: Towers of Hanoi problem for n= 3.
+
+Solution: Observe that it consists of the following seven moves
+1. Move top disk from peg A to peg C.
+
+Move top disk from peg A to peg B.
+
+Move top disk from peg C to peg B.
+
+Move top disk from peg A to peg C.
+
+Move top disk from peg B to peg A.
+
+Move top disk from peg B to peg C.
+
+4a awry n
+
+Move top disk from peg A to peg C.
+
+vtucode.in 12

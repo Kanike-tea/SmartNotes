@@ -1,0 +1,53 @@
+14.3 Normal Forms Based on Primary Keys
+
+this section on the first three normal forms for relation schemas and the intuition
+behind them, and we discuss how they were developed historically. More general
+definitions of these normal forms, which take into account all candidate keys of a
+relation rather than just the primary key, are deferred to Section 14.4.
+
+We start by informally discussing normal forms and the motivation behind their
+development, as well as reviewing some definitions from Chapter 3 that are needed
+here. Then we discuss the first normal form (1NF) in Section 14.3.4, and we present
+the definitions of second normal form (2NF) and third normal form (3NF), which
+are based on primary keys, in Sections 14.3.5 and 14.3.6, respectively.
+
+14.3.1 Normalization of Relations
+
+The normalization process, as first proposed by Codd (1972a), takes a relation
+schema through a series of tests to certify whether it satisfies a certain normal form.
+The process, which proceeds in a top-down fashion by evaluating each relation
+against the criteria for normal forms and decomposing relations as necessary, can
+thus be considered as relational design by analysis. Initially, Codd proposed three
+normal forms, which he called first, second, and third normal form. A stronger
+definition of 3NF—called Boyce-Codd normal form (BCNF)—was proposed later
+by Boyce and Codd. All these normal forms are based on a single analytical tool: the
+functional dependencies among the attributes of a relation. Later, a fourth normal
+form (4NF) and a fifth normal form (5NF) were proposed, based on the concepts of
+multivalued dependencies and join dependencies, respectively; these are briefly dis-
+cussed in Sections 14.6 and 14.7.
+
+Normalization of data can be considered a process of analyzing the given relation
+schemas based on their FDs and primary keys to achieve the desirable properties of
+(1) minimizing redundancy and (2) minimizing the insertion, deletion, and update
+anomalies discussed in Section 14.1.2. It can be considered as a “filtering” or “purifi-
+cation” process to make the design have successively better quality. An unsatisfactory
+relation schema that does not meet the condition for a normal form—the normal
+form test—is decomposed into smaller relation schemas that contain a subset of the
+attributes and meet the test that was otherwise not met by the original relation. Thus,
+the normalization procedure provides database designers with the following:
+
+= A formal framework for analyzing relation schemas based on their keys and
+on the functional dependencies among their attributes
+
+= A series of normal form tests that can be carried out on individual relation
+schemas so that the relational database can be normalized to any desired
+degree
+
+Definition. The normal form of a relation refers to the highest normal form
+condition that it meets, and hence indicates the degree to which it has been
+normalized.
+
+Normal forms, when considered in isolation from other factors, do not guarantee a
+good database design. It is generally not sufficient to check separately that each
+
+475

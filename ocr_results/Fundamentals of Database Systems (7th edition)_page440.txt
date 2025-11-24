@@ -1,0 +1,54 @@
+410
+
+Chapter 12 Object and Object-Relational Databases
+
+We will use the first construct in our examples.”
+
+The named objects used as database entry points for OQL queries are not limited to
+the names of extents. Any named persistent object, whether it refers to an atomic
+(single) object or to a collection object, can be used as a database entry point.
+
+12.5.2 Query Results and Path Expressions
+
+In general, the result of a query can be of any type that can be expressed in the
+ODMG object model. A query does not have to follow the select ... from ... where ...
+structure; in the simplest case, any persistent name on its own is a query, whose
+result is a reference to that persistent object. For example, the query
+
+Qi: DEPARTMENTS;
+
+returns a reference to the collection of all persistent DEPARTMENT objects, whose
+type is set<DEPARTMENT>. Similarly, suppose we had given (via the database bind
+operation, see Figure 12.8) a persistent name CS_DEPARTMENT to a single
+DEPARTMENT object (the Computer Science department); then, the query
+
+QtA: CS_DEPARTMENT;
+
+returns a reference to that individual object of type DEPARTMENT. Once an entry point
+is specified, the concept of a path expression can be used to specify a path to related
+attributes and objects. A path expression typically starts at a persistent object name, or at
+the iterator variable that ranges over individual objects in a collection. This name will
+be followed by zero or more relationship names or attribute names connected using
+the dot notation. For example, referring to the UNIVERSITY database in Figure 12.10,
+the following are examples of path expressions, which are also valid queries in OQL:
+
+Q2: CS_DEPARTMENT.Chair;
+Q2A: CS_DEPARTMENT.Chair.Rank;
+Q2B: CS_DEPARTMENT.Has_faculty;
+
+The first expression Q2 returns an object of type FACULTY, because that is the type
+of the attribute Chair of the DEPARTMENT class. This will be a reference to the
+FACULTY object that is related to the DEPARTMENT object whose persistent name is
+CS_DEPARTMENT via the attribute Chair; that is, a reference to the FACULTY object
+who is chairperson of the Computer Science department. The second expression
+Q2A is similar, except that it returns the Rank of this FACULTY object (the Computer
+Science chair) rather than the object reference; hence, the type returned by Q2A is
+string, which is the data type for the Rank attribute of the FACULTY class.
+
+Path expressions Q2 and Q2A return single values, because the attributes Chair (of
+DEPARTMENT) and Rank (of FACULTY) are both single-valued and they are applied to
+a single object. The third expression, Q2B, is different; it returns an object of type
+set<FACULTY> even when applied to a single object, because that is the type of the
+relationship Has_faculty of the DEPARTMENT class. The collection returned will include
+
+3°Note that the latter two options are similar to the syntax for specifying tuple variables in SOL queries.

@@ -1,0 +1,45 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+4.PC (PROGRAM COUNTER)
+> Itis a special purpose register used to hold the address of the next instruction to be
+executed.
+> The contents of PC are incremented by 1 or 2 or 4, during the execution of current
+instruction.
+> The contents of PC are incremented by 1| for 8 bit CPU, 2 for 16 bit CPU and for 4 for 32
+bit CPU.
+
+4. GENERAL PURPOSE REGISTER / REGISTER ARRAY
+The structure of register file is as shown in the figure
+
+Ro
+Ri
+R2
+Rn-t
+. It consists of set of registers.
+a A register is defined as group of flip flops. Each,flip flop is designed to store 1 bit of
+data.
+. It is a storage element.
+. It is used to store the data temporarily during the execution of the program(eg: result).
+. It can be used as a pointer to Memory.
+
+. The Register size depends on the processing speed of the CPU
+. EX: Register size = 8 bits for 8 bit CPU.
+
+5. IR (INSTRUCTION REGISTER
+It holds the instruction to be executed. It notifies the control unit, which generates timing
+signals that controls various operations in the execution of that instruction.
+
+6. ALU (ARITHMETIC and LOGIC UNIT)
+. It performs arithmetic and logical operations on given data.
+
+Steps for reading the instruction.
+
+PC contents are transferred to MAR and read signal is sent to memory by control unit.
+The data from memory location is read and sent to MDR.
+
+The content of MDR is moved to IR.
+
+[PC] > MAR ————_+ Memory > MDR > IR
+CU ( read signal)
+
+Dr. Ajay V G, Dept. of CSE, SVIT 10

@@ -1,0 +1,58 @@
+LECTURE-10: RELATIONAL MODEL
+
+RELATIONAL MODEL
+Relational model is simple model in which database is represented as a collection of “relations”
+where each relation is represented by two-dimensional table.
+
+account—number | branch_name | balance
+‘A-101 Downtown | 500
+A-102 Perryridge 400
+A-201 Brighton 900
+A-215 Mianus 700
+A-217 Brighton 750
+A-222 Redwood 700
+A-305 Round Hill 350
+
+The relational model was founded by E. F. Codd of the IBM in 1972. The basic concept in the
+relational model is that of a relation.
+
+Properties:
+
+o It is column homogeneous. In other words, in any given column of a table, all items are of
+the same kind.
+
+o Each item is a simple number or a character string. That is a table must be in first normal
+form.
+
+o Allrows of a table are distinct.
+
+o The ordering of rows with in a table is immaterial.
+
+o The column of a table are assigned distinct names and the ordering of these columns is
+immaterial.
+
+Domain, attributes tuples and relational:
+
+Tuple:
+Each row in a table represents a record and is called a tuple .A table containing ‘n’ attributes in a
+record is called is called n-tuple.
+
+Attributes:
+
+The name of each column in a table is used to interpret its meaning and is called an attribute Each
+table is called a relation. In the above table, account_number, branch name, balance are the
+attributes.
+
+Domain:
+A domain is a set of values that can be given to an attributes. So every attribute in a table has a
+specific domain. Values to these attributes can not be assigned outside their domains.
+
+Relation:
+
+Arelation consist of
+
+o Relational schema
+o Relation instance
+
+Relational Schema:
+A relational schema specifies the relation’s name, its attributes and the domain of each attribute. If

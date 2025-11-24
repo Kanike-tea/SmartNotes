@@ -1,0 +1,54 @@
+12.5 The Object Query Language OOL
+
+Note that query Q12 also illustrates how attribute, relationship, and operation
+inheritance applies to queries. Although S is an iterator that ranges over the extent
+GRAD_STUDENTS, we can write S.Majors_in because the Majors_in relationship is
+inherited by GRAD_STUDENT from STUDENT via extends (see Figure 12.10). Finally,
+to illustrate the exists quantifier, query Q13 answers the following question: Does
+any graduate Computer Science major have a 4.0 GPA? Here, again, the operation
+gpa is inherited by GRAD_STUDENT from STUDENT via extends.
+
+Q13: exists Gin
+(select S
+from Sin GRAD_STUDENTS
+where S.Majors_in.Dname = ‘Computer Science’ )
+:G.Gpa = 4;
+
+Ordered (Indexed) Collection Expressions. As we discussed in Section 12.3.3,
+collections that are lists and arrays have additional operations, such as retrieving
+the ith, first, and last elements. Additionally, operations exist for extracting a sub-
+collection and concatenating two lists. Hence, query expressions that involve lists
+or arrays can invoke these operations. We will illustrate a few of these operations
+using sample queries. Q14 retrieves the last name of the faculty member who earns
+the highest salary:
+
+Q14: first ( select struct(facname: F.name.Lname, salary: F.Salary)
+from Fin FACULTY
+order by salary desc );
+
+Q14 illustrates the use of the first operator on a list collection that contains the sala-
+ries of faculty members sorted in descending order by salary. Thus, the first element
+in this sorted list contains the faculty member with the highest salary. This query
+assumes that only one faculty member earns the maximum salary. The next query,
+Q15, retrieves the top three Computer Science majors based on GPA.
+
+Q15: (select — struct(last_name: S.name.Lname, first_name: S.name.Fname,
+gpa: S.Gpa )
+from Sin CS_DEPARTMENT.Has_majors
+order by gpa desc ) [0:2];
+
+The select-from-order-by query returns a list of Computer Science students ordered
+by GPA in descending order. The first element of an ordered collection has an
+index position of 0, so the expression [0:2] returns a list containing the first, second,
+and third elements of the select ... from ... order by ... result.
+
+The Grouping Operator. The group by clause in OQL, although similar to the
+corresponding clause in SQL, provides explicit reference to the collection of objects
+within each group or partition. First we give an example, and then we describe the
+general form of these queries.
+
+Q16 retrieves the number of majors in each department. In this query, the students
+are grouped into the same partition (group) if they have the same major; that is, the
+same value for S.Majors_in.Dname:
+
+415

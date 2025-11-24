@@ -1,0 +1,30 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Drawback of Queue
+When item enters and deleted from the queue, the queue gradually shifts to the right as
+
+shown in figure.
+
+4
+t
+
+In this above situation, when we try to insert another item, which shows that the queue is
+full. This means that the rear index equals to MAX_QUEUE_SIZE -1. But even if the
+
+space is available at the front end, rear insertion cannot be done.
+
+Overcome of Drawback using different methods
+
+Method _1:
+
+e When an item is deleted from the queue, move the entire queue to the left so that the
+first element is again at queue[0] and front is at -1. It should also recalculate rear so
+that it is correctly positioned.
+
+e Shifting an array is very time-consuming when there are many elements in queue &
+
+queueFull has worst case complexity of O(MAX_QUEUE_SIZE)
+
+item B is deleted
+
+vtucode.in 5

@@ -1,0 +1,41 @@
+BASIC OPERATIONAL CONCEPTS
+
+An Instruction consists of 2 parts, 1) Operation code (Opcode) and 2) Operands.
+
+OPCODE OPERANDS
+
+e The data/operands are stored in memory.
+e The individual instruction are brought from the memory to the processor.
+e Then, the processor performs the specified operation.
+Let us see a typical instruction
+ADD LOCA, RO
+This instruction is an addition operation. The following are the steps to execute the instruction:
+Step 1: Fetch the instruction from main-memory into the processor.
+Step 2: Fetch the operand at location LOCA from main-memory into the processor.
+Step 3: Add the memory operand (fetched contents of LOCA) to the contents of register RO.
+Step 4: Store the result (sum) in RO.
+The same instruction can be realized using 2 instructions as:
+Load LOCA, RI
+Add R1, RO
+The following are the steps to execute the instruction:
+Step 1: Fetch the instruction from main-memory into the processor.
+Step 2: Fetch the operand at location LOCA from main-memory into the register R1.
+Step 3: Add the content of Register R1 and the contents of register RO.
+
+Step 4: Store the result (sum) in RO.
+
+MAIN PARTS OF PROCESSOR
+
+e The processor contains ALU, control-circuitry and many registers.
+e The processor contains “n” general-purpose registers RO through Rn-1.
+e = The IR holds the instruction that is currently being executed.
+e The control-unit generates the timing-signals that determine when a given action is to take place.
+e The PC contains the memory-address of the next-instruction to be fetched & executed.
+e During the execution of an instruction, the contents of PC are updated to point to next instruction.
+e¢ The MAR holds the address of the memory-location to be accessed.
+¢ The MDR contains the data to be written into or read out of the addressed location.
+e MAR and MDR facilitates the communication with memory.
+(IR- Instruction-Register, PC- Program Counter, MAR-Memory Address Register, MDR-Memory
+Data Register)
+
+Page 2

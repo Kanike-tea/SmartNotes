@@ -1,0 +1,58 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+Program 02: Write python program and algorithm to find the sum of even sum and
+
+odd sum for given N number.
+
+ALGORITHM
+
+1. Read the value of N.
+
+2. Initialize variables even_sum and odd_sum to 0.
+
+3. Set a loop variable i to 1.
+
+4. Repeat steps 5 and 6 while i is less than or equal to N.
+
+5. Ifiis even, add i to even_sum.
+
+6.  Ifiis odd, add i to odd_sum.
+
+7. Print the value of even_sum as the sum of even numbers from | to N.
+
+8. Print the value of odd_sum as the sum of odd numbers from 1 to N.
+
+PROGRAM
+
+def sum_of_even_and_odd_numbers (n):
+if n <= 0:
+return "N should be a positive integer."
+
+even_sum = 0
+odd_sum = 0
+
+for iin range(1, n+ 1):
+if i%s2 ==
+even_sum += i
+else:
+
+odd_sum += i
+return even_sum, odd_sum
+
+n = int(input("Enter a positive integer: "))
+even_sum, odd_sum = sum_of_even_and_odd_numbers (n)
+
+print ("Sum of even numbers from 1 to", n, , even_sum)
+print ("Sum of odd numbers from 1 to", n, ":", odd_sum)
+OUTPUT
+
+//Output 01
+
+Enter a positive integer: 10
+
+Sum of even numbers from 1 to 10 : 30
+Sum of odd numbers from 1 to 10 : 25
+
+eof fa ok ook coe
+
+Dept. of CSE 78 GSSSIETW, Mysuru

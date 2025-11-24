@@ -1,0 +1,44 @@
+418 Chapter 12. Caches
+
+12.3 CACHE POLICY
+
+There are three policies that determine the operation of a cache: the write policy, the
+replacement policy, and the allocation policy. The cache write policy determines where
+data is stored during processor write operations. The replacement policy selects the cache
+line in a set that is used for the next line fill during a cache miss. The allocation policy
+determines when the cache controller allocates a cache line.
+
+12.3.1 WRITE POLICY—WRITEBACK OR WRITETHROUGH
+
+When the processor core writes to memory, the cache controller has two alternatives for
+its write policy. The controller can write to both the cache and main memory, updating
+the values in both locations; this approach is known as writethrough. Alternatively, the
+cache controller can write to cache memory and not update main memory, this is known
+as writeback or copyback.
+
+12.3.1.1 Writethrough
+
+When the cache controller uses a writethrough policy, it writes to both cache and main
+memory when there is a cache hit on write, ensuring that the cache and main memory
+stay coherent at all times. Under this policy, the cache controller performs a write to
+main memory for each write to cache memory. Because of the write to main memory,
+a writethrough policy is slower than a writeback policy.
+
+12.3.1.2 Writeback
+
+When a cache controller uses a writeback policy, it writes to valid cache data memory
+and not to main memory. Consequently, valid cache lines and main memory may contain
+different data. The cache line holds the most recent data, and main memory contains older
+data, which has not been updated.
+
+Caches configured as writeback caches must use one or more of the dirty bits in the
+cache line status information block. When a cache controller in writeback writes a value to
+cache memory, it sets the dirty bit true. If the core accesses the cache line at a later time, it
+knows by the state of the dirty bit that the cache line contains data not in main memory. If
+the cache controller evicts a dirty cache line, it is automatically written out to main memory.
+The controller does this to prevent the loss of vital information held in cache memory and
+not in main memory.
+
+One performance advantage a writeback cache has over a writethrough cache is in the
+frequent use of temporary local variables by a subroutine. These variables are transient in
+nature and never really need to be written to main memory. An example of one of these

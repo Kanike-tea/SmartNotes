@@ -1,0 +1,61 @@
+Data Structures and Applications (BCS304) Module III
+
+}
+
+Analysis of Search(Both iterative and recursive): If h is the height of the binary search tree, then
+we can perform the search using either search in O(h). However, recursive search has an additional
+stack space requirement which is O(h).
+
+Inserting in to a Binary Search Tree: Binary search tree has distinct values, first we searchthe
+tree for the key and if the search is unsuccessful the key is inserted at the point the search
+
+terminated
+Example : consider the tree given below
+
+wo
+
+8
+
+35 80
+
+BST Tree Insert 80 Insert 35
+
+Inserting a dictionary pair into a binary search tree
+If k is in the tree pointed at by node do nothing. Otherwise add a new node with data = (k, item)
+
+TreeNode* insert(TreeNode *root, int k, int Item)
+
+{
+
+TreeNode * ptr, *lastnode;
+
+lastnode=Modifiedsearch(root,k);
+Ptr=(TreeNode*)malloc(sizeof(TreeNode));
+ptr—data.key =k;
+
+ptr—data.item = Item;
+
+ptr—leftChild = ptr—rightChild = NULL;
+
+if (toot==NULL)
+
+{
+
+root=ptr;
+
+return(root);
+
+}
+
+if(lastnode!=NULL)
+
+{
+if (k < lastnode—data.key)
+lastnode—leftChild = ptr;
+else
+lastnode—rightChild = ptr;
+return (root);
+
+}
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 27

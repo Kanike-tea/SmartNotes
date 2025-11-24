@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Recursion function:
+
+The inorder traversal of a binary tree can be recursively defined as
+e Traverse the left subtree in inorder.
+e Visit the root.
+
+e Traverse the right subtree in inorder.
+
+void inorder (treepointerptr)
+
+if (ptr)
+
+{
+inorder (ptr-leftchild);
+printf (“%d”,ptr—data) ;
+inorder (ptrorightchild);
+
+2.Preorder: Preorder is the procedure of visiting a node, traverse left and continue. When
+you cannot continue, move right and begin again or move back until you can move right
+and resume.
+
+Recursion function:
+The Preorder traversal of a binary tree can be recursively defined as
+
+e Visit the root
+
+e Traverse the left subtree in preorder.
+
+e Traverse the right subtree in preorder
+
+void preorder» (treepointerptr)
+{
+if (ptr)
+{
+printf (“%d”,ptr—data)
+preorder (ptrleftchild);
+preorder (ptrrightchild);
+
+vtucode.in 21

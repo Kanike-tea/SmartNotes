@@ -1,0 +1,65 @@
+7.5. Transcendental Functions: log, exp, sin, cos 243
+
+q RN 3
+t RN 12
+
+3 int ulog2_32(unsigned n)
+
+ulog2_32
+cz ory n
+Mov dy n, LSL#1
+
+Mov od, d, USL rr
+RSBo on, r, #31
+
+MOV. or, d, LSR#27
+ADR tt, ulog2_table
+LR sr, [t, vr, LSL#3]!
+LOR sq, [t, #4]
+
+Ised<2 at 032
+integer part of the log
+estimate e=1+(r/32)+(1/64)
+
+=log2(e) at 026
+qel/e at Q32
+
+Mov tt, #0
+UMLAL t, r, dy r 3 r=(d/e)-1 at 932
+
+LOR ——t,_=0x55555555 3 round(2“32/3)
+
+ADD ny q, n, LSL#26 3 n#log2(e) at 926
+
+SMULL t, q, rt 3q=1/3 at Q32
+
+LOR sd, =0x05c551d9 3 round(2*26/1n(2))
+
+SMULL t, qs rq 3g = 12/3 at Q32
+
+Mov t, #0
+
+SUB q, gy ry ASR#1 3g = -r/2#r°2/3 at 032
+SMLAL t, r, qr 5 r- r2/2 + 93/3 at Q32
+Mov t, #0
+
+SMLAL t, n, dy r 3 n += r/log(2) at Q26
+
+MOV pc, Ir
+
+ulog2_table
+; table[2*i] =round(2*32/a) where a=1+(i+0.5)/32
+3 table[2*i+1] =round (2%26*1og2(a)) and 0<=i<32
+DCD OxfcOFcOFc, 0x0016e797, Oxf4898d60, Ox0043ace2
+DCD Oxed7303b6, 0x006f2109, Oxe6c2b448, 0x0099574F
+DCD Oxe070381c, Ox00c2615f, Oxda740da7, Ox00ead#72
+DCD Oxd4c77b03, 0x0111307e, Oxcf6474a9, 0x0137124d
+DCD Oxca4587e7, Ox015c01a4, Oxc565c87b, 0x01800a56
+DCD OxcOcOcOcl, 0x01a33761, Oxbc52640c, Ox01c592Fb
+DCD Oxb81702e0, Ox01e726aa, Oxb40b40b4, 0x0207fb51
+DCD Oxb02cOb03, 0x0228193F, 0xac769184, 0x0247883b
+DCD Oxa8e8357, 0x0266448d, Oxa57eb503, 0x02847610
+DCD 0xa237c32b, 0x02a20231, 0x9F1165e7, Ox02bef9FF
+DCD 0x9c09c09c, Ox02db632d, Ox991F1a51, Ox02F7431F
+DCD 0x964fda6c, 0x03129ee9, 0x939a85c4, Ox032d7b5a
+DCD Ox90Fdbc09, Ox0347dcfe, Ox8e78356d, 0x0361c825

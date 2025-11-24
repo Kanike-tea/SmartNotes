@@ -1,0 +1,56 @@
+Database Management System [BCS403]
+
+Introduction
+
+Conceptual modeling is a very important phase in designing a successful database application.
+Entity-Relationship (ER) model is a popular high-level conceptual data model. This model and its
+variations are frequently used for the conceptual design of database applications, and many
+
+database design tools employ its concepts.
+
+3.1 Using High-Level Conceptual Data Models for Database Design
+
+Miniworld
+
+REQUIREMENTS:
+
+COLLEGTION AND
+ANALYSIS
+
+Functional Requirements Data Requirements
+FUNCTIONAL ANALYSIS CONCEPTUAL DESIGN
+
+High-Level Transaction ‘Conceptual Schema
+Specification (In a high-level data model)
+
+DBMS-independent__ “| Loaicat DEsiGn
+(DATA MODEL MAPPING)
+
+Logical (Conceptual) Schema
+{in the data model of a specific DBMS)
+
+t
+
+PHYSICAL DESIGN
+
+t
+
+——___——— Internal Schema
+
+APPLICATION PROGRAM
+DESIGN
+
+TRANSACTION
+IMPLEMENTATION
+
+Application Programs
+
+Figure 3.1: A simplified diagram to illustrate the main phases of database design.
+The first step shown is requirements collection and analysis. During this step, the database
+designers interview prospective database users to understand and document their data
+requirements. The result of this step is a concisely written set of users’ requirements.
+These requirements should be specified in as detailed and complete a form as possible. In parallel
+
+with specifying the data requirements, it is useful to specify the known functional requirements
+
+https://vtucode.in Page 34

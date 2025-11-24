@@ -1,0 +1,51 @@
+412
+
+Chapter 12 Object and Object-Relational Databases
+
+The name component is a further struct made up of last_name and first_name, each
+being a single string. The degrees component is defined by an embedded query and
+is itself a collection of further (second level) structs, each with three string compo-
+nents: deg, yr, and college.
+
+Note that OQL is orthogonal with respect to specifying path expressions. That is,
+attributes, relationships, and operation names (methods) can be used interchange-
+ably within the path expressions, as long as the type system of OQL is not compro-
+mised. For example, one can write the following queries to retrieve the grade point
+average of all senior students majoring in Computer Science, with the result ordered
+by GPA, and within that by last and first name:
+
+Q5A: select struct (last_name: S.name.Lname, first_name: S.name.Fname,
+gpa: S.gpa )
+from Sin CS_DEPARTMENT.Has_majors
+where S.Class = ‘senior’
+order by gpa desc, last_name asc, first_name asc;
+Q5B: select struct (last_name: S.name.Lname, first_name: S.name.Fname,
+gpa: S.gpa )
+from Sin STUDENTS
+where S.Majors_in.Dname = ‘Computer Science’ and
+S.Class = ‘senior’
+order by gpa desc, last_name asc, first_name asc;
+
+Q5A used the named entry point CS_DEPARTMENT to directly locate the reference
+to the Computer Science department and then locate the students via the relation-
+ship Has_majors, whereas Q5B searches the STUDENTS extent to locate all students
+majoring in that department. Notice how attribute names, relationship names, and
+operation (method) names are all used interchangeably (in an orthogonal manner)
+in the path expressions: gpa is an operation; Majors_in and Has_majors are relation-
+ships; and Class, Name, Dname, Lname, and Fname are attributes. The implementa-
+tion of the gpa operation computes the grade point average and returns its value as
+a float type for each selected STUDENT.
+
+The order by clause is similar to the corresponding SQL construct, and specifies in
+which order the query result is to be displayed. Hence, the collection returned by a
+query with an order by clause is of type list.
+
+12.5.3 Other Features of OOL
+
+Specifying Views as Named Queries. The view mechanism in OQL uses the
+concept of a named query. The define keyword is used to specify an identifier of the
+named query, which must be a unique name among all named objects, class names,
+method names, and function names in the schema. If the identifier has the same
+name as an existing named query, then the new definition replaces the previous
+definition. Once defined, a query definition is persistent until it is redefined or
+deleted. A view can also have parameters (arguments) in its definition.

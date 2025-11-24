@@ -1,0 +1,44 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+In other words,
+
+n=3: A>C, AB, CB, A>C, B>A, BoC, A>C
+
+For completeness, the solution to the Towers of Hanoi problem for n= 1
+and n= 2 n=l: A>C
+n=2: A>B, A>C, BC
+The Towers of Hanoi problem for n> 1 disks may be reduced to the following sub-
+problems:
+(1) Move the top n - | disks from peg A to peg B
+(2) Move the top disk from peg A to peg C: AC.
+(3) Move the top n - 1 disks from peg B to peg C.
+
+The general notation
+e TOWER (N, BEG, AUX, END) to denote a procedure which moves the top n
+disks from the initial peg BEG to the final peg END using the peg AUX as an
+auxiliary.
+e When n = I, the solution:
+TOWER (1, BEG, AUX, END) consists of the single instruction BEG--END
+e When n> 1, the solution may be reduced to the solution of the following
+three sub- problems:
+(a) TOWER (N -I, BEG, END, AUX)
+(b) TOWER (1, BEG, AUX, END) or BEG — END
+(c) TOWER (N =I, AUX, BEG, END)
+
+void Hanoi(int n, char x, char y, char z)
+{
+if (n > 1)
+{
+Hanoi (n-1,x,Z,y)7
+printf ("Move disk %d from %c to %c.\n",n,x,Z);
+Hanoi (n-1,y,x,z)7
+}
+else
+{
+printf ("Move disk %d from %c to %c.\n",n,x,Z);
+
+}
+
+Recursive Implementation of tower of Hanoi
+
+vtucode.in 13

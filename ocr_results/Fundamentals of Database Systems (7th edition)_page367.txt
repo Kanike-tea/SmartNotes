@@ -1,0 +1,52 @@
+10.4 Database Stored Procedures and SQL/PSM
+
+In general, each parameter should have a parameter type that is one of the SQL
+data types. Each parameter should also have a parameter mode, which is one of IN,
+OUT, or INOUT. These correspond to parameters whose values are input only, out-
+put (returned) only, or both input and output, respectively.
+
+Because the procedures and functions are stored persistently by the DBMS, it
+should be possible to call them from the various SQL interfaces and programming
+techniques. The CALL statement in the SQL standard can be used to invoke a stored
+procedure—either from an interactive interface or from embedded SQL or SQLJ.
+The format of the statement is as follows:
+
+CALL <procedure or function name> (<argument list>) ;
+
+If this statement is called from JDBC, it should be assigned to a statement object of
+type CallableStatement (see Section 10.3.2).
+
+10.4.2 SQL/PSM: Extending SQL for Specifying Persistent
+Stored Modules
+
+SQL/PSM is the part of the SQL standard that specifies how to write persistent
+stored modules. It includes the statements to create functions and procedures that
+we described in the previous section. It also includes additional programming con-
+structs to enhance the power of SQL for the purpose of writing the code (or body)
+of stored procedures and functions.
+
+In this section, we discuss the SQL/PSM constructs for conditional (branching)
+statements and for looping statements. These will give a flavor of the type of con-
+structs that SQL/PSM has incorporated;” then we give an example to illustrate how
+these constructs can be used.
+
+The conditional branching statement in SQL/PSM has the following form:
+
+IF <condition> THEN <statement list>
+ELSEIF <condition> THEN <statement list>
+
+ELSEIF <condition> THEN <statement list>
+ELSE <statement list>
+END IF;
+
+Consider the example in Figure 10.14, which illustrates how the conditional branch
+structure can be used in an SQL/PSM function. The function returns a string value
+(line 1) describing the size of a department within a company based on the number
+of employees. There is one IN integer parameter, deptno, which gives a depart-
+ment number. A local variable NoofEmps is declared in line 2. The query in lines 3
+and 4 returns the number of employees in the department, and the conditional
+
+We only give a brief introduction to SQL/PSM here. There are many other features in the SQL/PSM
+standard.
+
+337

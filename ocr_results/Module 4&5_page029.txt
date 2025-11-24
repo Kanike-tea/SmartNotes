@@ -1,0 +1,43 @@
+Microcontrollers - BCS402
+
+|. The Memory Hierarchy and Cache Memory
+
+Figure | reviews some of this information to show where a cache and write buffer fit in the
+
+hierarchy.
+1
+1
+i
+Chip |
+1
+I
+i
+sot al
+1
+i
+1 Main
+I memory
+Board |
+1
+1
+1
+1
+i
+1
+area 4
+i
+i
+Device |
+! Secondary .
+and network
+storage BEE storage Write path
+
+Fig 1: Memory hierarchy
+
+The linnermost level lof the hierarchy is/atithe |processor\core) This memory is so tightly coupled
+
+to the processor that in many ways it is difficult to think of it as separate from the processor. THiS
+
+We talk more about caches in a moment.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 30

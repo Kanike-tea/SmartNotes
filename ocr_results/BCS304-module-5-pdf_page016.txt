@@ -1,0 +1,37 @@
+he \
+
+Nota WBLT Itis a WBLT
+
+Here we consider number of nodes in the subtree rather than the length of a shortest
+root to external node path
+w(x) be the weight of a node x
+if x is an external node
+w(x) =
+1+ sum of the weights of the children otherwise
+
+Definition : A binary tree is a Weight Biased Leftist Tree (WBLT) iff at every internal node
+the w value of the left child is greater than or equal to the w value of the right child.
+
+A max(min) WBLT is a max(min) tree that is also a WBLT
+Insert and delete operations are analogous to HBLT operations
+
+The meld operation can be done in a single top-to-bottom pass. On the way down, we
+can update w-values and swap subtrees as necessary.
+
+» WBLT is faster than HBLT
+8
+
+5.0.8 Optimal Binary Search Tree:
+
+In computer science, an optimal binary search tree (Optimal BST), sometimes called a weight-balanced
+binary tree, is a binary search tree which provides the smallest possible search time (or expected search
+time) for a given sequence of accesses (or access probabilities).
+
+~ for for
+( do ») while do int
+int © if >) (while
+(b)
+it
+(a)
+
+Page 17

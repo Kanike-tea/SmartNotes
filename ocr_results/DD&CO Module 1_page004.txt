@@ -1,0 +1,42 @@
+Theorem 3:
+
+THEOREM 3: (x’')' = x. From postulate 5, we have x + x’ = 1 and x-x’' = 0, which
+together define the complement of x. The complement of x’ is x and is also (x’)’.
+
+Theorem 6(a): Theorem 6(b):
+x+xy=x. x(x + y) = x by duality.
+Statement Justification
+
+xtxy=x-l + xy postulate 2(b)
+
+=x(1 + y) (a)
+
+= x(y + 1) 3(a)
+
+=x-l 2(a)
+
+=x 2(b)
+
+The theorems of Boolean algebra can be proven by means of truth tables. In truth tables, both sides of
+the relation are checked to see whether they yield identical results for all possible combinations of the
+
+variables involved. The following truth table verifies the first absorption theorem:
+
+xily xy | x+xy
+0/0 0 0
+0} 1 0 0
+
+The algebraic proofs of the associative law and DeMorgan’s theorem are long and will not be shown
+here. However, their validity is easily shown with truth tables. For example, the truth table for the first
+DeMorgan’s theorem, (x + y)= xy, is as follows:
+
+x y |x+y| (x+y) x ly’ | xy’
+
+Operator Precedence
+
+The operator precedence for evaluating Boolean expressions is (1) parentheses, (2) NOT, (3) AND, and
+(4) OR. In other words, expressions inside parentheses must be evaluated before all other operations.
+The next operation that holds precedence is the complement, and then follows the AND and, finally, the
+OR. As an example, consider the truth table for one of DeMorgan’s theorems. The left side of the
+
+expression is (x + y). Therefore, the expression inside the parentheses is evaluated first and the result

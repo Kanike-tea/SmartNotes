@@ -1,0 +1,40 @@
+Digital Design and Computer Organization (BCS302) Module V
+odule
+
+1) Transfer a word of data from one register to another or to the ALU.
+
+2) Perform arithmetic or a logic operation and store the result in a register.
+
+3) Fetch the contents of a given memory-location and load them into a register.
+
+4) Store a word of data from a register into a given memory-location.
+«Disadvantage: Only one data-word can be transferred over the bus ina
+clock cycle. Solution: Provide multiple internal-paths. Multiple paths allow
+several data- transfers to take place in parallel.
+REGISTER TRANSFERS
+eInstruction execution involves a sequence of steps in which data are
+transferredfrom one register to another.
+«For each register, two control-signals are used: Riin & Riout. These are
+
+called Gating Signals
+
+¢ Riin=1,the data on the bus are loaded into Ri,
+¢ Riout=1,the contents of register are placed on the bus,
+¢ Riout=0,the bus can be used for transferring data from other registers.
+Suppose we wish to transfer the contents of register R1 to register R2.This
+can be accomplished as follows:
+
+1. Enable the output of registers R1 by setting Rlout to 1 (Figure 7.2).
+This places thecontents of R1 on processor-bus.
+
+2. Enable the input of register R4 by setting R4in to 1.This loads data from
+processor-bus into register R4.
+
+e All operations and data transfers within the processor take place
+
+within time-periods defined by the processor-clock.
+
+Figure 7.2 Input and output gating for the registers in Figure 7.3 Input and output goting for one register bit,
+Figure 7.1
+
+Dr Ajay V G, Dept. of CSE,SVIT

@@ -1,0 +1,66 @@
+Then the contents of RI are transferred to register Y in step 5, to prepare for the addition operation. When
+the Read operation is completed, the memory operand is available in register MDR, and the addition
+operation is performed in step 6. The contents of MDR are gated to the bus, and thus also to the B input of
+the ALU, and register Y is selected as the second input to the ALU by choosing Select Y. The sum is
+stored in register Z, then transferred to RI in step 7.
+
+This discussion accounts for all control signals in Figure 7.6 except Y in step 2. There is no need to copy
+the updated contents of PC into register Y when executing the Add instruction. But, in Branch
+instructions the updated value of the PC is needed to compute the Branch target address. To speed up the
+execution of Branch instructions, this value is copied into register Y in step 2. Since step 2 is part of the
+fetch phase, the same action will be performed for all instructions. This does not cause any harm because
+register Y is not used for any other purpose at that time. Branch Instructions: A branch instruction
+replaces the contents of the PC with the branch target address. This address is usually obtained by adding
+an offset X, which is given in the branch instruction, to the updated value of the PC. Listing in figure 8
+below gives a control sequence that implements an unconditional branch instruction. Processing starts, as
+usual, with the fetch phase. This phase ends when the instruction is loaded into the IR in step 3. The offset
+value is extracted from the IR by the instruction decoding circuit, which will also perform sign extension
+if required. Since the value of the updated PC is already available in register Y, the offset X is gated onto
+the bus in step 4, and an addition operation is performed. The result, which is the branch target address, is
+loaded into the PC in step 5. The offset X used in a branch instruction is usually the difference between
+the branch target address and the address immediately following the branch instruction.
+
+For example, if the branch instruction is at location 2000 and if the branch target address is 2050, the value
+of X must be 46. The reason for this can be readily appreciated from the control sequence in Figure 7. The
+PC is incremented during the fetch phase, before knowing the type of instruction being executed. Thus,
+when the branch address is computed in step 4, the PC value used is the updated value, which points to
+the instruction following the branch instruction in the memory. Consider now a conditional branch. In this
+case, we need to check the status of the condition codes before loading a new value into the PC. For
+example, for a Branch-nonnegative
+
+Hardwired Control
+
+To execute instructions, the processor must have some means of generating the control signals needed in
+the proper sequence.
+
+Two categories: hardwired control and micro programmed control
+
+Hardwired system can operate at high speed; but with little flexibility
+
+Control Unit Organization
+
+Pipelining
+
+Pipelining is widely used in modern processors.
+Pipelining improves system performance in terms of throughput.
+Pipelined organization requires sophisticated compilation techniques.
+
+Making the Execution of Programs Faster
+
+Use faster circuit technology to build the processor and the main memory.
+Arrange the hardware so that more than one operation can be performed at the same time.
+
+In the latter way, the number of operations performed per second is increased even though the elapsed
+time needed to perform any one operation is not changed.
+
+Traditional Pipeline Concept
+
+Laundry Example
+
+Ann, Brian, Cathy, Dave
+each have one load of clothes
+to wash, dry, and fold
+
+Washer takes 30 minutes
+
+Page 79

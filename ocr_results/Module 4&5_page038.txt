@@ -1,0 +1,53 @@
+Microcontrollers - BCS402
+
+The set of cache lines pointed to by the set index are set associative. A data or code block from
+main memory can be allocated to any of the four ways in a set without affecting program
+behavior; in other words the storing of data in cache lines within a set does not affect program
+execution. Two sequential blocks from main memory can be stored as cache lines in the same
+way or two different ways. The important thing to note is that the data or code blocks from a
+specific location in main memory can be stored in any cache line that is a member of a set. The
+placement of values within a set is exclusive to prevent the same code or data block from
+
+simultaneously occupying two cache lines in a set.
+
+The mapping of main memory to a cache changes in a four-way set associative cache. Figure 8
+shows the differences. Any single location in main memory now maps to four different locations
+
+in the cache.
+
+; a Ox3FF
+4G main memory .
+OxFFFFFFFF
+Ls ~ Scheie] word [aoe [word [word] Ox224 <5
+0x000
+SL) Way 2 OFF
+x00000c00
+x00000824 SE FET SRST aT] 0X24
+x00000800
+0x00
+x00000424 Wai Ox3FF
+x00000400
+1KB 4
+0x0000022 SE PEE EE] 0x24 <]
+x00000000
+0x00
+Ox3FF
+
+Way 0
+
+SSS PED eT] 0x224
+
+0x00
+
+oe
+
+XXXXX] 2 2 4
+tag —_| set index} data index
+
+31 109 a3 )
+
+Address issued by processor core
+
+Figure 8 Main memory mapping to a four-way set associative cache.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 39

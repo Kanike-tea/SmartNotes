@@ -1,0 +1,59 @@
+case 2: item = pop();
+if(item !=-1)
+printf("\nElement popped is: %d", item);
+
+break;
+case 3: palindrome();
+break;
+case 4: display();
+break;
+case 5: exit(1);
+default: printf("\nPlease enter valid choice ") ;
+break;
+3
+}
+i
+void push(int item)
+{
+if(top == MAX-1)
+{
+printf("\n- -~Stack overflow~
+return;
+}
+top =top +1;
+s[top] = item;
+i
+int pop()
+{ a
+int item;
+if(top == -1)
+{
+printf("\n~~~~Stack underflow~~~~");
+return -1;
+}
+item = s[top];
+top = top - 1;
+return item;
+i
+
+void display()
+{
+
+int i;
+if(top == -1)
+{
+
+printf("\n~~~~Stack is empty~~~~");
+return;
+
+printf("\nStack elements are:\n ");
+for(i=top; i>=0 ; i--)
+printf("l %d Nn", s[i]);
+i
+
+void palindrome()
+{
+int flag=l ji;
+printf("\nStack content are:\n");
+for(i=top; i>=0 ; i--)
+printf("l %d Nn", s[i]);

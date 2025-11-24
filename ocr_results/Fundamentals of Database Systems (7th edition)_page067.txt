@@ -1,0 +1,52 @@
+2.2 Three-Schema Architecture and Data Independence
+
+2. The conceptual level has a conceptual schema, which describes the structure
+of the whole database for a community of users. The conceptual schema hides
+the details of physical storage structures and concentrates on describing enti-
+ties, data types, relationships, user operations, and constraints. Usually, a rep-
+resentational data model is used to describe the conceptual schema when a
+database system is implemented. This implementation conceptual schema is
+often based on a conceptual schema design in a high-level data model.
+
+3. The external or view level includes a number of external schemas or user
+views. Each external schema describes the part of the database that a partic-
+ular user group is interested in and hides the rest of the database from that
+user group. As in the previous level, each external schema is typically imple-
+mented using a representational data model, possibly based on an external
+schema design in a high-level conceptual data model.
+
+The three-schema architecture is a convenient tool with which the user can visual-
+ize the schema levels in a database system. Most DBMSs do not separate the three
+levels completely and explicitly, but they support the three-schema architecture to
+some extent. Some older DBMSs may include physical-level details in the concep-
+tual schema. The three-level ANSI architecture has an important place in database
+technology development because it clearly separates the users’ external level, the
+database’s conceptual level, and the internal storage level for designing a database.
+It is very much applicable in the design of DBMSs, even today. In most DBMSs that
+support user views, external schemas are specified in the same data model that
+describes the conceptual-level information (for example, a relational DBMS like
+Oracle or SQLServer uses SQL for this).
+
+Notice that the three schemas are only descriptions of data; the actual data is stored
+at the physical level only. In the three-schema architecture, each user group refers
+to its own external schema. Hence, the DBMS must transform a request specified
+on an external schema into a request against the conceptual schema, and then into
+a request on the internal schema for processing over the stored database. If the
+request is a database retrieval, the data extracted from the stored database must be
+reformatted to match the user’s external view. The processes of transforming
+requests and results between levels are called mappings. These mappings may be
+time-consuming, so some DBMSs—especially those that are meant to support small
+databases—do not support external views. Even in such systems, however, it is nec-
+essary to transform requests between the conceptual and internal levels.
+
+2.2.2 Data Independence
+
+The three-schema architecture can be used to further explain the concept of data
+independence, which can be defined as the capacity to change the schema at one
+level of a database system without having to change the schema at the next higher
+level. We can define two types of data independence:
+
+1. Logical data independence is the capacity to change the conceptual schema
+without having to change external schemas or application programs. We
+
+37

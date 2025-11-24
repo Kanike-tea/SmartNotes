@@ -1,0 +1,56 @@
+4.0
+
+: ptimization », ae
+: id
+ei,
+aa {1}:and compute t; = :
+
+‘ set. P= 41; for j x
+ee e consider. the set 4 parte ’ 523.
+the first nee i of the directed edge (arc) from vertex i to vertex j yp4.',
+denotes the W sietearere
+
+ke gjj = ©: In the first step of this iteration, we identify the mii S m"
+arc from i to Js : a oe is minimum, we label the.arc 1, &).as.p1, and adjoin K to th Moy
+the t;'s computed.
+
+: re Set
+d step of the iteration, we take P = {1,k}, along with t, and choose ney, ts ( :
+In the secon : eg te a
+
+‘ ae
+than f) through the expression
+
+In
+where qij
+
+new f; = min {t),fe + quj} Last ‘
+. é L ( ider t, as well as the ;
+For the second iteration, we take P =/{1, k} and consider t : the new 7S. In
+
+first step of this iteration, we identify the- minimum of the new 1,’s.- If.tm,is this minimy
+
+ee + Im, We
+label the arc (i,m) as p2, where i € P and (i,m) has minimum weight. We also adjoin mo
+In the second step of the iteration, we take-P = {1,k, m}, along with t and t,,, and Choose ney
+
+t;’s (other than 4; and f,) through the expression (i) by replacing ty by tins
+
+We repeat the process by considering the third, fourth,... iterations, and Stop the proces,
+when P becomes equal to V. : :
+
+Finally, we collect together all the labeled arcs py, po,... (obtained in step 1 of each it
+eration) and form the path from 1 to n constituted by them. This path, called a short path
+arborescence, determines a shortest path (and its weight) from vertex 1 to every other verter,
+
+Using the Dijkstra’s algorithm, obtain the shortest path from vertex | to each
+of the other vertices in the weighted, directed network shown in Figure 4.53.* Indicate the
+weights of these shortest paths,
+
+> First Iteration
+
+: is iteration, P = {1} and 2; = 41j for j = 2, 3, 4, 5, 6,7. By examining the figure,"
+
+h=4, 5 =6, 44 = 8, ts = 00, 16. = 00, t7 = 00,
+
+gf

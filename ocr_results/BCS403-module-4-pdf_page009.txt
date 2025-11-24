@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+MULTIWAY JOIN
+It is also possible to nest join specifications; that is, one of the tables in a join may itself be a joined
+table. This allows the specification of the join of three or more tables as a single joined table, which
+is called a multiway join.
+Example: For every project located in ‘Stafford’, list the project number, the controlling department
+number, and the department manager's last name,address, and birth date.
+
+SELECT Pnumber, Dnum, Lname, Address, Bdate
+
+FROM ((PROJECT JOIN DEPARTMENT ON Dnum=Dnumber)
+
+JOIN EMPLOYEE ON Mgr_ssn=Ssn)
+
+WHERE Plocation='Stafford’;
+
+1.1.7 Aggregate Functions in SQL
+
+Aggregate functions are used to summarize information from multiple tuples into a single-tuple
+summary. A number of built-in aggregate functions exist: COUNT, SUM, MAX, MIN, and AVG. The
+COUNT function returns the number of tuples or values as specified in a query. The functions SUM,
+MAX, MIN, and AVG can be applied to a set or multiset of numeric values and return, respectively,
+the sum, maximum value, minimum value, and average (mean) of those values. These functions
+can be used in the SELECTclause or in a HAVING clause (which we introduce later). The functions
+MAX and MIN can also be used with attributes that have nonnumeric domains if the domain values
+have a total ordering among one another.
+
+Examples
+1. Find the sum of the salaries of all employees, the maximum salary, the minimum salary, and the
+average salary.
+
+SELECT SUM (Salary), MAX (Salary), MIN (Salary), AVG (Salary)
+
+FROM EMPLOYEE;
+
+2. Find the sum of the salaries of all employees of the ‘Research’ department, as well as the
+maximum salary, the minimum salary, and the average salary in this department.
+
+SELECT SUM (Salary), MAX (Salary), MIN (Salary), AVG (Salary)
+
+FROM (EMPLOYEE JOIN DEPARTMENT ON Dno=Dnumber)
+
+WHERE Dname='Research’;
+
+3. Count the number of distinct salary values in the database.
+SELECT COUNT (DISTINCT Salary)
+FROM EMPLOYEE;
+
+https://vtucode.in page 27

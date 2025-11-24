@@ -1,0 +1,53 @@
+276 Chapter 8 The Relational Algebra and Relational Calculus
+
+Using the general transformation from universal to existential quantifiers given in
+Section 8.6.6, we can rephrase the query in Q3 as shown in Q3A, which uses a
+negated existential quantifier instead of the universal quantifier:
+
+Q3A: {e.Lname, e.Fname | EMPLOYEE(e) AND (NOT (Ax) (PROJECT(x) AND
+(x.Dnum=5) and (NOT (Sw)(WORKS_ON(w) AND w.Essn=e.Ssn
+AND x.Pnumber=w.Pno))))}
+
+We now give some additional examples of queries that use quantifiers.
+Query 6. List the names of employees who have no dependents.
+
+Q6: {e.Fname, e.Lname | EMPLOYEE(e) AND (NOT (3d) (DEPENDENT(d)
+AND e.Ssn=d.Essn))}
+
+Using the general transformation rule, we can rephrase Q6 as follows:
+
+Q6A: {e.Fname, e.Lname | EMPLOYEE(e) AND ((‘/d)(NOT(DEPENDENT(d))
+OR NOT(e.Ssn=d.Essn)))}
+
+Query 7. List the names of managers who have at least one dependent.
+
+Q7: {e.Fname, e.Lname | EMPLOYEE(e) AND ((3d)(3p)(DEPARTMENT(d)
+AND DEPENDENT(p) AND e.Ssn=d.Mgr_ssn AND p.Essn=e.Ssn))}
+
+This query is handled by interpreting managers who have at least one dependent as
+managers for whom there exists some dependent.
+
+8.6.8 Safe Expressions
+
+Whenever we use universal quantifiers, existential quantifiers, or negation of predi-
+cates in a calculus expression, we must make sure that the resulting expression
+makes sense. A safe expression in relational calculus is one that is guaranteed to
+yield a finite number of tuples as its result; otherwise, the expression is called unsafe.
+For example, the expression
+
+{t | NOT (EMPLOYEE())}
+
+is unsafe because it yields all tuples in the universe that are not EMPLOYEE tuples,
+which are infinitely numerous. If we follow the rules for Q3 discussed earlier, we
+will get a safe expression when using universal quantifiers. We can define safe
+expressions more precisely by introducing the concept of the domain of a tuple
+relational calculus expression: This is the set of all values that either appear as
+constant values in the expression or exist in any tuple in the relations referenced
+in the expression. For example, the domain of {t | NOT(EMPLOYEE(t))} is the set
+of all attribute values appearing in some tuple of the EMPLOYEE relation (for any
+attribute). The domain of the expression Q3A would include all values appearing
+in EMPLOYEE, PROJECT, and WORKS_ON (unioned with the value 5 appearing in
+the query itself).
+
+An expression is said to be safe if all values in its result are from the domain of the
+expression. Notice that the result of {f | NOT(EMPLOYEE(t))} is unsafe, since it will,

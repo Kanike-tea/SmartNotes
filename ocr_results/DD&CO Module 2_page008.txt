@@ -1,0 +1,47 @@
+Binary Subtractor
+
+The subtraction of unsigned binary numbers can be done most conveniently by means of complements.
+Remember that the subtraction A - B can be done by taking the 2’s complement of B and adding it to A.
+The 2’s complement can be obtained by taking the 1’s complement and adding 1 to the least significant
+pair of bits. The 1’s complement can be implemented with inverters, and a 1 can be added to the sum
+through the input carry.
+
+The circuit for subtracting A - B consists of an adder with inverters placed between each data input B
+and the corresponding input of the full adder. The input carry CO must be equal to 1 when subtraction is
+performed. The operation thus performed becomes A, plus the 1’s complement of B, plus 1. This is equal
+to A plus the 2’s complement of B.
+
+By AS BA Bo A By Ac
+
+M
+
+Ss Sy S, So
+—
+
+Four-bit adder—subtractor (with overflow detection)
+
+The addition and subtraction operations can be combined into one circuit with one common binary adder
+by including an exclusive-OR gate with each full adder. A four-bit adder—subtractor circuit is shown in
+above Fig. The mode input M controls the operation. When M = 0, the circuit is an adder, and when
+M = 1, the circuit becomes a subtractor. Each exclusive-OR gate receives input M and one of the inputs
+of B. When M = 0, we have B © 0 = B. The full adders receive the value of B, the input carry is 0, and
+the circuit performs A plus B. When M = 1, we have B © 1| = B and CO = 1. The B inputs are all
+complemented and a | is added through the input carry. The circuit performs the operation A plus the
+2’s complement of B. (The exclusive-OR with output V is for detecting an overflow.)
+
+Overflow
+
+When two numbers with n digits each are added and the sum is a number occupying n+ | digits, we say
+that an overflow occurred. This is true for binary or decimal numbers, signed or unsigned. When the
+addition is performed with paper and pencil, an overflow is not a problem, since there is no limit by the
+width of the page to write down the sum. Overflow is a problem in digital computers because the number
+of bits that hold the number is finite and a result that contains n + | bits cannot be accommodated by an
+n -bit word. For this reason, many computers detect the occurrence of an overflow, and when it occurs,
+a corresponding flip-flop is set that can then be checked by the user.
+
+The detection of an overflow after the addition of two binary numbers depends on whether the numbers
+are considered to be signed or unsigned. When two unsigned numbers are added, an overflow is detected
+from the end carry out of the most significant position. In the case of signed numbers, two details are
+important: the leftmost bit always represents the sign, and negative numbers are in 2’s-complement form.
+When two signed numbers are added, the sign bit is treated as part of the number and the end carry does
+not indicate an overflow.

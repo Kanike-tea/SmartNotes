@@ -1,0 +1,43 @@
+e Availability (A)
+«Partition Tolerance (P)
+
+This theorem helps database architects and system designers understand the trade-offs they
+must make when building and scaling distributed systems, especially in the context of NoSQL
+databases.
+
+2. Definitions of CAP Properties
+
+1. Consistency (C)
+Every read receives the most recent write or an error. This means that all nodes ina
+distributed system return the same data at any given time. It’s similar to the ACID
+concept of consistency in relational databases.
+
+2. Availability (A)
+Every request receives a (non-error) response, without guarantee that it contains the
+most recent write. In other words, the system is operational and responsive at all
+times, even if some data is outdated or inconsistent.
+
+3. Partition Tolerance (P)
+The system continues to operate despite network partitions (communication
+breakdowns) between nodes. In real-world distributed systems, network failures are
+inevitable, so partition tolerance is a must.
+
+3. The Theorem in Practice
+
+According to the CAP theorem, a distributed system can only satisfy two of the three
+guarantees at any given time, especially during a network failure. This leads to three
+possible combinations:
+
+1. CP (Consistency + Partition Tolerance)
+
+o The system remains consistent and tolerates partitions but may become
+unavailable during a failure.
+
+o Example: HBase, MongoDB (default configuration)
+o Use Case: Banking systems where consistency is critical.
+2. AP (Availability + Partition Tolerance)
+
+o The system remains available and tolerates partitions but may return stale or
+inconsistent data.
+
+o Example: Cassandra, DynamoDB, Couchbase

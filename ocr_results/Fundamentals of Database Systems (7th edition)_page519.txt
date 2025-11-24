@@ -1,0 +1,55 @@
+14.5 Boyce-Codd Normal Form
+
+and A being a prime attribute will R be in 3NF but not in BCNF. The relation schema
+R shown in Figure 14.13(b) illustrates the general case of such a relation. Such
+an f.d. leads to potential redundancy of data, as we illustrated above in case of
+FD5: Area > County_name.in LOTSA relation. Ideally, relational database design
+should strive to achieve BCNF or 3NF for every relation schema. Achieving the normal-
+ization status of just INF or 2NF is not considered adequate, since both were developed
+historically to be intermediate normal forms as stepping stones to 3NF and BCNF.
+
+14.5.1 Decomposition of Relations not in BCNF
+
+As another example, consider Figure 14.14, which shows a relation TEACH with the
+following dependencies:
+
+FD1: {Student, Course} — Instructor
+FD2:!4 Instructor > Course
+
+Note that {Student, Course} is a candidate key for this relation and that the depen-
+dencies shown follow the pattern in Figure 14.13(b), with Student as A, Course as B,
+and Instructor as C. Hence this relation is in 3NF but not BCNF. Decomposition of
+this relation schema into two schemas is not straightforward because it may be
+decomposed into one of the three following possible pairs:
+
+1. R1 (Student, Instructor) and R2(Student, Course)
+
+2. R1 (Course, Instructor) and R2(Course, Student)
+3. RI (Instructor, Course) and R2(Instructor, Student)
+
+All three decompositions lose the functional dependency FD1. The question then
+becomes: Which of the above three is a desirable decomposition? As we pointed out
+earlier (Section 14.3.1), we strive to meet two properties of decomposition during
+
+489
+
+TEACH Figure 14.14
+A relation TEACH that is in
+3NF but not BCNF.
+
+Student Course Instructor
+Narayan | Database Mark
+Smith | Database Navathe
+Smith | Operating Systems | Ammar
+Smith _ | Theory Schulman
+Wallace | Database Mark
+
+Wallace | Operating Systems | Ahamad
+
+Wong _ | Database Omiecinski
+
+Zelaya | Database Navathe
+
+Narayan | Operating Systems | Ammar
+
+'4This dependency means that each instructor teaches one course is a constraint for this application.

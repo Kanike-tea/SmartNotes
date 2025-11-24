@@ -1,0 +1,54 @@
+932
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+data having a large number of entries and let them be handled by Reduce tasks,
+whereas the rest of the values may undergo hash partitioning as usual.
+
+This discussion should provide the reader with a good sense of the many possibili-
+ties of implementing Join strategies on top of MapReduce. There are other factors
+affecting performance, such as row versus columnar storage and pushing predicates
+down to storage handlers. These are beyond our scope of discussion here. Inter-
+ested readers will find ongoing research publications in this area that are similar to
+Afrati and Ullman (2010).
+
+The purpose of this section is to highlight two major developments that have
+impacted the big data community by providing high-level interfaces on top of the
+core technology of Hadoop and MapReduce. We will give a brief overview of the
+language Pig Latin and the system Hive.
+
+Apache Pig. Pig’? was a system that was designed at Yahoo Research to bridge the
+gap between declarative-style interfaces such as SQL, which we studied in the con-
+text of the relational model, and the more rigid low-level procedural-style program-
+ming style required by MapReduce that we described in Section 25.2.2. Whereas it
+is possible to express very complex analysis in MR, the user must express programs
+as a one-input, two-stage (map and reduce) process. Furthermore, MR provides no
+methods for describing a complex data flow that applies a sequence of transforma-
+tions on the input. There is no standard way to do common data transformation
+operations like Projections, Filtering, Grouping, and Joining. We saw all these
+operations being expressed declaratively in SQL in Chapters 7 and 8. However,
+there is a community of users and programmers that thinks more procedurally. So
+the developers of Pig invented the language Pig Latin to fill in the “sweet spot”
+between SQL and MR. We show an example of a simple Group By query expressed
+in Pig Latin in Olston et al. (2008):
+
+There is a table of urls: (url,category.pagerank).
+
+We wish to find, for categories having a large number of URLs, the average page-
+rank of the high-pagerank URLs in that category. This requires a grouping of URLs
+by category. The SQL query that expresses this requirement may look like:
+
+SELECT category, AVG(pagerank)
+
+FROM urls WHERE pagerank > 0.2
+GROUP BY category HAVING COUNT(*) > 10**6
+
+The same query in Pig Latin is written as:
+
+good_urls = FILTER urls BY pagerank > 0.2;
+groups = GROUP good_urls BY category;
+big_groups = FILTER groups BY COUNT(good_urls)> 10+*6;
+output = FOREACH big_groups GENERATE
+category, AVG(good_urls.pagerank);
+
+'8See Olston et al. (2008).

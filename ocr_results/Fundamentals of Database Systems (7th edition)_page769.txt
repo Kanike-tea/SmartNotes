@@ -1,0 +1,51 @@
+Review Questions 739
+
+was devoted to a discussion of how typical queries in data warehouses are opti-
+mized. We gave an example of cost-based query transformation in data ware-
+house queries on the so-called star schema. In Section 19.9 we presented a detailed
+overview of the Oracle query optimizer, which uses a number of additional tech-
+niques, details of which were beyond our scope. Finally, in Section 19.10 we men-
+tioned the technique of semantic query optimization, which uses the semantics or
+integrity constraints to simplify the query or completely avoid accessing the data
+or the actual execution of the query.
+
+Review Questions
+19.1. What is a query execution plan?
+
+19.2. What is meant by the term heuristic optimization? Discuss the main heuris-
+tics that are applied during query optimization.
+
+19.3. How does a query tree represent a relational algebra expression? What is
+meant by an execution of a query tree? Discuss the rules for transformation
+of query trees, and identify when each rule should be applied during optimi-
+zation.
+
+19.4. How many different join orders are there for a query that joins 10 relations?
+How many left-deep trees are possible?
+
+19.5. What is meant by cost-based query optimization?
+
+19.6. What is the optimization approach based on dynamic programming? How
+is it used during query optimization?
+
+19.7. What are the problems associated with keeping views materialized?
+19.8. What is the difference between pipelining and materialization?
+
+19.9. Discuss the cost components for a cost function that is used to estimate
+query execution cost. Which cost components are used most often as the
+basis for cost functions?
+
+19.10. Discuss the different types of parameters that are used in cost functions.
+Where is this information kept?
+
+19.11. What are semi-join and anti-join? What are the join selectivity and join car-
+dinality parameters associated with them? Provide appropriate formulas.
+
+19.12. List the cost functions for the SELECT and JOIN methods discussed in
+Sections19.4 and 19.5.
+
+19.13. Whatare the special features of query optimization in Oracle that we did not
+discuss in the chapter?
+
+19.14. What is meant by semantic query optimization? How does it differ from
+other query optimization techniques?

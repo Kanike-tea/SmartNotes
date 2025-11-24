@@ -1,0 +1,33 @@
+chapter 2 7
+
+Introduction to Information
+Retrieval and Web Search
+
+n most of the chapters in this book so far, we have
+
+discussed techniques for modeling, designing, query-
+ing, transaction processing of, and managing structured data. In Section 13.1, we
+discussed the differences among structured, semistructured, and unstructured data.
+Information retrieval deals mainly with unstructured data, and the techniques for
+indexing, searching, and retrieving information from large collections of unstruc-
+tured documents. In Chapter 24, on NOSQL technologies, we considered systems,
+like MongoDB, that are suited to handling data in the form of documents. In this
+chapter, we will provide an introduction to information retrieval. This is a very
+broad topic, so we will focus on the similarities and differences between informa-
+tion retrieval and database technologies, and on the indexing techniques that form
+the basis of many information retrieval systems.
+
+This chapter is organized as follows. In Section 27.1, we introduce information
+retrieval (IR) concepts and discuss how IR differs from traditional databases. Sec-
+tion 27.2 is devoted to a discussion of retrieval models, which form the basis for IR
+search. Section 27.3 covers different types of queries in IR systems. Section 27.4
+discusses text preprocessing, and Section 27.5 provides an overview of IR indexing,
+which is at the heart of any IR system. In Section 27.6, we describe the various
+evaluation metrics for IR systems performance. Section 27.7 details Web analysis
+and its relationship to information retrieval, and Section 27.8 briefly introduces the
+current trends in IR. Section 27.9 summarizes the chapter. For a limited overview of
+IR, we suggest that students read Sections 27.1 through 27.6.
+
+"This chapter is coauthored with Saurav Sahay, Intel Labs.
+
+1021

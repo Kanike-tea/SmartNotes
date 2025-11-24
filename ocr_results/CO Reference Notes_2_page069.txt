@@ -1,0 +1,56 @@
+1 (+13) : o1101
+0 (6) O-1+1-1 0
+00000000
+o11
+01
+
+1110110010 (78)
+Figure 9.11 Booth multiplication with a negative multiplier.
+
+FAST MULTIPLICATION
+BIT-PAIR RECODING OF MULTIPLIERS
+© This method
+— derived from the booth algorithm
+— reduces the number of summands by a factor of 2
+© Group the Booth-recoded multiplier bits in pairs. (Figure 9.14 & 9.15).
+© The pair (+1 -1) is equivalent to the pair (0 +1).
+
+Sige extensions i] 1 ot 0 1 0 [0] 27 Implied 0 to right of LSB
+
+0 -l mY)
+(a) Example of bit-pair recoding derived from Booth recoding
+
+Multiplier bit-pair_| Multiplier bit on the right Multiplicand
+ei F 1 selected at position i
+0 0 0 OxM
+0 0 1 +1xM
+0 1 0 +1xM
+0 1 1 +2xM
+I 0 0 -2xM
+1 0 1 -1xM
+I 1 0 -1xM
+1 1 1 OxM
+
+(b) Table of multiplicand selection decisions
+Figure 9.14 — Multiplier bit-pair recoding.
+
+O11 01 GIB
+x11010 (6)
+|
+o1iot
+O41 0
+0000000000
+bitoort
+oooorro0)
+1oo1t
+00000
+1tiottoot o (78)
+orior
+o - -2
+11oo0rl0
+Loot
+oo000
+riiort
+Figure 9.15 Multiplication requiring only n/2 summands.
+
+Page 70

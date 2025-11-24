@@ -1,0 +1,48 @@
+Data Structures and Applications(BCS304) Module 2
+
+Function to delete a NODE in the end of a linked list
+Void delete-end()
+{
+NODE * cur,*prev;
+If (first==NULL)
+Printf(“List empty”);
+else
+if (first->link==NULL)
+{
+Cur=first
+First=NULL
+Free(cur);
+}
+else
+{
+Prev=NULL;
+Cur=first;
+While(cur->link!=NULL)
+{
+Prev=cur;
+Cur=cur-.link;
+}
+Prev->link=NULL
+Free(cur);
+
+Delete the nodes from a linked list pointed by first whose information part is specified is item
+
+NODE * delete_item(NODE “first, int item)
+{
+
+NODE *prev, *cur;
+If (first==NULL)
+{
+printf(“list is empty”);
+return(first);
+}
+if(first->info==item)
+{
+cur=first
+first=first->link
+free(cur);
+return(first);
+}
+prev=NULL;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 17

@@ -1,0 +1,66 @@
+118 Chapter 5 Efficient C Programming
+
+EXAMPLE
+
+5.4
+
+We call these instructions the loop overhead. On ARM7 or ARM9 processors the
+subtract takes one cycle and the branch three cycles, giving an overhead of four cycles
+per loop.
+
+You can save some of these cycles by unrolling a loop—repeating the loop body several
+times, and reducing the number of loop iterations by the same proportion. For example,
+let’s unroll our packet checksum example four times.
+
+The following code unrolls our packet checksum loop by four times. We assume that the
+number of words in the packet N is a multiple of four.
+
+int checksum_v9(int *data, unsigned int N)
+
+{
+
+‘int sum=0;
+
+do
+
+{
+sum += *(datat+) ;
+sum += *(datat+) ;
+sum += *(datat+) ;
+sum += *(datat+) ;
+N-= 45
+
+} while ( NI=0);
+
+return sum;
+
+This compiles to
+
+checksum_v9
+
+MOV r2,#0 5 sum = 0
+checksum_v9_loop
+
+LOR 13, [r0] #4 3 13 = *(data++)
+
+SUBS rl,rl,#4 3 N-= 4 & set flags
+
+ADD 12,73, 72 3 sum += r3
+
+LOR 13, [r0] #4 3 13 = *(data++)
+
+ADD 12,73, 72 3 sum += r3
+
+LOR 13, [r0] #4 3 13 = *(data++)
+
+ADD 12,73, 72 3 sum += r3
+
+LOR 13, [r0] #4 3 13 = *(data++)
+
+ADD 12,73, 72 3 sum += r3
+
+BNE checksum_v9_loop ; if (N!=0) goto loop
+
+Mov 10,72 3 r0 = sum
+
+Mov pe, rl4 3 return r0

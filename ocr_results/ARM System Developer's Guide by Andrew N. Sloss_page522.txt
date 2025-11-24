@@ -1,0 +1,66 @@
+14.5 The Translation Lookaside Buffer 509
+
+the two-stage process for a translation held in a coarse L2 page table. Note that the virtual
+address is divided into three parts.
+
+In the first step, the L1 offset portion is used to index into the master L1 page table
+and find the L1 PTE for the virtual address. If the lower two bits of the PTE contain the
+binary value 01, then the entry contains the L2 page table base address to a coarse page
+(see Figure 14.6).
+
+In the second step, the L2 offset is combined with the L2 page table base address found
+in the first stage; the resulting address selects the PTE that contains the translation for
+the page. The MMU transfers the data in the L2 PTE to the TLB, and the base address is
+combined with the offset portion of the virtual address to generate the requested address
+in physical memory.
+
+14.5.3 TLB OPERATIONS
+
+Table 14.3
+
+If the operating system changes data in the page tables, translation data cached in the TLB
+may no longer be valid. To invalidate data in the TLB, the core has CP15 commands to
+flush the TLB. There are several commands available (see Table 14.3): one to flush all TLB
+data, one to flush the Instruction TLB, and another to flush the Data TLB. The TLB can
+also be flushed a line at a time.
+
+CP15:c7 commands to flush the TLB.
+
+Command
+
+MCR instruction Value in Rd Core support
+
+Invalidate all
+TLBs
+
+Invalidate
+TLB by line
+Invalidate I
+TLB
+
+Invalidate I
+TLB by line
+
+Invalidate D
+TLB
+
+Invalidate D
+TLB by line
+
+MCR p15, 0, Rd, c8, c7, 0 shouldbe zero ARM720T, ARM920T, ARM922T,
+ARM926EJ-S, ARM1022E,
+ARM1026EJ-S, StrongARM, XScale
+MCR p15, 0, Rd, c8, c7, 1 virtual address ARM720T
+to invalidate
+MCR p15, 0, Rd, c8, c5, 0 virtual address ARM920T, ARM922T, ARM926EJ-S,
+to invalidate | ARM1022E, ARM1026EJ-S,
+StrongARM, XScale
+MCR p15, 0, Rd, c8, c5, 1 virtual address ARM920T, ARM922T, ARM926EJ-S,
+to invalidate | ARM1022E, ARM1026EJ-S,
+StrongARM, XScale
+MCR p15, 0, Rd, c8, c6, 0 virtual address ARM920T, ARM922T, ARM926EJ-S,
+to invalidate | ARM1022E, ARM1026EJ-S,
+StrongARM, XScale
+MCR p15, 0, Rd, c8, c6, 1 virtual address ARM920T, ARM922T, ARM926EJ-S,
+to invalidate | ARM1022E, ARM1026EJ-S,
+StrongARM, XScale

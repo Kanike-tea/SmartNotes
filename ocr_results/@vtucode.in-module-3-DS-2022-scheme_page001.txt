@@ -1,0 +1,55 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Operations for Circularly Linked Lists:
+
+1 Inserting at front of the list:
+
+void insertfront(listpointer *last, listpointer node)
+{
+
+/*insert node at the front of the circular list whose
+last node is last*/
+
+if(!(*last))
+{
+/*list is empty, change last to point to new entry*/
+*last=node;
+}
+else
+{
+/*list is not empty, add new entry at front*/
+node->link=(*last) ->link;
+(*last) ->link=node;
+
+}
+Prg: Inserting at the front of a list
+
+To insert at rear , we only need to add the additional
+statement *last=node to the else clause of insertFront
+
+2. Finding the length of a circular list
+
+int length(listpointeér last)
+
+{
+/*find theslength of the circular list last*/
+
+listpointer ‘temp;
+int, count=0;
+if (last)
+
+{
+
+temp=last;
+do
+{
+countt++;
+temp=temp->link;
+}
+}
+
+return count;
+
+prg: finding lrngth of a circular list
+
+vtucode.in 2

@@ -1,0 +1,42 @@
+Microcontrollers - BCS402
+
+Figure 2 shows the relationship that a cache has with main memory system and the processor
+core. The upper half of the figure shows a block diagram of a system without a cache. Main
+memory is accessed directly by the processor core using the data types supported by the
+
+processor core. The lower half of the diagram shows a system with a cache.
+
+The cache memory is much faster than main memory and thus responds quickly to data requests
+by the core. The cache’s relationship with main memory involves the transfer of small blocks of
+
+data between the slower main memory to the faster cache memory.
+
+These blocks of data are known as cache lines. The write buffer acts as a temporary buffer that
+frees available space in the cache memory. The cache transfers a cache line to the write buffer at
+
+high speed and then the write buffer drains it to main memory at slow speed.
+1.1 Caches and Memory Management Units
+
+If a cached core supports virtual memory, it can be located between the core and the memory
+management unit (MMU), or between the MMU and physical memory. Placement of the cache
+before or after the MMU determines the addressing realm the cache operates in and how a
+programmer views the cache memory system. Figure 3 shows the difference between the two
+
+caches.
+
+A logical cache stores data in a virtual address space. A logical cache is located between the
+processor and the MMU. The processor can access data from a logical cache directly without
+
+going through the MMU. A logical cache is also known as a virtual cache.
+
+A physical cache stores memory using physical addresses. A physical cache is located between
+the MMU and main memory. For the processor to access memory, the MMU must first translate
+
+the virtual address to a physical address before the cache memory can provide data to the core.
+
+ARM cached cores with an MMU use logical caches for processor families ARM7 through
+ARM1O, including the Intel Strong ARM and Intel X Scale processors. The ARM11 processor
+family uses a physical cache. See Chapter 14 for additional information on the operation of the
+MMU.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 32

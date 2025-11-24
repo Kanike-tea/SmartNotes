@@ -1,0 +1,49 @@
+916
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+listing veracity as one of the dimensions of big data amounts to saying that data
+coming into the so-called big data applications have a variety of trustworthiness,
+and therefore before we accept the data for analytical or other applications, it must
+go through some degree of quality testing and credibility analysis. Many sources of
+data generate data that is uncertain, incomplete, and inaccurate, therefore making
+its veracity questionable.
+
+We now turn our attention to the technologies that are considered the pillars of big
+data technologies. It is anticipated that by 2016, more than half of the data in the
+world may be processed by Hadoop-related technologies. It is therefore important
+for us to trace the MapReduce/Hadoop revolution and understand how this tech-
+nology is positioned today. The historical development starts with the program-
+ming paradigm called MapReduce programming.
+
+25.2 Introduction to MapReduce and Hadoop
+
+In this section, we will introduce the technology for big data analytics and data pro-
+cessing known as Hadoop, an open source implementation of the MapReduce pro-
+gramming model. The two core components of Hadoop are the MapReduce
+programming paradigm and HDFS, the Hadoop Distributed File System. We will
+briefly explain the background behind Hadoop and then MapReduce. Then we will
+make some brief remarks about the Hadoop ecosystem and the Hadoop releases.
+
+25.2.1 Historical Background
+
+Hadoop has originated from the quest for an open source search engine. The first
+attempt was made by the then Internet archive director Doug Cutting and Univer-
+sity of Washington graduate student Mike Carafella. Cutting and Carafella devel-
+oped a system called Nutch that could crawl and index hundreds of millions of Web
+pages. It is an open source Apache project.® After Google released the Google File
+System? paper in October 2003 and the MapReduce programming paradigm
+paper’? in December 2004, Cutting and Carafella realized that a number of things
+they were doing could be improved based on the ideas in these two papers. They
+built an underlying file system and a processing framework that came to be known
+as Hadoop (which used Java as opposed to the C++ used in MapReduce) and ported
+Nutch on top of it. In 2006, Cutting joined Yahoo, where there was an effort under
+way to build open source technologies using ideas from the Google File System and
+the MapReduce programming paradigm. Yahoo wanted to enhance its search pro-
+cessing and build an open source infrastructure based on the Google File System
+and MapReduce. Yahoo spun off the storage engine and the processing parts
+of Nutch as Hadoop (named after the stuffed elephant toy of Cutting’s son). The
+
+®For documentation on Nutch, see http:nutch.apache.org
+°Ghemawat, Gbioff, and Leung (2008).
+‘Dean and Ghemawat (2004).

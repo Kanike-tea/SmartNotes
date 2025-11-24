@@ -1,0 +1,54 @@
+754 — Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+Begin
+
+transaction transaction Commit
+eC (Rotive) nen Partially committed eam = Committed)
+
+Figure 20.4
+
+Read, Write
+
+End
+
+Abort Abort
+
+~ Cod
+
+State transition diagram illustrating the states for transaction execution.
+
+whether the transaction has to be aborted because it violates serializability
+(see Section 20.5) or for some other reason.
+
+= COMMIT_TRANSACTION. This signals a successful end of the transaction so that
+any changes (updates) executed by the transaction can be safely committed to
+the database and will not be undone.
+
+™ ROLLBACK (or ABORT). This signals that the transaction has ended unsuc-
+cessfully, so that any changes or effects that the transaction may have applied
+to the database must be undone.
+
+Figure 20.4 shows a state transition diagram that illustrates how a transaction
+moves through its execution states. A transaction goes into an active state immedi-
+ately after it starts execution, where it can execute its READ and WRITE operations.
+When the transaction ends, it moves to the partially committed state. At this
+point, some types of concurrency control protocols may do additional checks to see
+if the transaction can be committed or not. Also, some recovery protocols need to
+ensure that a system failure will not result in an inability to record the changes of
+the transaction permanently (usually by recording changes in the system log,
+discussed in the next section).° If these checks are successful, the transaction is said
+to have reached its commit point and enters the committed state. Commit points
+are discussed in more detail in Section 20.2.3. When a transaction is committed, it
+has concluded its execution successfully and all its changes must be recorded
+permanently in the database, even if a system failure occurs.
+
+However, a transaction can go to the failed state if one of the checks fails or if the trans-
+action is aborted during its active state. The transaction may then have to be rolled back
+to undo the effect of its WRITE operations on the database. The terminated state corre-
+sponds to the transaction leaving the system. The transaction information that is main-
+tained in system tables while the transaction has been running is removed when the
+transaction terminates. Failed or aborted transactions may be restarted later—either
+automatically or after being resubmitted by the user—as brand new transactions.
+
+5 Optimistic concurrency control (see Section 21.4) also requires that certain checks are made at this
+point to ensure that the transaction did not interfere with other executing transactions.

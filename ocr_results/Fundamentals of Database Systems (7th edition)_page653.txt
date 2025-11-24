@@ -1,0 +1,49 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees 623
+
+(a) oP | K | | Ka] Pe Kil Poe
+
+Tree Tree Tree
+pointer pointer pointer
+
+X<K, Ka<Xx<K, Kya<X
+b)
+( K ],Pn KelpPra] --- [Ki lePa] --- [Kea |pPlot] Poon el Pointer fe
+node in
+' ' ’ ' tree
+Data Data Data Data
+pointer pointer pointer pointer
+
+Figure 17.11
+The nodes of a B*-tree. (a) Internal node of a B*-tree with q— 1 search values. (b) Leaf node of a B*-tree with q— 1
+search values and q— 1 data pointers.
+
+2. Within each internal node, Ky < Ky <... < Kyi.
+
+3. For all search field values X in the subtree pointed at by P;, we have Kj_) < X
+<K; for 1 <i<q;X<K;fori=1;and Kj_; < X for i=q (see Figure 17.11(a)).'*
+4. Each internal node has at most p tree pointers.
+
+5. Each internal node, except the root, has at least I(p/2)] tree pointers. The
+root node has at least two tree pointers if it is an internal node.
+
+6. An internal node with q pointers, q < p, has q — 1 search field values.
+The structure of the leaf nodes of a B*-tree of order p (Figure 17.11(b)) is as follows:
+1. Each leaf node is of the form
+
+<<Kj, Pri>, <K, Pr>, <Kq-1) Prg-1>s Pnext>
+
+where q < p, each Pr; is a data pointer, and Pyex, points to the next leaf node
+of the B*-tree.
+
+2. Within each leaf node, K, < Ky ..., Ky 1.95 p-
+
+3. Each Pr; is a data pointer that points to the record whose search field value is
+K; or toa file block containing the record (or to a block of record pointers that
+point to records whose search field value is K; if the search field is not a key).
+
+4. Each leaf node has at least [(p/2)] values.
+
+5. All leaf nodes are at the same level.
+
+'2Our definition follows Knuth (1998). One can define a B*-tree differently by exchanging the < and <
+symbols (K;-1 < X< Kj; Kg-1 < X), but the principles remain the same.

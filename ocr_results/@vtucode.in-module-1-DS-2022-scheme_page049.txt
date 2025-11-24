@@ -1,0 +1,53 @@
+DATA STRUCTURES-BCS304
+
+MODULE 1
+
+precedence getToken(char *symbol, int *n)
+
+{
+
+*symbol =
+
+expr[(*n)++]; switch
+
+(*symbol)
+{
+
+case '(': return Iparen;
+case ')' : return rparen;
+case '+' : return plus;
+case '-' : return minus;
+case '/' : return divide;
+case '*' : return times;
+case '%!' : return mod;
+case '': return eos;
+
+default: return operand;
+
+Program: Function to get a token from the input string
+
+e The function eval ( ) contains the code to. evaluate a postfix expression. Since an
+
+operand (symbol) is initially a character, convert it into a single digit integer.
+
+e To convert use the statement,symbol-'0'. The statement takes the ASCII value
+
+of symbol and subtracts the ASCII value of '0', which is 48, from it. For example,
+
+suppose symbol = '!. The character 'l' has an ASCII value of 49. Therefore, the
+
+statement symbol-'0' produces as result the number 1.
+
+e The function getToken( ), obtain tokens from the expression string. If the token is
+
+an operand, convert it to a number and add it to the stack. Otherwise remove two
+
+operands from the stack, perform the specified operation, and place the result back
+
+on the stack. When the end of expression is reached, remove the result from the
+
+stack.
+
+vtucode.in
+
+50

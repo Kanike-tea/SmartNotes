@@ -1,0 +1,52 @@
+Selected Bibliography
+
+Since DBD is implemented in Prolog, use of uppercase terms is reserved for variables
+in the language and therefore lowercase constants are used to code the attributes. For
+further details on using the DBD system, please refer to the laboratory manual.
+15.33. Using the DBD system, verify your answers to the following exercises:
+
+a. 15.24
+
+b. 15.26
+
+ce. 15.27
+. 15.28
+15.29
+15.31 (a) and (b)
+g. 15.32 (a) and (c)
+
+2
+
+°
+
+Selected Bibliography
+
+The books by Maier (1983) and Atzeni and De Antonellis (1993) include a compre-
+hensive discussion of relational dependency theory. Algorithm 15.4 is based on the
+normalization algorithm presented in Biskup et al. (1979). The decomposition
+algorithm (Algorithm 15.5) is due to Bernstein (1976). Tsou and Fischer (1982)
+give a polynomial-time algorithm for BCNF decomposition.
+
+The theory of dependency preservation and lossless joins is given in Ullman (1988),
+where proofs of some of the algorithms discussed here appear. The lossless join
+property is analyzed in Aho et al. (1979). Algorithms to determine the keys of a
+relation from functional dependencies are given in Osborn (1977); testing for
+BCNF is discussed in Osborn (1979). Testing for 3NF is discussed in Tsou and
+Fischer (1982). Algorithms for designing BCNF relations are given in Wang (1990)
+and Hernandez and Chan (1991).
+
+Multivalued dependencies and fourth normal form are defined in Zaniolo (1976)
+and Nicolas (1978). Many of the advanced normal forms are due to Fagin: the fourth
+normal form in Fagin (1977), PJNF in Fagin (1979), and DKNF in Fagin (1981). The
+set of sound and complete rules for functional and multivalued dependencies was
+given by Beeri et al. (1977). Join dependencies are discussed by Rissanen (1977) and
+Aho et al. (1979). Inference rules for join dependencies are given by Sciore (1982).
+Inclusion dependencies are discussed by Casanova et al. (1981) and analyzed further
+in Cosmadakis et al. (1990). Their use in optimizing relational schemas is discussed
+in Casanova et al. (1989). Template dependencies, which are a general form of
+dependencies based on hypotheses and conclusion tuples, are discussed by Sadri and
+Ullman (1982). Other dependencies are discussed in Nicolas (1978), Furtado (1978),
+and Mendelzon and Maier (1979). Abiteboul et al. (1995) provides a theoretical
+treatment of many of the ideas presented in this chapter and Chapter 14.
+
+537

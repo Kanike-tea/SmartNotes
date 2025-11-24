@@ -1,0 +1,40 @@
+3.4. Relationship Types, Relationship Sets, Roles, and Structural Constraints
+
+EMPLOYEE WORKS_FOR DEPARTMENT
+
+Figure 3.9
+
+Some instances in
+the WORKS_FOR
+relationship set,
+which represents a
+relationship type
+WORKS_FOR
+between EMPLOYEE
+and DEPARTMENT.
+
+73
+
+EMPLOYEE and DEPARTMENT, which associates each employee with the depart-
+ment for which the employee works. Each relationship instance in the relationship
+set WORKS_FOR associates one EMPLOYEE entity and one DEPARTMENT
+entity. Figure 3.9 illustrates this example, where each relationship instance r; is
+shown connected to the EMPLOYEE and DEPARTMENT entities that participate
+in r;. In the miniworld represented by Figure 3.9, the employees e), e3, and eg work
+for department d}; the employees e) and e4 work for department d); and the employ-
+ees es and e7 work for department d3.
+
+In ER diagrams, relationship types are displayed as diamond-shaped boxes, which
+are connected by straight lines to the rectangular boxes representing the participat-
+ing entity types. The relationship name is displayed in the diamond-shaped box
+(see Figure 3.2).
+
+3.4.2 Relationship Degree, Role Names, and Recursive
+Relationships
+
+Degree of a Relationship Type. The degree of a relationship type is the number
+of participating entity types. Hence, the WORKS_FOR relationship is of degree
+two. A relationship type of degree two is called binary, and one of degree three is
+called ternary. An example of a ternary relationship is SUPPLY, shown in Fig-
+ure 3.10, where each relationship instance r; associates three entities—a supplier s, a
+part p, and a project j—whenever s supplies part p to project j. Relationships can

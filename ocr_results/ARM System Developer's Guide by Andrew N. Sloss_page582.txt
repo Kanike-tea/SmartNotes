@@ -1,0 +1,29 @@
+APPENDIX
+
+ARM AND THUMB
+ASSEMBLER
+INSTRUCTIONS
+
+This appendix lists the ARM and Thumb instructions available up to, and including, ARM
+architecture ARMv6, which was just released at the time of writing. We list the operations
+in alphabetical order for easy reference. Sections A.4 and A.5 give quick reference guides to
+the ARM and GNU assemblers armasm and gas.
+
+We have designed this appendix for practical programming use, both for writing
+assembly code and for interpreting disassembly output. It is not intended as a definitive
+architectural ARM reference. In particular, we do not list the exhaustive details of each
+instruction bitmap encoding and behavior. For this level of detail, see the ARM Architecture
+Reference Manual, edited by David Seal, published by Addison Wesley. We do give a
+summary of ARM and Thumb instruction set encodings in Appendix B.
+
+A.l USING THIS APPENDIX
+
+Each appendix entry begins by enumerating the available instructions formats for the given
+instruction class. For example, the first entry for the instruction class ADD reads
+
+1. ADD<cond>{S} Rd, Rn, #<rotated_immed> ARMV1
+
+The fields <cond> and <rotated_immed> are two of a number of standard fields described
+in Section A.2. Rd and Rn denote ARM registers. The instruction is only executed if the
+
+569

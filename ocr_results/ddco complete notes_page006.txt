@@ -1,0 +1,26 @@
+Digital Design and Computer Organization(BCS302)
+
+gate forms the logical OR of the three terms. The truth table for F2 is listed in
+Table 2.2.
+
+Now consider the possible simplification of the function by applying some of the
+identities of Boolean algebra:
+F2 = x'y'z + x'yz + xy' = x'z(y' + y) + xy' = x'z + xy'
+> The function is reduced to only two terms and can be implemented with gates
+as shown in Fig. 2.2(b). It is obvious that the circuit in (b) is simpler than the
+one in (a), yet both implement the same function.
+> By means of a truth table, it is possible to verify that the two expressions are
+equivalent. The simplified expression is equal to 1 when xz = 01 or when xy = 10.
+> In general, there are many equivalent representations of a logic function. Finding
+the most economic representation of the logic is an important design task.
+
+y —
+
+ne
+
+(b) Fy = xy'+ x's
+
+FIGURE 2.2
+Implementation of Boolean function Fz with gates
+
+Page 7

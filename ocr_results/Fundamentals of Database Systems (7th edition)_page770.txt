@@ -1,0 +1,53 @@
+740
+
+Chapter 19 Query Optimization
+
+Exercises
+
+19.15. Develop cost functions for the PROJECT, UNION, INTERSECTION, SET
+DIFFERENCE, and CARTESIAN PRODUCT algorithms discussed in Section 19.4.
+
+19.16. Develop cost functions for an algorithm that consists of two SELECTs, a
+JOIN, and a final PROJECT, in terms of the cost functions for the individual
+operations.
+
+19.17. Develop a pseudo-language-style algorithm for describing the dynamic
+programming procedure for join-order selection.
+
+19.18. Calculate the cost functions for different options of executing the JOIN
+operation OP7 discussed in Section 19.4.
+
+19.19. Develop formulas for the hybrid hash-join algorithm for calculating the size
+of the buffer for the first bucket. Develop more accurate cost estimation
+formulas for the algorithm.
+
+19.20. Estimate the cost of operations OP6 and OP7 using the formulas developed
+in Exercise 19.19.
+
+19.21. Compare the cost of two different query plans for the following query:
+OSalary< 40000(EMPLOYEE 04 pno=DnumbeOEPARTMENT)
+
+Use the database statistics shown in Figure 19.6.
+
+Selected Bibliography
+
+This bibliography provides literature references for the topics of query processing
+and optimization. We discussed query processing algorithms and strategies in the
+previous chapter, but it is difficult to separate the literature that addresses optimiza-
+tion from the literature that addresses query processing strategies and algorithms.
+Hence, the bibliography is consolidated.
+
+A detailed algorithm for relational algebra optimization is given by Smith and
+Chang (1975). The Ph.D. thesis of Kooi (1980) provides a foundation for query
+processing techniques. A survey paper by Jarke and Koch (1984) gives a taxonomy
+of query optimization and includes a bibliography of work in this area. A survey by
+Graefe (1993) discusses query execution in database systems and includes an exten-
+sive bibliography.
+
+Whang (1985) discusses query optimization in OBE (Office-By-Example), which is
+a system based on the language QBE. Cost-based optimization was introduced in
+the SYSTEM R experimental DBMS and is discussed in Astrahan et al. (1976).
+Selinger et al. (1979) is a classic paper that discussed cost-based optimization of
+multiway joins in SYSTEM R. Join algorithms are discussed in Gotlieb (1975), Blas-
+gen and Eswaran (1976), and Whang et al. (1982). Hashing algorithms for imple-
+menting joins are described and analyzed in DeWitt et al. (1984), Bratbergsengen

@@ -1,0 +1,93 @@
+checksum_v7_loop
+
+LOR v3, [rO] , #4
+
+suBS —rl,rl,#1
+
+ADD r2,r3,r2
+
+BNE checksum_v7_loop
+checksum_v7_end
+
+MOV r,r2
+
+MOV pcyrl4
+
+117
+
+5.3 C Looping Structures
+
+13 = *(data++)
+
+3 Ne- and set flags
+3 sum += 3
+
+if (N!=0) goto loop
+
+r0 = sum
+
+3 return r0
+
+Notice that the compiler checks that N is nonzero on entry to the function. Often this
+check is unnecessary since you know that the array won’t be empty. In this case a do-whi le
+loop gives better performance and code density than a for loop.
+
+EXAMPLE
+
+5.3
+
+occurs ina for loop.
+
+This example shows how to use a do-while loop to remove the test for N being zero that
+
+int checksum_v8(int *data, unsigned int N)
+
+{
+
+int sum=0;
+
+do
+{
+
+sum += *(data++);
+} while (--N!=0);
+return sum;
+
+}
+
+The compiler output is now
+
+checksum_v8
+
+MOV 2, #0
+checksum_v8_loop
+
+LOR v3, [rO] , #4
+
+suBS —rl,rl,#1
+
+ADD r2,r3,r2
+
+BNE checksum_v8_loop
+
+MOV r0,r2
+
+MOV pcyrl4
+
+sum = 0
+
+13 = *(data++)
+
+3 Ne- and set flags
+3 sum += 3
+
+if (N!=0) goto loop
+r0 = sum
+return r0
+
+Compare this with the output for checksum_v7 to see the two-cycle saving.
+
+5.3.3. LOOP UNROLLING
+
+We saw in Section 5.3.1 that each loop iteration costs two instructions in addition to
+the body of the loop: a subtract to decrement the loop count and a conditional branch.

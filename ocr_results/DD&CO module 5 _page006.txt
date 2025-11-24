@@ -1,0 +1,37 @@
+PERFORMING AN ARITHMETIC OR LOGIC OPERATION
+¢ The ALU performs arithmetic operations on the 2 operands applied to its A and B
+inputs.
+¢ One of the operands is output of MUX;
+And, the other operand is obtained directly from processor-bus.
+¢ The result (produced by the ALU) is stored temporarily in register Z.
+¢ The sequence of operations for [R3] (/R1]+[R2] is as follows:
+
+1) Rlout, Yin
+
+2) R2out, SelectY, Add, Zin
+
+3) Zout, R3in
+
+« Instruction execution proceeds as follows:
+Step 1 --> Contents from register R1 are loaded into register Y.
+p2 --> Contents from Y and from register R2 are applied to the A,and B inputs of ALU;
+
+Addition is performed &
+Result is stored in the Z register.
+Step 3 --> The contents of Z register is stored in the R3 register.
+¢ The signals are activated for the duration of the clock cycle corresponding to that
+step. All other signals are inactive.
+
+CONTROL-SIGNALS OF MDR
+¢ The MDR register has 4 control-signals (Figure 7.4):
+1) MDRin & MDRout contro! the connection to the internal processor data bus &
+2) MDRinE & MDRoutE control the connection to the memory Data bus.
+¢ MAR register has 2 control-signals.
+1) MARin controls the connection to the internal processor address bus &
+2) MARout controls the connection to the memory address bus.
+
+» Intemal processor
+data lines MD Raw MDR,,
+MDRie MDR;,
+
+Figure 7.4 Connection and control signals for register MDR.

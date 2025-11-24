@@ -1,0 +1,24 @@
+Developers enforce data validation in the system by adding appropriate code in the various
+application program. How ever when new constraints are added, it is difficult to change the
+
+programs to enforce them.
+
+5) Atomicity:
+
+6)
+
+D)
+
+It is difficult to ensure atomicity in a file processing system when transaction failure occurs
+due to power failure, networking problems etc. (atomicity: either all operations of the
+transaction are reflected properly in the database or non are)
+
+Concurrent access:
+In the file processing system it is not possible to access the same file for transaction at same
+
+the time.
+
+Security problems:
+There is no security provided in file processing system to secure the data from unauthoriz-
+
+ed user access.

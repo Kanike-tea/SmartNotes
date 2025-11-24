@@ -1,0 +1,40 @@
+96 Chapter 4 Introduction to the Thumb Instruction Set
+
+4.5 SINGLE-REGISTER LOAD-STORE INSTRUCTIONS
+
+The Thumb instruction set supports load and storing registers, or LDR and STR. These
+instructions use two preindexed addressing modes: offset by register and offset by
+immediate.
+
+Syntax: <LDR|STR>{<B|H>) Rd, [Rn,#immediate]
+LDR{<H|SB|SH>} Rd, [Rn, Rm]
+STR{<B|H>} Rd, [Rn, Rm]
+LOR Rd, [pc, #immedi ate]
+<LDR|STR> Rd, [sp,#immediate]
+
+LOR | load word into a register Rd <- mem32 [address]
+STR | save word from a register Rd -> mem32 [address]
+LORB | load byte into a register Rd <- mem8 [address]
+STRB_ | save byte from a register Rd -> mem8 [address]
+LORH | load halfword into a register Rd <- meml6 [address]
+STRH | save halfword into a register Rd -> meml6 [address]
+LORSB | load signed byte into a register Rd <- SignExtend(mem8[address])
+LORSH | load signed halfword into a register | Rd <- SignExtend(mem16[address])
+
+You can see the different addressing modes in Table 4.3. The offset by register uses
+a base register Rn plus the register offset Rm. The second uses the same base register Rn
+plus a 5-bit immediate or a value dependent on the data size. The 5-bit offset encoded in
+the instruction is multiplied by one for byte accesses, two for 16-bit accesses, and four for
+32-bit accesses.
+
+Table 4.3. Addressing modes.
+
+Type Syntax
+
+Load/store register [Rn, Rm]
+
+Base register + offset [Rn, #immediate]
+Relative [pc|sp, #immediate]
+
+ExamPLe This example shows two Thumb instructions that use a preindex addressing mode. Both
+4.5 use the same pre-condition.

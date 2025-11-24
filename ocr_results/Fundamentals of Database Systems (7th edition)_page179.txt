@@ -1,0 +1,35 @@
+=
+chapter ~)
+
+The Relational Data Model and
+Relational Database Constraints
+
+Th chapter opens Part 3 of the book, which covers
+relational databases. The relational data model was
+first introduced by Ted Codd of IBM Research in 1970 in a classic paper (Codd,
+1970), and it attracted immediate attention due to its simplicity and mathematical
+foundation. The model uses the concept of a mathematical relation—which looks
+somewhat like a table of values—as its basic building block, and has its theoretical
+basis in set theory and first-order predicate logic. In this chapter we discuss the
+basic characteristics of the model and its constraints.
+
+The first commercial implementations of the relational model became available in
+the early 1980s, such as the SQL/DS system on the MVS operating system by IBM
+and the Oracle DBMS. Since then, the model has been implemented in a large num-
+ber of commercial systems, as well as a number of open source systems. Current
+popular commercial relational DBMSs (RDBMSs) include DB2 (from IBM), Oracle
+(from Oracle), Sybase DBMS (now from SAP), and SQLServer and Microsoft
+Access (from Microsoft). In addition, several open source systems, such as MySQL
+and PostgreSQL, are available.
+
+Because of the importance of the relational model, all of Part 2 is devoted to this
+model and some of the languages associated with it. In Chapters 6 and 7, we describe
+some aspects of SQL, which is a comprehensive model and language that is the
+standard for commercial relational DBMSs. (Additional aspects of SQL will be cov-
+ered in other chapters.) Chapter 8 covers the operations of the relational algebra and
+introduces the relational calculus—these are two formal languages associated with
+the relational model. The relational calculus is considered to be the basis for the
+SQL language, and the relational algebra is used in the internals of many database
+implementations for query processing and optimization (see Part 8 of the book).
+
+149

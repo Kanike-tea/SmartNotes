@@ -1,0 +1,51 @@
+14.1 Informal Design Guidelines for Relation Schemas
+
+Deletion Anomalies. The problem of deletion anomalies is related to the second
+insertion anomaly situation just discussed. If we delete from EMP_DEPT an employee
+tuple that happens to represent the last employee working for a particular depart-
+ment, the information concerning that department is lost inadvertently from the
+database. This problem does not occur in the database of Figure 14.2 because
+DEPARTMENT tuples are stored separately.
+
+Modification Anomalies. In EMP_DEPT, if we change the value of one of the attri-
+butes of a particular department—say, the manager of department 5—we must
+update the tuples of all employees who work in that department; otherwise, the
+database will become inconsistent. If we fail to update some tuples, the same depart-
+ment will be shown to have two different values for manager in different employee
+tuples, which would be wrong.
+
+It is easy to see that these three anomalies are undesirable and cause difficulties to
+maintain consistency of data as well as require unnecessary updates that can be
+avoided; hence, we can state the next guideline as follows.
+
+Guideline 2. Design the base relation schemas so that no insertion, deletion, or
+modification anomalies are present in the relations. If any anomalies are present,*
+note them clearly and make sure that the programs that update the database will
+operate correctly.
+
+The second guideline is consistent with and, in a way, a restatement of the first
+guideline. We can also see the need for a more formal approach to evaluating
+whether a design meets these guidelines. Sections 14.2 through 14.4 provide these
+needed formal concepts. It is important to note that these guidelines may some-
+times have to be violated in order to improve the performance of certain queries. If
+EMP_DEPT is used as a stored relation (known otherwise as a materialized view) in
+addition to the base relations of EMPLOYEE and DEPARTMENT, the anomalies in
+EMP_DEPT must be noted and accounted for (for example, by using triggers or
+stored procedures that would make automatic updates). This way, whenever the
+base relation is updated, we do not end up with inconsistencies. In general, it is
+advisable to use anomaly-free base relations and to specify views that include the
+joins for placing together the attributes frequently referenced in important queries.
+
+14.1.3 NULL Values in Tuples
+
+In some schema designs we may group many attributes together into a “fat” rela-
+tion. If many of the attributes do not apply to all tuples in the relation, we end up
+with many NULLs in those tuples. This can waste space at the storage level and may
+also lead to problems with understanding the meaning of the attributes and with
+
+SThis is not as serious as the other problems, because all tuples can be updated by a single SQL query.
+
+4Other application considerations may dictate and make certain anomalies unavoidable. For example, the
+EMP_DEPT relation may correspond to a query or a report that is frequently required.
+
+467

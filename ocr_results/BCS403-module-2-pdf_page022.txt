@@ -1,0 +1,62 @@
+Database Management System [BCS403]
+
+2.3.2 The CARTESIAN PRODUCT (CROSS PRODUCT) Operation
+
+The CARTESIAN PRODUCT operation—also known as CROSS PRODUCT or CROSS JOIN
+denoted by x is a binary set operation, but the relations on which it is applied do not have to be
+union compatible. This set operation produces a new element by combining every member (tuple)
+
+from one relation (set) with every member (tuple) from the other relation (set)
+
+In general, the result of R(41, 42, ..., An) < S(Bi, Ba, ..., Bm) is a relation Q with degree n + m
+attributes Q(A1, 42, ..., An, Bi, B2, ..., Bm), in that order. The resulting relation Q has one tuple. for
+each combination of tuples—one from R and one from S. Hence, if R has ng tuples (denoted as |R|.=
+np), and S has ns tuples, then R x S will have ng * ns tuples
+Example: suppose that we want to retrieve a list of names of each female employee’s dependents.
+
+FEMALE_EMPS < ogende—t-(EMPLOYEE)
+
+EMPNAMES << ZtFname, Lname, Sm(FEMALE_EMPS)
+
+EMP_DEPENDENTS «<- EMPNAMES x DEPENDENT
+
+ACTUAL_DEPENDENTS < ossn-tssn(EMP_DEPENDENTS)
+
+RESULT < name, Lname, Dependent_name (AC TUAL_DEPENDENTS)
+
+FEMALE EMPS
+
+Fname Salary] Super_ssn
+
+Alicia | J | Zelaya | 999887777 |1968-07-19|8921Gastle, Spring, TX | F_|25000/987654321| 4
+
+Jennifer] S| Wallace] 987854321(|1941-06-20| 99%Bery,Bellaire, TX | F [43000|888665555| 4
+
+Joyce | A_ | English] 458459453 [1972-07-31 [5631 Rice, Houston, Tx] F_[25000]333445555| 5
+EMP_DEPENDENTS
+Frame |Lname |) San Essn ‘Dependentiname | Sex| Bdate
+Alicia Zelaya | 999887777 | 333445555 Alice F | 1986-04-05
+
+999887777 | 333445555 Theodore M | 1983-10-25 EMPNAMES
+999887777 | 333445555 Joy F | 1958-05-03
+
+Alicia | Zelaya’ | 999887777 | 987654321 Abner M | 1942-02-28
+Alicia _| Zelaya. | 999887777 | 123456789 Michael M | 1988-01-04 ——
+Alicia | Zelaya | 999887777 | 123456789 Alice F | 1988-1230
+Alicia | Zelaya | 999887777 | 123456789 Elizabeth F | 1967-05-05 987654321
+Jennifer | Wallace | 987654321 | 333445555 Alice F | 1986-04-05 a5 oa 453453453
+Jennifer | Wallace | 087654321 | 333445555 Theodore M | 1983-10-25 |_..
+Jennifer | Wallace | 987654321 | 333445555 Joy F | 1958-05-03
+Jennifer | Wallace| 987654321 | 987654321 Abner M | 1942-02-28
+Jennifer | Wallace | 987654321 | 123456789 Michael M | 1988-01-04
+Jennifer | Wallace | 087654321 | 123456789 Alice F | 1988-12-30
+Jennifer | Wallace | 987654321 | 123456789 Elizabeth F | 1967-05-05
+Joyce _| English | 453453453 | 333445555 Alice F | 1986-04-05
+Joyce _| English | 453453453 | 333445565 Theodore M | 1983-10-25
+Joyce | English | 453453453 | 333445555 Joy F | 1958-05-08
+Joyce | English | 453453453 | 987654321 Abner M | 1942-02-28
+Joyce | English | 453453453 | 123456789 Michael M | 1988-01-04
+Joyce | English | 453453453 | 123456789 Alice F | 1988-1230
+Joyce | English | 453459453 | 123456780 Elizabeth F | 1967-05-05
+
+https://vtucode.in Page 23

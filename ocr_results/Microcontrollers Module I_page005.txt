@@ -1,0 +1,45 @@
+Microcontrollers-BCS402
+
+4.1 ARM Bus Technology
+Embedded systems use different bus technologies than those designed for x86 PCs.
+
+The most common PC bus technology, the Peripheral Component Interconnect (PCI) bus,
+
+connects such devices as video cards and hard disk controllers to the x86 processor bus.
+
+This type of technology is external or off-chip (i.c., the bus is designed to connect
+mechanically and electrically to devices external to the chip) and is built into the motherboard
+of a PC.
+
+In contrast, embedded devices use an on-chip bus that is internal to the chip and that allows
+
+different peripheral devices to be interconnected with an ARM core.
+There are two different classes of devices attached to the bus.
+
+Bus master: It is a logical device capable of initiating a data transfer with another
+
+device across the same bus.
+
+Bus slaves: Logical devices capable only of responding to a transfer request from a
+
+bus master device.
+A bus has two architecture levels.
+
+The first is a physical level that covers the electrical characteristics and bus width (16,
+32, or 64 bits).
+
+The second level deals with protocol—the logical rules that govern the
+
+communication between the processor and a peripheral.
+
+4.2 AMBA Bus Protocol
+
+The Advanced Microcontroller Bus Architecture (AMBA) was introduced in 1996 and has
+
+been widely adopted as the on-chip bus architecture used for ARM processors.
+
+The first AMBA buses introduced were the ARM System Bus (ASB) and the ARM
+Peripheral Bus (APB). Later ARM introduced another bus design, called the ARM High
+Performance Bus (AHB).
+
+Dept. of ECE, GSSSIETW Page 6

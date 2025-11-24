@@ -1,0 +1,53 @@
+7.1 More Complex SQL Retrieval Queries
+
+as Employee_name and Supervisor_name. The new names will appear as column
+headers for the query result.
+
+Q8A: SELECT —_E.Lname AS Employee_name, S.Lname AS Supervisor_name
+FROM EMPLOYEE AS E, EMPLOYEE AS S
+WHERE — E.Super_ssn = S.Ssn;
+
+7.1.6 Joined Tables in SQL and Outer Joins
+
+The concept of a joined table (or joined relation) was incorporated into SQL to
+permit users to specify a table resulting from a join operation in the FROM clause of
+a query. This construct may be easier to comprehend than mixing together all the
+select and join conditions in the WHERE clause. For example, consider query Q1,
+which retrieves the name and address of every employee who works for the
+‘Research’ department. It may be easier to specify the join of the EMPLOYEE and
+DEPARTMENT relations in the WHERE clause, and then to select the desired tuples
+and attributes. This can be written in SQL as in Q1A:
+
+Q1A: SELECT _ Fname, Lname, Address
+FROM (EMPLOYEE JOIN DEPARTMENT ON Dno = Dnumber)
+WHERE Dname = ‘Research’;
+
+The FROM clause in Q1A contains a single joined table. The attributes of such a table
+are all the attributes of the first table, EMPLOYEE, followed by all the attributes of
+the second table, DEPARTMENT. The concept of a joined table also allows the user to
+specify different types of join, such as NATURAL JOIN and various types of OUTER
+JOIN. In a NATURAL JOIN on two relations R and S, no join condition is specified; an
+implicit EQUIJOIN condition for each pair of attributes with the same name from R
+and S is created. Each such pair of attributes is included only once in the resulting
+relation (see Sections 8.3.2 and 8.4.4 for more details on the various types of join
+operations in relational algebra).
+
+If the names of the join attributes are not the same in the base relations, it is possible
+to rename the attributes so that they match, and then to apply NATURAL JOIN. In
+this case, the AS construct can be used to rename a relation and all its attributes in
+the FROM clause. This is illustrated in Q1B, where the DEPARTMENT relation is
+renamed as DEPT and its attributes are renamed as Dname, Dno (to match the name
+of the desired join attribute Dno in the EMPLOYEE table), Mssn, and Msdate. The
+implied join condition for this NATURAL JOIN is EMPLOYEE.Dno = DEPT.Dno,
+because this is the only pair of attributes with the same name after renaming:
+
+Q1B: SELECT Frame, Lname, Address
+FROM (EMPLOYEE NATURAL JOIN
+(DEPARTMENT AS DEPT (Dname, Dno, Mssn, Msdate)))
+WHERE Dname = ‘Research’;
+
+The default type of join in a joined table is called an inner join, where a tuple is
+included in the result only if a matching tuple exists in the other relation. For exam-
+ple, in query Q8A, only employees who have a supervisor are included in the result;
+
+215

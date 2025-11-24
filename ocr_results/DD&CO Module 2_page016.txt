@@ -1,0 +1,59 @@
+4x 1MUX
+y —s,
+x y 2|F
+x — 5,
+0 0 0/0 p=;
+oo 1}1
+01 0/1 pay z— 0 F
+ol 1,0 1
+1 0 0/0
+F=0 —2
+10 1/0 ° ;
+11 0/1 poy t 2
+rift
+(a) Truth table (b) Multiplexer implementation
+
+Implementing a Boolean function with a multiplexer
+
+2. Consider the implementation of the Boolean function F (A, B, C, D) == (1, 3, 4, 11, 12, 13, 14, 15)
+
+This function is implemented with a multiplexer with three selection inputs as shown in Fig below. Note
+that the first variable A must be connected to selection input S2 so that A, B, and C correspond to
+selection inputs S2, Si, and So respectively. The values for the data inputs are determined from the truth
+table listed in the figure. The corresponding data line number is determined from the binary combination
+of ABC. For example, the table shows that when ABC = 101, F = D, so the input variable D is applied
+to data input 5.
+
+000 0/0 pep
+oo 0 ol0 ‘8X 1MUX
+| c So
+001 0/0 pep
+001 1/1 B S;
+0 10 o0j1 4 5
+010 1\0 *-?
+D—3——}—0
+011 0/0 pL
+011 10 f=? p ; |_p
+100 0/0 pL 0 3
+1001/0 *-° A
+10 1 0/0 gL 5
+1o1a1|1 Fo? 1 6
+110 0/1 gL 7
+11 o0a|1 Fo}
+er
+riaaii f=
+
+Implementing a four-input function with a multiplexer
+
+Three-State Gates
+
+A multiplexer can be constructed with three-state gates—digital circuits that exhibit three states. Two of
+the states are signals equivalent to logic | and logic 0 as in a conventional gate. The third state is a high-
+impedance state in which (1) the logic behaves like an open circuit, which means that the output appears
+to be disconnected, (2) the circuit has no logic significance, and (3) the circuit connected to the output
+of the three-state gate is not affected by the inputs to the gate. Three-state gates may perform any
+conventional logic, such as AND or NAND. However, the one most commonly used is the buffer gate.
+The graphic symbol for a three-state buffer gate is shown in Fig below. It is distinguished from a normal
+buffer by an input control line entering the bottom of the symbol. The buffer has a normal input, an
+output, and a control input that determines the state of the output. When the control input is equal to 1,
+the output is enabled and the gate behaves like a conventional buffer, with the output equal to the normal

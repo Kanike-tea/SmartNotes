@@ -1,0 +1,54 @@
+Logic Signal Logic Signal
+
+value value value value
+1 H 0 r H
+0 L 1 L
+
+(b) Negative logic
+
+Signal Assignment & Logic Polarity
+
+Consider, for example, the electronic gate shown in Fig(b). The truth table for this gate is listed in Fig(a).
+It specifies the physical behavior of the gate when H is 3V and L is OV. The truth table of Fig.(c) assumes
+a positive logic assignment, with H = | and L = 0. This truth table is the same as the one for the AND
+
+operation. The graphic symbol for a positive logic AND gate is shown in Fig(d).
+
+x oy Zz
+LLL x &
+Lou L Digital z
+AH L L y gate
+H H H
+(a) Truth table (b) Gate block diagram
+with H and L
+
+&
+
+z
+
+HRoo
+RoKRO|<
+RooO
+
+(c) Truth table for (d) Positive logic AND gate
+positive logic
+
+Now consider the negative logic assignment for the same physical gate with L = 1 and H = 0. The result
+is the truth table of Fig(e). This table represents the OR operation, even though the entries are reversed.
+
+The graphic symbol for the negative- logic OR gate is shown in Fig(f).
+
+x oy z
+1 1 1
+1 0 1
+o 1 1 * z
+0 0 0 y
+(e) Truth table for (£) Negative logic OR gate
+
+negative logic
+The Map Method
+
+The complexity of the digital logic gates that implement a Boolean function is directly related to the
+complexity of the algebraic expression from which the function is implemented. Although the truth table
+
+representation of a function is unique, when it is expressed algebraically it can appear in many different,

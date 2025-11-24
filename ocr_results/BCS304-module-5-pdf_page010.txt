@@ -1,0 +1,39 @@
+After split:
+
+resi] 7
+s=>|2--— 8] Il ~ 2
+
+—
+
+3 ~ 3
+
+Insertion of 10 : as (10 mod 3 = 1) and bucket | < s, we need to hash 10 again using h1(10) = 10 mod 6 =
+4" bucket.
+
+ner SE
+afore -[_4 7!
+
+5.0.6 Priority Queues
+1 Single and Double- ended priority queues
+
+The single ended priority queues may be categorized as min and max priority queues.The operations
+
+supported by a min priority queue are:
+
+SP1: Return an element with minimum priority.
+
+SP2: Insert an element with an arbitrary priority.
+SP3: Delete an element with minimum priority.
+
+The operations supported by a max priority queue are the same as those supported by a min priority queue
+except that in SP] and SP3 we replace minimum by maximum. The heap structure is a classical data
+structure for the representation of a priority queue. Using a min (max) heap, the minimum (maximum)
+element can be found in O(1) time. Meldable (single- ended) priority queue, augments the operations SP1
+
+through SP3 with a meld operation that melds together two priority queues.
+
+A double-ended priority queue (DEPQ) is a data structure that supports the following opertions on a
+
+collection of elements.
+
+Page 11

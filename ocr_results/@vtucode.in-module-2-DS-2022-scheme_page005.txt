@@ -1,0 +1,40 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Method 2:
+Circular Queue
+
+e It is “The queue which wrap around the end of the array.” The array positions are
+arranged ina circle.
+
+e In this convention the variable front is changed. front variable points one position
+counterclockwise from the location of the front element in the queue. The
+convention for rear is unchanged.
+
+CIRCULAR QUEUES
+
+e It is “The queue which wrap around the end of the array.” The array positions are
+arranged in a circle as shown in figure.
+
+e In this convention the variable front is changed. front variable points one position
+counterclockwise from the location of the front element in the queue. The
+
+convention for rear is unchanged.
+
+rear
+rear rear
+
+| | |
+KIN (Ry ey
+BO SR AO
+
+front front
+(a) Initial (b) Addition (c) Deletion
+
+enPTY QUEUE
+
+front = 0 from = 0
+rear = 0. rear = 3
+
+Figure 3.6: Empty and nonempty circular queues
+
+vtucode.in 6

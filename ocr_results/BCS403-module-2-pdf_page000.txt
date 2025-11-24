@@ -1,0 +1,44 @@
+ee AbaSE Management System [BCS403]_
+
+Module 2
+
+Chapter 1: The Relational Data Model
+
+Introduction
+
+The relational data model was first introduced by Ted Codd of IBM Research in 1970 in a classic
+paper (Codd 1970), and it attracted immediate attention due to its simplicity and mathematical
+foundation. The model uses the concept of a mathematical relation—which looks somewhat like a
+table of values—as its basic building block, and has its theoretical basis in set theory and first-order
+predicate logic.
+
+The first commercial implementations of the relational model became available in the early 1980s,
+such as the SQL/DS system on the MVS operating system by IBM and the Oracle DBMS. Since
+then, the model has been implemented in a large number of commercial, systems. Current popular
+relational DBMSs (RDBMSs) include DB2 and Informix Dynamic Server (from IBM), Oracle and
+Rdb (from Oracle), Sybase DBMS (from Sybase) and SQLServer,and Access (from Microsoft). In
+
+addition, several open source systems, such as MySQL and PostgreSQL, are available.
+
+1.1 Relational Model Concepts
+
+The relational model represents the database asa collection of relations. Informally, each relation
+resembles a table of values or, to some extent, a flat file of records. It is called a flat file because
+each record has a simple linear,or flat structure.
+
+When a relation is thought of as a table of values, each row in the table represents a collection of
+related data values. A row represents a fact that typically corresponds to a real-world entity or
+relationship. The table name and column names are used to help to interpret the meaning of the
+values.in each row.
+
+For example, in STUDENT relation because each row represents facts about a particular student
+entity. The column names—Name, Student_number, Class, and Major—specify how to interpret the
+data values in each row, based on the column each value is in. All values in a column are of the same
+data type.
+
+In the formal relational model terminology, a row is called a tuple, a column header is called an
+attribute, and the table is called a relation. The data type describing the types of values that can
+
+appear in each column is represented by a domain of possible values.
+
+https://vtucode.in Page 1

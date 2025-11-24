@@ -1,0 +1,47 @@
+432 Chapter 13 XML: Extensible Markup Language
+
+<?xml version="1.0" standalone="yes"?>
+<Projects>
+<Project>
+<Name>ProductX</Name>
+<Number>1</Number>
+<Location>Bellaire</Location>
+<Dept_no>S</Dept_no>
+<Worker>
+<Ssn>123456789</Ssn>
+<Last_name>Smith</Last_name>
+<Hours>32.5</Hours>
+<IWorker>
+<Worker>
+<Ssn>453453453</Ssn>
+<First_name>Joyce</First_name>
+<Hours>20.0</Hours>
+<IWorker>
+</Project>
+<Project>
+<Name>ProductY</Name>
+<Number>2</Number>
+<Location>Sugarland</Location>
+<Dept_no>S</Dept_no>
+<Worker>
+<Ssn>123456789</Ssn>
+<Hours>7.5</Hours>
+<IWorker>
+<Worker>
+<Ssn>453453453</Ssn>
+<Hours>20.0</Hours>
+<IWorker>
+<Worker>
+<Ssn>333445555</Ssn>
+<Hours>10.0</Hours>
+Figure 13.3 <Morker>
+A complex XML </Project>
+element called oe
+<Projects>. <JProjects>
+
+XML documents that do not follow a predefined schema of element names and cor-
+responding tree structure are known as schemaless XML documents. It is impor-
+tant to note that data-centric XML documents can be considered either as
+semistructured data or as structured data as defined in Section 13.1. If an XML
+document conforms to a predefined XML schema or DTD (see Section 13.3), then
+the document can be considered as structured data. On the other hand, XML allows

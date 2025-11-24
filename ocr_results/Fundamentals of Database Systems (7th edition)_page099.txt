@@ -1,0 +1,50 @@
+3.3 Entity Types, Entity Sets, Attributes, and Keys
+
+(a)
+
+(b) CAR
+Registration (Number, State), Vehicle_id, Make, Model, Year, {Color}
+
+CAR,
+((ABC 123, TEXAS), TK629, Ford Mustang, convertible, 2004 {red, black})
+
+CAR,
+((ABC 123, NEW YORK), WP9872, Nissan Maxima, 4-door, 2005, {blue})
+
+CAR,
+((VSY 720, TEXAS), TD729, Chrysler LeBaron, 4-door, 2002, {white, blue})
+
+Figure 3.7
+
+The CAR entity type
+with two key attributes,
+Registration and
+Vehicle_id. (a) ER
+
+: diagram notation.
+
+: (b) Entity set with
+three entities.
+
+69
+
+its own right. The Registration attribute is an example of a composite key formed
+from two simple component attributes, State and Number, neither of which is a key
+on its own. An entity type may also have no key, in which case it is called a weak
+entity type (see Section 3.5).
+
+In our diagrammatic notation, if two attributes are underlined separately, then each
+is a key on its own. Unlike the relational model (see Section 5.2.2), there is no con-
+cept of primary key in the ER model that we present here; the primary key will be
+chosen during mapping to a relational schema (see Chapter 9).
+
+Value Sets (Domains) of Attributes. Each simple attribute of an entity type is
+associated with a value set (or domain of values), which specifies the set of values
+that may be assigned to that attribute for each individual entity. In Figure 3.6, if the
+range of ages allowed for employees is between 16 and 70, we can specify the value
+set of the Age attribute of EMPLOYEE to be the set of integer numbers between 16
+and 70. Similarly, we can specify the value set for the Name attribute to be the set of
+strings of alphabetic characters separated by blank characters, and so on. Value sets
+are not typically displayed in basic ER diagrams and are similar to the basic data
+types available in most programming languages, such as integer, string, Boolean,
+float, enumerated type, subrange, and so on. However, data types of attributes can

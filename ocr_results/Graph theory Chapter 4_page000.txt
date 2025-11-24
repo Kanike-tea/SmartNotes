@@ -1,0 +1,48 @@
+CS ; Chapter 4
+
+- Optimization and Matching
+
+FE als 2 CEE SE perenne
+In Section 3.4. we described a method of constructing a complete binary tree
+of minimum weight called an optimal tree. In this chapter, we consider a few
+more of such optimization problems, namely those of constructing minimal
+
+spanning trees and finding maximum flows and shortest paths in networks.
+The concepts of cut-sets and matchings are also briefly dealt-with.
+
+4.1 Minimal Spanning Tree
+
+Let G be a graph and suppose there is a positive real number associated with each edge of G-
+Then G is called a weighted graph and the positive real number associated with an edge ¢ (of
+G) is called the weight of the edge e.
+
+For example, consider a graph in which the vertices represent certain cities in a State and
+the edges represent the motor roads connecting the cities. Then a road between two cities wil
+have a certain length (in Kms, say) which is a positive real number. Thus, with each edge of
+the graph there is associated a positive real number, and therefore the graph is'a weighted >"
+and the weight of an edge is the length of the road which it represents.
+
+Returning to the general discussion, let us consider a weighted graph G which is connected.
+Let T be a spanning tree of this graph. Then every branch of T is an edge in G (because TEMS
+subgraph of G), and as such every branch of T has a weight. The sum Bi the weights of all
+branches of T is called the weight of T. Thus every spannin connect
+graph has a certain weight. : een gine
+
+WfGi Z
+- res meat weighted graph, then the weight of an édge e of G is denoted bY a
+
+eee Panning tree T of G is denoted by w1(T):
+ocak oe bi inthe sat all Spanning trees of a connected, weighted graph, and fot
+
+ey Ty ese spanning trees. A spanning ir aS eT eee
+
+called a minimal spanning tree of the i A ee eg nee ele ee :
+
+graph. This tree is not unique. i
+ymbe®
+
+For example, consider the connected wei
+‘ weight in Fi
+shown adjacent to the edges are their weinhig” ma eh owain Soe! ee
+
+yo 214 ae

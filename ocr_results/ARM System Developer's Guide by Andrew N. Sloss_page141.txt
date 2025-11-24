@@ -1,0 +1,55 @@
+128 Chapter 5 Efficient C Programming
+
+EXAMPLE
+
+5.8
+
+In this case the second value of *step is different from the first and has the value *timer1.
+This forces the compiler to insert an extra load instruction.
+
+The same problem occurs if you use structure accesses rather than direct pointer access.
+The following code also compiles inefficiently:
+
+typedef struct {int step;} State;
+typedef struct {int timerl, timer2;} Timers;
+
+void timers_v2(State *state, Timers *timers)
+{
+timers->timerl += state->step;
+timers->timer2 += state->step;
+
+}
+
+The compiler evaluates state->step twice in case state->step and timers->timerl are
+at the same memory address. The fix is easy: Create a new local variable to hold the value
+of state->step so the compiler only performs a single load.
+
+In the code for timers_v3 we use a local variable step to hold the value of state->step.
+Now the compiler does not need to worry that state may alias with timers.
+
+void timers_v3(State *state, Timers *timers)
+
+{
+int step = state->step;
+timers->timerl += step;
+timers->timer2 += step;
+}
+
+You must also be careful of other, less obvious situations where aliasing may occur.
+When you call another function, this function may alter the state of memory and so change
+the values of any expressions involving memory reads. The compiler will evaluate the
+expressions again. For example suppose you read state->step, call a function and then
+read state->step again. The compiler must assume that the function could change the
+value of state->step in memory. Therefore it will perform two reads, rather than reusing
+the first value it read for state->step.
+
+Another pitfall is to take the address of a local variable. Once you do this, the variable is
+referenced by a pointer and so aliasing can occur with other pointers. The compiler is likely
+to keep reading the variable from the stack in case aliasing occurs. Consider the following
+example, which reads and then checksums a data packet:
+
+int checksum_next_packet (void)
+
+{
+int *data;
+int N, sum=0;

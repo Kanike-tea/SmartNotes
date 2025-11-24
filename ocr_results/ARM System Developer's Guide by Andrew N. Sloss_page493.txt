@@ -1,0 +1,43 @@
+480 Chapter 13 Memory Protection Units
+
+OxFFFFFFFF
+0x11000000 , User access
+Devices :
+vo | Region4 Privileged access
+0x10000000 ia
+0x00038000 Task 3 stack base
+Task 3
+0x00030000 Task 2 stack base -
+T Running task is
+Task 2 | Region 3 |-«
+assigned region 3
+0x00028000 Task 1 stack base
+Task 1
+0x00020000
+System | Region 2
+shared
+0x00010000 FIQ stack base
+base
+System stack base
+protected
+Region 1 Abort stack base
+0x00000000
+
+Figure 13.7 Region assignment and memory map of demonstration protection system.
+
+13.3.2 ASSIGNING REGIONS USING A MEMORY MAP
+
+The last column of Table 13.10 shows the four regions we assigned to the memory areas.
+The regions are defined using the starting address listed in the table and the size of the code
+and data blocks. A memory map showing the region layout is provided in Figure 13.7.
+
+Region 1 is a background region that covers the entire addressable memory space. It is a
+privileged region (ie., no user mode access is permitted). The instruction cache is enabled,
+and the data cache operates with a writethrough policy. This region has the lowest region
+priority because it is the region with the lowest assigned number.
+
+The primary function of region | is to restrict access to the 64 KB space between 0x0
+and 0x10000, the protected system area. Region 1 has two secondary functions: it acts as
+a background region and as a protection region for dormant user tasks. As a background
+region it ensures the entire memory space by default is assigned system-level access; this is
+done to prevent a user task from accessing spare or unused memory locations. As a user

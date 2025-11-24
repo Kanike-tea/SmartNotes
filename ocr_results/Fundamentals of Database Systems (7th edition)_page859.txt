@@ -1,0 +1,52 @@
+22.5 The ARIES Recovery Algorithm
+
+to disk during checkpoint, since the Transaction Table and Dirty Page Table—
+which are appended to the log on disk—contain the information needed for
+recovery. Note that if a crash occurs during checkpointing, the special file will refer
+to the previous checkpoint, which would be used for recovery.
+
+After a crash, the ARIES recovery manager takes over. Information from the
+last checkpoint is first accessed through the special file. The analysis phase
+starts at the begin_checkpoint record and proceeds to the end of the log. When the
+end_checkpoint record is encountered, the Transaction Table and Dirty Page Table
+are accessed (recall that these tables were written in the log during checkpointing).
+During analysis, the log records being analyzed may cause modifications to these
+two tables. For instance, if an end log record was encountered for a transaction T in
+the Transaction Table, then the entry for T is deleted from that table. If some other
+type of log record is encountered for a transaction T’, then an entry for T’ is inserted
+into the Transaction Table, if not already present, and the last LSN field is modified.
+If the log record corresponds to a change for page P, then an entry would be made
+for page P (if not present in the table) and the associated LSN field would be
+modified. When the analysis phase is complete, the necessary information for
+REDO and UNDO has been compiled in the tables.
+
+The REDO phase follows next. To reduce the amount of unnecessary work, ARIES
+starts redoing at a point in the log where it knows (for sure) that previous changes
+to dirty pages have already been applied to the database on disk. It can determine
+this by finding the smallest LSN, M, of all the dirty pages in the Dirty Page Table,
+which indicates the log position where ARIES needs to start the REDO phase. Any
+changes corresponding to an LSN < M, for redoable transactions, must have already
+been propagated to disk or already been overwritten in the buffer; otherwise, those
+dirty pages with that LSN would be in the buffer (and the Dirty Page Table). So,
+REDO starts at the log record with LSN = M and scans forward to the end of the log.
+
+For each change recorded in the log, the REDO algorithm would verify whether or
+not the change has to be reapplied. For example, if a change recorded in the log
+pertains to page P that is not in the Dirty Page Table, then this change is already on
+disk and does not need to be reapplied. Or, if a change recorded in the log (with
+LSN = N,, say) pertains to page P and the Dirty Page Table contains an entry for P
+with LSN greater than N, then the change is already present. If neither of these two
+conditions holds, page P is read from disk and the LSN stored on that page, LSN(P),
+is compared with N. If N < LSN(P), then the change has been applied and the page
+does not need to be rewritten to disk.
+
+Once the REDO phase is finished, the database is in the exact state that it was in
+when the crash occurred. The set of active transactions—called the undo_set—has
+been identified in the Transaction Table during the analysis phase. Now, the UNDO
+phase proceeds by scanning backward from the end of the log and undoing the
+appropriate actions. A compensating log record is written for each action that is
+undone. The UNDO reads backward in the log until every action of the set of trans-
+actions in the undo_set has been undone. When this is completed, the recovery pro-
+cess is finished and normal processing can begin again.
+
+829

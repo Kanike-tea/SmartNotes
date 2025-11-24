@@ -1,0 +1,73 @@
+Data Structures and Applications (BCS304)
+
+Module III
+
+void Tinorder(ThreadNode * tree)
+{
+
+for (:;)
+{
+ThreadNode * temp = tree;
+
+temp = insucc(temp);
+if (temp == tree) break;
+printf("%c", temp—data);
+
+}
+
+Analysis: The computing time for tinorder is still O(n)
+
+Binary Search Trees
+
+ADT Dictionary
+
+objects: a collection of n> 0 pairs, each pair has a key and an associated item
+functions: for all d € Dictionary, item € Item, k € Key, n € integer
+
+DictionaryCreate(max_size) ::= | create an empty Dictionary
+
+Boolean IsEmpty(d, n) :
+
+if (n>0O) return TRUE else return FALSE
+
+Element Search(d, k) ::=
+
+return item with key k,
+return NULL if no such element.
+
+Element Delete(d, k) ::=
+
+delete and return item (if any) with key k;
+
+void Insert(d,item,k) :
+
+insert item with key k into d.
+
+Definition Binary search tree
+
+A binary search tree is a binary tree. It may be empty. If it is not empty then it satisfies the following
+
+properties:
+
+1) Each node has exactly one key and the keys in the tree are distinct.
+
+2) The keys (if any) in the left subtree are smaller than the key in the root.
+3) The keys (if any) in the right subtree are larger than the key in the root.
+4) The left and right subtrees are also binary search trees.
+
+5) The root has a key.
+Example:
+
+Searching a Binary Search Tree
+
+3 ©)
+
+of ¥
+
+» O®
+
+Binary search Tree
+
+To search for a node whose key is k. We begin at the root of the binary search tree.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 25

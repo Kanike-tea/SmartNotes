@@ -1,0 +1,55 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ
+
+well as generating the code for executing it. It is possible to combine the PREPARE
+and EXECUTE commands (lines 4 and 5 in E3) into a single statement by writing
+
+EXEC SQL EXECUTE IMMEDIATE :sqlupdatestring ;
+
+This is useful if the command is to be executed only once. Alternatively, the pro-
+grammer can separate the two statements to catch any errors after the PREPARE
+statement as in E3.
+
+Although including a dynamic update command is relatively straightforward in
+dynamic SQL, a dynamic retrieval query is much more complicated. This is because
+the programmer does not know the types or the number of attributes to be retrieved
+by the SQL query when writing the program. A complex data structure is needed to
+allow for different numbers and types of attributes in the query result if no prior
+information is known about the dynamic query. Techniques similar to those that
+we shall discuss in Section 10.3 can be used to assign retrieval query results (and
+query parameters) to host program variables.
+
+10.2.4 SQLJ: Embedding SQL Commands in Java
+
+In the previous subsections, we gave an overview of how SQL commands can be
+embedded in a traditional programming language, using the C language in our
+examples. We now turn our attention to how SQL can be embedded in an object-
+oriented programming language," in particular, the Java language. SQL] is a stan-
+dard that has been adopted by several vendors for embedding SQL in Java.
+Historically, SQLJ was developed after JDBC, which is used for accessing SQL data-
+bases from Java using class libraries and function calls. We discuss JDBC in Sec-
+tion 10.3.2. In this section, we focus on SQLJ as it is used in the Oracle RDBMS. An
+SQLJ translator will generally convert SQL statements into Java, which can then be
+executed through the JDBC interface. Hence, it is necessary to install a JDBC driver
+when using SQL.” In this section, we focus on how to use SQL] concepts to write
+embedded SQL in a Java program.
+
+Before being able to process SQL] with Java in Oracle, it is necessary to import several
+class libraries, shown in Figure 10.5. These include the JDBC and IO classes (lines 1
+and 2), plus the additional classes listed in lines 3, 4, and 5. In addition, the program
+must first connect to the desired database using the function call getconnection,
+which is one of the methods of the oracle class in line 5 of Figure 10.5. The format of
+this function call, which returns an object of type default context,!° is as follows:
+
+public static DefaultContext
+
+getConnection(String url, String user, String password,
+Boolean autoCommit)
+
+throws SQLException ;
+
+®This section assumes familiarity with object-oriented concepts (see Chapter 12) and basic Java concepts.
+®We discuss JDBC drivers in Section 10.3.2.
+
+1, default context, when set, applies to subsequent commands in the program until it is changed.
+
+321

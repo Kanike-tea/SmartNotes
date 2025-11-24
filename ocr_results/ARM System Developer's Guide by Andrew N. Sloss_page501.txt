@@ -1,0 +1,11 @@
+488 Chapter 13 Memory Protection Units
+
+cache and CP15:c3 for the write buffer. The last step enables active regions using CP15:c6
+and the caches, write buffer, and MPU using CP15:cl.
+
+In closing, a demonstration system showed three tasks, each protected from the other, in
+a simple multitasking environment. The demonstration system defined a protected system
+and then showed how to initialize it. After initialization, the last step needed to run a
+protected system is to change the region assignments to the next task during a task switch.
+This demonstration system is incorporated into mpuSLOS to provide a functional example
+of a protected operating system.

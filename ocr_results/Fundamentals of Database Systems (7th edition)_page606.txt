@@ -1,0 +1,54 @@
+576 Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Figure 16.9
+
+Bucket
+
+Number Block address on disk
+
+oO a Sal
+1
+2 al tee
+- a
+M-2 —_
+M-41 H
+
+Matching bucket numbers to disk
+
+block addresses.
+
+Bucket 0
+
+Bucket 1
+
+Bucket 2
+
+Bucket 9
+
+Main buckets
+
+NULL
+
+Record pointer LULL
+
+340
+460
+Record pointer | —
+= NULL
+Overflow buckets
+321 —>|981 Record pointer
+761 Record pointer
+a1 >| 182 Record pointer |—
+Record pointer |—!
+22 LL 652 Record pointer —,
+72
+522 Record pointer
+Record pointer | —
+: (Pointers are to records within the overflow blocks)
+399
+89
+Figure 16.10
+Record pointer —_
+
+Handling overflow for buckets
+NULL by chaining,

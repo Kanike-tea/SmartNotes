@@ -1,0 +1,54 @@
+Se We compute Yq from the predictor formula.
+
+4
+
+NUMERICAL METHODS -! .
+
+Consider the differential equation y’ = = = f(x,y) with a set of four pre
+
+determined values of y:y (x) = Yor V(X) = Yyr Y(%_) = yy and y (x3) = yy.
+Here Xy 4 Xq x3 are equally spaced values of x with width h.
+Also X4 =x; +h = Xyt4h
+
+Predictor and Corrector formulae to compute y ( x4) = yz are as follows.
+1.31
+
+Milne’s predictor and corrector formulae
+
+; 4h .
+
+yy?) = Yor a (2y/’ ~ Yq + 2yy’)... ( Predictor formula’)
+OF a i Secnonen Ble
+
+44" = Yyt 3 (Yo +4y, *Y4:)++. (Corrector formula )
+
+Note : These two formulae can be written in the general form as follows :
+(P) = ad er , /
+Yn+1 FY gt 3 [2y n-2~Y n-1 +2Y, ]
+(C) _ here, Ogee
+Yn+1 = Yn-1t 3 [y n-1 +4y', ty nt |
+
+Adams - Bashforth predictor and corrector formulae
+h ’ ' PhnBias J eg}
+ye Pew Ys +34 (55 y3/—59 y,' + os —9 Yq) (Predictor formula)
+(C) oy yt
+
+Ye = Maton (9 yf +19 y’-5Sy,’ + yy) (Corrector formula)
+Note: We can write down the general form of these two formulae also as in Milne’s method,
+
+Working procedure for problems
+
+We first prepare the table showing the values of
+
+c Y corrésponding to four
+equidistant valites of x and the computation of y’ = f(x, y).
+
+"| @. Weuse this value of Yq tocompute y,’ = f(x;, y,)
+
+© We apply corrector formula to obtain the corrected value of Vg:
+
+© _ This valie is used for computing yq° to apply the corrector formula again,
+. The process is continued till we get consistency in two consecutive values of Ya:
+
+Note : We can also find y,, yg ... by deducing expressions from the general form of the
+predictor and corrector formulae.

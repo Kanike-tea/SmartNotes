@@ -1,0 +1,32 @@
+Lindsay ANY Brighton 217 Green 150
+Smith Downtown | 191 Johnson | S00
+— Downtown | 110 Peterson 600
+
+4 Mianus 21s Smith 700
+
+TF Perricidge 102 Hayes 400
+
+Perricidge 201 Williams | 900
+
+Pemiridge | 218 Lyle 700
+
+— Redwood 222 Lindsay 700
+
+>| Round Hill | 30S Tumer 350
+
+There can be many secondary indexes and hence indexing fields for the same file.
+
+Primary and Secondary Indices:
+
+Secondary indices have to be dense.
+
+1.
+2.
+
+Indices offer substantial benefits when searching for records.
+When a file is modified, every index on the file must be updated, Updating indices
+imposes overhead on database modification.
+Sequential scan using primary index is efficient, but a sequential scan using a secondary
+index is expensive
+
+a. each record access may fetch a new block from disk

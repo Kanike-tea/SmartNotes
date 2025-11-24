@@ -1,0 +1,53 @@
+Database Management System [BCS403]
+
+2. It is a minimal superkey—that is, a superkey from which we cannot remove any
+attributes and still have the uniqueness constraint in condition 1 hold.This property is
+not required by a superkey.
+
+Example: Consider the STUDENT relation
+
+Attributes —
+
+Relation Name a
+
+ee
+, =e
+STUDENT 4 ——— oe
+Nannie Sou Houne_phone: Addicss Offive_phone | Aye] Gua
+Benjamin Bayer | 05-61-2435 | (817)373-1616 | 2918 Bluebonnet Lane] NULL 19 | 3.21
+ve Chung-cha Kim | 381-62-1245 | (817)375-4409 | 125 Kirby Road NULL 18 | 2.89
+Tuples & Dick Davidson | 42-11-2320 NULL 3452 Elgin Road (817)749-1953 | 25 | 8.53
+~ Rohan Panchal | 409-22-1100| (017)976-9021 | 265 Lark Lane (017)749-G492| 20 | 9.99
+Barbara Benson | 533-69-1238| (817)839-8461 | 7384 FontanaLane | NULL 19 | 8.25
+
+« The attribute set {Ssn} is a key of STUDENT because no two student tuples can
+have the same value for Ssn
+
+« Any set of attributes that includes Ssn—for example, {Ssn, Name, Age}—is a
+superkey
+
+« The superkey {Ssn, Name, Age} is not a key of STUDENT because removing
+
+Name or Age or both from the set still leaves us with a superkey
+
+In general, any superkey formed from a single attribute is also a key. A key with multiple
+
+attributes must require all its attributes together to have the uniqueness property.
+
+Candidate key
+A relation schema may have more than one key. In this case, each of the keys is called a
+candidate key. For example, the CAR relation has two candidate keys: License_number and
+
+Engine. serial_number
+
+CAR
+
+[_License_number | Engine_serial_number Make Model | Year
+Texas ABC-739 A69352 Ford Mustang | 02
+Florida TVP-347 B43696 Oldsmobile | Cutlass | 05
+New York MPO-22 X83554 Oldsmobile | Delta 01
+California 432-TFY C43742 Mercedes | 190-D 99
+California RSK-629 Y82935 Toyota Camry 04
+Texas RSK-629 U028365 Jaguar US 04
+
+https://vtucode.in Page 7

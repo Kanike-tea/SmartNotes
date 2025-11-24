@@ -1,0 +1,40 @@
+1.2. Graphs cd
+
+[Example 3] Which of the following is a complete graph?
+, B v1 v2
+(ales)
+(a) (b)
+Figure 1.24
+
+> The first of the graphs is nor complete. It is not simple on the one hand and there is no edge
+between A and C on the other hand. The second of the graphs is complete. It is a simple graph
+and there is an edge between every pair of vertices. a
+GREE) °C = GV. Bis a simple graph, prove that 2\E\ <|Vi’ — IVI
+
+> Each edge of a graph is determined by a pair of vertices. In a simple graph there occur no
+multiple edges. As such, in.a simple graph, the number of edges cannot exceed the number of
+pairs of vertices. The number of pairs of vertices that can be choosen from n vertices is (from
+the theory of combinations)*
+
+"C= = nn)
+2=G@—ai2 2"
+
+Thus, for a simple graph with n (> 2) vertices, the number of edges cannot exceed $n(n— 1).
+Accordingly, if a simple graph G = G(V, E) has n vertices and m edges, then m < $n(n— 1), or,
+2m < n? —n; that is : 2|E] = |VF - IVI. a
+Remark: If a graph is not simple, it can have any number of edges (because, in such a graph
+multiple edges and loops are allowed).
+
+Show that a complete graph with n vertices, namely K,, has in(n — 1) edges.
+
+> In acomplete graph, there exists exactly one edge between every pair of vestioes: As such,
+the number of edges in a complete graph is equal to the number of pairs of vertices. If the
+Number of vertices is n, then the number of pairs of vertices is
+
+1
+n(n — 1)
+
+n = n! ag
+C2= GD 2
+
+*See Chapter 5. The symbol °C, is also denoted by .C,, C(n,r) and (").

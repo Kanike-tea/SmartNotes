@@ -1,0 +1,46 @@
+45. Matchings ei 257
+
+We note that the degree.of every Vertex in Vy is greater than or equal to 2. Also, the
+degree of every vertex In V2 is less than’ or equal to 2. Hence, by Theorem 2, there exists
+a complete matching from Vj to V2. This means that the three committees can select three
+different representatives. For example, ss can be selected from c;; 53 can be selected from c2,
+znd ss can be selected from cs. 5
+Example 6| In a certain class, there are equal number of boys and girls, say n. Every girl is
+liked by k boys. weil! < ms and every boy by k girls. Is it possible for each boy to go toa
+dinner party with a girl he likes and each girl with a boy who likes her?
+
+» Let Vj denote the set of boys and V2 denote the set of girls. Consider the bipartite graph
+G=G(V;, V2; E) where E consists of those edges {x,y} where x € V; and y € V2 and x likes y
+or vice-versa. y
+
+Then, from what is given, we have deg(x) = k and deg(y) = k for every x € V; and every
+
+y€ V2. Thus, degree of every vertex in V; = k = degree of every vertex in V2. Therefore, there
+
+exists a complete matching from V; to V2, and vice-versa. This means that the answer to the
+Py
+
+question asked is “Yes”.
+
+Show that the condition in Theorem 2 is not a necessary condition for the exis-
+tence of a complete matching from Vj to V2 in a bipartite graph G(V,, V2; E).
+
+» Consider the bipartite graph shown in Figure 4.67. We note that the degree of every vertex
+in V; is 2. Therefore, if there isa positive integer m such that the degree of every vertex in
+VY; > m, then m can be 1 or 2. This m is not greater than or equal to the degree of every
+vertex in V2; observe that the vertex S in V2 has degree 3. Thus, the condition of Theorem 2
+is not satisfied. But the graph has a complete matching. (Note that the edges ey, €4, eg form a
+
+complete matching from V; to V2).
+
+Figure 4.67
+
+tion for the
+
+orem 2 is not a necessary condi
+.
+
+This example shows that the condition of Th
+e condition is only sufficient).
+
+Sxistence of a complete matching from V1 to V2. (Thi

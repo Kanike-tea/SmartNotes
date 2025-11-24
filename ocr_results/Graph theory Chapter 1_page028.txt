@@ -1,0 +1,46 @@
+Vertex degree and Handshaking pro
+
+B xanple 8] Determine the order |V| of the 8raph G = (V; E) in the following cases :
+(1) Gis a cubic graph with 9 edges,
+
+(2) G is regular with 15 edges,
+(3) G has 10 edges with 2 vertices of degree 4 and all other vertices of degree 3.
+
+» (1) Suppose the order of G is n. Since G is a cubic
+
+graph, all vertices of G have degree 3,
+and therefore the sum of the degrees of vertices
+
+is 3n. Since G has 9 edges, we should
+have 3n = 2 x 9 (by the handshaking property) so that n = 6, Thus, the order of G is 6.
+
+(2) Since G is regular, all vertices of G must be of the same degree, say k. If G is of order
+n, then the sum of the degrees of vertices is kn. Since G has 15 edges, we should have
+kn = 2 15 so that k = 30/n. Since k has to be a positive integer, it follows that n must
+be a divisor of 30. Thus, the possible orders of G are 1,2, 3,5, 6, 10, 15 and 30.
+
+(3) Suppose the order of G is n. Since two vertices of G are of degree 4 and all others are of
+degree 3, the sum of the degrees of vertices of G is 2x4 + (n — 2) x 3. Since G has 10
+edges, we should have 2 x 4 + (n — 2) x 3 = 2x 10. This gives n = 6. Thus, the order of
+Gis 6. .
+
+Z Example 9] Let G be a graph of order 9 such that each vertex has degree 5 or 6. Prove that
+at least 5 vertices have degree 6 or atleast 6 vertices have degree 5.
+> Let p be the number of vertices of G which have degree 5. Then the number of vertices of
+G which have degree 6 is 9 — p = q (say). Evidently, 0 < p< 9,0< qs%
+
+We note that the sum of the degrees of vertices of G is
+
+(5 x p) + (6 x q) = 5p + 6(9 - p) = 54- p.
+
+Since this sum has to be an even number, p cannot be odd. Thus, p = 0,2,4,6, or 8.
+Consequently, the following possible cases arise :
+
+p=0, q=9
+p=2, q=7
+p=4, q=5 ‘
+p=6, q=3
+p=8 q=l
+
+We observe that in all the above possible cases either q 2 Sor p = 6. This means that
+atleast 5 vertices have degree 6 or atleast 6 vertices have degree 5. s

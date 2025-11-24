@@ -1,0 +1,28 @@
+120
+
+Brute Force and Exhaustive Search
+
+<1,2,3,4> cost=9+44+1+4=18
+9278 <1,2,4,3>  cost=9+4+8+9=30
+6437 <1,3,2,4>  cost=9+3+8+4=24
+5818 <1,3,4,2> cost=9+3+8+6=26 ete,
+7694 <1,4,2,3> cost=9+7+8+9=33
+
+<1,4,3,2>  cost=9+7+1+6=23
+
+FIGURE 3.9 First few iterations of solving a small instance of the assignment problem
+by exhaustive search.
+
+Since the number of permutations to be considered for the general case of the
+assignment problem is n!, exhaustive search is impractical for all but very small
+instances of the problem. Fortunately, there is a much more efficient algorithm for
+this problem called the Hungarian method after the Hungarian mathematicians
+K®6nig and Egervary, whose work underlies the method (see, e.g., [Kol95]).
+
+This is good news: the fact that a problem domain grows exponentially or
+faster does not necessarily imply that there can be no efficient algorithm for solving
+it. In fact, we present several other examples of such problems later in the book.
+However, such examples are more of an exception to the rule. More often than
+not, there are no known polynomial-time algorithms for problems whose domain
+grows exponentially with instance size, provided we want to solve them exactly.
+And, as we mentioned above, such algorithms quite possibly do not exist.

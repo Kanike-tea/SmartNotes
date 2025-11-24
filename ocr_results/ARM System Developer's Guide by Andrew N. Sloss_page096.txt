@@ -1,0 +1,51 @@
+EXAMPLE
+
+3.34
+
+EXAMPLE
+
+3.35
+
+3.8 Conditional Execution 83
+
+This example shows an ADD instruction with the EQ condition appended. This instruction
+will only be executed when the zero flag in the cpsris set to 1.
+
+3 r0 = rl + r2 if zero flag is set
+ADDEQ r0, rl, r2
+
+Only comparison instructions and data processing instructions with the S$ suffix
+appended to the mnemonic update the condition flags in the cpsr.
+
+To help illustrate the advantage of conditional execution, we will take the simple C code
+fragment shown in this example and compare the assembler output using nonconditional
+and conditional instructions.
+
+while (a!=b)
+{
+
+if (a>b) a -= b; else b -= a;
+}
+
+Let register r] represent a and register r2 represent b. The following code fragment
+shows the same algorithm written in ARM assembler. This example only uses conditional
+execution on the branch instructions:
+
+3 Greatest Common Divisor Algorithm
+
+ged
+CMP orl, r2
+BEQ complete
+BLT lessthan
+SUB rl, rl, r2
+B ged
+lessthan
+SUB r2, r2, rl
+B ged
+complete
+
+Now compare the same code with full conditional execution. As you can see, this
+dramatically reduces the number of instructions:
+
+gcd
+cP rl, r2

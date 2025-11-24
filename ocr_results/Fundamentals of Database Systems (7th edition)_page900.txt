@@ -1,0 +1,37 @@
+870 — Chapter 23 Distributed Database Concepts
+
+@) Computer System 1 | | Computer System 2
+-_ C>
+T I
+Memory Memory
+Switch
+Computer System n
+=>
+T
+Memory
+() Central Site
+DB, (Chicago) DB,
+Site Site
+(San Francisco) (New York)
+Communications
+Network
+Site Site
+(Los Angeles) (Atlanta)
+©
+Site 5
+—— ] ——
+Site 4 Site 1
+J Communications J
+—_ Network <>
+Site 3 Site 2
+7 LJ
+
+Figure 23.7
+Some different database system architectures. (a) Shared-nothing architecture. (b) A networked architecture with a
+centralized database at one of the sites. (c) A truly distributed database architecture.
+
+particular site. The logical organization of data at each site is specified by the local
+conceptual schema (LCS). The GCS, LCS, and their underlying mappings provide
+the fragmentation and replication transparency discussed in Section 23.1.2. Fig-
+ure 23.8 shows the component architecture of a DDB. It is an extension of its cen-
+tralized counterpart (Figure 2.3) in Chapter 2. For the sake of simplicity, common

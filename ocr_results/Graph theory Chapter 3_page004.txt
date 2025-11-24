@@ -1,0 +1,46 @@
+34. Trees and their Basic properties
+
+157
+
+Prove that a graph with n vertices, n= l edges and no cycles is connected.
+> Consider a graph G which has n vertices, n ~ 1 ed
+
+ges and no cycles. Suppose G is not
+connected. Let the components of G be H;, i = 1,2,...k. If Hy has n; vertices, we have
+
+m+m+--* +7 =n. Since G has no cycles, His also do not have cycles. Further, they are
+all connected graphs. Therefore, they are trees. Consequently, each H; must have n; — 1 edges.
+Therefore, the total number of edges in these Fis is
+
+(m1 — 1) + (m= 1) 4+ Dank
+
+This must be equal to the total number of edges in G; that isn —k = n — 1. This is not
+
+possible, since k > 1. Therefore, G must be connected. .
+Let F be a forest with k components (trees). If'n is the number of vertices and m
+
+is the number of edges in F, prove thatn = m+k.
+
+> Let H1,H2,..., Hx be the components of F. Since each of these is a tree, if n; is the number
+of vertices in H; and m; is the number of edges in Hj, we have
+
+m=n—-1, for i=1,2,...,k.
+
+_ This gives
+
+my +m +--- +m = (my — 1) + (mp — 1) $2 + OR - D
+
+; =n tnt: +nm—k.
+
+© But my+my+---+my =m and ny +ny+-+--+m =n. Therefore, m = nk, aia
+Let T; = (V;, Ey):and Tz = (V2, E2) be two trees. If |E\| = 19 and |V2| = 3|Vil,
+determine \V;|, |Vo|, and \E,
+
+> Itis given that |E;| ='19: Therefore,
+
+|Vj| =1Eil +1 = 19+ 1 = 20.
+Since |V,| = 3|V;| as given, we get
+[Vol = 31Vil = 3 x 20 = 60.
+
+Lastly,
+[Ep| = |V2| — 1 = 60-1 = 59.

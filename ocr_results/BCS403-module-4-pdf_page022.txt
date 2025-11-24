@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+Techniques using the concept of incremental update have been developed for this purpose,
+where the DBMS can determine what new tuples must be inserted, deleted, or modified in a
+materialized view table when a database update is applied to one of the defining base tables.
+
+The view is generally kept as a materialized (physically stored) table as long as it is being queried. If
+the view is not queried for a certain period of time, the system may then automatically remove the
+physical table and recompute it from scratch when future queries reference the view.
+
+Updating of views is complicated and can be ambiguous. In general, an update on a view defined
+on a single table without any aggregate functions can be mapped to an update on the underlying
+base table under certain conditions. For a view involving joins, an update operation may be mapped
+to update operations on the underlying base relations in multiple ways. Hence, it is often not
+possible for the DBMS to determine which of the updates is intended.
+
+To illustrate potential problems with updating a view defined on multiple tables, consider the
+WORKS_ON1 view, and suppose that we issue the command to update the PNAME attribute of
+‘John Smith’ from ‘Product’ to ‘ProductY’. This view update is shown in UV1:
+UV1: UPDATEWORKS_ON1
+SET Pname = ‘ProductY'
+WHERE Lname=‘Smith’ AND Fname=‘John’
+AND Pname='ProductX’;
+This query can be mapped into several updates on the base relations to give the desired update
+effect on the view. In addition, some of these updates will create additional side effects that affect
+the result of other queries.
+For example, here are two possible updates, (a) and (b), on the base relations corresponding to the
+view update operation in UV1:
+(a): UPDATEWORKS_ON
+SET Pno= (SELECT Pnumber
+FROM PROJECT
+WHERE Pname='ProductY’ )
+WHERE Essn IN ( SELECT Ssn
+FROM EMPLOYEE
+WHERE Lname=‘Smith’ AND Fname='‘John’ )
+AND
+Pno= (SELECT Pnumber
+FROM PROJECT
+WHERE Pname='ProductX’ );
+
+y page 40

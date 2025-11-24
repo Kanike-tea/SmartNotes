@@ -1,0 +1,23 @@
+A.5 GNU Assembler Quick Reference 635
+
+Table A.19 —. section flags for ELF format files.
+
+Flag Meaning
+
+a allocatable section
+writable section
+x executable section
+
+directive AREA. Table A.19 lists possible characters to appear in the <flags> string for ELF
+format files.
+
+«set <variable_name>, <variable_value>
+This directive sets the value of a variable. It is similar to SETA in armasm.
+«space <number_of_bytes> {,<fill_byte>}
+
+Reserves the given number of bytes. The bytes are filled with zero or <fi11_byte> if
+specified. It is similar to SPACE in armasm.
+
+-word <wordi> {,<word2>} ...
+
+Inserts a list of 32-bit word values as data into the assembly, as for DCD in armasm.

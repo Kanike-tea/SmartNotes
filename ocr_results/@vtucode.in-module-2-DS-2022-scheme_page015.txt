@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+BAT Car frar rar [—}—faar [_ |
+
+a——-| Gar
+
+Insert node GAT into list
+
+REPRESENTING CHAIN IN C
+The following capabilities are needed to make linked representation
+1. Amechanism for defining a node’s structure, that is, the field it contains. So self-
+referential structures can be used
+2. Away to create new nodes, so MALLOC functions can do this operation
+3. A way to remove nodes that no longer needed. The FREE function handles this
+
+operation.
+
+L. Defining a node structure
+
+typedef struct listNode *listPointer
+typedef struct
+
+{
+char data[4];
+listPointer list;
+} listNodeg
+
+Create a New Empty list
+
+listPointer first = NULL
+
+To create a New Node
+
+MALLOC (first, sizeof(*first));
+
+To place the data into NODE
+
+strcopy(first+ data,”BAT”);
+first link = NULL
+
+vtucode.in 16

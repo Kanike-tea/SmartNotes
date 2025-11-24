@@ -1,0 +1,48 @@
+Selected Bibliography 205
+
+6.13. Write SQL update statements to do the following on the database schema
+shown in Figure 1.2.
+
+a. Insert a new student, <‘Johnson’, 25, 1, ‘Math’>, in the database.
+b. Change the class of student ‘Smith’ to 2.
+._ Insert a new course, <‘Knowledge Engineering’, ‘cs4390’, 3, ‘cs’>.
+
+2
+
+. Delete the record for the student whose name is ‘Smith’ and whose stu-
+dent number is 17.
+
+2
+
+6.14. Design a relational database schema for a database application of your
+choice.
+a. Declare your relations using the SQL DDL.
+b. Specify a number of queries in SQL that are needed by your database
+application.
+c. Based on your expected use of the database, choose some attributes that
+should have indexes specified on them.
+d. Implement your database, if you have a DBMS that supports SQL.
+6.15. Consider that the EMPLOYEE table’s constraint EMPSUPERFK as specified in
+Figure 6.2 is changed to read as follows:
+CONSTRAINT EMPSUPERFK
+FOREIGN KEY (Super_ssn) REFERENCES EMPLOYEE(Ssn)
+ON DELETE CASCADE ON UPDATE CASCADE,
+Answer the following questions:
+a. What happens when the following command is run on the database state
+shown in Figure 5.6?
+DELETE EMPLOYEE WHERE Lname = ‘Borg’
+
+b. Is it better to CASCADE or SET NULL in case of EMPSUPERFK constraint
+ON DELETE?
+
+6.16. Write SQL statements to create a table EMPLOYEE_BACKUP to back up the
+EMPLOYEE table shown in Figure 5.6.
+
+Selected Bibliography
+
+The SQL language, originally named SEQUEL, was based on the language SQUARE
+(Specifying Queries as Relational Expressions) described by Boyce et al. (1975). The
+syntax of SQUARE was modified into SEQUEL (Chamberlin & Boyce, 1974) and
+then into SEQUEL 2 (Chamberlin et al., 1976), on which SQL is based. The original
+implementation of SEQUEL was done at IBM Research, San Jose, California. We
+will give additional references to various aspects of SQL at the end of Chapter 7.

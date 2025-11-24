@@ -1,0 +1,43 @@
+116 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+= Inserting an entity in a superclass implies that the entity is mandatorily
+inserted in all predicate-defined (or attribute-defined) subclasses for which
+the entity satisfies the defining predicate.
+
+= Inserting an entity in a superclass of a total specialization implies that
+the entity is mandatorily inserted in at least one of the subclasses of the
+specialization.
+
+The reader is encouraged to make a complete list of rules for insertions and dele-
+tions for the various types of specializations.
+
+4.3.2 Specialization and Generalization Hierarchies
+and Lattices
+
+A subclass itself may have further subclasses specified on it, forming a hierarchy or
+a lattice of specializations. For example, in Figure 4.6 ENGINEER is a subclass of
+EMPLOYEE and is also a superclass of ENGINEERING_MANAGER; this represents the
+real-world constraint that every engineering manager is required to be an engineer.
+A specialization hierarchy has the constraint that every subclass participates as a
+subclass in only one class/subclass relationship; that is, each subclass has only one
+parent, which results in a tree structure or strict hierarchy. In contrast, for a
+specialization lattice, a subclass can be a subclass in more than one class/subclass
+relationship. Hence, Figure 4.6 is a lattice.
+
+Figure 4.7 shows another specialization lattice of more than one level. This may
+be part of a conceptual schema for a UNIVERSITY database. Notice that this
+arrangement would have been a hierarchy except for the STUDENT_ASSISTANT
+subclass, which is a subclass in two distinct class/subclass relationships.
+
+Figure 4.6
+
+A specialization lattice with shared subclass
+
+ENGINEERING_MANAGER.
+
+EMPLOYEE
+d
+SECRETARY || TECHNICIAN ENGINEER MANAGER HOURLY_EMPLOYEE
+SALARIED_EMPLOYEE
+
+ENGINEERING_MANAGER

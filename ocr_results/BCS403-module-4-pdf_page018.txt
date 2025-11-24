@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+3. Suppose we want to check whenever an employee’s salary is greater than the salary of his or
+her direct supervisor in the COMPANY database
+
+Several events can trigger this rule:
++ inserting a new employee record
+* changing an employee's salary or
+
+* changing an employee’s supervisor
+
+Suppose that the action to take would be to call an external stored procedure
+SALARY_VIOLATION which will notify the supervisor
+
+CREATE TRIGGER SALARY_VIOLATION
+
+BEFORE INSERT OR UPDATE OF SALARY, SUPERVISOR_SSN
+ON EMPLOYEE
+
+FOR EACH ROW
+
+WHEN ( NEW.SALARY > ( SELECT SALARY FROM EMPLOYEE
+WHERE SSN = NEW.SUPERVISOR_SSN))
+INFORM_SUPERVISOR(NEW.Supervisor_ssn,NEW-Ssn );
+
+The trigger is given the name SALARY_VIOLATION, which can be used to remove or
+deactivate the trigger later
+
+In this example the events are: inserting a new employee record, changing an employee’s
+salary, or changing an employee's supervisor
+
+The action is to execute the stored procedure INFORM_SUPERVISOR
+
+Triggers can be used in various applications, such as maintaining database consistency, monitoring
+
+database updates.
+
+Assertions vs. Triggers
+
+Assertions do not modify the data, they only check certain conditions. Triggers are more
+powerful because the can check conditions and also modify the data
+
+Assertions are not linked to specific tables in the database and not linked to specific events.
+Triggers are linked to specific tables and specific events
+
+All assertions can be implemented as triggers (one or more). Not all triggers can be
+implemented as assertions
+
+: page 36

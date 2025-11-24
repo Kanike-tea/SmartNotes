@@ -1,0 +1,52 @@
+2.3 Database Languages and Interfaces
+
+2.3.1 DBMS Languages
+
+Once the design of a database is completed and a DBMS is chosen to implement the
+database, the first step is to specify conceptual and internal schemas for the data-
+base and any mappings between the two. In many DBMSs where no strict separa-
+tion of levels is maintained, one language, called the data definition language
+(DDL), is used by the DBA and by database designers to define both schemas. The
+DBMS will have a DDL compiler whose function is to process DDL statements in
+order to identify descriptions of the schema constructs and to store the schema
+description in the DBMS catalog.
+
+In DBMSs where a clear separation is maintained between the conceptual and
+internal levels, the DDL is used to specify the conceptual schema only. Another
+language, the storage definition language (SDL), is used to specify the internal
+schema. The mappings between the two schemas may be specified in either one of
+these languages. In most relational DBMSs today, there is no specific language that
+performs the role of SDL. Instead, the internal schema is specified by a combination
+of functions, parameters, and specifications related to storage of files. These permit
+the DBA staff to control indexing choices and mapping of data to storage. For a true
+three-schema architecture, we would need a third language, the view definition
+language (VDL), to specify user views and their mappings to the conceptual
+schema, but in most DBMSs the DDL is used to define both conceptual and external
+schemas. In relational DBMSs, SQL is used in the role of VDL to define user or
+application views as results of predefined queries (see Chapters 6 and 7).
+
+Once the database schemas are compiled and the database is populated with data,
+users must have some means to manipulate the database. Typical manipulations
+include retrieval, insertion, deletion, and modification of the data. The DBMS pro-
+vides a set of operations or a language called the data manipulation language
+(DML) for these purposes.
+
+In current DBMSs, the preceding types of languages are usually not considered dis-
+tinct languages; rather, a comprehensive integrated language is used that includes
+constructs for conceptual schema definition, view definition, and data manipula-
+tion. Storage definition is typically kept separate, since it is used for defining physi-
+cal storage structures to fine-tune the performance of the database system, which is
+usually done by the DBA staff. A typical example of a comprehensive database lan-
+guage is the SQL relational database language (see Chapters 6 and 7), which repre-
+sents a combination of DDL, VDL, and DML, as well as statements for constraint
+specification, schema evolution, and many other features. The SDL was a compo-
+nent in early versions of SQL but has been removed from the language to keep it at
+the conceptual and external levels only.
+
+There are two main types of DMLs. A high-level or nonprocedural DML can be
+used on its own to specify complex database operations concisely. Many DBMSs
+allow high-level DML statements either to be entered interactively from a display
+monitor or terminal or to be embedded in a general-purpose programming lan-
+guage. In the latter case, DML statements must be identified within the program so
+
+39

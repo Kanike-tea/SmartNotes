@@ -1,0 +1,44 @@
+3.1 Data Processing Instructions 55,
+
+POST cpsr = nZCvqiFt_USER
+rl = 0x00000000
+
+3.1.4 USING THE BARREL SHIFTER WITH ARITHMETIC
+INSTRUCTIONS
+
+‘The wide range of second operand shifts available on arithmetic and logical instructions
+is a very powerful feature of the ARM instruction set. Example 3.7 illustrates the use of
+the inline barrel shifter with an arithmetic instruction. The instruction multiplies the value
+stored in register r] by three.
+
+ExAMPLE Register rJ is first shifted one location to the left to give the value of twice rl. The ADD
+3.7 _ instruction then adds the result of the barrel shift operation to register rl. The final result
+transferred into register r0 is equal to three times the value stored in register rl.
+
+PRE r0 = 0x00000000
+r1 = 0x00000005
+
+3
+
+ADD v0, rl, ri, LSL #1
+
+POST rO = 0x0000000F
+r1 = 0x00000005
+
+3.1.5 LOGICAL INSTRUCTIONS
+
+Logical instructions perform bitwise logical operations on the two source registers.
+
+Syntax: <instruction>{<cond>}{$} Rd, Rn, N
+
+AND logical bitwise AND of two 32-bit values Rd = Rn&N
+ORR logical bitwise OR of two 32-bit values Rd = Rn|N
+EOR logical exclusive OR of two 32-bit values Rd = Rn“ N
+BIC logical bit clear (AND NOT) Rd = Rn& ~N
+
+EXAMPLE This example shows a logical OR operation between registers r] and r2. r0 holds the result.
+PRE r0 = 0x00000000
+r1 = 0x02040608
+r2 = 0x10305070
+
+3

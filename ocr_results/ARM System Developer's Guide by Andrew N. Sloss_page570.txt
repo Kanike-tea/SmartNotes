@@ -1,0 +1,35 @@
+15.1 Advanced DSP and SIMD Support in ARMv6 557
+
+Rm Rs
+
+a
+
+absdiff \aa absdiff / absdiff,
+
+Rn
+
+Rd
+
+Figure 15.2 Sum-of-absolute-differences operation.
+
+To implement this using the new instructions, use the following sequence to compute the
+sum_-of-absolute differences of four pixels:
+
+LOR pl, [plPtr],#4 5 load 4 pixels from pl
+LOR —p2, [p2Ptr],#4 5 load 4 pixels from p2
+jload delay-slot
+jload delay-slot
+USADA8 acc, pl, p2 3 accumlate sum abs diff
+
+There is a tremendous performance advantage for this algorithm over an ARMVSTE
+implementation. There is a four times improvement in performance from the eight-bit
+SIMD alone. Additionally the USADA8 operation includes the accumulation operation. The
+USAD8 operation will typically be used to carry out the setup into the loop before there is an
+existing accumulated value.
+
+15.1.6 DUAL 16-BIT MULTIPLY INSTRUCTIONS
+
+ARMVSTE introduced considerable DSP performance to ARM, but ARMv6 takes this much
+further. Implementations of ARMv6 (such as ARM1136J) have a dual 16 x 16 multiply
+capability, which is comparable with many high-end dedicated DSP devices. Table 15.9 lists
+these instructions.

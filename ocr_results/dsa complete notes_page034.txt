@@ -1,0 +1,57 @@
+Data Structures and Applications/BCS304 Module 1
+
+Infix, postfix(Suffix) and Prefix(polish)
+
+e Expression is a collection of operands and operators
+
+e Anexpression can be represented in three different ways.
+> Infix expression: operators are in between the two operands . Example a+b
+> Prefix expression: operators are present before the operands. Example +ab
+> Postfix expression: operators are present after the operands. Example ab+
+
+e The prefixes “pre”, “post”, and “in” refer to the relative position of the operator with respect
+to the two operands.
+
+To convert an expression from infix to prefix or postfix we follow the rules of precedence.
+e Precedence : The order in which different operators are evaluated in an expression is called
+precendence
+e Associativity : The order in which operators of same precedence are evaluated in an expression
+
+is called Associativity.
+
+The operators are listed in the order of higher precedence down to lower precedence
+
+Operator Associativity
+=r left-to-right
+Unary operators ~,!,-,+, &, * sizeof Right to left
+*/,% left-to-right
++, left-to-right
+
+Converting an expression from infix to postfix
+
+The operands in the infix and the postfix expression are in the same order. With respect to operators ,
+precedence of operators plays an important role in converting an infix expression to postfix expression.
+We make use of the stack to insert the operators according to their precedence.
+
+The following operations are performed to convert an infix expression to postfix.
+
+e Scan the symbol character by character
+
+°
+°
+°
+
+If the symbol is an operand place it in the postfix string
+
+If the symbol is an opening parenthesis push it on to the stack
+
+If the symbol is a closing parenthesis pop the contents of the stack until we see an
+opening parenthesis and place it in the postfix string. The opening parenthesis and the
+closing parenthesis is not placed in the postfix string.
+
+If the symbol is an operator and if the precedence of the input symbol is more than the
+precedence of the symbol on top of the stack, then the operator is pushed on to the
+stack. If the precedence of the input symbol is lesser than the symbol on top of the stack
+we pop each such operators and place it in the postfix string
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 35

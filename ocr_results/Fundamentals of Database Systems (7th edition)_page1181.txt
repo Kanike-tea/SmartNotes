@@ -1,0 +1,55 @@
+30.7 Encryption and Public Key Infrastructures
+
+The major liability associated with secret-key algorithms is the need for sharing the
+secret key. A possible method is to derive the secret key from a user-supplied password
+string by applying the same function to the string at both the sender and receiver; this
+is known as a password-based encryption algorithm. The strength of the symmetric key
+encryption depends on the size of the key used. For the same algorithm, encrypting
+using a longer key is tougher to break than the one using a shorter key.
+
+30.7.3 Public (Asymmetric) Key Encryption
+
+In 1976, Diffie and Hellman proposed a new kind of cryptosystem, which they
+called public key encryption. Public key algorithms are based on mathematical
+functions rather than operations on bit patterns. They address one drawback of
+symmetric key encryption, namely that both sender and recipient must exchange
+the common key in a secure manner. In public key systems, two keys are used for
+encryption/decryption. The public key can be transmitted in a nonsecure way,
+whereas the private key is not transmitted at all. These algorithms—which use two
+related keys, a public key and a private key, to perform complementary operations
+(encryption and decryption)—are known as asymmetric key encryption
+algorithms. The use of two keys can have profound consequences in the areas of
+confidentiality, key distribution, and authentication. The two keys used for public
+key encryption are referred to as the public key and the private key. The private key
+is kept secret, but it is referred to as a private key rather than a secret key (the key
+used in conventional encryption) to avoid confusion with conventional encryption.
+The two keys are mathematically related, since one of the keys is used to perform
+encryption and the other to perform decryption. However, it is very difficult to
+derive the private key from the public key.
+
+A public key encryption scheme, or infrastructure, has six ingredients:
+
+1. Plaintext. This is the data or readable message that is fed into the algorithm
+as input.
+
+2. Encryption algorithm. This algorithm performs various transformations
+on the plaintext.
+
+3. and 4. Public and private keys. These are a pair of keys that have been
+selected so that if one is used for encryption, the other is used for decryp-
+tion. The exact transformations performed by the encryption algorithm
+depend on the public or private key that is provided as input. For example, if
+a message is encrypted using the public key, it can only be decrypted using
+the private key.
+
+5. Ciphertext. This is the scrambled message produced as output. It depends
+on the plaintext and the key. For a given message, two different keys will
+produce two different ciphertexts.
+
+6. Decryption algorithm. This algorithm accepts the ciphertext and the
+matching key and produces the original plaintext.
+
+As the name suggests, the public key of the pair is made public for others to use,
+whereas the private key is known only to its owner. A general-purpose public key
+
+1151

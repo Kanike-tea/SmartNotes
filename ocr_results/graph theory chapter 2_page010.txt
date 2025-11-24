@@ -1,0 +1,50 @@
+2.2 Kuler’s formula
+2b
+
+ui
+
+pounded and the region Re is unbounded, We say that the regions Ry to Rs are in the interior
+
+of the graph and the region Rg is in the exterior, eneereene
+Ro
+‘ _¢ yu
+Figure 2,20 ante:
+64 GF 10fL v
+
+We further observe that, in Figure 2,20, the boundary of the region R; is made up of two
+edges. Therefore, the degree of Ri is 2; we write this as d(R;) = 2, The boundary of each
+of the regions R2 and Rq is made up of 3 edges; therefore, d(R2) = d(R4) = 3. The boundary
+of the region R3 consists of 4 edges of which one is a pendant edge. Therefore, d(R3) = 5.
+The region Rs is bounded by a single edge (loop); therefore, d(Rs) =A, The boundary of the
+exterior region Re consists of six edges; therefore, d(R6) = 6.
+
+We note that
+
+d(R,) + d(R2) + d(R3) + d(R4) + d(Rs) + d(Ro) = 20 -
+
+which is twice the number of edges in the graph. This property is analogous to the handshaking
+
+property and is true for all planar graphs.
+
+It should be pointed out that the regions are determined by a diagram of a planar graph and
+not by the graph itself. This means that if we change the diagram of the graph, the regions
+determined by the new diagram will be generally different from those determined by the old
+one in the sense that a region unbounded in the old diagram need not be unbounded in the new
+diagram. However, the interesting fact is that the{total number of regions in the two diagrams
+remains the same. The proof of this fact is contained in the following Euler’s fundamental
+
+theorem on planar graphs.
+Theorem: A connected planar graph G with n vertices and m edges has
+regions in all of its diagrams.
+
+Proof: Let r denote the number of regions in a
+
+exactly m-~m+2
+
+diagram of G. The theorem states that
+(yt
+
+r=m-n+2, OF n-m+r=2
+XK We give the proof by induction on m. WY ~ ete
+
+*This formula is known as the Euler’s formula. Ae: oe wt =

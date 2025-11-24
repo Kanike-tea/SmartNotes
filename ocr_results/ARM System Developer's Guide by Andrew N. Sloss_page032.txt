@@ -1,0 +1,35 @@
+CHAPTER
+
+ARM PROCESSOR
+FUNDAMENTALS
+
+Chapter | covered embedded systems with an ARM processor. In this chapter we will focus
+on the actual processor itself. First, we will provide an overview of the processor core and
+describe how data moves between its different parts. We will describe the programmer’s
+model from a software developer's view of the ARM processor, which will show you the
+functions of the processor core and how different parts interact. We will also take a look at
+the core extensions that form an ARM processor. Core extensions speed up and organize
+main memory as well as extend the instruction set. We will then cover the revisions to the
+ARM core architecture by describing the ARM core naming conventions used to identify
+them and the chronological changes to the ARM instruction set architecture. The final
+section introduces the architecture implementations by subdividing them into specific
+ARM processor core families.
+
+A programmer can think of an ARM core as functional units connected by data buses,
+as shown in Figure 2.1, where, the arrows represent the flow of data, the lines represent the
+buses, and the boxes represent either an operation unit or a storage area. The figure shows
+not only the flow of data but also the abstract components that make up an ARM core.
+
+Data enters the processor core through the Data bus. The data may be an instruction to
+execute or a data item. Figure 2.1 shows a Von Neumann implementation of the ARM—
+data items and instructions share the same bus. In contrast, Harvard implementations of
+the ARM use two different buses.
+
+The instruction decoder translates instructions before they are executed. Each
+instruction executed belongs to a particular instruction set.
+
+The ARM processor, like all RISC processors, uses a load-store architecture. This
+means it has two instruction types for transferring data in and out of the processor: load
+instructions copy data from memory to registers in the core, and conversely the store
+
+19

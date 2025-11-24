@@ -1,0 +1,54 @@
+17.7 Physical Database Design in Relational Databases
+
+17.7 Physical Database Design
+in Relational Databases
+
+In this section, we discuss the physical design factors that affect the performance of
+applications and transactions, and then we comment on the specific guidelines for
+RDBMSs in the context of what we discussed in Chapter 16 and this chapter so far.
+
+17.7.1 Factors That Influence Physical Database Design
+
+Physical design is an activity where the goal is not only to create the appropriate
+structuring of data in storage, but also to do so in a way that guarantees good per-
+formance. For a given conceptual schema, there are many physical design alterna-
+tives in a given DBMS. It is not possible to make meaningful physical design
+decisions and performance analyses until the database designer knows the mix of
+queries, transactions, and applications that are expected to run on the database.
+This is called the job mix for the particular set of database system applications. The
+database administrators/designers must analyze these applications, their expected
+frequencies of invocation, any timing constraints on their execution speed, the
+expected frequency of update operations, and any unique constraints on attributes.
+We discuss each of these factors next.
+
+A. Analyzing the Database Queries and Transactions. Before undertaking
+the physical database design, we must have a good idea of the intended use of the
+database by defining in a high-level form the queries and transactions that are
+expected to run on the database. For each retrieval query, the following informa-
+tion about the query would be needed:
+
+- The files (relations) that will be accessed by the query
+. The attributes on which any selection conditions for the query are specified
+. Whether the selection condition is an equality, inequality, or a range condition
+
+Pers
+
+. The attributes on which any join conditions or conditions to link multiple
+tables or objects for the query are specified
+
+5. The attributes whose values will be retrieved by the query
+
+The attributes listed in items 2 and 4 above are candidates for the definition of
+access structures, such as indexes, hash keys, or sorting of the file.
+
+For each update operation or update transaction, the following information
+would be needed:
+1. The files that will be updated
+2. The type of operation on each file (insert, update, or delete)
+3. The attributes on which selection conditions for a delete or update are specified
+4. The attributes whose values will be changed by an update operation
+
+Again, the attributes listed in item 3 are candidates for access structures on the files,
+because they would be used to locate the records that will be updated or deleted. On
+
+643

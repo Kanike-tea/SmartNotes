@@ -1,0 +1,52 @@
+25.4 MapReduce: Additional Details
+
+As shown by this example, a Pigscript written using the scripting language Pig Latin
+is a sequence of data transformation steps. On each step, a basic transformation like
+Filter, Group By, or Projection is expressed. The script resembles a query plan for
+the SQL query similar to the plans we discussed in Chapter 19. The language sup-
+ports operating on nested data structures like JSON (Java Script Object Notation)
+and XML. It has an extensive and extendible function library, and also an ability to
+bind schema to data very late or not at all.
+
+Pig was designed to solve problems such as ad hoc analyses of Web logs and click-
+streams. The logs and clickstreams typically require custom processing at row level
+as well as at an aggregate level. Pig accommodates user-defined functions (UDFs)
+extensively. It also supports a nested data model with the following four types:
+
+Atoms: Simple atomic values such as a number or a string
+Tuples: A sequence of fields, each of which can be of any permissible type
+Bag: A collection of tuples with possible duplicates
+
+Map: A collection of data items where each item has a key that allows direct
+access to it
+
+Olston et al. (2008) demonstrates interesting applications on logs using Pig. An
+example is analysis of activity logs for a search engine over any time period (day,
+week, month, etc.) to calculate frequency of search terms by a user’s geographic loca-
+tion. Here the functions needed include mapping IP addresses to geo-locations and
+using n-gram extraction. Another application involves co-grouping search queries
+of one period with those of another period in the past based on search terms.
+
+Pig was architected so that it could run on different execution environments. In
+implementing Pig, Pig Latin was compiled into physical plans that were translated
+into a series of MR jobs and run in Hadoop. Pig has been a useful tool for enhanc-
+ing programmers’ productivity in the Hadoop environment.
+
+25.4.3 Apache Hive
+
+Hive was developed at Facebook" with a similar intent—to provide a higher level
+interface to Hadoop using SQL-like queries and to support the processing of aggre-
+gate analytical queries that are typical in data warehouses (see Chapter 29). Hive
+remains a primary interface for accessing data in Hadoop at Facebook; it has been
+adopted widely in the open source community and is undergoing continuous
+improvements. Hive went beyond Pig Latin in that it provided not only a high-level
+language interface to Hadoop, but a layer that makes Hadoop look like a DBMS
+with DDL, metadata repository, JDBC/ODBC access, and an SQL compiler. The
+architecture and components of Hive are shown in Figure 25.2.
+
+Figure 25.2 shows Apache Thrift as interface in Hive. Apache Thrift defines an
+Interface Definition Language (IDL) and Communication Protocol used to develop
+
+'8See Thusoo et al. (2010).
+
+933

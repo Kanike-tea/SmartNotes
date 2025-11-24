@@ -1,0 +1,51 @@
+314
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+programming constructs for defining modules (procedures and functions) that are
+stored within the database system.* Section 10.5 compares these approaches.
+
+10.2 Embedded SQL, Dynamic SQL, and SQLJ
+
+In this section, we give an overview of the techniques for embedding SQL state-
+ments in a general-purpose programming language. We focus on two languages: C
+and Java. The examples used with the C language, known as embedded SQL, are
+presented in Sections 10.2.1 through 10.2.3, and can be adapted to other similar
+programming languages. The examples using Java, known as SQLJ, are presented
+in Sections 10.2.4 and 10.2.5. In this embedded approach, the programming lan-
+guage is called the host language. Most SQL statements—including data or con-
+straint definitions, queries, updates, or view definitions—can be embedded in a
+host language program.
+
+10.2.1 Retrieving Single Tuples with Embedded SQL
+
+To illustrate the concepts of embedded SQL, we will use C as the host programming
+language.’ In a C program, an embedded SQL statement is distinguished from pro-
+gramming language statements by prefixing it with the keywords EXEC SQL so that
+a preprocessor (or precompiler) can separate embedded SQL statements from the
+host language source code. The SQL statements within a program are terminated
+by a matching END-EXEC or by a semicolon (;). Similar rules apply to embedding
+SQL in other programming languages.
+
+Within an embedded SQL command, the programmer can refer to specially
+declared C program variables; these are called shared variables because they are
+used in both the C program and the embedded SQL statements. Shared variables
+are prefixed by a colon (:) when they appear in an SQL statement. This distin-
+guishes program variable names from the names of database schema constructs
+such as attributes (column names) and relations (table names). It also allows pro-
+gram variables to have the same names as attribute names, since they are distin-
+guishable by the colon (:) prefix in the SQL statement. Names of database schema
+constructs—such as attributes and relations—can only be used within the SQL
+commands, but shared program variables can be used elsewhere in the C program
+without the colon (:) prefix.
+
+Suppose that we want to write C programs to process the COMPANY database in
+Figure 5.5. We need to declare program variables to match the types of the database
+attributes that the program will process. The programmer can choose the names of
+the program variables; they may or may not have names that are identical to their
+
+3SQL/PSM illustrates how typical general-purpose programming language constructs—such as loops
+and conditional structures—can be incorporated into SL.
+
+Our discussion here also applies to the C++ or C# programming languages, since we do not use any
+of the object-oriented features, but focus on the database programming mechanism.

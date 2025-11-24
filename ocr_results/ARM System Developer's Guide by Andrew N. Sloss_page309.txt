@@ -1,0 +1,48 @@
+296 Chapter 8 Digital Signal Processing
+
+EXAMPLE
+
+8.14
+
+Figure 8.5
+
+‘The coefficient bp controls the amplitude of the biquad. We can assume that by = 1
+when performing a series of biquads, and use a single multiply or shift at the end to correct
+the signal amplitude. So, to summarize, we have reduced an IIR to filtering by a series of
+biquads of the form
+
+St = Xp ASe—1 — ADSp—2, Ye = Se + DiSp—-1 + bys¢-2 (8.36)
+
+To implement each biquad, we need to store fixed-point representations of the six values
+ay, — ap, by, bo, +1, 5+-2 in ARM registers. To load a new biquad requires six loads; to
+load a new sample, only one load. Therefore it is much more efficient for the inner loop to
+loop over samples rather than loop over biquads.
+
+For a block IIR, we split the input signal x; into large frames of N samples. We make
+multiple passes over the signal, filtering by as many biquads as we can hold in registers
+on each pass. Typically for ARMv4 processors we filter by one biquad on each pass; for
+ARMVSTE processors, by two biquads. The following examples give IIR code for different
+ARM processors.
+
+This example implements a 1 x 2 block IIR filter on the ARM7TDMI. Each inner loop
+applies one biquad filter to the next two input samples. The input arrays have the format
+given in Figure 8.5.
+
+Each biquad Bx is a list of six values (—ay,—ap, b, b>, 5:1, 5+-2). As with previous
+implementations for the ARM7TDMI, we store the 16-bit input values in 32-bit integers so
+we can use load multiples. We store the biquad coefficients at Q14 fixed-point format. The
+number of samples N must be even.
+
+y RN ; address for output samples y[]
+x RN 1; address of input samples x[]
+b RN 2 3 address of biquads
+N RN 3 5 number of samples to filter (a multiple of 2)
+M RN 4 5 number of biquads to apply
+x0 RN 2 5 input samples
+Array First Second Third Last Array
+name element element element element length
+x X X41 X42 we | XteNH N
+y Yr Yr Yr42 ee | Yepn-a N
+Bo By By «| Bu-1 M
+
+Formats of the arrays x, y, and b.

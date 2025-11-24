@@ -1,0 +1,50 @@
+Microcontrollers - BCS402
+
+1
+Virtual H Physical
+memory \ memory
+1
+Offset Address bus
+1 ~
+|
+Translation 1
+base
+ase : .| MMU .
+Cache T
+i
+| Data bus
+~ . |
+i
+Processor ! Main
+Logical cache memory
+Virtual | Physical
+memory | memory
+|
+Offset Address bus
+i |
+I
+Translation i
+base
+- +| MMU ae
+Cache
+Data bus |
+Le. L
+]
+Processor ! Main
+Physical cache memory
+
+Fig 3: Logical and physical caches
+
+The improvement a cache provides is possible because computer programs execute in
+nonrandom ways. Predictable program execution is the key to the success of cached systems. If a
+program’s accesses to memory were random, a cache would provide little improvement to
+overall system performance. The principle of locality of reference explains the performance
+
+improvement provided by the addition of a cache memory to a system.
+
+This principle states that, computer software programs frequently run small loops of code that
+repeatedly operate on local sections of data memory. The repeated use of the same code or data
+
+in memory, or those very near, is the reason a cache improves performance. By loading the
+
+Dept. of ECE, GSSSIETW, Mysuru Page 33

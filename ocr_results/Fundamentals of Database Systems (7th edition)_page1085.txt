@@ -1,0 +1,54 @@
+27.7 Web Search and Analysis
+
+Web usage data describes the pattern of usage of Web pages, such as IP addresses,
+page references, and the date and time of accesses for a user, user group, or an
+application. Web usage analysis typically consists of three main phases: preprocess-
+ing, pattern discovery, and pattern analysis.
+
+1. Preprocessing. Preprocessing converts the information collected about
+usage statistics and patterns into a form that can be utilized by the pattern
+discovery methods. For example, we use the term page view to refer to pages
+viewed or visited by a user. There are several different types of preprocessing
+techniques available:
+
+& Usage preprocessing analyzes the available collected data about usage
+patterns of users, applications, and groups of users. Because this data is
+often incomplete, the process is difficult. Data cleaning techniques are
+necessary to eliminate the impact of irrelevant items in the analysis result.
+Frequently, usage data is identified by an IP address and consists of click-
+ing streams that are collected at the server. Better data is available if a
+usage tracking process is installed at the client site.
+
+© Content preprocessing is the process of converting text, image, scripts,
+and other content into a form that can be used by the usage analysis.
+Often, this process consists of performing content analysis such as classi-
+fication or clustering. The clustering or classification techniques can group
+usage information for similar types of Web pages, so that usage patterns
+can be discovered for specific classes of Web pages that describe particular
+topics. Page views can also be classified according to their intended use,
+such as for sales or for discovery or for other uses.
+
+© Structure preprocessing can be done by parsing and reformatting the
+information about hyperlinks and structure between viewed pages. One
+difficulty is that the site structure may be dynamic and may have to be
+constructed for each server session.
+
+2. Pattern discovery. The techniques that are used in pattern discovery are based
+on methods from the fields of statistics, machine learning, pattern recognition,
+data analysis, data mining, and other similar areas. These techniques are adapted
+so they take into consideration the specific knowledge and characteristics of
+Web analysis. For example, in association rule discovery (see Section 28.2), the
+notion of a transaction for market-basket analysis considers the items to be
+unordered. But the order of accessing of Web pages is important, and so it
+should be considered in Web usage analysis. Hence, pattern discovery involves
+mining sequences of page views. In general, using Web usage data, the following
+types of data mining activities may be performed for pattern discovery.
+
+Statistical analysis. Statistical techniques are the most common method
+of extracting knowledge about visitors to a Web site. By analyzing the ses-
+sion log, it is possible to apply statistical measures such as mean, median,
+and frequency count to parameters such as pages viewed, viewing time
+per page, length of navigation paths between pages, and other parameters
+that are relevant to Web usage analysis.
+
+1055

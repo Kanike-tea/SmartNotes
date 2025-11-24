@@ -1,0 +1,56 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+String insertion:
+Assume that we have two strings, say string | and string 2, and that we want to insert string 2 into
+string | starting at the ith position of string 1. We begin with the declarations:
+
+#include <string.h>
+
+#define MAX-—SIZE 100 /*size of largest string*/
+
+char stringl[MAX-SIZE], *s = stringl;
+char string2[MAX-SIZE], *t = string2;
+
+void strnins(char *s, char *t, int i)
+
+{
+
+/* insert string t into string s at position i */
+char string[MAX—SIZE], *temp = string;
+
+if (i < 0 && i > strien(s)) {
+fprintf(stderr,"Position is out of bounds \n");
+exit (1);
+
+}
+
+if (!strlen(s) )
+strepy(s,t)
+
+else if (strlen(t)) {
+strncpy(temp, s,i);
+streat (temp,t);
+streat (temp, (s+i));
+strepy(s, temp) ;
+
+Program 2.11: String insertion function
+
+5 Serie | Me b ifr fe{o]
+
+temp ——> \0
+
+initially
+
+temp —> a | \0
+
+(a) after strncpy (temp,s,i)
+
+temp —=»aluJ|t]o]|\0
+
+(b) after strcat (temp,t)
+
+temp —=sal|lu|lt}o]/m}o{/biijl |e]
+
+(c) after strcat (temp, (5 +i))
+
+vtucode.in 35

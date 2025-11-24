@@ -1,0 +1,55 @@
+528
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+following inference rules IR1 through IR8 form a sound and complete set for infer-
+ring functional and multivalued dependencies from a given set of dependencies.
+
+Assume that all attributes are included in a universal relation schema R = {Aj, A,
+..» An} and that X, Y, Z, and W are subsets of R.
+
+IR1 (reflexive rule for FDs): If X D Y, then X > Y.
+
+IR2 (augmentation rule for FDs): {X > Y} |= XZ = YZ.
+
+IRS (transitive rule for FDs): {X > Y, Y > Z} |= X > Z.
+
+IR4 (complementation rule for MVDs): {X —» R} |= {X >(R - (X U))}.
+IR5 (augmentation rule for MVDs): If X >» Y and WD Z, then WX >» YZ.
+IRG (transitive rule for MVDs): {X —» Y, Y >» Z} | = X +» (X- Y).
+
+IR7 (replication rule for FD to MVD): {X > Y}|=X >> Y.
+
+IR8 (coalescence rule for FDs and MVDs): If X > Y and there exists W with
+the properties that (a) WM Y is empty, (b) W > Z, and (c) YD Z, then X > Z.
+
+IR1 through IR3 are Armstrong’s inference rules for FDs alone. IR4 through IR6
+are inference rules pertaining to MVDs only. IR7 and IR8 relate FDs and MVDs.
+In particular, IR7 says that a functional dependency is a special case of a multi-
+valued dependency; that is, every FD is also an MVD because it satisfies the formal
+definition of an MVD. However, this equivalence has a catch: An FD X > Yisan
+MVD X —» Y with the additional implicit restriction that at most one value of Y
+is associated with each value of X.° Given a set F of functional and multivalued
+dependencies specified on R = {Aj, Ap, ..., A,}, we can use IR1 through IR8 to infer
+the (complete) set of all dependencies (functional or multivalued) F* that will hold
+in every relation state r of R that satisfies F. We again call F* the closure of F.
+
+15.5.2 Fourth Normal Form Revisited
+We restate the definition of fourth normal form (4NF) from Section 14.6:
+
+Definition. A relation schema R is in 4NF with respect to a set of dependencies F
+(that includes functional dependencies and multivalued dependencies) if, for every
+nontrivial multivalued dependency X +» Y in F*, X in F*, X is a superkey for R.
+
+To illustrate the importance of 4NF, Figure 15.4(a) shows the EMP relation in Fig-
+ure 14.15 with an additional employee, ‘Brown’, who has three dependents (‘Jim’,
+‘Joan’, and ‘Bob’) and works on four different projects (“W’, ‘X’, ‘Y’, and ‘Z’). There
+are 16 tuples in EMP in Figure 15.4(a). If we decompose EMP into EMP_PROJECTS
+and EMP_DEPENDENTS, as shown in Figure 15.4(b), we need to store a total of
+only 11 tuples in both relations. Not only would the decomposition save on stor-
+age, but the update anomalies associated with multivalued dependencies would
+also be avoided. For example, if ‘Brown’ starts working on a new additional project
+‘P’, we must insert three tuples in EMP—one for each dependent. If we forget to
+
+That is, the set of values of Y determined by a value of X’is restricted to being a singleton set with only
+one value. Hence, in practice, we never view an FD as an MVD.

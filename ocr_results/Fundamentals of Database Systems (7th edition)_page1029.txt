@@ -1,0 +1,49 @@
+26.5 Introduction to Deductive Databases
+
+content. These systems use image-processing and statistical-modeling techniques
+to analyze image content to generate accurate annotation tags that can then be used
+to retrieve images by content. Since different annotation schemes will use different
+vocabularies to annotate images, the quality of image retrieval will be poor. To solve
+this problem, recent research techniques have proposed the use of concept hierar-
+chies, taxonomies, or ontologies using OWL (Web Ontology Language), in which
+terms and their relationships are clearly defined. These can be used to infer higher-
+level concepts based on tags. Concepts like “sky” and “grass” may be further divided
+into “clear sky” and “cloudy sky” or “dry grass” and “green grass” in such a taxon-
+omy. These approaches generally come under semantic tagging and can be used in
+conjunction with the above feature-analysis and object-identification strategies.
+
+26.4.4 Analysis of Audio Data Sources
+
+Audio sources are broadly classified into speech, music, and other audio data. Each
+of these is significantly different from the others; hence different types of audio data
+are treated differently. Audio data must be digitized before it can be processed and
+stored. Indexing and retrieval of audio data is arguably the toughest among all types
+of media, because like video, it is continuous in time and does not have easily mea-
+surable characteristics such as text. Clarity of sound recordings is easy to perceive
+humanly but is hard to quantify for machine learning. Interestingly, speech data
+often uses speech recognition techniques to aid the actual audio content, as this can
+make indexing this data a lot easier and more accurate. This is sometimes referred
+to as text-based indexing of audio data. The speech metadata is typically content
+dependent, in that the metadata is generated from the audio content; for example,
+the length of the speech, the number of speakers, and so on. However, some of the
+metadata might be independent of the actual content, such as the length of the
+speech and the format in which the data is stored. Music indexing, on the other
+hand, is done based on the statistical analysis of the audio signal, also known as
+content-based indexing. Content-based indexing often makes use of the key features
+of sound: intensity, pitch, timbre, and rhythm. It is possible to compare different
+pieces of audio data and retrieve information from them based on the calculation of
+certain features, as well as application of certain transforms.
+
+26.5 Introduction to Deductive Databases
+
+26.5.1 Overview of Deductive Databases
+
+In a deductive database system we typically specify rules through a declarative
+language—a language in which we specify what to achieve rather than how to
+achieve it. An inference engine (or deduction mechanism) within the system can
+deduce new facts from the database by interpreting these rules. The model used for
+deductive databases is closely related to the relational data model, and particularly
+to the domain relational calculus formalism (see Section 6.6). It is also related to the
+field of logic programming and the Prolog language. The deductive database work
+
+999

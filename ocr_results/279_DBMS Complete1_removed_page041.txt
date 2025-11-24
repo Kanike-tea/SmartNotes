@@ -1,0 +1,20 @@
+Hashed file organization:
+Hashing is the most common form of purely random access to a file or database. It is also used to
+access columns that do not have a index as an optimization technique. Hash functions calculate the
+address of the page in which the record is to be stored based on one or more fields in the record.
+The records in a hash file appear randomly distributed across the available space. It requires some
+hashing algorithm and the technique. Hashing algorithm converts a primary key value into a record
+address.
+Advantage of hashed file organization:
+
+1. Insertion or search on hash key is fast.
+
+2. Best if equality search is needed on hash key
+Disadvantage of hashed file organization:
+It is a complex file organization method
+search is slow
+It suffers from disk space overhead
+Unbalanced buckets degrade performance
+Range search is slow
+
+YRONP

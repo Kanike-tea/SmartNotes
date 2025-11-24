@@ -1,0 +1,53 @@
+54
+
+Chapter 2 Database System Concepts and Architecture
+
+2.7 Summary
+
+In this chapter we introduced the main concepts used in database systems. We
+defined a data model and we distinguished three main categories:
+
+= High-level or conceptual data models (based on entities and relationships)
+= Low-level or physical data models
+
+= Representational or implementation data models (record-based, object-
+oriented)
+
+We distinguished the schema, or description of a database, from the database itself.
+The schema does not change very often, whereas the database state changes every
+time data is inserted, deleted, or modified. Then we described the three-schema
+DBMS architecture, which allows three schema levels:
+
+= An internal schema describes the physical storage structure of the database.
+= A conceptual schema is a high-level description of the whole database.
+= External schemas describe the views of different user groups.
+
+A DBMS that cleanly separates the three levels must have mappings among
+the schemas to transform requests and query results from one level to the
+next. Most DBMSs do not separate the three levels completely. We used the
+three-schema architecture to define the concepts of logical and physical data
+independence.
+
+Then we discussed the main types of languages and interfaces that DBMSs support.
+A data definition language (DDL) is used to define the database conceptual schema.
+In most DBMSs, the DDL also defines user views and, sometimes, storage struc-
+tures; in other DBMSs, separate languages or functions exist for specifying storage
+structures. This distinction is fading away in today’s relational implementations,
+with SQL serving as a catchall language to perform multiple roles, including view
+definition. The storage definition part (SDL) was included in SQL’s early versions,
+but is now typically implemented as special commands for the DBA in relational
+DBMSs. The DBMS compiles all schema definitions and stores their descriptions in
+the DBMS catalog.
+
+A data manipulation language (DML) is used for specifying database retrievals and
+updates. DMLs can be high level (set-oriented, nonprocedural) or low level (record-
+oriented, procedural). A high-level DML can be embedded in a host programming
+language, or it can be used as a standalone language; in the latter case it is often
+called a query language.
+
+We discussed different types of interfaces provided by DBMSs and the types of
+DBMS users with which each interface is associated. Then we discussed the
+database system environment, typical DBMS software modules, and DBMS
+utilities for helping users and the DBA staff perform their tasks. We continued
+with an overview of the two-tier and three-tier architectures for database
+applications.

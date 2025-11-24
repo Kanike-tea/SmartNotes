@@ -1,0 +1,71 @@
+906 Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+Figure 24.4
+Examples in Neo4j using the Cypher language. (a) Creating some nodes. (b) Creating some relationships.
+
+(a) creating some nodes for the COMPANY data (from Figure 5.6):
+
+CREATE (e1: EMPLOYEE, {Empid: ‘1’, Lname: ‘Smith’, Fname: ohn’, Minit: ‘B’))
+CREATE (e2: EMPLOYEE, {Empid: ‘2’, Lname: ‘Wong’, Fname: ‘Franklin’})
+CREATE (e3: EMPLOYEE, {Empid: ‘3', Lname: ‘Zelaya’, Fname: ‘Alicia’})
+CREATE (e4: EMPLOYEE, {Empid: ‘4’, Lname: ‘Wallace’, Frame: ‘Jennifer’, Minit: 'S’})
+CREATE (d1: DEPARTMENT, {Dno: ‘5’, Dname: ‘Research’})
+CREATE (d2: DEPARTMENT, {Dno: ‘4’, Dname: ‘Administration’})
+CREATE (p1: PROJECT, {Pno: ‘1’, Pname: ‘ProductX’})
+CREATE (p2: PROJECT, {Pno:
+CREATE (p3: PROJECT, {Pno: ‘10’, Pname: ‘Computerization’})
+CREATE (p4: PROJECT, {Pno: ‘20’, Pname: ‘Reorganization’))
+
+OCATION, {Lname: ‘Houston’})
+
+OCATION, {Lname: 'Stafford’})
+
+: LOCATION, {Lname: ‘Bellaire’})
+
+CREATE (loc4: LOCATION, {Lname: 'Sugarland’})
+
+(b) creating some relationships for the COMPANY data (from Figure 5.6):
+
+CREATE (e1) - [:
+CREATE (e3) - [:
+
+CREATE (d1) - [:
+CREATE (d2) - [:
+
+CREATE (d1) - [:
+CREATE (d1) - [:
+CREATE (d1) - [:
+CREATE (d2) - [:
+
+CREATE (e1) - [:
+CREATE (e1) = [:
+CREATE (e2) - [:
+CREATE (e2) = [:
+CREATE (e2) - [:
+CREATE (e2) - [:
+
+WorksFor ] -> (d1)
+WorksFor ] -> (d2)
+
+Manager ] -> (e2)
+Manager ] -> (e4)
+
+Locatedin ] —> (loc1)
+Locatedin ] —> (loc3)
+Locatedin ] —> (loc4)
+Locatedin ] -> (loc2)
+
+WorksOn, {Hours:
+WorksOn, {Hours:
+WorksOn, {Hours:
+WorksOn, {Hours:
+WorksOn, {Hours:
+
+WorksOn, {Hours:
+
+'32.5'}] -> (p1)
+75} ] -> (p2)
+10.0} ] -> (p1)
+10.0}] -> (p2)
+10.0'}] -> (p3)
+: 10.0} ] -> (p4)

@@ -1,0 +1,52 @@
+310 Chapter 8 Digital Signal Processing
+
+EXAMPLE
+
+8.18
+
+MOVS S, S, LSR#2 — ; quarter number of blocks
+BNE next_stage_arm9m
+LOMFD sp!, {r4-rll, pc}
+
+fft_table_arm9m
+3; FFT twiddle table of triplets E(3t), E(t), E(2t)
+3 Where E(t)=(cos(t)-sin(t))+i*sin(t) at Ql4
+3 N=16 t=2*PI*k/N for k=0,1,2,..,N/4-1
+DCW 0x4000,0x0000, 0x4000,0x0000, 0x4000,0x0000
+DCW Oxdd5d,0x3b21, 0x22a3,0x187e, 0x0000,0x2d41
+DCW Oxa57e,0x2d41, 0x0000,0x2d41, Oxc000,0x4000
+DCW Oxdd5d,0xe782, Oxdd5d,0x3b21, Oxa57e,0x2d41
+3 N=64 t=2*PI*k/N for k=0,1,2,..,N/4-1
+DCW 0x4000,0x0000, 0x4000,0x0000, 0x4000,0x0000
+DCW Ox2aaa,0x1294, 0x396b,0x0646, 0x3249,0x0c7c
+DCW 0x11a8,0x238e, 0x3249,0x0c7c, 0x22a3,0x187e
+DCW Ox#721,0x3179, Ox2aaa,0x1294, 0x11a8,0x238e
+DCW Oxdd5d,0x3b21, 0x22a3,0x187e, 0x0000,0x2d41
+DCW 0xc695,0x3fb1, 0x1a46,0xle2b, Oxee58,0x3537
+DCW Oxb4be,0x3ec5, 0x11a8,0x238e, Oxdd5d,0x3b21
+DCW 0xa963,0x3871, Ox08df,0x289a, Oxcdb7 ,0x3ec5
+DCW Oxa57e,0x2d41, 0x0000,0x2d41, Oxc000,0x4000
+DCW 0xa963,0xle2b, Oxf721,0x3179, Oxb4be,0x3ec5
+DCW Oxb4be,0x0c7c, Oxee58,0x3537, Oxac61,0x3b21
+DCW 0xc695,0xf9ba, OxeSba,0x3871, Oxa73b,0x3537
+DCW Oxdd5d,0xe782, Oxdd5d,0x3b21, Oxa57e,0x2d41
+DCW Ox#721,0xd766, 0xd556,0x3d3f, Oxa73b,0x238e
+DCW 0x11a8,0xcac9, Oxcdb7,0x3ec5, Oxac61,0x187e
+DCW Ox2aaa,0xc2cl, 0xc695,0x3fb1, Oxb4be,0x0c7c
+3 N=256 t=2*PI*k/N for k=0,1,2,..,N/4-1
+3+.» continue as necessary ...
+
+The code is in two parts. The first stage does not require any complex multiplies. We
+read the data in a bit-reversed order from the source array x, and then we apply the radix-4
+butterfly and write to the destination array y. We perform the remaining stages in place in
+the destination buffer.
+
+It is possible to implement the FFT without bit reversal, by alternating between the
+source and destination buffers at each stage. However, this requires more registers in the
+general stage loop, and there are none available. The bit-reversed increment is very cheap,
+costing less than 1.5 cycles per input sample in total.
+
+See Section 8.6 for the benchmark results for the preceding code.
+
+This example implements a radix-4 FFT on an ARMySTE architecture processor such
+as the ARMOE. For the ARM9E we do not need to avail ourselves of the trick used in

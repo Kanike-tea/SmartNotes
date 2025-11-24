@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+= Similarly, any transaction 72 that may have used a value written by 71 must also be rolled
+back, and so on. This effect is known as cascading rollback and is one of the problems
+associated with basic TO, since the schedules produced are not guaranteed to be
+recoverable.
+= An additional protocol must be enforced to ensure that the schedules are recoverable,
+cascadeless, or strict.
+= The basic TO algorithm :
+= The concurrency control algorithm must check whether conflicting operations violate
+the timestamp ordering in the following two cases:
+1. Whenever a transaction T issues a write_item(X) operation, the following is
+checked:
+
+a. If read_TS(X) > TS(7) or if write_TS(X) > TS(7), then abort and roll back T and
+reject the operation. This should be done because some younger transaction
+with a timestamp greater than TS(7)—and hence after T in the timestamp
+ordering—has already read or written the value of item X before T had a chance
+to write X, thus violating the timestamp ordering.
+
+b.If the condition in part (a) does not occur, then execute the write_item(X)
+operation of T and set write_TS(X) to TS(7).
+
+2. Whenever a transaction T issues a read_item(X) operation, the following is checked:
+a. If write_TS(X) > TS(7), then abort and roll back T and reject the operation. This
+should be done because some younger transaction with timestamp greater than
+TS(T}—and hence after T in the timestamp ordering—has already written the
+value of item X before T had a chance to read X.
+
+b. If write_TS(X) s TS(T), then execute the read_item(X) operation of T and set
+tead_TS(X) to the /arger of TS(T) and the current read_TS(X).
+
+= Whenever the basic TO algorithm detects two conflicting operations that occur in
+the incorrect order, it rejects the later of the two operations by aborting the
+transaction that issued it. The schedules produced by basic TO are hence
+guaranteed to be conflict serializable
+
+Strict Timestamp Ordering (TO)
+= A variation of basic TO called strict TO ensures that the schedules are both strict
+
+(for easy recoverability) and (conflict) serializable.
+
+https://vtucode.in 35

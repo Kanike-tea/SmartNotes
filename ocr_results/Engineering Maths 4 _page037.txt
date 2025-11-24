@@ -1,0 +1,41 @@
+30 ENGINEERING MATHEMATICS - IV :
+Use fourth order Runge-Kutta method to solve the following initiql value problems.
+
+8. Worsy, y(0) = 1, Compute y (0.2)
+
+wo
+
+=x +y, y(0) = 1. Compute y (0.2) by taking h = 0.1
+
+10. . = 3x + a y(0) = 1.Computey (0.2) with h = 0.1
+
+tL we =x ty , y(O) = 1 for the interval 0 < x < 0.2 by taking h=01.
+
+12, H asy, y(1) = 2. Compute y (1.2) by taking h =0.2.
+
+13. = =1+ ¥, Xq = 0, Yq = 0. Compute the values of y corresponding to the -
+values of x inthe range 0 < x < 0.6 by taking h =0.2
+
+14. H = x(14ay), y(0) =1 in the range 0 Sx < 0.2 by taking h = 0.1
+
+15. = logig (x/y) inthe range 20 < x < 20.4 by taking h = 0.2 given that
+y = 5 when x = 20.
+
+ANSWERS
+1. 1.923 2. 0.3292 3. 1.0202, 1.0408, 1.0619
+4. 1.2427 5. 1.218, 1.467, 1.737 6. 5.051
+7, 1.8851 8. 1.2428 "9, 1.2736
+10. 1.1678 11. 1.0101, 1.0205 12, 2.4921
+13, 0.3027, 0.4228, 0.6841 14, 1,0053, 1.0227 15, 5.12, 5.24
+
+Numerical Predictor and Corrector methods
+
+In these methods the value of y ata desired vale of x is estimated from a set of four
+values of y corresponding to four equally spaced values of x . The four values may
+be readily available or be generated using the given initial condition by any numerical
+method discussed earlier. Picards method or Taylor's series method would be
+appropriate to generate three more values of y given one value initially.
+
+We discuss two predictor and corréctor methods namely,
+
+1. Milne’s method 2. Adams - Bashforth method

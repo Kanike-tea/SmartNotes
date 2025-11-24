@@ -1,0 +1,46 @@
+212 Chapter 7 Optimized Primitives
+
+Mov b0, a2, ASR#31
+ApS a2, a2, a3
+ADC a3, b0, a3, ASR#31
+
+SMLAL a2, a3, b1, cl 3; high*high
+3 return wrapper
+
+Mov r0, a0
+Mov rl, al
+Mov r2, a2
+Mov r3, a3
+
+LDMFD = sp!,_ {r4,r5,pc}
+
+7.2 INTEGER NORMALIZATION AND COUNT
+LEADING ZEROS
+
+An integer is normalized when the leading one, or most significant bit, of the integer is at
+a known bit position. We will need normalization to implement Newton-Raphson division
+(see Section 7.3.2) or to convert to a floating-point format. Normalization is also useful
+for calculating logarithms (see Section 7.5.1) and priority decoders used by some dispatch
+routines. In these applications, we need to know both the normalized value and the shift
+required to reach this value.
+
+This operation is so important that an instruction is available from ARM architecture
+ARMv5E onwards to accelerate normalization. The CLZ instruction counts the number of
+leading zeros before the first significant one. It returns 32 if there is no one bit at all. The
+CLZ value is the left shift you need to apply to normalize the integer so that the leading one
+is at bit position 31.
+
+7.2.1. NORMALIZATION ON ARMVS5 AND ABOVE
+
+On an ARMv5 architecture, use the following code to perform unsigned and signed nor-
+malization, respectively. Unsigned normalization shifts left until the leading one is at bit 31.
+Signed normalization shifts left until there is one sign bit at bit 31 and the leading bit is at
+bit 30. Both functions return a structure in registers of two values, the normalized integer
+and the left shift to normalize.
+
+x RN 0 — ; input, output integer
+shift RN1  ; shift to normalize
+
+3 _value_in_regs struct { unsigned x; int shift; }
+3 unorm_arme(unsigned x)
+unorm_arm9e

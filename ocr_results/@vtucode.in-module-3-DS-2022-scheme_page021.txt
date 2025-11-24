@@ -1,0 +1,57 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+3. Postorder: Postorder traversal calls for moving down the tree towards the left until you
+can go no further. Then move to the right node and then visit the node and continue.
+
+Recursion function:
+The Postorder traversal of a binary tree can be recursively defined as
+
++ Traverse the left subtree in postorder.
+
++ Traverse the right subtree in postorder.
+
+¢ Visit the root
+
+void postorder (treepointerptr)
+{
+if (ptr)
+{
+postorder
+(ptr-leftchild);
+postorder
+(ptr-rightchild);
+printf
+“$da",ptrodata) ;
+}
+
+4. Iterative inorder Traversal:
+
+Iterative inorder traversal explicitly make use of stack function.
+
+The left nodes are pushed. into stack until a null node is reached, the node is then remove:
+from the stackand displayed, and the node’s right child is stacked until a null node is reached.
+The traversal then continues with, the left child. The traversal is complete when the stack is
+empty.
+
+void Yterfnorder (treePointer node)
+
+{
+
+int top = -1; /* initialize stack */
+treePointer stack [MAX—STACK-—SIZE};
+for (33) 1
+
+for(; node; node = node—leftChild)
+push(node); /* add to stack */
+
+node =~ pop(); /* delete from stack */
+
+if (!node) break; /* empty stack */
+
+printf("%da", node—rdata);
+
+node = node-rightChild;
+
+Program : Iterative inorder traversal
+
+vtucode.in 22

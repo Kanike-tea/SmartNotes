@@ -1,0 +1,28 @@
+Database Management System [BCS403]
+
+Data independence occurs because when the schema is changed at some level, the schema
+at the next higher level remains unchanged; only the mapping between the two levels is
+
+changed.
+
+2.3 Database Languages and Interfaces
+The DBMS must provide appropriate languages and interfaces for each category of
+users.
+DBMS Languages
+Once the design of a database is completed and a DBMS is chosen to implement the
+database, the first step is to specify conceptual and internal schemas for the database and any
+
+mappings between the two.
+
+Data Definition Language (DDL)
+
+Storage Definition Language (SDL)
+
+Storage definition language is used when clear separation is maintained between the
+conceptual and internal levels, the DDL is used to specify the conceptual schema only.
+
+The storage definition language (SDL), is used to specify the internal schema. The
+
+mappings between the two schemas may be specified in either one of these languages.
+
+https://vtucode.in Page 22

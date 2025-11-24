@@ -1,0 +1,59 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+PART B
+
+Program 01: Write an algorithm and python program to find the sum of ‘N’ natural
+numbers.
+
+ALGORITHM
+
+1. Read the value of N.
+
+2. Initialize a variable sum to 0.
+
+3. Set a loop variable i to 1.
+
+4. Repeat steps 5 and 6 while i is less than or equal to N.
+5. Addi to sum.
+
+6. Increment i by 1.
+
+7. Print the value of sum as the sum of the first N natural numbers.
+
+PROGRAM
+Here's a Python program that calculates the sum of the first N natural numbers:
+
+def sum_of_natural_numbers (n)
+if n <= 0:
+return "N should be a positive integer."
+
+sum = 0
+for iin range(1, ntl):
+sum += i
+
+return sum
+
+n = int(input("Enter a positive integer: "))
+result = sum_of_natural_numbers (n)
+print ("Sum of the first", n, "natural numbers:", result)
+
+OUTPUT
+
+//Output 01
+
+Enter a positive integer: 5
+
+Sum of the first 5 natural numbers: 15
+
+//Output 02
+Enter a positive integer: 20
+Sum of the first 20 natural numbers: 210
+
+//Output 03
+
+Enter a positive integer: -10
+Sum of the first -10 natural numbers: N should be a positive integer.
+
+eof fa ok ook coe
+
+Dept. of CSE 77 GSSSIETW, Mysuru

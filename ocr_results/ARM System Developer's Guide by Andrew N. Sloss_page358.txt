@@ -1,0 +1,57 @@
+9.3 Interrupt Handling Schemes
+
+345
+
+LOR rl4, =ic_Base 3 5: int crt] address
+LOR r8, [rl4, #1RQStatus] 5 : get int status
+STR r8, [rl14, #IRQEnableClear] ; 5 : clear interrupts
+MRS r14, cpsr 6 : rl4_svc=cpsr
+
+BIC rl4, rl4, #1_Bit 6 : clear I-Bit
+
+MSR cpsr_c, rl4 3 6 : enable IRQ int
+BL process_interrupt 3 7: call ISR
+
+LOR rl4, =ic_Base 3 9: int ctrl address
+STR r8, [rl14, #IRQEableSet]  ; 9: enable ints
+
+BL read_RescheduleFlag ; 9 : more processing
+cMP r0, #0 3 8 : if processing
+LOMNEIA v13!, {r0-r3,r8,r12,r14} 8 : then load context
+MSRNE  spsr_cxsf, rl4 8: update spsr
+LDMNEIA r13!, {r14, pc}* return
+
+LOMIA r13!, {r0-r3, r8} else load reg
+STMDB rl3!, {r0-r11} save context
+BL continue_servicing continue service
+LOMIA 13!, {r0-r12, r14} : restore context
+MSR spsr_cxsf, rl14 : update spsr
+LOMIA ri3!, {r14, pc}* : return
+
+The start of the handler includes a normal interrupt entry point, with four being
+
+subtracted from the register r14_irg.
+
+It is now important to assign values to the various fields in the data structure pointed to
+by register r13_irg. The registers that are recorded are r14_irq, spsr_irg, and 10. The register
+r0 is used to transfer a pointer to the data structure when swapping to SVC mode since
+register r0 will not be banked. This is why register r3_irq cannot be used for this purpose:
+it is not visible from SVC mode.
+
+The pointer to the data structure is saved by copying register r13_irg into r0.
+
+Offset (from r13_irq) Value
++0 10 (on entry)
++4
+
++8 rl4_irg
+
+The handler will now set the processor into SVC mode using the standard procedure
+of manipulating the cpsr. The link register r14 for SVC mode is saved on the SVC stack.
+Subtracting 8 provides room on the stack for two 32-bit words.
+
+Register r14_irq is then recovered and stored on the SVC stack. Now both the link
+registers r14 for IRQ and SVC are stored on the SVC stack.
+
+The rest of the IRQ context is recovered from the data structure passed into the SVC
+mode. Register r14_svc will now contain the spsr for IRQ mode.

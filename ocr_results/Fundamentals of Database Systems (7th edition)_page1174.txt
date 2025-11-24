@@ -1,0 +1,52 @@
+1144 Chapter 30 Database Security
+
+Asa result, the attacker who knows that ‘jake’ is a valid login of some user is able to
+log into the database system as ‘jake’ without knowing his password and is able to
+do everything that ‘jake’ may be authorized to do to the database system.
+
+Code Injection. This type of attack attempts to add additional SQL statements or
+commands to the existing SQL statement by exploiting a computer bug, which is
+caused by processing invalid data. The attacker can inject or introduce code into a
+computer program to change the course of execution. Code injection is a popular
+technique for system hacking or cracking to gain information.
+
+Function Call Injection. In this kind of attack, a database function or operating
+system function call is inserted into a vulnerable SQL statement to manipulate the
+data or make a privileged system call. For example, it is possible to exploit a func-
+tion that performs some aspect related to network communication. In addition,
+functions that are contained in a customized database package, or any custom data-
+base function, can be executed as part of an SQL query. In particular, dynamically
+created SQL queries (see Chapter 10) can be exploited since they are constructed
+at runtime.
+
+For example, the dual table is used in the FROM clause of SQL in Oracle when a user
+needs to run SQL that does not logically have a table name. To get today’s date, we
+can use:
+
+SELECT SYSDATE FROM dual;
+
+The following example demonstrates that even the simplest SQL statements can be
+vulnerable.
+
+SELECT TRANSLATE (‘user input; ‘from_string; ‘to_string’) FROM dual;
+
+Here, TRANSLATE is used to replace a string of characters with another string
+of characters. The TRANSLATE function above will replace the characters of the
+‘from_string’ with the characters in the ‘to_string’ one by one. This means that the
+fwill be replaced with the f, the r with the o, the o with the _, and so on.
+
+This type of SQL statement can be subjected to a function injection attack. Con-
+sider the following example:
+
+SELECT TRANSLATE (“|| UTL_HTTP.REQUEST (‘http://129.107.2.1/’) ||”,
+“98765432', ‘9876’) FROM dual;
+
+The user can input the string (“ || UTL_HTTP.REQUEST (‘http://129.107.2.1/) ||”),
+where || is the concatenate operator, thus requesting a page from a Web server.
+UTL_HTTP makes Hypertext Transfer Protocol (HTTP) callouts from SQL. The
+REQUEST object takes a URL (‘http://129.107.2.1/’ in this example) as a parame-
+ter, contacts that site, and returns the data (typically HTML) obtained from that
+site. The attacker could manipulate the string he inputs, as well as the URL, to
+include other functions and do other illegal operations. We just used a dummy
+example to show conversion of ‘98765432’ to ‘9876’, but the user’s intent would be
+to access the URL and get sensitive information. The attacker can then retrieve

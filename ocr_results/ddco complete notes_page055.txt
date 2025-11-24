@@ -1,0 +1,75 @@
+Digital Design and Computer Organization(BCS302)
+
+0 | AQ
+oA
+5 | AD
+Y | Ad
+
+Behavioral modelling for 2:1 Mux
+
+Using Case Statement
+
+module mux2_1( 10,11,8,Y);
+input 10,11 ;
+
+input S$ ;
+
+output Y ;
+
+reg Y;
+
+always @ (S or I0 or I1)
+tbegin
+
+tcase (S)
+
+O10
+
+1: Y=Il ;
+
+endcase
+
+en
+endmodule
+
+using If else statement
+
+module mux2_1( 10,11,8,¥);
+input 10,11 ;
+input S ;
+output Y ;
+reg Y;
+always @ (S ,10 , Il)
+ibegin
+
+if (S==0)
+
+Y=10 ;
+
+else Y=Il ;
+end
+endmodule
+
+Write Verilog program for 4:1mux using CASE STATEMENT
+
+module mux4_1(1,S,Y);
+input [1:0] S;
+input [3:0]I;
+output Y;
+reg Yq
+always @ (I,S)
+begin
+case (S)
+OFY= LO]?
+12Y= Lp] s
+28yY= Tl21¢
+32V= D3] F
+endcase
+end
+endmodule
+
+Dr Ajay V G, Dept. of CSE , SVIT
+
+Timing Diagram
+
+Page 27

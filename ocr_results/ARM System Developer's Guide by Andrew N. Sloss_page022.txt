@@ -1,0 +1,51 @@
+1.3 Embedded System Hardware 9
+
+The example device shown in Figure 1.2 has three buses: an AHB bus for the high-
+performance peripherals, an APB bus for the slower peripherals, and a third bus for external
+peripherals, proprietary to this device. This external bus requires a specialized bridge to
+connect with the AHB bus.
+
+1.3.3. MEMORY
+
+Figure 1.3
+
+‘An embedded system has to have some form of memory to store and execute code. You
+have to compare price, performance, and power consumption when deciding upon specific
+memory characteristics, such as hierarchy, width, and type. If memory has to run twice as
+fast to maintain a desired bandwidth, then the memory power requirement may be higher.
+
+1.3.3.1 Hierarchy
+
+All computer systems have memory arranged in some form of hierarchy. Figure 1.2 shows
+a device that supports external off-chip memory. Internal to the processor there is an option
+of a cache (not shown in Figure 1.2) to improve memory performance.
+
+Figure 1.3 shows the memory trade-offs: the fastest memory cache is physically located
+nearer the ARM processor core and the slowest secondary memory is set further away.
+Generally the closer memory is to the processor core, the more it costs and the smaller its
+capacity.
+
+The cache is placed between main memory and the core. It is used to speed up data
+transfer between the processor and main memory. A cache provides an overall increase in
+performance but with a loss of predictable execution time. Although the cache increases the
+
+Cache
+
+Main
+memory
+
+Ss
+3
+3
+5
+=
+
+Secondary
+storage
+
+T T
+1 MB 1GB
+
+Memory Size
+
+Storage trade-offs.

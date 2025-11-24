@@ -1,0 +1,51 @@
+732 Chapter 19 Query Optimization
+
+(B) bitmap index star transformation. Both these optimizations are performed on
+the basis of comparative costs of the original and the transformed queries.
+
+A. Classic Star Transformation
+In this optimization, a Cartesian product of the dimension tables is per-
+formed first after applying the filters (such as D1.A > 5 ) to each dimension
+table. Note that generally there are no join predicates between dimension
+tables. The result of this Cartesian product is then joined with the fact table
+using B-tree indexes (if any) on the joining keys of the fact table.
+
+B. Bitmap Index Star Transformation
+
+The requirement with this optimization is that there must be bitmap!”
+indexes on the fact-table joining keys referenced in the query. For example,
+in QSTAR, there must be bitmap indexes (see Section 17.5.2) on FACT.FK1,
+FACT.Fk2, and FACT.Fk3 attributes; each bit in the bitmap corresponds to
+a row in the fact table. The bit is set if the key value of the attribute appears
+in a row of the fact table. The given query QSTAR is transformed into
+Q2STAR as shown below.
+
+Q2STAR:
+
+SELECT D1.X, D2.Y, SUM (F.M)
+FROM FACT F, DIM1 D1, DIM2 D2
+WHERE F.Fk1 = D1.Pk and F.Fk2 = D2.Pk and D1.A > 5 and D2.B < 77 and
+F.Fk1 IN (SELECT D1.Pk
+FROM DIM1 D1
+WHERE D1.A > 5) AND
+F.Fk2 IN (SELECT D2.Pk
+FROM DIM2 D2
+WHERE D2.B < 77) AND
+F.Fk3 IN (SELECT D3.pk
+FROM DIM3 D3
+WHERE D3.C = 11)
+GROUP BY DL.X, D2.Y;
+The bitmap star transformation adds subquery predicates corresponding to
+the dimension tables. Note that the subqueries introduced in Q2STAR may
+be looked upon as a set membership operation; for example, F.Fk1 IN (5, 9,
+12, 13, 29...).
+
+When driven by bitmap AND and OR operations of the key values supplied by the
+dimension subqueries, only the relevant rows from the fact table need to be
+retrieved. If the filter predicates on the dimension tables and the intersection of the
+fact table joining each dimension table filtered out a significant subset of the fact
+table rows, then this optimization would prove to be much more efficient than a
+brute force full-table scan of the fact table.
+
+'7ln some cases, the B-tree index keys can be converted into bitmaps, but we will not discuss this
+technique here.

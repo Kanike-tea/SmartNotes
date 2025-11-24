@@ -1,0 +1,57 @@
+Data Structures and Applications/BCS304 Module-1
+
+Write a program to add two numbers using pointers.
+#include <stdio.h>
+int main()
+{
+int num1, num2, *p, *q, sum;
+printf("Enter two integers to add\n");
+scanf("%d%d", &num1, &num2);
+p=&numl; q=&num2;
+sum = *p + *q;
+printf("Sum of the numbers = %d\n", sum)
+return 0;
+b
+
+Write a program to swap two numbers.
+#include <stdio.h>
+int main()
+{
+int num1, num2, *p, *q, sum;
+printf("Enter two integers to swap\n");
+scanf("%d%d", &num1, &num2);
+p=&numl; q=&num2;
+temp = *p;
+*p=*q;
+*q = temp;
+printf(“After Swapping p = %d, q = %d\n", p.q);
+return 0;
+
+}
+
+Pointers and Functions
+When we call a function by passing the address of a variable we call it as pass by reference. By
+passing the address of variables defined in main we can directly store the data in the calling function
+rather returning the value. Pointers can also be used when we have to return more than one value
+from a function
+
+Program to swap two characters using Functions.
+void main()
+
+{
+char a ,b;
+printf(‘\nenter two characters\n”);
+scanf(“%e Ye”, &a,&b);
+printf(‘“‘the value before swap: Yc %c” a,b);
+swap(&a,&b);
+printf(“‘the value after swap: %c %c’” a,b);
+}
+void swap(char *p1 ,char *p2)
+{
+char temp;
+temp=*p1;
+*pl=*p2;
+*p2=temp;
+}
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 6

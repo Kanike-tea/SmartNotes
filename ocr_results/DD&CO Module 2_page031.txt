@@ -1,0 +1,39 @@
+depending on the value of the D input immediately before the clock transition. Synchronized by a clock
+signal, the JK flip-flop has two inputs and performs all three operations. The circuit diagram of a JK
+flip-flop constructed with a D flip-flop and gates is shown in Fig(a) below. The J input sets the flip-flop
+to 1, the K input resets it to 0, and when both inputs are enabled, the output is complemented. This can
+be verified by investigating the circuit applied to the D input:
+
+D=JQ'+K'Q
+
+When J = 1 and K = 0, D=Q'+ Q = 1, so the next clock edge sets the output to 1. When J = 0 and K =
+1, D =0, so the next clock edge resets the output to 0. When both J = K = 1 and D = Q’, the next clock
+edge complements the output. When both J = K = 0 and D = Q, the clock edge leaves the output
+unchanged. The graphic symbol for the JK flip-flop is shown in Fig(b).
+
+»——_LD>
+D rt 2 J
+K a ——Pax
+Clk Clk - Qo K Pp
+(a) Circuit diagram (b) Graphic symbol
+JK flip-flop
+
+The T (toggle) flip-flop is a complementing flip-flop and can be obtained from a JK flip-flop when inputs
+J and K are tied together. This is shown below in Fig(a). When T = 0 (J = K = 0), a clock edge does not
+change the output. When T = | (J = K = 1), a clock edge complements the output. The complementing
+flip-flop is useful for designing binary counters.
+
+T J D T
+T
+> clk
+K pP— Clk [> Clk Pr
+(a) From JK flip-flop (b) From D flip-flop (c) Graphic symbol
+T flip-flop
+
+The T flip-flop can be constructed with a D flip-flop and an exclusive-OR gate as shown in above Fig(b).
+The expression for the D input is
+
+D=T Q=TQ+TQ
+
+When T = 0, D = Q and there is no change in the output. When T = 1, D = Q' and the output complements.
+The graphic symbol for this flip-flop has a T symbol in the input.

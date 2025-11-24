@@ -1,0 +1,56 @@
+Recursion, which is basically a function that calls itself based on a terminating condition, makes use of
+thestack. Using LIFO, a call to a recursive function saves the return address so that it knows how to return to
+thecallingfunction after the call terminates.
+
+11) Whatisastack?
+
+A stack is a data structure in which only the top element can be accessed. As data is stored in the stack,
+eachdatais pushed downward, leavingthemost recentlyadded data on top.
+
+12) ExplainBinarySearchTree
+
+A binary search tree stores data in such a way that they can be retrieved very efficiently. The left
+subtreecontains nodes whose keys are less than the node’s key value, while the right subtree contains nodes
+whosekeysaregreater thanor equal tothenode’s keyvalue. Moreover,bothsubtrees arealso binarysearchtrees.
+13) Whatare multidimensionalarrays?
+
+Multidimensional arrays make use of multiple indexes to store data. It is useful when storing data that
+cannotbe represented using a single dimensional indexing, such as data representation in a board game, tables
+withdatastored in morethanonecolumn.
+
+14) Arelinkedlistsconsideredlinearornon-lineardatastructures?
+
+It actually depends on where you intend to apply linked lists. If you based it on storage, a linked list
+isconsidered non-linear. On the other hand, if you based it on access strategies, then a linked list is
+consideredlinear.
+
+15) Howdoesdynamicmemoryallocationhelpin managingdata?
+
+Aside frombeing abletostore simple structureddata types,dynamicmemory
+allocationcancombineseparatelyallocated structuredblocks toform composite structuresthat
+expandandcontract asneeded.
+
+16) WhatisFIFO?
+
+FIFO is short for First-in, First-out, and is used to represent how data is accessed in a queue. Data has
+
+beeninsertedinto thequeuelist thelongest is the onethat is removed first.
+
+17) Whatisan orderedlist?
+
+An ordered list is a list in which each node’s position in the list is determined by the value of its
+keycomponent,so that thekeyvalues forman increasingsequence.asthe list is traversed.
+
+18) Whatis mer gesort?
+
+Merge sort takes a divide-and-conquer approach to sorting data. In a sequence of data, adjacent ones
+
+aremerged and sorted to create bigger sorted lists. These sorted lists are then merged again to form an
+evenbiggersorted list, whichcontinuous untilyou haveonesingle sorted list.
+
+19) DifferentiateNULLandVOID.
+
+Null is actually a value, whereas Void is a data type identifier. A variable that is given a Null
+
+valuesimplyindicates anemptyvalue. Void is usedto identifypointers as havingno initial size.
+58

@@ -1,0 +1,49 @@
+11.2 Example: Simple Little Operating System 383
+
+change in a device. If the device state changes, then a specific action can be connected to
+a particular state change.
+
+The scheduler is an algorithm that determines which task is to be executed next. There
+are many scheduling algorithms available. One of the simplest is called a round-robin
+algorithm—it activates tasks in a fixed cyclic order. Scheduling algorithms have to balance
+efficiency and size with complexity.
+
+Once the scheduler is complete, the new and old tasks have to be swapped with a context
+switch. A context switch saves all the old task registers from the processor into a data
+structure. Data for the new task is then loaded into the processor’s registers. (For more
+details on this procedure, take a look at Section 11.2.6.)
+
+The last component is the device driver framework—the mechanism an operating system
+uses to provide a consistent interface between different hardware peripherals. The frame-
+work allows a standard and easy way of integrating new support for a particular peripheral
+into the operating system. For an application to access a particular peripheral there has to
+bea specific device driver available. The framework must provide a safe method of accessing
+the peripheral (for example, not allowing the simultaneous access of the same peripheral
+by more than one application).
+
+11.2 EXAMPLE: SIMPLE LITTLE OPERATING SYSTEM
+
+We have developed a small operating system we call the Simple Little Operating System
+(SLOS). It shows how the fundamental components discussed earlier come together in
+a complete operating system. We have chosen the ARM7TDMI since it is the simplest core
+in the ARM family. For a development environment we use the ARM Developers’ Suite
+version 1.2, and for a target the Evaluator-7T from ARM. It should be relatively easy to
+modify SLOS to build in other development environments. SLOS is loaded and executed
+using the Sandstone firmware described in Chapter 10.
+
+SLOS is a preemptive operating system. A periodic interrupt activates a dormant task.
+For simplicity, all the tasks and device drivers are static; that is, they are created at build
+time and not while the system is running. SLOS also provides a device driver framework,
+discussed in Section 11.2.7.
+
+SLOS is designed to execute on an ARM7TDMI core with no memory management
+unit or protection unit. It is assumed that the memory map has already been configured by
+the initialization code (in this case, Sandstone, found in Chapter 10). SRAM is required to
+be located between 0x00000000 to 0x00080000, and the base configuration registers must
+be set to address 0x03ff0000.
+
+SLOS is loaded at address 0x00000000, where the vector table is located. This is the
+same address as the entry point into SLOS. It is important that the ARM processor is in
+SVC mode when the firmware hands over control because SVC mode is a privileged mode
+and hence allows the initialization code to change modes by accessing the cpsr. We take
+advantage of this to set up the stacks in IRQ and system mode.

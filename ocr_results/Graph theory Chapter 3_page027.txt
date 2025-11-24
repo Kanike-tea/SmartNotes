@@ -1,0 +1,29 @@
+90
+Thus, a spanning tree that consists of the edges {v1,V2}, {¥25V7},-{¥7, v3), (v7, vs},
+{vq, vg}, (vg, V6) has been determined. This
+
+3.30.
+
+‘ (i,y
+depth-first search spanning tree is shown in Feet
+
+v8
+
+Figure 3,30
+
+As another illustration, we indicate that for the graph ‘shown in Figure 3.31(a) (wherein the
+order of the vertices is-alphabetic)'the depth-first search spanning tree consists of the edges
+{a,b}, {bd}, {b, e}, {e,f}, {eh}, {a,c}, {cg}, {g,i} and {g, j}. This spanning tree is shown in
+Figure 3.31(b). Lf
+
+BFS Algorithm
+
+wie G =(V,E) be a connected graph of order n, with vertices labeled v1, v2,..-»¥n i2 some
+specified order. We refer to.an ordered list Q of vertices (prepared for some purpose) of 6 *
+a queue in G. Vertices are ‘inserted.into this list at one end (called the rear of the quev©)
+deleted from the list at the other end (called the front of the queue): The first vertex in
+in to the queue is the first vertex that can be taken out of it. The BFS algorithm specifies -
+
+following steps for determining a spannin; ich ®
+ig tree T in-vi ‘ whic
+vertex of G is assigned. of G,-wherein v is a variable to

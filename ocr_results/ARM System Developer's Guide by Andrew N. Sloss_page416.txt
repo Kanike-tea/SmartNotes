@@ -1,0 +1,36 @@
+CHAPTER
+
+CACHES
+
+A cache is a small, fast array of memory placed between the processor core and main
+memory that stores portions of recently referenced main memory. The processor uses
+cache memory instead of main memory whenever possible to increase system performance.
+The goal of a cache is to reduce the memory access bottleneck imposed on the processor
+core by slow memory.
+
+Often used with a cache is a write buffer—a very small first-in-first-out (FIFO) memory
+placed between the processor core and main memory. The purpose of a write buffer is to
+free the processor core and cache memory from the slow write time associated with writing
+to main memory.
+
+The word cache is a French word meaning “a concealed place for storage.” When applied
+to ARM embedded systems, this definition is very accurate. The cache memory and write
+buffer hardware when added to a processor core are designed to be transparent to software
+code execution, and thus previously written software does not need to be rewritten for use
+on a cached core. Both the cache and write buffer have additional control hardware that
+automatically handles the movement of code and data between the processor and main
+memory. However, knowing the details of a processor’s cache design can help you create
+programs that run faster on a specific ARM core.
+
+Since the majority of this chapter is about the wonderful things a cache can do to make
+programs run faster, the question arises, “Are there any drawbacks created by having a cache
+in your system?” The answer is yes. The main drawback is the difficulty of determining the
+execution time of a program. Why this is a problem will become evident shortly.
+
+Since cache memory only represents a very small portion of main memory, the cache fills
+quickly during program execution. Once full, the cache controller frequently evicts existing
+code or data from cache memory to make more room for the new code or data. This eviction
+process tends to occur randomly, leaving some data in cache and removing others. Thus,
+at any given instant in time, a value may or may not be stored in cache memory.
+
+403

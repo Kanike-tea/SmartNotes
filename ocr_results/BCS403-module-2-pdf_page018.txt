@@ -1,0 +1,56 @@
+Database Management System [BCS403]
+
+2.2.3 Sequences of Operations and the RENAME Operation
+For most queries, we need to apply several relational algebra operations one after the other. Either
+we can write the operations as a single relational algebra expression by nesting the operations, or we
+can apply one operation at a time and create intermediate result relations. In the latter case, we must
+give names to the relations that hold the intermediate results.
+For example, to retrieve the first name, last name, and salary of all employees who work in
+department number 5, we must apply a SELECT and a PROJECT operation. We can write a single
+relational algebra expression, also known as an in-line expression, as follows:
+TUF name, Lname, Salary(6Dno=s(EMPLOYEE))
+
+Alternatively, we can explicitly show the sequence of operations, giving a name to each intermediate
+relation, as follows:
+
+DEP5_EMPS < 6 pno-s(EMPLOYEE)
+
+RESULT < aFname, Lname, Salary((DEP5_EMPS)
+We can also use this technique to rename the attributes in the intermediate and result relations. To
+rename the attributes in a relation, we simply list the new attribute names in parentheses
+
+TEMP < opno-s(EMPLOYEE)
+
+R(First_name, Last_name, Salary) <— 7Fname, Lname, Salary((TEMP)
+
+TEMP
+Fame [Minit [Lname | Ssn Bdate ‘Address Sex [Salary [ Superssn [Dno
+John B_ | Smith [123456789 |,1965-01-09 [1731 Fondren, Houston, TX [30000 [333445555
+
+M
+Franklin | T | Wong | 333445555 | 1955-72-08 |638 Voss, Houston,TX M_ | 40000 [888665555
+Ramesh | Ke | Narayan | 666884444 | 1962-09-15 |975 Fire Oak, Humble,TX | M [38000 333445555
+English’ | 453453459 | 1979-07-31 [5631 Rice, Houston, TX | F [25000 [393445555
+
+alatala
+
+Toyce
+
+R
+First_name |)Last_name | Salary
+John Smith 30000
+
+Franklin Wong 40000
+Ramesh Narayan” _| 38000
+Joyce English 25000
+
+If no renaming is applied, the names of the attributes in the resulting relation of a SELECT operation
+are the same as those in the original relation and in the same order.For a PROJECT operation with no
+renaming, the resulting relation has the same attribute names as those in the projection list and in the
+same order in which they appear in the list.
+
+We can also define a formal RENAME operation—which can rename either the relation name or the
+
+attribute names, or both—as a unary operator.
+
+https://vtucode.in Page 19

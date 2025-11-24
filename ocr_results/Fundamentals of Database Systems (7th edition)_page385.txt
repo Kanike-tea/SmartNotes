@@ -1,0 +1,53 @@
+11.3 Overview of PHP Database Programming
+
+Following the <DB_ software> in the string argument passed to DB: :connect is
+the separator : // followed by the user account name <user account> followed by
+the separator : and the account password <password>. These are followed by the
+separator @ and the server name and directory <database server> where the
+database is stored.
+
+In line 1 of Figure 11.6, the user is connecting to the server at www.host.com/db1
+using the account name acct1 and password pass12 stored under the Oracle
+DBMS oci8. The whole string is passed using DB: :connect. The connection
+information is kept in the database connection variable $d, which is used whenever
+an operation to this particular database is applied.
+
+Checking for errors. Line 2 in Figure 11.6 shows how to check whether the
+connection to the database was established successfully or not. PEAR DB has a
+function DB: : isError, which can determine whether any database access oper-
+ation was successful or not. The argument to this function is the database con-
+nection variable ($d in this example). In general, the PHP programmer can
+check after every database call to determine whether the last database operation
+was successful or not, and terminate the program (using the die function) if it
+was not successful. An error message is also returned from the database via the
+operation $d->get_message( ). This can also be displayed as shown in line 2 of
+Figure 11.6.
+
+Submitting queries and other SQL statements. In general, most SQL com-
+mands can be sent to the database once a connection is established by using the
+query function. The function $d->query takes an SQL command as its string argu-
+ment and sends it to the database server for execution. In Figure 11.6, lines 3 to 7
+send a CREATE TABLE command to create a table called EMPLOYEE with four attri-
+butes. Whenever a query or SQL statement is executed, the result of the query is
+assigned to a query variable, which is called $q in our example. Line 8 checks
+whether the query was executed successfully or not.
+
+The PHP PEAR DB library offers an alternative to having to check for errors after
+every database command. The function
+
+$d—>setErrorHandling(PEAR_ERROR_DIE)
+
+will terminate the program and print the default error messages if any subsequent
+errors occur when accessing the database through connection $d (see line 9 in
+Figure 11.6).
+
+11.3.2 Collecting Data from Forms
+and Inserting Records
+
+It is common in database applications to collect information through HTML or
+other types of Web forms. For example, when purchasing an airline ticket or apply-
+ing for a credit card, the user has to enter personal information such as name,
+address, and phone number. This information is typically collected and stored in a
+database record on a database server.
+
+355

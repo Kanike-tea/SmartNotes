@@ -1,0 +1,98 @@
+672
+
+Index
+
+Branch instructions (continued)
+variations of, 92-93
+Branch prediction, 32
+Bus
+architecture levels of, 8
+characteristics of, 8
+function of, 7
+schematic diagram of, 7f
+Bus master, 8
+Bus slaves, 8
+BX instruction, 90-91, 579-580
+BXJ instruction, 579-580
+byte, 632
+Byte reversal, 249t
+
+c
+
+C code
+data types
+function argument, 111-112
+local variable, 107-110
+overview of, 105-107
+signed, 112-113
+unsigned, 112-113
+loops
+with fixed number of iterations, 113-116
+unrolling, 117-120
+with variable number of iterations,
+116-117
+optimization of, 104-105
+overview of, 104-105
+portability issues, 153-154
+C compilers
+bit-fields, 133-136
+datatype mappings, 107t
+description of, 104-105
+function calls, 122-127
+inline assembly, 149-153
+inline functions, 149-153
+pointer aliasing, 127-130
+register allocation, 120-122
+structure arrangement, 130-133
+unaligned data, 136-140
+Cache
+architecture of, 408-417
+cleaning of, 438-443
+coprocessor 15 and, 423
+
+D-, cleaning of
+description of, 423, 428
+in Intel XScale SA-110 and Intel
+StrongARM cores, 435-438
+procedural methods for, 428t, 428-431
+test-clean command for, 428t, 434-435
+way and set index addressing for, 428t,
+431-434
+definition of, 403, 457
+description of, 9-10, 34-35
+direct-mapped, 410-411
+efficiency measurements, 417
+flushing of, 423-427, 438-443
+fully associative, 414
+hit rate for, 417
+improvements using, 406-407
+initializing of, 465-466
+logical, 406, 407f, 458
+main memory and, relationship between,
+410-412
+memory management units and, 406-408,
+512-513
+miss rate for, 417, 443
+performance of, 456-457
+physical, 406, 407f, 458
+primary, 405
+region attributes, 474-477
+secondary, 405
+self-modifying code, 424
+set associativity, 412-416, 458
+simple, 408, 409f
+size of, 408
+split, 408, 424, 458
+status bits in, 408-409
+unified, 408, 458
+write buffer used with, 403, 416-417,
+457
+writeback, 418-419
+Cache bit, 474
+Cache controller
+description of, 409-410
+replacement policy of, 419
+Cache lines
+definition of, 408, 457
+eviction, 410, 419
+replacement policies, 419-422

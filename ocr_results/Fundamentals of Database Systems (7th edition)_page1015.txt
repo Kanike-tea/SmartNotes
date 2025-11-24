@@ -1,0 +1,58 @@
+26.2 Temporal Database Concepts
+
+case, the specified time period is compared with the valid time period of each tuple
+version [T.Vst, T.Vet], and only those tuples that satisfy the condition are selected.
+In these operations, a period is considered to be equivalent to the set of time points
+from T\ to T> inclusive, so the standard set comparison operations can be used.
+Additional operations, such as whether one time period ends before another starts,
+are also needed.”!
+
+Some of the more common operations used in queries are as follows:
+
+[T-Vst, T.Vet] INCLUDES [T), T>] Equivalent to T, > T.Vst AND T> < T.Vet
+[T.Vst, T.Vet] INCLUDED_IN [T}, T>] Equivalent to T, < T:Vst AND T> > T.Vet
+[T.Vst, T.Vet] OVERLAPS [7}, T>] Equivalent to (T; < T.Vet AND T; > T.Vst)”?
+[TVst, T:Vet] BEFORE [T}, T2] Equivalent to T, = T.Vet
+
+[T.Vst, T.Vet] AFTER [T}, T>] Equivalent to T> < T:Vst
+
+[T.Vst, T.Vet] MEETS_BEFORE [T), T] Equivalent to T, = T.Vet + 1°
+[T.Vst, T.Vet] MEETS AFTER [T}, T,] _ Equivalent to T, + 1 = T-Vst
+
+Additionally, operations are needed to manipulate time periods, such as computing
+the union or intersection of two time periods. The results of these operations may
+not themselves be periods, but rather temporal elements—a collection of one or
+more disjoint time periods such that no two time periods in a temporal element are
+directly adjacent. That is, for any two time periods [T), T,] and [T3, Ts] in a tempo-
+ral element, the following three conditions must hold:
+
+= [T\, T,] intersection [T3, T4] is empty.
+
+= T; is not the time point following T; in the given granularity.
+
+= T, is not the time point following T, in the given granularity.
+The latter conditions are necessary to ensure unique representations of temporal
+elements. If two time periods [T), T2] and [T;, T,] are adjacent, they are combined
+
+into a single time period [T), T,]. This is called coalescing of time periods. Coalesc-
+ing also combines intersecting time periods.
+
+To illustrate how pure time conditions can be used, suppose a user wants to select
+all employee versions that were valid at any point during 2002. The appropriate
+selection condition applied to the relation in Figure 26.8 would be
+
+[T-Vst, T.Vet] OVERLAPS [2002-01-01, 2002-12-31]
+
+Typically, most temporal selections are applied to the valid time dimension. For a
+bitemporal database, one usually applies the conditions to the currently correct
+
+°1,A complete set of operations, known as Allen’s algebra (Allen, 1983), has been defined for comparing
+time periods.
+
+22This operation returns true if the intersection of the two periods is not empty; it has also been called
+INTERSECTS_WITH.
+
+?8Here, 1 refers to one time point in the specified granularity. The MEETS operations basically specify if
+one period starts immediately after another period ends
+
+985

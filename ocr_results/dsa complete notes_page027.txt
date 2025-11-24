@@ -1,0 +1,62 @@
+Data Structures and Applications/BCS304 Module-1
+
+strncpy(temp,s,i);
+streat(temp,t);
+streat(temp ,(s+i));
+strepy(s,temp);
+
+tt
+
+Pattern matching : Consider two strings str and pat where pat is a pattern to be searched for in
+stri. The easiest way to find if the pat is in str is by using the built in function strstr.
+
+Example: If we have a declaration as follows
+Char pat[max_size], str[max_size], *t;
+
+The pattern matching can be carried out as follows
+if((t= strstr(str,pat))
+Printf(“The pattern found in the string is %s”,t);
+Else
+Printf(“* The pattern was not found”);
+
+Since there are different methods to find pattern matching discussed below are two functions that
+finds pattern matching in a more efficient way.
+
+The easiest and the least efficient method in pattern matching is sequential search. The computing
+time is of O(n.m).
+
+Exhaustive patter matching is improved in nfind function by
+® Quitting when strlen(pat) is greater than the number of remaining characters
+
+© Compare the first and last character if pat and string before we check the remaining
+characters
+
+int nfind(char *string char *pat)
+{
+
+Int ij,start=0;
+
+int lasts=strlen(string)-1;
+
+int lastp=strlen(pat)-1;
+
+int endmatch= lastp
+
+for(i=0;endmatch<=lasts;endmatch++,strt++)
+
+{
+If(string[endmatch] == pat[lastp])
+{
+j= start;
+while(j<lastp && string[i]== pat[j])
+{
+i++;
+j++):
+i
+t
+if(j==lastp)
+return start;
+}
+return -1
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 28

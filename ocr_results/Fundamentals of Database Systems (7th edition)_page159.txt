@@ -1,0 +1,53 @@
+4.7 Data Abstraction, Knowledge Representation, and Ontology Concepts 129
+
+data modeling but also in artificial intelligence literature when discussing
+knowledge representation (KR). This section discusses the similarities and differ-
+ences between conceptual modeling and knowledge representation, and introduces
+some of the alternative terminology and a few additional concepts.
+
+The goal of KR techniques is to develop concepts for accurately modeling some domain
+of knowledge by creating an ontology’” that describes the concepts of the domain
+and how these concepts are interrelated. The ontology is used to store and manipu-
+late knowledge for drawing inferences, making decisions, or answering questions.
+The goals of KR are similar to those of semantic data models, but there are some
+important similarities and differences between the two disciplines:
+
+= Both disciplines use an abstraction process to identify common properties and
+important aspects of objects in the miniworld (also known as domain of discourse
+in KR) while suppressing insignificant differences and unimportant details.
+
+= Both disciplines provide concepts, relationships, constraints, operations,
+and languages for defining data and representing knowledge.
+
+= KR is generally broader in scope than semantic data models. Different forms
+of knowledge, such as rules (used in inference, deduction, and search),
+incomplete and default knowledge, and temporal and spatial knowledge, are
+represented in KR schemes. Database models are being expanded to include
+some of these concepts (see Chapter 26).
+
+= KR schemes include reasoning mechanisms that deduce additional facts
+from the facts stored in a database. Hence, whereas most current database
+systems are limited to answering direct queries, knowledge-based systems
+using KR schemes can answer queries that involve inferences over the
+stored data. Database technology is being extended with inference mecha-
+nisms (see Section 26.5).
+
+= Whereas most data models concentrate on the representation of database
+schemas, or meta-knowledge, KR schemes often mix up the schemas with
+the instances themselves in order to provide flexibility in representing
+exceptions. This often results in inefficiencies when these KR schemes are
+implemented, especially when compared with databases and when a large
+amount of structured data (facts) needs to be stored.
+
+We now discuss four abstraction concepts that are used in semantic data models,
+such as the EER model, as well as in KR schemes: (1) classification and instantia-
+tion, (2) identification, (3) specialization and generalization, and (4) aggregation
+and association. The paired concepts of classification and instantiation are inverses
+of one another, as are generalization and specialization. The concepts of aggrega-
+tion and association are also related. We discuss these abstract concepts and their
+relation to the concrete representations used in the EER model to clarify the data
+abstraction process and to improve our understanding of the related process of
+conceptual schema design. We close the section with a brief discussion of ontology,
+which is being used widely in recent knowledge representation research.
+
+'2,n ontology is somewhat similar to a conceptual schema, but with more knowledge, rules, and exceptions.

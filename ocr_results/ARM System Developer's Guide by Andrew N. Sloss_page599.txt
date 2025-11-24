@@ -1,0 +1,51 @@
+586 Appendix A ARM and Thumb Assembler Instructions
+
+You should use full descending or empty ascending stacks by preference, since LDC also
+supports these addressing modes.
+
+Notes
+
+= For Thumb (format 2), Rn and the register list registers must be in the range r0 to r7.
+= The number of registers N in the list must be nonzero.
+
+= ~=Rnmust not be pe.
+
+=~ Rnmust not appear in the register list if! (writeback) is specified.
+
+= If pcappears in the register list, then on ARMvS and above the processor performs a BX
+to the loaded address. For ARMv4 and below, the processor branches to the loaded
+address.
+
+"= If is specified, then the operation is modified. The processor must not be in user or
+system mode. If pc is not in the register list, then the registers appearing in the register
+list refer to the user mode versions of the registers and writeback must not be specified.
+If pcis in the register list, then the spsr is copied to the cpsr in addition to the standard
+operation.
+
+= The time order of the memory accesses may depend on the implementation. Be careful
+when using a load multiple to access I/O locations where the access order matters. If
+the order matters, then check that the memory locations are marked as I/O in the page
+tables, do not cross page boundaries, and do not use pc in the register list.
+
+Examples
+LOMIA rl, {r0, rl} 3 rO=*rd, rl=x(rd+4), rdt=8
+LOMDB rl, {r0, rl}; rl=*(r4-4), rO=*(rd-8), r4-=8
+LDMEQFD sp!, {r0, pc} ; if (result zero) then unstack r0, pc
+
+LOMFD sp, {sp}
+LOMFD sp!, {r0-pc}*
+
+load sp_usr from sp_current
+return from exception, restore cpsr
+
+LDR
+
+Load a single value from a virtual address in memory
+
+1. LDR<cond>{ |B} Rd, [Rn {, #{-}<immed12>}] {!} ARMV1
+2. LDR<cond>{ |B} Rd, [Rn, {-}Rm {,<imm_shift>}]{!}  ARMv1
+3. LDR<cond>{|B}{T} Rd, [Rn], #{-}<immed12> ARMV1
+4, LDR<cond>{|B}{T} Rd, [Rn], {-}Rm {,<imm_shift>} ARMV1
+5. LDR<cond>{H|SB|SH} Rd, [Rn, {, #{-}<immed8>}]{!} ARMV4
+6. LDR<cond>{H|SB|SH} Rd, [Rn, {-}Rm]{!} ARMV4
+7. LDR<cond>{H|SB|SH} Rd, [Rn], #{-}<immed8> ARMV4

@@ -1,0 +1,59 @@
+18 Chapter 1 Databases and Database Users
+
+accounting office keeps data on registration and related billing information,
+whereas the registration office keeps track of student courses and grades. Other
+groups may further duplicate some or all of the same data in their own files.
+
+This redundancy in storing the same data multiple times leads to several problems.
+First, there is the need to perform a single logical update—such as entering data on
+a new student—multiple times: once for each file where student data is recorded.
+This leads to duplication of effort. Second, storage space is wasted when the same
+data is stored repeatedly, and this problem may be serious for large databases.
+Third, files that represent the same data may become inconsistent. This may happen
+because an update is applied to some of the files but not to others. Even if an
+update—such as adding a new student—is applied to all the appropriate files, the
+data concerning the student may still be inconsistent because the updates are applied
+independently by each user group. For example, one user group may enter a stu-
+dent’s birth date erroneously as ‘JAN-19-1988’, whereas the other user groups may
+enter the correct value of ‘JAN-29-1988’.
+
+In the database approach, the views of different user groups are integrated during
+database design. Ideally, we should have a database design that stores each logical
+data item—such as a student’s name or birth date—in only one place in the data-
+base. This is known as data normalization, and it ensures consistency and saves
+storage space (data normalization is described in Part 6 of the text).
+
+However, in practice, it is sometimes necessary to use controlled redundancy to
+improve the performance of queries. For example, we may store Student_name and
+Course_number redundantly in a GRADE_REPORT file (Figure 1.6(a)) because
+whenever we retrieve a GRADE_REPORT record, we want to retrieve the student
+name and course number along with the grade, student number, and section identi-
+fier. By placing all the data together, we do not have to search multiple files to col-
+lect this data. This is known as denormalization. In such cases, the DBMS should
+
+Figure 1.6
+Redundant storage
+of Student_name
+and Course_name in
+GRADE_REPORT.
+(a) Consistent data.
+(b) Inconsistent
+record.
+
+GRADE_REPORT
+Student_number | Student_name | Section identifier] Course_number | Grade
+
+17 Smith 112 MATH2410. B
+17 Smith 119 CS1310 Cc
+8 Brown 85 MATH2410. A
+8 Brown 92 CS1310 A
+8 Brown 102 CS3320 B
+8 Brown 135 CS3380 A
+
+(a)
+
+GRADE_REPORT
+Student_number | Student_name | Section identifier] Course_number | Grade
+17 Brown 112 MATH2410 B
+
+(b)

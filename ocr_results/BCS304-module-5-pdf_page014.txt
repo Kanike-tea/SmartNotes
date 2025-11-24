@@ -1,0 +1,11 @@
+void min-combine(leftist—tree *a, leftist-tree *b)
+{
+/* combine the twoomin leftist trees *a and *b. The
+resulting min leftist tree is returned in *a, and *b
+is set to;NULL */
+if (!*a)
+*a = ¥b;
+else if (*b)
+min—union (a,b);
+*b = NULL;
+}

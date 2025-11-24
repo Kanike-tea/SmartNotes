@@ -1,0 +1,44 @@
+632 Appendix A ARM and Thumb Assembler Instructions
+
+Unlike the ARM assembler, you needn’t indent instructions and directives. Labels are
+recognized by the following colon rather than their position at the start of the line. The
+following example shows a simple assembly file defining a function add that returns the
+sum of the two input arguments:
+
+ssection .text,
+«global add @ give the symbol add external linkage
+add:
+
+ADD v0, r0, rl @ add input arguments
+MOV pc, Ir @ return from subroutine
+
+A.5.1 GNU ASSEMBLER DIRECTIVES
+
+Here is an alphabetical list of the more common gas directives.
+
+cascii "<string>"
+
+Inserts the string as data into the assembly, as for DCB in armasm.
+
+.asciz "<string>"
+
+As for .ascii but follows the string with a zero byte.
+
+-balign <power_of_2> {,<fill_value> {,<max_padding>} }
+
+Aligns the address to <power_of_2> bytes. The assembler aligns by adding bytes of value
+<fill_value> or a suitable default. The alignment will not occur if more than <max_padding>
+fill bytes are required. Similar to ALIGN in armasm.
+
+byte <bytel> {,<byte2>} ...
+
+Inserts a list of byte values as data into the assembly, as for DCB in armasm.
+
+.code <number_of_bits>
+
+Sets the instruction width in bits. Use 16 for Thumb and 32 for ARM assembly. Similar to
+CODE16 and CODE32 in armasm.
+
+.else
+
+Use with .if and .endif. Similar to ELSE in armasm.

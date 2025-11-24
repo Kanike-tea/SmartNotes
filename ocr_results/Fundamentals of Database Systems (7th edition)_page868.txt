@@ -1,0 +1,32 @@
+838
+
+Chapter 22 Database Recovery Techniques
+
+Selected Bibliography
+
+The books by Bernstein et al. (1987) and Papadimitriou (1986) are devoted to the
+theory and principles of concurrency control and recovery. The book by Gray and
+Reuter (1993) is an encyclopedic work on concurrency control, recovery, and other
+transaction-processing issues.
+
+Verhofstad (1978) presents a tutorial and survey of recovery techniques in database
+systems. Categorizing algorithms based on their UNDO/REDO characteristics is dis-
+cussed in Haerder and Reuter (1983) and in Bernstein et al. (1983). Gray (1978)
+discusses recovery, along with other system aspects of implementing operating sys-
+tems for databases. The shadow paging technique is discussed in Lorie (1977), Ver-
+hofstad (1978), and Reuter (1980). Gray et al. (1981) discuss the recovery mechanism
+in SYSTEM R. Lockemann and Knutsen (1968), Davies (1973), and Bjork (1973)
+are early papers that discuss recovery. Chandy et al. (1975) discuss transaction roll-
+back. Lilien and Bhargava (1985) discuss the concept of integrity block and its use
+to improve the efficiency of recovery.
+
+Recovery using write-ahead logging is analyzed in Jhingran and Khedkar (1992)
+and is used in the ARIES system (Mohan et al., 1992). More recent work on recov-
+ery includes compensating transactions (Korth et al., 1990) and main memory
+database recovery (Kumar, 1991). The ARIES recovery algorithms (Mohan et al.,
+1992) have been successful in practice. Franklin et al. (1992) discusses recovery in
+the EXODUS system. Two books by Kumar and Hsu (1998) and Kumar and Song
+(1998) discuss recovery in detail and contain descriptions of recovery methods used
+ina number of existing relational database products. Examples of page replacement
+strategies that are specific for databases are discussed in Chou and DeWitt (1985)
+and Pazos et al. (2006).

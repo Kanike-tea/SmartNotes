@@ -1,0 +1,52 @@
+Find more notes: vtucode.in
+
+Module 5-Hashing
+
+HASHING: Introduction, Static Hashing,
+Dynamic Hashing
+PRIORITY QUEUES: Single and double
+
+ended Priority Queues, Leftist Trees
+
+Module 5 Syllabus INTRODUCTION TO EFFICIENT
+BINARY SEARCH TREES: Optimal
+Binary Search Trees
+
+5.0 Hashing
+
+Hashing enables us to perform the dictionary operations such as search, insert and deleting
+expected time.
+
+In a mathematical sense, a map is a relation between two sets. We can define Map M as a set of
+pairs, where each pair is of the form (key, value), where for given a key, we can find a value using
+some kind of a “function” that maps keys to values.
+
+The key for a given object can be calculated using a function called a hash function.
+
+Hashing technique is designed to use a special function called the hash function which is used to
+
+map a given value with a particular key for faster access of elements.
+
+5.0.1 Hash Function
+
+Is a function which is used to put the data in hash table. The integer is returned by the hash function
+is called hash key.
+A good hash function should satisfy 2 criteria
+1. A hash function should hash address such that keys are distributed as evenly as possible
+among the various cells of the hash table.
+
+2. Computation of key should be simple.
+
+5.0.2 Hash Table
+
+Hash table is a data structure used for storing and retrieving data very quickly.
+
+Insertion, Deletion or Retrieval operation takes place with help of hash value.
+
+Hence every entry in the hash table is associated with some key.
+
+Using the hash key the required piece of data can be searched in the hash table by few or more key
+
+comparisons. The searching time is dependent upon the size of the hash table.
+
+Page 1

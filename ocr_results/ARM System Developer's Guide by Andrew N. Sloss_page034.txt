@@ -1,0 +1,41 @@
+2.1 Registers 21
+
+One important feature of the ARM is that register Rm alternatively can be preprocessed
+in the barrel shifter before it enters the ALU. Together the barrel shifter and ALU can
+calculate a wide range of expressions and addresses.
+
+After passing through the functional units, the result in Rd is written back to the register
+file using the Result bus. For load and store instructions the incrementer updates the address
+register before the core reads or writes the next register value from or to the next sequential
+memory location. The processor continues executing instructions until an exception or
+interrupt changes the normal execution flow.
+
+Now that you have an overview of the processor core we'll take a more detailed look
+at some of the key components of the processor: the registers, the current program status
+register (cpsr), and the pipeline.
+
+2.1 REGISTERS
+
+General-purpose registers hold either data or an address. They are identified with the
+letter r prefixed to the register number. For example, register 4 is given the label r4.
+Figure 2.2 shows the active registers available in user mode—a protected mode normally
+
+7
+72
+r3
+r4
+75
+76
+17
+78
+79
+710
+rIT
+712
+713 sp
+rid ir
+713 pe
+
+cpsr
+
+Figure 2.2 _ Registers available in user mode.

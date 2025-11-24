@@ -1,0 +1,50 @@
+14.6 Summary
+
+For an example of a JD, consider once again the SUPPLY all-key relation in Fig-
+ure 14.15(c). Suppose that the following additional constraint always holds: Whenever
+a supplier s supplies part p, and a project j uses part p, and the supplier s supplies at
+least one part to project j, then supplier s will also be supplying part p to project j.
+This constraint can be restated in other ways and specifies a join dependency
+JD(R}, Rz, R3) among the three projections R; (Sname, Part_name), R (Sname,
+Proj_name), and R3 (Part_name, Proj_name) of SUPPLY. If this constraint holds, the
+tuples below the dashed line in Figure 14.15(c) must exist in any legal state of the
+SUPPLY relation that also contains the tuples above the dashed line. Figure 14.15(d)
+shows how the SUPPLY relation with the join dependency is decomposed into three
+relations Rj, Rj, and R; that are each in SNF. Notice that applying a natural join to
+any two of these relations produces spurious tuples, but applying a natural join to
+all three together does not. The reader should verify this on the sample relation in
+Figure 14.15(c) and its projections in Figure 14.15(d). This is because only the JD
+exists, but no MVDs are specified. Notice, too, that the JD(R}, Ro, R3) is specified on
+all legal relation states, not just on the one shown in Figure 14.15(c).
+
+Discovering JDs in practical databases with hundreds of attributes is next to impos-
+sible. It can be done only with a great degree of intuition about the data on the part
+of the designer. Therefore, the current practice of database design pays scant atten-
+tion to them. One result due to Date and Fagin (1992) relates to conditions detected
+using f.d.’s alone and ignores JDs completely. It states: “If a relation schema is in
+3NF and each of its keys consists of a single attribute, it is also in SNF.”
+
+14.8 Summary
+
+In this chapter we discussed several pitfalls in relational database design using intu-
+itive arguments. We identified informally some of the measures for indicating
+whether a relation schema is good or bad, and we provided informal guidelines for
+a good design. These guidelines are based on doing a careful conceptual design in
+the ER and EER model, following the mapping procedure in Chapter 9 to map enti-
+ties and relationships into relations. Proper enforcement of these guidelines and
+lack of redundancy will avoid the insertion/deletion/update anomalies and genera-
+tion of spurious data. We recommended limiting NULL values, which cause prob-
+lems during SELECT, JOIN, and aggregation operations. Then we presented some
+formal concepts that allow us to do relational design in a top-down fashion by ana-
+lyzing relations individually. We defined this process of design by analysis and
+decomposition by introducing the process of normalization.
+
+We defined the concept of functional dependency, which is the basic tool for ana-
+lyzing relational schemas, and we discussed some of its properties. Functional
+dependencies specify semantic constraints among the attributes of a relation
+schema. Next we described the normalization process for achieving good designs
+by testing relations for undesirable types of problematic functional dependencies.
+We provided a treatment of successive normalization based on a predefined pri-
+mary key in each relation, and we then relaxed this requirement and provided more
+
+495

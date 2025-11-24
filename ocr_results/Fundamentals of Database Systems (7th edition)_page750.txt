@@ -1,0 +1,53 @@
+720
+
+Chapter 19 Query Optimization
+
+The join selectivity of the semi-join above is given by:
+js= MIN(1,NDV(Y, T2)/NDV(X, T1))
+
+The join cardinality of the semi-join is given by:
+je=|1I"js
+
+Anti-Join Consider the following query:
+
+SELECT COUNT (*)
+
+FROM T1
+
+WHERE T1.X NOT IN (SELECT T2.Y
+FROM 12);
+
+Unnesting of the query above leads to anti-join.'° (In the following query, the notation
+“A=” for anti-join is nonstandard.)
+
+SELECT COUNT(*)
+FROM T1, T2
+WHERE T1.X A= T2.Y;
+
+The join selectivity of the anti-join above is given by:
+js=1- MIN(I,NDV(T2.y)/NDV(TLx))
+The join cardinality of the anti-join is given by:
+
+je= [THs
+
+19.5.2 Example of Join Optimization Based on Cost Formulas
+
+Suppose that we have the EMPLOYEE file described in the example in the previ-
+ous section, and assume that the DEPARTMENT file in Figure 5.5 consists of
+rp = 125 records stored in bp = 13 disk blocks. Consider the following two join
+operations:
+
+OP6: EMPLOYEE ™pno-Dnumber DEPARTMENT
+OP7: DEPARTMENT Pe\1gy_ssn=Sen EMPLOYEE
+
+Suppose that we have a primary index on Dnumber of DEPARTMENT with xpnumber= 1
+level and a secondary index on Mgr_ssn of DEPARTMENT with selection cardinality
+Smgr_ssn= 1 and levels xygr_ssn= 2. Assume that the join selectivity for OP6 is
+jSop6 = (1/|DEPARTMENT|) = 1/1251! because Dnumber is a key of DEPARTMENT.
+Also assume that the blocking factor for the resulting join file is bfrgp= 4 records
+
+'Note that in order for anti-join to be used in the NOT IN subquery, both the join attributes, T1.X and
+T2Y, must have non-null values. For a detailed discussion, consult Bellamkonda et al. (2009).
+
+"Note that this coincides with our other formula: = 1/ max (NDV (Dno, EMPLOYEEE), NDV (Onumber,
+DEPARTMENT) = 1/max (125,125) = 1/125.

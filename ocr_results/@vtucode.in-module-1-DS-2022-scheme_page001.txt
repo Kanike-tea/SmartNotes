@@ -1,0 +1,51 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Field: is a single elementary unit of information representing an attribute of an entity. Record
+is the collection of field values of a given entity.
+
+File: is the collection of records of the entities in a given entity set.
+
+Each record in a file may contain many field items but the value in a certain field may
+uniquely determine the record in the file. Such a field K is called a primary key and the
+values k1, k2, ..... in such a field are called keys or key values.
+
+Records may also be classified according to length.
+
+A file can have fixed-length records or variable-length records.
+
+¢ In fixed-length records, all the records contain the same data items with the same amount of
+space assigned to each data item.
+
+e In variable-length records file records may contain different lengths. Example: Student
+records have variable lengths, since different students take different numbers of courses.
+Variable-length records have a minimum and a maximum length. The above organization of
+data into fields, records and files may not be complex enough to maintain and efficiently
+process certain collections of data. For this reason, data are also organized into more complex
+
+types of structures.
+
+CLASSIFICATION OF DATA STRUCTURES
+Data Structures can be divided into two categories,
+i) Primitive Data Structures
+
+ii) Non-Primitive Data Structures
+
+-—> void
+
+— ‘Character
+
+[—> Primitive > Integer
+> Float
+Data Structures >| — Double
+
+Linear Non- Linear
+> Arrays > Trees
+> Structure > Graphs
+
+> Stacks
+
+> Queues
+
+\__s Linked Lists
+
+vtucode.in 2

@@ -1,0 +1,47 @@
+110 Chapter 5 Efficient C Programming
+
+However, the first problem is a new issue. We can solve it by accessing the array by
+incrementing the pointer data rather than using an index as in data[i]. This is efficient
+regardless of array type size or element size. All ARM load and store instructions have
+a postincrement addressing mode.
+
+Examece The checksum_v4 code fixes all the problems we have discussed in this section. It uses int
+5.1 type local variables to avoid unnecessary casts. It increments the pointer data instead of
+using an index offset data[i].
+
+short checksum_v4(short *data)
+
+{
+unsigned int i;
+‘int sum=0;
+
+for (i=0; i<64; i++)
+
+{
+sum += *(datat+) ;
+}
+return (short) sum;
+}
+
+The *(data++) operation translates to a single ARM instruction that loads the data and
+increments the data pointer. Of course you could write sum += *data; datat+; or even
+*data++ instead if you prefer. The compiler produces the following output. Three instruc
+tions have been removed from the inside loop, saving three cycles per loop compared to
+checksum_v3.
+
+checksum_v4
+
+Mov r2,#0 3 sum = 0
+Mov r1,#0 ;i=0
+checksum_v4_loop
+LORSH 3, [rO] , #2 3 13 = *(datat+)
+ADD rl,rl, #1 5 it
+cmp 11, #0x40 ; compare i, 64
+ADD 12,73, 12 3 sum += 73
+BCC checksum_v4_loop ; if (sum<64) goto loop
+Mov 10,72, LSL #16
+Mov 10,r0,ASR #16 3 r0 = (short) sum
+Mov pc,rl4 3 return r0
+
+The compiler is still performing one cast to a 16-bit range, on the function return. You
+could remove this also by returning an int result as discussed in Section 5.2.2.

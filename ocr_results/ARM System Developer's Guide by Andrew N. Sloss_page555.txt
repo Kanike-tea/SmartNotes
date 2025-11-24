@@ -1,0 +1,52 @@
+542 Chapter 14 Memory Management Units
+
+EXAMPLE
+
+14.12
+
+Enabling the MMU is the fifth and final last part in the MMU initialization process. The
+routine control Set, shown as Example 14.3, enables the MMU. It is advisable to call the
+control Set procedure from a “fixed” address area.
+
+14.10.6.5 Putting It All Together: Initializing the MMU for the
+Demonstration.
+
+The routine mmuInit calls the routines described in previous sections to initialize the MMU
+for the demonstration. While reading this section of code it will be helpful to review the
+control blocks shown in Section 14.10.5.
+
+The routine can be called using the following C function prototype:
+
+void mmuInit (void)
+
+This example calls the routines previously described as the five parts in the process of
+initializing the MMU. The five parts are labeled as comments in the example code.
+
+The mmuInit begins by initializing the page tables and mapping regions in the privileged
+system area. The first part initalizes the fixed system area with calls to the routine mmuIni tPT.
+These calls fill the L1 master and the L2 page tables with FAULT values. The routine calls
+mmuInitPT five times: once to initialize the L1 master page table, once to initialize the
+system L2 page table, and then calls mmnuInitPT three more time to initialize the three task
+page tables:
+
+#define DOM3CLT 0x00000040
+#define CHANGEALLDOM Oxffffffff
+
+#define ENABLEMMU 0x00000001
+#define ENABLEDCACHE 0x00000004
+#define ENABLEICACHE 0x00001000
+#define CHANGEMMU 0x00000001
+
+#define CHANGEDCACHE 0x00000004
+#define CHANGEICACHE 0x00001000
+#define ENABLEWB 0x00000008
+#define CHANGEWB 0x00000008
+
+void mnuInit()
+
+{
+
+unsigned int enable, change;
+
+/* Part 1 Initialize system (fixed) page tables */
+mmnuInitPT (&masterPT) ; /* init master L1 PT with FAULT PTE */

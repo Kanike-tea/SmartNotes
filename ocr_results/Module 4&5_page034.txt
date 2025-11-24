@@ -1,0 +1,50 @@
+Microcontrollers - BCS402
+
+Address issued Cache Cache
+by processor core controller memory
+-
+31> res; Miss
+Hi store Status Data
+Cc AL A A
+Tag Compare =|
+Cache-tag | v]d[ word3| word2 | word! | word0 |] }- Cache
+Cache-tag )v | d | word3 | word2 [ word! | word0 line
+12 Cache-tag |v [d| word3 | word2 | word! | wordO
+yy
+tj .
+Set es es | Cache-tag |v] 4] word3| word? [word] | word
+index Cache-tag [v[d | word3 | word2 [word! [word0 |] address/data
+Cache-tag |v [d| word3 | word2 | word! | word] || hus
+4144 v|d[word3| word2 | word! | word ||
+Cache-tag |v [a] word3 | word2 | word! | wordO
+Data S
+index a
+ol }
+
+Fig 4: A 4 KB cache consisting of 256 cache lines of four 32-bit words
+
+A cache memory must also store the data read from main memory. This information is held in
+
+the data section.
+
+The size of a cache is defined as the actual code or data the cache can store from main memory.
+
+Not included in the cache size is the cache memory required to support cache-tags or status bits.
+
+There are also status bits in cache memory to maintain state information. Two common status
+bits are the valid bit and dirty bit. A valid bit marks a cache line as active, meaning it contains
+live data originally taken from main memory and is currently available to the processor core on
+demand. A dirty bit defines whether or not a cache line contains data that is different from the
+
+value it represents in main memory.
+2.3. The Relationship between Cache and Main Memory
+
+Figure 5 shows where portions of main memory are temporarily stored in cache memory. The
+
+figure represents the simplest form of cache, known as a direct-mapped cache.
+
+In a direct-mapped cache each addressed location in main memory maps to a single location in
+
+cache memory. Since main memory is much larger than cache memory, there are many addresses
+
+Dept. of ECE, GSSSIETW, Mysuru Page 35

@@ -1,0 +1,46 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+THREADED BINARY TREE
+
+The limitations of binary tree are:
+e In binary tree, there are n+1 null links out of 2n total links.
+e Traversing a tree with binary tree is time consuming. These limitations can
+be overcome by threaded binary tree.
+In the linked representation of any binary tree, there are more null links than actual pointers.
+
+These null links are replaced by the pointers, called threads, which points to other nodes in
+
+the tree.
+
+To construct the threads use the following rules:
+
+. Assume that ptr represents a node. If ptr—leftChild is null, then replace.the null link
+with a pointer to the inorder predecessor of ptr.
+
+. If ptr —rightChild is null, replace the null link with a pointer to the inorder successor of
+ptr.
+
+Ex: Consider the binary tree as shown in below figure:
+
+Figure A: Binary Tree
+There should be no loose threads in threaded binary tree. But in Figure B two threads
+
+have-been left dangling: one in the left child of H, the other in the right child of G.
+
+root.
+Bey
+
+r---5
+
+a
+1
+i
+i
+4
+
+Figure B: Threaded tree corresponding to Figure A
+In above figure the new threads are drawn in broken lines. This tree has 9 node and 100-
+
+links which has been replaced by threads.
+
+vtucode.in 24

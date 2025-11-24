@@ -1,0 +1,237 @@
+tuple versioning, 977-982
+valid and invalid relational states,
+160-161
+Reachability, object persistence and,
+373-374
+Read/write head, disk devices, 551
+Read/write transactions, 748
+Real-time database technology, 4
+Reasoning mechanisms, 129
+Recall and precision metrics, IR,
+1044-1046
+Record type (format), 560
+Record-at-a-time, file operations, 566
+Record-at-time DML, 40
+Record-based data models, 33
+Records
+blocking, 563-564
+data types, 560-561
+data values, 560
+fields, 560, 561-563, 568-569, 582-583
+file storage, 560-564, 567-572,
+582-583
+fixed-length, 561-563
+mixed, 582-583
+ordered (sorted), 568-572
+spanned versus unspanned, 563-564
+unordered (heaps), 567-568
+variable-length, 561-563
+Recoverability basis of schedules, 761-762
+Recoverable/nonrecoverable schedule, 761
+Recursive closure operations, 262
+Recursive queries, 223
+Recursive (self-referencing)
+relationships, 75
+Redis key-value cache, 900
+Redundancy control, 18-19
+REEF keyword, 383, 386
+Reference types, OIDs created using, 383
+References
+dot notation for path expressions, 386
+inverse, 366, 370, 396-397
+object identity from, 370
+object type relationships, 369-370
+relationships specified by, 386
+SQL, 370, 386
+Referential integrity
+constraints, 21, 163-165, 186-187
+NULL values and, 163-164
+relational data modeling, 163-165
+SQL constraints, 186-187
+Referential triggered action clause, SQL,
+186
+Reflexive association, UML class
+diagrams, 87
+Regression, data mining, 1091-1092
+Regression function, data mining, 1092
+Relation extension/intension, 152
+Relation nodes, query graphs, 273
+Relation schema
+anomalies and, 465-467
+assertion, 156
+attribute clarity and, 464
+
+degree (arity) of attributes, 152
+facts, 156
+functional dependency of, 471-474
+goodness of, 459
+interpretation of, 156
+key of, 159
+nested relations, 479-480
+normalization of relations, 474-476
+NULL value in tuples, 467-468
+predicate, 156
+redundant information in tuples,
+465-467
+relational database (RDB) design
+guidelines, 461-471
+relational model constraints and,
+157-165
+relational model domains and, 152
+semantics of, 461-465
+spurious tuple generation, 468-471
+superkey of, 158-159
+universal, 471-474
+Relation state
+current, 153
+relational model domains and, 152-153
+relational database, 160-161
+tuple values in, 152-156
+valid and not valid, 160-161
+Relational algebra
+aggregate functions, 240, 260-261
+binary operations, 240, 251-259,
+262-264
+expressions for, 239, 241-242, 245
+formal relational modeling and, 239-240
+generalized projection operation,
+259-260
+groupings, 260-261
+operations, purpose and notation of, 258
+procedural order of, 268
+queries in, 265-268
+query optimization and, 697-699
+recursive closure operations, 262
+set theory and, 246-251, 264-265
+SQL query translation into, 657-660
+transformation rules for operations,
+697-699
+unary operations, 240, 241-246
+Relational calculus
+declarative expressions for, 268
+domains and, 268, 277-279
+formal relational modeling and,
+240-241
+nonprocedural language of, 268
+query graphs, 273-274
+relationally complete language of, 268
+tuples and, 268-277
+Relational data models
+attributes, 152-153
+breaking cycle for tree-structure model
+conversion, 452-453
+concepts, 150-157
+constraints, 157-167
+DBMS criteria and, 51-52
+
+Index 1235
+
+delete operation, 166, 167-168
+
+domains, 151-152
+
+entity integrity, 163-165
+
+extraction of XML documents using,
+447-449
+
+flat files, 150
+
+formal languages for, see Relational
+algebra; Relational calculus
+
+insert operation, 166-167
+
+key constraints, 21, 158-160, 163-165
+
+mathematical relation of, 149
+
+notation for, 156-157
+
+operations, 165-168
+
+referential integrity, 163-165
+
+practical language for, see SQL
+(Structured Query Language)
+
+relations, 152-156
+
+representational model type, 33
+
+retrievals (operations), 165-166
+
+schemas, 152-165
+
+table of values, 150-151
+
+transactions, 169
+
+tuples, 152-156
+
+update (modify) operation, 166,
+168-169
+
+Relational database (RDB) design
+
+algorithms for schema design,
+519-523, 524-527
+
+bottom-up method, 460, 504
+
+by analysis, 503
+
+by synthesis, 504, 503
+
+dangling tuple problems, 523-524
+
+data model mapping for, 289
+
+designer intention for, 459-460
+
+EER-to-relational mapping, 298-303
+
+ER-to-relational mapping, 290-298
+
+functional dependency and, 471-474,
+505-512, 527-528, 532
+
+implementation (physical storage)
+level, 459-460
+
+inclusion dependency and, 531-532
+
+inference rules for, 505-509, 527-528
+
+join dependency (JD) and, 494-495,
+530-531
+
+keys for, 474-483
+
+logical (conceptual) level, 459-460
+
+multivalued dependency (MVD) and,
+491-494, 527-530
+
+normal forms, 474-495, 513-514,
+528-533
+
+normalization algorithm problems,
+524-527
+
+normalization of relations, 474-476,
+482, 485, 486-487, 493-494
+
+NULL value problems, 523-524
+
+ODBs compared to, 405-406
+
+properties of decomposition, 504,
+513-518
+
+relation schema, guidelines for,
+461-471
+
+top-down method, 460
+
+universal relations, 471-474, 504

@@ -1,0 +1,50 @@
+20
+
+Chapter 1 Databases and Database Users
+
+The persistent storage of program objects and data structures is an important func-
+tion of database systems. Traditional database systems often suffered from the so-
+called impedance mismatch problem, since the data structures provided by the
+DBMS were incompatible with the programming language’s data structures.
+Object-oriented database systems typically offer data structure compatibility with
+one or more object-oriented programming languages.
+
+1.6.4 Providing Storage Structures and Search
+Techniques for Efficient Query Processing
+
+Database systems must provide capabilities for efficiently executing queries and
+updates. Because the database is typically stored on disk, the DBMS must provide
+specialized data structures and search techniques to speed up disk search for the
+desired records. Auxiliary files called indexes are often used for this purpose.
+Indexes are typically based on tree data structures or hash data structures that are
+suitably modified for disk search. In order to process the database records needed
+by a particular query, those records must be copied from disk to main memory.
+Therefore, the DBMS often has a buffering or caching module that maintains parts
+of the database in main memory buffers. In general, the operating system is respon-
+sible for disk-to-memory buffering. However, because data buffering is crucial to
+the DBMS performance, most DBMSs do their own data buffering.
+
+The query processing and optimization module of the DBMS is responsible for
+choosing an efficient query execution plan for each query based on the existing
+storage structures. The choice of which indexes to create and maintain is part of
+physical database design and tuning, which is one of the responsibilities of the DBA
+staff. We discuss query processing and optimization in Part 8 of the text.
+
+1.6.5 Providing Backup and Recovery
+
+A DBMS must provide facilities for recovering from hardware or software failures.
+The backup and recovery subsystem of the DBMS is responsible for recovery. For
+example, if the computer system fails in the middle of a complex update transac-
+tion, the recovery subsystem is responsible for making sure that the database is
+restored to the state it was in before the transaction started executing. Disk backup
+is also necessary in case of a catastrophic disk failure. We discuss recovery and
+backup in Chapter 22.
+
+1.6.6 Providing Multiple User Interfaces
+
+Because many types of users with varying levels of technical knowledge use a data-
+base, a DBMS should provide a variety of user interfaces. These include apps for
+mobile users, query languages for casual users, programming language interfaces
+for application programmers, forms and command codes for parametric users,
+and menu-driven interfaces and natural language interfaces for standalone users.
+Both forms-style interfaces and menu-driven interfaces are commonly known as

@@ -1,0 +1,55 @@
+518 Chapter 14 Memory Management Units
+
+EXAMPLE
+
+14.4
+
+14.9.1
+
+This routine takes an unsigned integer as an input, clips it to seven bits, mod 128, by
+multiplying the value by 0x20000000 (32 MB), and then writing the result to the process
+ID register using an MCR instruction.
+
+void processIDSet (unsigned int value)
+{
+
+unsigned int PID;
+
+PID = value<<25;
+
+__asm{MCR p15, 0, PID, cl3, cO, 0} /* write Process ID register */
+}
+
+How THE FCSE USES PAGE TABLES AND DOMAINS
+
+To use the FCSE efficiently, the system uses page tables to control region configuration
+and operation, and domains to isolate tasks from each other. Refer again to Figure 14.14,
+which shows the memory layout before and after a context switch from Task 1 to Task 2.
+Table 14.9 shows the numerical details used to create Figure 14.14.
+
+Figure 14.16 shows how to change the value in the domain access register of CP15:¢3:c0
+to switch from Task 1 to Task 2. Switching between tasks requires a change in the process
+ID and a new entry in the domain access register.
+
+Table 14.9 shows that Task 1 is assigned Domain 1, and Task 2 is assigned Domain 2.
+When changing from Task 1 to Task 2, change the domain access register to allow client
+access to Domain 2, and no access to Domain 1. This prevents Task 2 from accessing the
+memory space of Task 1. Note that client access remains the same for the kernel, Domain 0.
+This allows the page tables to control access to the system area of memory.
+
+Sharing memory between tasks can be accomplished by using a “sharing” domain,
+shown as Domain 15 in Figure 14.16 and Table 14.9. The sharing domain is not shown
+in Figure 14.15. Tasks can share a domain that allows client access to a partition in modified
+
+Table 14.9 Domain assignment in a simple three-task multiprogramming environment using the
+FSCE.
+Partition starting address in
+
+Region Domain Privileged AP User AP modified virtual memory Process ID
+Kernel 0 read write no access OxFE000000 not assigned
+Task 3 3 read write read write 0x06000000 0x03
+
+Task 2 2 read write read write 0x04000000 0x02
+
+Task 1 1 read write read write 0x02000000 0x01
+Shared 15 read write read write OxF8000000 not assigned

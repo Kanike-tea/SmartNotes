@@ -1,0 +1,51 @@
+x
+
+Preface
+
+and algorithms developed for relational database design by normaliza-
+tion, including the relational decomposition algorithms and the relational
+synthesis algorithms.
+
+Part 7 (Chapters 16 and 17) contains the chapters on file organizations on
+disk (Chapter 16) and indexing of database files (Chapter 17). Chapter 16
+describes primary methods of organizing files of records on disk, including
+ordered (sorted), unordered (heap), and hashed files; both static and
+dynamic hashing techniques for disk files are covered. Chapter 16 has been
+updated to include materials on buffer management strategies for DBMSs as
+well as an overview of new storage devices and standards for files and mod-
+ern storage architectures. Chapter 17 describes indexing techniques for files,
+including B-tree and B*-tree data structures and grid files, and has been
+updated with new examples and an enhanced discussion on indexing,
+including how to choose appropriate indexes and index creation during
+physical design.
+
+Part 8 (Chapters 18 and 19) includes the chapters on query processing algo-
+rithms (Chapter 18) and optimization techniques (Chapter 19); these two
+chapters have been updated and reorganized from the single chapter that
+covered both topics in the previous editions and include some of the newer
+techniques that are used in commercial DBMSs. Chapter 18 presents algo-
+rithms for searching for records on disk files, and for joining records from
+two files (tables), as well as for other relational operations. Chapter 18 con-
+tains new material, including a discussion of the semi-join and anti-join
+operations with examples of how they are used in query processing, as well
+as a discussion of techniques for selectivity estimation. Chapter 19 covers
+techniques for query optimization using cost estimation and heuristic rules;
+it includes new material on nested subquery optimization, use of histograms,
+physical optimization, and join ordering methods and optimization of
+typical queries in data warehouses.
+
+Part 9 (Chapters 20, 21, and 22) covers transaction processing concepts;
+concurrency control; and database recovery from failures. These chapters
+have been updated to include some of the newer techniques that are used
+in some commercial and open source DBMSs. Chapter 20 introduces the
+techniques needed for transaction processing systems, and defines the
+concepts of recoverability and serializability of schedules; it has a new sec-
+tion on buffer replacement policies for DBMSs and a new discussion on
+the concept of snapshot isolation. Chapter 21 gives an overview of the var-
+ious types of concurrency control protocols, with a focus on two-phase
+locking. We also discuss timestamp ordering and optimistic concurrency
+control techniques, as well as multiple-granularity locking. Chapter 21
+includes a new presentation of concurrency control methods that are based
+on the snapshot isolation concept. Finally, Chapter 23 focuses on database
+recovery protocols, and gives an overview of the concepts and techniques
+that are used in recovery.

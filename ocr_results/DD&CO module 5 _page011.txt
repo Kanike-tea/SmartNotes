@@ -1,0 +1,42 @@
+Problem 1:
+
+Why is the Wait-for-memory-function-completed step needed for reading from or
+writing to the main memory?
+
+Solution:
+
+The WMEC step is needed to synchronize the operation of the processor and the main
+memory.
+
+Problem 2:
+For the single bus organization, write the complete control sequence for the
+instruction: Move (R1), R1
+Solution:
+PCout, MARin, Read, Select4, Add, Zin
+
+2) Zout, PCin, Yin, WMFC
+
+3) MDRout, IRin
+
+4) R1out, MARin, Read
+
+5) MDRinE, WMFC
+
+6) MDRout, R2in, End
+Prob
+
+lem
+3:
+XQ
+
+Write the sequence of control steps required for the single bus organization in each of
+the following instructions:
+a) Add the immediate number NUM to register R1.
+
+b) Add the contents of memory-location NUM to register R1.
+c) Add the contents of the memory-location whose address is at memory-location
+NUM to register R1.
+Assume that each instruction consists of two words. The first word specifies the
+operation andN the addressing mode, and the second word contains the number
+NUM
+Solution:

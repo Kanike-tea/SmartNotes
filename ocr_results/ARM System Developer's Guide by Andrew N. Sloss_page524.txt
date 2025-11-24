@@ -1,0 +1,46 @@
+Figure 14.11
+
+Table 14.5
+
+14.6 Domains and Memory Access Permission 511
+
+ARM920T, ARM922T, ARM926EJ-S, ARM1022E
+31 2625 2019 Lo
+Base Victim SBZ P|
+
+ARM1026EI-S
+3129282625 10
+
+SBZ | Victim SBZ P|
+
+should be zero
+
+Format of the CP15:c10:c0 register.
+
+can be assigned to 1 MB sections of virtual memory and are assigned to a section by setting
+the domain bit field in the master L1 PTE (see Figure 14.6).
+
+When a domain is assigned to a section, it must obey the domain access rights assigned
+to the domain. Domain access rights are assigned in the CP15:c3 register and control the
+processor core’s ability to access sections of virtual memory.
+
+The CP15:c3 register uses two bits for each domain to define the access permitted for
+each of the 16 available domains. Table 14.5 shows the value and meaning of a domain
+access bit field. Figure 14.12 gives the format of the CP15:c3:c0 register, which holds the
+domain access control information. The 16 available domains are labeled from D0 to D15
+in the figure.
+
+Even if you don’t use the virtual memory capabilities provided by the MMU, you can
+still use these cores as simple memory protection units: first, by mapping virtual memory
+directly to physical memory, assigning a different domain to each task, then using domains
+to protect dormant tasks by assigning their domain access to “no access.”
+
+Domain access bit assignments.
+
+Access Bit field value Comments
+Manager in access is uncontrolled, no permission aborts generated
+Reserved 10 unpredictable
+
+Client 01 access controlled by permission values set in PTE
+
+No access 00 generates a domain fault

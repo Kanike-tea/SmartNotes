@@ -1,0 +1,47 @@
+Database Management System [BCS403]
+
+Module-4: SQL- Advances Queries
+
+1.1 More Complex SQL Retrieval Queries
+Additional features allow users to specify more complex retrievals from database
+
+1.1.1 Comparisons Involving NULL and Three-Valued Logic
+
+SQL has various rules for dealing with NULL values. NULL is used to represent a missing value, but
+that it usually has one of three different interpretations—value
+
+Example
+
+1. Unknown value. A person’s date of birth is not known, so it is represented by NULL in the
+database.
+
+2. Unavailable or withheld value. A person has a home phone but does not want it to be
+listed, so it is withheld and represented as NULL in the database.
+
+3. Not applicable attribute. An attribute CollegeDegree would be NULL for a person who has no
+
+college degrees because it does not apply to that person.
+
+Each individual NULL value is considered to be different from every other NULL value in the various
+database records. When a NULL is involved in a comparison operation, the result is considered to
+be UNKNOWN (it may be TRUE or it may be FALSE). Hence, SQL uses a three-valued logic with
+values TRUE, FALSE, and UNKNOWN instead of the standard two-valued (Boolean) logic with
+values TRUE or FALSE. It is therefore necessary to define the results (or truth values) of three-
+valued logical expressions when the logical connectives AND, OR, and NOT are used
+
+Table 5.1, Logical Conhectives in Three-Valued Logic
+
+fa) AND TRUE FALSE UNKNOWN
+TRUE TRUE FALSE UNKNOWN
+FALSE FALSE FALSE FALSE
+UNKNOWN UNKNOWN FALSE UNKNOWN
+(b) OR TRUE FALSE UNKNOWN
+TRUE TRUE TRUE TRUE
+FALSE TRUE FALSE UNKNOWN
+UNKNOWN TRUE UNKNOWN UNKNOWN
+(c) NOT
+TRUE FALSE
+FALSE TRUE
+UNKNOWN UNKNOWN
+
+https://vtucode.in page 18

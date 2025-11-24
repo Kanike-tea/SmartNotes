@@ -1,0 +1,52 @@
+358
+
+Chapter 11 Web Database Programming Using PHP
+
+11.4 Brief Overview of Java Technologies
+for Database Web Programming
+
+The parts of the PHP scripting language that we discussed run on the application
+server and serve as a conduit that collects client user input through forms, formu-
+lates database queries and submits them to the database server, and then creates
+dynamic HTML Web pages to display query results. The Java environment has
+components that run on the server and other components that can run on the client
+machine. It also has standards for exchanging data objects. We briefly discuss some
+of these components here that are related to Web and database access. We already
+discussed JDBC and SQLJ in some detail in Chapter 10.
+
+Java Servlets. Servlets are Java objects that can reside on the Web server
+machine and manage interactions with the client. They can store information
+that was submitted by the client during a session, so that this information can
+be used to generate database queries. Servlet objects can also store query results
+so that parts of these results can be formatted as HTML and sent to the client
+for display. The servlet object can maintain all the information produced dur-
+ing a particular client interaction until the client session is terminated.
+
+Java Server Pages (JSP). This allows scripting at the server to produce dynamic Web
+pages to be sent at the client in a manner somewhat similar to PHP. However, it is
+associated with the Java language and the scripting can be combined with Java code.
+
+JavaScript. JavaScript is a scripting language that is different from the Java
+programming language and was developed separately. It is widely used in Web
+applications, and it can run on the client computer or on the server.
+
+Java Script Object Notation (JSON). This is a text-based representation of
+data objects, so that data can be formatted in JSON and exchanged between
+clients and servers over the Web in text format. It can be considered as an alter-
+native to XML (see Chapter 13) and represents objects using attribute-value
+pairs. JSON has also been adopted as the data model by some newer database
+systems known as NOSQL systems, such as MongoDB (see Chapter 24).
+
+11.5 Summary
+
+In this chapter, we gave an overview of how to convert some structured data from
+databases into elements to be entered or displayed on a Web page. We focused on
+the PHP scripting language, which is becoming very popular for Web database pro-
+gramming. Section 11.1 presented some PHP basics for Web programming through
+a simple example. Section 11.2 gave some of the basics of the PHP language, includ-
+ing its array and string data types that are used extensively. Section 11.3 presented
+an overview of how PHP can be used to specify various types of database com-
+mands, including creating tables, inserting new records, and retrieving database
+records. PHP runs at the server computer in comparison to some other scripting
+languages that run on the client computer. Section 11.4 introduced some of the
+technologies associated with Java that can be used in similar contexts.

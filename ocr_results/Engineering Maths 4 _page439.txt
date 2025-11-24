@@ -1,0 +1,45 @@
+430 :
+ENGINEERING MATHEMATICS - IV
+
+me state space of the system is { train (t), bus (b) .
+oO era process is a Markov.chain since the outcome of any day depends only
+n the happening of the previous day.The t-p-m isas follows.
+
+t ob
+
+pei) ® 1
+b|1/2 1/2
+
+The first Tow of the matrix is related to the fact that the person does not commute two
+consecutive days by train and is sure to go:by bus if he had travelled. by train. The
+second row of the matrix is related to the fact that if the person had commuted in bus
+ona particular day he is likely to go by bus again or by train. Thus the probabilities are,
+equal to 1/2. “, 8 “ on ,
+
+2. Threeboys A, B, C are throwing ball to each other-A always throws the ball to B and
+B always throws the ball to C. C is just as likely to throw the ball to B as to A. ,
+
+State space = {A, B,C} andthe t-p-m P is as follows. |
+
+A BC
+A[o 1 0
+P=B)/0 0 1]. | ° \
+c\1/72 172 0 ’
+
+© Higher transition probabilities a .
+
+The entry p;, in the transition probability matrix P of the Markov chain is the
+probability that the system changes from the state a; to a, in a single step. That is
+a>; , . .
+The probability that the system changes from the state a; to the state 4, in exactly
+
+n steps is denoted by pn)
+
+oe i in ok :
+The matrix formed by the probabilities pf i ) is called the 1 - step
+transition matrix denoted by P‘"? " 93 ;
+
+[P™] =[ Py )] is obviously a stochastic matrix. ‘
+It can be proved that the m step transition matrix is equal to the ath power of P.
+
+That is P‘") = P™

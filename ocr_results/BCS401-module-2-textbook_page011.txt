@@ -1,0 +1,23 @@
+136
+
+Decrease-and-Conquer
+
+This very good performance in the best case of sorted arrays is not very useful by
+itself, because we cannot expect such convenient inputs. However, almost-sorted
+files do arise in a variety of applications, and insertion sort preserves its excellent
+performance on such inputs.
+
+A rigorous analysis of the algorithm’s average-case efficiency is based on
+investigating the number of element pairs that are out of order (see Problem 11 in
+this section’s exercises). It shows that on randomly ordered arrays, insertion sort
+makes on average half as many comparisons as on decreasing arrays, ice.,
+
+rn 2
+Cayg(n) © 7é O(n’).
+
+This twice-as-fast average-case performance coupled with an excellent efficiency
+on almost-sorted arrays makes insertion sort stand out among its principal com-
+petitors among elementary sorting algorithms, selection sort and bubble sort. In
+addition, its extension named shellsort, after its inventor D. L. Shell [She59], gives
+us an even better algorithm for sorting moderately large files (see Problem 12 in
+this section’s exercises).

@@ -1,0 +1,58 @@
+committed version X. However, once T is ready to commit, it must obtain a certify lock on all items
+that it currently holds write locks on before it can commit. The certify lock is not compatible with
+read locks, so the transaction may have to delay its commit until all its write-locked items are
+released by any reading transactions in order to obtain the certify locks. Once the certify locks—
+which are exclusive locks—are acquired, the committed version X of the data item is set to the
+value of version X, version X is discarded, and the certify locks are then released. In this
+multiversion 2PL scheme, reads can proceed concurrently with a single write operation—an
+arrangement not permitted under the standard 2PL schemes.
+
+3.6.4. Optimistic Concurrency Control Techniques:
+Basic idea: all transactions consist of three phases:
+1. Read. Here, all writes are to private storage (shadow copies).
+2. Validation. Make sure no conflicts have occurred.
+3. Write. If Validation was successful, make writes public. (If not, abort!)
+
+Useful in the following case:
+1. All transactions are readers.
+
+2. Lots of transactions, each accessing/modifying only a small amount of data, large total
+amount of data.
+
+3. Fraction of transaction execution in which conflicts "really take place" is small compared to
+total pathlength.
+
+The Validation Phase
+
+¢ Goal: to guarantee that only serializable schedules result.
+
+¢ Technique: actually find an equivalent serializable schedule. In particular,
+
+1. Assign each transaction a TN during execution.
+
+2. Ensure that if you run transactions in order induced by "<" on TNs, you get an equivalent
+serial schedule.
+
+Suppose ™7 < TN(T)j). Then if one of the following three conditions holds, it’s serializable:
+Ti completes its write phase before Tj starts its read phase.
+
+> WS(Ti) intersect RS(Tj) = emptysetand Ti completes its write phase before Tj starts
+its write phase.
+3. WS(Ti) intersect RS(Tj) = WS(Ti) intersect WS(Tj) = emptysetand Ti completes its
+read phase before Tj completes its read phase.
+Recovery
+
+Types of Failure
+
+Failures may be
+
+Transaction Caused by errors within the transaction processes.
+
+System Caused by failure of network or operating system or physical threats to the
+system as a whole.
+
+Media Failure of hard disk, out of memory errors, out of disk space errors.
+
+Reasons for Failure
+
+Failure may be caused by a number of things.

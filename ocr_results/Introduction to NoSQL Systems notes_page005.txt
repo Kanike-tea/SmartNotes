@@ -1,0 +1,35 @@
+« Integration with Applications: MongoDB drivers are available for nearly all major
+programming languages, including Python, JavaScript (Node.js), Java, C#, and more.
+
+4. Example Document and Query in MongoDB
+
+A sample MongoDB document for a user might look like:
+
+json
+CopyEdit
+{
+
+"id": 101,
+
+"name": "John Doe",
+"email": "john@example.com",
+"address": {
+"street": "123 Main St",
+"city": "New York",
+"zip": "10001"
+1,
+“orders”: [
+{"item": "Laptop", "price": 999.99},
+{"item": "Mouse", "price": 25.00}
+]
+}
+
+This document stores all relevant information about the user in one place. To query all
+users who have ordered a "Laptop", you'd use:
+
+javascript
+CopyEdit
+db.users.find({"orders.item": "Laptop"});
+
+This returns all documents where the nested orders array includes an item called
+"Laptop".

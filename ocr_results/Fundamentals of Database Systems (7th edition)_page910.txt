@@ -1,0 +1,53 @@
+880
+
+Chapter 23 Distributed Database Concepts
+
+including legacy databases (from hierarchical and network models; no spe-
+cific knowledge of these models is needed) as well as relational databases,
+which are geographically distributed so that global applications can be sup-
+ported. Assume that alternative 1 is to keep all databases as they are, whereas
+alternative 2 is to first convert them to relational and then support the appli-
+cations over a distributed integrated database.
+
+a. Draw two schematic diagrams for the above alternatives showing the
+linkages among appropriate schemas. For alternative 1, choose the
+approach of providing export schemas for each database and construct-
+ing unified schemas for each application.
+
+b. List the steps that you would have to go through under each alternative
+from the present situation until global applications are viable.
+
+c. Compare these alternatives from the issues of:
+
+i. design time considerations
+ii. runtime considerations
+
+Selected Bibliography
+
+The textbooks by Ceri and Pelagatti (1984a) and Ozsu and Valduriez (1999) are
+devoted to distributed databases. Peterson and Davie (2008), Tannenbaum (2003),
+and Stallings (2007) cover data communications and computer networks. Comer
+(2008) discusses networks and internets. Ozsu et al. (1994) has a collection of papers
+on distributed object management.
+
+Most of the research on distributed database design, query processing, and optimi-
+zation occurred in the 1980s and 1990s; we quickly review the important references
+here. Distributed database design has been addressed in terms of horizontal and
+vertical fragmentation, allocation, and replication. Ceri et al. (1982) defined the
+concept of minterm horizontal fragments. Ceri et al. (1983) developed an integer
+programming-based optimization model for horizontal fragmentation and alloca-
+tion. Navathe et al. (1984) developed algorithms for vertical fragmentation based
+on attribute affinity and showed a variety of contexts for vertical fragment alloca-
+tion. Wilson and Navathe (1986) present an analytical model for optimal allocation
+of fragments. Elmasri et al. (1987) discuss fragmentation for the ECR model; Karla-
+palem et al. (1996) discuss issues for distributed design of object databases. Navathe
+et al. (1996) discuss mixed fragmentation by combining horizontal and vertical
+fragmentation; Karlapalem et al. (1996) present a model for redesign of distributed
+databases.
+
+Distributed query processing, optimization, and decomposition are discussed in
+Hevner and Yao (1979), Kerschberg et al. (1982), Apers et al. (1983), Ceri and Pela-
+gatti (1984), and Bodorick et al. (1992). Bernstein and Goodman (1981) discuss the
+theory behind semijoin processing. Wong (1983) discusses the use of relationships
+in relation fragmentation. Concurrency control and recovery schemes are discussed
+in Bernstein and Goodman (1981a). Kumar and Hsu (1998) compile some articles

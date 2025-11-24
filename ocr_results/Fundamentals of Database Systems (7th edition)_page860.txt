@@ -1,0 +1,38 @@
+830 Chapter 22 Database Recovery Techniques
+
+(a) Lsn Last_Isn Tran_id Type Page_id Other_information
+1 0 Ty, update c
+2 0) To update B
+3 1 Ty, commit
+4 | begin checkpoint
+5 | end checkpoint
+6 0 Ts update A
+7 2 Te update c
+8 7 Th commit
+TRANSACTION TABLE DIRTY PAGE TABLE
+(b) Transaction_id Last_Isn Status Page_id Lsn
+Ty 3 commit Cc 1
+Ty 2 in progress B 2
+TRANSACTION TABLE DIRTY PAGE TABLE
+(© Transaction_id Last_Isn Status Page_id Lsn
+Ty 3 commit c 7
+Ta 8 commit B
+Ts 6 in progress A 6
+Figure 22.5
+
+An example of recovery in ARIES. (a) The log at point of crash. (b) The Transaction and Dirty Page Tables at time of
+checkpoint. (c) The Transaction and Dirty Page Tables after the analysis phase.
+
+Consider the recovery example shown in Figure 22.5. There are three transactions:
+Tj, Tz, and T3. T, updates page C, T; updates pages B and C, and T3 updates page A.
+Figure 22.5(a) shows the partial contents of the log, and Figure 22.5(b) shows the
+contents of the Transaction Table and Dirty Page Table. Now, suppose that a crash
+occurs at this point. Since a checkpoint has occurred, the address of the associated
+begin_checkpoint record is retrieved, which is location 4. The analysis phase starts
+from location 4 until it reaches the end. The end_checkpoint record contains the
+Transaction Table and Dirty Page Table in Figure 22.5(b), and the analysis phase
+will further reconstruct these tables. When the analysis phase encounters log record 6,
+anew entry for transaction T; is made in the Transaction Table and a new entry for
+page A is made in the Dirty Page Table. After log record 8 is analyzed, the status of
+transaction T, is changed to committed in the Transaction Table. Figure 22.5(c)
+shows the two tables after the analysis phase.

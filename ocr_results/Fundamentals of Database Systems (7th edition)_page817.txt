@@ -1,0 +1,64 @@
+21.1. Two-Phase Locking Techniques for Concurrency Control 787
+
+(a) Ty Tp,
+read_lock(Y); read_lock(X);
+read_item(Y); read_item(X);
+unlock(Y); unlock(X);
+write_lock(X); write_lock(Y);
+read_item(X); read_item(Y);
+X=X+Y; Y=X+Y;
+write_item(X); write_item(Y);
+unlock(X); unlock(Y);
+
+© Ty Tp,
+read_lock(Y);
+read_item(Y);
+unlock(Y);
+
+read_lock(X);
+read_item(X);
+unlock(X);
+Time write_lock(Y);
+read_item(Y);
+write_item(Y);
+unlock(Y);
+write_lock(X);
+read_item(X);
+X=X+Y;
+V|  write_item(X);
+unlock(X);
+
+(b)
+
+Initial values: X=20, Y=30
+
+Result serial schedule T;
+followed by Ty: X=50, Y=80
+
+Result of serial schedule T,
+followed by T;: X=70, Y=50
+
+Result of schedule S:
+X=50, Y=50
+(nonserializable)
+
+Figure 21.3
+
+Transactions that do not obey two-phase locking.
+(a) Two transactions T; and Tp. (b) Results of
+possible serial schedules of T; and Tp. (c) A
+nonserializable schedule S that uses locks.
+
+expanding phase, and downgrading of locks (from write-locked to read-locked)
+must be done in the shrinking phase.
+
+Transactions T, and T; in Figure 21.3(a) do not follow the two-phase locking pro-
+tocol because the write_lock(X) operation follows the unlock(Y) operation in T), and
+similarly the write_lock(Y) operation follows the unlock(X) operation in T>. If we
+enforce two-phase locking, the transactions can be rewritten as T,’ and T,’, as
+shown in Figure 21.4. Now, the schedule shown in Figure 21.3(c) is not permitted
+for T,’ and T;’ (with their modified order of locking and unlocking operations)
+under the rules of locking described in Section 21.1.1 because Ty’ will issue its
+write_lock(X) before it unlocks item Y; consequently, when T,’ issues its read_lock(X),
+it is forced to wait until T,’ releases the lock by issuing an unlock (X) in the schedule.
+However, this can lead to deadlock (see Section 21.1.3).

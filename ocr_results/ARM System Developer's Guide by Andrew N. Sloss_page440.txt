@@ -1,0 +1,48 @@
+12.5 Flushing and Cleaning Cache Memory 427
+
+You can use Example 12.2 to create simpler routines dedicated to the specific core you are
+using. We use an ARM926EJ-S as a model to show how the three routines can be extracted
+from Example 12.2. The rewritten version is
+
+EXPORT flushCache926
+EXPORT flushICache926
+EXPORT flushDCache926
+c7f RN 0 ; register in CP15:c7 format
+
+FlushCache926
+MCR p15,0,c7f,c7,c7,0 3 flush I-cache & D-cache
+MOV pc, Ir
+FlushICache926
+MCR p15,0,c7f,c7,c5,0 5 flush I-cache
+MOV pc, Ir
+FlushDCache926
+MCR p15,0,c7f,c7,c6,0 5 flush D-cache
+MOV pc, Ir
+
+If you are writing in C, you might simplify this code even further and make them inline
+functions that can be collected and placed in an include file. The inline functions are
+
+__inline void flushCache926 (void)
+{
+
+unsigned int c7format = 0;
+__asm{ MCR p15,0,c7format,c7,c7,0 }; /* flush I8D-cache */
+}
+
+__inline void flushDcache926(void)
+{
+
+unsigned int c7format = 0;
+__asm{MCR p15,0,c7format,c7,c6,0 } /* flush D-cache */
+}
+
+__inline void flushIcache926(void)
+{
+
+unsigned int c7format = 0;
+__asm{MCR p15,0,c7format,c7,c5,0 } /* flush I-cache */
+}
+
+‘The remainder of the examples in this chapter are presented in ARM assembler and
+support all current cores. The same extraction procedures can be applied to the routines
+provided.

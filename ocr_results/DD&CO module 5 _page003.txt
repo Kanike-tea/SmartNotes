@@ -1,0 +1,6 @@
+3) Fetch the contents of a given memory-location and load them into a register.
+
+4) Store a word of data from a register into a given memory-location.
+¢ Disadvantage: Only one data-word can be transferred over the bus in a clock cycle.
+Solution: Provide multiple internal-paths. Multiple paths allow several data-
+transfers to take place in parallel.

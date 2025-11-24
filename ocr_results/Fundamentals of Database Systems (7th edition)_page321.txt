@@ -1,0 +1,52 @@
+9.1 Relational Database Design Using ER-to-Relational Mapping 291
+
+EMPLOYEE
+
+Fname | Minit | Lname | Ssn | Bdate | Address | Sex | Salary | Super_ssn| Dno
+
+DEPARTMENT _————
+
+Dname | Dnumber | Mgr_ssn | Mgr_start_date
+
+r
+
+DEPT_LOCATIONS
+
+Dnumber | Dlocation
+
+WL
+PROJECT
+Pname | Pnumber | Plocation | Dnum
+WORKS_ON
+Essn | Pno | Hours
+
+l Figure 9.2
+
+Result of mapping the
+
+DEPENDENT COMPANY ER schema
+Essn | Dependent_name | Sex | Bdate | Relationship into a relational database
+
+l schema.
+
+mapping steps. We assume that the mapping will create tables with simple single-
+valued attributes. The relational model constraints defined in Chapter 5, which
+include primary keys, unique keys (if any), and referential integrity constraints on
+the relations, will also be specified in the mapping results.
+
+Step 1: Mapping of Regular Entity Types. For each regular (strong) entity type
+E in the ER schema, create a relation R that includes all the simple attributes of E.
+Include only the simple component attributes of a composite attribute. Choose one
+of the key attributes of E as the primary key for R. If the chosen key of E is a com-
+posite, then the set of simple attributes that form it will together form the primary
+key of R.
+
+If multiple keys were identified for E during the conceptual design, the information
+describing the attributes that form each additional key is kept in order to specify
+additional (unique) keys of relation R. Knowledge about keys is also kept for index-
+ing purposes and other types of analyses.
+
+In our example, we create the relations EMPLOYEE, DEPARTMENT, and PROJECT in
+Figure 9.2 to correspond to the regular entity types EMPLOYEE, DEPARTMENT, and
+PROJECT from Figure 9.1. The foreign key and relationship attributes, if any,
+are not included yet; they will be added during subsequent steps. These include

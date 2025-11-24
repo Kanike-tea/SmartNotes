@@ -1,0 +1,52 @@
+R is the name of a relation and Al, A2,...An is a list of attributes representing R then
+R(A1,A2,...,An) is called a Relational Schema. Each attribute in this relational schema takes a
+value from some specific domain called domain(Ai).
+
+Example:
+
+PERSON (PERSON_ID:INTEGER, NAME:STRING, AGE:INTEGER, ADDRESS:STRING)
+
+Total number of attributes in a relation denotes the degree of a relation since the PERSON relation
+scheme contains four attributes, so this relation is of degree 4.
+
+Relation Instance:
+A relational instance denoted as r is a collection of tuples for a given relational schema at a specific
+point of time.
+Arelation state r to the relations schema R(A1, A2..., An) also denoted by r(R) is a set of n-tuples
+R{tl,t2,...tm}
+Where each n-tuple is an ordered list of n values
+T=<vl,v2,....vn>
+Where each vi belongs to domain (Ai) or contains null values.
+The relation schema is also called ‘intension’ and the relation state is also called ‘extension’.
+Eg: Relation schema for Student
+STUDENT(rollno:string, name:string, city:string, age:integer)
+
+Relation instance:
+
+Student:
+Rollno Name City Age
+101 Sujit Bam 23
+102 kunal bbsr 22
+Keys:
+Super key:
+A super key is an attribute or a set of attributes used to identify the records uniquely in a relation.
+
+For example, customer-id, (cname, customer-id), (cname,telno)
+
+Candidate key:
+
+Super keys of a relation can contain extra attributes. Candidate keys are minimal super keys. i.e,
+such a key contains no extraneous attribute. An attribute is called extraneous if even after removing
+it from the key, makes the remaining attributes still has the properties of a key(atribute represents
+entire table).
+
+In a relation R, a candidate key for R is a subset of the set of attributes of R, which have the
+following properties
+
+e Uniqueness: no two distinct tuples in R have the same values for
+the candidate key
+e  Irreducible: No proper subset of the candidate key has the
+
+uniqueness property that is the candidate key.
+e Acandidate key’s values must exist. It cant be null.
+e The values of a candidate key must be stable. Its value can not change outside the

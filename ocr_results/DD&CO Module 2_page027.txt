@@ -1,0 +1,53 @@
+in the set state. After both inputs go back to 1, we are allowed to change the state of the latch by placing
+a 0 in the R input. This action causes the circuit to go to the reset state and stay there even after both
+inputs return to 1. The condition that is forbidden for the NAND latch is both inputs being equal to 0 at
+the same time, an input combination that should be avoided.
+
+. SR|OQ
+0 S (set) +
+2 10/01
+1 1/0 1 (afters =1,R=0)
+1 o1j10
+1 1/1 0 (afterS=0,R=1)
+0 R (reset) Q 00 ua 1 (forbidden)
+(a) Logic diagram (b) Function table
+
+SR latch with NAND gates
+
+In comparing the NAND with the NOR latch, note that the input signals for the NAND require the
+complement of those values used for the NOR latch. Because the NAND latch requires a 0 signal to
+change its state, it is sometimes referred to as an S'R' latch.
+
+The operation of the basic SR latch can be modified by providing an additional input signal that
+determines (controls) when the state of the latch can be changed by determining whether S and R (or S'
+and R’) can affect the circuit. An SR latch with a control input is shown in below Fig. It consists of the
+basic SR latch and two additional NAND gates. The control input En acts as an enable signal for the
+other two inputs. The outputs of the NAND gates stay at the logic-1 level as long as the enable signal
+remains at 0. This is the quiescent condition for the SR latch. When the enable input goes to 1,
+information from the S or R input is allowed to affect the latch. The set state is reached with S = 1, R=
+0, and En = 1 (active-high enabled).
+
+5 ——J
+Q
+En S R | Nextstate of Q
+. oxx
+En 100
+101
+; 110/@ e
+Q 1 1 1 | Indeterminate
+R
+(a) Logic diagram (b) Function table
+
+SR latch with control input
+
+To change to the reset state, the inputs must be S = 0, R = 1, and En = 1. In either case, when En returns
+to 0, the circuit remains in its current state. The control input disables the circuit by applying 0 to En, so
+that the state of the output does not change regardless of the values of S and R. Moreover, when En = |
+and both the S and R inputs are equal to 0, the state of the circuit does not change. These conditions are
+listed in the function table accompanying the diagram.
+
+D Latch (Transparent Latch)
+
+One way to eliminate the undesirable condition of the indeterminate state in the SR latch is to ensure
+that inputs S and R are never equal to 1 at the same time. This is done in the D latch, shown in below
+Fig. This latch has only two inputs: D (data) and En (enable).

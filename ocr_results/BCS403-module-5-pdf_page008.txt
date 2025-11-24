@@ -1,0 +1,51 @@
+Database Management System [BCS403]
+
+Deadlock prevention protocols
+
+One way to prevent deadlock is to use a deadlock prevention protocol
+
+One deadlock prevention protocol, which is used in conservative two-phase locking,
+requires that every transaction lock all the items it needs in advance. If any of the items
+cannot be obtained, none of the items are locked. Rather, the transaction waits and then
+tries again to lock all the items it needs.
+
+A second protocol, which also limits concurrency, involves ordering all the items in the
+database and making sure that a transaction that needs several items will lock them
+according to that order. This requires that the programmer (or the system) is aware of
+the chosen order of the items
+
+Both approaches impractical
+
+Some of these techniques use the concept of transaction timestamp TS(7), which is a
+unique identifier assigned to each transaction
+
+The timestamps are typically based on the order in which transactions are started; hence, if
+transaction T1 starts before transaction T2, then TS(71) < TS(T2).
+
+The older transaction (which starts first) has the smaller timestamp value.
+
+Protocols based on a timestamp
++ Wait-die
++ Wound-wait
+
+Suppose that transaction. 7/ tries to lock an item X but is not able to because X is locked
+by some other transaction. 7/ with a conflicting lock. The rules followed by these
+schemes are:
+
+u Wait-die. If TS(7i) < TS(7j), then (Ti older than Tj) Ti is allowed to wait; otherwise (Ti
+younger than 7/) abort Ti (Ti dies) and restart it later with the same timestamp.
+
+= Wound-wait. If TS(Ti) < TS(7j/), then (Ti older than Tj) abort Tj (Ti wounds Tj) and
+restart it later with the same timestamp; otherwise (Ti younger than Tj) Ti is allowed to
+wait.
+
+In wait-die, an older transaction is allowed to wait for a younger transaction, whereas a
+younger transaction requesting an item held by an older transaction is aborted and
+restarted.
+
+The wound-wait approach does the opposite: A younger transaction is allowed to wait
+for an older one, whereas an older transaction requesting an item held by a younger
+
+transaction preempts the younger transaction by aborting it.
+
+https://vtucode.in 30

@@ -1,0 +1,48 @@
+cept the last vertex, is followed by precisely one ed;
+
+vertex, ex ‘
+> (1) Ina path, every it must have n — 1 edges. Its length is therefore n — 1,
+
+fore, if a path has n vertices,
+(2) Ina cycle, every vertex is followed by precisely one edge. Therefore, ifa cycl
+vertices, it must have n edges. estas:
+
+. (3) Inacycle, exactly two edges are incident on every vertex (— one edge through which
+enter the vertex and one edge through which we leave the vertex). ber lores the d
+
+of every vertex in a cycle is two.
+
+pty}
+
+Example 3 Show that, for any positive integer k > 2, there exists a simple, cubic. gr
+order 2k. ie ‘ sof te eee
+> Consider a set of points vj, v2, -.. v2, and the cycle made up of the following 2k edges
+
+(v4, va} v2, 3), (v3, Va) -o-5 (VERT Vids (Vhs Vest }y 92-9 (V2K-1 Vad, VK, Vi
+To this cycle, let us add the following k edges:
+{v1, vest}, (02, Ves2}, (¥3,Ve43},---» (Vk, Vad
+
+Then the resulting graph is simple and contains 2k vertices and 2k + k = 3k edges.
+this graph, exactly three edges are incident on every vertex vj, namely the edges {vj_1, vj}
+{v;, ¥:z1} which belong to the original cycle and the edge {v;, v;,;} which has been added to
+original cycle. Thus, the simple graph constructed is of order 2k in which the degree of
+vertex is 3. This proves the existence of a graph of the desired type.
+
+Let G be.a cycle on n vertices. Proye.that G is self-complementary if and
+» LetG bea cycle of order n = 5 with vertices a, b,c, d, e (say) and edges {a, b}, {b,c}, {6
+{d,e}, {e, a}. Then G is the cycle with vertices a, b,c, d, e-and edges {a,c}, {c, e}, {e, b}, {B,
+{d,a}. It is easy to check that G and G are isomorphic. ;
+
+Conversely, suppose G is a cycle on n vertices and G is self-complementary. Then
+number of edges in each of G and G is n(n — 1)/4.* Thus, we have n(n=1)/4 =n, or
+| Example 10] If G is a bipartite 8raph, show that G has no cycle of odd length.
+> Since G is bipartite, we can Partition its
+and V2 so that each edge of G joins a vertex
+cycle in G, and assume (without loss of gen
+
+vertex set V into two disjoint sets (bipartites
+in Vi and a vertex in V2. Let Vo} V2: . UmVO.
+erality) that vo is in Vj. Then vy is in V2, ¥2.
+
+Mie ecu To
+See Section 1.5, Example 3, and the Remark following that Example.

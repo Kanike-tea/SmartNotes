@@ -1,0 +1,41 @@
+628 Appendix A ARM and Thumb Assembler Instructions
+
+GET
+See INCLUDE.
+
+GLOBAL
+See EXPORT.
+
+IF (alias [), ELSE (alias |), ENDIF (alias ])
+
+‘These directives provide for conditional assembly. They are similar to #if, #e1se, #endif,
+available in C. The IF directive is followed by a logical expression. The ELSE directive may
+be omitted. For example:
+
+IF ARCHITECTURE="5TE"
+SMULBB r0, rl, rl
+ELSE
+MUL r0, rl, rl
+ENDIF
+
+IMPORT
+See EXTERN.
+
+INCBIN
+INCBIN <filename>
+
+This directive includes the raw data contained in the binary file <filename> at the current
+point in the assembly. For example, INCBIN table.dat.
+
+INCLUDE (alias GET)
+INCLUDE <filename>
+
+Use this directive to include another assembly file. It is similar to the #include command in
+C. For example, INCLUDE header.h.
+
+INFO (alias !)
+
+INFO <numeric_expression>, <string_expression>
+
+If <numeric_expresssion> is nonzero, then assembly terminates with error <string_expresssion>.
+Otherwise the assembler prints <string_expression> as an information message.

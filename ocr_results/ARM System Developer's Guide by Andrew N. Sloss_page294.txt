@@ -1,0 +1,48 @@
+EXAMPLE
+
+8.8
+
+8.3 FIR filters 281
+
+Then Aft] is a Q(n+m) representation of y;. But, how large is A[t]? How many bits
+of precision do we need to ensure that A[t] does not overflow its integer container and
+give a meaningless filter result? There are two very useful inequalities that answer these
+questions:
+
+M-1
+|A[¢]| < max{|X[t — i]|,0 <i<M} x » (CLi]| (8.24)
+i=0
+
+\A[e]] <
+
+M-1
+» |X[t - i]|2 x
+i=0
+
+Equation (8.24) says that if you know the dynamic range of X[t], then the maximum
+gain of dynamic range is bounded by the sum of the absolute values of the filter coefficients
+CTi]. Equation (8.25) says that if you know the power of the signal X[f], then the dynamic
+range of A[t] is bounded by the product of the input signal and coefficient powers. Both
+inequalities are the best possible. Given fixed C[t], we can choose X[t] so that there is
+equality. They are special cases of the more general Holder inequalities. Let’s illustrate with
+an example.
+
+Consider the simple, crude, high-pass filter defined by Equation (8.26). The filter allows
+through high-frequency signals, but attenuates low-frequency ones.
+
+Vr = —0.45x; +0. 9x;1 — 0.45x1—2 (8.26)
+
+Suppose we represent x; and c; by Qn, Qu 16-bit fixed-point signals X[t] and C[i].
+Then,
+
+Clo] = —0.45 x 2", C[1]=0.90x 2”, C[2] = —0.45 x 2” (8.27)
+Since X[t] is a 16-bit integer, |X[t]| < 2'5, and so, using the first inequality above,
+JA[t]] < 2) x 1.8 x 2 = 1.8 x 2+™ (8.28)
+A[t] will not overflow a 32-bit integer, provided that m < 15. So, take m = 15 for greatest
+coefficient accuracy. The following integer calculation implements the filter with 16-bit Qn
+input X[t] and 32-bit Q(n + 15) output A[t]:
+A[t] = -0x399A*X[t] + 0x7333*X[t-1] - 0x399A*X[t-2];
+For a Qu output Y[t] we need to set Y[t] = A[t] >> 15. However, this could overflow
+
+a 16-bit integer. Therefore you either need to saturate the result, or store the result using
+a Q(n— 1) representation.

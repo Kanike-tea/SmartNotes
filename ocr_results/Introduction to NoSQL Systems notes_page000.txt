@@ -1,0 +1,44 @@
+Introduction to NoSQL Systems
+
+NoSQL (Not Only SQL) systems are a class of database management systems that diverge
+from the traditional relational model by offering flexible data models, high scalability, and
+distributed architecture. NoSQL databases are designed to efficiently handle large volumes
+of unstructured, semi-structured, or rapidly changing data that relational databases
+struggle with. They support modern application requirements like real-time analytics, cloud
+computing, big data processing, and mobile/web applications. The term "NoSQL" does not
+imply the absence of SQL but rather reflects the diversity of query languages and storage
+mechanisms in these systems.
+
+Unlike relational databases that store data in fixed tables with rows and columns, NoSQL
+
+databases use a schema-less design, which allows developers to store data in more natural
+and application-friendly formats. The most common types of NoSQL databases are key-value
+stores, document-based, column-family, and graph databases. Each type addresses specific
+needs; for example, key-value stores are great for caching, document databases for flexible
+data structures, column stores for analytics, and graph databases for relationship-heavy
+data.
+
+NoSQL systems are particularly suited for distributed environments, offering horizontal
+scalability—the ability to increase capacity by adding more servers. They often prioritize
+availability and partition tolerance over strict consistency, following the CAP Theorem,
+which states that in a distributed system, you can only fully achieve two out of the three:
+Consistency, Availability, and Partition Tolerance. Many NoSQL systems opt for eventual
+consistency to ensure system uptime and fault tolerance.
+
+In summary, NoSQL databases offer a powerful alternative to traditional databases in
+scenarios that demand speed, scalability, and flexibility. They are not a replacement for
+relational databases but rather a complementary solution, especially in systems that deal
+with big data, real-time requirements, or variable data formats. Popular NoSQL systems
+include MongoDB (document-based), Cassandra (column-based), Redis (key-value), and
+Neo4j (graph-based), each tailored to specific application needs.
+
+CAP Theorem — Detailed Notes
+
+1. Introduction to CAP Theorem
+
+The CAP Theorem, also known as Brewer’s Theorem, is a fundamental principle in
+distributed database systems. Proposed by Eric Brewer in 2000 and formally proved later, it
+states that a distributed system can simultaneously provide only two out of the following
+three guarantees:
+
+e Consistency (C)

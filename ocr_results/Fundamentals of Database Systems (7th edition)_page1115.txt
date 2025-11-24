@@ -1,0 +1,45 @@
+28.3 Classification
+
+28.3 Classification
+
+Classification is the process of learning a model that describes different classes of
+data. The classes are predetermined. For example, in a banking application, cus-
+tomers who apply for a credit card may be classified as a poor risk, fair risk, or good
+risk. Hence this type of activity is also called supervised learning. Once the model
+is built, it can be used to classify new data. The first step—learning the model—is
+accomplished by using a training set of data that has already been classified. Each
+record in the training data contains an attribute, called the class label, which indi-
+cates which class the record belongs to. The model that is produced is usually in the
+form of a decision tree or a set of rules. Some of the important issues with regard to
+the model and the algorithm that produces the model include the model’s ability to
+predict the correct class of new data, the computational cost associated with the
+algorithm, and the scalability of the algorithm.
+
+We will examine the approach where our model is in the form of a decision tree. A
+decision tree is simply a graphical representation of the description of each class or, in
+other words, a representation of the classification rules. A sample decision tree is pic-
+tured in Figure 28.5. We see from Figure 28.5 that if a customer is married and if sal-
+ary = 50K, then she is a good risk for a bank credit card. This is one of the rules that
+describe the class good risk. Traversing the decision tree from the root to each leaf node
+forms other rules for this class and the two other classes. Algorithm 28.3 shows the pro-
+cedure for constructing a decision tree from a training data set. Initially, all training sam-
+ples are at the root of the tree. The samples are partitioned recursively based on selected
+attributes. The attribute used at a node to partition the samples is the one with the best
+splitting criterion, for example, the one that maximizes the information gain measure.
+
+1085
+
+Mendis | Figure 28.5
+Sample decision tree for
+
+credit card applications.
+
+Yes No
+Salary Acct_balance
+<20K “>= 20K >=50K  <5K >=5K
+<50K
+Poor risk Fair risk  Goodrisk Poor risk Age
+
+<25 >= 25
+
+Fair risk Good risk

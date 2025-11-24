@@ -1,0 +1,33 @@
+Fig. 9-19 Digraph and its adjacency matrix.
+
+Pp
+
+X is a symmetric matrix if and only if G is a symmetric digraph.
+
+2. Every nonzero element on the main diagonal represents a self-loop at the
+corresponding vertex.
+
+3. There is no way of showing parallel edges in X. This is why the adjacency
+matrix is defined only for a digraph without parallel edges.
+
+4. The sum of each row equals the out-degree of the corresponding vertex,
+and the sum of each column equals the in-degree of the corresponding
+vertex. The number of nonzero entries in X equals the number of edges in
+G.
+
+5. Permutation of any two rows accompanied by a permutation of the
+
+corresponding columns does not alter the graph. The permutation merely
+corresponds to a reordering of the vertices. Thus two digraphs are
+isomorphic if and only if their adjacency matrices differ only by such
+permutations.
+
+6. If X is the adjacency matrix of a digraph G, then the transposed matrix X?
+is the adjacency matrix of a digraph G® obtained by reversing the direction
+of every edge in G.
+
+7. For any square (0, 1)-matrix Q of order n, there exists a unique digraph G
+of n vertices, such that Q is the adjacency matrix of G.
+
+The incidence matrix can be obtained in a similar way by replacing
+columns by edges.

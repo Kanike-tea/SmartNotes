@@ -1,0 +1,46 @@
+5.2 BasicC Data Types 105
+
+To keep our examples concrete, we have tested them using the following specific C
+compilers:
+
+= armcc from ARM Developer Suite version 1.1 (ADS1.1). You can license this compiler,
+ora later version, directly from ARM.
+
+= arm-elf-gcc version 2.95.2. This is the ARM target for the GNU C compiler, gcc, and is
+freely available.
+
+We have used armcc from ADS1.1 to generate the example assembler output in this
+book. The following short script shows you how to invoke armcc on a C file test.c. You
+can use this to reproduce our examples.
+
+armcc -Otime -c -o test.o test.c
+fromelf -text/c test.o > test.txt
+
+By default armcc has full optimizations turned on (the -02 command line switch). The
+-Otime switch optimizes for execution efficiency rather than space and mainly affects the
+layout of for and while loops. If you are using the gcc compiler, then the following short
+script generates a similar assembler output listing:
+
+arm-elf-gcc -02 -fomit-frame-pointer -c -o test.o test.c
+arm-elf-objdump -d test.o > test. txt
+
+Full optimizations are turned off by default for the GNU compiler. The - fomi t- frame-
+pointer switch prevents the GNU compiler from maintaining a frame pointer register.
+Frame pointers assist the debug view by pointing to the local variables stored on the stack
+frame. However, they are inefficient to maintain and shouldn’t be used in code critical to
+performance.
+
+5.2 BASiIc C DATA TYPES
+
+Let’s start by looking at how ARM compilers handle the basic C data types. We will see
+that some of these types are more efficient to use for local variables than others. There are
+also differences between the addressing modes available when loading and storing data of
+each type.
+
+ARM processors have 32-bit registers and 32-bit data processing operations. The ARM.
+architecture is a RISC load/store architecture. In other words you must load values from
+memory into registers before acting on them. There are no arithmetic or logical instructions
+that manipulate values in memory directly.
+
+Early versions of the ARM architecture (ARMv1 to ARMv3) provided hardware
+support for loading and storing unsigned 8-bit and unsigned or signed 32-bit values.

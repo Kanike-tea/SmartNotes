@@ -1,0 +1,51 @@
+16.11 Modern Storage Architectures
+
+elements of SCSI and FC (just like iSCSI), but it does not include TCP/IP compo-
+nents. FCoE has been successfully productized by CISCO (termed “Data Center
+Ethernet”) and Brocade. It takes advantage of a reliable ethernet technology that
+uses buffering and end-to-end flow control to avoid dropped packets. This prom-
+ises excellent performance, especially on 10 Gigabit Ethernet (10GbE), and is
+relatively easy for vendors to add to their products.
+
+16.11.4 Automated Storage Tiering
+
+Another trend in storage is automated storage tiering (AST), which automati-
+cally moves data between different storage types such as SATA, SAS, and solid-
+state drives (SSDs) depending on the need. The storage administrator can set up
+a tiering policy in which less frequently used data is moved to slower and cheaper
+SATA drives and more frequently used data is moved up to solid-state drives
+(see Table 16.1 for the various tiers of storage ordered by increasing speed of
+access). This automated tiering can improve database performance tremendously.
+
+EMC has an implementation of this technology called FAST (fully automated stor-
+age tiering) that does continuous monitoring of data activity and takes actions to
+move the data to the appropriate tier based on the policy.
+
+16.11.5 Object-Based Storage
+
+During the last few years, there have been major developments in terms of rapid
+growth of the cloud concept, distributed architectures for databases and for analyt-
+ics, and development of data-intensive applications on the Web (see Chapters 23,
+24, and 25). These developments have caused fundamental changes in enterprise
+storage infrastructure. The hardware-oriented file-based systems are evolving into
+new open-ended architectures for storage. The latest among these is object-based
+storage. Under this scheme, data is managed in the form of objects rather than files
+made of blocks. Objects carry metadata that contains properties that can be used for
+managing those objects. Each object carries a unique global identifier that is used to
+locate it. Object storage has its origins in research projects at CMU (Gibson et al.,
+1996) on scaling up of network attached storage and in the Oceanstore system at
+UC Berkeley (Kubiatowicz et al., 2000), which attempted to build a global infra-
+structure over all forms of trusted and untrusted servers for continuous access to
+persistent data. There is no need to do lower level storage operations in terms of
+capacity management or making decisions like what type of RAID architecture
+should be used for fault protection.
+
+Object storage also allows additional flexibility in terms of interfaces—it gives con-
+trol to applications that can control the objects directly and also allows the objects
+to be addressable across a wide namespace spanning multiple devices. Replication
+and distribution of objects is also supported. In general, object storage is ideally
+suited for scalable storage of massive amounts of unstructured data such as Web
+pages, images, and audio/video clips and files. Object-based storage device com-
+mands (OSDs) were proposed as part of SCSI protocol a long time ago but did not
+
+591

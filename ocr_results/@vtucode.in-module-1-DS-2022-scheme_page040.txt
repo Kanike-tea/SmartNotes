@@ -1,0 +1,52 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+e Associated with the array is a variable, top, which points to the top element in the stack.
+
+Initially, top is set to -1 to denote an empty stack.
+
+¢ we have specified that element is a structure that consists of only a key field.
+
+1. CREATE STACK:
+
+Stack CreateS(maxStackSize )::=
+
+#define MAX_STACK_SIZE 100 /* maximum stack size*/
+
+typedef struct
+|
+int key;
+/* other fields */
+} element;
+element stack[MAX STACK SIZE];
+int top
+
+The element which is used to insert or delete is specified as.a structure that consists of
+only akey field.
+
+1. Boolean IsEmpty(Stack)::= top < 0;
+
+2. Boolean IsFull(Stack)::= top >= MAX_STACK_SIZE-1;
+
+The IsEmpty and IsFull operations are simple, and is implemented directly in the
+program push and pop functions. Each of these functions assumes that the variables
+
+stack and top are global.
+
+Add an item tova stack
+
+void add(int *top, element item)
+{
+/* add an item to the global stack */
+if (*top >= MAX_STACK-STZF-1) {
+stack—full();
+return;
+3
+stack[++*top] = item;
+
+}
+¢ Function push() checks to see if the stack is full. If it is, it calls stackFull, which prints an
+error message and terminates execution.
+
++ When the stack is not full, we increment top and assign item to stack[top].
+
+vtucode.in 4l

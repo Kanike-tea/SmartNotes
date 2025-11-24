@@ -1,0 +1,48 @@
+BCS304
+
+4.5 Counting Binary trees
+4.5.1: Distinct Binary tree
+
+if n= 0 orn = 1, there is only one binary tree. If n = 2, then there are two distinct trees and if n
+
+= 3.
+
+>
+and
+. J
+Distinct binary trees with n = 2
+OQ @) @) O
+\ \ a - 0
+Q 2 OO Q f
+\
+ee
+Destinct binary wees with n= J
+
+4.5.2 Stack permutations:
+
+Suppose we have the preorder sequence: ABCDEFGHI and the inorder sequence:
+
+BCAEDGHFI of the binary tree. To construct the binary tree from these sequences, we
+look at the first letter in the preorder sequence, A. This letter must be the root of the tree by
+definition of the preorder traversal (VLR. }. We also know by definition of the inorder
+traversal {LVR} that all nodes preceding A in the inorder sequence (B Q are in the left
+subtree, while the remaining nodes {ED GHFI) are in the right subtree. Figure 5.49(a) is
+
+imation to the correct tree. Moving right in the preorder sequence, we find
+
+our first approx
+B has an empty left
+
+B as the next root. Since no node precedes B in the inorder sequence,
+which means that C is in its right subtree. Figure 5.49(b) is the nex
+we arrive at the binary tree of Figure 5.49(c). By formalizing this
+we can verify that every binary tree has a
+
+subtree, t approximation.
+
+Continuing in this way,
+argument (see the exercises for this section),
+
+unique pair of preorder inorder sequences.
+
+12

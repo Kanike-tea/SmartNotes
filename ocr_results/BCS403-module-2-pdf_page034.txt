@@ -1,0 +1,54 @@
+Database Management System [BCS403]
+
+JOIN result. Tuples with NULL values in the join attributes are also eliminated.This type of join,
+where tuples with no match are eliminated, is known as an inner join.
+
+A set of operations, called outer joins, were developed for the case where the user wants to keep
+all the tuples in R, or all those in S, or all those in both relations in the result of the JOIN,
+
+regardless of whether or not they have matching tuples in the other relation.
+
+For example, suppose that we want a list of all employee names as well as the name of the
+departments they manage if they happen to manage a department; if they do not manage one, we
+
+can indicate it with a NULL value. We can apply an operation LEFT OUTER JOIN, denoted by
+
+Boa
+
+to retrieve the result as follows:
+
+TEMP < (EMPLOYEE )<.._ DEPARTMENT)
+
+Magr_sen
+RESULT & Trname, Minit, Lname, Dame TEMP)
+
+The LEFT OUTER JOIN operation keeps every tuple in the first, or left, relation R in
+R_ >q_ S; if no matching tuple is found in S, then the attributes of S in the join result are
+filled or padded with NULL values.
+
+RESULT
+Fname Minit | dame Dname
+John B. ‘Smith NULL
+Franklin |<. |)Wong — | Research
+Alicia Jj Zelaya NULL
+Jennifer Ss Wallace. | Administration
+Ramesh K Narayan | NULL
+Joyce Ay [English | NULL
+Ahmad Vv Jabbar NULL
+James E | Borg Headquarters
+
+A similar operation, RIGHT OUTER JOIN, denoted by [pf _ keeps every tuple in the second,
+3
+or right, relation S inthe result of R re ; S.
+
+A third operation, FULL OUTER JOIN, denoted by }*{ , keeps all tuples in both the left
+and the right relations when no matching tuples are found, padding them with NULL values as
+needed.
+
+2.5.5 The OUTER UNION Operation
+
+The OUTER UNION operation was developed to take the union of tuples from two relations
+
+that have some common attributes, but are not union (type) compatible.This operation will take
+
+https:/ivtucode.in Page 35

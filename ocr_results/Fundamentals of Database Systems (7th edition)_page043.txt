@@ -1,0 +1,46 @@
+1.3 Characteristics of the Database Approach 13
+Data Item Name | Starting Position in Record | Length in Characters (bytes)
+Name 1 80 Figure 1.4
+Student_number 31 4 Internal storage format
+Class 35 1 for a STUDENT record,
+- based on the database
+Major 36 4 catalog in Figure 1.3.
+
+file—can be hidden from database users by the DBMS; we discuss storage details in
+Chapters 16 and 17.
+
+In the database approach, the detailed structure and organization of each file are
+stored in the catalog. Database users and application programs refer to the concep-
+tual representation of the files, and the DBMS extracts the details of file storage
+from the catalog when these are needed by the DBMS file access modules. Many
+data models can be used to provide this data abstraction to database users. A major
+part of this text is devoted to presenting various data models and the concepts they
+use to abstract the representation of data.
+
+In object-oriented and object-relational databases, the abstraction process includes
+not only the data structure but also the operations on the data. These operations
+provide an abstraction of miniworld activities commonly understood by the users.
+For example, an operation CALCULATE_GPA can be applied to a STUDENT object
+to calculate the grade point average. Such operations can be invoked by the user
+queries or application programs without having to know the details of how the
+operations are implemented.
+
+1.3.3 Support of Multiple Views of the Data
+
+A database typically has many types of users, each of whom may require a different
+perspective or view of the database. A view may be a subset of the database or it may
+contain virtual data that is derived from the database files but is not explicitly stored.
+Some users may not need to be aware of whether the data they refer to is stored or
+derived. A multiuser DBMS whose users have a variety of distinct applications must
+provide facilities for defining multiple views. For example, one user of the database
+of Figure 1.2 may be interested only in accessing and printing the transcript of each
+student; the view for this user is shown in Figure 1.5(a). A second user, who is inter-
+ested only in checking that students have taken all the prerequisites of each course
+for which the student registers, may require the view shown in Figure 1.5(b).
+
+1.3.4 Sharing of Data and Multiuser Transaction Processing
+
+A multiuser DBMS, as its name implies, must allow multiple users to access the
+database at the same time. This is essential if data for multiple applications is to be
+integrated and maintained ina single database. The DBMS must include concurrency
+control software to ensure that several users trying to update the same data

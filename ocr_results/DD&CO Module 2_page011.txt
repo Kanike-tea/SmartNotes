@@ -1,0 +1,31 @@
+Combinational Logic Implementation using Decoders
+
+The procedure for implementing a combinational circuit by means of a decoder and OR gates requires
+that the Boolean function for the circuit be expressed as a sum of minterms. This procedure will be
+illustrated by an example that implements a full-adder circuit.
+
+Consider the truth table of Full adder-
+Full Adder
+
+we obtain the functions for the combinational circuit in sum-of-minterms form
+S(x,y, z) = =(1,2,4,7)
+C(x, y,z) = &(3,5, 6,7)
+
+Since there are three inputs and a total of eight minterms, we need a three-to-eight-line decoder. The
+implementation is shown in Fig below. The decoder generates the eight minterms for x, y, and z. The
+OR gate for output S forms the logical sum of minterms 1, 2, 4, and 7. The OR gate for output C forms
+the logical sum of minterms 3, 5, 6, and 7.
+
+SMES
+decoder 4
+
+Implementation of a full adder with a decoder
+
+Exercise:
+
+Using a decoder and external gates, design the combinational circui defined by the
+following three Boolean functions:
+
+(a) Fy = x'yz’ + xz (b) Fy = (y' + x)z
+F, = xy'z' + x'y F,=y'z'+x'y + yz’
+F; = x'y'z' + xy F;= (x+y)z

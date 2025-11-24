@@ -1,0 +1,75 @@
+/* BR Doubly Linked List Node
+* /structDLLNode
+{
+structDLLNode*prev; intda
+ta;
+structDLLNode*next;
+Mi
+
+/* Representation of the stack data structure that
+supportsfindMiddle()
+
+in O(1) time.The Stack is implemented using Doubly
+LinkedList.It
+
+maintainspointertoheadnode, pointertomiddlenodeandcount
+of
+
+nodes*/
+structmyStack
+{
+
+structDLLNode*head; str
+
+uct
+
+DLLNode*mid; intcount;
+
+Mi
+
+/* Function to create the stack data structure
+*/structmyStack*createMyStack ()
+{
+structmyStack*ms=
+(structmyStack*) malloc (sizeof (structmyStack) ) ;ms-
+>count= 0;
+returnms;
+
+Mi
+
+/* Function to push an element to the stack
+*/voidpush (structmyStack*ms, intnew_data)
+{
+/* allocate DLLNode and put in data
+*/structDLLNode*new_DLLNode=
+(struct DLLNode*) malloc (sizeof (struct DLLNode) ) ;new_
+DLLNode->data=new_data;
+
+/* Since we are adding at the
+beginning,previs alwaysNULL */
+new_DLLNode->prev=NULL;
+
+/* link the old list off the new DLLNode
+* /new_DLLNode->next=ms->head;
+
+/* Increment count of items in stack
+*/ms->count+= 1;
+
+/*Changemidpointerintwocases
+1) LinkedListisempty
+2) Number of nodes in linked list is odd
+* /if (ms->count==1)
+{
+ms->mid=new_DLLNode;
+}
+
+else
+
+{
+
+ms->head->prev=new_DLLNode;
+
+if (ms->count&1) //Updatemidifms->countisoddms->mid=
+ms->mid->prev;
+
+63

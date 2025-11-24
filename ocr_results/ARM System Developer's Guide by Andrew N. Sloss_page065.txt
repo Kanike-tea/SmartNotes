@@ -1,0 +1,44 @@
+52 Chapter 3 Introduction to the ARM Instruction Set
+
+MOV r7, v5, LSL #2; let r7 = r5*4 = (r5<<2)
+
+POST V5 = 5
+r7 = 2
+
+The example multiplies register r5 by four and then places the result into register r7.
+
+The five different shift operations that you can use within the barrel shifter are
+
+summarized in Table 3.2.
+
+Figure 3.2 illustrates a logical shift left by one. For example, the contents of bit 0 are
+shifted to bit 1. Bit 0 is cleared. The C flag is updated with the last bit shifted out of the
+register. This is bit (32 — y) of the original value, where y is the shift amount. When y is
+greater than one, then a shift by y positions is the same as a shift by one position executed
+
+y times.
+
+Table 3.2 Barrel shifter operations.
+
+Mnemonic Description Shift Result Shift amount y
+LSL logical shift left xlSLy  x«y #0-31 or Rs
+LSR logical shift right xLSRy — (unsigned)x>> y #1-32 or Rs
+ASR arithmetic right shift. xASRy — (signed)x>> y #1-32 or Rs
+ROR rotate right xRORy — ((unsigned)x > y) | (x (32—y)) #131 or Rs
+RRX rotate right extended xRRX —(c flag < 31) | ((unsigned)x>> 1) none
+
+Note: x represents the register being shifted and y represents the shift amount.
+
+Condition Bags
+
+Condition Bags
+
+Condition flags
+updated when
+S is present
+
+0x80000004
+
+0x00000008
+
+Figure 3.2 Logical shift left by one.

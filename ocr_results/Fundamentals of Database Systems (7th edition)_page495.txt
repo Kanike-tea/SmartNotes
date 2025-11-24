@@ -1,0 +1,51 @@
+14.1 Informal Design Guidelines for Relation Schemas
+
+the employee name (Ename), project name (Pname), and project location (Plocation).
+Although there is nothing wrong logically with these two relations, they violate
+Guideline 1 by mixing attributes from distinct real-world entities: EMP_DEPT mixes
+attributes of employees and departments, and EMP_PROJ mixes attributes of
+employees and projects and the WORKS_ON relationship. Hence, they fare poorly
+against the above measure of design quality. They may be used as views, but they
+cause problems when used as base relations, as we discuss in the following section.
+
+14.1.2 Redundant Information in Tuples and Update Anomalies
+
+One goal of schema design is to minimize the storage space used by the base rela-
+tions (and hence the corresponding files). Grouping attributes into relation sche-
+mas has a significant effect on storage space. For example, compare the space used
+by the two base relations EMPLOYEE and DEPARTMENT in Figure 14.2 with that
+for an EMP_DEPT base relation in Figure 14.4, which is the result of applying the
+NATURAL JOIN operation to EMPLOYEE and DEPARTMENT. In EMP_DEPT, the attri-
+bute values pertaining to a particular department (Dnumber, Dname, Dmgr_ssn) are
+repeated for every employee who works for that department. In contrast, each depart-
+ment’s information appears only once in the DEPARTMENT relation in Figure 14.2.
+Only the department number (Dnumber) is repeated in the EMPLOYEE relation for
+each employee who works in that department as a foreign key. Similar comments
+apply to the EMP_PRO) relation (see Figure 14.4), which augments the WORKS_ON
+relation with additional attributes from EMPLOYEE and PROJECT.
+
+Storing natural joins of base relations leads to an additional problem referred to as
+update anomalies. These can be classified into insertion anomalies, deletion anom-
+alies, and modification anomalies.’
+
+Insertion Anomalies. Insertion anomalies can be differentiated into two types,
+illustrated by the following examples based on the EMP_DEPT relation:
+
+= To insert a new employee tuple into EMP_DEPT, we must include either the
+attribute values for the department that the employee works for, or NULLs (if
+the employee does not work for a department as yet). For example, to insert
+a new tuple for an employee who works in department number 5, we must
+enter all the attribute values of department 5 correctly so that they are con-
+sistent with the corresponding values for department 5 in other tuples in
+EMP_DEPT. In the design of Figure 14.2, we do not have to worry about this
+consistency problem because we enter only the department number in the
+employee tuple; all other attribute values of department 5 are recorded only
+once in the database, as a single tuple in the DEPARTMENT relation.
+
+= It is difficult to insert a new department that has no employees as yet in the
+EMP_DEPT relation. The only way to do this is to place NULL values in the
+
+°These anomalies were identified by Codd (1972a) to justify the need for normalization of relations, as
+we shall discuss in Section 15.3.
+
+465

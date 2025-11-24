@@ -1,0 +1,45 @@
+2, Planar Graphs and Cok
+112
+ifn > 1, thenG will have at least two vertices
+* st be equal to 1. Because, 0 ’ .
+ee ae cama connecting them (because G is connected), so that m # 0, which ig
+ae mus
+
+a contradiction. one region Reo ~ the entire plane region (as shown
+
+Tfn = 1, a diagram of G determines only
+
+7 oe eet thenn = | afr = 19 that n-—m+r=2. This verifies the theorem for
+> om ’ P
+m=0. Kn
+Roo
+
+(a) (b)
+Figure 2.21
+
+Now, assume that the theorem holds for all graphs with m = k number of edges, where kis
+a non-negative integer.
+
+Consider a graph Gy+1 with k + 1 edges and n vertices. First, suppose that Gx+1 has no
+cycles in it. Then a diagram of Grs1 Will be of the form shown in Figure 2.21(b)* in which the
+number of vertices will be exactly one more than the number of edges, and the diagram will
+determine only one region Reo — the entire plane region (as in Figure 2.21(b)). Thus, for Gres
+we have, in this case, n = (k+1)+1 and r = 1, so that
+
+n-(k+1)+r=2.
+
+This means that the result (1) is the true when m = k + 1 as well, if Ges contains no cycles i
+it.
+
+Next, suppose G;,1 contains at least one cycle. Let r be the number of regions which #
+diagram of G,,1 determine. Consider an edge e in a cycle and remove it from Gust: bled
+resulting graph, Gj41 — e, will have n vertices and (k + 1) — 1 = k edges, and its diagram will
+determine r-1 regions. Since Gy, — e has k edges, the theorem holds for this graph (by
+induction assumption made), That is, we have
+
+r-lsk=n+2, or n-(k+l)+r=2.
+This means that in this case also the result (1) is true when m = k + 1 as well *
+
+i ae
+“A graph for which a diagram is in the fo i ; jini
+Ss oer hasten rm of Figure 2,21(b) is called a tree. Such graphs will be dealt-witt :

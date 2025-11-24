@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+e Examples of such constraints are the salary of an employee should not exceed the
+
+salary of the employee’s supervisor and the maximum number of hours an employee
+
+can work on all projects per week is 56.
+
+1.2.1 Domain Constraints
+Domain Constraints specify that within each tuple, the value of each attribute A must be
+an atomic value from the domain dom(A). The data types associated with domains
+typically include standard numeric data types for integers (such as short integer, integer,
+and long integer) and real numbers (float and doubleprecision float). Characters,
+Booleans, fixed-length strings, and variable-length strings are also available, as are date,
+
+time, timestamp, and money, or other special data types.
+
+1.2.2 Key Constraints and Constraints on NULL Values
+All tuples in a relation must also be distinct. This means that no two tuples can have the
+same combination of values for ai/ their attributes. There are other subsets of attributes of
+a relation schema R with the property that no two tuples in any relation state r of R should
+have the same combination of values for these attributes.
+Suppose that we denote one such subset of attributes by SK; then for any two distinct
+tuples tl and 2 in a relation state r of R, we have the constraint that: t[SK]# #[SK] .
+
+such set of attributes SK is called a superkey of the relation schema R
+
+superkey
+A superkey SK specifies a uniqueness constraint that no two distinct tuples in any state r of
+
+R can have the same value for SK. Every relation has at least one default superkey—the set
+
+of all its attributes.
+
+Key
+A key K of a relation schema R is a superkey of R with the additional property that
+
+removing any attribute 4 from K leaves a set of attributes K’ that is not a superkey of R
+
+anymore. Hence, a key satisfies two properties:
+
+1. Two distinct tuples in any state of the relation cannot have identical values for (all) the
+
+attributes in the key. This first property also applies to a superkey.
+
+https://vtucode.in Page 6

@@ -1,0 +1,62 @@
+468
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+specifying JOIN operations at the logical level.> Another problem with NULLs is how
+to account for them when aggregate operations such as COUNT or SUM are applied.
+SELECT and JOIN operations involve comparisons; if NULL values are present, the
+results may become unpredictable.° Moreover, NULLs can have multiple interpreta-
+
+tions, such as the following:
+
+= The attribute does not apply to this tuple. For example, Visa_status may not
+
+apply to U.S. students.
+
+= The attribute value for this tuple is unknown. For example, the Date_of_birth
+
+may be unknown for an employee.
+
+= The value is known but absent; that is, it has not been recorded yet. For
+example, the Home_Phone_Number for an employee may exist, but may not
+
+be available and recorded yet.
+
+Having the same representation for all NULLs compromises the different meanings
+
+they may have. Therefore, we state another guideline.
+
+Guideline 3. As far as possible, avoid placing attributes in a base relation whose
+values may frequently be NULL. If NULLs are unavoidable, make sure that they apply
+in exceptional cases only and do not apply to a majority of tuples in the relation.
+
+Using space efficiently and avoiding joins with NULL values are the two overriding
+criteria that determine whether to include the columns that may have NULLs in a
+relation or to have a separate relation for those columns (with the appropriate key
+columns). For example, if only 15% of employees have individual offices, there is
+little justification for including an attribute Office_number in the EMPLOYEE rela-
+tion; rather, a relation EMP_OFFICES(Essn, Office_number) can be created to include
+
+tuples for only the employees with individual offices.
+
+14.1.4 Generation of Spurious Tuples
+
+Consider the two relation schemas EMP_LOCS and EMP_PROJ1 in Figure 14.5(a),
+which can be used instead of the single EMP_PROJ relation in Figure 14.3(b). A
+tuple in EMP_LOCS means that the employee whose name is Ename works on at
+least one project located at Plocation. A tuple in EMP_PROJI1 refers to the fact that the
+employee whose Social Security number is Ssn works the given Hours per week on
+the project whose name, number, and location are Pname, Pnumber, and Plocation.
+Figure 14.5(b) shows relation states of EMP_LOCS and EMP_PROJ1 corresponding
+to the EMP_PROJ relation in Figure 14.4, which are obtained by applying the appro-
+
+priate PROJECT (1) operations to EMP_PROJ.
+
+SThis is because inner and outer joins produce different results when NULLs are involved in joins. The users
+must thus be aware of the different meanings of the various types of joins. Although this is reasonable for
+
+sophisticated users, it may be difficult for others.
+
+8in Section 6.5.1 we presented comparisons involving NULL values where the outcome (in three-valued
+
+logic) is TRUE, FALSE, and UNKNOWN.

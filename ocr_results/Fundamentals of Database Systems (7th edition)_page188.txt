@@ -1,0 +1,52 @@
+158
+
+Chapter 5 The Relational Data Model and Relational Database Constraints
+
+3. Constraints that cannot be directly expressed in the schemas of the data
+model, and hence must be expressed and enforced by the application pro-
+grams or in some other way. We call these application-based or semantic
+constraints or business rules.
+
+The characteristics of relations that we discussed in Section 5.1.2 are the inherent
+constraints of the relational model and belong to the first category. For example, the
+constraint that a relation cannot have duplicate tuples is an inherent constraint. The
+constraints we discuss in this section are of the second category, namely, constraints
+that can be expressed in the schema of the relational model via the DDL. Constraints
+in the third category are more general, relate to the meaning as well as behavior of
+attributes, and are difficult to express and enforce within the data model, so they are
+usually checked within the application programs that perform database updates. In
+some cases, these constraints can be specified as assertions in SQL (see Chapter 7).
+
+Another important category of constraints is data dependencies, which include
+functional dependencies and multivalued dependencies. They are used mainly for
+testing the “goodness” of the design of a relational database and are utilized in a
+process called normalization, which is discussed in Chapters 14 and 15.
+
+The schema-based constraints include domain constraints, key constraints, con-
+straints on NULLs, entity integrity constraints, and referential integrity constraints.
+
+5.2.1 Domain Constraints
+
+Domain constraints specify that within each tuple, the value of each attribute A must
+be an atomic value from the domain dom(A). We have already discussed the ways in
+which domains can be specified in Section 5.1.1. The data types associated with
+domains typically include standard numeric data types for integers (such as short
+integer, integer, and long integer) and real numbers (float and double-precision float).
+Characters, Booleans, fixed-length strings, and variable-length strings are also avail-
+able, as are date, time, timestamp, and other special data types. Domains can also be
+described by a subrange of values from a data type or as an enumerated data type in
+which all possible values are explicitly listed. Rather than describe these in detail here,
+we discuss the data types offered by the SQL relational standard in Section 6.1.
+
+5.2.2 Key Constraints and Constraints on NULL Values
+
+In the formal relational model, a relation is defined as a set of tuples. By definition,
+all elements of a set are distinct; hence, all tuples in a relation must also be distinct.
+This means that no two tuples can have the same combination of values for all their
+attributes. Usually, there are other subsets of attributes of a relation schema R with
+the property that no two tuples in any relation state r of R should have the same
+combination of values for these attributes. Suppose that we denote one such subset
+of attributes by SK; then for any two distinct tuples t) and f; ina relation state r of R,
+we have the constraint that:
+
+t,(SK] # [SK]

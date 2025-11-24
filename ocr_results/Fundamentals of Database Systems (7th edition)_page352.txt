@@ -1,0 +1,68 @@
+322 Chapter 10 Introduction to SQL Programming Techniques
+
+1) import java.sql.* ;
+2) import java.io.* ;
+
+3) import sqlj.runtime.* ;
+
+4) import sqlj.runtime.ref.* ;
+5) import oracle.sqlj.runtime.* ;
+
+6) DefaultContext cntxt
+
+Figure 10.5
+
+Importing classes needed for including
+SQLJ in Java programs in Oracle, and
+establishing a connection
+
+and default context.
+
+7)
+8)
+
+oracle.getConnection("<url name>", "<user name>", "<password>", true) ;
+DefaultContext.setDefaultContext(cntxt) ;
+
+For example, we can write the statements in lines 6 through 8 in Figure 10.5 to
+connect to an Oracle database located at the url <url name> using the login of
+<user name> and <password> with automatic commitment of each command,!!
+and then set this connection as the default context for subsequent commands.
+
+In the following examples, we will not show complete Java classes or programs
+since it is not our intention to teach Java. Rather, we will show program segments
+that illustrate the use of SQLJ. Figure 10.6 shows the Java program variables used in
+our examples. Program segment J1 in Figure 10.7 reads an employee’s Ssn and
+prints some of the employee’s information from the database.
+
+Notice that because Java already uses the concept of exceptions for error han-
+dling, a special exception called SQLException is used to return errors or
+exception conditions after executing an SQL database command. This plays a
+similar role to SQLCODE and SQLSTATE in embedded SQL. Java has many types
+of predefined exceptions. Each Java operation (function) must specify the
+exceptions that can be thrown—that is, the exception conditions that may
+occur while executing the Java code of that operation. If a defined exception
+occurs, the system transfers control to the Java code specified for exception
+handling. In J1, exception handling for an SQLException is specified in lines 7
+and 8. In Java, the following structure
+
+try {<operation>} catch (<exception>) {<exception handling
+code>} <continuation code>
+
+Figure 10.6
+
+Java program variables
+
+1) string dname, ssn , fname, fn, lname, 1n,
+bdate, address ;
+
+used in SQLJ examples 2) char sex, minit, mi ;
+J1 and J2.
+
+3) double salary, sal ;
+4) integer dno, dnumber ;
+
+"Automatic commitment roughly means that each command is applied to the database after it is
+executed. The alternative is that the programmer wants to execute several related database commands
+and then commit them together. We discuss commit concepts in Chapter 20 when we describe database
+transactions.

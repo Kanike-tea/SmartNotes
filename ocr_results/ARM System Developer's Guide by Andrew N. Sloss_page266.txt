@@ -1,0 +1,67 @@
+7.7 Saturated and Rounded Arithmetic
+
+253
+
+; each www is the sum of six adjacent bits
+
+ADD n, n,n, LSR #6
+ADD on, n, n, LSR #12
+ADD on, n, n, LSR #24
+AND on, n, #63
+
+MOV pc, Ir
+
+3 sum the w's
+
+; mask out irrelevant bits
+
+7.7 SATURATED AND ROUNDED ARITHMETIC
+
+Saturation clips a result to a fixed range to prevent overflow. You are most likely to need
+16- and 32-bit saturation, defined by the following operations:
+
+= saturate16(x) = x clipped to the range —0x00008000 to +0x00007f ff inclusive
+= saturate32(x) = x clipped to the range —0x80000000 to +Ox7ffffffF inclusive
+
+We'll concentrate on these operations although you can easily convert the 16-bit satura-
+tion examples to 8-bit saturation or any other length. The following sections give standard
+implementations of basic saturating and rounding operations you may need. They use a
+
+standard trick: for a 32-bit signed integer x,
+
+x >> 31 = sign(x)
+
+lifx <Oand0ifx>0
+
+7.7.1. SATURATING 32 BITS TO 16 BITS
+
+This operation crops up frequently in DSP applications. For example, sound samples are
+often saturated to 16 bits before storing to memory. This operation takes three cycles,
+provided a constant m is set up beforehand in a register.
+
+; besaturate16(b)
+
+LOR om, =0x00007FFF ;m=
+MOV a, b, ASR#15 pas
+TEQ a, b, ASR#31 ;
+
+EORNE b, m, b, ASR#31 ; b=
+
+7.7.2 SATURATED LEFT SHIFT
+
+Ox7FFF maximum +ve
+(b>>15)
+
+if (a!=sign(b))
+
+Ox7FFF * sign(b)
+
+In signal processing left shifts that could overflow need to saturate the result. This operation
+requires three cycles for a constant shift or five cycles for a variable shift c.
+
+5 a=saturate32(b<<c)
+MOV om, #0x7FFFFFFF 3
+MOV a, b, LSLc pas
+
+Ox7FFFFFFF max +ve
+b<<c

@@ -1,0 +1,49 @@
+16.4 Placing File Records on Disk 563
+
+type indicator. Understandably, programs that process files of variable-length
+records—which are usually part of the file system and hence hidden from the typi-
+cal programmers—need to be more complex than those for fixed-length records,
+where the starting position and size of each field are known and fixed.'°
+
+16.4.3 Record Blocking and Spanned
+versus Unspanned Records
+
+The records ofa file must be allocated to disk blocks because a block is the unit of data
+transfer between disk and memory. When the block size is larger than the record size,
+each block will contain numerous records, although some files may have unusually
+large records that cannot fit in one block. Suppose that the block size is B bytes. For a
+file of fixed-length records of size R bytes, with B > R, we can fit bfr =LB/R] records
+per block, where the L(x)] (floor function) rounds down the number x to an integer.
+The value bff is called the blocking factor for the file. In general, R may not divide B
+exactly, so we have some unused space in each block equal to
+
+B-— (bfr* R) bytes
+
+To utilize this unused space, we can store part of a record on one block and the rest
+on another. A pointer at the end of the first block points to the block containing the
+remainder of the record in case it is not the next consecutive block on disk. This
+organization is called spanned because records can span more than one block.
+Whenever a record is larger than a block, we must use a spanned organization. If
+records are not allowed to cross block boundaries, the organization is called
+unspanned. This is used with fixed-length records having B > R because it makes
+each record start at a known location in the block, simplifying record processing. For
+variable-length records, either a spanned or an unspanned organization can be used.
+If the average record is large, it is advantageous to use spanning to reduce the lost
+space in each block. Figure 16.6 illustrates spanned versus unspanned organization.
+
+For variable-length records using spanned organization, each block may store a dif-
+ferent number of records. In this case, the blocking factor bfr represents the average
+
+(a) Block j Record 1 Record 2 Record 3
+Block i+1 Record 4 Record 5 Record 6
+
+(b) Block j Record 1 Record 2 Record 3 | Record4 | P 4
+Block i+1 | Record 4 (rest) Record 5 Record 6 Record 7 | P
+
+10Qther schemes are also possible for representing variable-length records.
+
+Figure 16.6
+Types of record
+organization.
+(a) Unspanned.
+(b) Spanned.

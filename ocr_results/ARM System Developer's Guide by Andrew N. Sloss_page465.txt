@@ -1,0 +1,88 @@
+452 Chapter 12. Caches
+
+MOV tmpl, #1
+TsT —c9f, tmp
+
+MOVNE tmpl, tmpl, LSL #1
+TSTNE c9f, tmp1
+
+MOVNE tmpl, tmpl, LSL #1
+TSTNE c9f, tmp1
+
+MOVNE tmpl, tmpl, LSL #1
+BNE FTI
+
+CMP size, #0
+
+BEQ FTI
+
+MVN = tmpl, tmp1
+AND —tmpl, tmpl, #0xf
+BIC —c9F, CF, #Oxf
+ADD OF, cOF, tmpl
+
+ENDIF
+IF "$op" = "Dcache"
+
+MCR
+ENDIF
+
+IF "$op"
+MCR
+ADD
+ENDIF
+IF "$op" = "Dcache"
+
+pl5, 0, adr, c7, c13, 1
+adr, adr, #1<<CLINE
+
+test lock bit 0
+
+test lock bit 1
+
+test lock bit 2
+
+ERROR: no available ways
+3 no lockdown requested
+5 exit return size =0
+select L bit
+
+mask off non L bits
+construct c9f
+
+p15, 0, c9f, c9, cO, 1; set lock I page
+
+p15, 0, c9f, c9, c0, 0 ; set lock D page
+
+3 load code cacheline
+3 Cline addr =+ 1
+
+LOR —tmp1, [adr], #1<<CLINE ; load data cacheline
+
+ENDIF
+SUBS size, size, #1
+BNE %BT5
+
+MVN —tmpl, c9F
+AND tmp, tmpl, #0xf
+ORR tmp, tmp, tmpl
+BIC —c9F, cOF, #Oxf
+ADD c9F, cOF, tmp
+
+IF "$op" = "Icache"
+MCR
+ENDIF
+
+p15, 0, adr, c9, cO, 1 ; set i-cache
+
+cline =- 1
+loop thru clines
+
+lock selected L-bit
+mask off non L-bits
+merge with orig L-bits
+clear all L-bits
+
+set L-bits in c9f
+
+lock bits

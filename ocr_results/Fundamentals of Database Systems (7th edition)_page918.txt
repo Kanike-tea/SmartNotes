@@ -1,0 +1,54 @@
+888
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+1. Document-based NOSQL systems: These systems store data in the form of
+documents using well-known formats, such as JSON (JavaScript Object
+Notation). Documents are accessible via their document id, but can also be
+accessed rapidly using other indexes.
+
+2. NOSQL key-value stores: These systems have a simple data model based
+on fast access by the key to the value associated with the key; the value can
+be a record or an object or a document or even have a more complex data
+structure.
+
+3. Column-based or wide column NOSQL systems: These systems partition a
+table by column into column families (a form of vertical partitioning; see
+Section 23.2), where each column family is stored in its own files. They also
+allow versioning of data values.
+
+4. Graph-based NOSQL systems: Data is represented as graphs, and related
+nodes can be found by traversing the edges using path expressions.
+
+Additional categories can be added as follows to include some systems that are not
+easily categorized into the above four categories, as well as some other types of sys-
+tems that have been available even before the term NOSQL became widely used.
+
+5. Hybrid NOSQL systems: These systems have characteristics from two or
+more of the above four categories.
+
+6. Object databases: These systems were discussed in Chapter 12.
+7. XML databases: We discussed XML in Chapter 13.
+
+Even keyword-based search engines store large amounts of data with fast search
+access, so the stored data can be considered as large NOSQL big data stores.
+
+The rest of this chapter is organized as follows. In each of Sections 24.3 through
+24.6, we will discuss one of the four main categories of NOSQL systems, and elabo-
+rate further on which characteristics each category focuses on. Before that, in Sec-
+tion 24.2, we discuss in more detail the concept of eventual consistency, and we
+discuss the associated CAP theorem.
+
+24.2 The CAP Theorem
+
+When we discussed concurrency control in distributed databases in Section 23.3,
+we assumed that the distributed database system (DDBS) is required to enforce the
+ACID properties (atomicity, consistency, isolation, durability) of transactions that
+are running concurrently (see Section 20.3). In a system with data replication, con-
+currency control becomes more complex because there can be multiple copies of
+each data item. So if an update is applied to one copy of an item, it must be applied
+to all other copies in a consistent manner. The possibility exists that one copy of an
+item X is updated by a transaction T; whereas another copy is updated by a transac-
+tion T, so two inconsistent copies of the same item exist at two different nodes in
+the distributed system. If two other transactions T3 and T, want to read X, each may
+read a different copy of item X.

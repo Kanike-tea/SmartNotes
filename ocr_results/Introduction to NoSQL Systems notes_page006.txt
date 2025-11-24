@@ -1,0 +1,49 @@
+5. Use Cases of MongoDB and Document Databases
+
+Content Management Systems (CMS): Store articles, media, and user-generated
+content with flexible fields.
+
+E-commerce: Manage product catalogs with varying attributes like size, color, price,
+and reviews.
+
+loT and Real-Time Analytics: Handle time-series data from sensors and devices in a
+scalable manner.
+
+Mobile and Web Apps: Store user sessions, activity logs, and preferences without
+rigid schema enforcement.
+
+Customer Data Platforms: Manage user profiles with changing fields like purchase
+history, preferences, and feedback.
+
+6. Limitations of Document-Based Databases
+
+While document databases are powerful and flexible, they are not suited for every use
+
+case:
+
+No Join Support: Joins are not natively supported like in relational databases.
+Workarounds include embedding documents or manual aggregation.
+
+Large Document Size: Storing too much data in a single document can cause
+performance issues. MongoDB limits document size to 16MB.
+
+Not Ideal for Complex Transactions: Although MongoDB has added multi-document
+ACID transactions, relational databases still perform better in transaction-heavy
+environments.
+
+7. Conclusion
+
+Document-based NoSQL systems, especially MongoDB, offer a flexible, scalable, and
+developer-friendly alternative to relational databases. They are well-suited for modern
+
+applications that handle diverse and evolving data structures. By storing all related data in
+
+single, self-contained documents, these databases simplify application logic and improve
+
+performance for many real-world workloads. With strong community support and
+
+enterprise features, MongoDB has become the go-to choice for many organizations
+
+building cloud-native, real-time, and scalable applications.
+
+NoSQL Key-Value Stores — Detailed Notes

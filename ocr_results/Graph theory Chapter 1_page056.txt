@@ -1,0 +1,30 @@
+1.5. Operations on Graphs 59
+
+(a) (b)
+Figure 1.82
+
+Complement of a Simple graph
+
+Earlier, we have noted that every simple graph of order n is a subgraph of the complete
+graph K,. If G is a simple graph of order n, then the complement of G in K,, is called the
+complement of G; it is denoted by G.
+
+Thus, the complement G of a simple graph G with n vertices is that graph which is obtained
+by deleting those edges in K, which belong to G. Thus, G = K,-G=K,AG.
+
+Evidently, K,, G and G have the same vertex set, and two vertices are adjacent in G if and
+only if they are not adjacent in G. Obviously, G is also a simple graph and the complement of
+Gis G; that is G = G. Itis equally obvious that the complement of K,, is the null graph of order
+_ nand vice-versa.
+
+In Figure 1.83(a), the complete graph Ky is shown. A simple graph G of order 4 is shown
+in Figure 1.83(b). The complement, G, of G is shown in Figure 1.83(c). Observe that G, G
+and K; have the same vertices and that the edges in G are got by deleting those edges from K4
+which belong to G.
+
+(a): Ka (b) : G (c):G
+Figure 1.83
+
+In Figure 1.84(a), a graph G of order 6 is shown as a subgraph of Kg, the edges of G being
+own in thick lines. Its complement, G, is shown in Figure 1.84(b). The graph shown in
+igure 1.84(b) is known as the David graph.

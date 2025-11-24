@@ -1,0 +1,51 @@
+394
+
+Chapter 12 Object and Object-Relational Databases
+
+The NoMoreElements exception in the iterator interface would be raised by the
+I.next_position() operation if the iterator is currently positioned at the last element in
+the collection, and hence no more elements exist for the iterator to point to.
+
+Collection objects are further specialized into set, list, bag, array, and dictionary, which
+inherit the operations of the Collection interface. A set<T> type generator can be
+used to create objects such that the value of object O is a set whose elements are of
+type T. The Set interface includes the additional operation P = O.create_union(S)
+(see Figure 12.5(c)), which returns a new object P of type set<T> that is the union of
+the two sets O and S. Other operations similar to create_union (not shown in Fig-
+ure 12.5(c)) are create_intersection(S) and create_difference(S). Operations for set com-
+parison include the O.is_subset_of(S) operation, which returns true if the set object
+Oisa subset of some other set object S, and returns false otherwise. Similar opera-
+tions (not shown in Figure 12.5(c)) are is_proper_subset_of(S), is_superset_of(S), and
+is_proper_superset_of(S). The bag<T> type generator allows duplicate elements in
+the collection and also inherits the Collection interface. It has three operations—
+create_union(b), create_intersection(b), and create_difference(b)—that all return a new
+object of type bag<T>.
+
+A list<T> type generator inherits the Collection operations and can be used to create
+collections of objects of type T where the order of the elements is important. The
+value of each such object O is an ordered list whose elements are of type T. Hence, we
+can refer to the first, last, and ith element in the list. Also, when we add an element to
+the list, we must specify the position in the list where the element is inserted. Some of
+the list operations are shown in Figure 12.5(c). If O is an object of type list<T>, the
+operation O.insert_element_first(E) inserts the element E before the first element in the
+list O, so that E becomes the first element in the list. A similar operation (not shown)
+is O.insert_element_last(E). The operation O.insert_element_after(E, I) in Figure 12.5(c)
+inserts the element E after the ith element in the list O and will raise the exception
+Invalidindex if no ith element exists in O. A similar operation (not shown) is
+O.insert_element_before(E, I). To remove elements from the list, the operations are
+E=O,emove_first_element(), E = O.remove_last_element(), and E = O.remove_element _at(I);
+these operations remove the indicated element from the list and return the element as
+the operation’s result. Other operations retrieve an element without removing it from
+the list. These are E = O.retrieve_first_element(), E = O.retrieve _last_element(), and
+E = Osetrieve_element_at(I). Also, two operations to manipulate lists are defined. They
+are P = O.concat(J), which creates a new list P that is the concatenation of lists O and I
+(the elements in list O followed by those in list J), and O.append(I), which appends
+the elements of list J to the end of list O (without creating a new list object).
+
+The array<T> type generator also inherits the Collection operations and is similar to
+list. Specific operations for an array object O are O.replace_element_at(I, E), which
+replaces the array element at position J with element E; E = O.remove_element_at(I),
+which retrieves the ith element and replaces it with a NULL value; and
+E = Oretrieve_element_at(I), which simply retrieves the ith element of the array. Any
+of these operations can raise the exception Invalidindex if I is greater than the array’s
+size. The operation O.resize(N) changes the number of array elements to N.

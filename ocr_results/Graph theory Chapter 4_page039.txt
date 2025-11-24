@@ -1,0 +1,38 @@
+gS Matehiings 253
+
+For the existence of a complete matching from’V; to V2 it is necessary that the number of
+
+(2)
+vertices in V2 is greater than or equal to the number of vertices in Vi.
+
+3) A complete matching from.V;, to Vz, does;not exist if V2 has lesser number of vertices
+than Vi. me
+
+The following theorem, known as’ Hall’s Theorem, provides a necessary and sufficient
+condition for the existence of a complete matching.
+
+Theorem 1 . Ina bipartite graph G = G(V,, V2; E), a complete matching from V, to V2 exists
+ifand only if every subset of k vertices in Vj is collectively adjacent to k or more vertices in V2,
+forall possible values of k.
+
+The proof of the theorem is beyond the scope of this text. But we will illustrate it.
+
+Prove that the bipartite graph shown in Figure 4.63 does not have a complete
+matching from V, to V2.
+
+Figure 4.63
+
+> We observe that the three vertices v1, v2, V3 in V) are together joined to two vertices a), a2, in
+
+V Thus, there is a subset of 3 vertices in V; which is collectively adjacent to 2 (< 3) vertices
+
+Vo,
+
+i Hence, by Hall’s theorem, there does not exist a complete matching from V, to V2 (although
+2has more vertices than Vi): ; .
+
+sample 2 Three boys by, ba, by and four girls g1, 82, 83, 84.are such that
+
+® bisa cousin of g1, 83 gat (ii) bz is a cousin of g2 and gy;
+
+ill) bs is q cousin of gz and gs.

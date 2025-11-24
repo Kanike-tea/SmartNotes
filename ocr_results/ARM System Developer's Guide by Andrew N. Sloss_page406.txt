@@ -1,0 +1,41 @@
+11.2 Example: Simple Little Operating System 393
+
+case /* SWI */ Event_I0DeviceWriteBlock:
+/* call io_writeblock_driver */
+break;
+case /* SWI */ Event_I0DeviceReadBlock:
+/* call io_readblock_driver */
+break;
+}
+/* if not initializing change back to svc mode
+and disable IRQs */
+if (STATE!=1) {modifyControlCPSR (SVC|IRQOFF) ;}
+}
+
+Figure 11.3. SWIC handler. (Continued.)
+
+11.2.4.3 IRQ Exception
+
+The IRQ handler is a lot simpler than the SWI handler. It is implemented as a basic
+nonnested interrupt handler. The handler first saves the context and then copies the
+contents of the interrupt controller status register, INTPND, into register r0. Each service
+routine then compares register r0 with a particular interrupt source. If the source and
+interrupt match, then the service routine is called; otherwise the interrupt is treated as
+being a phantom interrupt and ignored.
+
+TICKINT EQU 0x400
+BUTTONINT EQU 0x001
+
+events IRQHandler
+SuB_ rd, rl4, #4 3 rl4_irg-=4
+STMFD r13!, {r0-r3, r12, rl4} 3 save context
+LDR 0, INTPND 3 r0=int pending reg
+LOR —r0, [r0] 3 rO=memory[r0]
+TST 0, #TICKINT 3 if tick int
+BNE eventsTickVeneer 3 then tick ISR
+TST 0, #BUTTONINT ; if button interrupt
+BNE eventsButtonVeneer 3 then button ISR
+LOMFD ri3!, {r0-r3, r12, pc}” return to task
+
+For a known interrupt source an interrupt veneer is called to service the event. The
+following code shows an example timer veneer. You can see from the example that the veneer

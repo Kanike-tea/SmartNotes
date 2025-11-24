@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+r0
+rl
+
+2
+
+r3
+
+5
+
+r6
+17
+
+8
+
+ro
+
+rl0
+rll
+rl2
+rl3 sp
+rl4 ir
+15 pe
+
+cpsr
+
+Fig 2: Registers Available in User mode.
+
+e Register r13 is traditionally used as the stack pointer (sp) and stores the head of the
+stack in the current processor mode.
+e Register r14 is called the link register (Ir) and is where the core puts the return
+address whenever it calls a subroutine.
+e Register r15 is the program counter (pc) and contains the address of the next
+instruction to be fetched by the processor.
+Registers r13 and r14 can also be used as general-purpose registers, which can be particularly
+useful since these registers are banked during a processor mode change. However, it is
+dangerous to use r13 as a general register when the processor is running any form of
+operating system because operating systems often assume that r13 always points to a valid
+stack frame.
+In addition to the 16 data registers, there are two program status registers: cpsr and spsr (the
+current and saved program status registers, respectively).
+The register file contains all the registers available to a programmer. Which registers are
+
+visible to the programmer depend upon the current mode of the processor.
+
+Dept. of ECE, GSSSIETW Page 17

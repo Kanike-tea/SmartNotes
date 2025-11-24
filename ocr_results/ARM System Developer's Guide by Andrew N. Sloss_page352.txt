@@ -1,0 +1,129 @@
+cMP
+LDMNEIA
+MRS
+MOV
+ADD
+MRS
+BIC
+ORR
+MSR
+SUB
+STMIA
+LOMIA
+BIC
+MSR
+STMDB
+STR
+STR
+STR
+STR
+
+r0,#0
+
+r13!, {r0-r3,r12,pc}*
+r2,spsr
+
+r0,r13
+
+113,113, #6*4
+
+rl,cpsr
+r1,r1,#Maskmd
+r1,r1,#SVC32md
+cpsr_c,rl
+r13,r13,#FRAME_SIZE-FRAME_R4
+r13, {r4-r11}
+r0,{r4-r9}
+rl,rl,#1_Bit
+cpsr_c,rl
+
+r13!, {r4-r7}
+
+r2, [r13, #FRAME_PSR]
+18, [r13, #FRAME_R12]
+19, [r13, #FRAME_PC]
+114, [r13,#FRAME_LR]
+
+<complete interrupt service routine>
+
+LOMIA
+MSR
+LOMIA
+
+r13!, {r0-r12,r14}
+spsr_cxsf,r14
+r13!, {r14,pc}*
+
+9.3 Interrupt Handling Schemes
+
+3 ll:
+11
+ll:
+
+: save
+: save
+: save
+: save
+
+WC LCCLCCMHMYNNADAAGGUMSEYW
+
+: save
+
+339
+
+: if processing?
+
+else return
+
+: copy spsr_irq
+: copy r13_irg
+: reset stack
+
+: copy cpsr
+
+: change to SVC
+: make space
+
+: save r4-rll
+
+: restore r4-r9
+
+: enable IRA
+
+r4-r7 SVC
+PSR
+
+rl2
+
+pe
+
+Ir
+
+restore context
+
+: restore spsr
+
+return
+
+This example uses a stack frame structure. All registers are saved onto the frame except
+for the stack register r13. The order of the registers is unimportant except that FRAME_LR
+and FRAME_PC should be the last two registers in the frame because we will return with a
+
+single instruction:
+
+LOMIA r13!, {r14, pc}*
+
+There may be other registers that are required to be saved onto the stack frame,
+depending upon the operating system or application being used. For example:
+
+= Registers r13_usr and r14_usr are saved when there is a requirement by the operating
+system to support both user and SVC modes.
+
+= Floating-point registers are saved when the system uses hardware floating point.
+
+There are a number of defines declared in this example. These defines map various
+cpsr/spsr changes to a particular label (for example, the I_Bit).
+
+A set of defines is also declared that maps the various frame register references with
+frame pointer offsets. This is useful when the interrupts are reenabled and registers have to
+be stored into the stack frame. In this example we store the stack frame on the SVC stack.

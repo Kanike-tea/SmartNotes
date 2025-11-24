@@ -1,0 +1,53 @@
+846
+
+Chapter 23 Distributed Database Concepts
+
+23.1.6 Advantages of Distributed Databases
+
+Some important advantages of DDB are listed below.
+
+1. Improved ease and flexibility of application development. Developing
+and maintaining applications at geographically distributed sites of an
+organization is facilitated due to transparency of data distribution and
+control.
+
+2. Increased availability. This is achieved by the isolation of faults to their
+site of origin without affecting the other database nodes connected to the
+network. When the data and DDBMS software are distributed over many
+sites, one site may fail while other sites continue to operate. Only the data
+and software that exist at the failed site cannot be accessed. Further
+improvement is achieved by judiciously replicating data and software at
+more than one site. In a centralized system, failure at a single site makes
+the whole system unavailable to all users. In a distributed database, some
+of the data may be unreachable, but users may still be able to access other
+parts of the database. If the data in the failed site has been replicated at
+another site prior to the failure, then the user will not be affected at all. The
+ability of the system to survive network partitioning also contributes to
+high availability.
+
+3. Improved performance. A distributed DBMS fragments the database
+by keeping the data closer to where it is needed most. Data localization
+reduces the contention for CPU and I/O services and simultaneously
+reduces access delays involved in wide area networks. When a large
+database is distributed over multiple sites, smaller databases exist at
+each site. As a result, local queries and transactions accessing data at a
+single site have better performance because of the smaller local data-
+bases. In addition, each site has a smaller number of transactions exe-
+cuting than if all transactions are submitted to a single centralized
+database. Moreover, interquery and intraquery parallelism can be
+achieved by executing multiple queries at different sites, or by breaking
+up a query into a number of subqueries that execute in parallel. This
+contributes to improved performance.
+
+4. Easier expansion via scalability. In a distributed environment, expansion
+of the system in terms of adding more data, increasing database sizes, or
+adding more nodes is much easier than in centralized (non-distributed)
+systems.
+
+The transparencies we discussed in Section 23.1.2 lead to a compromise between
+ease of use and the overhead cost of providing transparency. Total transparency
+provides the global user with a view of the entire DDBS as if it is a single centralized
+system. Transparency is provided as a complement to autonomy, which gives the
+users tighter control over local databases. Transparency features may be imple-
+mented as a part of the user language, which may translate the required services
+into appropriate operations.

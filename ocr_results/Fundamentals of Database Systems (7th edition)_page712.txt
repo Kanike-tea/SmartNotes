@@ -1,0 +1,53 @@
+682
+
+Chapter 18 Strategies for Query Processing
+
+In Section 19.1, we discuss how heuristic relational algebra optimization can group
+operations together for execution. Combining several operations into one and
+avoiding the writing of temporary results to disk is called pipelining or stream-
+based processing.
+
+It is common to create the query execution code dynamically to implement multi-
+ple operations. The generated code for producing the query combines several algo-
+rithms that correspond to individual operations. As the result tuples from one
+operation are produced, they are provided as input for subsequent operations. For
+example, if a join operation follows two select operations on base relations, the
+tuples resulting from each select are provided as input for the join algorithm in a
+stream or pipeline as they are produced. The corresponding evaluation is consid-
+ered a pipelined evaluation. It has two distinct benefits:
+
+= Avoiding the additional cost and time delay incurred for writing the inter-
+mediate results to disk.
+
+= Being able to start generating results as quickly as possible when the root
+operator is combined with some of the operators discussed in the follow-
+ing section means that the pipelined evaluation can start generating tuples
+of the result while rest of the pipelined intermediate tables are undergoing
+processing.
+
+18.7.1 Iterators for implementing Physical Operations
+
+Various algorithms for algebraic operations involve reading some input in the form
+of one or more files, processing it, and generating an output file as a relation. If the
+operation is implemented in such a way that it outputs one tuple at a time, then it
+can be regarded as an iterator. For example, we can devise a tuple-based imple-
+mentation of the nested-loop join that will generate a tuple at a time as output.
+Iterators work in contrast with the materialization approach wherein entire rela-
+tions are produced as temporary results and stored on disk or main memory and
+are read back again by the next algorithm. The query plan that contains the query
+tree may be executed by invoking the iterators in a certain order. Many iterators
+may be active at one time, thereby passing results up the execution tree and avoid-
+ing the need for additional storage of temporary results. The iterator interface typi-
+cally consists of the following methods:
+
+1. Open (): This method initializes the operator by allocating buffers for its
+input and output and initializing any data structures needed for the opera-
+tor. It is also used to pass arguments such as selection conditions needed to
+perform the operation. It in turn calls Open() to get the arguments it needs.
+
+2. Get_Next (): This method calls the Get_next() on each of its input argu-
+ments and calls the code specific to the operation being performed on
+the inputs. The next output tuple generated is returned and the state of
+the iterator is updated to keep track of the amount of input processed.
+When no more tuples can be returned, it places some special value in the
+output buffer.

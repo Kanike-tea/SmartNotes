@@ -1,0 +1,55 @@
+16
+
+Chapter 1 Databases and Database Users
+
+to specify their requests and are typically middle- or high-level managers or
+other occasional browsers.
+
+= Naive or parametric end users make up a sizable portion of database
+end users. Their main job function revolves around constantly querying
+and updating the database, using standard types of queries and updates—
+called canned transactions—that have been carefully programmed and
+tested. Many of these tasks are now available as mobile apps for use with
+mobile devices. The tasks that such users perform are varied. A few
+examples are:
+
+© Bank customers and tellers check account balances and post withdrawals
+and deposits.
+
+O Reservation agents or customers for airlines, hotels, and car rental com-
+panies check availability for a given request and make reservations.
+
+& Employees at receiving stations for shipping companies enter package
+identifications via bar codes and descriptive information through buttons
+to update a central database of received and in-transit packages.
+
+© Social media users post and read items on social media Web sites.
+
+= Sophisticated end users include engineers, scientists, business analysts, and
+others who thoroughly familiarize themselves with the facilities of the DBMS
+in order to implement their own applications to meet their complex require-
+ments.
+
+= Standalone users maintain personal databases by using ready-made pro-
+gram packages that provide easy-to-use menu-based or graphics-based
+interfaces. An example is the user of a financial software package that stores
+a variety of personal financial data.
+
+A typical DBMS provides multiple facilities to access a database. Naive end users
+need to learn very little about the facilities provided by the DBMS; they simply have
+to understand the user interfaces of the mobile apps or standard transactions
+designed and implemented for their use. Casual users learn only a few facilities that
+they may use repeatedly. Sophisticated users try to learn most of the DBMS facilities
+in order to achieve their complex requirements. Standalone users typically become
+very proficient in using a specific software package.
+
+1.4.4 System Analysts and Application Programmers
+(Software Engineers)
+
+System analysts determine the requirements of end users, especially naive and
+parametric end users, and develop specifications for standard canned transactions
+that meet these requirements. Application programmers implement these specifi-
+cations as programs; then they test, debug, document, and maintain these canned
+transactions. Such analysts and programmers—commonly referred to as software
+developers or software engineers—should be familiar with the full range of capa-
+bilities provided by the DBMS to accomplish their tasks.

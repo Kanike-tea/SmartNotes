@@ -1,0 +1,38 @@
+158 n the
+If a tree has 2020 vertices, find the sum of the degrees of the vertices,
+
+> Since the number of vertices in the given tree is |V| = 2020, the number of its eee
+|E| = |V|- 1 = 2019. Therefore (by hand-shaking property) the sum of degrees of its tls
+= 2|E| = 4038.
+Prove that a tree with two or more vertices contains at least two leaves (Pend
+vertices).
+
+> Consider a tree T with n baer where n > 2. Then it has n— ledges. Therefore (by the
+handshaking property), th©sum of the degrees of the n vertices must be equal to 2(n- 1), Thus,
+if d|,d2,...,d, are the degrees of vertices of T, we have —
+
+dy +dyt++++dy=2(n= 1) =2n=2.
+
+If each of dj, d2,...,d, is > 2, then their sum must be at least 2n. Since this is not true, at
+least one of the d’s is less than 2. Thus, there is a d which is equal to 1. (Since T is connected,
+no d can be zero). Without loss of generality, let us take this to be d). Then
+
+dz +d3+++++d, =(2n—2)-1=2n-3,
+
+This is possible only if at least one of dz, d3,...,dy is equal to 1. So, there is at least one
+more d which is equal to 1. Thus, in T, there are at least two vertices with degree 1; that is,
+there are at least two pendant vertices (leaves). ‘ ‘ ‘
+
+Show that if a tree has exactly two: pendant, vertices, the degree. of € every non:
+Fenian vertex is two.
+
+> Let n be the number of vertices in a tree T. Suppose it has exactly two rates vertices (s
+that their degrees are 1 each). Let Let dj,d2,...,dn-2 be the degrees of the other (non- -pendatt)
+vertices. Then, since T has exactly n —'1 edges, we have’
+
+1+1td) +d. +--++dy2 =2(n-1) ae
+or dy +. dy + +++ + dy-2 = 2n-4 = An —- 2)
+——V— —
+
+The left hand side of this condition has n — 2 terms, and none of these is one OF on
+Therefore, this condition holds only if each of the dis i is equal to two. _

@@ -1,0 +1,50 @@
+6.8 Efficient Switches 199
+
+CMP x, #8
+ADDLT pc, pc, x, LSL#2
+method_d
+method_0
+method_1
+method_2
+method_3
+method_4
+method_5
+method_6
+method_7
+
+DODD BDDBD OD
+
+There is one final optimization you can make. If the method functions are short, then
+you can inline the instructions in place of the branch instructions.
+
+EXAMPLE Suppose each nondefault method has a four-instruction implementation. Then you can
+6.28 _ use code of the form
+
+CMP x, #8
+ADDLT pc, pc, x, LSL#4 ; each method is 16 bytes long
+B method_d
+
+method_0
+; the four instructions for method_0 go here
+
+method_1
+; the four instructions for method_1 go here
+3 +++ continue in this way ...
+
+6.8.2 SWITCHES ON A GENERAL VALUE X
+
+Now suppose that x does not lie in some convenient range 0 < x < N for Nsmall enough
+to apply the methods of Section 6.8.1. How do we perform the switch efficiently, without
+having to test x against each possible value in turn?
+
+Avery useful technique in these situations is to use a hashing function. A hashing function
+is any function y = f(x) that maps the values we are interested in into a continuous range
+of the form 0 < y < N. Instead of a switch on x, we can use a switch on y = f(x). There is
+a problem if we have a collision, that is, if two x values map to the same y value. In this case
+we need further code to test all the possible x values that could have led to the y value. For
+our purposes a good hashing function is easy to compute and does not suffer from many
+collisions.
+
+To perform the switch we apply the hashing function and then use the optimized switch
+code of Section 6.8.1 on the hash value y. Where two x values can map to the same hash,
+we need to perform an explicit test, but this should be rare for a good hash function.

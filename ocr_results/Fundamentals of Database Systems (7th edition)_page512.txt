@@ -1,0 +1,50 @@
+482 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+1NF but is not in 2NF. The nonprime attribute Ename violates 2NF because of FD2,
+as do the nonprime attributes Pname and Plocation because of FD3. Each of the func-
+tional dependencies FD2 and FDS violates 2NF because Ename can be functionally
+determined by only Ssn, and both Pname and Plocation can be functionally deter-
+mined by only Pnumber. Attributes Ssn and Pnumber are a part of the primary key
+{Ssn, Pnumber} of EMP_PROJ, thus violating the 2NF test.
+
+If a relation schema is not in 2NF, it can be second normalized or 2NF normalized
+into a number of 2NF relations in which nonprime attributes are associated only
+with the part of the primary key on which they are fully functionally dependent.
+Therefore, the functional dependencies FD1, FD2, and FDS in Figure 14.3(b) lead to
+the decomposition of EMP_PROJ into the three relation schemas EP1, EP2, and EP3
+shown in Figure 14.11 (a), each of which is in 2NF.
+
+(a)
+EMP_PROJ
+Ssn |Pnumber | Hours | Ename |Pname | Plocation
+
+FD1 4
+FD2
+
+FD3
+
+2NF Normalization
+
+EP1 EP2 EP3
+Ssn_|Pnumber | Hours Ssn_[Ename Pnumber | Pname | Plocation
+
+FD1| | 4 FD2| 4 FD3 4 4
+
+(b)
+
+EMP_DEPT
+
+Ename | Ssn | Bdate | Address | Dnumber | Dname
+
+a
+
+ED1 ED2
+Ename Ssn_| Bdate | Address | Dnumber Dnumber_| Dname | Dmgr_ssn
+
+4 4 4 4 4 4
+
+3NF Normalization
+
+Figure 14.11
+Normalizing into 2NF and 3NF. (a) Normalizing EMP_PROJ into
+QNF relations. (b) Normalizing EMP_DEPT into 3NF relations.

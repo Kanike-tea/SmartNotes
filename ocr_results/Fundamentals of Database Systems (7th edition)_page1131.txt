@@ -1,0 +1,31 @@
+©) e
+chapter 29
+
+Overview of Data
+Warehousing and OLAP
+
+D ata warehouses are databases that store and
+maintain analytical data separately from transac-
+tion-oriented databases for the purpose of decision support. Regular transaction-
+oriented databases store data for a limited period of time before the data loses its
+immediate usefulness and it is archived. On the other hand, data warehouses tend
+to keep years’ worth of data in order to enable analysis of historical data. They
+provide storage, functionality, and responsiveness to queries beyond the capabili-
+ties of transaction-oriented databases. Accompanying this ever-increasing power
+is a great demand to improve the data access performance of databases. In modern
+organizations, users of data are often completely removed from the data sources.
+Many people only need read-access to data, but still need fast access to a larger
+volume of data than can conveniently be downloaded to their desktops. Often
+such data comes from multiple databases. Because many of the analyses performed
+are recurrent and predictable, software vendors and systems support staff are
+designing systems to support these functions. Data warehouses are modeled and
+structured differently, they use different types of technologies for storage and
+retrieval, and they are used by different types of users than transaction-oriented
+databases. Presently there is a great need to provide decision makers from middle
+management upward with information at the correct level of detail to support
+decision making. Data warehousing, online analytical processing (OLAP), and data
+mining provide this functionality. We gave an introduction to data mining tech-
+niques in Chapter 28. In this chapter, we give a broad overview of data warehous-
+ing and OLAP technologies.
+
+1101

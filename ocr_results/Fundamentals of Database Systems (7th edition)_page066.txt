@@ -1,0 +1,46 @@
+36 Chapter 2 Database System Concepts and Architecture
+
+2.2 Three-Schema Architecture
+and Data Independence
+
+Three of the four important characteristics of the database approach, listed in
+Section 1.3, are (1) use of a catalog to store the database description (schema) so
+as to make it self-describing, (2) insulation of programs and data (program-data
+and program-operation independence), and (3) support of multiple user views.
+In this section we specify an architecture for database systems, called the
+three-schema architecture,’ that was proposed to help achieve and visualize
+these characteristics. Then we discuss further the concept of data independence.
+
+2.2.1 The Three-Schema Architecture
+
+The goal of the three-schema architecture, illustrated in Figure 2.2, is to separate
+the user applications from the physical database. In this architecture, schemas can
+be defined at the following three levels:
+
+1. The internal level has an internal schema, which describes the physical
+storage structure of the database. The internal schema uses a physical data
+model and describes the complete details of data storage and access paths for
+the database.
+
+Figure 2.2
+The three-schema End Users
+architecture.
+
+External External
+View — View
+
+External Level
+
+External/Conceptual
+
+Mapping
+Conceptual Level Conceptual Schema
+Conceptual/Internal 4
+Mapping
+y
+Internal Level Internal Schema
+
+Stored Database
+
+“This is also known as the ANSI/SPARC (American National Standards Institute/ Standards Planning
+And Requirements Committee) architecture, after the committee that proposed it (Tsichritzis & Klug, 1978).

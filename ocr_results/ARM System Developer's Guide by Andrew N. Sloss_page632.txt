@@ -1,0 +1,36 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 619
+
+2. TST<cond> Rn, Rm {, <shift>} ARMV1
+3. TST Ln, Lm THUMBV1
+Action
+
+1. Set the cpsr on the result of (Rn & <rotated_immed>)
+2. Set the cpsr on the result of (Rn & <shifted_Rm>)
+
+3. Set the cpsr on the result of (Ln & Lm)
+
+Notes
+
+The cpsr is updated: N = <Negative>, Z = <Zero>, C = <shifter_C> (see Table A.3).
+If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+
+Use this instruction to test whether a selected set of bits are all zero.
+
+Example
+TST v0, #0xFF ; test if the bottom 8 bits of rO are 0
+UADD Unsigned parallel modulo add (see the entry for SADD)
+UHADD Unsigned halving add and subtract (see the entry for SHAD)
+UHSUB
+UMAAL. Unsigned multiply accumulate accumulate long
+
+1. UMAAL<cond> RdLo, RdHi, Rm, Rs ARMV6
+Action
+1. RdHi:RdLo = (unsigned)Rm*Rs + (unsigned)RdLo + (unsigned)RdHi
+Notes
+
+RdHi and RdLo must be different registers.
+RdHi, RdLo, Rm, Rs must not be pe.
+
+This operation cannot overflow because (232 — 1)(22 — 1) + (27 — 1) + (2% —1) =
+(26 — 1). You can use it to synthesize the multiword multiplications used by public
+key cryptosystems.

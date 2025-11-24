@@ -1,0 +1,48 @@
+13.3 Demonstration of an MPU system 481
+
+task protection region, it protects dormant tasks from misconduct by the running task
+(see Figure 13.7).
+
+Region 2 controls access to shared system resources. It has a starting address of 0x10000
+and is 64 KB in length. It maps directly over the shared memory space of the shared system
+code. Region 2 lies on top of a portion of protected region 1 and will take precedence over
+protected region 1 because it has a higher region number. Region 2 permits both user and
+system level memory access.
+
+Region 3 controls the memory area and attributes of a running task. When control
+transfers from one task to another, as during a context switch, the operating system redefines
+region 3 so that it overlays the memory area of the running task. When region 3 is relocated
+over the new task, it exposes the previous task to the attributes of region 1. The previous
+task becomes part of region 1, and the running task is a new region 3. The running task
+cannot access the previous task because it is protected by the attributes of region 1.
+
+Region 4 is the memory-mapped peripheral system space. The primary purpose of this
+region is to establish the area as not cached and not buffered. We don’t want input, output,
+or control registers subject to the stale data issues caused by caching, or the time or sequence
+issues involved when using buffered writes (see Chapter 12 for details on using I/O devices
+with caches and write buffers).
+
+13.3.3. INITIALIZING THE MPU
+
+To organize the initialization process we created a datatype called Regi on; it is a structure
+whose members hold the attributes of a region used during system operation. This Region
+structure is not required when using the MPU; it is simply a design convenience created to
+support the demonstration software. For this demonstration, we call the set of these data
+structures a region control block (RCB).
+
+The initialization software uses the information stored in the RCB to configure the
+regions in the MPU. Note that there can be more Region structures defined in the RCB
+than physical regions. For example, region 3 is the only region used for tasks, yet there
+are three Region structures that use region 3, one for each user task. The typedef for the
+structure is
+
+typedef struct {
+
+unsigned int number;
+unsigned int type;
+unsigned int baseaddress;
+unsigned int
+unsigned int
+unsigned int
+unsigned int
+} Region;

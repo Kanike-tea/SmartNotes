@@ -1,0 +1,35 @@
+CHAPTER
+
+OPTIMIZED
+PRIMITIVES
+
+A primitive is a basic operation that can be used in a wide variety of different algorithms and
+programs. For example, addition, multiplication, division, and random number generation
+are all primitives. Some primitives are supported directly by the ARM instruction set,
+including 32-bit addition and multiplication. However, many primitives are not supported
+directly by instructions, and we must write routines to implement them (for example,
+division and random number generation).
+
+This chapter provides optimized reference implementations of common primitives. The
+first three sections look at multiplication and division. Section 7.1 looks at primitives to
+implement extended-precision multiplication. Section 7.2 looks at normalization, which is
+useful for the division algorithms in Section 7.3.
+
+The next two sections look at more complicated mathematical operations. Section 7.4
+covers square root. Section 7.5 looks at the transcendental functions log, exp, sin, and cos.
+Section 7.6 looks at operations involving bit manipulation, and Section 7.7 at operations
+involving saturation and rounding. Finally, Section 7.8 looks at random number generation.
+
+You can use this chapter in two ways. First, it is useful as a straight reference. If you need
+a division routine, go to the index and find the routine, or find the section on division. You
+can copy the assembly from the book’s Web site. Second, this chapter provides the theory to
+explain why each implementation works, which is useful if you need to change or generalize
+the routine. For example, you may have different requirements about the precision or the
+format of the input and output operands. For this reason, the text necessarily contains
+many mathematical formulae and some tedious proofs. Please skip these as you see fit!
+
+We have designed the code examples so that they are complete functions that you can
+lift directly from the Web site. They should assemble immediately using the toolkit supplied
+by ARM. For constancy we use the ARM toolkit ADS1.1 for all the examples of this chapter.
+
+207

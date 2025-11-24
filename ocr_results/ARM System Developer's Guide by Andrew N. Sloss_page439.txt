@@ -1,0 +1,51 @@
+426 Chapter 12. Caches
+
+MACRO
+CACHEFLUSH $op
+
+MOV c7f, #0
+
+IF "Sop" = "Icache"
+MCR p15, 0,c7f,c7,c5,0 3 flush I-cache
+ENDIF
+IF "$op" = "Deache"
+MCR p15, 0,c7f,c7,c6,0 3 flush D-cache
+ENDIF
+IF "$op" = "IDcache"
+
+F {CPU} = "ARM940T" :LOR: \
+
+{CPU} = "ARM946E-S"
+
+MCR p15,0,c7f,c7,c5,0 3 flush I-cache
+MCR p15,0,c7f,c7,c6,0 3 flush D-cache
+
+ELSE
+MCR p15,0,c7f,c7,c7,0 —; flush I-cache & D-cache
+ENDIF
+ENDIF
+MOV pc, Ir
+MEND
+
+IF {CPU} = "ARM720T"
+EXPORT flushCache
+flushCache
+CACHEFLUSH IDcache
+ELSE
+EXPORT flushCache
+EXPORT flushICache
+EXPORT flushDCache
+flushCache
+CACHEFLUSH IDcache
+flushICache
+CACHEFLUSH Icache
+flushDCache
+CACHEFLUSH Dcache
+ENDIF
+
+Finally, we use the macro several times to create the routines. The ARM720T has a unified
+cache so only the flushCache routine is available; otherwise, the routine uses the macro
+three times to create the routines.
+
+This example contains a little more code than most implementations require. However,
+it is provided as an exhaustive routine that supports all current ARM processor cores.

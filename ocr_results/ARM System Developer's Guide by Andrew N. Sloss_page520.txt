@@ -1,0 +1,50 @@
+14.5 The Translation Lookaside Buffer 507
+
+A TLB miss may take many extra cycles if the MMU generates an abort exception. The
+extra cycles result as the abort handler maps in the requested virtual memory. The ARM720T.
+has a single TLB because it has a unified bus architecture. The ARM920T, ARM922T,
+ARM926EJ-S, and ARM1026EJ-S have two Translation Lookaside Buffers because they
+use a Harvard bus architecture: one TLB for instruction translation and one TLB for data
+translation.
+
+14.5.1 SINGLE-STEP PAGE TABLE WALK
+
+If the MMU is searching for a 1 MB section page, then the hardware can find the entry in a
+
+single-step search because 1 MB page table entries are found in the master L1 page table.
+Figure 14.9 shows the table walk of an L1 table for a 1 MB section page translation. The
+
+MMU uses the base portion of the virtual address, bits [31:20], to select one of the 4096
+
+31 20 19 0
+
+Virtual
+address
+
+— if
+
+L1 master page table
+
+Base Offset
+
+4095
+
+Page
+table
+
+entry
+
+a
+
+ou
+
+Translation table
+base address
+
+Selects
+31 20 19 0. physical
+j memory
+Physical | Base Offset | >
+address
+
+Figure 14.9 LI Page table virtual-to-physical memory translation using 1 MB sections.

@@ -1,0 +1,32 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 595
+
+Examples
+MVN v0, #0xff 3 70 = Oxffffff00
+MVN 0, #0 3rd = -1
+NEG Negate value in Thumb (use RSB to negate in ARM state)
+1. NEG Ld, Lm THUMBv1
+Action Effect on the cpsr
+1. Ld = -Lm Updated (see Notes below)
+Notes
+The cpsr is updated: N = <Negative>, Z = <Zero>, C = <NoUnsignedOverflow>, V =
+<SignedOverflow>. Note that Z = Cand V = (Ld==0x80000000).
+This is the same as the operation RSBS Ld, Lm, #0 in ARM state.
+NOP No operation
+1. NOP MACRO
+This is not an ARM instruction. It isan assembly macro that produces an instruction having
+no effect other than advancing the pce as normal. In ARM state it assembles to MOV r0,r0.
+In Thumb state it assembles to MOV r8,r8. The operation is not guaranteed to take one
+processor cycle. In particular, if you use NOP after a load of r0, then the operation may cause
+pipeline interlocks.
+ORR Logical bitwise OR of two 32-bit values
+
+1. ORR<cond>{S} Rd, Rn, #<rotated_immed> ARMv1
+2. ORR<cond>{$} Rd, Rn, Rm {, <shift>} ARMv1
+3. ORR Ld, Lm THUMBv 1
+Action Effect on the cpsr
+
+1. Rd = Rn | <rotated_immed> Updated if S suffix specified
+
+2. Rd = Rn | <shifted_Rm> Updated if S suffix specified
+
+3. Ld = Ld | Lm Updated (see Notes below)

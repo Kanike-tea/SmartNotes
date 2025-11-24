@@ -1,0 +1,60 @@
+Data Structures and Applications/BCS304 Module-1
+
+Comparing structures: Return TRUE if employee | and employee 2 are the same
+otherwisereturn FALSE
+
+int EmployeeEqual(employee p1, Employee p2)
+{
+if (!stremp(p1.name, p2.name))
+return FALSE;
+if (pl.age != p2.age)
+return FALSE;
+if (pl.salary != p2.salary)
+return FALSE;
+return TRUE;
+i
+
+A typical function call might be:
+if (EmployeeEqual(p1,p2))
+printf("The two employee are the same\n");
+else
+printf("The two Employee are not the same\n");
+
+Nested Structure: A structure can be embedded within another structure. That is a structure
+canhave another structure as its member such a structure is called a nested structure.
+
+For example, associated with our employee structure we may wish to include the date of Birth of an
+employee by using nested stucture
+
+typedef struct {
+int month;
+int day;
+int year;
+
+} date;
+
+typedef struct {
+char name[10];
+int age;
+float salary;
+date dob;
+
+}employee;
+
+If we have to store the information of a person we declare a variable as
+
+Employee p1;
+
+A person born on September 10, 1974, would have the values for the date struct set as:
+p1.dob.month = 9;
+pl.dob.day = 10;
+pl.dob.year = 1974;
+
+Array of Structures: In the case of a student or the employee we may not store the details
+ofonly 1 student or 1 employee. When we have to store the details of a group of students
+
+we can declare an array of structures.
+
+Example: struct student s[10];
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 3

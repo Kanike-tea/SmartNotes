@@ -1,0 +1,63 @@
+17.5 Other Types of Indexes 635
+
+EMPLOYEE
+Row_id Emp_id Thame Sex Zipcode Salary_grade
+0 51024 Bass M 94040 a
+
+1 23402 Clarke F 30022
+
+2 62104 England) M 19046
+
+3 34723 Ferragamo F 30022
+
+4 81165 Gucci F 19046
+
+5 13646 Hanson M 19046
+
+6 12676 Marcus M 30022
+
+7 41301 Zara F 94040
+
+Bitmap index for Sex
+
+M F
+10100110 01011001
+
+Bitmap index for Zipcode
+
+Zipcode 19046 Zipcode 30022 Zipcode 94040
+00101100 01010010 10000001
+
+Figure 17.16
+Bitmap indexes for
+Sex and Zipcode.
+
+those columns is indexed. Typically, a bitmap index is created for those columns
+that contain a fairly small number of unique values. To build a bitmap index on a
+set of records in a relation, the records must be numbered from 0 to n with an id (a
+record id or a row id) that can be mapped to a physical address made of a block
+number and a record offset within the block.
+
+A bitmap index is built on one particular value of a particular field (the column in
+a relation) and is just an array of bits. Thus, for a given field, there is one separate
+bitmap index (or a vector) maintained corresponding to each unique value in the
+database. Consider a bitmap index for the column C and a value V for that column.
+For a relation with n rows, it contains n bits. The ith bit is set to 1 if the row i has the
+value V for column C; otherwise it is set to a 0. If C contains the valueset <vj, 72, ... 5
+Vm> with m distinct values, then m bitmap indexes would be created for that col-
+umn. Figure 17.16 shows the relation EMPLOYEE with columns Emp_id, Lname, Sex,
+Zipcode, and Salary_grade (with just eight rows for illustration) and a bitmap index
+for the Sex and Zipcode columns. As an example, if the bitmap for Sex = F, the bits
+for Row_ids 1, 3, 4, and 7 are set to 1, and the rest of the bits are set to 0, the bitmap
+indexes could have the following query applications:
+
+= For the query C, = Vj, the corresponding bitmap for value Vj returns the
+Row_ids containing the rows that qualify.
+= For the query C\= V, and C, = V> (a multikey search request), the two cor-
+responding bitmaps are retrieved and intersected (logically AND-ed) to
+yield the set of Row_ids that qualify. In general, k bitvectors can be inter-
+sected to deal with k equality conditions. Complex AND-OR conditions can
+also be supported using bitmap indexing.
+© For the query Cj = Vj or Cy = V2 or C3 = V3 (a multikey search request),
+the three corresponding bitmaps for three different attributes are retrieved
+and unioned (logically OR-ed) to yield the set of Row ids that qualify.

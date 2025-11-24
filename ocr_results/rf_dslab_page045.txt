@@ -1,0 +1,53 @@
+head->link=head;
+
+head 1->link=head 1;
+head2->link=head2;
+head3->link= head3;
+
+while(1)
+{
+printf("\n~~~Menu~~~");
+printf("\n] Represent and Evaluate a Polynomial P(x,y.z)");
+printf("\n2.Find the sum of two polynomials POLY 1(x,y,z)");
+printf("\nEnter your choice:");
+scanf("%d" &ch);
+switch(ch)
+{
+case |: printf("\n~~~~Polynomial evaluation P(x.y,z)~~~\n");
+head = read_poly(head);
+printf("\nRepresentation of Polynomial for evaluation: \n");
+display(head);
+res = poly_evaluate(head);
+printf("\nResult of polynomial evaluation is : %d \n", res);
+break;
+
+case 2: printf("\nEnter the POLY 1(x,y,z): \n");
+head1 = read_poly(head1);
+printf("\nPolynomial | is: \n");
+display(head1);
+
+printf("\nEnter the POLY2(x,y,z): \n");
+head2 = read_poly(head2);
+printf("\nPolynomial 2 is: \n");
+display(head2);
+
+printf("\nPolynomial addition result: \n");
+head3 = poly_sum(head 1 ,head2,head3);
+display(head3);
+break;
+
+case 3: exit(0);
+
+Output:
+-~Menu~~~
+
+1 Represent and Evaluate a Polynomial P(x.y,z)
+2.Find the sum of two polynomials POLY 1 (x,y,z) and POLY2(x,y.z)
+Enter your choice: 1
+
+~~~~Polynomial evaluation P(x,y.z)~~~
+Enter the no of terms in the polynomial: 5
+Enter the | term:
+Coef = 6
+Enter Pow(x) Pow(y) and Pow(z): 2 2 1
+Enter the 2 term:

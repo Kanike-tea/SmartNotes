@@ -1,0 +1,52 @@
+858
+
+Chapter 23 Distributed Database Concepts
+
+database operation. Once the operation is completed, locks are released and the
+transaction manager is updated with the result of the operation.
+
+23.4.1 Two-Phase Commit Protocol
+
+In Section 22.6, we described the two-phase commit protocol (2PC), which requires
+a global recovery manager, or coordinator, to maintain information needed for
+recovery, in addition to the local recovery managers and the information they
+maintain (log, tables). The two-phase commit protocol has certain drawbacks that
+led to the development of the three-phase commit protocol, which we discuss next.
+
+23.4.2 Three-Phase Commit Protocol
+
+The biggest drawback of 2PC is that it is a blocking protocol. Failure of the coordi-
+nator blocks all participating sites, causing them to wait until the coordinator
+recovers. This can cause performance degradation, especially if participants are
+holding locks to shared resources. Other types of problems may also occur that
+make the outcome of the transaction nondeterministic.
+
+These problems are solved by the three-phase commit (3PC) protocol, which essen-
+tially divides the second commit phase into two subphases called prepare-to-commit
+and commit. The prepare-to-commit phase is used to communicate the result of
+the vote phase to all participants. If all participants vote yes, then the coordinator
+instructs them to move into the prepare-to-commit state. The commit subphase is
+identical to its two-phase counterpart. Now, if the coordinator crashes during this
+subphase, another participant can see the transaction through to completion. It can
+simply ask a crashed participant if it received a prepare-to-commit message. If it
+did not, then it safely assumes to abort. Thus the state of the protocol can be recov-
+ered irrespective of which participant crashes. Also, by limiting the time required
+for a transaction to commit or abort to a maximum time-out period, the protocol
+ensures that a transaction attempting to commit via 3PC releases locks on time-out.
+
+The main idea is to limit the wait time for participants who have prepared to com-
+mit and are waiting for a global commit or abort from the coordinator. When a
+participant receives a precommit message, it knows that the rest of the participants
+have voted to commit. If a precommit message has not been received, then the par-
+ticipant will abort and release all locks.
+
+23.4.3 Operating System Support for Transaction Management
+
+The following are the main benefits of operating system (OS)-supported transaction
+management:
+
+= Typically, DBMSs use their own semaphores” to guarantee mutually exclu-
+sive access to shared resources. Since these semaphores are implemented in
+
+?Semaphores are data structures used for synchronized and exclusive access to shared resources for
+preventing race conditions in a parallel computing system.

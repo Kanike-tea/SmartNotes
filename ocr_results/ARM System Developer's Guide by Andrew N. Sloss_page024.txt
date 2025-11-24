@@ -1,0 +1,49 @@
+1.3 Embedded System Hardware 11
+
+Flash ROM can be written to as well as read, but it is slow to write so you shouldn’t use
+it for holding dynamic data. Its main use is for holding the device firmware or storing long-
+term data that needs to be preserved after power is off. The erasing and writing of flahh ROM
+are completely software controlled with no additional hardware circuity required, which
+reduces the manufacturing costs. Flash ROM has become the most popular of the read-only
+memory types and is currently being used as an alternative for mass or secondary storage.
+
+Dynamic random access memory (DRAM) is the most commonly used RAM for devices.
+It has the lowest cost per megabyte compared with other types of RAM. DRAM is dynamic—
+it needs to have its storage cells refreshed and given a new electronic charge every few
+milliseconds, so you need to set up a DRAM controller before using the memory.
+
+Static random access memory (SRAM) is faster than the more traditional DRAM, but
+requires more silicon area. SRAM is static—the RAM does not require refreshing. The
+access time for SRAM is considerably shorter than the equivalent DRAM because SRAM.
+does not require a pause between data accesses. Because of its higher cost, it is used mostly
+for smaller high-speed tasks, such as fast memory and caches.
+
+Synchronous dynamic random access memory (SDRAM) is one of many subcategories
+of DRAM. It can run at much higher clock speeds than conventional memory. SDRAM
+synchronizes itself with the processor bus because it is clocked. Internally the data is fetched
+from memory cells, pipelined, and finally brought out on the bus in a burst. The old-style
+DRAM is asynchronous, so does not burst as efficiently as SDRAM.
+
+1.3.4 PERIPHERALS
+
+Embedded systems that interact with the outside world need some form of peripheral
+device. A peripheral device performs input and output functions for the chip by connecting
+to other devices or sensors that are off-chip. Each peripheral device usually performs a single
+function and may reside on-chip. Peripherals range from a simple serial communication
+device to a more complex 802.11 wireless device.
+
+All ARM peripherals are memory mapped—the programming interface is a set of
+memory-addressed registers. The address of these registers is an offset from a specific
+peripheral base address.
+
+Controllers are specialized peripherals that implement higher levels of functionality
+within an embedded system. Two important types of controllers are memory controllers
+and interrupt controllers.
+
+1.3.4.1 Memory Controllers
+
+Memory controllers connect different types of memory to the processor bus. On power-up
+amemory controller is configured in hardware to allow certain memory devices to be active.
+‘These memory devices allow the initialization code to be executed. Some memory devices
+must be set up by software; for example, when using DRAM, you first have to set up the
+memory timings and refresh rate before it can be accessed.

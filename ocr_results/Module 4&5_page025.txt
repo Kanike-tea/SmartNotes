@@ -1,0 +1,48 @@
+Microcontrollers - BCS402
+
+LOR rl4, =sandstone_init2
+LOR r4, =0x01800000 3 new flash ROM location
+
+The first part of the code calculates the absolute address of the routine sandstone_init2 before
+remapping takes place. This address is used by Sandstone to jump to the next routine in the new
+
+remapped environment.
+
+ADD rl4, rl4, r4
+ADRL rO, memorymaptable_str
+LOMIA r0, {rl-r12}
+
+LOR r0, =EXTDBWTH 3 =(SYSCFG + 0x3010)
+STMIA 0, {rl-r12}
+MOV pe, r14 ; jump to remapped memory
+
+sandstone _init2
+3 Code after sandstone _init2 executes @ +0x1800000
+
+The second part carries out the memory remapping. The new memory map data is loaded into
+registers rl to r12, from a structure pointed by memorymaptable_str. This structure, using the
+registers, is then written to the memory controller offset 0x3010 from system configuration
+
+register. Once this is complete, the new memory map as shown in the following table is active.
+
+Table Remapping.
+
+Type Start address End address _ Size
+
+Flash ROM 0x01800000 0x01880000 512
+SRAM bank 0 0x00000000 0x00040000 2:
+SRAM bank 1 0x00040000 0x00080000 256K
+
+The results of executing step 3 are the following:
+
+¢ Memory has been remapped as shown in the above table.
+
+© pc now points to the next step. This address is located in the newly remapped flash ROM.
+Step 4: Initialize Communication Hardware
+
+Communication initialization involves configuring a serial port and outputting a standard banner.
+The banner is used to show that the firmware is fully functional and memory has been
+
+successfully remapped.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 26

@@ -1,0 +1,45 @@
+556 Chapter 15 The Future of the Architecture
+
+Table 15.7 Saturation instructions.
+
+Instruction Description
+
+SSAT Rd, #<BitPosition>, Rm, {<Shift>} Signed 32-bit saturation at an arbitrary bit
+position. Shift can be an LSL or ASR.
+
+SSAT16{<cond>} Rd, #<immed>, Rm Dual 16-bit saturation at the same position in
+both halves.
+
+USAT Rd, #<BitPosition>, Rm, {<Shift>} Unsigned 32-bit saturation at an arbitrary bit
+position. Shift can be LSL or ASR.
+
+USAT16{<cond>} Rd, #<immed>, Rm Unsigned dual 16-bit saturation at the same
+position in both halves.
+
+Note that in the 32-bit versions of these saturation operations there is an optional
+arithmetic shift of the source register Rm before saturation, allowing scaling to take place
+in the same instruction.
+
+15.1.5 SUM OF ABSOLUTE DIFFERENCES INSTRUCTIONS
+
+These two new instructions are probably the most application specific within the ARMv6
+architecture—USAD8 and USADA8. They are used to compute the absolute difference
+between eight-bit values and are particularly useful in motion video compression algorithms
+such as MPEG or H.263, including motion estimation algorithms that measure motion by
+comparing blocks using many sum-of-absolute-difference operations (see Figure 15.2).
+Table 15.8 lists these instructions.
+
+Table 15.8 Sum of absolute differences.
+
+Instruction Description
+USAD8{<cond>} Rd, Rm, Rs Sum of absolute differences
+USADA8{<cond>} Rd, Rm, Rs, Rn Accumulated sum of absolute differences
+
+To compare an N x N square at (x, y) in image p; with an N x N square po, we calculate
+the accumulated sum of absolute differences:
+
+N-1N-1
+
+assy) = 2 YP |prlxtiy +) - pli
+
+i=0 j=0

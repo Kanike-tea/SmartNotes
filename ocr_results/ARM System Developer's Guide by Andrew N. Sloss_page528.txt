@@ -1,0 +1,50 @@
+14.9 The Fast Context Switch Extension 515
+
+ExamPLe The routine control Set sets the control bits register in CP15:cl. The routine first reads
+14.3 the CP15:r3 register and places it in the variable cl format. The routine then uses the input
+mask value to clear the bits in cl format that need updating. The update is done by ORing
+clformat with the value input parameter. The updated clformat is finally written back
+
+out to the CP15:cl register to enable the MMU, caches, and write buffer.
+
+void controlSet(unsigned int value, unsigned int mask)
+
+{
+
+unsigned int clformat;
+
+__asm{MRC p15, 0, clformat, cl, c0, 0} /* read control register */
+
+Clformat & ~mask; /* clear bits that change */
+
+clformat |= value; /* set bits that change */
+
+__asm{MCR p15, 0, clformat, cl, cO, 0} /* write control register */
+}
+
+Here isa code sequence that calls the contro] Set routine to enable the I-cache, D-cache,
+and the MMU in an ARM920T:
+
+#define ENABLEMMU 0x00000001
+#define ENABLEDCACHE 0x00000004
+#define ENABLEICACHE 0x00001000
+
+#define CHANGEMMU 0x00000001
+#define CHANGEDCACHE 0x00000004
+#define CHANGEICACHE 0x00001000
+
+unsigned int enable, change;
+#if defined(_TARGET_CPU_ARN920T)
+enable = ENABLEMMU | ENABLEICACHE | ENABLEDCACHE;
+change = CHANGEMMU | CHANGEICACHE | CHANGEDCACHE;
+#endif
+controlSet (enable, change) ;
+
+14.9 THE FAST CONTEXT SWITCH EXTENSION
+
+The Fast Context Switch Extension (FCSE) is additional hardware in the MMU that is
+considered an enhancement feature, which can improve system performance in an ARM
+embedded system. The FCSE enables multiple independent tasks to run ina fixed overlap-
+ping area of memory without the need to clean or flush the cache, or flush the TLB during
+a context switch. The key feature of the FCSE is the elimination of the need to flush the
+cache and TLB.

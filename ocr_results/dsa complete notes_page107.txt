@@ -1,0 +1,34 @@
+Data Structures and Applications (BCS304) Module IV
+
+Structure of the node can be defined as follows
+
+struct node
+
+aw
+
+Struct node *Ichild;
+struct
+
+aw
+
+int item; /* Itype represents the data type of the element*/
+int key;
+}data;
+
+Struct node *rchild;
+
+OT
+
+Typedef struct node TreeNode;
+
+ReCUFSiVe Search Of a binary Searchitree: Return a pointer to the element whose key is k, if there
+is no such element, return NULL. We assume that the data field of the element is of type elemenet
+and it has two components key and item.
+
+>
+
+Analysis of Search(Both iterative and recursive): If h is the height of the binary search tree, then
+we can perform the search using either search in O(h). However, recursive search has an additional
+stack space requirement which is O(h).
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 2

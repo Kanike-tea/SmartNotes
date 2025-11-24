@@ -1,0 +1,59 @@
+190
+
+Divide-and-Conquer
+
+my = (ao + 411) * (boo + bin),
+
+my = (ayo + 411) * Poo,
+
+m3 = ago * (bor — Pi),
+
+m4 = a1 * (d19 — boo).
+
+ms = (a0 + 401) * Pu,
+
+me = (aq — 499) * (boo + bow)
+
+m7 = (agi ~ 411) * (bio + Pi)-
+Thus, to multiply two 2 x 2 matrices, Strassen’s algorithm makes seven multipli-
+cations and 18 additions/subtractions, whereas the brute-force algorithm requires
+eight multiplications and four additions. These numbers should not lead us to
+multiplying 2 x 2 matrices by Strassen’s algorithm. Its importance stems from its
+asymptotic superiority as matrix order n goes to infinity.
+
+Let A and B be twon x n matrices where n is a power of 2. (Ifn is nota power
+
+of 2, matrices can be padded with rows and columns of zeros.) We can divide A,
+B, and their product C into four n/2 x n/2 submatrices each as follows:
+
+[ | - ie | Al \e | a”
+= * :
+
+Cio Cu Ato Ait Bio Bu
+It is not difficult to verify that one can treat these submatrices as numbers to
+get the correct product. For example, Cog can be computed either as Agg * Bog +
+Aoy * Big or as M; + My— Ms + M7 where M;, My, Ms, and M; are found by
+Strassen’s formulas, with the numbers replaced by the corresponding submatrices.
+If the seven products of n/2 x n/2 matrices are computed recursively by the same
+method, we have Strassen’s algorithm for matrix multiplication.
+
+Let us evaluate the asymptotic efficiency of this algorithm. If M(n) is the
+number of multiplications made by Strassen’s algorithm in multiplying two n x n
+matrices (where n isa power of 2), we get the following recurrence relation for it:
+
+M(n)=7M(n/2) forn>1, M()=1.
+
+Since n =2*,
+M2") =7M 2-4 =70 M2) = Puy
+=7TM(2t)...= 72k = 7,
+
+Since k = log, n,
+M(n) = 782" = p!027 = 92-807,
+
+which is smaller than n required by the brute-force algorithm.
+
+Since this savings in the number of multiplications was achieved at the expense
+of making extra additions, we must check the number of additions A(n) made by
+Strassen’s algorithm. To multiply two matrices of order n > 1, the algorithm needs
+to multiply seven matrices of order n/2 and make 18 additions/subtractions of
+matrices of size n/2; when n = 1, no additions are made since two numbers are

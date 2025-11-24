@@ -1,0 +1,27 @@
+Data Structures and Applications (BCS304) Module III
+
+Polynomials Polynomial
+Representation
+
+We should be able to represent any number of different polynomials as long as memory is available.
+In general, A polynomial is represented as :
+
+A(K)= amt X feet aox’
+where the aj are nonzero coefficients and the e' are nonnegative integer exponents such that
+em-1 >em-2)>.........0.......00+- >el>e020.
+
+We represent each term as a NODE containing coefficient and exponent fields, as well as a pointer
+to the next term. Assuming that the coefficients are integers, the type declarations are:
+
+struct polyNode {
+int coef;
+int expon;
+struct polyNode * link;
+b
+Typedef struct polyNode POLY;
+
+A polyNODE can be drawn as
+
+coef expon | link
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 5

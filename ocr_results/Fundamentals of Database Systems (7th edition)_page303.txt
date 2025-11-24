@@ -1,0 +1,49 @@
+8.6 The Tuple Relational Calculus 273
+
+Query 4. Make a list of project numbers for projects that involve an employee
+whose last name is ‘Smith’, either as a worker or as manager of the controlling
+department for the project.
+
+Q4: { p.Pnumber | PROJECT(p) AND (((Je)(4w)(EMPLOYEE(e)
+AND WORKS_ON(w) AND w.Pno=p.Pnumber
+AND e.Lname=‘Smith’ AND e.Ssn=w.Essn) )
+OR
+((Am)(Ad)(EMPLOYEE(m) AND DEPARTMENT(d)
+AND p.Dnum=d.Dnumber AND d.Mgr_ssn=m.Ssn
+AND m.Lname="Smith’)))}
+
+Compare this with the relational algebra version of this query in Section 8.5. The
+UNION operation in relational algebra can usually be substituted with an OR con-
+nective in relational calculus.
+
+8.6.5 Notation for Query Graphs
+
+In this section, we describe a notation that has been proposed to represent relational
+calculus queries that do not involve complex quantification in a graphical form.
+These types of queries are known as select-project-join queries because they only
+involve these three relational algebra operations. The notation may be expanded to
+more general queries, but we do not discuss these extensions here. This graphical
+representation of a query is called a query graph. Figure 8.13 shows the query graph
+for Q2. Relations in the query are represented by relation nodes, which are displayed
+as single circles. Constant values, typically from the query selection conditions, are
+represented by constant nodes, which are displayed as double circles or ovals. Selec-
+tion and join conditions are represented by the graph edges (the lines that connect
+the nodes), as shown in Figure 8.13. Finally, the attributes to be retrieved from each
+relation are displayed in square brackets above each relation.
+
+The query graph representation does not indicate a particular order to specify which
+operations to perform first, and is hence a more neutral representation of a select-
+project-join query than the query tree representation (see Section 8.3.5), where the
+order of execution is implicitly specified. There is only a single query graph corre-
+sponding to each query. Although some query optimization techniques were based
+on query graphs, it is now generally accepted that query trees are preferable because,
+
+[P.Pnumber,P.Dnum] [E.Lname,.address,E.Bdate]
+
+P.Dnum=D.Dnumber D.Mgr_ssn=E.Ssn
+©) ©
+
+P.Plocation='Stafford!’
+
+Figure 8.13
+Query graph for Q2.

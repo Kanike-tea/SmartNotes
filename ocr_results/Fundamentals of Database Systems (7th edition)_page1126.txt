@@ -1,0 +1,61 @@
+1096 Chapter 28 Data Mining Concepts
+
+Table 28.1 Some Representative Data Mining Tools
+
+Company Product Technique Platform Interface*
+
+AcknoSoft Kate Decision trees, case-based Windows Microsoft
+reasoning UNIX Access
+
+Angoss Knowledge SEEKER _ Decision trees, statistics | Windows ODBC
+
+Business Objects Business Miner Neural nets, machine Windows ODBC
+learning
+
+CrossZ QueryObject Statistical analysis, Windows MVS_ ODBC
+optimization algorithm UNIX
+
+Data Distilleries | Data Surveyor Comprehensive; can UNIX ODBC and
+mix different types of ODMG-
+data mining compliant
+
+DBMiner DBMiner OLAP analysis, associa- | Windows Microsoft 7.0
+
+Technology Inc. tions, classification, OLAP
+clustering algorithms
+
+IBM Intelligent Miner Classification, association UNIX (AIX) IBM DB2
+rules, predictive models
+
+Megaputer PolyAnalyst Symbolic knowledge Windows OS/2_ ODBC
+
+Intelligence acquisition, evolutionary Oracle DB2
+programming
+
+NCR Management Association rules Windows ODBC
+
+Discovery Tool (MDT)
+
+Purple Insight MineSet Decision trees, UNIX (Irix) Oracle
+
+association rules Sybase
+Informix
+
+SAS Enterprise Miner Decision trees, association UNIX (Solaris) ODBC
+rules, Nneural nets, Windows Oracle
+regression, clustering Macintosh AS/400
+
+*ODBC: Open Database Connectivity
+ODMG: Object Data Management Group
+
+and brought into service for mining operations as needed using OLAP (online ana-
+lytical processing) servers. Not only are multimedia databases growing, but, in
+addition, image storage and retrieval are slow operations. Also, the cost of second-
+ary storage is decreasing, so massive information storage will be feasible, even for
+small companies. Thus, data mining programs will have to deal with larger sets of
+data of more companies.
+
+Most of data mining software will use the ODBC standard to extract data from
+business databases; proprietary input formats can be expected to disappear.
+There is a definite need to include nonstandard data, including images and other
+multimedia data, as source data for data mining.

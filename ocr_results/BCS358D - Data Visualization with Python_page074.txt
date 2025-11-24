@@ -1,0 +1,53 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+7. Create a legend: This code creates a legend using Legend and LegendItem objects. It
+associates each legend item with a specific renderer (in this case, the line objects line1
+and “line2) and assigns labels for the legend items.
+
+8. Finally, show the plot in a web browser: The show function displays the Bokeh plot in a
+web browser, and you can interact with the plot, including zooming and panning, as well
+as seeing the legend and annotation. The plot is also saved in the HTML file specified
+
+earlier using output_file.
+PROGRAM
+
+from bokeh.plotting import figure, output_file, show
+from bokeh.models import Legend, LegendItem, Title, Span
+
+# Output to an HTML file
+output_file("line_graph_with_annotations.html")
+
+# Sample data
+
+x = [1, 2, 3, 4, 5]
+yl = (2, 5, 7, 2, 8]
+y2 = (1, 4, 5, 3, 6]
+
+# Create a Bokeh figure
+p = figure(title="Line Graph with Annotations and Legends",
+x_axis_label='X-axis', y_axis_label='Y-axis')
+
+# Add lines to the figure
+
+linel = p.line(x, yl, line_width=2, color="blue", legend_label="Line
+i")
+
+line2 = p.line(x, y2, line_width=2, color="red", legend_label="Line
+2")
+
+# Add annotations (vertical line and a text label)
+annotation = Span(location=3, dimension='width', line_color='black',
+line_width=8)
+
+# Add the annotation to the figure
+p.add_layout (annotation)
+
+# Create a legend
+
+legend = Legend (items=[
+LegendItem(label="Line 1", renderers=[linel]),
+LegendItem(label="Line 2", renderers=[line2]),
+
+])
+
+Dept. of CSE 59 GSSSIETW, Mysuru

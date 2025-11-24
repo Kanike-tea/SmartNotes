@@ -1,0 +1,5 @@
+{
+free(calendar[i].acDayName);
+free(calendar[i].acActivity);
+
+free(calendar);

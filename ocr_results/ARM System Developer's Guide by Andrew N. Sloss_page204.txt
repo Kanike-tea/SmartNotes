@@ -1,0 +1,52 @@
+SUMMARY
+
+6.7 Bit Manipulation 191
+
+loop
+3 loop body
+MOVS i, i, LSR#I
+BNE loop
+Looping Constructs
+
+= ARM requires two instructions to implement a counted loop: a subtract that sets flags
+and a conditional branch.
+
+= Unroll loops to improve loop performance. Do not overunroll because this will hurt
+cache performance. Unrolled loops may be inefficient for a small number of iterations.
+You can test for this case and only call the unrolled loop if the number of iterations is
+large.
+
+= Nested loops only require a single loop counter register, which can improve efficiency
+by freeing up registers for other uses.
+
+= ARM can implement negative and logarithmic indexed loops efficiently.
+
+6.7 Bit MANIPULATION
+
+Compressed file formats pack items at a bit granularity to maximize the data density.
+The items may be of a fixed width, such as a length field or version field, or they may be of
+a variable width, such as a Huffman coded symbol. Huffman codes are used in compression
+to associate with each symbol a code of bits. The code is shorter for common symbols and
+longer for rarer symbols.
+
+In this section we look at methods to handle a bitstream efficiently. First we look at
+fixed-width codes, then variable width codes. See Section 7.6 for common bit manipulation
+routines such as endianness and bit reversal.
+
+6.7.1 FIXED-WIDTH BIT-FIELD PACKING AND UNPACKING
+
+EXAMPLE
+
+6.22
+
+You can extract an unsigned bit-field from an arbitrary position in an ARM register in
+one cycle provided that you set up a mask in advance; otherwise you require two cycles.
+A signed bit-field always requires two cycles to unpack unless the bit-field lies at the top of
+a word (most significant bit of the bit-field is the most significant bit of the register). On
+the ARM we use logical operations and the barrel shifter to pack and unpack codes, as in
+the following examples.
+
+The assembly code shows how to unpack bits 4 to 15 of register r0, placing the result in rl.
+
+; unsigned unpack with mask set up in advance
+3 mask=0x00000FFF

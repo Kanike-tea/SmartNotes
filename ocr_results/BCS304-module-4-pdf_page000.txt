@@ -1,0 +1,53 @@
+BCS304 CEC
+
+MODULE 04: TREE(CONTINUATION)
+
+TREES(Cont..): Binary Search trees,
+Selection Trees, Forests, Representation of
+MODULE 04 Disjoint sets, Counting Binary Trees,
+
+GRAPHS: The Graph Abstract Data Types,
+Elementary Graph Operations
+
+4.1 BINARY SEARCH TREES:
+
+Definition: A binary search tree is a binary tree. It may be empty. If it is not empty, it satisfies
+the following properties:
+
+(1) Every element has a key, and no two elements have the same key, that is, the keys are
+unique.
+
+(2) The keys in a nonempty left subtree must be smaller than the key in the root of the subtree.
+
+(3) The keys in a nonempty right subtree must be larger than the key in the root of the subtree.
+(4) The left and right subtrees are also binary search trees.
+
+4.1.1 Searching A Binary Search Tree
+
+Suppose we wish to search for an element with a key. We begin at the root. If the root is NULL,
+the search tree contains no elements and the search is unsuccessful. Otherwise, we compare
+key with the key value in root. If key equals root's key value, then the search terminates
+successfully. If key is less than roofs key value, then no element in the right subtree can have
+
+a key value equal to key. Therefore, we search the left subtree of root. If key is larger than roofs
+key value, we search the right subtree of root.
+
+tree-pointer search(tree-pointer root, int key)
+{
+/* return a pointer to the node that contains key. If
+there is no such node, return NULL. */
+
+if (!root) return NULL;
+
+if (key == root->data) return root;
+
+if (key < root->data)
+
+return search(root->left-child, key);
+
+return search (root—>right—child, key);
+
+)
+
+ee
+Recursive search of a binary search tree

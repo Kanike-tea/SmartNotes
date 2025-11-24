@@ -1,0 +1,190 @@
+1216 = Index
+
+ALL option, SQL, 194-195, 210
+All-key relation, 491, 493
+Allocation of file blocks on a disk, 564
+ALTER command, SQL, 233-234
+ALTER TABLE command, SQL, 180
+Analysis, RDB design by, 503
+Analytical data store (ADS), 1105
+Analytical operations, spatial databases,
+988
+Anchor texts, 1027
+AND/OR/NOT operators
+Boolean conditions, 270-271
+quantifier transformations using, 274
+Annotations, XML language, 440
+Anomalies
+deletion, 467
+insertion, 465-466
+modification, 467
+RDB design and, 465-467
+tuple redundant information
+avoidance using, 465-467
+update, 465-467
+Anti-join (AJ) operator, 658-660,
+677-678, 681, 719-720
+Apache systems
+‘Apache Cassandra, 900
+Apache Giraph, 943
+Apache Hive, 933-936
+Apache Pig, 932-933
+Apache Tez, 943
+Apache Zookeeper, 900
+Big data technologies for, 932-936,
+943-944
+API (Application programming
+interface)
+client-side program calls from, 49
+data mining, 1095
+database programming and, 312, 326
+library of functions, 312, 326
+Application-based (semantic)
+constraints, 158
+Application development environments,
+47
+Application programmers, 16
+Application programs, 6, 313
+Application server, 44, 50
+ApplicationMaster (AM), YARN, 942
+Apriori algorithm, 1075-1076
+Arbitrary number replacement symbol
+(%), 195-196
+Architecture
+automated storage tiering (AST), 591
+centralized DBMS, 46-47
+client/server, 47-49
+data independence and, 37-38
+database systems and, 46-51
+distributed databases (DDBs), 868-875
+federated database (FDBS) schema,
+871-872
+Fibre Channel over Ethernet (FCoE),
+590-591
+Fibre Channel over IP (FCIP), 590
+
+Internet SCSI (iSCSI), 590
+label security, 1156-1157
+mappings, 37
+network-attached storage (NAS),
+589-590
+n-tier for Web applications, 49-51
+parallel database, 683
+parallel versus distributed, 869
+pure distributed databases, 869-871
+shared-disk, 683
+shared-memory, 683
+shared-nothing, 684
+storage area networks (SANs),
+588-589
+storage, 588-592
+three-schema, 36-38
+three-tier client/server, 49-51, 872-875
+two-tier client-server, 49
+Web applications, 49-51
+YARN (Hadoop v2), 940-942
+ARIES recovery algorithm, 827-831
+Arithmetic operations, SQL query
+recovery and, 196-197
+Armstrong's axioms, 506-509
+Array constructor, 369
+Array processing, Oracle, 735-736
+Arrays
+associative, 350
+brackets (( ]) for, 383
+dynamic, 345-346
+numeric, 349
+PHP programming, 345-346, 348-350
+UDT elements, 383
+AS option, SQL, 196
+Assertions
+constraint conditions in parentheses
+() for, 226
+CREATE ASSERTION statement,
+225-226
+declarative, 225-227
+relation schema and, 156
+SQL constraint specification, 158, 165,
+225-226
+Assignment operations (¢), relational
+algebra, 245
+Association rules
+apriori algorithm, 1075-1076
+complications with, 1084
+confidence of, 1074
+data mining, 1073-1084
+EP-growth algorithm, 1077-1080
+frequent-pattern (FP) tree, 1077-1080
+hierarchies and, 1081-1082
+market-basket data model, 1073-1075
+multidimensional associations,
+1082-1083
+negative associations, 1082-1084
+partition algorithm, 1081
+sampling algorithm, 1076-1077
+support for, 1074
+Association, semantic modeling process,
+131-132
+
+Associations, UML class diagrams 87-88
+Associative arrays, PHP, 350
+Asterisk (*)
+all attribute specification, 193
+tuple rows of query results, 218
+Asymmetric key encryption algorithms,
+1151
+Atom constructor, 368, 369
+Atomic (single-valued) types, 368
+Atomic literals, 388
+Atomic objects, ODMG models, 388,
+395-398
+Atomic values
+domains, 151
+first normal form (INF), 477-478
+tuples, 155
+Atomicity property, transactions, 14, 157
+Atoms
+domain relational calculus formulas,
+277-278
+tuple relational calculus formulas,
+270-271
+truth value of, 270, 277
+Attribute data, 989
+Attribute-defined specialization, 114, 126
+Attribute preservation, RDB
+decomposition condition, 513
+Attribute versioning, 982-984
+Attributes. See also Entities
+ambiguous, prevention of, 191-192
+asterisk (*) for, 193
+clarity of in RDB design, 461-465
+complex, 66-67, 441
+composite, 65-66, 441
+conceptual data models, 33
+constraints and defaults in SQL,
+184-186
+data types in SQL, 182-184
+default values, 184-186
+defined, 63
+defining, 114
+degree (arity) of, 152
+derived, 66
+discriminating, 299-300
+EER-to-relational mapping, 298-300
+entities and, 63-65
+ER models, 63-70
+ER-to-relational mapping, 295-296
+functional dependency of, 472-473
+grouping, 219, 260-261
+HTML tags, 430
+key (uniqueness constraint), 68-69
+multiple keys for, 631-632
+multivalued, 66, 295-296, 481
+normal form keys, 477
+NULL values, 66, 184-186
+ODMG model objects, 396
+ordered indexes, 631-632
+partial key, 79
+prime/nonprime, 477
+project, 189
+query retrieval in SQL, 191-192

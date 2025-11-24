@@ -1,0 +1,54 @@
+Database Management System [BCS403]
+
+= The drawback is having an extra relation, and requiring an extra join operation when
+
+combining related tuples from the tables.
+
+Step 4: Mapping of Binary 1:N Relationship Types
+
+« For each regular binary 1:N relationship type R, identify the relation S that represents the
+participating entity type at the N-side of the relationship type.
+
+= Include as foreign key in S the primary key of the relation 7 that represents the other entity
+
+type participating in R
+
+* Include any simple attributes (or simple components of composite attributes),of the 1:N
+relationship type as attributes of S
+
+= In our example, we now map the 1:N relationship types WORKS_FOR, CONTROLS, and
+SUPERVISION
+
+« For WORKS _FOR we include the primary key Dnumber of the DEPARTMENT relation as
+foreign key in the EMPLOYEE relation and call it Dno.
+
+* For SUPERVISION we include the primary key of the EMPLOYEE relation as foreign key
+in the EMPLOYEE relation itself—because the relationship is recursive—and call it
+Super_ssn.
+
+= The CONTROLS relationship is mapped to the foreign key attribute Dnum of PROJECT,
+which references the primary key Dnumber of the DEPARTMENT relation.
+
+Step 5: Mapping of Binary M:N Relationship Types
+
+= For each binary M:N relationship type
++ Create a new relation S
++ Include primary key of participating entity types as foreign key attributes in S
++ Include any simple attributes of M:N relationship type
+
+= In our example, we map the M:N relationship type WORKS_ON by creating the relation
+WORKS ON.We include the primary keys of the PROJECT and EMPLOYEE relations as
+foreign keys in WORKS _ON and rename them Pno and Essn, respectively.
+
+= We also include an attribute Hours in WORKS_ON to represent the Hours attribute of the
+relationship type.
+
+« The primary key of the WORKS_ON relation is the combination of the foreign key
+
+attributes {Essn, Pno}.
+
+WORKS ON
+
+Essn | Pno | Hours
+
+https://vtucode.in Page 41

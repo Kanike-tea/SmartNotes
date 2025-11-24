@@ -1,0 +1,84 @@
+while(a!=head1 && b!=head2)
+
+while(1)
+{
+
+if(a->xexp == b->xexp && a->yexp == b->yexp && a->zexp == b->zexp)
+
+{
+
+coef = a->coef + b->coef;
+
+head3 = attach(coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+
+b =b->link;
+
+break;
+} //if ends here
+
+if(a->xexp!=0 Il b->xexp!=0)
+
+switch(COMPARE(a->xexp, b->xexp))
+
+{
+
+case -1:
+
+case 0:
+
+case |:
+
+head3 = attach(b->coef, b->xexp, b->yexp, b->zexp, head3);
+b=b->link;
+break;
+
+if(a->yexp > b->yexp)
+
+{
+head3 = attach(a->coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+
+break;
+
+else if(a->yexp < b->yexp)
+
+head3 = attach(b->coef, b->xexp, b->yexp, b->zexp, head3);
+
+b=b->link;
+break;
+
+}
+
+else if(a->zexp > b->zexp)
+
+head3 = attach(a->coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+break;
+
+else if(a->zexp < b->zexp)
+
+head3 = attach(b->coef, b->xexp, b->yexp, b->zexp, head3);
+b =b->link;
+break;
+
+head3 = attach(a->coef,a->xexp,a->yexp,a->zexp,head3);
+a=a->link;
+break;
+
+} //switch ends here
+
+break;
+} //if ends here
+
+if(a->yexp!=0 Il b->yexp!=0)
+
+{
+
+switch(COMPARE(a->yexp, b->yexp))
+
+{
+
+case -1: head3 = attach(b->coef, b->xexp, b->yexp, b->zexp, head3);
+
+43

@@ -1,0 +1,58 @@
+440
+
+Chapter 13. XML: Extensible Markup Language
+
+. Schema descriptions and XML namespaces. It is necessary to identify the
+
+specific set of XML schema language elements (tags) being used by specify-
+ing a file stored at a Web site location. The second line in Figure 13.5 speci-
+fies the file used in this example, which is http://www.w3.org/2001/XMLSchema.
+This is a commonly used standard for XML schema commands. Each such
+definition is called an XML namespace because it defines the set of com-
+mands (names) that can be used. The file name is assigned to the variable xsd
+(XML schema description) using the attribute xmins (XML namespace), and
+this variable is used as a prefix to all XML schema commands (tag names).
+For example, in Figure 13.5, when we write xsd:element or xsd:sequence, we
+are referring to the definitions of the element and sequence tags as defined in
+the file http://www.w3.org/2001/XMLSchema.
+
+. Annotations, documentation, and language used. The next couple of lines
+
+in Figure 13.5 illustrate the XML schema elements (tags) xsd:annotation and
+xsd:documentation, which are used for providing comments and other
+descriptions in the XML document. The attribute xml:lang of the
+xsd:documentation element specifies the language being used, where en stands
+for the English language.
+
+. Elements and types. Next, we specify the root element of our XML schema.
+
+In XML schema, the name attribute of the xsd:element tag specifies the ele-
+ment name, which is called company for the root element in our example (see
+Figure 13.5). The structure of the company root element can then be speci-
+fied, which in our example is xsd:complexType. This is further specified to be
+a sequence of departments, employees, and projects using the xsd:sequence
+structure of XML schema. It is important to note here that this is not the
+only way to specify an XML schema for the COMPANY database. We will
+discuss other options in Section 13.6.
+
+. First-level elements in the COMPANY database. Next, we specify the three
+
+first-level elements under the company root element in Figure 13.5. These
+elements are named employee, department, and project, and each is specified
+in an xsd:element tag. Notice that if a tag has only attributes and no further
+subelements or data within it, it can be ended with the backslash symbol (/>)
+directly instead of having a separate matching end tag. These are called
+empty elements; examples are the xsd:element elements named department
+and project in Figure 13.5.
+
+. Specifying element type and minimum and maximum occurrences. In
+
+XML schema, the attributes type, minOccurs, and maxOccurs in the xsd:element
+tag specify the type and multiplicity of each element in any document that
+conforms to the schema specifications. If we specify a type attribute in an
+xsd:element, the structure of the element must be described separately, typi-
+cally using the xsd:complexType element of XML schema. This is illustrated
+by the employee, department, and project elements in Figure 13.5. On the other
+hand, if no type attribute is specified, the element structure can be defined
+directly following the tag, as illustrated by the company root element in Fig-
+ure 13.5. The minOccurs and maxOccurs tags are used for specifying lower

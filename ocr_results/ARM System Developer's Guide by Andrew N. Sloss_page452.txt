@@ -1,0 +1,58 @@
+12.5 Flushing and Cleaning Cache Memory 439
+
+Table 12.8 Commands to clean and flush a cache line referenced by its location in main memory.
+
+Command
+
+MCR instruction Core support
+
+Flush instruction cache line MCR  pl5,0, Rd, c7,c5,1 = ARM920T, ARM922T, ARM926EJ-S,
+
+ARM946E-S, ARM1022E,
+ARM1026EJ-S, XScale
+
+Flush data cache line MCR p15, 0, Rd, c7,c6,1 = ARM920T, ARM922T, ARM926EJ-S,
+
+ARM946E-S, ARM1022E,
+ARM1026EJ-S, StrongARM, XScale
+
+Clean data cache line MCR p15, 0, Rd, c7,cl0,1 ARM920T, ARM922T, ARM926EJ-S,
+
+ARM946E-S, ARM1022E,
+ARM1026EJ-S, StrongARM, XScale
+
+Clean and flush data cache line MCR p15, 0,Rd,c7,cl4,1 ©ARM920T, ARM922T, ARM926EJ-S,
+
+ARM946E-S, ARM1022E,
+ARM1026EJ-S, XScale
+
+Two of the commands flush a single cache line, one flushes the instruction cache, and the
+other flushes the data cache. There are also two commands to clean the data cache: one that
+cleans a single cache line and another that cleans and flushes a single cache line.
+
+When using these instructions the value in core register Rd is the same for all four
+commands within the same processor, and its contents must be the value needed to set the
+CP15:c7 register. However, the format of the bit values in the CP15:c7 register vary slightly
+from processor to processor. Figure 12.12 shows the register format for cores that support
+cleaning and flushing a cache line by its modified virtual address if the core has an MMU,
+or its physical address if it has an MPU.
+
+We use the four commands to create six routines, which clean and/or flush the cache
+lines in the cache that represent a region of memory:
+
+= flushICacheRegion flushes the cache lines from the I-cache representing a region of
+main memory.
+
+=~ flushDCacheRegion flushes the cache lines from the D-cache representing a region of
+main memory.
+
+= ~cleanDCacheRegion cleans the cache lines from the D-cache representing a region of
+main memory.
+
+=~ cleanFlushDcacheRegion cleans and flushes the cache lines from the D-cache
+representing a region of main memory.
+
+= flushCacheRegion flushes the cache lines representing a region of main memory from
+both the I-cache and D-cache.
+
+=~ cleanFlushCacheRegion cleans and flushes the D-cache and then flushes the I-cache.

@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+4. Embedded System Hardware
+
+Embedded systems can control many different devices, from small sensors found on a
+
+production line, to the real-time control systems used on a NASA space probe.
+
+ROM
+
+[- SRAM
+FLASHROM
+
+Memory controller
+[- DRAM
+Interrupt controller
+
+1 External bus
+physical
+driver
+
+Console (ARTs
+
+Fig 4.1: An example of an ARM-based embedded device, a microcontroller.
+
+Figure 5.1 shows a typical embedded device based on an ARM core. Each box represents a
+feature or function. The lines connecting the boxes are the buses carrying data. This can be
+
+separated device into four main hardware components:
+
+ARM processor: It controls the embedded device. An ARM processor comprises a core (the
+execution engine that processes instructions and manipulates data) and the surrounding
+components that interface it with a bus. These components can include memory management
+
+and caches.
+
+Controllers: It coordinates with important functional blocks of the system. Two commonly
+
+found controllers are interrupt and memory controllers.
+
+Peripherals provide all the input-output capability external to the chip and are responsible for
+
+the uniqueness of the embedded device.
+
+Bus: Is used to communicate between different parts of the device.
+
+Dept. of ECE, GSSSIETW Page 5

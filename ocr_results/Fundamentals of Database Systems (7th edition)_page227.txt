@@ -1,0 +1,55 @@
+6.3 Basic Retrieval Queries in SQL
+
+Query 14. Retrieve all employees in department 5 whose salary is between
+$30,000 and $40,000.
+
+Q14: SELECT *
+FROM EMPLOYEE
+WHERE (Salary BETWEEN 30000 AND 40000) AND Dno = 5;
+
+The condition (Salary BETWEEN 30000 AND 40000) in Q14 is equivalent to the con-
+dition (Salary >= 30000) AND (Salary <= 40000)).
+
+6.3.6 Ordering of Query Results
+
+SQL allows the user to order the tuples in the result of a query by the values of one
+or more of the attributes that appear in the query result, by using the ORDER BY
+clause. This is illustrated by Query 15.
+
+Query 15. Retrieve a list of employees and the projects they are working on,
+ordered by department and, within each department, ordered alphabetically by
+last name, then first name.
+
+Q15: SELECT —_D.Dname, E.Lname, E.Fname, P.Pname
+FROM DEPARTMENT AS D, EMPLOYEE AS E, WORKS_ON AS W,
+PROJECT AS P
+WHERE —_D.Dnumber = E.Dno AND E.Ssn = W.Essn AND W.Pno =
+P.Pnumber
+ORDER BY D.Dname, E.Lname, E.Fname;
+
+The default order is in ascending order of values. We can specify the keyword DESC
+if we want to see the result in a descending order of values. The keyword ASC can be
+used to specify ascending order explicitly. For example, if we want descending
+alphabetical order on Dname and ascending order on Lname, Fname, the ORDER BY
+clause of Q15 can be written as
+
+ORDER BY D.Dname DESC, E.Lname ASC, E.Fname ASC
+
+6.3.7 Discussion and Summary of
+Basic SQL Retrieval Queries
+
+A simple retrieval query in SQL can consist of up to four clauses, but only the first
+two—SELECT and FROM—are mandatory. The clauses are specified in the follow-
+
+ing order, with the clauses between square brackets [ ... ] being optional:
+SELECT <attribute list>
+FROM <table list>
+[ WHERE <condition> ]
+
+[ORDERBY <attribute list> ];
+
+The SELECT clause lists the attributes to be retrieved, and the FROM clause
+specifies all relations (tables) needed in the simple query. The WHERE clause
+identifies the conditions for selecting the tuples from these relations, including
+
+197

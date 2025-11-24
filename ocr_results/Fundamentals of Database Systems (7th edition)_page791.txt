@@ -1,0 +1,53 @@
+20.4 Characterizing Schedules Based on Recoverability
+
+20.4.2 Characterizing Schedules Based on Recoverability
+
+For some schedules it is easy to recover from transaction and system failures,
+whereas for other schedules the recovery process can be quite involved. In some
+cases, it is even not possible to recover correctly after a failure. Hence, it is impor-
+tant to characterize the types of schedules for which recovery is possible, as well as
+those for which recovery is relatively simple. These characterizations do not actually
+provide the recovery algorithm; they only attempt to theoretically characterize the
+different types of schedules.
+
+First, we would like to ensure that, once a transaction T is committed, it should
+never be necessary to roll back T. This ensures that the durability property of
+transactions is not violated (see Section 20.3). The schedules that theoretically
+meet this criterion are called recoverable schedules. A schedule where a committed
+transaction may have to be rolled back during recovery is called nonrecoverable
+and hence should not be permitted by the DBMS. The condition for a recoverable
+schedule is as follows: A schedule S is recoverable if no transaction T in § commits
+until all transactions T’ that have written some item X that T reads have commit-
+ted. A transaction T reads from transaction T’ in a schedule S if some item X is
+first written by T’ and later read by T. In addition, T’ should not have been aborted
+before T reads item X, and there should be no transactions that write X after T’
+writes it and before T reads it (unless those transactions, if any, have aborted
+before T reads X).
+
+Some recoverable schedules may require a complex recovery process, as we shall
+see, but if sufficient information is kept (in the log), a recovery algorithm can be
+devised for any recoverable schedule. The (partial) schedules S, and S, from the
+preceding section are both recoverable, since they satisfy the above definition. Con-
+sider the schedule S,’ given below, which is the same as schedule S, except that two
+commit operations have been added to S,:
+
+Sa’ r4(X)s ro(X)s wi(X)s r1(Y)s w2(X)s 023 w1(¥)5 c15
+
+S,’ is recoverable, even though it suffers from the lost update problem; this problem
+is handled by serializability theory (see Section 20.5). However, consider the two
+(partial) schedules S, and S, that follow:
+
+Sez ry(X)s wi (X)s r2(X)s (Vs wo(X)s €25 ays
+Sas r1(X)s w(X)5 72(X)3 (Vs wo(X)3 wy (Ys c15 C5
+Se ry(X)s wi(X)5 r2(X)s m(Y)s wo(X)s wi (V)s as a2
+
+S. is not recoverable because T, reads item X from Tj, but T; commits before T,
+commits. The problem occurs if T; aborts after the c, operation in S,; then the value
+of X that T, read is no longer valid and T, must be aborted after it is committed,
+leading to a schedule that is not recoverable. For the schedule to be recoverable, the
+Cy operation in S$, must be postponed until after T, commits, as shown in Sy. If T;
+aborts instead of committing, then T, should also abort as shown in S,, because the
+value of X it read is no longer valid. In S,, aborting T is acceptable since it has not
+committed yet, which is not the case for the nonrecoverable schedule S..
+
+761

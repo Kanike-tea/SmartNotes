@@ -1,0 +1,73 @@
+Data Structures and Applications/BCS304 Module 1
+
+char symbol,item;
+
+push('#');
+
+for (i=0;infix[i]!="0'si++4)
+
+{
+
+}
+
+while(top>0)
+
+{
+
+postfix[p]="\0';
+
+}
+
+symbol=infix[i];
+switch(symbol)
+
+case '(': push(symbol);
+break;
+
+case ')':item=pop();
+
+while(item!="(')
+
+{
+postfix[p++]=item;
+item=pop();
+
+}
+
+break;
+
+case '+':
+
+case '-':
+
+case '*':
+
+case '/':
+
+case '%':while(precd(s[top])>=precd(symbol))
+
+{
+item=pop();
+postfix[p++]=item;
+
+push(symbol);
+break;
+
+case '4': while(precd(s[top])>precd(symbol))
+{
+
+item=pop();
+
+postfix[p++]=item;
+
+push(symbol);
+
+break;
+
+default: postfix[p++]=symbol;
+break;
+
+item=pop();
+postfix[p++]=item;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 37

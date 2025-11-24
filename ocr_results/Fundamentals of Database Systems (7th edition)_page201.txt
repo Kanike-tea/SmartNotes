@@ -1,0 +1,67 @@
+5.12.
+
+5.13.
+
+violated by each operation, if any, and the different ways of enforcing
+these constraints.
+
+a. Insert <‘Robert’, ‘P, ‘Scott’, 943775543’, ‘1972-06-21’, ‘2365 Newcastle
+Rd, Bellaire, TX’, M, 58000, ‘888665555’, 1> into EMPLOYEE.
+
+. Insert <ProductA’, 4, ‘Bellaire’, 2> into PROJECT.
+
+. Insert <‘Production’, 4, ‘943775543’, ‘2007-10-01’> into DEPARTMENT.
+
+. Insert <“677678989’, NULL, ‘40.0’> into WORKS_ON.
+
+. Insert <“453453453’, John’, ‘M’, ‘1990-12-12’, ‘spouse’> into DEPENDENT.
+Delete the WORKS_ON tuples with Essn = “333445555”.
+
+. Delete the EMPLOYEE tuple with Ssn = ‘987654321’.
+
+. Delete the PROJECT tuple with Pname = ‘ProductX’.
+
+i. Modify the Mgr_ssn and Mgr_start_date of the DEPARTMENT tuple with
+Dnumber = 5 to ‘123456789’ and ‘2007-10-01’, respectively.
+
+j. Modify the Super_ssn attribute of the EMPLOYEE tuple with Ssn =
+“999887777 to 943775543".
+
+k. Modify the Hours attribute of the WORKS_ON tuple with Essn =
+“999887777 and Pno = 10 to ‘5.0’.
+
+-~ pao:
+
+Consider the AIRLINE relational database schema shown in Figure 5.8,
+which describes a database for airline flight information. Each FLIGHT is
+identified by a Flight_number, and consists of one or more FLIGHT_LEGs
+with Leg_numbers 1, 2, 3, and so on. Each FLIGHT_LEG has scheduled
+arrival and departure times, airports, and one or more LEG_INSTANCEs—
+one for each Date on which the flight travels. FAREs are kept for each
+FLIGHT. For each FLIGHT_LEG instance, SEAT_RESERVATIONs are kept, as
+are the AIRPLANE used on the leg and the actual arrival and departure times
+and airports. An AIRPLANE is identified by an Airplane_id and is of a particu-
+Jar AIRPLANE_TYPE. CAN_LAND relates AIRPLANE_TYPEs to the AIRPORTs
+at which they can land. An AIRPORT is identified by an Airport_code. Con-
+sider an update for the AIRLINE database to enter a reservation on a particu-
+lar flight or flight leg on a given date.
+
+a. Give the operations for this update.
+
+b. What types of constraints would you expect to check?
+
+c. Which of these constraints are key, entity integrity, and referential integ-
+rity constraints, and which are not?
+
+d. Specify all the referential integrity constraints that hold on the schema
+shown in Figure 5.8.
+
+Consider the relation CLASS(Course#, Univ_Section#, Instructor_name,
+Semester, Building_code, Room#, Time_period, Weekdays, Credit_hours). This rep-
+resents classes taught in a university, with unique Univ_section#s. Identify what
+you think should be various candidate keys, and write in your own words the
+conditions or assumptions under which each candidate key would be valid.
+
+Exercises
+
+171

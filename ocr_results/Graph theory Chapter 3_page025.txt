@@ -1,0 +1,35 @@
+178 3: Trees
+
+PRS Eescon anor
+Answers
+
+NKZUZ
+
+Figure 3.28
+
+2 @ Gedges (fi) 9 edges. A
+
+3.3.1 Depth-First Search and Breadth-First Search
+
+In this subsection, we present two methods of finding a spanning tree of a connected graph.
+The first of these is known as the depth-first search (DFS) and the second i is known as the
+breadth-first search (BFS).
+
+DFS Algorithm
+
+Let G = (V, E) be a connected graph of order n, with vertices labeled v;, V2, +9 Yn in some
+specified order. The DFS algorithm specifies the following steps for determining a spanning
+tree T of G wherein the variable v stands for the vertex being considered.
+
+Step 1. Assign the first vertex v; to the variable v and initialize T as the tree consisting of just
+this vertex. (The vertex v; will turn out tobe the root of T aie
+
+Step 2. Select the smallest subscript k for 2 < k < n, such that 0 md €E aad vg has 00%
+already been included in T.
+
+If no such subscript.is found, then go to Step 3. Otherwise, perform the following:
+(i) Attach the edge {v, v;} to T
+
+(ii) Assign vy; to v
+
+(iii) Return to Step 2.

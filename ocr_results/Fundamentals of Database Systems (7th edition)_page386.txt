@@ -1,0 +1,52 @@
+356
+
+Chapter 11 Web Database Programming Using PHP
+
+Lines 10 through 12 in Figure 11.6 illustrate how this may be done. In this exam-
+ple, we omitted the code for creating the form and collecting the data, which can
+be a variation of the example in Figure 11.1. We assume that the user entered valid
+values in the input parameters called emp_name, emp_job, and emp_dno. These
+would be accessible via the PHP auto-global array $_PosT as discussed at the end
+of Section 11.2.4.
+
+In the SQL INSERT command shown on lines 11 and 12 in Figure 11.6, the array
+entries $POST[ 'emp_name'], $POST['emp_job'], and $POST[ 'emp_dno'] will
+hold the values collected from the user through the input form of HTML. These are
+then inserted as a new employee record in the EMPLOYEE table.
+
+This example also illustrates another feature of PEAR DB. It is common in some
+applications to create a unique record identifier for each new record inserted into
+the database.'
+
+PHP has a function $d—>next ID to create a sequence of unique values for a partic-
+ular table. In our example, the field Emp_id of the EMPLOYEE table (see Figure 11.6,
+line 4) is created for this purpose. Line 10 shows how to retrieve the next unique
+value in the sequence for the EMPLOYEE table and insert it as part of the new record
+in lines 11 and 12.
+
+The code for insert in lines 10 to 12 in Figure 11.6 may allow malicious strings to be
+entered that can alter the INSERT command. A safer way to do inserts and other
+queries is through the use of placeholders (specified by the ? symbol). An example
+is illustrated in lines 13 to 15, where another record is to be inserted. In this form of
+the $d->query() function, there are two arguments. The first argument is the SQL
+statement, with one or more ? symbols (placeholders). The second argument is an
+array, whose element values will be used to replace the placeholders in the order
+they are specified (see lines 13 to 15 in Figure 11.6).
+
+11.3.3 Retrieval Queries from Database Tables
+
+We now give three examples of retrieval queries through PHP, shown in Fig-
+ure 11.7. The first few lines 0 to 3 establish a database connection $d and set the
+error handling to the default, as we discussed in the previous section. The first
+query (lines 4 to 7) retrieves the name and department number of all employee
+records. The query variable $q is used to refer to the query result. A while-loop to
+go over each rowin the result is shown in lines 5 to 7. The function $q->fetchRow( )
+in line 5 serves to retrieve the next record in the query result and to control the
+loop. The looping starts at the first record.
+
+The second query example is shown in lines 8 to 13 and illustrates a dynamic
+query. In this query, the conditions for selection of rows are based on values
+input by the user. Here we want to retrieve the names of employees who have a
+
+'This would be similar to the system-generated OID discussed in Chapter 12 for object and object-rela-
+tional database systems.

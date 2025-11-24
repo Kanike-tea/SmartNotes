@@ -1,0 +1,33 @@
+Microcontrollers-BCS402
+
+ARM Processor Fundamentals
+
+1. ARM Core Data Flow Model
+
+Figure | show the ARM core data floe model in which the arrows represent the flow of data,
+the lines represent the buses, and the boxes represent either an operation unit or a storage
+
+area.
+
+Address register
+
+|_____.| Incrementer
+
+Address
+
+Fig 1: ARM Core Data Flow Model
+The figure shows not only the flow of data but also the abstract components that make up an
+ARM core.
+Data enters the processor core through the Data bus. The data may be an instruction to
+execute or a data item. Figure | shows a Von Neumann implementation of the ARM—data
+items and instructions share the same bus. In contrast, Harvard implementations of the ARM
+use two different buses.
+The instruction decoder translates instructions before they are executed. Each instruction
+executed belongs to a particular instruction set. The ARM processor uses load-store
+architecture. This means it has two instruction types for transferring data in and out of the
+processor:
+Load instructions copy data from memory to registers in the core
+
+Store instructions copy data from registers to memory.
+
+Dept. of ECE, GSSSIETW Page 15

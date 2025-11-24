@@ -1,0 +1,40 @@
+9.2 Interrupts 325
+
+= Fast Interrupt Requests are normally reserved for a single interrupt source that requires
+a fast response time—for example, direct memory access specifically used to move
+blocks of memory. Thus, in an embedded operating system design, the FIQ exception
+is used for a specific application, leaving the IRQ exception for more general operating
+system activities.
+
+9.2.2 INTERRUPT LATENCY
+
+Interrupt-driven embedded systems have to fight a battle with interrupt latency—the inter-
+val of time from an external interrupt request signal being raised to the first fetch of an
+instruction of a specific interrupt service routine (ISR).
+
+Interrupt latency depends on a combination of hardware and software. System architects
+must balance the system design to handle multiple simultaneous interrupt sources and
+minimize interrupt latency. If the interrupts are not handled in a timely manner, then the
+system will exhibit slow response times.
+
+Software handlers have two main methods to minimize interrupt latency. The first
+method is to use a nested interrupt handler, which allows further interrupts to occur
+even when currently servicing an existing interrupt (see Figure 9.3). This is achieved by
+reenabling the interrupts as soon as the interrupt source has been serviced (so it won’t
+generate more interrupts) but before the interrupt handling is complete. Once a nested
+interrupt has been serviced, then control is relinquished to the original interrupt service
+routine.
+
+---> Interrupt handler
+
+Normal execution Interrupt enabled
+
+Interrupt (1)
+
+Interrupt (2)
+
+Interrupt (3)
+
+Return
+
+Figure 9.3 A three-level nested interrupt.

@@ -1,0 +1,52 @@
+24.5 Column-Based or Wide Column NOSQL Systems
+
+part of the Hbase data model (this is similar to the concept of attribute versioning in
+temporal databases, which we shall discuss in Section 26.2). As with other NOSQL
+systems, unique keys are associated with stored data items for fast access, but the
+keys identify cells in the storage system. Because the focus is on high performance
+when storing huge amounts of data, the data model includes some storage-related
+concepts. We discuss the Hbase data modeling concepts and define the terminol-
+ogy next. It is important to note that the use of the words table, row, and column is
+not identical to their use in relational databases, but the uses are related.
+
+= Tables and Rows. Data in Hbase is stored in tables, and each table has a
+table name. Data in a table is stored as self-describing rows. Each row has a
+unique row key, and row keys are strings that must have the property that
+they can be lexicographically ordered, so characters that do not have a lexi-
+cographic order in the character set cannot be used as part of a row key.
+
+= Column Families, Column Qualifiers, and Columns. A table is associated
+with one or more column families. Each column family will have a name,
+and the column families associated with a table must be specified when the
+table is created and cannot be changed later. Figure 24.3(a) shows how a table
+may be created; the table name is followed by the names of the column fami-
+lies associated with the table. When the data is loaded into a table, each col-
+umn family can be associated with many column qualifiers, but the column
+qualifiers are not specified as part of creating a table. So the column qualifiers
+make the model a self-describing data model because the qualifiers can be
+dynamically specified as new rows are created and inserted into the table. A
+column is specified by a combination of ColumnFamily:Column Qualifier.
+Basically, column families are a way of grouping together related columns
+(attributes in relational terminology) for storage purposes, except that the
+column qualifier names are not specified during table creation. Rather, they
+are specified when the data is created and stored in rows, so the data is self-
+describing since any column qualifier name can be used in a new row of data
+(see Figure 24.3(b)). However, it is important that the application program-
+mers know which column qualifiers belong to each column family, even
+though they have the flexibility to create new column qualifiers on the fly
+when new data rows are created. The concept of column family is somewhat
+similar to vertical partitioning (see Section 23.2), because columns (attri-
+butes) that are accessed together because they belong to the same column
+family are stored in the same files. Each column family of a table is stored in
+its own files using the HDFS file system.
+
+= Versions and Timestamps. Hbase can keep several versions of a data item,
+along with the timestamp associated with each version. The timestamp is a
+long integer number that represents the system time when the version was
+created, so newer versions have larger timestamp values. Hbase uses mid-
+night ‘January 1, 1970 UTC’ as timestamp value zero, and uses a long integer
+that measures the number of milliseconds since that time as the system
+timestamp value (this is similar to the value returned by the Java utility
+java.util.Date.getTime() and is also used in MongoDB). It is also possible for
+
+901

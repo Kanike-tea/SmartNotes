@@ -1,0 +1,56 @@
+Module 2
+
+Combinational Logic
+Introduction
+
+A combinational circuit consists of logic gates whose outputs at any time are determined from only the
+present combination of inputs. A combinational circuit performs an operation that can be specified
+logically by a set of Boolean functions.
+
+Combinational Circuits
+
+A combinational circuit consists of an interconnection of logic gates. Combinational logic gates react to
+the values of the signals at their inputs and produce the value of the output signal, transforming binary
+information from the given input data to a required output data. A block diagram of a combinational
+circuit is shown in Fig. The n input binary variables come from an external source; the m output variables
+are produced by the internal combinational logic circuit and go to an external destination.
+
+Combinational
+‘ombinational >
+ninputs ——> m outputs
+; circuit ;
+—>| —-
+
+Block Diagram of Combinational Circuit
+
+For n input variables, there are 2n possible combinations of the binary inputs. For each possible input
+combination, there is one possible value for each output variable. Thus, a combinational circuit can be
+specified with a truth table that lists the output values for each combination of input variables. A
+combinational circuit also can be described by m Boolean functions, one for each output variable. Each
+output function is expressed in terms of the n input variables.
+
+There are several combinational circuits that are employed extensively in the design of digital systems.
+These circuits are available in integrated circuits and are classified as standard components. They
+perform specific digital functions commonly needed in the design of digital systems.
+
+Examples of Combinational Logic Circuits: Adders, Subtractors, Decoders, Encoders, Multipliers,
+Dividers, Display Drivers, Keyboard Encoders, Etc...
+
+Design Procedure
+
+The design of combinational circuits starts from the specification of the design objective and culminates
+in a logic circuit diagram or a set of Boolean functions from which the logic diagram can be obtained.
+The procedure involves the following steps:
+
+1. From the specifications of the circuit, determine the required number of inputs and outputs and
+assign a symbol to each.
+
+2. Derive the truth table that defines the required relationship between inputs and outputs.
+
+3. Obtain the simplified Boolean functions for each output as a function of the input variables.
+
+4. Draw the logic diagram and verify the correctness of the design (manually or by simulation).
+
+A truth table for a combinational circuit consists of input columns and output columns. The input
+columns are obtained from the 2n binary numbers for the n input variables. The binary values for the
+outputs are determined from the stated specifications. The output functions specified in the truth table

@@ -1,0 +1,40 @@
+1, Directed Graphs and Graphs
+6
+
+p vertex of a digraph which is neither an initial vertex nor a terminal vertex of ry directed
+ge is called an isolated vertex of the digraph. A non-isolated vanes happens to = initial
+vertex or a terminal vertex for a (some) directed edge. A omisolated vertex whieh is Rot a
+terminal vertex for any directed edge is called a source and a non-isolated vertex which is not
+an initial vertex for any directed edge is called a sink.
+
+v1 i v3
+e
+V6, V5 v4
+Figure 1.6
+
+In the digraph shown in Figure 1.6, the vertex vq is an isolated vertex, the vertices vy, and
+
+v3 are sources and the vertex v2 is a sink. The vertices vs and ve do not belong to any of these
+categories.
+
+In-degree and Out-degree
+
+If Vis a vertex of a digraph D, the number of edges for which v is the initial vertex is called
+the out-going degree or the out-degree of v and the number of edges for which v is the terminal
+vertex is called the incoming degree or the in
+
+av) or od{v) and the in-degree of v is denoted by d(v) or id(yv).
+
+If follows that (i) d*(v) = Oif visa sink, (ii) d-(v) =
+
+d-(v) = Oif vis an isolated vertex.
+
+-degree of v. The Out-degree of vis denoted by
+
+0 if v is a source, and ii) d*(v) =
+
+Vy V9
+v3
+ev
+v6 vs
+Figure 1.7

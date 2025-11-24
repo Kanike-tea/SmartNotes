@@ -1,0 +1,52 @@
+328 Chapter 10 Introduction to SQL Programming Techniques
+
+Each record is accessible to the program through a C pointer variable—called a
+handle to the record. The handle is returned when a record is first created. To cre-
+ate a record and return its handle, the following SQL/CLI function is used:
+
+SQLAllocHandle(<handle_type>, <handle_1>, <handle_2>)
+In this function, the parameters are as follows:
+
+™ <handle_type> indicates the type of record being created. The possible val-
+ues for this parameter are the keywords SQL_HANDLE_ENV, SQL_HANDLE_DBC,
+SQL_HANDLE_STMT, or SQL_HANDLE_DESC, for an environment, connec-
+tion, statement, or description record, respectively.
+
+™ <handle_1> indicates the container within which the new handle is being
+created. For example, for a connection record this would be the environ-
+ment within which the connection is being created, and for a statement
+record this would be the connection for that statement.
+
+™ <handle_2> is the pointer (handle) to the newly created record of type
+<handle_type>.
+
+Steps in a database program. When writing a C program that will include
+database calls through SQL/CLI, the following are the typical steps that are taken.
+We illustrate the steps by referring to the example CLI1 in Figure 10.10, which
+reads a Social Security number of an employee and prints the employee’s last name
+and salary.
+
+1. Including the library of functions. The library of functions comprising
+SQL/CLI must be included in the C program. This is called sqlcli.h, and is
+included using line 0 in Figure 10.10.
+
+2. Declaring handle variables. Declare handle variables of types SOLASTMT,
+SQLHDBC, SQLHENV, and SOLHDESC for the statements, connections, envi-
+ronments, and descriptions needed in the program, respectively (lines 2
+to 4).!4 Also declare variables of type SOLRETURN (line 5) to hold the
+return codes from the SQL/CLI function calls. A return code of 0 (zero)
+indicates successful execution of the function call.
+
+3. Environment record. An environment record must be set up in the program
+using SQLA1locHandle. The function to do this is shown in line 6. Because
+an environment record is not contained in any other record, the parameter
+<handle_1> is the NULL handle sQL_NULL_HANDLE (NULL pointer) when
+creating an environment. The handle (pointer) to the newly created envi-
+ronment record is returned in variable env1 in line 6.
+
+4. Connecting to the database. A connection record is set up in the program
+using SQLA11locHandle. In line 7, the connection record created has the han-
+dle con1 and is contained in the environment env1. A connection is then
+established in con1 to a particular server database using the SoLconnect
+
+"To keep our presentation simple, we will not show description records here.

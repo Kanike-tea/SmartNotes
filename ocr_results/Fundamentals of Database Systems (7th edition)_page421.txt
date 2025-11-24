@@ -1,0 +1,93 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 391
+
+bag
+oh
+interface list : Collection {
+exception
+void
+Object
+
+void
+void
+void
+void
+Object
+list
+void
+
+};
+
+create_union(in Bag other_bag); Figure 12.5
+(continued)
+Overview of the
+
+Invalid_Index{unsigned_long index; ); interface
+: definitions for
+remove_element_at(in unsigned long index)
+(Invalidindex); part of the
+_ false! oes ODMG object
+
+retrieve_element_at(in unsigned long index) model
+
+raises(Invalidindex); (©) (continued)
+replace_element_at(in Object element, in unsigned long index) Interfaces for
+
+raises (Invalidindex); collections and
+
+insert_element_after(in Object element, in unsigned long index) _ iterators
+raises (Invalidindex);
+
+insert_element_first(in Object element);
+remove_first_element() raises(ElementNotFound);
+retrieve_first_element() raises(ElementNotFound);
+
+concat(in list other_list);
+append(in list other_list);
+
+interface array : Collection {
+
+exception
+exception
+void
+Object
+void
+
+void
+
+};
+
+Invalid_Index{unsigned_long index; };
+
+Invalid_Size{unsigned_long size; };
+
+remove_element_at(in unsigned long index)
+raises(Invalidindex);
+
+retrieve_element_at(in unsigned long index)
+raises (Invalidindex);
+
+replace_element_at(in unsigned long index, in Object element)
+raises (Invalidindex);
+
+resize(in unsigned long new_size)
+raises(InvalidSize);
+
+struct association { Object key; Object value; };
+interface dictionary : Collection {
+
+exception
+exception
+void
+
+void
+Object
+boolean
+
+DuplicateName(string key; };
+KeyNotFound{Object key; };
+bind(in Object key, in Object value)
+
+raises (DuplicateName);
+unbind(in Object key) raises(KeyNotFound);
+lookup(in Object key) raises(KeyNotFound);
+contains_key(in Object key);

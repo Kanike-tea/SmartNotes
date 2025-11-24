@@ -1,0 +1,51 @@
+Database Management System [BCS403]
+
+= The whole database
+
+The granularity can affect the performance of concurrency control and recovery
+
+5.16.1 Granularity Level Considerations for Locking
+
+The size of data items is often called the data item granularity.
+
+Fine granularity refers to small item sizes, whereas coarse granularity refers to large
+item sizes
+
+The larger the data item size is, the lower the degree of concurrency permitted.
+
+For example, if the data item size is a disk block, a transaction T that needs to lock.a
+record B must lock the whole disk block X that contains B because a lock is associated
+with the whole data item (block). Now, if another transaction S wants to lock a different
+record C that happens to reside in the same block X in a conflicting lock mode, it is
+forced to wait. If the data item size was a single record, transaction S would be able to
+proceed, because it would be locking a different data item (record).
+
+The smaller the data item size is, the more the number of items in the database.
+Because every item is associated with a lock, the system will have a larger number of
+active locks to be handled by the lock manager. More lock and unlock operations will be
+performed, causing a higher overhead
+
+The best item size depends on the types of transactions involved.
+
+If a typical transaction accesses a small number of records, it is advantageous to have
+the data item granularity be one record
+
+On the other hand, if a transaction typically accesses many records in the same file, it
+may be better to have block or file granularity so that the transaction will consider all
+
+those records as one (or a few) data items
+
+5.16.2 Multiple Granularity Level Locking
+
+Since the best granularity size depends on the given transaction, it seems appropriate
+that a database system should support multiple levels of granularity, where the
+granularity level can be different for various mixes of transactions
+
+Figure 22.7 shows a simple granularity hierarchy with a database containing two files,
+each file containing several disk pages, and each page containing several records.
+
+This can be used to illustrate a multiple granularity level 2PL protocol, where a lock
+
+can be requested at any level
+
+https://vtucode.in 40

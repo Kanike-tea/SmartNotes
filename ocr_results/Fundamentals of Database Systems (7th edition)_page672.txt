@@ -1,0 +1,54 @@
+642
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+processor and optimizer for expediting query execution. One form of hints is called
+indexing hints; these hints suggest the use of an index to improve the execution of a
+query. The hints appear as a special comment (which is preceded by +) and they
+override all optimizer decisions, but they may be ignored by the optimizer if they
+are invalid, irrelevant, or improperly formulated. We do not get into a detailed dis-
+cussion of indexing hints, but illustrate with an example query.
+
+For example, to retrieve the SSN, Salary, and department number for employees
+working in department numbers with Dno less than 10:
+
+SELECT /*+ INDEX (EMPLOYEE emp_dno_index ) */ Emp_ssn, Salary, Dno
+FROM EMPLOYEE
+WHERE Dno < 10;
+
+The above query includes a hint to use a valid index called emp_dno_index (which
+is an index on the EMPLOYEE relation on Dno).
+
+Column-Based Storage of Relations: There has been a recent trend to con-
+sider a column-based storage of relations as an alternative to the traditional way of
+storing relations row by row. Commercial relational DBMSs have offered B*-tree
+indexing on primary as well as secondary keys as an efficient mechanism to support
+access to data by various search criteria and the ability to write a row or a set of rows
+to disk at a time to produce write-optimized systems. For data warehouses (to be
+discussed in Chapter 29), which are read-only databases, the column-based storage
+offers particular advantages for read-only queries. Typically, the column-store
+RDBMSs consider storing each column of data individually and afford performance
+advantages in the following areas:
+
+= Vertically partitioning the table column by column, so that a two-column
+table can be constructed for every attribute and thus only the needed col-
+umns can be accessed
+
+= Using column-wise indexes (similar to the bitmap indexes discussed in Sec-
+tion 17.5.2) and join indexes on multiple tables to answer queries without
+having to access the data tables
+
+= Using materialized views (see Chapter 7) to support queries on multiple
+columns
+
+Column-wise storage of data affords additional freedom in the creation of indexes,
+such as the bitmap indexes discussed earlier. The same column may be present in
+multiple projections of a table and indexes may be created on each projection. To
+store the values in the same column, strategies for data compression, null-value
+suppression, dictionary encoding techniques (where distinct values in the column
+are assigned shorter codes), and run-length encoding techniques have been devised.
+MonetDB/X100, C-Store, and Vertica are examples of such systems Some popular
+systems (like Cassandra, Hbase, and Hypertable) have used column-based storage
+effectively with the concept of wide column-stores. The storage of data in such
+systems will be explained in the context of NOSQL systems that we will discuss
+in Chapter 24.

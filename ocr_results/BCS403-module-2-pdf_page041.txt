@@ -1,0 +1,58 @@
+Database Management System [BCS403]
+
+« The propagate (CASCADE) option for the referential triggered action should be specified
+on the foreign keys in the relation corresponding to the relationship R, since each
+relationship instance has an existence dependency on each of the entities it relates. This
+can be used for both ON UPDATE and ON DELETE.
+
+Step 6: Mapping of Multivalued Attributes
+
+= For each multivalued attribute
++ Create a new relation
++ Primary key of R is the combination of A and K
++ Ifthe multivalued attribute is composite, include its simple components
+
+= In our example, we create a relation DEPT_LOCATIONS
+
+" The attribute Dlocation represents the multivalued attribute LOCATIONS of
+DEPARTMENT, while Dnumber—as foreign key—tepresents the primary key of the
+DEPARTMENT relation.
+
+* The primary key of DEPT_LOCATIONS is the combination of {Dnumber, Dlocation}
+
+= A separate tuple will exist in DEPT_LOCATIONS for each location that a department has
+
+" The propagate (CASCADE) option for the referential triggered action should be specified
+on the foreign key in the relation R corresponding to the multivalued attribute for both ON
+UPDATE and ON DELETE.
+
+EMPLOYEE
+Fname | Minit | kname |) Ssn | Bdate | Address | Sex | Salary | Super_ssn} Dno
+
+DEPARTMENT
+
+Dname | Dnumber | Mgr_ssn Mgr_start, |_date|
+
+os
+
+DEPT_LOCATIONS
+
+Dnumber | Diocation
+=a |
+
+PROJECT
+
+Pname | Pnumber | Plocation | Dnum
+
+Lo
+WORKS_ON
+
+Essn | Pno | Hours
+I |
+
+DEPENDENT
+
+Essn Dependent_name | Sex | Bdate | Relationship
+i
+
+https://vtucode.in Page 42

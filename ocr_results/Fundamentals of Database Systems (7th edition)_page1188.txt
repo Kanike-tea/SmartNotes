@@ -1,0 +1,45 @@
+1158 Chapter 30 Database Security
+
+Maximum |
+| All compartments to which
+User Label Access }
+: the user has access
+Level |
+Minimum}
+DataLabe! | Access Level | All compartments to which
+: the user must have access
+Required |
+User Labels Rows in Table Data Labels
+HS | FIN: WR Row 1 S | CHEM, FIN: WR
+Row 2 HS | FIN: WR_SAL
+Ss ! FIN : WR_SAL
+Figure 30.5 Legend for Labels = Row 3 U_| FIN
+Data labels and user labels GS = fishy sensitive
+sensitive
+in Oracle. c Confidential L__» Row 4 Cc | FIN: WR_SAL
+Data from: Oracle (2007) U_ = Unclassified
+
+WR_SAL (WR Sales). He cannot access row 1 because he does not have the CHEM
+(Chemical) compartment. It is important that a user has authorization for all com-
+partments in a row’s data label so the user can access that row. Based on this exam-
+ple, user 2 can access both rows 3 and 4 and has a maximum level of S, which is less
+than the HS in row 2. So, although user 2 has access to the FIN compartment, he
+can only access the group WR_SAL and thus cannot access row 1.
+
+30.11 Summary
+
+In this chapter, we discussed several techniques for enforcing database system
+security. Section 30.1 is an introduction to database security. We presented in Sec-
+tion 30.1.1 different threats to databases in terms of loss of integrity, availability,
+and confidentiality. We discussed in Section 30.1.2 the types of control measures
+to deal with these problems: access control, inference control, flow control, and
+encryption. In the rest of Section 30.1, we covered various issues related to secu-
+rity, including data sensitivity and type of disclosures; security versus precision of
+results when a user requests information; and the relationship between informa-
+tion security and privacy.
+
+Security enforcement deals with controlling access to the database system as a
+whole and controlling authorization to access specific portions of a database. The
+former is usually done by assigning accounts with passwords to users. The latter
+can be accomplished by using a system of granting and revoking privileges to
+individual accounts for accessing specific parts of the database. This approach,

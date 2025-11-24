@@ -1,0 +1,52 @@
+2.1. Data Models, Schemas, and Instances
+
+We call each object in the schema—such as STUDENT or COURSE—a schema
+construct.
+
+A schema diagram displays only some aspects of a schema, such as the names of
+record types and data items, and some types of constraints. Other aspects are not
+specified in the schema diagram; for example, Figure 2.1 shows neither the data
+type of each data item nor the relationships among the various files. Many types of
+constraints are not represented in schema diagrams. A constraint such as students
+majoring in computer science must take CS1310 before the end of their sophomore
+year is quite difficult to represent diagrammatically.
+
+The actual data in a database may change quite frequently. For example, the data-
+base shown in Figure 1.2 changes every time we add a new student or enter a new
+grade. The data in the database at a particular moment in time is called a database
+state or snapshot. It is also called the current set of occurrences or instances in
+the database. In a given database state, each schema construct has its own current
+set of instances; for example, the STUDENT construct will contain the set of indi-
+vidual student entities (records) as its instances. Many database states can be con-
+structed to correspond to a particular database schema. Every time we insert or
+delete a record or change the value of a data item in a record, we change one state
+of the database into another state.
+
+The distinction between database schema and database state is very important.
+When we define a new database, we specify its database schema only to the
+DBMS. At this point, the corresponding database state is the empty state with
+no data. We get the initial state of the database when the database is first
+populated or loaded with the initial data. From then on, every time an update
+operation is applied to the database, we get another database state. At any point
+in time, the database has a current state.* The DBMS is partly responsible for
+ensuring that every state of the database is a valid state—that is, a state that
+satisfies the structure and constraints specified in the schema. Hence, specify-
+ing a correct schema to the DBMS is extremely important and the schema must
+be designed with utmost care. The DBMS stores the descriptions of the schema
+constructs and constraints—also called the meta-data—in the DBMS catalog so
+that DBMS software can refer to the schema whenever it needs to. The schema
+is sometimes called the intension, and a database state is called an extension of
+the schema.
+
+Although, as mentioned earlier, the schema is not supposed to change frequently,
+it is not uncommon that changes occasionally need to be applied to the schema as
+the application requirements change. For example, we may decide that another
+data item needs to be stored for each record ina file, such as adding the Date_of_birth
+to the STUDENT schema in Figure 2.1. This is known as schema evolution. Most
+modern DBMSs include some operations for schema evolution that can be applied
+while the database is operational.
+
+®The current state is also called the current snapshot of the database. It has also been called a database
+instance, but we prefer to use the term instance to refer to individual records.
+
+35

@@ -1,0 +1,62 @@
+608 — Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Figure 17.3
+Clustering index with a
+separate block cluster
+for each group of
+records that share the
+same value for the
+clustering field.
+
+Index file
+(<K(i), P(i)> entries)
+
+Clustering Block
+field value pointer
+i .
+2 =
+3 .
+4 .
+5 -
+6 °
+8 .
+
+Data file
+(Clustering
+field)
+Dept_number [Name | Ssn_|Job [Birth date | Salary
+1
+1
+1
+Block pointer
+_L_ NULL pointer
+2 =
+2
+Block pointer
+3
+3
+3
+3
+Block pointer «——
+3
+Block pointer
+4
+4
+Block pointer =
+5
+5
+5
+5
+Block pointer
+6
+6
+6
+6
+Block pointer *——
+6
+Block pointer —
+8
+8
+8
+
+Block pointer

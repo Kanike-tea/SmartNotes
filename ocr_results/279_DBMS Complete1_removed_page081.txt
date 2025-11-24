@@ -1,0 +1,65 @@
+e {A} {A}
+* {A.B} >{A}
+* {A,B} >{B}
+
+e« {A,B} >{A,B}
+
+are all trivial FDs and will not contribute to the evaluation of normalization.
+
+FD Axioms
+
+Understanding: Functional Dependencies are recognized by analysis of the real world; no
+automation or algorithm. Finding or recognizing them are the database designer's task.
+
+FD manipulations:
+
+¢ Soundness -- no incorrect FD's are generated
+¢ Completeness -- all FD's can be generated
+
+Axiom Name
+
+Axiom
+
+Example
+
+if a is set of attributes, b € a,
+
+ivi SSN, Ne SSN
+Reflexivity then a —>b lame >
+A tati ifa— b holds and c is a set of | |SSN — Name then
+ugmentation attributes, then ca cb 'SSN,Phone — Name, Phone
+Transitivity ifa —b holds and bc holds, cox) 7: and Zip + City then SSN City
+
+then a— c holds
+
+Union or Additivity
+*
+
+ifa— banda-—c holds then
+a— be holds
+
+'SSN—Name and SSN—Zip then SSN—Name,Zip
+
+Decomposition or
+Projectivity*
+
+ifa — be holds then a > b
+and a — c holds
+
+'SSN—Name,Zip then SYN--Name and SSN>Zip
+
+Pseudotransitivity*
+
+ifa — b and cb > d hold then
+ac — d holds
+
+Address — Project and Project, Date Amount then
+Address, Date + Amount
+
+(NOTE)
+
+ab— c does NOT imply a— c
+
+andb—c
+
+*Armstrong's Axioms (basic axioms)

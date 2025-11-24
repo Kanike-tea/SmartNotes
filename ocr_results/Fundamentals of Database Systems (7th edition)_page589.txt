@@ -1,0 +1,53 @@
+16.3 Buffering of Blocks
+
+16.3.2 Buffer Replacement Strategies:
+
+The following are some popular replacement strategies that are similar to those
+used elsewhere, such as in operating systems:
+
+1. Least recently used (LRU): The strategy here is to throw out that page that
+has not been used (read or written) for the longest time. This requires the
+buffer manager to maintain a table where it records the time every time a
+page in a buffer is accessed. Whereas this constitutes an overhead, the strat-
+egy works well because for a buffer that is not used for a long time, its chance
+of being accessed again is small.
+
+2. Clock policy: This is a round-robin variant of the LRU policy. Imagine the
+buffers are arranged like a circle similar to a clock. Each buffer has a flag
+with a 0 or 1 value. Buffers with a 0 are vulnerable and may be used for
+replacement and their contents read back to disk. Buffers with a 1 are not
+vulnerable. When a block is read into a buffer, the flag is set to 1. When the
+buffer is accessed, the flag is set to 1 also. The clock hand is positioned on a
+“current buffer.” When the buffer manager needs a buffer for a new block, it
+rotates the hand until it finds a buffer with a 0 and uses that to read and
+place the new block. (If the dirty bit is on for the page being replaced, that
+page will be written to disk, thus overwriting the old page at its address on
+disk.) If the clock hand passes buffers with 1s, it sets them to a zero. Thus, a
+block is replaced from its buffer only if it is not accessed until the hand com-
+pletes a rotation and returns to it and finds the block with the 0 that it set the
+last time.
+
+3. First-in-first-out (FIFO): Under this policy, when a buffer is required, the
+one that has been occupied the longest by a page is used for replacement.
+Under this policy, the manager notes the time each page gets loaded into a
+buffer; but it does not have to keep track of the time pages are accessed.
+Although FIFO needs less maintenance than LRU, it can work counter to
+desirable behavior. A block that remains in the buffer for a long time because
+it is needed continuously, such as a root block of an index, may be thrown
+out but may be immediately required to be brought back.
+
+LRU and clock policies are not the best policies for database applications if they
+require sequential scans of data and the file cannot fit into the buffer at one time.
+There are also situations when certain pages in buffers cannot be thrown out and
+written out to disk because certain other pinned pages point to those pages. Also,
+policies like FIFO can be modified to make sure that pinned blocks, such as root
+block of an index, are allowed to remain in the buffer. Modification of the clock
+policy also exists where important buffers can be set to higher values than 1 and
+therefore will not be subjected to replacement for several rotations of the hand.
+There are also situations when the DBMS has the ability to write certain blocks to
+disk even when the space occupied by those blocks is not needed. This is called
+force-writing and occurs typically when log records have to be written to disk
+ahead of the modified pages in a transaction for recovery purposes. (See Chapter 22.)
+There are some other replacement strategies such as MRU (most recently used)
+
+559

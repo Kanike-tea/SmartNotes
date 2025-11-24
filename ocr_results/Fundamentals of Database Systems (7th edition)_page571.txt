@@ -1,0 +1,34 @@
+oy)
+
+chapter 1
+
+Disk Storage, Basic File
+Structures, Hashing, and Modern
+Storage Architectures
+
+[ast are stored physically as files of records,
+which are typically stored on magnetic disks. This
+chapter and the next deal with the organization of databases in storage and the
+techniques for accessing them efficiently using various algorithms, some of which
+require auxiliary data structures called indexes. These structures are often referred
+to as physical database file structures and are at the physical level of the three-
+schema architecture described in Chapter 2. We start in Section 16.1 by introducing
+the concepts of computer storage hierarchies and how they are used in database
+systems. Section 16.2 is devoted to a description of magnetic disk storage devices
+and their characteristics, flash memory, and solid-state drives and optical drives
+and magnetic tape storage devices used for archiving data. We also discuss tech-
+niques for making access from disks more efficient. After discussing different stor-
+age technologies, we turn our attention to the methods for physically organizing
+data on disks. Section 16.3 covers the technique of double buffering, which is used
+to speed retrieval of multiple disk blocks. We also discuss buffer management and
+buffer replacement strategies. In Section 16.4 we discuss various ways of formatting
+and storing file records on disk. Section 16.5 discusses the various types of opera-
+tions that are typically applied to file records. We present three primary methods
+for organizing file records on disk: unordered records, in Section 16.6; ordered
+records, in Section 16.7; and hashed records, in Section 16.8.
+
+Section 16.9 briefly introduces files of mixed records and other primary methods
+for organizing records, such as B-trees. These are particularly relevant for storage of
+object-oriented databases, which we discussed in Chapter 11. Section 16.10
+
+541

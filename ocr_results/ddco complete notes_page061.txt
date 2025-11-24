@@ -1,0 +1,41 @@
+Digital Design and Computer Organization(BCS302)
+
+If D = 1, the Q output goes to 1, placing the circuit in the set state. If D = 0,
+
+output Q goes to 0, placing the circuit in the reset state.
+
+The graphic symbols for the various latches are shown in Fig. 5.7 . A latch is
+designated by a rectangular block with inputs on the left and outputs on the
+right. One output designates the normal output, and the other (with the bubble
+
+designation) designates the complement output
+
+s Ss D
+R R En
+SR SR D
+FIGURE 5.7
+
+Graphic symbols for latches
+
+STORAGE ELEMENTS : FLIP - FLOPS
+
+» Flip-flops are fundamental building blocks in digital electronics and
+sequential logic circuits.
+
+» They are bistable multivibrators, like latches, but they are edge-
+
+triggered and use a clock signal to control the timing of state changes.
+
+» Flip-flops are widely used for storing binary information in electronic
+systems.
+
+Edge triggered DFF
+
+Table of truth
+D D clk D Qa a
+
+°o ° a cou
+
+Clk > Clk ° a a a
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 33

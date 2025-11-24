@@ -1,0 +1,34 @@
+Database Management System [BCS403]
+
+sn Sar
+to 1 1. we in { 1 f- X { u
+\ see { \
+@:) @s) ey) (en) (ex) (ex)
+faa aj Fay Aap a Fay fort °° Sotk fore”: Gone Wome fomk
+
+Figure 22.7 A granularity hierarchy for illustrating multiple granularity level locking
+
+= To make multiple granularity level locking practical, additional types of locks, called
+intention locks, are needed
+
+= The idea behind intention locks is for’a transaction to indicate, along the path from the root
+to the desired node, what type of lock (shared or exclusive) it will require from one of the
+node’s descendants.
+
+= There are three types of intention locks:
+
+1. Intention-shared (IS) indicates that one or more shared locks will be requested on some
+
+descendant node(s).
+
+2. Intention-exclusive (IX) indicates that one or more exclusive locks will be requested on
+some descendant node(s).
+
+3. Shared-intention-exclusive (SIX) indicates that the current node is locked in shared
+mode but that one or more exclusive locks will be requested on some descendant
+node(s).
+
+= The compatibility table of the three intention locks, and the shared and exclusive locks, is
+shown in Figure 22.8.
+
+https://vtucode.in 41

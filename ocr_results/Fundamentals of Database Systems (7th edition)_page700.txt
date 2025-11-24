@@ -1,0 +1,56 @@
+670 Chapter 18 Strategies for Query Processing
+
+Figure 18.3
+
+Implementing JOIN, PROJECT, UNION, INTERSECTION, and SET DIFFERENCE by
+
+using sort-merge, where R has n tuples and Shas m tuples. (a) Implementing the operation
+T&—R™ 4-28. (b) Implementing the operation T — matiribute ist>(A).
+
+(a) sort the tuples in R on attribute A; (‘assume R has n tuples (records)*)
+sort the tuples in S on attribute B; (‘assume S has m tuples (records)*)
+seti1,jo1;
+while (j <n) and (j < m)
+do (if RUA] > S(/)IB}
+
+then set /<—j+1
+elseif RUA] < S())IB]
+then set /<—i+1
+else { (* R(/)[A] = S(/)[B], so we output a matched tuple *)
+output the combined tuple <R(i), S(/)> to T;
+
+(* output other tuples that match R(i), if any *)
+
+set/<j+1;
+
+while (/ < m) and (R()[A] = S(/)[B})
+
+do { output the combined tuple <R(i), S(/)> to T;
+set/<—/+1
+
+}
+
+(* output other tuples that match S(j), if any *)
+setk i+;
+while (k < n) and (R(k)[A] = S(/)[B])
+do { output the combined tuple <R(k), S(j)> to T;
+setke—k+1
+}
+set ik, j 1
+}
+}
+
+(b) create a tuple t[<attribute list>] in T’ for each tuple t in R;
+(* T’ contains the projection results before duplicate elimination *)
+if <attribute list> includes a key of R
+then TT’
+else { sort the tuples in T’;
+seti 1,2;
+while i <n
+do { output the tuple 7’[i] to 7;
+while 7’[i] = T’L/] and j < n do j<—j+1; (* eliminate duplicates *)
+iepRjci+i
+}
+}
+
+(*T contains the projection result after duplicate elimination*)

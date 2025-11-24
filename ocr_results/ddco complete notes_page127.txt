@@ -1,0 +1,53 @@
+Digital Design and Computer Organization (BCS302) Module V
+odule
+
+MODULE 5:
+Basic Processing Unit and Pipelining
+
+Basic Processing Unit: Some Fundamental Concepts: Register Transfers, Performing ALU
+operations, fetching a word from Memory, Storing a word in memory. Execution of a Complete
+Instruction.
+
+Pipelining: Basic concepts, Role of Cache memory, Pipeline Performance.
+
+SOME FUNDAMENTAL CONCEPTS
+
+The processing unit which executes machine instructions and coordinates
+the activities of other units of computer is called the Instruction Set
+Processor (ISP) or processor or Central Processing Unit (CPU).
+
+The primary function of a processor is to execute the instructions stored
+in memory. Instructions are fetched from successive memory locations
+and executed in processor, until a branch instruction occurs.
+
+To execute an instruction, processor has to perform following 3 steps:
+
+1. Fetch contents of memory-location pointed to by PC. Content of this
+location isan instruction to be executed. The instructions are loaded
+into IR, Symbolically, this operation is written as:
+IR € [[PC]]
+
+2. Increment PC by
+4.PC €[PC] +4
+
+3. Carry out the actions specified by instruction (in the IR).
+
+The steps 1 and 2 are referred to as Fetch Phase.
+Step 3 is referred to as Execution Phase.
+
+SINGLE BUS ORGANIZATION
+
+«Here the processor contain only a single bus for the movement of data,
+address andinstructions.
+«ALU and all the registers are interconnected via a Single Common Bus
+(Figure 7.1).
+«Data & address lines of the external memory-bus is connected to
+the internal processor-bus via MDR & MAR respectively.
+(MDR -> Memory Data Register, MAR -> Memory Address Register).
+¢MDR has 2 inputs and 2 outputs. Data may be loaded
+— into MDR either from memory-bus (external) or
+— from processor-bus (internal).
+¢MAR’s input is connected to internal-bus; MAR's output is connected to
+external- bus. (address sent from processor to memory only)
+
+Dr Ajay V G, Dept. of CSE,SVIT

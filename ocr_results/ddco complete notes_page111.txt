@@ -1,0 +1,47 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+¢ At the time of execution of ISR for some device, priority of processor is raised to
+that of the device.
+
+¢ Thus, interrupts from devices at the same level of priority or lower are disabled.
+Privileged Instruction
+
+¢ Processor's priority is encoded in a few bits of PS word. (PS = Processor-Status).
+« Encoded-bits can be changed by Privileged Instructions that write into PS.
+
+¢ Privileged-instructions can be executed only while processor is running in
+Supervisor Mode.
+
+¢ Processor is in supervisor-mode only when executing operating-system routines.
+Privileged Exception
+¢ User program cannot
+
+— accidently or intentionally change the priority of the processor &
+
+— disrupt the system-operation.
+
+¢ An attempt to execute a privileged-instruction while in user-mode leads to a
+Privileged Exception.
+
+SIMULTANEOUS REQUESTS
+DAISY CHAIN
+
+¢ The daisy chain with multiple priority levels is as shown in the figure.
+e The interrupt request line INTR is common to all devices as shown in the fig.
+
+e The interrupt acknowledge line is connected in a daisy fashion as shown in the figure.
+e This signal propagates serially from one device to another device.
+e The several devices raise an interrupt by activating INTR signal. In response to
+
+the signal, processortransfers its device by activating INTA signal.
+
+e This signal is received by device 1. The device-1 blocks the propagation of INTA
+signal to device-2,when it needs processor service.
+
+e The device-1 transfers the INTA signal to next device when it does not require the
+processor service.
+
+e In daisy chain arrangement device-1 has the highest priority.
+Advantage: It requires fewer wires than the individual connection
+
+Dr Ajay V G, Dept. of CSE 13

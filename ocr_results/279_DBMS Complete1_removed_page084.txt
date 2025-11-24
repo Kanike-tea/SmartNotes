@@ -1,0 +1,56 @@
+A attribute A in a relation scheme R is a prime attribute or simply prime if A is part of any
+candidate key of the relation. If A is not a part of any candidate key of R, A is called a nonprime
+attribute or simply non prime .
+
+Trivial functional dependency:
+AFD XY is said to be a trivial functional dependency if Y is subset of X.
+
+LECTURE-29
+Normalization
+
+While designing a database out of an entity—relationship model, the main problem existing in that
+“raw” database is redundancy. Redundancy is storing the same data item in more one place. A
+redundancy creates several problems like the following:
+
+Extra storage space: storing the same data in many places takes large amount of disk space.
+Entering same data more than once during data insertion.
+
+Deleting data from more than one place during deletion.
+
+Modifying data in more than one place.
+
+Anomalies may occur in the database if insertion, deletion, modification ete are no done
+properly. It creates inconsistency and unreliability in the database.
+
+VY NS
+
+To solve this problem, the “raw” database needs to be normalized. This is a step by step process of
+removing different kinds of redundancy and anomaly at each step. At each step a specific rule is
+followed to remove specific kind of impurity in order to give the database a slim and clean look.
+
+Un-Normalized Form (UNF)
+If a table contains non-atomic values at each row, it is said to be in UNF. An atomic value is
+something that can not be further decomposed. A non-atomic value, as the name suggests, can be
+
+further decomposed and simplified. Consider the following table:
+
+Emp-Id Emp-Name | Month | Sales | Bank-Id Bank-Name
+
+EOI AA Jan | 1000 BOI SBI
+Feb | 1200
+Mar 850
+
+E02 BB Jan | 2200 BO2 UTI
+Feb | 2500
+
+E03 cc Jan | 1700 BOI SBI
+Feb | 1800
+Mar | 1850
+Apr | 1725
+
+In the sample table above, there are multiple occurrences of rows under each key Emp-Id. Although
+considered to be the primary key, Emp-Id cannot give us the unique identification facility for any
+single row. Further, each primary key points to a variable length record (3 for E01, 2 for E02 and 4
+for E03).
+
+First Normal Form (INF)

@@ -1,0 +1,46 @@
+204 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+Summary Handling Unaligned Data
+
+If performance is not an issue, access unaligned data using multiple byte loads and
+stores. This approach accesses data of a given endianness regardless of the pointer
+alignment and the configured endianness of the memory system.
+
+If performance isan issue, then use multiple routines, with a different routine optimized
+for each possible array alignment. You can use the assembler MACRO directive to generate
+these routines automatically.
+
+6.10 SUMMARY
+
+For the best performance in an application you will need to write optimized assembly
+
+routines. It is only worth optimizing the key routines that the performance depends on.
+You can find these using a profiling or cycle counting tool, such as the ARMulator simulator
+from ARM.
+
+This chapter covered examples and useful techniques for optimizing ARM assembly.
+
+Here are the key ideas:
+
+Schedule code so that you do not incur processor interlocks or stalls. Use Appendix D
+to see how quickly an instruction result is available. Concentrate particularly on load
+and multiply instructions, which often take a long time to produce results.
+
+Hold as much data in the 14 available general-purpose registers as you can. Sometimes
+it is possible to pack several data items in a single register. Avoid stacking data in the
+innermost loop.
+
+For small if statements, use conditional data processing operations rather than
+conditional branches.
+
+Use unrolled loops that count down to zero for the maximum loop performance.
+
+For packing and unpacking bit-packed data, use 32-bit register buffers to increase
+efficiency and reduce memory data bandwidth.
+
+Use branch tables and hash functions to implement efficient switch statements.
+
+To handle unaligned data efficiently, use multiple routines. Optimize each routine for
+
+a particular alignment of the input and output arrays. Select between the routines at
+run time.

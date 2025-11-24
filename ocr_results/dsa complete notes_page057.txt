@@ -1,0 +1,59 @@
+Data Structures and Applications(BCS304) Module 2
+
+The different types of linear linked lists are :
+1. Singly linked lists
+2. Circular singly linked lists
+3. Doubly linked lists
+4. Circular doubly linked lists.
+
+Representation of linked list: Each item in the list is called a node and contains two fields
+> Information field - The information field holds the actual elements in the list
+
+> Link field- The Link field contains the address of the next node in the list
+
+To create a linked list of integers the node can be defined as follows using a self referential
+structure.
+
+Sruct Node
+
+|
+
+int info;
+
+struct Node * link;
+
+8
+
+Typedef struct Node NODE;
+
+e The pointer first stores the address of the first node in the list. With this information we
+will be able to access the location of all the other nodes in the list.
+
+¢ To obtain a node we use the statement
+
+e First=(node*) malloc(sizeof(node)
+
+e To place the information 5 ,we can use the statement Firs->info= 5;
+
+e As there are no other nodes in the list the link part can be made NULL as follow
+
+e  First->link=NULL
+
+The node created is shown is represented as follows
+
+Firs’. |————>_ [5 -—
+
+Memory allocation and garbage collection
+
+¢ The maintenance of linked lists in memory assumes the possibility of inserting new nodes
+into the lists and hence requires some mechanism which provides unused memory space
+for the new nodes. Similarly a mechanism is required which makes the deleted node
+available for future use.
+
+e Together with the linked list in memory, a special list is maintained which consist of
+unused memory cells.
+
+¢ This list which has its own pointer is called the list of available space or the free storage
+list or the free pool. Such a list is also called AVAIL
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 13

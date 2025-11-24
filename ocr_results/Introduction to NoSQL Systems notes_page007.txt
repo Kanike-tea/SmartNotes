@@ -1,0 +1,43 @@
+1. What Are Key-Value Stores?
+
+Key-Value stores are the most fundamental type of NoSQL databases. They store data as a
+collection of key-value pairs, where each key is a unique identifier and each value is the
+data associated with that key. This model is conceptually similar to a hash table or
+dictionary in programming. These databases are designed for simplicity, high performance,
+and scalability, making them well-suited for applications that require fast access to data
+without complex queries or relationships.
+
+Each key maps to exactly one value, and the value can be a simple data type (e.g., string,
+number) or a more complex object like a JSON structure, blob, or serialized object. The
+simplicity of the key-value model makes it highly efficient for reads and writes, especially
+in large-scale, distributed systems.
+
+2. Features and Characteristics
+e Schema-less: No predefined structure; values can be of any format.
+
+e Highly Scalable: Easily distributed across multiple nodes or servers (horizontal
+scaling).
+
+« Ultra-Fast Access: Optimized for low-latency, high-throughput access using keys.
+
+« No Relationships: Not designed to model relations between different pieces of data
+(unlike relational or graph databases).
+
+« Simple API: Generally uses basic operations like PUT, GET, DELETE.
+
+3. Popular Key-Value Databases
+Here are some widely used key-value databases:
+
+e  Redis: An in-memory key-value store that supports advanced data structures like
+lists, sets, sorted sets, hashes, and streams. It’s often used for caching, messaging,
+and real-time analytics.
+
+« Amazon DynamoDB: A fully managed NoSQL database service by AWS that
+provides high availability and performance at scale.
+
+e  Riak KV: A distributed key-value store known for fault tolerance and availability.
+« Berkeley DB: A software library for embedded key-value database storage.
+
+Each of these systems has its own optimizations and features. For example, Redis keeps
+data in memory for fast access, while DynamoDB is optimized for scalability and fault
+tolerance in the cloud.

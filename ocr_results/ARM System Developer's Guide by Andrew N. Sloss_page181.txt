@@ -1,0 +1,57 @@
+168 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.9
+
+void str_tolower(char *out, char *in)
+
+{
+
+unsigned int c;
+
+do
+{
+c= *(intt);
+if (ce='A' 8B c<='Z')
+{
+c=c# (‘at -'A');
+}
+*(out++) = (char)c;
+} while (c)s
+}
+
+The ADS1.1 compiler generates the following compiled output. Notice that the compiler
+optimizes the condition (c>='A' && c<='Z') to the check that 0<=c-'A'<='Z'-'A'.
+The compiler can perform this check using a single unsigned comparison.
+
+str_tolower
+LOR r2,[r1],#1 ; ¢ = *(int+)
+SUB r3,r2,#0x41 5 r3. = c -'AY
+CMP 3, #0x19 if (c <=!Z'-'A')
+ADDLS r2,r2,#0x20 ; c #s"a'-"A"
+TRB. r2,[r0],#1 *(out++) = (char)c
+
+CMP r2,#0 3 if (c!=0)
+BNE str_tolower ; goto str_tolower
+MOV pcyrl4 3 return
+
+Unfortunately, the SUB instruction uses the value of c directly after the LDRB instruction
+that loads c. Consequently, the ARM9TDMI pipeline will stall for two cycles. The compiler
+can’t do any better since everything following the load of c depends on its value. However,
+there are two ways you can alter the structure of the algorithm to avoid the cycles by using
+assembly. We call these methods load scheduling by preloading and unrolling.
+
+6.3.1.1 Load Scheduling by Preloading
+
+In this method of load scheduling, we load the data required for the loop at the end of
+the previous loop, rather than at the beginning of the current loop. To get performance
+improvement with little increase in code size, we don’t unroll the loop.
+
+This assembly applies the preload method to the str_tolower function.
+
+out RN O
+in RN 1
+
+pointer to output string
+pointer to input string

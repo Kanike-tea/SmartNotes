@@ -1,0 +1,50 @@
+1030 Chapter 27 Introduction to Information Retrieval and Web Search
+
+Documents
+
+Document #1
+
+Wy W. W3'W, Ws We
+
+2
+RoonKK
+coonnEB
+
+HRoRER
+
+Inverted Index
+
+Figure 27.2
+
+EXTRACT =
+10...)
+11.
+11.
+b a FEEDBACK
+00... | QUERY « — ———————— 4
+|
+|
+PROCESS |
+RANK Result #1
+comPARE| ____ S| - ,
+Query x
+Documents
+
+Simplified IR process pipeline.
+
+27.2.1 Boolean Model
+
+In this model, documents are represented as a set of terms. Queries are formulated
+as a combination of terms using the standard Boolean logic set-theoretic operators
+such as AND, OR and NOT. Retrieval and relevance are considered as binary con-
+cepts in this model, so the retrieved elements are an “exact match” retrieval of rele-
+vant documents. There is no notion of ranking of resulting documents. All retrieved
+documents are considered equally important—a major simplification that does not
+consider frequencies of document terms or their proximity to other terms com-
+pared against the query terms.
+
+Boolean retrieval models lack sophisticated ranking algorithms and are among the
+earliest and simplest information retrieval models. These models make it easy to
+associate metadata information and write queries that match the contents of the
+documents as well as other properties of documents, such as date of creation,
+author, and type of document.

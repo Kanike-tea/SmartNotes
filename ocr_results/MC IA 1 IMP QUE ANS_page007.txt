@@ -1,0 +1,37 @@
+Rotate Right (ROR): Bits shifted out of the right end are wrapped around and inserted at the left end.
+The last bit rotated goes into the C flag97 .
+Rotate Right with Extend (RRX): Operates as a rotate right by one bit position, with the Carry flag
+
+being shifted into the most significant bit and the least significant bit being shifted into the Carry
+flag97 .
+
+The amount of shift can be an immediate value specified in the instruction or the value in another
+register98 . Using the barrel shifter can achieve fast multiplications or divisions by powers of 296 ....
+For example, MOV r7, r5, LSL #2 effectively multiplies the content of r5 by 4 and stores the result in
+1796 .
+
+11.
+
+Working of Reverse Subtraction (RSB) and Comparison with Carry
+
+Reverse Subtraction (RSB): The RSB instruction performs a subtraction where the operands are
+reversed compared to the standard SUB instruction67 .... The syntax is RSB{<cond>}{S} Rd, Rn, N,
+which performs the operation Rd = N - Rn, where N can be an immediate value or a register (possibly
+with a shift operation)66 .... For example, RSB r0, r1, #0 subtracts the value in register r1 from 0 and
+stores the result in r0, effectively negating the value in r199 . Like other data processing instructions,
+the 'S' suffix can be used to update the condition flags in the cpsr based on the result of the
+operation64 ....
+
+Comparison Instructions and Carry: Comparison instructions like CMP, TST, and TEQ compare or test
+a register with a 32-bit value70 .... They update the condition flags (N, Z, C, V) in the cpsr based on
+the result of an implicit arithmetic or logical operation, but do not affect the registers themselves70
+
+CMP Rn, N: Performs a subtraction of N from Rn and updates the flags, but the result is discarded.
+The Carry flag (C) is set if a borrow does not occur (i.e., Rn = N for unsigned numbers) and cleared if a
+borrow does occur (Rn <N)65.
+
+TST Rn, N: Performs a bitwise AND operation between Rn and N and updates the flags (N, Z, C), but
+the result is discarded. The C flag is typically set from the result of the barrel shift if used65 .
+
+TEQ Rn, N: Performs a bitwise Exclusive OR operation between Rn and N and updates the flags (N, Z,
+C), but the result is discarded. The C flag is typically set from the result of the barrel shift if used65 .

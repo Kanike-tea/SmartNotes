@@ -1,0 +1,56 @@
+2. Planar Graphs ang
+ee
+
+Find the minimum number of vertices necessary for a connected simple Bray,
+
+with 11 edges to be planar.
+> By Corollary 1, we should have m < 3n ~ 6, orn 2 4(m + 6). Therefore, when m
+
+= il, We
+should have n > 17/3. Thus, the minimum number of vertices is 6. :
+Show that the condition m < 3n ~ 6 is not a sufficient condition for a connectgg
+
+simple graph with n vertices and m edges to be planar.
+> Consider the Kuratowski’s second graph K33 which is simple and connected and which has
+n = 6 vertices and m = 9 edges (see Figure 2.6). We check that, for this graph, m < 3n-6, But
+
+the graph is non-planar. This counterexample proves the required result. Fs
+
+Remark: In the above example, we have shown that the converse of the second part of Corol.
+lary 1 need not be true.
+
+Show that there does not exist a connected simple planar grapn with m =7
+edges and with degree 6 = 3'.
+
+> Suppose there is a graph G of the desired type. Then, for this graph, the inequality 6 <
+(2m/n) gives 3n < 14. On the other hand, Corollary 1 requires 7 < 3n — 6, or 3n > 13. Thus,
+
+we should have 13 < 3n < 14 which is not Possible (because n has to be a positive integer).
+Hence the graph of the desired type does not exist. bg
+Show that every connected simple planar graph G with less than 12 vertices
+must have a vertex of degree < 4.
+
+> Suppose every vertex of G has degree
+
+greater than 4. Then, if dy,d>,d3,...,dy are te
+degrees of n vertices of G, we have qd
+
+25,0, 25,02. ,dy > 5, so that
+
+A+d)+---+d,>5n, or 2m2>5n, _ by hand shaking property,
+5
+or > <m. 0
+
+On the other hand, Corollary 1 requires m < 3n~6, Thus, we should have, in view of (i)
+
+Sn F
+™ S3n-6, or n>12. @
+ay ifevery vertex of G has degree greater than 4, then G must have at least 12 verti
+Hence, if G has less than 12 vertices, it must have a vertex of degree < 4 s
+Fe ae ee ce EE Tee
+‘Recall that the degree of a group is the minimum of
+
+the de its vert 17 of Ser
+1.2.1, ithas been seen that if 6 is the degree of a graph of order enc) ol its Yertices. In Example
+
+order n and size m, then 5 < (2m/n).

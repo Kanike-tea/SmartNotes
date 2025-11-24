@@ -1,0 +1,48 @@
+214 Chapter 7 Optimized Primitives
+
+Table 7.1
+
+MOVEQ shift, #32 3 if (x==0) shift=32; }
+MOV pc, Ir
+
+The final MOVEQ sets shift to 32 when x is zero and can often be omitted. The imple-
+mentation requires 17 cycles on ARM7TDMI or ARM9TDMI and is sufficient for most
+purposes. However, it is not the fastest way to normalize on these processors. For maximum
+speed you can use a hash-based method.
+
+The hash-based method first reduces the input operand to one of 33 different pos-
+sibilities, without changing the CLZ value. We do this by iterating x = x | (x>>s) for shifts
+s= 1, 2,4, 8. This replicates the leading one 16 positions to the right. Then we calculate
+x= x &~(x>16). This clears the 16 bits to the right of the 16 replicated ones. Table 7.1
+illustrates the combined effect of these operations. For each possible input binary pattern
+we show the 32-bit code produced by these operations. Note that the CLZ value of the input
+pattern is the same as the CLZ value of the code.
+
+Now our aim is to get from the code value to the CLZ value using a hashing function
+followed by table lookup. See Section 6.8.2 for more details on hashing functions.
+
+For the hashing function, we multiply by a large value and extract the top six bits of the
+result. Values of the form 2 + 1 and 2% — 1 are easy to multiply by on the ARM using the
+barrel shifter. In fact, multiplying by (2? — 1)(2!! — 1)(2!4 — 1) gives a different hash value
+for each distinct CLZ value. The authors found this multiplier using a computer search.
+
+You can use the code here to implement a fast hash-based normalization on ARMv4
+processors. The implementation requires 13 cycles on an ARM7TDMI excluding setting up
+the table pointer.
+
+table RN 2 ; address of hash lookup table
+
+;__value_in_regs struct { unsigned x; int shift; }
+} unorm_arm7m_hash(unsigned x)
+
+Code and CLZ values for different inputs.
+
+Input (in binary, x is a wildcard bit) 32-bit code CLZ value
+UXXXXXXX _XXXXXXXX AXXXXXKX AXXXXXAX OxFFFFO000 0
+OLXXXXXX XXXXXXXX AXXXXXXX XXXXXXXX Ox7FFF8000 1
+QOLXXXXX XXXXXXXX XXXXXXXX XXXXXXXX Ox3FFFCO00 2
+
+00000000 00000000 00000000 000001xx 0x00000007 29
+00000000 00000000 00000000 0000001x 0x00000003 30
+00000000 00000000 00000000 00000001 0x00000001 31
+00000000 00000000 00000000 00000000 0x00000000 32

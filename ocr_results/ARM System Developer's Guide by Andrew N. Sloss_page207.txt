@@ -1,0 +1,104 @@
+194 Chapter 6 Writing and
+
+codebits
+bitbuffer
+bitsfree
+tmp
+
+mask
+
+Optimizing ARM Assembly Code
+
+RN 5 3 length in bits of current code
+RN 6 ; 32-bit output big-endian bitbuffer
+RN 7 3 number of bits free in the bitbuffer
+RN 8 3; scratch register
+
+RN 12 ; endian reversal mask OxFFFFOOFF
+
+bitstream_write_start
+
+MOV
+Mov
+
+align_loop
+TST
+LDRNEB
+SUBNE
+ORRNE
+BNE
+Mov
+Mov
+
+bitstream_writ
+SUBS
+BLE
+ORR
+MoV
+full_buffer
+RSB
+ORR
+IF {EN
+3 by
+EOR
+AND
+EOR
+ENDIF
+STR
+RSB
+MoV
+MoV
+
+bitstream_writ
+RSBS
+
+flush_loop
+MOVGT
+STRGTB
+suBGTS
+BGT
+Mov
+
+bitbuffer, #0
+bitsfree, #32
+
+bitstream, #3
+code, [bitstream, #-1]!
+
+bitsfree, bitsfree, #8
+
+bitbuffer, code, bitbuffer, ROR #8
+align_loop
+
+bitbuffer, bitbuffer, ROR #8
+
+pc, Ir
+
+e_code
+bitsfree, bitsfree, codebits
+full_buffer
+bitbuffer, bitbuffer, code, LSL bitsfree
+pc, Ir
+
+bitsfree, bitsfree, #0
+bitbuffer, bitbuffer, code, LSR bitsfree
+DIAN}="1ittle"
+te reverse the bit buffer prior to storing
+tmp, bitbuffer, bitbuffer, ROR #16
+tmp, mask, tmp, LSR #8
+bitbuffer, tmp, bitbuffer, ROR #8
+
+bitbuffer, [bitstream], #4
+bitsfree, bitsfree, #32
+bitbuffer, code, LSL bitsfree
+pc, Ir
+
+e_flush
+bitsfree, bitsfree, #32
+
+bitbuffer, bitbuffer, ROR #24
+bitbuffer, [bitstream], #1
+bitsfree, bitsfree, #8
+flush_loop
+
+pe, Ir

@@ -1,0 +1,52 @@
+10.1 Overview of Database Programming Techniques and Issues
+
+Most database systems have an interactive interface where these SQL commands
+can be typed directly into a monitor for execution by the database system.
+For example, in a computer system where the Oracle RDBMS is installed, the com-
+mand SQLPLUS starts the interactive interface. The user can type SQL commands
+or queries directly over several lines, ended by a semicolon and the Enter key (that
+is, ";<cr>"). Alternatively, a file of commands can be created and executed
+through the interactive interface by typing ¢<filename>. The system will execute
+the commands written in the file and display the results, if any.
+
+The interactive interface is quite convenient for schema and constraint creation or
+for occasional ad hoc queries. However, in practice, the majority of database inter-
+actions are executed through programs that have been carefully designed and
+tested. These programs are generally known as application programs or database
+applications, and are used as canned transactions by the end users, as discussed in
+Section 1.4.3. Another common use of database programming is to access a data-
+base through an application program that implements a Web interface, for exam-
+ple, when making airline reservations or online purchases. In fact, the vast majority
+of Web electronic commerce applications include some database access commands.
+Chapter 11 gives an overview of Web database programming using PHP, a script-
+ing language that has recently become widely used.
+
+In this section, first we give an overview of the main approaches to database pro-
+gramming. Then we discuss some of the problems that occur when trying to access
+a database from a general-purpose programming language, and the typical sequence
+of commands for interacting with a database from a software program.
+
+10.1.1 Approaches to Database Programming
+
+Several techniques exist for including database interactions in application pro-
+grams. The main approaches for database programming are the following:
+
+1. Embedding database commands in a general-purpose programming
+language. In this approach, database statements are embedded into the host
+programming language, but they are identified by a special prefix. For
+example, the prefix for embedded SQL is the string EXEC SQL, which pre-
+cedes all SQL commands in a host language program.’ A precompiler or
+preproccessor scans the source program code to identify database state-
+ments and extract them for processing by the DBMS. They are replaced in
+the program by function calls to the DBMS-generated code. This technique
+is generally referred to as embedded SQL.
+
+2. Using a library of database functions or classes. A library of functions is
+made available to the host programming language for database calls. For
+example, there could be functions to connect to a database, prepare a query,
+execute a query, execute an update, loop over the query result on record at a
+time, and so on. The actual database query and update commands and any
+
+‘Other prefixes are sometimes used, but this is the most common,
+
+311

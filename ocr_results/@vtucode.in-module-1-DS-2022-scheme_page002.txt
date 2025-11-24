@@ -1,0 +1,55 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Primitive Data Structures
+
+These are basic data structures and are directly operated upon by the machine instructions.
+These data types consists of characters that cannot be divided and hence they also called
+simple data types.
+
+Example: Integers, Floating Point Numbers, Characters and Pointers etc.
+
+Non-Primitive Data Structures
+
+These are derived from the primitive data structures. The non-primitive data structures
+
+emphasizeon structuring of a group of homogeneous or heterogeneous data items.
+
+Example: Arrays, Lists and Files, Graphs, trees etc.
+
+Based on the structure and arrangement of data, non-primitive data structures is
+furtherclassified into
+
+1. Linear Data Structure
+
+2. Non-linear Data Structure
+
+1. Linear Data Structure:
+
+A data structure is said to be linear if its elements form a sequence or a linear list. There are
+basically two ways of representing such linear structure in memory.
+
+1. One way is to have the linear relationships between the elements represented by means of
+sequential memory location. These linear structures are called arrays.
+
+2. The other way is to have the linear relationship between the elements represented by means
+of pointers or links. These linear structures are called linked lists.
+
+The common examples of linear data structure are Arrays, Queues, Stacks, Linked lists
+
+2. Non-linear Data Structure:
+
+A data structure is said to be non-linear if the data are not arranged in sequence or a linear.
+The insertion and deletion of data is not possible in linear fashion. This structure is mainly
+used to represent data containing a hierarchical relationship between elements. Trees and
+
+graphs are the examples of non-linear data structure.
+
+OPERATIONS ON DATA STRUCTURES
+
+The commonly used operations on data structures are as follows,
+1. Create: The Create operation results in reserving memory for the program elements.
+The creation of data structures may take place either during compile time or during
+
+run time.
+
+vtucode.in 3

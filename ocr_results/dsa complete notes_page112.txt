@@ -1,0 +1,29 @@
+Data Structures and Applications (BCS304) Module IV
+
+GRAPHS
+
+Introduction
+
+The first recorded evidence of the use of graph dates back to 1736. When Leonhard Euler used them
+to solve the classical Konigsberg bridge problem.
+
+Definitions
+
+V(G)= {v1, v2, v3, v4, v5, v6}
+E(G) = {el, e2, 3, e4, e5, 6} E(G) = {(v1, v2) (v2, v3) (v1, v3) (v3, v4), (v3, v5) (v5, v6)}.
+There are six edges and six vertex in the graph
+
+Undirected Graph: Ina undirected graph the pair of vertices representing an edge is unordered.
+thus the pairs (u,v) and (v,u) represent the same edge.
+Example:
+
+() («) V(G)={a,b,c,d}
+
+E(G)={(a,b),(a,d),(b,d),(b,c)
+
+O— ©
+
+Directed Graph (digraph): In a directed graph each edge is represented by a directed pair (u,v), v is
+the head and u is the tail of the edge. Therefore (v,u) and(<u,v) represent two different edges
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 7

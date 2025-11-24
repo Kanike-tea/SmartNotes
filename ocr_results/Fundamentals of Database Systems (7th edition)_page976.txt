@@ -1,0 +1,51 @@
+946
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Higher level language support. SQL was a distinguishing feature that was in
+favor for RDBMSs for writing complex analytical queries. However, Hive has
+incorporated a large number of SQL features in HiveQL, including grouping and
+aggregation as well as nested subqueries and multiple functions that are useful in
+data warehouses, as we discussed previously. Hive 0.13 is able to execute about 50
+queries from the TPC-DS benchmark without any manual rewriting. New machine
+learning-oriented function libraries are emerging (e.g., the function library at
+madlib.net supports traditional RDBMSs like PostgreSql as well as the Pivotal dis-
+tribution of Hadoop database (PHD)). Pivotal’s HAWQ claims to be the latest and
+most powerful parallel SQL engine combining the advantages of SQL and Hadoop.
+Furthermore, the YARN plugin architecture that we discussed simplifies the pro-
+cess of extending the fabric with new components and new functions. Pig and
+Hive have extendibility with UDFs (user-defined functions). Several data services
+are now available on YARN, such as Revolution R and Apache Mahout for machine
+learning and Giraph for graph processing. Many traditional DBMSs now run on
+the YARN platform; for example, the Vortex analytic platform from Actian”! and
+BigSQL 3.0 from IBM.”*
+
+Fault tolerance. Fault tolerance remains a decided advantage of MR-based sys-
+tems. The panel of authors in Pavlo et al. (2009) also acknowledged that “MR does
+a superior job of minimizing the amount of work lost when a hardware failure
+occurs.” As pointed out by these authors, this capability comes at the cost of mate-
+rializing intermediate files between Map and Reduce phases. But as Hadoop begins
+to handle very complex data flows (such as in Apache Tez) and as the need for
+latencies decreases, users can trade off performance for fault tolerance. For exam-
+ple, in Apache Spark one can configure an intermediate Resilient Distributed
+Dataset (RDD)”? to be either materialized on disk or in memory, or even to be
+recomputed from its input.
+
+As we can see from this discussion, even though MR started with a goal of sup-
+porting batch-oriented workloads, it could not keep up with traditional parallel
+RDBMSs in terms of interactive query workloads, as exemplified by Pavlo et al.
+(2009). However, the two camps have moved much closer to each other in capa-
+bilities. Market forces, such as the need for venture capital for new startups, require
+an SQL engine for new applications that largely deal with very large semistruc-
+tured datasets; and the research community’s interest and involvement have
+brought about substantial improvements in Hadoop’s capability to handle tradi-
+tional analytical workloads. But there is still significant catching up to be done in
+all the areas pointed out in Pavlo et al. (2009): runtime, planning and optimiza-
+tion, and analytic feature-sets.
+
+2'See hitp://wwwactian.com/about-us/blog/sq-hadoop-real-deal/ for a current description.
+
+?2See Presentation at http://wwwslideshare.net/Hadoop_Summit/w-325p230-azubirigrayatv4 for a
+current description.
+
+?°See Zaharia et al. (2012).

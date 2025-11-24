@@ -1,0 +1,48 @@
+882
+
+Chapter 23 Distributed Database Concepts
+
+present an excellent survey of techniques for analysis of schemas. Pitoura et al.
+(1995) discuss object orientation in multidatabase systems. Xiao et al. (2003) pro-
+pose an XML-based model for a common data model for multidatabase systems
+and present a new approach for schema mapping based on this model. Lakshmanan
+et al. (2001) propose extending SQL for interoperability and describe the architec-
+ture and algorithms for achieving the same.
+
+Transaction processing in multidatabases is discussed in Mehrotra et al. (1992),
+Georgakopoulos et al. (1991), Elmagarmid et al. (1990), and Brietbart et al.
+(1990), among others. Elmagarmid (1992) discusses transaction processing for
+advanced applications, including engineering applications that are discussed in
+Heiler et al. (1992).
+
+The workflow systems, which are becoming popular for managing information in
+complex organizations, use multilevel and nested transactions in conjunction with
+distributed databases. Weikum (1991) discusses multilevel transaction manage-
+ment. Alonso et al. (1997) discuss limitations of current workflow systems. Lopes et
+al. (2009) propose that users define and execute their own workflows using a client-
+side Web browser. They attempt to leverage Web 2.0 trends to simplify the user’s
+work for workflow management. Jung and Yeom (2008) exploit data workflow to
+develop an improved transaction management system that provides simultaneous,
+transparent access to the heterogeneous storages that constitute the HVEM
+DataGrid. Deelman and Chervanak (2008) list the challenges in data-intensive sci-
+entific workflows. Specifically, they look at automated management of data, effi-
+cient mapping techniques, and user feedback issues in workflow mapping. They
+also argue for data reuse as an efficient means to manage data and present the chal-
+lenges therein.
+
+A number of experimental distributed DBMSs have been implemented. These
+include distributed INGRES by Epstein et al. (1978), DDTS by Devor and Weel-
+dreyer (1980), SDD-1 by Rothnie et al. (1980), System R* by Lindsay et al. (1984),
+SIRIUS-DELTA by Ferrier and Stangret (1982), and MULTIBASE by Smith et al.
+(1981). The OMNIBASE system by Rusinkiewicz et al. (1988) and the Federated
+Information Base developed using the Candide data model by Navathe et al. (1994)
+are examples of federated DDBMSs. Pitoura et al. (1995) present a comparative
+survey of the federated database system prototypes. Most commercial DBMS ven-
+dors have products using the client/server approach and offer distributed versions
+of their systems. Some system issues concerning client/server DBMS architectures
+are discussed in Carey et al. (1991), DeWitt et al. (1990), and Wang and Rowe
+(1991). Khoshafian et al. (1992) discuss design issues for relational DBMSs in the
+client/server environment. Client/server management issues are discussed in many
+books, such as Zantinge and Adriaans (1996). Di Stefano (2005) discusses data dis-
+tribution issues specific to grid computing. A major part of this discussion may also
+apply to cloud computing.

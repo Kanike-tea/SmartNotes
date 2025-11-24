@@ -1,0 +1,55 @@
+Actua Data stored,
+
+Hash Lad
+Ki Z
+WN i Function > Hash Value 4
+
+Actual Dita to be stowe
+
+®
+
+Figure 5.17 Hashing.
+
+5.0.3 Types of Hash Functions
+
+1. Division Method: It is the most simple method of hashing an integer x. This method divides x
+
+y M and then uses the remainder obtained. In this case, the hash function can be given as [h(x)}
+
+— x mod M |The division method is quite good for just about any value of M and since it
+
+requires only a single division operation, the method works very fast. However, extra care
+should be taken to select a suitable value for M. Generally, it is best to choose M to be a prime
+number because making M a prime number increases the likelihood that the keys are mapped
+with a uniformity in the output range of values.
+
+Example: If the record to be stored {54,72, 89,37} is to be placed in the hash table and if the table
+size is 10
+
+H(Key) = Record % Size i.e:
+
+H (54) =54%10=4
+
+H (72) =72%10=2
+
+H (89) =89%10=9
+
+H (37) =37%10=7
+
+|
+
+[ 72: |
+
+54
+
+37
+
+Caornanwnry
+
+89
+
+2. Mid-Square Method:
+¢ Here, the key K is squared. A number ‘I’ in the middle of K’ is selected by removing the digits
+from both ends. H(k)=1
+
+Page 2

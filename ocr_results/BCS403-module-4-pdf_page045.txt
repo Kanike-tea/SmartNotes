@@ -1,0 +1,35 @@
+Database Management System [BCS403]
+
+Table 21.1 Possible Violations Based on Isolation Levels as Defined in SOL
+
+Type of Violation
+Isolation Level Dirty Read Nonrepeatable Read Phantom
+READ UNCOMMITTED Yes Yes Yes
+READ COMMITTED No Yes Yes
+REPEATABLE READ No No Yes
+SERIALIZABLE No No No
+
+EXEC SQL WHENEVER SQLERROR GOTO UNDO;
+EXEC SQL SET TRANSACTION
+READ WRITE
+DIAGNOSTIC SIZE 5
+ISOLATION LEVEL SERIALIZABLE;
+EXEC SQL INSERT INTO EMPLOYEE (Fname, Lname, Ssn, Do, Salary)
+VALUES ('Robert', 'Smith', '991004321', 2, 35000);
+EXEC SQL UPDATE EMPLOYEE
+SET Salary = Salary * 1.1 WHERE Dno = 2;
+EXEC SQL COMMIT;
+GOTO THE END;
+UNDO: EXEC SQL ROLLBACK;
+THE END: ... ;
+
+= The transaction consists of first inserting a new row in the EMPLOYEE table and then
+updating the salary of all employees who work in department 2
+
+= If an error occurs on any of the SQL statements, the entire transaction is rolled back
+
+= This implies that any updated salary (by this transaction) would be restored to its
+
+previous value and that the newly inserted row would be removed.
+
+https://vtucode.in 21

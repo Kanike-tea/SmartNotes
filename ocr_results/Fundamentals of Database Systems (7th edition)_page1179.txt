@@ -1,0 +1,50 @@
+30.7 Encryption and Public Key Infrastructures
+
+channels can be classified into two broad categories: timing channels and storage.
+The distinguishing feature between the two is that in a timing channel the infor-
+mation is conveyed by the timing of events or processes, whereas storage channels
+do not require any temporal synchronization, in that information is conveyed by
+accessing system information or what is otherwise inaccessible to the user.
+
+In a simple example of a covert channel, consider a distributed database system in
+which two nodes have user security levels of secret (S) and unclassified (U). In order
+for a transaction to commit, both nodes must agree to commit. They mutually can
+only do operations that are consistent with the *-property, which states that in any
+transaction, the S site cannot write or pass information to the U site. However, if
+these two sites collude to set up a covert channel between them, a transaction
+involving secret data may be committed unconditionally by the U site, but the S site
+may do so in some predefined agreed-upon way so that certain information may be
+passed from the S site to the U site, violating the *-property. This may be achieved
+where the transaction runs repeatedly, but the actions taken by the S site implicitly
+convey information to the U site. Measures such as locking, which we discussed in
+Chapters 21 and 22, prevent concurrent writing of the information by users with
+different security levels into the same objects, preventing the storage-type covert
+channels. Operating systems and distributed databases provide control over the
+multiprogramming of operations, which allows a sharing of resources without the
+possibility of encroachment of one program or process into another’s memory or
+other resources in the system, thus preventing timing-oriented covert channels. In
+general, covert channels are not a major problem in well-implemented robust data-
+base implementations. However, certain schemes may be contrived by clever users
+that implicitly transfer information.
+
+Some security experts believe that one way to avoid covert channels is to disallow
+programmers to actually gain access to sensitive data that a program will process
+after the program has been put into operation. For example, a programmer for a
+bank has no need to access the names or balances in depositors’ accounts. Program-
+mers for brokerage firms do not need to know what buy and sell orders exist for
+clients. During program testing, access to a form of real data or some sample test
+data may be justifiable, but not after the program has been accepted for regular use.
+
+30.7 Encryption and Public Key Infrastructures
+
+The previous methods of access and flow control, despite being strong control mea-
+sures, may not be able to protect databases from some threats. Suppose we commu-
+nicate data, but our data falls into the hands of a nonlegitimate user. In this situation,
+by using encryption we can disguise the message so that even if the transmission is
+diverted, the message will not be revealed. Encryption is the conversion of data into
+a form, called a ciphertext, that cannot be easily understood by unauthorized per-
+sons. It enhances security and privacy when access controls are bypassed, because
+in cases of data loss or theft, encrypted data cannot be easily understood by unau-
+thorized persons.
+
+1149

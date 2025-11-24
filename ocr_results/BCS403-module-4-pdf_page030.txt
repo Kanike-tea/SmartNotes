@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+= A transaction includes read_item and write_item operations to access and update DB.
+
+(a) Figure 21.2
+- s Two sample transac-
+read_item(X); read_item(X); tions. (a) Transaction
+X=X-N; X=X+M; T,. (b) Transaction T.
+
+write_item(X); write_item(X);
+read_item(Y);
+
+Y=Y+N;
+
+write_item(Y);
+
+= The read-set of a transaction is the set of all items that the transaction reads
+= The write-set is the set of all items that the transaction writes
+
+= For example, the read-set of 71 in Figure 21.2 is {X, Y}and its write-set is also {X, Y}.
+
+5.2.3 Why Concurrency Control Is\Needed
+
+= Several problems can occur when concurrent transactions execute in an uncontrolled
+manner
+= Example:
++ We consider an Airline reservation DB
++ Each records is stored for an airline flight which includes Number of reserved seats
+among other information.
+Types of problems we may encounter:
+
+1. The Lost Update Problem
+The Temporary Update (or Dirty Read) Problem
+
+The Incorrect Summary Problem
+
+pe
+
+The Unrepeatable Read Problem
+
+read_item(X); read_item(X);
+X =X+M; X=X-N;
+write_item(X); write_item(X);
+
+read_item(Y);
+Y=Y+N;
+write_item(Y);
+
+https://vtucode.in

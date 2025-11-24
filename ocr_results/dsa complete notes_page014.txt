@@ -1,0 +1,56 @@
+Data Structures and Applications/BCS304 Module-1
+
+a[j+1]= temp;
+i
+printf("the sorted array is \n");
+for(i=0;i<n;i++)
+printf("%d \t" a[i]);
+return(0);
+
+}
+
+Complexity of the bubble sort algorithm is O(n?)
+e The time for sorting is measured in terms of the number of comparisons. In the bubble sort
+there are n-1 comparison in the first pass which places the largest element in the last position.
+e There are n-2 comparison in the second pass which places the second largest element in the
+next to last position and so on, therefore
+C(n)= (n-1) +(n-2) + 2+ 1= n(n-1)/2= n?/2 = O(n)
+
+Searching:
+e Let DATA be a collection of data elements in memory and suppose a specific ITEM of
+information is given.
+e Searching refers to the operation of finding the Location LOC of the ITEM in DATA or
+printing a message that the item does not appear here.
+e The search is successful if the ITEM appear in DATA and unsuccessful otherwise.
+
+The algorithm chosen for searching depends on the way the data is organised. The two algorithm
+considered here is linear search and binary search.
+
+LINEAR SEARCH: This program traverses the array sequentially to locate key
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+int a[10],i,key,pos.n.flag=0;
+printf("enter the size of the array : ");
+scanf("%d" ,&n);
+printf("enter the elements of the array\n");
+for(i=0;i<n;i++)
+scanf("%d" &ali]);
+printf("enter the key \n");
+scanf("%d" &key);
+for(i=0;i<=n-1;i++)
+if (a[i]== key)
+{
+printf("key %d found at %d" key,pos+1);
+exit();
+
+}
+printf("key not found");
+i
+
+Complexity of Linear search: The complexity is based on the number of comparison C(n) required
+to find the key in the array element.
+e The best case occurs when the key is found at first position. C(n)<¢O(1)
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 15

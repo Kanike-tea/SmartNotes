@@ -1,0 +1,44 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 04 (a)
+4a) Write a Python program to Demonstrate how to Draw a Bar Plot using Matplotlib.
+Aim: Demonstration of how to draw a bar plot using matplotlib.
+
+PROGRAM EXPLANATION
+
+The below program demonstrates how to draw a bar plot using Matplotlib. Make sure you have
+Matplotlib installed before running this code. You can install it using pip if you haven't already:
+
+pip install matplotlib
+
+1. Import Matplotlib: The script begins by importing the ‘pyplot’ module from the
+Matplotlib library as p1t. Matplotlib is a popular data visualization library in Python,
+and ‘pyplot’ is a subpackage that provides a simple interface for creating various types
+of plots, including bar plots.
+
+2. Define Sample Data: Two lists are defined: ‘categories’ and ‘values’. These lists
+represent the categories (e.g., labels) and corresponding values (e.g., numerical data
+points) that will be used to create the bar plot. In this case, there are four categories and
+their respective values.
+
+3. Create a Bar Plot: The ‘plt.bar()’ function is used to create a bar plot. This
+function takes two arguments: the first argument is the list of categories (x-axis), and the
+second argument is the list of values (y-axis). Additionally, the ‘color’ parameter is set
+to 'green', specifying the color of the bars in the plot.
+
+4. Add Labels and Title: The ‘plt.xlabel()’, ‘plt.ylabel()’, and
+‘plt.title()’ functions are used to add labels to the x-axis, y-axis, and a title to the
+plot, respectively. In this example, 'Categories' is set as the x-axis label, 'Values' as the y-
+axis label, and 'Bar Plot Example' as the title.
+
+5. Display the Plot: Finally, the plt.show() function is called to display the created bar
+plot on the screen. This function is essential for showing the plot to the user. It should be
+
+the last line of the script.
+
+When you run this program, it will generate a bar plot with the specified categories on the x-axis
+and their corresponding values on the y-axis, labeled and titled as described, and display the plot
+
+in a graphical window.
+
+Dept. of CSE 33 GSSSIETW, Mysuru

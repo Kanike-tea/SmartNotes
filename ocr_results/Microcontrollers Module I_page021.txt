@@ -1,0 +1,49 @@
+Microcontrollers-BCS402
+
+hardware portion of Jazelle only supports a subset of the Java bytecodes; the rest are
+emulated in software.
+
+Jazelle instruction set features.
+
+Jazelle (cpsr T = 0, J = 1)
+
+Instruction size 8-bit
+Core instructions | Over 60% of the Java bytecodes are implemented in hardware;
+the rest of the codes are implemented in software.
+
+Interrupt Mask:
+
+Interrupt masks are used to stop specific interrupt requests from interrupting the processor.
+There are two interrupt request levels available on the ARM processor core—interrupt
+request (IRQ) and fast interrupt request (FIQ).
+
+The cpsr has two interrupt mask bits, 7 and 6 (or I and F), which control the masking of IRQ
+and FIQ, respectively. The I bit masks IRQ when set to binary 1, and similarly the F bit
+
+masks FIQ when set to binary 1.
+
+Condition Flags:
+
+Condition flags are updated by comparisons and the result of ALU operations that specify the
+S instruction suffix. For example, if a SUBS subtract instruction results in a register value of
+zero, then the Z flag in the cpsr is set. This particular subtract instruction specifically updates
+the cpsr.
+
+Condition flags.
+
+Flag Flag name Set when
+Q Saturation the result causes an overflow and/or saturation
+Vv oVerflow the result causes a signed overflow
+Cc Carry the result causes an unsigned carry
+Z Zero the result is zero, frequently used to indicate equality
+N Negative bit 31 of the result is a binary 1
+3130292827 24 7oO54 °
+oOjO|1}O\o oO O|1)O 1OO11
+1 |
+nzCvq ij iF t svc
+
+Example: cpsr =
+
+zCvqjiFt_SVC.
+
+Dept. of ECE, GSSSIETW Page 22

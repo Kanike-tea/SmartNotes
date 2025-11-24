@@ -1,0 +1,56 @@
+9.3 Interrupt Handling Schemes 361
+
+AND = rl0, rll, #0xf 3 mask off top 24-bit
+ADR rll, lowest_significant_bit ; load LSB addr
+
+LoRB- rll, [rl, ri0] 3 load byte
+
+B disable_lower_priority ; jump to routine
+
+lowest_significant_bit
+
+3 0 123456789abcdef
+DCB Oxf F,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0
+disable_lower_priority
+CMP rll, #0xff 3 if unknown
+BEQ _unknown_condition 3; then jump
+LOR rl, [rl4, #IRQEnable] 3 load IRQ enable reg
+ADR rl0, priority_mask 3 load priority addr
+LOR =r, [rl0, rll, LSL #2] 3 mem32[r10+r11 <<2]
+
+AND = rl2, rl2, r10 AND enable reg
+STR 12, [rl4, #IRQEnableClear] ; disable ints
+MRS rl4, cpsr copy cpsr
+
+BIC rld, ria, #1_Bit clear I-bit
+MSR cpsr_c, 14 enable IRQ ints
+
+LOR pe, [pe, rll, LSL #2] ; jump to an ISR
+NOP
+
+DCD —service_timer1 3 timerl ISR
+DCD —service_commtx 3 commtx ISR
+DCD ——service_commrx 3 commrx ISR
+DCD —service_timer2 3 timer2 ISR
+
+priority_mask
+
+DCD MASK_TIMERL 3 mask GROUP 0
+DCD MASK_COMMTX 3 mask GROUP 1
+DCD MASK_COMMRX 3 mask GROUP 1
+DCD MASK_TIMER2 3 mask GROUP 0
+
+The GROUP_x defines assign the various interrupt sources to their specific priority level
+by using a binary OR operation on the binary patterns. The GMASK_x defines assign the
+masks for the grouped interrupts. The MASK_x defines connect each GMASK_x to a specific
+interrupt source, which can then be used in the priority mask table.
+
+After the context has been saved the interrupt handler loads the IRQ status register using
+an offset from the interrupt controller base address.
+
+The handler then identifies the group to which the interrupt source belongs by using
+the binary AND operation on the source. The letter $ postfixed to the instructions means
+update condition flags in the cpsr.
+
+Register r1 J will now contain the highest-priority group 0 or 1. The handler now masks
+out the other interrupt sources by applying a binary AND operation with Oxf.

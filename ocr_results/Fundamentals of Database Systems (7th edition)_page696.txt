@@ -1,0 +1,52 @@
+666
+
+Chapter 18 Strategies for Query Processing
+
+the indexes include record pointers (rather than block pointers), then each
+index can be used to retrieve the set of record pointers that satisfy the indi-
+vidual condition. The intersection of these sets of record pointers gives the
+record pointers that satisfy the conjunctive select condition, which are then
+used to retrieve those records directly. If only some of the conditions have
+secondary indexes, each retrieved record is further tested to determine
+whether it satisfies the remaining conditions.'? In general, method $10
+assumes that each of the indexes is on a nonkey field of the file, because if one
+of the conditions is an equality condition on a key field, only one record will
+satisfy the whole condition. The bitmap and functional indexes discussed
+above in $7 are applicable for conjunctive selection on multiple attributes as
+well. For conjunctive selection on multiple attributes, the resulting bitmaps
+are AND-ed to produce the list of record ids; the same can be done when one
+or more set of record ids comes from a functional index.
+
+Whenever a single condition specifies the selection—such as OP1, OP2, or OP3—
+the DBMS can only check whether or not an access path exists on the attribute
+involved in that condition. If an access path (such as index or hash key or bitmap
+index or sorted file) exists, the method corresponding to that access path is used;
+otherwise, the brute force, linear search approach of method S1 can be used. Query
+optimization for a SELECT operation is needed mostly for conjunctive select condi-
+tions whenever more than one of the attributes involved in the conditions have an
+access path. The optimizer should choose the access path that retrieves the fewest
+records in the most efficient way by estimating the different costs (see Section 19.3)
+and choosing the method with the least estimated cost.
+
+18.3.3 Search Methods for Disjunctive Selection
+
+Compared to a conjunctive selection condition, a disjunctive condition (where
+simple conditions are connected by the OR logical connective rather than by AND)
+is much harder to process and optimize. For example, consider OP4’:
+
+OP4’: Gpno=5 OR Salary > 30000 OR Sex =F’ (EMPLOYEE)
+
+With such a condition, the records satisfying the disjunctive condition are the
+union of the records satisfying the individual conditions. Hence, if any one of the
+conditions does not have an access path, we are compelled to use the brute force,
+linear search approach. Only if an access path exists on every simple condition in
+the disjunction can we optimize the selection by retrieving the records satisfying
+each condition—or their record ids—and then applying the union operation to
+eliminate duplicates.
+
+All the methods discussed in $1 through $7 are applicable for each simple condition
+yielding a possible set of record ids. The query optimizer must choose the appropri-
+ate one for executing each SELECT operation in a query. This optimization uses
+
+'The technique can have many variations—for example, if the indexes are logical indexes that store primary
+key values instead of record pointers.

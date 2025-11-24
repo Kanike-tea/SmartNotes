@@ -1,0 +1,53 @@
+19.2 Choice of Query Execution Plans
+
+Aggregation (Group By): For aggregation, let us consider that GROUP BY
+is used on column G in relation R and the view contains (SELECT G, aggregate-
+function (A)). The view is a result of some aggregation function applied to attribute A,
+which corresponds to (see Section 8.4.2):
+
+GSAggregate-function(A)
+We consider a few aggregate-functions below:
+
+= Count: For keeping the count of tuples for each group, if a new tuple is
+inserted in r, and if it has a value for G = gl, and if g1 is present in the view,
+then its count is incremented by 1. If there is no tuple with the value gl in the
+view, then a new tuple is inserted in the view: <g1, 1>. When the tuple being
+deleted has the value G = gl, its count is decremented by 1. If the count of g1
+reaches zero after deletion in the view, that tuple is removed from the view.
+
+= Sum: Suppose the view contains (G, sum(A)). There is a count maintained
+for each group in the view. Ifa tuple is inserted in the relation r and has (g1,
+x1) under the columns R.G and R.A, and if the view does not have an entry
+for gl, a new tuple <gl, x1> is inserted in the view and its count is set to 1. If
+there is already an entry for gl as <gl, s1> in the old view, it is modified as
+<gl, sl + x1> and its count is incremented by 1. For the deletion from base
+relation of a tuple with R.G, R.A being <gl, x1>, if the count of the corre-
+sponding group g] is 1, the tuple for group g1 would be removed from the
+view. If it is present and has count higher than 1, the count would be decre-
+mented by 1 and the sum s1 would be decremented to s1- x1.
+
+= Average: The aggregate function cannot be maintained by itself without main-
+taining the sum and the count functions and then computing the average as sum
+divided by count. So both the sum and count functions need to be maintained
+and incrementally updated as discussed above to compute the new average.
+
+= Maxand Min: We can just consider Max. Min would be symmetrically han-
+dled. Again for each group, the (g, max(a), count) combination is main-
+tained, where max(a) represents the maximum value of R.A in the base
+relation. If the inserted tuple has R.A value lower than the current max(a)
+value, or if it has a value equal to max(a) in the view, only the count for the
+group is incremented. If it has a value greater than max(a), the max value in
+the view is set to the new value and the count is incremented. Upon deletion
+of a tuple, if its R.A value is less than the max(a), only the count is decre-
+mented. If the R.A value matches the max(a), the count is decremented by 1;
+so the tuple that represented the max value of A has been deleted. Therefore,
+a new max must be computed for A for the group that requires substantial
+amount of work. If the count becomes 0, that group is removed from the
+view because the deleted tuple was the last tuple in the group.
+
+We discussed incremental materialization as an optimization technique for main-
+taining views. However, we can also look upon materialized views as a way to
+reduce the effort in certain queries. For example, if a query has a component, say,
+RS or mR that is available as a view, then the query may be modified to use the
+
+709

@@ -1,0 +1,50 @@
+6.4 Register Allocation 177
+
+ADD 2, sp, #d 3 r2 = &d[0]
+
+ADD sp, sp, #length —; restore the stack pointer
+LOMFD sp!, {r4-rl1, pc} 3 return
+
+6.4.3. MAKING THE MOST OF AVAILABLE REGISTERS
+
+EXAMPLE
+
+6.14
+
+EXAMPLE
+
+6.15
+
+On a load-store architecture such as the ARM, it is more efficient to access values held in
+registers than values held in memory. There are several tricks you can use to fit several
+sub-32-bit length variables into a single 32-bit register and thus can reduce code size and
+increase performance. This section presents three examples showing how you can pack
+multiple variables into a single ARM register.
+
+Suppose we want to step through an array by a programmable increment. A common
+example is to step through a sound sample at various rates to produce different pitched
+notes. We can express this in C code as
+
+table[index] ;
+increment;
+
+Commonly index and increment are small enough to be held as 16-bit values. We can
+pack these two variables into a single 32-bit variable indinc:
+
+Bit 31 16 15 0
+
+indinc = (index<<16) + increment = index increment
+
+The C code translates into assembly code using a single register to hold indinc:
+
+LORB_ sample, [table, indinc, LSR#16] ; table[index]
+ADD indinc, indinc, indinc, LSL#16 ; indext=increment
+
+Note that if index and increment are 16-bit values, then putting index in the top
+16 bits of indinc correctly implements 16-bit-wrap-around. In other words, index =
+(short) (index + increment). This can be useful if you are using a buffer where you want
+to wrap from the end back to the beginning (often known as a circular buffer).
+
+When you shift by a register amount, the ARM uses bits 0 to 7 as the shift amount. The
+ARM ignores bits 8 to 31 of the register. Therefore you can use bits 8 to 31 to hold a second
+variable distinct from the shift amount.

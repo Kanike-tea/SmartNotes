@@ -1,0 +1,18 @@
+D.8 ARMI1 Cycle Timings 665
+
+Table D.14 ARM11 (ARMv6) instruction cycle timings. (Continued.)
+
+Instruction class Cycles Notes
+
+UMAAL 3 RadLo is not available for one cycle. RdHi is not available for
+two cycles. These latencies are reduced by one for another
+accumulate.
+
+Rmand Rsare required one cycle early. RdLo is not required
+until the second cycle.
+
+USAD8, USADA8 1 Rd is not available for two cycles, with the exception that the
+result of USAD8 is available as the accumulator for USADA8 after
+one cycle.
+
+Rmand Rsare required one cycle early.

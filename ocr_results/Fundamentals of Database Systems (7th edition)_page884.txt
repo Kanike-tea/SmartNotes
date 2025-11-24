@@ -1,0 +1,53 @@
+854
+
+Chapter 23 Distributed Database Concepts
+
+23.3 Overview of Concurrency Control
+and Recovery in Distributed Databases
+
+For concurrency control and recovery purposes, numerous problems arise in a dis-
+tributed DBMS environment that are not encountered in a centralized DBMS envi-
+ronment. These include the following:
+
+= Dealing with multiple copies of the data items. The concurrency control
+method is responsible for maintaining consistency among these copies. The
+recovery method is responsible for making a copy consistent with other cop-
+ies if the site on which the copy is stored fails and recovers later.
+
+= Failure of individual sites. The DDBMS should continue to operate with its
+running sites, if possible, when one or more individual sites fail. When a site
+recovers, its local database must be brought up-to-date with the rest of the
+sites before it rejoins the system.
+
+= Failure of communication links. The system must be able to deal with the
+failure of one or more of the communication links that connect the sites. An
+extreme case of this problem is that network partitioning may occur. This
+breaks up the sites into two or more partitions, where the sites within each
+partition can communicate only with one another and not with sites in other
+partitions.
+
+= Distributed commit. Problems can arise with committing a transaction
+that is accessing databases stored on multiple sites if some sites fail during
+the commit process. The two-phase commit protocol (see Section 21.6) is
+often used to deal with this problem.
+
+= Distributed deadlock. Deadlock may occur among several sites, so
+techniques for dealing with deadlocks must be extended to take this
+into account.
+
+Distributed concurrency control and recovery techniques must deal with these
+and other problems. In the following subsections, we review some of the tech-
+niques that have been suggested to deal with recovery and concurrency control
+in DDBMSs.
+
+23.3.1 Distributed Concurrency Control Based
+on a Distinguished Copy of a Data Item
+
+To deal with replicated data items in a distributed database, a number of concur-
+rency control methods have been proposed that extend the concurrency control
+techniques that are used in centralized databases. We discuss these techniques in
+the context of extending centralized locking. Similar extensions apply to other con-
+currency control techniques. The idea is to designate a particular copy of each data
+item as a distinguished copy. The locks for this data item are associated with the
+distinguished copy, and all locking and unlocking requests are sent to the site that
+contains that copy.

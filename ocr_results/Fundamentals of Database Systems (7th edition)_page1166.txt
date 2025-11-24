@@ -1,0 +1,56 @@
+1136 Chapter 30 Database Security
+
+Figure 30.2
+
+A multilevel relation to
+illustrate multilevel security.
+(a) The original EMPLOYEE
+tuples. (b) Appearance of
+EMPLOYEE atter filtering
+for classification C users.
+(c) Appearance of
+EMPLOYEE atter filtering
+for classification U users
+(d) Polyinstantiation of the
+Smith tuple.
+
+(a) EMPLOYEE
+Name Salary JobPerformance TC
+Smith U | 40000 C Fair Ss Ss
+Brown C | 80000 S Good Cc Ss
+
+(b) EMPLOYEE
+Name Salary JobPerformance TC
+Smith U | 40000 C NULL Cc Cc
+Brown C | NULL C Good Cc Cc
+
+(c) EMPLOYEE
+Name Salary JobPerformance TC
+Smith U | NULL U NULL U U
+
+(d) EMPLOYEE
+Name Salary JobPerformance TC
+Smith U | 40000 C Fair Ss Ss
+Smith U | 40000 C Excellent C ej
+Brown C | 80000 S Good Cc Ss
+
+attribute’s value. Assume that the Name attribute is the apparent key, and consider the
+query SELECT * FROM EMPLOYEE. A user with security clearance S would see the same
+relation shown in Figure 30.2(a), since all tuple classifications are less than or equal to
+S. However, a user with security clearance C would not be allowed to see the values for
+Salary of ‘Brown’ and Job_performance of ‘Smith’, since they have higher classification.
+The tuples would be filtered to appear as shown in Figure 30.2(b), with Salary and
+Job_performance appearing as null. For a user with security clearance U, the filtering
+allows only the Name attribute of ‘Smith’ to appear, with all the other attributes appear-
+ing as null (Figure 30.2(c)). Thus, filtering introduces null values for attribute values
+whose security classification is higher than the user’s security clearance.
+
+In general, the entity integrity rule for multilevel relations states that all attributes
+that are members of the apparent key must not be null and must have the same
+security classification within each individual tuple. Additionally, all other attribute
+values in the tuple must have a security classification greater than or equal to that of
+the apparent key. This constraint ensures that a user can see the key if the user is
+permitted to see any part of the tuple. Other integrity rules, called null integrity
+and interinstance integrity, informally ensure that if a tuple value at some security
+level can be filtered (derived) from a higher-classified tuple, then it is sufficient to
+store the higher-classified tuple in the multilevel relation.

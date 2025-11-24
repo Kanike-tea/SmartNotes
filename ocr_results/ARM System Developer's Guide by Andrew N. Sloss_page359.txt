@@ -1,0 +1,52 @@
+346 Chapter 9 Exception and Interrupt Handling
+
+SUMMARY
+
+Registers are then saved onto the SVC stack. Register r8 is used to hold the interrupt
+mask for the interrupts that have been disabled in the interrupt handler. They will be
+reenabled later.
+
+The interrupt source(s) are then disabled. An embedded system would at this point
+prioritize the interrupts and disable all interrupts lower than the current priority to prevent
+a low-priority interrupt from locking out a high-priority interrupt. Interrupt prioritizing
+will be discussed later on in this chapter.
+
+Since the interrupt source has been cleared, it is now safe to reenable IRQ exceptions.
+This is achieved by clearing the i bit in the cpsr. Note that the interrupt controller still has
+external interrupts disabled.
+
+It is now possible to process the interrupt. The interrupt processing should not attempt
+to do a context switch because the external source interrupt is disabled. If during the
+interrupt processing a context switch is needed, it should set a flag that could be picked up
+later by the interrupt handler. It is now safe to reenable external interrupts.
+
+The handler needs to check if further processing is required. If the returned value is
+nonzero in register r0, then no further processing is required. If zero, the handler restores
+the context and then returns control back to the suspended task.
+
+A stack frame now has to be created so that the service routine can complete. This is
+achieved by restoring parts of the context and then storing the complete context back on to
+the SVC stack.
+
+The subroutine continue_servicing, which will complete the servicing of the
+interrupt, is called. This routine is not provided because it is specific to an implementation.
+
+After the interrupt routine has been serviced, control can be given back to the suspended
+task.
+
+Reentrant Interrupt Handler
+
+= Handles multiple interrupts that can be prioritized.
+= Low interrupt latency.
+= Advantage: handles interrupts with differing priorities.
+
+= Disadvantage: tends to be more complex.
+
+9.3.4 PRIORITIZED SIMPLE INTERRUPT HANDLER
+
+Both the nonnested interrupt handler and the nested interrupt handler service interrupts
+on a first-come-first-served basis. In comparison, the prioritized interrupt handler will
+associate a priority level with a particular interrupt source. The priority level is used to dictate
+the order that the interrupts will be serviced. Thus, a higher-priority interrupt will take
+precedence over a lower-priority interrupt, which is a particularly desirable characteristic
+in many embedded systems.

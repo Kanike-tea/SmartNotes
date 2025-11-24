@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+2. The Temporary Update (or Dirty Read) Problem
+
+= occurs when one transaction updates a database item and then the transaction fails for
+some reason
+
+» Meanwhile the updated item is accessed by another transaction before it is changed back
+to its original value
+
+qt Th
+
+read_item(X);
+X=X-N;
+write_item(X);
+
+Time read_item(X);
+X=X+M;
+write_item(X);
+Transaction 7; fails;and must change
+read _item(Y); the value of X back to its old value;
+meanwhile T, has read the temporary
+incorrect value of X.
+
+3. The Incorrect Summary Problem
++ If one transaction is calculating an aggregate summary function on a number of db items
+while other transactions are updating some of these items, the aggregate function may
+
+calculate some values before they are updated and others after they are updated.
+
+i if
+
+sum = 0;
+read_item(A);
+sum = sum + A;
+
+read item(X);
+X=X-N;
+write_item(X);
+pecan a 7 Tareads X after Nis subtracted and reads
+ay). | | Y before NV is added; a wrong summary
+read_item(Y); is
+te . is the result (off by N)
+sum = sum + Y;
+read_item(¥);
+Y=Y+N;
+write_item(Y);
+
+https://vtucode.in

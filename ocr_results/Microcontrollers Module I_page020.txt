@@ -1,0 +1,44 @@
+Microcontrollers-BCS402
+
+The above figure illustrates what happens when an interrupt forces a mode change. The
+figure shows the core changing from user mode to interrupt request mode, which happens
+when an interrupt request occurs due to an external device raising an interrupt to the
+processor core. This change causes user registers r13 and rl4 to be banked. The user
+registers are replaced with registers r13_irq and r14_irq, respectively. Note r14_irg contains
+
+the return address and r13_irq contains the stack pointer for interrupt request mode.
+
+State and Instruction Set:
+
+The state of the core determines which instruction set is being executed. There are three
+instruction sets: ARM, Thumb, and Jazelle. The ARM instruction set is only active when the
+processor is in ARM state. Similarly the Thumb instruction set is only active when the
+processor is in Thumb state. Once in Thumb state the processor is executing purely Thumb
+16-bit instructions.
+
+The Jazelle J and Thumb T bits in the cpsr reflect the state of the processor. When both J and
+T bits are 0, the processor is in ARM state and executes ARM instructions. This is the case
+when power is applied to the processor. When the T bit is 1, then the processor is in Thumb
+state. To change states the core executes a specialized branch instruction. The below table
+
+compares the ARM and Thumb instruction set features.
+
+ARM and Thumb instruction set features.
+
+ARM (cpsr T= 0) Thumb (cpsr T= 1)
+Instruction size 32-bit 16-bit
+Core instructions 58 30
+Conditional execution* most only branch instructions
+Data processing access to barrel shifter and separate barrel shifter and
+instructions ALU ALU instructions
+Program status register read-write in privileged mode _ no direct access
+Register usage 15 general-purpose registers 8 general-purpose registers
++pe +7 high registers +pce
+
+The ARM designers introduced a third instruction set called Jazelle. Jazelle executes 8-bit
+instructions and is a hybrid mix of software and hardware designed to speed up the execution
+of Java bytecodes. To execute Java bytecodes, you require the Jazelle technology plus a
+
+specially modified version of the Java virtual machine. It is important to note that the
+
+Dept. of ECE, GSSSIETW Page 21

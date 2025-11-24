@@ -1,0 +1,45 @@
+466 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Redundancy
+EMP_DEPT
+Ename Ssn Bdate Address Dnumber Dname Dmgr_ssn
+‘Smith, John B. 123456789 | 1965-01-09 | 731 Fondren, Houston, TX] 5 Research 333445555
+Wong, Franklin T. _|883445555 | 1955-12-08 | 638 Voss, Houston, TX 5 Research 333445555
+Zelaya, Alicia J. 999887777 | 1968-07-19 | 3321 Castle, Spring, TX 4 Administration | 987654321
+Wallace, Jennifer S. |987654321 | 1941-06-20 | 291 Berry, Bellaire, TX 4 Administration | 987654321
+Narayan, Ramesh K.|666884444| 1962-09-15 | 975 FireOak, Humble, TX 5 Research 333445555
+English, Joyce A. [453453453 | 1972-07-31 |5631 Rice, Houston, TX 5 Research 333445555
+Jabbar, Ahmad V. _|987987987 | 1969-03-29 | 980 Dallas, Houston, TX 4 Administration | 987654321
+Borg, James E. 888665555 | 1937-11-10 | 450 Stone, Houston, TX 1 Headquarters | 888665555
+Redundancy Redundancy
+EMP_PROJ
+Ssn Pnumber__| Hours Ename Pname Plocation
+123456789 1 32.5 | Smith, John B. ProductX Bellaire
+123456789 2 75 _| Smith, John B. ProductY Sugarland
+666884444 3 40.0 _| Narayan, Ramesh K. | ProductZ Houston
+453453453 1 20.0 | English, Joyce A. ProductX Bellaire
+453453453 2 20.0 | English, Joyce A. ProductY Sugarland
+333445555 2 10.0 _| Wong, Franklin T. ProductY Sugarland
+333445555 3 10.0 _| Wong, Franklin T. ProductZ Houston
+333445555 10 10.0 | Wong, Franklin T. Computerization | Stafford
+333445555 20 10.0 _| Wong, Franklin T. Reorganization Houston
+999887777 30 30.0 | Zelaya, Alicia J. Newbenefits Stafford
+999887777 10 10.0 | Zelaya, Alicia J. Computerization | Stafford
+987987987 10 35.0 | Jabbar, Ahmad V. Computerization | Stafford
+987987987 30 5.0 Jabbar, Ahmad V. Newbenefits Stafford
+987654321 30 20.0 | Wallace, Jennifer S. | Newbenefits Stafford
+987654321 20 15.0 _| Wallace, Jennifer S. | Reorganization Houston
+888665555 20 Null__| Borg, James E. Reorganization _| Houston
+Figure 14.4
+
+Sample states for EMP_DEPT and EMP_PRO4 resulting from applying NATURAL JOIN to the relations
+in Figure 14.2. These may be stored as base relations for performance reasons.
+
+attributes for employee. This violates the entity integrity for EMP_DEPT
+because its primary key Ssn cannot be null. Moreover, when the first
+employee is assigned to that department, we do not need this tuple with
+NULL values anymore. This problem does not occur in the design of Fig-
+ure 14.2 because a department is entered in the DEPARTMENT relation whether
+or not any employees work for it, and whenever an employee is assigned to
+
+that department, a corresponding tuple is inserted in EMPLOYEE.

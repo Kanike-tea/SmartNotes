@@ -1,0 +1,53 @@
+428
+
+Chapter 13. XML: Extensible Markup Language
+
+or classes), and relationships. The internal nodes represent individual objects or
+composite attributes. The leaf nodes represent actual data values of simple
+(atomic) attributes.
+
+There are two main differences between the semistructured model and the object
+model that we discussed in Chapter 12:
+
+1. The schema information—names of attributes, relationships, and classes
+(object types) in the semistructured model—is intermixed with the objects
+and their data values in the same data structure.
+
+2. In the semistructured model, there is no requirement for a predefined
+schema to which the data objects must conform, although it is possible
+to define a schema if necessary. The object model of Chapter 12 requires
+a schema.
+
+In addition to structured and semistructured data, a third category exists, known as
+unstructured data because there is very limited indication of the type of data. A
+typical example is a text document that contains information embedded within it.
+Web pages in HTML that contain some data are considered to be unstructured
+data. Consider part of an HTML file, shown in Figure 13.2. Text that appears
+between angled brackets, <...>, isan HTML tag. A tag with a slash, </...>, indicates
+an end tag, which represents the ending of the effect of a matching start tag. The
+tags mark up the document! in order to instruct an HTML processor how to dis-
+play the text between a start tag and a matching end tag. Hence, the tags specify
+document formatting rather than the meaning of the various data elements in the
+document. HTML tags specify information, such as font size and style (boldface,
+italics, and so on), color, heading levels in documents, and so on. Some tags provide
+text structuring in documents, such as specifying a numbered or unnumbered list
+ora table. Even these structuring tags specify that the embedded textual data is to be
+displayed in a certain manner rather than indicating the type of data represented in
+the table.
+
+HTML uses a large number of predefined tags, which are used to specify a variety of
+commands for formatting Web documents for display. The start and end tags spec-
+ify the range of text to be formatted by each command. A few examples of the tags
+shown in Figure 13.2 follow:
+
+= The <HTML> ... </HTML> tags specify the boundaries of the document.
+
+= The document header information—within the <HEAD> ... </HEAD>
+tags—specifies various commands that will be used elsewhere in the docu-
+ment. For example, it may specify various script functions in a language
+such as JavaScript or PERL, or certain formatting styles (fonts, paragraph
+styles, header styles, and so on) that can be used in the document. It can also
+specify a title to indicate what the HTML file is for, and other similar infor-
+mation that will not be displayed as part of the document.
+
+'That is why it is known as HyperText Markup Language.

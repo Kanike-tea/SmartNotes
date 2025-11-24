@@ -1,0 +1,53 @@
+22.3 Recovery Techniques Based on Immediate Update 823
+
+T
+1 Ts
+
+T, ———}—
+
+Ts
+
+Checkpoint Ae, System crash t, b Time
+
+Figure 22.2
+
+An example of a
+recovery timeline to
+illustrate the effect of
+checkpointing.
+
+We can make the NO-UNDO/REDO recovery algorithm more efficient by noting that,
+ifa data item X has been updated—as indicated in the log entries—more than once
+by committed transactions since the last checkpoint, it is only necessary to REDO
+the last update of X from the log during recovery because the other updates would
+be overwritten by this last REDO. In this case, we start from the end of the log; then,
+whenever an item is redone, it is added to a list of redone items. Before REDO is
+applied to an item, the list is checked; if the item appears on the list, it is not redone
+again, since its latest value has already been recovered.
+
+Ifa transaction is aborted for any reason (say, by the deadlock detection method), it
+is simply resubmitted, since it has not changed the database on disk. A drawback of
+the method described here is that it limits the concurrent execution of transactions
+because all write-locked items remain locked until the transaction reaches its commit
+point. Additionally, it may require excessive buffer space to hold all updated items
+until the transactions commit. The method’s main benefit is that transaction opera-
+tions never need to be undone, for two reasons:
+
+1. A transaction does not record any changes in the database on disk until after
+it reaches its commit point—that is, until it completes its execution success-
+fully. Hence, a transaction is never rolled back because of failure during
+transaction execution.
+
+2. A transaction will never read the value of an item that is written by an
+uncommitted transaction, because items remain locked until a transaction
+reaches its commit point. Hence, no cascading rollback will occur.
+
+Figure 22.3 shows an example of recovery for a multiuser system that utilizes the
+recovery and concurrency control method just described.
+
+22.3 Recovery Techniques Based
+on Immediate Update
+
+In these techniques, when a transaction issues an update command, the database on
+disk can be updated immediately, without any need to wait for the transaction to
+reach its commit point. Notice that it is not a requirement that every update be

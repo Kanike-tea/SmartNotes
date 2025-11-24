@@ -1,0 +1,51 @@
+Digital Design and Computer Organization(BCS302)
+
+Prime Implicants
+In choosing adjacent squares in a map, we must ensure that
+
+(1) all the minterms of the function are covered when we combine the squares.
+(2) the number of terms in the expression is minimized, and
+
+(3) there are no redundant terms (i.e., Minterms already covered by other terms).
+
+* A prime implicant is a product term obtained by combining the maximum
+possible number of adjacent squares in the map.
+
+* The prime implicants of a function can be obtained from the map by combining
+all possible maximum numbers of squares.
+
+* prime implicants are the building blocks used in the simplification of Boolean
+functions
+
+Essential Prime Implicant:
+
++ An essential prime implicant is a prime implicant that covers at least one
+minterm that no other prime implicant covers.
+
+essential prime implicants are a subset of prime implicants that are necessary to
+cover specific minterms in order to achieve a minimal representation of the Boolean
+function.
+
+1) Simplify following four-variable Boolean function:
+F(A, B, C, D) = =m (0, 2, 3, 5, 7, 8, 9, 10, 11, 13, 15)
+
+The simplified expression is obtained from the logical sum of the two essential prime
+implicants and any two prime implicants that cover minterms m3, m9, and m11..
+
+Essential Prime Implicants are BD and B’D’
+
+Prime Implicants are B’D’,CD,BD,AD
+
+ers
+
+Ss=BO+CD+BD+
+
+There are four possible ways that the function can be expressed with four product
+terms of two literals each:
+
+F = BD+B'D'+CD+AD
+= BD+B'D'+ CD + AB'
+=BD+B'D'+ B'C+ AD
+
+Page
+16

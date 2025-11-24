@@ -1,0 +1,32 @@
+BCS304
+is played between sibling nodes and the result put in the parent node. Lemma 5.4 may be used
+
+to compute the address of sibling and parent nodes efficiently. Each new take place at the next
+
+higher level in the tree.
+
+0) Os ey
+
+& [TR
+& (es «
+[
+
+Bis @;
+[BS
+eS
+
+0
+cunt rund rend uns rund run6 rund
+
+5.33: Winner tree of fig.5.32 after one record has been output and the tree restructured.
+4.2.1 Loser Tree:
+
+After the record with the smallest key value is output, the winner tree of Figure 5.32 is to be
+restructured. Since the record with the smallest key value is in run 4this re- involves inserting
+the next record from this run into the tree. The next record has key value 15. are played between
+sibling nodes along the path from node 11 to the root. Since these sibling nodes represent the
+losers of played earlier, we can simplify the process by placing in each nonleaf node a pointer
+to the record that loses the rather than to the winner of the tournament. A selection tree in which
+each nonleaf node retains a pointer to the loser is called a loser tree. Figure 5.34 shows the
+
+loser tree that to the winner tree of Figure 5.32. For, each node the key value of a record rather

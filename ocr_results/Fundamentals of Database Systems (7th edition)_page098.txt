@@ -1,0 +1,52 @@
+68
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+database at any point in time is called an entity set or entity collection; the entity set
+is usually referred to using the same name as the entity type, even though they are
+two separate concepts. For example, EMPLOYEE refers to both a type of entity as
+well as the current collection of all employee entities in the database. It is now more
+common to give separate names to the entity type and entity collection; for example
+in object and object-relational data models (see Chapter 12).
+
+An entity type is represented in ER diagrams’ (see Figure 3.2) as a rectangular box
+enclosing the entity type name. Attribute names are enclosed in ovals and are
+attached to their entity type by straight lines. Composite attributes are attached to
+their component attributes by straight lines. Multivalued attributes are displayed in
+double ovals. Figure 3.7(a) shows a CAR entity type in this notation.
+
+An entity type describes the schema or intension for a set of entities that share the
+same structure. The collection of entities of a particular entity type is grouped into
+an entity set, which is also called the extension of the entity type.
+
+Key Attributes of an Entity Type. An important constraint on the entities of an
+entity type is the key or uniqueness constraint on attributes. An entity type usually
+has one or more attributes whose values are distinct for each individual entity in the
+entity set. Such an attribute is called a key attribute, and its values can be used to
+identify each entity uniquely. For example, the Name attribute is a key of the
+COMPANY entity type in Figure 3.6 because no two companies are allowed to have
+the same name. For the PERSON entity type, a typical key attribute is Ssn (Social Secu-
+rity number). Sometimes several attributes together form a key, meaning that the
+combination of the attribute values must be distinct for each entity. If a set of attri-
+butes possesses this property, the proper way to represent this in the ER model that
+we describe here is to define a composite attribute and designate it as a key attribute
+of the entity type. Notice that such a composite key must be minimal; that is, all
+component attributes must be included in the composite attribute to have the
+uniqueness property. Superfluous attributes must not be included in a key. In ER
+diagrammatic notation, each key attribute has its name underlined inside the oval,
+as illustrated in Figure 3.7(a).
+
+Specifying that an attribute is a key of an entity type means that the preceding
+uniqueness property must hold for every entity set of the entity type. Hence, it is a
+constraint that prohibits any two entities from having the same value for the key
+attribute at the same time. It is not the property of a particular entity set; rather, it is
+a constraint on any entity set of the entity type at any point in time. This key con-
+straint (and other constraints we discuss later) is derived from the constraints of the
+miniworld that the database represents.
+
+Some entity types have more than one key attribute. For example, each of the
+Vehicle_id and Registration attributes of the entity type CAR (Figure 3.7) is a key in
+
+5We use a notation for ER diagrams that is close to the original proposed notation (Chen, 1976). Many
+other notations are in use; we illustrate some of them later in this chapter when we present UML class
+diagrams, and some additional diagrammatic notations are given in Appendix A.

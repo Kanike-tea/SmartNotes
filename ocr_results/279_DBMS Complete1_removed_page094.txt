@@ -1,0 +1,53 @@
+Module-3:
+Lecture-33
+
+Transaction
+
+A transaction is the smallest unit of operation done on a database.
+It can be basically of two types:
+
+Read Transaction
+
+Write Transaction
+
+3.2. ACID Properties of transaction:
+
+Atomicity: (all or nothing)
+
+A transaction is said to be atomic if a transaction always executes all its actions in one step or not
+executes any actions at all It means either all or none of the transactions operations are performed.
+
+Consistency: (No violation of integrity constraints)
+
+A transaction must preserve the consistency of a database after the execution. The DBMS assumes
+that this property holds for each transaction. Ensuring this property of a transaction is the
+responsibility of the user.
+
+Isolation: (concurrent changes invisibles)
+
+The transactions must behave as if they are executed in isolation. It means that if several
+transactions are executed concurrently the results must be same as if they were executed serially in
+some order. The data used during the execution of a transaction cannot be used by a second
+transaction until the first one is completed.
+
+Durability: (committed update persist)
+
+The effect of completed or committed transactions should persist even after a crash. It means once a
+transaction commits, the system must guarantee that the result of its operations will never be lost, in
+spite of subsequent failures.
+
+3.3. States of a transaction:
+A transaction must be in one of the following states:
+
+¢ Active: the initial state, the transaction stays in this state while it is executing.
+
+e Partially committed: after the final statement has been executed.
+
+e Failed: when the normal execution can no longer proceed.
+
+e Aborted: after the transaction has been rolled back and the database has been restored to its
+state prior to the start of the transaction.
+
+¢ Committed: after successful completion.
+
+The state diagram corresponding to a transaction is shown in Figure.

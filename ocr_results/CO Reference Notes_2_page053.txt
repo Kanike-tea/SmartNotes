@@ -1,0 +1,78 @@
+Main memory
+
+Block |
+Cache
+tag .
+Seto
+
+tag
+7 Block 1
+tag —
+: =
+
+Block 63
+
+Block 64
+
+Block 65
+
+Block 127
+
+Block 128
+
+Block 129
+
+tag
+
+Set 63 Block 126
+re
+
+= Block 127
+
+‘Tag Set
+
+Figure 8.18 — Set-associative-mapped cache with two blocks per set.
+
+Main memory address
+
+© The cache which contains | block per set is called direct mapping.
+
+¢ A cache that has ,,k" blocks per set is called as“k-way set associative cache".
+
+Each block contains a control-bit called a valid-bit.
+
+¢ The Valid-bit indicates that whether the block contains valid-data.
+
+¢ The dirty bit indicates that whether the block has been modified during its cache residency.
+Valid-bit=0 > When power is initially applied to system.
+Valid-bit=1 > When the block is loaded from main-memory at first time.
+
+. If the main-memory-block is updated by a source & if the block in
+the source is already exists in the cache, then the valid-bit will be cleared to
+«o",
+
+If Processor & DMA uses the same copies of data then it is called as Cache Coherence Problem.
+
+« Advantages:
+1) Contention problem of direct mapping is solved by having few choices for block placement.
+2) The hardware cost is decreased by reducing the size of associative search.
+
+REPLACEMENT ALGORITHM
+
+¢ In direct mapping method,
+
+the position of each block is pre-determined and there is no need of replacement strategy.
+¢ In associative & set associative method,
+
+The block position is not pre-determined.
+
+If the cache is full and if new blocks are brought into the cache,
+
+then the cache-controller must decide which of the old blocks has to be replaced.
+¢ When a block is to be overwritten, the block with longest time w/o being referenced is over-written.
+¢ This block is called Least recently Used (LRU) block & the technique is called LRU algorithm.
+© The cache-controller tracks the references to all blocks with the help of block-counter.
+. Advantage: Performance of LRU is improved by randomness in deciding which block is to be
+over- written.
+
+Page 54

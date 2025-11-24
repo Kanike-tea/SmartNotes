@@ -1,0 +1,71 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+© rear
+
+D i+ rear
+
+c
+
+D
+c je rear! ¢
+B |« rear | B B
+Aa
+
+A |. rear A |e front | A |« front + front} B |e front
++ front
+
+o 4 2.3 4 o 1 2 #3 4
+A A |Bfi[c|pbD ]
+fr
+
+aad ft aga
+o 1 2 3 4 o 4 34
+A |B A[B|c|]D|/E ]
+t Tt t t
+f r ft r
+
+add add
+° 2.3 4 oO 41 #2 3 44
+A/|Blec BiI|c|DIE |
+t t t t
+f f r
+
+r
+add delete
+
+structure Queue is
+objects: a finite ordered list with zero or more elements.
+functions:
+
+for all queue € Queue, item € element, max—queue—size € positive integer
+Queue CreateQ(max—queue —size) =
+
+create an empty queue whose maximum size is max—queue —size
+Boolean \sFullQ(queue, max—queue —size) ::=
+
+if (number of elements in queue == max-queue-—size)
+
+return TRUE
+
+else return FALSE
+Queue AddQ(queue, item) :
+
+if (IsFullQ(queue)) queue — full
+
+else insert item at rear of queue and return queue
+Boolean IsEmptyQ(queue) ::=
+
+if (queue == CreateQ(max —queue -size))
+
+return TRUE
+
+else return FALSE
+Element DeleteQ(queue) ::=
+
+if (IsEmptyQ(queue)) return
+
+else remove and return the item at front of queue.
+
+Structure 3.2: Abstract data type Queue
+
+vtucode.in 2

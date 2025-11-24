@@ -1,0 +1,54 @@
+14.3 Normal Forms Based on Primary Keys
+
+2. Expand the key so that there will be a separate tuple in the original
+DEPARTMENT relation for each location of a DEPARTMENT, as shown in Fig-
+ure 14.9(c). In this case, the primary key becomes the combination {Dnumber,
+Dlocation}. This solution has the disadvantage of introducing redundancy in
+the relation and hence is rarely adopted.
+
+3. Ifa maximum number of values is known for the attribute—for example, if it
+is known that at most three locations can exist for a department—replace the
+Dlocations attribute by three atomic attributes: Dlocation1, Dlocation2, and
+Dlocation3. This solution has the disadvantage of introducing NULL values if
+most departments have fewer than three locations. It further introduces
+spurious semantics about the ordering among the location values; that
+ordering is not originally intended. Querying on this attribute becomes more
+difficult; for example, consider how you would write the query: List the
+departments that have ‘Bellaire’ as one of their locations in this design. For all
+these reasons, it is best to avoid this alternative.
+
+Of the three solutions above, the first is generally considered best because it
+does not suffer from redundancy and it is completely general; it places no max-
+imum limit on the number of values. In fact, if we choose the second solution, it
+will be decomposed further during subsequent normalization steps into the
+first solution.
+
+First normal form also disallows multivalued attributes that are themselves com-
+posite. These are called nested relations because each tuple can have a relation
+within it. Figure 14.10 shows how the EMP_PROJ relation could appear if nesting is
+allowed. Each tuple represents an employee entity, and a relation PROJS(Pnumber,
+Hours) within each tuple represents the employee’s projects and the hours per week
+that employee works on each project. The schema of this EMP_PROJ relation can be
+represented as follows:
+
+EMP_PROJ(Ssn, Ename, {PROJS(Pnumber, Hours)})
+
+The set braces { } identify the attribute PROJS as multivalued, and we list the com-
+ponent attributes that form PROJS between parentheses ( ). Interestingly, recent
+trends for supporting complex objects (see Chapter 12) and XML data (see Chap-
+ter 13) attempt to allow and formalize nested relations within relational database
+systems, which were disallowed early on by 1NF.
+
+Notice that Ssn is the primary key of the EMP_PROJ relation in Figures 14.10(a)
+and (b), whereas Pnumber is the partial key of the nested relation; that is, within each
+tuple, the nested relation must have unique values of Pnumber. To normalize this
+into INF, we remove the nested relation attributes into a new relation and propa-
+gate the primary key into it; the primary key of the new relation will combine the
+partial key with the primary key of the original relation. Decomposition and pri-
+mary key propagation yield the schemas EMP_PROJ1 and EMP_PROJ2, as shown in
+Figure 14.10(c).
+
+This procedure can be applied recursively to a relation with multiple-level nesting
+to unnest the relation into a set of INF relations. This is useful in converting an
+
+479

@@ -1,0 +1,56 @@
+864 Chapter 23 Distributed Database Concepts
+
+Figure 23.5
+
+Guard conditions and
+attributes lists for
+fragments.
+
+(a) Site 2 fragments.
+(b) Site 3 fragments.
+
+(a) EMPDS
+attribute list: Fname, Minit, Lname, Ssn, Salary, Super_ssn, Dno
+guard condition: Dno = 5
+DEP5
+attribute list: * (all attributes Dname, Dnumber, Mgr_ssn, Mgr_start_date)
+guard condition: Dnumber = 5
+DEP5_LOCS
+attribute list: * (all attributes Dnumber, Location)
+guard condition: Dnumber = 5
+PROJSS
+attribute list: * (all attributes Pname, Pnumber, Plocation, Dnum)
+guard condition: Dnum = 5
+WORKS_ONS5
+attribute list: * (all attributes Essn, Pno,Hours)
+guard condition: Essn IN (tgs (EMPD5)) OR Pno IN (stpnumber (PROJSS))
+
+(b) EMPD4
+attribute list: Fname, Minit, Lname, Ssn, Salary, Super_ssn, Dno
+guard condition: Dno = 4
+DEP4
+attribute list: * (all attributes Dname, Dnumber, Mgr_ssn, Mgr_start_date)
+guard condition: Dnumber = 4
+DEP4_LOCS
+attribute list: * (all attributes Dnumber, Location)
+guard condition: Dnumber = 4
+PROJS4
+attribute list: * (all attributes Pname, Pnumber, Plocation, Dnum)
+guard condition: Dnum = 4
+WORKS_ON4
+attribute list: * (all attributes Essn, Pno, Hours)
+guard condition: Essn IN (gsn (EMPD4))
+OR Pno IN (ttpnumber (PROJS4))
+
+shown in Figure 23.2, we have the guard conditions and attribute lists shown in
+Figure 23.5. When the DDBMS decomposes an update request, it can determine
+which fragments must be updated by examining their guard conditions. For exam-
+ple, a user request to insert a new EMPLOYEE tuple <‘Alex’, ‘B’, ‘Coleman’,
+“345671239’, ‘22-APR-64’, ‘3306 Sandstone, Houston, TX’, M, 33000, ‘987654321’,
+4> would be decomposed by the DDBMS into two insert requests: the first inserts
+the preceding tuple in the EMPLOYEE fragment at site 1, and the second inserts the
+projected tuple <‘Alex’, ‘B’, ‘Coleman’, ‘345671239’, 33000, ‘987654321’, 4> in the
+EMPD4 fragment at site 3.
+
+For query decomposition, the DDBMS can determine which fragments may contain
+the required tuples by comparing the query condition with the guard conditions. For

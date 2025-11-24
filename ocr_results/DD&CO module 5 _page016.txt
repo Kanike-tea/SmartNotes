@@ -1,0 +1,37 @@
+| } | }
+
+Figure 9-5 Multiple functional units in parallel.
+
+5.2 Arithmetic Pipeline
+
+«There are various reasons why the pipeline cannot operate at its maximumtheoretical
+rate.
+o Different segments may take different times to complete their sub operation.
+
+o  Itis not always correct to assume that a nonpipe circuit has the same timedelay as that of
+an equivalent pipeline circuit.
+
+« There are two areas of computer design where the pipeline organization isapplicable.
+o Arithmetic pipeline
+o Instruction pipeline
+
+Arithmetic Pipeline: Introduction
+
+«Pipeline arithmetic units are usually found in very high speed computers
+o Floating-point operations, multiplication of fixed-point numbers, and
+similarcomputations in scientific problem
+« Floating-point operations are easily decomposed into suboperations as demonstratedin Sec. 10-5.
+e  Anexample of a pipeline unit for floating-point addition and subtraction is showed inthe following:
+o The inputs to the floating-point adder pipeline are two normalized
+floating-point binary number
+
+X = Ax 2?
+Y=Bx2??
+
+e AandBare two fractions that represent the mantissas, a and b are the exponents.
+e — The floating-point addition and subtraction can be performed in four segments, asshown in Fig.
+9-6.
+« The suboperations that are performed in the four segments are:
+o Compare the exponents
+= The larger exponent is chosen as the exponent of the result.
+o Align the mantissas

@@ -1,0 +1,50 @@
+‘raphs
+1.2. Grap! uW
+
+4.2 Graphs
+
+IF consider again the diagram in Figure 1.1. Let us redraw this diagram by dropping the arrows
+present in the edges. The rewritten diagram appears as shown below.
+
+A B
+
+Figure 1.13
+
+We say that this (rewritten) diagram represents the diagram of an underlying graph of the
+directed graph shown in Figure 1.1. This underlying graph has the same vertices and the same
+edges as the original directed graph; but its edges are all undirected._}
+
+We observe that Figure 1.13 depicts a diagram of the underlying graph of the directed graph
+shown in Figure 1.2 as well.
+
+The underlying graph of a directed graph is an example of what is called an undirected
+_ graph. Like a directed graph, an undirected graph also consists of a nonempty set of vertices
+and a set of edges, but the edges are all “undirected”. An edge in a undirected graph is deter-
+mined and represented by an unordered pair of vertices. For example, in the undirected graph
+shown in Figure 1.13, the edge AB is determined by the vertices A and B and is represented by
+| the unordered pair {A, B} = {B, A}.* For brevity in terminology, an undirected graph is referred
+to as just a graph (— the adjective “undirected” being understood).*
+The formal definition of a graph is given below.
+
+_ Definition of a Graph
+(a graph is a pair (V,E), where V is a nonempty set and E is a set of unordered pairs of
+elements taken from the set V.
+For a graph (V, E), the elements of V are called vertices (or points or nodes) and the ele-
+ments of E are called undirected edges or just edges. The set V is called the vertex set and the
+
+Set E is called the edge set. si
+The graph (V, E) is also denoted by G = (V, E) or G = G(V, E) or just G when poe ase
+
+1 ambiguity, oo
+
+*We use the notation (A, B) to denote the ordered pair of A and B in that order and the notation (4, B}
+
+for the unordered pai
+pair of A and B.
+"The terms directed graph and digraph mean one and the same. The terms undirected graph and graph mean
+
+| SNe and the same.
+
+= (B.A)
+
+/

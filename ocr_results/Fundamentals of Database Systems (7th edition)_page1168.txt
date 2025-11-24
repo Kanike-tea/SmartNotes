@@ -1,0 +1,51 @@
+1138 Chapter 30 Database Security
+
+Its basic notion is that privileges and other permissions are associated with organi-
+zational roles rather than with individual users. Individual users are then assigned
+to appropriate roles. Roles can be created using the CREATE ROLE and DESTROY
+ROLE commands. The GRANT and REVOKE commands discussed in Section 30.2
+can then be used to assign and revoke privileges from roles, as well as for individual
+users when needed. For example, a company may have roles such as sales account
+manager, purchasing agent, mailroom clerk, customer service manager, and so on.
+Multiple individuals can be assigned to each role. Security privileges that are com-
+mon to a role are granted to the role name, and any individual assigned to this role
+would automatically have those privileges granted.
+
+RBAC can be used with traditional discretionary and mandatory access controls; it
+ensures that only authorized users in their specified roles are given access to certain
+data or resources. Users create sessions during which they may activate a subset of
+roles to which they belong. Each session can be assigned to several roles, but it maps
+to one user or a single subject only. Many DBMSs have allowed the concept of roles,
+where privileges can be assigned to roles.
+
+Separation of duties is another important requirement in various mainstream
+DBMSs. It is needed to prevent one user from doing work that requires the involve-
+ment of two or more people, thus preventing collusion. One method in which sepa-
+ration of duties can be successfully implemented is with mutual exclusion of roles.
+Two roles are said to be mutually exclusive if both the roles cannot be used simul-
+taneously by the user. Mutual exclusion of roles can be categorized into two types,
+namely authorization time exclusion (static) and runtime exclusion (dynamic). In
+authorization time exclusion, two roles that have been specified as mutually exclu-
+sive cannot be part of a user’s authorization at the same time. In runtime exclusion,
+both these roles can be authorized to one user but cannot be activated by the user at
+the same time. Another variation in mutual exclusion of roles is that of complete
+and partial exclusion.
+
+The role hierarchy in RBAC is a natural way to organize roles to reflect the organi-
+zation’s lines of authority and responsibility. By convention, junior roles at the bot-
+tom are connected to progressively senior roles as one moves up the hierarchy. The
+hierarchic diagrams are partial orders, so they are reflexive, transitive, and antisym-
+metric. In other words, if a user has one role, the user automatically has roles lower
+in the hierarchy. Defining a role hierarchy involves choosing the type of hierarchy
+and the roles, and then implementing the hierarchy by granting roles to other roles.
+Role hierarchy can be implemented in the following manner:
+
+GRANT ROLE full_time TO employee_type1
+GRANT ROLE intern TO employee_type2
+
+The above are examples of granting the roles full_time and intern to two types of
+employees.
+
+Another issue related to security is identity management. Identity refers to a unique
+name of an individual person. Since the legal names of persons are not necessarily
+unique, the identity of a person must include sufficient additional information to

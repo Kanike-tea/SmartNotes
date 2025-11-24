@@ -1,0 +1,30 @@
+Data Structures and Applications (BCS304) Module IV
+
+Krainpk:
+
+e If we represent G by its adjacency list then we can determine the vertices adjacent to v by
+following a chain of links. Since dfs examines each node in the adjacency list at most once
+then the time to complete the search is O(e).
+
+e If we represent G by its adjacency matrix then determining all vertices adjacent 0 v requires
+O(n) time. Since we visit at most n vertices the total time is O(n7).
+
+Example: For the graph given below if the search is initiated from vertex 0 then the vertices are
+visited in the order vertex 3, 1,2
+
+ae:
+
+adjLists data link
+[0] >| 3 > 1 of 2 0
+(1) >) 2 > 0 +3 0
+(2] > 1 > 0 +3 0
+[3] > 0 > 1 2 0
+Breadth first Search
+
+The queue definition and the function prototypes
+
+4
+int vertex:
+a
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 13

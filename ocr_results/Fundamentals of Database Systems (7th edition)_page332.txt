@@ -1,0 +1,64 @@
+302
+
+Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+9.2.3 Mapping of Categories (Union Types)
+
+We add another step to the mapping procedure—step 9—to handle categories. A
+category (or union type) is a subclass of the union of two or more superclasses
+that can have different keys because they can be of different entity types (see Sec-
+tion 4.4). An example is the OWNER category shown in Figure 4.8, which is a
+subset of the union of three entity types PERSON, BANK, and COMPANY. The
+other category in that figure, REGISTERED_VEHICLE, has two superclasses that
+have the same key attribute.
+
+Step 9: Mapping of Union Types (Categories). For mapping a category whose
+defining superclasses have different keys, it is customary to specify a new key attri-
+bute, called a surrogate key, when creating a relation to correspond to the union
+type. The keys of the defining classes are different, so we cannot use any one of
+them exclusively to identify all entities in the relation. In our example in Figure 4.8,
+we create a relation OWNER to correspond to the OWNER category, as illustrated in
+Figure 9.7, and include any attributes of the category in this relation. The primary
+key of the OWNER relation is the surrogate key, which we called Owner_id. We also
+
+Figure 9.7
+
+Mapping the EER categories
+(union types) in Figure 4.8 to
+relations.
+
+PERSON
+
+Ssn_ | Driver_license_no | Name | Address | Owner_id
+
+BANK
+
+Bname_ | Baddress | Owner_id
+
+COMPANY
+
+Cname_ | Caddress | Owner_id
+
+OWNER
+
+Owner_id
+
+|
+
+REGISTERED_VEHICLE
+
+Vehicle _id | License_plate_number
+
+ca *
+
+Vehicle id] Cstyle | Cmake | Cmodel | Cyear
+
+TRUCK |
+
+Vehicle id] Tmake | Tmodel | Tonnage | Tyear
+
+OWNS
+
+Owner_id
+
+Purchase_date | Lien_or_regular

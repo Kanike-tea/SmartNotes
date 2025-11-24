@@ -1,0 +1,52 @@
+4.2 Topological Sorting 141
+
+delete C1 delete C2
+
+lelete lelete
+
+a al = a]
+e 6
+
+deleteca 4) delete C4 delete C5
+—> —> — >
+
+) ©)
+
+The solution obtained is C1, C2, C3, C4,C5
+
+1)
+g9
+
+©)
+@
+
+FIGURE 4.8
+
+The second algorithm is based on a direct implementation of the decrease-(by
+one)-and-conquer technique: repeatedly, identify in a remaining digraph a source,
+which is a vertex with no incoming edges, and delete it along with all the edges
+outgoing from it. (If there are several sources, break the tie arbitrarily. If there
+are none, stop because the problem cannot be solved—see Problem 6a in this
+section’s exercises.) The order in which the vertices are deleted yields a solution
+to the topological sorting problem. The application of this algorithm to the same
+digraph representing the five courses is given in Figure 4.8.
+
+Note that the solution obtained by the source-removal algorithm is different
+from the one obtained by the DFS-based algorithm. Both of them are correct, of
+course; the topological sorting problem may have several alternative solutions.
+
+The tiny size of the example we used might create a wrong impression about
+the topological sorting problem. But imagine a large project—e.g., in construction,
+research, or software development—that involves a multitude of interrelated tasks
+with known prerequisites. The first thing to do in such a situation is to make sure
+that the set of given prerequisites is not contradictory. The convenient way of
+doing this is to solve the topological sorting problem for the project’s digraph.
+Only then can one start thinking about scheduling tasks to, say, minimize the total
+completion time of the project. This would require, of course, other algorithms that
+you can find in general books on operations research or in special ones on CPM.
+(Critical Path Method) and PERT (Program Evaluation and Review Technique)
+methodologies.
+
+As to applications of topological sorting in computer science, they include
+instruction scheduling in program compilation, cell evaluation ordering in spread-
+sheet formulas, and resolving symbol dependencies in linkers.

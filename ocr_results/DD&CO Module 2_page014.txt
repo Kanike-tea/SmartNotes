@@ -1,0 +1,48 @@
+enabled and I; has a path to the output. The multiplexer acts like an electronic switch that selects one of
+two sources. The block diagram of a multiplexer is sometimes depicted by a wedge-shaped symbol, as
+shown in Fig. The multiplexer is often labeled “MUX” in block diagrams.
+
+Iy
+
+— ty
+
+D> =
+h
+
+tel |
+
+(a) Logic diagram (b) Block diagram
+
+Two-to-One-line multiplexer
+
+Four-to-One-line multiplexer
+
+A four-to-one-line multiplexer is shown in Fig below. Each of the four inputs, Io through 1s, is applied
+to one input of an AND gate. Selection lines S; and So are decoded to select a particular AND gate. The
+outputs of the AND gates are applied to a single OR gate that provides the one-line output.
+
+To demonstrate the operation of the circuit, consider the case when S1So = 10. The AND gate associated
+with input lb has two of its inputs equal to | and the third input connected to I. The other three AND
+gates have at least one input equal to 0, which makes their outputs equal to 0. The output of the OR gate
+is now equal to the value of lL, providing a path from the selected input to the output. A multiplexer is
+also called a data selector, since it selects one of many inputs and steers the binary information to the
+output line.
+
+Ig
+
+h
+
+A
+
+UUUU
+
+(a) Logic diagram (b) Function table
+
+Four-to-One-line Multiplexer
+
+The AND gates and inverters in the multiplexer resemble a decoder circuit, and indeed, they decode the
+selection input lines. In general, a 2"-to-1-line multiplexer is constructed from an n -to-2" decoder by
+adding 2" input lines to it, one to each AND gate. The outputs of the AND gates are applied to a single
+OR gate. The n selection lines are implied from the 2” data lines. As in decoders, multiplexers may have
+an enable input to control the operation of the unit. When the enable input is in the inactive state, the
+outputs are disabled, and when it is in the active state, the circuit functions as a normal multiplexer.

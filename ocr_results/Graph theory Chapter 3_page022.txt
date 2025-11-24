@@ -1,0 +1,42 @@
+3.3. Spanning Trees 175
+aaa ee Ee RL ee PR i
+
+Conversely, suppose a graph G has a spanning tree T, Since T is a trée, there exists a path
+petween every pair of vertices in T. Since T is a Spanning tree, T contains all vertices of G.
+Therefore, there is a path between every pair of vertices in G. Hence G is connected.
+
+This completes the proof of the theorem. e
+
+Theorem 2 . With respect to any of its Spanning trees,
+
+a connected graph of n vertices and m
+edges has n — | branches and m-—n + | chords.
+
+Proof: Let G be a connected graph of n.vertices and m edges and T be a spanning tree of
+
+G. Then T contains all vertices of G; therefore, it has n vertices. Consequently, T has n — 1
+
+branches (edges). Therefore, the number of edges in G that are not in T is m-(n-1) = m-n+l1.
+
+This means that, w.r.t. 7, G has m —n +1 chords.
+The theorem is proved.
+
+Remark: In view of the above theorem it follows that in order to obtain a spanning tree’ of
+aconnected graph with n vertices and m edges, the number of edges to be removed from the
+graph ism—n+ 1.
+
+wee Find all the spanning trees of the graph shown below:
+
+Figure 3.23
+
+> Aspanning tree of the given graph must be a subgraph which is a tree and must contain all
+the vertices of the graph. Since there are four vertices, this tree must have three edges.. Each
+Such tree is got by deleting one edge from the graph. There are four such trees; these are shown
+
+1n Figures 3.24(a),(b),(c),(d)-
+
+(a)
+
+= =
+
+™“.

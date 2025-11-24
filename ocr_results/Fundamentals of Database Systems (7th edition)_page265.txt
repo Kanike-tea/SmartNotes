@@ -1,0 +1,47 @@
+75 Summary 235
+
+concept of triggers and the CREATE TRIGGER statement. Then, in Section 7.3, we
+described the SQL facility for defining views on the database. Views are also called
+virtual or derived tables because they present the user with what appear to be tables;
+however, the information in those tables is derived from previously defined tables.
+Section 7.4 introduced the SQL ALTER TABLE statement, which is used for modify-
+ing the database tables and constraints.
+
+Table 7.2 summarizes the syntax (or structure) of various SQL statements. This
+summary is not meant to be comprehensive or to describe every possible SQL
+construct; rather, it is meant to serve as a quick reference to the major types of
+constructs available in SQL. We use BNF notation, where nonterminal symbols
+
+Table 7.2. Summary of SOL Syntax
+
+CREATE TABLE <table name> (<column name> <column type> [ <attribute constraint> ]
+{, <column name> <column type> [ <attribute constraint> ] }
+[<table constraint> { , <table constraint> } ] )
+
+DROP TABLE <table name>
+ALTER TABLE <table name> ADD <column name> <column type>
+SELECT [ DISTINCT ] <attribute list>
+FROM (<table name> { <alias> } | <joined table>) {, (<table name> { <alias> } | <joined table> ) }
+[ WHERE <condition> ]
+[ GROUP BY <grouping attributes> [ HAVING <group selection condition> ] ]
+LORDER BY <column name> [<order>] {, <column name> [<order>] } ]
+<attribute list> ::= (* | (<column name> | <function> ( ( [ DISTINCT ] <column name> | *)) )
+{, (<column name> | <function> (([ DISTINCT] <column name> |*))}))
+<grouping attributes> ::= <column name> { , <column name>}
+<order> ::= (ASC | DESC )
+INSERT INTO <table name> [ (<column name> { , <column name>} ) ]
+(VALUES (<constant value> , {<constant value> } ) { , (<constant value> { , <constant value> } ) }
+| <select statement> )
+DELETE FROM <table name>
+[WHERE <selection condition> ]
+UPDATE <table name>
+SET <column name> = <value expression> { ,<column name> = <value expression> }
+[WHERE <selection condition> ]
+CREATE [ UNIQUE] INDEX <index name>
+ON <table name> (<column name> [ <order>] { ,<column name> [ <order>] } )
+[CLUSTER ]
+DROP INDEX <index name>
+CREATE VIEW <view name> [ (<column name> { ,<column name> }) ]
+AS <select statement>
+DROP VIEW <view name>
+NOTE: The commands for creating and dropping indexes are not part of standard SQL.

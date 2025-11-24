@@ -1,0 +1,45 @@
+128 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+PERSON
+
+Name
+
+Ssn
+Birth_date
+Sex
+Address
+
+age
+
+EMPLOYEE ALUMNUS, DEGREE STUDENT
+
+Salary Year Major_dept
+
+Frevern renal ” Degree Ghongeumaar
+
+STAFF FACULTY STUDENT_ASSISTANT
+
+Position Rank Percent_time
+
+hire_staff promote hire_student
+A
+
+RESEARCH_ TEACHING_ GRADUATE_ UNDERGRADUATE _
+
+ASSISTANT ASSISTANT STUDENT STUDENT
+
+Project Course Degree_program Class
+
+change_project assign_to_course change_degree_program || change_classification
+
+Figure 4.10
+
+A UML class diagram corresponding to the EER diagram in Figure 4.7,
+illustrating UML notation for specialization/generalization
+
+4.7 Data Abstraction, Knowledge
+Representation, and Ontology Concepts
+
+In this section, we discuss in general terms some of the modeling concepts that we
+described quite specifically in our presentation of the ER and EER models in Chap-
+ter 3 and earlier in this chapter. This terminology is not only used in conceptual

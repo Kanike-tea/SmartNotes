@@ -1,0 +1,51 @@
+7.1 More Complex SQL Retrieval Queries
+
+In U6’, the salary raise value is determined through the CASE construct based on
+the department number for which each employee works. The CASE construct can
+also be used when inserting tuples that can have different attributes being NULL
+depending on the type of record being inserted into a table, as when a specialization
+(see Chapter 4) is mapped into a single table (see Chapter 9) or when a union type
+is mapped into relations.
+
+7.1.10 Recursive Queries in SQL
+
+In this section, we illustrate how to write a recursive query in SQL. This syntax was
+added in SQL:99 to allow users the capability to specify a recursive query in a
+declarative manner. An example of a recursive relationship between tuples of the
+same type is the relationship between an employee and a supervisor. This relation-
+ship is described by the foreign key Super_ssn of the EMPLOYEE relation in Fig-
+ures 5.5 and 5.6, and it relates each employee tuple (in the role of supervisee) to
+another employee tuple (in the role of supervisor). An example of a recursive oper-
+ation is to retrieve all supervises of a supervisory employee e at all levels—that is,
+all employees e’ directly supervised by e, all employees e’ directly supervised by each
+employee e’, all employees e”” directly supervised by each employee e”, and so on.
+In SQL:99, this query can be written as follows:
+
+029: WITH RECURSIVE — SUP_EMP (SupSsn, EmpSsn) AS
+( SELECT SupervisorSsn, Ssn
+FROM EMPLOYEE
+UNION
+SELECT E.Ssn, S.SupSsn
+FROM EMPLOYEE AS E, SUP_EMP AS S
+WHERE E.SupervisorSsn = S.EmpSsn)
+SELECT*
+FROM SUP_EMP;
+
+In Q29, we are defining a view SUP_EMP that will hold the result of the recursive
+query. The view is initially empty. It is first loaded with the first level (supervisor,
+supervisee) Ssn combinations via the first part (SELECT SupervisorSss, Ssn FROM.
+EMPLOYEE), which is called the base query. This will be combined via UNION
+with each successive level of supervises through the second part, where the view
+contents are joined again with the base values to get the second level combinations,
+which are UNIONed with the first level. This is repeated with successive levels until
+a fixed point is reached, where no more tuples are added to the view. At this point,
+the result of the recursive query is in the view SUP_EMP.
+
+7.1.11 Discussion and Summary of SQL Queries
+
+A retrieval query in SQL can consist of up to six clauses, but only the first two—
+SELECT and FROM—are mandatory. The query can span several lines, and is
+ended by a semicolon. Query terms are separated by spaces, and parentheses can
+be used to group relevant parts of a query in the standard way. The clauses are
+
+223

@@ -1,0 +1,45 @@
+1.7. Connected and Disconnected Graphs 77
+
+1.7 Connected and Disconnected Graphs
+
+Consider a graph G of order greater than or equal to two. Two vertices in G are said to be
+connected if there is at least one path from one vertex to the other.*
+
+We say that a graph G is a connected graph if every pair of distinct vertices in G are
+connected. Otherwise, G is called a disconnected graph.
+
+In other words, a graph G is said to be (i) connected if there is at least one path between
+
+every two distinct vertices in G, and (ii) disconnected if G has at least one pair of distinct
+vertices between which there is no path.
+
+A digraph D is said to be connected or disconnected according as its underlying graph G is
+connected or disconnected.
+
+Intuitively, a graph G is connected if we can reach any vertex of G from any other vertex
+of G by travelling along the edges, and disconnected otherwise.
+
+For example, the graph shown in Figure 1.113(a) is connected whereas the graph shown in
+Figure 1.113(b) is disconnected; because, for example, there is no path from vy to vg.
+
+v7 V6 Vi V4
+
+v2 v3
+
+(a) Me (b)
+
+Figure 1.113
+
+It is obvious that in a graph G all walks and, therefore, all trails, all circuits, all paths and
+all cycles (when they exist) are connected subgraphs of G.
+
+It is evident that every (nontrivial) graph G consists of one or more connected graphs. .Each
+such connected graph is a subgraph of G and is called a component of G.
+
+Obviously, a connected graph has only one component and a disconnected graph has two
+Or more components, The number of components of a graph G is denoted by x(G).
+
+“Recall that two vertices are said to be joined (with each other) if there is an edge joining them; that is if they
+are adjacent vertices. Two vertices that are adjacent are connected. But, two vertices that are connected need not be
+adjacent. For example, in Figure 1.104, the vertices A and R are connected but not adjacent. Thus, “joined vertices’
+and “connected vertices” are not one and the same.

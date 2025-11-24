@@ -1,0 +1,52 @@
+408
+
+Chapter 12 Object and Object-Relational Databases
+
+Step 3. Include appropriate operations for each class. These are not available from
+the EER schema and must be added to the database design by referring to the origi-
+nal requirements. A constructor method should include program code that checks
+any constraints that must hold when a new object is created. A destructor method
+should check any constraints that may be violated when an object is deleted. Other
+methods should include any further constraint checks that are relevant.
+
+Step 4. An ODL class that corresponds to a subclass in the EER schema inherits (via
+extends) the attributes, relationships, and methods of its superclass in the ODL
+schema. Its specific (local) attributes, relationship references, and operations are
+specified, as discussed in steps 1, 2, and 3.
+
+Step 5. Weak entity types can be mapped in the same way as regular entity types.
+An alternative mapping is possible for weak entity types that do not participate in
+any relationships except their identifying relationship; these can be mapped as
+though they were composite multivalued attributes of the owner entity type, by using
+the set<struct<...>> or list<struct<...>> constructors. The attributes of the weak entity
+are included in the struct<...> construct, which corresponds to a tuple constructor.
+Attributes are mapped as discussed in steps 1 and 2.
+
+Step 6. Categories (union types) in an EER schema are difficult to map to ODL. It is
+possible to create a mapping similar to the EER-to-relational mapping (see Sec-
+tion 9.2) by declaring a class to represent the category and defining 1:1 relationships
+between the category and each of its superclasses.
+
+Step 7. An n-ary relationship with degree n > 2 can be mapped into a separate class,
+with appropriate references to each participating class. These references are based on
+mapping a 1:N relationship from each class that represents a participating entity
+type to the class that represents the n-ary relationship. An M:N binary relationship,
+especially if it contains relationship attributes, may also use this mapping option,
+if desired.
+
+The mapping has been applied to a subset of the UNIVERSITY database schema in
+Figure 4.10 in the context of the ODMG object database standard. The mapped
+object schema using the ODL notation is shown in Figure 12.10.
+
+12.5 The Object Query Language OQL
+
+The object query language OQL is the query language proposed for the ODMG
+object model. It is designed to work closely with the programming languages for
+which an ODMG binding is defined, such as C++, Smalltalk, and Java. Hence, an
+OQL query embedded into one of these programming languages can return objects
+that match the type system of that language. Additionally, the implementations of
+class operations in an ODMG schema can have their code written in these pro-
+gramming languages. The OQL syntax for queries is similar to the syntax of the
+relational standard query language SQL, with additional features for ODMG con-
+cepts, such as object identity, complex objects, operations, inheritance, polymor-
+phism, and relationships.

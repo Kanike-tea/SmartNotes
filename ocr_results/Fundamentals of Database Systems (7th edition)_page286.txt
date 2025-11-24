@@ -1,0 +1,56 @@
+256 Chapter 8 The Relational Algebra and Relational Calculus
+
+list of project numbers that ‘John Smith’ works on in the intermediate relation
+SMITH_PNOS:
+
+SMITH < Gfpame=John’ AND Lname="Smith (EMPLOYEE)
+SMITH_PNOS © Tipng(WORKS_ON > gogn-SenSMITH)
+
+Next, create a relation that includes a tuple <Pno, Essn> whenever the employee
+whose Ssn is Essn works on the project whose number is Pno in the intermediate
+relation SSN_PNOS:
+
+SSN_PNOS © Teesen, Pno(WORKS_ON)
+
+Finally, apply the DIVISION operation to the two relations, which gives the desired
+employees’ Social Security numbers:
+
+SSNS(Ssn) < SSN_PNOS + SMITH_PNOS
+RESULT < TiFname, Lname(SSNS * EMPLOYEE)
+
+The preceding operations are shown in Figure 8.8(a).
+
+In general, the DIVISION operation is applied to two relations R(Z) + S(X), where the
+attributes of S are a subset of the attributes of R; that is, X C Z. Let Y be the set of
+attributes of R that are not attributes of S; that is, Y= Z — X (and hence Z= X U Y).
+
+Figure 8.8
+The DIVISION operation. (a) Dividing SSN_PNOS by SMITH_PNOS. (b) TH R+ S,
+(a) (b)
+SSN_PNOS SMITH_PNOS R s
+Pno Pho A | B A
+
+123456789 | 1 1 at | bt al
+123456789 | 2 2 a2 | bt a2
+666884444 | 3 a3 | bi a3
+453453453 | 1 a4 | bt
+
+453453453 | 2 SSNS at | b2 T
+333445555 | 2 Ssn a3 | b2 B
+333445555 | 3 123456789 a2 | b3 b1
+333445555 | 10 453453453 a3 | b3 b4
+333445555 | 20 a4 | b3
+
+999887777 | 30 at | b4
+
+999887777 | 10 a2 | b4
+
+987987987 | 10 a3 | b4
+
+987987987 | 30
+
+987654321 | 30
+
+987654321 | 20
+
+888665555 | 20

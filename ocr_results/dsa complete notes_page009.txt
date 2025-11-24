@@ -1,0 +1,62 @@
+Data Structures and App! 's/BCS304 Module-1
+
+The function can be invoked as follows to allocate memory
+int ** twodarray
+twodarray= maketwodarray(5,10);
+
+Arrays
+Linear Arrays: A Linear Array is a list of finite number (n) of homogenous data elements.
+
+a. The elements of the array are referenced by an index set consisting of n consecutive
+numbers(0. ..(n-1)).
+
+b. The elements of the array are stored in successive memory locations
+
+c. The number n of elements is called the length or size of the array. Length of the array can be
+obtained from the index set using the formula
+
+Length = Upper bound — Lowe bound +1
+
+d. The elements of an array may be denoted by a[0],a[2]............a{n-1]. The number k in a[k] is
+called a subscript or index and a[k] is called the subscripted value.
+
+e. An array is usually implemented as a consecutive set of memory locations
+
+Declaration: Linear arrays are declared by adding a bracket to the name of a variable. The size of
+the array is mentioned within the brackets.
+
+Eg :- int list[5]; // Declares an array containing five integer elements.
+
+In C all arrays start at index 0. Therefore, list[{0], list[{1], list{2], list[3], and list{4] are the names of
+the five array elements ,each of which contains an integer value.
+
+Representation of Linear Arrays in memory
+
+e¢ When the compiler encounters an array declaration such as int list[5], to create list, it allocates
+five consecutive memory locations. Each memory location is large enough to hold a single
+integer.
+
+e The address of the first element list[0], is called the base address
+
+base address=address(list[0])
+e Using the base address the address of any element of list can be calculated using the formula
+address(list[k])= base addres + w.k
+// where w is the size of each element in the array list
+
+Example: int list[5]
+
+e The elements of the array is list[0] list[4]
+e Ifthe size of an integer on the machine is denoted by sizeof(int), then the memory
+Address(list [k])= base address+ sizeof (int).k.
+
+Variable Memory Address canlculatio
+
+Let a the base address , the address of list[0]
+
+Let w=sizeof(int)
+address(list{1] )= a + w*1
+address(list[2]) = a + w*2
+address(list[3]) = a + w*3
+address(list[4]) = a + w*4
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 10

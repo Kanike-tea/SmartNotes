@@ -1,0 +1,44 @@
+Data Structures and Applications (15CS33)
+
+tree tree
+(0} | - } (0) [ -
+i) | A i) A)
+2) |B 3 7B
+Bg) | 7 B) Te
+(4) c 4° D-
+{5} - iS} E
+(6) - {6} F
+(7) - | (1 °G
+(8) D (8) | H |
+{9} mf }
+(16) | E | {16} |
+
+(a). Tree of figure 1(a) (b). Tree of figure 1(b)
+
+e For complete binary tree the array representation is ideal, as no space is wasted.
+e For the skewed tree less than half the array is utilized.
+
+Linked representation:
+
+The problems in array representation are:
+e It is good forcomplete binary trees,but more memory is wasted for skewed and many
+other binary trees.
+e The insertion and deletion of nodes from the middle of a tree require the movement of
+many nodes to reflect the change in level number of these nodes.
+
+These problems can be easily overcome by linked representation
+
+Each node has three fields
+e LeftChild - which contains the address of left subtree
+e RightChild - which contains the address of right subtree.
+e Data - which contains the actual information
+
+C Code for node:
+
+typedef struct node *treepointer;
+typedef struct {
+int data;
+treepointer leftChild, rightChild;
+}node;
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

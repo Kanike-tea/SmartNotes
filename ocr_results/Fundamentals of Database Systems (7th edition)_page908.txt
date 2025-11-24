@@ -1,0 +1,78 @@
+878
+
+Chapter 23 Distributed Database Concepts
+
+23.18.
+
+23.19.
+
+23.20.
+
+23.21.
+
+23.22.
+
+23.23.
+
+23.24.
+
+23.25,
+
+23.26.
+
+List the support offered by operating systems to a DDBMS and also the ben-
+efits of these supports.
+
+Discuss the factors that do not appear in centralized systems but that affect
+concurrency control and recovery in distributed systems.
+
+Discuss the two-phase commit protocol used for transaction management
+in a DDBMS. List its limitations and explain how they are overcome using
+the three-phase commit protocol.
+
+Compare the primary site method with the primary copy method for dis-
+tributed concurrency control. How does the use of backup sites affect each?
+
+When are voting and elections used in distributed databases?
+Discuss catalog management in distributed databases.
+
+What are the main challenges facing a traditional DDBMS in the context of
+today’s Internet applications? How does cloud computing attempt to address
+them?
+
+. Discuss briefly the support offered by Oracle for homogeneous, heteroge-
+
+neous, and client/server-based distributed database architectures.
+
+Discuss briefly online directories, their management, and their role in dis-
+tributed databases.
+
+Exercises
+
+23.27.
+
+23.28.
+
+Consider the data distribution of the COMPANY database, where the frag-
+ments at sites 2 and 3 are as shown in Figure 23.3 and the fragments at site 1
+are as shown in Figure 3.6. For each of the following queries, show at least
+two strategies of decomposing and executing the query. Under what condi-
+tions would each of your strategies work well?
+
+a. For each employee in department 5, retrieve the employee name and the
+names of the employee's dependents.
+
+b. Print the names of all employees who work in department 5 but who
+work on some project not controlled by department 5.
+
+Consider the following relations:
+
+BOOKS (Book#, Primary_author, Topic, Total_stock, $price)
+BOOKSTORE (Store#, City, State, Zip, Inventory_value)
+STOCK(Store#, Book#, Qty)
+
+Total_stock is the total number of books in stock, and Inventory_value is the
+total inventory value for the store in dollars.
+
+a. Give an example of two simple predicates that would be meaningful for
+the BOOKSTORE relation for horizontal partitioning.

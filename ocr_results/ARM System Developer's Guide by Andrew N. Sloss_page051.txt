@@ -1,0 +1,47 @@
+38 Chapter 2. ARM Processor Fundamentals
+
+may have. In the future the number and letter combinations may change as more features
+are added. Note the nomenclature does not include the architecture revision information.
+There are a few additional points to make about the ARM nomenclature:
+
+= AILARM cores after the ARM7TDMI include the TDMI features even though they may
+not include those letters after the “ARM” label.
+
+= The processor family is a group of processor implementations that share the same
+hardware characteristics. For example, the ARM7TDMI, ARM740T, and ARM720T all
+share the same family characteristics and belong to the ARM7 family.
+
+= JTAGis described by IEEE 1149.1 Standard Test Access Port and boundary scan archi-
+tecture. It is a serial protocol used by ARM to send and receive debug information
+between the processor core and test equipment.
+
+= = EmbeddedICE macrocell is the debug hardware built into the processor that allows
+breakpoints and watchpoints to be set.
+
+= Synthesizable means that the processor core is supplied as source code that can be
+compiled into a form easily used by EDA tools.
+
+2.6.2) ARCHITECTURE EVOLUTION
+
+The architecture has continued to evolve since the first ARM processor implementation
+was introduced in 1985. Table 2.7 shows the significant architecture enhancements from
+the original architecture version 1 to the current version 6 architecture. One of the most
+significant changes to the ISA was the introduction of the Thumb instruction set in ARMv4T
+(the ARM7TDMI processor).
+
+Table 2.8 summarizes the various parts of the program status register and the availabil-
+ity of certain features on particular instruction architectures. “All” refers to the ARMv4
+architecture and above.
+
+2.7 ARM PROCESSOR FAMILIES
+
+ARM has designed a number of processors that are grouped into different families according
+to the core they use. The families are based on the ARM7, ARM9, ARM10, and ARM11
+cores. The postfix numbers 7, 9, 10, and 11 indicate different core designs. The ascending
+number equates to an increase in performance and sophistication. ARM8 was developed
+but was soon superseded.
+
+Table 2.9 shows a rough comparison of attributes between the ARM7, ARM9, ARM10,
+and ARM11I cores. The numbers quoted can vary greatly and are directly dependent upon
+the type and geometry of the manufacturing process, which has a direct effect on the
+frequency (MHz) and power consumption (watts).

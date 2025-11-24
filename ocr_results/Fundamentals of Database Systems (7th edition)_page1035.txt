@@ -1,0 +1,57 @@
+26.5 Introduction to Deductive Databases 1005
+
+return one result to the query (that is, one set of values for the variables in the
+query) at a time and must be prompted to return additional results. On the con-
+trary, Datalog returns results set-at-a-time.
+
+26.5.5 Interpretations of Rules
+
+There are two main alternatives for interpreting the theoretical meaning of rules:
+proof-theoretic and model-theoretic. In practical systems, the inference mechanism
+within a system defines the exact interpretation, which may not coincide with either
+of the two theoretical interpretations. The inference mechanism is a computational
+procedure and hence provides a computational interpretation of the meaning of
+rules. In this section, first we discuss the two theoretical interpretations. Then we
+briefly discuss inference mechanisms as a way of defining the meaning of rules.
+
+In the proof-theoretic interpretation of rules, we consider the facts and rules to be
+true statements, or axioms. Ground axioms contain no variables. The facts are
+ground axioms that are given to be true. Rules are called deductive axioms, since
+they can be used to deduce new facts. The deductive axioms can be used to construct
+proofs that derive new facts from existing facts. For example, Figure 26.12 shows
+how to prove the fact SUPERIOR(james, ahmad) from the rules and facts given in
+Figure 26.11. The proof-theoretic interpretation gives us a procedural or computa-
+tional approach for computing an answer to the Datalog query. The process of prov-
+ing whether a certain fact (theorem) holds is known as theorem proving.
+
+The second type of interpretation is called the model-theoretic interpretation.
+Here, given a finite or an infinite domain of constant values,** we assign to a predi-
+cate every possible combination of values as arguments. We must then determine
+whether the predicate is true or false. In general, it is sufficient to specify the combi-
+nations of arguments that make the predicate true, and to state that all other com-
+binations make the predicate false. If this is done for every predicate, it is called an
+interpretation of the set of predicates. For example, consider the interpretation
+shown in Figure 26.13 for the predicates SUPERVISE and SUPERIOR. This interpre-
+tation assigns a truth value (true or false) to every possible combination of argu-
+ment values (from a finite domain) for the two predicates.
+
+An interpretation is called a model for a specific set of rules if those rules are always
+true under that interpretation; that is, for any values assigned to the variables in the
+rules, the head of the rules is true when we substitute the truth values assigned to
+
+1. SUPERIOR(X, Y) :- SUPERVISE(X, Y). (rule 1)
+
+2. SUPERIOR(X, Y) :- SUPERVISE(X, Z), SUPERIOR(Z, Y). (rule 2)
+
+3. SUPERVISE(jennifer, ahmad). (ground axiom, given)
+
+4, SUPERVISE(james, jennifer). (ground axiom, given)
+
+5. SUPERIOR (jennifer, ahmad). (apply rule 1 on 3)
+
+6. SUPERIOR(james, ahmad). (apply rule 2 on 4 and 5)
+
+33The most commonly chosen domain is finite and is called the Herbrand Universe.
+
+Figure 26.12
+Proving a new fact.

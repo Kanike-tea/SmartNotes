@@ -1,0 +1,44 @@
+Data Structures and Applications (BCS304) Module III
+
+postorderEval(node->leftchild);
+postorderEval(node->rightchild);
+switch(node->data)
+
+{
+Case not: node->value= ! node->rightchild->value;
+Break;
+Case and: node->value= node->rightchild->value && node>lefchild->value;
+Break;
+Case or: node->value= node->rightchild->value II node>lefchild->value;
+Break;
+Case true: node->value= true; break;
+Case false: node->value= false; break;
+}
+}
+Threaded Binary Tree
+Threads
+
+A binary tree has more NULL links than pointers. These null links can be replaced by special
+pointers, called threads, to other nodes in the tree.
+
+Two way threading
+To construct the threads we use the following rules (assume that ptr represents a node):
+e If ptr — leftChild is null, replace ptr — leftChild with a pointer to the inorder predecessor of
+ptr.
+e . If ptr — rightChild is null, replace ptr — rightChild with a pointer to the inorder successor of
+
+ptr.
+
+One way threading: If ptr — rightChild is null, replace ptr — rightChild with a pointer to the
+inorder successor of ptr. Ptr->left child remains unchanged.
+
+Note : unless specified we consider threading corresponds to the inorder traversal. To distinguish the
+threads from ordinary pointers, threads are always drawn with broken links
+
+Example: consider the binary tree and the corresponding threaded tree given below
+
+B c
+
+Binary tree
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 22

@@ -1,0 +1,55 @@
+MICROCONTROLLER(BCS402)
+
+Exception Mode __ Vector table offset
+
+Reset SVC +0x00
+Undefined Instruction UND +0x04
+Software Interrupt (SWI) SVC +0x08
+
+Prefetch Abort ABT — +0x0c
+Data Abort ABT — +0x10
+Not assigned — +0x14
+IRQ IRQ +0x18
+FIQ FIQ +0x1c
+
+Table 4.2 Vector table and processor modes
+
+The branch instruction can be any of the following forms:
+
+B <address>—This branch instruction provides a branch relative from
+the pe.
+LDR pe, [pc, #offset]—This load register instruction loads the handler
+address from memory to the pc. This form gives slight delay in branching
+as it need the extra memory access. But using this form we can branch to
+any address in memory.
+LDR pe, [pe, #-Oxff0]—This load register instruction loads a specific
+interrupt service routine address from address Oxfffff030 to the pc. This
+specific instruction is used when a vector interrupt controller is present
+(VIC PL190).
+MOV pc, #immediate—This move instruction copies an immediate value
+into the pc.The address must be an 8-bit immediate rotated right by an
+even number of bits.
+
+0x00000000: Oxe59ffa38. RESET: > Idr pc, [pc, #reset]
+
+0x00000004: Oxea000502 UNDEF: b undInstr
+
+0x00000008: Oxe59ffa38 SWI : dr pc, [pc, #swi]
+
+0x0000000c: Oxe59ffa38 PABT : dr pc, [pc, #prefetch]
+0x00000010: Oxe59#fa38 DABT : dr pc, [pc, #data]
+
+0x00000014: Oxe59ffa38_ - =: Idr_pc, [pc, #notassigned]
+0: e59ffa38 IRQ : Idr pc, [pc, #irq]
+Ox : Oxe59ffa38 FIQ : dr pc, [pc, #fiq]
+
+Figure 4.2 Example vector table.
+
+4.1.3 Exception Priorities
+
+Exceptions can occur simultaneously, so the processor has to adopt a
+priority mechanism.Each exception is dealt with according to the priority
+level set out in Table 9.3.
+
+Table 9.3 shows the various exceptions that occur on the ARM processor
+and their associated priority level.

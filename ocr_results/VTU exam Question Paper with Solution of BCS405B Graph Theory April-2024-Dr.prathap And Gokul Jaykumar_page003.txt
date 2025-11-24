@@ -1,0 +1,56 @@
+between them. This means that every vertex in G belongs to either g1 or
+g2, but not both.
+
+Since G is connected, there must be at least one edge connecting vertices
+in g1 and vertices in g2. Without loss of generality, let (u, v) be such an
+edge, where u is in g1 and vis in g2.
+
+Since every vertex in G belongs to either g1 or g2, and there is no vertex
+common between them, we can say that there is no path in g1 that
+connects u to v, and there is no path in g2 that connects v to u. But this
+contradicts the fact that G is connected, which means that there must be
+a path between any two vertices in G. Therefore, our assumption that
+there exists a connected graph G that can be decomposed into two
+subgraphs g1 and g2 such that there is no vertex common between them
+is false.
+
+Hence, we have proven that if a connected graph is decomposed into two
+subgraphs g1 and g2 there must be at least one vertex common between
+gland g2.
+
+c) Yes, the given graphs are isomorphic. The second graph is obtained by
+switching the inner and outer cycles in the first graph. A mapping can be
+easily obtained by labelling the graphs.
+
+2a) (i)
+| ns Gyand G2 are said to be isomorphic to each other i the rouowmny,
+s Gy
+Two grap
+conditions are s
+() There &
+(ii) There exists a one to one correspondence betwee!
+i .
+edges of G2.
+Ie, = (M4) isan edge in Gy, ;
+corresponds to yj ¥j in Gy.
+at two graphs G, and Gz are isomorphi
+nce between their vertices
+
+atisfied. ; ic
+xists a one to one correspondence between the vertices of G, and G).
+n the edges of G, and the
+
+then the corresponding edge ¢, = (v1, 07") be such
+
+that vj'vj' in G2
+Thus we can say th
+exists a one to one corresponde!
+edges such that adjacency of vertices is preserved.
+
+cto each other if there
+and also between their
+
+(ii) In graph theory, a subgraph is a graph that satisfies the following
+conditions:
+
+Its vertex set is a subset of the vertex set of a larger graph.

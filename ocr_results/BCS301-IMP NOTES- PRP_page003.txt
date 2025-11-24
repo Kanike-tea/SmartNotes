@@ -1,0 +1,58 @@
+Inspire before you expire..., BCS301
+3) Find the value of k, such that the following distribution represents discrete probability
+distribution. Hence find Mean, S.D, P(x > 5) and P(3 <x <6).
+x o;1 2 3.14 {5 6
+P(x) | k | 3k | 5k | 7k | 9k | 11k | 13k
+
+Sol": Let X be the random variable for the random values,
+X1 = 0, X2 = 1, X3 = 2, X4 = 3, X5 = 4, Xp = 5, XV = 6
+and the given probabilities are,
+
+P(X =x,) = P(0)=k
+P(X = x2) = P(1) =3k
+P(X =x3) = P(2) =5k
+P(X =x4) = P(3) =7k
+P(X = x5) = P(4) = 9k
+P(X = x6) = P(S) = 11k
+P(X = x7) = P(6) = 13k
+
+We know that,
+DP, PW =x) =1
+=>k+3k+5k+7k+9k+11k+13k=1
+
+=> 49k =1
+Sk= 7
+x | P(x) | xP) | x? | x2PO)
+0|k 0 0 [0
+1|3k__| 3k 1__| 3k
+2|5k |10k [4 | 20k
+3|7k | 21k [9 | 63k
+4|9k | 36k | 16 | 144k
+5|11k | 55k | 25 | 275k
+6|13k | 78k | 36 | 468k
+> 203k |- | 973k
+Mean p = Y4., x;:P(x;) = 203k = 722 = 4.1428
+
+49
+Variance o? = Yi}, x? P(x) — p?
+
+= 973k — 4.14287
+
+49
+
+=~3 _ 17.1628
+
+= 2.6943
+
+S.D = ¥2.6943 = 1.6414
+
+i) P(x > 5) = P(5) + P(6)
+=> P(x >5) = 11k + 13k
+
+24
+= P(x B 5) = 24k = 7, = 0.4898
+
+33
+ii) P(3 <x <6) = P(4) + P(S) + P(6) = 9k + 11k + 13k = 33k =79= 0.6734
+
+Prepared by: PURUSHOTHAM P, SJC INSTITUTE OF TECHNOLOGY, | 4 TAKEITEASY ENGINEERS

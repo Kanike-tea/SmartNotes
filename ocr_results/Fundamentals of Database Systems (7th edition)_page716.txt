@@ -1,0 +1,54 @@
+686
+
+Chapter 18 Strategies for Query Processing
+
+& Symmetric case: Under this general method, which is applicable to any
+type of join, both R and S are partitioned. R is partitioned n ways, and
+S is partitioned m ways. A total of m * n processors are used for the
+parallel join. These partitions are appropriately replicated so that pro-
+cessors Poo thru Py-1,n-1 (total of m * n processors) can perform the
+join locally. The processor P;,; performs the join of r; with s; using any
+of the join techniques. The system replicates the partition r; to proces-
+sors Pj, P;,; thru P;,,,.1. Similarly, partition s;is replicated to processors
+Po, Pi, Pn. In general, partitioning with replication has a higher
+cost than just partitioning; thus partitioning with replication costs
+more in the case of an equijoin.
+
+c. Parallel partitioned hash join: The partitioned hash join we described as
+algorithm J4 in Section 18.4 can be parallelized. The idea is that when R and S
+are large relations, even if we partition each relation into n partitions equaling
+the number of processors, the local join at each processor can still be costly.
+This join proceeds as follows; assume that s is the smaller of r and s:
+
+1. Using a hash function h1 on the join attribute, map each tuple of rela-
+tions r and s to one of the n processors. Let r; and s; be the partitions
+hashed to P;. First, read the s tuples at each processor on its local disk
+and map them to the appropriate processor using h1.
+
+2. Within each processor P;, the tuples of S received in step 1 are parti-
+tioned using a different hash function h2 to, say, k buckets. This step is
+identical to the partitioning phase of the partitioned hash algorithm
+we described as J4 in Section 18.4.
+
+3. Read the r tuples from each local disk at each processor and map them
+to the appropriate processor using hashing function h1. As they are
+received at each processor, the processor partitions them using the
+same hash function h2 used in step 2 for the k buckets; this process is
+just as in the probing phase of algorithm J4.
+
+4. The processor P; executes the partitioned hash algorithm locally on the
+partitions r; and s; using the joining phase on the k buckets (as
+described in algorithm J4) and produces a join result.
+
+The results from all processors P; are independently computed and
+unioned to produce the final result.
+
+Aggregation. Aggregate operations with grouping are achieved by partitioning
+on the grouping attribute and then computing the aggregate function locally at
+each processor using any of the uni-processor algorithms. Either range partitioning
+or hash partitioning can be used.
+
+Set Operations. For union, intersection, and set difference operations, if the
+argument relations R and S are partitioned using the same hash function, they can
+be done in parallel on each processor. If the partitioning is based on unmatched
+criteria, R and S may need to be redistributed using an identical hash function.

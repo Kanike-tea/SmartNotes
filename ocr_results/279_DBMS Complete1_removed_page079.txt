@@ -1,0 +1,54 @@
+phase 2 into a data model of the choice dbms.
+
+5. Physical databse design
+During this phase we design the specification for the database in terms of physical storage
+structure ,record placement and indexes.
+
+6. Database system implementation and tuning
+During this phase, the database and application programs are implemented, tested and
+eventually deployed for service.
+
+Informal Guidelines for Relation Design
+
+Want to keep the semantics of the relation attributes clear. The information in a tuple should
+represent exactly one fact or an entity. The hidden or buried entities are what we want to discover
+and eliminate.
+
+e Design a relation schema so that it is easy to explain its meaning.
+
+¢ Do not combine attributes from multiple entity types and relationship types into a single
+relation. Use a view if you want to present a simpler layout to the end user.
+
+e Arelation schema should correspond to on entity type or relationship type.
+
+¢ Minimize redundant information in tuples, thus reducing update anomalies
+
+¢ Ifanomalies are present, try to decompose the relation into two or more to represent the
+separate facts, or document the anomalies well for management in the applications
+programs.
+
+Minimize the use of null values. Nulls have multiple interpretations:
+¢ The attribute does not apply to this tuple
+e = The attribute value is unknown
+e The attribute value is absent
+
+e The attribute value might represent an actual value
+
+Tf nulls are likely (non-applicable) then consider decomposition of the relation into two or more
+relations that hold only the non-null valued tuples.
+
+¢ Do not permit the creation of spurious tuples
+
+Too much decomposition of relations into smaller ones may also lose information or generate
+erroneous information
+
+¢ Be sure that relations can be logically joined using natural join and the result doesn't
+generate relationships that don't exist
+
+Functional Dependencies
+
+FD's are constraints on well-formed relations and represent a formalism on the infrastructure of
+relation.
+
+Definition: A functional dependency (FD) on a relation schema R is a constraint X — Y, where X
+and Yare subsets of attributes of R.

@@ -1,0 +1,65 @@
+1. Directed Graphs and Graph,
+
+in Figure 1.1 13(b) has two components and so KG)<
+
+For example, the disconnected graph
+
+2 for this graph.
+
+It has been mentioned that
+walk. Since a path is a walk, this defi
+y are two vertices in a connected grap!
+containing least number of edges) is cal!
+
+For example, in the connected grap!
+vertices v; and vo is 3 and the distance between
+
+The following theorems contain some useful results
+
+Teas 1. If a graph has exactly two vertices of odd degree,
+
+the number of edges present in a walk is called the length of thy
+nition of length is applicable to paths as well. If u ang
+h, then the length of the shortest path (that is the pa
+led the distance between u and v.
+h shown in Figure 1.113(a), the distance between the
+the vertices v3 and vs is 2. 3
+
+involving connectedness.
+
+then there must be a path
+
+connecting these vertices. :
+Proof: Denote the two vertices of odd degree by v1 and vz. Suppose there is no path connecting |
+these. Then the graph is disconnected, and v; and v2 belong to two different components, say
+H, and Hp. Consequently, each of H; and H; contains only one vertex of odd degree. ‘This
+is not possible, because Hy and H are graphs and in a graph the number of vertices of odd |
+
+degrees is always even * Hence, there must be a path connecting v; and v2. This completes the
+proof.
+
+Theorem 2. A simple graph with n vertices and k components can hav
+sn — k(n - k + 1) number of edges.
+
+Proof: In the given graph G let n; be the num
+number of vertices in the second component, and so on,
+in the kth component. Then
+
+e at most
+
+ber of vertices in the first component, 72 be th
+and finally n; be the number of verti
+nytngtngttman
+
+This gives
+
+(m —1) +m -1) + +(e —- 1D an-(L+1 414°) (k terms)
+
+=n-k.,
+Squaring both sides, we get
+(ny -1)P +(m - IP test (m= +5 =(n-k?
+
+where S§ is the sum of products of
+vier of the form 2(n; — 1(nj = 1,4 = 1,2s-00ke J =
+
+*See Theorem following the handshaking property, in Section 1.2.1

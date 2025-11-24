@@ -1,0 +1,80 @@
+22.32.
+
+22.33.
+
+22.34,
+
+22.35.
+
+22.36.
+
+22.37.
+
+Exercises 837
+
+For correct behavior during recovery, undo and redo operations must be
+
+a. commutative
+
+b. associative
+
+c. idempotent
+
+d. distributive
+
+When a failure occurs, the log is consulted and each operation is either
+undone or redone. This is a problem because
+
+a. searching the entire log is time consuming
+
+b. many redos are unnecessary
+
+c. both (a) and (b)
+
+d. none of the above
+
+Using a log-based recovery scheme might improve performance as well as
+provide a recovery mechanism by
+
+a. writing the log records to disk when each transaction commits
+
+b. writing the appropriate log records to disk during the transaction’s
+execution
+
+c. waiting to write the log records until multiple transactions commit and
+writing them as a batch
+
+d. never writing the log records to disk
+
+There is a possibility of a cascading rollback when
+
+a. a transaction writes items that have been written only by a committed
+transaction
+
+b. a transaction writes an item that is previously written by an uncommitted
+transaction
+
+c. a transaction reads an item that is previously written by an uncommitted
+transaction
+
+d. both (b) and (c)
+
+To cope with media (disk) failures, it is necessary
+
+a. for the DBMS to only execute transactions in a single user environment
+b. to keep a redundant copy of the database
+
+c. to never abort a transaction
+
+d. all of the above
+
+If the shadowing approach is used for flushing a data item back to disk,
+then
+
+a. the item is written to disk only after the transaction commits
+
+b. the item is written to a different location on disk
+
+c. the item is written to disk before the transaction commits
+
+d. the item is written to the same disk location from which it was read

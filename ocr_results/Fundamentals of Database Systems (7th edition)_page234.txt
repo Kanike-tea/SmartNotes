@@ -1,0 +1,57 @@
+204 Chapter 6 Basic SQL
+
+Figure 6.6
+
+A relational database
+schema fora
+LIBRARY database.
+
+BOOK
+Book_id| Title | Publisher_name
+(ho
+BOOK_AUTHORS
+
+Book_id} Author_name
+|
+
+PUBLISHER
+Name | Address | Phone
+A
+
+BOOK_COPIES
+Book_id} Branch_id] No of_copies
+L
+
+BOOK_LOANS
+
+Book_id| Branch_id| Card_no | Date_out | Due_date
+L
+
+LIBRARY_BRANCH
+Branch_id| Branch_name| Address.
+BORROWER
+
+Card_no| Name | Address | Phone
+
+4
+
+6.11.
+6.12.
+
+Specify the updates of Exercise 3.11 using the SQL update commands.
+
+Specify the following queries in SQL on the database schema of Figure 1.2.
+
+a. Retrieve the names of all senior students majoring in ‘cs’ (computer
+science).
+
+b. Retrieve the names of all courses taught by Professor King in 2007 and
+2008.
+
+c. For each section taught by Professor King, retrieve the course number,
+semester, year, and number of students who took the section.
+
+d. Retrieve the name and transcript of each senior student (Class = 4)
+majoring in CS. A transcript includes course name, course number,
+credit hours, semester, year, and grade for each course completed by
+the student.

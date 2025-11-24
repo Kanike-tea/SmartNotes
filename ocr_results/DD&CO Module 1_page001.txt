@@ -1,0 +1,43 @@
+Binary logic resembles binary arithmetic, and the operations AND and OR have similarities to
+multiplication and addition, respectively. In fact, the symbols used for AND and OR are the same as
+those used for multiplication and addition. However, binary logic should not be confused with binary
+arithmetic. One should realize that an arithmetic variable designates a number that may consist of many
+digits. A logic variable is always either | or 0. For example, in binary arithmetic, we have 1 + 1 = 10
+(read “one plus one is equal to 2”), whereas in binary logic, we have 1 + 1 = | (read “one OR one is
+
+equal to one”).
+Logic Gates
+
+Logic gates are electronic circuits that operate on one or more input signals to produce an output signal.
+Electrical signals such as voltages or currents exist as analog signals having values over a given
+continuous range, say, 0 to 3 V, but in a digital system, these voltages are interpreted to be either of two
+recognizable values, 0 or 1. Voltage-operated logic circuits respond to two separate voltage levels that
+represent a binary variable equal to logic 1 or logic 0. For example, a particular digital system may define
+logic 0 as a signal equal to 0 V and logic | as a signal equal to 3 V. In practice, each voltage level has
+
+an acceptable range, as shown in Figure
+
+Volts
+rN
+3
+Signal
+range for
+logic 1
+2
+Transition occurs
+between these limits
+iL
+Signal
+range for
+logic 0
+0
+Signal Levels of Binary Logic Values
+
+The graphic symbols used to designate the three types of gates are shown in Fig
+
+=xty >: ,
+x x
+
+(a) Two-input AND gate (b) Two-input OR gate (c) NOT gate or inverter
+
+Symbols of Digital Logic Circuits

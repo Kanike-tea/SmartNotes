@@ -1,0 +1,47 @@
+Data Structures and Applications (BCS304) Module III
+
+TREES
+
+Definition of Tree:
+A tree is a finite set of one or more nodes such that
+e There is a special node called the root.
+e The remaining nodes are partitioned into n= 0 disjoint sets T1, ---, Tn, where each of these
+sets are called the subtrees of the root.
+
+Example: Consider the tree given below
+
+LEVEL
+A) 1
+|
+B ¢ D 2
+T
+E F G i I 3 3
+K i M) 4
+
+Figure 4.1 A sample Tree
+
+The tree has 13 nodes and has one character as its information. A tree is always drawn with its root
+at the top. Here the node A is the root.
+
+> Degree of a node: The number of subtrees of a node is called its degree.
+o Example : The degree of A= 3,C = 1, and of F=0.
+> Degree of a Tree :The degree of a tree is the maximum degree of the nodes in the tree. The
+tree shown in the example has degree 3.
+Leaf or terminal nodes or external nodes: Nodes that have degree zero is called the leaf
+nodes
+o Example: {K.L,F,G.M,LJ} is the set of leaf nodes
+> Non-terminal nodes/internal nodes : Nodes that have at least a degree one or two. (nodes
+other than the leaf nodes )
+o Example: {B,C,D.E.F,H,A} is the set of Non-terminal nodes
+> Siblings : Children of the same parent are said to be siblings
+o Example : {H,I,J} are siblings.
+> The ancestors: all the nodes along the path from the root to that node.
+o Example: The ancestors of M are A, D, and H.
+> The level of a node is .The root is considered be at level one[1]. If a node is at level 1, then
+its children are at level 1+ 1.
+> The height or depth is maximum level of any node in the tree. Thus, the depth of the tree in
+the example is 4.
+
+Vv
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 10

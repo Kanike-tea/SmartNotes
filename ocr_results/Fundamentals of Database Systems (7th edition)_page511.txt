@@ -1,0 +1,55 @@
+14.3 Normal Forms Based on Primary Keys
+
+relation. The first normalization using internal partial keys Company and Year,
+respectively, results in the following 1NF relations:
+
+CANDIDATE_1 (Ssn, Name)
+CANDIDATE_JOB_HIST (Ssn, Company, Highest_position)
+CANDIDATE_SAL_HIST (Ssn, Company, Year, Max-sal)
+
+The existence of more than one multivalued attribute in one relation must be han-
+dled carefully. As an example, consider the following non-1NF relation:
+
+PERSON (Ss#, {Car_lic#}, {Phone#})
+
+This relation represents the fact that a person has multiple cars and multiple phones.
+If strategy 2 above is followed, it results in an all-key relation:
+
+PERSON_IN_1NF (Ss#, Car_lic#, Phone#)
+
+To avoid introducing any extraneous relationship between Car_lic# and Phone#, all
+possible combinations of values are represented for every Ss#, giving rise to redun-
+dancy. This leads to the problems that are typically discovered at a later stage of
+normalization and that are handled by multivalued dependencies and 4NF, which
+we will discuss in Section 14.6. The right way to deal with the two multivalued attri-
+butes in PERSON shown previously is to decompose it into two separate relations,
+using strategy 1 discussed above: P1(Ss#, Car_lic#) and P2(Ss#, Phone#).
+
+A note about the relations that involve attributes that go beyond just numeric and
+character string data. It is becoming common in today’s databases to incorporate
+images, documents, video clips, audio clips, and so on. When these are stored in a
+relation, the entire object or file is treated as an atomic value, which is stored as a
+BLOB (binary large object) or CLOB (character large object) data type using SQL.
+For practical purposes, the object is treated as an atomic, single-valued attribute
+and hence it maintains the 1NF status of the relation.
+
+14.3.5 Second Normal Form
+
+Second normal form (2NF) is based on the concept of full functional dependency.
+A functional dependency X > Y is a full functional dependency if removal of any
+attribute A from X means that the dependency does not hold anymore; that is, for
+any attribute A ¢ X, (X — {A}) does not functionally determine Y. A functional
+dependency X — Y is a partial dependency if some attribute A ¢ X can be removed
+from X and the dependency still holds; that is, for some A € X, (X — {A}) > Y. In
+Figure 14.3(b), {Ssn, Pnumber} —> Hours is a full dependency (neither Ssn + Hours
+nor Pnumber — Hours holds). However, the dependency {Ssn, Pnumber} — Ename is
+partial because Ssn — Ename holds.
+
+Definition. A relation schema R is in 2NF if every nonprime attribute A in R is
+fully functionally dependent on the primary key of R.
+
+The test for 2NF involves testing for functional dependencies whose left-hand side
+attributes are part of the primary key. If the primary key contains a single attribute,
+the test need not be applied at all. The EMP_PROJ relation in Figure 14.3(b) is in
+
+481

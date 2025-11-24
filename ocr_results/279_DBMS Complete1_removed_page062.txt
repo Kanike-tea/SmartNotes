@@ -1,0 +1,52 @@
+LECTURE-20
+
+Additional Operations
+Natural Join G2 21)
+e Forms Cartesian product of its two arguments, performs selection forcing equality on
+those attributes that appear in both relations
+e For example consider Borrower and Loan relations, the natural join between them
+Borrower Loan will automatically perform the selection on the table returned by
+Borrower x Loan which force equality on the attribute that appear in both Borrower
+and Loan i.e. Loan-no and also will have only one of the column named Loan-No.
+
+Borrower ™ Loan
+
+e That means = OBorrower.Loan-no = Loan.Loan-no (Borrower x Loan).
+
+e The table returned from this will be as follows:
+Eliminate rows that does not satisfy the selection criteria “oporrowerLoan-no = Loan.Loan-no” from Borrower
+x Loan =
+Borrower.Cust- | Borrower.Loan- | Loan.Loan- | Loan.Amount
+name no no
+Ram L-13 L-13 1000
+Ram EB £30 20000
+Ram EB £2 40000
+Shyam £30 } 4000
+Shyam L-30 L-30 20000
+Shyam £30 ER 40000
+Suleman £42 } 4000
+Suleman £42 £30 20000
+Suleman L-42 L-42 40000
+
+And will remove one of the column named Loan-no.
+
+: rrower Dd a
+e ie, Borrower Loan _
+
+Cust-name Loan-no Amount
+Ram L-13 1000
+Shyam L-30 20000
+Suleman L-42 40000
+
+Division Operation:
+e denoted by ~ is used for queries that include the phrase “for all”.
+e For example “Find customers who has an account in all branches in branch city
+
+Agra”. This query can be solved by following statement.
+
+Depositor Account
+T castomer-name. branch-name (= ) + TToranch-name (OBranch-city="Agra’(Branch)
+
+e The division operations can be specified by using only basic operations as follows:
+Let r(R) and s(S) be given relations for schema R and § with °=R
+r+s=TIrs(r) - Urs (Irs (r) x s) - Tks s(r))

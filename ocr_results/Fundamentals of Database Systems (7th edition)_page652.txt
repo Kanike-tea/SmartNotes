@@ -1,0 +1,53 @@
+622
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+16 pointers and, hence, 15 search key field values. The average fan-out fo = 16.
+We can start at the root and see how many values and pointers can exist, on the
+average, at each subsequent level:
+
+Root: 1 node 15 key entries 16 pointers
+Level 1: 16 nodes 240 key entries 256 pointers
+Level 2: 256 nodes 3,840 key entries 4,096 pointers
+Level 3: 4,096 nodes __—61,440 key entries
+
+At each level, we calculated the number of key entries by multiplying the total num-
+ber of pointers at the previous level by 15, the average number of entries in each
+node. Hence, for the given block size (512 bytes), record/data pointer size (7 bytes),
+tree/block pointer size (6 bytes), and search key field size (9bytes), a two-level B-tree
+of order 23 with 69% occupancy holds 3,840 + 240 + 15 = 4,095 entries on the aver-
+age; a three-level B-tree holds 65,535 entries on the average.
+
+B-trees are sometimes used as primary file organizations. In this case, whole
+records are stored within the B-tree nodes rather than just the <search key, record
+pointer> entries. This works well for files with a relatively small number of records
+and a small record size. Otherwise, the fan-out and the number of levels become too
+great to permit efficient access.
+
+In summary, B-trees provide a multilevel access structure that is a balanced tree
+structure in which each node is at least half full. Each node in a B-tree of order p can
+have at most p — 1 search values.
+
+17.3.2 Bt-Trees
+
+Most implementations of a dynamic multilevel index use a variation of the B-tree data
+structure called a B*-tree. In a B-tree, every value of the search field appears once at
+some level in the tree, along with a data pointer. In a B*-tree, data pointers are stored
+only at the leaf nodes of the tree; hence, the structure of leaf nodes differs from the
+structure of internal nodes. The leaf nodes have an entry for every value of the search
+field, along with a data pointer to the record (or to the block that contains this record)
+if the search field is a key field. For a nonkey search field, the pointer points to a block
+containing pointers to the data file records, creating an extra level of indirection.
+
+The leaf nodes of the B*-tree are usually linked to provide ordered access on the
+search field to the records. These leaf nodes are similar to the first (base) level of an
+index. Internal nodes of the B*-tree correspond to the other levels of a multilevel
+index. Some search field values from the leaf nodes are repeated in the internal
+nodes of the B*-tree to guide the search. The structure of the internal nodes of a
+B*-tree of order p (Figure 17.11(a)) is as follows:
+1. Each internal node is of the form
+
+Py
+where q < p and each P; is a tree pointer.
+
+<P , Kj, P2, Ky, .. = Kg -1 Pa

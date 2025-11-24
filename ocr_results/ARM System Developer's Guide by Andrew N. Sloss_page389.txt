@@ -1,0 +1,51 @@
+376 Chapter 10 Firmware
+
+Table 10.4
+
+Table 10.5
+
+Initial memory state.
+
+Memory type  Startaddress Endaddress Size
+
+Flash ROM 0x00000000 0x00080000 512K
+SRAM bank0 Unavailable unavailable 256K
+SRAM bank 1 Unavailable unavailable 256K
+
+ADD orld, ria, ra
+ADRL 0, memorymaptable_str
+LOMIA 0, {rl-r12}
+
+LOR 0, =EXTDBWTH 3 =(SYSCFG + 0x3010)
+STMIA  r0, {rl-ri2}
+MOV pc, rl4 3 jump to remapped memory
+
+sandstone_init2
+; Code after sandstone_init2 executes @ +0x1800000
+
+The first part of the code calculates the absolute address of the routine sandstone_init2 before
+remapping takes place. This address is used by Sandstone to jump to the next routine in
+the new remapped environment.
+
+The second part carries out the memory remapping. The new memory map data is
+loaded into registers r] to r12, from a structure pointed by memorymaptable_str. This
+structure, using the registers, is then written to the memory controller offset 0x3010 from
+system configuration register. Once this is complete, the new memory map as shown in
+Table 10.5 is active.
+
+You can see that the SRAM banks are now available, and the flash ROM is set to a higher
+address. The final part is to jump to the next routine, or stage, of the firmware.
+
+This jump is achieved by taking advantage of the ARM pipeline. Even though the
+new memory environment is active, the next instruction has already been loaded into the
+pipeline. The next routine can be called by moving the contents of register r4 (the address
+sandstone_init2) into the pc. We achieve this by using a single MOV instruction that
+follows immediately after the remap code.
+
+Remapping.
+
+Type Start address Endaddress Size
+
+Flash ROM 0x01800000 0x01880000 512K
+SRAM bank 0 0x00000000 + 0x00040000 256K
+SRAM bank 1 0x00040000 0x00080000 256K

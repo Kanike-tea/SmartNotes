@@ -1,0 +1,51 @@
+560
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+that work well for certain types of database transactions, such as when a block that
+is used most recently is not needed until all the remaining blocks in the relation are
+processed.
+
+16.4 Placing File Records on Disk
+
+Data in a database is regarded as a set of records organized into a set of files. In this
+section, we define the concepts of records, record types, and files. Then we discuss
+techniques for placing file records on disk. Note that henceforth in this chapter we
+will be referring to the random access persistent secondary storage as “disk drive” or
+“disk.” The disk may be in different forms; for example, magnetic disks with rota-
+tional memory or solid-state disks with electronic access and no mechanical delays.
+
+16.4.1 Records and Record Types
+
+Data is usually stored in the form of records. Each record consists of a collection of
+related data values or items, where each value is formed of one or more bytes and
+corresponds to a particular field of the record. Records usually describe entities and
+their attributes. For example, an EMPLOYEE record represents an employee entity,
+and each field value in the record specifies some attribute of that employee, such as
+Name, Birth_date, Salary, or Supervisor. A collection of field names and their corre-
+sponding data types constitutes a record type or record format definition. A data
+type, associated with each field, specifies the types of values a field can take.
+
+The data type of a field is usually one of the standard data types used in program-
+ming. These include numeric (integer, long integer, or floating point), string of
+characters (fixed-length or varying), Boolean (having 0 and 1 or TRUE and FALSE
+values only), and sometimes specially coded date and time data types. The number
+of bytes required for each data type is fixed for a given computer system. An integer
+may require 4 bytes, a long integer 8 bytes, a real number 4 bytes, a Boolean 1 byte,
+a date 10 bytes (assuming a format of YYYY-MM-DD), and a fixed-length string of
+k characters k bytes. Variable-length strings may require as many bytes as there are
+characters in each field value. For example, an EMPLOYEE record type may be
+defined—using the C programming language notation—as the following structure:
+
+struct employee{
+char name[30];
+char ssn[9];
+int salary;
+int job_code;
+char department[20];
+dG
+
+In some database applications, the need may arise for storing data items that consist
+of large unstructured objects, which represent images, digitized video or audio
+streams, or free text. These are referred to as BLOBs (binary large objects). A BLOB
+data item is typically stored separately from its record in a pool of disk blocks, and

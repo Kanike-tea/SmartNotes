@@ -1,0 +1,62 @@
+MICROCONTROLLER(BCS402)
+
+Table 4.6 shows procedure to disable or mask an interrupt request.
+
+cpsr IRQ FIQ
+Pre nzcvqjift_ SVC nzcvqjift_ SVC
+Code disable_irg disable fiq
+MRS rl, cpsr MRS rl, cpsr
+ORR rl, rl, #0x80 ORR rl, rl, #0x40
+MSR cpsr_c, rl MSR cpsr_c, rl
+Post —nzcvqjlft_ SVC ~ nzcvgjiFt_SVC ~
+
+Table 4.6 Disabling an interrupt.
+
+To enable and disable both the IRQ and FIQ exceptions , the
+immediate value on the data processing BIC or ORR instruction has to be
+changed to Oxc0.
+
+The interrupt request is either enabled or disabled only once the MSR
+instruction has completed the execution stage of the pipeline. Interrupts
+can still be raised or masked prior to the MSR completing this stage.
+
+4.2 4 Basic Interrupt Stack Design and Implementation
+
+Exceptions handlers uses the stacks to save the register contents. Each
+
+mode has dedicated register containing the stack pointer. The design of
+
+the exception stacks depends upon these factors:
+
+@ Operating system requirements—Each operating system has its own
+requirements for stack design.
+
+@ Target hardware—The target hardware provides a physical limit to
+the size and positioning of the stack in memory
+
+Two design decisions need to be made for the stacks:
+
+am The location: which determines where in the memory map the stack
+
+begins. Most ARM-based systems are designed with a stack that descends
+
+downwards, with the top of the stack at a high memory address.
+
+™@ Stack size: depends upon the type of handler, nested or nonnested. A
+nested interrupt handler requires more memory space since the stack
+will grow with the number of nested interrupts.
+
+stack overflow—when the stack extends beyond the allocated memory.
+It causes instability in embedded systems.
+
+There are software techniques that identify overflow and that allow
+corrective measures to take place to repair the stack before irreparable
+memory corruption occurs.
+
+The two main methods are
+
+(1) use memory protection
+
+(2) call a stack check function at the start of each routine.
+
+11

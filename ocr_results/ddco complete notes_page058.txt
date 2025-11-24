@@ -1,0 +1,59 @@
+Digital Design and Computer Organization(BCS302)
+
+1)SR latch (Set-Reset latch), 2)D latch (Data latch),3) JK latch.
+Storage elements that operate with signal levels (rather than signal
+transitions) are referred to as latches ; those controlled by a clock
+transition are flip-flops.Latches are said to be level sensitive devices;
+flip-flops are edge-sensitive devices.The two types of storage elements
+are related because latches are the basic circuits from which all flip-
+
+flops are constructed.
+
+eal eal SS i
+
+Level Triggering
+
+pj ee.
+
+Positive-Edge Triggering
+
+o tity
+
+Negative-Edge Triggering
+
+SR Latch (Set-Reset Latch):
+
+The SR latch has two inputs, S (Set) and R (Reset).It has two outputs,
+Q and ~Q (complement of Q).
+
+When S is asserted, Q is set to 1, and when R is asserted, Q is reset
+to O.The SR latch is sensitive to the input conditions, and having both
+
+S and R asserted simultaneously can lead to unpredictable behavior.
+
+0 0 NO CHANGE
+(Previous output)
+0 1 0 1
+1 0
+1 1 FORBIDDEN
+
+SR Latch with nor gates
+
+1 SR|\QQ’
+
+0 R (reset) 2 10°10
+Ct 0 0/1 O (after S =1,R=0)
+
+01/01
+i -_
+
+oO = 0 0/0 1 (afters =0,R=1)
+° S (set) = 1 10 0 (forbidden)
+
+(a) Logic diagram
+
+FIGURE 5.3 (b) Function table
+
+SR latch with NOR gates
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 30

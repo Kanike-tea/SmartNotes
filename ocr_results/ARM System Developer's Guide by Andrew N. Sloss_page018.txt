@@ -1,0 +1,49 @@
+1.2 The ARM Design Philosophy 5
+
+processing operations. In contrast, CISC processors have dedicated registers for specific
+purposes.
+
+4. Load-store architecture—The processor operates on data held in registers. Separate load
+and store instructions transfer data between the register bank and external memory.
+Memory accesses are costly, so separating memory accesses from data processing pro-
+vides an advantage because you can use data items held in the register bank multiple
+times without needing multiple memory accesses. In contrast, with a CISC design the
+data processing operations can act on memory directly.
+
+‘These design rules allow a RISC processor to be simpler, and thus the core can operate
+at higher clock frequencies. In contrast, traditional CISC processors are more complex
+and operate at lower clock frequencies. Over the course of two decades, however, the
+distinction between RISC and CISC has blurred as CISC processors have implemented
+more RISC concepts.
+
+1.2 THE ARM DESIGN PHILOSOPHY
+
+‘There are a number of physical features that have driven the ARM processor design. First,
+portable embedded systems require some form of battery power. The ARM processor has
+been specifically designed to be small to reduce power consumption and extend battery
+operation—essential for applications such as mobile phones and personal digital assistants
+(PDAs).
+
+High code density is another major requirement since embedded systems have lim-
+ited memory due to cost and/or physical size restrictions. High code density is useful for
+applications that have limited on-board memory, such as mobile phones and mass storage
+devices.
+
+In addition, embedded systems are price sensitive and use slow and low-cost memory
+devices. For high-volume applications like digital cameras, every cent has to be accounted
+for in the design. The ability to use low-cost memory devices produces substantial savings.
+
+Another important requirement is to reduce the area of the die taken up by the embedded
+processor. For a single-chip solution, the smaller the area used by the embedded processor,
+the more available space for specialized peripherals. This in turn reduces the cost of the
+design and manufacturing since fewer discrete chips are required for the end product.
+
+ARM has incorporated hardware debug technology within the processor so that software
+engineers can view what is happening while the processor is executing code. With greater
+visibility, software engineers can resolve issues faster, which has a direct effect on the time
+to market and reduces overall development costs.
+
+The ARM core is not a pure RISC architecture because of the constraints of its primary
+application—the embedded system. In some sense, the strength of the ARM core is that
+it does not take the RISC concept too far. In today’s systems the key is not raw processor
+speed but total effective system performance and power consumption.

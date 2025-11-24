@@ -1,0 +1,53 @@
+Data Structures and Applications (BCS304) Module IV
+
+[EGiaapp lereate():= return an empty graph
+Graph InsertVertex(graph,v):= return a graph with v inserted. v has no incident edges
+Graph InsertEdge(graph,v1,v2) := retrun a graph with a new edge between v1 and v2
+Graph DeleteVertex(graph,v) := return a graph in which v and all edges incident to it is
+removed
+
+Graph DeleteEdge(graph,v1,v2): retrun a graph in which the edge (v1,v2) is removed,
+
+leave the incident nodes in the graph
+
+Boolean IsEmpty:= If (graph == empty graph) retrun TRUE else Retrun
+FALSE
+List Adjacent(graph,v) := retrun a list of all vertices that are adjacent to v
+
+Graph Representation
+The three most commonly used representations are
+
+e Adjacency Matrix
+e Adjacency List
+e Adjacency Multilist
+
+Adjacency Matrix: Let G=(V,E) be a graph with n vertices, n>=1. The adjacency matrix of G is a
+two dimensional n*n array for example a, with the property that a[i][j]=1 if there exist ane edge (i,j)
+(for a directed graph edge <i,j> is in E(G).a[i][j]=0 if no such edge in G.
+
+Example:
+0 . 9
+Adjacency Matrix
+012 3
+o)/O;1;1)1
+CGC) 1fafola/a
+2/1/1/0)1
+3/1,/1/1)0
+
+Figure 5.1 Graph G1
+
+© The space requirement to store an adjacency matrix is n? bits.
+
+e The adjacency matrix for a undirected graph is symmetric .About half the space can be saved
+in an undirected graph by storing only the upper or lower triangle of the matrix.
+
+e Foran undirected graph the degree of any vertex i is its row sum. For a directed graph the row
+sum is the out-degree and the column sum is the in-degree.
+
+Adjacency list: In adjacency matrix the n rows of the adjacency matrix are represented as n chains.
+There is one chain for each vertex in G. The nodes in chain i represent the vertices that are adjacent
+from vertex i. The data field of a chain node stores the index of an adjacent vertex.
+
+Example: the adjacency list of graph G1 in figure 5.1 is shown below
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 10

@@ -1,0 +1,49 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+In this Addressing Mode , EA of an operand is stored in the one of the GPR‘ of the CPU. This
+
+Addressing Mode increment the contents of memory register by 4 memory locations after operand
+
+access.
+The symbolic representation is
+(Ri)+ Where R; is the one of the GPR.
+Ex: MOVE (Ri)+ ,R2
+
+This instruction transfer‘s data from the memory location whoseaddress is stored in Ri into R3
+
+register and then it increments the contents of Ri by 4 memory locations.
+
+5c__|3298
+6B {3300
+TF _|3302
+Register Set
+Memory
+
+Auto-Increment Addressing Mode
+
+h. AUTO DECREMENT ADDRESSING MODE
+
+In this Addressing Mode_, EA of.an operand is stored in the one of the GPR* of the CPU. This
+
+Addressing Mode decrements the contents.of memory register by 4 memory locations and then
+
+transfersithe data to destination.
+
+The symbolic representation is
+-(R1) WhereRiis the one of theGPR.
+Ex: MOVE™- (Ri) ,R2
+This instruction first decrements the contents of Ri by 4 memory locations and then transfer“s data
+
+of that location to destination register.
+
+ae
+
+6E | 3298
+3302 & 1F _|3300
+een 3302
+
+Register Set Memory
+
+Auto-Decrement Addressing Mode
+
+Dr. Ajay V G, Dept. of CSE, SVIT 31

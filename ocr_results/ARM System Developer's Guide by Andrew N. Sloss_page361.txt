@@ -1,0 +1,48 @@
+348 Chapter 9 Exception and Interrupt Handling
+
+Interrupt
+
+Return to task
+
+~ |
+
+| Disable interrupts
+
+y
+
+2.| Save minimum context
+Y
+3.] Get external interrupt
+status
+Identify interrupt
+4. priority and mask off
+lower-priority
+interrupts and enable
+IRQs
+5. Jump to service
+routine
+T
+1
+1
+1
++
+6.| Create a context
+7.
+8. Switch on internal
+
+Restore context }#—
+
+interrupts followed
+by external interrupt
+
+Figure 9.11 Priority interrupt handler.
+
+IRQRawStatus
+IRQEnable
+IRQEnableSet
+IRQEnableClear
+
+EQU Ox4
+EQU 0x8
+EQU 0x8
+EQU Oxc

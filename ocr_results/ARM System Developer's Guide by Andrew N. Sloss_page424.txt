@@ -1,0 +1,55 @@
+12.2 Cache Architecture 411
+
+OxFFFFFFFF
+
+OxFFFFFOOO
+
+OxFFFFEOOO
+
+0x00003000
+
+0x00002000
+
+0x00001000
+
+4KB
+0x00000000
+
+Main memory
+
+OxFFFFF824
+OXFFFFEB24 4 KB cache memory
+(direct mapped)
+OxFFF
+wa Cache-tag [vd] word3] word [word] [word0 | 0x820
+- s
+ox00002824 —
+
+0x000
+0x00001824
+0x00000824
+en tn a)
+XXXXX 8 2
+
+2 4
+tag set index | data index
+31 12 11 43 0
+
+Address issued by processor core
+
+Figure 12.5 How main memory maps to a direct-mapped cache.
+
+A direct-mapped cache is a simple solution, but there is a design cost inherent in having
+a single location available to store a value from main memory. Direct-mapped caches are
+subject to high levels of thrashing—a software battle for the same location in cache memory.
+‘The result of thrashing is the repeated loading and eviction of a cache line. The loading and
+eviction result from program elements being placed in main memory at addresses that map
+to the same cache line in cache memory.
+
+Figure 12.6 takes Figure 12.5 and overlays a simple, contrived software procedure to
+demonstrate thrashing. The procedure calls two routines repeatedly in a do while loop.
+Each routine has the same set index address; that is, the routines are found at addresses in
+physical memory that map to the same location in cache memory. The first time through
+the loop, routine A is placed in the cache as it executes. When the procedure calls routine B,
+it evicts routine A a cache line at a time as it is loaded into cache and executed. On the second
+time through the loop, routine A replaces routine B, and then routine B replaces routine A.

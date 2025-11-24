@@ -1,0 +1,45 @@
+A.4 ARM Assembler Quick Reference 627
+
+This directive is similar to #def ine in C. It defines a symbol <name> with value defined by
+the expression. This value cannot be redefined. See Section A.4.1 for the use of redefinable
+variables.
+
+EXPORT (alias GLOBAL)
+EXPORT <symbol>{ [WEAK] }
+
+Assembler symbols are local to the object file unless exported using this command. You
+can link exported symbols with other object and library files. The optional [WEAK] suffix
+indicates that the linker should try and resolve references with other instances of this symbol
+before using this instance.
+
+EXTERN, IMPORT
+
+EXTERN <symbol>{ [WEAK] }
+IMPORT <symbo1>{ [WEAK] }
+
+Both of these directives declare the name of an external symbol, defined in another object
+file or library. If you use this symbol, then the linker will resolve it at link time. For IMPORT,
+the symbol will be resolved even if you don’t use it. For EXTERN, only used symbols are
+resolved. If you declare the symbol as [WEAK], then no error is generated if the linker
+cannot resolve the symbol; instead the symbol takes the value 0.
+
+FIELD (alias #)
+See MAP.
+
+FUNCTION (alias PROC) and ENDFUNC (alias ENDP)
+
+The FUNCTION and ENDFUNC directives mark the start and end of an ATPCS-compliant
+function. Their main use is to improve the debug view and allow backtracking of function
+calls during debugging. They also allow the profiler to more accurately profile assembly
+functions. You must precede the function directive with the ATPCS function name. For
+example:
+
+sub FUNCTION
+suB sr, 0, rl
+MOV pc, Ir
+ENDFUNC
+
+GBLA, GBLL, GBLS
+
+Directives defining global arithmetic, logic, and string variables, respectively. See
+Section A.4.1.

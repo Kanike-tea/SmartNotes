@@ -1,0 +1,43 @@
+190 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+of the combined add and subtract is negative, then we have finished the j loop. We repeat
+the same process for the i loop. ARM’s ability to handle a wide range of rotated constants
+in addition and subtraction instructions makes this scheme very efficient.
+
+6.6.4 OTHER COUNTED Loops
+
+You may want to use the value of a loop counter as an input to calculations in the loop. It’s
+not always desirable to count down from Nto | or N — | to 0. For example, you may want
+to select bits out of a data register one at a time; in this case you may want a power-of-two
+mask that doubles on each iteration.
+
+The following subsections show useful looping structures that count in different
+patterns. They use only a single instruction combined with a branch to implement
+the loop.
+
+6.6.4.1 Negative Indexing
+This loop structure counts from —N to 0 (inclusive or exclusive) in steps of size STEP.
+
+RSB i, N, #0 3 i=-N
+loop
+3 loop body goes here and i=-N,-N+STEP,...,
+ADDS i, i, #STEP
+BLT loop 3 use BLT or BLE to exclude 0 or not
+
+6.6.4.2 Logarithmic Indexing
+
+This loop structure counts down from 2 to 1 in powers of two. For example, if N =
+then it counts 16, 8, 4, 2, 1.
+
+MoV i, #1
+Movi, i, LSLN
+loop
+3 loop body
+MOVS i, i, LSR#L
+BNE loop
+
+The following loop structure counts down from an N-bit mask to a one-bit mask. For
+example, if N = 4, then it counts 15, 7, 3, 1.
+
+MoV i, #1
+RSB i, i, i, LSLN 5 i=(1<<N)-1

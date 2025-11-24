@@ -1,0 +1,62 @@
+Digital Design and Computer Organization(BCS302)
+
+1. write Verilog code for 4 bit parallel adder using full adder as component.
+
+module fourbit_full_adder(a, b,sum,cout);
+input [3:0] a;
+
+input [3:0] b;
+
+output [3:0] sum;
+
+output cout;
+wire cl, c2, c3;
+full_adder fa0(a
+full_adder fal(a
+full_adder fa2(a
+full_adder fa3(a
+endmodule
+
+0], b{0], 0, sum[0], cl);
+1], bf1], cl, sum[1], c2);
+2], b[2], c2, sum[2], c3);
+3], b[3], c3, sum[3], cout);
+
+module full_adder (a, b, cin, sum, cout);
+input a, b, cin;
+
+output sum, cout;
+
+assign sum = a*b“cin;
+
+assign cout = (a&b) | (b&cin) | (ciné&a) ;
+endmodule
+
+2. Write Verilog code for 4 bit adder .
+
+HDL (Dataflow: Four-Bit Adder)
+
+module binary_adder (
+
+output [3: 0] Sum,
+output C_out,
+input [3: 0] A,B,
+input c_in
+
+»
+
+assign {C_out, Sum} = A+ B + C_in;
+endmodule
+
+There are several techniques for reducing the carry propagation time in a parallel adder.
+The most widely used technique employs the principle of carry lookahead logic .
+
+Carry Propagation
+
+* Carry Propagation The addition of two binary numbers in parallel implies that all the
+bits of the augend and addend are available for computation at the same time.
+
+* Consider the circuit of the full adder shown in Fig. 4.10 . If we define two new binary
+variables.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 9

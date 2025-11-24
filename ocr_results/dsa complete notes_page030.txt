@@ -1,0 +1,37 @@
+Data Structures and Applications/BCS304 Module 1
+
+Stack
+
+Stack Definition and Examples
+
+e Given a stack S = (a0, ...., an-1), we say that a0 is the bottom element, an-1 is the top
+element,and ai is on top of element ai-1,0 <i<n.
+
+Illustration of stack operations
+
+E (top
+D top |p D> top
+C frtop C Cc Cc
+Bretop |B B B B
+A|* top| A A A A A
+
+Fig: Illustration of the push and pop operations
+
+Implementation of stack
+
+Stack is implemented by using a one-dimensional array, stack [MAX_STACK_SIZE], where MAX
+is the maximum number of entries.
+
+e The first, or bottom, element of the stack is stored in stack [0], the second in stack [1], and the
+ith in stack [i-1].
+
+e Variable top points to the top element in the stack.
+
+¢ Top=-1 to denote an empty stack.
+
+ADTStack is
+objects: a finite ordered list with zero or more elements.
+
+functions: for all stackeStack, itemEelement, maxStackSize€ positive integer
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 31

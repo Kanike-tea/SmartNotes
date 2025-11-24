@@ -1,0 +1,68 @@
+198 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.26
+
+EXAMPLE
+
+6.27
+
+case 2: return method_2();
+
+case 1: return method_1(
+
+case return method_3();
+case 4: return method_4();
+case
+
+case return method_6();
+case return method_7(
+
+)
+)
+)
+)
+return method_5();
+)
+)
+(
+
+default: return method_d();
+
+There are two ways to implement this structure efficiently in ARM assembly. The first
+method uses a table of function addresses. We load pc from the table indexed by x.
+
+The switch_absolute code performs a switch using an inlined table of function pointers:
+
+x RN O
+
+3 int switch absolute(int x)
+switch_absolute
+
+cmp x, #8
+LORLT pc, [pc, x, LSL#2]
+B method_d
+
+DCD —method_O
+DCD method_1
+DCD —method_2
+DCD ——method_3
+DCD method_4
+DCD —method_5
+DCD —method_6
+DCD method_7
+
+The code works because the pc register is pipelined. The pc points to the method_0 word
+when the ARM executes the LDR instruction.
+
+The method above is very fast, but has one drawback: The code is not position
+independent since it stores absolute addresses to the method functions in memory. Position-
+independent code is often used in modules that are installed into a system at run time. The
+next example shows how to solve this problem.
+
+The code switch_relative is slightly slower compared to switch_absolute, but it is
+position independent:
+
+3 int switch_relative(int x)
+switch_relative

@@ -1,0 +1,51 @@
+23, Detection of F s 119
+
+2. Verify the Euler's formula for the planar graphs representing ies a
+
+ee ee ee , wits F iertidea
+(Ans :
+
+4 Find the minimum number of vertices necessary for a connected simple graph with 7 edges to be
+planar. (Ans: 5)
+
+5, Show that a connected simple planar graph with less than 30 edges must have a vertex of degree
+<4
+
+6. If G is a connected simple planar graph which has no cycles of length 3, show that G contains a
+vertex of degree at most 3.
+
+7. Prove that, if G is a connected simple planar (n,m) graph in which every region is bounded by.a
+cycle with k vertices, then m = k(n — 2)/(k - 2).
+
+8. For each of the planar graphs shown in Figure 2.24, verify that the sum of the degrees of the
+regions is equal to twice the number of edges.
+
+9. Let G be a connected simple planar graph. Prove the following:
+
+(1) If the degree of G is at least 5, then G has at least 12 vertices of degree 5.
+
+(2) If the degree of G is at least 3 and the order of G is at least 4, then G has at least 4 vertices
+of degree less than 6.
+
+10. Prove that every connected simple planar graph with n > 4 vertices has at least four vertices of
+degree five or less.
+
+nn
+
+2.3 Detection of planarity
+
+Given a graph G, the determination of its planarity or otherwise is an important problem. This
+Problem can be tackled by employing what is known as Elementary Reduction. The steps
+involved in this reduction are as explained below:
+
+Elementary Reduction
+Step 1. Given a graph G, determine the set
+
+A = {G1,G2,---+Gk}
+
+where G\,G2,...G, are subgraphs of.G every pair of which has exactly one vertex in
+common (~ such subgraphs are called blocks).
+
+Hing 2 Remove all loops from all of Gis.
+
+a

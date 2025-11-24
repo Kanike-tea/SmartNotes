@@ -1,0 +1,47 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
+>
+
+During Write-operation
+
++ If the requested-word does not exists in the cache, then write-miss will occur.
+1) If Write Through Protocol is used, the information is
+written directlyinto main-memory.
+2) If Write Back Protocol is used,
+
+— then block containing the addressed word is first brought
+into the cache&
+
+— then the desired word in the cache is over-written
+with the newinformation.
+
+Mapping functions
+
+There are 3 techniques to map main memory blocks into cache memory —
+1. Direct mapped cache
+2. Associative Mapping
+3. Set-Associative Mapping
+
+DIRECT MAPPING
+
+¢ The simplest way to determine cache locations in which to store memory blocks
+
+is the direct mapping technique as shown in the figure.
+
+* Cache block number= (block-j of main memory)% 128; ° If there are 128
+
+blocks in a cache, the
+block-j of the main-memory maps onto block-jmodulo-128 of the cache . When the memory-blocks
+0, 128, & 256 are loaded into cache, the block is stored in cache-block 0. Similarly, memory-
+blocks 1, 129, 257 are stored in cache-block 1 .(eg:1mod 128=1,
+129 mod 128=1)
+¢ The contention may arise
+
+1) Even when the cache is full.
+
+2) But more than one memory-block is mapped onto a given cache-block position.
+¢ The contention is resolved by allowing the new blocks to overwrite the currently resident-block.
+
+Memory-address determines placement of block in the cache.
+
+Dr.Ajay V G, Dept. of CSE, 23

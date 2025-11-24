@@ -1,0 +1,45 @@
+Data Structures and Applications(BCS304) Module 2
+
+printf("queue overflow\n");
+
+return(first)
+}
+temp->info=item;
+temp->link=NULL;
+if (front==NULL)
+{
+rear=temp;
+front=temp;
+}
+else
+{
+rear->link=temp;
+rear=temp;
+}
+}
+
+Function deletes the NODE in the front and returns the item
+int del_front(NODE * front)
+{
+NODE cur;int
+itemdel;
+if(front==NULL)
+{
+printf("Queue underflow\n");
+return front;
+}
+cur=front;
+itemdel=cur->info;
+front=front->link;
+free(cur);
+return(itemdel);
+
+Linked stacks and queues
+e We represented stacks and queues sequentially. However, when several stacks and queues
+coexisted, there was no efficient way to represent them sequentially. Fig below shows linked
+stack and a linked queue.
+e Notice that the direction of links for both the stack and the queue facilitate easy insertion and
+deletion of NODEs. We can easily add or delete a NODE from the top of the stack. We can
+easily add a NODE to the rear of the queue and delete a NODE at the front.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 22

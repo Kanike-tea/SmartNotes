@@ -1,0 +1,38 @@
+registers . In CISC design, data processing operations can act on memory directly, unlike the load-
+store approach of RISC.
+
+3.
+
+ARM-based Embedded System Hardware with Diagram
+
+Figure 5.1 (though the figure itself is not provided here, its description is) shows a typical embedded
+device based on an ARM core and illustrates four main hardware components connected by buses20
+
+ARM Processor: Controls the embedded device. It includes the core (the execution engine) and
+surrounding components that interface with a bus, such as memory management and caches21 .
+
+Controllers: Coordinate with important functional blocks. Interrupt controllers and memory
+controllers are common examples21 .
+
+Peripherals: Provide all the input-output capability external to the chip, responsible for the device's
+uniqueness. Examples range from simple serial communication devices to complex wireless
+devices22 .... All ARM peripherals are memory mapped, with programming interfaces as a set of
+memory-addressed registers24 .
+
+Bus: Used for communication between different parts of the device22 . Embedded systems use on-
+chip buses that are internal to the chip to interconnect peripherals with the ARM core25 . The AMBA
+(Advanced Microcontroller Bus Architecture) is widely adopted for this purpose26 .
+
+4.
+
+AMBA Technology Diagram
+
+The sources describe AMBA (Advanced Microcontroller Bus Architecture) as an on-chip bus
+architecture widely used for ARM processors26 . It was introduced in 1996 to allow peripheral
+designers to reuse the same design across multiple projects, providing a "plug-and-play" interface for
+hardware developers27 ....
+
+The first AMBA buses introduced were the ARM System Bus (ASB) and the ARM Peripheral Bus
+(APB)27 . Later, the ARM High Performance Bus (AHB) was introduced27 .
+
+APB is intended for slower peripherals29 .

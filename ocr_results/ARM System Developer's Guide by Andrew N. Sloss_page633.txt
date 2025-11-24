@@ -1,0 +1,34 @@
+620 Appendix A ARM and Thumb Assembler Instructions
+
+Unsigned long multiply and multiply accumulate (see the SMLAL and SMULL entries)
+
+UMLAL
+UMULL
+UQADD Unsigned saturated add and subtract (see the QADD entry)
+UQSUB
+USAD Unsigned sum of absolute differences
+1. USAD8<cond> Rd, Rm, Rs ARMv6
+2. USADA8<cond> Rd, Rm, Rs, Rn ARMv6
+Action
+1. Rd = abs (Rm[31:24]-Rs[31:24]) + abs(Rm[23:16] -Rs[23:16])
++ abs (Rm[15:08]-Rs[15:08]) + abs (Rm[07:00]-Rs[07:00])
+2. Rd = Rn + abs(Rm[31:24]-Rs[31:24]) + abs (Rm[23:16]-Rs[23:16])
++ abs (Rm[15:08]-Rs[15:08]) + abs (Rm[07:00]-Rs[07:00])
+Notes
+= abs(x) returns the absolute value of x. Rm and Rs are treated as unsigned.
+= Rd, Rm, and Rs must not be pe.
+= The sum of absolute differences operation is common in video codecs where it provides
+a metric to measure how similar two images are.
+USAT Unsigned saturation instruction (see the SSAT entry)
+USUB Unsigned parallel modulo subtracts (see the SADD entry)
+UXT Unsigned extract, extract with accumulate (see the entry for SXT)
+UXTA
+
+A.4 ARM ASSEMBLER QUICK REFERENCE
+
+This section summarizes the more useful commands and expressions available with the
+ARM assembler, armasm. Each assembly line has one of the following formats:
+
+{<label>} {<instruction>} 3 comment
+{<symbol>}  <directive> 3 comment
+{<arg_0>}  <macro> {<arg_1>} {,<arg_2>} .. {,<arg_n>} 3 comment

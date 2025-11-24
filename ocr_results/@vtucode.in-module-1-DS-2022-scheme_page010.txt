@@ -1,0 +1,39 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+3. PERMUTATIONS:
+Given a set of n > | elements, print out all possible permutations of this set. For example, if
+the set is (a, b. c), then the set of permutations is {(a, b, c), (a, c, b), (b, a, c), (b, c, d), (c, a,
+b),(c, b, a)}.
+It is easy to see that, given n elements, there are n! permutations. We can obtain a simple
+algorithm for generating the permutations if we look at the set (a, b, c, d). We can construct
+the set of permutations by printing:
+1. a followed by all permutations of (b, c, d)
+2. b followed by all permutations of (a, c, d)
+3. c followed by all permutations of (a, b, d)
+4. d followed by all permutations of (a, b, c)
+The clue to the recursive solution is the phrase "followed by all permutations." It implies
+that we can solve the problem for a set with n elements if,we have an algorithm that
+works on n - | elements. We assume that list is a character array. Notice that it recursively
+
+generates permutations until i = n. The initial function callis perm(list. 0, n-1);
+
+void perm(char *list,int i,int n)
+
+{
+int j,temp; if (i==n)
+{
+for (j=0;j<=n; j++), printe(’%c”, list(j]); printf (*
+“)i
+}
+else
+{
+for (j=ijd<=n; j++)
+{
+SWAP (list[i],list[j],temp); perm(list,it+t1l,n);
+SWAP (list[i],list[j],temp);
+t
+}
+
+Recursive permutations generator
+
+vtucode.in ll

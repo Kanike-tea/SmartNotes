@@ -1,0 +1,38 @@
+COMPUTER ORGANIZATION (21¢s34 Module 3
+
+The diagrammatic representation of this addressing mode is as shown in the fig.
+
+Memory
+
+Indirect Addressing Mode
+
+e. INDEX ADDRESSING MODE
+
+In this addressing mode, the effective address of an operand is computed by adding constant
+
+value with the contents of Index Register and any one of the General Purpose Register namely
+
+Roto Rn-1 can be used as the Index Register. The constant valuejis directly specified in the
+
+instruction.
+
+The symbolic representations of this mode are as follows
+
+1. X (Ri) where Xis the Constant value and Rj is the GPR.
+It-can be represented as
+EA of an operand = X + (Ri)
+2. (Ri , Ry) Where Ri and Rj are the General Purpose Registers used to store
+addresses of an operand and constant value respectively. It can be represented as
+The EA of an operand is given by
+EA = (Ri) + (Rj)
+3. X (Ri, Rj) Where Xais the constant value and Ri and Rj are the General Purpose Registers
+used to store the addresses of the operands.It can be represented as
+The EA of an operand is given by
+EA = (Ri) + (Rj) +X
+
+There are two types of Index Addressing Modes
+
+i) Offset is given as constant.
+ii) Offset is in Index Register.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 28

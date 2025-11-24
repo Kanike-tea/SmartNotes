@@ -1,0 +1,55 @@
+13.5 XML Languages
+
+axes of an XPath expression. Our examples above used only three of these axes: child
+of the current node (/), descendent or self at any level of the current node (//), and
+attribute of the current node (@). Other axes include parent, ancestor (at any level),
+previous sibling (a node at same level to the left), and next sibling (a node at the
+same level to the right). These axes allow for more complex path expressions.
+
+The main restriction of XPath path expressions is that the path that specifies the pat-
+tern also specifies the items to be retrieved. Hence, it is difficult to specify certain
+conditions on the pattern while separately specifying which result items should be
+retrieved. The XQuery language separates these two concerns and provides more
+powerful constructs for specifying queries.
+
+13.5.2 XQuery: Specifying Queries in XML
+
+XPath allows us to write expressions that select items from a tree-structured XML
+document. XQuery permits the specification of more general queries on one or
+more XML documents. The typical form of a query in XQuery is known as a
+FLWOR expression, which stands for the five main clauses of XQuery and has the
+following form:
+
+FOR <variable bindings to individual nodes (elements)>
+LET <variable bindings to collections of nodes (elements)>
+WHERE <qualifier conditions>
+
+ORDER BY <ordering specifications>
+
+RETURN <query result specification>
+
+There can be zero or more instances of the FOR clause, as well as of the LET clause
+in a single XQuery. The WHERE and ORDER BY clauses are optional but can appear
+at most once, and the RETURN clause must appear exactly once. Let us illustrate
+these clauses with the following simple example of an XQuery.
+
+LET $d : = doc(www.company.com/info.xml)
+FOR $x IN $d/company/projectlprojectNumber = 5]/projectWorker,
+$y IN $d/company/employee
+WHERE $x/hours gt 20.0 AND $y.ssn = $x.ssn
+ORDER BY $x/hours
+RETURN <res> $y/employeeName/firstName, $y/employeeName/lastName,
+$x/hours </res>
+
+1. Variables are prefixed with the $ sign. In the above example, $d, $x, and $y
+are variables. The LET clause assigns a variable to a particular expression for
+the rest of the query. In this example, $d is assigned to the document file
+name. It is possible to have a query that refers to multiple documents by
+assigning multiple variables in this way.
+
+2. The FOR clause assigns a variable to range over each of the individual ele-
+ments in a sequence. In our example, the sequences are specified by path
+expressions. The $x variable ranges over elements that satisfy the path expres-
+sion $d/company/project[projectNumber = 5]/projectWorker. The $y variable
+
+445

@@ -1,0 +1,52 @@
+828
+
+Chapter 22 Database Recovery Techniques
+
+Certain information in the ARIES log will provide the start point for REDO, from
+which REDO operations are applied until the end of the log is reached. Additionally,
+information stored by ARIES and in the data pages will allow ARIES to determine
+whether the operation to be redone has actually been applied to the database and
+therefore does not need to be reapplied. Thus, only the necessary REDO operations
+are applied during recovery. Finally, during the UNDO phase, the log is scanned
+backward and the operations of transactions that were active at the time of the crash
+are undone in reverse order. The information needed for ARIES to accomplish its
+recovery procedure includes the log, the Transaction Table, and the Dirty Page
+Table. Additionally, checkpointing is used. These tables are maintained by the
+transaction manager and written to the log during checkpointing.
+
+In ARIES, every log record has an associated log sequence number (LSN) that is
+monotonically increasing and indicates the address of the log record on disk. Each
+LSN corresponds to a specific change (action) of some transaction. Also, each data
+page will store the LSN of the latest log record corresponding to a change for that
+page. A log record is written for any of the following actions: updating a page
+(write), committing a transaction (commit), aborting a transaction (abort), undo-
+ing an update (undo), and ending a transaction (end). The need for including the
+first three actions in the log has been discussed, but the last two need some explana-
+tion. When an update is undone, a compensation log record is written in the log so
+that the undo does not have to be repeated. When a transaction ends, whether by
+committing or aborting, an end log record is written.
+
+Common fields in all log records include the previous LSN for that transaction, the
+transaction ID, and the type of log record. The previous LSN is important because
+it links the log records (in reverse order) for each transaction. For an update (write)
+action, additional fields in the log record include the page ID for the page that con-
+tains the item, the length of the updated item, its offset from the beginning of the
+page, the before image of the item, and its after image.
+
+In addition to the log, two tables are needed for efficient recovery: the Transaction
+Table and the Dirty Page Table, which are maintained by the transaction manager.
+When a crash occurs, these tables are rebuilt in the analysis phase of recovery. The
+Transaction Table contains an entry for each active transaction, with information
+such as the transaction ID, transaction status, and the LSN of the most recent log
+record for the transaction. The Dirty Page Table contains an entry for each dirty
+page in the DBMS cache, which includes the page ID and the LSN corresponding to
+the earliest update to that page.
+
+Checkpointing in ARIES consists of the following: writing a begin_checkpoint
+record to the log, writing an end_checkpoint record to the log, and writing the LSN
+of the begin_checkpoint record to a special file. This special file is accessed during
+recovery to locate the last checkpoint information. With the end_checkpoint record,
+the contents of both the Transaction Table and Dirty Page Table are appended to
+the end of the log. To reduce the cost, fuzzy checkpointing is used so that the
+DBMS can continue to execute transactions during checkpointing (see Sec-
+tion 22.1.4). Additionally, the contents of the DBMS cache do not have to be flushed

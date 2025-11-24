@@ -1,0 +1,51 @@
+164 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+Appendix D. The following rules summarize the cycle timings for common instruction
+classes on the ARM9TDMI.
+
+Instructions that are conditional on the value of the ARM condition codes in the cpsr
+take one cycle if the condition is not met. If the condition is met, then the following rules
+
+apply:
+
+= ALU operations such as addition, subtraction, and logical operations take one cycle.
+This includes a shift by an immediate value. If you use a register-specified shift, then
+add one cycle. If the instruction writes to the pc, then add two cycles.
+
+= Load instructions that load N 32-bit words of memory such as LDR and LDM take N cycles
+to issue, but the result of the last word loaded is not available on the following cycle.
+The updated load address is available on the next cycle. This assumes zero-wait-state
+memory for an uncached system, or a cache hit for a cached system. An LDM of a single
+value is exceptional, taking two cycles. If the instruction loads pc, then add two cycles.
+
+= Load instructions that load 16-bit or 8-bit data such as LDRB, LDRSB, LDRH, and LDRSH
+take one cycle to issue. The load result is not available on the following two cycles.
+The updated load address is available on the next cycle. This assumes zero-wait-state
+memory for an uncached system, or a cache hit for a cached system.
+
+= Branch instructions take three cycles.
+
+= Store instructions that store N values take N cycles. This assumes zero-wait-state
+memory for an uncached system, or a cache hit or a write buffer with N free entries for
+a cached system. An STM of a single value is exceptional, taking two cycles.
+
+= Multiply instructions take a varying number of cycles depending on the value of the
+second operand in the product (see Table D.6 in Section D.3).
+
+To understand how to schedule code efficiently on the ARM, we need to understand
+the ARM pipeline and dependencies. The ARM9TDMI processor performs five operations
+in parallel:
+
+= Fetch: Fetch from memory the instruction at address pc. The instruction is loaded into
+the core and then processes down the core pipeline.
+
+= Decode: Decode the instruction that was fetched in the previous cycle. The processor
+also reads the input operands from the register bank if they are not available via one of
+the forwarding paths.
+
+= ALU: Executes the instruction that was decoded in the previous cycle. Note this instruc-
+tion was originally fetched from address pc — 8 (ARM state) or pc — 4 (Thumb state).
+Normally this involves calculating the answer for a data processing operation, or the
+address for a load, store, or branch operation. Some instructions may spend several
+cycles in this stage. For example, multiply and register-controlled shift operations take
+several ALU cycles.

@@ -1,0 +1,55 @@
+152
+
+Chapter 5 The Relational Data Model and Relational Database Constraints
+
+A relation schema’ R, denoted by R(Aj, Ap, --. , An), is made up of a relation name
+Rand a list of attributes, A}, Az, ... , A; Each attribute A; is the name of a role
+played by some domain D in the relation schema R. D is called the domain of A;
+and is denoted by dom(A;). A relation schema is used to describe a relation; R is
+called the name of this relation. The degree (or arity) of a relation is the number of
+attributes n of its relation schema.
+
+A relation of degree seven, which stores information about university students,
+would contain seven attributes describing each student as follows:
+
+STUDENT(Name, Ssn, Home_phone, Address, Office_phone, Age, Gpa)
+Using the data type of each attribute, the definition is sometimes written as:
+
+STUDENT(Name: string, Ssn: string, Home_phone: string, Address: string,
+Office_phone: string, Age: integer, Gpa: real)
+
+For this relation schema, STUDENT is the name of the relation, which has seven
+attributes. In the preceding definition, we showed assignment of generic types such
+as string or integer to the attributes. More precisely, we can specify the following
+previously defined domains for some of the attributes of the STUDENT relation:
+dom(Name) = Names; dom(Ssn) = Social_security_numbers; dom(HomePhone)
+USA_phone_numbers?, dom(Office_phone) = USA_phone_numbers, and dom(Gpa) =
+Grade_point_averages. It is also possible to refer to attributes of a relation schema by
+their position within the relation; thus, the second attribute of the STUDENT rela-
+tion is Ssn, whereas the fourth attribute is Address.
+
+A relation (or relation state)‘ r of the relation schema R(Aj, Ao, A,), also denoted
+by r(R), is a set of n-tuples r= {t, hy, ... , tm}. Each n-tuple f is an ordered list of n
+values t =<vj, V2, ... , V»>, Where each value v;, 1 <i <n, is an element of dom (A)) or is
+a special NULL value. (NULL values are discussed further below and in Section 5.1.2.)
+The ith value in tuple ¢, which corresponds to the attribute Aj, is referred to as ¢[Aj] or
+t.A; (or ¢{i] if we use the positional notation). The terms relation intension for the
+schema R and relation extension for a relation state r(R) are also commonly used.
+
+Figure 5.1 shows an example of a STUDENT relation, which corresponds to the
+STUDENT schema just specified. Each tuple in the relation represents a particular
+student entity (or object). We display the relation as a table, where each tuple is
+shown as a row and each attribute corresponds to a column header indicating a role
+or interpretation of the values in that column. NULL values represent attributes
+whose values are unknown or do not exist for some individual STUDENT tuple.
+
+2A relation schema is sometimes called a relation scheme.
+
+With the large increase in phone numbers caused by the proliferation of mobile phones, most metropol-
+itan areas in the United States now have multiple area codes, so seven-digit local dialing has been
+discontinued in most areas. We changed this domain to Usa_phone_numbers instead of Local_phone_
+numbers, which would be a more general choice. This illustrates how database requirements can change
+over time.
+
+‘This has also been called a relation instance. We will not use this term because instance is also used
+to refer to a single tuple or row.

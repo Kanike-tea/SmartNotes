@@ -1,0 +1,71 @@
+304 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+Time_stamp
+
+SHIP_MOVEMENT
+
+SHIP.
+
+HOME_PORT
+
+1 (07)
+
+PORT
+
+Figure 9.8
+
+g
+
+> SD
+
+SHIP_TYPE
+
+(0") End_date)
+
+(1,1)
+
+SHIP_AT PORT_VISIT
+
+-PORT
+N 1
+STATE/COUNTRY
+N
+
+Y
+
+IZ
+>
+3
+>
+
+Name
+
+1
+<> SEA/OCEAN/LAKE
+
+3
+
+An ER schema for a SHIP_TRACKING database.
+
+9.4.
+
+9.5.
+
+9.6.
+
+9.7.
+
+Figure 9.8 shows an ER schema for a database that can be used to keep track of
+transport ships and their locations for maritime authorities. Map this schema
+into a relational schema and specify all primary keys and foreign keys.
+
+Map the BANK ER schema of Exercise 3.23 (shown in Figure 3.21) into a
+relational schema. Specify all primary keys and foreign keys. Repeat for the
+AIRLINE schema (Figure 3.20) of Exercise 3.19 and for the other schemas for
+Exercises 3.16 through 3.24.
+
+Map the EER diagrams in Figures 4.9 and 4.12 into relational schemas.
+Justify your choice of mapping options.
+
+Is it possible to successfully map a binary M:N relationship type without
+requiring a new relation? Why or why not?

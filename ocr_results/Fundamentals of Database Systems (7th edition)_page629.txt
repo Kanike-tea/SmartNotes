@@ -1,0 +1,42 @@
+Selected Bibliography
+
+a complete discussion of hash functions and collision resolution techniques, as well
+as of their performance comparison. Knuth also offers a detailed discussion of tech-
+niques for sorting external files. Textbooks on file structures include Claybrook
+(1992), Smith and Barnes (1987), and Salzberg (1988); they discuss additional file
+organizations including tree-structured files, and have detailed algorithms for
+operations on files. Salzberg et al. (1990) describe a distributed external sorting
+algorithm. File organizations with a high degree of fault tolerance are described by
+Bitton and Gray (1988) and by Gray et al. (1990). Disk striping was proposed in
+Salem and Garcia Molina (1986). The first paper on redundant arrays of inexpen-
+sive disks (RAID) is by Patterson et al. (1988). Chen and Patterson (1990) and the
+excellent survey of RAID by Chen et al. (1994) are additional references. Gro-
+chowski and Hoyt (1996) discuss future trends in disk drives. Various formulas for
+the RAID architecture appear in Chen et al. (1994).
+
+Morris (1968) is an early paper on hashing. Extendible hashing is described in Fagin
+et al. (1979). Linear hashing is described by Litwin (1980). Algorithms for insertion
+and deletion for linear hashing are discussed with illustrations in Salzberg (1988).
+Dynamic hashing, which we briefly introduced, was proposed by Larson (1978).
+There are many proposed variations for extendible and linear hashing; for examples,
+see Cesarini and Soda (1991), Du and Tong (1991), and Hachem and Berra (1992).
+
+Gibson et al. (1997) describe a file server scaling approach for network-attached
+storage, and Kubiatowicz et al. (2000) decribe the Oceanstore system for creating a
+global utility infrastructure for storing persistent data. Both are considered pio-
+neering approaches that led to the ideas for object-based storage. Mesnier et al.
+(2003) give an overview of the object storage concept. The Lustre system (Braam &
+Schwan, 2002) was one of the first object storage products and is used in the major-
+ity of supercomputers, including the top two, namely China’s Tianhe-2 and
+Oakridge National Lab’s Titan.
+
+Details of disk storage devices can be found at manufacturer sites (for example,
+http://www.seagate.com, http://www.ibm.com, http://www.emc.com, http://www.
+hp.com, http://www.storagetek.com). IBM has a storage technology research center
+at IBM Almaden (http://www.almaden.ibm.com). Additional useful sites include
+CISCO storage solutions at cisco.com; Network Appliance (NetApp) at www.
+netapp.com; Hitachi Data Storage (HDS) at www.hds.com, and SNIA (Storage Net-
+working Industry Association) at www.snia.org. A number of industry white papers
+are available at the aforementioned sites.
+
+599

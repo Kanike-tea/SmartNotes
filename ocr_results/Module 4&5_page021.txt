@@ -1,0 +1,47 @@
+Microcontrollers - BCS402
+
+Communication—configuration is over serial or Ethernet. For serial, X-Modem protocol is used
+to communicate with the GNU Debugger (GDB). For Ethernet, TCP is used to communicate
+
+with GDB. RedBoot supports a range of network standards, such as bootp, telnet, and tftp.
+
+Flash ROM memory management—provides a set of filing system routines that can download,
+update, and erase images in flash ROM. In addition, the images can either be compressed or
+
+uncompressed.
+
+Full operating system support—supports the loading and booting of Embedded Linux, Red Hat
+eCos, and many other popular operating systems. For Embedded Linux, RedBoot supports the
+
+ability to define parameters that are passed directly to the kernel upon booting.
+3.4 Example: Sandstone
+It carries out only the following tasks:
+
+e Set up target platform environment
+¢ Load a bootable image into memory
+
+¢  Relinquish control to an operating system.
+
+Sandstone is a static design and cannot be configured after the build process is complete. Table
+
+lists the basic characteristics of Sandstone.
+
+Table Summary of Sandstone.
+Feature Configuration
+Code ARM instructions only
+
+Tool chain ARM Developer Suite 1.2
+Image size 700 bytes
+
+Source 17 KB
+
+Memory remapped
+
+Sandstone Directory Layout
+
+The directory layout shows you where the source code is located and where the different build
+files are placed. The directory structure is as shown in Figure 10.1. The structure follows a
+
+standard style. The sandstone source file sand.s is located under the sand/build/sre directory.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 22

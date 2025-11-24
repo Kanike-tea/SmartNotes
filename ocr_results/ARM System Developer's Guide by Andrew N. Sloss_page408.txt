@@ -1,0 +1,111 @@
+Table 11.3
+
+11.2 Example: Simple Little Operating System 395
+
+Labels used by the scheduler.
+
+Label
+
+Description
+
+PCB_CurrentTask
+
+PCB_Tab
+
+PCB_PtrCurrentTask
+PCB_PtrNextTask
+PCB_IRQStack
+
+le
+
+contains the current task t
+
+table of address pointers to each task PCB
+
+pointer to the current task t
+pointer to the next task ¢
+
+temporary storage for the IRQ stack (context switch)
+
+4. Calculate the new task ¢ ID using the round-robin algorithm.
+
+w
+
+. Store the new task f ID into PCB_CurrentTask.
+
+6. Find the address of the next task PCB by indexing into the PCB_Tab1e using the updated
+PCB_CurrentTask.
+
+7. Store the next task PCB into PCB_PtrNextTask.
+
+The code scheduling the next task f'is:
+
+MaxNumTasks EQU 3
+FirstTask EQU 0
+
+CurrentT:
+
+ask
+LOR
+LOR
+LOR
+LOR
+LOR
+STR
+
+r3,=PCB_CurrentTask
+rd, [r3]
+
+rl,=PCB_Table
+
+rl, [r1,r0,LSL#2]
+r2,=PCB_PtrCurrentTask
+rl, [r2]
+
+3 ** PCB_PtrCurrentTask - updated with
+= PCB_PtrCurrentTask address
+= current task PCB address
+
+3 ** V2
+3 ** rl
+3 * 10
+
+NextTask
+
+= current task ID
+
+ADD
+cMP
+
+MOVEQ
+
+STR
+LOR
+LOR
+
+10,70, #1
+10, #MaxNumTasks
+10, #FirstTask
+rd, [r3]
+r1,=PCB_Table
+rl, [r1,r0,LSL#2]
+
+[1] r3=PCB_CurrentTask
+r0= current Task ID
+
+[2] r1=PCB_Table address
+rl=mem32[r1+r0<<2]
+
+[3] r2=PCB_PtrCurrentTask
+mem32[r2]=r1 : task addr
+
+the addr of the current task
+
+[4] r0 = (CurrentTaskID)+1
+if rO==MaxNumTasks
+
+then r0 = FirstTask (0)
+[5] mem32[r3]=next Task ID
+
+; [6] rl=PCB_Table addr
+; rl=memory[r1+r0 <<2]

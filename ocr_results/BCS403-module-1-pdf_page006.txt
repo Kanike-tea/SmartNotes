@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+A fundamental characteristic of the database approach is that the database system contains not
+
+only the database itself but also a complete definition or description of the database structure
+
+and constraints. This meta-data (i.e., data about data) is stored in the so-called system catalog,
+
+which contains a description of the structure of each file, the type and storage format of each
+
+field, and the various constraints on the data (i.e., conditions that the data must satisfy).
+
+The system catalog is used not only by users but also by the DBMS software, which certainly
+
+needs to "know" how the data is/structured/organized in order to interpret it in a manner
+
+RELATIONS
+Relation_name No_of_columns
+STUDENT 4
+COURSE 4
+SECTION 5
+GRADE_REPORT 3
+PREREQUISITE By
+COLUMNS
+Column _name Data_type Belongs_to_relation
+Nari Character (30) STUDENT
+Student_number Character (4) STUDENT
+Class: Integer (1) STUDENT
+Major Major_type STUDENT
+Course_name Character (10) COURSE
+Course number XXXXNNNN COURSE
+Prerequisite_number | _ XXXXNNNN PREREQUISITE
+
+Figure
+database catalog for the database
+
+consistent with that structure.
+
+1.2(a): An example of a
+
+2. Insulation between Programs and Data, and Data Abstraction
+
+https://vtucode.in
+
+Page 7

@@ -1,0 +1,41 @@
+Graph databases are a category of NoSQL databases that use graph structures to store, map,
+and query relationships between data. Instead of organizing data in rows and columns like
+relational databases, graph databases represent data as:
+
+e Nodes - These are entities or objects such as users, products, or locations.
+
+e Edges (or Relationships) — These define how nodes are related to each other (e.g.,
+“LIKES”, “FRIEND_OF”, “PURCHASED”).
+
+« Properties — Key-value pairs associated with nodes and relationships, storing
+metadata (e.g., age, date, status).
+
+The graph model mirrors real-world relationships more naturally than tables, making it
+exceptionally useful for applications that need to handle complex, connected data.
+
+2. Why Use Graph Databases?
+
+Relational databases use joins to represent relationships, which become computationally
+expensive and slow as the number of tables and relationships grows. In contrast, graph
+databases store relationships directly in the database, making traversals (e.g., finding all
+friends of friends) very fast — often in constant time regardless of data size.
+
+Key benefits include:
+« High performance for relationship queries
+e Intuitive data modeling
+e Flexibility in schema (no rigid structure)
+
+¢ Efficient handling of deeply connected data
+
+3. Core Concepts in Graph Databases
+« Nodes: Represent entities (e.g., Person, Movie, Product).
+
+« Edges (Relationships): Connect nodes and can be directional (e.g., (User)-
+[:FOLLOWS]->(User)).
+
+« Properties: Metadata about nodes or edges, like (User {name: 'Alice'}).
+Example:
+Scss
+CopyEdit
+
+(Alice)-[:FRIEND_OF]->(Bob)

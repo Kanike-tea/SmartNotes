@@ -1,0 +1,40 @@
+Microcontrollers — BCS402
+
+Example 2:
+
+BL subroutine ; branch to subroutine
+CMP rl, #5 ; compare rl with 5
+MOVEQ rl, #0 ; if (rl==5) then rl =0
+
+Subroutine
+<subroutine code>
+MOV pe, Ir ; return by moving pe = Ir
+The branch with link, or BL, instruction is similar to the B instruction but overwrites the link
+register Ir with a return address. It performs a subroutine call. This example shows a simple
+fragment of code that branches to a subroutine using the BL instruction. To return from a
+
+subroutine, you copy the link register to the pc.
+
+The branch exchange (BX) and branch exchange with link (BLX) are the third type of branch
+instruction. The BX instruction uses an absolute address stored in register Rm. The T bit in
+the cpsr is updated by the least significant bit of the branch register. Similarly the BLX
+instruction updates the T bit of the cpsr with the least significant bit and additionally sets the
+
+link register with the return address.
+3. Load-Store Instructions
+
+Load-store instructions transfer data between memory and processor registers. There are three
+
+types of load-store instructions: single-register transfer, multiple-register transfer, and swap.
+3.1 Single-Register Transfer
+
+These instructions are used for moving a single data item in and out of a register. The data
+types supported are signed and unsigned words (32-bit), half words (16-bit), and bytes. Here
+
+are the various load-store single-register transfer instructions.
+Syntax: <LDRISTR>{<cond>}{B} Rd.addressing
+LDR {<cond>}SBIHISH Rd, addressing
+
+STR {<cond>}H Rd, addressing
+
+Dept. of ECE, GSSSIETW Page 13

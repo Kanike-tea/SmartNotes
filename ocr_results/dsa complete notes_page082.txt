@@ -1,0 +1,59 @@
+Data Structures and Applications (BCS304) Module III
+
+While(tempb!=NULL)
+
+{
+lastc=attach (tempb—coef,tempb—expon, lastc);
+tempb=tempb->link;
+
+}
+
+return(c);
+
+}
+
+Attach a NODE to the end ofa list
+POLY* attach(float c, int e, POL * rear)
+{
+temp = (POLY*)malloc(sizeof(POLY));
+temp—coef = c;
+temp—expon =e;
+rear->link=temp;
+rear=temp;
+return(rear);
+
+}
+
+Adding two polynomials represented as circular lists with header NODEs
+
+POLY *Pointer padd(POLY * a, POLY * b) /* return a polynomial which is the sum of a and
+
+b*/
+
+{
+
+POLY * c,*tempa, *tempb,*lastc;
+int sum;
+
+c= (POLY*)malloc(sizeof(POLY))
+c->link=c
+
+tempa=a->link;
+
+while (tempa!=a && tempb!=b)
+{
+switch (COMPARE(tempa—expon, tempb—expon))
+{
+case -1: lastc=attach(tempb—-coef, tempb—expon, lastc);
+tempb = tempb—link;
+break;
+
+case 0: sum =tempa—coef + tempb—coef;
+if (sum)
+{
+lastc=attach(sum, tempa—expon, lastc);
+tempa = tempa—link; tempb = tempb—link;
+
+}
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 7

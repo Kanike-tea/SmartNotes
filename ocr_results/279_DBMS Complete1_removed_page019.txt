@@ -1,0 +1,31 @@
+Cate match
+
+team
+
+eason_scord
+
+name ¢ ranking =}
+
+Figure 2.7 E-R diagram for all teams statistics.
+
+Cosidet a university database for the scheduling of class rooms for final exams. This database could
+be modeled as the single entity set exam, with attributes course-name,section-number,room-number
+and time, Alternatively, one or more additional entity sets would be defined, along with relationship
+sets to replae some of the attributes of the exam entity set, as
+
+* course with attributes name,department and c-number
+
+« section with attributes s-number and enrollment and dependent as a weak entity set on
+
+course
+« room with attributes r-number,capacity and building
+
+——:
+
+course section
+
+room —— exam
+
+ZO =
+
+Figure 2.12 E-R diagram for exam scheduling.

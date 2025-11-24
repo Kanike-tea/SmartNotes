@@ -1,0 +1,27 @@
+=G @@.
+e \
+St &
+G (G-») G-¢)
+Fig. 2-15 Vertex deletion and edge deletion.
+
+Fusion: A pair of vertices a, b in a graph are said to be fused (merged or
+identified) if the two vertices are replaced by a single new vertex such that every
+edge that was incident on either a or b or on both is incident on the new vertex.
+Thus fusion of two vertices does not alter the number of edges, but it reduces the
+number of vertices by one. See Fig. 2-16 for an example.
+
+Fig. 2-16 Fusion of vertices a and b.
+
+These are some of the elementary operations on graphs. More complex
+operations have been defined and are used in graph-theory literature. For a
+survey of such operations see the paper by Harary and Wilcox [2-10].
+
+2-8. MORE ON EULER GRAPHS
+The following are some more results on the important topic of Euler graphs.
+
+THEOREM 2-6
+
+A connected graph G is an Euler graph if and only if it can be decomposed
+into circuits.
+
+Proof: Suppose graph G can be decomposed into circuits; that is, G is a union

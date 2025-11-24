@@ -1,0 +1,48 @@
+Microcontrollers — BCS402
+
+Double word
+
+Addressing? mode and index method Addressing? syntax
+Preindex immediate offset [Rn, #+/-offset_8]
+Preindex register offset [Rn, +/-Rm]
+
+Preindex writeback immediate offset (Rn, #+/-offset_8]!
+Preindex writeback register offset [Rn, +/-Rm]!
+Immediate postindexed [Rn], #+/-offset_8
+Register postindexed [Rn], +/-Rm
+
+Table 8: Variations of STRH instructions
+
+Instruction Result rl+=
+Preindex with STRH r0,[r1,#0x4]! — meml6[r1+0x4]=r0 0x4
+writeback
+
+STRH r0,[rl,r2]! mem16[r1+r2]=r0 r2
+Preindex STRH r0,[rl1,#0x4] meml6[r1+0x4]=r0 —_ not updated
+
+STRH r0,[rl,r2] mem16[r1+r2]=r0 not updated
+Postindex STRH r0, [rl] ,#0x4 mem16[r1]=r0 0x4
+
+STRH r0,[rl],r2 mem16[r1]=r0 r2
+
+Load-store multiple instructions can increase interrupt latency.
+
+ARM implementations do not usually interrupt instructions while they are executing. For
+example, on an ARM7 a load multiple instruction takes 2 + Nt cycles, where N is the number
+of registers to load and t is the number of cycles required for each sequential access to
+memory. If an interrupt has been raised, then it has no effect until the load-store multiple
+
+instruction is complete.
+
+Compilers, such as arm cc, provide a switch to control the maximum number of registers
+
+being transferred on a load-store, which limits the maximum interrupt latency.
+Syntax: <LDM|STM>{<cond>}<addressing mode> Rn{!},<registers>{*}
+
+Table 9 shows the different addressing modes for the load-store multiple instructions. Here N
+
+is the number of registers in the list of registers.
+
+Table 9: Addressing mode for load-store multiple instructions
+
+Dept. of ECE, GSSSIETW Page 17

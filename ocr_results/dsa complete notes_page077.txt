@@ -1,0 +1,25 @@
+Data Structures and Applications (BCS304) Module III
+
+Since there are two different types of NODEs a union is used to create the appropriate data structure.
+The necessary C declarations are as follows:
+
+#define MAX_SIZE 50 /*size of largest matrix*/
+typedef enum {head, entry} tagfield;
+
+typedef struct entryNODE {
+int row;
+
+int col;
+
+int value;
+
+‘
+
+typedef struct matrixNODE {
+matrixPointer *down;
+matrixPointer *right;
+tagfield tag;
+
+a
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 2

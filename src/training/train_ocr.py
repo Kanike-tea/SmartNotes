@@ -34,6 +34,53 @@ from src.model.ocr_model import CRNN
 logger = get_logger(__name__)
 
 
+class WarmupScheduler:
+    """
+    Learning rate scheduler with warmup.
+    
+    Gradually increases LR from 0 to base_lr over warmup steps.
+    This improves training stability, especially early in training.
+    """
+    
+    def __init__(self, optimizer, base_lr: float, warmup_epochs: int = 2):
+        """
+        Initialize warmup scheduler.
+        
+        Args:
+            optimizer: PyTorch optimizer
+            base_lr: Base learning rate
+            warmup_epochs: Number of epochs for warmup phase
+        """
+        self.optimizer = optimizer
+        self.base_lr = base_lr
+        self.warmup_epochs = warmup_epochs
+        self.current_epoch = 0
+    
+    def step(self, epoch: int) -> float:
+        """
+        Update learning rate based on epoch.
+        
+        Args:
+            epoch: Current epoch number
+            
+        Returns:
+            Current learning rate
+        """
+        self.current_epoch = epoch
+        
+        if epoch < self.warmup_epochs:
+            # Linear warmup: gradually increase from 0 to base_lr
+            lr = self.base_lr * (epoch + 1) / self.warmup_epochs
+        else:
+            # After warmup, use base learning rate
+            lr = self.base_lr
+        
+        for param_group in self.optimizer.param_groups:
+            param_group['lr'] = lr
+        
+        return lr
+
+
 class OCRTrainer:
     """
     Trainer class for OCR model.
@@ -68,6 +115,7 @@ class OCRTrainer:
         self.model = None
         self.optimizer = None
         self.scheduler = None
+        self.warmup_scheduler = None
         self.criterion = None
         self.scaler = None
         self.start_epoch = 0
@@ -100,7 +148,14 @@ class OCRTrainer:
             weight_decay=self.config.WEIGHT_DECAY
         )
         
-        # Learning rate scheduler
+        # Warmup scheduler (linear warmup for first 2 epochs)
+        self.warmup_scheduler = WarmupScheduler(
+            self.optimizer,
+            base_lr=self.config.LEARNING_RATE,
+            warmup_epochs=2
+        )
+        
+        # Main learning rate scheduler (kicks in after warmup)
         self.scheduler = optim.lr_scheduler.StepLR(
             self.optimizer,
             step_size=self.config.LR_SCHEDULER_STEP_SIZE,
@@ -296,6 +351,11 @@ class OCRTrainer:
         for epoch in range(self.start_epoch, num_epochs):
             logger.info(f"\nEpoch [{epoch + 1}/{num_epochs}]")
             
+            # Apply warmup for first 2 epochs
+            if epoch < 2 and self.warmup_scheduler is not None:
+                lr = self.warmup_scheduler.step(epoch)
+                logger.info(f"Warmup LR: {lr:.6f}")
+            
             # Training
             train_loss = self.train_epoch(train_loader)
             logger.info(f"Training Loss: {train_loss:.4f}")
@@ -304,8 +364,10 @@ class OCRTrainer:
             val_loss = self.validate(val_loader)
             logger.info(f"Validation Loss: {val_loss:.4f}")
             
-            # Learning rate step
-            self.scheduler.step()  # type: ignore
+            # Learning rate step (only after warmup)
+            if epoch >= 2 and self.scheduler is not None:
+                self.scheduler.step()  # type: ignore
+            
             current_lr = self.optimizer.param_groups[0]['lr']  # type: ignore
             logger.info(f"Learning Rate: {current_lr:.6f}")
             

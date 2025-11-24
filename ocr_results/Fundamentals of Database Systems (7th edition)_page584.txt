@@ -1,0 +1,52 @@
+554
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+The main component of an SSD is a controller and a set of interconnected flash
+memory cards. Use of NAND flash memory is most common. Using form factors
+compatible with 3.5 inch or 2.5 inch HDDs makes SSDs pluggable into slots already
+available for mounting HDDs on laptops and servers. For ultrabooks, tablets, and
+the like, card-based form factors such as mSATA and M.2 are being standardized.
+Interfaces like SATA express have been created to keep up with advancements in
+SSDs. Because there are no moving parts, the unit is more rugged, runs silently, is
+faster in terms of access time and provides higher transfer rates than HDD. As
+opposed to HDDs, where related data from the same relation must be placed on
+contiguous blocks, preferably on contiguous cylinders, there is no restriction on
+placement of data on an SSD since any address is directly addressable. As a result,
+the data is less likely to be fragmented; hence no reorganization is needed. Typi-
+cally, when a write to disk occurs on an HDD, the same block is overwritten with
+new data. In SDDs, the data is written to different NAND cells to attain wear-leveling,
+which prolongs the life of the SSD. The main issue preventing a wide-scale adop-
+tion of SSDs today is their prohibitive cost (see Table 16.1), which tends to be about
+70 to 80 cents per GB as opposed to about 15 to 20 cents per GB for HDDs.
+
+In addition to flash memory, DRAM-based SSDs are also available. They are cost-
+lier than flash memory, but they offer faster access times of around 10 us (microsec-
+onds) as opposed to 100 us for flash. Their main drawback is that they need an
+
+internal battery or an adapter to supply power.
+
+As an example of an enterprise level SSD, we can consider CISCO’s UCS (Unified
+Computing System®) Invicta series SSDs. They have made it possible to deploy
+SSDs at the data center level to unify workloads of all types, including databases and
+virtual desktop infrastructure (VDI), and to enable a cost-effective, energy-efficient,
+and space-saving solution. CISCO’s claim is that Invicta SSDs offer a better price-
+to-performance ratio to applications in a multitenant, multinetworked architecture
+because of the advantages of SSDs stated above. CISCO states that typically four
+times as many HDD drives may be needed to match an SSD-based RAID in perfor-
+mance.° The SSD configuration can have a capacity from 6 to 144 TB, with up to 1.2
+million I/O operations/second, and a bandwidth of up to 7.2 GB/sec with an aver-
+age latency of 200 us.” Modern data centers are undergoing rapid transformation
+and must provide real-time response using cloud-based architectures. In this envi-
+
+ronment, SSDs are likely to play a major role.
+
+16.2.4 Magnetic Tape Storage Devices
+
+Disks are random access secondary storage devices because an arbitrary disk block
+may be accessed at random once we specify its address. Magnetic tapes are sequen-
+tial access devices; to access the nth block on tape, first we must scan the preceding
+
+®Based on the CISCO White Paper (CISCO, 2014)
+
+7Data sheet for CISCO UCS Invicta Scaling System,

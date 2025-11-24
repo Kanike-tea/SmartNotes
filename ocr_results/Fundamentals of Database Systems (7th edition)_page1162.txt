@@ -1,0 +1,58 @@
+1132 Chapter 30 Database Security
+
+implementation to define. Note that Al , A2, and so forth may be individuals, like
+John in IT department or Mary in marketing; but they may also be applications or
+programs that want to access a database.
+
+In SQL2, the same effect can be accomplished by having the DBA issue a CREATE
+SCHEMA command, as follows:
+
+CREATE SCHEMA EXAMPLE AUTHORIZATION A1;
+
+User account A1 can now create tables under the schema called EXAMPLE. To con-
+tinue our example, suppose that A1 creates the two base relations EMPLOYEE and
+DEPARTMENT shown in Figure 30.1; A is then the owner of these two relations and
+hence has all the relation privileges on each of them.
+
+Next, suppose that account A1 wants to grant to account A2 the privilege to insert and
+delete tuples in both of these relations. However, A1 does not want A2 to be able to
+propagate these privileges to additional accounts. A1 can issue the following command:
+
+GRANT INSERT, DELETE ON EMPLOYEE, DEPARTMENT TO A2;
+
+Notice that the owner account A1 of a relation automatically has the GRANT OPTION,
+allowing it to grant privileges on the relation to other accounts. However, account A2
+cannot grant INSERT and DELETE privileges on the EMPLOYEE and DEPARTMENT
+tables because A2 was not given the GRANT OPTION in the preceding command.
+
+Next, suppose that A1 wants to allow account A3 to retrieve information from either
+of the two tables and also to be able to propagate the SELECT privilege to other
+accounts. A1 can issue the following command:
+
+GRANT SELECT ON EMPLOYEE, DEPARTMENT TO A3 WITH GRANT OPTION;
+
+The clause WITH GRANT OPTION means that A3 can now propagate the privilege to
+other accounts by using GRANT. For example, A3 can grant the SELECT privilege on
+the EMPLOYEE relation to A4 by issuing the following command:
+
+GRANT SELECT ON EMPLOYEE TO A4;
+
+Notice that A4 cannot propagate the SELECT privilege to other accounts because
+the GRANT OPTION was not given to A4.
+
+Now suppose that A1 decides to revoke the SELECT privilege on the EMPLOYEE
+relation from A3; A1 then can issue this command:
+
+REVOKE SELECT ON EMPLOYEE FROM A3;
+
+Figure 30.1
+
+Schemas for the two relations
+EMPLOYEE and DEPARTMENT.
+
+EMPLOYEE
+Name | Ssn | Bdate | Address | Sex | Salary | Dno
+
+DEPARTMENT
+
+Dnumber | Dname | Mgr_ssn

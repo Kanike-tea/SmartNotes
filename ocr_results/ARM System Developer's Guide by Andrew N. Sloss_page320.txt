@@ -1,0 +1,60 @@
+EXAMPLE
+
+8.17
+
+8.5 The Discrete Fourier Transform 307
+
+MACRO
+
+CSTR $x, $a, Soffset
+STRH  $x._i, [Sa, #2]
+STRH  §x._r, [Sa], $offset
+MEND
+
+This example implements a 16-bit radix-4 FFT for any ARMy4 architecture processor. We
+assume that the number of points is n = 4°. If Nis an odd power of two, then you will need
+to alter the routine to start with a radix-2 stage, or a radix-8 stage, rather than the radix-4
+stage we show.
+
+‘The code uses a trick to perform a complex multiply using only three real multiplies. If
+a + ib is a complex data item, and c + is a complex coefficient, then
+
+(a + ib)(c — is) = [(b— a)s + a(c + 5)] + i[(b — a)s + b(c — 5)] (8.49)
+(a+ ib)(c + is) = [(a — b)s + alc — s)] + i[(a — b)s + b(c +5)] (8.50)
+
+When c + is = e?"#/N, these are the complex multiplies required for the forward and
+inverse transform radix-4 butterflies, respectively. Given inputs c — s, s,c + s, a, b, you can
+calculate either of the above using a subtract, multiply, and two multiply accumulates. In
+the coefficient lookup table we store (c — s, s) and calculate c + s on the fly. We can use the
+same table for both forward and inverse transforms.
+
+Use the following code to perform the radix-4 transform on ARMv4. The number of
+points N must be a power of four. The algorithm actually calculates DFT y (x)/N, the extra
+scaling by N preventing overflow. The algorithm uses the C_FFT4 and load-store macros
+defined previously.
+
+; Complex conjugate multiply a=(xr+i*xi)*(cr-i*ci)
+3x = xr + iFxi
+3 we (creci) + i*ci
+
+MACRO
+
+C_MULOm $a, $x, $w
+
+SUB tl, $x._i, $x._r 3 (xi-xr)
+MUL tO, tl, Sw._i 3 (xi-xr)*ci
+ADD tl, $w._r, $w._i, LSL#1 5 (cr+ci)
+MLA $a._i, $x._i, Sw._r, tO 5 xi*cr-xr*ci
+MLA $a._r, $x._r, tl, t0 5 xr*crtxi*ci
+MEND
+
+RN O — ; output complex array y[]
+
+RN O coefficient array
+
+RN 1 input complex array x[]
+
+RN 2  ; number of samples (a power of 2)
+RN 2 the number of blocks
+
+n2zxaK

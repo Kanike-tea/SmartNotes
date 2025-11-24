@@ -1,0 +1,49 @@
+2, Planar Graphs and Colouring
+136
+
+3. Prove that every connected graph having a triangle (a cycle of length 3) is at least 3-chromatic,
+
+4. Prove that every cubic graph is 4-colourable.
+
+5. Find the smallest number of examination schedules for six subjects a, b,c, d, e, f if some of the
+students take a, b, f, some c, d, e, some a, Cc, € and some @, c.
+
+6. Prove that y(G) = A(G) + 1 if and only if G is either a complete graph or a cycle of odd length.
+7. For a graph of order n and size m, prove or disprove that y(G) < 1+ 2(m/n).
+
+8. Show that a planar graph with 8 vertices and 13 edges is not 2-colourable.
+
+Answers
+
+1. (i), (ii): 3, (iii), (iv): 4 5. 3.
+
+2.5.1 Chromatic Polynomials
+
+Given a graph G and A number of different colours, let us take up the problem of finding the
+number of different ways of properly colouring G with these 2 colours.
+
+First, consider the null graph.N,, with n vertices. In this graph, no two vertices are adjacent.
+Therefore, a proper colouring of this graph can be done by assigning a single colour to all the
+vertices. Thus, if the number of different colours available is A, then each vertex of the graph
+has A possible choices of colours assigned to it, and as such the graph can be properly coloured
+in A” different ways.
+
+Next, consider the complete graph K,,. In this graph, every two vertices are adjacent, and
+as such there must be at least n colours for'a proper colouring of the graph. If the number of
+different colours available is A, then the number of ways of properly colouring Ky is (i) zer0 #
+
+A <n, (ii) one if A = n, and (iii) greater than | if A >n. Let V1, V2, ¥3,...Vq be the vertices of
+
+K,, and suppose A > n. For a proper colouring of K,, the vertex v; can be assigned any of the
+colours, the vertex v2 can be assigned any of the remaining
+
+assigned any of the remaining A—2 colours’and finally the
+
+A-n+ 1 colours. Thus, K, can be properly coloured in AC
+ways if A> n.
+
+= 1 colours, \he vertex v3 can be
+
+a
+vertex v, can be assigned any of the
+A~1)(A~2)...(A—n+ 1) differe™

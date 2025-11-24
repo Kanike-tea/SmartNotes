@@ -1,0 +1,53 @@
+406
+
+Chapter 12 Object and Object-Relational Databases
+
+declared in a single direction, or in both directions, depending on the types of
+access expected. If declared in both directions, they may be specified as inverses of
+one another, thus enforcing the ODB equivalent of the relational referential integ-
+rity constraint.
+
+In RDB, relationships among tuples (records) are specified by attributes with
+matching values. These can be considered as value references and are specified via
+foreign keys, which are values of primary key attributes repeated in tuples of the
+referencing relation. These are limited to being single-valued in each record because
+multivalued attributes are not permitted in the basic relational model. Thus, M:N
+relationships must be represented not directly, but as a separate relation (table), as
+discussed in Section 9.1.
+
+Mapping binary relationships that contain attributes is not straightforward in
+ODBs, since the designer must choose in which direction the attributes should be
+included. If the attributes are included in both directions, then redundancy in stor-
+age will exist and may lead to inconsistent data. Hence, it is sometimes preferable to
+use the relational approach of creating a separate table by creating a separate class
+to represent the relationship. This approach can also be used for n-ary relation-
+ships, with degree n > 2.
+
+Another major area of difference between ODB and RDB design is how inheritance
+is handled. In ODB, these structures are built into the model, so the mapping is
+achieved by using the inheritance constructs, such as derived (:) and extends. In
+relational design, as we discussed in Section 9.2, there are several options to choose
+from since no built-in construct exists for inheritance in the basic relational model.
+It is important to note, though, that object-relational and extended-relational sys-
+tems are adding features to model these constructs directly as well as to include
+operation specifications in abstract data types (see Section 12.2).
+
+The third major difference is that in ODB design, it is necessary to specify the oper-
+ations early on in the design since they are part of the class specifications. Although
+it is important to specify operations during the design phase for all types of data-
+bases, the design of operations may be delayed in RDB design as it is not strictly
+required until the implementation phase.
+
+There is a philosophical difference between the relational model and the object
+model of data in terms of behavioral specification. The relational model does not
+mandate the database designers to predefine a set of valid behaviors or operations,
+whereas this is a tacit requirement in the object model. One of the claimed advan-
+tages of the relational model is the support of ad hoc queries and transactions,
+whereas these are against the principle of encapsulation.
+
+In practice, it is becoming commonplace to have database design teams apply
+object-based methodologies at early stages of conceptual design so that both the
+structure and the use or operations of the data are considered, and a complete spec-
+ification is developed during conceptual design. These specifications are then
+mapped into relational schemas, constraints, and behavioral artifacts such as trig-
+gers or stored procedures (see Sections 5.2 and 13.4).

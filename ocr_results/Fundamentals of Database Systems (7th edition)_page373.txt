@@ -1,0 +1,35 @@
+chapter 1 ‘|
+
+Web Database
+Programming Using PHP
+
+n the previous chapter, we gave an overview of data-
+
+base programming techniques using traditional pro-
+gramming languages, and we used the Java and C programming languages in our
+examples. We now turn our attention to how databases are accessed from scripting
+languages. Many Internet applications that provide Web interfaces to access infor-
+mation stored in one or more databases use scripting languages. These languages
+are often used to generate HTML documents, which are then displayed by the Web
+browser for interaction with the user. In our presentation, we assume that the
+reader is familiar with basic HTML concepts.
+
+Basic HTML is useful for generating static Web pages with fixed text and other
+objects, but most Internet applications require Web pages that provide interactive
+features with the user. For example, consider the case of an airline customer who
+wants to check the arrival time and gate information of a particular flight. The user
+may enter information such as a date and flight number in certain fields of the Web
+page. The Web interface will send this information to the application program,
+which formulates and submits a query to the airline database server to retrieve the
+information that the user needs. The database information is sent back to the Web
+page for display. Such Web pages, where part of the information is extracted from
+databases or other data sources, are called dynamic Web pages. The data extracted
+and displayed each time will be for different flights and dates.
+
+There are various techniques for programming dynamic features into Web pages.
+We will focus on one technique here, which is based on using the PHP open source
+server side scripting language. PHP originally stood for Personal Home Page, but
+now stands for PHP Hypertext Processor. PHP has experienced widespread use. The
+interpreters for PHP are provided free of charge and are written in the C language so
+
+343

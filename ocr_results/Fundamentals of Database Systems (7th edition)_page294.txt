@@ -1,0 +1,48 @@
+264 Chapter 8 The Relational Algebra and Relational Calculus
+
+Figure 8.12 RESULT
+
+OUTER JOIN operation Fname | Minit | Lname Dname
+John B [Smith | NULL
+Franklin | T | Wong | Research
+Alicia J | Zelaya | NULL
+Jennifer | S| Wallace | Administration
+Ramesh | _K | Narayan | NULL
+Joyce A__| English | NULL
+Ahmad Vv | Jabbar | NULL
+James E | Borg Headquarters
+
+with a NULL value. We can apply an operation LEFT OUTER JOIN, denoted by >, to
+retrieve the result as follows:
+
+TEMP < (EMPLOYEE 4 g5n,-\gr_ ssn EPARTMENT)
+RESULT < Tername, Minit, Lname, Dname(TEMP)
+
+The LEFT OUTER JOIN operation keeps every tuple in the first, or left, relation R in R™S;
+if no matching tuple is found in S, then the attributes of S in the join result are filled or
+padded with NULL values. The result of these operations is shown in Figure 8.12.
+
+A similar operation, RIGHT OUTER JOIN, denoted by >, keeps every tuple in the
+second, or right, relation S in the result of R » S. A third operation, FULL OUTER
+JOIN, denoted by >¢, keeps all tuples in both the left and the right relations when no
+matching tuples are found, padding them with NULL values as needed. The three
+outer join operations are part of the SQL2 standard (see Section 7.1.6). These oper-
+ations were provided later as an extension of relational algebra in response to the
+typical need in business applications to show related information from multiple
+tables exhaustively. Sometimes a complete reporting of data from multiple tables is
+required whether or not there are matching values.
+
+8.4.5 The OUTER UNION Operation
+
+The OUTER UNION operation was developed to take the union of tuples from two
+relations that have some common attributes, but are not union (type) compatible.
+This operation will take the UNION of tuples in two relations R(X, Y) and S(X, Z)
+that are partially compatible, meaning that only some of their attributes, say X, are
+union compatible. The attributes that are union compatible are represented only
+once in the result, and those attributes that are not union compatible from either
+relation are also kept in the result relation T(X, Y, Z). It is therefore the same as a
+FULL OUTER JOIN on the common attributes.
+
+Two tuples t; in R and ft, in S are said to match if t,[X] = t;[X]. These will be com-
+bined (unioned) into a single tuple in ¢. Tuples in either relation that have no
+matching tuple in the other relation are padded with NULL values. For example, an

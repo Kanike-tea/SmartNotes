@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+Example :
+
+1. To list each employee’s first and last name and salary we can use the PROJECT operation as
+follows:
+
+7ULname, Fname, Salar(/EMPLOYEE)
+
+If the attribute list includes only nonkey attributes of R, duplicate tuples are likely to
+occur. The result of the PROJECT operation is a set of distinct tuples, and hence a valid
+relation. This is known as duplicate elimination.For example, consider the following
+PROJECT operation:
+
+Tegender, Salary(/ EMPLOYEE)
+
+Lname | Fname | Salary
+Smith | John 30000
+Wong | Franklin | 40000
+Zelaya _| Alicia | 25000
+Wallace | Jennifer | 43000
+Narayan | Ramesh | 38000
+English | Joyce | 25000
+Jabbar | Ahmad | 25000
+Borg | James | (5000
+
+The tuple <‘F’, 25000> appears only once in resulting relation even though this combination of
+values appears twice in the EMPLOYEE relation.
+The number of tuples in a relation resulting from a PROJECT operation is always less than or equal
+to the number of tuples in R. Commutativity does not hold on PROJECT
+Teatisti> (tt<1ist2>(R)) = taisti>(R)
+as long as <list2> contains the attributes in <list>; otherwise, the left-hand side is an incorrect
+expression.
+In SQL, the PROJECT attribute list is specified in the SELECT clause of a query. For example, the
+following operation:
+Tgender, Salary(/ EMPLOYEE)
+would correspond to the following SQL query:
+SELECT DISTINCT gender, Salary FROM EMPLOYEE
+
+https://vtucode.in Page 18

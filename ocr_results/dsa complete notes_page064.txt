@@ -1,0 +1,51 @@
+Data Structures and Applications(BCS304) Module 2
+
+retrun;
+}
+cur =cur->link;
+}
+}
+
+Printf(“search unsuccessfull”);
+
+Search an item from a sorted list
+Void search(int item,struct NODE* first)
+{
+
+Struct NODE *cur;If
+(first==NULL)
+printf(“list empty”);
+
+else
+{
+cur=first;
+while(cur!=NULL&& item>=cur->nfo)
+{
+If(item==cur->info)
+{
+printf(“search successful”)
+retrun;
+}
+cur =cur->link;
+}
+}
+
+Printf(“search unsuccessfull”);
+
+Additional Operations on a linked list
+Function to concatenate two linked list pointed by list! and list2
+NODE* concat(Struct NODE * list1 ,stuct NODE *list2)
+{
+struct NODE* temp;
+if(list1==NULL)
+return(list2)
+if(list2==NULL)
+return(list1);
+temp=list1
+while(temp->link!=NULL)
+temp=temp->link;
+temp->link=list2
+return(list1)
+
+}
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 20

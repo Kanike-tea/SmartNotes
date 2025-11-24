@@ -1,0 +1,81 @@
+printf("\nEntergraphdatainmatrix
+
+form:\n");for(i=1;i<=n;i++)
+
+for(j=1,j<=n;j++)scanf("%d" &a[i][j]);printf("1.BFS\n 2.DFS\n 3.Exit\n");scanf("%d" &choice);
+switch(choice)
+
+{
+
+case 1 :printf("\nEnterthestartingvertex:");scanf("
+
+Joa" &v);
+
+bfs(v);
+
+if((v<1)II(v>n))
+
+{
+
+printf("\n Bfsisnotpossible");
+
+}
+
+else
+
+{
+
+printf("\n The nodes which are reachable from
+
+%d:\n" v);for(i=1si<=n3i++)
+
+if(visited[i])
+
+printf("%d\t" i);
+
+i
+
+break;
+
+case 2:dfs(1);
+
+if(count==n-1)
+printf("\n Graph is connected");
+else
+printf("\nGraphisnotconnected");
+
+break;
+
+case3:exit(0);
+
+}
+
+Qutput
+linux:~/dslab#geditbfs.clinux:
+
+~/dslab #gcc
+bfs.clinux:~/dslab# /a.out
+
+Enter the number of vertices:5
+Enter graph data in matrix form:
+01010
+
+10101
+
+01010
+
+10100
+
+01000
+
+1.BFS
+
+2.DFS
+
+3.Exit
+
+2
+
+1-2
+
+53

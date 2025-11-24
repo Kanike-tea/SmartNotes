@@ -1,0 +1,51 @@
+30.3 Mandatory Access Control and Role-Based Access Control for Multilevel Security
+
+make the complete name unique. Authorizing this identity and managing the
+schema of these identities is called identity management. Identity management
+addresses how organizations can effectively authenticate people and manage their
+access to confidential information. It has become more visible as a business require-
+ment across all industries affecting organizations of all sizes. Identity management
+administrators constantly need to satisfy application owners while keeping expen-
+ditures under control and increasing IT efficiency.
+
+Another important consideration in RBAC systems is the possible temporal con-
+straints that may exist on roles, such as the time and duration of role activations
+and the timed triggering of a role by an activation of another role. Using an RBAC
+model is a highly desirable goal for addressing the key security requirements of
+Web-based applications. Roles can be assigned to workflow tasks so that a user with
+any of the roles related to a task may be authorized to execute it and may play a
+certain role only for a certain duration.
+
+RBAC models have several desirable features, such as flexibility, policy neutrality,
+better support for security management and administration, and a natural enforce-
+ment of the hierarchical organization structure within organizations. They also
+have other aspects that make them attractive candidates for developing secure
+Web-based applications. These features are lacking in DAC and MAC models.
+RBAC models do include the capabilities available in traditional DAC and MAC
+policies. Furthermore, an RBAC model provides mechanisms for addressing the
+security issues related to the execution of tasks and workflows, and for specifying
+user-defined and organization-specific policies. Easier deployment over the Inter-
+net has been another reason for the success of RBAC models.
+
+30.3.3 Label-Based Security and Row-Level Access Control
+
+Many mainstream RDBMSs currently use the concept of row-level access control,
+where sophisticated access control rules can be implemented by considering the
+data row by row. In row-level access control, each data row is given a label, which
+is used to store information about data sensitivity. Row-level access control pro-
+vides finer granularity of data security by allowing the permissions to be set for
+each row and not just for the table or column. Initially the user is given a default
+session label by the database administrator. Levels correspond to a hierarchy of
+data-sensitivity levels to exposure or corruption, with the goal of maintaining pri-
+vacy or security. Labels are used to prevent unauthorized users from viewing or
+altering certain data. A user having a low authorization level, usually represented
+by alow number, is denied access to data having a higher-level number. If no such
+label is given to a row, a row label is automatically assigned to it depending upon
+the user’s session label.
+
+A policy defined by an administrator is called a label security policy. Whenever
+data affected by the policy is accessed or queried through an application, the policy
+is automatically invoked. When a policy is implemented, a new column is added to
+each row in the schema. The added column contains the label for each row that
+
+1139

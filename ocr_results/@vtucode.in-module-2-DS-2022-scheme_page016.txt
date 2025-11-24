@@ -1,0 +1,58 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+<= * first
+first > data
+
+E —— B A T \o NULL
+.
+first i) :
+first — data [O} Jirst —> data [2] first —> link
+Jirst — data [1] first — data [3]
+
+2,
+
+Two-node linked list:
+
+listPointer create2 ()
+
+{
+
+/*create a linked list with two nodes*/
+listPointer first,second;
+
+MALLOC (first, sizeof (*first));
+
+MALLOC (second, sizeof (*second) );
+Second->1link=NULL;
+
+Second->data=20;
+
+First->data=10;
+
+First->link=second;
+
+Return first
+
+Program: create two node list
+
+Ie
+
+Listiin sertion:
+
+void
+
+insert (listPointer *first, listPointer x)
+
+listPointer temp;
+malloc(temp, sizeof (*temp) ;
+temp->data=50;
+
+if (*first)
+
+temp->link;
+x->link;
+
+temp->link;
+*first->temp;
+
+vtucode.in 17

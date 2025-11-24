@@ -1,0 +1,39 @@
+a 1. Directed Graphs and Gry) _
+
+Figure 1.40
+
+We observe that this graph is not a complete bipartite graph. Becauats there if ng edge
+between every vertex in V; and every vertex in V2; for example, there is no edge joining ®
+and R.
+
+Prove that the k-dimensional hypercube Q; has k2*-! edges.
+Determine the number of edges in Qs.
+
+> Inthe hypercube Q,, the number of vertices is 2* and each vertex is of degree k. Therefore,
+the sum of degrees of vertices of Q; is k x 2*. By handshaking property, we should hav
+
+kx 2* = 2/E|, where |E| is the size of Q,. Thus, |E| = $(k x 2") = kx 2*-!. This means that QO, —
+has k2*-! edges.
+
+It follows that the number of edges in Qg is 8 x 27 = 1024.
+
+(a) What is the dimension of the hypercube with 524288 edges?
+
+(b) How many vertices are there in a hypercube with 4980736 edges?
+
+> For the k-dimensional hypercube Q;, the number of vertices is 2‘ and the number of edges |
+is 1, ;
+
+(a) If Q, has 524288 edges, we have k2*-! = 524288. We check that
+524288 = 29 = 24 x 2!5 = 16x 2)5,
+
+Accordingly, k2'"! = 524288 holds if k = 16. Thus,
+
+; the dimension of the hypercube
+with 524288 edges is k = 16.
+
+(b) We check that 4980736 = 19 x 2!8, which indicates that On
+k
+
+: has 4980736 edges
+= 19. The number of vertices in this hypercube is 2 = 2!9 = 524288.

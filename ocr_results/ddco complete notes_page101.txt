@@ -1,0 +1,39 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+There are 2 schemes available to connect I/O devices to CPU
+1. Memory mapped I/O:
+e In this technique, both memory and I/O devices use the common bus to
+
+transfer the data to CPU .
+
+e« same address space is used for both memory and I/O interface. They have
+only one set of read and write signals.
+e All memory related instructions are used for data transfer between I/O and
+
+processor.
+Memory Mapped 10
+
+« Incase of memory mapped I/O input operation can be
+
+implemented as, MOVE DATAIN , RO
+Source destination
+
+This instruction sends the contents of location DATAIN to register RO.
+
+¢ Similarly output can be implemented as, MOVE R panjour
+
+Source Destination
+
+¢The data is written from RO to DATAOUT location (address of output buffer.
+2) 1/O Mapped 1/0:
+> In this technique, a separate bus is used for I/O devices and memory to transfer
+the data to CPU. Address space for memory and I/O devices are different.
+> Hence two sets of instruction are used for data transfer.
+> One set for memory operations and another set for I/O
+operations. Whole address space is available for the program.
+
+> Eg-—IN AL, DX 1/0 Mapped VO
+
+cpu
+
+Dr.Ajay V G, Dept. of CSE 3

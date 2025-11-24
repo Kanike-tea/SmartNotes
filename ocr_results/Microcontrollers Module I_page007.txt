@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+The memory in all computer systems has to be arranged in some form of hierarchy. Figure 2
+shows a device that supports external off-chip memory. Internal to the processor there is an
+
+option of a cache to improve memory performance.
+
+Figure 3 shows the memory trade-offs: the fastest memory cache is physically located nearer
+the ARM processor core and the slowest secondary memory is set further away. Generally
+
+the closer memory is to the processor core, the more it costs and the smaller its capacity.
+
+Cache
+
+Main
+
+Secondary
+storage
+
+Memory Size
+
+Fig 3: Storage trade-offs
+
+The cache is placed between main memory and the core. It is used to speed up data transfer
+between the processor and main memory. A cache provides an overall increase in
+performance but with a loss of predictable execution time. Although the cache increases the
+
+general performance of the system, it does not help real-time system response.
+
+The main memory is large around 256 KB to 256 MB (or even greater), depending on the
+application and is generally stored in separate chips. Load and store instructions access the
+main memory unless the values have been stored in the cache for fast access. Secondary
+storage is the largest and slowest form of memory. Hard disk drives and CD-ROM drives are
+
+examples of secondary storage.
+
+Width
+
+The memory width is the number of bits the memory returns on each access typically 8, 16,
+32, or 64 bits. The memory width has a direct effect on the overall performance and cost
+ratio.
+
+If an uncached system uses 32-bitARMinstructions and 16-bit-wide memory chips, then the
+
+processor will have to make two memory fetches per instruction. Each fetch requires two 16-
+
+Dept. of ECE, GSSSIETW Page 8

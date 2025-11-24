@@ -1,0 +1,72 @@
+438 Chapter 12. Caches
+
+cleanFlushDCache
+
+STMFD  sp!, {Ir}
+
+BL cleanDCache
+
+IF {CPU} = "XSCALE"
+BL cleanMiniDCache
+
+ENDIF
+
+MOV r0, #0
+
+MCR p15,0,r0,c7,c6,0;
+
+IF {CPU} = "XSCALE"
+CPWAIT
+
+ENDIF
+
+LOMFD sp! {pc}
+
+cleanFlushCache
+
+STMFD  sp!, {Ir}
+
+BL cleanDCache
+
+IF {CPU} = "XSCALE"
+BL cleanMiniDCache
+
+ENDIF
+
+MOV r0, #0
+
+MCR p15,0,r0,c7,c7,0 ;
+
+IF {CPU} = "XSCALE"
+CPWAIT
+
+ENDIF
+
+LOMFD sp! {pc}
+
+ENDIF
+
+IF {CPU} = "XSCALE"
+EXPORT cleanMiniDCache
+
+cleanMiniDCache
+CACHECLEANXSCALE DcleanMini
+MOV pc, Ir
+ENDIF
+
+flush D-cache
+
+flush I-cache & D-cache
+
+The macro then filters the needed commands to execute the clean operation for the
+two processor cores. The Intel XScale uses the allocate CP15:c7 command to clean the
+D-cache and reads a dedicated cached memory block to clean the mini D-cache. The Intel
+StrongARM reads from a dedicated area of memory to clean its D-cache.
+
+Finally, we use the macro several times to create the cl eanDCache, cleanFlushDCache,
+cleanFlushCache, and cleanMiniDCache procedures.
+
+12.5.7, CLEANING AND FLUSHING PORTIONS OF A CACHE
+
+ARM cores support cleaning and flushing a single cache line by reference to the location it
+represents in main memory. We show these commands as MCR instructions in Table 12.8.

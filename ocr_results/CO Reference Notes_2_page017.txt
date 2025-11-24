@@ -1,0 +1,56 @@
+* EQU informs the assembler about the value of an identifier (Figure: 2.18).
+Ex: SUM EQU 200 ;Informs assembler that the name SUM should be replaced by the value 200.
+ORIGIN tells the assembler about the starting-address of memory-area to place the data block.
+Ex: ORIGIN 204 ;Instructs assembler to initiate data-block at memory-locations starting from 204.
+* DATAWORD directive tells the assembler to load a value into the location.
+Ex: N DATAWORD 100 ; Informs the assembler to load data 100 into the memory-location N(204).
++ RESERVE directive is used to reserve a block of memory.
+Ex: NUMI RESERVE 400 ;declares a memory-block of 400 bytes is to be reserved for data.
++ END directive tells the assembler that this is the end of the source-program text.
++ RETURN directive identifies the point at which execution of the program should be terminated.
++ Any statement that makes instructions or data being placed in a memory-location may be given a
+label. The label(say N or NUM 1) is assigned a value equal to the address of that location.
+
+GENERAL FORMAT OF A STATEMENT
+
++ Most assembly languages require statements in a source program to be written in the form:
+
+Label | Operation | Operands | Comment
+
+1) Label is an optional name associated with the memory-address where the machine language
+instruction produced from the statement will be loaded.
+
+2) Operation Field contains the OP-code mnemonic of the desired instruction or assembler.
+3) Operand Field contains addressing information for accessing one or more
+
+operands, depending on the type of instruction.
+
+4) Comment Field is used for documentation purposes to make program easier to understand.
+
+ASSEMBLY AND EXECUTION OF PRGRAMS
+
++ Programs written in an assembly language are automatically translated into a sequence of machine
+instructions by the Assembler .
+
+* Assembler Program
+— Replaces all symbols denoting operations & addressing-modes with binary-codes used
+in machine instructions.
+— Replaces all names and labels with their actual values.
+— Assigns addresses to instructions & data blocks, starting at address given in ORIGIN directive
+— inserts constants that may be given in DATAWORD directives.
+— reserves memory-space as requested by RESERVE directives.
+* Two Pass Assembler has 2 passes:
+1) First Pass: Work out all the addresses of labels.
+> As the assembler scans through a source-program, it keeps track of all names of numerical-
+values that correspond to them in a symbol-table.
+2) Second Pass: Generate machine code, substituting values for the labels.
+> When a name appears a second time in the source-program, it is replaced with its value from
+the table.
+* The assembler stores the object-program on a magnetic-disk. The object-program must be loaded
+into the memory of the computer before it is executed. For this, a Loader Program is used.
++ Debugger Program is used to help the user find the programming errors.
++ Debugger program enables the user
+— to stop execution of the object-program at some points of interest &
+— to examine the contents of various processor-registers and memory-location.
+
+Page 18

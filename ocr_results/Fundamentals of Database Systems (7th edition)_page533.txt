@@ -1,0 +1,34 @@
+—T
+
+chapter ~)
+
+Relational Database Design
+Algorithms and Further
+Dependencies
+
+C hapter 14 presented a top-down relational design
+technique and related concepts used extensively
+in commercial database design projects today. The procedure involves designing an
+ER or EER conceptual schema and then mapping it to the relational model by a
+procedure such as the one described in Chapter 9. Primary keys are assigned to
+each relation based on known functional dependencies. In the subsequent process,
+which may be called relational design by analysis, initially designed relations from
+the above procedure—or those inherited from previous files, forms, and other
+sources—are analyzed to detect undesirable functional dependencies. These depen-
+dencies are removed by the successive normalization procedure that we described
+in Section 14.3 along with definitions of related normal forms, which are succes-
+sively better states of design of individual relations. In Section 14.3 we assumed that
+primary keys were assigned to individual relations; in Section 14.4 a more general
+treatment of normalization was presented where all candidate keys are considered
+for each relation, and Section 14.5 discussed a further normal form called BCNF.
+Then in Sections 14.6 and 14.7 we discussed two more types of dependencies—
+multivalued dependencies and join dependencies—that can also cause redundancies
+and showed how they can be eliminated with further normalization.
+
+In this chapter, we use the theory of normal forms and functional, multivalued, and
+join dependencies developed in the last chapter and build upon it while maintain-
+ing three different thrusts. First, we discuss the concept of inferring new functional
+dependencies from a given set and discuss notions including closure, cover, mini-
+mal cover, and equivalence. Conceptually, we need to capture the semantics of
+
+503

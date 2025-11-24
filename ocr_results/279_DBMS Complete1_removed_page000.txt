@@ -1,0 +1,57 @@
+Module-1:
+LECTURE-1: Introduction to Data
+
+Introduction:
+
+In computerized information system data are the basic resource of the organization. So, proper
+organization and management for data is required for organization to run smoothly. Database
+management system deals the knowledge of how data stored and managed on a computerized
+information system. In any organization, it requires accurate and reliable data for better decision
+making, ensuring privacy of data and controlling data efficiently.
+
+The examples include deposit and/or withdrawal from a bank, hotel, airline or railway reservation,
+purchase items from supermarkets in all cases, a database is accessed.
+
+What is data?
+
+Data are the known facts or figures that have implicit meaning. It can also be defined as it is the
+representation of facts, concepts or instructions in a formal manner, which is suitable for
+understanding and processing. Data can be represented in alphabets (A-Z, a-z), digits (0-9) and
+using special characters (+,-.#,$, etc)
+
+e.g: 25, “ajit” ete.
+
+Information:
+
+Information is the processed data on which decisions and actions are based. Information can be
+defined as the organized and classified data to provide meaningful values.
+
+Eg: “The age of Ravi is 25”
+
+File:
+File is a collection of related data stored in secondary memory.
+
+File Oriented Approach:
+
+The traditional file oriented approach to information processing each application has a separate
+master file and its own set of personal file. In file oriented approach the program dependent on the
+files and files dependent upon the programs.
+
+Disadvantages of file oriented appro:
+1) Data redundancy and inconsistency:
+
+The same information may be written in several files. This redundancy leads to higher
+storage and access cost. It may lead data inconsistency that is the various copies of the same
+data may present at multiple places for example a changed customer address may be
+reflected in single file but not else where in the system.
+
+2) Difficulty in accessing data :
+The conventional file processing system do not allow data to be retrieved in a convenient
+and efficient manner according to user choice.
+
+3) Data isolation :
+Because data are scattered in various files and files may be in different formats with new
+
+application programs to retrieve the appropriate data is difficult.
+
+4) Integrity Problems:

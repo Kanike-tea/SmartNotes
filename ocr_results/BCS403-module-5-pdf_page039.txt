@@ -1,0 +1,51 @@
+902 Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+Figure 24.3
+
+Examples in Hbase. (a) Creating a table called EMPLOYEE with three column families: Name, Address, and Details.
+(b) Inserting some in the EMPLOYEE table; different rows can have different self-describing column qualifiers
+(Fname, Lname, Nickname, Mname, Minit, Suffix, ... for column family Name; Job, Review, Supervisor, Salary
+
+for column family Details). (c) Some CRUD operations of Hbase.
+
+(a) creating a table:
+create ‘EMPLOYEE’, ‘Name’, ‘Address’, ‘Details’
+(b) inserting some row data in the EMPLOYEE table:
+put ‘EMPLOYEE’, ‘row1', ‘Name:Fname’, ‘John’
+put ‘EMPLOYEE’, ‘row1', ‘Name:Lname’, ‘Smith’
+put ‘EMPLOYEE’, ‘row1’, ‘Name:Nickname’, Johnny’
+put ‘EMPLOYEE’, ‘row1’, ‘Details:Job’, ‘Engineer’
+put ‘EMPLOYEE’, ‘row1’, ‘Details:Review’, ‘Good’
+put ‘EMPLOYEE’, ‘row2’, ‘Name:Fname’, ‘Alicia’
+put ‘EMPLOYEE’, ‘row2', ‘Name:Lname', ‘Zelaya’
+put ‘EMPLOYEE’, ‘row2’, ‘Name:MName', ‘Jennifer’
+put ‘EMPLOYEE’, ‘row2’, ‘Details:Job’, ‘DBA’
+put ‘EMPLOYEE’, ‘row2’, ‘Details:Supervisor'’, ‘James Borg’
+put ‘EMPLOYEE’, ‘row3’, ‘Name:Fname’, ‘James’
+put ‘EMPLOYEE’, ‘row3’, ‘Name:Minit’, ‘E’
+put ‘EMPLOYEE’, ‘row3’, ‘Name:Lname', ‘Borg’
+put ‘EMPLOYEE’, ‘row3’, ‘Name:Suffix’, ‘Ir.’
+put ‘EMPLOYEE’, ‘row3’, ‘Details:Job’, ‘CEO"
+put ‘EMPLOYEE, ‘row’, ‘Details:Salary’, ‘1,000,000!
+
+(c) Some Hbase basic CRUD operations:
+Creating a table: create <tablename>, <column family>, <column family>, ...
+Inserting Data: put <tablename>, <rowid>, <column family>:<column qualifier>, <value>
+Reading Data (all data in a table): scan <tablename>
+Retrieve Data (one item): get <tablename>,<rowid>
+
+the user to define the timestamp value explicitly in a Date format rather than
+using the system-generated timestamp.
+
+= Cells. A cell holds a basic data item in Hbase. The key (address) of a cell is
+specified by a combination of (table, rowid, columnfamily, columnqualifier,
+timestamp). If timestamp is left out, the latest version of the item is retrieved
+unless a default number of versions is specified, say the latest three versions.
+The default number of versions to be retrieved, as well as the default number
+of versions that the system needs to keep, are parameters that can be speci-
+fied during table creation.
+
+= Namespaces. A namespace is a collection of tables. A namespace basically
+specifies a collection of one or more tables that are typically used together by
+user applications, and it corresponds to a database that contains a collection
+of tables in relational terminology.

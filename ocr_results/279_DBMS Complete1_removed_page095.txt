@@ -1,0 +1,50 @@
+partially
+committed
+
+aborted
+
+States of transaction
+
+We say that a transaction has committed only if it has entered the committed state. Similarly, we say
+that a transaction has aborted only if it has entered the aborted state. A transaction is said to have
+terminated if has either committed or aborted.
+
+A transaction starts in the active state. When it finishes its final statement, it enters the partially
+committed state. At this point, the transaction has completed its execution, but it is still possible that
+it may have to be aborted, since the actual output may still be temporarily hiding in main memory
+and thus a hardware failure may preclude its successful completion
+
+The database system then writes out enough information to disk that, even in the event of a failure,
+the updates performed by the transaction can be recreated when the system restarts after the failure.
+When the last of this information is written out, the transaction enters the committed state.
+
+Problems due to concurrency:
+1) Lost update problem
+2) Dirty Read problem
+
+3) Incorrect summary problem
+
+1. The lost update problem: A second transaction writes a second value of a data-item (datum)
+on top of a first value written by a first concurrent transaction, and the first value is lost to
+other transactions running concurrently which need, by their precedence, to read the first
+value. The transactions that have read the wrong value end with incorrect results.
+
+2. The dirty read problem: Transactions read a value written by a transaction that has been later
+aborted. This value disappears from the database upon abort, and should not have been read
+by any transaction ("dirty read"). The reading transactions end with incorrect results.
+
+3. The incorrect summary problem: While one transaction takes a summary over the values of
+all the instances of a repeated data-item, a second transaction updates some instances of that
+data-item. The resulting summary does not reflect a correct result for any (usually needed
+for correctness) precedence order between the two transactions (if one is executed before the
+other), but rather some random result, depending on the timing of the updates, and whether
+certain update results have been included in the summary or not.
+
+Concurrency Control Techniques:
+1) Locking
+
+2) Timestamp ordering
+
+3) Multi-version concurrency control
+
+4) Optimistic concurrency control

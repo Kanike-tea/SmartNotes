@@ -1,0 +1,45 @@
+Digital Design and Computer Organization (BCS302)
+
+—* Time
+Clock cycle 1 2 3 4
+
+Instruction
+
+Ty
+
+(c) Pipelined execution
+
+Figure 8.1 Basic idea of instruction pipelining
+
+Idea of Pipelining in a computer
+
+a pipelined processor may process each instruction in four steps, as follows:
+
+—» Time
+Clock cycle 1 2 3 4 5 6
+
+Instruction
+
+\ ete
+PT [el]
+\
+
+(a) Instruction execution divided into four steps
+
+Interstage buffers
+
+D : Decode
+F: Fetch instruction E: Execute W : Write
+
+instruction and fetch operation results
+operands
+
+(b) Hardware organization
+The sequence of events for this case is shown in Figure a. Four instructions are in
+progress at any given time. This means that four distinct hardware units are
+needed, as shown in Figure b. These units must be capable of performing their
+tasks simultaneously and without interfering with one another. Information is
+passed from one unit to the next through a storage buffer. As an instruction
+progresses through the pipeline, all the information needed by the stages
+
+Dr Ajay V G, Dept. of CSE,SVIT

@@ -1,0 +1,54 @@
+17.1 Types of Single-Level Ordered Indexes
+
+not both. A third type of index, called a secondary index, can be specified on any
+nonordering field of a file. A data file can have several secondary indexes in addition
+to its primary access method. We discuss these types of single-level indexes in the
+next three subsections.
+
+17.1.1 Primary Indexes
+
+A primary index is an ordered file whose records are of fixed length with two
+fields, and it acts like an access structure to efficiently search for and access the
+data records in a data file. The first field is of the same data type as the ordering
+key field—called the primary key—of the data file, and the second field is a
+pointer to a disk block (a block address). There is one index entry (or index
+record) in the index file for each block in the data file. Each index entry has the
+value of the primary key field for the first record in a block and a pointer to that
+block as its two field values. We will refer to the two field values of index entry i as
+<K(i), P(i)>. In the rest of this chapter, we refer to different types of index entries
+< K (i), X >as follows:
+
+= X may be the physical address of a block (or page) in the file, as in the case of
+P(i) above.
+
+= X may be the record address made up of a block address and a record id (or
+offset) within the block.
+
+= X may bea logical address of the block or of the record within the file and is
+a relative number that would be mapped to a physical address (see further
+explanation in Section 17.6.1).
+
+To create a primary index on the ordered file shown in Figure 16.7, we use the Name
+field as primary key, because that is the ordering key field of the file (assuming that
+each value of Name is unique). Each entry in the index has a Name value and a
+pointer. The first three index entries are as follows:
+
+<K(1) = (Aaron, Ed), P(1) = address of block 1>
+<K(2) = (Adams, John), P(2) = address of block 2>
+<K(3) = (Alexander, Ed), P(3) = address of block 3>
+
+Figure 17.1 illustrates this primary index. The total number of entries in the index is
+the same as the number of disk blocks in the ordered data file. The first record in
+each block of the data file is called the anchor record of the block, or simply the
+block anchor.’
+
+Indexes can also be characterized as dense or sparse. A dense index has an index
+entry for every search key value (and hence every record) in the data file. A sparse
+(or nondense) index, on the other hand, has index entries for only some of the
+search values. A sparse index has fewer entries than the number of records in
+the file. Thus, a primary index is a nondense (sparse) index, since it includes an
+
+2We can use a scheme similar to the one described here, with the last record in each block (rather than
+the first) as the block anchor. This slightly improves the efficiency of the search algorithm.
+
+603

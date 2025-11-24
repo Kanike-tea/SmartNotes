@@ -1,0 +1,53 @@
+27.1 Information Retrieval (IR) Concepts
+
+by Gerald Salton, an IR pioneer.” We can enhance the definition slightly to say that
+it applies in the context of unstructured documents to satisfy a user’s information
+needs. This field has existed even longer than the database field and was originally
+concerned with retrieval of cataloged information in libraries based on titles,
+authors, topics, and keywords. In academic programs, the field of IR has long been
+a part of Library and Information Science programs. Information in the context of
+IR does not require machine-understandable structures, such as in relational data-
+base systems. Examples of such information include written texts, abstracts, docu-
+ments, books, Web pages, e-mails, instant messages, and collections from digital
+libraries. Therefore, all loosely represented (unstructured) or semistructured infor-
+mation is also part of the IR discipline.
+
+We introduced XML modeling and retrieval in Chapter 13 and discussed advanced
+data types, including spatial, temporal, and multimedia data, in Chapter 26. RDBMS
+vendors are providing modules to support many of these data types, as well as XML
+data, in the newer versions of their products. These newer versions are sometimes
+referred to as extended RDBMSs, or object-relational database management systems
+(ORDBMSs; see Chapter 12). The challenge of dealing with unstructured data is
+largely an information retrieval problem, although database researchers have been
+applying database indexing and search techniques to some of these problems.
+
+IR systems go beyond database systems in that they do not limit the user to a spe-
+cific query language, nor do they expect the user to know the structure (schema) or
+content of a particular database. IR systems use a user’s information need expressed
+as a free-form search request (sometimes called a keyword search query, or just
+query) for interpretation by the system. Whereas the IR field historically dealt with
+cataloging, processing, and accessing text in the form of documents for decades, in
+today’s world the use of Web search engines is becoming the dominant way to find
+information. The traditional problems of text indexing and making collections of
+documents searchable have been transformed by making the Web itself into a
+quickly accessible repository of human knowledge or a virtual digital library.
+
+An IR system can be characterized at different levels: by types of users, types of data,
+and the types of the information need, along with the size and scale of the informa-
+tion repository it addresses. Different IR systems are designed to address specific
+problems that require a combination of different characteristics. These characteris-
+tics can be briefly described as follows:
+
+Types of Users. Users can greatly vary in their abilities to interact with compu-
+tational systems. This ability depends on a multitude of factors, such as educa-
+tion, culture, and past exposure to computational environments. The user may
+be an expert user (for example, a curator or a librarian) who is searching for
+specific information that is clear in his/her mind, understands the scope and
+the structure of the available repository, and forms relevant queries for the task,
+or a layperson user with a generic information need. The latter cannot create
+highly relevant queries for search (for example, students trying to find infor-
+mation about a new topic, researchers trying to assimilate different points of
+
+2See Salton’s 1968 book entitled Automatic Information Organization and Retrieval.
+
+1023

@@ -1,0 +1,55 @@
+822
+
+Chapter 22 Database Recovery Techniques
+
+in the cache buffers until the commit point, so many cache buffers will be pinned
+and cannot be replaced.
+
+We can state a typical deferred update protocol as follows:
+
+1. A transaction cannot change the database on disk until it reaches its commit
+point; hence all buffers that have been changed by the transaction must be
+pinned until the transaction commits (this corresponds to a no-steal policy).
+
+2. A transaction does not reach its commit point until all its REDO-type log
+entries are recorded in the log and the log buffer is force-written to disk.
+
+Notice that step 2 of this protocol is a restatement of the write-ahead logging (WAL)
+protocol. Because the database is never updated on disk until after the transaction
+commits, there is never a need to UNDO any operations. REDO is needed in case the
+system fails after a transaction commits but before all its changes are recorded in
+the database on disk. In this case, the transaction operations are redone from the
+log entries during recovery.
+
+For multiuser systems with concurrency control, the concurrency control and
+recovery processes are interrelated. Consider a system in which concurrency con-
+trol uses strict two-phase locking, so the locks on written items remain in effect
+until the transaction reaches its commit point. After that, the locks can be released.
+This ensures strict and serializable schedules. Assuming that [checkpoint] entries are
+included in the log, a possible recovery algorithm for this case, which we call RDU_M
+(Recovery using Deferred Update in a Multiuser environment), is given next.
+
+Procedure RDU_M (NO-UNDO/REDO with checkpoints). Use two lists of trans-
+actions maintained by the system: the committed transactions T since the last
+checkpoint (commit list), and the active transactions T’ (active list). REDO all
+the WRITE operations of the committed transactions from the log, in the order
+in which they were written into the log. The transactions that are active and did
+not commit are effectively canceled and must be resubmitted.
+
+The REDO procedure is defined as follows:
+
+Procedure REDO (WRITE_OP). Redoing a write_item operation WRITE_OP con-
+sists of examining its log entry [write_item, T, X, new_value] and setting the value
+of item X in the database to new_value, which is the after image (AFIM).
+
+Figure 22.2 illustrates a timeline for a possible schedule of executing transactions.
+When the checkpoint was taken at time f), transaction T, had committed, whereas
+transactions T3 and T, had not. Before the system crash at time f,, T3 and T> were
+committed but not T, and T;. According to the RDU_M method, there is no need to
+redo the write_item operations of transaction T;—or any transactions committed
+before the last checkpoint time f;. The write_item operations of T, and T3 must be
+redone, however, because both transactions reached their commit points after the
+last checkpoint. Recall that the log is force-written before committing a transaction.
+Transactions T, and T; are ignored: They are effectively canceled or rolled back
+because none of their write_item operations were recorded in the database on disk
+under the deferred update protocol (no-steal policy).

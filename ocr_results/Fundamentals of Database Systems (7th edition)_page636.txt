@@ -1,0 +1,52 @@
+606
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+A major problem with a primary index—as with any ordered file—is insertion and
+deletion of records. With a primary index, the problem is compounded because if
+we attempt to insert a record in its correct position in the data file, we must not
+only move records to make space for the new record but also change some index
+entries, since moving records will change the anchor records of some blocks. Using
+an unordered overflow file, as discussed in Section 16.7, can reduce this problem.
+Another possibility is to use a linked list of overflow records for each block in the
+data file. This is similar to the method of dealing with overflow records described
+with hashing in Section 16.8.2. Records within each block and its overflow linked
+list can be sorted to improve retrieval time. Record deletion is handled using dele-
+tion markers.
+
+17.1.2 Clustering Indexes
+
+If file records are physically ordered on a nonkey field—which does not have a dis-
+tinct value for each record—that field is called the clustering field and the data file
+is called a clustered file. We can create a different type of index, called a clustering
+index, to speed up retrieval of all the records that have the same value for the clus-
+tering field. This differs from a primary index, which requires that the ordering
+field of the data file have a distinct value for each record.
+
+A clustering index is also an ordered file with two fields; the first field is of the
+same type as the clustering field of the data file, and the second field is a disk block
+pointer. There is one entry in the clustering index for each distinct value of the
+clustering field, and it contains the value and a pointer to the first block in the data
+file that has a record with that value for its clustering field. Figure 17.2 shows an
+example. Notice that record insertion and deletion still cause problems because
+the data records are physically ordered. To alleviate the problem of insertion, it is
+common to reserve a whole block (or a cluster of contiguous blocks) for each value
+of the clustering field; all records with that value are placed in the block (or block
+cluster). This makes insertion and deletion relatively straightforward. Figure 17.3
+shows this scheme.
+
+A clustering index is another example of a nondense index because it has an entry
+for every distinct value of the indexing field, which is a nonkey by definition and
+hence has duplicate values rather than a unique value for every record in the file.
+
+Example 2. Suppose that we consider the same ordered file with r = 300,000
+records stored on a disk with block size B = 4,096 bytes. Imagine that it is ordered by
+the attribute Zipcode and there are 1,000 zip codes in the file (with an average 300
+records per zip code, assuming even distribution across zip codes.) The index in this
+case has 1,000 index entries of 11 bytes each (5-byte Zipcode and 6-byte block
+pointer) with a blocking factor bfr; = L(B/R)) =[(4,096/11) | = 372 index entries per
+block. The number of index blocks is hence b; = [ (rilbfr)) | =| (1,000/372) |=3 blocks.
+To perform a binary search on the index file would need [ dog, b) l= [ dog. 3)]=2
+block accesses. Again, this index would typically be loaded in main memory (occu-
+pies 11,000 or 11 Kbytes) and takes negligible time to search in memory. One block
+access to the data file would lead to the first record with a given zip code.

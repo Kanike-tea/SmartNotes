@@ -1,0 +1,57 @@
+15.1 Further Topics in Functional Dependencies: Inference Rules, Equivalence, and Minimal Cover
+
+FD2: Course# — Credit_hrs;
+
+FD3: {Course#, Instr_name} — Text, Classroom;
+FD4: Text — Publisher
+
+FDS: Classroom — Capacity
+
+Note that the above FDs express certain semantics about the data in the relation
+CLASS. For example, FD1 states that each class has a unique Classid. FD3 states
+that when a given course is offered by a certain instructor, the text is fixed and the
+instructor teaches that class in a fixed room. Using the inference rules about the
+FDs and applying the definition of closure, we can define the following closures:
+
+{ Classid } * = { Classid , Course#, Instr_name, Credit_hrs, Text, Publisher,
+Classroom, Capacity } = CLASS
+
+{ Course#} * = { Course#, Credit_hrs}
+
+{ Course#, Instr_name } * = { Course#, Credit_hrs, Text, Publisher,
+Classroom, Capacity }
+
+Note that each closure above has an interpretation that is revealing about the
+attribute(s) on the left-hand side. For example, the closure of Course# has only
+Credit_hrs besides itself. It does not include Instr_name because different instruc-
+tors could teach the same course; it does not include Text because different instruc-
+tors may use different texts for the same course. Note also that the closure of
+{Course#, Instr_nam} does not include Classid, which implies that it is not a candi-
+date key. This further implies that a course with given Course# could be offered by
+different instructors, which would make the courses distinct classes.
+
+15.1.2 Equivalence of Sets of Functional Dependencies
+
+In this section, we discuss the equivalence of two sets of functional dependencies.
+First, we give some preliminary definitions.
+
+Definition. A set of functional dependencies F is said to cover another set of
+functional dependencies E if every FD in E is also in F*; that is, if every
+dependency in E can be inferred from F, alternatively, we can say that E is
+covered by F.
+
+Definition. Two sets of functional dependencies E and F are equivalent if
+E* = F*. Therefore, equivalence means that every FD in E can be inferred from
+F, and every FD in F can be inferred from E; that is, E is equivalent to F if both
+the conditions—E covers F and F covers E—hold.
+
+We can determine whether F covers E by calculating X* with respect to F for each
+FD X > Y in E, and then checking whether this X* includes the attributes in Y. If
+this is the case for every FD in E, then F covers E. We determine whether E and F are
+equivalent by checking that E covers F and F covers E. It is left to the reader as an
+exercise to show that the following two sets of FDs are equivalent:
+
+F={A—>C,AC—> D, E- AD, E> H}
+and G = {A > CD, E> AH}
+
+509

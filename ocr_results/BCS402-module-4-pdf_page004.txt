@@ -1,0 +1,54 @@
+MICROCONTROLLER(BCS402)
+
+exceptions will be disabled, but the FIQ exceptions will remain
+unchanged.If FIQ is enabled and an FIQ exception occurs, it can be
+taken while servicing the Prefetch Abort.
+
+@ A Software Interrupt (SWI) exception occurs when the SWI
+instruction is executed and none of the other higher-priority
+exceptions have been flagged. On entry to the handler,
+
+@ the cpsr will be set to supervisor mode If the system uses nested SWI
+calls, the link register rl4 and spsr must be stored away before
+branching to the nested SWI to avoid possible corruption of the link
+register and the spsr.
+
+@ An Undefined Instruction exception occurs when an instruction not in
+the ARM or Thumb instruction set reaches the execute stage of the
+pipeline and none of the other exceptions have been flagged. The ARM
+processor “asks” the coprocessors if they can handle this as a
+coprocessor instruction. Since coprocessors follow the pipeline,
+instruction identification can take place in the execute stage of the core.
+If none of the coprocessors claims the instruction, an Undefined
+Instruction exception is raised.Both the SWI instruction and Undefined
+Instruction have the same level of priority, since they cannot occur at the
+same time.
+
+4.1.4 Link Register Offsets
+
+When an exception occurs, the link register is set to a specific address
+based on the current pe.
+
+For example when an IRQ exception is raised, the link register Ir points to
+the last executed instruction plus 8 because of three stage pipeline. Care
+has to be taken to make sure the exception handler does not corrupt Ir
+because Ir is used to return from an exception handler. The IRQ exception
+is taken only after the current instruction is executed, so the return
+address has to point to the next instruction, or Ir — 4.
+
+Table 4.4 provides a list of useful addresses for the different exceptions.
+
+Exception Address Use
+
+Reset _— Iris not defined on a Reset
+
+Data Abort Ir—8 points to the instruction that caused the Data Abort exception
+FIQ Ir-4 return address from the FIQ handler
+
+IRQ Ir-4 return address from the IRQ handler
+
+Prefetch Abort Ir-4 points to the instruction that caused the Prefetch Abort exception
+swl Ir points to the next instruction after the SWI instruction
+Undefined Instruction — Ir points to the next instruction after the undefined instruction
+
+Table 4.4 Useful link-register-based addresses.

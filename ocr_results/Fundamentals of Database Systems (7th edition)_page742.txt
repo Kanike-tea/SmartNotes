@@ -1,0 +1,51 @@
+712
+
+Chapter 19 Query Optimization
+
+For large databases, the main emphasis is often on minimizing the access cost to
+secondary storage. Simple cost functions ignore other factors and compare dif-
+ferent query execution strategies in terms of the number of block transfers
+between disk and main memory buffers. For smaller databases, where most of
+the data in the files involved in the query can be completely stored in memory,
+the emphasis is on minimizing computation cost. In distributed databases,
+where many sites are involved (see Chapter 23), communication cost must be
+minimized. It is difficult to include all the cost components in a (weighted) cost
+function because of the difficulty of assigning suitable weights to the cost com-
+ponents. This is why some cost functions consider a single factor only—disk
+access. In the next section, we discuss some of the information that is needed for
+formulating cost functions.
+
+19.3.2 Catalog Information Used in Cost Functions
+
+To estimate the costs of various execution strategies, we must keep track of any
+information that is needed for the cost functions. This information may be stored
+in the DBMS catalog, where it is accessed by the query optimizer. First, we must
+know the size of each file. For a file whose records are all of the same type, the
+number of records (tuples) (r), the (average) record size (R), and the number of
+file blocks (b) (or close estimates of them) are needed. The blocking factor (bfr) for
+the file may also be needed. These were mentioned in Section 18.3.4, and we utilized
+them while illustrating the various implementation algorithms for relational opera-
+tions. We must also keep track of the primary file organization for each file. The
+primary file organization records may be unordered, ordered by an attribute with or
+without a primary or clustering index, or hashed (static hashing or one of the
+dynamic hashing methods) on a key attribute. Information is also kept on all pri-
+mary, secondary, or clustering indexes and their indexing attributes. The number
+of levels (x) of each multilevel index (primary, secondary, or clustering) is needed
+for cost functions that estimate the number of block accesses that occur during
+query execution. In some cost functions the number of first-level index blocks
+(by) is needed.
+
+Another important parameter is the number of distinct values NDV (A, R) of an
+attribute in relation R and the attribute selectivity (s/), which is the fraction of
+records satisfying an equality condition on the attribute. This allows estimation of
+the selection cardinality (s = sl*r) of an attribute, which is the average number of
+records that will satisfy an equality selection condition on that attribute.
+
+Information such as the number of index levels is easy to maintain because it does
+not change very often. However, other information may change frequently; for
+example, the number of records r in a file changes every time a record is inserted or
+deleted. The query optimizer will need reasonably close but not necessarily com-
+pletely up-to-the-minute values of these parameters for use in estimating the cost of
+various execution strategies. To help with estimating the size of the results of que-
+ries, it is important to have as good an estimate of the distribution of values as pos-
+sible. To that end, most systems store a histogram.

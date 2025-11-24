@@ -1,0 +1,46 @@
+324 Chapter 9 Exception and Interrupt Handling
+
+STMFD rl3!,{r0-r3, r14} 3 store context
+<handler code>
+LOMFD r13!,{r0-r3, pc}* 3; return
+
+To return to normal execution, the LDM instruction is used to load the pc. The * symbol in
+the instruction forces the cpsr to be restored from the spsr.
+
+9.2 INTERRUPTS
+
+There are two types of interrupts available on the ARM processor. The first type of interrupt
+causes an exception raised by an external peripheral—namely, IRQ and FIQ. The second
+type is a specific instruction that causes an exception—the SWI instruction. Both types
+suspend the normal flow of a program.
+
+In this section we will focus mainly on IRQ and FIQ interrupts. We will cover these
+topics:
+
+= Assigning interrupts
+= Interrupt latency
+= IRQand FIQ exceptions
+
+= Basic interrupt stack design and implementation
+
+9.2.1 ASSIGNING INTERRUPTS
+
+A system designer can decide which hardware peripheral can produce which interrupt
+request. This decision can be implemented in hardware or software (or both) and depends
+upon the embedded system being used.
+
+An interrupt controller connects multiple external interrupts to one of the two ARM
+interrupt requests. Sophisticated controllers can be programmed to allow an external
+interrupt source to cause either an IRQ or FIQ exception.
+
+When it comes to assigning interrupts, system designers have adopted a standard design
+practice:
+
+= Software Interrupts are normally reserved to call privileged operating system routines.
+For example, an SWI instruction can be used to change a program running in user mode
+toa privileged mode. For an SWI handler example, take a look at Chapter 11.
+
+= Interrupt Requests are normally assigned for general-purpose interrupts. For example,
+a periodic timer interrupt to force a context switch tends to be an IRQ exception. The
+IRQ exception has a lower priority and higher interrupt latency (to be discussed in the
+next section) than the FIQ exception.

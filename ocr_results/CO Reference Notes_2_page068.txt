@@ -1,0 +1,51 @@
+SIGNED OPERAND MULTIPLICATION
+
+BOOTH ALGORITHM
+¢ This algorithm
+— generates a 2n-bit product
+— treats both positive & negative 2's-complement n-bit operands uniformly(Figure 9.9-9.12).
+
+. Attractive feature: This algorithm achieves some efficiency in the number of addition required
+when the multiplier has a few large blocks of Is.
+. This algorithm suggests that we can reduce the number of operations required for
+
+multiplication by representing multiplier as a difference between 2 numbers.
+For e.g. multiplier(Q) 14(001110) can be represented as
+
+010000 (16)
+-000010 (2)
+001110 (14)
+. Therefore, product P=M*Q can be computed by adding 24 times the M to the 2's
+complement of 2! times the M.
+Olor1lol O10r101
+0 O+lel+l+1 0 0+1 00 0-1 0
+000000 0) , 000000
+Ol1orlot 1o1roold 7's complement of
+o1ori1o0) 0000000 the multiplicand
+Porirot 0000000
+Oo1orlrotl 0000000
+0000000 Ol1odortoOot
+0000000 0000000
+O0O01T0T0T0001T1T07/000TO0TOTO00110O
+Figure 9.9 — Normal and Booth multiplication schemes.
+o o 1 0 1 1 0 0 1 1 of oO 1 0 1 1 0 0
+O+1 -14+!1 O-1 O+1 O O -1 +1 -1+!1 O-1 0 0
+
+Figure 9.10 Booth recoding of a multiplier.
+
+Multioticr | Version of multiplicand
+
+ee RET selected by bit i
+Biti Biui-1
+
+0 0 0xM
+
+0 1 +1xM
+
+1 0 -1xM
+
+1 1 0xM
+
+Figure 9.12 — Booth multiplier recoding table.
+
+Page 69

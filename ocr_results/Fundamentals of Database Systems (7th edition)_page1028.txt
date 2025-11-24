@@ -1,0 +1,51 @@
+998
+
+Chapter 26 Enhanced Data Models
+
+The representation of the multimedia object in an object model is extremely impor-
+tant. One approach is to divide the image into homogeneous segments using a
+homogeneous predicate. For example, in a colored image, adjacent cells that have
+similar pixel values are grouped into a segment. The homogeneity predicate defines
+conditions for automatically grouping those cells. Segmentation and compression
+can hence identify the main characteristics of an image. Another approach finds
+measurements of the object that are invariant to transformations. It is impossible to
+keep a database of examples of all the different transformations of an image. To deal
+with this, object recognition approaches find interesting points (or features) in an
+image that are invariant to transformations.
+
+An important contribution to this field was made by Lowe,*° who used scale-invari-
+ant features from images to perform reliable object recognition. This approach is
+called scale-invariant feature transform (SIFT). The SIFT features are invariant to
+image scaling and rotation, and partially invariant to change in illumination and
+3D camera viewpoint. They are well localized in both the spatial and frequency
+domains, reducing the probability of disruption by occlusion, clutter, or noise. In
+addition, the features are highly distinctive, which allows a single feature to be cor-
+rectly matched with high probability against a large database of features, providing
+a basis for object and scene recognition.
+
+For image matching and recognition, SIFT features (also known as keypoint fea-
+tures) are first extracted from a set of reference images and stored in a database.
+Object recognition is then performed by comparing each feature from the new
+image with the features stored in the database and finding candidate matching fea-
+tures based on the Euclidean distance of their feature vectors. Since the keypoint
+features are highly distinctive, a single feature can be correctly matched with good
+probability in a large database of features.
+
+In addition to SIFT, there are a number of competing methods available for object
+recognition under clutter or partial occlusion. For example, RIFT, a rotation invari-
+ant generalization of SIFT, identifies groups of local affine regions (image features
+having a characteristic appearance and elliptical shape) that remain approximately
+affinely rigid across a range of views of an object, and across multiple instances of
+the same object class.
+
+26.4.3 Semantic Tagging of Images
+
+The notion of implicit tagging is an important one for image recognition and com-
+parison. Multiple tags may attach to an image or a subimage: for instance, in the
+example we referred to above, tags such as “tiger,” “jungle,” “green,” and “stripes”
+may be associated with that image. Most image search techniques retrieve images
+based on user-supplied tags that are often not very accurate or comprehensive. To
+improve search quality, a number of recent systems aim at automated generation of
+these image tags. In case of multimedia data, most of its semantics is present in its
+
+2°See Lowe (2004), “Distinctive Image Features from Scale-Invariant Keypoints?

@@ -1,0 +1,50 @@
+LECTURE-22
+
+Structured Query Language (SQL)
+Introduction
+
+O Commercial database systems use more user friendly language to specify the queries.
+im SQL is the most influential commercially marketed product language.
+
+Oo Other commercially used languages are QBE, Quel, and Datalog.
+Basic Structure
+e The basic structure of an SQL consists of three clauses: select, from and where.
+¢ select: it corresponds to the projection operation of relational algebra. Used to list the
+attributes desired in the result.
+« from: corresponds to the Cartesian product operation of relational algebra. Used to list the
+relations to be scanned in the evaluation of the expression
+« where: corresponds to the selection predicate of the relational algebra. It consists of a
+predicate involving attributes of the relations that appear in the from clause.
+e Atypical SQL query has the form:
+select Ai, Az,..., An
+from r1, 12,..., tm
+where P
+o Ajrepresents an attribute
+© 1 represents a relation
+o Pisa predicate
+© It is equivalent to following relational algebra expression:
+o Haas (o; (T,X ry X...X1,,))
+[Note: The words marked in dark in this text work as keywords in SQL language. For example
+“select”, “from” and “where” in the above paragraph are shown in bold font to indicate that they
+are keywords]
+Select Clause
+Let us see some simple queries and use of select clause to express them in SQL.
+e Find the names of all branches in the Loan relation
+select branch-name
+from Loan
+e By default the select clause includes duplicate values. If we want to force the elimination of
+duplicates the inct keyword is used as follows:
+select distinct branch-name
+from Loan
+e The all key word can be used to specify explicitly that duplicates are not removed. Even if
+we not use all it means the same so we don’t require all to use in select clause.
+select all branch-name
+from Loan
+e The asterisk “*” can be used to denote “all attributes”. The following SQL statement will
+select and all the attributes of Loan.
+select *
+from Loan
+
+e The arithmetic expressions involving operators, +, -, *, and / are also allowed in select
+clause. The following statement will return the amount multiplied by 100 for the rows in
+Loan table.

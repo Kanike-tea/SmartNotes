@@ -1,0 +1,54 @@
+460
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+This level applies only to schemas of base relations—which will be physically stored
+as files—whereas at the logical level we are interested in schemas of both base rela-
+tions and views (virtual relations). The relational database design theory developed
+in this chapter applies mainly to base relations, although some criteria of appropri-
+
+ateness also apply to views, as shown in Section 14.1.
+
+As with many design problems, database design may be performed using two
+approaches: bottom-up or top-down. A bottom-up design methodology (also called
+design by synthesis) considers the basic relationships among individual attributes as
+the starting point and uses those to construct relation schemas. This approach is not
+very popular in practice! because it suffers from the problem of having to collect a
+large number of binary relationships among attributes as the starting point. For prac-
+tical situations, it is next to impossible to capture binary relationships among all such
+pairs of attributes. In contrast, a top-down design methodology (also called design by
+analysis) starts with a number of groupings of attributes into relations that exist
+together naturally, for example, on an invoice, a form, or a report. The relations are
+then analyzed individually and collectively, leading to further decomposition until all
+desirable properties are met. The theory described in this chapter is applicable pri-
+marily to the top-down design approach, and as such is more appropriate when per-
+forming design of databases by analysis and decomposition of sets of attributes that
+
+appear together in files, in reports, and on forms in real-life situations.
+
+Relational database design ultimately produces a set of relations. The implicit goals
+of the design activity are information preservation and minimum redundancy.
+Information is very hard to quantify—hence we consider information preservation
+in terms of maintaining all concepts, including attribute types, entity types, and
+relationship types as well as generalization/specialization relationships, which are
+described using a model such as the EER model. Thus, the relational design must
+preserve all of these concepts, which are originally captured in the conceptual
+design after the conceptual to logical design mapping. Minimizing redundancy
+implies minimizing redundant storage of the same information and reducing the
+need for multiple updates to maintain consistency across multiple copies of the
+same information in response to real-world events that require making an update.
+
+We start this chapter by informally discussing some criteria for good and bad rela-
+tion schemas in Section 14.1. In Section 14.2, we define the concept of functional
+dependency, a formal constraint among attributes that is the main tool for formally
+measuring the appropriateness of attribute groupings into relation schemas. In Sec-
+tion 14.3, we discuss normal forms and the process of normalization using func-
+tional dependencies. Successive normal forms are defined to meet a set of desirable
+constraints expressed using primary keys and functional dependencies. The normal-
+ization procedure consists of applying a series of tests to relations to meet these
+increasingly stringent requirements and decompose the relations when necessary. In
+Section 14.4, we discuss more general definitions of normal forms that can be directly
+
+'An exception in which this approach is used in practice is based on a model called the binary relational
+
+model. An example is the NIAM methodology (Verheijen and VanBekkum, 1982).

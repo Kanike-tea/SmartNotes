@@ -1,0 +1,50 @@
+22.8 Summary
+
+redone. A new log is started after each database backup. Hence, to recover from disk
+failure, the database is first recreated on disk from its latest backup copy on tape. Fol-
+lowing that, the effects of all the committed transactions whose operations have been
+recorded in the backed-up copies of the system log are reconstructed.
+
+22.8 Summary
+
+In this chapter, we discussed the techniques for recovery from transaction failures.
+The main goal of recovery is to ensure the atomicity property of a transaction. If a
+transaction fails before completing its execution, the recovery mechanism has to
+make sure that the transaction has no lasting effects on the database. First in Sec-
+tion 22.1 we gave an informal outline for a recovery process, and then we discussed
+system concepts for recovery. These included a discussion of caching, in-place
+updating versus shadowing, before and after images of a data item, UNDO versus
+REDO recovery operations, steal/no-steal and force/no-force policies, system check-
+pointing, and the write-ahead logging protocol.
+
+Next we discussed two different approaches to recovery: deferred update (Sec-
+tion 22.2) and immediate update (Section 22.3). Deferred update techniques
+postpone any actual updating of the database on disk until a transaction reaches its
+commit point. The transaction force-writes the log to disk before recording the
+updates in the database. This approach, when used with certain concurrency
+control methods, is designed never to require transaction rollback, and recovery
+simply consists of redoing the operations of transactions committed after the last
+checkpoint from the log. The disadvantage is that too much buffer space may be
+needed, since updates are kept in the buffers and are not applied to disk until a
+transaction commits. Deferred update can lead to a recovery algorithm known as
+NO-UNDO/REDO. Immediate update techniques may apply changes to the database
+on disk before the transaction reaches a successful conclusion. Any changes applied
+to the database must first be recorded in the log and force-written to disk so that
+these operations can be undone if necessary. We also gave an overview of a recovery
+algorithm for immediate update known as UNDO/REDO. Another algorithm,
+known as UNDO/NO-REDO, can also be developed for immediate update if all trans-
+action actions are recorded in the database before commit.
+
+We discussed the shadow paging technique for recovery in Section 22.4, which
+keeps track of old database pages by using a shadow directory. This technique,
+which is classified as NO-UNDO/NO-REDO, does not require a log in single-user sys-
+tems but still needs the log for multiuser systems. We also presented ARIES in Sec-
+tion 22.5, which is a specific recovery scheme used in many of IBM’s relational
+database products. Then in Section 22.6 we discussed the two-phase commit proto-
+col, which is used for recovery from failures involving multidatabase transactions.
+Finally, we discussed recovery from catastrophic failures in Section 22.7, which is
+typically done by backing up the database and the log to tape. The log can be backed
+up more frequently than the database, and the backup log can be used to redo oper-
+ations starting from the last database backup.
+
+833

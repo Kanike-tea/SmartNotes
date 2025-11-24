@@ -1,0 +1,60 @@
+180
+
+Divide-and-Conquer
+
+continue until the last one A[n — 2..n — 1] has been processed. The total number
+of key comparisons made will be equal to
+
+(n+1(n +2)
+2
+
+Thus, the question about the utility of quicksort comes down to its average-
+case behavior. Let Cayg(n) be the average number of key comparisons made by
+quicksort on a randomly ordered array of size n. A partition can happen in any
+position s (0 <s <n —1)aftern + 1 comparisons are made toachieve the partition.
+After the partition, the left and right subarrays will have s andn — 1 — 5 elements,
+respectively. Assuming that the partition split can happen in each position s with
+the same probability 1/n, we get the following recurrence relation:
+
+Cworst() = (2 +1) tn+-5-4+3= ~36€@(n).
+
+n=l
+
+Cay) == SU@ FD + Cores) + Cave? =1=5)] fora >,
+s=0
+
+Cavg(0) =0, — Cayg(1) = 0.
+
+Its solution, which is much trickier than the worst- and best-case analyses, turns
+out to be
+
+Cayg(n) © 2n Inn 1.390 logy n.
+
+Thus, on the average, quicksort makes only 39% more comparisons than in the
+best case. Moreover, its innermost loop is so efficient that it usually runs faster than
+mergesort (and heapsort, another n log n algorithm that we discuss in Chapter 6)
+on randomly ordered arrays of nontrivial sizes. This certainly justifies the name
+given to the algorithm by its inventor.
+
+Because of quicksort’s importance, there have been persistent efforts over the
+years to refine the basic algorithm. Among several improvements discovered by
+researchers are:
+
+= . better pivot selection methods such as randomized quicksort that uses a
+random element or the median-of-three method that uses the median of the
+leftmost, rightmost, and the middle element of the array
+
+= — switching to insertion sort on very small subarrays (between 5 and 15 elements
+for most computer systems) or not sorting small subarrays at all and finishing
+the algorithm with insertion sort applied to the entire nearly sorted array
+
+= modifications of the partitioning algorithm such as the three-way partition
+into segments smaller than, equal to, and larger than the pivot (see Problem 9
+in this section’s exercises)
+
+According to Robert Sedgewick [Sed11, p. 296], the world’s leading expert on
+quicksort, such improvements in combination can cut the running time of the
+algorithm by 20%-30%.
+
+Like any sorting algorithm, quicksort has weaknesses. It is not stable. It
+requires a stack to store parameters of subarrays that are yet to be sorted. While

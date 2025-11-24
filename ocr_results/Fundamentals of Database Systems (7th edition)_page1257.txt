@@ -1,0 +1,190 @@
+Index-based nested-loop join, 559,
+718-719
+Indexed allocation, file blocks, 564
+Indexed (ordered) collection expressions,
+OQL, 415
+Indexed-sequential file, 571, 616
+Indexes
+bitmap indexes, 634-637
+clustering, 602, 606-608
+constraint management using, 641
+creation of, 639-640
+data modeling access path, 34
+DBMS auxiliary files, 20
+duplicate management using, 641
+fully inverted file, 641
+hash indexes, 633-634
+locks for concurrency control,
+805-806
+logical versus physical, 638-639
+multilevel, 613-617
+multiple keys for, 613-633
+ordered index on multiple attributes,
+631-632
+physical database file structures as, 641
+primary, 602, 603-606
+rebuilding, 640
+secondary, 603, 609-612
+single-level ordered, 602-613
+spatial data, 991-993
+SQL creation of, 201-202
+tuning, 640-641
+Indexing fields, 601, 602
+Indexing structures
+column-based storage of relations, 642
+hints in queries, 641-642
+physical database design and, 601-652
+indexed sequential access method
+(ISAM), 601
+B-trees, 601-602, 622-630, 636-637
+B-trees, 601-602, 617-622, 629-630
+single-level ordered indexes, 602-613
+multilevel indexes, 613-617
+multiple keys for, 631-633
+hash indexes, 633-634
+bitmap indexes, 634-637
+function-based indexing, 637-638
+issues concerning, 638-642
+RDB design and, 643-646
+strings, 640
+Industrial internet of things (IIOT or
+I0T), 914
+Inference engine, deductive databases,
+999, 1004-1005
+Inference rules
+Armstrong's axioms, 506-509
+closure, 505-506, 508
+ANF schema using, 527-528
+functional dependencies, 505-509,
+527-528
+proof by contradiction, 507
+multivalued dependencies, 527-528
+Information extraction (IE), 1040
+
+Information privacy, security
+relationship to, 1128-1129
+Information repository, DBMS, 46
+Information retrieval (IR)
+Boolean model, 1030
+data, 1024
+databases compared to IR systems,
+1025-1026
+defined, 1022-1023
+desktop search engines for, 1025
+enterprise search systems for, 1024
+F-score for, 1046-1047
+free-form search request, 1023
+history of, 1026-1027
+information need, 1024
+inverted indexing, 1040-1044
+levels of scale, 1024
+modes of interaction in IR systems,
+1027-1028
+pipeline for processing, 1028-1029
+probabilistic model, 1033-1034
+queries in IR systems, 1035-1037
+recall and precision, 1044-1046
+search relevance, 1044-1047
+semantic approach, 1028
+semantic model, 1034-1035
+statistical approach, 1028
+text preprocessing, 1037-1040
+trends in, 1057-1063
+unstructured information, 1022
+users, 1023-1024
+vector space model, 1031-1033
+Information updating, 23
+Inherent model-based (implicit)
+constraints, 157
+Inherent rules, 22
+Inheritance
+behavior inheritance, 393
+class-schema interface, ODL, 404—405
+colon (:) notation for, 393
+EER-to-relational mapping, 301
+EXTENDS, 393
+extent inheritance, 377, 385
+function overloading and, 385
+generalization lattice or hierarchy, 119
+interface inheritance, 377, 393
+multiple, 118, 301, 377-378, 393
+ODBs, 366, 374-377, 377-378, 385, 393
+ODMG object model and, 393, 404—405
+selective, 377
+simplified model for, 347-377
+single, 118-119
+specialization lattice or hierarchy,
+117-118,
+SQL, 380
+subclass/superclass relationships, 110,
+117-119
+table inheritance, 385
+type inheritance, 385
+Initial hash function, 580
+Initial state, populating (loading)
+databases and, 35
+
+Index 1227
+
+Inner join, SQL table (relations),
+215-216
+Inner/outer joins, 254, 263-264
+Innermost nested query, 211
+INSERT command, SQL, 198-200
+Insert operation
+constraint violations and, 166-167
+relational data models, 166-167
+Insertion, B-trees, 626-629
+Insertion anomalies, RDB design and,
+465-466
+Instance variables, 365-366
+Instances (occurrences), 35, 72
+Instantiable class behavior, interface
+and, 392
+Instantiation, semantic modeling
+process, 130
+Integrity constraints
+database applications and, 21-22
+entity integrity, 163-165
+foreign keys and, 163-164
+referential integrity, 21, 163-165
+relational modeling and, 160-165
+relational database schemas and,
+160-163
+semantic, 165
+valid and not valid states and, 160-161
+Intellectual property rights, 1154-1155
+Intention, 35
+Interactive query interface, 43-44
+Interactive transactions, concurrency
+control and, 807
+Interblock gaps, disk devices, 550
+Interface inheritance, 377, 393
+Interfaces. See also GUI (Graphical User
+Interfaces)
+built-in, ODMG models, 393-396
+class-schema inheritance, ODL,
+404-405
+database operations, 12
+DBMS, 20-21, 40-42
+disk drives with computer systems,
+551-552
+instantiable class behavior and, 392
+multiple user, 20-21
+noninstantiable object behavior and,
+392
+object model definitions, 389-392
+ODMG models and, 389-396,
+404-405
+operation encapsulation and, 371
+operation specifications, 366
+Interleaved concurrency, 747
+Interleaved processes, 747
+Internal hashing, 572-575
+Internal (schema) level, 36
+Internal nodes, tree structures, 622
+Internet SCSI (iSCSI), 590
+Interpolating variables within text
+strings, 347
+Interpreted queries, 710
+Interquery parallelism, 687

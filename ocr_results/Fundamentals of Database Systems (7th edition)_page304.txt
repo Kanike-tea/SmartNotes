@@ -1,0 +1,54 @@
+274
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+in practice, the query optimizer needs to show the order of operations for query
+execution, which is not possible in query graphs.
+
+In the next section we discuss the relationship between the universal and existential
+quantifiers and show how one can be transformed into the other.
+
+8.6.6 Transforming the Universal and Existential Quantifiers
+
+We now introduce some well-known transformations from mathematical logic that
+relate the universal and existential quantifiers. It is possible to transform a universal
+quantifier into an existential quantifier, and vice versa, to get an equivalent expres-
+sion. One general transformation can be described informally as follows: Trans-
+form one type of quantifier into the other with negation (preceded by NOT); AND
+and OR replace one another; a negated formula becomes unnegated; and an un-
+negated formula becomes negated. Some special cases of this transformation can be
+stated as follows, where the = symbol stands for equivalent to:
+
+(Vx) (P(x)) = NOT (Ax) (NOT (P(x)))
+(Bx) (P(x) = NOT (Vx) (NOT (P(x)))
+(Wx) (P(x) AND Q(x)) = NOT (Ax) (NOT (P(x)) OR NOT (Q(x)))
+(Wx) (P(x) OR Q(x)) = NOT (Ax) (NOT (P(x)) AND NOT (Q(x)))
+(3x) (P(x) OR Q(x) = NOT (Vx) (NOT (P(x)) AND NOT (Q(x)))
+(Bx) (P(x) AND Q(x)) = NOT (Vx) (NOT (P(x)) OR NOT (Q(x)))
+
+Notice also that the following is TRUE, where the = symbol stands for implies:
+
+(Wx)(P(x)) = (Ax)(P(x))
+NOT (Ax)(P(x)) = NOT (Wx)(P(x))
+
+8.6.7 Using the Universal Quantifier in Queries
+
+Whenever we use a universal quantifier, it is quite judicious to follow a few rules to
+ensure that our expression makes sense. We discuss these rules with respect to the
+query Q3.
+
+Query 3. List the names of employees who work on all the projects controlled
+by department number 5. One way to specify this query is to use the universal
+quantifier as shown:
+
+Q3: {e.Lname, e.Fname | EMPLOYEE(e) AND ((‘/x)(NOT(PROJECT(x)) OR NOT
+(x.Dnum=5) OR ((Sw)(WORKS_ON(w) AND w.Essn=e.Ssn AND
+x.Pnumber=w.Pno))))}
+
+We can break up Q3 into its basic components as follows:
+
+Q3: {e.Lname, e.Fname | EMPLOYEE(e) AND F’}
+F’ = ((Wx)(NOT(PROJECT(x)) OR F,))
+F, = NOT(x.Dnum=5) OR Fy
+F, = ((dw)(WORKS_ON(w) AND w.Essn=e.Ssn
+AND x.Pnumber=w.Pno))

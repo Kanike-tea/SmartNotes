@@ -1,0 +1,38 @@
+13.6 Extracting XML Documents from Relational Databases 451
+
+Ssn Figure 13.12
+Hierarchical (tree) view with
+STUDENT Name) STUDENT as the root.
+1
+Class
+Sections
+completed
+Number
+:
+SECTION
+\
+1 (CCourse_number
+Course_name
+<xsd:element name="root"> Figure 13.13
+<asd:sequence> XML schema document
+
+<xsd:element name="student” minOccurs="0" maxOccurs="unbounded"> with student as the root.
+
+<xsd:sequence>
+<xsd:element name="ssn” type="xsd:string” />
+<xsd:element name="sname” type="xsd:string” />
+<xsd:element name="class” type="xsd:string” />
+<xsd:element name="section” minOccurs="0" maxOccurs="unbounded">
+<xsd:sequence>
+<xsd:element name="secnumber" type="xsd:unsignedint” />
+<xsd:element name="year” type="xsd:string” />
+<xsd:element name="quarter” type="xsd:string” />
+<xsd:element name="cnumber” type="xsd:unsignedint” />
+<xsd:element name="cname’ type="xsd:string” />
+<xsd:element name="grade” type="xsd:string” />
+</xsd:sequence>
+</xsd:element>
+</xsd:sequence>
+</xsd:element>
+</xsd:sequence>
+</xsd:element>

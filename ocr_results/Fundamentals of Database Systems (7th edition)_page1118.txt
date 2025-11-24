@@ -1,0 +1,43 @@
+1088 Chapter 28 Data Mining Concepts
+
+Salary
+
+Class is “no” {4,5} ‘Age {1,2} Class is “yes”
+Figure 28.7
+Decision tree based on sample
+training data where the leaf nodes <25 >= 25
+are represented by a set of RIDs
+of the partitioned records. Class is “no” {3} {6} Class is “yes”
+
+We can choose either Age or Acct_balance since they both have the largest gain. Let
+us choose Age as the partitioning attribute. We add a node with label Age that has
+two branches, less than 25, and greater or equal to 25. Each branch partitions the
+remaining sample data such that one sample record belongs to each branch and
+hence one class. Two leaf nodes are created and we are finished. The final decision
+tree is pictured in Figure 28.7.
+
+28.4 Clustering
+
+The previous data mining task of classification deals with partitioning data based
+on using a preclassified training sample. However, it is often useful to partition data
+without having a training sample; this is also known as unsupervised learning. For
+example, in business, it may be important to determine groups of customers who
+have similar buying patterns, or in medicine, it may be important to determine
+groups of patients who show similar reactions to prescribed drugs. The goal of
+clustering is to place records into groups, such that records in a group are simi-
+lar to each other and dissimilar to records in other groups. The groups are usu-
+ally disjoint.
+
+An important facet of clustering is the similarity function that is used. When the
+data is numeric, a similarity function based on distance is typically used. For exam-
+ple, the Euclidean distance can be used to measure similarity. Consider two
+n-dimensional data points (records) rj and rg. We can consider the value for the ith
+dimension as rj; and ry; for the two records. The Euclidean distance between points
+rj and r; in n-dimensional space is calculated as:
+
+Distance(r,, n,
+j
+
+The smaller the distance between two points, the greater is the similarity as
+we think of them. A classic clustering algorithm is the k-means algorithm,
+Algorithm 28.4.

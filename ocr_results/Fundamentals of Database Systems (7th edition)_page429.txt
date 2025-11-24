@@ -1,0 +1,88 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 399
+
+interface ObjectFactory {
+
+Object
+};
+
+new();
+
+interface SetFactory : ObjectFactory {
+
+Set
+};
+
+new_of_size(in long size);
+
+interface ListFactory : ObjectFactory {
+
+List
+};
+
+new_of_size(in long size);
+
+interface ArrayFactory : ObjectFactory {
+
+Array
+};
+
+new_of_size(in long size);
+
+interface DictionaryFactory : ObjectFactory {
+
+Dictionary
+
+};
+
+new_of_size(in long size);
+
+interface DateFactory : ObjectFactory {
+
+exception
+
+Date
+
+Date
+};
+
+InvalidDate(};
+
+calendar_date( _ in unsigned short year,
+in unsigned short month,
+in unsigned short day )
+raises(InvalidDate);
+
+current();
+
+interface DatabaseFactory {
+
+Database
+
+};
+
+new();
+
+interface Database {
+
+void
+void
+void
+Object
+
+Object
+
+ah
+
+open(in string database_name)
+raises (DatabaseNotFound, DatabaseOpen);
+close() raises(DatabaseClosed, ...);
+bind(in Object an_object, in string name)
+raises(DatabaseClosed, ObjectNameNotUnique, ...);
+unbind(in string name)
+raises(DatabaseClosed, ObjectNameNotFound, ...);
+lookup(in string object_name)
+raises(DatabaseClosed, ObjectNameNotFound,
+
+Figure 12.8
+Interfaces to illustrate factory
+objects and database objects.

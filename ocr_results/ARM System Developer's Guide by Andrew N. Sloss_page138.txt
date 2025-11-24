@@ -1,0 +1,60 @@
+EXAMPLE
+
+5.7
+
+5.5 Function Calls 125
+
+This compiles to
+
+queue_bytes_v2
+STR r14,[r13,#-4]!; save Ir on the stack
+LOR 3, [r0, #8] r3 = queue->Q_ptr
+
+LOR rl, [r0, #4] 3 14 = queue->Q_end
+queue_v2_loop
+
+LORBrl2,[r1],#1 3 rl2 = *(data++)
+
+TRB 12, [r3],#1 3 *(Qptr++) = riz
+
+CMP r3,r14 3 if (Qptr == Q end)
+
+LOREQ 3, [r0, #0] 3 Q.ptr = queue->Q start
+
+SUBS r2,r2,#1 3 --N and set flags
+
+BNE queue_v2_loop if (N!=0) goto loop
+STR 3, [r0, #8] queue->Q ptr = r3
+LOR pe, [r13] , #4 3 return
+
+The queue_bytes_v2 is one instruction longer than queue_bytes_v1, but it is in fact
+more efficient overall. The second version has only three function arguments rather than
+five. Each call to the function requires only three register setups. This compares with four
+register setups, a stack push, and a stack pull for the first version. There is a net saving
+of two instructions in function call overhead. There are likely further savings in the callee
+function, as it only needs to assign a single register to the Queue structure pointer, rather
+than three registers in the nonstructured case.
+
+There are other ways of reducing function call overhead if your function is very small
+and corrupts few registers (uses few local variables). Put the C function in the same C file as
+the functions that will call it. The C compiler then knows the code generated for the callee
+function and can make optimizations in the caller function:
+
+= The caller function need not preserve registers that it can see the callee doesn’t corrupt.
+Therefore the caller function need not save all the ATPCS corruptible registers.
+
+= If the callee function is very small, then the compiler can inline the code in the caller
+function. This removes the function call overhead completely.
+
+The function uint_to_hex converts a 32-bit unsigned integer into an array of eight hexa-
+decimal digits. It uses a helper function nybble_to_hex, which converts a digit d in the
+range 0 to 15 to a hexadecimal digit.
+
+unsigned int nybble_to_hex(unsigned int d)
+{
+
+if (d<10)
+
+{
+
+return d + '0';

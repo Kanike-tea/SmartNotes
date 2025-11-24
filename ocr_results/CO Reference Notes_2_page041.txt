@@ -1,0 +1,45 @@
+Ao
+a Address . . . . . Memory
+decoder : : : 3 cells
+Ay — i x $ 2
+Ag
+Data input/output lines: b7 by
+
+Figure 8.2 Organization of bit cells in a memory chip.
+
+¢ The data-input and data-output of each Sense/Write circuit are connected to a single bidirectional data-
+line.
+* Data-line can be connected to a data-bus of the computer.
+© Following 2 control lines are also used:
+1) R/W’ > Specifies the required operation.
+CS’ > Chip Select input selects a given chip in the multi-chipmemory
+
+Requirement of external
+Bit Organization | connection for address, data and
+control lines
+
+128 (16x8) 14
+(1024) 128x8(1k) | 19
+
+STATIC RAM (OR MEMORY)
+
+* Memories consist of circuits capable of retaining their state as long as power is applied are known.
+
+Word line
+
+Bit lines -
+Figure 8.4 A static RAM cell,
+1) Two inverters are cross connected to form a latch (Figure 8.4).
+2) The latch is connected to 2-bit-lines by transistors T] and T2.
+3) The transistors act as switches that can be opened/closed under the control of the word-line.
+4) When the word-line is at ground level, the transistors are turned off and the latch retain its state.
+
+Read Operation
+© To read the state of the cell, the word-line is activated to close switches T1 and T2.
+¢ If the cell is in state 1, the signal on bit-line b is high and the signal on the bit-line b" is low.
+© Thus, b and b“ are complement of each other.
+¢ Sense/Write circuit
+— monitors the state of b & b* and
+— sets the output accordingly.
+
+Page 42

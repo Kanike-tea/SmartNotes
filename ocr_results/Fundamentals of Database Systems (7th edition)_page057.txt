@@ -1,0 +1,54 @@
+1.8 When Not to Use a DBMS
+
+In spite of the advantages of using a DBMS, there are a few situations in which a
+DBMS may involve unnecessary overhead costs that would not be incurred in
+traditional file processing. The overhead costs of using a DBMS are due to the
+following:
+
+= High initial investment in hardware, software, and training
+= The generality that a DBMS provides for defining and processing data
+
+= Overhead for providing security, concurrency control, recovery, and integ-
+rity functions
+
+Therefore, it may be more desirable to develop customized database applications
+under the following circumstances:
+
+= Simple, well-defined database applications that are not expected to change
+at all
+
+= Stringent, real-time requirements for some application programs that may
+not be met because of DBMS overhead
+
+= Embedded systems with limited storage capacity, where a general-purpose
+DBMS would not fit
+
+= No multiple-user access to data
+
+Certain industries and applications have elected not to use general-purpose
+DBMSs. For example, many computer-aided design (CAD) tools used by mechan-
+ical and civil engineers have proprietary file and data management software that
+is geared for the internal manipulations of drawings and 3D objects. Similarly,
+communication and switching systems designed by companies like AT&T were
+early manifestations of database software that was made to run very fast with
+hierarchically organized data for quick access and routing of calls. GIS imple-
+mentations often implement their own data organization schemes for efficiently
+implementing functions related to processing maps, physical contours, lines,
+polygons, and so on.
+
+1.9 Summary
+
+In this chapter we defined a database as a collection of related data, where data
+means recorded facts. A typical database represents some aspect of the real world
+and is used for specific purposes by one or more groups of users. A DBMS is a
+generalized software package for implementing and maintaining a computerized
+database. The database and software together form a database system. We identi-
+fied several characteristics that distinguish the database approach from traditional
+file-processing applications, and we discussed the main categories of database
+users, or the actors on the scene. We noted that in addition to database users, there
+are several categories of support personnel, or workers behind the scene, in a data-
+base environment.
+
+1.9 Summary
+
+27

@@ -1,0 +1,44 @@
+404 Chapter 12 Object and Object-Relational Databases
+
+(a) GeometryObject
+
+RECTANGLE TRIANGLE CIRCLE
+
+(b) interface GeometryObject
+
+{ attribute enum Shape{RECTANGLE, TRIANGLE, CIRCLE, ... }
+Shape;
+attribute struct Point {short x, short y} Reference_point;
+float perimeter();
+float area();
+void translate(in short x_translation; in short y_translation);
+void rotate(in float angle_of_rotation); };
+class RECTANGLE : GeometryObject
+(extent RECTANGLES )
+{attribute struct Point {short x, short y} Reference_point;
+attribute short Length;
+attribute short Height;
+attribute float Orientation_angle; };
+class TRIANGLE : GeometryObject
+(extent TRIANGLES )
+{attribute struct Point {short x, short y} Reference_point;
+attribute short Side_1;
+; attribute short Side_2;
+Figure 13-14 of attribute _ float Side1_side2_angle;
+interface inheritance attribute float Side1_orientation_angle; };
+via *". (a) Graphical class CIRCLE : GeometryObject
+schema representation, (extent CIRCLES )
+(b) Corresponding { attribute struct Point {short x, short y} Reference_point;
+interface and class attribute short Radius; };
+
+definitions in ODL.
+
+However, the class GRADE requires some explanation. The GRADE class corre-
+sponds to the M:N relationship between STUDENT and SECTION in Figure 12.9(b).
+The reason it was made into a separate class (rather than as a pair of inverse rela-
+tionships) is because it includes the relationship attribute Grade.”
+
+Hence, the M:N relationship is mapped to the class GRADE, and a pair of 1:N rela-
+tionships, one between STUDENT and GRADE and the other between SECTION and
+
+32We will discuss alternative mappings for attributes of relationships in Section 12.4.

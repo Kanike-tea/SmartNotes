@@ -1,0 +1,57 @@
+Microcontrollers — BCS402
+
+and then compare with 0. Modulo arithmetic means that i now has the value +0x7fffffff,
+
+which is greater than zero. Thus the loop continues for many iterations.
+
+Of course, in practice, i rarely takes the value -0x80000000. The compiler can’t usually
+determine this, especially if the loop starts with a variable number of iterations. Therefore
+you should use the termination condition i!=0 for signed or unsigned loop counters. It saves
+
+one instruction over the condition i>0 for signed i.
+
+3.2 Loops Using a Variable Number of Iterations
+
+The checksum_v7 example shows how the compiler handles a for loop with a variable
+
+number of iterations N.
+
+int checksum_v7(int *data, unsigned int N)
+
+{
+
+int sum=0;
+
+for (; N!=0; N--)
+{
+sum += *(datat+);
+}
+return sum;
+}
+
+This compiles to
+
+chec ksum_v7
+MOV r2,#0 3; sum = 0
+cMP rl,#0 ; compare N, 0
+BEQ checksum_v7_end 3; if (N==0) goto end
+
+checksum_v7_loop
+
+LOR r3, [ro], #4 3 73 = *(datat+)
+SUBS ri,ri, #1 3 N-- and set flags
+ADD r2,173,1r2 3; sum += 13
+
+BNE checksum_v7_loop ; if (N!=0) goto loop
+checksum_v7_end
+
+MoV ro,r2 3; rd = sum
+
+Mov pe,rl4 3 return rO
+
+Notice that the compiler checks that N is nonzero on entry to the function. Often this check is
+unnecessary since you know that the array won’t be empty. In this case a do-while loop gives
+
+better performance and code density than a for loop.
+
+Dept. of ECE, GSSSIETW Page 42

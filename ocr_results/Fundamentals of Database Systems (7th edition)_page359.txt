@@ -1,0 +1,53 @@
+10.3 Database Programming with Function Calls and Class Libraries: SQL/CLI and JDBC
+
+function of SQL/CLI (line 8). In our example, the database server name we
+are connecting to is dbs and the account name and password for login are js
+and xyz, respectively.
+
+. Statement record. A statement record is set up in the program using
+SQLA1llocHandle. In line 9, the statement record created has the handle
+stmt1 and uses the connection con1.
+
+. Preparing an SQL statement and statement parameters. The SQL state-
+ment is prepared using the SQL/CLI function souprepare. In line 10,
+this assigns the SQL statement string (the query in our example) to the
+statement handle stmt1. The question mark (?) symbol in line 10 repre-
+sents a statement parameter, which is a value to be determined at run-
+time—typically by binding it to a C program variable. In general, there
+could be several parameters in a statement string. They are distinguished
+by the order of appearance of the question marks in the statement string
+(the first ? represents parameter 1, the second ? represents parameter 2,
+and so on). The last parameter in SoLPrepare should give the length of
+the SQL statement string in bytes, but if we enter the keyword soL_nrs,
+this indicates that the string holding the query is a NULL-terminated
+string so that SQL can calculate the string length automatically. This use
+of soL_nts also applies to other string parameters in the function calls in
+our examples.
+
+. Binding the statement parameters. Before executing the query, any param-
+eters in the query string should be bound to program variables using the
+SQL/CLI function soLBindParameter. In Figure 10.10, the parameter
+(indicated by 2) to the prepared query referenced by stmt1 is bound to the
+C program variable ssn in line 12. If there are n parameters in the SQL state-
+ment, we should have n SOLBindParameter function calls, each with a dif-
+ferent parameter position (1, 2, ... ,n).
+
+. Executing the statement. Following these preparations, we can now exe-
+cute the SQL statement referenced by the handle stmt1 using the func-
+tion SQLExecute (line 13). Notice that although the query will be
+executed in line 13, the query results have not yet been assigned to any C
+program variables.
+
+. Processing the query result. In order to determine where the result of the
+query is returned, one common technique is the bound columns approach.
+Here, each column in a query result is bound to a C program variable using
+the SoLBindcol function. The columns are distinguished by their order of
+appearance in the SQL query. In Figure 10.10 lines 15 and 16, the two col-
+umns in the query (Lname and Salary) are bound to the C program vari-
+ables Iname and salary, respectively.'>
+
+'5An alternative technique known as unbound columns uses different SQL/CLI functions, namely
+SQLGetCol or SALGetData, to retrieve columns from the query result without previously binding them;
+these are applied after the SQLFetch command in line 17.
+
+329

@@ -1,0 +1,35 @@
+448 — Chapter 13 XML: Extensible Markup Language
+
+integrity constraints, a relational schema can be considered to be a graph structure
+(for example, see Figure 3.7). Similarly, the ER model represents data using graph-
+like structures (for example, see Figure 7.2). We saw in Chapter 9 that there are
+straightforward mappings between the ER and relational models, so we can con-
+ceptually represent a relational database schema using the corresponding ER
+schema. Although we will use the ER model in our discussion and examples to clar-
+ify the conceptual differences between tree and graph models, the same issues apply
+to converting relational data to XML.
+
+We will use the simplified UNIVERSITY ER schema shown in Figure 13.8 to illus-
+trate our discussion. Suppose that an application needs to extract XML docu-
+ments for student, course, and grade information from the UNIVERSITY database.
+The data needed for these documents is contained in the database attributes of
+the entity types COURSE, SECTION, and STUDENT from Figure 13.8, and the
+relationships S-S and C-S between them. In general, most documents extracted
+
+Figure 13.8
+An ER schema diagram for a simplified UNIVERSITY database.
+
+Students 1 DEPARTMENT |1_ ~ Instructors
+a we
+Courses | 1
+
+Major dept be \ sr
+
+Ssn STUDENT COURSE INSTRUCTOR Salary
+
+M j 1
+Sections Seotons | 1 \ssations tauah
+completed Grade ections taug
+Ss (oxs} S41
+Students attended Course N Fr veractors
+N | section |

@@ -1,0 +1,55 @@
+196
+
+Chapter 6 Basic SQL
+
+Query 12. Retrieve all employees whose address is in Houston, Texas.
+
+Q12: SELECT —Fname, Lname
+FROM EMPLOYEE
+WHERE Address LIKE ‘%Houston,TX%’;
+
+To retrieve all employees who were born during the 1970s, we can use Query Q12A.
+Here, ‘7’ must be the third character of the string (according to our format for date),
+so we use the value “__ 5 ’, with each underscore serving as a place-
+
+holder for an arbitrary character.
+Query 12A. Find all employees who were born during the 1950s.
+
+Q12: SELECT —Fname, Lname
+FROM EMPLOYEE
+WHERE Bdate LIKE ‘__7 ;
+
+If an underscore or % is needed as a literal character in the string, the character
+should be preceded by an escape character, which is specified after the string using
+the keyword ESCAPE. For example, ‘AB\_CD\%EF’ ESCAPE ‘\’ represents the lit-
+eral string ‘AB_CD%EF’ because \ is specified as the escape character. Any charac-
+ter not used in the string can be chosen as the escape character. Also, we need a rule
+to specify apostrophes or single quotation marks (‘’) if they are to be included in a
+string because they are used to begin and end strings. If an apostrophe (’) is needed,
+it is represented as two consecutive apostrophes (”) so that it will not be interpreted
+as ending the string. Notice that substring comparison implies that attribute values
+are not atomic (indivisible) values, as we had assumed in the formal relational
+model (see Section 5.1) .
+
+Another feature allows the use of arithmetic in queries. The standard arithmetic
+operators for addition (+), subtraction (—), multiplication (*), and division (/) can
+be applied to numeric values or attributes with numeric domains. For example,
+suppose that we want to see the effect of giving all employees who work on the
+‘ProductX’ project a 10% raise; we can issue Query 13 to see what their salaries
+would become. This example also shows how we can rename an attribute in the
+query result using AS in the SELECT clause.
+
+Query 13. Show the resulting salaries if every employee working on the
+“ProductX’ project is given a 10% raise.
+
+Q13: SELECT E.Fname, E.Lname, 1.1 * E.Salary AS Increased_sal
+FROM EMPLOYEE AS E, WORKS_ON AS W, PROJECT AS P
+WHERE E.Ssn = W.Essn AND W.Pno = P.Pnumber AND
+P.Pname = ‘ProductX’;
+
+For string data types, the concatenate operator || can be used in a query to append
+two string values. For date, time, timestamp, and interval data types, operators
+include incrementing (+) or decrementing (—) a date, time, or timestamp by an
+interval. In addition, an interval value is the result of the difference between two
+date, time, or timestamp values. Another comparison operator, which can be used
+for convenience, is BETWEEN, which is illustrated in Query 14.

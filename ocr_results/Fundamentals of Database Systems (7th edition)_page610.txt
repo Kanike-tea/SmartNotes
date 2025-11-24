@@ -1,0 +1,52 @@
+580
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+dynamically as needed. The space overhead for the directory table is negligible. The
+maximum directory size is 2, where k is the number of bits in the hash value.
+Another advantage is that splitting causes minor reorganization in most cases, since
+only the records in one bucket are redistributed to the two new buckets. The only
+time reorganization is more expensive is when the directory has to be doubled (or
+halved). A disadvantage is that the directory must be searched before accessing the
+buckets themselves, resulting in two block accesses instead of one in static hashing.
+This performance penalty is considered minor and thus the scheme is considered
+quite desirable for dynamic files.
+
+Dynamic Hashing. A precursor to extendible hashing was dynamic hashing pro-
+posed by Larson (1978), in which the addresses of the buckets were either the n
+high-order bits or n — 1 high-order bits, depending on the total number of keys
+belonging to the respective bucket. The eventual storage of records in buckets for
+dynamic hashing is somewhat similar to extendible hashing. The major difference
+is in the organization of the directory. Whereas extendible hashing uses the notion
+of global depth (high-order d bits) for the flat directory and then combines adjacent
+collapsible buckets into a bucket of local depth d— 1, dynamic hashing maintains a
+tree-structured directory with two types of nodes:
+
+= Internal nodes that have two pointers—the left pointer corresponding to the
+0 bit (in the hashed address) and a right pointer corresponding to the 1 bit.
+
+= Leaf nodes—these hold a pointer to the actual bucket with records.
+
+An example of the dynamic hashing appears in Figure 16.12. Four buckets are
+shown (“000”, “001”, “110”, and “111”) with high-order 3-bit addresses (corre-
+sponding to the global depth of 3), and two buckets (“01” and “10”) are shown
+with high-order 2-bit addresses (corresponding to the local depth of 2). The latter
+two are the result of collapsing the “010” and “011” into “01” and collapsing “100”
+and “101” into “10”. Note that the directory nodes are used implicitly to deter-
+mine the “global” and “local” depths of buckets in dynamic hashing. The search
+for a record given the hashed address involves traversing the directory tree, which
+leads to the bucket holding that record. It is left to the reader to develop algo-
+rithms for insertion, deletion, and searching of records for the dynamic hashing
+scheme.
+
+Linear Hashing. The idea behind linear hashing, proposed by Litwin (1980), is to
+allow a hash file to expand and shrink its number of buckets dynamically without
+needing a directory. Suppose that the file starts with M buckets numbered 0, 1, ... ,
+M-—1and uses the mod hash function h(K) = K mod M; this hash function is called
+the initial hash function h;. Overflow because of collisions is still needed and can
+be handled by maintaining individual overflow chains for each bucket. However,
+when a collision leads to an overflow record in any file bucket, the first bucket in the
+file—bucket 0—is split into two buckets: the original bucket 0 and a new bucket M
+at the end of the file. The records originally in bucket 0 are distributed between the
+two buckets based on a different hashing function hj,;(K) = K mod 2M. A key prop-
+erty of the two hash functions h; and hj,; is that any records that hashed to bucket 0

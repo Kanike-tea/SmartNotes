@@ -1,0 +1,50 @@
+Table 13.6
+
+Figure 13.4
+
+13.2 Initializing the MPU, Caches, and Write Buffer 471
+
+Bit field assignments for the standard and extended access permission registers CP15:c5.
+
+Standard AP Extended AP
+
+Region Field name Bit field Field name Bit field
+0 APO 1:0] eAPO [3:0]
+
+1 API [3:2] eAP1 (7:4]
+2 AP2 [5:4] eAP2 (11:8]
+3 AP3 (7:6] eAP3 (15:12]
+4 AP4 [9:8] eAP4 [19:16]
+5 APS {11:10] eAPS [23:20]
+6 AP6 (13:12] eAP6 (27:24]
+7 AP7 (15:14] eAP7 [31:28]
+CP1S; 0 standard instruction region AP
+
+CP15:c5:c1 standard data region AP
+
+|AP7|AP6|AP5|AP4|AP3|AP2|AP1|APO}
+
+31 161514131211109 876543210
+
+CP15:c5:c2 extended instruction region AP
+CP15:c5:c3 extended data region AP
+
+eAP7 | eAPG | eAPS | eAP4 | eAP3 | eAP2| eAPI | eAPO
+
+3128272423) 2019 1615121 87 43 0
+
+CP15 register 5 access permission register formats.
+
+To assign access permission to a region requires a write to a secondary register in
+CP15:c5. Secondary registers CP15:c5:c0:0 and CP15:c5:c0:1 configure standard AP, and
+secondary registers CP15:c5:c0:2 or CP15:c5:c0:3 configure extended AP. Table 13.6 and
+Figure 13.4 show the register’s permission bit assignments for the AP registers.
+
+Processors that support extended permission can also run software written for standard
+permission. The type of permission in effect depends on the last write to a CP15 AP register:
+If the last written AP register was a standard AP register, then the core is using standard
+
+permission; if the last written AP register was an extended AP register, then the core uses
+extended permission. This works because a write to the standard AP registers also updates
+the extended AP registers, meaning that the high bits [2:3] of the extended AP region entry
+are cleared.

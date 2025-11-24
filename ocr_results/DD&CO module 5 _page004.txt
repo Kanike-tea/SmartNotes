@@ -1,0 +1,32 @@
+REGISTER TRANSFERS
+
+1)
+
+2)
+
+¢ Instruction execution involves a sequence of steps in which data are transferred
+from one register to another.
+
+¢ For each register, two control-signals are used: Riin & Riout. These are called
+Gating Signals.
+
+¢ Riin=1 0 data on bus is loaded into Ri. Riout=1
+
+(1 content of Ri is placed on bus.
+
+Riout=0, 1 bus can be used for transferring data from other registers.
+
+¢ For example, Move R1, R2; This transfers the contents of register R1 to register R2.
+This can be accomplished as follows:
+
+Enable the output of registers R1 by setting Rlout to 1 (Figure 7.2). This places the
+contents of R1 on processor-bus.
+
+Enable the input of register R2 by setting R2out to 1.
+
+This loads data from processor-bus into register R4.
+
+All operations and data transfers within the processor take place within time-
+periods defined by the
+
+processor-clock.

@@ -1,0 +1,48 @@
+5.1 Relational Model Concepts 153
+rae Name Attributes
+
+sruvent ai xf ES
+Name Ssn Home_phone Address Office phone | Age | Gpa
+Benjamin Bayer | 305-61-2435 | (817)373-1616 | 2918 Bluebonnet Lane | NULL 19 | 3.21
+4 Chung-cha Kim | 381-62-1245 | (817)375-4409 | 125 Kirby Road NULL. 18 | 2.89
+Tuples Nd Dick Davidson | 422-11-2320 | NULL 3452 Elgin Road (817)749-1253 | 25 | 3.53
+x Rohan Panchal_| 489-22-1100 | (817)376-9821 | 265 Lark Lane (817)749-6492 | 28 | 3.93
+Barbara Benson | 533-69-1238 | (817)839-8461 | 7384 Fontana Lane NULL. 19 | 3.25
+
+Figure 5.1
+The attributes and tuples of a relation STUDENT.
+
+The earlier definition of a relation can be restated more formally using set theory
+concepts as follows. A relation (or relation state) r(R) is a mathematical relation of
+degree n on the domains dom(A,), dom(A,), ... ,dom(A,,), which is a subset of the
+Cartesian product (denoted by x) of the domains that define R:
+
+r(R) C (dom(A,) x dom(A2) x... x (dom(A,,))
+
+The Cartesian product specifies all possible combinations of values from the under-
+lying domains. Hence, if we denote the total number of values, or cardinality, in a
+domain D by |D| (assuming that all domains are finite), the total number of tuples
+in the Cartesian product is
+
+|dom(A))| x |dom(A3)| x... x |dom(A,,)]
+
+This product of cardinalities of all domains represents the total number of possible
+instances or tuples that can ever exist in any relation state r(R). Of all these possible
+combinations, a relation state at a given time—the current relation state—reflects
+only the valid tuples that represent a particular state of the real world. In general, as
+the state of the real world changes, so does the relation state, by being transformed
+into another relation state. However, the schema R is relatively static and changes
+very infrequently—for example, as a result of adding an attribute to represent new
+information that was not originally stored in the relation.
+
+It is possible for several attributes to have the same domain. The attribute names indi-
+cate different roles, or interpretations, for the domain. For example, in the STUDENT
+relation, the same domain USA_phone_numbers plays the role of Home_phone, referring
+to the home phone of a student, and the role of Office_phone, referring to the office
+phone of the student. A third possible attribute (not shown) with the same domain
+could be Mobile_phone.
+
+5.1.2 Characteristics of Relations
+
+The earlier definition of relations implies certain characteristics that make a rela-
+tion different from a file or a table. We now discuss some of these characteristics.

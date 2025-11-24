@@ -1,0 +1,53 @@
+896
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+set of operations that can be used by the application programmers. The key is a
+unique identifier associated with a data item and is used to locate this data item
+rapidly. The value is the data item itself, and it can have very different formats for
+different key-value storage systems. In some cases, the value is just a string of bytes
+or an array of bytes, and the application using the key-value store has to interpret
+the structure of the data value. In other cases, some standard formatted data is
+allowed; for example, structured data rows (tuples) similar to relational data, or
+semistructured data using JSON or some other self-describing data format. Differ-
+ent key-value stores can thus store unstructured, semistructured, or structured data
+items (see Section 13.1). The main characteristic of key-value stores is the fact that
+every value (data item) must be associated with a unique key, and that retrieving the
+value by supplying the key must be very fast.
+
+There are many systems that fall under the key-value store label, so rather than pro-
+vide a lot of details on one particular system, we will give a brief introductory over-
+view for some of these systems and their characteristics.
+
+24.4.1 DynamoDB Overview
+
+The DynamoDB system is an Amazon product and is available as part of Amazon’s
+AWS/SDK platforms (Amazon Web Services/Software Development Kit). It can be
+used as part of Amazon’s cloud computing services, for the data storage component.
+
+DynamoDB data model. The basic data model in DynamoDB uses the concepts
+of tables, items, and attributes. A table in DynamoDB does not have a schema; it
+holds a collection of self-describing items. Each item will consist of a number of
+(attribute, value) pairs, and attribute values can be single-valued or multivalued. So
+basically, a table will hold a collection of items, and each item is a self-describing
+record (or object). DynamoDB also allows the user to specify the items in JSON for-
+mat, and the system will convert them to the internal storage format of DynamoDB.
+
+When a table is created, it is required to specify a table name and a primary key;
+the primary key will be used to rapidly locate the items in the table. Thus, the pri-
+mary key is the key and the item is the value for the DynamoDB key-value store.
+The primary key attribute must exist in every item in the table. The primary key can
+be one of the following two types:
+
+= A single attribute. The DynamoDB system will use this attribute to build a
+hash index on the items in the table. This is called a hash type primary key.
+The items are not ordered in storage on the value of the hash attribute.
+
+= A pair of attributes. This is called a hash and range type primary key. The
+primary key will be a pair of attributes (A, B): attribute A will be used for hash-
+ing, and because there will be multiple items with the same value of A, the B
+values will be used for ordering the records with the same A value. A table
+with this type of key can have additional secondary indexes defined on its
+attributes. For example, if we want to store multiple versions of some type of
+items in a table, we could use ItemID as hash and Date or Timestamp (when
+the version was created) as range in a hash and range type primary key.

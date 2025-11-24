@@ -1,0 +1,73 @@
+498
+
+Chapter 14 Basics
+
+14.20.
+
+14.21
+
+14.22
+14.23
+
+14.24,
+
+14.25.
+
+14.26.
+
+of Functional Dependencies and Normalization for Relational Databases
+
+d. Each section has an instructor (Iname), semester (Semester), year (Year),
+course (Sec_course), and section number (Sec_num). The section number
+distinguishes different sections of the same course that are taught during
+the same semester/year; its values are 1, 2, 3, ... , up to the total number of
+sections taught during each semester.
+
+e. A grade record refers to a student (Ssn), a particular section, and a
+grade (Grade).
+
+Design a relational database schema for this database application. First show
+all the functional dependencies that should hold among the attributes. Then
+design relation schemas for the database that are each in 3NF or BCNE. Spec-
+ify the key attributes of each relation. Note any unspecified requirements,
+and make appropriate assumptions to render the specification complete.
+
+. What update anomalies occur in the EMP_PROJ and EMP_DEPT relations of
+Figures 14.3 and 14.4?
+
+. In what normal form is the LOTS relation schema in Figure 14.12(a) with
+respect to the restrictive interpretations of normal form that take only the
+primary key into account? Would it be in the same normal form if the gen-
+eral definitions of normal form were used?
+
+. Prove that any relation schema with two attributes is in BCNF.
+
+. Why do spurious tuples occur in the result of joining the EMP_PROJ1 and
+EMP_LOCS relations in Figure 14.5 (result shown in Figure 14.6)?
+
+. Consider the universal relation R = {A, B, C, D, E, F, G, H, I, J} and the set
+of functional dependencies F = {{A, B}>{C}, {A}{D, E}, {B}>{F},
+{F}—{G, H}, {D}>{1, J}}. What is the key for R? Decompose R into 2NF and
+then 3NF relations.
+
+. Repeat Exercise 14.24 for the following different set of functional dependen-
+cies G= {{A, B}>{C}, {B, D} 9{E, F}, {A, D} 1G, H}, {A} {I (HJ OU}.
+
+. Consider the following relation:
+
+A B Cc |TUPLE#
+10 bl cl 1
+
+10 b2 2.
+ll b4 cl
+12 b3, c4
+13 bl cl
+14 b3 c4
+
+Que foo fro
+
+a. Given the previous extension (state), which of the following dependen-
+cies may hold in the above relation? If the dependency cannot hold,
+explain why by specifying the tuples that cause the violation.
+
+i ADB, iiBOC, iii CoB, iv.B>A, v.C>A

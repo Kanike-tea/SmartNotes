@@ -1,0 +1,43 @@
+Microcontrollers-BCS402
+
+e Fetch loads an instruction from memory.
+
+e Decode identifies the instruction to be executed.
+
+e Execute processes the instruction and writes the result back to a register.
+Figure 5 illustrates the pipeline using a simple example. It shows a sequence of three
+instructions being fetched, decoded, and executed by the processor. Each instruction takes a
+
+single cycle to complete after the pipeline is filled.
+
+Fetch Decode
+
+Execute
+
+Fig 5: Pipelined Instruction Sequence
+
+The three instructions are placed into the pipeline sequentially. In the first cycle the core
+fetches the ADD instruction from memory. In the second cycle the core fetches the SUB
+instruction and decodes the ADD instruction. In the third cycle, both the SUB and ADD
+instructions are moved along the pipeline. The ADD instruction is executed, the SUB
+instruction is decoded, and the CMP instruction is fetched. This procedure is called filling the
+ipeline. The pipeline allows the core to execute an instruction every cycle.
+
+As the pipeline length increases, the amount of work done at each stage is reduced, which
+allows the processor to attain a higher operating frequency. This in turn increases the
+erformance. The system latency also increases because it takes more cycles to fill the
+ipeline before the core can execute an instruction. The increased pipeline length also means
+there can be data dependency between certain stages.
+
+The pipeline design for each ARM family differs. For example, The ARM9 core increases the
+
+ipeline length to five stages, as shown in Figure 6.
+
+(| Fetch }-f]Decode}-ffExecute} +f] Memory} +f] Write )
+
+Fig 6: ARM9 five-stage pipeline
+The ARM9 adds a memory and write back stage, which allows the ARM9 to process on
+
+average 1.1 Dhrystone MIPS per MHz—an increase in instruction throughput by around 13%
+
+Dept. of ECE, GSSSIETW Page 24

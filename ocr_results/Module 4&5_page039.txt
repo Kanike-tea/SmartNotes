@@ -1,0 +1,46 @@
+Microcontrollers - BCS402
+
+The bit field for the tag is now two bits larger, and the set index bit field is two bits smaller. This
+means four million main memory addresses now map to one set of four cache lines, instead of
+one million addresses mapping to one location. The size of the area of main memory that maps to
+cache is now | KB instead of 4 KB. This means that the likelihood of mapping cache line data
+blocks to the same set is now four times higher. This is offset by the fact that a cache line is one
+
+fourth less likely to be evicted.
+Increasing Set Associativity
+
+As the associativity of a cache controller goes up, the probability of thrashing goes down. The
+ideal goal would be to maximize the set associativity of a cache by designing it so any main
+memory location maps to any cache line. A cache that does this is known as a fully associative
+cache. However, as the associativity increases, so does the complexity of the hardware that
+supports it. One method used by hardware designers to increase the set associativity of a cache
+
+includes a content addressable memory (CAM).
+
+A CAM uses a set of comparators to compare the input tag address with a cache-tag stored in
+each valid cache line. A CAM works in the opposite way a RAM works. Where a RAM
+produces data when given an address value, a CAM produces an address if a given data value
+exists in the memory. Using a CAM allows many more cache-tags to be compared
+
+simultaneously, thereby increasing the number of cache lines that can be included in a set.
+
+Address issued Cache
+by processor core controller
+31-4 Miss
+I
+Tag Pf
+Address/data
+34 bus
+CAM
+set 4 cache
+Set [>| select lines per
+index logic way
+4) |
+3
+Data
+index J
+oWI
+
+Figure 9 ARM940T—4 KB 64-way set associative D-cache using a CAM.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 40

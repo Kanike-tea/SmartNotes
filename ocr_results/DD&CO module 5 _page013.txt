@@ -1,0 +1,42 @@
+sa Pipelining
+
+Pipelining is a technique of decomposing a sequential process into
+suboperations, with each subprocess being executed in a special dedicated
+segment that operates concurrently with all other segments. The name “pipeline”
+implies aflow of information analogous to an industrial assembly line. It is
+characteristic of pipelines that severalcomputations can be in progress in distinct
+segments at the same time.
+
+« Perhaps the simplest way of viewing the pipeline structure is to imagine that each segment consists
+ofan input register followed by a combinational circuit.
+o The register holds the data.
+o  Thecombinational circuit performs the suboperation in the particularsegment.
+eA clock is applied to all registers after enough time has elapsed to perform allsegment
+
+activity.
+- Example
+
+« — The pipeline organization will be demonstrated by means of a simple example.
+o To perform the combined multiply and add operations with a stream
+ofnumbers
+Ai* Bi + Ci fori = 1, 2, 3, 7
+
+« Each suboperation is to be implemented in a segment within a pipeline.
+
+o RI€©A,R2€B Input A; and B;
+o R3€R1*R2,R4 €C;Multiply and input C;
+o RS€©R3+R4 Add C; to product
+
+The five registers are loaded with new data every clock pulse. The effect of
+each clock is shownin Table 9-1. The first clock pulse transfers A1 and 31 into R1
+andR2. The second clockpulse transfers the product of R1 and R2 into R3 and Clinto
+R4. The same clock pulse transfers A2 and B2 into R1 and R2. The third clock pulse
+operates on all three segments simultaneously. It places A3 and B3into R1 and R2,
+transfers the product of R1 and R2 into R3, transfers C2 intoR4, and places the
+sum of R3_and R4 into RS. It takes three clock pulses to fill up the pipe and
+retrieve the first output from RS. From there on, each clock produces a new output
+and moves the data one step down the pipeline. This happens as longas new input
+data flow into the system. When no more input data are available, the clock must
+continue until the last output emerges out of the pipeline.
+
+e Each segment has one or two registers and a combinational circuit as shown in Fig. 9-2.

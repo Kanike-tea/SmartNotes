@@ -1,0 +1,50 @@
+9.3 Interrupt Handling Schemes 333
+
+9.3 INTERRUPT HANDLING SCHEMES
+
+In this final section we will introduce a number of different interrupt handling schemes,
+ranging from the simple nonnested interrupt handler to the more complex grouped prior-
+itized interrupt handler. Each scheme is presented as a reference with a general description
+plus an example implementation.
+
+The schemes covered are the following:
+
+= A nonnested interrupt handler handles and services individual interrupts sequentially. It
+is the simplest interrupt handler.
+
+= A nested interrupt handler handles multiple interrupts without a priority assignment.
+= A reentrant interrupt handler handles multiple interrupts that can be prioritized.
+= A prioritized simple interrupt handler handles prioritized interrupts.
+
+= A prioritized standard interrupt handler handles higher-priority interrupts in a shorter
+time than lower-priority interrupts.
+
+=A prioritized direct interrupt handler handles higher-priority interrupts in a shorter time
+and goes directly to a specific service routine.
+
+= A prioritized grouped interrupt handler is a mechanism for handling interrupts that are
+grouped into different priority levels.
+
+= A VIC PL190 based interrupt service routine shows how the vector interrupt controller
+(VIC) changes the design of an interrupt service routine.
+
+9.3.1 NONNESTED INTERRUPT HANDLER
+
+The simplest interrupt handler is a handler that is nonnested: the interrupts are disabled
+until control is returned back to the interrupted task or process. Because a nonnested
+interrupt handler can only service a single interrupt at a time, handlers of this form are
+not suitable for complex embedded systems that service multiple interrupts with differing
+priority levels.
+
+Figure 9.8 shows the various stages that occur when an interrupt is raised in a system
+that has implemented a simple nonnested interrupt handler:
+
+1. Disable interrupt/-—When the IRQ exception is raised, the ARM processor will disable
+further IRQ exceptions from occurring. The processor mode is set to the appropri-
+ate interrupt request mode, and the previous cpsr is copied into the newly available
+spsr_{interrupt request mode}. The processor will then set the pe to point to the correct
+entry in the vector table and execute the instruction. This instruction will alter the pc to
+point to the specific interrupt handler.
+
+2. Save context—On entry the handler code saves a subset of the current processor mode
+nonbanked registers.

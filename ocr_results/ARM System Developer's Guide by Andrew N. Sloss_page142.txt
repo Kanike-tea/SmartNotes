@@ -1,0 +1,56 @@
+5.6 Pointer Aliasing 129
+
+data = get_next_packet(&N) ;
+
+do
+{
+
+sum += *(data++);
+} while (--N);
+
+return sum;
+
+Here get_next_packet isa function returning the address and size of the next data packet.
+The previous code compiles to
+
+checksum_next_packet
+STMFD  r13!,{r4,r14}
+SUB r13,r13,#8
+ADD r0,r13,#4
+
+save r4, Ir on the stack
+create two stacked variables
+r0 = &N, N stacked
+
+MOV r4,#0 3 sum = 0
+BL get_next_packet 3 r0 = data
+checksum_loop
+LOR rl, [r0] #4 3 rl = *(datat+)
+‘ADD r4,r1,r4 3 sum += rl
+
+LOR rl, [r13,#4] rl = N (read from stack)
+
+suBSrl,rl,#1 3 rl-- & set flags
+sTR rl, [r13,#4] 3; N= rl (write to stack)
+BNE checksum_loop 3 if (N!=0) goto loop
+
+MOV r0,r4
+ADD 13, r13,#8
+LOMFD 13! {r4,pc}
+
+rO = sum
+
+delete stacked variables
+
+return r0
+
+Note how the compiler reads and writes N from the stack for every N--. Once you
+take the address of N and pass it to get_next_packet, the compiler needs to worry about
+aliasing because the pointers data and &N may alias. To avoid this, don’t take the address
+of local variables. If you must do this, then copy the value into another local variable
+before use.
+
+You may wonder why the compiler makes room for two stacked variables when it only
+uses one. This is to keep the stack eight-byte aligned, which is required for LDRD instructions
+available in ARMVSTE. The example above doesn’t actually use an LDRD, but the compiler
+does not know whether get_next_packet will use this instruction.

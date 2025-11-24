@@ -1,0 +1,51 @@
+362 Chapter 9 Exception and Interrupt Handling
+
+Table 9.12
+
+Lowest significant bit table.
+
+Binary pattern Value
+
+0000 unknown
+0001
+0010
+0011
+0100
+0101
+0110
+olll
+1000
+1001
+1010
+1011
+1100
+1101
+1110
+1111
+
+cH oNcoHOUSHONOHS
+
+The address of the lowest significant bit table is then loaded into register r11. A byte is
+loaded from the start of the table using the value in register r10 (0, 1, 2, or 3, see Table 9.12).
+Once the lowest significant bit position is loaded into register r11, the handler branches to
+a routine.
+
+The disable_lower_priority interrupt routine first checks for a spurious (no longer
+present) interrupt. If the interrupt is spurious, then the unknown_condition routine is
+called. The handler then loads the IRQEnable register and places the result in register r12.
+
+The priority mask is found by loading in the address of the priority mask table and
+then shifting the data in register r1J left by two. The result, 0, 4, 8, or 12, is added to the
+priority mask address. Register r]0 then contains a mask to disable the lower-priority group
+interrupts from being raised.
+
+The next step is to clear the lower-priority interrupts using the mask by performing a
+binary AND with the mask in registers r10 and r12 (IRQEnab1e register) and then clearing
+the bits by saving the result into the IRQEnableClear register. At this point it is now safe
+to enable IRQ exceptions by clearing the i bit in the cpsr.
+
+Lastly the handler jumps to the correct interrupt service routine by modifying register
+rll (which still contains the highest-priority interrupt) and the pc. By shifting register r11
+left by two and adding the result to the pc the address of the ISR is determined. This address
+is then loaded directly into the pc. Note that the jump table must follow the LDR instruction.
+The NOP is present due to the ARM pipeline.

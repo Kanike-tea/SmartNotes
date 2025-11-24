@@ -1,0 +1,45 @@
+Extension to Multiple Inputs
+
+The gates shown in above Fig. except for the inverter and buffer - can be extended to have more than
+two inputs. A gate can be extended to have multiple inputs if the binary operation it represents is
+commutative and associative. The AND and OR operations, defined in Boolean algebra, possess these
+two properties. For the OR function, we have
+x+y=y+x (commutative)
+
+and
+
+(x+y)+z=x+(y+z)=x+y+z (associative)
+which indicates that the gate inputs can be interchanged and that the OR function can be extended to
+three or more variables.
+To overcome this difficulty, we define the multiple NOR (or NAND) gate as a complemented OR (or
+
+AND) gate.
+
+Ne
+NMS H
+
+(a) 3-input NOR gate (b) 3-input NAND gate
+
+The graphic symbols for the three-input gates are shown in Fig. In writing cascaded NOR and NAND
+operations, one must use the correct parentheses to signify the proper sequence of the gates. To
+demonstrate this principle, consider the circuit of Fig. The Boolean function for the circuit must be
+
+written as F = [(ABC) ' (DE) ']'= ABC + DE
+
+D> F = [(ABC)' : (DE)']’ = ABC + DE
+D tT)
+E—
+
+(c) Cascaded NAND gates
+
+Positive and Negative Logic
+
+Qw>
+
+The binary signal at the inputs and outputs of any gate has one of two values, except during transition.
+One signal value represents logic 1 and the other logic 0. Since two signal values are assigned to two
+logic values, there exist two different assignments of signal level to logic value, as shown in Figure. The
+higher signal level is designated by H and the lower signal level by L. Choosing the high-level H to
+represent logic 1 defines a positive logic system. Choosing the low-level L to represent logic 1
+
+defines a negative logic system.

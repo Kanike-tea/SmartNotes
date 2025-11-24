@@ -1,0 +1,50 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 08 (b)
+8 b) Write a Python program for plotting different types of plots using Bokeh.
+
+Aim: Demonstration of different types of plots using Bokeh.
+
+PROGRAM EXPLANATION
+This Python program uses the Bokeh library to create a single plot with multiple types of glyphs,
+including a line plot, a bar chart, and a scatter plot. Here's a step-by-step explanation of the
+
+program:
+
+1. Import necessary modules: The program imports NumPy for numerical operations and
+Bokeh modules for creating interactive plots.
+
+2. Specify the output file: This line tells Bokeh to generate an HTML file named
+"multiple_plots.html" where the plot will be saved.
+
+3. Create a new plot object: This line creates a new Bokeh plot object named fig with
+specified width, height, and a title.
+
+4. Generate data for the plot: NumPy is used to generate data for the x-axis (x) and compute
+the corresponding y-axis values (y).
+
+5. Add a line glyph to the plot: This line adds a line plot to the figure using the line method.
+The line_width parameter sets the width of the line, and legend_label provides a label for
+the legend.
+
+6. Add a bar chart to the plot: Here, a vertical bar chart is added to the figure using the vbar
+method. The width parameter specifies the width of the bars, and bottom sets the starting
+point of the bars.
+
+7. Add a scatter plot to the plot: A scatter plot is added to the figure using the circle method.
+The size parameter sets the size of the scatter points, and color specifies the point color.
+
+8. Customize the plot appearance: This code customizes the appearance of the plot by
+adding axis labels for the x and y axes and setting the legend location to the top-left
+corner.
+
+9. Show the plot: The show function displays the Bokeh plot in a web browser. The plot is
+
+also saved in the HTML file specified earlier using output_file.
+In this program, we demonstrate three types of plots:
+
+1. Line Plot: We create a simple line plot of the sine function.
+
+2. Bar Plot: We create a bar plot to visualize the counts of various fruits.
+
+Dept. of CSE 61 GSSSIETW, Mysuru

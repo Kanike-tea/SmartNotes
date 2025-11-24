@@ -1,0 +1,66 @@
+556 Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Robotic arms write on multiple cartridges in parallel using multiple tape drives and
+automatic labeling software to identify the backup cartridges. An example of a giant
+library is the SL8500 model of Sun Storage Technology. The SL8500 scales from
+1,450 to just over 10,000 slots and from 1 to 64 tape drives within each library. It
+accepts both DLT/SDLT and LTO tapes. Up to 10 SL8500s can be connected within
+a single library complex for over 100,000 slots and up to 640 drives. With 100,000
+slots, the SL8500 can store 2.1 exabytes (exabyte = 1,000 petabytes, or million TB =
+10**18 bytes). We defer the discussion of disk storage technology called RAID, and
+of storage area networks, network-attached storage, and iSCSI storage systems, to
+the end of the chapter.
+
+16.3 Buffering of Blocks
+
+When several blocks need to be transferred from disk to main memory and all the
+block addresses are known, several buffers can be reserved in main memory to
+speed up the transfer. While one buffer is being read or written, the CPU can pro-
+cess data in the other buffer because an independent disk I/O processor (controller)
+exists that, once started, can proceed to transfer a data block between memory and
+disk independent of and in parallel to CPU processing.
+
+Figure 16.3 illustrates how two processes can proceed in parallel. Processes A and B
+are running concurrently in an interleaved fashion, whereas processes C and D are
+running concurrently in a parallel fashion. When a single CPU controls multiple
+processes, parallel execution is not possible. However, the processes can still run
+concurrently in an interleaved way. Buffering is most useful when processes can
+run concurrently in a parallel fashion, either because a separate disk I/O processor
+is available or because multiple CPU processors exist.
+
+Figure 16.4 illustrates how reading and processing can proceed in parallel when the
+time required to process a disk block in memory is less than the time required to
+
+Interleaved concurrency Parallel execution of
+of operations A and B operations C and D
+
+mo i rot : :
+
+fo ' 4 ! !
+
+A! nr H H
+
+i— I Hl Hl Hl
+
+: ! ! ! : : :
+
+: ! ! ! : : :
+
+Hl ' ' ' Hl Hl Hl
+
+ho Boa iB! : :
+
+: i i i Hi : :
+
+Hl ' ' ' Hl H i
+
+: ! ! ! : : Hi
+
+: ! ! ! : ¢ 7
+
+7 i L Lt : ‘
+
+Figure 16.3 i i i i
+Interleaved concurrency Time
+
+versus parallel execution. 4 b bs ty

@@ -1,0 +1,24 @@
+o Different segments may take different times to operate on the incominginformation.
+
+o Some segments are skipped for certain operations.
+o Two or more segments may require memory access at the same time, causing one
+segment to wait until another is finished with the memory.
+
+Example: four-segment instruction pipeline:
+
+* Assume that:
+o The decoding of the instruction can be combined with the calculation of the effective
+address into one segment.
+o The instruction execution and storing of the result can be combined into onesegment.
+« Fig 9-7 shows how the instruction cycle in the CPU can be processed with a four- segment
+pipeline.
+o Thus up to four suboperations in the instruction cycle can overlap and up tofour different
+instructions can be in progress of being processed at the sametime.
+
+e  Aninstruction in the sequence may be causes a branch out of normal sequence.
+o» In that case the pending operations in the last two segments are completedand all
+information stored in the instruction buffer is deleted.
+
+o Similarly, an interrupt request will cause the pipeline to empty and start againfrom a new
+address value.
+« — Fig. 9-8 shows the operation of the instruction pipeline.

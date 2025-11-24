@@ -1,0 +1,47 @@
+614 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.13
+
+STR data types.
+Store Datatype <size> (bytes) Action
+STR word 4 memory(a, 4) = Rd
+STRB unsigned Byte 1 memory(a, 1) = (char)Rd
+STRBT Byte Translated 1 memoryT(a, 1) = (char)Rd
+STRD Double word 8 memory(a, 4) = Rd
+memory(at4, 4) = R(d+1)
+STREX word EXclusive 4 if (IsExclsuive(a)) {
+memory(a, 4) = Rm;
+Rd = 0;
+} else {
+Rd = 1;
+}
+STRH unsigned Halfword 2 memory(a, 2) = (short) Rd
+STRT word Translated 4 memoryT(a, 4) = Rd
+
+Ifthe address ais not a multiple of <size>, then the store is unaligned. Because the behav-
+ior of an unaligned store depends on the architecture revision, memory system, and system
+coprocessor (CP15) configuration, it is best to avoid unaligned stores if possible. Assuming
+that the external memory system does not abort unaligned stores, then the following rules
+usually apply. In the rules, A is bit 1 of system coprocessor register CP15:cl:c0:0, and U
+is bit 22 of CP15:cl:c0:0, introduced in ARMv6. If there is no system coprocessor, then
+A=U=0.
+
+= IfA = 1, then unaligned stores cause an alignment fault data abort exception except
+that word-aligned double-word stores are supported if U = 1.
+
+= IfA =Oand U = 1, then unaligned stores are supported for STR{ | T|H| SH}. Word-
+aligned stores are supported for STRD. A non-word-aligned STRD generates an alignment
+fault data abort.
+
+= IfA =Oand U = 0, then STRand STRT write to memory(a & ~3, 4). All other unaligned
+operations are unpredictable but do not cause an alignment fault.
+
+Format 17 generates a pc -relative store accessing the address specified by <Jabel>. In other
+words it assembles to STR<cond><type> Rd, [pc, #<offset>] whenever this instruction is
+supported and <offset>=<label>-pc is in range.
+
+Notes
+
+= For double-word stores (formats 9 to 12), Rd must be even and in the range r0 to r12.
+
+= Ifthe addressing mode updates Rn, then Rd and Rn must be distinct.

@@ -1,0 +1,25 @@
+6.3 Balanced Search Trees 221
+
+single Rerotation
+
+Lag
+
+FIGURE 6.4 General form of the A-rotation in the AVL tree. A shaded node is the last
+one inserted.
+
+double LR-rotation
+
+FIGURE 6.5 General form of the double LR-rotation in the AVL tree. A shaded node
+is the last one inserted. It can be either in the left subtree or in the right
+subtree of the root's grandchild.
+
+The double right-left rotation (RL-rotation) is the mirror image of the double
+LR-rotation and is left for the exercises.
+
+Note that the rotations are not trivial transformations, though fortunately they
+can be done in constant time. Not only should they guarantee that a resulting tree is
+balanced, but they should also preserve the basic requirements of a binary search
+tree. For example, in the initial tree of Figure 6.4, all the keys of subtree 7; are
+smaller than c, which is smaller than all the keys of subtree 7>, which are smaller
+than r, which is smaller than all the keys of subtree 7;. And the same relationships
+among the key values hold, as they must, for the balanced tree after the rotation.

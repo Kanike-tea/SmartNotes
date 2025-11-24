@@ -1,0 +1,39 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Linked representation:
+The problems in array representation are:
+
+e It is good for complete binary trees, but more memory is wasted for skewed and
+
+many other binary trees.
+e The insertion and deletion of nodes from the middle ofa tree require the
+
+movement of many nodes to reflect the change in level number of these nodes.
+These problems can be easily overcome by linked representation
+
+Each node has three fields
+
+e LeftChild - which contains the address of left subtree
+e RightChild - which contains the address of right subtree.
+e Data - which contains the actual information
+
+C Code for node:
+
+typedef struct node *treepointer;
+typedef struct
+{
+int data;
+treepointer leftChild, rightChild
+}node;
+leftChild data rightChild | (a
+leftChild rightChild
+Figure: Node representation
+A ¢ A)
+(B @ vc
+Oo @o (B) (F) ()
+a @ C1
+CE Figure 1(b) Complete binary tree
+Figure 1(a) skewed binary tree
+vtucode.in
+
+19

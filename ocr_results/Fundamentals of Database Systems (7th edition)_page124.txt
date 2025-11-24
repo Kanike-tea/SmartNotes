@@ -1,0 +1,34 @@
+94
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+COLLEGE <a> INSTRUCTOR
+(1) (0,1)
+(ON) CStartDate (0,1) (0,N)
+CHAIR (1,1)
+ADMINS.
+(1) G@iName>
+(1,1) EMPLOYS Name) <>
+(0,N) SoS Shame
+, DOB
+a
+DEPT HAS STUDENT Phone >
+(ON) (1) \ Citar
+ow)
+(0.N)
+Grade
+OFFERS TAKES TEACHES:
+(4,1) (5,N)
+CCode (1,1) Secld
+COURSE SECS SECTION |—CSecNo
+(0,N)
+
+Figure 3.20
+An ER diagram for a UNIVERSITY database schema.
+
+3.11 Summary
+
+In this chapter we presented the modeling concepts of a high-level conceptual data
+model, the entity-relationship (ER) model. We started by discussing the role that a
+high-level data model plays in the database design process, and then we presented a
+sample set of database requirements for the COMPANY database, which is one of the

@@ -1,0 +1,51 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ 323
+
+//Program Segment J1: Figure 10.7
+1) ssn = readEntry("Enter a Social Security Number: ") ; Program segment J1,
+2) try { a Java program
+3)  #sql { SELECT Fname, Minit, Lname, Address, Salary segment with SQLJ.
+4) INTO :fname, :minit, :lname, :address, :salary
+5) FROM EMPLOYEE WHERE Ssn = :ssn} ;
+6) } catch (SQLException se) {
+7) System.out.print1n("Social Security Number does not exist: " + ssn) ;
+8) Return ;
+9) }
+10) System.out.println(fname + "" + minit + " "+ lname + " " + address
+
++" " + salary)
+
+is used to deal with exceptions that occur during the execution of <operation>. If
+no exception occurs, the <continuation code> is processed directly. Exceptions
+that can be thrown by the code in a particular operation should be specified as part
+of the operation declaration or interface—for example, in the following format:
+
+<operation return type> <operation name> (<parameters>)
+throws SQLException, IOException ;
+
+In SQLJ, the embedded SQL commands within a Java program are preceded by
+#sql, as illustrated in J1 line 3, so that they can be identified by the preprocessor.
+The #sq]1 is used instead of the keywords EXEC SQL that are used in embedded SQL
+with the C programming language (see Section 10.2.1). SQLJ uses an INTO clause—
+similar to that used in embedded SQL—to return the attribute values retrieved from
+the database by an SQL query into Java program variables. The program variables
+are preceded by colons (:) in the SQL statement, as in embedded SQL.
+
+In J1 a single tuple is retrieved by the embedded SQL] query; that is why we are able
+to assign its attribute values directly to Java program variables in the INTO clause in
+line 4 in Figure 10.7. For queries that retrieve many tuples, SQLJ uses the concept of
+an iterator, which is similar to a cursor in embedded SQL.
+
+10.2.5 Processing Query Results in SQLJ Using Iterators
+
+In SQL], an iterator is a type of object associated with a collection (set or multiset)
+of records in a query result.!? The iterator is associated with the tuples and attri-
+butes that appear in a query result. There are two types of iterators:
+
+1. Anamed iterator is associated with a query result by listing the attribute names
+and types that appear in the query result. The attribute names must correspond
+to appropriately declared Java program variables, as shown in Figure 10.6.
+
+2. A positional iterator lists only the attribute types that appear in the query
+result.
+
+'2We shall discuss iterators in more detail in Chapter 12 when we present object database concepts.

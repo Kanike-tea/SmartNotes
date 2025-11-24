@@ -1,0 +1,54 @@
+186
+
+Chapter 6 Basic SQL
+
+We can then use the created domain D_NUM as the attribute type for all attributes
+that refer to department numbers in Figure 6.1, such as Dnumber of DEPARTMENT,
+Dnum of PROJECT, Dno of EMPLOYEE, and so on.
+
+6.2.2 Specifying Key and Referential Integrity Constraints
+
+Because keys and referential integrity constraints are very important, there are spe-
+cial clauses within the CREATE TABLE statement to specify them. Some examples to
+illustrate the specification of keys and referential integrity are shown in Figure 6.1.’
+The PRIMARY KEY clause specifies one or more attributes that make up the primary
+key of a relation. If a primary key has a single attribute, the clause can follow the
+attribute directly. For example, the primary key of DEPARTMENT can be specified as
+follows (instead of the way it is specified in Figure 6.1):
+
+Dnumber INT PRIMARY KEY,
+
+The UNIQUE clause specifies alternate (unique) keys, also known as candidate keys
+as illustrated in the DEPARTMENT and PROJECT table declarations in Figure 6.1.
+The UNIQUE clause can also be specified directly for a unique key if it is a single
+attribute, as in the following example:
+
+Dname VARCHAR(15) UNIQUE,
+
+Referential integrity is specified via the FOREIGN KEY clause, as shown in Fig-
+ure 6.1. As we discussed in Section 5.2.4, a referential integrity constraint can be
+violated when tuples are inserted or deleted, or when a foreign key or primary key
+attribute value is updated. The default action that SQL takes for an integrity viola-
+tion is to reject the update operation that will cause a violation, which is known as
+the RESTRICT option. However, the schema designer can specify an alternative
+action to be taken by attaching a referential triggered action clause to any foreign
+key constraint. The options include SET NULL, CASCADE, and SET DEFAULT. An
+option must be qualified with either ON DELETE or ON UPDATE. We illustrate this
+with the examples shown in Figure 6.2. Here, the database designer chooses ON
+DELETE SET NULL and ON UPDATE CASCADE for the foreign key Super_ssn of
+EMPLOYEE. This means that if the tuple for a supervising employee is deleted, the
+value of Super_ssn is automatically set to NULL for all employee tuples that were
+referencing the deleted employee tuple. On the other hand, if the Ssn value for a
+supervising employee is updated (say, because it was entered incorrectly), the new
+value is cascaded to Super_ssn for all employee tuples referencing the updated
+employee tuple.®
+
+In general, the action taken by the DBMS for SET NULL or SET DEFAULT is the
+same for both ON DELETE and ON UPDATE: The value of the affected referencing
+attributes is changed to NULL for SET NULL and to the specified default value of the
+
+Key and referential integrity constraints were not included in early versions of SQL.
+
+8Notice that the foreign key Super_ssn in the EMPLOYEE table is a circular reference and hence may
+have to be added later as a named constraint using the ALTER TABLE statement as we discussed at
+the end of Section 6.1.2.

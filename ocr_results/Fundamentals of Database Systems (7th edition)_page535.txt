@@ -1,0 +1,53 @@
+15.1 Further Topics in Functional Dependencies: Inference Rules, Equivalence, and Minimal Cover
+
+15.1 Further Topics in Functional
+Dependencies: Inference Rules,
+Equivalence, and Minimal Cover
+
+We introduced the concept of functional dependencies (FDs) in Section 14.2, illus-
+trated it with some examples, and developed a notation to denote multiple FDs over
+a single relation. We identified and discussed problematic functional dependencies
+in Sections 14.3 and 14.4 and showed how they can be eliminated by a proper decom-
+position of a relation. This process was described as normalization, and we showed
+how to achieve the first through third normal forms (1NF through 3NF) given pri-
+mary keys in Section 14.3. In Sections 14.4 and 14.5 we provided generalized tests for
+2NF, 3NF, and BCNF given any number of candidate keys in a relation and showed
+how to achieve them. Now we return to the study of functional dependencies and
+show how new dependencies can be inferred from a given set and discuss the con-
+cepts of closure, equivalence, and minimal cover that we will need when we later
+consider a synthesis approach to design of relations given a set of FDs.
+
+15.1.1 Inference Rules for Functional Dependencies
+
+We denote by F the set of functional dependencies that are specified on relation
+schema R. Typically, the schema designer specifies the functional dependencies
+that are semantically obvious; usually, however, numerous other functional
+dependencies hold in ail legal relation instances among sets of attributes that can
+be derived from and satisfy the dependencies in F. Those other dependencies can
+be inferred or deduced from the FDs in F. We call them as inferred or implied
+functional dependencies.
+
+Definition: An FD X — Y is inferred from or implied by a set of dependencies
+F specified on R if X > Y holds in every legal relation state r of R; that is, when-
+ever r satisfies all the dependencies in F, X > Y also holds in r.
+
+In real life, it is impossible to specify all possible functional dependencies for a given
+situation. For example, if each department has one manager, so that Dept_no
+uniquely determines Mgr_ssn (Dept_no — Mgr_ssn), and a manager has a unique
+phone number called Mgr_phone (Mgr_ssn > Mgr_phone), then these two dependen-
+cies together imply that Dept_no > Mgr_phone. This is an inferred or implied FD
+and need not be explicitly stated in addition to the two given FDs. Therefore, it is
+useful to define a concept called closure formally that includes all possible depen-
+dencies that can be inferred from the given set F.
+
+Definition. Formally, the set of all dependencies that include F as well as all
+dependencies that can be inferred from F is called the closure of F; it is denoted
+
+by F*.
+
+For example, suppose that we specify the following set F of obvious functional
+dependencies on the relation schema in Figure 14.3(a):
+
+F={Ssn — {Ename, Bdate, Address, Dnumber}, Dnumber — {Dname, Dmgr_ssn} }
+
+505

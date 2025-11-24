@@ -1,0 +1,50 @@
+12.1 Overview of Object Database Concepts
+
+The inheritance model discussed in this section is very simple. As we will see in Sec-
+tion 12.3, the ODMG model distinguishes between type inheritance—called inter-
+face inheritance and denoted by a colon (:)—and the extent inheritance
+constraint—denoted by the keyword EXTEND.
+
+12.1.6 Other Object-Oriented Concepts
+
+Polymorphism of Operations (Operator Overloading). Another characteris-
+tic of OO systems in general is that they provide for polymorphism of operations,
+which is also known as operator overloading. This concept allows the same opera-
+tor name or symbol to be bound to two or more different implementations of the
+operator, depending on the type of objects to which the operator is applied. A sim-
+ple example from programming languages can illustrate this concept. In some lan-
+guages, the operator symbol “+” can mean different things when applied to
+operands (objects) of different types. If the operands of “+” are of type integer, the
+operation invoked is integer addition. If the operands of “+” are of type floating
+point, the operation invoked is floating-point addition. If the operands of “+” are of
+type set, the operation invoked is set union. The compiler can determine which
+operation to execute based on the types of operands supplied.
+
+In OO databases, a similar situation may occur. We can use the GEOMETRY_OBJECT
+example presented in Section 12.1.5 to illustrate operation polymorphism!>
+in ODB. In this example, the function Area is declared for all objects of type
+GEOMETRY_OBJECT. However, the implementation of the method for Area may
+differ for each subtype of GEOMETRY_OBJECT. One possibility is to have a general
+implementation for calculating the area of a generalized GEOMETRY_OBJECT (for
+example, by writing a general algorithm to calculate the area of a polygon) and then
+to rewrite more efficient algorithms to calculate the areas of specific types of geo-
+metric objects, such as a circle, a rectangle, a triangle, and so on. In this case, the
+Area function is overloaded by different implementations.
+
+The ODMS must now select the appropriate method for the Area function based on
+the type of geometric object to which it is applied. In strongly typed systems, this
+can be done at compile time, since the object types must be known. This is termed
+early (or static) binding. However, in systems with weak typing or no typing (such
+as Smalltalk, LISP, PHP, and most scripting languages), the type of the object to
+which a function is applied may not be known until runtime. In this case, the func-
+tion must check the type of object at runtime and then invoke the appropriate
+method. This is often referred to as late (or dynamic) binding.
+
+Multiple Inheritance and Selective Inheritance. Multiple inheritance occurs
+when a certain subtype T is a subtype of two (or more) types and hence inherits the
+functions (attributes and methods) of both supertypes. For example, we may create
+
+'5in programming languages, there are several kinds of polymorphism. The interested reader is referred to
+the Selected Bibliography at the end of this chapter for works that include a more thorough discussion.
+
+377

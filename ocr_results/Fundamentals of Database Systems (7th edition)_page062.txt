@@ -1,0 +1,51 @@
+32
+
+Chapter 2 Database System Concepts and Architecture
+
+In this chapter we present the terminology and basic concepts that will be used
+throughout the text. Section 2.1 discusses data models and defines the concepts
+of schemas and instances, which are fundamental to the study of database sys-
+tems. We discuss the three-schema DBMS architecture and data independence
+in Section 2.2; this provides a user’s perspective on what a DBMS is supposed to
+do. In Section 2.3 we describe the types of interfaces and languages that are typi-
+cally provided by a DBMS. Section 2.4 discusses the database system software
+environment. Section 2.5 gives an overview of various types of client/server
+architectures. Finally, Section 2.6 presents a classification of the types of DBMS
+packages. Section 2.7 summarizes the chapter.
+
+The material in Sections 2.4 through 2.6 provides detailed concepts that may be
+considered as supplementary to the basic introductory material.
+
+2.1 Data Models, Schemas, and Instances
+
+One fundamental characteristic of the database approach is that it provides some
+level of data abstraction. Data abstraction generally refers to the suppression of
+details of data organization and storage, and the highlighting of the essential fea-
+tures for an improved understanding of data. One of the main characteristics of the
+database approach is to support data abstraction so that different users can perceive
+data at their preferred level of detail. A data model—a collection of concepts that
+can be used to describe the structure of a database—provides the necessary means
+to achieve this abstraction.” By structure of a database we mean the data types, rela-
+tionships, and constraints that apply to the data. Most data models also include a
+set of basic operations for specifying retrievals and updates on the database.
+
+In addition to the basic operations provided by the data model, it is becoming more
+common to include concepts in the data model to specify the dynamic aspect or
+behavior of a database application. This allows the database designer to specify a set
+of valid user-defined operations that are allowed on the database objects.> An
+example of a user-defined operation could be COMPUTE_GPA, which can be
+applied to a STUDENT object. On the other hand, generic operations to insert,
+delete, modify, or retrieve any kind of object are often included in the basic data
+model operations. Concepts to specify behavior are fundamental to object-oriented
+data models (see Chapter 12) but are also being incorporated in more traditional
+data models. For example, object-relational models (see Chapter 12) extend the basic
+relational model to include such concepts, among others. In the basic relational data
+model, there is a provision to attach behavior to the relations in the form of persis-
+tent stored modules, popularly known as stored procedures (see Chapter 10).
+
+2Sometimes the word model is used to denote a specific database description, or schema—for example,
+the marketing data model. We will not use this interpretation.
+
+3The inclusion of concepts to describe behavior reflects a trend whereby database design and software
+design activities are increasingly being combined into a single activity. Traditionally, specifying behavior is
+associated with software design.

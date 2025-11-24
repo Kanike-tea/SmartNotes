@@ -1,0 +1,51 @@
+268
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+INTERSECTION operation in Q? can be replaced by a NATURAL JOIN. As an exercise,
+try to do each of these sample queries using different operations.'* We showed how to
+write queries as single relational algebra expressions for queries Q1, Q4, and Q6. Try
+to write the remaining queries as single expressions. In Chapters 6 and 7 and in Sec-
+tions 8.6 and 8.7, we show how these queries are written in other relational languages.
+
+8.6 The Tuple Relational Calculus
+
+In this and the next section, we introduce another formal query language for the
+relational model called relational calculus. This section introduces the language
+known as tuple relational calculus, and Section 8.7 introduces a variation called
+domain relational calculus. In both variations of relational calculus, we write one
+declarative expression to specify a retrieval request; hence, there is no description
+of how, or in what order, to evaluate a query. A calculus expression specifies what is
+to be retrieved rather than how to retrieve it. Therefore, the relational calculus is
+considered to be a nonprocedural language. This differs from relational algebra,
+where we must write a sequence of operations to specify a retrieval request in a par-
+ticular order of applying the operations; thus, it can be considered as a procedural
+way of stating a query. It is possible to nest algebra operations to form a single
+expression; however, a certain order among the operations is always explicitly spec-
+ified in a relational algebra expression. This order also influences the strategy for
+evaluating the query. A calculus expression may be written in different ways, but
+the way it is written has no bearing on how a query should be evaluated.
+
+It has been shown that any retrieval that can be specified in the basic relational alge-
+bra can also be specified in relational calculus, and vice versa; in other words, the
+expressive power of the languages is identical. This led to the definition of the con-
+cept of a relationally complete language. A relational query language L is considered
+relationally complete if we can express in L any query that can be expressed in
+relational calculus. Relational completeness has become an important basis for
+comparing the expressive power of high-level query languages. However, as we saw
+in Section 8.4, certain frequently required queries in database applications cannot
+be expressed in basic relational algebra or calculus. Most relational query languages
+are relationally complete but have more expressive power than relational algebra or
+relational calculus because of additional operations such as aggregate functions,
+grouping, and ordering. As we mentioned in the introduction to this chapter, the
+relational calculus is important for two reasons. First, it has a firm basis in mathe-
+matical logic. Second, the standard query language (SQL) for RDBMSs has its basic
+foundation in the tuple relational calculus.
+
+Our examples refer to the database shown in Figures 5.6 and 5.7. We will use the
+same queries that were used in Section 8.5. Sections 8.6.6, 8.6.7, and 8.6.8 discuss
+dealing with universal quantifiers and safety of expression issues. Students inter-
+ested in a basic introduction to tuple relational calculus may skip these sections.
+
+'2When queries are optimized (see Chapters 18 and 19), the system will choose a particular sequence
+of operations that corresponds to an execution strategy that can be executed efficiently.

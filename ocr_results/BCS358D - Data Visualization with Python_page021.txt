@@ -1,0 +1,55 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+Step 2— Running the Executable Installer
+
+1. After the installer is downloaded, double-click the .exe file, for example python-3.10.10-
+amd64.exe, to run the Python installer.
+
+2. Select the Install launcher for all users checkbox, which enables all users of the
+computer to access the Python launcher application.
+
+3. Select the Add python.exe to PATH checkbox, which enables users to launch Python
+from the command line.
+
+& Python 3.10.10 (64-bit) Setup = x
+
+Install Python 3.10.10 (64-bit)
+
+Select Install Now to install Python with default settings, or choose
+Customize to enable or disable features.
+
+@ Install Now
+CAUsers AppData\Local\Programs\Python\Python310
+
+Includes IDLE, pip and documentation
+Creates shortcuts and file associations
+
+> Customize installation
+Choose location and features
+
+python
+
+Use admin privileges when installing py.exe
+
+windows M Add python.exe to PATH Cancel
+
+4. If you’re just getting started with Python and you want to install it with default features
+as described in the dialog, then click Install Now and go to Step 4 - Verify the Python
+Installation. To install other optional and advanced features, click Customize
+Installation and continue.
+
+5. The Optional Features include common tools and resources for Python and you can
+install all of them, even if you don’t plan to use them.
+
+Select some or all of the following options:
+
+Documentation: recommended
+
+pip: recommended if you want to install other Python packages, such as NumPy or
+pandas
+
+tel/tk and IDLE: recommended if you plan to use IDLE or follow tutorials that use it
+
+Python test suite: recommended for testing and learning
+
+Dept. of CSE 6 GSSSIETW, Mysuru

@@ -1,0 +1,62 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+POLYNOMIALS ABSTRACT DATA TYPE
+e¢ A polynomial is a sum of terms, where each term has a form ax° , where x=variable,
+a=coefficient and e=exponent.
+© For ex, A(x)=3x70-+2x°44 and B(x)=x*+10x743x7+1
+e The largest(or leading) exponent of a polynomial is called its degree.
+
+e Assume that we have 2 polynomials,
+
+Structure Polynomial is
+
+objects: p(x)=alx® + . . anx® ; a set of ordered pairs of <ei,ai> where
+ai in Coefficients and ei in Exponents, ei are integers >= 0
+functions:
+
+for all poly, polyl, poly2 € Polynomial, coef Coefficients,
+
+expon € Exponents Polynomial Zero( ) ::= return the
+polynomial, p(x) = 0
+Boolean IsZero(poly) ::= if (poly)
+
+return FALSE
+
+else
+
+return TRUE
+Coefficient Coef(poly, expon) ::= if (expom € poly)
+
+return its coefficient
+
+else
+
+return Zero
+
+Exponent Lead Exp(poly) ::= return the largest exponent in poly
+
+Polynomial Attach(poly,coef, expon)
+
+a (expon € poly)
+return error
+else
+return the polynomial poly
+with the term <coef, expon>
+inserted
+Polynomial Remove (poly, expon)::= if (expon € poly)
+return the polynomial poly with
+the term whose exponent is expon
+deleted
+else
+return error
+Polynomial SingleMult (poly, coef, expon) ::=
+return the polynomial poly*coef*xexpon
+Polynomial Add(polyl, poly2) ::=
+return the polynomial polyl t+poly2
+Polynomial Mult (polyl, poly2)::=
+return the polynomial polyl «+ poly2
+End Polynomia
+
+A(x)= Yai x! & B(x)= Yb: x ! then A(x)+B(x)= Y(ai + byx!
+
+vtucode.in 24

@@ -1,0 +1,47 @@
+5.12 Inline Functions and Inline Assembly 149
+
+return q;
+
+}
+
+Section 7.3 shows how to implement divides efficiently in assembler.
+
+Summary _ Division
+
+= Avoid divisions as much as possible. Do not use them for circular buffer handling.
+
+= = If you can’t avoid a division, then try to take advantage of the fact that divide routines
+often generate the quotient n/d and modulus n%d together.
+
+= To repeatedly divide by the same denominator d, calculate s = (2 — 1)/d in advance.
+You can replace the divide of a k-bit unsigned integer by d with a 2k-bit multiply by s.
+
+= To divide unsigned n < 2 by an unsigned constant d, you can find a 32-bit unsigned s
+and shift k such that n/d is either (ns) >> (N + k) or (ns + s) > (N + k). The choice
+depends only on d. There is a similar result for signed divisions.
+
+5.1 1 FLOATING POINT
+
+The majority of ARM processor implementations do not provide hardware floating-point
+support, which saves on power and area when using ARM in a price-sensitive, embedded
+application. With the exceptions of the Floating Point Accelerator (FPA) used on the
+ARM7500FE and the Vector Floating Point accelerator (VFP) hardware, the C compiler
+must provide support for floating point in software.
+
+In practice, this means that the C compiler converts every floating-point operation
+into a subroutine call. The C library contains subroutines to simulate floating-point
+behavior using integer arithmetic. This code is written in highly optimized assembly.
+Even so, floating-point algorithms will execute far more slowly than corresponding integer
+algorithms.
+
+If you need fast execution and fractional values, you should use fixed-point or block-
+floating algorithms. Fractional values are most often used when processing digital signals
+such as audio and video. This is a large and important area of programming, so we have
+dedicated a whole chapter, Chapter 8, to the area of digital signal processing on the ARM.
+For best performance you need to code the algorithms in assembly (see the examples of
+Chapter 8).
+
+5.12 INLINE FUNCTIONS AND INLINE ASSEMBLY
+
+Section 5.5 looked at how to call functions efficiently. You can remove the function call
+overhead completely by inlining functions. Additionally many compilers allow you to

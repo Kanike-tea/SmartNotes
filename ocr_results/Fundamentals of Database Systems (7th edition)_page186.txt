@@ -1,0 +1,51 @@
+156
+
+Chapter 5 The Relational Data Model and Relational Database Constraints
+
+NULL values. Incorporating different types of NULL values into relational model opera-
+tions has proven difficult and is outside the scope of our presentation.
+
+The exact meaning of a NULL value governs how it fares during arithmetic aggrega-
+tions or comparisons with other values. For example, a comparison of two NULL
+values leads to ambiguities—if both Customer A and B have NULL addresses, it does
+not mean they have the same address. During database design, it is best to avoid
+NULL values as much as possible. We will discuss this further in Chapters 7 and 8 in
+the context of operations and queries, and in Chapter 14 in the context of database
+design and normalization.
+
+Interpretation (Meaning) of a Relation. The relation schema can be interpreted
+as a declaration or a type of assertion. For example, the schema of the STUDENT
+relation of Figure 5.1 asserts that, in general, a student entity has a Name, Ssn,
+Home_phone, Address, Office_phone, Age, and Gpa. Each tuple in the relation can
+then be interpreted as a fact or a particular instance of the assertion. For example,
+the first tuple in Figure 5.1 asserts the fact that there is a STUDENT whose Name is
+Benjamin Bayer, Ssn is 305-61-2435, Age is 19, and so on.
+
+Notice that some relations may represent facts about entities, whereas other rela-
+tions may represent facts about relationships. For example, a relation schema
+MAJORS (Student_ssn, Department_code) asserts that students major in academic
+disciplines. A tuple in this relation relates a student to his or her major discipline.
+Hence, the relational model represents facts about both entities and relationships
+uniformly as relations. This sometimes compromises understandability because
+one has to guess whether a relation represents an entity type or a relationship type.
+We introduced the entity-relationship (ER) model in detail in Chapter 3, where the
+entity and relationship concepts were described in detail. The mapping procedures
+in Chapter 9 show how different constructs of the ER/EER conceptual data models
+(see Part 2) get converted to relations.
+
+An alternative interpretation of a relation schema is as a predicate; in this case, the
+values in each tuple are interpreted as values that satisfy the predicate. For example,
+the predicate STUDENT (Name, Ssn, ...) is true for the five tuples in relation STUDENT
+of Figure 5.1. These tuples represent five different propositions or facts in the
+real world. This interpretation is quite useful in the context of logical programming
+languages, such as Prolog, because it allows the relational model to be used within
+these languages (see Section 26.5). An assumption called the closed world assumption
+states that the only true facts in the universe are those present within the extension
+(state) of the relation(s). Any other combination of values makes the predicate false.
+This interpretation is useful when we consider queries on relations based on
+relational calculus in Section 8.6.
+
+5.1.3 Relational Model Notation
+We will use the following notation in our presentation:
+
+= Arelation schema R of degree n is denoted by R(Aj, Ao, ... » An)

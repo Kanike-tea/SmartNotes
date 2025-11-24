@@ -1,0 +1,66 @@
+Data Structures and Applications (BCS304)
+
+Module III
+
+matrixPointer *next;
+entryNODE entry;
+
+yu;
+hi
+
+typedef struct matrixNODE matrixPointer;
+matrixPointer *hdNODE[MAX_SIZE],
+
+e If we are pointing to a specific NODE, say p, then we can move only in the direction of the
+links. The only way to find the NODE that precedes p is to start at the beginning of the list.
+
+e  Ifwe wish to delete an arbitrary NODE from a singly linked list. Easy deletion of an arbitrary
+NODE requires knowing the preceding NODE.
+
+¢ Can traverse only in one direction.
+
+e Difficult to delete arbitrary NODEs.
+
+Doubly Linked List representation
+e Each NODE now has two link fields, one linking in the forward direction and the other
+linking in the backward direction.
+
+e ANODE ina doubly
+
+inked list has at least three fields, a left link field (Ilink), a data field
+
+(data), and a right link field (rlink). It can be represented as follows
+
++
+
+—S
+
+>
+
+—S
+
+we
+
+link
+
+Data
+
+rin
+
+A doubly linked list may or may not be circular. The data field of the header NODE usually contains
+
+no information.
+
+data
+
+Header Node
+
+right e
+
+If head is a pointer to the header NODE then head->l
+
+ink= head-rlink= head
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru
+
+Page 3

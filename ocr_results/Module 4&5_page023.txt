@@ -1,0 +1,52 @@
+Microcontrollers - BCS402
+
+Step 1: Take the Reset Exception
+
+Execution begins with a Reset exception. Only the reset vector entry is required in the default
+vector table. It is the very first instruction executed. The code here shows that all the vectors,
+apart from the reset vector, branch to a unique dummy handler—a branch instruction that causes
+an infinite loop. It is assumed that no exception or interrupt will occur during the operation of
+
+Sandstone. The reset vector is used to move the execution flow to the second stage.
+
+AREA start,CODE,READONLY
+ENTRY
+
+sandstone start
+
+B sandstone _initl 3 reset vector
+
+B ex_und ; undefined vector
+
+B ex_swi 3 Swi vector
+
+B ex_pabt 3 prefetch abort vector
+
+B ex_dabt ; data abort vector
+
+NOP 3 not used...
+
+B int_irg ; irq vector
+
+B int_fig 3 fig vector
+ex_und B ex_und 3 loop forever
+ex_swi B ex_swi 3 loop forever
+ex_dabt B ex_dabt ; loop forever
+ex_pabt B ex_pabt ; loop forever
+int_irg B int_irg ; loop forever
+int_fiq B int_fig ; loop forever
+
+sandstone_start is located at address 0x00000000.
+The results of executing step 1 are the following:
+
+e¢ Dummy handlers are set up.
+
+¢ Control is passed to code to initialize the hardware.
+Step 2: Start Initializing the Hardware
+
+The primary phase in initializing hardware is setting up system registers. These registers have to
+be set up before accessing the hardware. For example, the ARM Evaluator-7T has a seven-
+
+segment display, which is used as a feedback tool to indicate that the firmware is active.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 24

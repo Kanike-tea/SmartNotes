@@ -1,0 +1,57 @@
+15.3 Algorithms for Relational Database Schema Design
+
+FDI: Property_id —> Lot#, County, Area
+
+FD2: Lot#, County > Area, Property_id
+
+FD3: Area > County
+‘These were called FD1, FD2, and FD5 in Figure 14.13(a). The meanings of the above
+attributes and the implication of the above functional dependencies were explained
+in Section 14.4.For ease of reference, let us abbreviate the above attributes with the
+first letter for each and represent the functional dependencies as the set
+
+F:{P—LCA,LC > AP,A>C}
+
+‘The universal relation with abbreviated attributes is U (P, C, L, A). If we apply the
+minimal cover Algorithm 15.2 to F, (in step 2) we first represent the set F as
+
+F{PSL,P>3C,P>A,LC>A,LC>P,A>C}
+
+In the set F, P—> A can be inferred from P - LC and LC = A; hence P > A by tran-
+sitivity and is therefore redundant. Thus, one possible minimal cover is
+
+Minimal cover GX: {P > LC, LC > AP, A> C}
+
+In step 2 of Algorithm 15.4, we produce design X (before removing redundant rela-
+tions) using the above minimal cover as
+
+Design X: Rj (P,L, C), Ro (L, C, A, P), and R; (A, C)
+In step 4 of the algorithm, we find that R3 is subsumed by R; (that is, R3 is always a
+projection of Ry and R; is a projection of R, as well). Hence both of those relations
+
+are redundant. Thus the 3NF schema that achieves both of the desirable properties
+is (after removing redundant relations)
+
+Design X: R; (L, C, A, P).
+
+or, in other words it is identical to the relation LOTS1A (Property_id, Lot#, County,
+Area) that we had determined to be in 3NF in Section 14.4.2.
+
+Example 2 of Algorithm 15.4 (Case Y). Starting with LOTS1A as the universal
+relation and with the same given set of functional dependencies, the second step of
+the minimal cover Algorithm 15.2 produces, as before,
+
+F{P3C,PA,P9L,LC>A,LC>P,A>C}
+
+The FD LC — A may be considered redundant because LC — P and P > A implies
+LC — A by transitivity. Also, P + C may be considered to be redundant because
+P— AandA— C implies P > C by transitivity. This gives a different minimal cover as
+
+Minimal cover GY: {P > LA, LC > P,A>C}
+‘The alternative design Y produced by the algorithm now is
+Design Y: S; (P, A, L), So (L, G, P), and S3 (A, C)
+
+Note that this design has three 3NF relations, none of which can be considered as
+redundant by the condition in step 4. All FDs in the original set F are preserved. The
+
+521

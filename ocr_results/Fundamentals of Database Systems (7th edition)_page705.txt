@@ -1,0 +1,52 @@
+18.4 Implementing the JOIN Operation
+
+number of buffers needed for iteration i is the number of blocks in the smaller of
+the two partitions, say R;, plus two additional buffers. If we use a nested-loop join
+during iteration i, the records from the smaller of the two partitions R; are copied
+into memory buffers; then all blocks from the other partition S; are read—one at a
+time—and each record is used to probe (that is, search) partition R; for matching
+record(s). Any matching records are joined and written into the result file. To
+improve the efficiency of in-memory probing, it is common to use an in-memory
+hash table for storing the records in partition R; by using a different hash func-
+tion from the partitioning hash function.'*
+
+We can approximate the cost of this partition hash-join as 3 * (by + bs) + bpgs for our
+example, since each record is read once and written back to disk once during the
+partitioning phase. During the joining (probing) phase, each record is read a second
+time to perform the join. The main difficulty of this algorithm is to ensure that the
+partitioning hash function is uniform—that is, the partition sizes are nearly equal in
+size. If the partitioning function is skewed (nonuniform), then some partitions may
+be too large to fit in the available memory space for the second joining phase.
+
+Notice that if the available in-memory buffer space ng > (bp + 2), where bp is the
+number of blocks for the smaller of the two files being joined, say R, then there is no
+reason to do partitioning since in this case the join can be performed entirely in
+memory using some variation of the nested-loop join based on hashing and probing.
+For illustration, assume we are performing the join operation OP6, repeated below:
+
+OP6: EMPLOYEE © pno-Dnumber DEPARTMENT
+
+In this example, the smaller file is the DEPARTMENT file; hence, if the number of
+available memory buffers ng > (bp + 2), the whole DEPARTMENT file can be read
+into main memory and organized into a hash table on the join attribute. Each
+EMPLOYEE block is then read into a buffer, and each EMPLOYEE record in the buf-
+fer is hashed on its join attribute and is used to probe the corresponding in-memory
+bucket in the DEPARTMENT hash table. If a matching record is found, the records
+are joined, and the result record(s) are written to the result buffer and eventually to
+the result file on disk. The cost in terms of block accesses is hence (bp + bg), plus
+bpes—the cost of writing the result file.
+
+18.4.5 Hybrid Hash-Join
+
+The hybrid hash-join algorithm is a variation of partition hash-join, where the join-
+ing phase for one of the partitions is included in the partitioning phase. To illustrate
+this, let us assume that the size of a memory buffer is one disk block; that ng such
+buffers are available; and that the partitioning hash function used is h(K) =
+K mod M, so that M partitions are being created, where M < ng. For illustration,
+assume we are performing the join operation OP6. In the first pass of the partitioning
+phase, when the hybrid hash-join algorithm is partitioning the smaller of the two files
+
+'Sif the hash function used for partitioning is used again, all records in a partition will hash to the same
+bucket again.
+
+675

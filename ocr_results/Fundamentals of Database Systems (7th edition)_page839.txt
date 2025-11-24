@@ -1,0 +1,99 @@
+21.4.
+
+21.5.
+21.6.
+
+21.7.
+21.8.
+
+21.9.
+
+21
+
+21.
+
+21.
+
+21.
+21.
+21.
+21.
+21.
+
+21.
+21.
+
+-10.
+
+11.
+
+12.
+
+13.
+14,
+15.
+16.
+17.
+
+18.
+19.
+
+Compare binary locks to exclusive/shared locks. Why is the latter type of
+locks preferable?
+
+Describe the wait-die and wound-wait protocols for deadlock prevention.
+
+Describe the cautious waiting, no waiting, and timeout protocols for dead-
+lock prevention.
+
+What is a timestamp? How does the system generate timestamps?
+
+Discuss the timestamp ordering protocol for concurrency control. How
+does strict timestamp ordering differ from basic timestamp ordering?
+
+Discuss two multiversion techniques for concurrency control. What is a cer-
+tify lock? What are the advantages and disadvantages of using certify locks?
+
+How do optimistic concurrency control techniques differ from other con-
+currency control techniques? Why are they also called validation or certifi-
+cation techniques? Discuss the typical phases of an optimistic concurrency
+control method.
+
+What is snapshot isolation? What are the advantages and disadvantages of
+concurrency control methods that are based on snapshot isolation?
+
+How does the granularity of data items affect the performance of concurrency
+control? What factors affect selection of granularity size for data items?
+
+What type of lock is needed for insert and delete operations?
+
+What is multiple granularity locking? Under what circumstances is it used?
+What are intention locks?
+
+When are latches used?
+
+What is a phantom record? Discuss the problem that a phantom record can
+cause for concurrency control.
+
+How does index locking resolve the phantom problem?
+
+What is a predicate lock?
+
+Exercises
+
+21.20. Prove that the basic two-phase locking protocol guarantees conflict serializ-
+
+21.21.
+
+ability of schedules. (Hint: Show that if a serializability graph for a schedule
+has a cycle, then at least one of the transactions participating in the schedule
+does not obey the two-phase locking protocol.)
+
+Modify the data structures for multiple-mode locks and the algorithms for
+read_lock(X), write_lock(X), and unlock(X) so that upgrading and downgrad-
+ing of locks are possible. (Hint: The lock needs to check the transaction id(s)
+that hold the lock, if any.)
+
+Exercises
+
+809

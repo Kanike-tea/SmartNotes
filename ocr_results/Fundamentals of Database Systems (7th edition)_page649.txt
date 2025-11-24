@@ -1,0 +1,49 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees 619
+
+fo] Tree node pointer
+[] Null tree pointer
+Wa 5 |e
+Wa 3 6 |e iN
+1 7 8 12
+
+Figure 17.9
+A search tree of
+order p= 3.
+
+search field (which is the same as the index field if a multilevel index guides the
+search). Each key value in the tree is associated with a pointer to the record in the
+data file having that value. Alternatively, the pointer could be to the disk block con-
+taining that record. The search tree itself can be stored on disk by assigning each
+tree node to a disk block. When a new record is inserted in the file, we must update
+the search tree by inserting an entry in the tree containing the search field value of
+the new record and a pointer to the new record.
+
+Algorithms are necessary for inserting and deleting search values into and from the
+search tree while maintaining the preceding two constraints. In general, these algo-
+rithms do not guarantee that a search tree is balanced, meaning that all of its leaf
+nodes are at the same level.” The tree in Figure 17.7 is not balanced because it has
+leaf nodes at levels 1, 2, and 3. The goals for balancing a search tree are as follows:
+
+= To guarantee that nodes are evenly distributed, so that the depth of the tree
+is minimized for the given set of keys and that the tree does not get skewed
+with some nodes being at very deep levels
+
+= To make the search speed uniform, so that the average time to find any ran-
+dom key is roughly the same
+
+Minimizing the number of levels in the tree is one goal, another implicit goal is to
+make sure that the index tree does not need too much restructuring as records are
+inserted into and deleted from the main file. Thus we want the nodes to be as full as
+possible and do not want any nodes to be empty if there are too many deletions.
+Record deletion may leave some nodes in the tree nearly empty, thus wasting stor-
+age space and increasing the number of levels. The B-tree addresses both of these
+problems by specifying additional constraints on the search tree.
+
+B-Trees. The B-tree has additional constraints that ensure that the tree is always
+balanced and that the space wasted by deletion, if any, never becomes excessive.
+The algorithms for insertion and deletion, though, become more complex in order
+to maintain these constraints. Nonetheless, most insertions and deletions are sim-
+ple processes; they become complicated only under special circumstances—namely,
+whenever we attempt an insertion into a node that is already full or a deletion from
+
+°The definition of balanced is different for binary trees. Balanced binary trees are known as AVL trees.

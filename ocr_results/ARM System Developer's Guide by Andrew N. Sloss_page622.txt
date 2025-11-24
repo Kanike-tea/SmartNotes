@@ -1,0 +1,39 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 609
+
+Examples
+SMULBB r0, rl, r2 3 r0
+SMULBT 0, rl, r2 3 r0
+SMULWB 0, rl, r2 3
+
+SMULL 0, rl, r2, 73 5 acc
+
+(short)r1 * (short) r2
+(short)r1 * ((signed)r2>>16)
+(r1*(short) r2) >> 16
+
+r2*r3, acc is 64 bits [rl:r0]
+
+SMUADX 0, rl, r2 3 0 = imag(r1*r2) in complex maths
+SRS Save return state
+1. SRS<amode> #<mode>{!} ARMV6
+This performs the operation that STM<amode> sp_<mode>{!}, {Ir, spsr} would perform
+if STM allowed a register list of {Ir, spsr} and allowed you to reference the stack pointer of
+a different mode. See the entry for STM.
+SSAT Saturate to n bits
+1. {S|U}SAT<cond> Rd, #<n>, Rm {, LSL#<0-31>}
+2. {S|U}SAT<cond> Rd, #<n>, Rm {, ASR#¥<1-32>}
+3. {S|U}SAT16<cond> Rd, #<n>, Rm
+Action Effect on the cpsr
+1. Rd = sat(<shifted_Rm>, n); Q=Q | 1 if saturation occurred
+2. Rd = sat(<shifted_Rm>, n); Q=Q | 1 if saturation occurred
+2. Rd[31:16] = sat(Rm[31:16], n);  Q=Q | 1 if saturation occurred
+Rd[15:00] = sat(Rm[15:00], n)
+Notes
+= If you specify the $ prefix, then sat(x, 1) saturates the signed value x to a signed n-bit
+value in the range —2"-! < x <2"~!, nis encoded as 1 + <immed5> for SAT and 1 +
+<immed4> for SAT16.
+= If you specify the U prefix, then sat(x, n) saturates the signed value x to an unsigned
+n-bit value in the range 0 < x < 2”. nis encoded as <immed5> for SAT and <immed4>
+for SAT16.
+= = Rdand Rm must not be pe.
+SSUB Signed parallel subtract (see SADD)

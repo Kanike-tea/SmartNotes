@@ -1,0 +1,37 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
+main memory block has to be placed in particular
+cache block number by using below formula
+Cache block number=main memory block number
+% number of blocks present in cache memory.
+
+For eg: main memory block 129 has to be placed in
+cache block number | by using above formula i.e
+Cache block number=129 % 128 (consider
+remainder that is 1).
+Cache block number=258 % 128 (consider
+remainder that is 2).
+Main memory block 258 has to be placed in cache
+block 2
+
+ae Breck 25
+
+Block — Word
+
+[7a] Main memory adress
+
+e¢ The main memory block is loaded into cache block by means of memory address. The main memory
+address consists of 3 fields as shown in the figure.
+. Each block consists of 16 words. Hence least significant 4 bits are used to select one of the 16
+
+words.
+
+e The 7bits of memory address are used to specify the position of the cache block, location. The most
+significant 5 bits of the memory address are stored in the tag bits. The tag bits are used to map one of
+2° = 32 blocks into cache block location (tag bit has value 0-31).
+. The higher order 5 bits of memory address are compared with the tag bits associated with cache
+location. If they match, then the desired word is in that block of the cache.
+
+e If there is no match, then the block containing the required word must first be read from the main memory
+
+Dr.Ajay V G, Dept. of CSE, 24

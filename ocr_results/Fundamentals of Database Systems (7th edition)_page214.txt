@@ -1,0 +1,53 @@
+184
+
+Chapter 6 Basic SQL
+
+strings preceded by the keyword TIMESTAMP, with a blank space between
+data and time; for example, TIMESTAMP ‘2014-09-27 09:12:47.648302’.
+
+= Another data type related to DATE, TIME, and TIMESTAMP is the INTERVAL data
+type. This specifies an interval—a relative value that can be used to increment
+or decrement an absolute value of a date, time, or timestamp. Intervals are
+qualified to be either YEAR/MONTH intervals or DAY/TIME intervals.
+
+The format of DATE, TIME, and TIMESTAMP can be considered as a special type of
+string. Hence, they can generally be used in string comparisons by being cast (or
+coerced or converted) into the equivalent strings.
+
+It is possible to specify the data type of each attribute directly, as in Figure 6.1; alter-
+natively, a domain can be declared, and the domain name can be used with the
+attribute specification. This makes it easier to change the data type for a domain
+that is used by numerous attributes in a schema, and improves schema readability.
+For example, we can create a domain SSN_TYPE by the following statement:
+
+CREATE DOMAIN SSN_TYPE AS CHAR(9);
+
+We can use SSN_TYPE in place of CHAR(9) in Figure 6.1 for the attributes Ssn and
+Super_ssn of EMPLOYEE, Mgr_ssn of DEPARTMENT, Essn of WORKS_ON, and Essn
+of DEPENDENT. A domain can also have an optional default specification via a
+DEFAULT clause, as we discuss later for attributes. Notice that domains may not be
+available in some implementations of SQL.
+
+In SQL, there is also a CREATE TYPE command, which can be used to create user
+defined types or UDTs. These can then be used either as data types for attributes, or
+as the basis for creating tables. We shall discuss CREATE TYPE in detail in Chap-
+ter 12, because it is often used in conjunction with specifying object database features
+that have been incorporated into more recent versions of SQL.
+
+6.2 Specifying Constraints in SQL
+
+This section describes the basic constraints that can be specified in SQL as part of
+table creation. These include key and referential integrity constraints, restrictions
+on attribute domains and NULLs, and constraints on individual tuples within a rela-
+tion using the CHECK clause. We discuss the specification of more general con-
+straints, called assertions, in Chapter 7.
+
+6.2.1 Specifying Attribute Constraints and Attribute Defaults
+
+Because SQL allows NULLs as attribute values, a constraint NOT NULL may be specified
+if NULL is not permitted for a particular attribute. This is always implicitly specified for
+the attributes that are part of the primary key of each relation, but it can be specified for
+any other attributes whose values are required not to be NULL, as shown in Figure 6.1.
+
+It is also possible to define a default value for an attribute by appending the clause
+DEFAULT <value> to an attribute definition. The default value is included in any

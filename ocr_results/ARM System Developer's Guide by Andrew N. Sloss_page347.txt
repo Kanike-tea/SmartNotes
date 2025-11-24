@@ -1,0 +1,33 @@
+334 Chapter 9 Exception and Interrupt Handling
+
+Interrupt
+1.
+2. | Save context |
+3. | Interrupt
+handler
+4. | Service
+interrupt
+Return to routine
+task
+5.| Restore
+|__|
+
+context
+
+Figure 9.8 Simple nonnested interrupt handler.
+
+3. Interrupt handler—The handler then identifies the external interrupt source and
+executes the appropriate interrupt service routine (ISR).
+
+4. Interrupt service routine—The ISR services the external interrupt source and resets the
+interrupt.
+
+5. Restore context—The ISR returns back to the interrupt handler, which restores the
+context.
+
+6. Enable interrupts—Finally, to return from the interrupt handler, the spsr_{interrupt
+request mode} is restored back into the cpsr. The pc is then set to the next instruction
+after the interrupt was raised.
+
+Examece This IRQ handler example assumes that the IRQ stack has been correctly set up by the
+9.8 initialization code.

@@ -1,0 +1,48 @@
+254 Chapter 8 The Relational Algebra and Relational Calculus
+
+(a)
+PROJ_DEPT
+Pname Pnumber | Plocation | Dnum Dname Mgr_ssn Mgr_start_date
+
+ProductX 1 Bellaire 5 Research 333445555, 1988-05-22
+ProductY 2 Sugarland 5 Research 333445555, 1988-05-22
+ProductZ 3 Houston 5 Research 333445555, 1988-05-22
+Computerization 10 Stafford 4 Administration | 987654321 1995-01-01
+Reorganization 20 Houston 1 Headquarters | 888665555 1981-06-19
+Newbenefits 30 Stafford 4 Administration | 987654321 1995-01-01
+
+(b)
+
+DEPT_LOCS
+
+Dname Dnumber Mgr_ssn Mgr_start_date Location
+Headquarters 1 888665555, 1981-06-19 Houston
+Administration 4 987654321 1995-01-01 Stafford
+Research 5 333445555 1988-05-22 Bellaire
+Research 5 333445555 1988-05-22 Sugarland
+Research 5 333445555 1988-05-22 Houston
+Figure 8.7
+
+Results of two natural join operations. (a) proj_dept < project « dept.
+(b) dept_locs < department + dept_locations.
+
+Notice that if no combination of tuples satisfies the join condition, the result of a
+JOIN is an empty relation with zero tuples. In general, if R has ng tuples and S has
+ng tuples, the result of a JOIN operation R > join condition> § Will have between zero
+and ng * ng tuples. The expected size of the join result divided by the maximum
+size np * ns leads to a ratio called join selectivity, which is a property of each join
+condition. If there is no join condition, all combinations of tuples qualify and the
+JOIN degenerates into a CARTESIAN PRODUCT, also called CROSS PRODUCT or
+CROSS JOIN.
+
+As we can see, a single JOIN operation is used to combine data from two relations so
+that related information can be presented in a single table. These operations are
+also known as inner joins, to distinguish them from a different join variation called
+outer joins (see Section 8.4.4). Informally, an inner join is a type of match-and-
+combine operation defined formally as a combination of CARTESIAN PRODUCT
+and SELECTION. Note that sometimes a join may be specified between a relation
+and itself, as we will illustrate in Section 8.4.3. The NATURAL JOIN or EQUUOIN
+operation can also be specified among multiple tables, leading to an n-way join. For
+example, consider the following three-way join:
+
+((PROJECT ™ pnum=DnumberO EPARTMENT) >< Mgr_ssn=SsnEMPLOYEE)

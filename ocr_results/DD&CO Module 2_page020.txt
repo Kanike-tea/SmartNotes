@@ -1,0 +1,36 @@
+first in the port list of a primitive, followed by the inputs. This example describes the decoder
+
+implementation shown in below Fig.
+ia Ds
+=a
+
+4b ;
+——
+
+HDL Example below shows the gate-level description of a Four-bit ripple carry adder
+
+There are two basic types of design methodologies: top down and bottom up. In a top-down design, the
+top-level block is defined and then the subblocks necessary to build the top-level block are identified. In
+a bottom-up design, the building blocks are first identified and then combined to build the top-level
+block. Take, for example, the binary adder shown in below fig. It can be considered as a top-block
+component built with four full-adder blocks, while each full adder is built with two half-adder blocks.
+In a top-down design, the four-bit adder is defined first, and then the two adders are described. In a
+bottom-up design, the half adder is defined, then each full adder is constructed, and then the four-bit
+adder is built from the full adders.
+
+B; Ay B, A; BA, By Ao
+Cy CQ CQ ~
+FA <——_ FA ~« | FA | FA Co
+Cy S; S, S; AY
+
+Four-bit adder
+
+A bottom-up hierarchical description of a four-bit adder is shown in HDL Example below. The half
+adder is defined by instantiating primitive gates. The next module describes the full adder by
+instantiating and connecting two half adders. The third module describes the four-bit adder by
+instantiating and connecting four full adders. Note that the first character of an identifier cannot be a
+number, but can be an underscore, so the module name _4bitadder is valid. An alternative name that is
+meaningful, but does not require a leading underscore, is adder_4_bit. The instantiation is done by using
+the name of the module that is instantiated together with a new (or the same) set of port names. For
+example, the half adder HA1 inside the full adder module is instantiated with ports S1, Cl, x, and y.
+This produces a half adder with outputs S1 and C1 and inputs x and y.

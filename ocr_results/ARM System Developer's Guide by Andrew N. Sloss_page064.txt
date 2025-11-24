@@ -1,0 +1,47 @@
+3.1 Data Processing Instructions 51
+
+3.1.2 BARREL SHIFTER
+
+Figure 3.1
+
+EXAMPLE
+
+3.2
+
+In Example 3.1 we showed a MOV instruction where N is a simple register. But N can be
+more than just a register or immediate value; it can also be a register Rm that has been
+preprocessed by the barrel shifter prior to being used by a data processing instruction.
+Data processing instructions are processed within the arithmetic logic unit (ALU).
+‘A unique and powerful feature of the ARM processor is the ability to shift the 32-bit binary
+pattern in one of the source registers left or right by a specific number of positions before
+it enters the ALU. This shift increases the power and flexibility of many data processing
+
+operations.
+There are data processing instructions that do not use the barrel shift, for example,
+
+the MUL (multiply), CLZ (count leading zeros), and QADD (signed saturated 32-bit add)
+instructions.
+
+Pre-processing or shift occurs within the cycle time of the instruction. This is particularly
+useful for loading constants into a register and achieving fast multiplies or division by
+a power of 2.
+
+rs]
+s
+
+No pre-processing
+
+Barrel shifter and ALU.
+
+To illustrate the barrel shifter we will take the example in Figure 3.1 and add a shift
+operation to the move instruction example. Register Rn enters the ALU without any pre-
+processing of registers. Figure 3.1 shows the data flow between the ALU and the barrel
+shifter.
+
+We apply a logical shift left (LSL) to register Rim before moving it to the destination register.
+This is the same as applying the standard C language shift operator < to the register. The
+MOV instruction copies the shift operator result N into register Rd. N represents the result
+of the LSL operation described in Table 3.2.
+
+PRE 5 = 5
+v7 = 8

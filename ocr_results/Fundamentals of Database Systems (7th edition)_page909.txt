@@ -1,0 +1,73 @@
+23.29.
+
+23.70.
+
+. How would a derived horizontal partitioning of STOCK be defined based
+
+on the partitioning of BOOKSTORE?
+
+. Show predicates by which BOOKS may be horizontally partitioned by
+
+topic.
+
+. Show how the STOCK may be further partitioned from the partitions in
+
+(b) by adding the predicates in (c).
+
+Consider a distributed database for a bookstore chain called National Books
+with three sites called EAST, MIDDLE, and WEST. The relation schemas are
+given in Exercise 23.28. Consider that BOOKS are fragmented by $price
+amounts into:
+
+By: BOOK1: $price up to $20
+
+By: BOOK2: $price from $20.01 to $50
+Bs: BOOKS: $price from $50.01 to $100
+By: BOOKA: $price $100.01 and above
+
+Similarly, BOOK_STORES are divided by zip codes into:
+
+S\: EAST: Zip up to 35000
+Sy: MIDDLE: Zip 35001 to 70000
+Ss: WEST: Zip 70001 to 99999
+
+Assume that STOCK is a derived fragment based on BOOKSTORE only.
+
+a.
+
+Consider the query:
+
+SELECT Book#, Total_stock
+FROM — Books
+WHERE  $price > 15 AND $price < 55;
+
+Assume that fragments of BOOKSTORE are nonreplicated and assigned
+based on region. Assume further that BOOKS are allocated as:
+
+EAST: By, By
+MIDDLE: By, By
+WEST: By, Bs, Bs, By
+
+Assuming the query was submitted in EAST, what remote subqueries does it
+generate? (Write in SQL.)
+
+b.
+
+If the price of Book# = 1234 is updated from $45 to $55 at site MIDDLE,
+what updates does that generate? Write in English and then in SQL.
+
+. Give a sample query issued at WEST that will generate a subquery for
+
+MIDDLE.
+
+. Write a query involving selection and projection on the above rela-
+
+tions and show two possible query trees that denote different ways of
+execution.
+
+Consider that you have been asked to propose a database architecture in a
+large organization (General Motors, for example) to consolidate all data
+
+Exercises
+
+879

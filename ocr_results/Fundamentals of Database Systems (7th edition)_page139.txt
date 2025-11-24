@@ -1,0 +1,58 @@
+4.1 Subclasses, Superclasses, and Inheritance 109
+
+subclass or subtype of the EMPLOYEE entity type, and the EMPLOYEE entity type is
+called the superclass or supertype for each of these subclasses. Figure 4.1 shows how
+to represent these concepts diagramatically in EER diagrams. (The circle notation in
+Figure 4.1 will be explained in Section 4.2.)
+
+We call the relationship between a superclass and any one of its subclasses a
+superclass/subclass or supertype/subtype or simply class/subclass relationship.’
+In our previous example, EMPLOYEE/SECRETARY and EMPLOYEE/TECHNICIAN
+are two class/subclass relationships. Notice that a member entity of the subclass
+represents the same real-world entity as some member of the superclass; for
+example, a SECRETARY entity ‘Joan Logano ’ is also the EMPLOYEE ‘Joan Logano.’
+Hence, the subclass member is the same as the entity in the superclass, but in a
+distinct specific role. When we implement a superclass/subclass relationship in
+the database system, however, we may represent a member of the subclass as a
+distinct database object—say, a distinct record that is related via the key attribute
+to its superclass entity. In Section 9.2, we discuss various options for representing
+superclass/subclass relationships in relational databases.
+
+An entity cannot exist in the database merely by being a member of a subclass; it
+must also be a member of the superclass. Such an entity can be included optionally
+
+Hams Cini) Coane
+
+EMPLOYEE
+
+U a
+CEng_type
+
+‘Typing_speed
+
+Figure 4.1
+
+EER diagram
+notation to represent
+subclasses and
+specialization.
+
+SECRETARY || TECHNICIAN|| ENGINEER |[ MANAGER HOURLY_EMPLOYEE
+
+SALARIED_EMPLOYEE
+
+Three specializations of EMPLOYEE:
+{SECRETARY, TECHNICIAN, ENGINEER} MANAGES
+{MANAGER}
+
+{HOURLY_EMPLOYEE, SALARIED_EMPLOYEE}
+
+PROJECT
+
+3A class/subclass relationship is often called an IS-A (or IS-AN) relationship because of the way we
+refer to the concept. We say a SECRETARY js an EMPLOYEE, a TECHNICIAN is an EMPLOYEE, and
+so on.
+
+BELONGS_TO
+
+TRADE_UNION

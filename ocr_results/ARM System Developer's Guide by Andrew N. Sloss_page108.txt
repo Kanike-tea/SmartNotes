@@ -1,0 +1,53 @@
+EXAMPLE
+
+43
+
+EXAMPLE
+
+4.4
+
+4.4 Data Processing Instructions 95.
+
+These instructions follow the same style as the equivalent ARM instructions. Most
+Thumb data processing instructions operate on low registers and update the cpsr. The
+exceptions are
+
+MOV Rd,Rn
+ADD Rd, Rm
+CMP Rn, Rm
+
+ADD sp, #immediate
+SUB sp, #immediate
+
+ADD Rd, sp, #immediate
+ADD Rd, pc, #immediate
+
+which can operate on the higher registers r8—r14 and the pc. These instructions, except for
+CMP, do not update the condition flags in the cpsr when using the higher registers. The CMP
+instruction, however, always updates the cpsr.
+
+This example shows a simple Thumb ADD instruction. It takes two low registers rl and r2
+and adds them together. The result is then placed into register r0, overwriting the original
+contents. The cpsr is also updated.
+
+PRE —cpsr = nzcvIFT_SVC
+r1 = 0x80000000
+r2 = 0x10000000
+ADD r0, rl, r2
+
+POST r0 = 0x90000000
+cpsr = NzcvIFT_SVC
+
+Thumb deviates from the ARM style in that the barrel shift operations (ASR, LSL, LSR, and
+ROR) are separate instructions. This example shows the logical left shift (LSL) instruction to
+multiply register r2 by 2.
+
+PRE r2 = 0x00000002
+r4 = 0x00000001
+
+USL r2, ra
+
+POST r2 = 0x00000004
+r4 = 0x00000001
+
+See Appendix A for a complete list of Thumb data processing instructions.

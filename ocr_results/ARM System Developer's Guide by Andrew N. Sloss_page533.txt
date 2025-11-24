@@ -1,0 +1,52 @@
+520 Chapter 14 Memory Management Units
+
+= If you use domains to control task access, the running task also appears as an alias at
+VA + (0x2000000 » process ID) in virtual memory.
+
+= Ifyou use domains to protect tasks from each other, you are limited to a maximum of
+16 concurrent tasks, unless you are willing to modify the domain fields in the level 1
+page table and flush the TLB on a context switch.
+
+14.10 DEMONSTRATION: A SMALL VIRTUAL MEMORY
+SYSTEM
+
+Here is a little demonstration that shows the fundamentals of a small embedded system
+using virtual memory. It is designed to run on an ARM720T or ARM920T core. The
+demonstration provides a static multitasking system showing the infrastructure needed to
+run three concurrent tasks. We wrote the demonstration using the ARM ADS1.2 developer
+suite. There are many ways to improve the demonstration, but its primary purpose is as
+an aid in understanding the underlying ARM MMU hardware. Paging or swapping to
+secondary storage is not demonstrated.
+
+The demonstration uses the same execution region for all user tasks, which simplifies
+the compiling and linking of those tasks. Each task is compiled as a standalone program
+containing text, data, and stack information in a single region.
+
+The hardware requirements are an ARM-based evaluation board, which includes an
+ARM720T or ARM920T processor core. The example requires 256 KB of RAM starting at
+address 0x00000000 and a method of loading code and data into memory. In addition there
+are also several memory-mapped peripherals spread over 256 MB from address 0x10000000
+to 0x20000000.
+
+The software requirements are an operating system infrastructure such as SLOS,
+provided in earlier chapters. The system must support fixed partition multitasking.
+
+The example uses only 1 MB and 4 KB pages. However, the coded examples support all
+page sizes. Tasks are limited to less than 1 MB and therefore fit in a single L2 page table.
+Thus, a task switch can be performed by changing a single L2 PTE in the master L1 page table.
+
+This approach is much simpler than trying to create and maintain a full sets of page
+tables for each task, and changing the TTB address during each context switch. Changing
+the TTB to change between task memory maps would require creating a master table and all
+the L2 system tables in three different sets of page tables. This would also require additional
+memory to store these additional page tables. The purpose for swapping out a single L2
+table is to eliminate the duplication of system information in the multiple sets of page tables.
+The reduction in the number of duplicated page tables reduces the required memory to run
+the system.
+
+We use seven steps to set up the MMU for the demonstration:
+
+1. Define the fixed system software regions; this fixed area is shown in Figure 14.5.
+
+2. Define the three virtual memory maps for the three tasks; the general layout of these
+maps is shown in Figure 14.4.

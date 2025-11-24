@@ -1,0 +1,49 @@
+800
+
+Chapter 21 Concurrency Control Techniques
+
+concurrency control. Although these anomalies are rare, they are very difficult to
+detect and may result in an inconsistent or corrupted database. The interested
+reader can refer to the end-of-chapter bibliography for papers that discuss in detail
+the rare types of anomalies that can occur.
+
+In this scheme, read operations do not require read locks to be applied to the items,
+thus reducing the overhead associated with two-phase locking. However, write
+operations do require write locks. Thus, for transactions that have many reads, the
+performance is much better than 2PL. When writes do occur, the system will have
+to keep track of older versions of the updated items in a temporary version store
+(sometimes known as tempstore), with the timestamps of when the version was
+created. This is necessary so that a transaction that started before the item was writ-
+ten can still read the value (version) of the item that was in the database snapshot
+when the transaction started.
+
+To keep track of versions, items that have been updated will have pointers to a list
+of recent versions of the item in the tempstore, so that the correct item can be read
+for each transaction. The tempstore items will be removed when no longer needed,
+so a method to decide when to remove unneeded versions will be needed.
+
+Variations of this method have been used in several commercial and open source
+DBMSs, including Oracle and PostGRES. If the users require guaranteed serializ-
+ability, then the problems with anomalies that violate serializability will have to be
+solved by the programmers/software engineers by analyzing the set of transactions
+to determine which types of anomalies can occur, and adding checks that do not
+permit these anomalies. This can place a burden on the software developers when
+compared to the DBMS enforcing serializability in all cases.
+
+Variations of snapshot isolation (SI) techniques, known as serializable snapshot
+isolation (SSI), have been proposed and implemented in some of the DBMSs that
+use SI as their primary concurrency control method. For example, recent versions of
+the PostGRES DBMS allow the user to choose between basic SI and SSI. The tradeoff
+is ensuring full serializability with SSI versus living with possible rare anomalies but
+having better performance with basic SI. The interested reader is referred to the end-
+of-chapter bibliography for more complete discussions of these topics.
+
+21.5 Granularity of Data Items and
+Multiple Granularity Locking
+All concurrency control techniques assume that the database is formed of a number
+of named data items. A database item could be chosen to be one of the following:
+A database record
+A field value of a database record
+A disk block
+A whole file
+The whole database

@@ -1,0 +1,52 @@
+© The Cache-memory stores a reasonable number of blocks at a given time.
+
+© This number of blocks is small compared to the total number of blocks available in main-memory.
+
+© Correspondence b/w main-memory-block & cache-memory-block is specified by mapping-function.
+* Cache control hardware decides which block should be removed to create space for the new block.
+
+© The collection of rule for making this decision is called the Replacement Algorithm.
+
+© The cache control-circuit determines whether the requested-word currently exists in the cache.
+
+© The write-operation is done in 2 ways: 1) Write-through protocol & 2) Write-back protocol.
+
+Write-Through Protocol
+» Here the cache-location and the main-memory-locations are updated simultaneously.
+Write-Back Protocol
+> This technique is to
+— update only the cache-location &
+— mark the cache-location with associated flag bit called Dirty/Modified Bit.
+> The word in memory will be updated later, when the marked-block is removed from cache.
+During Read-operation
+« If the requested-word currently not exists in the cache, then read-miss will occur.
+© To overcome the read miss, Load—through/Early restart protocol is used.
+Load-Throu gh Protocol
+> The block of words that contains the requested-word is copied from the memory into cache.
+> After entire block is loaded into cache, the requested-word is forwarded to processor.
+During Write-operation
+« If the requested-word not exists in the cache, then write-miss will occur.
+1) If Write Through Protocol is used, the information is written directly into main-memory.
+2) If Write Back Protocol is used,
+— then block containing the addressed word is first brought into the cache &
+— then the desired word in the cache is over-written with the new information.
+
+MAPPING-FUNCTION
+© Here we discuss about 3 different mapping-function:
+1) Direct Mapping
+2) Associative Mapping
+3) Set-Associative Mapping
+
+DIRECT MAPPING
+
+© The block-j of the main-memory maps onto block-j modulo-128 of the cache (Figure 8.16).
+« When the memory-blocks 0, 128, & 256 are loaded into cache, the block is stored in cache-block 0.
+Similarly, memory-blocks 1, 129, 257 are stored in cache-block 1.
+¢ The contention may arise when
+1) When the cache is full.
+2) When more than one memory-block is mapped onto a given cache-block position.
+© The contention is resolved by
+allowing the new blocks to overwrite the currently resident-block.
+* Memory-address determines placement of block in the cache.
+
+Page 51

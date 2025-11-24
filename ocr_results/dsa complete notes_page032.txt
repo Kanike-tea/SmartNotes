@@ -1,0 +1,53 @@
+Data Structures and Applications/BCS304 Module 1
+
+printf("%d\n" stack[i]);
+
+}
+}
+void main()
+{
+int ch,item,num,itemdel;
+while(1)
+{
+printf("\nEnter the Choice\n1 .Push\n2.Pop\n3 .Display\n4.Exit\n");
+scanf("%d" ,&ch);
+switch(ch)
+{
+case |: printf("Enter item to be inserted\n");
+scanf("%d" &item);
+push(item);
+break;
+case 2: itemdel=pop();
+if(itemdel)
+printf("\n Deleted Item is:%d\n" itemdel);
+else
+printf("Stack Underflow\n");
+break;
+case 3: display();
+break;
+case 4: exit(0);
+}
+}
+2.1.3 Stacks Using Dynamic Arrays
+
+If we do not know the maximum size of the stack at compile time, space can be allocated for the
+elements dynamically at run time and the size of the array can be increases as needed.
+
+Creation of stack: Here the capacity of the stack is taken as 1. The value of the capacity can be altered
+specific to the application
+
+StackCreateS() ::=
+
+int *stack
+
+Stack=(int*)malloc(stack, sizeof(int));
+
+int capacity = 1;
+
+int top =-1;
+
+BooleanIsEmpty(Stack) ::= top < 0;
+
+BooleanIsFull(Stack) ::= top >= capacity-1;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 33

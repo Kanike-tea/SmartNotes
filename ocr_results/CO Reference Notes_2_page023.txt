@@ -1,0 +1,50 @@
+Move #LINE,RO Tnitialize memory pointer.
+WAITK ‘TestBit — #0,STATUS Test SIN,
+Branch=) WAITK Wait for character to be entered,
+Move DATAIN,R1 Read character.
+WAITD TestBit — #1,STATUS Test SOUT.
+Branch=0 WAITD Wait for display to become ready.
+Move RIDATAOUT Send character to display.
+Move R1(RO}+ Store charater and advance pointer.
+Compare #$0D,R1 Check if Carriage Return.
+Branch#) WAITK If not, get another character,
+Move #S0A,DATAOUT Otherwise, send Line Feed.
+Call PROCESS Call a subroutine to process the
+
+Figure 4.4 A program that reads one line from the keyboord, stores it in memory bufler, and echoes it back to the display.
+
+VECTORED INTERRUPTS
+« A device requesting an interrupt identifies itself by sending a special-code to processor over bus.
+© Then, the processor starts executing the ISR.
+© The special-code indicates starting-address of ISR.
+© The special-code length ranges from 4 to 8 bits.
+* The location pointed to by the interrupting-device is used to store the staring address to ISR.
+© The staring address to ISR is called the interrupt vector.
+¢ Processor
+— loads interrupt-vector into PC &
+— executes appropriate ISR.
+« When processor is ready to receive interrupt-vector code, it activates INTA line.
+© Then, I/O-device responds by sending its interrupt-vector code & turning off the INTR signal.
+© The interrupt vector also includes a new value for the Processor Status Register.
+
+CONTROLLING DEVICE REQUESTS
+
+¢ Following condition-codes are used:
+
+> KEN > Keyboard Interrupt Enable.
+
+> DEN > Display InterruptEnable.
+
+> KIRQ/DIRQ > Keyboard/Display unit requesting an interrupt.
+There are 2 independent methods for controlling interrupt-requests. (IE > interrupt-enable).
+1) At Device-end
+
+IE bit in a control-register determines whether device is allowed to generate an interrupt-request.
+
+2) At Processor-end, interrupt-request is determined by
+
+— IE bit in the PS register or
+
+— Priority structure
+
+Page 24

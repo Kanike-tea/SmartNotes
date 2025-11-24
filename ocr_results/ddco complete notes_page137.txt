@@ -1,0 +1,55 @@
+Digital Design and Computer Organization (BCS302)
+
+Vv
+
+Pipeline Performance:
+
+The potential increase in performance resulting from pipelining is
+proportional to the number of pipeline stages.
+
+However, this increase would be achieved only if pipelined operation as
+depicted in Figure a could be sustained without interruption throughout
+program execution.
+
+Unfortunately, this is not the True.
+
+Floating point may involve many clock cycle.
+
+For a variety of reasons, one of the pipeline stages may not be able to
+complete its processing task for a given instruction in the time allotted. For
+example, stage E in the four stage pipeline of Figure b is responsible for
+arithmetic and logic operations, and one clock cycle is assigned for this task.
+Although this may be sufficient for most operations, some operations, such
+as divide, may require more time to complete. Figure shows an example in
+which the operation specified in instruction I2 requires three cycles to
+complete, from cycle 4 through cycle 6. Thus, in cycles 5 and 6, the Write
+stage must be told to do nothing, because it has no data to work with.
+Meanwhile, the information in buffer B2 must remain intact until the
+Execute stage has completed its operation. This means that stage 2 and, in
+turn, stage 1 are blocked from accepting new instructions because the
+information in B1 cannot be overwritten. Thus, steps D4 and F5 must be
+postponed as shown.
+
+Clock cycle 1 2 3 4 5 6 7 8 9
+
+Instruction
+
+Is Fs Ds Es
+
+Eg: for Data Hazard
+
+Figure 8.3. Effect of an execution operation taking more than one clock cycle
+
+Pipelined operation in Figure 8.3 is said to have been stalled for two clock
+
+cycles. Normal pipelined operation resumes in cycle 7. Any condition that
+
+causes the pipeline to stall is called a hazard. We have just seen an example
+of a data hazard.
+
+1) A data hazard is any condition in which either the source or the
+destination operands of an instruction are not available at the time
+expected in the pipeline. As a result some operation has to be
+delayed, and the pipeline stalls.
+
+Dr Ajay V G, Dept. of CSE,SVIT

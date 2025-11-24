@@ -1,0 +1,57 @@
+An overflow cannot occur after an addition if one number is positive and the other is negative, since
+adding a positive number to a negative number produces a result whose magnitude is smaller than the
+larger of the two original numbers. An overflow may occur if the two numbers added are both positive
+or both negative.
+
+Consider the following example: Two signed binary numbers, +70 and +80, are stored in two eight-bit
+registers. The range of numbers that each register can accommodate is from binary +127 to binary -128.
+Since the sum of the two numbers is +150, it exceeds the capacity of an eight-bit register. This is also
+true for -70 and -80.
+
+carries: 01 carries: 10
++70 0 1000110 -70 1 0111010
++80 0 1010000 80 1 0110000
++150 1 0010110 150 0 1101010
+
+Note that the eight-bit result that should have been positive has a negative sign bit (i.e., the eighth bit)
+and the eight-bit result that should have been negative has a positive sign bit. If, however, the carry out
+of the sign bit position is taken as the sign bit of the result, then the nine-bit answer so obtained will be
+correct. But since the answer cannot be accommodated within eight bits, we say that an overflow has
+occurred.
+
+Decoders
+
+A decoder is a combinational circuit that converts binary information from n input lines to a maximum
+of 2n unique output lines. If the n -bit coded information has unused combinations, the decoder may
+have fewer than 2n outputs. The decoders presented here are called n -to- m -line decoders, wherem s
+
+2n. Their purpose is to generate the 2n (or fewer) minterms of n input variables. Each combination of
+inputs will assert a unique output. The name decoder is also used in conjunction with other code
+converters, such as a BCD-to-seven-segment decoder.
+
+As an example, consider the three-to-eight-line decoder circuit of Fig below. The three inputs are
+decoded into eight outputs, each representing one of the minterms of the three input variables. The three
+inverters provide the complement of the inputs, and each one of the eight AND gates generates one of
+the minterms. A particular application of this decoder is binary-to-octal conversion. The input variables
+represent a binary number, and the outputs represent the eight digits of a number in the octal number
+system. However, a three-to-eight-line decoder can be used for decoding any three-bit code to provide
+eight outputs, one for each element of the code.
+
+Truth Table of a Three-to-Eight-Line Decoder
+
+Inputs Outputs
+x y z Do D, Dz, Ds; Dy Ds De dD,
+
+0 0 0 1 0 0 0 0 0 0 0
+0 0 1 0 1 0 0 0 0 0 0
+0 1 0 0 0 1 0 0 0 0 0
+0 1 1 0 0 0 1 0 0 0 0
+0 0 0 0 0 0 1 0 0 0
+0 1 0 0 0 0 0 1 0 0
+1 0 0 0 0 0 0 0 1 0
+1 1 0 0 0 0 0 0 0 1
+
+The operation of the decoder may be clarified by the truth table listed in Table above. For each possible
+input combination, there are seven outputs that are equal to 0 and only one that is equal to 1. The output
+whose value is equal to 1 represents the minterm equivalent of the binary number currently available in
+the input lines.

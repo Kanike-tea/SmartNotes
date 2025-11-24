@@ -1,0 +1,71 @@
+8. Develop a menu driven Program in C for the following operations on Doubly Linked List (DLL) of
+Employee Data with the fields: SSN, Name, Dept, Designation, Sal, PhNo
+
+la. Create a DLL of N Employees Data by using end insertion.
+
+lb. Display the status of DLL and count the number of nodes in it
+
+ic. Perform Insertion and Deletion at End of DLL
+
+ld. Perform Insertion and Deletion at Front of DLL
+
+le. Demonstrate how this DLL can be used as Double Ended Queue.
+
+If. Exit
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+
+{
+char ssn[25],name[25] ,dept[10],designation[25];
+int sal;
+long int phone;
+struct node *Ilink;
+struct node *rlink;
+iH
+
+typedef struct node* NODE;
+
+NODE first = NULL;
+int count=0;
+
+NODE create()
+{
+NODE enode;
+enode = (NODE)malloc(sizeof(struct node));
+if( enode== NULL)
+{
+printf("\nRunning out of memory");
+exit(0);
+
+printf("\nEnter the ssn, Name ,Department,Designation,Salary,PhoneNo of the employee: \n");
+
+scanf("%s %s Ys Ys Yd %ld" , enode->ssn, enode->name, enode->dept, enode->designation, &enode->sal, &enode-
+
+>phone);
+enode->llink=NULL;
+enode->rlink=NULL;
+count++;
+return enode;
+
+}
+
+NODE insertfront()
+
+{
+NODE temp;
+temp = create();
+if(first == NULL)
+{
+
+}
+
+temp->rlink = first;
+first->llink = temp;
+return temp;
+
+return temp;
+
+33

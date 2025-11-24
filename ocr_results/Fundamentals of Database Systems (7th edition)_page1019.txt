@@ -1,0 +1,52 @@
+26.3 Spatial Database Concepts
+
+where the topography of a geographical location can be represented with an x, y, z
+data model known as Digital Terrain (or Elevation) Model (DTM/DEM). The x and
+y dimensions of a DTM represent the horizontal plane, and z represents spot
+heights for the respective x, y coordinates. Such models can be used for analysis of
+environmental data or during the design of engineering projects that require ter-
+rain information. Spatial search allows a user to search for objects within a particu-
+lar spatial region. For example, thematic search allows us to search for objects
+related to a particular theme or class, such as “Find all water bodies within 25 miles
+of Atlanta” where the class is water.
+
+There are also topological relationships among spatial objects. These are often
+used in Boolean predicates to select objects based on their spatial relationships. For
+example, if a city boundary is represented as a polygon and freeways are repre-
+sented as multilines, a condition such as “Find all freeways that go through Arling-
+ton, Texas” would involve an intersects operation, to determine which freeways
+(lines) intersect the city boundary (polygon).
+
+26.3.2 Spatial Data Types and Models
+
+This section briefly describes the common data types and models for storing spatial
+data. Spatial data comes in three basic forms. These forms have become a de facto
+standard due to their wide use in commercial systems.
+
+= Map data” includes various geographic or spatial features of objects in a
+map, such as an object’s shape and the location of the object within the map.
+The three basic types of features are points, lines, and polygons (or areas).
+Points are used to represent spatial characteristics of objects whose loca-
+tions correspond to a single 2-D coordinate (x, y, or longitude/latitude) in
+the scale of a particular application. Depending on the scale, some examples
+of point objects could be buildings, cellular towers, or stationary vehicles.
+Moving vehicles and other moving objects can be represented by a sequence
+of point locations that change over time. Lines represent objects having
+length, such as roads or rivers, whose spatial characteristics can be approxi-
+mated by a sequence of connected lines. Polygons are used to represent spa-
+tial characteristics of objects that have a boundary, such as countries, states,
+lakes, or cities. Notice that some objects, such as buildings or cities, can be
+represented as either points or polygons, depending on the scale of detail.
+
+= Attribute data is the descriptive data that GIS systems associate with map
+features. For example, suppose that a map contains features that represent
+counties within a U.S. state (such as Texas or Oregon). Attributes for each
+county feature (object) could include population, largest city/town, area in
+square miles, and so on. Other attribute data could be included for other
+features in the map, such as states, cities, congressional districts, census
+tracts, and so on.
+
+These types of geographic data are based on ESRI's guide to GIS. See wwwgis.com/implementing_gis/
+data/data_typeshtml
+
+989

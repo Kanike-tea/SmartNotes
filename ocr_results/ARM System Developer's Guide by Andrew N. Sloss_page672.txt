@@ -1,0 +1,44 @@
+D.7 Intel XScale Instruction Cycle Timings 659
+
+Table D.10 ARMIOE (ARMvSTE) instruction cycle timings. (continued)
+
+Instruction class Cycles Notes
+
+PLD 1 +1 ifa shifted register offset is used.
+
+QxADD, QxSUB 1 Rd is not available for one cycle.
+
+SMULxy, SMULWx 1 Rd is not available for one cycle.
+
+SMLAxy, SMLAWx 2
+
+SMLALxy 2 RdHi is not available for one cycle.
+
+STC 1
+
+STR/B/H 1 +1 if a preindexed shifted register offset is used.
+
+STRD 1
+
+STM 1 Registers are stored two per cycle once the address is 8-byte aligned. You
+cannot write a register in the register list until its value has been stored.
+You cannot start another load or store until this one is complete.
+
+SWP/B 2
+
+D.7 INTEL XSCALE INSTRUCTION CYCLE TIMINGS
+
+The Intel XScale is based on a seven-stage pipeline. There is usually a two-cycle delay
+following a load instruction before you can use the data. Multiply instructions usually
+issue in a fixed number of cycles, but then the result is not available for a variable number
+of cycles, depending on the value of Rs. Table D.11 shows how the number of multiply
+iteration cycles M depends on the value of Rs. Table D.12 gives the Intel XScale instruction
+cycle timings.
+
+Table D.11 Intel XScale multiplier early termination.
+
+M_ Rsrange (use the first applicable range) Rs bitmap s = sign bit x = wildcard bit
+
+1 -28 <x<2)5 SSSSSSSS SSSSSSSS SXXXXXXX XXXXXXXX
+2 -27 <x<277 SSSSSXXX XXXXXXXX XXXXXXXX_XXXXXXXX
+3 remaining x XXXXXXXK AXAXXXXK XXAKXXXK AXAKKXK

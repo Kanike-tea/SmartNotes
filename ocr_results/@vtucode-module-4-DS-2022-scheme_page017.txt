@@ -1,0 +1,47 @@
+BCS304
+
+—_—_—_—_—
+structure Graph is
+
+objects: a nonempty set of vertices and a set of undirected edges, where cach edge is a
+
+pair of vertices,
+functions:
+for all graph € Graph, v, v,, and vy € Vertices
+Graph Create() S= return an empty graph.
+Graph InsertVertex( graph, v) = return a graph with v inserted.
+
+v has no incident edges.
+
+Graph InsertEdge(graph, v;, vy) “= return a graph with a new edge
+between v, and v».
+
+Graph Delete Vertex(graph, v) “= return a graph in which v and all
+edges incident to it are removed.
+
+Graph DeleteEdge(graph, v,.v.) = return a graph in which the edge
+{v). ¥2) is removed, Leave
+
+the incident nodes in the graph.
+Boolean \sEmpty(graph) == if (graph == empty graph) return
+TRUE else return FALSE
+List Adjacent(graph, v) c= return a list of all vertices that
+are adjacent to v.
+
+rn Si Se
+Fig: Abstract data type graph
+
+5.1.3 Graph representations
+
+Adjacency Matrix:
+
+Let G = (V, E) be a graph with n vertices, n>= 1. The adjacency matrix of G is a two-
+dimensional n x n array, say adj-mat. If the edge (Vi, Vj) (<Vi,V\>for a digraph) is in E(G),
+adj-mat[i][j] = 1. If there is no such edge in E(G), adj~mat{i}[j] = 0. The adjacency matrices
+for graphs Gi, G3, and G4 are shown in Figure. The adjacency matrix for an undirected graph
+is symmetric since the edge (v,, v,) is in E(G) iff the edge (vj, V|) is also in E(G). In contrast,
+the adjacency matrix for a digraph need not be symmetric. (This is true of G3.) ) For undirected
+
+graphs, we can save space by storing only the upper or lower triangle of the matrix.
+
+18

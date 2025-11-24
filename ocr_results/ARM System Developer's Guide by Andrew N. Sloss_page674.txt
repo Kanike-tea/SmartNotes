@@ -1,0 +1,59 @@
+D.8
+
+D.8 ARMI1 Cycle Timings 661
+
+ARM11 CYCLE TIMINGS
+
+The ARM11 core uses an eight-stage pipeline with three execute stages. There is usually a
+two-cycle delay following a load instruction before you can use the data. Some operations
+such as shift, multiply, and address calculations require their input registers a cycle early.
+
+For example, the following code sequence will stall the core for three cycles because the
+result of the load is not available for two cycles, and the input to the shift is required one
+cycle early:
+
+LOR =r, [rt] 3 0 not available for 2 cycles
+MOV —r2, v0, ASR#3 —-; 0 required one cycle early
+
+The ARM11 core has a separate address generation unit that can calculate simple
+addresses in one cycle. More complicated addresses take two cycles. Table D.13 defines
+the number of address calculation cycles A for each addressing mode.
+
+TableD.13_ ARM11 address calculation cycles.
+
+A Addressing modes
+
+Rn, #<signed-offset>]{!
+
+Rn), #<signed- Te
+
+Rn, Rm {, LSL #2} }{!}
+nt}, Rm {, LSL #2}
+
+Rn, -Rm] {1}
+‘n}, -Rm
+
+Rn, {-}<shifted_Rm>]{!} where shift is not LSL #0 or LSL #2
+
+t
+t
+[
+[R
+t
+[R
+[Rn,
+[Rn], {-}<shifted_Rm> where shift is not LSL #0 or LSL #2
+
+‘The ARM1I core uses prediction to minimize the number of cycles caused by a change
+in program flow. To enable prediction, set bit 11 of CP15 register cl. There are three branch
+predictors.
+
+A static predictor predicts relative branches that are not recorded in the branch prediction
+cache. This is the case the first time the processor sees a given branch. The static predictor
+predicts forward conditional branches as taken and backward conditional branches as not
+taken.
+
+A dynamic predictor predicts relative branches that are recorded in the branch prediction
+cache. The branch prediction cache has 128 entries based on the branch instruction
+address. Each cache entry predicts the branch destination and if the branch is taken. A
+cache entry has four states: strongly not taken, weakly not taken, weakly taken, strongly

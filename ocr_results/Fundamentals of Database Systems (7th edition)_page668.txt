@@ -1,0 +1,51 @@
+638
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+‘The following query uses the income_ix index even though the fields salary and
+commission_pct are occurring in the reverse order in the query when compared to
+the index definition.
+
+SELECT First_name, Lname
+FROM Employee
+WHERE ((Salary*Commission_pct) + Salary ) > 15000;
+
+Example 3. This is a more advanced example of using function-based indexing
+to define conditional uniqueness. The following statement creates a unique func-
+tion-based index on the ORDERS table that prevents a customer from taking
+advantage of a promotion id (“blowout sale”) more than once. It creates a compos-
+ite index on the Customer_id and Promotion_id fields together, and it allows only one
+entry in the index for a given Customer_id with the Promotion_id of “2” by declaring
+it as a unique index.
+
+CREATE UNIQUE INDEX promo_ix ON Orders
+(CASE WHEN Promotion_id = 2 THEN Customer_id ELSE NULL END,
+CASE WHEN Promotion_id = 2 THEN Promotion_id ELSE NULL END);
+
+Note that by using the CASE statement, the objective is to remove from the index any
+rows where Promotion_id is not equal to 2. Oracle Database does not store in the
+B*-tree index any rows where all the keys are NULL. Therefore, in this example, we
+map both Customer_id and Promotion_id to NULL unless Promotion_id is equal to 2. The
+result is that the index constraint is violated only if Promotion_id is equal to 2, for
+two (attempted insertions of) rows with the same Customer_id value.
+
+17.6 Some General Issues Concerning Indexing
+
+17.6.1 Logical versus Physical Indexes
+
+In the earlier discussion, we have assumed that the index entries <K, Pr> (or <K, P>)
+always include a physical pointer Pr (or P) that specifies the physical record address
+on disk as a block number and offset. This is sometimes called a physical index, and
+it has the disadvantage that the pointer must be changed if the record is moved to
+another disk location. For example, suppose that a primary file organization is
+based on linear hashing or extendible hashing; then, each time a bucket is split,
+some records are allocated to new buckets and hence have new physical addresses.
+If there was a secondary index on the file, the pointers to those records would have
+to be found and updated, which is a difficult task.
+
+To remedy this situation, we can use a structure called a logical index, whose index
+entries are of the form <K, K,>. Each entry has one value K for the secondary index-
+ing field matched with the value K, of the field used for the primary file organiza-
+tion. By searching the secondary index on the value of K, a program can locate the
+corresponding value of Kp and use this to access the record through the primary file
+organization, using a primary index if available. Logical indexes thus introduce an

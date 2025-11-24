@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+The software components are distributed over two systems: client and server
+
+= Server handles
+- Query and transaction functionality related to SQL processing
+= Client handles
+
+- User interface programs and application programs
+
+The user interface programs and application programs can run on the client side. When DBMS
+access is required, the program establishes a connection to the DBMS(which is on the server side)
+
+once the connection is created, the client program can communicate with the DBMS.
+
+A client program can actually connect to several RDBMSs and send query and transaction requests
+using the ODBC API, which are then processed at the server sites. Any query results are sent back
+to the client program, which can process and display the results as needed. A related standard for
+the Java programming language, called JDBC, has also been defined to allow Java client
+
+programs to access one or more DBMSs through a standard interface
+
+Object-oriented DBMSs
+The different approach to two-tier client/server architecture was taken by some object-oriented
+DBMSs, where the software modules of the DBMS were divided between client and server in a
+more integrated way.
+= server level
+may include the part of the DBMS software responsible for handling data storage on disk
+pages, local concurrency control and recovery, buffering and caching of disk pages.
+= client level
+may handle the user interface, data dictionary functions, DBMS _ interactions with
+programming language compilers, global query optimization, concurrency control, and
+recovery across multiple servers, structuring of complex objects from the data in the
+buffers.
+In this approach, the client/server interaction is more tightly coupled and is done internally by the
+DBMS modules—some of which reside on the client and some on the server—rather than by the
+
+users/programmers.
+
+2.5.4 Three-Tier and n-Tier Architectures for Web Applications
+Many Web applications use an architecture called the three-tier architecture, which adds an
+
+intermediate layer between the client and the database server
+
+https://vtucode.in Page 30

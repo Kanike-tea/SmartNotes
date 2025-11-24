@@ -1,0 +1,52 @@
+1.1 Introduction
+
+constitute a database. However, the common use of the term database is usually
+more restricted. A database has the following implicit properties:
+
+= A database represents some aspect of the real world, sometimes called the
+miniworld or the universe of discourse (UoD). Changes to the miniworld
+are reflected in the database.
+
+= A database is a logically coherent collection of data with some inherent
+meaning. A random assortment of data cannot correctly be referred to as a
+database.
+
+= A database is designed, built, and populated with data for a specific purpose.
+It has an intended group of users and some preconceived applications in
+which these users are interested.
+
+In other words, a database has some source from which data is derived, some degree
+of interaction with events in the real world, and an audience that is actively inter-
+ested in its contents. The end users of a database may perform business transactions
+(for example, a customer buys a camera) or events may happen (for example, an
+employee has a baby) that cause the information in the database to change. In order
+for a database to be accurate and reliable at all times, it must be a true reflection of
+the miniworld that it represents; therefore, changes must be reflected in the data-
+base as soon as possible.
+
+A database can be of any size and complexity. For example, the list of names and
+addresses referred to earlier may consist of only a few hundred records, each with a
+simple structure. On the other hand, the computerized catalog of a large library
+may contain half a million entries organized under different categories—by pri-
+mary author’s last name, by subject, by book title—with each category organized
+alphabetically. A database of even greater size and complexity would be maintained
+by a social media company such as Facebook, which has more than a billion users.
+The database has to maintain information on which users are related to one another
+as friends, the postings of each user, which users are allowed to see each posting,
+and a vast amount of other types of information needed for the correct operation of
+their Web site. For such Web sites, a large number of databases are needed to keep
+track of the constantly changing information required by the social media Web site.
+
+An example of a large commercial database is Amazon.com. It contains data for
+over 60 million active users, and millions of books, CDs, videos, DVDs, games,
+electronics, apparel, and other items. The database occupies over 42 terabytes
+(a terabyte is 10'* bytes worth of storage) and is stored on hundreds of computers
+(called servers). Millions of visitors access Amazon.com each day and use the
+database to make purchases. The database is continually updated as new books
+and other items are added to the inventory, and stock quantities are updated as
+purchases are transacted.
+
+A database may be generated and maintained manually or it may be computer-
+ized. For example, a library card catalog is a database that may be created and
+maintained manually. A computerized database may be created and maintained
+either by a group of application programs written specifically for that task or by a

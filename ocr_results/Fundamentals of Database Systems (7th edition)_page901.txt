@@ -1,0 +1,44 @@
+23.7 Distributed Database Architectures 871
+
+User User
+External External
+View
+
+a
+
+J View
+
+Global Conceptual Schema (GCS)
+
+\
+
+Local Conceptual Schema (LCS) Local Conceptual Schema (LCS)
+
+| |
+
+Local Internal Schema (LIS) Local Internal Schema (LIS)
+
+N
+
+Stored Stored
+Schema architecture of
+Site 1 Sites 2 to n-1 Site n distributed databases.
+
+elements are not shown here. The global query compiler references the global
+conceptual schema from the global system catalog to verify and impose defined
+constraints. The global query optimizer references both global and local conceptual
+schemas and generates optimized local queries from global queries. It evaluates all
+candidate strategies using a cost function that estimates cost based on response
+time (CPU, I/O, and network latencies) and estimated sizes of intermediate results.
+The latter is particularly important in queries involving joins. Having computed the
+cost for each candidate, the optimizer selects the candidate with the minimum cost
+for execution. Each local DBMS would have its local query optimizer, transaction
+manager, and execution engines as well as the local system catalog, which houses the
+local schemas. The global transaction manager is responsible for coordinating the
+execution across multiple sites in conjunction with the local transaction manager at
+those sites.
+
+23.7.3 Federated Database Schema Architecture
+
+Typical five-level schema architecture to support global applications in the FDBS
+environment is shown in Figure 23.9. In this architecture, the local schema is the

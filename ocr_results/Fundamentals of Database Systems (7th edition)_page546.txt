@@ -1,0 +1,49 @@
+516 Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+Algorithm 15.3. Testing for Nonadditive Join Property
+
+Input: A universal relation R, a decomposition D = {Rj, Ro, ... , Rm} of R, anda
+set F of functional dependencies.
+
+Note: Explanatory comments are given at the end of some of the steps. They
+follow the format: (comment).
+
+1. Create an initial matrix $ with one row i for each relation R; in D, and one
+column j for each attribute Aj in R.
+
+2. Set S(i, j): = by for all matrix entries. (*+Each bi is a distinct symbol associated
+with indices (i, j)*)
+3. For each row i representing relation schema R;
+{for each column j representing attribute A;
+{if (relation R; includes attribute Aj) then set S(i, j): = ap}s}s (+Each ajis
+a distinct symbol associated with index (j)*)
+4. Repeat the following loop until a complete loop execution results in no
+changes to S
+{for each functional dependency X > Y in F
+{for all rows in S that have the same symbols in the columns corresponding
+to attributes in X
+{make the symbols in each column that correspond to an attribute
+in Y be the same in all these rows as follows: If any of the rows has
+an a symbol for the column, set the other rows to that same a symbol
+in the column. If no a symbol exists for the attribute in any of the
+rows, choose one of the b symbols that appears in one of the rows for
+the attribute and set the other rows to that same b symbol in the
+column 5} ; } 3};
+5. If a row is made up entirely of a symbols, then the decomposition has the
+nonadditive join property; otherwise, it does not.
+
+Given a relation R that is decomposed into a number of relations Rj, Ro, ... 5 Ry»
+Algorithm 15.3 begins the matrix S that we consider to be some relation state r of
+R. Row iin S represents a tuple f; (corresponding to relation R;) that has a symbols
+in the columns that correspond to the attributes of R; and b symbols in the remain-
+ing columns. The algorithm then transforms the rows of this matrix (during the
+loop in step 4) so that they represent tuples that satisfy all the functional depen-
+dencies in F. At the end of step 4, any two rows in S—which represent two tuples
+in r—that agree in their values for the left-hand-side attributes X of a functional
+dependency X — Y in F will also agree in their values for the right-hand-side attri-
+butes Y. It can be shown that after applying the loop of step 4, if any row in S ends
+up with all a symbols, then the decomposition D has the nonadditive join property
+with respect to F.
+
+If, on the other hand, no row ends up being all a symbols, D does not satisfy the
+lossless join property. In this case, the relation state r represented by S at the end of

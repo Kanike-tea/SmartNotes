@@ -1,0 +1,49 @@
+326
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+10.3 Database Programming with Function
+Calls and Class Libraries: SQL/CLI
+and JDBC
+
+Embedded SQL (see Section 10.2) is sometimes referred to as a static database pro-
+gramming approach because the query text is written within the program source
+code and cannot be changed without recompiling or reprocessing the source code.
+The use of function calls is a more dynamic approach for database programming
+than embedded SQL. We already saw one dynamic database programming technique—
+dynamic SQL—in Section 10.2.3. The techniques discussed here provide another
+approach to dynamic database programming. A library of functions, also known
+as an application programming interface (API), is used to access the database.
+Although this provides more flexibility because no preprocessor is needed, one
+drawback is that syntax and other checks on SQL commands have to be done at
+runtime. Another drawback is that it sometimes requires more complex program-
+ming to access query results because the types and numbers of attributes in a query
+result may not be known in advance.
+
+In this section, we give an overview of two function call interfaces. We first discuss
+the SQL Call Level Interface (SQL/CLI), which is part of the SQL standard. This
+was developed as a standardization of the popular library of functions known as
+ODBC (Open Database Connectivity). We use C as the host language in our
+SQL/CLI examples. Then we give an overview of JDBC, which is the call function
+interface for accessing databases from Java. Although it is commonly assumed that
+JDBC stands for Java Database Connectivity, JDBC is just a registered trademark of
+Sun Microsystems (now Oracle), not an acronym.
+
+The main advantage of using a function call interface is that it makes it easier
+to access multiple databases within the same application program, even if they
+are stored under different DBMS packages. We discuss this further in Sec-
+tion 10.3.2 when we discuss Java database programming with JDBC, although
+this advantage also applies to database programming with SQL/CLI and ODBC
+(see Section 10.3.1).
+
+10.3.1 Database Programming with SQL/CLI Using C
+as the Host Language
+
+Before using the function calls in SQL/CLI, it is necessary to install the appropriate
+library packages on the database server. These packages are obtained from the ven-
+dor of the DBMS being used. We now give an overview of how SQL/CLI can be
+used in a C program.'? We will illustrate our presentation with the sample program
+segment CLI] shown in Figure 10.10.
+
+'8Qur discussion here also applies to the C++ and C# programming languages, since we do not use
+any of the object-oriented features but focus on the database programming mechanism.

@@ -1,0 +1,54 @@
+EXAMPLE
+
+9.11
+
+9.3 Interrupt Handling Schemes 347
+
+Methods of handling prioritization can either be achieved in hardware or software. For
+hardware prioritization, the handler is simpler to design since the interrupt controller will
+provide the current highest-priority interrupt that requires servicing. These systems require
+more initialization code at startup since the interrupts and associated priority level tables
+have to be constructed before the system can be switched on; software prioritization, on
+the other hand, requires the additional assistance of an external interrupt controller. This
+interrupt controller has to provide a minimal set of functions that include being able to set
+and un-setmasks, and to read the interrupt status and source.
+
+The rest of this section will cover a software prioritization technique chosen because it
+is a general method and does not rely on a specialized interrupt controller. To help describe
+the priority interrupt handler, we will introduce a fictional interrupt controller based upon
+a standard interrupt controller from ARM. The controller takes multiple interrupt sources
+and generates an IRQ and/or FIQ signal depending upon whether a particular interrupt
+source is enabled or disabled.
+
+Figure 9.11 shows a flow diagram of a simple priority interrupt handler, based on a
+reentrant interrupt handler.
+
+The interrupt controller has a register (IRQRawStatus) that holds the raw interrupt status—
+the state of the interrupt signals prior to being masked by the controller. The IRQEnable
+register determines which interrupts are masked from the processor. This register can only
+be set or cleared using IRQEnableSet and IRQEnableClear. Table 9.10 shows the interrupt
+controller register names, offsets from the controller’s base address, read/write operations,
+and a description of the registers.
+
+1_Bit EQU 0x80
+
+PRIORITY_O EQU 2 3 Comms Rx
+PRIORITY_1 EQU 1 3 Comms Tx
+PRIORITY_2 EQU 0 3 Timer 1
+PRIORITY_3 EQU 3 3 Timer 2
+
+BINARY_0O EQU 1<<PRIORITY_0 3 1<<2 0x00000004
+BINARY_1 EQU 1<<PRIORITY_1 3 1<<1 0x00000002
+BINARY_2 EQU 1<<PRIORITY_2 3 1<<0 0x00000001
+BINARY_3 EQU 1<<PRIORITY_3 3 1<<3 0x00000008
+MASK_3 EQU BINARY _3
+
+MASK_2 EQU MASK_3+BINARY_2
+
+MASK_1 EQU MASK_2+BINARY_1
+
+MASK_O EQU MASK_1+BINARY_0
+
+ic_Base EQU 0x80000000
+
+IRQStatus EQU 0x0

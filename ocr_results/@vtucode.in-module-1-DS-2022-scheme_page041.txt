@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Delete an item in a stack
+
+element delete(int *top)
+{
+/* return the top element from the stack */
+if (*top == -1)
+return stack-empty(); /* returns an error key */
+return stack[(*top)--];
+
+For deletion, the stack-empty function should print an error message and return an item of
+
+type element with a key field that contains an error code.
+
+STACK USING DYNAMIC ARRAYS
+
++ Shortcoming of static stack implementation: is the need to know at compile-time, a good
+bound(MAX_STACK_ SIZE) on how large the stack will become.
++ This shortcoming can be overcome by
+
+— using a dynamically allocated array for the elements &
+
+— then increasing the size of the array as needed
++ Initially, capacityn=1 where capacity=maximum no; of stack-elements that may be stored in
+array.
+
+* The CreateS() function can be implemented as follows
+
+Stack CreateS (max-stack-size") ::=
+#define MAX-STACK-SIZE 100 /*maximum stack size */
+typedef, struct
+{
+int’ key;
+/* other fields */
+} element;
+
+element stack [MAX—STACK-SIZE];
+
+int top - -1;
+Boolean IsEmpty(Stack) ::= top <0;
+Boolean IsFullI (Stack) ::= top >= MAX-STACK-SIZE-1;
+
+* Once the stack is full, realloc() function is used to increase the size of array.
++ In array-doubling, we double array-capacity whenever it becomes necessary to increase the
+
+capacity of an array.
+
+vtucode.in 42

@@ -1,0 +1,49 @@
+994
+
+Chapter 26 Enhanced Data Models
+
+In most instances, spatial items are a discrete version of continuous variables. For
+example, in the United States income regions may be defined as regions where the
+mean yearly income is within certain ranges, such as, below $40,000, from $40,000
+to $100,000, and above $100,000.
+
+= Spatial clustering attempts to group database objects so that the most similar
+objects are in the same cluster, and objects in different clusters are as dissimi-
+lar as possible. One application of spatial clustering is to group together seis-
+mic events in order to determine earthquake faults. An example of a spatial
+clustering algorithm is density-based clustering, which tries to find clusters
+based on the density of data points in a region. These algorithms treat clus-
+ters as dense regions of objects in the data space. Two variations of these
+algorithms are density-based spatial clustering of applications with noise
+(DBSCAN)?® and density-based clustering (DENCLUE).”? DBSCAN is a
+density-based clustering algorithm because it finds a number of clusters
+starting from the estimated density distribution of corresponding nodes.
+
+26.3.6 Applications of Spatial Data
+
+Spatial data management is useful in many disciplines, including geography, remote
+sensing, urban planning, and natural resource management. Spatial database man-
+agement is playing an important role in the solution of challenging scientific prob-
+lems such as global climate change and genomics. Due to the spatial nature of
+genome data, GIS and spatial database management systems have a large role to
+play in the area of bioinformatics. Some of the typical applications include pattern
+recognition (for example, to check if the topology of a particular gene in the genome
+is found in any other sequence feature map in the database), genome browser devel-
+opment, and visualization maps. Another important application area of spatial data
+mining is the spatial outlier detection. A spatial outlier is a spatially referenced
+object whose nonspatial attribute values are significantly different from those of
+other spatially referenced objects in its spatial neighborhood. For example, if a
+neighborhood of older houses has just one brand-new house, that house would be
+an outlier based on the nonspatial attribute ‘house_age’. Detecting spatial outliers is
+useful in many applications of geographic information systems and spatial data-
+bases. These application domains include transportation, ecology, public safety,
+public health, climatology, and location-based services.
+
+26.4 Multimedia Database Concepts
+
+Multimedia databases provide features that allow users to store and query differ-
+ent types of multimedia information, which includes images (such as photos or
+drawings), video clips (such as movies, newsreels, or home videos), audio clips
+
+28D SCAN was proposed by Martin Ester, Hans-Peter Kriegel, Jérg Sander, and Xiaowei Xu (1996).
+?°DENCLUE was proposed by Hinnenberg and Gabriel (2007).

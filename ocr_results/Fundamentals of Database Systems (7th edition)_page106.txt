@@ -1,0 +1,36 @@
+76 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+3.4.3 Constraints on Binary Relationship Types
+
+Relationship types usually have certain constraints that limit the possible combina-
+tions of entities that may participate in the corresponding relationship set. These
+constraints are determined from the miniworld situation that the relationships rep-
+resent. For example, in Figure 3.9, if the company has a rule that each employee
+must work for exactly one department, then we would like to describe this con-
+straint in the schema. We can distinguish two main types of binary relationship
+constraints: cardinality ratio and participation.
+
+Cardinality Ratios for Binary Relationships. The cardinality ratio for a binary
+relationship specifies the maximum number of relationship instances that an entity
+can participate in. For example, in the WORKS_FOR binary relationship type,
+DEPARTMENT:EMPLOYEE is of cardinality ratio 1:N, meaning that each department
+can be related to (that is, employs) any number of employees (N),? but an employee
+can be related to (work for) at most one department (1). This means that for
+this particular relationship type WORKS_FOR, a particular department entity can
+be related to any number of employees (N indicates there is no maximum number).
+On the other hand, an employee can be related to a maximum of one department.
+The possible cardinality ratios for binary relationship types are 1:1, 1:N, N:1,
+and M:N.
+
+An example of a 1:1 binary relationship is MANAGES (Figure 3.12), which relates a
+department entity to the employee who manages that department. This represents
+the miniworld constraints that—at any point in time—an employee can manage at
+
+Figure 3.12
+A 1:1 relationship,
+MANAGES.
+
+EMPLOYEE MANAGES DEPARTMENT
+
+®N stands for any number of related entities (zero or more). In some notations, the asterisk symbol (*) is
+used instead of N.

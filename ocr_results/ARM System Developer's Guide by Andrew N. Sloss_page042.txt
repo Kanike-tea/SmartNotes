@@ -1,0 +1,55 @@
+2.3 Pipeline 29
+
+Table 2.5 Condition mnemonics.
+
+Mnemonic Name Condition flags
+EQ equal Z
+
+NE not equal z
+
+CS HS carry set/unsigned higher or same c
+
+cc Lo carry clear/unsigned lower c
+
+MI minus/negative N
+
+PL plus/positive or zero n
+
+VS overflow v
+
+ve no overflow v
+
+HI unsigned higher 2C
+
+Ls unsigned lower or same Zorc
+
+GE signed greater than or equal NV or nv
+
+LT signed less than Nvor nv
+
+GT signed greater than NzVor nzv
+
+LE signed less than or equal Zor Nvor nV
+AL always (unconditional) ignored
+
+can see from the figure the processor is in supervisor (SVC) mode since the mode[4:0] is
+equal to binary 10011.
+
+2.2.6 CONDITIONAL EXECUTION
+
+Conditional execution controls whether or not the core will execute an instruction.
+Most instructions have a condition attribute that determines if the core will execute it
+based on the setting of the condition flags. Prior to execution, the processor compares the
+condition attribute with the condition flags in the cpsr. If they match, then the instruction
+is executed; otherwise the instruction is ignored.
+
+The condition attribute is postfixed to the instruction mnemonic, which is encoded
+into the instruction. Table 2.5 lists the conditional execution code mnemonics. When a
+condition mnemonic is not present, the default behavior is to set it to always (AL) execute.
+
+2.3 PIPELINE
+
+A pipeline is the mechanism a RISC processor uses to execute instructions. Using a pipeline
+speeds up execution by fetching the next instruction while other instructions are being
+decoded and executed. One way to view the pipeline is to think of it as an automobile
+assembly line, with each stage carrying out a particular task to manufacture the vehicle.

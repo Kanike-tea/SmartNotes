@@ -1,0 +1,52 @@
+248 Chapter 7 Optimized Primitives
+
+DCD Ox3ffec42d, Ox00c90e90, Ox3ff4e5e0, Ox025b0caf
+DCD Ox3fel2acb, Ox03ecadcf, Ox3fc395f9, 0x057db403
+DCD 0x3f9c2bfb, Ox070de172, Ox3f6af2e3, 0x089c F867
+DCD Ox3f2ff24a, Ox0a2abb59, Ox3eeb3347, OxObb6ecef
+DCD 0x3e9cc076, 0x0d415013, Ox3e44a5ef, Ox0ec9a7F3
+DCD Ox3de2f148, Ox104fb80e, Ox3d77b192, 0x11d3443f
+DCD 0x3d02f757, 0x135410c3, Ox3c84d496, Ox14d1le242
+DCD Ox3bfd5cc4, Ox164c7ddd, Ox3b6ca4c4, 0x17c3a931
+DCD Ox3ad2c2e8, 0x19372a64, Ox3a2fcee8, Oxlaa6c82b
+DCD 0x3983ele8, Ox1c1249d8, Ox38cf1669, 0x1d79775c
+DCD 0x3811884d, Oxledc1953, Ox374b54ce, 0x2039f90F
+DCD 0x367c9a7e, 0x2192e09b, 0x35a5793c, Ox22e69ac8
+DCD 0x34c61236, 0x2434f332, Ox33de87de, 0x257db64c
+DCD Ox32eefdea, Ox26c0b162, 0x31f79948, Ox27fdb2a7
+DCD 0x30f8801f, 0x29348937, Ox2ff1d9c7, 0x2a650525
+DCD Ox2ee3cebe, Ox2b8ef77d, Ox2dce88aa, Ox2cb2324c
+
+S
+
+Sos
+
+S
+
+S
+
+7.6 ENDIAN REVERSAL AND BIT OPERATIONS
+
+This section presents optimized algorithms for manipulating the bits within a register.
+Section 7.6.1 looks at endian reversal, a useful operation when you are reading data from
+a big-endian file on a little-endian memory system. Section 7.6.2 looks at permuting bits
+within a word, for example, reversing the bits. We show how to support a wide variety of bit
+permutations. See also Section 6.7 for a discussion on packing and unpacking bitstreams.
+
+7.6.1 ENDIAN REVERSAL
+
+To use the ARM core’s 32-bit data bus to maximum efficiency, you will want to load and
+store 8- and 16-bit arrays four bytes at a time. However, if you load multiple bytes at once,
+then the processor endianness affects the order they will appear in the register. If this does
+not match the order you want, then you will need to reverse the byte order.
+
+You can use the following code sequences to reverse the order of the bytes within a word.
+The first sequence uses two temporary registers and takes three cycles per word reversed
+after a constant setup cycle. The second code sequence only uses one temporary register
+and is useful for reversing a single word.
+
+n RN 0 input, output words
+t RN 1; scratch 1
+m RN 2 3 scratch 2
+
+byte_reverse sn=[ a,b, c, d ]

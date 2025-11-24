@@ -1,0 +1,51 @@
+752 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+The Unrepeatable Read Problem. Another problem that may occur is called
+unrepeatable read, where a transaction T reads the same item twice and the item is
+changed by another transaction T’ between the two reads. Hence, T receives differ-
+ent values for its two reads of the same item. This may occur, for example, if during
+an airline reservation transaction, a customer inquires about seat availability on
+several flights. When the customer decides on a particular flight, the transaction
+then reads the number of seats on that flight a second time before completing the
+reservation, and it may end up reading a different value for the item.
+
+20.1.4 Why Recovery Is Needed
+
+Whenever a transaction is submitted to a DBMS for execution, the system is
+responsible for making sure that either all the operations in the transaction are
+completed successfully and their effect is recorded permanently in the database,
+or that the transaction does not have any effect on the database or any other
+transactions. In the first case, the transaction is said to be committed, whereas
+in the second case, the transaction is aborted. The DBMS must not permit some
+operations of a transaction T to be applied to the database while other opera-
+tions of T are not, because the whole transaction is a logical unit of database
+processing. If a transaction fails after executing some of its operations but before
+executing all of them, the operations already executed must be undone and have
+no lasting effect.
+
+Types of Failures. Failures are generally classified as transaction, system, and
+media failures. There are several possible reasons for a transaction to fail in the
+middle of execution:
+
+1. A computer failure (system crash). A hardware, software, or network error
+occurs in the computer system during transaction execution. Hardware
+crashes are usually media failures—for example, main memory failure.
+
+2. A transaction or system error. Some operation in the transaction may
+cause it to fail, such as integer overflow or division by zero. Transaction fail-
+ure may also occur because of erroneous parameter values or because of a
+logical programming error.’ Additionally, the user may interrupt the trans-
+action during its execution.
+
+3. Local errors or exception conditions detected by the transaction. During
+transaction execution, certain conditions may occur that necessitate cancel-
+lation of the transaction. For example, data for the transaction may not be
+found. An exception condition,* such as insufficient account balance in a
+banking database, may cause a transaction, such as a fund withdrawal, to be
+canceled. This exception could be programmed in the transaction itself, and
+in such a case would not be considered as a transaction failure.
+
+3in general, a transaction should be thoroughly tested to ensure that it does not have any bugs (logical
+programming errors).
+
+4Exception conditions, if programmed correctly, do not constitute transaction failures.

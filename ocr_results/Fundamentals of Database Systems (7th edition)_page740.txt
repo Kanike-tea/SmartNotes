@@ -1,0 +1,50 @@
+710
+
+Chapter 19 Query Optimization
+
+view and avoid doing unnecessary computation. Sometimes an opposite situation
+happens. A view V is used in the query Q, and that view has been materialized as v;
+let us say the view includes R > S; however, no access structures like indexes are
+available on v. Suppose that indexes are available on certain attributes, say, A of the
+component relation R and that the query Q involves a selection condition on A. In
+such cases, the query against the view can benefit by using the index on a compo-
+nent relation, and the view is replaced by its defining query; the relation represent-
+ing the materialized view is not used at all.
+
+19.3 Use of Selectivities
+in Cost-Based Optimization
+
+A query optimizer does not depend solely on heuristic rules or query transforma-
+tions; it also estimates and compares the costs of executing a query using different
+execution strategies and algorithms, and it then chooses the strategy with the lowest
+cost estimate. For this approach to work, accurate cost estimates are required so that
+different strategies can be compared fairly and realistically. In addition, the opti-
+mizer must limit the number of execution strategies to be considered; otherwise,
+too much time will be spent making cost estimates for the many possible execution
+strategies. Hence, this approach is more suitable for compiled queries, rather than
+ad-hoc queries where the optimization is done at compile time and the resulting
+execution strategy code is stored and executed directly at runtime. For interpreted
+queries, where the entire process shown in Figure 18.1 occurs at runtime, a full-
+scale optimization may slow down the response time. A more elaborate optimiza-
+tion is indicated for compiled queries, whereas a partial, less time-consuming
+optimization works best for interpreted queries.
+
+This approach is generally referred to as cost-based query optimization.’ It uses
+traditional optimization techniques that search the solution space to a problem for a
+solution that minimizes an objective (cost) function. The cost functions used in
+query optimization are estimates and not exact cost functions, so the optimization
+may select a query execution strategy that is not the optimal (absolute best) one. In
+Section 19.3.1, we discuss the components of query execution cost. In Sec-
+tion 19.3.2, we discuss the type of information needed in cost functions. This infor-
+mation is kept in the DBMS catalog. In Section 19.3.3, we describe histograms that
+are used to keep details on the value distributions of important attributes.
+
+The decision-making process during query optimization is nontrivial and has mul-
+tiple challenges. We can abstract the overall cost-based query optimization
+approach in the following way:
+
+= For a given subexpression in the query, there may be multiple equivalence
+rules that apply. The process of applying equivalences is a cascaded one; it
+
+®This approach was first used in the optimizer for the SYSTEM R in an experimental DBMS developed at
+IBM (Selinger et al, 1979).

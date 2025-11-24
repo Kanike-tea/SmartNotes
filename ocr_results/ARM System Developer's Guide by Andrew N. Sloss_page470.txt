@@ -1,0 +1,52 @@
+128 Summary 457
+
+Memory-mapped peripherals frequently fail if they are configured to use cache or the
+write buffer. It is best to configure them as noncached and nonbuffered memory, which
+forces the processor to read the peripheral device on every memory access, rather than use
+what would be stale data from cache.
+
+Try to place frequently accessed data sequentially in memory, remembering that the
+cost of fetching a new data value from main memory requires a cache line fill. If the data in
+the cache line is used only once before it is evicted, performance will be poor. Placing data
+in the same cache line has the effect of actively forcing more cache hits by packing data close
+together to take advantage of spatial locality. It is most important to keep the data accessed
+by a common routine close together in main memory.
+
+Try to organize data so reading, processing, and writing is done in cache-line-sized
+blocks whose lower main memory address matches the starting address of the cache line.
+
+The best general approach is to keep code routines small and to group related data close
+together. The smaller the code, the more likely it is to be cache efficient.
+
+Linked lists can reduce program performance when using a cache because searching
+the list results in a high number of cache misses. When accessing data from a linked list, a
+program fetches data in a more random fashion than it would if it were accessing the data
+from a sequential array. This hint really applies to searching any unordered list. The way
+you choose to search for data may require a performance analysis of your system.
+
+However, it is important to remember that there are other factors that play a greater
+role in system performance than writing code to efficiently use cache. See Chapters 5 and 6
+for efficient programming techniques.
+
+12.8 SUMMARY
+
+A cache is a small, fast array of memory placed between the processor and main memory. It
+isa holding buffer that stores portions of recently referenced system memory. The processor
+uses cache memory in preference to system memory whenever possible to increase average
+system performance.
+
+Awrite buffer is a very small FIFO memory placed between the processor core and main
+memory, which helps free the processor core and cache memory from the slow write time
+associated with writing to main memory.
+
+The principle of locality of reference states that computer software programs frequently
+run small loops of code that repeatedly operate on local sections of data memory and
+explains why the average system performance increases significantly when using a cached
+processor core.
+
+There are many terms used by the ARM community to describe features of cache
+architecture. As a convenience we have created Table 12.14, which lists the features of all
+current ARM cached cores.
+
+The cache line is a fundamental component in a cache and contains three parts: a
+directory store, a data section, and status information. The cache-tag is a directory entry

@@ -1,0 +1,36 @@
+Z
+chapter 1
+
+The Enhanced Entity—Relationship
+(EER) Model
+
+T* ER modeling concepts discussed in Chapter 3
+are sufficient for representing many database sche-
+mas for traditional database applications, which include many data-processing
+applications in business and industry. Since the late 1970s, however, designers of
+database applications have tried to design more accurate database schemas that
+reflect the data properties and constraints more precisely. This was particularly
+important for newer applications of database technology, such as databases for
+engineering design and manufacturing (CAD/CAM),' telecommunications, com-
+plex software systems, and geographic information systems (GISs), among many
+other applications. These types of databases have requirements that are more com-
+plex than the more traditional applications. This led to the development of addi-
+tional semantic data modeling concepts that were incorporated into conceptual
+data models such as the ER model. Various semantic data models have been pro-
+posed in the literature. Many of these concepts were also developed independently
+in related areas of computer science, such as the knowledge representation area of
+artificial intelligence and the object modeling area in software engineering.
+
+In this chapter, we describe features that have been proposed for semantic data
+models and show how the ER model can be enhanced to include these concepts,
+which leads to the enhanced ER (EER) model.” We start in Section 4.1 by incorpo-
+rating the concepts of class/subclass relationships and type inheritance into the ER
+model. Then, in Section 4.2, we add the concepts of specialization and generalization.
+Section 4.3 discusses the various types of constraints on specialization/generalization,
+and Section 4.4 shows how the UNION construct can be modeled by including the
+
+'CAD/CAM stands for computer-aided design/computer-aided manufacturing
+
+EER has also been used to stand for extended ER model.
+
+107

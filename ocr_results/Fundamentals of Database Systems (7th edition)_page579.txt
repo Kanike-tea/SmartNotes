@@ -1,0 +1,90 @@
+16.2 Secondary Storage Devices 549
+
+away, thus maintaining a uniform density of recording, as shown in Figure 16.2(b).
+A technique called ZBR (zone bit recording) allows a range of cylinders to have the
+same number of sectors per arc. For example, cylinders 0-99 may have one sector
+per track, 100-199 may have two per track, and so on. A common sector size is 512
+
+bytes. Not all disks have their tracks divided into sectors.
+
+The division of a track into equal-sized disk blocks (or pages) is set by the operat-
+ing system during disk formatting (or initialization). Block size is fixed during
+initialization and cannot be changed dynamically. Typical disk block sizes range
+
+Table 16.2 Specifications of Typical High-End Enterprise Disks from Seagate (a) Seagate Enterprise Performance
+
+10 K HDD - 1200 GB
+
+Specifications
+
+SED Model Number
+
+SED FIPS 140-2 Model Number
+Model Name
+
+Interface
+
+Capacity
+
+Formatted 512 Bytes/Sector (GB)
+External Transfer Rate (MB/s)
+Performance
+
+Spindle Speed (RPM)
+
+Average Latency (ms)
+
+Sustained Transfer Rate Outer to Inner Diameter (MB/s)
+Cache, Multisegmented (MB)
+Configuration/ Reliability
+
+Disks
+
+Heads
+
+Nonrecoverable Read Errors per Bits Read
+Annualized Failure Rate (AFR)
+Physical
+
+Height (in/mm, max)
+
+Width (in/mm, max)
+
+Depth (in/mm, max)
+
+Weight (Ib/kg)
+
+1200GB
+
+ST1200MM0017
+
+ST1200MM0027
+
+Enterprise Performance 10K HDD v7
+6Gb/s SAS
+
+1200
+600
+
+10K
+
+2.9
+
+204 to 125
+64
+
+4
+
+8
+
+1 per 10E16
+0.44%
+
+0.591/15.00
+2.760/70.10
+3.955/100.45
+0.450/0.204
+
+Courtesy Seagate Technology
+
+(Continued)

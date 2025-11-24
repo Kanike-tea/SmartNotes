@@ -1,0 +1,54 @@
+952
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+systems may compensate to some extent for the missing values, conflicting
+values, hidden relationships, and the like. There is an inherent uncertainty
+about data collected from regular users using normal devices when such
+data comes in multiple forms (e.g., images, rates of speed, direction of
+travel). There is still a lot to be learned about how to use crowdsourcing data
+to generate effective decision making.
+
+The aforementioned issues are not new to information systems. However, the large
+volume and wide variety of information inherent in big data systems compounds
+these issues.
+
+25.6.6 Moving Forward
+
+YARN makes it feasible for enterprises to run and manage many services on one
+cluster. But building data solutions on Hadoop is still a daunting challenge. A solu-
+tion may involve assembling ETL (extract, transform, load) processing, machine
+learning, graph processing, and/or report creation. Although these different func-
+tional engines all run on the same cluster, their programming models and metadata
+are not unified. Analytics application developers must try to integrate all these ser-
+vices into a coherent solution.
+
+On current hardware, each node contains a significant amount of main memory
+and flash memory storage. The cluster thus becomes a vast resource of main mem-
+ory and flash storage. Significant innovation has demonstrated the performance
+gains of in-memory data engines; for example, SAP HANA is an in-memory,
+columnar scale-out RDBMS that is gaining a wide following.**
+
+The Spark platform from Databricks (https://databricks.com/), which is an off-
+shoot of the Berkeley Data Analytics Stack from AMPLabs at Berkeley,**addresses
+both of the advances mentioned above—namely, the ability to house diverse
+applications in one cluster and the ability to use vast amounts of main memory
+for faster response. Matei Zaharia developed the Resilient Distributed Datasets
+(RDD) concept** as a part of his Ph.D. work at the University of California-Berkeley
+that gave rise to the Spark system. The concept is generic enough to be used across
+all Spark’s engines: Spark core (data flow), Spark-SQL, GraphX, (graph process-
+ing), MLLib (machine learning), and Spark-Streaming (stream processing). For
+example, it is possible to write a script in Spark that expresses a data flow that
+reads data from HDFS, reshapes the data using a Spark-SQL query, passes that
+information to an MLLib function for machine learning-type analysis, and then
+stores the result back in HDFS.*°
+
+33See http://www.saphana.com/welcome for a variety of documentation on SAP's HANA system.
+
+See https://amplab.cs.berkeley.edu/software/ for projects at Amplab from the University of California
+Berkeley.
+
+35The RDD concept was first proposed in Zaharia et al. (2019).
+
+38See an example of the use of Spark at https://databricks.com/blog/201 4/03/26/spark-sql-
+manipulating-structured-data-using-spark-2.html

@@ -1,0 +1,43 @@
+Data Structures and Applications (15CS33)
+
+C function for testing equality of a binary tree:
+
+int equal(treepointer first,treepointer second)
+
+{
+return((!first && !second) ll (first && second && (first—>data==second—data)
+&& equal(first—leftchild,second—leftchild) && equal(first—rightchild,
+second—rightchild))
+
+}
+
+This function will return TRUE if two trees are equivalent and FALSE if they are not.
+
+3. The Satisfiability problem
+e Consider the formula that is constructed by set of variables: x1, x2, ..., Xn and operators
+a(and), v(or), 7 (not).
+e The variables can hold only of two possible values, true or false.
+e The expression can form using these variables and operators is defined by the
+following rules.
+e A variable is an expression
+e If xand yare expressions, then 7x, xy, xvy are expressions
+e Parentheses can be used to alter the normal order of evaluation (2 > ~>v)
+
+Example: x1 V (X2 A 7X3) If x: and x3 are false and xis true
+= false v (true A 7false)
+= false v true
+= true
+
+The satisfiablity problem for formulas of the propositional calculus asks if there is an
+
+assignment of values to the variable that causes the value of the expression to be true.
+
+Let’s assume the formula in a binary tree
+
+(x1 A 7X2) V (4X1 A x3) V 9X3
+
+QO @ &
+
+Figure : Propositional formula in a binary tree
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

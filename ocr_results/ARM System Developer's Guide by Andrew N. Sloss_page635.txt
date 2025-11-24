@@ -1,0 +1,51 @@
+622 Appendix A ARM and Thumb Assembler Instructions
+
+name before the line is assembled. You can omit the final period if name is not followed by
+
+an alphanumeric or underscore. Use $$ to produce a single $. Arithmetic variables expand
+
+to an eight-digit hexadecimal string on substitution. Logical variables expand to T or F.
+The following example code shows how to declare and substitute variables of each
+
+type:
+
+3 arithmetic variables
+GBLA count
+count SETA 1
+WHILE = count<15
+BL test$count ; call test00000001, test00000002 ...
+count SETA count+1 3 «++. test00000000E
+WEND
+
+declare an integer variable count
+set count = 1
+
+3 string variables
+GBLS cc declare a string variable called cc
+cc SETS "NE" 3 set cc="NE"
+ADD$cc 0, r0, r0 ; assembles as ADDNE r0,r0,r0
+STRS$cc.B r0, [rl]  ; assembles as STRNEB r0, [rl]
+
+3 logical variable
+
+GBLL debug 3 declare a logical variable called debug
+debug SETL {TRUE} 3 set debug={TRUE}
+IF debug 3 if debug is TRUE then
+BL print_debug ; print out some debug information
+ENDIF
+
+A4.2) ARM ASSEMBLER LABELS
+
+A label definition must begin on the first character of a line. The assembler treats indented
+text as an instruction, directive, or macro. It treats labels of the form <N><name> as a local
+label, where <N>_ is an integer in the range 0 to 99 and <name> is an optional textual name.
+Local labels are limited in scope by the ROUT directive. To reference a local label, you refer to
+it as %{ | F|B} { |A|T}<N>{<name>}. The extra prefix letters tell the assembler how to search
+for the label:
+
+= If you specify F, the assembler searches forward; if B, then the assembler searches
+backwards. Otherwise the assembler searches backwards and then forwards.
+
+= Ifyou specify T, the assembler searches the current macro only; if A, then the assembler
+searches all macro levels. Otherwise the assembler searches the current and higher
+macro nesting levels.

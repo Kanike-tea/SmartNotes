@@ -1,0 +1,51 @@
+5.2 BasicC Data Types 109
+
+return sum;
+
+}
+
+You may wonder why the for loop body doesn’t contain the code
+sum += data[i];
+
+With armcc this code will produce a warning if you enable implicit narrowing cast warnings
+using the compiler switch -W+n. The expression sum+data[i] is an integer and so can
+only be assigned to a short using an (implicit or explicit) narrowing cast. As you can see
+in the following assembly output, the compiler must insert extra instructions to implement
+the narrowing cast:
+
+checksum_v3
+MOV r2,r0 3 2 = data
+MoV 0, #0 3
+Mov rl, #0 ;i=0
+checksum_v3_loop
+ADD = r3,r2,r1,LSL #1; r3 = &dataLi]
+
+LDRH 3, [r3, #0] 3 13 = dataLi]
+
+ADD rlyrl,#1 3 itt
+
+CMP rl, #0x40 3 compare i, 64
+
+ADD —r0,r3,r0 3 r0 = sum + 13
+
+MOV r0,r0,LSL #16
+
+MOV r0,r0,ASR #16 3 sum = (short) r0
+BCC checksum_v3_ loop ; if (i<64) goto loop
+MOV pcyrl4 3 return sum
+
+The loop is now three instructions longer than the loop for example checksum_v2
+earlier! There are two reasons for the extra instructions:
+
+= The LDRH instruction does not allow for a shifted address offset as the LDR instruction
+did in checksum_v2. Therefore the first ADD in the loop calculates the address of item i
+in the array. The LDRH loads from an address with no offset. LDRH has fewer addressing
+modes than LDR as it was a later addition to the ARM instruction set. (See Table 5.1.)
+
+= The cast reducing total +array[i] to a short requires two MOV instructions. The
+compiler shifts left by 16 and then right by 16 to implement a 16-bit sign extend.
+The shift right is a sign-extending shift so it replicates the sign bit to fill the upper
+16 bits.
+
+We can avoid the second problem by using an int type variable to hold the partial sum.
+We only reduce the sum to a short type at the function exit.

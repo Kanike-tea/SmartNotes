@@ -1,0 +1,54 @@
+Microcontrollers — BCS402
+
+Example: This example shows the improvement if we switch to a decrementing loop rather
+
+than an incrementing loop.
+
+int checksum_v6(int *data) This compiles to
+{
+
+unsigned int i; checksum_v6
+
+int sum=0; Moy r2,r0 ; 72 = data
+Mov r0,#0 3 sum = 0
+
+for (1=64; i!=0; 1--) Mov rl, #0x40 31 = 64
+
+{ checksum_v6_loop
+
+sum += *(datat+) 5 LOR r3,[r2], #4 373 = *(datat+)
+} SUBS ri,rl, #1 3 i-- and set flags
+return sum; ADD r0,r3,r0 3 sum += 13
+} BNE checksum_v6_loop ; if (i!=0) goto loop
+
+Mov pe, rl4 ; return sum
+
+The SUBS and BNE instructions implement the loop. Our checksum example now has the
+minimum number of four instructions per loop. This is much better than six for checksum_v1
+
+and eight for checksum_v3.
+
+For an unsigned loop counter i we can use either of the loop continuation conditions i!=0 or
+i>0. As i can’t be negative, they are the same condition. For a signed loop counter, it is
+tempting to use the condition i>0 to continue the loop. You might expect the compiler to
+
+generate the following two instructions to implement the loop:
+
+SUBS rl,rl,# 3 compare i with 1, i=i-1
+BGT loop ; if (i+1>1) goto loop
+
+In fact, the compiler will generate
+
+SUB) ri,rl,#1 3 i--
+cMP orl, #0 ; compare i with O
+BGT loop 3 if (1>0) goto loop
+
+The compiler is not being inefficient. It must be careful about the case when i = -0x80000000
+
+because the two sections of code generate different answers in this case.
+
+For the first piece of code the SUBS instruction compares i with 1 and then decrements i.
+
+Since -0x80000000 < 1, the loop terminates. For the second piece of code, we decrement i
+
+Dept. of ECE, GSSSIETW Page 41

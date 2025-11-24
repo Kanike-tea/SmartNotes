@@ -1,0 +1,19 @@
+Database Management System [BCS403]
+
+Chapter 3: Mapping Conceptual Design into a Logical Design
+
+3.1 Relational Database Design using ER-to-Relational mapping
+
+Procedure to create a relational schema from an Entity-Relationship (ER)
+
+Fig 3.1: ER diagram of company database
+
+Step 1: Mapping of Regular Entity Types
+= For each regular entity type, create a relation R that includes all the simple attributes of E
+= Include only the simple component attributes of a composite attribute
+= Choose one of the key attributes of E as the primary key for R
+= Ifthe chosen key of E is a composite, then the set of simple attributes that form it will
+
+together form the primary key of R.
+
+https://vtucode.in Page 38

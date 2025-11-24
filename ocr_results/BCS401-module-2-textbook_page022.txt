@@ -1,0 +1,34 @@
+176
+
+5.2
+
+Divide-and-Conquer
+
+Quicksort
+
+Quicksort is the other important sorting algorithm that is based on the divide-and-
+conquer approach. Unlike mergesort, which divides its input elements according
+to their position in the array, quicksort divides them according to their value.
+We already encountered this idea of an array partition in Section 4.5, where we
+discussed the selection problem. A partition is an arrangement of the array’s
+elements so that all the elements to the left of some element A[s] are less than
+or equal to A[s], and all the elements to the right of A[s] are greater than or equal
+to it:
+
+A[O]... A[s—1] Als] A[s +1]... Af» —1]
+
+allare <A[s] allare =A[s]
+
+Obviously, after a partition is achieved, A[s] will be in its final position in the
+sorted array, and we can continue sorting the two subarrays to the left and to the
+right of A[s] independently (e.g., by the same method). Note the difference with
+mergesort: there, the division of the problem into two subproblems is immediate
+and the entire work happens in combining their solutions; here, the entire work
+happens in the division stage, with no work required to combine the solutions to
+the subproblems.
+Here is pseudocode of quicksort: call Quicksort(A[0..n — 1]) where
+
+As a partition algorithm, we can certainly use the Lomuto partition discussed
+in Section 4.5. Alternatively, we can partition A[0..n — 1] and, more generally, its
+subarray A[/..r] (0 </ <r <n — 1) by the more sophisticated method suggested by
+C.A.R. Hoare, the prominent British computer scientist who invented quicksort.?

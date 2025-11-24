@@ -1,0 +1,56 @@
+10.3 Database Programming with Function Calls and Class Libraries: SQL/CLI and JDBC
+
+. Load the JDBC driver. This is shown in lines 4 to 7. The Java exception in
+line 5 occurs if the driver is not loaded successfully.
+
+. Create appropriate variables. These are the variables needed in the Java
+program (lines 8 and 9).
+
+. The Connection object. A connection object is created using the
+getConnection function of the DriverManager class of JDBC. In lines 12
+and 13, the Connection object is created by using the function call
+getConnection(urlstring), where urlstring has the form
+
+jdbc: oracle:<driverType>:<dbaccount>/<password>
+
+An alternative form is
+
+getConnection(url, dbaccount, password)
+
+Various properties can be set for a connection object, but they are mainly
+related to transactional properties, which we discuss in Chapter 21.
+
+. The Prepared statement object. A statement object is created in the pro-
+gram. In JDBC, there is a basic statement class, Statement, with two spe-
+cialized subclasses: PreparedStatement and CallableStatement. The
+example in Figure 10.12 illustrates how PreparedStatement objects are
+created and used. The next example (Figure 10.13) illustrates the other type
+of Statement objects. In line 14 in Figure 10.12, a query string with a sin-
+gle parameter—indicated by the ? symbol—is created in the string variable
+stmt1. In line 15, an object p of type PreparedStatement is created based
+on the query string in stmt1 and using the connection object conn. In gen-
+eral, the programmer should use PreparedStatement objects if a query is
+to be executed multiple times, since it would be prepared, checked, and
+compiled only once, thus saving this cost for the additional executions of
+the query.
+
+. Setting the statement parameters. The question mark (?) symbol in line 14
+represents a statement parameter, which is a value to be determined at run-
+time, typically by binding it to a Java program variable. In general, there
+could be several parameters, distinguished by the order of appearance of the
+question marks within the statement string (first ? represents parameter 1,
+second ? represents parameter 2, and so on), as we discussed previously.
+
+. Binding the statement parameters. Before executing a PreparedStatement
+query, any parameters should be bound to program variables. Depending
+on the type of the parameter, different functions such as setString,
+set Integer, setDouble, and so on are applied to the PreparedStatement
+object to set its parameters. The appropriate function should be used to cor-
+respond to the data type of the parameter being set. In Figure 10.12, the
+parameter (indicated by ?) in object p is bound to the Java program variable
+ssn in line 18. The function setString is used because ssn is a string vari-
+able. If there are n parameters in the SQL statement, we should haven set ...
+functions, each with a different parameter position (1, 2, ... , 7). Generally, it
+is advisable to clear all parameters before setting any new values (line 17).
+
+333

@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304
+
+MODULE 2
+To divide the array into roughly equal segments
+top[0] = boundary[0] = -1;
+for (j= 1;j<n; j++)
+top[j] = boundary[j] = (MEMORY_SIZE / n) * j;
+boundary[n] = MEMORY_SIZE - 1;
+fe) [m/n] 2 [m/n] m-1
+t 4
+boundary[0] boundary[1] boundary[n!
+top[0] top[1]
+
+All stacks are empty and divided into roughly equal segments
+
+Figure: Initial configuration for n stacks in.memory [m].
+
+In the figure, n is the number of stacks.entered by the user, n < MAX_STACKS, and
+
+m=MEMORY_SIZE. Stack i grow from boundary[i] + 1 to boundary [i + 1] before it is
+
+full. A boundary for the last stack is needed, so set boundary [n] to MEMORY_SIZE-1.
+
+Implementation of theadd_ operation
+
+void push(int i, element item)
+
+{ /* add an item to the ith stack */
+if (top{i] == boundary[i+1])
+stackFull(i);
+memory[++top[i]] =
+item;
+3
+
+Program: Add an item to the ith stack
+
+vtucode.in

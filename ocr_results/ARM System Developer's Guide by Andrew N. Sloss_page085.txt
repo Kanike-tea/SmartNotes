@@ -1,0 +1,43 @@
+72° Chapter 3 Introduction to the ARM Instruction Set
+
+When handling a checked stack there are three attributes that need to be preserved: the
+stack base, the stack pointer, and the stack limit. The stack base is the starting address of the
+stack in memory. The stack pointer initially points to the stack base; as data is pushed onto
+the stack, the stack pointer descends memory and continuously points to the top of stack.
+If the stack pointer passes the stack limit, then a stack overflow error has occurred. Here is
+a small piece of code that checks for stack overflow errors for a descending stack:
+
+3 check for stack overflow
+
+SUB sp, sp, #size
+CMP sp, r10
+BLLO _stack_overflow ; condition
+
+ATPCS defines register r10as the stack limit or s/. This is optional since it is only used when
+stack checking is enabled. The BLLO instruction is a branch with link instruction plus the
+condition mnemonic LO. If sp is less than register r10 after the new items are pushed onto
+the stack, then stack overflow error has occurred. If the stack pointer goes back past the
+stack base, then a stack underflow error has occurred.
+
+3.3.4 SWAP INSTRUCTION
+
+The swap instruction is a special case of a load-store instruction. It swaps the contents of
+memory with the contents of a register. This instruction is an atomic operation—it reads
+and writes a location in the same bus operation, preventing any other instruction from
+reading or writing to that location until it completes.
+
+Syntax: SWP{B}{<cond>} Rd,Rm, [Rn]
+
+swP | swap a word between memory anda register | tmp =mem32[Rn]
+mem32[Rn] = Rm
+Rd=tmp
+
+SWPB | swap a byte between memory and a register tmp = mem8[Rn]
+mem8[Rn] =Rm
+Rd=tmp
+
+Swap cannot be interrupted by any other instruction or any other bus access. We say
+the system “holds the bus” until the transaction is complete.
+
+EXAMPLE The swap instruction loads a word from memory into register r0 and overwrites the memory
+3.22 with register rl.

@@ -1,0 +1,35 @@
+chapter 1 ()
+
+Introduction to SQL
+Programming Techniques
+
+n Chapters 6 and 7, we described several aspects of the
+
+SQL language, which is the standard for relational
+databases. We described the SQL statements for data definition, schema modifica-
+tion, queries, views, and updates. We also described how various constraints on the
+database contents, such as key and referential integrity constraints, are specified.
+
+In this chapter and the next, we discuss some of the methods that have been devel-
+oped for accessing databases from programs. Most database access in practical
+applications is accomplished through software programs that implement database
+applications. This software is usually developed in a general-purpose program-
+ming language such as Java, C/C++/C#, COBOL (historically), or some other pro-
+gramming language. In addition, many scripting languages, such as PHP, Python,
+and JavaScript, are also being used for programming of database access within Web
+applications. In this chapter, we focus on how databases can be accessed from the
+traditional programming languages C/C++ and Java, whereas in the next chapter
+we introduce how databases are accessed from scripting languages such as PHP.
+Recall from Section 2.3.1 that when database statements are included in a program,
+the general-purpose programming language is called the host language, whereas the
+database language—SQL, in our case—is called the data sublanguage. In some
+cases, special database programming languages are developed specifically for writ-
+ing database applications. Although many of these were developed as research pro-
+totypes, some notable database programming languages have widespread use, such
+as Oracle’s PL/SQL (Programming Language/SQL).
+
+It is important to note that database programming is a very broad topic. There are
+whole textbooks devoted to each database programming technique and how that
+technique is realized in a specific system. New techniques are developed all the
+
+309

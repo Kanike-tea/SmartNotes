@@ -1,0 +1,187 @@
+1230 Index
+
+Multimedia databases
+audio data source analysis, 999
+concepts, 994-996
+enhanced data models, 962, 994-999
+image automatic analysis, 996-997
+object recognition, 997-998
+semantic tagging of images, 998-999
+types of, 3-4
+Multiple granularity locking
+concurrency control and, 801-804
+granularity levels for, 801
+granularity of data items, 800-801
+protocol, 802-804
+Multiple hashing, collision resolution, 575
+Multiple inheritance, 118, 301, 377-378,
+393
+Multiple keys
+grid files and, 632-633
+indexes on, 613-633
+multiple attributes and, 631-632
+ordered index on, 631-632
+partitioned hashing with, 632
+physical database design and, 613-633
+Multiple-relation options, EER-to-
+relational mapping, 299-300
+Multiple user interfaces, 20-21
+Multiplicities, UML class diagrams, 87
+Multiprogramming
+concept of, 746-747
+operating systems, 747
+Multirelational queries, JOIN ordering
+choices and, 721-724
+‘Multiset (tuple) operations
+comparisons for query retrieval, 209-211
+SQL tables, 193-195
+Multiuser DBMS systems, 51
+Multiuser transaction processing, 13-14
+Multivalued attributes, 66, 295-296, 481
+Multivalued dependency, see MVD
+(multivalued dependency)
+Multiversion concurrency control, 781,
+795-797
+certify locks for, 796-797
+timestamp ordering (TO), 796
+two-phase locking (2PL), 796-797
+Multiway joins
+implementing, 668
+SQL table (relations), 216
+‘Mutator function, SQL encapsulation, 384
+MVD (multivalued dependency)
+all-key relation of, 491, 493
+definition of, 491-492
+fourth normal form (4NE) and,
+491-494, 527-530
+inference rules for, 527-528
+normalizing relations, 493-494
+trivial/nontrivial, 493
+n-ary relationship types, mapping of, 296
+n-degree relationships, 88-92
+n-tier architecture for Web applications,
+49-51
+
+N-way joins, MapReduce (MR), 931-932
+Named iterator, SQLJ, 323
+Namespace, XML, 440
+Naming mechanisms
+constraints, SQL, 187
+database entrypoints, 373
+object persistence and, 373-374
+operations for renaming attributes,
+245-246
+query retrieval and, 192, 214-215
+renaming attributes, 192, 214-215,
+245-246
+schema constructs, 82
+Naming transparency, DDBs, 843
+NATURAL JOIN (*__) comparison
+operator, 253, 262-263
+NATURAL JOIN operation, SQL tables,
+215
+Natural language interfaces, 41
+Natural language queries, 1037
+Neodj system
+cypher query language of, 905-908
+distributed system concepts for,
+908-909
+nodes, 904-905
+NOSQL, 903-909
+relationships, 904-905
+Nested-loop join, 558-559, 672-673, 718
+Nested queries
+comparison operators for, 210-211
+correlated, 211-212
+innermost query of, 211
+outer query of, 209
+query optimization and, 702-704
+subqueries, 702-704
+tuple values in, 209-211
+unnesting (decorrelation), 704
+Nested relations, INF in, 479-480
+Network-attached storage (NAS), 589-590
+Network data models, 33, 51, 53
+Network systems using databases, 23-24
+Network topologies, 843
+Neural networks, data mining, 1092
+No waiting algorithm, deadlock
+prevention, 791
+NodeManager, YARN, 942
+Nodes
+constant, query graphs, 273
+leaf, query trees, 257
+relation, query graphs, 273
+tree structures, 617
+Non-equi join implementation, 681
+Nonadditive (lossless) join property
+algorithms, 519-523
+Boyce-Codd normal form (BCNF)
+schemas using, 522-523
+dependency preservation and, 519-522
+ANF schema using, 530
+normalization process, 476
+RDB decomposition, 515-518, 519-522
+successive decompositions, 517-518
+
+testing binary decompositions for, 517
+3NF schema using, 519-522
+Nonadditive join test for binary
+decomposition (NJB), 490
+Noninstantiable object behavior,
+interface and, 392
+Nonprocedural language, 268
+Nonrecursive query evaluation, 1010-1012
+Nonserial schedules, 763, 764-765
+Normal form test, 475
+Normal forms
+Boyce-Codd normal form (BCNE),
+487-491
+defined, 475
+denormalization, 476
+domain-key (DKNF), 532-533
+fifth normal form (SNF), 494-495
+first normal form (INE), 477-481
+fourth normal form (4NE), 491-494
+insufficiency of for relational
+decomposition, 513-514
+join dependency (JD) and, 494-495
+keys, attributes and definitions for,
+476-477
+multivalued dependency (MVD) and,
+491-494
+normalization of relations, 474-476,
+482, 485, 486-487, 493-494
+practical use of, 476
+primary keys for, 483-495
+RDB design and, 474-495, 513-514,
+528-533
+second normal form (2NF), 481-482,
+484-486
+third normal form (3NF), 483-484,
+486-487
+Normalization process
+algorithms, 519-527
+data normalization, 475-476
+dependency preservation property, 476
+multivalued dependency (MVD),
+493-494
+nonadditive (lossless) join property, 476
+normal form test for, 475
+relations, 474-476
+NOSQL database system
+availability, 885-886
+big data storage uses, 3, 26
+CAP theorem, 888-890
+categories of, 887-888
+column-based, 888, 900-903
+CRUD (create, read, update, and
+delete) operations, 887, 893, 903
+data models, 34, 51
+DDB similar characteristics, 885-887
+distributed storage using, 883
+document-based, 888, 890-895
+emergence of, 884-885
+eventual consistency, 885-886
+graph-based, 888, 903-909
+Hbase data model, 900-903

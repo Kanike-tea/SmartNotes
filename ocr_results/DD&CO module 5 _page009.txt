@@ -1,0 +1,50 @@
+EXECUTION OF A COMPLETE INSTRUCTION
+
+«Consider the instruction Add (R3),R1 which adds the contents of a memory-location
+pointed by R3 to register R1. Executing this instruction requires the following
+actions:
+
+1) Fetch the instruction.
+
+2) Fetch the first operand.
+
+3) Perform the addition &
+
+4) Load the result into R1.
+
+Step Action
+
+PCouts MARin, Read, Select4, Add, Zin
+Bouts PCiny Yiny WMC
+
+MDRout, [Rin
+
+R3our, MARin, Read
+
+Rlout, Yin, WMC
+
+MDRout, Select, Add, Zin
+
+Zouty Rin, End \
+
+Nome wwe
+
+Figure 7.6 Control sequence for execution of the instruction Add (R3),R1
+
+« Instruction execution proceeds as follows:
+Step1--> The instruction-fetch operation is initiated by
+— loading contents of PC into MAR &
+— sending a Read request to memory.
+The Select signal is set to Select4, which causes the Mux to select constant 4. This
+value is added to operand at input B (PC‘s content), and the result is stored in Z.
+Step2--> Updated value in Z is moved to PC. This completes the PC increment operation
+and PC will now point to next instruction.
+Step3--> Fetched instruction is moved into MDR and then to IR. The step 1 through 3
+constitutes the Fetch Phase.
+At the beginning of step 4, the instruction decoder interprets the contents of the IR.
+This enables the control circuitry to activate the control-signals for steps 4 through
+7.
+The step 4 through 7 constitutes the Execution Phase.
+Step4--> Contents of R3 are loaded into MAR & a memory read signal is issued.
+Step5--> Contents of R1 are transferred to Y to prepare for addition.
+Step6--> When Read operation is completed, memory-operand is available in MDR, and the

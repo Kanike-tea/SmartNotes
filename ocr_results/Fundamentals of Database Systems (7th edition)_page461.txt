@@ -1,0 +1,56 @@
+13.2 XML Hierarchical (Tree) Data Model
+
+used in the same manner as is customary in database terminology, but rather as it is used
+in document description languages such as HTML and SGML.* Attributes in XML
+provide additional information that describes elements, as we will see. There are addi-
+tional concepts in XML, such as entities, identifiers, and references, but first we concen-
+trate on describing elements and attributes to show the essence of the XML model.
+
+Figure 13.3 shows an example of an XML element called <Projects>. As in HTML,
+elements are identified in a document by their start tag and end tag. The tag names
+are enclosed between angled brackets < ... >, and end tags are further identified by
+aslash, </... >
+
+Complex elements are constructed from other elements hierarchically, whereas
+simple elements contain data values. A major difference between XML and HTML
+is that XML tag names are defined to describe the meaning of the data elements in
+the document rather than to describe how the text is to be displayed. This makes it
+possible to process the data elements in the XML document automatically by com-
+puter programs. Also, the XML tag (element) names can be defined in another doc-
+ument, known as the schema document, to give a semantic meaning to the tag
+names that can be exchanged among multiple programs and users. In HTML, all
+tag names are predefined and fixed; that is why they are not extendible.
+
+It is straightforward to see the correspondence between the XML textual representa-
+tion shown in Figure 13.3 and the tree structure shown in Figure 13.1. In the tree
+representation, internal nodes represent complex elements, whereas leaf nodes rep-
+resent simple elements. That is why the XML model is called a tree model or a
+hierarchical model. In Figure 13.3, the simple elements are the ones with the tag
+names <Name>, <Number>, <Location>, <Dept_no>, <Ssn>, <Last_name>, <First_name>,
+and <Hours>. The complex elements are the ones with the tag names <Projects>,
+<Project>, and <Worker>. In general, there is no limit on the levels of nesting of elements.
+
+It is possible to characterize three main types of XML documents:
+
+= Data-centric XML documents. These documents have many small data
+items that follow a specific structure and hence may be extracted from a
+structured database. They are formatted as XML documents in order to
+exchange them over the Web. These usually follow a predefined schema that
+defines the tag names.
+
+= Document-centric XML documents. These are documents with large
+amounts of text, such as news articles or books. There are few or no struc-
+tured data elements in these documents.
+
+= Hybrid XML documents. These documents may have parts that contain
+structured data and other parts that are predominantly textual or unstruc-
+tured. They may or may not have a predefined schema.
+
+4SGML (Standard Generalized Markup Language) is a more general language for describing documents
+and provides capabilities for specifying new tags. However, it is more complex than HTML and XML.
+
+5The left and right angled bracket characters (< and >) are reserved characters, as are the ampersand
+(&), apostrophe (’), and single quotation mark (’). To include them within the text of a document, they
+must be encoded with escapes as &lt, &gt;, &amp;, &apos;, and &quot;, respectively.
+
+431

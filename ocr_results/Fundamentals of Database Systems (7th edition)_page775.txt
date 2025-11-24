@@ -1,0 +1,33 @@
+chapter “4 (
+
+Introduction to Transaction
+Processing Concepts
+and Theory
+
+‘Tt concept of transaction provides a mechanism
+for describing logical units of database processing.
+Transaction processing systems are systems with large databases and hundreds of
+concurrent users executing database transactions. Examples of such systems
+include airline reservations, banking, credit card processing, online retail purchas-
+ing, stock markets, supermarket checkouts, and many other applications. These
+systems require high availability and fast response time for hundreds of concur-
+rent users. In this chapter, we present the concepts that are needed in transaction
+processing systems. We define the concept of a transaction, which is used to repre-
+sent a logical unit of database processing that must be completed in its entirety to
+ensure correctness. A transaction is typically implemented by a computer program
+that includes database commands such as retrievals, insertions, deletions, and
+updates. We introduced some of the basic techniques for database programming
+in Chapters 10 and 11.
+
+In this chapter, we focus on the basic concepts and theory that are needed to ensure
+the correct executions of transactions. We discuss the concurrency control prob-
+lem, which occurs when multiple transactions submitted by various users interfere
+with one another in a way that produces incorrect results. We also discuss the prob-
+lems that can occur when transactions fail, and how the database system can recover
+from various types of failures.
+
+This chapter is organized as follows. Section 20.1 informally discusses why concur-
+rency control and recovery are necessary in a database system. Section 20.2 defines
+the term transaction and discusses additional concepts related to transaction
+
+745

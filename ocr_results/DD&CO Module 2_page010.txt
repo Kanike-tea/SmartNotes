@@ -1,0 +1,59 @@
+Some decoders are constructed with NAND gates. Since a NAND gate produces the AND operation
+with an inverted output, it becomes more economical to generate the decoder minterms in their
+complemented form. Furthermore, decoders include one or more enable inputs to control the circuit
+operation. A two-to-four-line decoder with an enable input constructed with NAND gates is shown in
+
+Fig below
+[> D,
+
+D
+
+{> 1 xX Xx 1 1
+C
+
+E A B Dy Di Dy Ds
+
+0 0 0
+0 0 1 1
+
+D> 0 1 0 1 1
+1
+
+D;
+
+(a) Logic diagram (b) Truth table
+
+Two-to-four-line decoder with enable input
+
+The circuit operates with complemented outputs and a complement enable input. The decoder is enabled
+when E is equal to 0 (i.e., active-low enable). As indicated by the truth table, only one output can be
+equal to 0 at any given time; all other outputs are equal to 1. The output whose value is equal to 0
+represents the minterm selected by inputs A and B. The circuit is disabled when E is equal to 1, regardless
+of the values of the other two inputs. When the circuit is disabled, none of the outputs are equal to 0 and
+none of the minterms are selected. In general, a decoder may operate with complemented or
+uncomplemented outputs. The enable input may be activated with a 0 or with a | signal. Some decoders
+have two or more enable inputs that must satisfy a given logic condition in order to enable the circuit.
+
+Decoders with enable inputs can be connected together to form a larger decoder circuit. Figure below
+shows two 3-to-8-line decoders with enable inputs connected to form a 4-to-16-line decoder. When w =
+0, the top decoder is enabled and the other is disabled. The bottom decoder outputs are all 0’s, and the
+top eight outputs generate minterms 0000 to 0111. When w = 1, the enable conditions are reversed: The
+bottom decoder outputs generate minterms 1000 to 1111, while the outputs of the top decoder are all
+0's.
+
+3x8
+) ° Dgto D;
+J T decoder "0
+
+E
+
+3x8
+decoder
+
+E
+
+Dg to Ds
+
+4 X 16decoder constructed with two 3 X 8decoders
+In general, enable inputs are a convenient feature for interconnecting two or more standard components
+for the purpose of combining them into a similar function with more inputs and outputs.

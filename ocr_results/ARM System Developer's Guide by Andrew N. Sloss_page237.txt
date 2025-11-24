@@ -1,0 +1,31 @@
+224 Chapter 7 Optimized Primitives
+
+Figure 7.3
+
+The Newton-Raphson technique applies to any equation of the form f(x) = 0, where
+f(x) isa differentiable function with derivative f’(x). We start with an approximation x,
+to a solution x of the equation. Then we apply the following iteration, to give us a better
+approximation x;.41
+
+Xn = Xn — (7.2)
+
+Figure 7.3 illustrates the Newton-Raphson iteration to solve f(x) = 0.8 — x! = 0,
+taking x) = 1 as our initial approximation. The first two steps are x; = 1.2 and x) = 1.248,
+converging rapidly to the solution 1.25.
+
+For many functions f, the iteration converges rapidly to the solution x. Graphically, we
+place the estimate x, where the tangent to the curve at estimate x, meets the x-axis.
+
+We will use Newton-Raphson iteration to calculate 2 d~! using only integer multipli-
+cation operations. We allow the factor of 2% because this is useful when trying to estimate
+2°7/d as used in Sections 7.3.2.1 and 5.10.2. Consider the following function:
+
+2N
+
+fix) =d— (7.3)
+
+Ax) = 0.8 — Ux
+
+0.95 1 1.05 LL 1.15 1.2 1.25 1.3
+
+Newton-Raphson iteration for f(x) = 0.8 — I/x.

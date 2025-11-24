@@ -1,0 +1,55 @@
+662 Appendix D Instruction Cycle Timings
+
+taken. Each time the branch is taken, the state moves one to the right in this list (if it can),
+and each time the branch is not taken, the state moves one to the left in this list (if it can).
+A return stack predicts unconditional subroutine return instructions. The stack has three
+entries storing the return address from the three deepest BL, BLX subroutine calls.
+Table D.14 gives the ARM11 instruction cycle timings.
+
+Table D.14 ARM11 (ARMv6) instruction cycle timings.
+
+Instruction class Cycles Notes
+ALU operations except a 1 Rmis required one cycle early if shifted by a constant shift.
+MOV to pc (for MOV to
+pc, see BX) +1 if a register-specified shift is used. In this case Rs is
+required one cycle early and Rnis not required until the second
+cycle.
++6 if Rdis pe.
+
+B <immed> 1 Assumes successful dynamic prediction. Some dynamically
+
+BL <immed> predicted branches may be folded, to be zero cycles.
+
+BLX <immed>
++3 for successful static prediction.
++4 for unsuccessful static or dynamic prediction. In this case
+the flags are required two cycles early.
+
+BX Ir 4 +1 if unconditional and return stack is empty.
+
+MOV pe, Ir +3 if unconditional and return stack mispredicts.
++1 if conditional. In this case the flags are required two cycles
+early.
+
+BX Rm (not Ir) 5 If no shift on MOV and conditional, the flags are required two
+
+BLX Rm cycles early.
+
+MOV pc, Rm (not Ir) +1 if a constant shift is used for MOV. In this case Rm is required
+one cycle early. If conditional, then the flags are required one
+cycle early.
++2 if a register-specified shift is used for MOV. In this case Rs is
+required one cycle early, and Rn is not used until the second
+cycle.
+
+cPS 1 +1 ifa mode change occurs.
+
+LDR/B/H/SB/SH/D A Rd is not available for two cycles. R(d + 1)is not available
+
+Rd not pe for two cycles for LDRD.
+
+If the load is potentially unaligned (base or offset unaligned),
+then you cannot start another memory access on the next cycle.
+If the load is unaligned, then Rd is not available for three cycles
+for LDR/H/SH. For LDRD Rd is not available for two cycles and
+R(d + 1) for three cycles.

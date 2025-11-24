@@ -1,0 +1,55 @@
+924
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+NameNode, uses the latest block report information for scheduling purposes. In
+response to a heartbeat from the DataNode, the NameNode sends one of the following
+types of commands to the DataNode:
+
+Replicate a block to another node.
+Remove a block replica.
+
+:
+:
+= Reregister the node or shut down the node.
+:
+
+Send an immediate block report.
+
+25.3.3 File 1/O Operations and Replica Management in HDFS
+
+HDEFS provides a single-writer, multiple-reader model. Files cannot be updated, but
+only appended. A file consists of blocks. Data is written in 64-KB packets in a write
+pipeline, which is set up to minimize network utilization, as we described above.
+Data written to the last block becomes available only after an explicit hflush opera-
+tion. Simultaneous reading by clients is possible while data is being written. A
+checksum is generated and stored for each block and is verified by the client to
+detect corruption of data. Upon detection of a corrupt block, the Namenode is noti-
+fied; it initiates a process to replicate the block and instructs the Datanode to remove
+the corrupt block. During the read operation, an attempt is made to fetch a replica
+from as close a node as possible by ordering the nodes in ascending order of dis-
+tance from the client. A read fails when the Datanode is unavailable, when the
+checksum test fails, or when the replica is no longer on the Datanode. HDFS has
+been optimized for batch processing similar to MapReduce.
+
+Block Placement. Nodes of a Hadoop cluster are typically spread across many
+racks. They are normally organized such that nodes on a rack share a switch, and
+rack switches are connected to a high-speed switch at the upper level. For example,
+the rack level may have a 1-Gb switch, whereas at the top level there may be a 10-Gb
+switch. HDFS estimates the network bandwidth between Datanodes based on their
+distance. Datanodes on the same physical node have a distance of 0, on the same
+rack are distance 2 away, and on different racks are distance 4 away. The default
+HDFS block placement policy balances between minimizing the write cost and
+maximizing data reliability and availability as well as aggregate read bandwidth.
+Network bandwidth consumed is estimated based on distance among DataNodes.
+Thus, for DataNodes on the same physical node, the distance is 0, whereas on the
+same rack it is 2 and on a different rack it is 4. The ultimate goal of block placement
+is to minimize the write cost while maximizing data availability and reliability as
+well as available bandwidth for reading. Replicas are managed so that there is at
+least one on the original node of the client that created it, and others are distributed
+among other racks. Tasks are preferred to be run on nodes where the data resides;
+three replicas gives the scheduler enough leeway to place tasks where the data is.
+
+Replica Management. Based on the block reports from the DataNodes, the
+NameNode tracks the number of replicas and the location of each block. A replica-
+tion priority queue contains blocks that need to be replicated. A background thread

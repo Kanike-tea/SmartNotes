@@ -1,0 +1,58 @@
+258 Chapter 8 The Relational Algebra and Relational Calculus
+
+Table 8.1 Operations of Relational Algebra
+
+OPERATION PURPOSE NOTATION
+
+SELECT Selects all tuples that satisfy the selection Oselection condition>(R)
+condition from a relation R.
+
+PROJECT Produces a new relation with only some of the Tattibute tists (R)
+attributes of R, and removes duplicate tuples.
+
+THETA JOIN Produces all combinations of tuples from Rj; Ry join conditions Ry
+and R; that satisfy the join condition.
+
+EQUUOIN Produces all the combinations of tuples from Ry ™ coin condition» R2, OR
+R, and R; that satisfy a join condition with Ry (<oin attributes 1>),
+only equality comparisons. (<join attributes 2>) Ra
+
+NATURAL JOIN Same as EQUUOIN except that the join attributes — Ry*<join conditions Ro»
+of R, are not included in the resulting relation; OR R)* (<join attributes 1>),
+if the join attributes have the same names, they _(<join attributes 2>)
+do not have to be specified at all. R, OR R, * Ro
+
+UNION Produces a relation that includes all the tuples = Ry U Ry
+in R, or R; or both Rj and R; Ry and Rj must
+be union compatible.
+
+INTERSECTION Produces a relation that includes all the tuples = Ry A Ry
+in both R; and R; R; and Ry must be union
+compatible.
+
+DIFFERENCE Produces a relation that includes all the tuples Ry - Ry
+in R; that are not in R; Rj and Ry must be
+union compatible.
+
+CARTESIAN PRODUCT Produces a relation that has the attributes of R, x Ry
+R, and R; and includes as tuples all possible
+combinations of tuples from R, and Ro.
+
+DIVISION Produces a relation R(X) that includes all tuples R(Z) + Ro(Y)
+
+t{X] in R,(Z) that appear in Ry; in combination
+with every tuple from R3(Y), where Z= XU Y.
+
+on the relational schema of Figure 5.5 and corresponds to the following relational
+
+algebra expression:
+
+Tepnumber, Dnum, Lname, Address, Bdate  ( (OPiocation=‘Stafford’(PROJECT))
+4 Dnum=Dnumber(DEPARTMENT)) * igc_ssn=Ssn(EMPLOYEE))
+
+In Figure 8.9, the three leaf nodes P, D, and E represent the three relations PROJECT,
+DEPARTMENT, and EMPLOYEE. The relational algebra operations in the expression are
+represented by internal tree nodes. The query tree signifies an explicit order of execu-
+tion in the following sense. In order to execute Q2, the node marked (1) in Figure 8.9
+must begin execution before node (2) because some resulting tuples of opera-
+tion (1) must be available before we can begin to execute operation (2). Similarly,

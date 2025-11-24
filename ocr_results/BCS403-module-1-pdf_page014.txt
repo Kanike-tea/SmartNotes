@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+1.4 History of Database Applications
+
+= Early Database Applications Using Hierarchical and Network Systems
+
+Early database applications maintained records in large organizations such as corporations,
+universities, hospitals, and banks. In many of these applications, there
+were large numbers of records of similar structure. There were also many types of records
+and many interrelationships among them.
+Problems with the early database systems
+- lack of data abstraction and program-data independence capabilities
+- provided only programming language interfaces. This. made it time-consuming and
+expensive to implement new queries and transactions, since new programs had to be
+written, tested, and debugged.
+
+= Providing Data Abstraction and Application Flexibility with Relational Databases
+
+Relational databases were originally proposed to separate the physical storage of data from
+its conceptual representation and to provide a mathematical foundation for data
+representation and querying. The relational data model also introduced high-level query
+languages that provided an alternative to programming language interfaces, making it much
+faster to write new queries. Hence, data abstraction and program-data independence were
+
+much improved when compared to earlier systems.
+
+= Object-Oriented Applications and the Need for More Complex Databases
+
+Object-oriented databases (OODBs) mainly used in specialized applications, such as
+engineering design, multimedia publishing, and manufacturing systems. In addition, many
+object-oriented concepts were incorporated into the newer versions of relational DBMSs,
+leading to object-relational database management systems, known as ORDBMSs.
+
+= Interchanging Data on the Web for E-Commerce Using XML
+
+The World Wide Web provides a large network of interconnected computers. Users can
+create documents using a Web publishing language, such as HyperText Markup Language
+(HTML), and store these documents on Web servers where other users (clients) can access
+them. Documents can be linked through hyperlinks, which are pointers to other
+
+documents.
+
+https:/ivtucode.in Page 15

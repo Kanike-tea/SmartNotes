@@ -1,0 +1,55 @@
+748 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+data, the transaction is called a read-only transaction; otherwise it is known as a
+read-write transaction.
+
+The database model that is used to present transaction processing concepts is sim-
+ple when compared to the data models that we discussed earlier in the book, such as
+the relational model or the object model. A database is basically represented as a
+collection of named data items. The size of a data item is called its granularity. A
+data item can be a database record, but it can also be a larger unit such as a whole
+disk block, or even a smaller unit such as an individual field (attribute) value of
+some record in the database. The transaction processing concepts we discuss are
+independent of the data item granularity (size) and apply to data items in general.
+Each data item has a unique name, but this name is not typically used by the pro-
+grammer; rather, it is just a means to uniquely identify each data item. For example,
+if the data item granularity is one disk block, then the disk block address can be
+used as the data item name. If the item granularity is a single record, then the record
+id can be the item name. Using this simplified database model, the basic database
+access operations that a transaction can include are as follows:
+
+= read_item(X). Reads a database item named X into a program variable. To
+simplify our notation, we assume that the program variable is also named X.
+
+= write_item(X). Writes the value of program variable X into the database
+item named X.
+
+As we discussed in Chapter 16, the basic unit of data transfer from disk to main
+memory is one disk page (disk block). Executing a read_item(X) command includes
+the following steps:
+
+1. Find the address of the disk block that contains item X.
+
+2. Copy that disk block into a buffer in main memory (if that disk block is not
+already in some main memory buffer). The size of the buffer is the same as
+the disk block size.
+
+3. Copy item X from the buffer to the program variable named X.
+Executing a write_item(X) command includes the following steps:
+
+1. Find the address of the disk block that contains item X.
+
+2. Copy that disk block into a buffer in main memory (if that disk block is not
+already in some main memory buffer).
+
+3. Copy item X from the program variable named X into its correct location in
+the buffer.
+
+4. Store the updated disk block from the buffer back to disk (either immedi-
+ately or at some later point in time).
+
+It is step 4 that actually updates the database on disk. Sometimes the buffer is not
+immediately stored to disk, in case additional changes are to be made to the buffer.
+Usually, the decision about when to store a modified disk block whose contents are in
+a main memory buffer is handled by the recovery manager of the DBMS in cooperation
+with the underlying operating system. The DBMS will maintain in the database cache

@@ -1,0 +1,93 @@
+Microcontrollers — BCS402
+
+1. Introduction
+
+Different ARM architecture revisions support different instructions. Code written for
+
+architecture ARMV4T should execute on an ARMYSTE processor.
+
+Table! provides complete list of ARM instructions available in the ARMVSE instruction set
+
+architecture (ISA). This ISA includes all the core ARM instructions as well as some of the
+
+newer features in the ARM instruction set.
+
+Table 1: ARM Instruction Set
+
+Mnemonics ARM ISA Description
+ADC vi add two 32-bit values and carry
+
+ADD vi add two 32-bit values
+
+AND vi logical bitwise AND of two 32-bit values
+
+B vi branch relative +/— 32 MB
+
+BIC vi logical bit clear (AND NOT) of two 32-bit values
+
+BKPT v5 breakpoint instructions
+
+BL vi relative branch with link
+
+BLX v5 branch with link and exchange
+
+BX v4T branch with exchange
+
+CDP cDP2 v2v5 coprocessor data processing operation
+
+cLz v5 count leading zeros
+
+MN vl compare negative two 32-bit values
+
+cup vl compare two 32-bit values
+
+EOR vi logical exclusive OR of two 32-bit values
+
+LDC LOC2 v2 v5 —_ load to coprocessor single or multiple 32-bit values
+
+LOM vl load multiple 32-bit words from memory to ARM registers
+LOR vi v4v5E load a single value from a virtual address in memory
+
+MCR MCR2 MCRR v2vSv5E move to coprocessor from an ARM register or registers
+
+MLA v2 multiply and accumulate 32-bit values
+
+MOV vi move a 32-bit value into a register
+
+MRC MRC2 MRRC v2vSvSE move to ARM register or registers from a coprocessor
+
+MRS v3 move to ARM register from a status register (cpsr or spsr)
+MSR v3 move to a status register (cpsr or spsr) from an ARM register
+MUL v2 multiply two 32-bit values
+
+MVN vl move the logical NOT of 32-bit value into a register
+
+ORR vi logical bitwise OR of two 32-bit values
+
+PLD vSE preload hint instruction
+
+QADD VSE signed saturated 32-bit add
+
+QDADD VSE signed saturated double and 32-bit add
+
+QDSUB VSE signed saturated double and 32-bit subtract
+
+QSUB vSE signed saturated 32-bit subtract
+
+RSB vi reverse subtract of two 32-bit values
+
+RSC vi reverse subtract with carry of two 32-bit integers
+
+SBC vi subtract with carry of two 32-bit values
+
+SMLAxy v5E signed multiply accumulate instructions ((16 x 16) + 32 = 32-bit)
+‘SMLAL v3M signed multiply accumulate long ((32 x 32) + 64 = 64-bit)
+SMLALXy vSE signed multiply accumulate long (16 x 16) + 64 = 64-bit)
+SMLAMy VSE signed multiply accumulate instruction (((32 x 16) > 16) + 32 = 32-bit)
+‘SMULL v3M signed multiply long (32 x 32 = 64-bit)
+
+continued
+
+Dept. of ECE, GSSSIETW
+
+Page 2

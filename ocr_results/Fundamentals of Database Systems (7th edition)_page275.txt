@@ -1,0 +1,55 @@
+8.1 Unary Relational Operations: SELECT and PROJECT
+
+Notice that if we remove the keyword DISTINCT from this SQL query, then dupli-
+cates will not be eliminated. This option is not available in the formal relational
+algebra, but the algebra can be extended to include this operation and allow rela-
+tions to be multisets; we do not discuss these extensions here.
+
+8.1.3 Sequences of Operations and the RENAME Operation
+
+The relations shown in Figure 8.1 that depict operation results do not have any
+names. In general, for most queries, we need to apply several relational algebra
+operations one after the other. Either we can write the operations as a single
+relational algebra expression by nesting the operations, or we can apply one operation
+at a time and create intermediate result relations. In the latter case, we must give
+names to the relations that hold the intermediate results. For example, to retrieve
+the first name, last name, and salary of all employees who work in department
+number 5, we must apply a SELECT and a PROJECT operation. We can write a sin-
+gle relational algebra expression, also known as an in-line expression, as follows:
+
+TeFname, Lname, Salary(GDno=5(EMPLOYEE))
+
+Figure 8.2(a) shows the result of this in-line relational algebra expression. Alterna-
+tively, we can explicitly show the sequence of operations, giving a name to each
+intermediate relation, and using the assignment operation, denoted by < (left
+arrow), as follows:
+
+DEP5_EMPS < Opno-5(EMPLOYEE)
+RESULT  TeFname, Lname, Salary(DEP5_EMPS)
+
+It is sometimes simpler to break down a complex sequence of operations by specify-
+ing intermediate result relations than to write a single relational algebra expression.
+We can also use this technique to rename the attributes in the intermediate and
+result relations. This can be useful in connection with more complex operations
+such as UNION and JOIN, as we shall see. To rename the attributes in a relation, we
+simply list the new attribute names in parentheses, as in the following example:
+
+TEMP < Opno=5(EMPLOYEE)
+R(First_name, Last_name, Salary) < TFname, Lname, Salary(TEMP)
+
+These two operations are illustrated in Figure 8.2(b).
+
+If no renaming is applied, the names of the attributes in the resulting relation of a
+SELECT operation are the same as those in the original relation and in the same
+order. For a PROJECT operation with no renaming, the resulting relation has the
+same attribute names as those in the projection list and in the same order in which
+they appear in the list.
+
+We can also define a formal RENAME operation—which can rename either the rela-
+tion name or the attribute names, or both—as a unary operator. The general
+RENAME operation when applied to a relation R of degree n is denoted by any of the
+following three forms:
+
+Ps(et, 62,..,8n)(R) or Ps(R) or Piet, 62,..., Bn)(R)
+
+245

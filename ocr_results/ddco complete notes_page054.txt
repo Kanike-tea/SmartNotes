@@ -1,0 +1,66 @@
+Digital Design and Computer Organization(BCS302)
+
+Table 4.10
+Some Verilog HDL Operators
+Symbol Operation Symbol Operation
++ binary addition
+binary subtraction
+& bitwise AND && logical AND
+\ bitwise OR 1) logical OR
+bitwise XOR
+3 bitwise NOT ! logical NOT
+== equality
+
+> greater than
+
+less th
+0 concatenation
+Z conditional
+
+Write a Verilog Program For Binary Adder(4bit )
+
+HDL (Dataflow: Four-Bit Adder)
+
+module binary_adder (
+
+output [3: 0] Sum,
+
+output C_out,
+
+input [3: 0] A,B,
+
+input C_in
+);
+
+assign {C_out, Sum} = A+ B+ C _ in;
+endmodule
+
+Write a Verilog code for 2:1 mux(multiplexer)
+
+Using cond itional operator
+
+condition ? true-expression : false-expression;
+
+s sy —
+y s Io + sly module mux2 1( 10,11,5S,Y);
+
+0 FA input Si
+input 10,11 ;
+output Y ;
+
+ny a assign Y=3?11:10;
+
+. endmodule
+Using Data flow Model
+
+module mux2_1(S,1,¥);
+input 3;
+
+input [1:0]I;
+
+output Y;
+
+assign Y=(~S&1[0] |S&I[1]);
+endmodule
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 26

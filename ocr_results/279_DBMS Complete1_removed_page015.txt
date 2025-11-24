@@ -1,0 +1,47 @@
+a) Total : When all the entities from an entity set participate in a relationship type, is called total
+participation. For example, the participation of the entity set student on the relationship set must
+‘opts’ is said to be total because every student enrolled must opt for a course.
+
+b) Partial: When it is not necessary for all the entities from an entity set to particapte in a
+relationship type, it is called partial participation. For example, the participation of the entity set
+student in ‘represents’ is partial, since not every student in a class is a class representative.
+
+Weak Entity:
+
+Entity types that do not contain any key attribute, and hence can not be identified independently are
+called weak entity types. A weak entity can be identified by uniquely only by considering some of
+its attributes in conjunction with the primary key attribute of another entity, which is called the
+identifying owner entity.
+
+Generally a partial key is attached to a weak entity type that is used for unique identification of
+weak entities related to a particular owner type. The following restrictions must hold:
+e The owner entity set and the weak entity set must participate in one to may relationship set.
+This relationship set is called the identifying relationship set of the weak entity set.
+e The weak entity set must have total participation in the identifying relationship.
+
+Example:
+
+Consider the entity type Dependent related to Employee entity, which is used to keep track of the
+dependents of each employee. The attributes of Dependents are: name, birthdate, sex and
+relationship. Each employee entity set is said to its own the dependent entities that are related to it.
+However, not that the ‘Dependent’ entity does not exist of its own, it is dependent on the Employee
+entity.
+
+Keys:
+
+Super Key:
+A super key is a set of one or more attributes that taken collectively, allow us to identify uniquely an
+entity in the entity set. For example , customer-id, (cname, customer-id), (cname, telno)
+
+Candidate Key:
+In a relation R, a candidate key for R is a subset of the set of attributes of R, which have the
+following properties:
+1. Uniqueness: No two distinct tuples in R have the same values for the candidate key
+2. Irreducible: No proper subset of the candidate key has the uniqueness property that is
+the candidate key. Eg: (cname,telno)
+
+Primary Key:
+
+The primary key is the candidate key that is chosen by the database designer as the principal means
+of identifying entities within an entity set. The remaining candidate keys if any, are called Alternate
+Key.

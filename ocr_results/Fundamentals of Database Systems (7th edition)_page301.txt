@@ -1,0 +1,56 @@
+8.6 The Tuple Relational Calculus
+
+a. (F, AND F5) is TRUE if both F, and F, are TRUE; otherwise, it is FALSE.
+b. (F, OR F;) is FALSE if both F, and F, are FALSE; otherwise, it is TRUE.
+. NOT (F,) is TRUE if F, is FALSE; it is FALSE if F, is TRUE.
+. NOT (F,) is TRUE if F, is FALSE; it is FALSE if F, is TRUE.
+
+ao
+
+8.6.3 The Existential and Universal Quantifiers
+
+In addition, two special symbols called quantifiers can appear in formulas; these
+are the universal quantifier (V) and the existential quantifier (4). Truth values for
+formulas with quantifiers are described in Rules 3 and 4 below; first, however, we
+need to define the concepts of free and bound tuple variables in a formula. Infor-
+mally, a tuple variable ¢ is bound if it is quantified, meaning that it appears in an
+(ad) or (Vt) clause; otherwise, it is free. Formally, we define a tuple variable in a
+formula as free or bound according to the following rules:
+
+= An occurrence of a tuple variable in a formula F that is an atom is free in F.
+
+= An occurrence ofa tuple variable t is free or bound in a formula made up of
+logical connectives—(F; AND F>), (F, OR F,), NOT(F;), and NOT(F,)—
+depending on whether it is free or bound in F, or F, (if it occurs in either).
+Notice that in a formula of the form F = (F; AND F)) or F = (F, OR F), a
+tuple variable may be free in F; and bound in F,, or vice versa; in this case,
+one occurrence of the tuple variable is bound and the other is free in F.
+
+= All free occurrences of a tuple variable f in F are bound in a formula F’ of the
+form F’= (4t)(F) or F’ = (V#)(F). The tuple variable is bound to the quanti-
+fier specified in F’. For example, consider the following formulas:
+F,: d.Dname = ‘Research’
+F; (At)(d.Dnumber = t.Dno)
+F3: (Wd)(d.Mgr_ssn = °333445555’)
+
+The tuple variable d is free in both F, and F), whereas it is bound to the (‘V) quanti-
+fier in F;. Variable t is bound to the (4) quantifier in F).
+
+We can now give Rules 3 and 4 for the definition of a formula we started earlier:
+
+= Rule 3: If F is a formula, then so is (4t)(F), where t is a tuple variable. The
+formula (4¢t)(F) is TRUE if the formula F evaluates to TRUE for some (at least
+one) tuple assigned to free occurrences of t in F; otherwise, (4t)(F) is FALSE.
+
+= Rule 4: If Fis a formula, then so is (Vt)(F), where f is a tuple variable. The for-
+mula (‘Vf)(F) is TRUE if the formula F evaluates to TRUE for every tuple (in the
+universe) assigned to free occurrences of t in F; otherwise, (Vt)(F) is FALSE.
+
+The (A) quantifier is called an existential quantifier because a formula (3t)(F) is
+TRUE if there exists some tuple that makes F TRUE. For the universal quantifier,
+(Vt)(F) is TRUE if every possible tuple that can be assigned to free occurrences of
+t in F is substituted for t, and F is TRUE for every such substitution. It is called the
+universal or for all quantifier because every tuple in the universe of tuples must
+make F TRUE to make the quantified formula TRUE.
+
+271

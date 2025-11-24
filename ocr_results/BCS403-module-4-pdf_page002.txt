@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+The first nested query selects the project numbers of projects that have an employee with last name
+‘Smith’ involved as manager. The second nested query selects the project numbers of projects that
+have an employee with last name ‘Smith’ involved as worker. In the outer query, we use the OR
+logical connective to retrieve a PROJECT tuple if the PNUMBER value of that tuple is in the result
+of either nested query.
+
+SQL allows the use of tuples of values in comparisons by placing them within parentheses. For
+example, the following query will select the Essns of all employees who work the same (project,
+hours) combination on some project that employee ‘John Smith’ (whose Ssn = 123456789’) works
+
+on
+SELECT DISTINCT Essn
+FROM WORKS_ON
+WHERE (Pno, Hours) IN ( SELECT Pno, Hours
+
+FROM WORKS_ON
+WHERE Essn="123456789 );
+
+In this example, the IN operator compares the subtuple of values in parentheses (Pno,Hours) within
+each tuple in WORKS_ON with the set of type-compatible tuples produced by the nested query.
+
+Nested Queries::Comparison Operators
+Other comparison operators can be used to compare a single value v to a set or multiset V. The =
+ANY (or = SOME) operator returns TRUE if the value v is equal to some value in the set V and is
+hence equivalent to IN. The two. keywords ANY and SOME have the same effect. The keyword ALL
+can also be combined with each of these operators. For example, the comparison condition (v >
+ALL V) returns TRUE if the value v is greater than al/ the values in the set (or multiset) V. For
+example is the following query, which returns the names of employees whose salary is greater than
+the salary of all the employees in department 5:
+
+SELECT Lname, Fname
+
+FROM EMPLOYEE
+
+WHERE Salary > ALL ( SELECT Salary
+
+FROM EMPLOYEE
+
+WHERE Dno=5 );
+In general, we can have several levels of nested queries. We can once again be faced with possible
+ambiguity among attribute names if attributes of the same name exist—one in a relation in the
+FROM clause of the outer query, and another in a relation in the FROM clause of the nested query.
+The rule is that a reference to an unqualified attribute refers to the relation declared in the
+innermost nested query.
+To avoid potential errors and ambiguities, create tuple variables (aliases) for all tables referenced in
+SQL query
+
+https://vtucode.in page 20

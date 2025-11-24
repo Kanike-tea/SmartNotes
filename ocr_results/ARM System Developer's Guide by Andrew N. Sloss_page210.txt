@@ -1,0 +1,49 @@
+SUMMARY
+
+6.8 Efficient Switches 197
+
+The counter bitsleft actually counts the number of bits remaining in the buffer
+bitbuffer less the N bits required for the next lookup. Therefore we can perform the
+next table lookup as long as bitsleft > 0. As soon as bitsleft < 0 there are two
+possibilities. One possibility is that we found a valid code but then have insufficient bits to
+look up the next code. Alternatively, codebits contains the escape value OxFF to indicate
+that the code was longer than N bits. We can trap both these cases at once using a call to
+empty_buffer_or_long_code. If the buffer is empty, then we fill it with 24 bits. If we have
+detected a long code, then we branch to the long_code trap.
+
+The example has a best-case performance of seven cycles per code unpack on an
+ARM9TDMI. You can obtain faster results if you know the sizes of the packed bitfields
+in advance.
+
+Bit Manipulation
+
+= The ARM can pack and unpack bits efficiently using logical operations and the barrel
+shifter.
+
+= To access bitstreams efficiently use a 32-bit register as a bitbuffer. Use a second register
+to keep track of the number of valid bits in the bitbuffer.
+
+= To decode bitstreams efficiently, use a lookup table to scan the next N bits of the
+bitstream. The lookup table can return codes of length at most N bits directly, or return
+an escape character for longer codes.
+
+6.8 EFFICIENT SWITCHES
+
+A switch or multiway branch selects between a number of different actions. In this section
+we assume the action depends on a variable x. For different values of x we need to per-
+form different actions. This section looks at assembly to implement a switch efficiently for
+different types of x.
+
+6.8.1 SWITCHES ON THE RANGE 0 <x<N
+
+The example C function ref_switch performs different actions according to the value
+of x. We are only interested in x values in the range 0 < x <8.
+
+int ref_switch(int x)
+{
+
+switch (x)
+
+{
+
+case 0: return method_0();

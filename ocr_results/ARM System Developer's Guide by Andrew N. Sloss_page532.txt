@@ -1,0 +1,52 @@
+14.9 The Fast Context Switch Extension 519
+
+Pre
+DIS D14D13 D12 DIL DIO D9 D8 D7 D6 DS D4 D3 D2 DI DO
+
+Task 1
+
+01 | 00 | 00 | 00 | 00} 00 | 00} 00 | 00} 00] 00 | 00 | 00 | 00} 01) O1
+running
+
+Post
+
+Task 2 DIS DI4 D13 D12 DIID10 D9 D8 D7 D6 DS D4 D3 D2 DI DO
+running
+
+01 | 00 | 00 | 00 | 00} 00 | 00} 00 | 00} 00] 00 | 00 | 00 | o1} 00) o1
+
+Figure 14.16 Pre- and post-view of CP15 register 3 changing from Task 1 to Task 2 in a three-task
+multiprogramming environment.
+
+virtual memory. This shared memory can be seen by both tasks, and access is determined
+by the page table entries that map the memory space.
+Here are the steps needed to perform a context switch when using the FCSE:
+
+1. Save the active task context and place the task in a dormant state.
+2. Write the awakening task’s process ID to CP15:c13:c0.
+
+3. Set the current task’s domain to no access, and the awakening task’s domain to client
+access, by writing to CP15:c3:c0.
+
+4. Restore the context of the awakening task.
+
+w
+
+. Resume execution of the restored task.
+
+14.9.2. HINTS FOR USING THE FCSE
+
+= A task has a fixed 32 MB maximum limit on size.
+
+= The memory manager must use fixed 32 MB partitions with a fixed starting address
+that is a multiple of 32 MB.
+
+= Unless you want to manage an exception vector table for each task, place the exception
+vector table at virtual address Oxffff0000, using the V bit in CP15 register 1.
+
+= You must define and use an active domain control system.
+
+= The core fetches the two instructions following a change in process ID from the previous
+
+process space, if execution is taking place in the first 32 MB block. Therefore, it is wise
+to switch tasks from a “fixed” region in memory.

@@ -1,0 +1,47 @@
+384 Chapter 11 Embedded Operating Systems
+
+In this current configuration, SLOS includes three tasks and two service routines. Tasks
+1 and 2 provide an example of mutual exclusion using a binary semaphore. The two
+service routines implemented are the periodic timer (which is essential) and a push-button
+interrupt (which is optional). Task 3 provides a simple command line interface through
+one of the ARM Evaluator-7T’s serial ports.
+
+Each task in SLOS requires its own stack. All the tasks operate in user mode; thus, a task
+can read but not write to the cpsr. The only way a task can change to a privileged mode is
+to use an SWI instruction call. This is the mechanism used to call a device driver function,
+since a device driver may require full access to the cpsr.
+
+The cpsr can be modified in a task, but only indirectly using an instruction that updates
+the condition flags.
+
+11.2.1 SLOS DIRECTORY LAYOUT
+
+Figure 11.1
+
+SLOS can be found on our Web site under the Chapter 11 directory. The directory layout
+for SLOS is similar to the Sandstone firmware layout (see Figures 10.1 and 11.1).
+
+‘There are six subdirectories under slos/build/srcthat hold all the operating system source
+files. The slos/build/src/core directory includes the miscellaneous utility files, as well as the
+command line interpreter (CLI) sources.
+
+Specific code for a platform is stored under a directory with the name of that platform.
+For instance, the code for the Evaluator-7T is stored under directory e7t.
+
+The slos/build/src/e7t/devices directory holds all the device driver files, and the
+slos/build/src/e7t/events directory holds the files that handle services, exceptions,
+and interrupts.
+
+[slos]
+|
+I T
+makefile readme.txt [build]
+
+[src] [obj] [image]
+
+I I |
+[apps] [core] [devices] [e7t] [events] [headers]
+
+[devices] [events] [headers]
+
+SLOS directory layout.

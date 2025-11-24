@@ -1,0 +1,49 @@
+9.3 Interrupt Handling Schemes 359
+
+‘The address of the priority mask table has to be copied into register r10 so it can be used
+to calculate the address of the actual mask. Register r1J is shifted left two positions, which
+gives an offset of 0, 4, 8, or 12. The offset plus the address of the priority mask table address
+is used to load the mask into register r10. The priority mask table is the same as for the
+priority interrupt handler in the previous section.
+
+Register r10 will contain the ISR mask, and register r12 will contain the current mask.
+A binary AND is used to merge the two masks. Then the new mask is used to configure
+the interrupt controller using the IRQEnableClear register. It is now safe to enable IRQ
+exceptions by clearing the i bit in the cpsr.
+
+The handler can continue servicing the current interrupt unless an interrupt with a
+higher priority occurs, in which case that interrupt will take precedence over the current
+interrupt.
+
+Summary  Prioritized Direct Interrupt Handler
+
+Handles higher-priority interrupts in a shorter time. Goes directly to the specific ISR.
+Low interrupt latency.
+
+Advantage: uses a single jump and saves valuable cycles to go to the ISR.
+
+Disadvantage: each ISR has a mechanism to set the external interrupt mask to stop
+lower-priority interrupts from halting the current ISR, which adds extra code to
+each ISR.
+
+9.3.7. PRIORITIZED GROUPED INTERRUPT HANDLER
+
+Lastly, the prioritized grouped interrupt handler differs from the other prioritized interrupt
+handlers since it is designed to handle a large set of interrupts. This is achieved by grouping
+interrupts together and forming a subset, which can then be given a priority level.
+
+The designer of an embedded system must identify each subset of interrupt sources
+and assign a group priority level to that subset. It is important to be careful when selecting
+the subsets of interrupt sources since the groups can determine the characteristics of the
+system. Grouping the interrupt sources together tends to reduce the complexity of the
+handler since it is not necessary to scan through every interrupt to determine the priority
+level. Ifa prioritized grouped interrupt handler is well designed, it will dramatically improve
+overall system response times.
+
+ExampLe This handler has been designed to have two priority groups. Timer sources are grouped into
+9.14 group 0, and communication sources are grouped into group 1 (see Table 9.11.) Group 0
+interrupts are given a higher priority than group | interrupts.
+
+1_Bit EQU 0x80
+
+PRIORITY_O EQU 2 3 Comms Rx

@@ -1,0 +1,89 @@
+Microcontrollers — BCS402
+
+4. Register Allocation
+
+The compiler attempts to allocate a processor register to each local variable used in a C
+
+function. It will try to use the same register for different local variables if the use of the
+
+variables does not overlap. When there are more local variables than available registers, the
+
+compiler stores the excess variables on the processor stack. These variables are called spilled
+
+or swapped out variables since they are written out to memory (in a similar way virtual
+
+memory is swapped out to disk). Spilled variables are slow to access compared to variables
+
+allocated to registers.
+
+To implement a function efficiently,
+
+¢ Minimize the number of spilled variables
+
+e Ensure that the most important and frequently accessed variables are stored in
+
+registers
+
+C compiler register usage.
+
+Alternate
+
+Register register
+number names
+
+ATPCS register usage
+
+r0 al
+rl a2
+12 a3
+13 a4
+r4 vl
+5 v2
+r6 v3
+7 v4
+8 v5
+r9 v6 sb
+rl0 w7sl
+rll v8 fp
+rl2 ip
+rl3 sp
+rl4 Ir
+rl5 pe
+
+Argument registers. These hold the first four function
+arguments on a function call and the return value on a
+function return. A function may corrupt these registers and
+use them as general scratch registers within the function.
+
+General variable registers. The function must preserve the callee
+
+values of these registers.
+
+General variable register. The function must preserve the callee
+value of this register except when compiling for read-write
+position independence (RWPI). Then r9 holds the static base
+address. This is the address of the read-write data.
+
+General variable register. The function must preserve the callee
+value of this register except when compiling with stack limit
+checking. Then r10 holds the stack limit address.
+
+General variable register. The function must preserve the callee
+value of this register except when compiling using a frame
+pointer. Only old versions of armcc use a frame pointer.
+
+A general scratch register that the function can corrupt. It is
+useful as a scratch register for function veneers or other
+intraprocedure call requirements.
+
+The stack pointer, pointing to the full descending stack.
+
+The link register. On a function call this holds the return
+
+address.
+
+The program counter.
+
+Dept. of ECE, GSSSIETW
+
+Page 46

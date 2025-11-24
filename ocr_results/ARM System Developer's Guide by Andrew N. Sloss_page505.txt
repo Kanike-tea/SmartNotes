@@ -1,0 +1,51 @@
+492 Chapter 14 Memory Management Units
+
+to the actual physical addresses where the programs are stored in physical main memory.
+This translation process allows programs to run with the same virtual addresses while being
+held in different locations in physical memory.
+
+This dual view of memory results in two distinct address types: virtual addresses and
+physical addresses. Virtual addresses are assigned by the compiler and linker when locating a
+program in memory. Physical addresses are used to access the actual hardware components
+of main memory where the programs are physically located.
+
+ARM provides several processor cores with integral MMU hardware that efficiently
+support multitasking environments using virtual memory. The goal of this chapter is to
+learn the basics of ARM memory management units and some basic concepts that underlie
+the use of virtual memory.
+
+We begin with a review of the protection features of an MPU and then present the
+additional features provided by an MMU. We introduce relocation registers, which hold
+the conversion data to translate virtual memory addresses to physical memory addresses,
+and the Translation Lookaside Buffer (TLB), which is a cache of recent address relocations.
+We then explain the use of pages and page tables to configure the behavior of the relocation
+registers.
+
+We then discuss how to create regions by configuring blocks of pages in virtual memory.
+We end the overview of the MMU and its support of virtual memory by showing how to
+manipulate the MMU and page tables to support multitasking.
+
+Next we present the details of configuring the MMU hardware by presenting a section for
+each of the following components in an ARM MMU: page tables, the Translation Lookaside
+Buffer (TLB), access permission, caches and write buffer, the CP15:cl control register, and
+the Fast Context Switch Extension (FCSE).
+
+We end the chapter by providing demonstration software that shows how to set up an
+embedded system using virtual memory. The demonstration supports three tasks running in
+a multitasking environment and shows how to protect each task from the others running in
+the system by compiling the tasks to run at a common virtual memory execution address and
+placing them in different locations in physical memory. The key part of the demonstration
+is showing how to configure the MMU to translate the virtual address of a task to the
+physical address of a task, and how to switch between tasks.
+
+The demonstration has been integrated into the SLOS operating system presented in
+Chapter 11 as a variant known as mmuSLOS.
+
+14.1 MOVING FROM AN MPU TO AN MMU
+
+In Chapter 13, we introduced the ARM cores with a memory protection unit (MPU). More
+importantly, we introduced regions as a convenient way to organize and protect memory.
+Regions are either active or dormant: An active region contains code or data in current use
+by the system; a dormant region contains code or data that is not in current use, but is likely
+to become active in a short time. A dormant region is protected and therefore inaccessible
+to the current running task.

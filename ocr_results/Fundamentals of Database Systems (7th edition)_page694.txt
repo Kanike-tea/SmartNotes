@@ -1,0 +1,54 @@
+664
+
+Chapter 18 Strategies for Query Processing
+
+records are grouped into disk blocks, each disk block is read into a main
+memory buffer, and then a search through the records within the disk block
+is conducted in main memory.
+
+$2—Binary search. If the selection condition involves an equality compari-
+son on a key attribute on which the file is ordered, binary search—which is
+more efficient than linear search—can be used. An example is OP1 if Ssn is
+the ordering attribute for the EMPLOYEE file.*
+
+$3a—Using a primary index. If the selection condition involves an equality
+comparison on a key attribute with a primary index—for example,
+Ssn = ‘123456789’ in OP1—use the primary index to retrieve the record.
+Note that this condition retrieves a single record (at most).
+
+$3b—Using a hash key. If the selection condition involves an equality com-
+parison on a key attribute with a hash key—for example, Ssn = ‘123456789
+in OP1—use the hash key to retrieve the record. Note that this condition
+retrieves a single record (at most).
+
+$4—Using a primary index to retrieve multiple records. If the comparison
+condition is >, >=, <, or <= on a key field with a primary index—for exam-
+ple, Dnumber > 5 in OP2—use the index to find the record satisfying the cor-
+responding equality condition (Dnumber = 5); then retrieve all subsequent
+records in the (ordered) file. For the condition Dnumber < 5, retrieve all the
+preceding records.
+
+$5—Using a clustering index to retrieve multiple records. If the selection
+condition involves an equality comparison on a nonkey attribute with a
+clustering index—for example, Dno = 5 in OP3—use the index to retrieve all
+the records satisfying the condition.
+
+S6—Using a secondary (B*-tree) index on an equality comparison. This
+search method can be used to retrieve a single record if the indexing field is
+a key (has unique values) or to retrieve multiple records if the indexing field
+is not a key. This can also be used for comparisons involving >, >=, <, or <=.
+Queries involving a range of values (e.g., 3,000 <= Salary <= 4,000) in their
+selection are called range queries. In case of range queries, the B*-tree index
+leaf nodes contain the indexing field value in order—so a sequence of them
+is used corresponding to the requested range of that field and provide record
+pointers to the qualifying records.
+
+§$7a—Using a bitmap index. (See Section 17.5.2.) If the selection condi-
+tion involves a set of values for an attribute (e.g., Dnumber in (3,27,49)
+in OP6), the corresponding bitmaps for each value can be OR-ed to give
+the set of record ids that qualify. In this example, that amounts to
+OR-ing three bitmap vectors whose length is the same as the number of
+employees.
+
+®Generally, binary search is not used in database searches because ordered files are not used unless
+they also have a corresponding primary index.

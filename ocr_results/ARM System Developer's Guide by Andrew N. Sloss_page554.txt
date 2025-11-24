@@ -1,0 +1,54 @@
+EXAMPLE
+
+14.11
+
+14.10 Demonstration: A Small Virtual Memory System 541
+
+14.10.6.4 Assigning Domain Access and Enabling the MMU
+
+The fourth part in initializing the MMU is to configure the domain access for the system.
+The demonstration does not use the FCSE, nor does it need to quickly expose and hide
+large blocks of memory, which eliminates the need to use the S and R access control bits in
+the CP:cl:cO register. This means that the access permissions defined in the page tables are
+enough to protect the system, and there is reason to use Domains.
+
+However, the hardware requires all active memory areas to have a domain assignment
+and be granted domain access privileges. The minimum domain configuration places all
+regions in the same domain and sets the domain access to client access. This domain
+configuration makes the access permission entries in the page tables the only permission
+system active.
+
+In this demo, all regions are assigned Domain 3 and have client domain access. The
+other domains are unused and masked by the fault entry in the unused page table entries
+of the L1 master page table. Domains are assigned in the master L1 page table, and domain
+access is defined in the CP15:c3:c0 register.
+
+domainAccessSet is a routine that sets the access rights for the 16 domains in the domain
+access control register CP15:c3:c0:0. It can be called from C using the following function
+
+prototype:
+
+void domainAccessSet (unsigned int value, unsigned int mask);
+
+The first argument passed to the procedure is an unsigned integer containing bit fields
+that set the Domain access for the 16 domains. The second parameter defines which domains
+need their access rights changed. The routine first reads the CP15:r3 register and places it in
+the variable c3format. The routine then uses the input mask value to clear the bits in c3format
+that need updating. The update is done by ORing c3format with value input parameter. The
+updated c3format is finally written back out to the CP15:c3 register to set the domain
+access.
+
+void domainAccessSet (unsigned int value, unsigned int mask)
+
+{
+
+unsigned int c3format;
+
+__asm{MRC p15, 0, c3format, c3, c0, 0} /* read domain register */
+
+c3format &= ~mask; /* clear bits that change */
+
+c3format |= value; /* set bits that change */
+
+__asm{MCR p15, 0, c3format, c3, cO, 0} /* write domain register */
+}

@@ -1,0 +1,34 @@
+412
+chapter \
+
+Basics of Functional
+Dependencies and Normalization
+for Relational Databases
+
+n Chapters 5 through 8, we presented various aspects
+
+of the relational model and the languages associated
+with it. Each relation schema consists of a number of attributes, and the relational
+database schema consists of a number of relation schemas. So far, we have assumed
+that attributes are grouped to form a relation schema by using the common sense of
+the database designer or by mapping a database schema design from a conceptual
+data model such as the ER or enhanced-ER (EER) data model. These models make
+the designer identify entity types and relationship types and their respective attri-
+butes, which leads to a natural and logical grouping of the attributes into relations
+when the mapping procedures discussed in Chapter 9 are followed. However, we
+still need some formal way of analyzing why one grouping of attributes into a rela-
+tion schema may be better than another. While discussing database design in
+Chapters 3, 4, and 9, we did not develop any measure of appropriateness or goodness
+to measure the quality of the design, other than the intuition of the designer. In this
+chapter we discuss some of the theory that has been developed with the goal of
+evaluating relational schemas for design quality—that is, to measure formally why
+one set of groupings of attributes into relation schemas is better than another.
+
+There are two levels at which we can discuss the goodness of relation schemas. The
+first is the logical (or conceptual) level—how users interpret the relation schemas
+and the meaning of their attributes. Having good relation schemas at this level
+enables users to understand clearly the meaning of the data in the relations, and
+hence to formulate their queries correctly. The second is the implementation (or
+physical storage) level—how the tuples in a base relation are stored and updated.
+
+459

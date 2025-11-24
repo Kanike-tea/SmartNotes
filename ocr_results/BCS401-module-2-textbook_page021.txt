@@ -1,0 +1,23 @@
+174
+
+Divide-and-Conquer
+
+The number of key comparisons made by mergesort in the worst case comes
+very close to the theoretical minimum? that any general comparison-based sorting
+algorithm can have. For large n, the number of comparisons made by this algo-
+rithm in the average case turns out to be about 0.25n less (see [Gon91, p. 173])
+and hence is also in ©(n log n). A noteworthy advantage of mergesort over quick-
+sort and heapsort—the two important advanced sorting algorithms to be discussed
+later—is its stability (see Problem 7 in this section’s exercises). The principal short-
+coming of mergesort is the linear amount of extra storage the algorithm requires.
+Though merging can be done in-place, the resulting algorithm is quite complicated
+and of theoretical interest only.
+
+There are two main ideas leading to several variations of mergesort. First, the
+algorithm can be implemented bottom up by merging pairs of the array’s elements,
+then merging the sorted pairs, and so on. (If 7 is not a power of 2, only slight
+bookkeeping complications arise.) This avoids the time and space overhead of
+using a stack to handle recursive calls. Second, we can divide a list to be sorted
+in more than two parts, sort each recursively, and then merge them together. This
+scheme, which is particularly useful for sorting files residing on secondary memory
+devices, is called multiway mergesort.

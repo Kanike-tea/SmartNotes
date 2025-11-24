@@ -1,0 +1,57 @@
+512
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+= In step 3 we look for a redundant FD in E’. By using the transitive rule on
+B- Dand D A, we derive B > A. Hence B > A is redundant in E’ and
+can be eliminated.
+
+= Therefore, the minimal cover of E is F: {B > D, D > A}.
+
+The reader can verify that the original set F can be inferred from E; in other words,
+the two sets F and E are equivalent.
+
+Example 2: Let the given set of FDs be G: {A + BCDE, CD > E}.
+
+= Here, the given FDs are NOT in the canonical form. So we first convert
+them into:
+
+E: {A > B, A> C, A> D, A> E, CD > E}.
+
+= In step 2 of the algorithm, for CD > E, neither C nor D is extraneous on the
+left-hand side, since we cannot show that C — E or D > E from the given
+FDs. Hence we cannot replace it with either.
+
+= In step 3, we want to see if any FD is redundant. Since A> CD and
+CD — E, by transitive rule (IR3), we get A— E. Thus, A E is redundant
+in G.
+
+= So we are left with the set F, equivalent to the original set G as: {A > B,
+A C, A> D, CD > E}. F is the minimum cover. As we pointed out in foot-
+note 6, we can combine the first three FDs using the union rule (IRS) and
+express the minimum cover as:
+
+Minimum cover of G, F: {A > BCD, CD > E}.
+In Section 15.3, we will show algorithms that synthesize 3NF or BCNF relations
+
+from a given set of dependencies E by first finding the minimal cover F for E.
+
+Next, we provide a simple algorithm to determine the key of a relation:
+
+Algorithm 15.2(a). Finding a Key K for R Given a Set F of Functional Depen-
+dencies
+
+Input: A relation R and a set of functional dependencies F on the attributes
+of R.
+
+1. Set K:=R.
+2. For each attribute A in K
+{compute (K — A)* with respect to F;
+if (K — A)* contains all the attributes in R, then set K := K — {A} };
+In Algorithm 15.2(a), we start by setting K to all the attributes of R; we can say
+that R itself is always a default superkey. We then remove one attribute at a time
+and check whether the remaining attributes still form a superkey. Notice, too,
+that Algorithm 15.2(a) determines only one key out of the possible candidate keys
+
+for R; the key returned depends on the order in which attributes are removed
+from R in step 2.

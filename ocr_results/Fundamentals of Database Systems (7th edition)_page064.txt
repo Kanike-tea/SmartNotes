@@ -1,0 +1,52 @@
+34 Chapter 2 Database System Concepts and Architecture
+
+access path is a search structure that makes the search for particular database
+records efficient, such as indexing or hashing. We discuss physical storage tech-
+niques and access structures in Chapters 16 and 17. An index is an example of an
+access path that allows direct access to data using an index term or a keyword. It is
+similar to the index at the end of this text, except that it may be organized in a lin-
+ear, hierarchical (tree-structured), or some other fashion.
+
+Another class of data models is known as self-describing data models. The data
+storage in systems based on these models combines the description of the data with
+the data values themselves. In traditional DBMSs, the description (schema) is sepa-
+rated from the data. These models include XML (see Chapter 12) as well as many of
+the key-value stores and NOSQL systems (see Chapter 24) that were recently cre-
+ated for managing big data.
+
+2.1.2 Schemas, Instances, and Database State
+
+In a data model, it is important to distinguish between the description of the
+database and the database itself. The description of a database is called the
+database schema, which is specified during database design and is not expected
+to change frequently.° Most data models have certain conventions for displaying
+schemas as diagrams.’ A displayed schema is called a schema diagram. Figure 2.1
+shows a schema diagram for the database shown in Figure 1.2; the diagram dis-
+plays the structure of each record type but not the actual instances of records.
+
+Figure 2.1
+
+Schema diagram for
+the database in
+Figure 1.2.
+
+STUDENT
+Name | Student_number | Class | Major
+
+COURSE
+Course_name | Course_number | Credit_hours | Department
+
+PREREQUISITE
+Course_number | Prerequisite_number
+
+SECTION
+Section_identifier | Course_number | Semester | Year | Instructor
+
+GRADE_REPORT
+Student_number | Section_identifier | Grade
+
+®Schema changes are usually needed as the requirements of the database applications change. Most
+database systems include operations for allowing schema changes.
+
+“It is customary in database parlance to use schemas as the plural for schema, even though schemata is
+the proper plural form. The word scheme is also sometimes used to refer to a schema.

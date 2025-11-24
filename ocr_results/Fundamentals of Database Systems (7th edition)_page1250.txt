@@ -1,0 +1,187 @@
+1220 Index
+
+Data abstraction
+conceptual representation of, 12-13
+data models and, 12, 32-34
+program independence from, 12
+Data allocation, DDBs, 849-853
+Data-based approach, Web content
+analysis, 1054
+Data buffers, transaction processing,
+748-749
+Data-centric documents, XML, 431
+Data collection and records, PHP, 355-356
+Data definition, SQL, 179
+Data dictionary (data repository), 45-46
+Data Encryption Standards (DES), 1150
+Data fragmentation, DDBs, 847-853
+Data independence, three-schema
+architecture and, 37-38
+Data insertion, concurrency control and,
+806
+Data manipulation language (DML),
+39-40, 44
+Data marts, 1102
+Data mining
+application programming interface
+(API), 1095
+applications of, 1094
+association rules, 1073-1084
+BIRCH algorithm, 1090
+classification, 1085-1088
+clustering, 1088-1091
+commercial tools, 1094-1096
+data warehousing compared to, 1070
+decision trees, 1085-1086
+genetic algorithms (GAs), 1093
+graphical user interface (GUD), 1095
+k-means algorithm, 1088-1089
+knowledge discovery in databases
+(KDD), 1070-1073
+neural networks, 1092
+Open Database Connectivity (ODBC)
+interface, 1094-1095
+regression, 1091-1092
+sequential pattern discovery, 1091
+spatial databases, 993-994
+Data model mapping
+database design and, 62
+logical database design, 289
+Data models. See also Object data models
+access path, 34
+basic operations, 32
+categories of, 33-34
+conceptual, 12-13, 33
+data abstraction and, 12, 32-34
+database schemas for, 34-38
+DBMS classification from, 51-53
+dynamic aspect of applications, 23
+EER (enhanced entity-relationship),
+107-146
+ER (entity-relationship), 59-105
+object, 33, 51, 52-53
+relational, 33, 51, 52, 149-157
+
+representational, 33
+self-describing, 34
+Data normalization, 475-476
+Data organization transparency, DDBs,
+843
+Data quality, database security and, 1154
+Data replication, DDBs, 849-853
+Data security
+access acceptability and, 1127
+authenticity assurance and, 1127
+data availability and, 1127
+sensitivity of data and, 1126-1127
+Data sources
+databases as, 425
+JDBC, 331
+Data striping, RAID, 584-585
+Data transfer costs, DDB query
+processing, 860-862
+Data types
+attributes in SQL, 182-184
+bit strings, 183,
+Boolean, 183
+character strings, 182-183
+CREATE TYPE command, 184
+DATE, 183
+INTERVAL, 184
+numeric, 182
+records, 560-561
+relational model domains, 151
+spatial, 989-990
+TIME, 183
+TIMESTAMP, 183-184
+Data values, records, 560
+Data warehouses
+building, 1111-1114
+data modeling for, 1105-1110
+defined, 1102
+ETL (extract, transform, load) process,
+1103
+functionality of, 1114-1115
+use of, 4
+views compared to, 1115
+Data warehousing
+analytical data store (ADS), 1105
+characteristics of, 1103-1104
+data mining compared to, 1070
+DSS (decision-support systems), 1102
+master data management (MDM), 1110
+OLAP (online analytical processing),
+1102
+OLTP (online transaction processing),
+1102-1103
+operational data store (ODS), 1105
+query optimization, 731-733
+use of, 1101
+warehouse implementation difficulties,
+1115-1117
+Database administrator, see DBA
+(database administrator)
+Database design
+active databases, 967-972
+
+conceptual design, 61-62, 70-72
+data modal mapping, 62
+entities and attributes for, 70-72
+ER (Entity-Relationship) models for,
+60-62, 70-72
+functional requirements for, 61
+logical design, 62
+physical design, 62
+requirements collection and analysis,
+60-61
+schema creation, 61-62
+Database designer, 15
+Database items, transaction processing,
+748
+Database management systems, see DBMS.
+(database management system)
+Database monitoring, SQL triggers for,
+226-227
+Database programming
+application programming interface
+(API), 312
+database application implementation,
+309
+embedding commands in programming
+language, 311, 314-320
+evolution of, 309-310
+impendence mismatch, 312-313
+language design for, 312, 339
+library of functions or classes for,
+311-312, 326-335
+overview of techniques and issues,
+310-311
+sequence of interaction, 313-314
+stored procedures, 335-338
+Web programming using PHP, 343-359
+Database recovery techniques
+ARIES recovery algorithm, 827-831
+caching (buffering) disk blocks, 815-816
+cascading rollback and, 819-821
+checkpoints, 818-819, 828-829
+database backup and recovery from
+catastrophic failures, 832-833
+deferred updates for recovery, 814,
+821-823
+force/no-force rules, 817-818
+fuzzy checkpointing, 819, 828
+idempotent operations, 815
+immediate updates for recovery, 815,
+823-826
+multidatabase system recovery,
+831-834
+NO-UNDO/REDO algorithm, 815,
+821-823
+shadow paging, 826-827
+steal/no-steal rules, 817-818
+system log for, 814, 817, 818-819
+transaction rollback and, 819
+transactions not affecting database, 821
+UNDO/REDO algorithm, 815, 818
+write-ahead logging (WAL), 816-818
+Database schema, ontology as, 134

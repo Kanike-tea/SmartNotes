@@ -1,0 +1,50 @@
+802 Chapter 21 Concurrency Control Techniques
+
+1
+
+nat
+
+Figure 21.7
+
+1
+
+ny
+
+Yoyo yo F FY
+
+Mov Gap tt Gt Any Tory 777 Totk
+
+A granularity hierarchy for illustrating multiple granularity level locking.
+
+Consider the following scenario, which refers to the example in Figure 21.7. Sup-
+pose transaction T| wants to update all the records in file fi, and T; requests and is
+granted an exclusive lock for f,. Then all of f;’s pages (pj through p;,,)—and the
+records contained on those pages—are locked in exclusive mode. This is beneficial
+for T, because setting a single file-level lock is more efficient than setting n page-
+level locks or having to lock each record individually. Now suppose another trans-
+action T, only wants to read record ry yj from page p1,, of file fj; then T, would
+request a shared record-level lock on r;,;. However, the database system (that is, the
+transaction manager or, more specifically, the lock manager) must verify the com-
+patibility of the requested lock with already held locks. One way to verify this is to
+traverse the tree from the leaf rj, to py, to fi to db. If at any time a conflicting lock
+is held on any of those items, then the lock request for T1nj is denied and T) is
+blocked and must wait. This traversal would be fairly efficient.
+
+However, what if transaction T's request came before transaction T;’s request? In
+this case, the shared record lock is granted to T> for Tin)» but when Ty's file-level lock
+is requested, it can be time-consuming for the lock manager to check all nodes
+(pages and records) that are descendants of node f, for a lock conflict. This would
+be very inefficient and would defeat the purpose of having multiple granularity
+level locks.
+
+To make multiple granularity level locking practical, additional types of locks,
+called intention locks, are needed. The idea behind intention locks is for a transac-
+tion to indicate, along the path from the root to the desired node, what type of lock
+(shared or exclusive) it will require from one of the node’s descendants. There are
+three types of intention locks:
+
+1. Intention-shared (IS) indicates that one or more shared locks will be
+requested on some descendant node(s).
+
+2. Intention-exclusive (IX) indicates that one or more exclusive locks will be
+requested on some descendant node(s).

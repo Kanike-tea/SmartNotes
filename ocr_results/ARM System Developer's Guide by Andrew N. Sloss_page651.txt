@@ -1,0 +1,50 @@
+638 Appendix B ARM and Thumb Instruction Encodings
+
+For example if there are two op bits value 1 and 0, then the binary value 10 indicates
+instruction number 2 in the list (the third instruction).
+
+= The instruction operands have the same name as in the instruction description of
+Appendix A.
+
+The table uses the following abbreviations:
+
+= Lis 1 if the L suffix applies for LDC and STC operations.
+
+= Mis 1 if CPS changes processor mode. mode is defined in Table B.3.
+
+= opland op2 are the opcode extension fields in coprocessor instructions.
+
+= post indicates a postindexed addressing mode such as [Rn], Rm or [Rn], #immed.
+= pre indicates a preindexed addressing mode such as [Rn, Rm] or [Rn, #immed].
+= register_list is a bit field with bit k set if register Rk appears in the register list.
+
+= rotis a byte rotate. The second operand is Rm ROR (8*rot).
+
+= rotate is a bit rotate. The second operand is #immed ROR (2*rotate).
+
+«= shiftand sh encode a shift type and direction. See Table B.4.
+
+= Uis the up/down select for addressing modes. If U = 1, then we add the offset to the
+base address, as in [Rn] , #4 or [Rn, Rm]. If U = 0, then we subtract the offset from the
+base address, as in [Rn,#-4] or [Rn] ,-Rm.
+
+= unindexed indicates an addressing mode of the form [Rn] , {option}.
+= Ris 1 if the R (round) instruction suffix is present.
+
+= Tis 1 if the T suffix is present on load and store instructions.
+
+= Wis 1 if ! (writeback) is specified in the instruction mnemonic.
+
+= Xis1 if the X (exchange) instruction suffix is present.
+
+= xand yare 0 for the B suffix, 1 for the T suffix.
+
+= “is 1 if the “ suffix is applied in LDM or STM instructions.
+
+B.2 THUMB INSTRUCTION SET ENCODINGS
+
+Table B.5 summarizes the bit encodings for the 16-bit Thumb instruction set. This table is
+useful if you need to decode a Thumb instruction by hand. We’ve expanded the table
+to aid quick manual decode. The table contains instruction definitions up to archi-
+tecture THUMBvy3. Any bitmaps not listed are either unpredictable or undefined for
+THUMBv3.

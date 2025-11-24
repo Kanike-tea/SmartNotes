@@ -1,0 +1,52 @@
+24.2 The CAP Theorem
+
+We saw in Section 23.3 that there are distributed concurrency control methods that
+do not allow this inconsistency among copies of the same data item, thus enforcing
+serializability and hence the isolation property in the presence of replication. How-
+ever, these techniques often come with high overhead, which would defeat the pur-
+pose of creating multiple copies to improve performance and availability in
+distributed database systems such as NOSQL. In the field of distributed systems,
+there are various levels of consistency among replicated data items, from weak con-
+sistency to strong consistency. Enforcing serializability is considered the strongest
+form of consistency, but it has high overhead so it can reduce performance of read
+and write operations and hence adversely affect system performance.
+
+The CAP theorem, which was originally introduced as the CAP principle, can be
+used to explain some of the competing requirements in a distributed system with
+replication. The three letters in CAP refer to three desirable properties of distributed
+systems with replicated data: consistency (among replicated copies), availability (of
+the system for read and write operations) and partition tolerance (in the face of the
+nodes in the system being partitioned by a network fault). Availability means that
+each read or write request for a data item will either be processed successfully or will
+receive a message that the operation cannot be completed. Partition tolerance means
+that the system can continue operating if the network connecting the nodes has a
+fault that results in two or more partitions, where the nodes in each partition can
+only communicate among each other. Consistency means that the nodes will have
+the same copies of a replicated data item visible for various transactions.
+
+It is important to note here that the use of the word consistency in CAP and its use
+in ACID do not refer to the same identical concept. In CAP, the term consistency
+refers to the consistency of the values in different copies of the same data item in a
+replicated distributed system. In ACID, it refers to the fact that a transaction will
+not violate the integrity constraints specified on the database schema. However, if
+we consider that the consistency of replicated copies is a specified constraint, then
+the two uses of the term consistency would be related.
+
+The CAP theorem states that it is not possible to guarantee all three of the desirable
+properties—consistency, availability, and partition tolerance—at the same time in a
+distributed system with data replication. If this is the case, then the distributed sys-
+tem designer would have to choose two properties out of the three to guarantee. It
+is generally assumed that in many traditional (SQL) applications, guaranteeing
+consistency through the ACID properties is important. On the other hand, in a
+NOSQL distributed data store, a weaker consistency level is often acceptable, and
+guaranteeing the other two properties (availability, partition tolerance) is impor-
+tant. Hence, weaker consistency levels are often used in NOSQL system instead of
+guaranteeing serializability. In particular, a form of consistency known as eventual
+consistency is often adopted in NOSQL systems. In Sections 24.3 through 24.6, we
+will discuss some of the consistency models used in specific NOSQL systems.
+
+The next four sections of this chapter discuss the characteristics of the four main cat-
+egories of NOSQL systems. We discuss document-based NOSQL systems in Sec-
+tion 24.3, and we use MongoDB as a representative system. In Section 24.4, we discuss
+
+889

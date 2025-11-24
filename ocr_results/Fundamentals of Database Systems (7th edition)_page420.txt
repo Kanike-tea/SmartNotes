@@ -1,0 +1,116 @@
+390 — Chapter 12 Object and Object-Relational Databases
+
+Figure 12.5
+(continued)
+Overview of the
+interface
+
+definitions for
+
+part of the ODMG
+object model.
+
+(b) (continued) Some
+standard interfaces
+for structured literals,
+(0) Interfaces for
+collections and
+iterators.
+
+Timestamp
+boolean
+
+boolean
+
+oh
+
+class Interval :
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+
+Interval
+Interval
+Interval
+Interval
+boolean
+boolean
+
+oh
+
+minus(in Interval an_interval);
+is_equal(in Timestamp a_timestamp);
+is_greater(in Timestamp a_timestamp);
+
+Object {
+day();
+
+hour();
+minute();
+second();
+millisecond();
+
+plus(in Interval an_interval);
+minus(in Interval an_interval);
+product(in long a_value);
+quotient(in long a_value);
+is_equal(in interval an_interval);
+is_greater(in interval an_interval);
+
+(c) interface Collection : Object {
+
+exception
+unsigned long
+boolean
+
+boolean
+void
+void
+
+iterator
+oh
+interface Iterator {
+exception
+
+boolean
+void
+Object
+void
+oh
+interface set : Collection {
+set
+
+boolean
+
+oh
+
+interface bag : Collection {
+
+unsigned long
+
+ElementNotFound{ Object element; };
+cardinality();
+is_empty();
+
+contains_element(in Object element);
+insert_element(in Object element);
+remove_element(in Object element)
+raises(ElementNotFound);
+create_iterator(in boolean stable);
+
+NoMoreElements();
+
+at_end();
+
+reset();
+
+get_element() raises(NoMoreElements);
+next_position() raises(NoMoreElements);
+
+create_union(in set other_set);
+
+is_subset_of(in set other_set);
+
+occurrences_of(in Object element);

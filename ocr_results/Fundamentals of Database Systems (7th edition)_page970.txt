@@ -1,0 +1,51 @@
+940 Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Figure 25.3
+
+The Hadoop v1 vs.
+
+Hadoop v2
+schematic.
+
+Hadoop v1 Hadoop v2
+Pig Hive Pig Hive
+Map Reduce — Map Reduce Tez
+Cluster — Application Mstr | Application Mstr
+Resource Management
++ YARN
+Job Management RESOURCE MANAGEMENT
+HDFS HDFS
+
+of the cluster. The ApplicationMaster presents a Container Launch Context to the
+NodeManager for the node that this lease references. The Launch Context, in
+addition to containing the lease, also specifies how to run the process for the task
+and how to get any resources like jars, libs for the process, environment variables,
+and security tokens. A node has a certain processing power in terms of number of
+cores, memory, network bandwidth, etc. Currently, YARN only considers mem-
+ory. Based on its processing power, a node can be divided into an interchangeable
+set of containers. Once an ApplicationMaster receives a container lease, it is free to
+schedule work on it as it pleases. ApplicationMasters, based on their workload, can
+continuously change their Resource requirements. The ResourceManager bases its
+scheduling decisions purely on these requests, on the state of the cluster, and on
+the cluster’s scheduling policy. It is not aware of the actual tasks being carried out
+on the nodes. The responsibility of managing and analyzing the actual work is left
+to ApplicationMasters.
+
+The NodeManager is responsible for managing Containers on their nodes. Con-
+tainers are responsible for reporting on the node health. They also handle the pro-
+cedure for nodes joining the cluster. Containers provide the Container Launch
+service to ApplicationMasters. Other services available include a Local cache, which
+could be User level, Application level, or Container level. Containers also can be
+configured to provide other services to Tasks running on them. For example, for
+MR tasks, the shuffle is now provided as a Node-level service.
+
+The ApplicationMaster is now responsible for running jobs on the cluster. Based on
+their job(s) the clusters negotiate for Resources with the ResourceManager. The
+ApplicationMaster itself runs on the cluster; at startup time a client submits an
+Application to the ResourceManager, which then allocates a container for the
+ApplicationMaster and launches it in that container. In the case of MR, the
+ApplicationMaster takes over most of the tasks of the JobTracker: it launches Map
+and Reduce tasks, makes decisions on their placement, manages failover of tasks,
+maintains counters similar to Job state counters, and provides a monitoring inter-
+face for running Jobs. The management and interface for completed jobs has been
+moved to a separate Job History Server.

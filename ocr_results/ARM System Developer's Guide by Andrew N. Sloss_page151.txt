@@ -1,0 +1,54 @@
+138 Chapter 5 Efficient C Programming
+
+Table 5.7
+
+EXAMPLE
+
+5.10
+
+Big-endian configuration.
+
+Instruction Width (bits) b31..b24 —b23..b16 —b15..b8 ~—_—b7..b0
+
+LDRB 8 0 0 0 B(A)
+LDRSB 8 S(A) S(A) S(A) B(A)
+STRB 8 x x x B(A)
+LDRH 16 0 0 B(A) B(A+1)
+LDRSH 16 S(A) S(A) B(A) B(A+1)
+STRH 16 x x B(A) B(A+1)
+LDR/STR 32 B(A) B(A+1) B(A+2) —B(A+3)
+Notes:
+
+B(A): The byte at address A.
+S(A): OxFF if bit 7 of B(A) is set, otherwise 0x00.
+X: These bits are ignored on a write.
+
+the size of the memory transfer. The tables show how the byte addresses in memory map
+into the 32-bit register that the instruction loads or stores.
+
+What is the best way to deal with endian and alignment problems? If speed is not critical,
+then use functions like readint_little and readint_big in Example 5.10, which read
+a four-byte integer from a possibly unaligned address in memory. The address alignment
+is not known at compile time, only at run time. If you've loaded a file containing big-
+endian data such as a JPEG image, then use readint_big. For a bytestream containing
+little-endian data, use readint_]itt1e. Both routines will work correctly regardless of the
+memory endianness ARM is configured for.
+
+These functions read a 32-bit integer from a bytestream pointed to by data. The bytestream
+contains little- or big-endian data, respectively. These functions are independent of the
+ARM memory system byte order since they only use byte accesses.
+
+int readint_little(char *data)
+{
+
+int a0,al,a2,a3;
+
+a0 = *(datat+);
+al = *(datat+);
+a2 = *(datat+);
+a3 = *(datat+);
+
+return a0 | (al<<8) | (a2<<16) | (a3<<24);
+}
+
+int readint_big(char *data)

@@ -1,0 +1,59 @@
+338 Chapter 10 Introduction to SQL Programming Techniques
+
+Figure 10.14
+Declaring a function in
+SQL/PSM.
+
+//Function PSM1:
+
+0) CREATE FUNCTION Dept_size(IN deptno INTEGER)
+1) RETURNS VARCHAR [7]
+
+2) DECLARE No_of_emps INTEGER ;
+
+3) SELECT COUNT(*) INTO No_of_emps
+
+4) FROM EMPLOYEE WHERE Dno = deptno ;
+
+5) IF No_of_emps > 100 THEN RETURN "HUGE"
+
+6) ELSEIF No_of_emps > 25 THEN RETURN "LARGE"
+7) ELSEIF No_of_emps > 10 THEN RETURN "MEDIUM"
+8) ELSE RETURN "SMALL"
+
+9) END IF ;
+
+branch in lines 5 to 8 then returns one of the values {“ HUGE’, ‘LARGE’, ‘MEDIUM’,
+‘SMALL’ based on the number of employees.
+
+SQL/PSM has several constructs for looping. There are standard while and repeat
+looping structures, which have the following forms:
+
+WHILE <condition> DO
+<statement list>
+END WHILE ;
+REPEAT
+<statement list>
+UNTIL <condition>
+END REPEAT ;
+
+There is also a cursor-based looping structure. The statement list in such a loop is
+executed once for each tuple in the query result. This has the following form:
+
+FOR <loop name> AS <cursor name> CURSOR FOR <query> DO.
+<statement list>
+END FOR;
+
+Loops can have names, and there is a LEAVE <loop name> statement to break a loop
+when a condition is satisfied. SQL/PSM has many other features, but they are out-
+side the scope of our presentation.
+
+10.5 Comparing the Three Approaches
+
+In this section, we briefly compare the three approaches for database programming
+and discuss the advantages and disadvantages of each approach.
+
+4. Embedded SQL Approach. The main advantage of this approach is that the
+query text is part of the program source code itself, and hence can be checked
+for syntax errors and validated against the database schema at compile time.
+This also makes the program quite readable, as the queries are readily visible

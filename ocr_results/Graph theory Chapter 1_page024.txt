@@ -1,0 +1,38 @@
+1.2.1. Vertex degree and Handshaking property 27
+
+The graph shoes in Figure 1.38 is a cubic graph with 8 = 2? vertices. This particular graph
+is called the three-dimensional hypercube and is denoted by Q3.
+
+Figure 1.38
+
+In general, for any positive integer k, a loop-free k-regular graph with 2" vertices is called
+the k-dimensional hypercube (or k-cube) and is denoted by Qx.* (Note that the graph shown in
+Figure 1.35 is Q2).
+
+Handshaking Property
+
+Let us refer back to the graph shown in Figure 1.33. As noted earlier, we have, in this
+graph,
+
+deg(v;)=3, deg(v2)=4, deg(v3)=4, deg(v4) = 3.
+
+Also, the graph has 7 edges. We observe that
+deg(v;) + deg(v2) + deg(v3) + deg(v4) = 14 =2 7.
+
+This observation illustrates the following important property common to all (finite) graphs.
+
+perty : The sum of the degrees of all the vertices in a graph is an even number; and this
+umber is equal to twice the number of edges in the graph.
+In an alternative form, this property reads as follows:
+For a graph G = (V,E).
+>) dee) = 2121.
+veV :
+This property is obvious from the fact that while counting the degrees of vertices, each
+ge is counted twice (once at each end).
+The aforesaid property is popularly called the handshaking property.' Because, it essen-
+ially states that if several people shake hands, then the total number of hands shaken must be
+‘ven, because just two hands are involved in each handshake.
+
+ihe graph Q, arises in the study of Computer Architecture.
+Handshaking property was the first result noted in Graph Theory. This property is also known as the First
+‘orem of Graph Theory.

@@ -1,0 +1,47 @@
+b)
+
+THEOREM 8-11
+
+The vertices of every planar graph can be properly colored with five colors.
+
+Proof: The theorem will be proved by induction. Since the vertices of all
+graphs (self-loop-free, of courset) with 1, 2,3,4, or 5 vertices can be properly
+colored with five colors, let us assume that vertices of every planar graph with n
+— 1 vertices can be properly colored with five colors. Then, if we prove that any
+planar graph G with n vertices will require no more than five colors, we shall
+have proved the theorem.
+
+Consider the planar graph G with n vertices. Since G is planar, it must have at
+least one vertex with degree five or less (Problem 5-4). Let this vertex be v.
+
+Let G' be a graph (of n— 1 vertices) obtained from G by deleting vertex v (i.e.,
+v and all edges incident on v). Graph G' requires no more than five colors,
+according to the induction hypothesis. Suppose that the vertices in G' have been
+properly colored, and now we add to it v and all edges incident on v. If the
+degree of v is 1, 2, 3, or 4, we have no difficulty in assigning a proper color to v.
+
+This leaves only the case in which the degree of v is five, and all the five
+colors have been used in coloring the vertices adjacent to v, as shown in Fig. 8-
+15(a). (Note that Fig. 8-15 is part of a planar representation of graph G'.)
+
+Color 1
+a
+
+@ (b)
+Fig. 8-15 Reassigning of colors.
+
+Suppose that there is a path in G' between vertices a and c colored alternately
+with colors 1 and 3, as shown in Fig. 8-15(b). Then a similar path between b and
+d, colored alternately with colors 2 and 4, cannot exist; otherwise, these two
+paths will intersect and cause G to be nonplanar. (This is a consequence of the
+Jordan curve theorem, used in Section 5-3, also.)
+
+If there is no path between b and d colored alternately with colors 2 and 4,
+starting from vertex b we can interchange colors 2 and 4 of all vertices
+connected to b through vertices of alternating colors 2 and 4. This interchange
+will paint vertex b with color 4 and yet keep G' properly colored. Since vertex d
+is still with color 4, we have color 2 left over with which to paint vertex v.
+
+Had we assumed that there was no path between a and c of vertices painted
+alternately with colors 1 and 3, we would have released color 1 or 3 instead of
+color 2. And thus the theorem. =

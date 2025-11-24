@@ -1,0 +1,60 @@
+LECTURE-31
+QUERY PROCESSING
+
+Query processing includes translation of high-level queries into low-level expressions that can be used at the
+physical level of the file system, query optimization and actual execution of the query to get the result. It is a
+three-step process that consists of parsing and translation, optimization and execution of the query submitted
+by the user.
+
+Query in high-level
+language
+
+Parser and
+translator
+
+Internal representation
+of the query
+
+Query optimizer
+
+Execution plan
+
+DBMS catalog
+Query Evaluation
+engine
+
+Result of the query : i
+
+Data
+
+Query-processing Steps
+
+A query is processed in four general steps:
+1. Scanning and Parsing
+2. Query Optimization or planning the execution strategy
+3. Query Code Generator (interpreted or compiled)
+4. Execution in the runtime database processor
+
+1. Scanning and Parsing
+
+When a query is first submitted (via an applications program), it must be scanned and parsed to
+determine if the query consists of appropriate syntax.
+
+Scanning is the process of converting the query text into a tokenized representation.
+
+The tokenized representation is more compact and is suitable for processing by the parser.
+
+This representation may be in a tree form.
+
+The Parser checks the tokenized representation for correct syntax.
+
+In this stage, checks are made to determine if columns and tables identified in the query exist in the
+database and if the query has been formed correctly with the appropriate keywords and structure.
+If the query passes the parsing checks, then it is passed on to the Query Optimizer.
+
+2. Query Optimization or Planning the Execution Strategy
+
+For any given query, there may be a number of different ways to execute it.
+
+Each operation in the query (SELECT, JOIN, etc.) can be implemented using one or more different
+Access Routines.

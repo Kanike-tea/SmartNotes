@@ -1,0 +1,53 @@
+842
+
+Chapter 23 Distributed Database Concepts
+
+systems, which focus on providing distributed solutions to manage the vast amounts
+of data that are needed in applications such as social media, healthcare, and security,
+to name a few. Chapter 25 introduces the concepts and systems being used for pro-
+cessing and analysis of big data, such as map-reduce and other distributed process-
+ing technologies. We also discuss cloud computing concepts in Chapter 25.
+
+Section 23.1 introduces distributed database management and related concepts.
+Issues of distributed database design, involving fragmenting and sharding of data
+and distributing it over multiple sites, as well as data replication, are discussed in
+Section 23.2. Section 23.3 gives an overview of concurrency control and recovery in
+distributed databases. Sections 23.4 and 23.5 introduce distributed transaction pro-
+cessing and distributed query processing techniques, respectively. Sections 23.6 and
+23.7 introduce different types of distributed database systems and their architec-
+tures, including federated and multidatabase systems. The problems of heterogene-
+ity and the needs of autonomy in federated database systems are also highlighted.
+Section 23.8 discusses catalog management schemes in distributed databases. Sec-
+tion 23.9 summarizes the chapter.
+
+For a short introduction to the topic of distributed databases, Sections 23.1 through
+23.5 may be covered and the other sections may be omitted.
+
+23.1 Distributed Database Concepts
+
+We can define a distributed database (DDB) as a collection of multiple logically
+interrelated databases distributed over a computer network, and a distributed
+database management system (DDBMS) as a software system that manages a dis-
+tributed database while making the distribution transparent to the user.
+
+23.1.1 What Constitutes a DDB
+
+For a database to be called distributed, the following minimum conditions should
+be satisfied:
+
+= Connection of database nodes over a computer network. There are mul-
+tiple computers, called sites or nodes. These sites must be connected by an
+underlying network to transmit data and commands among sites.
+
+= Logical interrelation of the connected databases. It is essential that the
+information in the various database nodes be logically related.
+
+= Possible absence of homogeneity among connected nodes. It is not neces-
+sary that all nodes be identical in terms of data, hardware, and software.
+
+The sites may all be located in physical proximity—say, within the same building or a
+group of adjacent buildings—and connected via a local area network, or they may be
+geographically distributed over large distances and connected via a long-haul or wide
+area network. Local area networks typically use wireless hubs or cables, whereas
+long-haul networks use telephone lines, cables, wireless communication infrastruc-
+tures, or satellites. It is common to have a combination of various types of networks.

@@ -1,0 +1,42 @@
+Microcontrollers - BCS402
+
+Before set up of the segment display, position the base address of the system registers to a known
+location. In this case, the default address 0x03ff0000 is used, since this places all the hardware
+system registers away from both ROM and RAM, separating the peripherals and memory.
+Consequently, all the microcontroller memory-mapped registers are located as an offset from
+0x03ff0000. This is achieved using the following code:
+sandstone_initl
+LOR 73, =SYSCFG 3 where SYSCFG=0x03ff0000
+
+LDR r4, =0x03ffffa0
+STR r4, [r3]
+
+The results of executing step 2 are the following:
+
+e The system registers are set from a known base address—0x03ff0000.
+
+e The segment display is configured, so that it can be used to display progress.
+Step 3: Remap Memory
+
+One of the major activities of hardware initialization is to set up the memory environment.
+Sandstone is designed to initialize SRAM and remap memory. This process occurs fairly early
+on in the initialization of the system. The platform starts in a known memory state, as shown in
+
+the following table.
+
+Table Initial memory state.
+
+Memory type Start address End address Size
+
+Flash ROM 0x00000000 0x00080000 512K
+SRAM bank0 Unavailable — unavailable = 256K
+SRAM bank 1 Unavailable unavailable — 256K
+
+When the platform is powered up, only flash ROM is assigned a location in the memory map.
+The two SRAM banks (0 and 1) have not been initialized and are not available. The next stage is
+
+to bring in the two SRAM banks and remap flash ROM to a new location.
+
+This is achieved using the following code:
+
+Dept. of ECE, GSSSIETW, Mysuru Page 25

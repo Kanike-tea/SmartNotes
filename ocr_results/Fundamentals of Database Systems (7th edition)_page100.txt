@@ -1,0 +1,58 @@
+70
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+be specified in UML class diagrams (see Section 3.8) and in other diagrammatic
+notations used in database design tools. Additional data types to represent common
+database types, such as date, time, and other concepts, are also employed.
+
+Mathematically, an attribute A of entity set E whose value set is V can be defined as
+a function from E to the power set® P(V) of V:
+
+A:E- P(V)
+
+We refer to the value of attribute A for entity e as A(e). The previous definition cov-
+ers both single-valued and multivalued attributes, as well as NULLs. A NULL value
+is represented by the empty set. For single-valued attributes, A(e) is restricted to
+being a singleton set for each entity e in E, whereas there is no restriction on multi-
+valued attributes.’ For a composite attribute A, the value set V is the power set of
+the Cartesian product of P(V;), P(V3),..., P(V,), where V;, Vz,..., V,, are the
+value sets of the simple component attributes that form A:
+
+V=P(P(V,) x P(V2) x- ++ x P(V;,))
+
+The value set provides all possible values. Usually only a small number of these val-
+ues exist in the database at a particular time. Those values represent the data from
+the current state of the miniworld and correspond to the data as it actually exists in
+the miniworld.
+
+3.3.3 Initial Conceptual Design of the COMPANY Database
+
+We can now define the entity types for the COMPANY database, based on the
+requirements described in Section 3.2. After defining several entity types and their
+attributes here, we refine our design in Section 3.4 after we introduce the concept of
+a relationship. According to the requirements listed in Section 3.2, we can identify
+four entity types—one corresponding to each of the four items in the specification
+(see Figure 3.8):
+
+1. An entity type DEPARTMENT with attributes Name, Number, Locations,
+Manager, and Manager_start_date. Locations is the only multivalued attribute.
+We can specify that both Name and Number are (separate) key attributes
+because each was specified to be unique.
+
+v
+
+. An entity type PROJECT with attributes Name, Number, Location, and
+Controlling_department. Both Name and Number are (separate) key attributes.
+
+An entity type EMPLOYEE with attributes Name, Ssn, Sex, Address, Salary,
+Birth_date, Department, and Supervisor. Both Name and Address may be
+composite attributes; however, this was not specified in the requirements.
+We must go back to the users to see if any of them will refer to the individual
+components of Name—First_name, Middle_initial, Last_name—or of Address. In
+
+bad
+
+®The power set P(V/) of a set Vis the set of all subsets of V.
+
+7A singleton set is a set with only one element (value).

@@ -1,0 +1,82 @@
+}
+
+for(i=1; i<=n; i++)
+
+{
+
+}
+
+printf("\n\tEnter the %d term: ".i);
+printf("\n\t\tCoe: ");
+
+scanf("%d", &coef);
+
+printf("\n\t\tEnter Pow(x) Pow(y) and Pow(z):
+scanf("%d", &xexp);
+
+scanf("%d", &yexp);
+
+scanf("%d", &zexp);
+
+head = attach(coef, xexp, yexp, zexp, head);
+
+return head;
+
+void display(NODE head)
+{
+
+}
+
+NODE temp;
+if(head->link == head)
+
+{
+
+}
+
+printf("\nPolynomial does not exist.");
+return;
+
+temp = head->link;
+
+while(temp != head)
+
+printf("Ydx%dy/%dz'%d" , temp->coef, temp->xexp, temp->yexp, temp->zexp);
+temp = temp->link;
+if(temp != head)
+
+printf(" +");
+
+int poly_evaluate(/(NODE head)
+{
+
+}
+
+int x, y,z, sum = 0;
+
+NODE poly;
+
+printf("\nEnter the value of x,y and z: ");
+scanf("%d %d Yd", &x, &y, &Z);
+
+poly = head->link;
+while(poly != head)
+
+sum += poly->coef * pow(x,poly->xexp)* pow(y,poly->yexp) * pow(z.poly->zexp);
+
+poly = poly->link;
+
+return sum;
+
+NODE poly_sum(NODE head1, NODE head2, NODE head3)
+
+{
+
+NODE a, b;
+
+int coef;
+
+a= head1->link;
+b = head2->link;
+
+42

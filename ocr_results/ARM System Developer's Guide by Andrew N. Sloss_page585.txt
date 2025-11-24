@@ -1,0 +1,57 @@
+572 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.2 ARM condition mnemonics.
+
+<cond> Instruction is executed when cpsr condition
+{|AL} ALways
+
+EQ EQual (last result zero)
+
+NE Not Equal (last result nonzero)
+
+{CS|HS} Carry Set, unsigned Higher or Same (following a compare)
+{CC|LO} Carry Clear, unsigned LOwer (following a comparison)
+
+MI Minus (last result negative)
+
+PL PLus (last result greater than or equal to zero)
+
+VS V flag Set (signed overflow on last result)
+
+ve V flag Clear (no signed overflow on last result)
+
+HI unsigned HIgher (following a comparison)
+
+LS unsigned Lower or Same (following a comparison)
+GE signed Greater than or Equal
+
+LT signed Less Than
+
+GT signed Greater Than
+
+LE signed Less than or Equal
+
+NV NeVer—ARMvI1 and ARMv2 only—DO NOT USE
+
+m= <NoUnsignedOverf]ow> is the same as 1 — <UnsignedOverflow>.
+=) <Zero> is a flag indicating that the result of an arithmetic or logical operation is zero.
+The Z flag in the cpsr typically records the zero condition.
+
+= <Negative> is a flag indicating that the result of an arithmetic or logical operation is
+negative. In other words, <Negative> is bit 31 of the result. The N flag in the cpsr
+typically records this condition.
+
+A.2.5. SHIFT OPERATIONS
+
+= <imm_shift> represents a shift by an immediate specified amount. The possible shifts
+are LSL #<0-31>, LSR #<1-32>, ASR #<1-32>, ROR #<1-31>, and RRX. See Table A.3
+for the actions of each shift.
+
+= <reg_shift> represents a shift by a register-specified amount. The possible shifts are
+LSL Rs, LSR Rs, ASR Rs, and ROR Rs. Rs must not be pc. The bottom eight bits of Rs
+are used as the shift value k in Table A.3. Bits Rs[31:8] are ignored.
+
+= <shift> is shorthand for <imm_shift> or<reg_shift>.
+
+=) <shifted_Rm>is shorthand for the value of Rmatfter the specified shift has been applied.
+See Table A.3.

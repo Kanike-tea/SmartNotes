@@ -1,0 +1,28 @@
+5. DNA sequencing.
+3a)
+
+Proof: Suppose that G is an Euler graph. It therefore contains an Euler line
+(which is a closed walk). In tracing this walk we observe that every time the walk
+meets a vertex v it goes through two “new” edges incident on v—with one we
+“entered” v and with the other “exited.” This is true not only of all intermediate
+vertices of the walk but also of the terminal vertex, because we “exited” and
+“entered” the same vertex at the beginning and end of the walk, respectively. Thus
+if G is an Euler graph, the degree of every vertex is even.
+
+To prove the sufficiency of the condition, assume that all vertices of G are of
+even degree. Now we construct a walk starting at an arbitrary vertex v and going
+through the edges of G such that no edge is traced more than once. We continue
+tracing as far as possible. Since every vertex is of even degree, we can exit from
+every vertex we enter; the tracing cannot stop at any vertex but v. And since v is
+also of even degree, we shall eventually reach v when the tracing comes to an end.
+If this closed walk A we just traced includes all the edges of G, G is an Euler graph.
+If not, we remove from G all the edges in A and obtain a subgraph h’ of G formed
+by the remaining edges. Since both G and h have all their vertices of even degree,
+the degrees of the vertices of h’ are also even. Moreover, /’ must touch / at least
+
+at one vertex a, because G is connected. Starting from a, we can again construct
+a new walk in graph h’, Since all the vertices of h’ are of even degree, this walk in
+h’ must terminate at vertex a; but this walk in A’ can be combined with A to form
+a new walk, which starts and ends at vertex v and has more edges than A. This
+process can be repeated until we obtain a closed walk that traverses all the edges
+of G. Thus G is an Euler graph.

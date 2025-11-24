@@ -1,0 +1,31 @@
+asymmetric. The reason for the terms symmetric and asymmetric will be
+apparent in the context of binary relations in Section 9-3.
+
+Complete Digraphs: A complete undirected graph was defined as a simple
+graph in which every vertex is joined to every other vertex exactly by one edge.
+For digraphs we have two types of complete graphs. A complete symmetric
+digraph is a simple digraph in which there is exactly one edge directed from
+every vertex to every other vertex (Fig. 9-3), and a complete asymmetric digraph
+is an asymmetric digraph in which there is exactly one edge between every pair
+of vertices (Fig. 9-2).
+
+A complete asymmetric digraph of n vertices contains n(n — l)/2 edges, but a
+complete symmetric digraph of n vertices contains n(n — 1) edges. A complete
+asymmetric digraph is also called a tournament or a complete tournament (the
+reason for this term will be made clear in Section 9-10).
+
+A digraph is said to be balanced if for every vertex v; the in-degree equals the
+
+out-degree; that is, d *(v,) = d “(v;). (A balanced digraph is also referred to as a
+
+pseudosymmetric digraph, or an isograph.) A balanced digraph is said to be
+regular if every vertex has the same in-degree and out-degree as every other
+vertex.
+
+Fig. 9-3 Complete symmetric digraph of four vertices.
+
+9-3. DIGRAPHS AND BINARY RELATIONS
+
+The theory of graphs and the calculus of binary relations are closely related
+(so much so that some people often mistakenly come to regard graph theory as a
+branch of the theory of relations).

@@ -1,0 +1,47 @@
+702 Chapter 19 Query Optimization
+
+™Ename, Lname, Address
+
+™Dnumber=Dno
+o Dname='Research’ EMPLOYEE
+Figure 19.3 |
+A query tree for query Q1. DEPARTMENT
+
+would produce the query result table. On the other hand, with pipelined evaluation,
+as the resulting tuples of an operation are produced, they are forwarded directly
+to the next operation in the query sequence. We discussed pipelining as a strategy
+for query processing in Section 18.7. For example, as the selected tuples from
+DEPARTMENT are produced by the SELECT operation, they are placed in a buffer;
+the JOIN operation algorithm then consumes the tuples from the buffer, and those
+tuples that result from the JOIN operation are pipelined to the projection operation
+algorithm. The advantage of pipelining is the cost savings in not having to write
+the intermediate results to disk and not having to read them back for the next
+operation.
+
+We discussed in Section 19.1 the possibility of converting query trees into equiva-
+lent trees so that the evaluation of the query is more efficient in terms of its execu-
+tion time and overall resources consumed. There are more elaborate transformations
+of queries that are possible to optimize, or rather to “improve.” Transformations
+can be applied either in a heuristic-based or cost-based manner.
+
+As we discussed in Sections 7.1.2 and 7.1.3, nested subqueries may occur in the
+WHERE clause as well as in the FROM clause of SQL queries. In the WHERE
+clause, if an inner block makes a reference to the relation used in the outer block, it
+is called a correlated nested query. When a query is used within the FROM clause to
+define a resulting or derived relation, which participates as a relation in the outer
+query, it is equivalent to a view. Both these types of nested subqueries are handled
+by the optimizer, which transforms them and rewrites the entire query. In the next
+two subsections, we consider these two variations of query transformation and
+rewriting with examples. We will call them nested subquery optimization and sub-
+query (view) merging transformation. In Section 19.8, we revisit this topic in the
+context of data warehouses and illustrate star transformation optimizations.
+
+19.2.2 Nested Subquery Optimization
+We discussed nested queries in Section 7.1.2. Consider the query:
+
+SELECT E1.Fname, El.Lname
+
+FROM EMLOYEE El
+
+WHERE E1 Salary = ( SELECT MAX (Salary)
+FROM EMPLOYEE E2)

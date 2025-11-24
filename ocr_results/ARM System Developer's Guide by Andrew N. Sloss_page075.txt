@@ -1,0 +1,47 @@
+62 Chapter 3 Introduction to the ARM Instruction Set
+
+Table 3.4
+
+EXAMPLE
+
+3.16
+
+Index methods.
+Base address
+
+Index method Data register Example
+Preindex with writeback mem|base + offset] base + offset LOR rO,[r1,#4]!
+Preindex mem|base + offset] not updated LOR r0, [r1,#4]
+Postindex mem|[base] base + offset LOR rO,[r1],#4
+Note: ! indicates that the instruction writes the calculated address back to the base address register.
+Preindex with writeback calculates an address from a base register plus address offset and
+then updates that address base register with the new address. In contrast, the preindex offset
+is the same as the preindex with writeback but does not update the address base register.
+Postindex only updates the address base register after the address is used. The preindex
+mode is useful for accessing an element in a data structure. The postindex and preindex
+with writeback modes are useful for traversing an array.
+PRE r0 = 0x00000000
+
+rl = 0x00090000
+
+mem32[0x00009000] = 0x01010101
+
+mem32[0x00009004] = 0x02020202
+
+LOR rd, [rl, #4]!
+Preindexing with writeback:
+POST(1) rO = 0x02020202
+
+rl = 0x00009004
+
+LOR rd, [rl, #4]
+Preindexing:
+POST(2) r0 = 0x02020202
+
+rl = 0x00009000
+
+LOR rd, [ri], #4
+Postindexing:
+
+POST(3) rO = 0x01010101
+rl = 0x00009004

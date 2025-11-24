@@ -1,0 +1,29 @@
+For example, an access routine that employs an index to retrieve some rows would be more efficient
+that an access routine that performs a full table scan.
+
+The goal of the query optimizer is to find a reasonably efficient strategy for executing the query (not
+quite what the name implies) using the access routine:
+Optimization typically takes one of two forms: Heuristic Optimization or Cost Based Optimization
+In Heuristic Optimization, the query execution is refined based on heuristic rules for reordering the
+
+individual operations.
+With Cost Based Optimization, the overall cost of executing the query is systematically reduced by
+estimating the costs of executing several different execution plans.
+
+3. Query Code Generator (interpreted or compiled)
+
+Once the query optimizer has determined the execution plan (the specific ordering of access routines),
+the code generator writes out the actual access routines to be executed.
+
+With an interactive session, the query code is interpreted and passed directly to the runtime database
+processor for execution.
+
+It is also possible to compile the access routines and store them for later execution.
+
+4. Execution in the runtime database processor
+
+At this point, the query has been scanned, parsed, planned and (possibly) compiled.
+The runtime database processor then executes the access routines against the database.
+The results are returned to the application that made the query in the first place.
+
+Any runtime errors are also returned.

@@ -1,0 +1,19 @@
+The operations on the min (max) leftist trees are insert, delete, and meld(combine).
+The insert and delete-min operations can both be done by using the combine operation.
+
+To insert an element x into a min leftist tree, we first create a min leftist tree that contains the
+single element x. Then we combine the two min leftist trees.
+To delete the min element from a nonempty min leftist tree, we combine the min leftist trees
+root->LeftChild and root->RightChild and delete the node root.
+To meld(combine) two min-leftist trees
+Choose minimum root of the two trees, A and B.
+
+Leave the left subtree of smaller root (suppose A) unchanged and combine the right subtree
+of Awwith B. Back to step 1, until no remaining vertices.
+Compare shortest(x) and swap to make it satisfy the definition of leftist trees.
+
+nr
+
+(a)
+
+Page 14

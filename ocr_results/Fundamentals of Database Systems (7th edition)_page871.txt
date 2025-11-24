@@ -1,0 +1,37 @@
+©) 2)
+chapter a)
+
+Distributed Database Concepts
+
+n this chapter, we turn our attention to distributed
+
+databases (DDBs), distributed database management
+systems (DDBMSs), and how the client-server architecture is used as a platform for
+database application development. Distributed databases bring the advantages of
+distributed computing to the database domain. A distributed computing system
+consists of a number of processing sites or nodes that are interconnected by a com-
+puter network and that cooperate in performing certain assigned tasks. As a general
+goal, distributed computing systems partition a big, unmanageable problem into
+smaller pieces and solve it efficiently in a coordinated manner. Thus, more comput-
+ing power is harnessed to solve a complex task, and the autonomous processing
+nodes can be managed independently while they cooperate to provide the needed
+functionalities to solve the problem. DDB technology resulted from a merger of two
+technologies: database technology and distributed systems technology.
+
+Several distributed database prototype systems were developed in the 1980s and
+1990s to address the issues of data distribution, data replication, distributed query
+and transaction processing, distributed database metadata management, and other
+topics. More recently, many new technologies have emerged that combine distrib-
+uted and database technologies. These technologies and systems are being devel-
+oped for dealing with the storage, analysis, and mining of the vast amounts of data
+that are being produced and collected, and they are referred to generally as big data
+technologies. The origins of big data technologies come from distributed systems
+and database systems, as well as data mining and machine learning algorithms that
+can process these vast amounts of data to extract needed knowledge.
+
+In this chapter, we discuss the concepts that are central to data distribution and the
+management of distributed data. Then in the following two chapters, we give an
+overview of some of the new technologies that have emerged to manage and process
+big data. Chapter 24 discusses the new class of database systems known as NOSQL
+
+841

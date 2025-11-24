@@ -1,0 +1,40 @@
+2.4 The Database System Environment 43
+
+Users: DBA Staff Casual Users Application Parametric Users
+4 \ | Programmers
+y
+| DDL f Privileged Interactive Application
+Statements Commands Query Programs
+: uery F »| Language
+Compiler Compiler Precompiler Compiler
+T
+' Y i
+1 Query DML Compiled
+' Optimizer Compiler Transactions
+' 4 U”
+1 va <
+' z
+= oe
+' , “7
+\ “ oc DBA Commands,
+y “ a Queries, and Transactions
+yas Runtime Stored
+cue _-| Database /*————————_| _ Data
+Catalog/ OO eee Processor Concurrency Control/ Manager
+Data [ye Foss s=> Backup/Recovery
+Dictionary Y Subsystems
+Stored Database Input/Output
+Query and Transaction from Database
+Execution:
+Figure 2.3
+Component modules of a DBMS and their interactions,
+
+In addition, the catalog stores many other types of information that are needed by
+the DBMS modules, which can then look up the catalog information as needed.
+
+Casual users and persons with occasional need for information from the database
+interact using the interactive query interface in Figure 2.3. We have not explicitly
+shown any menu-based or form-based or mobile interactions that are typically used
+to generate the interactive query automatically or to access canned transactions.
+These queries are parsed and validated for correctness of the query syntax, the
+names of files and data elements, and so on by a query compiler that compiles

@@ -1,0 +1,41 @@
+Data Structures and Applications/BCS304 Module-1
+
+These errors are difficult to debug and correct, therefore a pointer should always be initialized with a
+valid memory address.
+
+NOTE: A pointer variable can only point at a variable of the same type.
+We can have more than one pointer variable pointing at the same variable. For example
+int a;
+int *p,*q;
+p=&a;
+q=&a;
+now both the pointer variable p and q are pointing at the same variable a. There is no limit to the
+number of pointer variable that can point to a variable.
+
+Accessing variables through pointers
+e A Variable can be accessed through a pointer variable by using an indirection operator.
+e Indirection operator(*): An indirection operator is a unary operator whose operand must be a
+pointer value.
+e For example to access a variable a through a pointer variable p we have to code it as follows
+
+Void main()
+{
+int a=5;
+int *p
+p=&a;// p is now pointing at a
+*p=*ptl
+
+printf“ %d %d %p”, a, *p,p);
+
+}
+Output: 6 6 XXXXX(address of variable a)
+Now the value of a is modified through the pointer variable p
+
+Note:
+> we need parenthesis for expressions like (*p) ++ as the precedence of postfix increment is
+more than precedence of the indirection operator (*). If the parenthesis is not used the address
+will be incremented.
+> The indirection and the address operators are the inverse of each other when combined in an
+expression such as *&a they cancel each other
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 5

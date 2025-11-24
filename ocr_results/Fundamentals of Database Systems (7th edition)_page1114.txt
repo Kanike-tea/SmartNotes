@@ -1,0 +1,48 @@
+1084 Chapter 28 Data Mining Concepts
+
+A strong positive association has been shown between soft drinks and chips. If we
+find a large support for the fact that when customers buy Days chips they predomi-
+nantly buy Topsy and not Joke and not Wakeup, that would be interesting because
+we would normally expect that if there is a strong association between Days and
+Topsy, there should also be such a strong association between Days and Joke or
+Days and Wakeup.?
+
+In the frozen yogurt and bottled water groupings shown in Figure 28.3, suppose
+the Reduce versus Healthy-brand division is 80-20 and the Plain and Clear
+brands division is 60-40 among respective categories. This would give a joint
+probability of Reduce frozen yogurt being purchased with Plain bottled water as
+48% among the transactions containing a frozen yogurt and bottled water. If this
+support, however, is found to be only 20%, it would indicate a significant nega-
+tive association among Reduce yogurt and Plain bottled water; again, that would
+be interesting.
+
+The problem of finding negative association is important in the above situations
+given the domain knowledge in the form of item generalization hierarchies (that is,
+the beverage given and desserts hierarchies shown in Figure 28.3), the existing pos-
+itive associations (such as between the frozen yogurt and bottled water groups), and
+the distribution of items (such as the name brands within related groups). The
+scope of discovery of negative associations is limited in terms of knowing the item
+hierarchies and distributions. Exponential growth of negative associations remains
+a challenge.
+
+28.2.7 Additional Considerations for Association Rules
+
+The mining of association rules in real-life databases is complicated by the following
+factors:
+
+= The cardinality of itemsets in most situations is extremely large, and the vol-
+ume of transactions is very high as well. Some operational databases in
+retailing and communication industries collect tens of millions of transac-
+tions per day.
+
+= Transactions show variability in such factors as geographic location and sea-
+sons, making sampling difficult.
+
+= Item classifications exist along multiple dimensions. Hence, driving the dis-
+covery process with domain knowledge, particularly for negative rules, is
+extremely difficult.
+
+= Quality of data is variable; significant problems exist with missing, errone-
+ous, conflicting, as well as redundant data in many industries.
+
+5For simplicity we are assuming a uniform distribution of transactions among members of a hierarchy.

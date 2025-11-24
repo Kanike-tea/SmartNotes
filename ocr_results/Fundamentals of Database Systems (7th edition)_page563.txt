@@ -1,0 +1,50 @@
+15.7 Summary
+
+dependencies were carried through 5NF, but it has been possible to define stricter
+normal forms that take into account additional types of dependencies and con-
+straints. The idea behind domain-key normal form (DKNF) is to specify (theoreti-
+cally, at least) the ultimate normal form that takes into account all possible types of
+dependencies and constraints. A relation schema is said to be in DKNF if all con-
+straints and dependencies that should hold on the valid relation states can be
+enforced simply by enforcing the domain constraints and key constraints on the
+relation. For a relation in DKNF, it becomes straightforward to enforce all database
+constraints by simply checking that each attribute value in a tuple is of the appro-
+priate domain and that every key constraint is enforced.
+
+However, because of the difficulty of including complex constraints in a DKNF
+relation, its practical utility is limited, since it may be quite difficult to specify gen-
+eral integrity constraints. For example, consider a relation CAR(Make, Vin#) (where
+Vin# is the vehicle identification number) and another relation MANUFACTURE (Vin#,
+Country) (where Country is the country of manufacture). A general constraint may be
+of the following form: If the Make is either ‘Toyota’ or ‘Lexus’, then the first character
+of the Vin# is a J if the country of manufacture is ‘Japan’; if the Make is ‘Honda’ or
+‘Acura’, the second character of the Vin# is a J’ if the country of manufacture is
+Japan’. There is no simplified way to represent such constraints short of writing a
+procedure (or general assertions) to test them. The procedure COMPUTE_TOTAL_PRICE
+above is an example of such procedures needed to enforce an appropriate integrity
+constraint.
+
+For these reasons, although the concept of DKNF is appealing and appears straight-
+forward, it cannot be directly tested or implemented with any guarantees of consis-
+tency or non-redundancy of design. Hence it is not used much in practice.
+
+15.7 Summary
+
+In this chapter we presented a further set of topics related to dependencies, a dis-
+cussion of decomposition, and several algorithms related to them as well as to the
+process of designing 3NF, BCNF, and 4NF relations from a given set of functional
+dependencies and multivalued dependencies. In Section 15.1 we presented infer-
+ence rules for functional dependencies (FDs), the notion of closure of an attribute,
+the notion of closure of a set of functional dependencies, equivalence among sets
+of functional dependencies, and algorithms for finding the closure of an attribute
+(Algorithm 15.1) and the minimal cover of a set of FDs (Algorithm 15.2). We then
+discussed two important properties of decompositions: the nonadditive join prop-
+erty and the dependency-preserving property. An algorithm to test for an n-way
+nonadditive decomposition of a relation (Algorithm 15.3) was presented. A sim-
+pler test for checking for nonadditive binary decompositions (property NJB) has
+already been described in Section 14.5.1. We then discussed relational design by
+synthesis, based on a set of given functional dependencies. The relational synthesis
+algorithm (Algorithm 15.4) creates 3NF relations from a universal relation
+schema based on a given set of functional dependencies that has been specified by
+
+533

@@ -1,0 +1,54 @@
+80
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+3.6 Refining the ER Design for
+the COMPANY Database
+
+We can now refine the database design in Figure 3.8 by changing the attributes that
+represent relationships into relationship types. The cardinality ratio and participa-
+tion constraint of each relationship type are determined from the requirements
+listed in Section 3.2. If some cardinality ratio or dependency cannot be determined
+from the requirements, the users must be questioned further to determine these
+structural constraints.
+
+In our example, we specify the following relationship types:
+
+™ MANAGES, which is a 1:1(one-to-one) relationship type between EMPLOYEE
+and DEPARTMENT. EMPLOYEE participation is partial. DEPARTMENT
+participation is not clear from the requirements. We question the users, who
+say that a department must have a manager at all times, which implies total
+participation.'* The attribute Start_date is assigned to this relationship type.
+
+™ WORKS_FOR, a 1:N (one-to-many) relationship type between
+DEPARTMENT and EMPLOYEE. Both participations are total.
+
+= CONTROLS, a 1:N relationship type between DEPARTMENT and PROJECT.
+The participation of PROJECT is total, whereas that of DEPARTMENT is deter-
+mined to be partial, after consultation with the users indicates that some
+departments may control no projects.
+
+= SUPERVISION, a 1:N relationship type between EMPLOYEE (in the supervi-
+sor role) and EMPLOYEE (in the supervisee role). Both participations are
+determined to be partial, after the users indicate that not every employee is a
+supervisor and not every employee has a supervisor.
+
+= WORKS_ON, determined to be an M:N (many-to-many) relationship type
+with attribute Hours, after the users indicate that a project can have several
+employees working on it. Both participations are determined to be total.
+
+= DEPENDENTS_OF, a 1:N relationship type between EMPLOYEE and
+DEPENDENT, which is also the identifying relationship for the weak entity
+type DEPENDENT. The participation of EMPLOYEE is partial, whereas that of
+DEPENDENT is total.
+
+After specifying the previous six relationship types, we remove from the entity types in
+Figure 3.8 all attributes that have been refined into relationships. These include Manager
+and Manager_start_date from DEPARTMENT; Controlling department from
+PROJECT; Department, Supervisor, and Works_on from EMPLOYEE; and Employee from
+DEPENDENT. It is important to have the least possible redundancy when we design the
+conceptual schema of a database. If some redundancy is desired at the storage level or at
+the user view level, it can be introduced later, as discussed in Section 1.6.1.
+
+'8The rules in the miniworld that determine the constraints are sometimes called the business rules,
+since they are determined by the business or organization that will utilize the database.

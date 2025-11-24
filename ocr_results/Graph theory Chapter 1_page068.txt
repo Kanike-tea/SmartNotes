@@ -1,0 +1,35 @@
+1.6. Walks and their classification a
+
+If G is a simple graph of order n with dj as the degree of a vertex v; for i=
+1,2,..., find the number of paths of length 2 in G.
+
+> Since deg(vi) = dj, the number of edges incident on y; is exactly dj, Of these, every two
+edges give a path of length 2 which contains v;. Therefore, there exist C(d;, 2) paths containing
+vi. This is tue for i = 1,2,..., Therefore, the total number of paths of length 2 in G is
+DE, Cd, 2). a
+
+IfG is a simple graph in which every vertex has degree at least k, prove that G
+contains a path of length at least k.
+
+> Consider a path p in G which has a maximum number of vertices, Let u be an end vertex
+of p. Then every neighbour of « belongs to p. Since u has at least k neighbours (because its
+degree is at least k by what is given) and since G is simple, p must therefore have at least k
+vertices other than u. Thus, p is a path of length at least k. a
+
+Find all the cycles present in the graph shown in Figure 1.106.
+
+Figure 1.106
+
+> In the given graph, there are no cycles beginning and ending with the vertices A, C and R.
+The cycles beginning and ending with the vertices B, P, Q are
+
+Be3PesQe4B, PesQe4Be3P, Qe4Be3Pe6Q.
+
+But all of these represent one and the same cycle. Thus, there is only one cycle in the graph. =
+| Example 7 | Prove the following:
+
+(1) A path with n vertices is of length n — 1.
+
+(2) Ifa cycle has n vertices, it has n edges.
+
+(3) The degree of every vertex in a cycle is two.

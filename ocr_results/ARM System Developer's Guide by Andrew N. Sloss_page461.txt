@@ -1,0 +1,63 @@
+448 Chapter 12. Caches
+
+adr
+size
+nw
+count
+tmp
+tmp1
+cof
+
+{CPU} = "ARM920T" :LOR: \
+{CPU} = "ARM922T" :LOR: \
+{CPU} = "ARM940T" :LOR: \
+{CPU} = "ARM946E-S" :LOR: \
+{CPU} = "ARM1022E"
+
+EXPORT lockDCache
+EXPORT lockICache
+INCLUDE cache.h
+
+RN O — ; current address of code or data
+RN 1 ; memory size in bytes
+
+RN 1 ; memory size in ways
+
+RN 2
+
+RN 2 ; scratch register
+
+RN 3; scratch register
+
+RN 12; CP15:c9 register format
+
+MACRO
+CACHELOCKBYWAY $op
+
+BIC adr, adr, #(1<<CLINE)-1 ; align to cline
+LOR tmp, =(1<<SWAY)-1 — ; scratch = size of way
+
+TsT size, tmp ; way end fragment ?
+MOV nw, size, Isr #SWAY ; convert bytes to ways
+ADDNE nw, nw, #1 ; add way if fragment
+cMP = onw, #0 ; no lockdown requested
+BEQ © -4FT2 ; exit return victim base
+
+IF "Sop" = "Icache"
+
+MRC pS, 0, c9F, c9, cO, 1 5 get i-cache victim
+ENDIF
+IF "Sop" = "Deache"
+
+MRC pS, 0, c9F, c9, cO, O 5 get d-cache victim
+ENDIF
+
+AND OF, cOF, tmp 3 mask high bits c9f = victim
+ADD tmp, c9F, nw 3 temp = victim + way count
+CMP tmp, #(1<<NWAY)-1 > total ways ?
+
+MOVGT 0, #-1 3 return -1 if to many ways
+BGT FTI 3 Error: cache way overrun
+
+F {CPU} = "ARM940T" :LOR: {CPU} = "ARM946E-S"
+ORR c9f, c9f, #1<<31 5 put cache in lockdown mode

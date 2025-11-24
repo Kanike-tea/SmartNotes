@@ -1,0 +1,55 @@
+STEPS TO EXECUTE AN INSTRUCTION
+
+1. The address of first instruction (to be executed) gets loaded into PC.
+
+2. The contents of PC (i.e. address) are transferred to the MAR & control-unit issues Read signal to
+memory.
+
+3. After certain amount of elapsed time, the first instruction is read out of memory and placed into MDR.
+
+4. Next, the contents of MDR are transferred to IR. At this point, the instruction can be decoded &
+executed.
+
+5. To fetch an operand, it's address is placed into MAR & control-unit issues Read signal. As a result, the
+
+operand is transferred from memory into MDR, and then it is transferred from MDR to ALU.
+
+Likewise required number of operands is fetched into processor.
+
+Finally, ALU performs the desired operation.
+
+If the result of this operation is to be stored in the memory, then the result is sent to the MDR.
+
+a
+
+The address of the location where the result is to be stored is sent to the MAR and a Write cycle is
+initiated.
+
+10. At some point during execution, contents of PC are incremented to point to next instruction in the
+
+program.
+
+Processor-memory interface
+
+2 general purpose
+registers
+
+— Processor
+
+Figure 1.2 Connection between the processor and the main memory.
+BUS STRUCTURE
+A bus is a group of lines that serves as a connecting path for several devices.A bus may be lines or wires.
+The lines carry data or address or control signal.
+
+There are 2 types of Bus structures: 1) Single Bus Structure and 2) Multiple Bus Structure.
+
+1) Single Bus Structure
+> Because the bus can be used for only one transfer at a time, only 2 units can actively use the
+
+bus at any given time.
+> Bus control lines are used to arbitrate multiple requests for use of the bus.
+> Advantages:
+
+Low cost & Flexibility for attaching peripheral devices.
+
+Page 3

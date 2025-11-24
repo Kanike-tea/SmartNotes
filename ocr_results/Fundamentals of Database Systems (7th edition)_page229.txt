@@ -1,0 +1,57 @@
+6.4 INSERT, DELETE, and UPDATE Statements in SQL
+
+A DBMS that fully implements SQL should support and enforce all the integrity
+constraints that can be specified in the DDL. For example, if we issue the command
+in U2 on the database shown in Figure 5.6, the DBMS should reject the operation
+because no DEPARTMENT tuple exists in the database with Dnumber = 2. Similarly,
+U2A would be rejected because no Ssn value is provided and it is the primary key,
+which cannot be NULL.
+
+U2: INSERT INTO EMPLOYEE (Fname, Lname, Ssn, Dno)
+
+VALUES (‘Robert’, ‘Hatcher’, ‘980760540’, 2);
+
+(U2 is rejected if referential integrity checking is provided by DBMS.)
+U2A: INSERT INTO EMPLOYEE (Fname, Lname, Dno)
+
+VALUES (‘Robert’, ‘Hatcher’, 5);
+
+(U2A is rejected if NOT NULL checking is provided by DBMS.)
+
+A variation of the INSERT command inserts multiple tuples into a relation in con-
+junction with creating the relation and loading it with the result of a query. For
+example, to create a temporary table that has the employee last name, project name,
+and hours per week for each employee working on a project, we can write the state-
+ments in USA and U3B:
+
+U3A: CREATE TABLE WORKS_ON_INFO
+
+(Emp_name VARCHAR(15),
+Proj_name VARCHAR(15),
+Hours_per_week  DECIMAL(3,1) );
+U3B: INSERT INTO WORKS_ON_INFO ( Emp_name, Proj_name,
+Hours_per_week)
+SELECT E,Lname, P.Pname, W.Hours
+FROM PROJECT P, WORKS_ON W, EMPLOYEE E
+WHERE P.Pnumber = W.Pno AND W.Essn = E.Ssn;
+
+A table WORKS_ON_INFO is created by U3A and is loaded with the joined informa-
+tion retrieved from the database by the query in U3B. We can now query
+WORKS_ON_INFO as we would any other relation; when we do not need it anymore,
+we can remove it by using the DROP TABLE command (see Chapter 7). Notice that
+the WORKS_ON_INFO table may not be up to date; that is, if we update any of the
+PROJECT,WORKS_ON, or EMPLOYEE relations after issuing U3B, the information
+in WORKS_ON_INFO may become outdated. We have to create a view (see Chap-
+ter 7) to keep such a table up to date.
+
+Most DBMSs have bulk loading tools that allow a user to load formatted data from
+a file into a table without having to write a large number of INSERT commands.
+The user can also write a program to read each record in the file, format it as a row
+in the table, and insert it using the looping constructs of a programming language
+(see Chapters 10 and 11, where we discuss database programming techniques).
+
+Another variation for loading data is to create a new table TNEW that has the
+same attributes as an existing table T, and load some of the data currently in T
+into TNEW. The syntax for doing this uses the LIKE clause. For example, if we
+
+199

@@ -1,0 +1,38 @@
+instomer-strect>
+Eistomername D> — | Ceisstomercity >
+
+customer depositor account
+
+(a) E-R diagram
+
+customer-name |customer-street | customer-city beer cccount-number balance
+jepositor
+account
+
+‘customer
+(b) Data structure diagram
+
+Since a link cannot contain any data value, represent an E-R relationship with attributes with a
+new record type and links.
+
+customer depositor account
+(a) E-R diagram
+customer-name | customer-street [ customer-city | account-numtber | balance
+customer account
+customer-date account-date
+
+access-date
+
+access-date
+(b) Network diagram
+
+To represent an E-R relationship of degree 3 or higher, connect the participating record types
+through a new record type that is linked directly to each of the original record types.
+
+1. Replace entity sets account, customer, and branch with record types account, customer, and
+branch, respectively.
+2. Create a new record type Rlink (referred to as a dummy record type).
+3. Create the following many-to-one links:
+o CustRlink from Rlink record type to customer record type
+o AcctRink from Rlink record type to account record type
+o BrncRInk from Rlink record type to branch record type

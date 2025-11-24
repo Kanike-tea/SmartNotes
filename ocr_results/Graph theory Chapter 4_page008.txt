@@ -1,0 +1,36 @@
+y
+4. Optimizatio,
+
+mand Ma
+222 chin,
+
+~ consider the edge (v1, vx) and connect it to its closest nieghbour (i.e., to a ve, meas
+than v; and vg, that has the smallest entry among all entries:in vj-and reroW a
+this vertex be vm:
+Step 3. Start from the vertex v,, and repeat the process of Step 2. Stop the process when all the
+n vertices have been connected by n— 1 edges. These n —1 edges constitute anak |
+spanning tree.
+
+" Remarks : |
+(1) In the process of connecting an edge to its nearest neighbour as explained above, care
+has to be taken that cycles are not created by the connections.
+
+(2) Like in the Kruskal’s method, a minimal spanning tree determined by the Prim’s method
+is not unique.
+
+Ss Using Prim’s algorithm, find a minimal spanning tree for the weighted graph
+shown below.
+
+Figure 4.13
+
+> We observe that the graph has 5 vertices. Therefore, a minimal spanning tree thereof wil
+have 4 edges,
+
+Let us tabulate the Weights of the edges between every pair of vertices as shown below:
+
+Now, let us Start w: 4
+ith the first 0 This is
+Which Corresponds to the edge {y, rat Seas and pick the smallest entry therein: od
+
+we
+examining all the entries j in vj- and v2-rows>

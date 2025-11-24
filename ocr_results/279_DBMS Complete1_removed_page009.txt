@@ -1,0 +1,45 @@
+uses the data dictionary to find the details of data file and using this information it create query
+plan/access plan to execute the query.
+
+Data Dictionary:
+Data dictionary is the table which contains the information about database objects. It contains
+information like
+
+1. external, conceptual and internal database description
+
+2. description of entities, attributes as well as meaning of data elements
+
+3. synonyms, authorization and security codes
+
+4. database authorization
+
+The data stored in the data dictionary is called meta data.
+DBMS STRUCTURE:
+Naive user Application On line user DBA
+prooramers
+v v v
+Application System calls Ddl compiler
+programs
+y v y v
+Application prog Dml precomplier Query processor Ddl compiler
+obj code <—_>|
+y
+Database manager
+
+ZL
+
+File manager
+
+DBMS
+
+Data file
+
+Data dictionary
+
+Que: List four significant differences between a File-Processing System and a DBMS.
+
+Ans: Some major differences between a database management system and a file-processing system
+are:
+* Both systems contain a collection of data and a set of programs which access that data. A
+database management system coordinates both the physical and the logical access to the
+data, whereas a file-processing system coordinates only the physical access.

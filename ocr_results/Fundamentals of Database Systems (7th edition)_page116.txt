@@ -1,0 +1,49 @@
+86 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+EMPLOYEE 4s WORKS.FOR 1.1 DEPARTMENT Multiplicity
+Name: Name_dom — = ~~ Name Notation in OMT:
+Fname a 0.1 Number — 4.
+Minit = - "| add_employee ——*@ oF
+Lname H number_of_employees 0 0.4
+
+Ssn MANAGES change_manager or
+Bdate: Date Smcni .
+Sex: {MF} ane’
+Address 12 11
+Salary ~ ;
+age . \ 1
+change_department : CONTROLS LOCATION
+change_projects supervisee | |WORKS_ON —
+Hours 14
+Dependent_name || 0..1 1 . .
+supervisor PROJECT
+or
+Name
+DEPENDENT Number
+Sex: (MF) add_employee Aggregation
+BightdetesDate add_project Notation in UML:
+Relationship change_manager
+Whole K>—_ Part
+Figure 3.16
+
+The COMPANY conceptual schema in UML class diagram notation.
+
+ways, class diagrams can be considered as an alternative notation to ER diagrams.
+Additional UML notation and concepts are presented in Section 8.6. Figure 3.16
+shows how the COMPANY ER database schema in Figure 3.15 can be displayed
+using UML class diagram notation. The entity types in Figure 3.15 are modeled as
+classes in Figure 3.16. An entity in ER corresponds to an object in UML.
+
+In UML class diagrams, a class (similar to an entity type in ER) is displayed as a box
+(see Figure 3.16) that includes three sections: The top section gives the class name
+(similar to entity type name); the middle section includes the attributes; and the
+last section includes operations that can be applied to individual objects (similar to
+individual entities in an entity set) of the class. Operations are not specified in ER
+diagrams. Consider the EMPLOYEE class in Figure 3.16. Its attributes are Name, Ssn,
+Bdate, Sex, Address, and Salary. The designer can optionally specify the domain (or
+data type) of an attribute if desired, by placing a colon (:) followed by the domain
+name or description, as illustrated by the Name, Sex, and Bdate attributes
+of EMPLOYEE in Figure 3.16. A composite attribute is modeled as a
+structured domain, as illustrated by the Name attribute of EMPLOYEE. A multival-
+ued attribute will generally be modeled as a separate class, as illustrated by the
+LOCATION class in Figure 3.16.

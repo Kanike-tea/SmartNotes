@@ -1,0 +1,52 @@
+13.6 Extracting XML Documents from Relational Databases 447
+
+1. FOR $x IN Figure 13.7
+doc(www.company.com/info.xml) Some examples of XQuery
+/lemployee [employeeSalary gt 70000]/employeeName queries on XML documents
+
+RETURN <res> $x/firstName, $x/lastName </res> that follow the XML schema
+file company in Figure 13.5.
+
+2. FOR $x IN
+doc(www.company.com/info.xml)/company/employee
+WHERE $x/employeeSalary gt 70000
+RETURN <res> $x/employeeName/firstName, $x/employeeName/lastName </res>
+
+3. FOR $x IN
+doc(www.company.com/info.xml)/company/project[projectNumber=5]/projectWorker,
+$y IN doc(www.company.com/info.xml)/company/employee
+WHERE $x/hours gt 20.0 AND $y.ssn=$x.ssn
+RETURN <res> $y/employeeName/firstName, $y/employeeName/lastName, $x/hours </res>
+
+technology for realization of the Semantic Web, where all information in the
+Web can be intelligently located and processed.
+
+= The Extensible Stylesheet Language (XSL) can be used to define how a docu-
+ment should be rendered for display by a Web browser.
+
+= The Extensible Stylesheet Language for Transformations (XSLT) can be
+used to transform one structure into a different structure. Hence, it can con-
+vert documents from one form to another.
+
+= The Web Services Description Language (WSDL) allows for the description
+of Web Services in XML. This makes the Web Service available to users and
+programs over the Web.
+
+= The Simple Object Access Protocol (SOAP) is a platform-independent and
+programming language-independent protocol for messaging and remote
+procedure calls.
+
+= The Resource Description Framework (RDF) provides languages and tools
+for exchanging and processing of meta-data (schema) descriptions and
+specifications over the Web.
+
+13.6 Extracting XML Documents from
+Relational Databases
+
+13.6.1 Creating Hierarchical XML Views over
+Flat or Graph-Based Data
+
+This section discusses the representational issues that arise when converting data
+from a database system into XML documents. As we have discussed, XML uses a
+hierarchical (tree) model to represent documents. The database systems with the
+most widespread use follow the flat relational data model. When we add referential

@@ -1,0 +1,76 @@
+D.4 StrongARM Instruction Cycle Timings
+
+655
+
+Table D.6 =ARM9TDMI (ARMv4T) instruction cycle timings.
+
+Instruction class Cycles Notes
+
+ALU 1 +1 if a register-specified shift Rs is used.
++2 if Rd is pe.
+
+B, BL, BX 3
+
+CDP 1+B
+
+LDC B+N
+
+LDRB/H/SB/SH 1 Rdis not available for two cycles.
+
+LDR Rd not pe 1 Rais not available for one cycle.
+
+LDR Rdis pe 5
+
+LDM not loading pe N +1 if N = 1 or the last loaded register used in
+the next cycle.
+
+LDM loading pe N+4
+
+MCR 1+B
+
+MRC Rd not pe 14+B Rd is not available for one cycle.
+
+MRC Rdis pe 34B
+
+MRS 1
+
+MSR 1 +2 if any of the csx fields are updated.
+
+MUL, MLA 24+M
+
+xMULL, xMLAL 3+M
+
+STC B+N
+
+STR/B/H 1
+
+STM N +1ifN=1.
+
+SWI 3
+
+SWP/B 2 Rais not available for one cycle.
+
+D.4 STRONGARM1 INSTRUCTION CYCLE TIMINGS
+
+Table D.7
+
+‘The StrongARMI coreis based on five-stage pipeline. There is usually a one-cycle delay fol-
+lowing a load or multiply instruction before you can use the data. Additionally, there is often
+a one-cycle delay if you start a new multiply instruction immediately following a previous
+multiply instruction. The multiplier circuit uses a 32-bit by 12-bit multiplier array with early
+termination. The number of multiply iteration cycles M depends on the value of register Rs
+according to Table D.7. Table D.8 gives the StrongARM] instruction cycle timings.
+
+StrongARM1 multiplier early termination.
+
+M_Rsrange (use the first applicable range)
+
+Rs bitmap s = sign bit x = wildcard bit
+
+1 -2!h<x<gl!
+2 -23 <x<2%
+3 remaining x
+
+SSSSSSSS SSSSSSSS SSSSSXXX XXXXXXXX
+SSSSSSSS SXXXXXXX XXXXXXXX XXXXXXXX
+XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXK

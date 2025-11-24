@@ -1,0 +1,45 @@
+then complemented. The right side of the expression is xy, so the complement of x and the complement
+
+of y are both evaluated first and the result is then ANDed.
+Boolean Functions
+
+Boolean algebra is an algebra that deals with binary variables and logic operations. A Boolean function
+described by an algebraic expression consists of binary variables, the constants 0 and 1, and the logic
+
+operation symbols. For a given value of the binary variables, the function can be equal to either 1 or 0.
+
+As an example, consider the Boolean function
+
+Fi =Sxt+y’'z
+The function F1 is equal to 1 if x is equal to | or if both y and z are equal to 1. F1 is equal to 0 otherwise.
+The complement operation dictates that when y = 1, y = 0. Therefore, Fl = 1 ifx = 1 or ify =0 and z=
+
+1. A Boolean function expresses the logical relationship between binary variables and is evaluated by
+
+determining the binary value of the expression for all possible values of the variables.
+
+A Boolean function can be represented in a truth table. The number of rows in the truth table is 2n ,
+where n is the number of variables in the function. The binary combinations for the truth table are
+
+obtained from the binary numbers by counting from 0 through 2n - 1.
+
+x y Fy
+
+0 0 0
+
+0 0 1 1 x .
+0 1 0 0 Fi
+
+1 1
+
+1 0 1 1
+
+1 1 0 1 y [Do
+1 1
+
+Truth Table for F1 Logic-circuit diagram (also called a schematic) for F1
+
+Implement the following functions
+Fy = x'y'z + x'yz + xy’
+
+F=x'z + xy’

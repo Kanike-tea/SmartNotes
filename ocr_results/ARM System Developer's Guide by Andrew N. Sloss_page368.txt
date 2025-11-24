@@ -1,0 +1,57 @@
+9.3 Interrupt Handling Schemes 355
+
+LORB rll, [r12,r11,LSR #3] 3 5 : mem8[tbl+(r11>>3)]
+ADR rl0, priority_masks 3 5 : priority mask
+LOR =r, [rl0,r11,LSL #2] 35 : load mask
+
+LOR rl, =ic_Base 3 6: int crt] addr
+LOR rl, [rl4,#1RQEnable] ; 6 : IRQ enable reg
+AND = rl2, rl2, r10 ; 6 : AND enable reg
+STR 12, [r14,#IRQEnableClear] ; 6 : disable ints
+MRS rl4, cpsr 3 7 : copy cpsr
+
+BIC rld, ria, #1_Bit 3 7: clear I-bit
+MSR cpsr_c, 14 3 7 : enable IRQ
+LOR pe, [pe, rll, LSL#2] 3 8 : jump to an ISR
+NOP 3
+
+DCD —service_timer1 3 timerl ISR
+
+DCD —service_commtx 3 commtx ISR
+
+DCD ——service_commrx 3 commrx ISR
+
+DCD —service_timer2 3 timer2 ISR
+
+priority_masks
+
+DCD MASK_2 3 priority mask 2
+DCD MASK_1 3 priority mask 1
+DCD MASK_0O. 3 priority mask 0
+DCD MASK_3 3 priority mask 3
+
+priority_table
+
+DCB PRIORITY_0 3 priority 0
+DCB PRIORITY 1 3 priority 1
+DCB PRIORITY 2 3 priority 2
+DCB PRIORITY 3 3 priority 3
+
+ALIGN
+
+The interrupt source can now be tested by comparing the highest to the lowest priority.
+The first priority level that matches the interrupt source determines the priority level of
+the incoming interrupt because each interrupt has a preset priority level. Once a match
+is achieved, then the handler can branch to the routine that masks off the lower-priority
+interrupts.
+
+To disable the equal- or lower-priority interrupts, the handler enters a routine that first
+calculates the priority level using the base address in register r]] and link register r14.
+
+Following the SUB instruction register r1J will now contain the value 4, 12, 20, or 28.
+These values correspond to the priority level of the interrupt multiplied by eight plus four.
+Register ris then divided by eight and added to the address of the priority_table. Following
+the LDRB register r1J will equal one of the priority interrupt numbers (0, 1, 2, or 3).
+
+The priority mask can now be determined, using the technique of shifting left by two
+and adding that to the register r10, which contains the address of the priority_mask.

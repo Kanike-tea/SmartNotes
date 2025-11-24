@@ -1,0 +1,51 @@
+106 Chapter 5 Efficient C Programming
+
+Table 5.1
+
+Load and store instructions by ARM architecture.
+
+Architecture Instruction Action
+Pre-ARMv4 LDRB load an unsigned 8-bit value
+STRB store a signed or unsigned 8-bit value
+LDR load a signed or unsigned 32-bit value
+STR store a signed or unsigned 32-bit value
+ARMv4 LDRSB load a signed 8-bit value
+LDRH load an unsigned 16-bit value
+LDRSH load a signed 16-bit value
+STRH store a signed or unsigned 16-bit value
+ARMv5 LDRD load a signed or unsigned 64-bit value
+STRD store a signed or unsigned 64-bit value
+
+These architectures were used on processors prior to the ARM7TDMI. Table 5.1 shows
+the load/store instruction classes available by ARM architecture.
+
+In Table 5.1 loads that act on 8- or 16-bit values extend the value to 32 bits before writing
+to an ARM register. Unsigned values are zero-extended, and signed values sign-extended.
+This means that the cast of a loaded value to an int type does not cost extra instructions.
+Similarly, a store of an 8- or 16-bit value selects the lowest 8 or 16 bits of the register. The
+cast of an int to smaller type does not cost extra instructions on a store.
+
+The ARMv4 architecture and above support signed 8-bit and 16-bit loads and stores
+directly, through new instructions. Since these instructions are a later addition, they do
+not support as many addressing modes as the pre-ARMv4 instructions. (See Section 3.3
+for details of the different addressing modes.) We will see the effect of this in the example
+checksum_v3 in Section 5.2.1.
+
+Finally, ARMv5 adds instruction support for 64-bit load and stores. This is available in
+ARMDE and later cores.
+
+Prior to ARMv4, ARM processors were not good at handling signed 8-bit or any 16-bit
+values. Therefore ARM C compilers define char to be an unsigned 8-bit value, rather than
+a signed 8-bit value as is typical in many other compilers.
+
+Compilers armcc and gcc use the datatype mappings in Table 5.2 for an ARM target.
+The exceptional case for type char is worth noting as it can cause problems when you are
+porting code from another processor architecture. Acommon example is using a char type
+variable i as a loop counter, with loop continuation condition i > 0. As i is unsigned for
+the ARM compilers, the loop will never terminate. Fortunately armcc produces a warning
+in this situation: unsigned comparison with 0. Compilers also provide an override switch to
+make char signed. For example, the command line option - fs igned-char will make char
+signed on gcc. The command line option -zc will have the same effect with armcc.
+
+For the rest of this book we assume that you are using an ARMv4 processor or above.
+This includes ARM7TDMI and all later processors.

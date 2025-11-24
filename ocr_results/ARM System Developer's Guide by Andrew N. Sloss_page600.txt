@@ -1,0 +1,38 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 587
+
+8. LDR<cond>{H|SB|SH} Rd, [Rn], {-}Rm ARMV4
+9. LDR<cond>D Rd, [Rn, {, #{-}<immed8>}] {!} ARMV5E
+10. LDR<cond>D Rd, [Rn, {-}Rm] {!} ARMV5E
+11. LOR<cond>D Rd, [Rn], #{-}<immed8> ARMV5E
+12. LDR<cond>D Rd, [Rn], {-}Rm ARMV5E
+13. LDREX<cond> Rd, [Rn] ARMV6
+14. LOR{|B|H} Ld, [Ln, #<immed5>*<size>] THUMBV1
+15. LOR{|B|H|SB|SH} Ld, [Ln, Lm] THUMBV1
+16. LOR Ld, [pc, #<immed8>*4] THUMBV1
+17. LOR Ld, [sp, #<immed8>*4] THUMBV1
+18. LDR<cond><type> Rd, <Tabel> MACRO
+19. LDR<cond> Rd, =<32-bit-value> MACRO
+
+Formats 1 to 17 load a single data item of the type specified by the opcode suffix, using
+a preindexed or postindexed addressing mode. Tables A.7 and A.8 show the different
+addressing modes and data types.
+
+In Table A.8memory(a, n) readsn sequential bytes from address a. The bytes are packed
+according to the configured processor data endianness. The function memoryT (a, n) per-
+forms the same access but with user mode privileges, regardless of the current processor
+mode. The function memoryEx(a, n) used by LDREX performs the access and marks the
+access as exclusive. If address a has the shared TLB attribute, then this marks address a as
+exclusive to the current processor and clears any other exclusive addresses for this processor.
+
+Table A.7 LDR Addressing Modes.
+
+Addressing format Address a accessed Value written back to Rn
+[Rn {,#{-}<immed>}] Rn + {{-}<immed>} Rn preserved
+
+[Rn {,#{-}<immed>}]! Rn + {{-}<immed>} Rn + {{-}<immed>}
+[Rn, {-}Rm {,<shift>}] Rn + {-}<shifted_Rm> Rn preserved
+
+[Rn, {-}Rm {,<shift>}]! Rn + {-}<shifted_Rm> Rn + {-}<shifted_Rm>
+[Rn], #{-}<immed> Rn Rn + {-}<immed>
+
+[Rn], {-}Rm {,<shift>} Rn Rn + {-}<shifted_Rm>

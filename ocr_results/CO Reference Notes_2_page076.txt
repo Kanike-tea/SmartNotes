@@ -1,0 +1,47 @@
+¢ The hardware-components needed to perform these actions are shown in Figure 5.1.
+
+Control
+circuitry
+
+Register
+
+Instruction
+address
+generator
+
+Pc
+
+Figure 5.1 Main hardware components of a processor.
+
+SINGLE BUS ORGANIZATION
+
+ALU and all the registers are interconnected via a Single Common Bus (Figure 7.1).
+Data & address lines of the external memory-bus is connected to the internal processor-bus via MDR &
+MAR respectively. (MDR= Memory Data Register, MAR = Memory Address Register).
+e MDR has 2 inputs and 2 outputs. Data may be loaded
+— into MDR either from memory-bus (external) or
+— from processor-bus (internal).
+e MAR's input is connected to internal-bus; MAR‘s output is connected to external- bus.
+
+¢ Instruction Decoder & Control Unit is responsible for
+
+— issuing the control-signals to all the units inside the processor.
+
+— implementing the actions specified by the instruction (loaded in the IR).
+* Register RO through R(n-1) are the Processor Registers.
+
+The programmer can access these registers for general-purpose use.
+. Only processor can access 3 registers Y, Z & Temp for temporary storage during program-
+
+execution. The programmer cannot access these 3 registers.
+eInALU, — 1),,A“ input gets the operand from the output of the multiplexer(MUX).
+
+2) ,,B" input gets the operand directly from the processor-bus.
+
+© There are 2 options provided for ,,A“ input of the ALU.
+* MUX is used to select one of the 2 inputs.
+* MUX selects either
+
+— output of Y or
+
+Page 77

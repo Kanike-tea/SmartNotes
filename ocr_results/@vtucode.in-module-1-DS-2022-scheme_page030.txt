@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+TRANSPOSING A MATRIX
++ To transpose a matrix ,we must interchange the rows and columns.
+* Each element a[i][j] in the original matrix becomes element b[j][i] in the transpose matrix.
+
++ Algorithm To transpose a matrix:
+
+for each row i
+take element<i,j,value> and store it
+as element<i,j,value> of the transpose;
+
+for all elements in column j
+place element<i,j,value> in
+element<i,j,value>
+
+void transpose (term a[], term b[])
+{
+
+/* b is set to the transpose of a */
+
+int n, i, j, currentb;
+
+n = a[0].value; /* total number of elements */
+b[0].row = a[0].col; /* rows in b = columns\in a */
+b[0].col = a[O].row; /*columns in® = rows in a */
+b[0].value = n;
+if (n > 0)
+{ /*non zero matrix */
+
+currentb = 1;
+
+for (i = 0; i < a[O].colj;-i++) /* transpose by columns
+
+ina */
+
+for( j = 1; <= nj jtt), /* find elements from the
+current column */
+if (afj).col == i)
+{/* element is in current column, add it to b */
+bicurrentb).row = a[j].col;
+
+b[cunrentb].col = a[j].row;
+b[currentb].value = a[j].value;
+currentb++
+
+Transpose of a sparse matrix
+
+vtucode.in 31

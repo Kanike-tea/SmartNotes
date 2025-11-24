@@ -1,0 +1,44 @@
+450 Chapter 12. Caches
+
+12.6.3 LOCKING A CACHE USING LOCK BITS
+
+The ARM926EJ-S and ARM1026EJ-S lock code and data in cache using a set of lock bits,
+as shown in Figure 12.15. These two processors have a different Rd format for the CP15:c9
+instructions, shown in Table 12.12. The four bits from zero to three represent each way in
+the four-way set associative cache in the two processors. If the bit’s set, the way is locked
+and contains either code if it is the I-cache or data if it is the D-cache. A locked way does
+not evict a cache line until it is unlocked. Clearing one of the L bits unlocks its way. This
+form of locking the cache allows the system code to individually select the way to lock or
+unlock.
+
+The ability to individually select a way to lock allows code to be more easily locked and
+unlocked in a system. The example code in this section implements a procedure that has
+the same programming interface used to lock data in the other cached cores.
+
+The example lockDCache and lockICache procedures for the ARM926EJ-S and
+ARM1026EJ-S processors have the same input parameters. However, the code size is lim-
+ited to a maximum of the way size, and it can be called up to three times. In the example,
+L bit 3 is always dedicated to cache. This is not a limitation of the processor hardware,
+but simply a limit placed on the procedure call to meet the needs of the programming
+interface.
+
+The example procedure returns the L bit of the locked way if the size argument is one
+byte or greater. The procedure returns the next available L bit if the size is zero, and eight
+if there are no available ways for lockdown.
+
+ARM926EJ-S, ARM1026EJ-S
+31 16 15 43 0
+
+SBZ SBO L bits
+
+Figure 12.15 CP15:c9 register format when locking cache using lockdown bits.
+
+Table 12.12 CP15:c9 Commands to lock cache using lockdown bits.
+
+Command MRC and MCR instructions
+
+Read I-cache lock page register. MRC p15, 0,c9f,c9, 0, 1
+Read D-cache lock page register. MRC p15, 0, c9f, c9, c0, 0
+Write I-cache lock page register MCR p15, 0, c9f,c9, 0, 1
+Write I-cache lock page register MCR p15, 0, c9f, c9, 0, 0
+Load code cache line at address. MCR p15, 0, Rd, c7,c13, 1

@@ -1,0 +1,62 @@
+598
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+16.49.
+
+16.50.
+
+16.51.
+
+16.52.
+
+Suppose that a file initially contains r= 120,000 records of R = 200 bytes each
+in an unsorted (heap) file. The block size B = 2,400 bytes, the average seek
+time s = 16 ms, the average rotational latency rd = 8.3 ms, and the block
+transfer time btt=0.8 ms. Assume that 1 record is deleted for every 2 records
+added until the total number of active records is 240,000.
+
+a. How many block transfers are needed to reorganize the file?
+
+b. How long does it take to find a record right before reorganization?
+
+c. How long does it take to find a record right after reorganization?
+
+Suppose we have a sequential (ordered) file of 100,000 records where each
+record is 240 bytes. Assume that B = 2,400 bytes, s = 16 ms, rd = 8.3 ms, and
+btt = 0.8 ms. Suppose we want to make X independent random record reads
+from the file. We could make X random block reads or we could perform
+one exhaustive read of the entire file looking for those X records. The ques-
+tion is to decide when it would be more efficient to perform one exhaustive
+read of the entire file than to perform X individual random reads. That is,
+what is the value for X when an exhaustive read of the file is more efficient
+than random X reads? Develop this as a function of X.
+
+Suppose that a static hash file initially has 600 buckets in the primary area
+and that records are inserted that create an overflow area of 600 buckets. If
+we reorganize the hash file, we can assume that most of the overflow is elim-
+inated. If the cost of reorganizing the file is the cost of the bucket transfers
+(reading and writing all of the buckets) and the only periodic file operation
+is the fetch operation, then how many times would we have to perform a
+fetch (successfully) to make the reorganization cost effective? That is, the
+reorganization cost and subsequent search cost are less than the search
+cost before reorganization. Support your answer. Assume s = 16 msec,
+rd=8.3 msec, and btt = 1 msec.
+
+Suppose we want to create a linear hash file with a file load factor of 0.7 and
+a blocking factor of 20 records per bucket, which is to contain 112,000
+records initially.
+
+a. How many buckets should we allocate in the primary area?
+
+b. What should be the number of bits used for bucket addresses?
+
+Selected Bibliography
+
+Wiederhold (1987) has a detailed discussion and analysis of secondary storage
+devices and file organizations as a part of database design. Optical disks are
+described in Berg and Roth (1989) and analyzed in Ford and Christodoulakis
+(1991). Flash memory is discussed by Dipert and Levy (1993). Ruemmler and
+Wilkes (1994) present a survey of the magnetic-disk technology. Most textbooks on
+databases include discussions of the material presented here. Most data structures
+textbooks, including Knuth (1998), discuss static hashing in more detail; Knuth has

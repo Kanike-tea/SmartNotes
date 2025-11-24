@@ -1,0 +1,49 @@
+50 Chapter 2 Database System Concepts and Architecture
+
+Figure 2.7
+
+Logical three-tier
+client/server
+architecture, with a
+couple of commonly
+used nomenclatures.
+
+i GUI Presentation
+Client :
+: Web Interface Layer
+Application Server Application Business
+& ET Logic Layer
+Web Server Web Pages 9} y'
+Database Database Database
+Server Management Services
+System Layer
+(a) (b)
+
+This intermediate layer or middle tier is called the application server or the Web
+server, depending on the application. This server plays an intermediary role by
+running application programs and storing business rules (procedures or con-
+straints) that are used to access data from the database server. It can also improve
+database security by checking a client’s credentials before forwarding a request to
+the database server. Clients contain user interfaces and Web browsers. The inter-
+mediate server accepts requests from the client, processes the request and sends
+database queries and commands to the database server, and then acts as a conduit
+for passing (partially) processed data from the database server to the clients, where
+it may be processed further and filtered to be presented to the users. Thus, the user
+interface, application rules, and data access act as the three tiers. Figure 2.7(b) shows
+another view of the three-tier architecture used by database and other application
+package vendors. The presentation layer displays information to the user and allows
+data entry. The business logic layer handles intermediate rules and constraints before
+data is passed up to the user or down to the DBMS. The bottom layer includes all
+data management services. The middle layer can also act as a Web server, which
+retrieves query results from the database server and formats them into dynamic
+Web pages that are viewed by the Web browser at the client side. The client machine
+is typically a PC or mobile device connected to the Web.
+
+Other architectures have also been proposed. It is possible to divide the layers
+between the user and the stored data further into finer components, thereby giving
+rise to n-tier architectures, where n may be four or five tiers. Typically, the business
+logic layer is divided into multiple layers. Besides distributing programming and
+data throughout a network, n-tier applications afford the advantage that any one
+tier can run on an appropriate processor or operating system platform and can be
+handled independently. Vendors of ERP (enterprise resource planning) and CRM
+(customer relationship management) packages often use a middleware layer, which

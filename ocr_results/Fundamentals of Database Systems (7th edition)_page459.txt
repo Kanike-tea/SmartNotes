@@ -1,0 +1,50 @@
+1.1 Structured, Semistructured, and Unstructured Data 429
+
+<HTML>
+<HEAD>
+
+</HEAD>
+<BODY>
+<H1>List of company projects and the employees in each project</H1>
+<H2>The ProductX project:</H2>
+<TABLE width="100%" border=0 cellpadding=0 cellspacing=0>
+<TR>
+<TD width="50%"><FONT size="2" face="Arial”>John Smith:</FONT></TD>
+<TD>32.5 hours per week</TD>
+</TR>
+<TR>
+<TD width="50%"><FONT size="2" face="Arial”">Joyce English:</FONT></TD>
+<TD>20.0 hours per week</TD>
+</TR>
+</TABLE>
+<H2>The ProductY project:</H2>
+<TABLE width="100%" border=0 cellpadding=0 cellspacing=0>
+<TR>
+<TD width="50%"><FONT size="2" face="Arial”>John Smith:</FONT></TD>
+<TD>7.5 hours per week</TD>
+</TR>
+<TR>
+<TD width="50%"><FONT size="2" face="Arial”>Joyce English:</FONT></TD>
+<TD>20.0 hours per week</TD>
+</TR>
+<TR>
+<TD width="50%"><FONT size="2" face="Arial">Franklin Wong:</FONT></TD>
+<TD>10.0 hours per week</TD>
+
+</TR>
+</TABLE>
+oe Figure 13.2
+</BODY> Part of an HTML document
+</HTML> representing unstructured data.
+
+= The body of the document—specified within the <BODY> ... </BODY>
+tags—includes the document text and the markup tags that specify how the
+text is to be formatted and displayed. It can also include references to other
+objects, such as images, videos, voice messages, and other documents.
+
+= The <H1> ... </H1> tags specify that the text is to be displayed as a level 1
+heading. There are many heading levels (<H2>, <H3>, and so on), each
+displaying text in a less prominent heading format.
+
+= The <TABLE> ... </TABLE> tags specify that the following text is to be dis-
+played asa table. Each table row in the table is enclosed within <TR> ... </TR>

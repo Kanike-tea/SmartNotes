@@ -1,0 +1,53 @@
+304 : .._ ENGINEERING MATHEMATICS - IV
+
+38. “A’communication channel receives independent pulses at the. rate of 12 pulses per micro
+second: The probability of transmission error is 0.001 for each micro second. Compute the
+probabilities of (i) no error during a micro second (ti) one error per ‘micro second (iii) . .
+atleast one error per micro second (iv) two errors (v) atmost two errors. . °
+
+>> Mean number of errors in one micro sécond - come
+
+w=np=m=12x0001=0012 —
+
+ne ™
+
+x!
+
+The Poisson distribution is P(x) =
+
+0012 (0.012).
+
+te, P(x)= a
+
+@ P(0) = 0.988072
+Gi) = P(1) = & 99? x 0.012 = 0.01186
+(iii) Probability of atleast one error
+= 1-P(0) =1-¢°°° = 0.01193
+(iv) = P(2) = oot (0012). = 0.000071 -
+(v) Probability of atmost two errors
+= P(0)+P(1)+P(2)
+(0.012).
+2
+
+= 0012 [+2012 = 0.999999714 = 1 .
+
+a
+
+39. Ashop has 4 disel generator sets which it hires every day. The demand for a gen set onan
+average is a poisson variate with valué 5/2. Obtain the probability that on a
+particular day (i) , there was no demand yo he i, :
+
+(ii) a demand had to be refused.
+
+>> By data m = mean demand for a generator = 5/2 '= 2.5
+
+xm e x
+Poisson distribution is given by P(x) = z = =e25. ae
+
+x!
+
+(i) No demand for a generator. We have to find P(0)
+P(0) = 6775 = 0,082085
+
+(ii) Ifa demand had to be refused, there should have been a demand for more than 4
+generators. We have to find P(x > 4) : 7;

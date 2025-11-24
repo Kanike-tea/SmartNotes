@@ -1,0 +1,29 @@
+from Account
+where branch-name= “Sadar”
+The result will be a table which contains single cell (one row and one column) having
+numerical value corresponding to average balance of all account at sadar branch.
+group by clause is used to form groups, tuples with the same value on all attributes in the
+group by clause are placed in one group.
+Find the average account balance at each branch
+select branch-name, avg(balance)
+from Account
+group by branch-name
+By default the aggregate functions include the duplicates.
+distinct keyword is used to eliminate duplicates in an aggregate functions:
+Find the number of depositors for each branch
+select branch-name, count(distinct customer-name)
+from Depositor, Account
+where Depositor.account-number = Account.account-number
+group by branch-name
+having clause is used to state condition that applies to groups rather than tuples.
+Find the average account balance at each branch where average account balance is more
+than Rs. 1200
+select branch-name, avg(balance)
+from Account
+group by branch-name
+having avg(balance) > 1200
+Count the number of tuples in Customer table
+select count(*)
+from Customer
+SQL doesn’t allow distinct with count(*)
+When where and having are both present in a statement where is applied before having.

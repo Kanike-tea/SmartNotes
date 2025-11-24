@@ -1,0 +1,45 @@
+148 Chapter 5 Efficient C Programming
+
+{
+D=(unsigned int) - d; /* 1 <= D <= 0x80000000 */
+}
+
+/* first find k such that (1<<k) <= D < (1<<(k+1)) */
+for (k=03 D/2>=(lu<<k); k++);
+
+if (D==1u<<k)
+
+{
+/* we can implement the divide with a shift */
+q = n>>31; /* 0 if me0, -1 if n<0 */
+q = n+ ((unsigned)q>>(32-k)); /* insert rounding */
+q = q>>k; /* divide */
+if (d <0)
+{
+q = -43 /* correct sign */
+}
+return q;
+}
+
+/* Next find s in the range 0<=s<=OxFFFFFFFF */
+/* Note that k here is one smaller than the k in the equation */
+s = (int) (((1u11 << (31+(k#1)))#(1u11 << (k#1))) /D) 5
+
+if (s>=0)
+{
+q = (int)(((signed long long)n*s) >>32);
+}
+else
+{
+
+/* (unsigned)s = (signed)s + (1<<32) */
+q = n+ (int) (((signed Tong long)n*s) >> 32);
+
+}
+q = g>>k;
+
+/* if nO then the formula requires us to add one */
+q += (unsigned)n>>31;
+
+/* if d was negative we must correct the sign */
+if (d<0)

@@ -1,0 +1,53 @@
+Data Structures and Applications(BCS304) Module 2
+
+Nr
+
+Example: Time sharing system: programs of higher priority are processed first and programs with the
+same priority form a standard queue.
+
+Representation using multiple queue: Use a separate queue for each level of priority. Each queue
+will appear in its own circular array and must have its own pair of pointers, front and rear. If each
+queue is allocated the same amount of space, a two dimensional array can be used instead of the linear
+arrays.
+
+Example : Consider the queue given below with the jobs and its priorities and its representation. A
+job with priority 1 is considered to have the highest priority
+
+J
+J2
+J3
+J4
+JS
+J6
+
+DAA) A] NP elK
+
+The queue is represented as a two dimensional array as shown below
+
+Front | rear 1 )2 13 14 |5 |6
+
+1 1 2 1) s1}s2
+2 2 3 2 53
+3 3
+4 4 3 4 J4 | JS
+5 5
+6 6 6 6 J6
+
+Delete operation
+
+Algorithm:
+
+1. Find the smallest k such that front[k]!=rear[k] ie Find the first non empty queue
+
+2. Delete the process at the front of the queue
+3. Exit
+
+Insert operation
+Algorithm: this algorithm adds an ITEM with priority number P to a priority queue maintained by a
+two dimensional array
+
+1. Inset ITEM as the rear element in row P-1 of queue
+
+2. exit
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 8

@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+As with software in general, design of a new application for an existing database or design of
+abrand new database starts off with a phase called requirements specification and
+
+analysis. These requirements are documented in detail and transformed into aconceptual design
+that can be represented and manipulated using some computerizedtools so that it can be easily
+
+maintained, modified, and transformed into a databaseimplementation.
+
+The design is then translated to alogical design that can be expressed in a data model implemented
+in a commercialDBMS. The final stage isphysical design, during which further specifications are
+provided for storing andaccessing the database. The database design is implemented, populated
+
+with actualdata, and continuously maintained to reflect the state of the miniworld.
+
+1.2 Characteristics of the Database Approach
+
+Database approach ys. File Processing approach
+
+Consider an organization that is organized as a collection of departments/offices. Each department
+
+has certain data processing "needs", many of which are unique to it.
+
+In the file processing approach, each department would control a collection of relevant data files
+and software applications to: manipulate that data. For example, one user, the grade reporting
+office, maykeep files on students and their grades. Programs to print a student’s transcript andto
+enter new grades are implemented as part of the application. A second user, theaccounting office,
+may keep track of students’ fees and their payments. Althoughboth users are interested in data
+about students, each user maintains separate files—and programs to manipulate these files—
+because each requires some data not available from the other user’s files.This redundancy in
+defining and storing data resultsin wasted storage space and in redundant efforts to maintain
+
+common up-to-datedata.
+
+In the database approach, a single repository maintains data that is defined onceand then accessed
+by various users. In file systems, each application is free to namedata elements independently. In
+contrast, in a database, the names or labels of dataare defined once, and used repeatedly by queries,
+
+transactions, and applications.
+
+https:/Ivtucode.in Page 6

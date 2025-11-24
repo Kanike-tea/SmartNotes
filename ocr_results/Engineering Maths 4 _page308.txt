@@ -1,0 +1,48 @@
+PROBABILITY DISTRIBUTIONS : 299
+
+29. A lot contains 1% of defective items. What should be the number (1) of items ina
+random sample so that the probability of finding atleast one defective in it is atleast
+0.75 ?
+
+“>> Let p be the probability of a defective item.
+
+By data p= 1% = 0.01 ». q = 0.99
+
+_.If x denotes a defective item,
+P(x) ="C, pi q'* ="C_ (0.01)* (0.99 )"-*
+
+‘We need to find n such that the probability of finding atleast one defective is> 0.75.
+Thatistofind n such that
+
+: P(x 21) 20.75
+
+ie, .1-P(x <1) 2075
+
+te, °“1-P(0) 20.75
+
+ie, 1-(0.99)" > 0.75 or 0.25 = (0.99)”
+
+Equivalently we have log (0.25) zn log (0.99) :
+
+10g (0.25) _ sa7035
+
+or 108 (0.99)
+
+. Hence the required 1 is 138.
+
+"30. The probability of a shooter hitting a target is 1/3, How many times he should shoot so
+that the probability of hitting the target atleast once is more than 3/4.
+
+>> Let p = probability of hitting a target = 1/3. Hence q = 2/3
+P(x) = mG pqgr* 25 "C(1/73)(23)"*
+
+We have to find n such that
+
+P(x21)>3/4
+i.e., 1-P(x< 1) > 3/4 or 1-P(0) > 3/4
+
+ie, * 1>(2/3)"'> 3/4 or,(2/3)" < 1/4
+We can find n by inspection as we have
+
+2/3 = 0.67:, (2/3)* = 0.44, (2/3)° = 0.3, (2/3)* = 0.2
+Hence the required » is 4,

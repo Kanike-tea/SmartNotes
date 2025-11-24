@@ -1,0 +1,54 @@
+18.1 Translating SQL Queries into Relational Algebra and Other Operators 659
+
+and queries for report generation. Additionally, SQL queries originate from OLAP
+(online analytical processing) applications on data warehouses (we discuss data
+warehousing in detail in Chapter 29). Some of these queries are transformed into
+operations that are not part of the standard relational algebra we discussed in Chap-
+ter 8. Two commonly used operations are semi-join and anti-join. Note that both
+these operations are a type of join. Semi-join is generally used for unnesting EXISTS,
+IN, and ANY subqueries.* Here we represent semi-join by the following non-
+standard syntax: T1.X $ = T2.Y, where T1 is the left table and T2 is the right table of
+the semi-join. The semantics of semi-join are as follows: A row of T1 is returned as
+soon as T1.X finds a match with any value of T2.Y without searching for further
+matches. This is in contrast to finding all possible matches in inner join.
+
+Consider a slightly modified version of the schema in Figure 5.5 as follows:
+
+EMPLOYEE ( Ssn, Bdate, Address, Sex, Salary, Dno)
+DEPARTMENT ( Dnumber, Dname, Dmgrssn, Zipcode)
+
+where a department is located in a specific zip code.
+
+Let us consider the following query:
+
+Q (SJ) : SELECT COUNT(*)
+
+FROM DEPARTMENT D
+
+WHERE D.Dnumber IN (SELECT E.Dno
+FROM EMPLOYEEE
+WHERE E Salary > 200000)
+
+Here we have a nested query which is joined by the connector IN.
+
+To remove the nested query:
+
+(SELECT E.Dno
+FROM EMPLOYEEE WHERE ESalary > 200000)
+
+is called as unnesting. It leads to the following query with an operation called
+semi-join,’ which we show with a non-standard notation “S=” below:
+
+SELECT COUNT(*+)
+FROM EMPLOYEE E, DEPARTMENT D
+WHERE D.Dnumber S= E.Dno and E.Salary > 200000;
+
+The above query is counting the number of departments that have employees who
+make more than $200,000 annually. Here, the operation is to find the department
+whose Dnumber attribute matches the value(s) for the Dno attribute of Employee
+with that high salary.
+
+4In some cases where duplicate rows are not relevant, inner join can also be used to unnest EXISTS
+and ANY subqueries.
+
+Note that this semi-join operator is not the same as that used in distributed query processing.

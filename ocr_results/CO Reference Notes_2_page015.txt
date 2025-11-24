@@ -1,0 +1,55 @@
+Base with Index Mode
+> Another version of the Index mode uses 2 registers which can be denoted as (Ri, Rj)
+> Here, a second register may be used to contain the offset X.
+> The second register is usually called the base register.
+> The effective-address of the operand is given by EA=[Ri]+[Rj]
+> This form of indexed addressing provides more flexibility in accessing
+operands because both components of the effective-address can be changed.
+Base with Index & Offset Mode
+> Another version of the Index mode uses 2 registers plus a
+constant, which can be denoted as X(Ri, Rj)
+> The effective-address of the operand is given by
+EA=X+{Ri]+[Rj]
+> This added flexibility is useful in accessing multiple components inside each item in a
+record, where the beginning of an item is specified by the (Ri, Rj) part of the addressing-
+mode. In other words, this mode implements a 3-dimensional array.
+
+RELATIVE MODE
+
+> This is similar to index-mode with one difference:
+
+> The effective-address is determined using the PC in place of the general purpose
+register Ri.
+
+> The operation is indicated as X(PC).
+
+> X(PC) denotes an effective-address of the operand which is X locations above or below
+the current contents of PC.
+
+> Since the addressed-location is identified "relative" to the PC, the name Relative mode
+is associated with this type of addressing.
+
+> This mode is used commonly in conditional branch instructions.
+
+> An instruction such as
+
+Branch > 0 LOOP ;Causes program execution to go to the branch target location
+
+identified by name LOOP if branch condition is satisfied.
+
+ADDITIONAL ADDRESSING MODES
+1) Auto Increment Mode
+> Effective-address of operand is contents of a register specified in the instruction (Fig: 2.16).
+> After accessing the operand, the contents of this register are automatically incremented to
+point to the next item in a list.
+> Implicitly, the increment amount is 1.
+> This mode is denoted as
+(Ri)+ where Ri=pointer-register.
+
+2) Auto Decrement Mode
+> The contents of a register specified in the instruction are first automatically decremented and are
+then used as the effective-address of the operand.
+> This mode is denoted as
+-(Ri) ;where Ri=pointer-register.
+
+Page 16

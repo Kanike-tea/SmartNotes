@@ -1,0 +1,59 @@
+1086
+
+Chapter 28 Data Mining Concepts
+
+Algorithm 28.3. Algorithm for Decision Tree Induction
+
+Input: Set of training data records: Rj, Ro, ... , R,, and set of attributes: Aj,
+Ay 5 An
+
+Output: Decision tree
+
+procedure Build_tree (records, attributes);
+Begin
+create a node N;
+if all records belong to the same class C, then
+return N as a leaf node with class label C;
+if attributes is empty then
+return N as a leaf node with class label C, such that the majority of
+records belong to it;
+select attribute A; (with the highest information gain) from attributes;
+label node N with Aj
+for each known value, vj of Aj do
+begin
+add a branch from node N for the condition A;
+Sj = subset of records where A; = vp
+if S| is empty then
+add a leaf, L, with class label C, such that the majority of
+records belong to it and return L
+else add the node returned by Build_tree(S;, attributes — A;);
+end;
+
+vp
+
+End;
+
+Before we illustrate Algorithm 28.3, we will explain the information gain measure
+in more detail. The use of entropy as the information gain measure is motivated by
+the goal of minimizing the information needed to classify the sample data in the
+resulting partitions and thus minimizing the expected number of conditional tests
+needed to classify a new record. The expected information needed to classify train-
+ing data of s samples, where the Class attribute has n values (vj, ... , v,) and s; is the
+number of samples belonging to class label v;, is given by
+
+1(S,)Sy--5, )=—>P; log, P;
+a
+
+where p; is the probability that a random sample belongs to the class with label v;. An
+estimate for p; is s;/s. Consider an attribute A with values {v;, ... , v,;,} used as the test
+attribute for splitting in the decision tree. Attribute A partitions the samples into the
+subsets Sj), ... , S,,, where samples in each S; have a value of v; for attribute A. Each S,
+may contain samples that belong to any of the classes. The number of samples in S; that
+belong to class i can be denoted as s;. The entropy associated with using attribute A as
+the test attribute is defined as
+
+BS tent Sy
+
+BA) x (5,55 Sy)
+
+j=l

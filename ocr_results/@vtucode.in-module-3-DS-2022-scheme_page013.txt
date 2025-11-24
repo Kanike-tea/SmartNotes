@@ -1,0 +1,32 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+3, Degree two tree (Binary Tree
+
+To obtain the degree-two tree representation of a tree, simply rotate the right-sibling
+pointers in a left child-right sibling tree clockwise by 45 degrees. This gives us the degree-
+two tree displayed in Figure (E).
+
+Figure (E): degree-two representation
+
+In the degree-two representation, a node has two children as the left and right children.
+
+BINARY TREES
+Definition: A binary tree T is defined _as/a/finite Set’of nodes!such that.
+e Tis empty or
+© Tconsists of a root and two disjoint binary trees called the left subtree and
+
+the right subtree.
+Hse
+a ©
+
+Figure: Binary’ Tree
+
+Different kinds of Binary Tree
+L.Skewed Tree
+A skewed tree is a tree, skewed to the left or skews to the right.
+or
+It is a tree consisting of only left subtree or only right subtree.
+e A tree with only left subtrees is called Left Skewed Binary Tree.
+e A tree with only right subtrees is called Right Skewed Binary Tree.
+
+vtucode.in 14

@@ -1,0 +1,31 @@
+APPENDIX
+
+PROCESSORS AND
+ARCHITECTURE
+
+This appendix lists ARM processor names together with their core name and Instruction
+Set Architecture (ISA). We have omitted processors designed prior to the ARM7TDMI.
+
+For example, Table C.3 shows that the ARM966E-S processor has a ARME core and
+implements ARM architecture version 5TE. Any ARMVSTE binaries will execute on an
+ARM966E-S processor.
+
+C.1 ARM NAMING CONVENTION
+
+All ARM processors share a common naming convention that has evolved over time. ARM.
+cores have the name ARM{x}{labels}, where x is the number of the core and labels are
+letters representing extra features, described in Table C.1. ARM processors have the name
+ARM{x}{y}{z}{labels}, where y and z are numbers defining the processor cache size and
+memory management model. Table C.2 lists the rules for ARM processor numbering.
+
+The labels, or attributes, are often subsumed into the architecture version over time.
+For example, the T label indicates the inclusion of Thumb in ARMv4 processors. However,
+Thumb is included in ARMv5 and later processors, so it is not necessary to specify the T
+after this point.
+
+C.2 CORE AND ARCHITECTURES
+
+Table C.3 shows each ARM processor together with the core and architecture versions that
+the processor uses.
+
+647

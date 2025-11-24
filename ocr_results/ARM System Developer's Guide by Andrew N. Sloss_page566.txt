@@ -1,0 +1,61 @@
+15.1 Advanced DSP and SIMD Support in ARMv6 553
+
+Table 15.4 cpsr fields for ARMv6.
+
+Field Use
+
+N Negative flag. Records bit 31 of the result of flag-setting operations.
+Z Zero flag. Records if the result of a flag-setting operation is zero.
+
+c Carry flag. Records unsigned overflow for addition, not-borrow for
+
+subtraction, and is also used by the shifting circuit. See Table A.3.
+
+Vv Overflow flag. Records signed overflows for flag-setting operations.
+
+Q Saturation flag. Certain saturating operations set this flag on saturation. See for
+example QADD in Appendix A (ARMvSE and above).
+
+J J = 1 indicates Java execution (must have T = 0). Use the BXd instruction to
+
+change this bit (ARMv5J and above).
+Res ‘These bits are reserved for future expansion. Software should preserve the
+values in these bits.
+
+GE[3:0] The SIMD greater-or-equal flags. See SADD in Appendix A (ARMv6).
+
+E Controls the data endianness. See SETEND in Appendix A (ARMv6).
+
+A A = 1 disables imprecise data aborts (ARMv6).
+
+I I = 1 disables IRQ interrupts.
+
+F F = 1 disables FIQ interrupts.
+
+T T = 1 indicates Thumb state. T’ = 0 indicates ARM state. Use the BX or BLX
+instructions to change this bit (ARMv4T and above).
+
+mode The current processor mode. See Table B.4.
+
+SEL Rd, Rn, Rm
+Rd [31:24] = GE[3]
+Rd[23:16] = GE[2]
+Rd[15:08] = GE[1]
+Rd[07:00] = GEO]
+
+Rn[31:24] : Rm[31:24]
+Rn[23:16] : Rm[23:16]
+Rn [15:08] : Rm[15:08]
+Rn[07:00] : Rm[07:00]
+
+These instructions, together with the other SIMD operations, can be used very effec-
+tively to implement the core of the Viterbi algorithm, which is used extensively for symbol
+recovery in communication systems. Since the Viterbi algorithm is essentially a statistical
+maximum likelihood selection algorithm, it is also used in such areas as speech and hand-
+writing recognition engines. The core of Viterbi is an operation that is commonly known as
+add-compare-select (ACS), and in fact many DSP processors have customized ACS instruc-
+tions. With its parallel (SIMD) add, subtract (which can be used to compare), and selection
+instructions, ARMv6 can implement an extremely efficient add-compare-select:
+
+ADDS pl, Rsl, Rbl_; path 1 = state 1+ branch 1 (metric update)
+ADDS —Rp2, Rs2, Rb2 ; path 2 = state 2 + branch 2 (mteric update)

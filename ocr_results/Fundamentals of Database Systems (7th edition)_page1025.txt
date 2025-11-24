@@ -1,0 +1,52 @@
+26.4 Multimedia Database Concepts
+
+(such as songs, phone messages, or speeches), and documents (such as books or
+articles). The main types of database queries that are needed involve locating mul-
+timedia sources that contain certain objects of interest. For example, one may
+want to locate all video clips in a video database that include a certain person, say
+Michael Jackson. One may also want to retrieve video clips based on certain activ-
+ities included in them, such as video clips where a soccer goal is scored by a certain
+player or team.
+
+The above types of queries are referred to as content-based retrieval, because the
+multimedia source is being retrieved based on its containing certain objects or
+activities. Hence, a multimedia database must use some model to organize and
+index the multimedia sources based on their contents. Identifying the contents of
+multimedia sources is a difficult and time-consuming task. There are two main
+approaches. The first is based on automatic analysis of the multimedia sources to
+identify certain mathematical characteristics of their contents. This approach uses
+different techniques depending on the type of multimedia source (image, video,
+audio, or text). The second approach depends on manual identification of the
+objects and activities of interest in each multimedia source and on using this infor-
+mation to index the sources. This approach can be applied to all multimedia
+sources, but it requires a manual preprocessing phase in which a person must scan
+each multimedia source to identify and catalog the objects and activities it contains
+so that they can be used to index the sources.
+
+In the first part of this section, we will briefly discuss some of the characteristics of
+each type of multimedia source—images, video, audio, and text/documents. Then
+we will discuss approaches for automatic analysis of images followed by the prob-
+lem of object recognition in images. We end this section with some remarks on
+analyzing audio sources.
+
+An image is typically stored either in raw form as a set of pixel or cell values, or
+in compressed form to save space. The image shape descriptor describes the geo-
+metric shape of the raw image, which is typically a rectangle of cells of a certain
+width and height. Hence, each image can be represented by an m by n grid of
+cells. Each cell contains a pixel value that describes the cell content. In black-
+and-white images, pixels can be one bit. In grayscale or color images, a pixel is
+multiple bits. Because images may require large amounts of space, they are often
+stored in compressed form. Compression standards, such as GIF, JPEG, or
+MPEG, use various mathematical transformations to reduce the number of cells
+stored but still maintain the main image characteristics. Applicable mathemati-
+cal transforms include discrete Fourier transform (DFT), discrete cosine trans-
+form (DCT), and wavelet transforms.
+
+To identify objects of interest in an image, the image is typically divided into
+homogeneous segments using a homogeneity predicate. For example, in a color
+image, adjacent cells that have similar pixel values are grouped into a segment.
+The homogeneity predicate defines conditions for automatically grouping those
+cells. Segmentation and compression can hence identify the main characteristics
+of an image.
+
+995

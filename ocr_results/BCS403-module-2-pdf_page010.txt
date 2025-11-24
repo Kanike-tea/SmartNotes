@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+To define referential integrity more formally, first we define the concept of a foreign key. The
+conditions for a foreign key, given below, specify a referential integrity constraint between the two
+relation schemas R; and R2.
+A set of attributes FK in relation schema R: is a foreign key of Ri that references relation R2 if it
+satisfies the following rules:
+1. Attributes in FK have the same domain(s) as the primary key attributes PK of R2; the
+attributes FK are said to reference or refer to the relation R2.
+2. A value of FK in a tuple ¢; of the current state 71(R1) either occurs as a value of PK for
+
+some tuple f2 in the current state r2(R2) or is NULL.
+In the former case, we have ti[FK] = [PK], and we say that the tuple t; references or refers to the
+tuple f2.
+In this definition, Ri is called the referencing relation and R2 is the referenced relation. If these
+
+two conditions hold, a referential integrity constraint from Rj to R2 is said to hold.
+
+1.2.5 Other Types of Constraints
+
+Semantic integrity constraints
+
+Semantic integrity constraints can be specified.and enforced within the application programs that
+update the database, or by using a general-purpose constraint specification language. Examples of
+such constraints are the salary of an employee should not exceed the salary of the employee’s
+supervisor and the maximum number of hours an employee can work on all projects per week is 56.
+Mechanisms called triggers and assertions can be used. In SQL, CREATE ASSERTION and
+CREATE TRIGGER statements can be used for this purpose.
+
+Functional dependency constraint
+Functional dependency constraint establishes a functional relationship among two sets of attributes X
+and Y. This constraint specifies that the value of X determines a unique value of Y in all states of a
+relation; it is denoted as a functional dependency X — Y. We use functional dependencies and other
+types of dependencies as tools to analyze the quality of relational designs and to “normalize”
+relations to improve their quality.
+State constraints(static constraints)
+
+Define the constraints that a valid state of the database must satisfy
+Transition constraints(dynamic constraints)
+
+Define to deal with state changes in the database
+
+https://vtucode.in Page 11

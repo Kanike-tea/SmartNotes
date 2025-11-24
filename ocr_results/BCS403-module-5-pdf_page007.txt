@@ -1,0 +1,39 @@
+Database Management System [BCS403]
+
+= Strict 2PL
+— guarantees strict schedules
+— Transaction does not release exclusive locks until after it commits or aborts
+— no other transaction can read or write an item that is written by T unless T has
+committed, leading to a strict schedule for recoverability
+- Strict 2PL is not deadlock-free
+
+= Rigorous 2PL
+- guarantees strict schedules
+— Transaction does not release any locks until after it commits or aborts
+
+— easier to implement than strict 2PL
+
+5.11 Dealing with Deadlock and Starvation
+= Deadlock occurs when each transaction T in a set of two or more transactions is
+waiting for some item that is locked by some other transaction T’ in the set.
+= Hence, each transaction in the set is in a waiting queue, waiting for one of the other
+transactions in the set to release the lock on an item.
+= But because the other transaction is also waiting, it will never release the lock.
+= A simple example is shown in Figure 22.5(a), where the two transactions 71’ and
+T2_’are deadlocked in a partial schedule; 71’ is in the waiting queue for X, which is
+locked by 72’, while 72’ is in the waiting queue for Y, which is locked by 71’. Meanwhile,
+neither 71’ nor T2’ nor any other.transaction can access items X and Y
+
+(a) i T, am | x 1
+read_lock(Y); 7 ;
+read_item(Y); () @)
+
+read_lock(X); 5 |
+Time read_item(X); i f |
+write_lock(X);
+write_lock(Y);
+
+Figure 22.5 Illustrating the deadlock problem (a) A partial schedule of 71' and 72' that is ina
+state of deadlock (b) A wait-for graph for the partial schedule in (a)
+
+https://vtucode.in 29

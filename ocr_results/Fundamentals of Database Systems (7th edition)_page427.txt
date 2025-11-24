@@ -1,0 +1,56 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 397
+
+class EMPLOYEE Figure 12.7
+(extent ALL_EMPLOYEES The attributes, relationships,
+
+key Ssn_ ) and operations in a class
+{ definition.
+
+attribute string Name;
+
+attribute string Ssn;
+
+attribute date Birth_date;
+
+attribute enum Gender{M, F} Sex;
+
+attribute short Age;
+
+relationship DEPARTMENT Works_for
+
+inverse DEPARTMENT::Has_emps;
+void reassign_emp(in string New_dname)
+
+raises(dname_not_valid);
+};
+class DEPARTMENT
+
+(extent ALL_DEPARTMENTS
+key Dname, Dnumber )
+{
+attribute string Dname;
+attribute short Dnumber;
+attribute struct Dept_mgr {EMPLOYEE Manager, date Start_date}
+Mgr;
+attribute set<string> Locations;
+attribute struct Projs {string Proj_name, time Weekly_hours)
+Projs;
+relationship set<EMPLOYEE> — Has_emps inverse EMPLOYEE::Works_for;
+void add_emp(in string New_ename) raises(ename_not_valid);
+void change_manager(in string New_mgr_name; in date
+Start_date);
+
+EMPLOYEE E refers to DEPARTMENT D, then the value of Has_emps for DEPARTMENT
+D must include a reference to E in its set of EMPLOYEE references. If the database
+designer desires to have a relationship to be represented in only one direction, then
+it has to be modeled as an attribute (or operation). An example is the Manager com-
+ponent of the Mgr attribute in DEPARTMENT.
+
+In addition to attributes and relationships, the designer can include operations in
+object type (class) specifications. Each object type can have a number of operation
+signatures, which specify the operation name, its argument types, and its returned
+value, if applicable. Operation names are unique within each object type, but they
+can be overloaded by having the same operation name appear in distinct object
+types. The operation signature can also specify the names of exceptions that
+can occur during operation execution. The implementation of the operation
+will include the code to raise these exceptions. In Figure 12.7 the EMPLOYEE class

@@ -1,0 +1,31 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+The following steps are necessary to transfer the bus mastership from CPU to
+one of the DMAcontroller:
+
+The DMA controller request the processor to obtain the bus mastership by
+activating BR (Busrequest) signal
+
+In response to this-signal the CPU transfers the bus mastership to
+
+requested devices DMAcontroller1 in the form of BG (Bus grant).
+
+When the bus mastership is obtained from CPU the DMA controller1 blocks the
+propagation of busgrant signal from one device to another device.
+
+The BG signal is connected to DMA controller2 from DMA controller1 in as daisy
+fashion style isas shown in the figure.
+
+When the DMA controllerl has not sent BR request, it transfers the bus
+mastership to DMAcontroller2 by unblocking bus grant signal.
+
+When the DMA controller1 receives the bus grant signal, it blocks the signal from
+passing to DMA controller2 and enables BBSY signal. When BBSY signal is set to 1
+the set of devices connected to system bus doesn’t have any rights to obtain the bus
+mastership from the CPU.
+
+e In this technique 2 or more devices trying to.access system bus at the same
+time may participatein bus arbitration process.
+e The schematic diagram of distributed bus arbitration is as shown in the figure
+
+Dr.Ajay V G, Dept. of CSE 18

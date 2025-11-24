@@ -1,0 +1,53 @@
+base Management System [OCS
+
+STUDENT u INSTRUCTOR
+Fn Ln
+Susan Yao
+Ramesh | Shah
+Johnny Kohler
+Barbara | Jones
+Amy Ford
+Jimmy Wang
+Emest Gilbert
+John Smith
+Ricardo | Browne
+Francis | Johnson
+
+STUDENT — INSTRUCTOR
+
+STUDENT n INSTRUCTOR
+
+INSTRUCTOR — STUDENT
+
+Example: To retrieve the Social Security numbers of all employees who either work in department 5
+or directly supervise an employee who works in department 5
+
+DEPS_EMPS < 6pno-s(EMPLOYEE)
+
+RESULT1 < asa(DEPS_EMPS)
+
+RESULT2(Ssn) — msuper ssn(DEP5_EMPS)
+
+RESULT <— RESULT1 U RESULT2
+
+EMPLOYEE —
+
+Fname | Minit | Lname Ssn Bdate Address endef Salary | Super_ssn_| Dno
+
+John B | Smith | 123456789 | 1965-01-09 |731 Fondren, Houston, TX] M_|30000 [333445555 | 5
+
+Franklin | T | Wong | 339445555 | 1955-12-08 | 638 Voss, Houston, TX | M_ [40000 |esee6ssss | 5
+
+Alicia J_| Zelaya _| 999887777 | 1968-01-19 |3321 Castle, Spring, TX | F _|25000 |987654321 | 4
+
+Jennifer | S | Wallace | 987654321 1941-06-20 291 Berry, Bellaire, TX F 143000 |888665555 | 4
+
+Ramesh| K_ | Narayan| 666884444 1962-09-15 | 975 Fire Oak, Humble, TX| M_|38000 |333445555 | 5
+
+Joyce A_| English | 453453453 | 1972-07-31 [5631 Rice, Houston, TX | F {25000 [333445555 | 5
+
+Ahmad V_ | Jabbar | 987987987 | 1969-03-29 | 980 Dallas, Houston, TX | M_ {25000 |987654321 | 4
+
+James E | Borg | 888665555 | 1997-11 10 | 450 Stone, Houston, TX | M |55000 [NULL 1 Page 21
+
+https://vtucode.in

@@ -1,0 +1,49 @@
+184 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+In this arrangement the Z flag is set on the last iteration of the loop and cleared for other
+iterations. If there is anything different about the last loop, then we can achieve this using
+the EQ and NE conditions. For example, if you preload data for the next loop (as discussed
+in Section 6.3.1.1), then you want to avoid the preload on the last loop. You can make all
+preload operations conditional on NE as in Section 6.3.1.1.
+
+There is no reason why we must decrement by one on each loop. Suppose we require
+N/3 loops. Rather than attempting to divide N by three, it is far more efficient to subtract
+three from the loop counter on each iteration:
+
+MOV i, N
+
+loop
+3 loop body goes here and iterates (round up) (N/3) times
+suBs i, i, #3
+BGT loop
+
+6.6.2 UNROLLED COUNTED Loops
+
+This brings us to the subject ofloop unrolling. Loop unrolling reduces the loop overhead by
+executing the loop body multiple times. However, there are problems to overcome. What
+if the loop count is not a multiple of the unroll amount? What if the loop count is smaller
+than the unroll amount? We looked at these questions for C code in Section 5.3. In this
+section we look at how you can handle these issues in assembly.
+
+We'll take the C library function memset as a case study. This function sets N bytes of
+memory at address s to the byte value c. The function needs to be efficient, so we will look
+at how to unroll the loop without placing extra restrictions on the input operands. Our
+version of memset will have the following C prototype:
+
+void my_memset(char *s, int c, unsigned int N);
+
+To be efficient for large N, we need to write multiple bytes at a time using STR or STM
+instructions. Therefore our first task is to align the array pointer s. However, it is only
+worth us doing this if N is sufficiently large. We aren’t sure yet what “sufficiently large”
+means, but let’s assume we can choose a threshold value T; and only bother to align the array
+when N > Tj. Clearly T; > 3 as there is no point in aligning if we don’t have four bytes to
+write!
+
+Now suppose we have aligned the array s. We can use store multiples to set memory
+efficiently. For example, we can use a loop of four store multiples of eight words each to set
+128 bytes on each loop. However, it will only be worth doing this if N > T2 > 128, where
+T> is another threshold to be determined later on.
+
+Finally, we are left with N < T bytes to set. We can write bytes in blocks of four using
+STR until N < 4. Then we can finish by writing bytes singly with STRB to the end of the
+array.

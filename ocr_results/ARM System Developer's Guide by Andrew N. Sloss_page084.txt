@@ -1,0 +1,46 @@
+Figure 3.7
+
+EXAMPLE
+
+3.21
+
+Figure 3.8
+
+3.3 Load-Store Instructions 71
+
+PRE Address Data POST Address Data
+0x80018 | 0x00000001 0x80018 | 0x00000001
+
+sp —>| 0x80014 | 0x00000002 0x80014 | 0x00000002
+0x80010 | Empty 0x80010 | 0x00000003
+0x8000c | Empty sp —>| 0x8000c | 0x00000002
+
+STMFD instruction—full stack push operation.
+
+POST rl = 0x00000002
+r4 = 0x00000003
+sp = 0x0008000c
+
+In contrast, Figure 3.8 shows a push operation on an empty stack using the STMED instruc-
+tion. The STMED instruction pushes the registers onto the stack but updates register sp to
+point to the next empty location.
+
+PRE rl = 0x00000002
+r4 = 0x00000003
+sp = 0x00080010
+
+STMED sp!, {r1,r4}
+POST rl = 0x00000002
+
+r4 = 0x00000003
+sp = 0x00080008
+
+PRE Address Data POST Address Data
+0x80018)] 0x00000001 0x80018 | 0x00000001
+0x80014 | 0x00000002 0x80014 | 0x00000002
+
+sp —>| 0x80010 | Empry 0x80010 | 0x00000003
+0x8000c | Empry 0x8000c | 0x00000002
+0x80008 | Empry sp —> | 0x80008 | Empty
+
+STMED instruction—empty stack push operation.

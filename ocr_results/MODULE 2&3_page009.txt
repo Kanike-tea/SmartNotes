@@ -1,0 +1,45 @@
+Microcontrollers — BCS402
+
+This example shows a CMP comparison instruction. Registers r0 and r9 are equal before
+executing the instruction. The value of the z flag prior to execution is 0 and is represented by
+a lowercase z. After execution the z flag changes to 1 or an uppercase Z. This change
+
+indicates equality.
+2.7 Multiply Instructions
+
+The multiply instructions multiply the contents of a pair of registers and, depending upon the
+instruction, accumulate the results in with another register. The long multiplies accumulate
+onto a pair of registers representing a 64-bit value. The final result is placed in a destination
+
+register or a pair of registers.
+Syntax: MLA {<cond>}{S} Rd, Rm, Rs, Rn
+
+MUL {<cond>}{S} Rd, Rm, Rs
+
+MLA | multiply and accumulate | Rd = (Rm*Rs) + Rn
+
+MUL | multiply | Rd = Rm*Rs
+
+Syntax: <instruction>{<cond>}{S} RdLo, RdHi, Rm, Rs
+
+SMLAL | signed multiply accumulate long | [RdHi, RdLo] = [RdHi, RdLo] + (Rm *Rs)
+
+SMULL | signed multiply long | [RdHi, RdLo] = Rm *Rs
+
+UMLAL | unsigned multiply accumulate [RdHi, RdLo] = [RdHi, RdLo] + (Rm * Rs)
+long
+
+UMULL | unsigned multiply long | [RdHi, RdLo] = Rm* Rs
+
+The number of cycles taken to execute a multiply instruction depends on the processor
+
+implementation. For some implementations the cycle timing also depends on the value in Rs.
+Example 1:
+MUL r0,r1,r2; 10 =rl*r2
+
+This example shows a simple multiply instruction that multiplies registers rl and r2 together
+and places the result into register r0. In this example, register rl is equal to the value 2, and
+
+12 is equal to 2. The result, 4, is then placed into register r0.
+
+Dept. of ECE, GSSSIETW Page 10

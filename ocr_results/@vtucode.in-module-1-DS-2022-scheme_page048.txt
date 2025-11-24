@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+EVALUATION OF POSTFIX EXPRESSION
+
+e The evaluation process of postfix expression is simpler than the evaluation
+of infix expressions because there are no parentheses to consider.
+
+e To evaluate an expression, make a single left-to-right scan of it. Place the
+operands on a stack until an operator is found. Then remove from the stack, the
+correct number of operands for the operator, perform the operation, and place
+the result back on the stack and continue this fashion until the end of the
+
+expression. We then remove the answer from the top of the stack.
+
+int eval(void)
+
+{
+precedence token:
+char symbol;
+int opLop2, n=0:;
+int top= -1;
+token = getToken(&symbol, &n);
+while(token! = egs)
+{
+if (token == operand)
+push(symbol-'0'); /* stack insert */
+else {
+op2 = pop();/* stack delete */
+opL= popO:
+switch(token) {
+case plus: push(opl+op2);
+break;
+case minus: push(opl-op2);
+break;
+case times: push(gpl*op2);
+break;
+case divide: push(gpl/op2);
+break;
+case mod: push(opl%op2);
+}
+}
+token = getToken(&symbol, &n);
+}
+return popQ): /* return result */
+}
+
+Program: Function to evaluate a postfix expression
+
+vtucode.in 49

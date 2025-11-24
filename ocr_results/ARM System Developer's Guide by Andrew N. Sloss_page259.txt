@@ -1,0 +1,66 @@
+246 Chapter 7 Optimized Primitives
+
+use a table to look up s(a) and c(a). The addition formula for sine and cosine reduces the
+problem to finding the sine and cosine of a small angle:
+
+s(x) = s(a) cos (x(x — a)2~*!) + e(a) sin (x(x — a)2~*') (7.52)
+c(x) = e(a) cos (r(x — a)2~*!) — s(a) sin (w(x — a)2~*1) (7.53)
+Next, we calculate the small angle n = (x — a)2~>! in radians and use the following
+series expansions to improve accuracy further:
+3 2
+
+sin(x) =x = po and cos(x) = 1 = Sp (7.54)
+
+You can use the following assembly to implement the preceding algorithm for sine and
+cosine. The answer is returned at Q30 and has a maximum error of 4 x 277°. The routine
+takes 31 cycles on an ARMOE excluding the return.
+
+n RN O 5 the input angle in revolutions at Q32, result Q30
+s RN 1 5 the output sign
+
+r RN 2
+
+q RN 3
+
+t RN 12
+
+cos_32 ; int cos_32(int n)
+
+EOR Ss, n,n, LSL#1 5 cos is -ve in quadrants 1,2
+
+MOVS n,n, LSL#1 3 angle in revolutions at Q33
+
+RSBMI on, _n, #0 3 in range 0-1/4 of a revolution
+
+cMP n, #1<<30 3 if angle < 1/8 of a revolution
+
+BCC cos_core 3 take cosine
+
+SUBEQ n,n, #1 3 otherwise take sine of
+
+RSBHI on, n, #1<<31 3 (1/4 revolution) -(angle)
+sin_core 3 take sine of Q33 angle n
+
+Mov q, n, LSR#25 3 approximation a=(q+0.5) /32
+
+SUB n,n, q, LSL#25 3 n = n-(q/32) at Q33
+
+SUB n,n, #1<<24 3 n = n-(1/64) at Q33
+
+LOR t, =0x6487ed51 3 round(2*P1*2%28)
+
+MOV ry n, LSL#3 3 r= nat Q36
+
+SMULL ty n, ry, t 3 n = (x-a)*PI/2431 at Q32
+
+ADR t, cossin_tab
+
+LOR q. [t, q, LSL#3]! ; c(a) at Q30
+
+LOR t, [t, #4] 3 s(a) at Q30
+
+EOR q, q, S, ASR#31 5 correct c(a) sign
+
+EOR s, t, s, ASR#31 correct s(a) sign
+SMULL tyr, n,n 3 2 at Q32
+SMULL = t, qv ng q n*c(a) —at_Q30

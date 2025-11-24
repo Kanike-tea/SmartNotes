@@ -1,0 +1,54 @@
+8.3 Binary Relational Operations: JOIN and DIVISION
+
+8.3.2 Variations of JOIN: The EQUIJOIN and NATURAL JOIN
+
+The most common use of JOIN involves join conditions with equality comparisons
+only. Such a JOIN, where the only comparison operator used is =, is called an
+EQUUJOIN. Both previous examples were EQUUOINs. Notice that in the result of an
+EQUUOIN we always have one or more pairs of attributes that have identical values
+in every tuple. For example, in Figure 8.6, the values of the attributes Mgr_ssn and
+Ssn are identical in every tuple of DEPT_MGR (the EQUUOIN result) because the
+equality join condition specified on these two attributes requires the values to be
+identical in every tuple in the result. Because one of each pair of attributes with
+identical values is superfluous, a new operation called NATURAL JOIN—denoted
+by *—was created to get rid of the second (superfluous) attribute in an EQUUOIN
+condition.® The standard definition of NATURAL JOIN requires that the two join
+attributes (or each pair of join attributes) have the same name in both relations. If
+this is not the case, a renaming operation is applied first.
+
+Suppose we want to combine each PROJECT tuple with the DEPARTMENT tuple that
+controls the project. In the following example, first we rename the Dnumber attribute
+of DEPARTMENT to Dnum—so that it has the same name as the Dnum attribute in
+PROJECT—and then we apply NATURAL JOIN:
+
+PROJ_DEPT < PROJECT » Poname, Dnum, Mar_san, Mgr star date) DEPARTMENT)
+
+The same query can be done in two steps by creating an intermediate table DEPT
+as follows:
+
+DEPT < P(Dname, Daum, Mgr_ssn, Mgr_start_date)(DEPARTMENT)
+PROJ_DEPT < PROJECT * DEPT
+
+The attribute Dnum is called the join attribute for the NATURAL JOIN operation,
+because it is the only attribute with the same name in both relations. The resulting
+relation is illustrated in Figure 8.7(a). In the PROJ_DEPT relation, each tuple combines
+a PROJECT tuple with the DEPARTMENT tuple for the department that controls the
+project, but only one join attribute value is kept.
+
+If the attributes on which the natural join is specified already have the same names
+in both relations, renaming is unnecessary. For example, to apply a natural join
+on the Dnumber attributes of DEPARTMENT and DEPT_LOCATIONS, it is sufficient
+to write
+
+DEPT_LOCS <- DEPARTMENT * DEPT_LOCATIONS
+
+The resulting relation is shown in Figure 8.7(b), which combines each department
+with its locations and has one tuple for each location. In general, the join condition
+for NATURAL JOIN is constructed by equating each pair of join attributes that have
+the same name in the two relations and combining these conditions with AND.
+There can be a list of join attributes from each relation, and each corresponding
+pair must have the same name.
+
+®NATURAL JOIN is basically an EQUIJOIN followed by the removal of the superfluous attributes.
+
+253

@@ -1,0 +1,51 @@
+23.1 Distributed Database Concepts
+
+system failure. Another more stringent approach attempts to ensure that the final
+system does not contain any faults. This is done through an exhaustive design pro-
+cess followed by extensive quality control and testing. A reliable DDBMS tolerates
+failures of underlying components, and it processes user requests as long as data-
+base consistency is not violated. A DDBMS recovery manager has to deal with fail-
+ures arising from transactions, hardware, and communication networks. Hardware
+failures can either be those that result in loss of main memory contents or loss of
+secondary storage contents. Network failures occur due to errors associated with
+messages and line failures. Message errors can include their loss, corruption, or
+out-of-order arrival at destination.
+
+The previous definitions are used in computer systems in general, where there is a
+technical distinction between reliability and availability. In most discussions related
+to DDB, the term availability is used generally as an umbrella term to cover both
+concepts.
+
+23.1.4 Scalability and Partition Tolerance
+
+Scalability determines the extent to which the system can expand its capacity while
+continuing to operate without interruption. There are two types of scalability:
+
+1. Horizontal scalability: This refers to expanding the number of nodes in the
+distributed system. As nodes are added to the system, it should be possible
+to distribute some of the data and processing loads from existing nodes to
+the new nodes.
+
+2. Vertical scalability: This refers to expanding the capacity of the individual
+nodes in the system, such as expanding the storage capacity or the process-
+ing power of a node.
+
+As the system expands its number of nodes, it is possible that the network, which
+connects the nodes, may have faults that cause the nodes to be partitioned into
+groups of nodes. The nodes within each partition are still connected by a subnet-
+work, but communication among the partitions is lost. The concept of partition
+tolerance states that the system should have the capacity to continue operating
+while the network is partitioned.
+
+23.1.5 Autonomy
+
+Autonomy determines the extent to which individual nodes or DBs in a connected
+DDB can operate independently. A high degree of autonomy is desirable for
+increased flexibility and customized maintenance of an individual node. Autonomy
+can be applied to design, communication, and execution. Design autonomy refers
+to independence of data model usage and transaction management techniques
+among nodes. Communication autonomy determines the extent to which each
+node can decide on sharing of information with other nodes. Execution autonomy
+refers to independence of users to act as they please.
+
+845

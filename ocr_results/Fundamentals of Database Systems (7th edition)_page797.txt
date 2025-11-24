@@ -1,0 +1,56 @@
+20.5 Characterizing Schedules Based on Serializability
+
+20.5.2 Testing for Serializability of a Schedule
+
+There is a simple algorithm for determining whether a particular schedule is (con-
+flict) serializable or not. Most concurrency control methods do not actually test for
+serializability. Rather protocols, or rules, are developed that guarantee that any
+schedule that follows these rules will be serializable. Some methods guarantee seri-
+alizability in most cases, but do not guarantee it absolutely, in order to reduce the
+overhead of concurrency control. We discuss the algorithm for testing conflict seri-
+alizability of schedules here to gain a better understanding of these concurrency
+control protocols, which are discussed in Chapter 21.
+
+Algorithm 20.1 can be used to test a schedule for conflict serializability. The algo-
+rithm looks at only the read_item and write_item operations in a schedule to con-
+struct a precedence graph (or serialization graph), which is a directed graph
+G =(N, E) that consists of a set of nodes N = {T}, T2, ... , Ty } and a set of directed
+edges E = {e1, €2, ... , € }. There is one node in the graph for each transaction Tj in
+the schedule. Each edge e; in the graph is of the form (Tj > Ty), 1<j<m1sk<n,
+where T; is the starting node of e; and T;, is the ending node of ei. Such an edge
+from node T; to node T;, is created by the algorithm if a pair of conflicting operations
+exist in Tj and T; and the conflicting operation in T; appears in the schedule before
+the conflicting operation in Ty.
+
+Algorithm 20.1. Testing Conflict Serializability of a Schedule $
+
+1. For each transaction T; participating in schedule S, create a node labeled
+T; in the precedence graph.
+
+2. For each case in § where Tj executes a read_item(X) after T; executes a
+write_item(X), create an edge (T; > T;) in the precedence graph.
+
+3. For each case in S where Tj executes a write_item(X) after T; executes a
+read_item(X), create an edge (T; > Tj) in the precedence graph.
+
+4. For each case in S where T; executes a write_item(X) after T; executes a
+write_item(X), create an edge (T; — T}) in the precedence graph.
+
+5. The schedule S is serializable if and only if the precedence graph has no
+cycles.
+
+The precedence graph is constructed as described in Algorithm 20.1. If there is a
+cycle in the precedence graph, schedule S is not (conflict) serializable; if there is no
+cycle, S is serializable. A cycle in a directed graph is a sequence of edges C = ((T; > T;),
+(> Tp), wi (Ti > T;)) with the property that the starting node of each edge—
+except the first edge—is the same as the ending node of the previous edge, and the
+starting node of the first edge is the same as the ending node of the last edge (the
+sequence starts and ends at the same node).
+
+In the precedence graph, an edge from T; to T; means that transaction T; must come
+before transaction T; in any serial schedule that is equivalent to S, because two con-
+flicting operations appear in the schedule in that order. If there is no cycle in the pre-
+cedence graph, we can create an equivalent serial schedule S’ that is equivalent to S,
+by ordering the transactions that participate in S as follows: Whenever an edge exists
+
+767

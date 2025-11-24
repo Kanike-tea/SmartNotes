@@ -1,0 +1,56 @@
+Lecture-36
+Serializability:
+When several concurrent transactions are trying to access the same data item, the instructions
+within these concurrent transactions must be ordered in some way so as there are no problem in
+accessing and releasing the shared data item. There are two aspects of serializability which are
+described here:
+
+Conflict Serializability
+
+Two instructions of two different transactions may want to access the same data item in order to
+perform a read/write operation. Conflict Serializability deals with detecting whether the
+instructions are conflicting in any way, and specifying the order in which these two instructions
+will be executed in case there is any conflict. A conflict arises if at least one (or both) of the
+instructions is a write operation. The following rules are important in Conflict Serializability:
+
+1. If two instructions of the two concurrent transactions are both for read operation, then
+they are not in conflict, and can be allowed to take place in any order.
+
+2. If one of the instructions wants to perform a read operation and the other instruction
+wants to perform a write operation, then they are in conflict, hence their ordering is
+important. If the read instruction is performed first, then it reads the old value of the data
+item and after the reading is over, the new value of the data item is written. It the write
+instruction is performed first, then updates the data item with the new value and the read
+instruction reads the newly updated value.
+
+3. If both the transactions are for write operation, then they are in conflict but can be
+allowed to take place in any order, because the transaction do not read the value updated
+by each other. However, the value that persists in the data item after the schedule is over
+is the one written by the instruction that performed the last write.
+
+It may happen that we may want to execute the same set of transaction in a different schedule on
+another day. Keeping in mind these rules, we may sometimes alter parts of one schedule (S1) to
+create another schedule (S2) by swapping only the non-conflicting parts of the first schedule.
+The conflicting parts cannot be swapped in this way because the ordering of the conflicting
+instructions is important and cannot be changed in any other schedule that is derived from the
+first. If these two schedules are made of the same set of transactions, then both $1 and S2 would
+yield the same result if the conflict resolution rules are maintained while creating the new
+schedule. In that case the schedule $1 and $2 would be called Conflict Equivalent.
+
+View Serializability:
+
+This is another type of serializability that can be derived by creating another schedule out of an
+existing schedule, involving the same set of transactions. These two schedules would be called
+View Serializable if the following rules are followed while creating the second schedule out of
+the first. Let us consider that the transactions Tl and T2 are being serialized to create two
+different schedules S1 and $2 which we want to be View Equivalent and both T1 and T2 wants
+to access the same data item.
+
+1. If in S1, T1 reads the initial value of the data item, then in S2 also, T1 should read the
+initial value of that same data item.
+
+2. If in $1, T1 writes a value in the data item which is read by T2, then in S2 also, T1
+should write the value in the data item before T2 reads it.
+
+3. If in S1, Tl performs the final write operation on that data item, then in S2 also, T1
+should perform the final write operation on that data item.

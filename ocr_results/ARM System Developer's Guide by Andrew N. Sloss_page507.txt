@@ -1,0 +1,47 @@
+494 Chapter 14 Memory Management Units
+
+Page
+
+Virtual Physical
+memory memory
+Base _ Offset
+Virtual [> L2x0400 | 0003 Task |
+address oxo80000e3 Fp
+- MMU ~ ef frame
+relocation 0x08000000
+register
+Task 1 si
+0x040000e3| region 0x0800
+0x04000000 } Offset i |
+0x0800 | 00e3
+Translated Physical
+address address
+
+Figure 14.1 Mapping a task in virtual memory to physical memory using a relocation register.
+
+When the processor core generates a virtual address, the MMU takes the upper bits of
+the virtual address and replaces them with the contents of the relocation register to create
+a physical address, shown in Figure 14.1
+
+The lower portion of the virtual address is an offset that translates to a specific address
+in physical memory. The range of addresses that can be translated using this method is
+limited by the maximum size of this offset portion of the virtual address.
+
+Figure 14.1 shows an example of a task compiled to run at a starting address of
+0x4000000 in virtual memory. The relocation register translates the virtual addresses of
+Task 1 to physical addresses starting at 0x8000000.
+
+A second task compiled to run at the same virtual address, in this case 0x400000, can
+be placed in physical memory at any other multiple of 0x10000 (64 KB) and mapped to
+0x400000 simply by changing the value in the relocation register.
+
+A single relocation register can only translate a single area of memory, which is set by
+the number of bits in the offset portion of the virtual address. This area of virtual memory
+is known as a page. The area of physical memory pointed to by the translation process is
+known as a page frame.
+
+The relationship between pages, the MMU, and page frames is shown in Figure 14.2.
+The ARM MMU hardware has multiple relocation registers supporting the translation
+of virtual memory to physical memory. The MMU needs many relocation registers to
+effectively support virtual memory because the system must translate many pages to many
+page frames.

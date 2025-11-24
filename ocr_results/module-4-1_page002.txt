@@ -1,0 +1,49 @@
+Data Structures and Applications (15CS33)
+
+List Representation:
+
+The tree can be represented as a List. The tree of figure (A) could be written as the list.
+(A B (E ({K, L), F),C (G),D (H (M), 1, J) ))
+
+e The information in the root node comes first.
+e The root node is followed by a list of the subtrees of that node.
+
+Tree node is represented by a memory node that has fields for the data and pointers to the tree
+node's children
+
+Al >| call =| [0
+| \ \
+B| f+{ | --[F[o c| {s/o Di +4) fT Tol
+| |
+
+H
+
+E] +k] 1JLJo
+
+7M 0
+
+Figure (B): List representation of the tree of figure (A)
+
+Since the degree of each tree node may be different,so memory nodes with a varying number
+
+of pointer fields are used.
+For a tree of degree k, the node structure can be represented as below figure. Each child field
+is used to point to a subtree.
+
+DATA | CHILD1 | CHILD2 | ~ | CHILDE
+
+Left Child-Right Sibling Representation
+
+The below figure show the node structure used in the left child-right sibling representation
+
+data
+
+left child right sibling
+
+Figure (c): Left child right sibling node structure
+
+To convert the tree of Figure (A) into this representation:
+1. First note that every node has at most one leftmost child
+2. At most one closest right sibling.
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

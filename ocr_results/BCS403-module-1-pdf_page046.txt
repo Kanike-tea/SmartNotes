@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+Partial participation
+
+we do not expect every employee to manage a department .So the participation of EMPLOYEE in the
+MANAGES relationship type is partial, meaning that some or part of the set of employee entities are
+
+related to some department entity via MANAGES, but not necessarily all.
+
+In ER diagrams, total participation is displayed as a double line connecting the participating entity type
+
+to the relationship, whereas partial participation is represented by a single line.
+cardinality ratio + participation constraints = structural constraints of a relationship type.
+3.4.4 Attributes of Relationship Types
+
+Relationship types can also have attributes, similar to those of entity types. For example, to record the
+number of hours per week that an employee works on a particular project, we can include an attribute
+Hours for the WORKS _ON relationship type. Another example is to include the date on which a manager
+started managing a department via an attribute Start_date for the MANAGES relationship type.
+
+Attributes of 1:1 or 1:N relationship types can be migrated to one of the participating entity types. For a
+1:N relationship type, a relationship attribute can be migrated only to the entity type on the N-side of the
+relationship. For M:N relationship types, some attributes may be determined by the combination of
+participating entities in a relationship instance, not by any single entity. Such attributes must be specified
+
+as relationship attributes.
+
+3.5 Weak Entity Types
+
+Entity. typesithatido nof‘havekey attributes of their own are called weak entity types. Entities belonging
+tA WEAK entifVltype are identified by being related to specific entities from another entity type in
+CombinatiOnWithone Of Their attributelValues) We call this other entity type the identifying or owner
+entity type. We call the relationship type that relates a weak entity type to its owner the identifying
+relationship of the weak entity type.
+
+Consider the entity type DEPENDENT, related to EMPLOYEE, which is used to keep track of the
+dependents of each employee via a 1:N relationship. In our example, the attributes of DEPENDENT are
+Name,Birth_date, gender, and Relationship (to the employee). Two dependents of two distinct employees
+may, by chance, have the same values for Name, Birth_date, gender, and Relationship, but they are still
+
+distinct entities. They are identified as distinct entities only after determining the particular employee
+
+https://vtucode.in Page 47

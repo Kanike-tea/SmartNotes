@@ -91,6 +91,20 @@ class CRNN(nn.Module):
 
         # Output layer: 512 (256*2 for bidirectional) -> num_classes + 1 (for CTC blank)
         self.fc = nn.Linear(512, num_classes + 1)
+        
+        # Validation assertion (CRITICAL for debugging)
+        # Ensure output shape matches expected CTC format
+        expected_output_classes = num_classes + 1
+        actual_output_classes = self.fc.out_features
+        assert actual_output_classes == expected_output_classes, \
+            f"Model output mismatch: expected {expected_output_classes} classes, " \
+            f"got {actual_output_classes}. This will cause CTC loss mismatch!"
+        
+        # Log model info
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"[CRNN] Initialized: {num_classes} chars + 1 blank = "
+                   f"{actual_output_classes} output classes")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """

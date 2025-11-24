@@ -1,0 +1,52 @@
+646
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+when retrieving the records themselves. A clustering index may be set up as
+a multiattribute index if range retrieval by that composite key is useful in
+report creation (for example, an index on Zip_code, Store_id, and Product_id
+may be a clustering index for sales data).
+
+4. Whether to use a hash index over a tree index. In general, RDBMSs use
+B*-trees for indexing. However, ISAM and hash indexes are also provided in
+some systems. B*-trees support both equality and range queries on the attri-
+bute used as the search key. Hash indexes work well with equality condi-
+tions, particularly during joins to find a matching record(s), but they do not
+support range queries.
+
+5. Whether to use dynamic hashing for the file. For files that are very volatile—
+that is, those that grow and shrink continuously—one of the dynamic hashing
+schemes discussed in Section 16.9 would be suitable. Currently, such schemes
+are not offered by many commercial RDBMSs.
+
+17.8 Summary
+
+In this chapter, we presented file organizations that involve additional access struc-
+tures, called indexes, to improve the efficiency of retrieval of records from a data
+file. These access structures may be used in conjunction with the primary file orga-
+nizations discussed in Chapter 16, which are used to organize the file records them-
+selves on disk.
+
+Three types of ordered single-level indexes were introduced: primary, clustering,
+and secondary. Each index is specified on a field of the file. Primary and cluster-
+ing indexes are constructed on the physical ordering field of a file, whereas sec-
+ondary indexes are specified on nonordering fields as additional access structures
+to improve performance of queries and transactions. The field for a primary
+index must also be a key of the file, whereas it is a nonkey field for a clustering
+index. A single-level index is an ordered file and is searched using a binary search.
+We showed how multilevel indexes can be constructed to improve the efficiency
+of searching an index. An example is IBM’s popular indexed sequential access
+method (ISAM), which is a multilevel index based on the cylinder/track configu-
+ration on disk.
+
+Next we showed how multilevel indexes can be implemented as B-trees and
+B*-trees, which are dynamic structures that allow an index to expand and shrink
+dynamically. The nodes (blocks) of these index structures are kept between half full
+and completely full by the insertion and deletion algorithms. Nodes eventually sta-
+bilize at an average occupancy of 69% full, allowing space for insertions without
+requiring reorganization of the index for the majority of insertions. B*-trees can
+generally hold more entries in their internal nodes than can B-trees, so they may
+have fewer levels or hold more entries than does a corresponding B-tree.
+
+We gave an overview of multiple key access methods, and we showed how an index
+can be constructed based on hash data structures. We introduced the concept of

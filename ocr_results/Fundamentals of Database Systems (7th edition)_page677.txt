@@ -1,0 +1,51 @@
+Review Questions
+
+partitioned hashing, which is an extension of external hashing to deal with mul-
+tiple keys. We also introduced grid files, which organize data into buckets along
+multiple dimensions, We discussed the hash index in some detail—it is a second-
+ary structure to access the file by using hashing on a search key other than that
+used for the primary organization. Bitmap indexing is another important type of
+indexing used for querying by multiple keys and is particularly applicable on fields
+with a small number of unique values. Bitmaps can also be used at the leaf nodes of
+B* tree indexes as well. We also discussed function-based indexing, which is being
+provided by relational vendors to allow special indexes on a function of one or
+more attributes.
+
+We introduced the concept of a logical index and compared it with the physical
+indexes we described before. They allow an additional level of indirection in index-
+ing in order to permit greater freedom for movement of actual record locations on
+disk. We discussed index creation in SQL, the process of bulk loading of index files
+and indexing of strings. We discussed circumstances that point to tuning of indexes.
+Then we reviewed some general topics related to indexing, including managing
+constraints, using inverted indexes, and using indexing hints in queries; we com-
+mented on column-based storage of relations, which is becoming a viable alterna-
+tive for storing and accessing large databases. Finally, we discussed physical
+database design of relational databases, which involves decisions related to storage
+and accessing of data that we have been discussing in the current and the previous
+chapter. This discussion was divided into factors that influence the design and the
+types of decisions regarding whether to index an attribute, what attributes to
+include in an index, clustered versus nonclustered indexes, hashed indexes, and
+dynamic hashing.
+
+Review Questions
+
+17.1. Define the following terms: indexing field, primary key field, clustering field,
+secondary key field, block anchor, dense index, and nondense (sparse) index.
+
+17.2. Whatare the differences among primary, secondary, and clustering indexes?
+How do these differences affect the ways in which these indexes are imple-
+mented? Which of the indexes are dense, and which are not?
+
+17.3. Why can we have at most one primary or clustering index on a file, but several
+secondary indexes?
+
+17.4. How does multilevel indexing improve the efficiency of searching an index file?
+17.5. What is the order p of a B-tree? Describe the structure of B-tree nodes.
+
+17.6. What is the order p of a B*-tree? Describe the structure of both internal and
+leaf nodes of a B*-tree.
+
+17.7. How does a B-tree differ from a B*-tree? Why is a B*-tree usually preferred
+as an access structure to a data file?
+
+647

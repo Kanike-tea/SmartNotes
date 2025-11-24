@@ -1,0 +1,49 @@
+20.6 Transaction Support in SQL 775
+
+Table 20.1 Possible Violations Based on Isolation Levels as Defined in SQL
+
+Type of Violation
+Isolation Level Dirty Read Nonrepeatable Read Phantom
+READ UNCOMMITTED Yes: Yes Yes
+READ COMMITTED No Yes Yes
+REPEATABLE READ No No Yes
+SERIALIZABLE No No No
+
+Table 20.1 summarizes the possible violations for the different isolation levels. An
+entry of Yes indicates that a violation is possible and an entry of No indicates that it
+is not possible. READ UNCOMMITTED is the most forgiving, and SERIALIZABLE is the
+most restrictive in that it avoids all three of the problems mentioned above.
+
+A sample SQL transaction might look like the following:
+
+EXEC SQL WHENEVER SQLERROR GOTO UNDO;
+EXEC SQL SET TRANSACTION
+READ WRITE
+DIAGNOSTIC SIZE 5
+ISOLATION LEVEL SERIALIZABLE;
+EXEC SQL INSERT INTO EMPLOYEE (Fname, Lname, Ssn, Dno, Salary)
+VALUES ('Robert', 'Smith', '991004321', 2, 35000);
+EXEC SQL UPDATE EMPLOYEE
+SET Salary = Salary * 1.1 WHERE Dno = 2;
+EXEC SQL COMMIT;
+GOTO THE_END;
+UNDO: EXEC SQL ROLLBACK;
+THE_END: ... ;
+
+The above transaction consists of first inserting a new row in the EMPLOYEE table
+and then updating the salary of all employees who work in department 2. If an error
+occurs on any of the SQL statements, the entire transaction is rolled back. This
+implies that any updated salary (by this transaction) would be restored to its previ-
+ous value and that the newly inserted row would be removed.
+
+As we have seen, SQL provides a number of transaction-oriented features. The
+DBA or database programmers can take advantage of these options to try improv-
+ing transaction performance by relaxing serializability if that is acceptable for
+their applications.
+
+Snapshot Isolation. Another isolation level, known as snapshot isolation, is
+used in some commercial DBMSs, and some concurrency control protocols exist
+that are based on this concept. The basic definition of snapshot isolation is that a
+transaction sees the data items that it reads based on the committed values of the
+items in the database snapshot (or database state) when the transaction starts. Snap-
+shot isolation will ensure that the phantom record problem does not occur, since

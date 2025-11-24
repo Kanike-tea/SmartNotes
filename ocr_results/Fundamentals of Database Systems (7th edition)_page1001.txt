@@ -1,0 +1,53 @@
+26.1 Active Database Concepts and Triggers
+
+R1S: CREATE RULE Total_sal1 ON EMPLOYEE
+WHEN INSERTED
+
+IF EXISTS ( SELECT + FROM INSERTED WHERE Dno IS NOT NULL)
+THEN UPDATE DEPARTMENT AS D
+SET D.Total_sal = D.Total_sal +
+
+( SELECT SUM (I.Salary) FROM INSERTED AS | WHERE D.Dno = 1.Dno )
+WHERE D.Dno IN ( SELECT Dno FROM INSERTED );
+
+R2S: CREATE RULE Total_sal2 ON EMPLOYEE
+WHEN UPDATED ( Salary)
+IF EXISTS (SELECT » FROM NEW-UPDATED WHERE Dno IS NOT NULL)
+OR EXISTS ( SELECT » FROM OLD-UPDATED WHERE Dno IS NOT NULL)
+THEN UPDATE DEPARTMENT AS D
+SET D.Total_sal = D.Total_sal +
+( SELECT SUM (N.Salary) FROM NEW-UPDATED AS N
+WHERE D.Dno = N.Dno ) -
+( SELECT SUM (O.Salary) FROM OLD-UPDATED AS O
+WHERE D.Dno = O.Dno )
+WHERE D.Dno IN ( SELECT Dno FROM NEW-UPDATED ) OR
+D.Dno IN ( SELECT Dno FROM OLD-UPDATED);
+
+R3S: CREATE RULE Total_sal3 ON EMPLOYEE
+WHEN UPDATED (Dno)
+THEN UPDATE DEPARTMENT AS D
+SET D.Total_sal = D.Total_sal +
+( SELECT SUM (N.Salary) FROM NEW-UPDATED AS N
+WHERE D.Dno = N.Dno )
+
+WHERE D.Dno IN (SELECT Dno FROM NEW-UPDATED );
+UPDATE DEPARTMENT AS D
+SET D.Total_sal = Total_sal —
+
+( SELECT SUM (O.Salary) FROM OLD-UPDATED AS O
+WHERE D.Dno = O.Dno )
+WHERE D.Dno IN ( SELECT Dno FROM OLD-UPDATED );
+
+Figure 26.5
+Active rules using statement-level semantics in STARBURST notation.
+
+tuples before they were updated, and the updated tuples after they were updated,
+respectively. Obviously, depending on the triggering events, only some of these
+transition tables may be available. The rule writer can refer to these tables when
+writing the condition and action parts of the rule. Transition tables contain tuples
+of the same type as those in the relation specified in the ON clause of the rule—for
+R1S, R2S, and R38, this is the EMPLOYEE relation.
+
+In statement-level semantics, the rule designer can only refer to the transition tables
+as a whole and the rule is triggered only once, so the rules must be written differ-
+ently than for row-level semantics. Because multiple employee tuples may be

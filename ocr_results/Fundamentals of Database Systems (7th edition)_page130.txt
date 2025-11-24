@@ -1,0 +1,53 @@
+100 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Figure 3.23
+
+Part of an ER diagram
+for a COMPANY
+database.
+
+EMPLOYEE DEPARTMENT
+
+CONTAINS.
+
+PHONE
+
+3.24.
+
+3.25.
+
+e. List concisely the user requirements that led to this ER schema design.
+
+f. Suppose that every customer must have at least one account but is
+restricted to at most two loans at a time, and that a bank branch cannot
+have more than 1,000 loans. How does this show up on the (min, max)
+constraints?
+
+Consider the ER diagram in Figure 3.23. Assume that an employee may
+work in up to two departments or may not be assigned to any department.
+Assume that each department must have one and may have up to three
+phone numbers. Supply (min, max) constraints on this diagram. State clearly
+any additional assumptions you make. Under what conditions would the
+relationship HAS_PHONE be redundant in this example?
+
+Consider the ER diagram in Figure 3.24. Assume that a course may or may
+not use a textbook, but that a text by definition is a book that is used in some
+course. A course may not use more than five books. Instructors teach from
+two to four courses. Supply (min, max) constraints on this diagram. State
+clearly any additional assumptions you make. If we add the relationship
+ADOPTS, to indicate the textbook(s) that an instructor uses for a course,
+should it be a binary relationship between INSTRUCTOR and TEXT, or a
+ternary relationship among all three entity types? What (min, max) con-
+straints would you put on the relationship? Why?
+
+Figure 3.24
+
+Part of an ER diagram
+for a COURSES
+database.
+
+INSTRUCTOR COURSE
+
+USES
+
+TEXT

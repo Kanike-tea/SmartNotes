@@ -1,0 +1,41 @@
+852 Chapter 23 Distributed Database Concepts
+(a) EMPD_5 Figure 23.2
+Fname | Minit | Lname Sen Salary | Superssn | Dno Allocation of fragments to
+John B Smith 123456789 | 30000 | 333445555 5 sites. @) coon omens
+Franklin T Wong 333445555 | 40000 | 888665555 5 department 5. (b) Relation
+Ramesh | K | Narayan | 666884444 | 38000 | 333445555 | 5 fragments at site 3
+Joyce A | English | 453453453 | 25000 | 333445565 | 5 corresponding to
+department 4.
+DEP_5 DEP_5 LOCS
+Dname | Dnumber | Mgr_ssn | Mgr_start_date Dnumber | Location
+Research 5 333445555 1988-05-22 5 Bellaire
+5 Sugarland
+5 Houston
+WORKS _ON.5 PROS 5
+Essn | Pno | Hours Pname | Pnumber | Plocation | Drum
+123456789 1 32.5 Product X 1 Bellaire 5
+123456789 2 75 Product Y 2 Sugarland 5
+666884444 3 40.0 Product Z 3 Houston 5
+453453453 1 20.0
+453453453 2 20.0
+333445555 2 10.0
+333445555 3 10.0
+333445555 10 10.0
+333445555 20 10.0 Data at site 2
+(bo) EMPD_4
+Fname | Minit | Lname | San | Salary | Superssn | Dno
+Alicia J Zelaya 999887777 | 25000 | 987654321 4
+Jennifer Ss Wallace | 987654321 | 43000 | 888665555. 4
+Ahmad Vv Jabbar 987987987 | 25000 | 987654321 4
+DEP_4 DEP_4_LOcs
+Dname | Dnumber |Mgrssn | Mgr_start_date Dnumber | Location
+Administration 4 987654321 1995-01-01 4 Stafford
+WORKS _ON_4 PROJS 4
+Essn___| Pno | Hours Pname Pnumber_| Plocation | Dnum
+333445555 10 10.0 Computerization 10 Stafford 4
+999887777 30 30.0 New_benefits 30 Stafford 4
+999887777 10 10.0
+987987987 10 35.0
+987987987 30 5.0
+987654321 30 20.0
+987654321 20 15.0 Data at site 3

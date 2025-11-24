@@ -1,0 +1,24 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Precedence of the operators
+The first problem with understanding the meaning of expressions and statements is
+
+finding out the order in which the operations are performed.
+Example: assume that a =4, b =c =2, d =e =3 in below expression
+
+X=a/b-c+d*e-a*c
+
+((4/2)-2) + (3*3)-(4#2) (A/ (2-2 +3) *(3-4)*2
+=049-8 OR = (4/3) * (-1) * 2
+=I = -2.66666
+
+The first answer is picked most because division is carried out before subtraction, and
+multiplication before addition. If we wanted the second answer, write expression
+differently using parentheses to change the order of evaluation
+
+X= ((a/(b-c+d))*(e-a)*e
+In C, there is a precedence hierarchy that determines.the order in which operators are
+
+evaluated. Below figure contains the precedence hierarchy for C.
+
+vtucode.in 44

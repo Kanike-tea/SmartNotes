@@ -1,0 +1,42 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+To represent a numRows x numCols matrix with numTerms nonzero terms, then we need
+
+max {numRows, numCols} + numTerms + 1 node. While each node may require several words
+
+of memory, the total storage will be less than numRows x numCols when numTerms is
+
+sufficiently small.
+
+There are two different types of nodes in representation, so unions are used to create the
+
+appropriate data structure. The C declarations are as follows:
+
+#define
+typedef
+typedef
+typedef
+
+typedef
+
+MAX—SIZE 50 /*size of largest matrix*/
+enum (head,entry} tagfield;
+struct matrixNode *matrixPointer;
+struct {
+int row;
+int col;
+int value;
+} entryNode;
+struct {
+matrixPointer down;
+matrixPointer right;
+tagfield tag;
+union 4
+matrixPointer next;
+entryNode entry;
+} ou;
+} matrixNode;
+
+matrixPointer hdnode[MAX—SIZE];
+
+vtucode.in

@@ -1,0 +1,21 @@
+652
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+and Narang (1992) discuss index creation. The performance of various B-tree and
+Bt-tree algorithms is assessed in Baeza-Yates and Larson (1989) and Johnson and
+Shasha (1993). Buffer management for indexes is discussed in Chan et al. (1992).
+Column-based storage of databases was proposed by Stonebraker et al. (2005) in
+the C-Store database system; MonetDB/X100 by Boncz et al. (2008) is another
+implementation of the idea. Abadi et al. (2008) discuss the advantages of column
+stores over row-stored databases for read-only database applications.
+
+Physical Database Design: Wiederhold (1987) covers issues related to physical
+design. O’Neil and O’Neil (2001) provides a detailed discussion of physical design
+and transaction issues in reference to commercial RDBMSs. Navathe and Kersch-
+berg (1986) discuss all phases of database design and point out the role of data dic-
+tionaries. Rozen and Shasha (1991) and Carlis and March (1984) present different
+models for the problem of physical database design. Shasha and Bonnet (2002) offer
+an elaborate discussion of guidelines for database tuning. Niemiec (2008) is one
+among several books available for Oracle database administration and tuning;
+Schneider (2006) is focused on designing and tuning MySQL databases.

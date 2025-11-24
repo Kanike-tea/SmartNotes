@@ -1,0 +1,45 @@
+512 Chapter 14 Memory Management Units
+
+30.28 26 24 22 20 18 16 14 12 10 8 6 4
+
+wv
+
+1D15}D14]D13]D12)D11 |D10} D9 | D8 | D7 | D6} D5 | D4] D3 | D2] D1] Do
+
+Figure 14.12 Format of the domain access control register CP15:c3.
+
+Table 14.6 Access permission and control bits.
+
+Privileged mode User mode AP bit field System bit Rom bit
+Read and write read and write u ignored ignored
+Read and write read only 10 ignored ignored
+Read and write no access 01 ignored ignored
+No access no access 00. 0 0
+Read only read only 00 0 1
+Read only no access 00 1 0
+Unpredictable unpredictable 00 1 1
+
+PAGE-TABLE-BASED ACCESS PERMISSIONS
+
+The AP bits in a PTE determine the access permission for a page. The AP bits are shown in
+Figures 14.6 and 14.8. Table 14.6 shows how the MMU interprets the two bits in the AP bit
+field.
+
+In addition to the AP bits located in the PTE, there are two bits in the CP15:cl control
+register that act globally to modify access permission to memory: the system (S) bit and the
+rom (R) bit. These bits can be used to reveal large blocks of memory from the system at
+different times during operation.
+
+Setting the $ bit changes all pages with “no access” permission to allow read access for
+privileged mode tasks. Thus, by changing a single bit in CP15:cl, all areas marked as no
+access are instantly available without the cost of changing every AP bit field in every PTE.
+
+Changing the R bit changes all pages with “no access” permission to allow read access
+for both privileged and user mode tasks. Again, this bit can speed access to large blocks of
+memory without needing to change lots of PTEs.
+
+14.7 THE CACHES AND WRITE BUFFER
+
+We presented the basic operation of caches and write buffers in Chapter 12. You configure
+the caches and write buffer for each page in memory using two bits in a PTE (see Figures 14.6
+and 14.8). When configuring a page of instructions, the write buffer bit is ignored and the

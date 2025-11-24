@@ -1,0 +1,50 @@
+14.2 How Virtual Memory Works 497
+
+include a list of page tables. The page tables for a region will always be derived from
+sequential page table entries in the master L1 page table. However, the locations of the L2
+page tables in physical memory do not need to be located sequentially. Page table levels are
+explained more fully in Section 14.4.
+
+14.2.2) MULTITASKING AND THE MMU
+
+Page tables can reside in memory and not be mapped to MMU hardware. One way to build
+a multitasking system is to create separate sets of page tables, each mapping a unique virtual
+memory space for a task. To activate a task, the set of page tables for the specific task and
+its virtual memory space are mapped into use by the MMU. The other sets of inactive page
+tables represent dormant tasks. This approach allows all tasks to remain resident in physical
+memory and still be available immediately when a context switch occurs to activate it.
+
+By activating different page tables during a context switch, it is possible to execute
+multiple tasks with overlapping virtual addresses. The MMU can relocate the execution
+address of a task without the need to move it in physical memory. The task’s physical
+memory is simply mapped into virtual memory by activating and deactivating page tables.
+Figure 14.4 shows three views of three tasks with their own sets of page tables running at a
+common execution virtual address of 0x0400000.
+
+In the first view, Task 1 is running, and Task 2 and Task 3 are dormant. In the second
+view, Task 2 is running, and Task 1 and Task 3 are dormant. In the third view, Task 3 is
+running, and Task | and Task 2 are dormant. The virtual memory in each of the three views
+represents memory as seen by the running task. The view of physical memory is the same
+in all views because it represents the actual state of real physical memory.
+
+The figure also shows active and dormant page tables where only the running task
+has an active set of page tables. The page tables for the dormant tasks remain resident in
+privileged physical memory and are simply not accessible to the running task. The result is
+that dormant tasks are fully protected from the active task because there is no mapping to
+the dormant tasks from virtual memory.
+
+When the page tables are activated or deactivated, the virtual-to-physical address map-
+pings change. Thus, accessing an address in virtual memory may suddenly translate to a
+different address in physical memory after the activation of a page table. As mentioned in
+Chapter 12, the ARM processor cores have a logical cache and store cached data in virtual
+memory. When this translation occurs, the caches will likely contain invalid virtual data
+from the old page table mapping. To ensure memory coherency, the caches may need
+cleaning and flushing. The TLB may also need flushing because it will have cached old
+translation data.
+
+The effect of cleaning and flushing the caches and the TLB will slow system operation.
+However, cleaning and flushing stale code or data from cache and stale translated physical
+addresses from the TLB keep the system from using invalid data and breaking.
+
+During a context switch, page table data is not moved in physical memory; only pointers
+to the locations of the page tables change.

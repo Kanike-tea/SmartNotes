@@ -1,0 +1,42 @@
+978 Chapter 26 Enhanced Data Models
+
+information that is valid (in the real world) only during the time period [V.Vst,
+V.Vet], whereas in EMPLOYEE each tuple represents only the current state or current
+version of each employee. In EMP_VT, the current version of each employee typi-
+cally has a special value, now, as its valid end time. This special value, now, is a
+temporal variable that implicitly represents the current time as time progresses.
+The nontemporal EMPLOYEE relation would only include those tuples from the
+EMP_VT relation whose Vet is now.
+
+Figure 26.8 shows a few tuple versions in the valid-time relations EMP_VT and
+DEPT_VT. There are two versions of Smith, three versions of Wong, one version of
+Brown, and one version of Narayan. We can now see how a valid time relation
+should behave when information is changed. Whenever one or more attributes of
+an employee are updated, rather than actually overwriting the old values, as would
+happen in a nontemporal relation, the system should create a new version and close
+the current version by changing its Vet to the end time. Hence, when the user issued
+the command to update the salary of Smith effective on June 1, 2003, to $30000, the
+second version of Smith was created (see Figure 26.8). At the time of this update,
+the first version of Smith was the current version, with now as its Vet, but after the
+update now was changed to May 31, 2003 (one less than June 1, 2003, in day granu-
+larity), to indicate that the version has become a closed or history version and that
+the new (second) version of Smith is now the current one.
+
+It is important to note that in a valid time relation, the user must generally provide
+the valid time of an update. For example, the salary update of Smith may have been
+
+Figure 26.8
+Some tuple versions in the valid time relations EMP_VT and DEPT_VT.
+EMP_VT
+Name Ssn Salary | Dno | Supervisor_ssn Vst Vet
+Smith 123456789 25000 5 333445555 2002-06-15 | 2003-05-31
+Smith 123456789 30000 5 333445555 2003-06-01 Now
+Wong 333445555, 25000 4 999887777 1999-08-20 | 2001-01-31
+Wong 333445555 | 30000 5 999887777 2001-02-01 2002-03-31
+Wong 333445555 | 40000 5 888665555 2002-04-01 Now
+Brown 222447777 28000 4 999887777 2001-05-01 2002-08-10
+Narayan | 666884444 | 38000 5 333445555 2003-08-01 Now
+DEPT_VT
+Dname Dno ] Manager_ssn Vst Vet
+Research 5 888665555 2001-09-20 | 2002-03-31
+Research 5 333445555 2002-04-01 Now

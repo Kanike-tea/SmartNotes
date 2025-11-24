@@ -1,0 +1,24 @@
+b)
+
+Another important matrix used in the representation and study of digraphs is
+the adjacency matrix defined as follows : Let G be a digraph with n vertices,
+
+containing no parallel edges. Then the adjacency matrix X = [xj] of the digraph
+Gis ann by n (0, 1)-matrix whose element
+
+if there is an edge directed from ith vertex to jth vertex,
+otherwise.
+
+A digraph and its adjacency matrix are shown in Fig. 9-19.
+
+The adjacency matrix occurs in many different disciplines, and therefore has
+different names. In the theory of sequential machines it is called the transition
+matrix. In the calculus of relations it is called the relation matrix. (Observe that
+the relation matrix defined in Section 9-3 is the same as the adjacency matrix of
+the corresponding digraph.) In network flows it is called the connection matrix.
+It is also known as the precedence matrix or preference matrix in some
+sociological applications. In scheduling and critical-path analysis the adjacency
+matrix is known as the predecessor matrix.
+
+Let us make the following observations on the properties of the adjacency
+matrix X of a digraph G.

@@ -1,0 +1,57 @@
+336
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+machine, or more likely at the application server computer in the middle-tier of a
+three-tier client-server architecture (see Section 2.5.4 and Figure 2.7). In either case,
+the machine where the program is executing is different from the machine on which
+the database server—and the main part of the DBMS software package—is located.
+Although this is suitable for many applications, it is sometimes useful to create
+database program modules—procedures or functions—that are stored and exe-
+cuted by the DBMS at the database server. These are historically known as database
+stored procedures, although they can be functions or procedures. The term used in
+the SQL standard for stored procedures is persistent stored modules because these
+programs are stored persistently by the DBMS, similarly to the persistent data
+stored by the DBMS.
+
+Stored procedures are useful in the following circumstances:
+
+= Ifa database program is needed by several applications, it can be stored at
+the server and invoked by any of the application programs. This reduces
+duplication of effort and improves software modularity.
+
+= Executing a program at the server can reduce data transfer and communica-
+tion cost between the client and server in certain situations.
+
+= These procedures can enhance the modeling power provided by views by
+allowing more complex types of derived data to be made available to the
+database users via the stored procedures. Additionally, they can be used to
+check for complex constraints that are beyond the specification power of
+assertions and triggers.
+
+In general, many commercial DBMSs allow stored procedures and functions to be
+written in a general-purpose programming language. Alternatively, a stored proce-
+dure can be made of simple SQL commands such as retrievals and updates. The
+general form of declaring stored procedures is as follows:
+
+CREATE PROCEDURE <procedure name> (<parameters>)
+<local declarations>
+<procedure body> ;
+
+The parameters and local declarations are optional, and are specified only if needed.
+For declaring a function, a return type is necessary, so the declaration form is:
+
+CREATE FUNCTION <function name> (<parameters>)
+RETURNS <return type>
+
+<local declarations>
+
+<function body> ;
+
+If the procedure (or function) is written in a general-purpose programming language,
+it is typical to specify the language as well as a file name where the program code is
+stored. For example, the following format can be used:
+
+CREATE PROCEDURE <procedure name> (<parameters>)
+LANGUAGE <programming language name>
+EXTERNAL NAME <file path name> ;

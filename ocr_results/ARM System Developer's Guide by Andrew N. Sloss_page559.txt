@@ -1,0 +1,14 @@
+546 Chapter 14 Memory Management Units
+
+An additional special feature in an ARM MMU is the Fast Context Switch Extension.
+The Fast Context Switch Extension improves performance in a multitasking environment
+because it does not require flushing the caches or TLB during a context switch.
+
+A working example ofa small virtual memory system provided in-depth details to set up
+the MMU to support multitasking. The steps in setting up the demonstration are to define
+the regions used in the fixed system software of virtual memory, define the virtual memory
+maps for each task, locate the fixed and task regions into the physical memory map, define
+and locate the page tables within the page table region, define the data structures needed
+to create and manage the regions and page tables, initialize the MMU by using the defined
+region data to create page table entries and write them to the page tables, and establish a
+context switch procedure to transition from one task to the next.

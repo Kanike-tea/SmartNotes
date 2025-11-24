@@ -1,0 +1,52 @@
+260 Chapter 8 Digital Signal Processing
+
+Table 8.1
+
+Multiply accumulate timings by processor.
+
+16- x 16-bit multiply with 32- x 32-bit multiply with
+
+Processor (architecture) 32-bit accumulate (cycles) 64-bit accumulate (cycles)
+ARM7 (ARMv3) ~12 ~44
+
+ARM7TDMI (ARMv4T) 4 7
+
+ARM9TDMI (ARMv4T) 4 7
+
+StrongARM (ARMv4) 2or3 4or5
+
+ARM9E (ARMVvSTE) 1 3
+
+XScale (ARMvSTE) 1 2-4
+
+ARM1136 (ARMv6) 0.5 2 (result top half)
+
+Due to their high data bandwidth and performance requirements, you will often need to
+code DSP algorithms in hand-written assembly. You need fine control of register allocation
+and instruction scheduling to achieve the best performance. We cannot cover implemen-
+tations of all DSP algorithms in this chapter, so we will concentrate on common examples
+and general rules that can be applied to a whole range of DSP algorithms.
+
+Section 8.1 looks at the basic problem of how to represent a signal on the ARM so that
+we can process it. Section 8.2 looks at general rules on writing DSP algorithms for the ARM.
+
+Filtering is probably the most commonly used signal processing operation. It can be
+used to remove noise, to analyze signals, or in signal compression. We look at audio
+filtering in detail in Sections 8.3 and 8.4. Another very common algorithm is the Discrete
+Fourier Transform (DFT), which converts a signal from a time representation to a frequency
+representation or vice versa. We look at the DFT in Section 8.5.
+
+8.1 REPRESENTING A DIGITAL SIGNAL
+
+Before you can process a digital signal, you need to choose a representation of the signal.
+How can you describe a signal using only the integer types available on ARM processors?
+This is an important problem that will affect the design of the DSP software. Throughout
+this chapter we will use the notations x; and x[t] to denote the value of a signal x at time t.
+The first notation is often clearer in equations and formulae. The second notation is used
+in programming examples as it is closer to the C style of array notation.
+
+8.1.1 CHOOSING A REPRESENTATION
+
+In an analogue signal x[t], the index t and the value x are both continuous real variables.
+To convert an analogue signal to a digital signal, we must choose a finite number of
+sampling points t; and a digital representation for the sample values x[{j].

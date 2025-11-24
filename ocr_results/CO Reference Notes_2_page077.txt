@@ -1,0 +1,35 @@
+— constant-value 4( which is used to increment PC content).
+
+Figure 7.1 Singlebus organizotion of the dotopath inside o processor.
+
+An instruction is executed by performing one or more of the following operations:
+1) Transfer a word of data from one register to another or to the ALU.
+2) Perform arithmetic or a logic operation and store the result in a register.
+3) Fetch the contents of a given memory-location and load them into a register.
+4) Store a word of data from a register into a given memory-location.
+¢ Disadvantage: Only one data-word can be transferred over the bus in a clock cycle.
+Solution: Provide multiple internal-paths. Multiple paths allow several data-transfers to take place in
+Parallel.
+
+EXECUTION OF A COMPLETE INSTRUCTION:
+
+Let us now put together the sequence of elementary operations required to execute one instruction.
+Consider the instruction Add (R3), R1 which adds the contents of a memory location pointed to by R3 to
+register R1. Executing this instruction requires the following actions:
+
+1. Fetch the instruction. 2. Fetch the first operand (the contents of the memory location pointed to by
+R3). 3. Perform the addition. 4 .Load the result into RI.
+
+Above indicates the sequence of control steps required to perform these operations for the single-bus
+architecture of Figure 2. Instruction execution proceeds as follows. In step 1, the instruction fetch
+operation is initiated by loading the contents of the PC into the MAR and sending a Read request to the
+memory. The Select signal is set to Select4, which causes the multiplexer MUX to select the constant 4.
+This value is added to the operand at input B, which is the contents of the PC, and the result is stored in
+register Z. The updated value is moved from register Z back into the PC during step 2, while waiting for
+the memory to respond. In step 3, the word fetched from the memory is loaded into the IR. Steps |
+through 3 constitute the instruction fetch phase, which is the same for all instructions. The instruction
+decoding circuit interprets the contents of the IR at the beginning of step 4. This enables the control
+circuitry to activate the control signals for steps 4 through 7, which constitute the execution phase. The
+contents of register R3 are transferred to the MAR in step 4, and a memory read operation is initiated.
+
+Page 78

@@ -1,0 +1,57 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 607
+
+Implementations may terminate early on the value of Rs. For this reason use small or
+constant values for Rs where possible.
+
+The X suffix and multiply subtract versions are useful for packed complex numbers.
+The following examples assume bits [15:00] hold the real part and [31:16] the imaginary
+part.
+
+Examples
+
+SMLABB 0, rl, r2, r0
+SMLABT 0, rl, r2, r0
+SMLAWB 0, rl, r2, r0
+SMLAL 10, rl, r2, 13
+
+r0 += (short)rl * (short) r2
+
+r0 += (short)rl * ((signed) r2>> 16)
+
+r0 += (r1*(short) r2) >> 16
+
+acc += r2*r3, acc is 64 bits [rl:r0]
+SMLALTB r0, rl, r2, 73 ; acc += ((signed)r2>>16)*((short)r3)
+SMLSD 0, rl, r2, rO ; rO += real(ri*r2) in complex maths
+
+SMLADX rO, rl, r2, r0 ; rO += imag(r1*r2) in complex maths
+
+SMMUL.
+SMMLA
+SMMLS
+
+Signed most significant word multiply instructions
+
+1. SMMUL{R}<cond> Rd, Rm, Rs ARMV6
+2. SMMLA{R}<cond> Rd, Rm, Rs, Rn ARMV6
+3. SMMLS{R}<cond> Rd, Rm, Rs, Rn ARMV6
+Action
+
+1. Rd = ((signed)Rm*(signed)Rs + round) >>32
+2. Rd = ((Rn<<32) + (signed)Rm*(signed)Rs + round) >>32
+3. Rd = ((Rn<<32) - (signed)Rm*(signed)Rs + round) >>32
+
+Notes
+
+If you specify the R suffix then round = 27; otherwise, round = 0.
+Rd, Rm, Rs, and Rn must not be pe.
+Implementations may terminate early on the value of Rs.
+
+For 32-bit DSP algorithms these operations have several advantages over using the
+high result register from SMLAL: They often take fewer cycles than SMLAL. They also
+implement rounding, multiply subtract, and don’t require a temporary scratch register
+for the low 32 bits of result.
+
+Example
+
+SMMULR 0, rl, r2 3 r0=rl*r2/2 using Q31 arithmetic

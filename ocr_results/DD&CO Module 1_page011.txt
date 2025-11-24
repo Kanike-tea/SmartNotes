@@ -1,0 +1,41 @@
+Three-Variable K-Map
+
+A three-variable K-map is shown in Fig. 3.3 . There are eight minterms for three binary variables;
+therefore, the map consists of eight squares. Note that the minterms are arranged, not in a binary
+sequence, but in a sequence similar to the Gray code. The characteristic of this sequence is that only one
+bit changes in value from one adjacent column to the next. For example, the square assigned to m5
+corresponds to row | and column 01. When these two numbers are concatenated, they give the binary
+
+number 101 (m5 = xy'z), whose decimal equivalent is 5.
+
+YZ —.
+* 00 Ol 1 10
+7 7m 7
+mo m, m; Mm, Of x'y'z' | x'y'z | x'yz | x'yz"
+7, im 7 7
+ms ms my, ms X41) xy'z’ | xy'z | xyz | xyz’
+—=_—_=
+
+(a) (b)
+
+e Simplify the Boolean function F (x, y, z) = X(2, 3, 4, 5)
+
+yz i '
+* 00 o1 ia 10
+0 1 1
+x41] oa il
+oT
+1 Zz
+xy F=x'y+xy'
+
+e Simplify the Boolean function F (x, y, z) == (3, 4, 6, 7)
+
+Note: xy'z' + xyz! = xz! F=yz+xz'
+
+Four Variable K-Map
+
+The map for Boolean functions of four binary variables (w, x, y, z) is shown in Fig(a) listed the 16
+minterms and the squares assigned to each. In Fig(b), the map is redrawn to show the relationship
+between the squares and the four variables. The rows and columns are numbered in a Gray code
+
+sequence, with only one digit changing value between two adjacent rows or columns. The minterm

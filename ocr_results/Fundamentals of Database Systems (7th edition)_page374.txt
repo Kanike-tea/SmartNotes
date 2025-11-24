@@ -1,0 +1,51 @@
+344
+
+Chapter 11 Web Database Programming Using PHP
+
+they are available on most computer platforms. A PHP interpreter provides a Hyper-
+text Preprocessor, which will execute PHP commands in a text file and create the
+desired HTML file. To access databases, a library of PHP functions needs to be
+included in the PHP interpreter, as we will discuss in Section 11.3. PHP programs
+are executed on the Web server computer. This is in contrast to some scripting lan-
+guages, such as JavaScript, that are executed on the client computer. There are many
+other popular scripting languages that can be used to access databases and create
+dynamic Web pages, such as JavaScript, Ruby, Python, and PERL, to name a few.
+
+This chapter is organized as follows. Section 11.1 gives a simple example to illustrate
+how PHP can be used. Section 11.2 gives a general overview of the PHP language
+and how it is used to program some basic functions for interactive Web pages. Sec-
+tion 11.3 focuses on using PHP to interact with SQL databases through a library of
+functions known as PEAR DB. Section 11.4 lists some of the additional technologies
+associated with Java for Web and database programming (we already discussed
+JDBC and SQLJ in Chapter 10). Finally, Section 11.5 contains a chapter summary.
+
+11.1 A Simple PHP Example
+
+PHP is an open source general-purpose scripting language. The interpreter engine
+for PHP is written in the C programming language so it can be used on nearly all
+types of computers and operating systems. PHP usually comes installed with the
+UNIX operating system. For computer platforms with other operating systems
+such as Windows, Linux, or Mac OS, the PHP interpreter can be downloaded from:
+http://www.php.net. As with other scripting languages, PHP is particularly suited
+for manipulation of text pages, and in particular for manipulating dynamic HTML
+pages at the Web server computer. This is in contrast to JavaScript, which is down-
+loaded with the Web pages to execute on the client computer.
+
+PHP has libraries of functions for accessing databases stored under various types of
+relational database systems such as Oracle, MySQL, SQLServer, and any system
+that supports the ODBC standard (see Chapter 10). Under the three-tier architec-
+ture (see Chapter 2), the DBMS would reside at the bottom-tier database server.
+PHP would run at the middle-tier Web server, where the PHP program commands
+would manipulate the HTML files to create the customized dynamic Web pages.
+The HTML is then sent to the client tier for display and interaction with the user.
+
+Consider the PHP example shown in Figure 11.1(a), which prompts a user to enter
+the first and last name and then prints a welcome message to that user. The line
+numbers are not part of the program code; they are used below for explanation
+purposes only:
+
+1. Suppose that the file containing PHP script in program segment P1 is stored in
+the following Internet location: http://www.myserver.com/example/greeting.php.
+Then ifa user types this address in the browser, the PHP interpreter would start
+interpreting the code and produce the form shown in Figure 11.1(b). We will
+explain how that happens as we go over the lines in code segment P1.

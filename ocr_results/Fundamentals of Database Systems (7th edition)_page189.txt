@@ -1,0 +1,54 @@
+5.2 Relational Model Constraints and Relational Database Schemas
+
+Any such set of attributes SK is called a superkey of the relation schema R. A super-
+key SK specifies a uniqueness constraint that no two distinct tuples in any state r of
+R can have the same value for SK. Every relation has at least one default superkey—
+the set of all its attributes. A superkey can have redundant attributes, however, so a
+more useful concept is that of a key, which has no redundancy. A key k of a relation
+schema R is a superkey of R with the additional property that removing any attri-
+bute A from K leaves a set of attributes K’ that is not a superkey of R any more.
+Hence, a key satisfies two properties:
+
+1. Two distinct tuples in any state of the relation cannot have identical values
+for (all) the attributes in the key. This uniqueness property also applies to a
+superkey.
+
+2. It is a minimal superkey—that is, a superkey from which we cannot remove
+any attributes and still have the uniqueness constraint hold. This minimality
+property is required for a key but is optional for a superkey.
+
+Hence, a key is a superkey but not vice versa. A superkey may be a key (if it is mini-
+mal) or may not be a key (if it is not minimal). Consider the STUDENT relation of
+Figure 5.1. The attribute set {Ssn} is a key of STUDENT because no two student
+tuples can have the same value for Ssn.° Any set of attributes that includes Ssn—for
+example, {Ssn, Name, Age}—is a superkey. However, the superkey {Ssn, Name, Age}
+is not a key of STUDENT because removing Name or Age or both from the set still
+leaves us with a superkey. In general, any superkey formed from a single attribute is
+also a key. A key with multiple attributes must require all its attributes together to
+have the uniqueness property.
+
+The value of a key attribute can be used to identify uniquely each tuple in the rela-
+tion. For example, the Ssn value 305-61-2435 identifies uniquely the tuple corre-
+sponding to Benjamin Bayer in the STUDENT relation. Notice that a set of attributes
+constituting a key is a property of the relation schema; it is a constraint that should
+hold on every valid relation state of the schema. A key is determined from the mean-
+ing of the attributes, and the property is time-invariant: It must continue to hold
+when we insert new tuples in the relation. For example, we cannot and should not
+designate the Name attribute of the STUDENT relation in Figure 5.1 as a key because
+it is possible that two students with identical names will exist at some point in a
+valid state.”
+
+In general, a relation schema may have more than one key. In this case, each of the
+keys is called a candidate key. For example, the CAR relation in Figure 5.4 has two
+candidate keys: License_number and Engine_serial_number. It is common to designate
+one of the candidate keys as the primary key of the relation. This is the candidate
+key whose values are used to identify tuples in the relation. We use the convention
+that the attributes that form the primary key of a relation schema are underlined, as
+shown in Figure 5.4. Notice that when a relation schema has several candidate keys,
+
+®Note that Ssn is also a superkey.
+
+®Names are sometimes used as keys, but then some artifact-such as appending an ordinal number—must
+be used to distinguish between persons with identical names.
+
+159

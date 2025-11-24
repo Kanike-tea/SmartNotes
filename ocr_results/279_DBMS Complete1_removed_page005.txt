@@ -1,0 +1,57 @@
+LECTURE-3: 3 level Architecture of DBMS
+
+Database Basics:
+
+Data Item:
+
+The data item is also called as field in data processing and is the smallest unit of data that has
+meaning to its users.
+
+Eg: “el01”, ’sumit”
+
+Entities and attributes:
+An entity is a thing or object in the real world that is distinguishable from all other objects
+Eg: Bank, employee, student
+
+Attributes are properties are properties of an entity.
+Eg: Empcode, ename, rolno, name
+
+Logical data and physical data :
+Logical data are the data for the table created by user in primary memory.
+Physical data refers to the data stored in the secondary memory.
+
+Schema and sub-schema
+A schema is a logical data base description and is drawn as a chart of the types of data that are used.
+It gives the names of the entities and attributes and specify the relationships between them.
+
+Adatabase schema includes such information as :
+
+Characteristics of data items such as entities and attributes .
+
+Logical structures and relationships among these data items .
+
+Format for storage representation.
+
+Integrity parameters such as physical authorization and back up policies.
+
+Vv
+
+A subschema is derived schema derived from existing schema as per the user requirement. There
+may be more then one subschema create for a single conceptual schema.
+
+Three Level Architecture of DBMS :
+
+External level View View View
+
+Mapping supplied by DBMS
+
+Conceptual
+level
+
+Concentnal view
+
+Mapping supplied by DBMS/OS
+
+Internal level
+
+Internal level

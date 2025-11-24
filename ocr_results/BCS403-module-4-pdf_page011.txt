@@ -1,0 +1,67 @@
+Database Management System [BCS403]
+
+Example: For each project, retrieve the project number, the project name, and the number of
+employees who work on that project.
+
+SELECT Pnumber, Pname, COUNT (*)
+
+FROM PROJECT, WORKS_ON
+
+WHERE Pnumber=Pno
+
+GROUP BY Pnumber, Pname;
+Above query shows how we can use a join condition in conjunction with GROUP BY. In this case,
+the grouping and functions are applied after the joining of the two relations.
+
+HAVING provides a condition on the summary information regarding the group of tuples associated.
+with each value of the grouping attributes. Only the groups that satisfy the condition are retrieved in
+the result of the query.
+
+Example: For each project on which more than two employees work, retrieve the project number,
+the project name, and the number of employees who work on the project.
+
+SELECT Pnumber, Pname, COUNT (*)
+
+FROM PROJECT, WORKS_ON
+
+WHERE Pnumber=Pno
+
+GROUP BY Pnumber, Pname
+
+HAVING COUNT (*)> 2;
+
+fae . ime Pasalipous -— These groups are not selected by
+ProductX 7 123456769 1 32.5 | the HAVING condition of O26.
+ProductX i 463453403| 1 | 200
+
+ProductY 2 123456789 | 2 75
+
+ProductY 2 453453453| 2 | 200
+
+Product 2 333445555| 2 | 100
+
+ProductZ 3 seseesaas| so | 400 | |
+
+ProductZ 3 339445555| 8 | 100 | |
+
+Computerization | _10 ..[ 333445556 10 | 100
+
+Computerization 10 999887777 10 10.0
+
+Computerization | __10 987987987 | 10 | 350
+
+Reorganization 20 333446555 | 20 | 10.0
+
+Reorganization 20 087654321 | 20 | 15.0
+
+Reorganization 20 ge665555| 20 | NULL | |
+
+_Newbenefits 30 87087087 | 30 | 50 | |
+
+Newbenefits 30 987654321 | 30 | 20.0
+
+Newbenefits 30 909887777 | 30 | 300
+
+After applying the WHERE clause but before applying HAVING
+
+https://vtucode.in page 29

@@ -1,0 +1,84 @@
+Relational Algebra:
+
+Basic operations:
+
+1.
+
+akwnD
+
+6.
+
+Selection (o) Selects a subset of rows from relation.
+Projection (z) Selects a subset of columns from relation.
+Cross-product (x) Allows us to combine two relations.
+Set-difference (11) Tuples in relation. 1, but not in relationn. 2.
+Union (U) Tuples in reln. 1 and in reln. 2.
+
+Rename( p) Use new name for the Tables or fields.
+
+Additional operations:
+
+7.
+
+Intersection (9), Join’), Division(+): Not essential, but (very!) useful.
+
+Since each operation returns a relation, operations can be composed! (Algebra is
+
+Projection
+> Deletes
+
+“closed”.)
+
+attributes that are not in projection list.
+
+> Schema of result contains exactly the fields in the projection list, with the same names that
+
+they ha
+
+d in the (only) input relation. ( Unary Operation)
+
+» Projection operator has to eliminate duplicates! (as it returns a relation which is a set)
+o Note: real systems typically don’t do duplicate elimination unless the user explicitly
+
+Tritle( BOOK) =
+
+Selection
+
+asks for it. (Duplicate values may be representing different real world entity or
+relationship).
+Example: Consider the BOOK table:
+
+Acc-No _| Title Author
+
+100 “DBMS” “Silbershatz”
+
+200 “DBMS” “Ramanuj”
+
+300 “COMPILER” | “Silbershatz”
+
+400 “COMPILER” | “Ullman”
+
+500 “OS” “Sudarshan”
+
+600 “DBMS” “Silbershatz”
+Title
+“DBMS”
+“COMPILER”
+
+>» Selects rows that satisfy selection condition.
+
+> No duplicates in result
+
+> Schema of result identical to schema of (only) input relation.
+
+> Result relation can be the input for another relational algebra operation! (Operator
+composition.)
+
+Example: For the example given above:
+OAce-no>300( BOOK) =
+Acc- | Title Author
+No
+
+400 |“COMPILER | “Ullman”
+
+500__| “OS” “Sudarshan”

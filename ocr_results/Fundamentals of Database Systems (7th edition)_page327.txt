@@ -1,0 +1,52 @@
+9.1 Relational Database Design Using ER-to-Relational Mapping 297
+
+Table 9.1 Correspondence between ER and Relational Models
+
+ER MODEL RELATIONAL MODEL
+
+Entity type Entity relation
+
+1:1 or 1:N relationship type Foreign key (or relationship relation)
+MN relationship type Relationship relation and two foreign keys
+n-ary relationship type Relationship relation and n foreign keys
+Simple attribute Attribute
+
+Composite attribute Set of simple component attributes
+Multivalued attribute Relation and foreign key
+
+Value set Domain
+
+Key attribute Primary (or secondary) key
+
+One of the main points to note in a relational schema, in contrast to an ER
+schema, is that relationship types are not represented explicitly; instead, they
+are represented by having two attributes A and B, one a primary key and the
+other a foreign key (over the same domain) included in two relations S and T.
+Two tuples in S and T are related when they have the same value for A and B. By
+using the EQUUOIN operation (or NATURAL JOIN if the two join attributes have
+the same name) over S.A and T.B, we can combine all pairs of related tuples
+from S$ and T and materialize the relationship. When a binary 1:1 or 1:N rela-
+tionship type is involved and the foreign key mapping is used, a single join
+operation is usually needed. When the relationship relation approach is used,
+such as for a binary M:N relationship type, two join operations are needed,
+whereas for n-ary relationship types, n joins are needed to fully materialize the
+relationship instances.
+
+For example, to form a relation that includes the employee name, project name,
+and hours that the employee works on each project, we need to connect
+each EMPLOYEE tuple to the related PROJECT tuples via the WORKS_ON
+relation in Figure 9.2. Hence, we must apply the EQUIUOIN operation to
+the EMPLOYEE and WORKS_ON relations with the join condition
+EMPLOYEE.Ssn = WORKS_ON.Essn, and then apply another EQUUOIN opera-
+tion to the resulting relation and the PROJECT relation with join condition
+WORKS_ON.Pno = PROJECT.Pnumber. In general, when multiple relationships
+need to be traversed, numerous join operations must be specified. The user
+must always be aware of the foreign key attributes in order to use them cor-
+rectly in combining related tuples from two or more relations. This is some-
+times considered to be a drawback of the relational data model, because the
+foreign key/primary key correspondences are not always obvious upon inspec-
+tion of relational schemas. If an EQUIJOIN is performed among attributes of two
+relations that do not represent a foreign key/primary key relationship, the result
+can often be meaningless and may lead to spurious data. For example, the
+reader can try joining the PROJECT and DEPT_LOCATIONS relations on the con-
+dition Dlocation = Plocation and examine the result.

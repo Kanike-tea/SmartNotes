@@ -1,0 +1,52 @@
+804 — Chapter 21 Concurrency Control Techniques
+
+Figure 21.9
+
+Lock operations to
+illustrate a serializable
+schedule.
+
+un Ty Ts
+IX(db)
+IX()
+IX(db)
+1S(db)
+IS(f)
+IS(p;1)
+IX(p41)
+Xr)
+IX(f)
+X (Pia)
+Sl)
+IX(f)
+IX(Po1)
+X(Po11)
+unlock (r5;;)
+unlock(p5;)
+unlock(f,)
+Sth)
+unlock(p, 5)
+unlock(f,)
+unlock(db)
+unlock(r, ;;)
+unlock(p;;)
+unlock(f,)
+unlock(db)
+unlock(r;;)
+unlock(p,;)
+unlock(f,)
+unlock(f,)
+unlock(db)
+
+Figure 21.9 shows a possible serializable schedule for these three transactions.
+Only the lock and unlock operations are shown. The notation <lock_type>(<item>)
+
+is used to display the locking operations in the schedule.
+
+The multiple granularity level protocol is especially suited when processing a
+mix of transactions that include (1) short transactions that access only a few
+items (records or fields) and (2) long transactions that access entire files. In
+this environment, less transaction blocking and less locking overhead are
+incurred by such a protocol when compared to a single-level granularity lock-
+
+ing approach.

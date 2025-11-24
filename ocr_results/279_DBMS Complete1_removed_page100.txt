@@ -1,0 +1,54 @@
+Lecture-34
+Problems due to locking
+
+1) deadlock
+2) starvation
+
+Deadlock:
+
+It is an indefinite wait situation in which a series of transactions wait for each other for unknown
+amount of time, it obeys the following conditions:
+
+Hold & Wait
+
+>No Preemption
+
+> Mutual Exclusion
+
+Circular Wait
+
+Example:
+
+For example, assume a set of transactions {To, Ti, T2, ...,Tn}. To needs a resource X to complete its
+task. Resource X is held by Ti, and T) is waiting for a resource Y, which is held by T2. T2 is waiting
+for resource Z, which is held by To. Thus, all the processes wait for each other to release resources.
+In this situation, none of the processes can finish their task. This situation is known as a deadlock.
+
+Starvation:
+
+It is a situation in which a transaction has locked a database for unfair means & all other
+transactions are in indefinite waiting.
+
+Starvation Deadlock
+Starvation happens if same transaction is A deadlock is a condition in which two or more transaction
+always chosen as victim. is waiting for each other.
+
+It occurs if the waiting scheme for locked/A situation where two or more transactions are unable to
+items in unfair, giving priority to some proceed because each is waiting for one of the other to do
+
+transactions over others. something.
+
+Starvation is also known as lived lock. Deadlock is also known as circular waiting.
+Avoidance: Avoidance:
+
+->switch priorities so that every thread has ->Acquire locks are predefined order.
+
+a chance to have high priority. ->Acquire locks at once before starting.
+
+-> Use FIFO order among competing
+
+request.
+
+It means that transaction goes in a state It is a situation where transactions are waiting for each
+
+where transaction never progress. other.

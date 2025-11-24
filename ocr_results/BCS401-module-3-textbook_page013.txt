@@ -1,0 +1,28 @@
+Step 1
+
+==> (8)
+
+6.4 Heaps and Heapsort 231
+
+Step 2 Step 3 @
+
+FIGURE 6.13
+
+The efficiency of deletion is determined by the number of key comparisons
+needed to “heapify” the tree after the swap has been made and the size of the tree
+is decreased by 1. Since this cannot require more key comparisons than twice the
+heap’s height, the time efficiency of deletion is in O(log n) as well.
+
+Heapsort
+
+Now we can describe heapsort—an interesting sorting algorithm discovered by
+J. W. J. Williams [Wil64]. This is a two-stage algorithm that works as follows.
+
+Stage 1 (heap construction): Construct a heap for a given array.
+Stage 2 (maximum deletions): Apply the root-deletion operation n — 1 times
+to the remaining heap.
+
+As a result, the array elements are eliminated in decreasing order. But since
+under the array implementation of heaps an element being deleted is placed last,
+the resulting array will be exactly the original array sorted in increasing order.
+Heapsort is traced on a specific input in Figure 6.14. (The same input as the one

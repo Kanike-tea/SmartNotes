@@ -1,0 +1,57 @@
+13.8 Summary
+
+document with the root tag “dept4emps”. Then we can write the SQL/XML
+query X3:
+
+X3: SELECT XMLROOT (
+XMLELEMENT (NAME “dept4emps”,
+
+XMLAGG (
+XMLELEMENT (NAME “emp”
+XMLFOREST (Lname, Fname, Salary)
+ORDER BY Lname ) ) )
+
+FROM EMPLOYEE
+WHERE = Dno=4;;
+
+The XMLROOT function creates a single root element, so the XML data would be a
+well-formed document (a tree with a single root). The result of X3 on the data
+shown in Figure 5.6 would be:
+
+<dept4emps>
+
+<emp><Lname>Jabbar</Lname><Fname>Ahmad</Fname><Salary>25000
+</Salary></emp>
+
+<emp><Lname>Wallace</Lname><Fname>Jennifer
+</Fname><Salary>43000</Salary></emp>
+
+<emp><Lname>Zelaya</Lname><Fname>Alicia</Fname><Salary>25000
+</Salary></emp>
+
+</dept4emps>
+
+These examples give a flavor of how the SQL standard has been extended to allow
+users to format query results as XML data.
+
+13.8 Summary
+
+This chapter provided an overview of the XML standard for representing and
+exchanging data over the Internet. First we discussed some of the differences between
+various types of data, classifying three main types: structured, semistructured, and
+unstructured. Structured data is stored in traditional databases. Semistructured data
+mixes data types names and data values, but the data does not all have to follow a
+fixed predefined structure. Unstructured data refers to information displayed on the
+Web, specified via HTML, where information on the types of data items is missing.
+We described the XML standard and its tree-structured (hierarchical) data model,
+and we discussed XML documents and the languages for specifying the structure of
+these documents, namely, XML DTD (Document Type Definition) and XML
+schema. We gave an overview of the various approaches for storing XML docu-
+ments, whether in their native (text) format, in a compressed form, or in relational
+and other types of databases. We gave an overview of the XPath and XQuery lan-
+guages proposed for querying XML data, and we discussed the mapping issues that
+arise when it is necessary to convert data stored in traditional relational databases
+into XML documents. Finally, we discussed SQL/XML, which provides SQL with
+additional functionality to format SQL query results as XML data.
+
+455

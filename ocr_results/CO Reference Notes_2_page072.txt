@@ -1,0 +1,86 @@
+Problem 2:
+
+Convert the following pairs of decimal numbers to 5-bit 2’s-complement numbers, then add them.
+
+State whether or not overflow occurs in each case.
+
+a) 5 and 10 b) 7 and 13
+c)—14 and 11 d) -5 and 7
+e) -3 and -8
+
+Repeat Problem 1.7 for the subtract operation, where the second number of each pair is to be
+subtracted from the first number. State whether or not overflow occurs in each case.
+
+Solution: (a)
+
+(b) To subtract the second number, form its 2's-complement and add it to the first number.
+
+(a) 00101 = (b) 00111 (c) 10010
++ 01010 + 01101 + 01011
+01111 10100 11101
+
+no overflow overflow no overflow
+(d) 11011 (e) 11101 (f) 10110
++ 00111 + 11000 + 10011
+00010 10101 01001
+
+no overflow no overflow overflow
+
+(a) 00101 (6)
+
++ 10110
+
+11011
+
+no overflow
+
+(d) 11011 (e)
+
+Problem 3:
+
+Perform following operations on the 6-bit signed numbers using 2's complement representation
+
++ 11001
+
+10100
+no overflow
+
+00111
++ 10011
+
+11010
+
+no overflow
+
+11101
++ 01000
+
+00101
+
+no overflow
+
+(c) 10010
++ 10101
+
+00111
+
+overflow
+
+(f) 10110
++ 01101
+
+00011
+no overflow
+
+system. Also indicate whether overflow has occurred.
+
+010110 101011 111111
+4001001 +100101 +000111
+011001. 110111. +=: 010101
+4010000 +111001 +4101011
+010110 111110 100001
+—011111 ~—100101 —011101
+111111 000111 011010
+—000111 —111000 —100010
+
+Page 73

@@ -1,0 +1,101 @@
+Data Structures and Applications/BCS304
+
+Module-1
+
+String substr(s, i, j) :=
+
+Tf( (j>0) && (i+j-1)<length(s))
+Return the string containing the characters of s at position i to i+j-1
+Else return NULL
+
+C provides several string functions which we access by including the header file string.h
+Given below is a set of C string functions
+
+char *strcat(char *dest, const char
+*src)
+
+Appends the string pointed to, by src to the end of the
+string pointed to by dest.
+
+char *strncat(char *dest, const char
+*src, size_t n)
+
+Appends the string pointed to, by src to the end of the
+string pointed to, by dest up to n characters long.
+
+int stremp(const char *strl, const
+char *str2)
+
+Compares the string pointed to, by str! to the string
+pointed to bystr2.
+
+int strncmp(const char *strl, const
+char *str2, size_t n)
+
+Compares first n characters
+Returns<0 if strl<str2
+
+0 is strl=str2
+
+>0 if strl>str2
+
+char *strepy(char *dest, const char
+*src)
+
+Copies the string pointed to, by src to dest and return dest
+
+char *strnepy(char *dest, const char
+*src, size_t n)
+
+Copies — ncharacters from
+by src to dest and returns dest
+
+the string pointed to,
+
+size_t strlen(const char *str)
+
+Returns the length of the string str . But not including the
+terminating null character.
+
+char *strchr(const char *str, int c)
+
+Returns pointer to the first occurrence of c in str . Returns
+NULL if not present
+
+char *strrchr(const char *str, int c)
+
+Returns pointer to the last occurrence of c in str . Returns
+NULL if not present
+
+char *strtok(char *str, const char
+*delim)
+
+Returns a token from string str . Tokens are separated
+by delim.
+
+char *strstr(char *str, const char
+*pat)
+
+Returns pointer to start of pat in str
+
+size_t strspn(const char *str, const
+char *spanset)
+
+Scan str for characters in spanset, returns the length of the
+span
+
+size_t strespn(const char *str, const
+char *spanset)
+
+Scans str for character not in spanset, returns the length of
+the span
+
+char *strpbrk(const char *str, const
+char *spanset)
+
+Scan str for characters in spanset, returns pointer to first
+occurrence of a character from spanset
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru
+
+Page 25

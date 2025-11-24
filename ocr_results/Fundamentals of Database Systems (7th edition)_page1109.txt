@@ -1,0 +1,46 @@
+28.2 Association Rules 1079
+
+NULL
+Milk: 3 Bread: 1
+Item Support | Link > 4 {
+Milk 3 Bread: 1 Juice: 1 Cookies: 1
+Bread 2 | A ry
+Cookies 2 ' '
+Juice 2 Cookies: 1. |--------- focccccece ene ean et
+Juice: 1 |--------- :
+
+Figure 28.2
+FP-tree and item
+header table.
+
+insert cookies as a child of this node and initialize its count. After the item header
+table is updated, we end up with the FP-tree and item header table as shown in Fig-
+ure 28.2. If we examine this FP-tree, we see that it indeed represents the original
+transactions in a compressed format (that is, only showing the items from each
+transaction that are large 1-itemsets).
+
+Algorithm 28.2 is used for mining the FP-tree for frequent patterns. With the FP-
+tree, it is possible to find all frequent patterns that contain a given frequent item by
+starting from the item header table for that item and traversing the node links in the
+FP-tree. The algorithm starts with a frequent 1-itemset (suffix pattern) and con-
+structs its conditional pattern base and then its conditional FP-tree. The condi-
+tional pattern base is made up of a set of prefix paths, that is, where the frequent
+item is a suffix. For example, if we consider the item juice, we see from Figure 28.2
+that there are two paths in the FP-tree that end with juice: (milk, bread, cookies,
+juice) and (milk, juice). The two associated prefix paths are (milk, bread, cookies)
+and (milk). The conditional FP-tree is constructed from the patterns in the condi-
+tional pattern base. The mining is recursively performed on this FP-tree. The fre-
+quent patterns are formed by concatenating the suffix pattern with the frequent
+patterns produced from a conditional FP-tree.
+
+Algorithm 28.2. FP-Growth Algorithm for Finding Frequent Itemsets
+Input: FP-tree and a minimum support, mins
+
+Output: frequent patterns (itemsets)
+procedure FP-growth (tree, alpha);
+
+Begin
+if tree contains a single path P then
+for each combination, beta, of the nodes in the path
+generate pattern (beta U alpha)
+with support = minimum support of nodes in beta

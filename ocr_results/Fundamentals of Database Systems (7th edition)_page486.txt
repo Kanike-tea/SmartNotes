@@ -1,0 +1,76 @@
+456
+
+Chapter 13. XML: Extensible Markup Language
+
+Review Questions
+
+13.1.
+
+13.2.
+
+13.3.
+13.4.
+
+13.5.
+
+13.6.
+
+What are the differences between structured, semistructured, and unstruc-
+tured data?
+
+Under which of the categories mentioned in Question 13.1 do XML docu-
+ments fall? What about self-describing data?
+
+What are the differences between the use of tags in XML versus HTML?
+
+What is the difference between data-centric and document-centric XML
+documents?
+
+What is the difference between attributes and elements in XML? List some
+of the important attributes used to specify elements in XML schema.
+
+What is the difference between XML schema and XML DTD?
+
+Exercises
+
+13.7.
+
+13.8.
+
+13.9.
+
+13.10.
+
+Create part of an XML instance document to correspond to the data stored
+in the relational database shown in Figure 5.6 such that the XML document
+conforms to the XML schema document in Figure 13.5.
+
+Create XML schema documents and XML DTDs to correspond to the hier-
+archies shown in Figures 13.14 and 13.15(c).
+
+Consider the LIBRARY relational database schema in Figure 6.6. Create an
+XML schema document that corresponds to this database schema.
+
+Specify the following views as queries in XQuery on the company XML
+
+schema shown in Figure 13.5.
+
+a. A view that has the department name, manager name, and manager salary
+for every department
+
+b. A view that has the employee name, supervisor name, and employee salary
+for each employee who works in the Research department
+
+c. A view that has the project name, controlling department name, number of
+employees, and total hours worked per week on the project for each project
+
+d. A view that has the project name, controlling department name, number
+of employees, and total hours worked per week on the project for each
+project with more than one employee working on it
+
+Selected Bibliography
+
+There are so many articles and books on various aspects of XML that it would be
+impossible to make even a modest list. We will mention one book: Chaudhri,
+Rashid, and Zicari, editors (2003). This book discusses various aspects of XML and
+contains a list of references to XML research and practice.

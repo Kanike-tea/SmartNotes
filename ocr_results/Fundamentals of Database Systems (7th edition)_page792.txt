@@ -1,0 +1,53 @@
+762
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+In a recoverable schedule, no committed transaction ever needs to be rolled back,
+and so the definition of a committed transaction as durable is not violated. How-
+ever, it is possible for a phenomenon known as cascading rollback (or cascading
+abort) to occur in some recoverable schedules, where an uncommitted transaction
+has to be rolled back because it read an item from a transaction that failed. This is
+illustrated in schedule S,, where transaction T has to be rolled back because it read
+item X from T), and T; then aborted.
+
+Because cascading rollback can be time-consuming—since numerous transactions
+can be rolled back (see Chapter 22)—it is important to characterize the schedules
+where this phenomenon is guaranteed not to occur. A schedule is said to be
+cascadeless, or to avoid cascading rollback, if every transaction in the schedule
+reads only items that were written by committed transactions. In this case, all items
+read will not be discarded because the transactions that wrote them have commit-
+ted, so no cascading rollback will occur. To satisfy this criterion, the r,(X) com-
+mand in schedules $y and S, must be postponed until after T, has committed (or
+aborted), thus delaying T, but ensuring no cascading rollback if T, aborts.
+
+Finally, there is a third, more restrictive type of schedule, called a strict schedule, in
+which transactions can neither read nor write an item X until the last transaction
+that wrote X has committed (or aborted). Strict schedules simplify the recovery
+process. In a strict schedule, the process of undoing a write_item(X) operation of an
+aborted transaction is simply to restore the before image (old_value or BFIM) of
+data item X. This simple procedure always works correctly for strict schedules, but
+it may not work for recoverable or cascadeless schedules. For example, consider
+schedule Sy:
+
+Sp: W(X 5)s wa(X, 8); a5
+
+Suppose that the value of X was originally 9, which is the before image stored in the
+system log along with the w,(X, 5) operation. If T; aborts, as in Sp the recovery pro-
+cedure that restores the before image of an aborted write operation will restore the
+value of X to 9, even though it has already been changed to 8 by transaction T>, thus
+leading to potentially incorrect results. Although schedule Sris cascadeless, it is not
+a strict schedule, since it permits T; to write item X even though the transaction T;
+that last wrote X had not yet committed (or aborted). A strict schedule does not
+have this problem.
+
+It is important to note that any strict schedule is also cascadeless, and any cascade-
+less schedule is also recoverable. Suppose we have i transactions T,, T, ... , T;, and
+their number of operations are nj, 1, ... , n, respectively. If we make a set of all
+possible schedules of these transactions, we can divide the schedules into two dis-
+joint subsets: recoverable and nonrecoverable. The cascadeless schedules will be a
+subset of the recoverable schedules, and the strict schedules will be a subset of the
+cascadeless schedules. Thus, all strict schedules are cascadeless, and all cascadeless
+schedules are recoverable.
+
+Most recovery protocols allow only strict schedules, so that the recovery process
+itself is not complicated (see Chapter 22).

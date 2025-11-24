@@ -1,0 +1,43 @@
+5.1 Mergesort 173
+
+83297154
+
+4oo™N
+
+8329 7154
+
+fom fe
+Ly LV
+We Ae
+
+[38 | [29] [oz [45]
+
+ee AY”
+
+2389 1457
+
+Ne
+
+12345789
+
+FIGURE 5.2 Exampletofimergesort:operation.
+
+How efficient is mergesort? Assuming for simplicity that n is a power of 2, the
+recurrence relation for the number of key comparisons C(n) is
+
+Cn) = 2C(0/2) + Crrerge(n) forn >1, CA) =0.
+
+Let us analyze C,,,.9¢(), the number of key comparisons performed during the
+merging stage. At each step, exactly one comparison is made, after which the total
+number of elements in the two arrays still needing to be processed is reduced
+by 1. In the worst case, neither of the two arrays becomes empty before the
+other one contains just one element (e.g., smaller elements may come from the
+alternating arrays). Therefore, for the worst case, Cyerge(n) =n — 1, and we have
+the recurrence
+
+Cworst(M) = Wyorsi(2/2) +n -— 1 forn>1, CyorseA) =
+
+Hence, according to the Master Theorem, C,,,,5,(”) € O(n log n) (why?). In fact,
+it is easy to find the exact solution to the worst-case recurrence for n = 2*:
+
+Cyorsi(t) =n loggn—n +1.

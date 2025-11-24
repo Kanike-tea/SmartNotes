@@ -1,0 +1,53 @@
+12.2 Object Database Extensions to SQL
+
+similar to the type constructors discussed in Section 12.1.3. In the initial specifica-
+tion of SQL/Object, only the ARRAY type was specified, since it can be used to simu-
+late the other types, but the three additional collection types were included in a
+later version of the SQL standard. In Figure 12.4(b), the PHONES attribute of
+PERSON_TYPE has as its type an array whose elements are of the previously defined
+UDT USA_PHONE_TYPE. This array has a maximum of four elements, meaning
+that we can store up to four phone numbers per person. An array can also have no
+maximum number of elements if desired.
+
+An array type can have its elements referenced using the common notation of
+square brackets. For example, PHONES[1] refers to the first location value in a
+PHONES attribute (see Figure 12.4(b)). A built-in function CARDINALITY can return
+the current number of elements in an array (or any other collection type). For
+example, PHONES[CARDINALITY (PHONES) refers to the last element in the array.
+
+The commonly used dot notation is used to refer to components of a ROW TYPE or
+a UDT. For example, ADDR.CITY refers to the CITY component of an ADDR attribute
+(see Figure 12.4(b)).
+
+12.2.2 Object Identifiers Using Reference Types
+
+Unique system-generated object identifiers can be created via the reference type
+using the keyword REF. For example, in Figure 12.4(b), the phrase:
+
+REF IS SYSTEM GENERATED
+
+indicates that whenever a new PERSON_TYPE object is created, the system will
+assign it a unique system-generated identifier. It is also possible not to have a system-
+generated object identifier and use the traditional keys of the basic relational model
+if desired.
+
+In general, the user can specify that system-generated object identifiers for the indi-
+vidual rows in a table should be created. By using the syntax:
+
+REF IS <OID_ATTRIBUTE> <VALUE_GENERATION_METHOD> ;
+
+the user declares that the attribute named <OID_ATTRIBUTE> will be used to identify
+individual tuples in the table. The options for <VALUE_GENERATION_METHOD>
+are SYSTEM GENERATED or DERIVED. In the former case, the system will
+automatically generate a unique identifier for each tuple. In the latter case, the
+traditional method of using the user-provided primary key value to identify
+tuples is applied.
+
+12.2.3 Creating Tables Based on the UDTs
+
+For each UDT that is specified to be instantiable via the phrase INSTANTIABLE (see
+Figure 12.4(b)), one or more tables may be created. This is illustrated in Fig-
+ure 12.4(d), where we create a table PERSON based on the PERSON_TYPE UDT. Notice
+that the UDTs in Figure 12.4(a) are noninstantiable and hence can only be used as
+
+383

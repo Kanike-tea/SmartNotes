@@ -1,0 +1,46 @@
+588 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.8 LDR datatypes.
+
+Load Datatype <size> (bytes) Action
+LOR word 4 Rd = memory(a, 4)
+LDRB unsigned Byte 1 Rd = (zero-extend)memory(a, 1)
+LDRBT Byte Translated 1 Rd = (zero-extend)memoryT(a, 1)
+LDRD Double word 8 Rd = memory(a, 4)
+
+R(d+1) = memory(at+4, 4)
+LDREX word EXclusive 4 Rd = memoryEx(a, 4)
+LDRH unsigned Halfword 2 Rd = (zero-extend)memory(a, 2)
+LDRSB Signed Byte 1 Rd = (sign-extend)memory(a, 1)
+LDRSH Signed Halfword 2 Rd = (sign-extend)memory(a, 2)
+LDRT word Translated 4 Rd = memoryT(a, 4)
+
+Otherwise the processor remembers that there is an outstanding exclusive access. Exclusivity
+only affects the action of the STREX instruction.
+
+Ifaddress a is not a multiple of <size>, then the load is unaligned. Because the behavior
+of an unaligned load depends on the architecture revision, memory system, and system
+coprocessor (CP15) configuration, it’s best to avoid unaligned loads if possible. Assuming
+that the external memory system does not abort unaligned loads, then the following rules
+usually apply. In the rules, A is bit 1 of system coprocessor register CP15:cl:c0:0, and U
+is bit 22 of CP15:cl:c0:0, introduced in ARMv6. If there is no system coprocessor, then
+A=U=0.
+
+= IfA = 1, then unaligned loads cause an alignment fault data abort exception except
+that word-aligned double-word loads are supported if U = 1.
+
+= IfA =0and U = 1, then unaligned loads are supported for LDR{ | T|H| SH}. Word-
+aligned loads are supported for LDRD. A non-word-aligned LDRD generates an alignment
+fault data abort.
+
+= IfA =Oand U = 0, then LDR and LORT return the value memory(a & ~3, 4) ROR
+((a&3)*8). All other unaligned operations are unpredictable but do not generate an
+alignment fault.
+
+Format 18 generates a pe-relative load accessing the address specified by <label>.
+In other words, it assembles to LDR<cond><type> Rd, [pc, #<offset>] whenever this
+instruction is supported and <offset>=<] abel>-pc is in range.
+
+Format 19 generates an instruction to move the given 32-bit value to the register Rd.
+Usually the instruction is LDR<cond> Rd, [pc, #<offset>], where the 32-bit value is
+stored in a literal pool at address pc+<of fset>.

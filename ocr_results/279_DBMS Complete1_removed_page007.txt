@@ -1,0 +1,46 @@
+Online Users :
+
+These are users who may communicate with the database directly via an online terminal or
+indirectly via a user interface and application program. These users are aware of the database
+system and also know the data manipulation language system.
+
+Application Programmers :
+Professional programmers who are responsible for developing application programs or user
+
+interfaces utilized by the naive and online user falls into this category.
+
+Database Administration :
+A person who has central control over the system is called database administrator .
+The function of DBA are :
+1. Creation and modification of conceptual Schema definition
+Implementation of storage structure and access method.
+Schema and physical organization modifications .
+Granting of authorization for data access.
+Integrity constraints specification.
+Execute immediate recovery procedure in case of failures
+Ensure physical security to database
+
+NAMA YN
+
+Database language :
+
+1) Data definition language (DDL) :
+DDL is used to define database objects .The conceptual schema is specified by a set of
+definitions expressed by this language. It also gives some details about how to implement
+this schema in the physical devices used to store the data. This definition includes all the
+entity sets and their associated attributes and their relationships. The result of DDL
+statements will be a set of tables that are stored in special file called data dictionary.
+
+2) Data Manipulation Language (DML) :
+A DML is a language that enables users to access or manipulate data stored in the database.
+Data manipulation involves retrieval of data from the database, insertion of new data into the
+database and deletion of data or modification of existing data.
+
+There are basically two types of DML:
+e@ Procedural: Which requires a user to specify what data is needed and how to get it.
+e@ Non-Procedural: which requires a user to specify what data is needed with out
+specifying how to get it.
+
+3) Data Control Language (DCL):
+This language enables user to grant authorization and canceling authorization of database
+objects.

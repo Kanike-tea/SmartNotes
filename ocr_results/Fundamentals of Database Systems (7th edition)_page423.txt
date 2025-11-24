@@ -1,0 +1,52 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL
+
+12.3.2 Inheritance in the Object Model of ODMG
+
+In the ODMG object model, two types of inheritance relationships exist: behavior-
+only inheritance and state plus behavior inheritance. Behavior inheritance
+is also known as ISA or interface inheritance and is specified by the colon (:)
+notation.”© Hence, in the ODMG object model, behavior inheritance requires
+the supertype to be an interface, whereas the subtype could be either a class or
+another interface.
+
+The other inheritance relationship, called EXTENDS inheritance, is specified by the
+keyword extends. It is used to inherit both state and behavior strictly among classes,
+so both the supertype and the subtype must be classes. Multiple inheritance via
+extends is not permitted. However, multiple inheritance is allowed for behavior
+inheritance via the colon (:) notation. Hence, an interface may inherit behavior
+from several other interfaces. A class may also inherit behavior from several inter-
+faces via colon (:) notation, in addition to inheriting behavior and state from at
+most one other class via extends. In Section 12.3.4 we will give examples of how these
+
+two inheritance relationships—*:” and extends—may be used.
+
+12.3.3 Built-in Interfaces and Classes in the Object Model
+
+Figure 12.5 shows the built-in interfaces of the object model. All interfaces, such as
+Collection, Date, and Time, inherit the basic Object interface. In the object model,
+there is a distinction between collections, whose state contains multiple objects or
+literals, versus atomic (and structured) objects, whose state is an individual object
+or literal. Collection objects inherit the basic Collection interface shown in Fig-
+ure 12.5(c), which shows the operations for all collection objects. Given a collection
+object O, the O.cardinality() operation returns the number of elements in the collec-
+tion. The operation O.is_empty() returns true if the collection O is empty, and
+returns false otherwise. The operations O.insert_element(E) and O.remove_element(E)
+insert or remove an element E from the collection O. Finally, the operation
+O.contains_element(E) returns true if the collection O includes element E, and
+returns false otherwise. The operation I = O.create_iterator() creates an iterator
+object I for the collection object O, which can iterate over each element in the
+collection. The interface for iterator objects is also shown in Figure 12.5(c). The
+Ireset() operation sets the iterator at the first element in a collection (for an unor-
+dered collection, this would be some arbitrary element), and Lnext_position() sets the
+iterator to the next element. The I.get_element() retrieves the current element,
+which is the element at which the iterator is currently positioned.
+
+The ODMG object model uses exceptions for reporting errors or particular condi-
+tions. For example, the ElementNotFound exception in the Collection interface would be
+raised by the O.remove_element(E) operation if E is not an element in the collection O.
+
+8The ODMG report also calls interface inheritance as type/subtype, is-a, and generalization/specializa-
+tion relationships, although in the literature these terms have been used to describe inheritance of both
+state and operations (see Chapter 8 and Section 12.1).
+
+393

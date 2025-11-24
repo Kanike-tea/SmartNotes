@@ -1,0 +1,45 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees
+
+17.3 Dynamic Multilevel Indexes Using
+B-Trees and B*-Trees
+
+B-trees and B*-trees are special cases of the well-known search data structure
+known as a tree. We briefly introduce the terminology used in discussing tree data
+structures. A tree is formed of nodes. Each node in the tree, except for a special
+node called the root, has one parent node and zero or more child nodes. The root
+node has no parent. A node that does not have any child nodes is called a leaf node;
+a nonleaf node is called an internal node. The level of a node is always one more
+than the level of its parent, with the level of the root node being zero.’ A subtree of
+anode consists of that node and all its descendant nodes—its child nodes, the child
+nodes of its child nodes, and so on. A precise recursive definition of a subtree is that
+it consists of a node n and the subtrees of all the child nodes of n. Figure 17.7 illus-
+trates a tree data structure. In this figure the root node is A, and its child nodes are
+B, C, and D. Nodes E, J, C, G, H, and K are leaf nodes. Since the leaf nodes are at
+different levels of the tree, this tree is called unbalanced.
+
+In Section 17.3.1, we introduce search trees and then discuss B-trees, which can be
+used as dynamic multilevel indexes to guide the search for records in a data file.
+B-tree nodes are kept between 50 and 100 percent full, and pointers to the data
+blocks are stored in both internal nodes and leaf nodes of the B-tree structure. In
+Section 17.3.2 we discuss B*-trees, a variation of B-trees in which pointers to the
+data blocks of a file are stored only in leaf nodes, which can lead to fewer levels and
+
+617
+
+Figure 17.7
+A tree data structure that shows an unbalanced tree.
+
+Subtree for node B
+
+(Nodes E, J, C, G, H, and K are leaf nodes of the tree)
+
+This standard definition of the level of a tree node, which we use throughout Section 173, is different
+from the one we gave for multilevel indexes in Section 17.2.
+
+Root node (level 0)
+
+te Nodes at level 1
+
+Nodes at level 2
+
+CK) Nodes at level 3

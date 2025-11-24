@@ -1,0 +1,53 @@
+Data Structures and Applications (BCS304) Module III
+
+Since each node in a binary tree has a maximum degree of 2, the maximum number of nodes
+on level i is two times the maximum number of nodes on level i-1,
+
+Le Q* Qi2 = gil
+
+Hence Prooved
+
+2. The maximum number of nodes in a binary tree of depth k is 2-1, k> 1.
+The maximum number of nodes in a binary tree of depth k is
+
+k k
+¥ (maximum number of nodes on level i) = Y.2'! = 2-1
+i=l i=l
+
+Lemma 2: [Relation between number of leaf nodes and degree-2 nodes]: For any non empty binary
+tree, T, if nO is the number of leaf nodes and n2 the number of nodes of degree 2, then nO = n2 + 1.
+
+Proof:
+
+Let nl be the number of nodes of degree one and n the total number of nodes. Since all
+nodes in T are at most of degree two, we have
+
+n=n0+n1+n2--------- (dd)
+
+If we count the number of branches in a binary tree, we see that every node except the root has
+a branch leading into it.
+
+If B is the number of branches, then n = B + 1 --------- (2)
+
+All branches stem out from a node of degree one or two.
+
+Thus, B =n1 + 2n2. Hence, we obtain -- (-3)
+
+Sum of the branches that stem out of a node(outdegree) is always equal to the sum of the
+branches that stem into a node(indegree). Therefore Substitutuing eq(3) in eq(2)
+
+n=B+1
+n=nl+2n241 0! (4)
+Subtracting Eq. (4) from Eq. (1) and rearranging terms, we get
+n0=n2+1
+Definition
+
+Full Binary Tree: A full binary tree of depth k is a binary tree of depth k having 2* - 1 nodes, k > 0.
+
+Example
+
+s 9 10 mM) (02) (13) (4 15
+
+Figure 4.6 Full Binary tree of depth 4
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 12

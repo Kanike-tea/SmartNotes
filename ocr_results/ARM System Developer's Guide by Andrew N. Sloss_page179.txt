@@ -1,0 +1,48 @@
+166 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+Figure 6.2
+
+EXAMPLE
+
+Figure 6.3
+
+Pipeline
+Cycle 1
+Cycle 2
+Cycle 3
+
+One-cycle interlock caused by load use.
+
+the second cycle because the load instruction has not yet loaded the value of r1. Therefore the
+pipeline stalls for one cycle while the load instruction completes the LS1 stage. Now that r
+is ready, the processor executes the ADD in the ALU on the third cycle.
+
+Figure 6.2 illustrates how this interlock affects the pipeline. The processor stalls the
+ADD instruction for one cycle in the ALU stage of the pipeline while the load instruction
+completes the LS1 stage. We’ve denoted this stall by an italic ADD. Since the LDR instruction
+proceeds down the pipeline, but the ADD instruction is stalled, a gap opens up between them.
+‘This gap is sometimes called a pipeline bubble. We've marked the bubble with a dash.
+
+This example shows a one-cycle interlock caused by delayed load use.
+
+LORB rl, [r2, #1]
+ADD 0, r0, r2
+EOR 0, v0, rl
+
+This instruction triplet takes four cycles. Although the ADD proceeds on the cycle following
+the load byte, the EOR instruction cannot start on the third cycle. The rl value is not ready
+until the load instruction completes the LS2 stage of the pipeline. The processor stalls the
+EOR instruction for one cycle.
+
+Note that the ADD instruction does not affect the timing at all. The sequence takes four
+cycles whether it is there or not! Figure 6.3 shows how this sequence progresses through the
+processor pipeline. The ADD doesn’t cause any stalls since the ADD does not use rl, the result
+of the load.
+
+Pipeline
+Cyele 1
+Cycle 2
+Cycle 3
+Cycle 4
+
+One-cycle interlock caused by delayed load use.

@@ -1,0 +1,76 @@
+D.5 ARMOE Instruction Cycle Timings 657
+
+Table D.9 ARM9Erev2 (ARMv5TE) instruction cycle timings.
+
+Instruction Class Cycles Notes
+
+ALU Rd not pe 1 +1 ifa register-specified shift is used.
+
+ALU Rdis pe 3 +1 if the operation is logical or any shift is used.
+
+B, BL, BX, BLX 3
+
+CDP 1+B
+
+LDC B+N
+
+LDRB/H/SB/SH 1 Rdis not available for two cycles.
++1 if the load offset is shifted.
+
+LDR Rd not pe 1 Rais not available for one cycle.
++1 if the load offset is shifted.
+
+LDR Rd is pe 5 +1 if the load offset is shifted.
+
+LDRD 2 R(d+1) is not available for one cycle.
+
+LDM not loading pc N +1 if N = 1 or the last loaded register used in the next
+cycle.
+
+LDM loading pe N+4
+
+MCR 1+B
+
+MCRR 24+B
+
+MRC Rd not pe 1+B Ris not available for one cycle.
+
+MRC Rdis pe 4+B
+
+MRRC 2+B Rnis not available for one cycle.
+
+MRS. 2
+
+MSR 1 +2 if any of the csx fields are updated.
+
+MUL, MLA 2 Rdis not available for one cycle, except as an
+accumulator input for a multiply accumulate.
+
+MULS, MLAS 4
+
+xMULL, xMLAL 3 RdHi is not available for one cycle, except as an
+accumulator input for a multiply accumulate.
+
+xMULLS, xMLALS 5
+
+PLD 1
+
+QxADD, QxSUB 1 Rd is not available for one cycle.
+
+SMULxy, SMLAxy, SMULWx, SMLAWx 1 Rd is not available for one cycle, except as an
+accumulator input for a multiply accumulate.
+
+SMLALxy 2 RdHiis not available for one cycle, except as an
+accumulator input for a multiply accumulate.
+
+STC B+N
+
+STR/B/H 1 +1 ifa shifted offset is used.
+
+STRD 2
+
+STM N +1ifN =1.
+
+SWI 3
+
+SWP/B 2 Rdis not available for one cycle.

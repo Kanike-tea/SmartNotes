@@ -1,0 +1,51 @@
+select customer-name
+from Customer
+where customer-street like ““%Main%”
+Set Operations
+¢ union, intersect and except operations are set operations available in SQL.
+¢ Relations participating in any of the set operation must be compatible; i.e. they must have
+the same set of attributes.
+¢ Union Operation:
+o Find all customers having a loan, an account, or both at the bank
+(select customer-name from Depositor )
+union
+(select customer-name from Borrower )
+It will automatically eliminate duplicates.
+o If we want to retain duplicates union all can be used
+(select customer-name from Depositor )
+union all
+(select customer-name from Borrower )
+e Intersect Operation
+o Find all customers who have both an account and a loan at the bank
+(select customer-name from Depositor )
+intersect
+(select customer-name from Borrower )
+o If we want to retail all the duplicates
+(select customer-name from Depositor )
+intersect all
+(select customer-name from Borrower )
+e Except Opeartion
+o Find all customers who have an account but no loan at the bank
+(select customer-name from Depositor )
+except
+(select customer-name from Borrower )
+o If we want to retain the duplicates:
+(select customer-name from Depositor )
+except all
+(select customer-name from Borrower )
+Aggregate Functions
+e Aggregate functions are those functions which take a collection of values as input and return
+a single value.
+¢ SQL offers 5 built in aggregate functions-
+o Average: avg
+Minimum:min
+
+Maximum:max
+Total: sum
+Count:count
+e The input to sum and avg must be a collection of numbers but others may have collections
+of non-numeric data types as input as well
+e Find the average account balance at the Sadar branch
+select avg(balance)
+
+oo00

@@ -1,0 +1,54 @@
+1092
+
+Chapter 28 Data Mining Concepts
+
+which contains values that are results from a series of n tests for one patient. The
+target variable that we wish to predict is P, the probability of survival of the patient.
+Then the rule for regression takes the form:
+
+(test 1 in range) and (test 2 in range.) and ... (test n in range,,) = P =x,
+orx<P<y
+
+The choice depends on whether we can predict a unique value of P or a range of
+values for P. If we regard P as a function:
+
+P=f (test 1, test 2, ..., test n)
+
+the function is called a regression function to predict P. In general, if the function
+appears as
+
+Y=f (Xp Xy Xn)»
+
+and fis linear in the domain variables x;, the process of deriving f from a given set of
+tuples for <Xj, X, ... , X;, y> is called linear regression. Linear regression is a com-
+monly used statistical technique for fitting a set of observations or points in n
+dimensions with the target variable y.
+
+Regression analysis is a very common tool for analysis of data in many research
+domains. The discovery of the function to predict the target variable is equivalent to
+a data mining operation.
+
+28.5.4 Neural Networks
+
+A neural network is a technique derived from artificial intelligence research that
+uses generalized regression and provides an iterative method to carry it out. Neural
+networks use the curve-fitting approach to infer a function from a set of samples.
+This technique provides a learning approach; it is driven by a test sample that is
+used for the initial inference and learning. With this kind of learning method,
+responses to new inputs may be able to be interpolated from the known samples.
+This interpolation, however, depends on the world model (internal representation
+of the problem domain) developed by the learning method.
+
+Neural networks can be broadly classified into two categories: supervised and unsu-
+pervised networks. Adaptive methods that attempt to reduce the output error are
+supervised learning methods, whereas those that develop internal representations
+without sample outputs are called unsupervised learning methods.
+
+Neural networks self-adapt; that is, they learn from information about a specific
+problem. They perform well on classification tasks and are therefore useful in data
+mining. Yet they are not without problems. Although they learn, they do not pro-
+vide a good representation of what they have learned. Their outputs are highly
+quantitative and not easy to understand. As another limitation, the internal repre-
+sentations developed by neural networks are not unique. Also, in general, neural
+networks have trouble modeling time series data. Despite these shortcomings, they
+are popular and frequently used by several commercial vendors.

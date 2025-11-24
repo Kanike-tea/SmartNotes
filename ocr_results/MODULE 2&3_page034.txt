@@ -1,0 +1,98 @@
+Microcontrollers — BCS402
+
+At first sight it looks as though declaring i as a char is efficient. All ARM registers are 32-bit
+
+and all stack entries are at least 32-bit. Furthermore, to implement the i++ exactly, the
+
+compiler must account for the case when i = 255. Any attempt to increment 255 should
+
+produce the answer 0.
+
+Now compare this to the compiler output where instead we declare i as an unsigned int.
+
+short checksum_v3(short *data) | checksum_v2
+
+{ MoV
+unsigned int 1; MOV
+short sum=0; MoV
+
+checksum_v2_loop
+for (1=0; 1<64; i++) LDR
+{ ADD
+sum = (short) (sum + data[i]); cMP
+ADD
+} Bcc
+return sum; MoV
+
+}
+
+r2,r0
+r0,#0
+rl,#0
+
+r3,[r2,rl, SL #2]
+ri,rl, #1
+
+rl, #0x40
+
+ro,r3, rd
+checksum_v2_loop
+pe,rl4
+
+3 72 = data
+3 sum = 0
+31=0
+
+3 73 = datafi]
+
+yo rl++
+
+; compare i, 64
+
+3 sum += 73
+
+3 if (1<64) goto loop
+3 return sum
+
+In the first case, the compiler inserts an extra AND instruction to reduce i to the range 0 to
+
+255 before the comparison with 64. This instruction disappears in the second case.
+
+With armcc this code will produce a warning if you enable implicit narrowing cast warnings
+
+using the compiler switch -W+n. The expression sum + data[i] is an integer and so can only
+
+be assigned to a short using an (implicit or explicit) narrowing cast. The following assembly
+
+output, the compiler must insert extra instructions to implement the narrowing cast:
+
+checksum_v3
+
+MOV r2,rd0 3 72 = data
+
+MOV ro,#0 3; sum = 0
+
+Mov rl,#0 31=0
+checksum_v3_loop
+
+ADD r3,r2,rl,LSb #1 3 73 = &datafi]
+
+LDRH r3, [r3, #0] 3; 73 = data[i]
+
+ADD rl,rl, #1 3 i
+
+cMP rl, #0x40 ; compare i, 64
+
+ADD r0,r3,r0 3; ro = sum + r3
+
+MoV ro,r0,LSL #16
+
+MoV r0,rO,ASR #16 ; sum = (short)ro
+
+Bcc checksum_v3_loop ; if (i<64) goto loop
+
+MoV pe,rl4 ; return sum
+
+Dept. of ECE, GSSSIETW
+
+Page 35

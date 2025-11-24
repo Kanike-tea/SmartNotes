@@ -1,0 +1,52 @@
+818
+
+Chapter 22 Database Recovery Techniques
+
+another transaction needs to update it, thus eliminating the I/O cost to write that
+page multiple times to disk and possibly having to read it again from disk. This may
+provide a substantial saving in the number of disk I/O operations when a specific
+page is updated heavily by multiple transactions.
+
+To permit recovery when in-place updating is used, the appropriate entries required
+for recovery must be permanently recorded in the log on disk before changes are
+applied to the database. For example, consider the following write-ahead logging
+(WAL) protocol for a recovery algorithm that requires both UNDO and REDO:
+
+1. The before image of an item cannot be overwritten by its after image in the
+database on disk until all UNDO-type log entries for the updating transaction—
+up to this point—have been force-written to disk.
+
+2. The commit operation of a transaction cannot be completed until all the
+REDO-type and UNDO-type log records for that transaction have been force-
+written to disk.
+
+To facilitate the recovery process, the DBMS recovery subsystem may need to
+maintain a number of lists related to the transactions being processed in the system.
+These include a list for active transactions that have started but not committed as
+yet, and they may also include lists of all committed and aborted transactions
+since the last checkpoint (see the next section). Maintaining these lists makes the
+recovery process more efficient.
+
+22.1.4 Checkpoints in the System Log
+and Fuzzy Checkpointing
+
+Another type of entry in the log is called a checkpoint.’ A [checkpoint, list of active
+transactions] record is written into the log periodically at that point when the system
+writes out to the database on disk all DBMS buffers that have been modified. As a
+consequence of this, all transactions that have their [commit, T'] entries in the log
+before a [checkpoint] entry do not need to have their WRITE operations redone in
+case of a system crash, since all their updates will be recorded in the database on
+disk during checkpointing. As part of checkpointing, the list of transaction ids for
+active transactions at the time of the checkpoint is included in the checkpoint
+record, so that these transactions can be easily identified during recovery.
+
+The recovery manager of a DBMS must decide at what intervals to take a check-
+point. The interval may be measured in time—say, every m minutes—or in the
+number ¢ of committed transactions since the last checkpoint, where the values of
+mor tare system parameters. Taking a checkpoint consists of the following actions:
+
+1. Suspend execution of transactions temporarily.
+2. Force-write all main memory buffers that have been modified to disk.
+
+The term checkpoint has been used to describe more restrictive situations in some systems, such as
+DB2. It has also been used in the literature to describe entirely different concepts

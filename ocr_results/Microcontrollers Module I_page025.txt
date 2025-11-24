@@ -1,0 +1,46 @@
+Microcontrollers-BCS402
+
+0x8004 NOP
+0x8008 OCD jumpAddress
+
+|
+
+Fetch Decode Execute
+(Loco _}y-+f]_nor_} iit)
+pe+8
+
+(0x8000 + 8)
+
+| 0x8000 LDR pc, [pc,#0]
+
+Fig 9: Example: pe = address + 8.
+Figure 9 illustrates the use of the pipeline and the program counter pc. In the execute stage,
+the pe always points to the address of the instruction plus 8 bytes. In other words, the pce
+always points to the address of the instruction being executed plus two instructions ahead.
+This is important when the pc is used for calculating a relative offset and is an architectural
+characteristic across all the pipelines. Note when the processor is in Thumb state the pe is the
+instruction address plus 4.
+There are three other characteristics of the pipeline.
+First, the execution of a branch instruction or branching by the direct modification of the pe
+causes the ARM core to flush its pipeline.
+Second, ARM10 uses branch prediction, which reduces the effect of a pipeline flush by
+predicting possible branches and loading the new branch address prior to the execution of the
+instruction.
+Third, an instruction in the execute stage will complete even though an interrupt has been
+
+raised.
+
+5. Exceptions, Interrupts, and the Vector Table
+
+When an exception or interrupt occurs, the processor sets the pe to a specific memory
+address. The address is within a special address range called the vector table. The entries in
+the vector table are instructions that branch to specific routines designed to handle a
+particular exception or interrupt.
+
+The memory map address 0x00000000 is reserved for the vector table, a set of 32-bit words.
+On some processors the vector table can be optionally located at a higher address in memory
+(starting at the offset Oxffff0000).
+
+Table 2: The vector table
+
+Dept. of ECE, GSSSIETW Page 26

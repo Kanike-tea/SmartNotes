@@ -1,0 +1,51 @@
+236 Chapter 7 Optimized Primitives
+
+PROOF
+
+7.4
+
+cLz s.q 3 01: choose a shift s to
+cMP rq 3 02: normalize d to the
+movec dy q, LSLs 3 03: range 0.5<=d<1 at Q32
+
+ADDCC ~—q, pc, d, LSR#24 3 04: look up q, a 08
+LORCCB. q, [q, #t15-b31-128] ; 05 : approximation to 1//d
+
+b3l = MOVCC: Sry ry LSL s 3 06 ; normalize numerator
+ADDCC gy q, #256 3 07 : part of table lookup
+3 q is now a Q8, 9-bit estimate to 1//d
+SMULBBCC a, q, q 3 08: a= q*q at Q16
+MOVCS —q, #0x7FFFFFFF 3 09 : overflow case
+UMULLCC s, a, d, a 3 10: a = q*q*d at Q16
+BxCS. Ir 3 11: exit on overflow
+RSB qs a, q, LSL#9 3 12: q = 2*q-q*q*d at Q16
+3 q is now a Q16, 17-bit estimate to 1//d
+UMULL =a, sy qq 313: [s,a] = g*q at Q32
+MOVS a, a, LSR#1 3 14: now halve [s,a] and
+ADC a, a, s, LSL#31 315: round so [N,a]=g*q at
+MOVS s, s, LSL#30 3 16 : Q31, C=0
+UMULL os, a, dy a 317: a= a*d at Q31
+ADDMI a, a, d 3 18 : if (N) at=2*d at Q31
+RSC qs a, q, LSL#16 319 : q = 2*q-q*q*d at Q31
+3 q is now a Q31 estimate to 1/d
+UMULL os, gy rq 3 20 : q approx n//d at Q31
+3 q is now a Q31 estimate to num/den, remainder<3*d
+UMULL = s, a, dy q 3 21: [ays] = d*q at Q62
+RSBS s,s, #0 3 22: [rs] = n-d*q
+RSC r, a, ry LSR#L 3 23: at Q62
+3 [r,s]=(r<<32)+s is now the positive remainder<3*d
+suBs s,s, d 3 24: [r,s] = n-(d+1)*q
+SBCS rr, #0 325: at Q62
+ADDPL q, q, #1 3 26: if ([r,s]>=0) qt
+suBs s,s, d 3 27: [r,s] = [r,s]-d
+SBCS rr, #0 3 28: at Q62
+ADDPL q, q, #1 3 29: if ([r,s]>=0) qt
+BX Ir 3 30: return q
+
+We first check that n < d. If not, then a sequence of conditional instructions occur that
+return the saturated value Ox7fffffff at [11. Otherwise d and n are normalized to Q31
+representations, 25° < d < 23!. 107 sets q to a Q8 representation of x9, the initial
+approximation, as in Section 7.3.3.3.
+
+108, 110, and [12 implement the first Newton-Raphson iteration. [08 sets a to the Q16
+representation of x9. 110 sets a to the Q16 representation of dxj — go, where the rounding

@@ -1,0 +1,45 @@
+Digital Design and Computer Organization(BCS302)
+
+feature not available in other gates. Because of this feature, a large number of three-state
+gate outputs can be connected with wires to form a common line without endangering
+loading effects.
+
+° The construction of multiplexers with three-state buffers is demonstrated in Fig. 4.30
+. Figure 4.30(a) shows the construction of a two-to-one-line multiplexer with 2 three-state
+buffers and an inverter. The two outputs are connected together to form a single output
+line. (Note that this type of connection cannot be made with gates that do not have three-
+state outputs.) When the select input is 0, the upper buffer is enabled by its control input
+and the lower buffer is disabled. Output Y is then equal to input A . When the select input
+is 1, the lower buffer is enabled and Y is equal toB .
+
+A | Y
+
+rn
+
+(a) 2-to-1-line mux
+
+0
+select | 1
+Selec aed
+Y=AS’+BS —]% decoder z
+Enable —] EN
+(@) A 3
+
+(b) 4-to-1-line mux
+
+HDL models of combinational circuits
+
+* The logic of a module can be described in any one (or a combination) of the following
+modeling styles:
+
+¢ Behavioral modeling using procedural assignment statements with the keyword always.
+
+e Gate-level (structural) modeling describes a circuit by specifying its gates and how
+they are connected with each other. Gate-level modeling using instantiations of
+predefined and user-defined primitive gates
+
+¢ Dataflow modeling is used mostly for describing the Boolean equations of
+combinational logic, Dataflow modeling using continuous assignment statements with
+the keyword assign.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 25

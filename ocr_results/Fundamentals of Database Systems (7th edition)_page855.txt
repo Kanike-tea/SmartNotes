@@ -1,0 +1,56 @@
+22.3 Recovery Techniques Based on Immediate Update
+
+strategy for deciding when updated main memory buffers are written back
+to disk (see Section 22.1.3).
+
+2. If the transaction is allowed to commit before all its changes are written to
+the database, we have the most general case, known as the UNDO/REDO
+recovery algorithm. In this case, the steal/no-force strategy is applied (see
+Section 22.1.3). This is also the most complex technique, but the most com-
+monly used in practice. We will outline an UNDO/REDO recovery algorithm
+and leave it as an exercise for the reader to develop the UNDO/NO-REDO
+variation. In Section 22.5, we describe a more practical approach known as
+the ARIES recovery technique.
+
+When concurrent execution is permitted, the recovery process again depends on
+the protocols used for concurrency control. The procedure RIU_M (Recovery using
+Immediate Updates for a Multiuser environment) outlines a recovery algorithm for
+concurrent transactions with immediate update (UNDO/REDO recovery). Assume
+that the log includes checkpoints and that the concurrency control protocol
+produces strict schedules—as, for example, the strict two-phase locking protocol
+does. Recall that a strict schedule does not allow a transaction to read or write an
+item unless the transaction that wrote the item has committed. However, deadlocks
+can occur in strict two-phase locking, thus requiring abort and UNDO of transac-
+tions. For a strict schedule, UNDO of an operation requires changing the item back
+to its old value (BFIM).
+
+Procedure RIU_M (UNDO/REDO with checkpoints).
+
+1. Use two lists of transactions maintained by the system: the committed
+transactions since the last checkpoint and the active transactions.
+
+2. Undo all the write_item operations of the active (uncommitted) transac-
+tions, using the UNDO procedure. The operations should be undone in
+the reverse of the order in which they were written into the log.
+
+3. Redo all the write_item operations of the committed transactions from
+the log, in the order in which they were written into the log, using the
+REDO procedure defined earlier.
+
+The UNDO procedure is defined as follows:
+
+Procedure UNDO (WRITE_OP). Undoing a write_item operation write_op consists
+of examining its log entry [write_item, T, X, old_value, new_value] and setting the
+value of item X in the database to old_value, which is the before image (BFIM).
+Undoing a number of write_item operations from one or more transactions from
+the log must proceed in the reverse order from the order in which the operations
+were written in the log.
+
+As we discussed for the NO-UNDO/REDO procedure, step 3 is more efficiently done
+by starting from the end of the log and redoing only the last update of each item X.
+Whenever an item is redone, it is added to a list of redone items and is not redone
+again. A similar procedure can be devised to improve the efficiency of step 2 so
+that an item can be undone at most once during recovery. In this case, the earliest
+UNDO is applied first by scanning the log in the forward direction (starting from
+
+825

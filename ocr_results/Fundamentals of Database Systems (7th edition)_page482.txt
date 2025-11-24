@@ -1,0 +1,56 @@
+452 Chapter 13 XML: Extensible Markup Language
+
+SECTION
+
+CRomber>
+
+1
+Students \
+attended \ Course_number
+Game) ade
+
+Figure 13.14 assy SIUDENT
+Hierarchical (tree)
+
+view with SECTION as
+
+‘the root.
+
+STUDENT element. As we can see, even in this simple example, there can be numer-
+ous hierarchical document views, each corresponding to a different root and a dif-
+ferent XML document structure.
+
+)
+
+Course_name
+
+&)
+
+13.6.2 Breaking Cycles to Convert Graphs into Trees
+
+In the previous examples, the subset of the database of interest had no cycles. It is
+possible to have a more complex subset with one or more cycles, indicating multi-
+ple relationships among the entities. In this case, it is more difficult to decide how
+to create the document hierarchies. Additional duplication of entities may be
+needed to represent the multiple relationships. We will illustrate this with an exam-
+ple using the ER schema in Figure 13.8.
+
+Suppose that we need the information in all the entity types and relationships in
+Figure 13.8 for a particular XML document, with STUDENT as the root element.
+Figure 13.15 illustrates how a possible hierarchical tree structure can be created for
+this document. First, we get a lattice with STUDENT as the root, as shown in Fig-
+ure 13.15(a). This is not a tree structure because of the cycles. One way to break the
+cycles is to replicate the entity types involved in the cycles. First, we replicate
+INSTRUCTOR as shown in Figure 13.15(b), calling the replica to the right
+INSTRUCTOR1. The INSTRUCTOR replica on the left represents the relationship
+between instructors and the sections they teach, whereas the INSTRUCTOR1 replica
+on the right represents the relationship between instructors and the department
+each works in. After this, we still have the cycle involving COURSE, so we can repli-
+cate COURSE in a similar manner, leading to the hierarchy shown in Fig-
+ure 13.15(c). The COURSE1 replica to the left represents the relationship between
+courses and their sections, whereas the COURSE replica to the right represents the
+relationship between courses and the department that offers each course.
+
+In Figure 13.15(c), we have converted the initial graph to a hierarchy. We can do
+further merging if desired (as in our previous example) before creating the final
+hierarchy and the corresponding XML schema structure.

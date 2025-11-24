@@ -1,0 +1,187 @@
+high-performance data access,
+‘886-887
+key-value stores, 888, 895-900
+MongoDB data model for, 890-895
+Neodj system, 903-909
+query language similar characteristics,
+887
+replication models for, 886
+replication, 885-886, 894
+scalability, 885
+sharding, 886, 894-895
+versioning, 887, 899, 900-902
+NOT FINAL, UDT inheritance
+specification, 385
+NOT operator, see AND/OR/NOT
+operators
+NO-UNDO/REDO algorithm, 815,
+821-823
+NULL values
+aggregate functions and, 218
+attribute not applicable, 208
+complex query retrieval and, 208-209
+constraints on attributes, 160,
+184-186
+discarded values, 218
+entity attributes, 66
+grouping attributes with, 219
+IS/IS NOT comparison operators for,
+209
+query retrieval in SQL, 208-209, 218,
+219
+RDB design problems, 523-524
+referential integrity and, 163-164
+relational modeling and, 155-156, 160
+relation schema for RDB design and,
+467-468
+grouping attributes, 219
+SQL attribute constraints, 184-186
+three-valued logic for comparisons,
+208-209
+tuples for relations, 155-156, 163,
+467-468
+unavailable (or withheld) value, 208
+unknown value, 208
+Numeric arrays, PHP, 349
+Numeric data types, 182, 348
+Object-based storage, 591-592
+Object Data Management Group, see
+ODMG (Object Data Management
+Group)
+Object data models
+classes, 52
+data model type, 33
+DBMS classification from, 51, 52-53
+hierarchies (acyclic graphs), 52
+methods, 53
+ODMG, 387-400
+Object databases, see ODBs (object
+databases)
+Object definition language, see ODL
+(object definition language)
+
+Object identifier, see OID (object identifier)
+Object identity
+literal values for, 368
+ODBs, 367-368, 378
+OID implementation of, 367
+SQL, 379
+Object-oriented systems, persistent
+storage, 19-20
+Object query language, see OQL (object
+query language)
+Object recognition, multimedia
+databases, 997-998
+Object-relational systems
+extended-relational systems, 53
+SQL, 202
+Objects
+arrow (->s) notation for, 392
+atomic (single-valued) types, 368, 388,
+396-398
+attributes, 396
+behavior of based on operations, 371
+collections, 373, 376
+constructors for, 368-370
+dot notation for, 372, 392
+encapsulation of, 366, 371
+exceptions, 397-398
+hidden attributes, 371
+instance variables, 365-366
+interfaces, noninstantiable behavior
+and, 392
+lifetime, 388
+literals compared to, 368
+naming, 373-374, 387
+ODBs, 365-371, 387-388, 395-400
+ODMG models, 387-388, 392, 395-400
+operations for, 370-372
+persistent, 365, 373-374, 376
+reachability, 373-374
+relationships, 396-397
+signatures, 366, 397
+state of, 387
+structure of, 388
+transient, 365, 373, 376
+type generators, 368-369
+type structures for, 368-370
+unique identity, 367-368
+visible/hidden attributes, 371, 375
+Observer function, SQL encapsulation, 384
+ODBC (Open Database Connectivity)
+data mining, 1094-1095
+standard, 49, 326
+ODBs (object databases)
+C++ language binding, 417-418
+conceptual design, 405-408
+development of, 363-365
+encapsulation of operations, 366,
+370-374, 384-385
+inheritance and, 366, 374-377,
+378, 385, 393
+instance variables, 365-366
+inverse references, 366, 370, 396-397
+
+Index 1231
+
+literals in, 368-370, 388-392
+Object Data Management Group
+(ODGM) model, 386-405, 417-418
+object definition language (ODL) and,
+386, 400-405
+object identifier (OID), 367-368
+object query language (OQL), 408-416
+object-oriented (OO) concepts, 365-366
+objects in, 365-371, 387-388, 395-400
+polymorphism (operator overloading),
+366, 377
+RDB compared to, 405-406
+SQL extended from, 379-386
+type (class) hierarchy, 366, 374-377
+ODL (object definition language)
+classes, 400, 404—405
+class-schema interface inheritance,
+401-404
+Object Data Management Group
+(ODGM) model and, 386, 400-405
+object databases (ODBs) and, 386-387,
+400-405
+schemas, 400-403
+type constructors in, 369
+ODMG (Object Data Management Group)
+atomic (user-defined) objects, 395-398
+bindings, 386, 417-418
+built-in interfaces and classes, 393-396
+C++ language binding, 386, 417-418
+database standard, 33, 364-365
+extents, 373, 376-377, 398
+factory objects, 398-400
+inheritance in object models, 393
+interface definitions for object models,
+389-392
+keys, 398
+literals in object models, 388, 392
+object databases (ODBs), 386-405,
+417-418
+object definition language (ODL) and,
+386, 400-405
+object model of, 387-400
+object query language (OQL) and, 386,
+408
+objects, 387-388, 392, 395-400
+standards, 386, 417-417
+OID (object identifier)
+immutable property of, 367
+ODB unique object identity and, 367-368
+ODMG models, 387
+reference types used for in SQL, 383
+OLAP (Online analytical processing)
+data warehousing and, 1102
+data warehousing characteristics and,
+1104
+HOLAP (hybrid OLAP) option, 1114
+MOLAP (multidimensional OLAP)
+function, 1114
+ROLAP (relational OLAP) function,
+1114
+use of, 4

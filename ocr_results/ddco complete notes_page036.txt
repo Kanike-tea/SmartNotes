@@ -1,0 +1,33 @@
+Digital Design and Computer Organization(BCS302)
+
+connected in a chain through the full adders. The input carry to the adder is CO, and it
+ripples through the full adders to the output carry C4.
+
+B; A; By, A B, A, By Ao
+FA
+C Ss Sy Ss; Sy
+FIGURE 4.9
+
+Four-bit adder
+
+To demonstrate with a specific example, consider the two binary numbers A = 1011
+and B = 0011. Their sum S = 1110 is formed with the four-bit adder as follows:
+
+Subscript i: 3 2 1 0
+
+Input carry 0 1 1 0 C;
+
+Augend 1 0 1 1 Aj
+Addend 0 0 1 1 B;
+
+Sum 1 1 1 0 S;
+
+Output carry 0 0 1 1 Cist
+
+The input carry CO in the least significant position must be 0.
+The value of Ci+1 in a given significant position is the output carry of the full adder.
+
+The carry propagation time is an important attribute of the adder because it limits the
+speed with which two numbers are added.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 8

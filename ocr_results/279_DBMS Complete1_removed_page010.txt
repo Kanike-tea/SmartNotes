@@ -1,0 +1,56 @@
++ A database management system reduces the amount of data duplication by ensuring that a
+physical piece of data is available to all programs authorized to have access to it, where as
+data written by one program in a file-processing system may not be readable by another
+program.
+
++ A database management system is designed to allow flexible access to data (i.e., queries),
+whereas a file-processing system is designed to allow predetermined access to data (i.e.,
+compiled programs).
+
++ A database management system is designed to coordinate multiple users accessing the same
+data at the same time. A file-processing system is usually designed to allow one or more
+programs to access different data files at the same time. In a file-processing system, a file
+can be accessed by two programs concurrently only if both programs have read-only access
+to the file.
+
+Que: Explain the difference between physical and logical data independence.
+
+Ans:
+
+* Physical data independence is the ability to modify the physical scheme without making it
+necessary to rewrite application programs. Such modifications include changing from
+unblocked to blocked record storage, or from sequential to random access files.
+
++ Logical data independence is the ability to modify the conceptual scheme without making it
+necessary to rewrite application programs. Such a modification might be adding a field to a
+record; an application program’s view hides this change from the program.
+
+Que: List five responsibilities of a database management system. For each responsibility, explain
+the problems that would arise if the responsibility were not discharged.
+
+Ans: A general purpose database manager (DBM) has five responsibilities:
+
+a.
+
+eS aoe
+
+interaction with the file manager.
+integrity enforcement.
+
+security enforcement.
+
+backup and recovery.
+concurrency control.
+
+If these responsibilities were not met by a given DBM (and the text points out that sometimes a
+responsibility is omitted by design, such as concurrency control on a single-user DBM for a micro
+computer) the following problems can occur, respectively:
+
+a. No DBM can do without this, if there is no file manager interaction then nothing stored in
+the files can be retrieved.
+
+b. Consistency constraints may not be satisfied, when account balances could go below the
+minimum allowed, employees could earn too much overtime (e.g.,hours > 80) or, airline
+pilots may fly more hours than allowed by law.
+
+c. Unauthorized users may access the database, or users authorized to access part of the

@@ -1,0 +1,31 @@
+According to above Table, the higher the subscript number, the higher the priority of the input. Input D3
+has the highest priority, so, regardless of the values of the other inputs, when this input is 1, the output
+for xy is 11 (binary 3). D2 has the next priority level. The output is 10 if D2 = 1, provided that D3 = 0,
+regardless of the values of the other two lower priority inputs. The output for D1 is generated only if
+higher priority inputs are 0, and so on down the priority levels.
+
+x=D,+D3 y=D;+D,D',
+
+The maps for simplifying outputs x and y are shown above. Although the table has only five rows, when
+each X in a row is replaced first by 0 and then by 1, we obtain all 16 possible input combinations. For
+example, the fourth row in the table, with inputs XX10, represents the four minterms 0010, 0110, 1010,
+and 1110. The simplified Boolean expressions for the priority encoder are obtained from the maps. The
+condition for output V is an OR function of all the input variables
+
+x=D,+D;
+y= Ds + Di Ds
+V = Do + D, + D2 + D3
+
+Four-input priority encoder
+Multiplexers
+
+A multiplexer is a combinational circuit that selects binary information from one of many input lines
+and directs it to a single output line. The selection of a particular input line is controlled by a set of
+selection lines. Normally, there are 2" input lines and n selection lines whose bit combinations determine
+which input is selected.
+
+Two-to-One-line multiplexer
+
+A two-to-one-line multiplexer connects one of two 1-bit sources to a common destination, as shown in
+Fig below. The circuit has two data input lines, one output line, and one selection line S. When S = 0,
+the upper AND gate is enabled and Ip has a path to the output. When S = 1, the lower AND gate is

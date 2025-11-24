@@ -1,0 +1,67 @@
+306 Chapter 8 Digital Signal Processing
+
+3X0 = (x0 + (x2>>s) + (xl>>s) +  (x3>>s))/4
+3 XL = (x0 - i*(x2>>s) - (xl>>s) + i*(x3>>s))/4
+3 x2 = (x0 -  (x2>>s) + (xl>>s) - — (x3>>s))/4
+3 ¥3 = (x0 + i*(x2>>s) - (xl>>s) - i*(x3>>s))/4
+MACRO
+
+C_FFT4 $s
+
+3 (x2,x3) = (x2#x3, x2-x3)
+
+ADD x2_r, x2_r, x3_r
+
+ADD -x2_i, x2_i, x3_i
+
+SUB x3_r, x2_r, x3_r, LSL#1
+
+SUB x3_i, x2_i, x3_i, LSL#1
+
+3 (x0,x1) = (x0+(xl>>s), x0-(xl>>s))/4
+
+MOV xO_r, xO_r, ASR#2
+
+MOV x0_i, xO_i, ASR#2
+
+ADD xO_r, x0_r, xl_r, ASR#(2+$s)
+
+ADD x0_i, xO_i, xl_i, ASR#(2+$s)
+
+SUB xL_r, x0_r, xl_r, ASR#(1+$s)
+
+SUB x1_i, xO_i, xl_i, ASR#(1+$s)
+
+5 (x0,x2) = (xO#(x2>>s)/4, x0-(x2>>s) /4)
+
+ADD xO_r, xO_r, x2_r, ASR#(2+$s)
+
+ADD x0_i, x0_i, x2_i, ASR#(2+$s)
+
+SUB x2_r, x0_r, x2_r, ASR#(1+$s)
+
+SUB x2_i, xO_i, x2_i, ASR#(1+$s)
+
+5 (x1,y3) = (x1-i*(x3>>s)/4, x1+i*(x3>> 5) /4)
+ADD xL_r, xl_r, x3_i, ASR#(2+$s)
+
+SUB x1_i, x1_i, x3_r, ASR#(2+$s)
+
+SUB y3_r, xL_r, x3_i, ASR#(1+$s)
+
+ADD y3_i, x1_i, x3_r, ASR#(1+$s)
+
+MEND
+
+We will also use the following macros, C_LDR and C_STR, to load and store complex
+values. This will clarify the FFT code listing in Examples 8.17 and 8.18.
+
+3 complex load, x=[a], at=offset
+
+MACRO
+C_LOR $x, $a, $offset
+LORSH $x._i, [$a, #2]
+LORSH $x._r, [$a], Soffset
+MEND
+
+3 complex store, [a]=x, at=offset

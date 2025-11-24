@@ -1,0 +1,49 @@
+430 Chapter 12. Caches
+
+IF {CPU} = "ARM946E-S"
+CSIZE EQU 12 ; cache size as 1<<CSIZE (4 K assumed)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU. 2. «5 set associativity = 1<<NWAY (4 way)
+I7SET EQU 4 ; CP15 c7 set incrementer = 1<<ISET
+I7WAY EQU 30. ; CP15 c7 way incrementer = 1<<IWAY
+IQWAY EQU O ; CP15 c7 way incrementer = 1<<IWAY
+ENDIF
+IF {CPU} = "ARM1022E"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 Kk)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY QU. 6 5 set associativity = 1<<NWAY (64 way)
+I7SET EQU 5 ; CPI5 c7 set incrementer as 1<<ISET
+I7WAY EQU 26 ; CP15 c7 way incrementer as 1<<SSET
+IQWAY QU 26
+ENDIF
+IF {CPU} = "ARM1026EJ-S"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 K assumed)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU. 2. «5 set associativity = 1<<NWAY (4 way)
+I7SET EQU 5 ; CPI5 c7 set incrementer as 1<<ISET
+I7WAY EQU 30. ; CP15 c7 way incrementer as 1<<IWAY
+ENDIF
+IF {CPU} = "SA-110"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 Kk)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY QU 5 5 set associativity = 1<<NWAY (4 way)
+CleanAddressDcache QU 0x8000
+ENDIF
+F {CPU} = "XSCALE"
+CSIZE EQU 15 ; cache size as 1<<CSIZE (32 Kk)
+
+CP15 c7 way incrementer = 1<<IWAY
+
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+
+NWAY QU 5; set associativity = 1<<NWAY (32 way)
+
+MNWAY EQU 1 3 set assoc mini D-cache = 1<<NWAY (2 way)
+
+MCSIZE EQU 11 ; mini cache size as 1<<CSIZE (2 K)
+ENDIF
+
+SWAY EQU (CSIZE-NWAY) 3 size of way = 1<<SWAY
+NSET  EQU (CSIZE-NWAY-CLINE) ; cache lines per way = 1<<NSET
+
+Figure 12.10 The header file cache.h. (Continued.)

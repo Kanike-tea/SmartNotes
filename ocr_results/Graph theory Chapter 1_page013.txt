@@ -1,0 +1,42 @@
+é 1. Directed Graphs and Graph,
+(a) Kz (b) K3 (c) Kg (d) Ks
+Figure 1.19
+Bipartite graph
+
+Suppose a simple graph G is such that its vertex set V is the union of two of its mutually
+disjoint nonempty subsets V; and V2 which are such that each edge in G joins a vertex in V, and
+a vertex in V2. Then G is called a bipartite graph. If E is the edge set of this graph, the graph
+is denoted by G = (Vi, V2; E), or G = G(V}, V2; E). The sets V; and V2 are called bipartites (or
+partitions) of the vertex set V.
+
+For example, consider the graph G shown in Figure 1.20 for which the vertex set is V =
+{A, B,C, P,Q,R,S} and the edge set is E = {AP,AQ, AR, BR, CQ, CS}. Note that the set V is
+the union of two of its subsets V, = {A, B,C} and V2 = {P, Q,R,S} which are such that (i) V;
+and V2 are disjoint, (ii) every edge in G joins a vertex in V; and a vertex in V>, (iii) G contains
+no edge that joins two vertices both of which are in V; or V2. This graph is a bipartic graph
+with V, = {A, B, C} and V2 = {P, Q, R, S} as bipartites.
+
+P
+
+A
+Q
+
+B
+R
+
+C
+Ss
+
+Figure 1.20
+
+Complete Bipartite graph
+
+A bipartite graph G = (Vi, V2; E) is called a complete bipartite graph if there is a0 pe
+een every vertex in V; and every vertex in V2.
+
+The bipartite graph shown in Figure 1.20 is nor
+example, that the graph does not contain an edge joi
+
+a complete bipartite graph. Observe: ff
+
+ming A and S.

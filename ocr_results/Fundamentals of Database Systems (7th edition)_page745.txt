@@ -1,0 +1,50 @@
+19.4 Cost Functions for SELECT Operation
+
+block in the cluster. Given an equality condition on the indexing attribute, s
+records will satisfy the condition, where s is the selection cardinality of the
+indexing attribute. This means that [(s/bfr) | file blocks will be in the cluster
+of file blocks that hold all the selected records, giving Cys = x +I (s/bfr) |.
+
+S6—Using a secondary (B*-tree) index. For a secondary index on a key
+(unique) attribute, with an equality (i.e., <attribute = value>) selection condi-
+tion, the cost is x + 1 disk block accesses. For a secondary index on a nonkey
+(nonunique) attribute, s records will satisfy an equality condition, where s is
+the selection cardinality of the indexing attribute. However, because the
+index is nonclustering, each of the records may reside on a different disk
+block, so the (worst case) cost estimate is Cs¢q =x + 1+ s. The additional 1 is
+to account for the disk block that contains the record pointers after the index
+is searched (see Figure 17.5). For range queries, if the comparison condition
+is >, >=, <, or <=and half the file records are assumed to satisfy the condition,
+then (very roughly) half the first-level index blocks are accessed, plus half the
+file records via the index. The cost estimate for this case, approximately, is
+Cop = x + (bp)/2) + (7/2). The r/2 factor can be refined if better selectivity
+estimates are available through a histogram. The latter method Cg, can be
+very costly. For a range condition such as vl < A < v2, the selection cardinal-
+ity s must be computed from the histogram or as a default, under the uniform
+distribution assumption; then the cost would be computed based on whether
+or not A is a key or nonkey with a B*-tree index on A. (We leave this as an
+exercise for the reader to compute under the different conditions.)
+$7—Conjunctive selection. We can use either $1 or one of the methods $2
+to S6 discussed above. In the latter case, we use one condition to retrieve the
+records and then check in the main memory buffers whether each retrieved
+record satisfies the remaining conditions in the conjunction. If multiple
+indexes exist, the search of each index can produce a set of record pointers
+(record ids) in the main memory buffers. The intersection of the sets of
+record pointers (referred to in $9) can be computed in main memory, and
+then the resulting records are retrieved based on their record ids.
+$8—Conjunctive selection using a composite index. Same as S3a, S5, or
+S6a, depending on the type of index.
+
+$9—Selection using a bitmap index. (See Section 17.5.2.) Depending on the
+nature of selection, if we can reduce the selection to a set of equality condi-
+tions, each equating the attribute with a value (e.g., A = {7, 13, 17, 55}), then
+a bit vector for each value is accessed which is r bits or 7/8 bytes long. A
+number of bit vectors may fit in one block. Then, if s records qualify, s blocks
+are accessed for the data records.
+
+$10—Selection using a functional index. (See Section 17.5.3.) This works
+similar to $6 except that the index is based on a function of multiple attributes;
+if that function is appearing in the SELECT clause, the corresponding index
+may be utilized.
+
+715

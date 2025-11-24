@@ -1,0 +1,52 @@
+990
+
+Chapter 26 Enhanced Data Models
+
+= Image data includes data such as satellite images and aerial photographs,
+which are typically created by cameras. Objects of interest, such as buildings
+and roads, can be identified and overlaid on these images. Images can also
+be attributes of map features. One can add images to other map features so
+that clicking on the feature would display the image. Aerial and satellite
+images are typical examples of raster data.
+
+Models of spatial information are sometimes grouped into two broad categories:
+field and object. A spatial application (such as remote sensing or highway traffic con-
+trol) is modeled using either a field- or an object-based model, depending on the
+requirements and the traditional choice of model for the application. Field models
+are often used to model spatial data that is continuous in nature, such as terrain eleva-
+tion, temperature data, and soil variation characteristics, whereas object models have
+traditionally been used for applications such as transportation networks, land parcels,
+buildings, and other objects that possess both spatial and non-spatial attributes.
+
+26.3.3 Spatial Operators and Spatial Queries
+
+Spatial operators are used to capture all the relevant geometric properties of objects
+embedded in the physical space and the relations between them, as well as to per-
+form spatial analysis. Operators are classified into three broad categories.
+
+= Topological operators. Topological properties are invariant when topo-
+logical transformations are applied. These properties do not change after
+transformations like rotation, translation, or scaling. Topological operators
+are hierarchically structured in several levels, where the base level offers
+operators the ability to check for detailed topological relations between
+regions with a broad boundary, and the higher levels offer more abstract
+operators that allow users to query uncertain spatial data independent of
+the underlying geometric data model. Examples include open (region),
+close (region), and inside (point, loop).
+
+= Projective operators. Projective operators, such as convex hull, are used to
+express predicates about the concavity/convexity of objects as well as other
+spatial relations (for example, being inside the concavity of a given object).
+
+= Metric operators. Metric operators provide a more specific description of
+the object’s geometry. They are used to measure some global properties of
+single objects (such as the area, relative size of an object’s parts, compact-
+ness, and symmetry), and to measure the relative position of different objects
+in terms of distance and direction. Examples include length (arc) and dis-
+tance (point, point).
+
+Dynamic Spatial Operators. The operations performed by the operators men-
+tioned above are static, in the sense that the operands are not affected by the appli-
+cation of the operation. For example, calculating the length of the curve has no
+effect on the curve itself. Dynamic operations alter the objects upon which the
+operations act. The three fundamental dynamic operations are create, destroy, and

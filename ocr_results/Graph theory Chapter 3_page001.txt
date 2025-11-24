@@ -1,0 +1,52 @@
+a, |
+
+154° 3. Trees
+
+: The following theorems contain some basic properties of trees.
+
+, * y .
+heorem 1 , /n a treé, there is one and only one path between every pair of vertices,
+a
+
+Proof: Let 7 be a tree. Then Tfs a connected simple graph. Since T is connected, there may
+be at least one path between every two vertices. If there are two paths between a pair Of Vertice,
+| of 7, the union of the paths will become’a cycle, and.7 cannot be a‘tree. Thus, between every
+| | pair of vertices in a tree there must exist one and only one path.
+
+.
+Theorem 2 . /f in a graph G there is one and only one path between every pair of Vertices, then
+G isa tree, ; :
+
+Proof: Since there is a path between every pair of vertices in G, it is obvious that G is con-
+nected, Since there is only one path between every pair of vertices, G cannot have a cycle,
+Because, if there is a cycle, then there exist two paths between two vertices on the cycle. Thus,
+G is a connected graph containing no cycles. This means that G is a tree, .
+The above two theorems may be combined together and put in the following form:
+A graph G is a tree if and only if there is one and only one path between every pair of
+vertices in G.
+
+Theorem 3 . A tree with n vertices has n - 1 edges”.
+
+Proof: We prove the theorem by induction on n.
+4 The theorem is obvious for'n ="I, n = 2 and n = 3; see the trees‘in Figure 3.1.
+Assume that the theorem holds for all trees with n vertices where n < k, for a specified
+positive integer k. y
+Consider a tree T with k + 1 vertices. In T, let e be an edge with end vertices u and ¥.
+Since T is a tree, it has no cycles and therefore there exists no other edge or path between“
+and y.,Hence, deletion of e from Twill disconnect the graph and.T.~ e consists of exactly tv
+components, say 7) and 7. Since T does not contain any cycle, the components, and h
+too do not contain any cycles. Hence, 7; and Tp are trees in their own right. Both of thes?
+trees have Jess than k + 1 vertices each, and therefore, according to the assumption made, the
+theorem holds for these trees; that is, each of T; and Ty contains one less edge than the number
+of vertices in it. Therefore, since the total number of vertices in T, and T> (taken together) :
+k + 1, the total number of edges in 7), and 7; (taken together) is (k + 1) -2 = k— 1. But™!
+
+and Ty taken together is T - e, Thus, T — e contains k — 1 edges. Consequently, 7 has
+k edges, :
+
+“In other word. : : shat fo"
+words, for a tree of n vertices and m edges, We have m = n — 1. Said al ively, this means
+a tree T = (V, E), we have |E| = |V| 1, or equivalently |V| = |E|
+——_
+
+=.

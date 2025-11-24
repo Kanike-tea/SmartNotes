@@ -1,0 +1,57 @@
+138 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4.20.
+
+ans issue a numbered, machine-readable card with the member’s photo on it.
+This card is good for four years. A month before a card expires, a notice is
+sent to a member for renewal. Professors at the institute are considered auto-
+matic members. When a new faculty member joins the institute, his or her
+information is pulled from the employee records and a library card is mailed
+to his or her campus address. Professors are allowed to check out books for
+three-month intervals and have a two-week grace period. Renewal notices to
+professors are sent to their campus address.
+
+The library does not lend some books, such as reference books, rare books,
+and maps. The librarians must differentiate between books that can be lent
+and those that cannot be lent. In addition, the librarians have a list of some
+books they are interested in acquiring but cannot obtain, such as rare or out-
+of-print books and books that were lost or destroyed but have not been
+replaced. The librarians must have a system that keeps track of books that
+cannot be lent as well as books that they are interested in acquiring. Some
+books may have the same title; therefore, the title cannot be used as a means
+of identification. Every book is identified by its International Standard Book
+Number (ISBN), a unique international code assigned to all books. Two
+books with the same title can have different ISBNs if they are in different
+languages or have different bindings (hardcover or softcover). Editions of
+the same book have different ISBNs.
+
+The proposed database system must be designed to keep track of the mem-
+bers, the books, the catalog, and the borrowing activity.
+
+Design a database to keep track of information for an art museum. Assume
+
+that the following requirements were collected:
+
+= The museum has a collection of ART_OBJECTS. Each ART_OBJECT has a
+unique Id_no, an Artist (if known), a Year (when it was created, if known),
+a Title, and a Description. The art objects are categorized in several ways, as
+discussed below.
+
+= ART_OBJECTS are categorized based on their type. There are three main
+types—PAINTING, SCULPTURE, and STATUE—plus another type called
+OTHER to accommodate objects that do not fall into one of the three main
+types.
+
+= A PAINTING has a Paint_type (oil, watercolor, etc.), material on which
+it is Drawn_on (paper, canvas, wood, etc.), and Style (modern,
+abstract, etc.).
+
+= A SCULPTURE or a statue has a Material from which it was created (wood,
+stone, etc.), Height, Weight, and Style.
+
+= Anart object in the OTHER category has a Type (print, photo, etc.) and Style.
+
+= ART_OBJECTs are categorized as either PERMANENT_COLLECTION
+(objects that are owned by the museum) and BORROWED. Information
+captured about objects in the PERMANENT_COLLECTION includes
+Date_acquired, Status (on display, on loan, or stored), and Cost. Information

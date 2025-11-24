@@ -1,0 +1,32 @@
+Database Management System [BCS403]
+
+implemented using a representational data model, possibly based on an external schema
+
+design in a high-level data model.
+
+$ End Users +
+
+External/Conceptual
+Mapping
+
+External Level
+
+Conceptual Level
+
+Conceptual/Internal
+Mapping
+
+Internal Level Internal Schema
+
+In a DBMS based on the three-schema architecture, each user group refers to its own external
+schema. Hence, the DBMS must transform a request specified on an external schema into a request
+against the conceptual schema, and then into a request on the internal schema for processing over
+the stored database. If the request is a database retrieval, the data extracted
+
+from the stored database must be reformatted to match the user’s external view.
+
+The processes of transforming requests and results between levels are called mappings.
+
+Data Independence
+
+https://vtucode.in Page 21

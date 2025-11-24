@@ -16,6 +16,8 @@ from typing import Tuple, List, Dict, Optional
 from torch.utils.data import Dataset
 import numpy as np
 
+from .augmentation import get_augmentation
+
 logger = logging.getLogger(__name__)
 
 # ============================================================================
@@ -149,7 +151,8 @@ class SmartNotesOCRDataset(Dataset):
         root_dir: str = "datasets",
         mode: str = 'train',
         split_ratio: float = 0.85,
-        max_samples: Optional[int] = None
+        max_samples: Optional[int] = None,
+        use_augmentation: bool = True
     ) -> None:
         """
         Initialize the dataset.
@@ -159,6 +162,7 @@ class SmartNotesOCRDataset(Dataset):
             mode: Dataset mode - 'train', 'val', or 'test'
             split_ratio: Train/val split ratio (e.g., 0.85 for 85% train)
             max_samples: Maximum number of samples to use (None for all)
+            use_augmentation: Enable data augmentation for training
             
         Raises:
             ValueError: If mode is invalid or no samples found
@@ -170,6 +174,11 @@ class SmartNotesOCRDataset(Dataset):
         self.mode = mode
         self.samples: List[Tuple[str, str]] = []
         self.tokenizer = TextTokenizer()
+        
+        # Augmentation pipeline (only for training)
+        self.augmentation = get_augmentation(training=(mode == 'train' and use_augmentation))
+        if self.augmentation:
+            logger.info("Data augmentation enabled for training")
 
         # Load all datasets
         logger.info(f"Loading {mode} dataset...")
@@ -471,6 +480,10 @@ class SmartNotesOCRDataset(Dataset):
                 logger.warning(f"Failed to read image: {img_path}")
                 # Return blank image
                 img = np.zeros((32, 128), dtype=np.uint8)
+            
+            # Apply augmentation BEFORE resize (critical for quality)
+            if self.augmentation is not None:
+                img = self.augmentation(img)
             
             img = cv2.resize(img, (128, 32))
             img = img.astype(np.float32) / 255.0

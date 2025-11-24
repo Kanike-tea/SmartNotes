@@ -1,0 +1,35 @@
+696 Chapter 19 Query Optimization
+
+Figure 19.2
+
+Steps in converting a query tree during heuristic optimization. (a) Initial (canonical) query tree for SQL query Q.
+(b) Moving SELECT operations down the query tree. (c) Applying the more restrictive SELECT operation first.
+
+(a) *Lname
+
+© Pname='Aquarius’ AND Pnumber=Pno AND Essn=Ssn AND Bdate>‘'1957-12-31"
+
+a PROJECT >
+
+(b) *Lname
+
+* Promber-Pro
+
+a
+
+°Essn=Ssn °Pname=‘Aquarius’
+
+x
+° . :
+Bdate>'1957-12-31 CWorks_ON>
+
+|
+
+© ® Lname
+° Essn=Ssn
+ms
+° Prumiar-re © Bdate>1 a 12-31
+
+© Pname=' —
+
+Rome

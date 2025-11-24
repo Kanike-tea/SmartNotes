@@ -1,0 +1,51 @@
+108
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+concept of category in the EER model. Section 4.5 gives a sample UNIVERSITY
+database schema in the EER model and summarizes the EER model concepts by
+giving formal definitions. We will use the terms object and entity interchangeably
+in this chapter, because many of these concepts are commonly used in object-
+oriented models.
+
+We present the UML class diagram notation for representing specialization and
+generalization in Section 4.6, and we briefly compare these with EER notation and
+concepts. This serves as an example of alternative notation, and is a continuation
+of Section 3.8, which presented basic UML class diagram notation that corre-
+sponds to the basic ER model. In Section 4.7, we discuss the fundamental abstrac-
+tions that are used as the basis of many semantic data models. Section 4.8
+summarizes the chapter.
+
+For a detailed introduction to conceptual modeling, Chapter 4 should be consid-
+ered a continuation of Chapter 3. However, if only a basic introduction to ER mod-
+eling is desired, this chapter may be omitted. Alternatively, the reader may choose
+to skip some or all of the later sections of this chapter (Sections 4.4 through 4.8).
+
+4.1 Subclasses, Superclasses, and Inheritance
+
+The EER model includes all the modeling concepts of the ER model that were pre-
+sented in Chapter 3. In addition, it includes the concepts of subclass and superclass
+and the related concepts of specialization and generalization (see Sections 4.2
+and 4.3). Another concept included in the EER model is that of a category or union
+type (see Section 4.4), which is used to represent a collection of objects (entities)
+that is the union of objects of different entity types. Associated with these concepts
+is the important mechanism of attribute and relationship inheritance. Unfortu-
+nately, no standard terminology exists for these concepts, so we use the most com-
+mon terminology. Alternative terminology is given in footnotes. We also describe a
+diagrammatic technique for displaying these concepts when they arise in an EER
+schema. We call the resulting schema diagrams enhanced ER or EER diagrams.
+
+The first enhanced ER (EER) model concept we take up is that of a subtype or
+subclass of an entity type. As we discussed in Chapter 3, the name of an entity type is
+used to represent both a type of entity and the entity set or collection of entities of that
+type that exist in the database. For example, the entity type EMPLOYEE describes the
+type (that is, the attributes and relationships) of each employee entity, and also refers
+to the current set of EMPLOYEE entities in the COMPANY database. In many cases an
+entity type has numerous subgroupings or subtypes of its entities that are meaningful
+and need to be represented explicitly because of their significance to the database
+application. For example, the entities that are members of the EMPLOYEE entity
+type may be distinguished further into SECRETARY, ENGINEER, MANAGER,
+TECHNICIAN, SALARIED_EMPLOYEE, HOURLY_EMPLOYEE, and so on. The set or
+collection of entities in each of the latter groupings is a subset of the entities that
+belong to the EMPLOYEE entity set, meaning that every entity that is a member of
+one of these subgroupings is also an employee. We call each of these subgroupings a

@@ -1,0 +1,48 @@
+3.1 Data Processing Instructions 57
+
+N is the result of the shifter operation. The syntax of shifter operation is shown in
+Table 3.3.
+
+EXAMPLE This example shows a CMP comparison instruction. You can see that both registers, r0 and
+3.10 9, are equal before executing the instruction. The value of the z flag prior to execution is 0
+and is represented by a lowercase z. After execution the z flag changes to 1 or an uppercase
+
+Z. This change indicates equality.
+
+PRE —cpsr = nzcvqiFt_USER
+r0 = 4
+rg = 4
+CMP 0, 9
+
+POST cpsr = nZcvqiFt_USER
+
+The CMP is effectively a subtract instruction with the result discarded; similarly the TST
+instruction is a logical AND operation, and TEQ is a logical exclusive OR operation. For
+each, the results are discarded but the condition bits are updated in the cpsr. It is important
+to understand that comparison instructions only modify the condition flags of the cpsr and
+do not affect the registers being compared.
+
+3.1.7 | MULTIPLY INSTRUCTIONS
+
+The multiply instructions multiply the contents of a pair of registers and, depending upon
+the instruction, accumulate the results in with another register. The long multiplies accu-
+mulate onto a pair of registers representing a 64-bit value. The final result is placed in
+a destination register or a pair of registers.
+
+Syntax: MLA{<cond>}{S} Rd, Rm, Rs, Rn
+MUL{<cond>}{S} Rd, Rm, Rs
+
+MLA multiply and accumulate Rd = (Rm*Rs) + Rn
+
+MUL multiply Rd = Rm*Rs
+
+Syntax: <instruction>{<cond>}{$} RdLo, RdHi, Rm, Rs
+
+SMLAL | signed multiply accumulate long | [RdHi, RdLo] = [RdHi, RdLo] + (Rm*Rs)
+
+SMULL | signed multiply long [RdHi, RdLo] = Rm*Rs
+
+UMLAL | unsigned multiply accumulate | [RdHi, RdLo] = [RdHi, RdLo] + (Rm*Rs)
+long
+
+UMULL | unsigned multiply long [RdHi, RdLo] = Rm*Rs

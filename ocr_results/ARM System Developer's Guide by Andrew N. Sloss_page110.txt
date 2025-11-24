@@ -1,0 +1,47 @@
+4.6 Multiple-Register Load-Store Instructions 97
+
+PRE mem32[0x90000] = 0x00000001
+mem32[0x90004] = 0x00000002
+mem32[0x90008] = 0x00000003
+r0 = 0x00000000
+rl = 0x00090000
+r4 = 0x00000004
+
+LOR 0, [ri, r4] 5 register
+POST 0 = Oxo0000002
+
+rl = 0x00090000
+r4 = 0x00000004
+
+LOR 0, [rl, #0x4]  ; immediate
+POST 0 = Oxo0000002
+
+Both instructions carry out the same operation. The only difference is the second LDR uses
+a fixed offset, whereas the first one depends on the value in register r4.
+
+4.6 MULTIPLE-REGISTER LOAD-STORE INSTRUCTIONS
+
+EXAMPLE
+
+4.6
+
+The Thumb versions of the load-store multiple instructions are reduced forms of
+the ARM _load-store multiple instructions. They only support the increment after (IA)
+addressing mode.
+
+Syntax : <LDM|STM>IA Rn!, {low Register list}
+
+LDMIA | load multiple registers | {Rd}*" <- mem32[Rn + 4*N], Rn=Rn + 4*N
+
+STMIA | save multiple registers | {Rd}“" -> mem32[Rn + 4*N], Rn=Rn + 4*N
+
+Here Nis the number of registers in the list of registers. You can see that these instruc-
+tions always update the base register Rn after execution. The base register and list of registers
+are limited to the low registers r0 to r7.
+
+This example saves registers r] to r3 to memory addresses 0X9000 to 0x900c. It also updates
+base register r4. Note that the update character ! is not an option, unlike with the ARM.
+instruction set.
+
+PRE r1 = 0x00000001
+r2 = 0x00000002

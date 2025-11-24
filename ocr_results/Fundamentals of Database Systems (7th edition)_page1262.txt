@@ -1,0 +1,208 @@
+1232 Index
+
+OLTP (online transaction processing)
+data warehousing and, 1102
+multiuser transaction processing, 14
+relational data modeling, 169
+special-purpose DBMS use, 52
+
+Online analytical processing, see OLAP
+
+(Online analytical processing)
+
+Online transaction processing, see OLTP
+
+(online transaction processing)
+
+Ontology
+conceptual
+defined, 134
+knowledge representation (KR) and, 129
+semantic Web data models, 133-134
+specification and, 134
+types of, 134
+
+Ontology-based information integration,
+
+1052-1053
+
+00 (object-oriented) concepts, 365-366
+
+OODB (object-oriented database)
+attribute versioning, 982-984
+database complexity and, 24-25
+development of, 363
+temporal databases incorporating time
+
+in, 982-984
+
+OQL (object query language)
+aggregate functions, 413-414
+Boolean (true/false) results, 414
+collection operators, 413-416
+element operator, 413
+exists quantifier, 415
+grouping operator, 415-416
+indexed (ordered) collection
+
+expressions, 415
+iterator variables for, 409-410
+named query specification, 412-413
+ODBs, 408-416
+ODGM model queries and, 408-416
+ODMG standard and, 386
+path expressions, 410-412
+query results, 410-412
+select...from...where structure of, 409
+OOPL (object-oriented programming
+language), class library for, 312
+op comparison operator, 270
+Open addressing, hashing collision
+resolution, 574
+OPEN CURSOR command, SQL, 317
+OpenPGP (Pretty Good Privacy)
+protocol, XML, 1140-1141
+
+Operating system (OS), 42
+
+Operational data store (ODS), 583, 1105
+
+Operations. See also Query processing
+
+strategies
+aggregate, 678-679
+assignment (<) for, 245
+binary, 240, 251-259, 262-264
+defined, 12
+delete, 166, 167-168
+dot notation for objects, 372
+encapsulation, 366, 370-374, 384-385
+files, 564-567
+
+tion and, 134
+
+generalized projection, 259-260
+insert, 166-167
+JOIN, 251-255, 262-264, 668-676
+method (body) of, 366, 371
+ODBs, 366, 370-374, 384-385
+pipelining for combinations of,
+681-683
+program variables for, 565-566
+record-at-a-time, 566
+recursive closure, 262
+relational algebra, 240-259, 262-265
+relational data modeling, 165-168
+renaming attributes, 245-246
+retrievals, 165-166, 564-565
+schedules, 759-760, 773
+selection conditions for, 564~565
+sequence of, 245-246
+set-at-a-time, 566
+set theory and, 246-251, 264-265
+signature (interface) of, 366, 371
+SQL query recovery and, 194-197
+SQL sets, 194-195
+unary, 240, 241-246
+UNION, 194-195, 264-265
+update (modify), 166, 168-169, 564-565
+user-defined functional requirements,
+61
+Operator-level parallelism, 684-686
+Operators
+aggregate functions, 216-219, 260-261
+arithmetic, SQL, 196-197
+collections, 413-416
+comparison, 209-211
+nested queries, 209-211
+defined, 17
+grouping, 415-416
+logical comparison, SQL, 188-190
+OQL collections, 413-416
+spacial, 990-991
+SQL query recovery, 188-190,
+196-197, 209-211
+SQL query translation into, 657-660
+Optical drives, 544
+Optimistic protocols, 781
+Optional field, records, 561-562
+OR logical connective, SQL, 209-210
+OR operator, see AND/OR/NOT operators
+Oracle
+adaptive optimization, 735
+array processing, 735-736
+global query optimizer, 734-735
+hints, 736
+key-value store, 899
+label-based security policy, 1155-1158
+outlines, 736
+physical optimizer, 733-734
+query optimization in, 733-737
+SQL plan management, 736-737
+virtual private database (VPD)
+technology, 1156
+ORDBMS (object-relational database
+management system), 364
+
+ORDER BY clause
+SQL, 197-198
+XQuery, 446
+Order preserving, hashing, 577
+Ordered (sorted) records, 568-572
+Ordering field, records, 568
+OUTER JOIN operations, 216, 262-264
+Outer query, 209
+OUTER UNION operation, 264-265
+Outlines, Oracle, 736
+Overflow (transaction) file, 571
+Overlapping entities, 115, 126
+PageRank ranking algorithm, 1051
+Parallel algorithms
+aggregate operations for, 686
+architectures for, 683-684
+interquery parallelism, 687
+intraquery parallelism, 687
+join techniques, 685
+operator-level parallelism, 684-686
+partitioning strategies, 684
+projection and duplicate elimination, 685
+query processing using, 683-687
+selection conditions, 685
+set operations for, 686
+sorting, 684
+Parallel database architecture, 683
+Parallel processing, 747
+Parameters
+binding, 329, 333
+disks, 1167-1169
+JDBC statement parameters, 333
+SQU/CLI statement parameters, 329
+stored procedure type and mode,
+336-337
+Parametric (naive) end users, 16
+Parametric user interfaces, 42
+Parent nodes, tree structures, 617
+Parser, query processing, 655
+Partial categories, 122
+Partial key, 79, 479
+Partial specialization, 115, 126
+Participation constraints, 77-78
+Partition algorithm, 1081
+Partition-hash join, 559, 674-675, 719,
+930-931
+Partition tolerance, DDBs, 845
+Partitioned hashing, 632
+Partitioning strategies
+NOSQL, 886
+parallel algorithms, 684
+Partitions
+OQL, 415-416
+grouping and, 219, 415-416
+SQL query retrieval and, 219
+Path expressions
+OQL, 410-412
+SQL, 386
+XPath for, 443-445
+Path separators (/ and //), XML, 443
+Patterns, substring matching in SQL,
+195-197

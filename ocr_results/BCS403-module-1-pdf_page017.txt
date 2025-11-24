@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+Chapter 2: Overview of Database Languages and Architectures
+
+Introduction
+
+The architecture of DBMS packages has evolved from the early monolithic systems, where the
+whole DBMS software package was one tightly integrated system. Modern DBMS packages are
+modular in design, with a client/server system architecture. In a basic client/server DBMS
+architecture, the system functionality is distributed between two types of module. A client
+module is designed to run on a user workstation or personal computer. The
+
+client module handles user interaction and provides the user-friendly interfaces.such.as forms- or
+menu-based GUIs. The other kind of module, called a server module handles data storage, access,
+
+search, and other functions
+
+2.1 Data Models, Schemas, and Instances.
+
+Data Model
+
+A data model is a collection of concepts that can be used to describe the structure of a database. By
+structure of a database we mean the data types, relationships and constraints that apply to the data.
+Most data models also include a set. of basic operations for specifying retrievals and updates on the
+
+database. Data model provides the necessary means to achieve abstraction.
+
+Categories of Data Models
+Data models can be categorized according to the types of concepts they use to describe the
+database structure.
+
+1. High-level or conceptual data models: provide concepts that are close to the way many
+users perceive data. Conceptual data models use concepts such as entities, attributes, and
+relationships.
+
+2. Representational or implementation data models: provide concepts that may be easily
+understood by end users but that are not too far removed from the way data is organized in
+computer storage. Representational data models hide many details of data storage on disk
+but can be implemented on a computer system directly. Representational or implementation
+data models are the models used most frequently
+in traditional commercial DBMSs. These include the widely used relational
+
+data model, as well as the so-called legacy data models—the network and hierarchical
+
+https:/ivtucode.in Page 18

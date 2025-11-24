@@ -1,0 +1,39 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Insertion into a doubly linked list
+Insertion into a doubly linked list is fairly easy. Assume there are two nodes, node
+and new node,node may be either a header node or an interior node in a list. The
+
+function dinsert performs the insertion operation in constant time.
+
+void dinsert (nodePointer node, nodePointer newnode)
+{/* insert newnode to the right of node */
+newnodellink = node;
+newnode-rlink = node—rlink;
+node>rlink-llink = newnode;
+nodesrlink = newnode;
+
+Insertion into a doubly linked circular list
+
+Deletion from a doubly linked list
+
+Deletion from a doubly linked list is equally easy. The function ddelete deletes the
+node deletedfrom the list pointed to by node.
+
+To accomplish this deletion, we only need to change the link fields of the nodes
+that precede(deleted—llink—rlink) and. follow (deleted—rlink—llink) the node we
+
+want to delete.
+
+void ddelete(nodePointer node, nodePointer deleted)
+{/* delete from the donbly linked list */
+if {node == deleted)
+printf£("Deletion of header node not permitted.\n");
+else {
+deletedllinkrlink ~ deleted-rlink;
+deleted rlink-llink = deleted—llink;
+free (deleted) ;
+
+Deletion from a doubly linked circular list
+
+vtucode.in 7

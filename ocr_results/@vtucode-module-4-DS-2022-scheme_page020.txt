@@ -1,0 +1,50 @@
+BCS304
+
+Weighted Edges:
+
+The edges of a graph are assigned weights. These weights may represent the distance from one
+vertex to another or the cost of going from one vertex to an adjacent vertex. A graph with
+
+weighted edges is called a network.
+5.2 Elementary Graph Operations
+
+Given an undirected graph, G = (V, E), and a vertex, v, in V(G) we wish to visit all vertices in
+G that are reachable from v, that is, ail vertices that are connected to v. There are two ways of
+
+doing this: depth first search and breadth first search.
+5.2.1 Depth First Search
+
+Depth first search is similar to a preorder tree traversal. We begin the search by visiting the
+start vertex, v. visiting consists of printing the node's vertex field. Next, we select an unvisited
+
+vertex, w, from v's adjacency list and carry out a depth first search on w. Eventually our search
+reaches a vertex, M, that has no unvisited vertices on its adjacency list. At this point, we remove
+a vertex from the stack and continue processing its adjacency list. Previously visited vertices
+are discarded; unvisited vertices are visited and placed on the stack. The search terminates
+when the stack is empty.
+
+sdefine FALSE 0
+
+define TRUB, 1
+short Int visiced(MAX—VERTICES];
+
+void dfisiinc v)
+{
+/* depth fiegt search of a graph beginning with vertex v.*/
+node.pointer w:
+visitediv] = TRUE;
+prince (*85d*,v);
+for (w= graph(vl; wr w = w->link)
+if (ivisiced(w->vertex))
+a@itsi(w->vertex);
+
+Depth first search
+
+5.2.2 Breadth First Search
+
+breadth first search resembles a level order tree traversal. Breadth first search starts at vertex v
+and marks it as visited. It then visits each of the vertices on v's adjacency list. When we have
+
+visited all the vertices on v's adjacency list, we visit all the unvisited vertices that are adjacent
+
+21

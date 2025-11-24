@@ -1,0 +1,52 @@
+90 Chapter 4 Introduction to the Thumb Instruction Set
+
+Table 4.2
+
+Summary of Thumb register usage.
+
+Registers Access
+
+10-17 fully accessible
+
+r8-r12 only accessible by MOV, ADD, and CMP
+r13 sp limited accessibility
+
+ri4 Ir limited accessibility
+
+r15 pc limited accessibility
+
+cpsr only indirect access
+
+spsr no access
+
+You may have noticed from the Thumb instruction set list and from the Thumb register
+usage table that there is no direct access to the cpsr or spsr. In other words, there are no
+MSR- and MRS-equivalent Thumb instructions.
+
+To alter the cpsr or spsr, you must switch into ARM state to use MSR and MRS. Similarly,
+there are no coprocessor instructions in Thumb state. You need to be in ARM state to access
+the coprocessor for configuring cache and memory management.
+
+4.2 ARM-THUMB INTERWORKING
+
+ARM-Thumb interworking is the name given to the method of linking ARM and Thumb
+code together for both assembly and C/C++. It handles the transition between the two
+states. Extra code, called a veneer, is sometimes needed to carry out the transition. ATPCS
+defines the ARM and Thumb procedure call standards.
+
+To call a Thumb routine from an ARM routine, the core has to change state. This state
+change is shown in the T bit of the cpsr. The BX and BLX branch instructions cause a switch
+between ARM and Thumb state while branching to a routine. The BX /rinstruction returns
+from a routine, also with a state switch if necessary.
+
+The BLX instruction was introduced in ARMv5T. On ARMv4T cores the linker uses
+a veneer to switch state on a subroutine call. Instead of calling the routine directly, the
+linker calls the veneer, which switches to Thumb state using the BX instruction.
+
+There are two versions of the BX or BLX instructions: an ARM instruction and a Thumb
+equivalent. The ARM BX instruction enters Thumb state only if bit 0 of the address in
+Rn is set to binary 1; otherwise it enters ARM state. The Thumb BX instruction does
+the same.
+
+Syntax: BX Rm
+BLX Rm | label

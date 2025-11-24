@@ -1,0 +1,54 @@
+30.6 Introduction to Flow Control
+
+only queries that involve statistical aggregate functions such as COUNT, SUM, MIN,
+MAX, AVERAGE, and STANDARD DEVIATION. Such queries are sometimes called
+statistical queries.
+
+It is the responsibility of a database management system to ensure the confidentiality
+of information about individuals while still providing useful statistical summaries of
+data about those individuals to users. Provision of privacy protection of users in a
+statistical database is paramount; its violation is illustrated in the following example.
+
+In some cases it is possible to infer the values of individual tuples from a sequence
+of statistical queries. This is particularly true when the conditions result in a popu-
+lation consisting of a small number of tuples. As an illustration, consider the fol-
+lowing statistical queries:
+
+Q1: SELECT COUNT (*)FROM PERSON
+WHERE <condition>;
+
+Q2: SELECT AVG (Income) FROM PERSON
+WHERE <condition>;
+
+Now suppose that we are interested in finding the Salary of Jane Smith, and we
+know that she has a Ph.D. degree and that she lives in the city of Bellaire, Texas. We
+issue the statistical query Q1 with the following condition:
+
+(Last_degree=Ph.D? AND Sex="F’ AND City=“Bellaire’ AND State=“Texas’)
+
+If we get a result of 1 for this query, we can issue Q2 with the same condition and
+find the Salary of Jane Smith. Even if the result of Q1 on the preceding condition is
+not 1 but is a small number—say 2 or 3—we can issue statistical queries using the
+functions MAX, MIN, and AVERAGE to identify the possible range of values for the
+Salary of Jane Smith.
+
+The possibility of inferring individual information from statistical queries is reduced if
+no statistical queries are permitted whenever the number of tuples in the population
+specified by the selection condition falls below some threshold. Another technique for
+prohibiting retrieval of individual information is to prohibit sequences of queries that
+refer repeatedly to the same population of tuples. It is also possible to introduce slight
+inaccuracies or noise into the results of statistical queries deliberately, to make it diffi-
+cult to deduce individual information from the results. Another technique is partition-
+ing of the database. Partitioning implies that records are stored in groups of some
+minimum size; queries can refer to any complete group or set of groups, but never to
+subsets of records within a group. The interested reader is referred to the bibliography
+at the end of this chapter for a discussion of these techniques.
+
+30.6 Introduction to Flow Control
+
+Flow control regulates the distribution or flow of information among accessible
+objects. A flow between object X and object Y occurs when a program reads values
+from X and writes values into Y. Flow controls check that information contained in
+some objects does not flow explicitly or implicitly into less protected objects. Thus, a
+
+1147

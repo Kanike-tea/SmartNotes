@@ -1,0 +1,83 @@
+518 Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+Figure 15.1
+
+Nonadditive join test for n-ary decompositions. (a) Case 1: Decomposition of EMP_PROJ into EMP_PROJ1
+and EMP_LOCS fails test. (b) A decomposition of EMP_PRO4 that has the lossless join property.
+(c) Case 2: Decomposition of EMP_PROJ into EMP, PROJECT, and WORKS. ON satisfies test
+
+(a)
+
+R,
+Ry
+
+(b)
+
+©
+
+Ry
+Rs
+
+Ry
+
+Rs
+
+R= {Ssn, Ename, Pnumber, Pname, Plocation, Hours}
+
+R, = EMP_LOCS = {Ename, Plocation}
+R,= EMP_PROJ1 = {Ssn, Pnumber, Hours, Pname, Plocation}
+
+D={R,, Ro}
+
+F = {Ssn ®Ename; Pnumber- {Pname, Plocation}; {Ssn, Pnumber} Hours}
+
+Ssn_| Ename | Pnumber | Pname | Plocation | Hours
+bu | a bia bia as bis
+ay boo ag aq as ag
+
+(No changes to matrix after applying functional dependencies)
+
+EMP
+
+PROJECT
+
+WORKS_ON
+
+Ename
+
+Pnumber
+
+Pname
+
+Plocation
+
+Ssn Pnumber | Hours
+
+R= {Ssn, Ename, Pnumber, Pname, Plocation, Hours}
+
+R, = EMP = {Ssn, Ename}
+
+R;
+
+PROJ = {Pnumber, Pname, Plocation}
+
+R, =WORKS_ON = {Ssn, Pnumber, Hours}
+
+D={R,, Ro, Ra}
+
+F = {Ssn ®Ename; Pnumber {Pname, Plocation}; {Ssn, Pnumber} Hours}
+
+Ssn_| Ename |Pnumber | Pname | Plocation | Hours
+a ay big baa bis bie
+box bop as a a5 bee
+a bap as baa bas ag
+
+(Original matrix S at start of algorithm)
+
+Ssn_| Ename |Pnumber | Pname | Plocation | Hours
+a ay big baa bis bie
+boy boo ag ay as bog
+a; | Peg ae as bsg a4 | bsg a5 ag
+
+(Matrix S after applying the first two functional dependencies;
+last row is all “a” symbols so we stop)

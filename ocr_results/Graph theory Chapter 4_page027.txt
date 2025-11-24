@@ -1,0 +1,37 @@
+a
+
+ale Max-flow and Min-cut Theorem 241
+
+Find the maximum flow possible between the vertices P and:S in the network
+
+shown in Figure 4.48.
+
+Figure 4.48
+
+» By examining the given network, we find that the cut-sets with respect to the vertex-pair
+(P,S), namely the P- S.cuts, are
+
+{PQ}, (QT,OS,OR}, (OR, OS,TS), (QT, QS,RS}, {TS,OS,RS).
+
+The capacities of these cut-sets are, respectively, 18, 17, 15, 16,,14, Evidently, the last
+cut-set has the minimum capacity, 14. The possible maximum flow i is therefore 14 units. .
+Example 3 gaa ‘the network shown below, determine the maximum flow between the vertices
+Aand D by identifying the cut-set of minimum capacity.
+
+Figure 4.49
+
+» By examining the given network, we find that the A-D cuts (that is cut-sets with respect to
+
+the Vertex- pair (A, D)) are:
+(AB, AF). (AB, BF, FE}, (AB,BF,CE,ED}, (AF, FB, BC},
+(AF, FB, CE,CD}, {BC, FE), {BC,CE,ED}, (FE, EC,CD), {CD, ED}.
+9, 11, 17, 11, 10,7, 13, 6,-10. Thus,
+
+set [FE, EC, CD}. The possible
+
+The Capacities of these cut-sets are, respectively,
+
+a the Minimum capacity, and this is possessed by the cut-
+
+Xi
+num flow is therefore 6 units.

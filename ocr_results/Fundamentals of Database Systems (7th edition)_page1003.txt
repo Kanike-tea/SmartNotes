@@ -1,0 +1,51 @@
+26.1 Active Database Concepts and Triggers
+
+occur. For example, an active database may be used to monitor, say, the tempera-
+ture of an industrial furnace. The application can periodically insert in the database
+the temperature reading records directly from temperature sensors, and active rules
+can be written that are triggered whenever a temperature record is inserted, with a
+condition that checks if the temperature exceeds the danger level and results in the
+action to raise an alarm.
+
+Active rules can also be used to enforce integrity constraints by specifying the
+types of events that may cause the constraints to be violated and then evaluating
+appropriate conditions that check whether the constraints are actually violated by
+the event or not. Hence, complex application constraints, often known as business
+rules, may be enforced that way. For example, in the UNIVERSITY database applica-
+tion, one rule may monitor the GPA of students whenever a new grade is entered,
+and it may alert the advisor if the GPA of a student falls below a certain threshold;
+another rule may check that course prerequisites are satisfied before allowing a stu-
+dent to enroll in a course; and so on.
+
+Other applications include the automatic maintenance of derived data, such as the
+examples of rules R1 through R4 that maintain the derived attribute Total_sal when-
+ever individual employee tuples are changed. A similar application is to use active
+rules to maintain the consistency of materialized views (see Section 5.3) whenever
+the base relations are modified. Alternately, an update operation specified on a view
+can be a triggering event, which can be converted to updates on the base relations
+by using an instead of trigger. These applications are also relevant to the new data
+warehousing technologies (see Chapter 29). A related application maintains that
+replicated tables are consistent by specifying rules that modify the replicas when-
+ever the master table is modified.
+
+26.1.5 Triggers in SQL-99
+
+Triggers in the SQL-99 and later standards are similar to the examples we dis-
+cussed in Section 26.1.1, with some minor syntactic differences. The basic events
+that can be specified for triggering the rules are the standard SQL update com-
+mands: INSERT, DELETE, and UPDATE. In the case of UPDATE, one may specify the
+attributes to be updated. Both row-level and statement-level triggers are allowed,
+indicated in the trigger by the clauses FOR EACH ROW and FOR EACH STATEMENT,
+respectively. One syntactic difference is that the trigger may specify particular
+tuple variable names for the old and new tuples instead of using the keywords
+NEW and OLD, as shown in Figure 26.1. Trigger T1 in Figure 26.6 shows how the
+row-level trigger R2 from Figure 26.1(a) may be specified in SQL-99. Inside the
+REFERENCING clause, we named tuple variables (aliases) O and N to refer to the OLD
+tuple (before modification) and NEW tuple (after modification), respectively. Trigger
+T2 in Figure 26.6 shows how the statement-level trigger R2S from Figure 26.5 may
+be specified in SQL-99. For a statement-level trigger, the REFERENCING clause is
+used to refer to the table of all new tuples (newly inserted or newly updated) as N,
+whereas the table of all old tuples (deleted tuples or tuples before they were
+updated) is referred to as O.
+
+973

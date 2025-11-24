@@ -1,0 +1,50 @@
+426
+
+Chapter 13. XML: Extensible Markup Language
+
+Basic HTML is useful for generating static Web pages with fixed text and other
+objects, but most e-commerce applications require Web pages that provide interac-
+tive features with the user and use the information provided by the user for select-
+ing specific data from a database for display. Such Web pages are called dynamic
+Web pages, because the data extracted and displayed each time will be different
+depending on user input. For example, a banking app would get the user’s account
+number, then extract the balance for that user’s account from the database for dis-
+play. We discussed how scripting languages, such as PHP, can be used to generate
+dynamic Web pages for applications such as those presented in Chapter 11. XML
+can be used to transfer information in self-describing textual files among various
+programs on different computers when needed by the applications.
+
+In this chapter, we will focus on describing the XML data model and its associated
+languages, and how data extracted from relational databases can be formatted as
+XML documents to be exchanged over the Web. Section 13.1 discusses the differ-
+ence among structured, semistructured, and unstructured data. Section 13.2 pres-
+ents the XML data model, which is based on tree (hierarchical) structures as
+compared to the flat relational data model structures. In Section 13.3, we focus on
+the structure of XML documents and the languages for specifying the structure of
+these documents, such as DTD (Document Type Definition) and XML Schema.
+Section 13.4 shows the relationship between XML and relational databases. Sec-
+tion 13.5 describes some of the languages associated with XML, such as XPath and
+XQuery. Section 13.6 discusses how data extracted from relational databases can be
+formatted as XML documents. In Section 13.7, we discuss the new functions that
+have been incorporated into XML for the purpose of generating XML documents
+from relational databases. Finally, Section 13.8 is the chapter summary.
+
+13.1 Structured, Semistructured,
+and Unstructured Data
+
+The information stored in relational databases is known as structured data because
+it is represented in a strict format. For example, each record in a relational database
+table—such as each of the tables in the COMPANY database in Figure 5.6—follows
+the same format as the other records. For structured data, it is common to carefully
+design the database schema using techniques such as those described in Chapters 3
+and 4 in order to define the database structure. The DBMS then checks to ensure
+that all data follows the structures and constraints specified in the schema.
+
+However, not all data is collected and inserted into carefully designed structured
+databases. In some applications, data is collected in an ad hoc manner before it is
+known how it will be stored and managed. This data may have a certain structure,
+but not all the information collected will have the identical structure. Some attri-
+butes may be shared among the various entities, but other attributes may exist only
+in a few entities. Moreover, additional attributes can be introduced in some of the
+newer data items at any time, and there is no predefined schema. This type of data
+is known as semistructured data. A number of data models have been introduced

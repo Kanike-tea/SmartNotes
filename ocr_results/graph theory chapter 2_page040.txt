@@ -1,0 +1,43 @@
+2.5.1. Chromatic Polynomials 141
+
+i) If the vertices a and b are to have different colours, then there are 2 choices for colouring
+the vertex a and (A — 1) choices for the vertex b (or vice versa). Consequently, there are
+(A - 2) choices for each of the vertices x, y,'z.. Hence the number of proper colourings
+(in this case) is A(A — 1)(A - 2)3.
+
+(iii) Since the two cases of the vertices a and b having the same colour or different colours
+are exhaustive and mutually exclusive, the chromatic polynomial of the graph is
+
+P(K23, a) = A(A- 17 +a = 1)(a = 2) 5
+
+Find the chromative polynomial for the graph Kn:
+
+> Let Vi = (a,b) and V2 = {x1, x2,.x3,...,n} be the two bipartites of Kan. Then, if a and b
+are to have the same colour, the number of proper colourings of K2,n is A(A — 1)", as in case (i)
+of Example 4 above. If a and b are to have different colours, the number of proper colourings
+is A(A— 1)(A—2)", as in case (ii) of Example 4 above. Consequently, the chromatic polynomial
+for Kon is ; ’
+
+P(Kon, a) = AA- 1 + AGAHDA- 2 os
+Find the chromatic polynomail for the cycle C4 of length 4.
+
+What is its chromatic number?
+
+V1
+
+V4
+
+Figure 2.49
+
+> Acycle of length 4, namely C4, is shown in Figure 2.49: Let us employ the Decomposition
+Theorem to obtain its chromatic polynomial.’ For this purpose, let us redesignate C4 as G and
+denote the edge {v2, v3} as e. Then the graphs G, and G/, defined in the Decomposition Theorem
+
+would be as shown below.
+
+' ~ v2(= v3)
+v1 v2 a4! a
+
+va v3 V4,
+
+Figure 2.50

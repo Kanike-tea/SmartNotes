@@ -1,0 +1,52 @@
+400
+
+Chapter 12 Object and Object-Relational Databases
+
+interfaces for DatabaseFactory and Database objects, as shown in Figure 12.8. Each
+database has its own database name, and the bind operation can be used to assign
+individual unique names to persistent objects in a particular database. The lookup
+operation returns an object from the database that has the specified persistent
+object_name, and the unbind operation removes the name of a persistent named
+object from the database.
+
+12.3.6 The Object Definition Language ODL
+
+After our overview of the ODMG object model in the previous section, we now
+show how these concepts can be utilized to create an object database schema using
+the object definition language ODL.*!
+
+The ODL is designed to support the semantic constructs of the ODMG object
+model and is independent of any particular programming language. Its main use is
+to create object specifications—that is, classes and interfaces. Hence, ODL is not a
+programming language. A user can specify a database schema in ODL indepen-
+dently of any programming language, and then use the specific language bindings
+to specify how ODL constructs can be mapped to constructs in specific program-
+ming languages, such as C++, Smalltalk, and Java. We will give an overview of the
+C++ binding in Section 12.6.
+
+Figure 12.9(b) shows a possible object schema for part of the UNIVERSITY data-
+base, which was presented in Chapter 4. We will describe the concepts of ODL
+using this example, and the one in Figure 12.11. The graphical notation for Fig-
+ure 12.9(b) is shown in Figure 12.9(a) and can be considered as a variation of EER
+diagrams (see Chapter 4) with the added concept of interface inheritance but
+without several EER concepts, such as categories (union types) and attributes of
+relationships.
+
+Figure 12.10 shows one possible set of ODL class definitions for the UNIVERSITY
+database. In general, there may be several possible mappings from an object schema
+diagram (or EER schema diagram) into ODL classes. We will discuss these options
+further in Section 12.4.
+
+Figure 12.10 shows the straightforward way of mapping part of the UNIVERSITY
+database from Chapter 4. Entity types are mapped into ODL classes, and inher-
+itance is done using extends. However, there is no direct way to map categories
+(union types) or to do multiple inheritance. In Figure 12.10 the classes
+PERSON, FACULTY, STUDENT, and GRAD_STUDENT have the extents PERSONS,
+FACULTY, STUDENTS, and GRAD_STUDENTS, respectively. Both FACULTY and
+STUDENT extends PERSON and GRAD_STUDENT extends STUDENT. Hence, the
+collection of STUDENTS (and the collection of FACULTY) will be constrained to
+bea subset of the collection of PERSONs at any time. Similarly, the collection of
+
+2'The ODL syntax and data types are meant to be compatible with the Interface Definition language
+(IDL) of CORBA (Common Object Request Broker Architecture), with extensions for relationships and
+other database concepts.

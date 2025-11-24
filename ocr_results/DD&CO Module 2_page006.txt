@@ -1,0 +1,45 @@
+final value until C2 is available from the previous stage. Similarly, C2 has to wait for C; and so on down
+to Co. Thus, only after the carry propagates and ripples through all stages will the last output S3 and carry
+C4 settle to their final correct value.
+
+The number of gate levels for the carry propagation can be found from the circuit of the full adder. The
+circuit is redrawn with different labels in Fig below for convenience. The input and output variables use
+the subscript i to denote a typical stage of the adder. The signals at P; and G; settle to their steady-state
+values after they propagate through their respective gates. These two signals are common to all half
+adders and depend on only the input augend and addend bits. The signal from the input carry Cj to the
+output carry Ci+: propagates through an AND gate and an OR gate, which constitute two gate levels. If
+there are four full adders in the adder, the output carry C4 would have 2 * 4 = 8 gate levels from Co to
+C4. For an n -bit adder, there are 2n gate levels for the carry to propagate from input to output.
+
+Half adder Half adder
+
+Full adder with P and G shown
+
+The carry propagation time is an important attribute of the adder because it limits the speed with which
+two numbers are added. The outputs will not be correct unless the signals are given enough time to
+propagate through the gates connected from the inputs to the outputs. Solution is to reduce the
+propagation time. There are several techniques for reducing the carry propagation time in a parallel
+adder. The most widely used technique employs the principle of carry lookahead logic.
+
+Consider the circuit of the full adder shown in above Fig. If we define two new binary variables
+P; = A;®B;
+G; = AB;
+the output sum and carry can respectively be expressed as
+S; = P,;®C,;
+
+Cin = G+ PC;
+
+i
+
+Gj is called a carry generate, and it produces a carry of 1 when both Aj and Bj are 1, regardless of the
+input carry Cj. Pj is called a carry propagate, because it determines whether a carry into stage i will
+propagate into stage i + 1 (assertion of C; will propagate to an assertion of Ci+1).
+
+We now write the Boolean functions for the carry outputs of each stage and substitute the value of each
+Ci from the previous equations:
+
+Co = input carry
+
+C, = Gy + Poo
+Cy = Gy + PiCy = Gy + Pi(Go + PoCo) = Gi + PiGo + PiPoCo
+C3 = Gy + PyCy = Gy + P2Gy + PyP\Gq = P2P\PoCo

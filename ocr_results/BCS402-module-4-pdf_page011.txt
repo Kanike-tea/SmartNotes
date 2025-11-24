@@ -1,0 +1,32 @@
+MICROCONTROLLER(BCS402)
+
+The IRQ mode stack has to be set up during the initialization code for the
+system.The stack size is reserved in the initial stages of boot-up .
+Figure 4.6 shows two memory layouts in a linear address space.
+
+A B Interrupt stack
+Ln
+Heap
+J
+Heap
+Code
+0x00008000
+Interrupt stack
+
+ox00000000 ox00000000
+
+Figure 4.6 Memory layouts.
+The first layout, A, shows a traditional stack layout with the interrupt
+stack stored underneath the code segment.
+The second layout, B, shows the interrupt stack at the top of the memory
+above the user stack.
+The main advantage of layout B over A is that Layout B does not corrupt
+the vector table when a stack overflow occurs, and so the system has a
+chance to correct itself when an overflow has been identified.
+
+For each processor mode a stack has to be set up. This is carried out every
+
+time the processor is reset. Figure 9.7 shows an implementation of stack
+using layout A.
+
+12

@@ -1,0 +1,46 @@
+LECTURE-17: Query Processing
+Query Processing
+Query Processing would mean the entire process or activity which involves query translation into
+low level instructions, query optimization to save resources, cost estimation or evaluation of query,
+and extraction of data from the database.
+Goal: To find an efficient Query Execution Plan for a given SQL query which would minimize the
+cost considerably, especially time.
+Cost Factors: Disk accesses [which typically consumes time], read/write operations [which
+typically needs resources such as memory/RAM].
+The major steps involved in query processing are depicted in the figure below;
+
+[ Query ea Parser | Translation | ©
+
+OUTPUT
+
+Let us discuss the whole process with an example. Let us consider the following two relations as the
+example tables for our discussion;
+
+Employee(Eno, Ename, Phone)
+
+Proj_Assigned(Eno, Proj_No, Role, DOP)
+where,
+
+Eno is Employee number,
+
+Ename is Employee name,
+
+Proj_No is Project Number in which an employee is assigned,
+
+Role is the role of an employee in a project,
+
+DOP is duration of the project in months.
+With this information, let us write a query to find the list of all employees who are working in a
+project which is more than 10 months old.
+
+SELECT Ename
+
+FROM Employee, Proj_Assigned
+
+WHERE Enployee.Eno = Proj_Assigned.Eno AND DOP > 10;
+Input:
+A query written in SQL is given as input to the query processor. For our case, let us consider the
+SQL query written above.
+Step 1: Parsing
+In this step, the parser of the query processor module checks the syntax of the query, the user’s
+privileges to execute the query, the table names and attribute names, etc. The correct table names,

@@ -1,0 +1,51 @@
+792
+
+Chapter 21 Concurrency Control Techniques
+
+waiting for, the directed edge is dropped from the wait-for graph. We have a state of
+deadlock if and only if the wait-for graph has a cycle. One problem with this
+approach is the matter of determining when the system should check for a dead-
+lock. One possibility is to check for a cycle every time an edge is added to the wait-
+for graph, but this may cause excessive overhead. Criteria such as the number of
+currently executing transactions or the period of time several transactions have
+been waiting to lock items may be used instead to check for a cycle. Figure 21.5(b)
+shows the wait-for graph for the (partial) schedule shown in Figure 21.5(a).
+
+If the system is in a state of deadlock, some of the transactions causing the deadlock
+must be aborted. Choosing which transactions to abort is known as victim
+selection. The algorithm for victim selection should generally avoid selecting trans-
+actions that have been running for a long time and that have performed many
+updates, and it should try instead to select transactions that have not made many
+changes (younger transactions).
+
+Timeouts. Another simple scheme to deal with deadlock is the use of timeouts.
+This method is practical because of its low overhead and simplicity. In this method,
+if a transaction waits for a period longer than a system-defined timeout period, the
+system assumes that the transaction may be deadlocked and aborts it—regardless of
+whether a deadlock actually exists.
+
+Starvation. Another problem that may occur when we use locking is starvation,
+which occurs when a transaction cannot proceed for an indefinite period of time
+while other transactions in the system continue normally. This may occur if the
+waiting scheme for locked items is unfair in that it gives priority to some transac-
+tions over others. One solution for starvation is to have a fair waiting scheme, such
+as using a first-come-first-served queue; transactions are enabled to lock an item
+in the order in which they originally requested the lock. Another scheme allows
+some transactions to have priority over others but increases the priority of a trans-
+action the longer it waits, until it eventually gets the highest priority and proceeds.
+Starvation can also occur because of victim selection if the algorithm selects the
+same transaction as victim repeatedly, thus causing it to abort and never finish exe-
+cution. The algorithm can use higher priorities for transactions that have been
+aborted multiple times to avoid this problem. The wait-die and wound-wait
+schemes discussed previously avoid starvation, because they restart a transaction
+that has been aborted with its same original timestamp, so the possibility that the
+same transaction is aborted repeatedly is slim.
+
+21.2 Concurrency Control Based
+on Timestamp Ordering
+
+The use of locking, combined with the 2PL protocol, guarantees serializability of
+schedules. The serializable schedules produced by 2PL have their equivalent serial
+schedules based on the order in which executing transactions lock the items they
+acquire. If a transaction needs an item that is already locked, it may be forced to
+wait until the item is released. Some transactions may be aborted and restarted

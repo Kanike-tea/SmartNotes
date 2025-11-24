@@ -1,0 +1,48 @@
+116 Chapter 5 Efficient C Programming
+
+In fact, the compiler will generate
+
+suB.orl,rl,#1 3 i--
+CMP r1,#0 3 compare i with 0
+BGT loop 3 if (i>0) goto loop
+
+The compiler is not being inefficient. It must be careful about the case when
+i = -0x80000000 because the two sections of code generate different answers in this case.
+For the first piece of code the SUBS instruction compares i with 1 and then decrements i.
+Since -0x80000000 < 1, the loop terminates. For the second piece of code, we decrement
+i and then compare with 0. Modulo arithmetic means that i now has the value
++0x7f fff FFF, which is greater than zero. Thus the loop continues for many iterations.
+
+Of course, in practice, i rarely takes the value -0x80000000. The compiler can’t usu-
+ally determine this, especially if the loop starts with a variable number of iterations (see
+Section 5.3.2).
+
+Therefore you should use the termination condition i !=0 for signed or unsigned loop
+counters. It saves one instruction over the condition i>0 for signed i.
+
+5.3.2. LOOPS USING A VARIABLE NUMBER OF ITERATIONS
+
+Now suppose we want our checksum routine to handle packets of arbitrary size. We pass
+in a variable N giving the number of words in the data packet. Using the lessons from the
+last section we count down until N = 0 and don’t require an extra loop counter i.
+
+‘The checksum_v7 example shows how the compiler handles a for loop with a variable
+number of iterations N.
+
+int checksum_v7(int *data, unsigned int N)
+
+{
+‘int sum=0;
+for (; NI=0; N--)
+{
+sum += *(data++) ;
+}
+return sum;
+}
+
+This compiles to
+
+checksum_v7
+MOV r2,#0 3 sum = 0
+cMP rl, #0 3 compare N, 0
+BEQ  checksum_v7_end ; if (N==0) goto end

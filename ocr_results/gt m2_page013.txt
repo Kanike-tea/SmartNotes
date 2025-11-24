@@ -1,0 +1,38 @@
+2-10. TRAVELING-SALESMAN PROBLEM
+
+A problem closely related to the question of Hamiltonian circuits is the
+traveling-salesman problem, stated as follows: A salesman is required to visit a
+number of cities during a trip. Given the distances between the cities, in what
+order should he travel so as to visit every city precisely once and return home,
+with the minimum mileage traveled?
+
+Representing the cities by vertices and the roads between them by edges, we
+get a graph. In this graph, with every edge e; there is associated a real number
+(the distance in miles, say), w(e;). Such a graph is called a weighted graph; w(e;)
+being the weight of edge e;..
+
+In our problem, if each of the cities has a road to every other city, we have a
+complete weighted graph. This graph has numerous Hamiltonian circuits, and we
+are to pick the one that has the smallest sum of distances (or weights).
+
+The total number of different (not edge disjoint, of course) Hamiltonian
+circuits in a complete graph of n vertices can be shown to be (n — 1)!/2. This
+follows from the fact that starting from any vertex we have n — 1 edges to choose
+from the first vertex, n — 2 from the second, n — 3 from the third, and so on.
+These being independent choices, we get (n — 1)! possible number of choices.
+This number is, however, divided by 2, because each Hamiltonian circuit has
+been counted twice.
+
+Theoretically, the problem of the traveling salesman can always be solved by
+enumerating all (n — 1)!/2 Hamiltonian circuits, calculating the distance traveled
+in each, and then picking the shortest one. However, for a large value of n, the
+labor involved is too great even for a digital computer (try solving it for the 50
+state capitals in the United States; n = 50).
+
+The problem is to prescribe a manageable algorithm for finding the shortest
+route. No efficient algorithm for problems of arbitrary size has yet been found,
+although many attempts have been made. Since this problem has applications in
+operations research, some specific large-scale examples have been worked out
+(see [2-1]). There are also available several heuristic methods of solution that
+give a route very close to the shortest one, but do not guarantee the shortest (see
+[2-4] for such a method).

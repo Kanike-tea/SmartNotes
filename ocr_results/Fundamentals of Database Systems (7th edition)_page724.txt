@@ -1,0 +1,51 @@
+694 — Chapter 19 Query Optimization
+
+This corresponds to the following SQL query:
+
+Q2: SELECT P.Pnumber, P.Dnum, E.Lname, E.Address, E.Bdate
+FROM PROJECT P, DEPARTMENT D, EMPLOYEE E
+WHERE = P.Dnum=D.Dnumber AND D.Mgr_ssn=E.Ssn AND
+
+P.Plocation= ‘Stafford’;
+
+In Figure 19.1(a), the leaf nodes P, D, and E represent the three relations PROJECT,
+DEPARTMENT, and EMPLOYEE, respectively, and the internal tree nodes represent
+the relational algebra operations of the expression. When this query tree is executed,
+the node marked (1) in Figure 19.1(a) must begin execution before node (2) because
+some resulting tuples of operation (1) must be available before we can begin execut-
+ing operation (2). Similarly, node (2) must begin executing and producing results
+before node (3) can start execution, and so on.
+
+As we can see, the query tree represents a specific order of operations for executing
+a query. A more neutral data structure for representation of a query is the query
+graph notation. Figure 19.1(c) (the same as shown in Figure 6.13) shows the query
+graph for query Q2. Relations in the query are represented by relation nodes, which
+are displayed as single circles. Constant values, typically from the query selection
+conditions, are represented by constant nodes, which are displayed as double cir-
+cles or ovals. Selection and join conditions are represented by the graph edges, as
+shown in Figure 19.1(c). Finally, the attributes to be retrieved from each relation are
+displayed in square brackets above each relation.
+
+The query graph representation does not indicate an order on which operations to
+perform first. There is only a single graph corresponding to each query.” Although
+some optimization techniques were based on query graphs such as those originally
+in the INGRES DBMS, it is now generally accepted that query trees are preferable
+because, in practice, the query optimizer needs to show the order of operations for
+query execution, which is not possible in query graphs.
+
+19.1.2 Heuristic Optimization of Query Trees
+
+In general, many different relational algebra expressions—and hence many differ-
+ent query trees—can be semantically equivalent; that is, they can represent the
+same query and produce the same results?
+
+The query parser will typically generate a standard initial query tree to correspond
+to an SQL query, without doing any optimization. For example, for a SELECT-
+PROJECT-JOIN query, such as Q2, the initial tree is shown in Figure 19.1(b). The
+CARTESIAN PRODUCT of the relations specified in the FROM clause is first applied;
+then the selection and join conditions of the WHERE clause are applied, followed by
+
+Hence, a query graph corresponds to a relational calculus expression as shown in Section 8.6.5.
+
+SThe same query may also be stated in various ways in a high-level query language such as SOL (see
+Chapters 7 and 8).

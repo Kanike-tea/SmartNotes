@@ -1,0 +1,54 @@
+7.1 More Complex SQL Retrieval Queries
+
+of employees who work on each project. In these cases we need to partition the rela-
+tion into nonoverlapping subsets (or groups) of tuples. Each group (partition) will
+consist of the tuples that have the same value of some attribute(s), called the
+grouping attribute(s). We can then apply the function to each such group indepen-
+dently to produce summary information about each group. SQL has a GROUP BY
+clause for this purpose. The GROUP BY clause specifies the grouping attributes,
+which should also appear in the SELECT clause, so that the value resulting from
+applying each aggregate function to a group of tuples appears along with the value
+of the grouping attribute(s).
+
+Query 24. For each department, retrieve the department number, the number
+of employees in the department, and their average salary.
+
+Q24: SELECT —_Dno, COUNT (*), AVG (Salary)
+FROM EMPLOYEE
+GROUP BY Dno;
+
+In Q24, the EMPLOYEE tuples are partitioned into groups—each group having
+the same value for the GROUP BY attribute Dno. Hence, each group contains the
+employees who work in the same department. The COUNT and AVG functions
+are applied to each such group of tuples. Notice that the SELECT clause includes
+only the grouping attribute and the aggregate functions to be applied on each
+group of tuples. Figure 7.1(a) illustrates how grouping works and shows the
+result of Q24.
+
+If NULLs exist in the grouping attribute, then a separate group is created for all
+tuples with a NULL value in the grouping attribute. For example, if the EMPLOYEE
+table had some tuples that had NULL for the grouping attribute Dno, there would be
+a separate group for those tuples in the result of Q24.
+
+Query 25. For each project, retrieve the project number, the project name, and
+the number of employees who work on that project.
+
+025: SELECT — Pnumber, Pname, COUNT (*)
+FROM PROJECT, WORKS_ON
+WHERE — Phumber=Pno
+GROUP BY Pnumber, Pname;
+
+Q25 shows how we can use a join condition in conjunction with GROUP BY. In this
+case, the grouping and functions are applied after the joining of the two relations in
+the WHERE clause.
+
+Sometimes we want to retrieve the values of these functions only for groups that
+satisfy certain conditions. For example, suppose that we want to modify Query 25 so
+that only projects with more than two employees appear in the result. SQL provides
+a HAVING clause, which can appear in conjunction with a GROUP BY clause, for this
+purpose. HAVING provides a condition on the summary information regarding the
+group of tuples associated with each value of the grouping attributes. Only the
+groups that satisfy the condition are retrieved in the result of the query. This is illus-
+trated by Query 26.
+
+219

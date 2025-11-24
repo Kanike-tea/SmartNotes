@@ -1,0 +1,42 @@
+9.1 Exception Handling 319
+
+Reset
+Data Abort
+FIQ
+IRQ
+Prefetch Abort
+SWI
+Undefined
+
+Exceptions * ¥ + v¥ vY
+* |(Undefined)( IRQ JC FIQ_)( Abort )( svc)
+
+Modes
+
+Figure 9.1 _ Exceptions and associated modes.
+
+= sets the cpsr to the exception mode
+
+= sets pc to the address of the exception handler
+
+Figure 9.1 shows a simplified view of exceptions and associated modes. Note that when
+an exception occurs the ARM processor always switches to ARM state.
+
+9.1.2 VECTOR TABLE
+
+Chapter 2 introduced the vector table—a table of addresses that the ARM core branches to
+when an exception is raised. These addresses commonly contain branch instructions of one
+of the following forms:
+
+= B<address>—This branch instruction provides a branch relative from the pe.
+
+m= LDR pc, [pc, #offset]—This load register instruction loads the handler address from
+memory to the pc. The address is an absolute 32-bit value stored close to the vector
+table. Loading this absolute literal value results in a slight delay in branching to a specific
+handler due to the extra memory access. However, you can branch to any address in
+memory.
+
+m= LDR pc, [pc, #-0xff0]—This load register instruction loads a specific interrupt ser-
+
+vice routine address from address Oxf ffff030 to the pe. This specific instruction is
+only used when a vector interrupt controller is present (VIC PL190).

@@ -1,0 +1,46 @@
+Microcontrollers-BCS402
+
+Before After
+Oxf f fff fff —
+1/0 Regs }|——+| 1/0 Regs
+FAST SRAM
++| Boot ROM
+DRAM DRAM
+large _| large
+contiguous contiguous
+block block
+Boot ROM [J L+| FAST SRAM
+0x00000000
+
+Fig 5.1.1: Memory Remapping
+
+Figure 5.1.1 shows memory before and after reorganization. It is common for ARM-based
+embedded systems to provide for memory remapping because it allows the system to start the
+initialization code from ROM at power-up. The initialization code then redefines or remaps
+the memory map to place RAM at address 0x00000000—an important step because then the
+exception vector able can be in RAM and thus can be reprogrammed.
+
+Diagnostics are often embedded in the initialization code. Diagnostic code tests the system
+by exercising the hardware target to check if the target is in working order. It also tracks
+down standard system-related issues. This type of testing is important for manufacturing
+since it occurs after the software product is complete. The primary purpose of diagnostic code
+is fault identification and isolation.
+
+Booting involves loading an image and handing control over to that image. The boot process
+itself can be complicated if the system must boot different operating systems or different
+versions of the same operating system.
+
+Booting an image is the final phase, but first you must load the image. Loading an image
+involves anything from copying an entire program including code and data into RAM, to just
+copying a data area containing volatile variables into RAM. Once booted, the system hands
+over control by modifying the program counter to point into the start of the image.
+Sometimes, to reduce the image size, an image is compressed. The image is then
+
+decompressed either when it is loaded or when control is handed over to it.
+
+5.2 Operating System
+The initialization process prepares the hardware for an operating system to take control. An
+
+operating system organizes the system resources: the peripherals, memory, and processing
+
+Dept. of ECE, GSSSIETW Page 13

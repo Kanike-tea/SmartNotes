@@ -1,0 +1,41 @@
+1106 Chapter 29 Overview of Data Warehousing and OLAP
+
+Figure 29.3
+
+A three-dimensional data
+
+cube model.
+
+P123
+
+P124
+
+P125
+
+Product. ——
+2
+S
+3
+
+specific fiscal quarter, and specific region. By including additional dimensions, a data
+hypercube could be produced, although more than three dimensions cannot be easily
+visualized or graphically presented. The data can be queried directly in any combina-
+tion of dimensions, thus bypassing complex database queries. Tools exist for viewing
+data according to the user’s choice of dimensions.
+
+Changing from one-dimensional hierarchy (orientation) to another is easily accom-
+plished in a data cube with a technique called pivoting (also called rotation). In this
+technique, the data cube can be thought of as rotating to show a different orienta-
+tion of the axes. For example, you might pivot the data cube to show regional sales
+revenues as rows, the fiscal quarter revenue totals as columns, and the company’s
+products in the third dimension (Figure 29.4). Hence, this technique is equivalent
+to having a regional sales table for each product separately, where each table shows
+quarterly sales for that product region by region. The term slice is used to refer to a
+two-dimensional view of a three- or higher-dimensional cube. The Product vs.
+Region 2-D view shown in Figure 29.2 is a slice of the 3-D cube shown in Figure
+29.3. The popular term “slice and dice” implies a systematic reduction of a body of
+data into smaller chunks or views so that the information is made visible from mul-
+tiple angles or viewpoints.
+
+Multidimensional models lend themselves readily to hierarchical views in what is
+known as roll-up display and drill-down display. A roll-up display moves up the

@@ -1,0 +1,181 @@
+MOV
+next_tap_arm9e
+
+a5, #0
+
+8.3 FIR filters
+
+3 perform next block of 6x6=36 taps
+
+LOMIA
+SUBS
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLATT
+LOR
+‘SMLABT
+SMLATT
+‘SMLABT
+SMLATT
+‘SMLABT
+LOR
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLATT
+LOR
+‘SMLABT
+SMLATT
+‘SMLABT
+SMLATT
+‘SMLABT
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLABB
+SMLATB
+SMLATT
+LOR
+‘SMLABT
+SMLATT
+‘SMLABT
+
+c!, {c_10,
+MM, #6
+
+a0, x10,
+al, x10,
+a2, x32,
+a3, x32,
+a4, x54,
+a5, x54,
+a0, x_10,
+x10, Dd,
+al, x32,
+a2, x32,
+a3, x54,
+a4, x54,
+a5, x_10,
+c_10, [cl],
+a0, x32,
+al, x32,
+a2, x54,
+a3, x54,
+a4, x10,
+a5, x_10,
+a0, x32,
+x32, Dd,
+al, x54,
+a2, x54,
+a3, x_10,
+a4, x_10,
+a5, x32,
+a0, x54,
+al, x54,
+a2, x10,
+a3, x_10,
+a4, x32,
+a5, x32,
+a0, x54,
+x54, Dd,
+al, x10,
+a2, x_10,
+a3, x32,
+
+c_32}
+
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+#4
+
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+#4
+
+c_32,
+c_32,
+c_32,
+c_32,
+c_32,
+c_32,
+c_32,
+#4
+
+c_32,
+c_32,
+c_32,
+c_32,
+c_32,
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+c_10,
+#4
+
+c_10,
+c_10,
+c_10,
+
+a0
+al
+a2
+a3
+a4
+a5
+a0
+
+al
+a2
+a3
+a4
+a5
+
+a0
+al
+a2
+a3
+a4
+a5
+a0
+
+al
+a2
+a3
+a4
+a5
+a0
+al
+a2
+a3
+a4
+a5
+a0
+
+al
+a2
+a3
+
+load four coefficients
+
+load two coefficients
+
+289

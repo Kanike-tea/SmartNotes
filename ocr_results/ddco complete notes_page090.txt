@@ -1,0 +1,37 @@
+COMPUTER ORGANIZATION (21¢s34 Module 3
+
+. The 3 instruction program is stored in the successive memory locations of the
+processor is as shown in the fig.
+
+Address Contents
+
+Begin execution here —e i
+i+4
+i+8
+
+e The system bus consists of uni-directional address bus,bi-direetional data bus and control bus
+“It is the process of accessing the 1“ instruction from memory whose address is stored in program
+counter into Instruction Register (IR))by means of bi-directional data bus and at the same time
+after instructiom,access the contents of PC are incremented by 4 in order to access the next
+instruction. Such a\process is called as “Straight Line Sequencing”.
+
+INSTRUCTION EXECUTION
+There aré}4.steps'for instructionjexecution
+1 Fetch the instruction from memory into the Instruction Register (IR) whose address
+is stored in PC.
+IR —[[PC]]
+2 Decode the instruction.
+3 Perform the operation according to the opcode of an instruction
+4 Load the result into the destination.
+5 During this process, Increment the contents of PC to point to next instruction ( In
+32 bit machine increment by 4 address)
+PC — [PC] +4.
+6 The next instruction is fetched, from the address pointed by PC.
+
+BRANCHING
+
+Suppose a list of ,,N“ numbers have to be added. Instead of adding one after the other, the
+add statement can be put in a loop. The loop is a straight-line of instructions executed as many
+times as needed.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 23

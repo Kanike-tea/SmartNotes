@@ -1,0 +1,52 @@
+18.2 Algorithms for External Sorting
+
+other operations (such as UNION and INTERSECTION), and in duplicate elimination
+algorithms for the PROJECT operation (when an SQL query specifies the DISTINCT
+option in the SELECT clause). We will discuss one of these algorithms in this sec-
+tion. Note that sorting of a particular file may be avoided if an appropriate index—
+such as a primary or clustering index (see Chapter 17)—exists on the desired file
+attribute to allow ordered access to the records of the file.
+
+External sorting refers to sorting algorithms that are suitable for large files of
+records stored on disk that do not fit entirely in main memory, such as most data-
+base files.° The typical external sorting algorithm uses a sort-merge strategy, which
+starts by sorting small subfiles—called runs—of the main file and then merges the
+sorted runs, creating larger sorted subfiles that are merged in turn. The sort-merge
+algorithm, like other database algorithms, requires buffer space in main memory,
+where the actual sorting and merging of the runs is performed. The basic algorithm,
+outlined in Figure 18.2, consists of two phases: the sorting phase and the merging
+phase. The buffer space in main memory is part of the DBMS cache—an area in the
+computer’s main memory that is controlled by the DBMS. The buffer space is
+divided into individual buffers, where each buffer is the same size in bytes as the size
+of one disk block. Thus, one buffer can hold the contents of exactly one disk block.
+
+In the sorting phase, runs (portions or pieces) of the file that can fit in the available
+buffer space are read into main memory, sorted using an internal sorting algorithm,
+and written back to disk as temporary sorted subfiles (or runs). The size of each run
+and the number of initial runs (ng) are dictated by the number of file blocks (b)
+and the available buffer space (ng). For example, if the number of available main
+memory buffers ng = 5 disk blocks and the size of the file b = 1,024 disk blocks, then
+np=| (b/ng) | or 205 initial runs each of size 5 blocks (except the last run, which will
+have only 4 blocks). Hence, after the sorting phase, 205 sorted runs (or 205 sorted
+subfiles of the original file) are stored as temporary subfiles on disk.
+
+In the merging phase, the sorted runs are merged during one or more merge passes.
+Each merge pass can have one or more merge steps. The degree of merging (dy)
+is the number of sorted subfiles that can be merged in each merge step. During each
+merge step, one buffer block is needed to hold one disk block from each of the
+sorted subfiles being merged, and one additional buffer is needed for containing
+one disk block of the merge result, which will produce a larger sorted file that is the
+result of merging several smaller sorted subfiles. Hence, dy, is the smaller of (ng — 1)
+and na, and the number of merge passes is [ logau(np)) |. In our example,
+where ng = 5, dy = 4 (four-way merging), so the 205 initial sorted runs would be
+merged 4 at a time in each step into 52 larger sorted subfiles at the end of the first
+merge pass. These 52 sorted files are then merged 4 at a time into 13 sorted files,
+which are then merged into 4 sorted files, and then finally into 1 fully sorted file,
+which means that four passes are needed.
+
+intemal sorting algorithms are suitable for sorting data structures, such as tables and lists, that can fit
+entirely in main memory. These algorithms are described in detail in data structures and algorithms texts,
+and include techniques such as quick sort, heap sort, bubble sort, and many others. We do not discuss
+these here. Also, main-memory DBMSs such as HANA employ their own techniques for sorting
+
+661

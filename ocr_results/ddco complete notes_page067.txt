@@ -1,0 +1,45 @@
+D flipflop
+
+Digital Design and Computer Organization(BCS302)
+
+T Flipflop
+
+module dataff
+input clk,d;
+output reg q;
+always @(posedge clk )
+' begin
+
+if(d == 0)
+
+q <=0 ;
+else
+q=
+
+end
+
+endmodule
+
+l;
+
+Dr Ajay V G, Dept. of CSE , SVIT
+
+( clk,d,q);
+
+module toggleff
+input clk,t;
+output reg q;
+always @(posedge clk )
+: begin
+if(t ==0)
+q <q
+
+(elk,eFq) 7
+
+else
+
+gq =-dr
+end
+endmodule
+
+Page 39

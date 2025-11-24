@@ -1,0 +1,44 @@
+230
+
+Transform-and-Conquer
+
+nodes occurs on each level. Let h be the height of the tree. According to the first
+property of heaps in the list at the beginning of the section, h = |log, nJ or just
+[logy (n + 1)] —1=k —1 for the specific values of n we are considering. Each
+key on level i of the tree will travel to the leaf level / in the worst case of the
+heap construction algorithm. Since moving to the next level down requires two
+comparisons—one to find the larger child and the other to determine whether
+the exchange is required—the total number of key comparisons involving a key
+on level i will be 2(h — i). Therefore, the total number of key comparisons in the
+worst case will be
+
+hig
+where the validity of the last equality can be proved either by using the closed-form
+formula for the sum a i2!' (see Appendix A) or by mathematical induction on
+h. Thus, with this bottom-up algorithm, a heap of size n can be constructed with
+fewer than 2n comparisons.
+
+The alternative (and less efficient) algorithm constructs a heap by successive
+insertions of a new key into a previously constructed heap; some people call it
+the top-down heap construction algorithm. So how can we insert a new key K
+into a heap? First, attach a new node with key K in it after the last leaf of the
+existing heap. Then sift K up to its appropriate place in the new heap as follows.
+Compare K with its parent’s key: if the latter is greater than or equal to K, stop
+(the structure is a heap); otherwise, swap these two keys and compare K with its
+new parent. This swapping continues until K is not greater than its last parent or
+it reaches the root (illustrated in Figure 6.12).
+
+Obviously, this insertion operation cannot require more key comparisons than
+the heap’s height. Since the height of a heap with n nodes is about log, n, the time
+efficiency of insertion is in O(log n).
+
+How can we delete an item from a heap? We consider here only the most
+important case of deleting the root’s key, leaving the question about deleting an
+arbitrary key in a heap for the exercises. (Authors of textbooks like to do such
+things to their readers, do they not?) Deleting the root’s key from a heap can be
+done with the following algorithm, illustrated in Figure 6.13.
+
+K Po Sooo
+
+FIGURE 6.12 Inserting a key (10) into the heap constructed in Figure 6.11. The new key
+(or is in the root).

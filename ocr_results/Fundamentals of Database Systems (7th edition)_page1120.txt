@@ -1,0 +1,47 @@
+1090
+
+Chapter 28 Data Mining Concepts
+
+a distance from C, of 10.0 and a distance from C of 5.0, so it joins cluster C,. The
+record with RID 4 has a distance from C, of 25.5 and a distance from C) of 36.6, so it
+joins cluster C). The record with RID 5 has a distance from C, of 20.6 and a distance
+from C) of 29.2, so it joins cluster C). Now, the new means (centroids) for the two
+clusters are computed. The mean for a cluster, C;, with 1 records of m dimensions is
+the vector:
+
+The new mean for C, is (33.75, 8.75) and the new mean for C) is (52.5, 25). A sec-
+ond iteration proceeds and the six records are placed into the two clusters as fol-
+lows: records with RIDs 1, 4, 5 are placed in C; and records with RIDs 2, 3, 6 are
+placed in Cj. The mean for C; and C) is recomputed as (28.3, 6.7) and (51.7, 21.7),
+respectively. In the next iteration, all records stay in their previous clusters and the
+algorithm terminates.
+
+Traditionally, clustering algorithms assume that the entire data set fits in main
+memory. More recently, researchers have developed algorithms that are efficient
+and are scalable for very large databases. One such algorithm is called BIRCH.
+BIRCH is a hybrid approach that uses both a hierarchical clustering approach,
+which builds a tree representation of the data, as well as additional clustering meth-
+ods, which are applied to the leaf nodes of the tree. Two input parameters are used
+by the BIRCH algorithm. One specifies the amount of available main memory and
+the other is an initial threshold for the radius of any cluster. Main memory is used
+to store descriptive cluster information such as the center (mean) of a cluster and
+the radius of the cluster (clusters are assumed to be spherical in shape). The radius
+threshold affects the number of clusters that are produced. For example, if the
+radius threshold value is large, then few clusters of many records will be formed.
+The algorithm tries to maintain the number of clusters such that their radius is
+below the radius threshold. If available memory is insufficient, then the radius
+threshold is increased.
+
+The BIRCH algorithm reads the data records sequentially and inserts them into an
+in-memory tree structure, which tries to preserve the clustering structure of the
+data. The records are inserted into the appropriate leaf nodes (potential clusters)
+based on the distance between the record and the cluster center. The leaf node
+where the insertion happens may have to split, depending upon the updated center
+and radius of the cluster and the radius threshold parameter. Additionally, when
+splitting, extra cluster information is stored, and if memory becomes insufficient,
+then the radius threshold will be increased. Increasing the radius threshold may
+actually produce a side effect of reducing the number of clusters since some nodes
+may be merged.
+
+Overall, BIRCH is an efficient clustering method with a linear computational com-
+plexity in terms of the number of records to be clustered.

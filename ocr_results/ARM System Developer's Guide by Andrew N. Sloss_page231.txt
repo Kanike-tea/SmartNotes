@@ -1,0 +1,55 @@
+218
+
+Chapter 7 Optimized Primitives
+
+PROOF
+
+7.1
+
+N--3 /* move to next bit */
+if ( (r>>N) >=) /* if re=d*(1<<N) */
+{
+r -= (d<<N); /* update remainder */
+q t= (1<<N); /* update quotient */
+}
+
+} white (N);
+
+return q;
+
+}
+
+To prove that the answer is correct, note that before we decrement N, the invariants of
+Equation (7.1) hold:
+
+n=qd+r and 0<r<d2% (7.1)
+
+At the start q = 0 and r = n, so the invariants hold by our assumption that the quotient
+fits into N bits. Assume now that the invariants hold for some N. If r < d2~!, then we
+need do nothing for the invariants to hold for N — 1. If r > d2~!, then we maintain the
+invariants by subtracting d2‘~! from rand adding 2N~! to q.
+
+The preceding implementation is called a restoring trial subtraction implementation. In
+a nonrestoring implementation, the subtraction always takes place. However, if r becomes
+negative, then we use an addition of (d < N) on the next round, rather than a subtraction,
+to give the same result. Nonrestoring division is slower on the ARM so we won't go into
+the details. The following subsections give you assembly implementations of the trial sub-
+traction method for different numerator and denominator sizes. They run on any ARM.
+processor.
+
+7.3.1.1 Unsigned 32-Bit/32-Bit Divide by Trial Subtraction
+
+This is the operation required by C compilers. It is called when the expression n/d or nd
+occurs in C and dis not a power of 2. The routine returns a two-element structure consisting
+of the quotient and remainder.
+
+RN 0 5 input denominator d, output quotient
+RN 1 input numerator n, output remainder
+RN 2 5 scratch register
+RN 3 current quotient
+
+aes
+
+3 _value_in_regs struct { unsigned q, r; }
+3; udiv_32by32_arm/m(unsigned d, unsigned n)
+udiv_32by32_arm7m

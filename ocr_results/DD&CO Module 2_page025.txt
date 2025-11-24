@@ -1,0 +1,54 @@
+of the inputs, but also of the present state of the storage elements. The next state of the storage elements
+is also a function of external inputs and the present state. Thus, a sequential circuit is specified by a
+time sequence of inputs, outputs, and internal states.
+
+Inputs ———>| Outputs
+Combinational
+circuit
+Memory
+
+elements
+
+Block diagram of sequential circuit
+
+There are two main types of sequential circuits, and their classification is a function of the timing of
+their signals. A synchronous sequential circuit is a system whose behavior can be defined from the
+knowledge of its signals at discrete instants of time. The behavior of an asynchronous sequential circuit
+depends upon the input signals at any instant of time and the order in which the inputs change. The
+storage elements commonly used in asynchronous sequential circuits are time-delay devices. The storage
+capability of a time-delay device varies with the time it takes for the signal to propagate through the
+device.
+
+A synchronous sequential circuit employs signals that affect the storage elements at only discrete instants
+of time. Synchronization is achieved by a timing device called a clock generator, which provides a
+clock signal having the form of a periodic train of clock pulses. The clock signal is commonly denoted
+by the identifiers clock and clk. The clock pulses are distributed throughout the system in such a way
+that storage elements are affected only with the arrival of each pulse. Synchronous sequential circuits
+that use clock pulses to control storage elements are called clocked sequential circuits and are the type
+most frequently encountered in practice. They are called synchronous circuits because the activity within
+the circuit and the resulting updating of stored values is synchronized to the occurrence of clock pulses.
+
+The storage elements (memory) used in clocked sequential circuits are called flip-flops. A flip-flop is a
+binary storage device capable of storing one bit of information. In a stable state, the output of a flip-flop
+is either 0 or 1. A sequential circuit may use many flip-flops to store as many bits as necessary. The
+block diagram of a synchronous clocked sequential circuit is shown in Fig(a) below. The outputs are
+formed by a combinational logic function of the inputs to the circuit or the values stored in the flip-flops
+(or both). The value that is stored in a flip-flop when the clock pulse occurs is also determined by the
+inputs to the circuit or the values presently stored in the flip-flop (or both). If the clock (synchronizing)
+pulses arrive at a regular interval, as shown in the timing diagram in Fig(b), the combinational logic
+must respond to a change in the state of the flip-flop in time to be updated before the next pulse arrives.
+
+Inputs ———>}
+
+Outputs
+Combinational
+
+circuit
+
+Flip-flops
+
+Clock pulses
+
+(a) Block diagram
+
+(b) Timing diagram of clock pulses

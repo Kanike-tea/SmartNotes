@@ -1,0 +1,53 @@
+78
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+MANAGES relationship type is partial, meaning that some or part of the set of
+employee entities are related to some department entity via MANAGES, but not
+necessarily all. We will refer to the cardinality ratio and participation constraints,
+taken together, as the structural constraints of a relationship type.
+
+In ER diagrams, total participation (or existence dependency) is displayed as a double
+line connecting the participating entity type to the relationship, whereas partial par-
+ticipation is represented by a single line (see Figure 3.2). Notice that in this notation,
+we can either specify no minimum (partial participation) or a minimum of one (total
+participation). An alternative notation (see Section 3.7.4) allows the designer to spec-
+ify a specific minimum number on participation in the relationship, such as 4 or 5.
+
+We will discuss constraints on higher-degree relationships in Section 3.9.
+
+3.4.4 Attributes of Relationship Types
+
+Relationship types can also have attributes, similar to those of entity types. For
+example, to record the number of hours per week that a particular employee works
+on a particular project, we can include an attribute Hours for the WORKS_ON
+relationship type in Figure 3.13. Another example is to include the date on which
+a manager started managing a department via an attribute Start_date for the
+MANAGES relationship type in Figure 3.12.
+
+Notice that attributes of 1:1 or 1:N relationship types can be migrated to one of the
+participating entity types. For example, the Start_date attribute for the MANAGES
+relationship can be an attribute of either EMPLOYEE (manager) or DEPARTMENT,
+although conceptually it belongs to MANAGES. This is because MANAGES is a 1:1
+relationship, so every department or employee entity participates in at most one
+relationship instance. Hence, the value of the Start_date attribute can be determined
+separately, either by the participating department entity or by the participating
+employee (manager) entity.
+
+For a 1:N relationship type, a relationship attribute can be migrated only to the
+entity type on the N-side of the relationship. For example, in Figure 3.9, if the
+WORKS_FOR relationship also has an attribute Start_date that indicates when an
+employee started working for a department, this attribute can be included as an
+attribute of EMPLOYEE. This is because each employee works for at most one
+department, and hence participates in at most one relationship instance in
+WORKS_FOR, but a department can have many employees, each with a different start date.
+In both 1:1 and 1:N relationship types, the decision where to place a relationship
+attribute—as a relationship type attribute or as an attribute of a participating entity
+type—is determined subjectively by the schema designer.
+
+For M:N (many-to-many) relationship types, some attributes may be determined.
+by the combination of participating entities in a relationship instance, not by any
+single entity. Such attributes must be specified as relationship attributes. An example
+is the Hours attribute of the M:N relationship WORKS_ON (Figure 3.13); the number
+of hours per week an employee currently works on a project is determined by an
+employee-project combination and not separately by either entity.

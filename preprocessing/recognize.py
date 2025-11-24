@@ -30,7 +30,7 @@ except (ImportError, AttributeError):
 
 
 class OCRRecognizer:
-    def __init__(self, checkpoint_path="checkpoints/ocr_finetuned_stage2_best.pth"):
+    def __init__(self, checkpoint_path="checkpoints/ocr_epoch_6.pth"):
 
         self.device = torch.device("cpu")
         self.tokenizer = TextTokenizer()
@@ -40,7 +40,12 @@ class OCRRecognizer:
         self.model = CRNN(num_classes=self.num_classes).to(self.device)
 
         if Path(checkpoint_path).exists():
-            self.model.load_state_dict(torch.load(checkpoint_path, map_location=self.device))
+            checkpoint = torch.load(checkpoint_path, map_location=self.device)
+            # Handle both wrapped and unwrapped checkpoints
+            if isinstance(checkpoint, dict) and 'model_state_dict' in checkpoint:
+                self.model.load_state_dict(checkpoint['model_state_dict'])
+            else:
+                self.model.load_state_dict(checkpoint)
             print(f"[OK] Loaded OCR model from: {checkpoint_path}")
         else:
             print("[WARNING] No checkpoint found — using placeholder predictions.")
@@ -148,13 +153,17 @@ class OCRRecognizer:
             Predicted text string
         """
         try:
-            # Convert PIL Image to numpy array if needed
-            if hasattr(line_image, 'tobytes'):
-                # PIL Image
-                img_array = np.array(line_image.convert('L'))
-            else:
+            # Convert to numpy array if needed
+            if isinstance(line_image, np.ndarray):
                 # Already numpy array
-                img_array = line_image if isinstance(line_image, np.ndarray) else np.array(line_image)
+                img_array = line_image
+            else:
+                # Try PIL Image conversion
+                try:
+                    img_array = np.array(line_image.convert('L'))
+                except:
+                    # Fallback - just convert to array
+                    img_array = np.array(line_image)
             
             # Preprocess
             tensor = self.preprocess_line(img_array)

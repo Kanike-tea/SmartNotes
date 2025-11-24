@@ -1,0 +1,34 @@
+Data Structures and Applications (BCS304) Module III
+
+The nodes are numbered in a full binary tree starting with the root on level 1, continuing with the
+nodes on level 2, and so on. Nodes on any level are numbered from left to right.
+
+Complete binary tree : A binary tree is complete if the number of nodes in each level i except
+possibly the last level is 2! The number of nodes in the last level appears as left as possible.
+
+Example: A complete tree T11 with 11 nodes is shown below. This is not a full binary tree.
+
+Complete Binary Tree
+
+e A binary tree T is said to be a 2-tree or an extended binary tree if each node N has either 0 or
+2 children.
+
+e The nodes with 2 children are called internal nodes and the nodes with 0 children are called
+external nodes. Sometimes the nodes are distinguished in diagrams by using circles for internal
+nodes and squares for external nodes
+
+e The term extended binary tree comes from the operation where tree T is converted into a 2-
+tree by replacing each empty subtree by new node and the new tree is a 2-tree . The nodes in
+the original tree T are internal nodes in the extended tree and the new nodes are the external
+nodes in the extended tree.
+
+(a) Binary tree T (b) Extended 2-tree
+
+Strictly Binary Tree is a tree where every non leaf node in a binary tree has non empty left and
+right subtrees.A strictly binary tree with n leaves always contain 2n-1 nodes
+
+Example:
+
+Example For a Strictly Binary Tree
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 13

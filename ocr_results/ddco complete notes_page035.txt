@@ -1,0 +1,39 @@
+Digital Design and Computer Organization(BCS302)
+
+Implementation of Full adder using 2 half adder
+We know that
+S=xy’z’ + xX’yz’?+xyz+x’y’z Caxyt+xztyz
+=2)(xy’+x’y)+z(xy+x’y’) =xy+xz(yty’)+yz(x+x’)
+
+=2?(xy’+x’y)+Zz(x’ytxy’)’ SxytxyZtxy’Zt+xyz+x’yz
+
+=27(x ® y)+z(x ® y)’ =xytxyztz(xy’+x’y)
+=” A+zZA’ =xy(1+z)+z(xy)
+=z@A
+
+C=xy+z(x®y)
+S=z ®x @y
+
+(x ®y)z+xy
+
+FIGURE 4.8
+Implementation of full adder with two half adders and an OR gate
+
+Binary Adder:
+
+A binary adder is a digital circuit that produces the arithmetic sum of two binary numbers.
+It can be constructed with full adders connected in cascade, with the output carry from
+each full adder connected to the input carry of the next full adder in the chain.
+
+n-bit numbers requires a chain of n full adders or a chain of one-half adder and n-1
+full adders.
+
+* Eg:4bit numbers requires a chain of 4 fulladders or one HA and 3FAs.
+
+* interconnection of four full-adder (FA) circuits to provide a four-bit binary ripple
+carry adder
+
++ The augend bits of A and the addend bits of B are designated by subscript numbers
+from right to left, with subscript 0 denoting the least significant bit. The carries are
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 7

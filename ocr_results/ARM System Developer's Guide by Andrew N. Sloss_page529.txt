@@ -1,0 +1,48 @@
+516 Chapter 14 Memory Management Units
+
+Without the FCSE, switching from one task to the next requires a change in virtual
+memory maps. If the change involves two tasks with overlapping address ranges, the infor-
+mation stored in the caches and TLB become invalid, and the system must flush the caches
+and TLB. The process of flushing these components adds considerable time to the task
+switch because the core must not only clear the caches and TLB of invalid data, but it must
+also reload data to the caches and TLB from main memory.
+
+With the FCSE there is an additional address translation when managing virtual mem-
+ory. The FCSE modifies virtual addresses before it reaches the cache and TLB using a special
+relocation register that contains a value known as the process ID. ARM refers to the addresses
+in virtual memory before the first translation as a virtual address (VA), and those addresses
+after the first translation as a modified virtual address(MVA), shown in Figure 14.4. When
+using the FCSE, all modified virtual addresses are active. Tasks are protected by using the
+domain access facilities to block access to dormant tasks. We discuss this in more detail in
+the next section.
+
+Switching between tasks does not involve changing page tables; it simply requires writing
+the new task’s process ID into the FCSE process ID register located in CP15. Because a task
+switch does not require changing the page tables, the caches and TLB remain valid after the
+switch and do not need flushing.
+
+When using the FCSE, each task must execute in the fixed virtual address range from
+0x00000000 to 0x1 FFFFFFF and must be located in a different 32 MB area of modified virtual
+memory. The system shares all memory addresses above 0x2000000, and uses domains to
+protect tasks from each other. The running task is identified by its current process ID.
+
+To utilize the FCSE, compile and link all tasks to run in the first 32 MB block of virtual
+memory (VA) and assign a unique process ID. Then place each task in a different 32 MB
+partition of modified virtual memory using the following relocation formula:
+
+MVA = VA + (0x2000000 * process ID) (14.2)
+
+To calculate the starting address of a task partition in modified virtual memory, take a value
+of zero for the VA and the task’s process ID, and use these values in Equation (14.2).
+
+The value held in the CP15:c13:cO register contains the current process ID. The process
+ID bit field in the register is seven bits wide and supports 128 process IDs. The format of
+the register is shown in Figure 14.15.
+
+31 2524 0
+
+Process ID SBZ
+
+SBZ = should be zero
+
+Figure 14.15 Fast context switch register CP15 register 13.

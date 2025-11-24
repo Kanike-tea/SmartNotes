@@ -1,0 +1,54 @@
+656 Appendix D_ Instruction Cycle Timings
+
+Table D.8 StrongARM1 (ARMv4) instruction cycle timings.
+
+Instruction class Cycles Notes
+
+ALU 1 +1 if a register-specified shift is used [even if the instruction is not
+executed].
++2 if Rdis pc (only if executed].
+
+B, BL 2
+
+LDR/B/H Rd not pe 1 Rdis not available for one cycle.
+
+LDRSB/SH Rd not pe 2 Rdis not available for one cycle.
+
+LDR Rd is pe 4
+
+LDM N = 1, not pe 2 [2 cycles if not executed.]
+
+LDM N > 1, not pe N The last loaded value is not available for one cycle.
+(N cycles if not executed.]
+
+LDM loading pe N+3 [max(N,2) if not executed.]
+
+MRS 1 Rais not available for one cycle.
+
+MSR to cpsr 3 +1 if any of the csx fields are updated.
+
+MSR to spsr 1
+
+MUL, MLA M Rdis not available for one cycle. You cannot start another multiply
+on the next cycle.
+
+MULS, MLAS 4
+
+xMULL, xMLAL 14+M RdHi is not available for one cycle. You cannot start a multiply on
+the next cycle. [2 if instruction not executed.]
+
+xMULLS, xMLALS 5 (2 if instruction not executed.]
+
+STR/B/H 1
+
+STM N +1ifN=1.
+{Same number of cycles if not executed.]
+
+SUP/B 2 (2 if instruction not executed.]
+
+D.5 ARMSE INSTRUCTION CYCLE TIMINGS
+
+‘The ARMOE core is based on a five-stage pipeline. There is usually a one- or two-cycle delay
+following a load or multiply instruction before you can use the data. The multiplier circuit
+uses a 32-bit by 16-bit multiplier array. The multiplier does not terminate early. Table D.9
+gives the ARM9E instruction cycle timings.

@@ -1,0 +1,46 @@
+826 Chapter 22 Database Recovery Techniques
+
+the beginning of the log). Whenever an item is undone, it is added to a list of
+undone items and is not undone again.
+
+22.4 Shadow Paging
+
+This recovery scheme does not require the use of a log in a single-user environ-
+ment. In a multiuser environment, a log may be needed for the concurrency control
+method. Shadow paging considers the database to be made up of a number of fixed-
+size disk pages (or disk blocks)—say, n—for recovery purposes. A directory with n
+entries” is constructed, where the ith entry points to the ith database page on disk.
+The directory is kept in main memory if it is not too large, and all references—reads
+or writes—to database pages on disk go through it. When a transaction begins exe-
+cuting, the current directory—whose entries point to the most recent or current
+database pages on disk—is copied into a shadow directory. The shadow directory
+is then saved on disk while the current directory is used by the transaction.
+
+During transaction execution, the shadow directory is never modified. When a
+write_item operation is performed, a new copy of the modified database page is cre-
+ated, but the old copy of that page is not overwritten. Instead, the new page is writ-
+ten elsewhere—on some previously unused disk block. The current directory entry
+is modified to point to the new disk block, whereas the shadow directory is not
+modified and continues to point to the old unmodified disk block. Figure 22.4 illus-
+trates the concepts of shadow and current directories. For pages updated by the
+transaction, two versions are kept. The old version is referenced by the shadow
+directory and the new version by the current directory.
+
+Figure 22.4
+
+Oak ons
+
+An example of shadow paging.
+Current directory Database disk Shadow directory
+(after updating blocks (pages) (not updated)
+pages 2, 5)
+. Page 5 (old) | * 1
+-+—_ |! Pagel Koo 2
+° =| Page 4 ~« ° 3
+° Page 2 (old) |-*— * 4
+° | Page 3 « * 5
+. =| Page 6 En 6
+L__»|~ Page 2 (new)
+|__|" Page 5 (new)
+
+®The directory is similar to the page table maintained by the operating system for each process.

@@ -1,0 +1,43 @@
+Microcontrollers - BCS402
+
+in main memory that map to the same single location in cache memory. The figure shows this
+
+relationship for the class of addresses ending in 0x824.
+
+Main memory
+
+OxFFFFFFFF
+OxFFFFF824
+OxFFFFFOOO
+OxFFFFE824 4 KB cache memory
+OxFFFFEOOO (direct mapped)
+OxFFF
+—
+Cache-tag |v ]d | word3 | word2 [ word! | word 0x820
+0x00003000 -— t
+0x00002824 | —
+0x00002000 0x000
+0x00001824 a
+0x00001000 [
+4KB { 0x00000824
+0x00000000 c ¥ als 1
+XXXXX]| 8 2 4
+lag set index | data index
+
+31 12 11 43 0
+
+Address issued by processor core
+
+Fig 5: How main memory maps to a direct-mapped cache
+
+The set index selects the one location in cache where all values in memory with an ending
+address of 0x824 are stored. The data index selects the word/halfword/byte in the cache line, in
+this case the second word in the cache line. The tag field is the portion of the address that is
+compared to the cache-tag value found in the directory store. In this example there are one
+million possible locations in main memory for every one location in cache memory. Only one of
+the possible one million values in the main memory can exist in the cache memory at any given
+time. The comparison of the tag with the cache-tag determines whether the requested data is in
+cache or represents another of the million locations in main memory with an ending address of
+0x824.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 36

@@ -1,0 +1,55 @@
+19.8 An Example of Query Optimization in Data Warehouses
+
+19.8 An Example of Query Optimization
+in Data Warehouses
+
+In this section, we introduce another example of query transformation and rewrit-
+ing as a technique for query optimization. In Section 19.2, we saw examples of
+query transformation and rewriting. Those examples dealt with nested subqueries
+and used heuristics rather than cost-based optimization. The subquery (view)
+merging example we showed can be considered a heuristic transformation; but the
+group-by view merging uses cost-based optimization as well. In this section, we
+consider a transformation of star-schema queries in data warehouses based on cost
+considerations. These queries are commonly used in data warehouse applications
+that follow the star schema. (See Section 29.3 for a discussion of star schemas.)
+
+We will refer to this procedure as star-transformation optimization. The star
+schema contains a collection of tables; it gets its name because of the schema’s
+resemblance to a star-like shape whose center contains one or more fact tables
+(relations) that reference multiple dimension tables (relations). The fact table con-
+tains information about the relationships (e.g., sales) among the various dimension
+tables (e.g., customer, part, supplier, channel, year, etc.) and measure columns (e.g.,
+amount_sold, etc.). Consider the representative query called QSTAR given below.
+Assume that D1, D2, D3 are aliases for the dimension tables DIM1, DIM2, DIM3,
+whose primary keys are, respectively, D1.Pk, D2.Pk, and D3.Pk. These dimensions
+have corresponding foreign key attributes in the fact table FACT with alias F—
+namely, F.Fk1, F.Fk2, F.Fk3—on which joins can be defined. The query creates a
+grouping on attributes D1.X, D2.Y and produces a sum of the so-called “measure”
+attribute (see Section 29.3) F.M from the fact table F. There are conditions on attri-
+butes A, B, C in DIM1, DIM2, DIM3, respectively:
+
+Query QSTAR:
+
+SELECT D1.X, D2.Y, SUM (F.M)
+
+FROM FACT F, DIM] D1, DIM2 D2, DIM3 D3
+
+WHERE F.Fk1 = D1.Pk and F.Fk2 = D2.Pk and F.Fk3 = D3.Pk and
+D1.A>5 and D2.B<77 and D3.C=11
+
+GROUP BY DL.X, D2.Y
+
+The fact table is generally very large in comparison with the dimension tables.
+QSTAR is a typical star query, and its fact table tends to be generally very large and
+joined with several tables of small dimension tables. The query may also contain
+single-table filter predicates on other columns of the dimension tables, which are
+generally restrictive. The combination of these filters helps to significantly reduce
+the data set processed from the fact table (such as D1.A > 5 in the above query).
+This type of query generally does grouping on columns coming from dimension
+tables and aggregation on measure columns coming from the fact table.
+
+The goal of star-transformation optimization is to access only this reduced set of
+data from the fact table and avoid using a full table scan on it. Two types of star-
+transformation optimizations are possible: (A) classic star transformation, and
+
+731

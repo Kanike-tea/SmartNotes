@@ -1,0 +1,47 @@
+1134 Chapter 30 Database Security
+
+that Al grants SELECT to A2 on the EMPLOYEE relation with horizontal propaga-
+tion equal to 1 and vertical propagation equal to 2. A2 can then grant SELECT to at
+most one account because the horizontal propagation limitation is set to 1. Addi-
+tionally, A2 cannot grant the privilege to another account except with vertical prop-
+agation set to 0 (no GRANT OPTION) or 1; this is because A2 must reduce the vertical
+propagation by at least 1 when passing the privilege to others. In addition, the hori-
+zontal propagation must be less than or equal to the originally granted horizontal
+propagation. For example, if account A grants a privilege to account B with the
+horizontal propagation set to an integer number j > 0, this means that B can grant
+the privilege to other accounts only with a horizontal propagation less than or equal
+to j. As this example shows, horizontal and vertical propagation techniques are
+designed to limit the depth and breadth of propagation of privileges.
+
+30.3 Mandatory Access Control and Role-Based
+Access Control for Multilevel Security
+
+The discretionary access control technique of granting and revoking privileges on
+relations has traditionally been the main security mechanism for relational data-
+base systems. This is an all-or-nothing method: A user either has or does not have a
+certain privilege. In many applications, an additional security policy is needed that
+classifies data and users based on security classes. This approach, known as
+mandatory access control (MAC), would typically be combined with the discre-
+tionary access control mechanisms described in Section 30.2. It is important to note
+that most mainstream RDBMSs currently provide mechanisms only for discretionary
+access control. However, the need for multilevel security exists in government, mil-
+itary, and intelligence applications, as well as in many industrial and corporate
+applications. Because of the overriding concerns for privacy, in many systems the
+levels are determined by who has what access to what private information (also
+called personally identifiable information). Some DBMS vendors—for example,
+Oracle—have released special versions of their RDBMSs that incorporate manda-
+tory access control for government use.
+
+Typical security classes are top secret (TS), secret (S), confidential (C), and unclas-
+sified (U), where TS is the highest level and U the lowest. Other more complex
+security classification schemes exist, in which the security classes are organized in
+a lattice. For simplicity, we will use the system with four security classification lev-
+els, where TS = $ > C 2 U, to illustrate our discussion. The commonly used model
+for multilevel security, known as the Bell-LaPadula model, classifies each subject
+(user, account, program) and object (relation, tuple, column, view, operation) into
+one of the security classifications TS, $, C, or U. We will refer to the clearance
+(classification) of a subject S as class($) and to the classification of an object O as
+class(O). Two restrictions are enforced on data access based on the subject/object
+classifications:
+
+‘Bell and La Padulla (1976) was a MITRE technical report on secure computer systems in Multics.

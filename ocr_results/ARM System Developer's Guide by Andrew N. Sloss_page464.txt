@@ -1,0 +1,52 @@
+12.6 Cache Lockdown 451
+
+ExampLe A macro called CACHELOCKBYLBIT generates both the lockDCache and lockICache
+12.8 functions.The macro also uses constants in the header file cache..h shown in Figure 12.10.
+The macro starts by checking if the number of bytes to lock in cache is zero. Then it
+aligns the address adr to a cache line while determining the number of cache lines it takes
+to contain the code.
+
+If the procedure is locking data in the D-cache, then it reads the lock register
+CP15:c9:c0:0. If the procedure is locking code in the I-cache, then it reads the lock register
+CP15:c9:c0:1. The resulting value is placed in the core c9f register. The L bits are also stored
+
+in the tmp register for later use.
+
+IF {CPU} = "ARM926EJ-S" = LOR: \,
+{CPU} = "ARM1026EJ-S"
+EXPORT lockDCache
+EXPORT lockICache
+EXPORT bittest
+INCLUDE cache.h
+
+adr RN O 3 current address of code or data
+size RN 1 5 memory size in bytes
+tmp RN 2 3 scratch register
+tmpl RN 3 3 scratch register
+cof RN 12; CP15:c9 register format
+MACRO.
+
+CACHELOCKBYLBIT $op
+
+ADD size, adr, size ; size = end address
+BIC adr, adr, #(1<<CLINE)-1 ; align to CLINE
+MoV tmp, #(1<<CLINE)-1 3 scratch CLINE mask
+
+TsT size, tmp CLINE end fragment ?
+SUB size, size, adr add alignment bytes
+MOV size, size, Isr #CLINE ; convert size 2 # CLINE
+ADDNE size, size, #1 add CLINE for fragment
+CMP size, #(1<<NSET)-1 ; size to large ?
+
+BHI FTI exit return victim base
+
+IF "$op" = "Icache"
+
+MRC p15, 0, c9f, c9, cO, 1 3 get i-cache lock bits
+ENDIF
+IF "$op" = "Deache"
+
+MRC p15, 0, c9f, c9, cO, 0 3 get d-cache lock bits
+ENDIF
+
+AND tmp, cOf, #0xf ; tmp = state of Lbits

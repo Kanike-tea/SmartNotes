@@ -1,0 +1,96 @@
+floating-point representation signal, 262, 268
+infinite impulse response filters, 294-302
+on Intel XScale, 278-280
+load-store intensive, 259
+multiply, 259
+representation of digital signal
+block-floating, 263
+description of, 260
+fixed-point. see Digital signal processing,
+fixed-point representation
+floating-point, 262, 268
+logarithmic, 263
+selection of, 260-263
+summary of, 268-269
+on StrongARM, 274-275
+Digital signal processor, 6
+Direct-mapped cache, 410-411
+Disable_lower_priority routine, 362
+Discrete Fourier transform
+definition of, 303
+fast Fourier transform
+benchmarks, 314t
+description of, 303-304
+radix-2, 304-305
+radix-4, 305-313
+function of, 303
+Division
+conversion into multiplies, 143-145
+description of, 216-217
+fixed-point representation signal, 267
+Newton-Raphson
+applications of, 223-224
+on ARM9E, 217
+description of, 223-225
+fractional values
+initial estimate for, 231
+iteration accuracy, 232
+overview of, 230
+theory of, 231
+integer normalization for, 212
+QIS5 fixed-point division by, 233-235
+Q31 fixed-point division by, 235-237
+unsigned 32/32-bit divide by, 225-230
+overview of, 140-142
+repeated unsigned division with remainder,
+142-143
+
+Index 675
+
+signed
+by a constant, 147-149
+description of, 237-238
+trial subtraction
+description of, 217-218
+nonrestoring, 218
+restoring, 218
+unsigned 64/31-bit divide by, 222-223
+unsigned 32-bit/15-bit divide by, 220-222
+unsigned 32-bit/32-bit divide by, 218-220
+unsigned
+by a constant, 145-147
+by Newton-Raphson division. see Division,
+Newton-Raphson
+repeated, with remainder, 142-143
+by trial subtraction. see Division, trial
+subtraction
+Domains
+access to, 541-542
+fast context switch extension use of, 518-519
+memory management units, 510-512
+Double-precision integer multiplication
+description of, 208
+long long multiplication, 208-209
+signed 64-bit by 64-bit multiply with 128-bit
+result, 211-212
+unsigned 64-bit by 64-bit multiply with
+128-bit result, 209-210
+DRAM, 11
+DSL modems, 15
+Dual 16-bit multiply instructions, 557-558
+Dynamic predictor, 661-662
+Dynamic random access memory. see DRAM
+Dynamic task, 382
+
+E
+ELSE, 626
+.else, 632
+
+Embedded operating systems
+ARM processors. see ARM processors
+components of, 381-383
+description of, 381
+device driver framework, 383
+hardware, 6-12, 16
+initialization, 382
+initialization code, 12-14

@@ -1,0 +1,54 @@
+14.3 Normal Forms Based on Primary Keys
+
+The difference between a key and a superkey is that a key has to be minimal; that is,
+if we have a key K = {Aj, Ao, ... , Ag} of R, then K — {A}} is not a key of R for any Aj,
+1 Sisk. In Figure 14.1, {Ssn} is a key for EMPLOYEE, whereas {Ssn}, {Ssn, Ename},
+{Ssn, Ename, Bdate}, and any set of attributes that includes Ssn are all superkeys.
+
+Ifa relation schema has more than one key, each is called a candidate key. One of
+the candidate keys is arbitrarily designated to be the primary key, and the others
+are called secondary keys. In a practical relational database, each relation schema
+must have a primary key. If no candidate key is known for a relation, the entire rela-
+tion can be treated as a default superkey. In Figure 14.1, {Ssn} is the only candidate
+key for EMPLOYEE, so it is also the primary key.
+
+Definition. An attribute of relation schema R is called a prime attribute of R if
+it is a member of some candidate key of R. An attribute is called nonprime if it
+is not a prime attribute—that is, if it is not a member of any candidate key.
+
+In Figure 14.1, both Ssn and Pnumber are prime attributes of WORKS_ON, whereas
+other attributes of WORKS_ON are nonprime.
+
+We now present the first three normal forms: 1NF, 2NF, and 3NF. These were pro-
+posed by Codd (1972a) as a sequence to achieve the desirable state of 3NF relations
+by progressing through the intermediate states of INF and 2NF if needed. As we
+shall see, 2NF and 3NF independently attack different types of problems arising
+from problematic functional dependencies among attributes. However, for histori-
+cal reasons, it is customary to follow them in that sequence; hence, by definition a
+3NF relation already satisfies 2NF.
+
+14.3.4 First Normal Form
+
+First normal form (1NF)is now considered to be part of the formal definition of a
+relation in the basic (flat) relational model; historically, it was defined to disallow
+multivalued attributes, composite attributes, and their combinations. It states that
+the domain of an attribute must include only atomic (simple, indivisible) values and
+that the value of any attribute in a tuple must be a single value from the domain of
+that attribute. Hence, 1NF disallows having a set of values, a tuple of values, or a
+combination of both as an attribute value for a single tuple. In other words, INF
+disallows relations within relations or relations as attribute values within tuples. The
+only attribute values permitted by 1NF are single atomic (or indivisible) values.
+
+Consider the DEPARTMENT relation schema shown in Figure 14.1, whose primary
+key is Dnumber, and suppose that we extend it by including the Dlocations attribute
+as shown in Figure 14.9(a). We assume that each department can have a number of
+locations. The DEPARTMENT schema and a sample relation state are shown in Fig-
+ure 14.9. As we can see, this is not in 1NF because Dlocations is not an atomic attri-
+bute, as illustrated by the first tuple in Figure 14.9(b). There are two ways we can
+look at the Dlocations attribute:
+
+= The domain of Dlocations contains atomic values, but some tuples can have a
+set of these values. In this case, Dlocations is not functionally dependent on
+the primary key Dnumber.
+
+477

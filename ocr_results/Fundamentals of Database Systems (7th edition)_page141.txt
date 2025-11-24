@@ -1,0 +1,29 @@
+4.2 Specialization and Generalization
+
+relationship in Figure 4.1. We will explain the d symbol in the circles in Figure 4.1
+and additional EER diagram notation shortly.
+
+Figure 4.2 shows a few entity instances that belong to subclasses of the (SECRETARY,
+ENGINEER, TECHNICIAN} specialization. Again, notice that an entity that belongs to
+a subclass represents the same real-world entity as the entity connected to it in the
+EMPLOYEE superclass, even though the same entity is shown twice; for example, e,
+is shown in both EMPLOYEE and SECRETARY in Figure 4.2. As the figure suggests,
+a superclass/subclass relationship such as EMPLOYEE/SECRETARY somewhat
+resembles a 1:1 relationship at the instance level (see Figure 3.12). The main differ-
+ence is that in a 1:1 relationship two distinct entities are related, whereas in a super-
+class/subclass relationship the entity in the subclass is the same real-world entity as
+the entity in the superclass but is playing a specialized role—for example, an
+EMPLOYEE specialized in the role of SECRETARY, or an EMPLOYEE specialized in
+the role of TECHNICIAN.
+
+There are two main reasons for including class/subclass relationships and special-
+izations. The first is that certain attributes may apply to some but not all entities of
+
+111
+
+SECRETARY Figure 4.2
+Instances of a specialization.
+
+EMPLOYEE
+
+ENGINEER

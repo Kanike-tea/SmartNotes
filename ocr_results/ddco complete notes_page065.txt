@@ -1,0 +1,41 @@
+Digital Design and Computer Organization(BCS302)
+
+——? Clk ——
+
+(b) From D flip-flop
+
+>» Characteristic tablesA characteristic table defines the logical properties ofa flip-flop by
+describing its operation in tabular form. They define the next state (i.e., the state that
+
+results from a clock transition) as a function of the inputs and the present state
+
+> Q(t) denotes the state of the flip-flop immediately before the clock edge, and
+
+> Q(t + 1) denotes the state that results from the clock transition.
+
+Table 5.1
+Flip-Flop Characteristic Tables
+JK Flip-Flop D Flip-Flop
+J kK | Qt+1) pieatt+h — T Flip-Flop
+0 0 | a No change —_——————————_ T | at + 1)
+o 1 io Reset 0 |0 Reset
+1 0/1 Set 1 1 Set 0 O(t) No change
+1 1/0@ Complement a as Q(t) | Complement
+
+Characteristic equation
+
+> It is the Boolean expression in terms of its input and output which determines
+
+the next state of the flipflop.
+
+T FF
+
+G
+
+= 3200
+= Oo-0
+o--=0
+
+Q(t+1)=TQ’+QT’
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 37

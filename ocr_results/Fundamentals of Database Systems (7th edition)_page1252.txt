@@ -1,0 +1,187 @@
+1222 Index
+
+DBMS (continued)
+operators and maintenance personnel,
+7
+persistent storage, 19-20
+physical design phase, 9
+query processing, 20
+redundancy control, 18-19
+requirements specification and
+analysis phase, 9
+single-user systems, 51
+special purpose, 52
+SQL and, 177-178
+stored procedures and, 336-337
+system designers and implementers, 17
+tool developers, 17
+two-tier client-server architecture, 49
+unauthorized access restriction, 19
+XML document storage, 442
+DBMS-specific buffer replacement
+policies, 756-757
+DDBMSs (distributed database
+management systems)
+degree of local autonomy, 865-866
+degree of homogeneity, 865-866
+technology and, 841
+update decomposition and, 863-865
+DDBs (distributed databases)
+advantages of, 846
+architectures, 868-875
+autonomy, 845-846
+availability, 844-845
+catalog management, 875
+concurrent control and recovery in,
+854-857
+conditions for, 842-843
+data allocation, 849-853
+data fragmentation, 847-853
+data replication, 849-853
+network topologies, 843
+partition tolerance, 845
+query processing and optimization,
+859-865
+reliability, 844-845,
+scalability, 845
+sharding, 847-848
+technology and, 841
+transaction management in, 857-859
+transparency, 843-844
+DDL (data definition language)
+compiler for schema definitions,
+42-43
+DBMS languages and, 39
+Deadlock
+cautious waiting algorithm, 791
+detection, 791-792
+no waiting algorithm, 791
+occurrence in transactions, 789-790
+prevention protocols, 790-791
+timeouts for, 792
+transaction timestamps and, 790-791
+Debt-credit transactions, 773
+
+Decision-support systems, see DSS
+(decision-support systems)
+Decision trees, data mining, 1085-1086
+Declaration, XML documents, 433
+Declarative assertions, 225-227
+Declarative expressions, 268
+Declarative languages, 40, 999
+Decomposition
+algorithms, 519-523
+Boyce-Codd normal form (BCNE),
+489-491, 522-523
+dependency preservation, 514-515,
+519-522
+DDMS (distributed database
+management service), 863-865
+fourth normal form (4NE), 527-530
+nonadditive (lossless) join property,
+476, 515-518, 519-523, 530
+nonadditive join test for binary
+decomposition (NJB), 490
+normalization and, 489-491
+properties of, 504, 513-518
+queries, 863-865
+relations not in BCNF, 489-491
+three normal form (3NE), 519-522
+update, 863-865,
+Deductive database systems, 22
+Deductive databases
+clausal form, 1003-1005
+Datalog language for, 1001, 1002-1003
+Datalog program safety, 1007-1010
+Datalog rule, 1004
+declarative language of, 999
+enhanced data models, 962, 999-1012
+Horn clauses, 1004
+nonrecursive query evaluation,
+1010-1012
+overview of, 999-1000
+Prolog language for, 1000-1001
+Prolog/Datalog notation, 1000-1003
+relational operators for, 1010
+rules, 1000, 1005-1007
+Deep Web, 1052
+Default values, SQL attributes, 184-186
+Deferred updates, database recovery, 814,
+821-823
+Degree of homogeneity, 865-866
+Degree of local autonomy, 865-866
+Degree of relation
+schema attributes, 152
+SELECT operations, 243
+PROJECT operation, 244
+DELETE command, SQL, 200
+Delete operation, relational data models,
+166, 167-168
+Deletion, B-Trees, 629-630
+Deletion anomalies, RDB design and, 467
+Deletion marker, files, 568
+Deletion operation, concurrency control
+and, 806
+Denormalization, 476
+
+Dependency
+diagrammatic notation for, 474
+equivalence of sets of, 508
+functional, 471-474, 505-512,
+527-528, 532
+inclusion, 531-532
+inference rules for, 505~509, 527-528
+join (JD), 494-495, 530-531
+minimal sets of, 510-512
+multivalued (MVD), 491-494, 527-530
+preservation property, 476
+Dependency preservation
+algorithms, 519-522
+nonadditive (lossless) join
+decomposition and, 519-522
+property of decomposition, 514-515
+3NF schema using, 519-522
+Dereferencing (—>), SQL, 386
+Derived attribute, 66
+Descendant nodes, tree structures, 617
+Description record, SQL/CLI, 327-328
+Descriptors, SQL schemas, 179
+Design, see Database design
+Design autonomy, DBs, 845
+Design transparency, DDBs, 844
+Destructor, object operation, 371
+Dictionary, ontology as, 134
+Dictionary constructor, 369
+Digital certificates, 1153
+Digital libraries, 1047-1048
+Digital signatures, 1152-1153
+Digital terrain analysis, 988-989
+Directed acyclic graph (DAG), 655
+Directed graph, XML data
+representation, 427-428
+Dirty bit, buffer (cache) management,
+558, 816
+Dirty page tables, database recovery,
+828-831
+Dirty read problem, transaction
+processing, 750
+DISCONNECT command, SQL, 316
+Discretionary action control, 1121,
+1129-1134
+Discretionary privileges, types of,
+1129-1130
+Discretionary security mechanisms, 1123
+Discriminating attributes, 299-300
+Discriminator key, UML class diagrams, 88
+Disjointness constraint (d notation),
+114-115
+Disjunctive selection, search methods
+for, 666-667
+Disk blocks (pages)
+allocating files on, 564
+block size, 549-550
+buffering, 556-560, 815-816
+database recovery, 815-816
+hardware addresses of, 550-551
+interblock gaps in, 550
+reading/writing data from, 551

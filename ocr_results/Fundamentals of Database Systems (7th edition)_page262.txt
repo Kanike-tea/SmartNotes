@@ -1,0 +1,51 @@
+232 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+= Views defined on multiple tables using joins are generally not updatable.
+= Views defined using grouping and aggregate functions are not updatable.
+
+In SQL, the clause WITH CHECK OPTION should be added at the end of the view
+definition if a view is to be updated by INSERT, DELETE, or UPDATE statements.
+This allows the system to reject operations that violate the SQL rules for view
+updates. The full set of SQL rules for when a view may be modified by the user are
+more complex than the rules stated earlier.
+
+It is also possible to define a view table in the FROM clause of an SQL query. This is
+known as an in-line view. In this case, the view is defined within the query itself.
+
+7.3.4 Views as Authorization Mechanisms
+
+We describe SQL query authorization statements (GRANT and REVOKE) in detail
+in Chapter 30, when we present database security and authorization mechanisms.
+Here, we will just give a couple of simple examples to illustrate how views can be
+used to hide certain attributes or tuples from unauthorized users. Suppose a certain
+user is only allowed to see employee information for employees who work for
+department 5; then we can create the following view DEPT5EMP and grant the user
+the privilege to query the view but not the base table EMPLOYEE itself. This user
+will only be able to retrieve employee information for employee tuples whose
+Dno = 5, and will not be able to see other employee tuples when the view is queried.
+
+CREATE VIEW DEPTSEMP: AS
+
+SELECT *
+FROM EMPLOYEE
+WHERE Dno = 5;
+
+In a similar manner, a view can restrict a user to only see certain columns; for
+example, only the first name, last name, and address of an employee may be visible
+as follows:
+
+CREATE VIEW = BASIC_EMP_DATA = AS
+SELECT Fname, Lname, Address
+FROM EMPLOYEE;
+
+Thus by creating an appropriate view and granting certain users access to the view
+and not the base tables, they would be restricted to retrieving only the data specified
+in the view. Chapter 30 discusses security and authorization in detail, including the
+GRANT and REVOKE statements of SQL.
+
+7.4 Schema Change Statements in SQL
+
+In this section, we give an overview of the schema evolution commands available
+in SQL, which can be used to alter a schema by adding or dropping tables, attri-
+butes, constraints, and other schema elements. This can be done while the database
+is operational and does not require recompilation of the database schema. Certain

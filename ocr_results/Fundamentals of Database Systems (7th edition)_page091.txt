@@ -1,0 +1,72 @@
+3.1. Using High-Level Conceptual Data Models for Database Design
+
+——
+
+Functional Requirements
+
+'
+
+FUNCTIONAL ANALYSIS
+
+High-Level Transaction
+Specification
+
+DBMS -independent
+
+| DBMS-specific
+
+y
+APPLICATION PROGRAM
+DESIGN
+
+y
+TRANSACTION
+IMPLEMENTATION
+
+Application Programs
+
+Figure 3.1
+
+61
+
+REQUIREMENTS
+COLLECTION AND
+ANALYSIS
+
+Data Requirements
+
+'
+
+CONCEPTUAL DESIGN
+
+Conceptual Schema
+(In a high-level data model)
+
+1
+
+LOGICAL DESIGN
+(DATA MODEL MAPPING)
+
+Logical (Conceptual) Schema
+(In the data model of a specific DBMS)
+
+'
+
+PHYSICAL DESIGN
+
+1
+
+<—_—___4H4H4H44 Internal Schema
+
+A simplified diagram to illustrate the main phases of database design.
+
+the known functional requirements of the application. These consist of the user-
+defined operations (or transactions) that will be applied to the database, including
+both retrievals and updates. In software design, it is common to use data flow dia-
+grams, sequence diagrams, scenarios, and other techniques to specify functional
+requirements. We will not discuss any of these techniques here; they are usually
+
+described in detail in software engineering texts.
+
+Once the requirements have been collected and analyzed, the next step is to create a
+conceptual schema for the database, using a high-level conceptual data model. This

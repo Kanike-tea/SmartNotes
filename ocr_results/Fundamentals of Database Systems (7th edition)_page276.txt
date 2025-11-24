@@ -1,0 +1,60 @@
+246 Chapter 8 The Relational Algebra and Relational Calculus
+
+(a)
+
+Fname | Lname _| Salary
+
+John Smith [30000
+
+Franklin | Wong _[ 40000
+
+Ramesh | Narayan | 38000
+
+Joyce _| English | 25000
+
+(b)
+
+TEMP
+
+Fname_| Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn |Dno
+John B_ | Smith | 123456789 | 1965-01-09 | 731 Fondren, Houston,TX | _M_| 30000 | 333445555 [_5
+Franklin | T | Wong | 383445555 | 1955-12-08 | 638 Voss, Houston,TX M_| 40000 | 888665555 | 5
+Ramesh | K_ | Narayan | 666884444 | 1962-09-15 | 975 Fire Oak, Humble,Tx | M_ | 38000 | 333445555 | 5
+Joyce A_| English | 453453453 | 1972-07-31 | 5631 Rice, Houston, TX | F | 25000 | 333445555 | 5
+R
+
+First_name | Last_name | Salary
+
+John ‘Smith 30000
+
+Franklin Wong 40000
+
+Ramesh | Narayan _ | 38000
+
+Joyoe English 25000
+
+Figure 8.2
+
+Results of a sequence of operations. (a) Rename, Lname, Salary (Spno=5(EMPLOYEE)).
+(b) Using intermediate relations and renaming of attributes.
+
+where the symbol p (rho) is used to denote the RENAME operator, S is the new rela-
+tion name, and Bj, Bp, ... , By, are the new attribute names. The first expression
+renames both the relation and its attributes, the second renames the relation only,
+and the third renames the attributes only. If the attributes of R are (Aj, Ap, ... , An)
+in that order, then each A; is renamed as B;.
+
+In SQL, a single query typically represents a complex relational algebra expression.
+Renaming in SQL is accomplished by aliasing using AS, as in the following example:
+
+SELECT E.Fname AS First_name, E.Lname AS Last_name, E.Salary AS Salary
+FROM EMPLOYEE AS E
+WHERE E.Dno=5,
+
+8.2 Relational Algebra Operations
+from Set Theory
+
+8.2.1 The UNION, INTERSECTION, and MINUS Operations
+
+The next group of relational algebra operations are the standard mathematical
+operations on sets. For example, to retrieve the Social Security numbers of all

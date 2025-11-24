@@ -1,0 +1,49 @@
+Table 15.10
+
+15.1 Advanced DSP and SIMD Support in ARMv6 559
+
+Most significant word multiplies.
+
+Instruction Description
+
+SMMLA{R}{<cond>} Rd, Rm, Rs, Rn Signed 32 x 32 multiply with accumulation of
+the high 32 bits of the product to the
+32-bit accumulator Rn
+
+SMMLS{R}{<cond>} Rd, Rm, Rs, Rn Signed 32 x 32 multiply subtracting from
+(Rn << 32) and then taking the high 32 bits
+of the result
+
+SMMUL{R}{<cond>} Rd, Rm, Rs Signed 32 x 32 multiply with upper 32 bits of
+product only
+
+The optional {R} in the mnemonic allows the addition of the fixed constant 0x80000000
+to the 64-bit product before producing the upper 32 bits. This allows for biased rounding
+of the result.
+
+15.1.8 CRYPTOGRAPHIC MULTIPLICATION EXTENSIONS
+
+Table 15.11
+
+In some cryptographic algorithms, very long multiplications are quite common. In order
+to maximize their throughput, a new 64 + 32 x 32 — 64 multiply accumulate operation
+has been added to complement the already existing 32 x 32 multiply operation UMULL
+(see Table 15.11).
+
+Here is an example of a very efficient 64-bit x 64-bit multiply using the new instructions:
+
+; inputs: First 64-bit multiply operand in (RaHi,RaLo)
+3 Second 64-bit multiply operand in (RbHi, RbLo)
+
+umu 1 64x64
+UMULL RO, R2, RaLo, RbLo
+UMULL R1, R3, RaHi, RbLo
+UMAAL RL, R2, RaLo, RbHi
+UMAAL 2, R3, RaHi, RbHi
+
+3 output: 128-bit result in (R3, R2, R1, RO)
+
+Cryptographic multiply.
+
+UMAAL{<cond>} RdLo, RdHi, Rm, Rs Special crypto multiply (RdHi : RdLo) = Rm
+Rs + RdHi + RdLo

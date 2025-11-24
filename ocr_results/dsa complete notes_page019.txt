@@ -1,0 +1,97 @@
+Data Structures and Applications/BCS304
+
+Module-1
+
+e¢ When a matrix is represented as a two dimensional | array defined as a[max_rows][max_cols],
+we can locate each element quickly by writing a[i][j] where i is the row index and j is the
+
+column index.
+
+¢ Consider the matrix given below. It contains many zero entries, such a matrix is called a sparse
+
+matrix
+Col0_ Coll
+Row0|15 0
+Rowl | 0 ll
+Row2 | 0 0
+Row3 | 0 0
+Row4 | 91 0
+Row5 |0 0
+
+Col2 Col3 Col4 _Col5
+
+0 22 0 -15
+3 0 0 0
+0 -6 0 0
+0 0 0 0
+0 0 0 0
+28 0 0 0
+
+When a sparse matrix is represented as a two dimensional array space is wasted for example if we
+have 1000x 1000 matrix with only 2000 non zero element, the corresponding 2 dimensional array
+requires space for 1,000,000 elements
+
+ADT Sparse Matrix objects: a set of triples, <row, column, value>, where row and column are
+integers and form a unique combination, and value comes from the set item.
+
+Functions:
+for all a, beSparseMatrix, x€item, i, j, maxCol, maxRoweindex
+
+n
+
+parse MatrixCreate(maxRow, maxCol) ::=
+
+return a SparseMatrix that can hold up to
+
+maxItems = maxRow x maxCol and whose maximum
+row size is maxRow and whose maximum column size
+is maxCol.
+
+n
+
+arse MatrixTranspose(a) : =
+
+return the matrix produced by interchanging
+the row and column value of every triple.
+
+n
+
+arse MatrixAdd(a, b) :=
+
+if the dimensions of a and b are the same
+
+return the matrix produced by adding corresponding
+items, namely those with identical row and column
+values else return error
+
+n
+
+arse MatrixMultiply(a, b) :=
+
+if number of columns in a equals number of
+
+rows in b return the matrix d produced by multiplying
+a by b according to the formula:
+
+d{iJ[j] = = (alil[k]-b[k][j]) else return error.
+
+Sparse Matrix Representation
+
+e A Sparse matrix can be represented by using an array of triple <row, col, value >.
+
+e In addition to ensure the operations terminate , it is necessary to know the number of rows and
+columns, and the number of nonzero elements in the matrix. Putting all this information
+together a sparse matrix can be created as follows
+
+SparseMatrix Create(maxRow, maxCol) ::=
+
+#define MAX_TERMS 101 /* maximum number of terms +1*/
+
+typedef struct {
+int col;
+int row;
+int value;
+} term;
+term a[MAX_TERMS] ;
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 20

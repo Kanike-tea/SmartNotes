@@ -1,0 +1,51 @@
+5.10 Division 141
+
+division routine that you can tailor to a specific range of numerator and denominator
+values. We look at assembly division routines in detail in Chapter 7. The standard integer
+division routine provided in the C library can take between 20 and 100 cycles, depending
+on implementation, early termination, and the ranges of the input operands.
+
+Division and modulus (/ and %) are such slow operations that you should avoid them
+as much as possible. However, division by a constant and repeated division by the same
+denominator can be handled efficiently. This section describes how to replace certain
+divisions by multiplications and how to minimize the number of division calls.
+
+Circular buffers are one area where programmers often use division, but you can avoid
+these divisions completely. Suppose you have a circular buffer of size buf fer_size bytes
+and a position indicated by a buffer of fset. To advance the offset by increment bytes you
+could write
+
+offset = (offset + increment) % buffer size;
+Instead it is far more efficient to write
+
+offset += increment;
+if (offset>=buffer_size)
+{
+
+offset -= buffer_size;
+
+}
+
+The first version may take 50 cycles; the second will take 3 cycles because it does not involve
+a division. We've assumed that increment < buffer_size; you can always arrange this
+in practice.
+
+If you can’t avoid a division, then try to arrange that the numerator and denominator
+are unsigned integers. Signed division routines are slower since they take the absolute values
+of the numerator and denominator and then call the unsigned division routine. They fix
+the sign of the result afterwards.
+
+Many C library division routines return the quotient and remainder from the division.
+In other words a free remainder operation is available to you with each division operation
+and vice versa. For example, to find the (x, y) position of a location at of fset bytes into
+a screen buffer, it is tempting to write
+
+typedef struct {
+int x;
+int ys
+
+} point;
+
+point getxy vi(unsigned int offset, unsigned int bytes per_line)
+{
+point p;

@@ -1,0 +1,57 @@
+8.3 FIR filters 293
+
+N RN 3; number of outputs (a multiple of 3)
+M RN 4 — ; number of coefficients (a multiple of 2)
+c0  RN3 5 coefficient registers
+
+cl RN12
+
+x0 RNS ; data registers
+
+x1 RNG
+
+a01  RN7 — ; accumulators (low 32 bits)
+
+a0h RN8 — ; accumulators (high 32 bits)
+
+all RNQ
+
+alh RN 10
+
+a2) RN 1
+
+a2h RN 14
+
+3 void fir 32by32
+; (long long *a,
+; int *x,
+; struct { int *c; unsigned int M; } *c,
+; unsigned int N)
+
+fir_32by32
+STMFD  sp!, {r4-rll, Ir}
+LOMIA cc, {c, M}
+
+next_sample32
+STMFD sp!, {N, M}
+LOMIA x!, {x.0, x 1}
+MOV a0l, #0
+MOV a_Oh, #0
+MOV all, #0
+MOV a_lh, #0
+MOV a2l, #0
+MOV a_2h, #0
+
+next_tap32
+3 perform next block of 3x2=6 taps
+LOMIA c!, {c_0, cl}
+SMLAL 01, a.0h, x0, c_0
+SMLAL all, ah, x1, c0
+SMLAL 01, a.0h, x1, c1
+LOMIA x!, {x.0, x 1}
+SUBS = M, M, #2
+SMLAL  a_21, a 2h, x0, c.0
+SMLAL all, ath, x0, cl
+SMLAL a21, a 2h, x1, c1
+BGT —next_tap32
+LOMFD sp!, {N, M}

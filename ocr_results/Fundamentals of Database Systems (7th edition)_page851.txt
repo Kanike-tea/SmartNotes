@@ -1,0 +1,51 @@
+22.2 NO-UNDO/REDO Recovery Based on Deferred Update
+
+We must now check for cascading rollback. From Figure 22.1(c), we see that trans-
+action T> reads the value of item B that was written by transaction T3; this can also
+be determined by examining the log. Because T3 is rolled back, T,; must now be
+rolled back, too. The WRITE operations of T, marked by ** in the log, are the ones
+that are undone. Note that only write_item operations need to be undone during
+transaction rollback; read_item operations are recorded in the log only to determine
+whether cascading rollback of additional transactions is necessary.
+
+In practice, cascading rollback of transactions is never required because practical
+recovery methods guarantee cascadeless or strict schedules. Hence, there is also no
+need to record any read_item operations in the log because these are needed only for
+determining cascading rollback.
+
+22.1.6 Transaction Actions That Do Not Affect the Database
+
+In general, a transaction will have actions that do not affect the database, such as
+generating and printing messages or reports from information retrieved from the
+database. If a transaction fails before completion, we may not want the user to get
+these reports, since the transaction has failed to complete. If such erroneous reports
+are produced, part of the recovery process would have to inform the user that these
+reports are wrong, since the user may take an action that is based on these reports
+and that affects the database. Hence, such reports should be generated only after the
+transaction reaches its commit point. A common method of dealing with such
+actions is to issue the commands that generate the reports but keep them as batch
+jobs, which are executed only after the transaction reaches its commit point. If the
+transaction fails, the batch jobs are canceled.
+
+22.2 NO-UNDO/REDO Recovery Based
+on Deferred Update
+
+The idea behind deferred update is to defer or postpone any actual updates to the
+database on disk until the transaction completes its execution successfully and
+reaches its commit point.*
+
+During transaction execution, the updates are recorded only in the log and in the
+cache buffers. After the transaction reaches its commit point and the log is force-
+written to disk, the updates are recorded in the database. If a transaction fails before
+reaching its commit point, there is no need to undo any operations because the
+transaction has not affected the database on disk in any way. Therefore, only REDO-
+type log entries are needed in the log, which include the new value (AFIM) of the
+item written by a write operation. The UNDO-type log entries are not needed since
+no undoing of operations will be required during recovery. Although this may sim-
+plify the recovery process, it cannot be used in practice unless transactions are short
+and each transaction changes few items. For other types of transactions, there is the
+potential for running out of buffer space because transaction changes must be held
+
+4Hence deferred update can generally be characterized as a no-steal approach.
+
+821

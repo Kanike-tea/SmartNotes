@@ -1,0 +1,54 @@
+Car tesian-Product or Cross-Product (SI x R1)
+e Each row of S1 is paired with each row of R1.
+e Result schema has one field per field of S1 and R1, with field names ‘inherited’ if possible.
+¢ Consider the borrower and loan tables as follows:
+
+Borrower: Loan:
+Cust-name Loan-no Loan-no Amount
+Ram L-13 L-13 1000
+Shyam L-30 L-30 20000
+Suleman L-42 L-42 40000
+
+Cross product of Borrower and Loan, Borrower x Loan =
+
+Borrower.Cust- | Borrower.Loan- | Loan.Loan- | Loan.Amount
+name no no
+
+Ram L-13 L-13 1000
+Ram L-13 L-30 20000
+Ram L-13 L-42 40000
+Shyam L-30 L-13 1000
+Shyam L-30 L-30 20000
+Shyam L-30 L-42 40000
+Suleman L-42 L-13 1000
+Suleman L-42 L-30 20000
+Suleman L-42 L-42 40000
+
+The rename operation can be use
+same in two participating tables:
+
+to rename the fields to avoid confusion when two field names are
+
+For example the statement, PLoan-borrower(Cust-nameLoan-No-1, Loan-No-2,Amount)( Borrower x Loan) results
+into- A new Table named Loan-borrower is created where it has four fields which are renamed as
+
+Cust-name, Loan-No-1, Loan-No-
+
+product of Borrower and Loan.
+
+Loan-borrower:
+
+2 and Amount and the rows contains the same data as the cross
+
+Cust- Loan-No-1 | Loan- Amount
+name No-2
+
+Ram L-13 L-13 1000
+Ram L-13 L-30 20000
+Ram L-13 L-42 40000
+Shyam L-30 L-13 1000
+Shyam L-30 L-30 20000
+Shyam L-30 L-42 40000
+Suleman L-42 L-13 1000
+Suleman L-42 L-30 20000
+Suleman L-42 L-42 40000

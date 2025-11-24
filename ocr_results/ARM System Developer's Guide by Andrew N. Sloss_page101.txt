@@ -1,0 +1,41 @@
+88 Chapter 4 Introduction to the Thumb Instruction Set
+
+Figure 4.1
+
+Figure 4.2
+
+ARM code Thumb code
+ARMDi vide ThumbDivide
+3 IN: rO(value),r1 (divisor) ; IN: rO(value),r1(divisor)
+3 OUT: r2(MODulus) ,r3(DIVide) 3 OUT: r2(MODulus) ,r3(DIVide)
+MOV r3,#0 MOV r3,#0
+loop loop
+SUBS r0,r0,r1 ADD r3,#1
+ADDGE r3,r3,#1 SUB r0,rl
+BGE loop BGE loop
+ADD r2,r0,r1 SUB r3,#1
+ADD r2,r0,r1
+5 x 4 = 20 bytes 6 x 2 = 12 bytes
+Code density.
+Thumb 16-bit ARM 32-bit
+instruction D instruction
+1)
+©
+ADD 10, #3 ——+|  O ADDS 10, 10, #3
+D
+1)
+R
+
+cpsr = nzcvgifT_SvC
+
+Thumb instruction decoding.
+
+We only describe a subset of these instructions in this chapter since most code is
+compiled from a high-level language. See Appendix A for a complete list of Thumb
+
+instructions.
+
+This chapter covers Thumb register usage, ARM-Thumb interworking, branch instruc-
+tions, data processing instructions, load-store instructions, stack operations, and software
+
+interrupts.

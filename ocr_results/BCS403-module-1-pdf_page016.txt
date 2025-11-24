@@ -1,0 +1,19 @@
+Database Management System [BCS403]
+
+When Not to Use a DBMS
+= DBMS may involve unnecessary overhead costs that would not be incurred in _ traditional
+file processing. The overhead costs of using a DBMS are due to the following:
+e High initial investment in hardware, software, and training
+e The generality that a DBMS provides for defining and processing data
+e Overhead for providing security, concurrency control, recovery, and integrity
+functions
+«Therefore, it may be more desirable to use regular files under the following circumstances:
+e Simple, well-defined database applications that are not expected to,change at all
+© Stringent, real-time requirements for some application programs that may not be
+met because of DBMS overhead
+« Embedded systems with limited storage capacity, where a general-purpose DBMS
+would not fit
+
+« No multiple-user access to data
+
+https://vtucode.in Page 17

@@ -1,0 +1,82 @@
+Review Questions
+
+20.1.
+
+20.2.
+20.3.
+
+20.4.
+
+20.6.
+
+20.7.
+
+20.9.
+
+20.10.
+
+20.11.
+
+20.12.
+
+20.13.
+
+What is meant by the concurrent execution of database transactions in a
+multiuser system? Discuss why concurrency control is needed, and give
+informal examples.
+
+Discuss the different types of failures. What is meant by catastrophic failure?
+
+Discuss the actions taken by the read_item and write_item operations on a
+database.
+
+Draw a state diagram and discuss the typical states that a transaction goes
+through during execution.
+
+. What is the system log used for? What are the typical kinds of records ina
+
+system log? What are transaction commit points, and why are they
+important?
+
+Discuss the atomicity, durability, isolation, and consistency preservation
+properties of a database transaction.
+
+What is a schedule (history)? Define the concepts of recoverable, cascade-
+less, and strict schedules, and compare them in terms of their recoverability.
+
+. Discuss the different measures of transaction equivalence. What is the dif-
+
+ference between conflict equivalence and view equivalence?
+
+What is a serial schedule? What is a serializable schedule? Why is a serial
+schedule considered correct? Why is a serializable schedule considered
+correct?
+
+What is the difference between the constrained write and the unconstrained
+write assumptions? Which is more realistic?
+
+Discuss how serializability is used to enforce concurrency control in a data-
+base system. Why is serializability sometimes considered too restrictive as a
+measure of correctness for schedules?
+
+Describe the four levels of isolation in SQL. Also discuss the concept of
+snapshot isolation and its effect on the phantom record problem.
+
+Define the violations caused by each of the following: dirty read, nonrepeat-
+able read, and phantoms.
+
+Exercises
+
+20.14.
+
+Change transaction T, in Figure 20.2(b) to read
+
+read_item(X);
+X:=X+M;
+
+if X > 90 then exit
+else write_item(X);
+
+Exercises
+
+777

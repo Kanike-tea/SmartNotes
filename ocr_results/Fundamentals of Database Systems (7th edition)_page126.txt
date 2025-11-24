@@ -1,0 +1,82 @@
+96 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Review Questions
+
+3.1.
+
+3.2.
+
+3.3.
+
+3.4.
+
+3.5.
+3.6.
+
+3.7.
+
+3.8.
+
+3.9.
+
+3.11.
+
+3.12.
+
+3.13.
+
+3.14,
+3.15.
+
+Discuss the role of a high-level data model in the database design process.
+List the various cases where use of a NULL value would be appropriate.
+
+Define the following terms: entity, attribute, attribute value, relationship
+instance, composite attribute, multivalued attribute, derived attribute, com-
+plex attribute, key attribute, and value set (domain).
+
+What is an entity type? What is an entity set? Explain the differences among
+an entity, an entity type, and an entity set.
+
+Explain the difference between an attribute and a value set.
+
+What is a relationship type? Explain the differences among a relationship
+instance, a relationship type, and a relationship set.
+
+What is a participation role? When is it necessary to use role names in the
+description of relationship types?
+
+Describe the two alternatives for specifying structural constraints on rela-
+tionship types. What are the advantages and disadvantages of each?
+
+Under what conditions can an attribute of a binary relationship type be
+migrated to become an attribute of one of the participating entity types?
+
+. When we think of relationships as attributes, what are the value sets of these
+
+attributes? What class of data models is based on this concept?
+
+What is meant by a recursive relationship type? Give some examples of
+recursive relationship types.
+
+When is the concept of a weak entity used in data modeling? Define the
+terms owner entity type, weak entity type, identifying relationship type, and
+partial key.
+
+Can an identifying relationship of a weak entity type be of a degree greater
+than two? Give examples to illustrate your answer.
+
+Discuss the conventions for displaying an ER schema as an ER diagram.
+
+Discuss the naming conventions used for ER schema diagrams.
+
+Exercises
+
+3.16.
+
+Which combinations of attributes have to be unique for each individual
+SECTION entity in the UNIVERSITY database shown in Figure 3.20 to enforce
+each of the following miniworld constraints:
+
+a. During a particular semester and year, only one section can use a particu-
+lar classroom at a particular DaysTime value.

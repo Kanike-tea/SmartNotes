@@ -1,0 +1,58 @@
+264
+
+Space and Time Trade-Offs
+
+Ift,(c) — k <0, we obviously do not want to shift the pattern by 0 or a negative
+number of positions. Rather, we can fall back on the brute-force thinking and
+simply shift the pattern by one position to the right.
+
+To summarize, the bad-symbol shift d, is computed by the Boyer-Moore
+algorithm either as t\(c) — k if this quantity is positive and as 1 if it is negative
+or zero. This can be expressed by the following compact formula:
+
+dy =max{t,(c) —k, 1). (7.2)
+
+The second type of shift is guided by a successful match of the last k > 0
+characters of the pattern. We refer to the ending portion of the pattern as its suffix
+of size k and denote it suff (k). Accordingly, we call this type of shift the good-suffix
+shift. We now apply the reasoning that guided us in filling the bad-symbol shift
+table, which was based on a single alphabet character c, to the pattern’s suffixes
+of sizes 1,..., m — 1 to fill in the good-suffix shift table.
+
+Let us first consider the case when there is another occurrence of suff (k) in
+the pattern or, to be more accurate, there is another occurrence of suff(k) not
+preceded by the same character as in its rightmost occurrence. (It would be useless
+to shift the pattern to match another occurrence of suff (k) preceded by the same
+character because this would simply repeat a failed trial.) In this case, we can shift
+the pattern by the distance d) between such a second rightmost occurrence (not
+preceded by the same character as in the rightmost occurrence) of suff (k) and its
+rightmost occurrence. For example, for the pattern ABCBAB, these distances for
+k =1and 2 will be 2 and 4, respectively:
+
+k pattern dy
+
+ABCBAB 2
+2  ABCBAB 4
+
+What is to be done if there is no other occurrence of suff (k) not preceded by
+the same character as in its rightmost occurrence? In most cases, we can shift the
+pattern by its entire length m. For example, for the pattern DBCBAB and k = 3, we
+can shift the pattern by its entire length of 6 characters:
+
+50 A
+ll
+A
+
+asf
+w= 0
+a= o
+
+I
+
+DBCBAB
+
+Unfortunately, shifting the pattern by its entire length when there is no other
+occurrence of suff(k) not preceded by the same character as in its rightmost
+occurrence is not always correct. For example, for the pattern ABCBAB and k = 3,
+shifting by 6 could miss a matching substring that starts with the text’s AB aligned
+with the last two characters of the pattern:

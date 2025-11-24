@@ -1,0 +1,39 @@
+Microcontrollers — BCS402
+
+This example shows a more complicated logical instruction called BIC, which carries out a
+
+logical bit clear. This is equivalent to Rd = Rn AND NOT(N)
+PRE rl = 0b1111,12 =0b0101 POST r0 = 0b1010
+
+In this example, register r2 contains a binary pattern where every binary | in r2 clears a
+corresponding bit location in register rl. This instruction is particularly useful when clearing
+status bits and is frequently used to change interrupt masks in the cpsr. The logical
+instructions update the cpsr flags only if the S suffix is present. These instructions can use
+
+barrel-shifted second operands in the same way as the arithmetic instructions.
+2.6 Comparison Instructions
+
+The comparison instructions are used to compare or test a register with a 32-bit value. They
+update the cpsr flag bits according to the result, but do not affect other registers. After the bits
+
+have been set, the information can then be used to change program flow by using conditional
+
+execution.
+Syntax: <instruction>{<cond>} Rn, N
+CMN compare negated flags set as a result of Rn +N
+cMP compare flags set as a result of Rn — N
+TEQ test for equality of two 32-bit values flags set as a result of Rn “N
+TST test bits of a 32-bit value flags set as a result of Rn & N
+Example:
+CMP r0,r9 ; Compares RO with r9, if equal Z = 1
+
+The CMP is effectively a subtract instruction with the result discarded; similarly the TST
+instruction is a logical AND operation, and TEQ is a logical exclusive OR operation. For
+each, the results are discarded but the condition bits are updated in the cpsr. It is important to
+understand that comparison instructions only modify the condition flags of the cpsr and do
+
+not affect the registers being compared.
+
+PRE cpsr = nzcvqiFt_USER, 10 = 4,19 = 4 POST cepsr = nZevqiFt_USER
+
+Dept. of ECE, GSSSIETW Page 9

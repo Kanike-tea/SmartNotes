@@ -1,0 +1,61 @@
+Data Structures and Applications/BCS304 Module-1
+
+Example:
+
+Fa-SS-Ca-EE- EROS -S-EE- LE
+
+(a) One character per node.
+
+Tlo] |B E| [oj NJo|T [-}+{rlol e[-+—+[EL] [t]++— «-
+
+(b) Four characters per node.
+
+String insertion function
+
+Example: Insert string t in string s at position
+
+S= A m ° b i 1 e ‘NOV
+
+t= U t fo} ‘NOV
+
+Initially
+Temp= 0\
+
+Strncpy(temp,s,i)
+
+a ‘O\
+
+Streat(temp.t)
+
+a U t fo} ‘\O\
+
+Streat(temp,(s+i))
+
+a u T ° m te) b i L e ‘\O\
+
+Consider two string str1 and str2 . insert srting str2 into str1 at position i.
+# include<string.h>
+# define max_size 100
+Char str1[max_size];
+Char str2 [max_size];
+
+Void strins(char *s, char *t, int i)
+{
+
+Char str[max_size], *temp= string;
+
+If (i<O && i>strlen(s)
+
+{
+Printf(“ position is out of bound”);
+Exit(0);
+
+}
+
+else
+
+if (strlen(t))
+
+{
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 27

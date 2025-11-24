@@ -1,0 +1,52 @@
+422
+
+Chapter 12 Object and Object-Relational Databases
+
+Selected Bibliography
+
+Object-oriented database concepts are an amalgam of concepts from OO pro-
+gramming languages and from database systems and conceptual data models. A
+number of textbooks describe OO programming languages—for example,
+Stroustrup (1997) for C++, and Goldberg and Robson (1989) for Smalltalk.
+Books by Cattell (1994) and Lausen and Vossen (1997) describe OO database
+concepts. Other books on OO models include a detailed description of the
+experimental OODBMS developed at Microelectronic Computer Corporation
+called ORION and related OO topics by Kim and Lochovsky (1989). Bancilhon
+et al. (1992) describes the story of building the O02 OODBMS with a detailed
+discussion of design decisions and language implementation. Dogac et al.
+(1994) provides a thorough discussion on OO database topics by experts at a
+NATO workshop.
+
+There is a vast bibliography on OO databases, so we can only provide a repre-
+sentative sample here. The October 1991 issue of CACM and the December
+1990 issue of ieee Computer describe OO database concepts and systems. Dit-
+trich (1986) and Zaniolo et al. (1986) survey the basic concepts of OO data
+models. An early paper on OO database system implementation is Baroody and
+DeWitt (1981). Su et al. (1988) presents an OO data model that was used in
+CAD/CAM applications. Gupta and Horowitz (1992) discusses OO applica-
+tions to CAD, Network Management, and other areas. Mitschang (1989)
+extends the relational algebra to cover complex objects. Query languages and
+graphical user interfaces for OO are described in Gyssens et al. (1990), Kim
+(1989), Alashqur et al. (1989), Bertino et al. (1992), Agrawal et al. (1990), and
+Cruz (1992).
+
+The Object-Oriented Manifesto by Atkinson et al. (1990) is an interesting arti-
+cle that reports on the position by a panel of experts regarding the mandatory
+and optional features of OO database management. Polymorphism in databases
+and OO programming languages is discussed in Osborn (1989), Atkinson and
+Buneman (1987), and Danforth and Tomlinson (1988). Object identity is dis-
+cussed in Abiteboul and Kanellakis (1989). OO programming languages for
+databases are discussed in Kent (1991). Object constraints are discussed in Del-
+cambre et al. (1991) and Elmasri, James, and Kouramajian (1993). Authoriza-
+tion and security in OO databases are examined in Rabitti et al. (1991) and
+Bertino (1992).
+
+Cattell et al. (2000) describe the ODMG 3.0 standard, which is described in this
+chapter, and Cattell et al. (1993) and Cattell et al. (1997) describe the earlier
+versions of the standard. Bancilhon and Ferrari (1995) give a tutorial presenta-
+tion of the important aspects of the ODMG standard. Several books describe
+the CORBA architecture—for example, Baker (1996).
+
+The O2 system is described in Deux et al. (1991), and Bancilhon et al. (1992)
+includes a list of references to other publications describing various aspects of
+2. The O2 model was formalized in Velez et al. (1989). The ObjectStore system

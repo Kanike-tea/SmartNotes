@@ -1,0 +1,30 @@
+CHAPTER
+
+MEMORY
+PROTECTION
+UNITS
+
+Some embedded systems use a multitasking operating or control system and must ensure
+that a running task does not disrupt the operation of other tasks. The shielding of system
+resources and other tasks from unwanted access is called protection and is the subject of
+this chapter.
+
+There are two methods to control access to system resources, unprotected and protected.
+An unprotected system relies solely on software to protect the system resources. A protected
+system relies on both hardware and software to protect the system resources. The choice
+of method used by the control system depends on the capability of the processor and the
+requirements of the control system.
+
+An unprotected embedded system has no hardware dedicated to enforcing the use
+of memory and peripheral devices during operation. In these systems, each task must
+cooperate with all other tasks when accessing system resources because any task could
+corrupt the state of another task. This cooperative scheme may result in task failure when
+one task ignores the access limits of another task’s environment.
+
+An example of a task failure that might occur in an unprotected system involves reading
+and writing to a serial port register for communication. If one task is using the port, there
+is no way to prevent another task from using the same port. Successful use of the port must
+be coordinated through a system call that provides access to the port. An unauthorized
+access by a task working around these calls can easily disrupt communications through
+
+461

@@ -1,0 +1,50 @@
+524
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+watching for potential NULL values in foreign keys. This can cause unexpected loss
+of information in queries that involve joins on that foreign key. Moreover, if NULLs
+occur in other attributes, such as Salary, their effect on built-in functions such as
+SUM and AVERAGE must be carefully evaluated.
+
+A related problem is that of dangling tuples, which may occur if we carry a decom-
+position too far. Suppose that we decompose the EMPLOYEE relation in Fig-
+ure 15.2(a) further into EMPLOYEE_1 and EMPLOYEE_2, shown in Figures 15.3(a)
+and 15.3(b). Ifwe apply the NATURAL JOIN operation to EMPLOYEE_1 and EMPLOYEE_2,
+we get the original EMPLOYEE relation. However, we may use the alternative repre-
+sentation, shown in Figure 15.3(c), where we do not include a tuple in EMPLOYEE_3
+if the employee has not been assigned a department (instead of including a tuple
+with NULL for Dnum as in EMPLOYEE_2). If we use EMPLOYEE_3 instead of
+EMPLOYEE_2 and apply a NATURAL JOIN on EMPLOYEE_1 and EMPLOYEE_3, the
+tuples for Berger and Benitez will not appear in the result; these are called dangling
+tuples in EMPLOYEE_1 because they are represented in only one of the two rela-
+tions that represent employees, and hence they are lost if we apply an (INNER)
+JOIN operation.
+
+15.4.2 Discussion of Normalization Algorithms
+and Alternative Relational Designs
+
+One of the problems with the normalization algorithms we described is that the
+database designer must first specify all the relevant functional dependencies among
+the database attributes. This is not a simple task for a large database with hundreds
+of attributes. Failure to specify one or two important dependencies may result in an
+undesirable design. Another problem is that these algorithms are not deterministic
+in general. For example, the synthesis algorithms (Algorithms 15.4 and 15.5) require
+the specification of a minimal cover G for the set of functional dependencies F.
+Because there may be, in general, many minimal covers corresponding to F, as we
+illustrated in Example 2 of Algorithm 15.4 above, the algorithm can give different
+designs depending on the particular minimal cover used. Some of these designs
+may not be desirable. The decomposition algorithm to achieve BCNF (Algo-
+rithm 15.5) depends on the order in which the functional dependencies are supplied
+to the algorithm to check for BCNF violation. Again, it is possible that many different
+designs may arise. Some of the designs may be preferred, whereas others may
+be undesirable.
+
+It is not always possible to find a decomposition into relation schemas that pre-
+serves dependencies and allows each relation schema in the decomposition to be
+in BCNF (instead of 3NF, as in Algorithm 15.4). We can check the 3NF relation
+schemas in the decomposition individually to see whether each satisfies BCNF. If
+some relation schema R; is not in BCNF, we can choose to decompose it further
+or to leave it as it is in 3NF (with some possible update anomalies). We showed by
+using the bottom-up approach to design that different minimal covers in cases X
+and Y of Example 2 under Algorithm 15.4 produced different sets of relations

@@ -1,0 +1,51 @@
+Microcontrollers-BCS402
+
+There are three hardware extensions ARM wraps around the core:
+i) Cache and tightly coupled memory
+ii) Memory management
+
+iii) Coprocessor interface.
+
+Cache and Tightly Coupled Memory
+
+The cache is a block of fast memory placed between main memory and the core. It allows for
+more efficient fetches from some memory types. With a cache the processor core can run for
+the majority of the time without having to wait for data from slow external memory.
+
+Most ARM-based embedded systems use a single-level cache internal to the processor. ARM
+has two forms of cache. The first is found attached to the Von Neumann-style cores. It
+
+combines both data and instruction into a single unified cache, as shown in Figure 10.
+
+{Logic and control
+
+(_{AMBA bus interface unit } —
+(LAMBA bus |
+
+On-chip AMBA bus
+
+Fig 10: A simplified Von Neumann architecture with cache
+The second form, attached to the Harvard-style cores as shown in figure 11, has separate
+caches for data and instruction. A cache provides an overall increase in performance but at
+
+the expense of predictable execution.
+
+id control
+
+I
+
+(tea } D
+
+TCM
+AMBA bus interface unit }—I (Cine ro
+
+D+!
+
+On-chip AMBA bus
+
+Fig 11: A simplified Harvard architecture with TCMs
+But for real-time systems it is paramount that code execution is deterministic— the time
+
+taken for loading and storing instructions or data must be predictable. This is achieved using
+
+Dept. of ECE, GSSSIETW Page 28

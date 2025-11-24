@@ -1,0 +1,34 @@
+238 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+c. SELECT D, AVERAGE_S
+FROM DEPT_SUMMARY
+WHERE C> (SELECT C FROM DEPT_SUMMARY WHERE D = 4);
+
+d. UPDATE DEPT_SUMMARY
+SET D=3
+WHERE D=4;
+
+e. DELETE FROM DEPT_SUMMARY
+WHERE C>4;
+
+Selected Bibliography
+
+Reisner (1977) describes a human factors evaluation of SEQUEL, a precursor of
+SQL, in which she found that users have some difficulty with specifying join condi-
+tions and grouping correctly. Date (1984) contains a critique of the SQL language
+that points out its strengths and shortcomings. Date and Darwen (1993) describes
+SQL2. ANSI (1986) outlines the original SQL standard. Various vendor manuals
+describe the characteristics of SQL as implemented on DB2, SQL/DS, Oracle,
+INGRES, Informix, and other commercial DBMS products. Melton and Simon
+(1993) give a comprehensive treatment of the ANSI 1992 standard called SQL2.
+Horowitz (1992) discusses some of the problems related to referential integrity and
+propagation of updates in SQL2.
+
+The question of view updates is addressed by Dayal and Bernstein (1978), Keller
+(1982), and Langerak (1990), among others. View implementation is discussed in
+Blakeley et al. (1989). Negri et al. (1991) describes formal semantics of SQL queries.
+
+There are many books that describe various aspects of SQL. For example, two refer-
+ences that describe SQL-99 are Melton and Simon (2002) and Melton (2003). Fur-
+ther SQL standards—SQL 2006 and SQL 2008—are described in a variety of
+technical reports; but no standard references exist.

@@ -1,0 +1,49 @@
+A2 Syntax 571
+
+Had, Hn, Hm, Hs represent high-numbered ARM registers in the range r8 to r15.
+
+Cd, Cn, Cm represent coprocessor registers in the range c0 to cl5.
+
+sp, Ir, pcare names for r13, r14, r15, respectively.
+
+Rn{a] denotes bit a of register Rn. Therefore Rn[a] = (Rn > a) & 1.
+
+Rn{a:b] denotes the a + 1 — b bit value stored in bits a to b of Rn inclusive.
+RdHi:RdLo represents the 64-bit value with high 32 RDHi bits and low 32 bits RdLo.
+
+A.2.3. VALUES STORED AS IMMEDIATES
+
+<immedN> is any unsigned N-bit immediate. For example, <immed8> represents any
+integer in the range 0 to 255. <immed5>*4 represents any integer in the list 0, 4, 8, ..., 124.
+
+<addressN> is an address or label stored as a relative offset. The address must be in the
+range pc — 2N < address < pc + 2N. Here, pc is the address of the instruction plus
+eight for ARM state, or the address of the instruction plus four for Thumb state. The
+address must be four-byte aligned if the destination is an ARM instruction or two-byte
+aligned if the destination is a Thumb instruction.
+
+<A-B> represents any integer in the range A to B inclusive.
+
+<rotated_immed> is any 32-bit immediate that can be represented as an eight-
+bit unsigned value rotated right (or left) by an even number of bit positions. In
+other words, <rotated_immed> = <immed8> ROR (2*<immed4>). For example Oxff,
+0x104, 0xe0000005, and 0x0bc00000 are possible values for <rotated_immed>. How-
+ever, 0x101 and 0x102 are not. When you use a rotated immediate, <shifter_C> is
+set according to Table A.3 (discussed in Section A.2.5). A nonzero rotate may cause
+a change in the carry flag. For this reason, you can also specify the rotation explicitly,
+using the assembly syntax <immed8>, 2*<immed4>.
+
+A.2.4 CONDITION CODES AND FLAGS
+
+<cond> represents any of the standard ARM condition codes. Table A.2 shows the
+possible values for <cond>.
+
+<SignedOverf1low> is a flag indicating that the result of an arithmetic operation suf-
+fered from a signed overflow. For example, 0x7 fffffff + 1 = 0x80000000 produces
+a signed overflow because the sum of two positive 32-bit signed integers is a negative
+32- bit signed integer. The V flag in the cpsr typically records signed overflows.
+
+<UnsignedOverflow> is a flag indicating that the result of an arithmetic operation
+suffered from an unsigned overflow. For example, Oxffffffff + 1 = 0 produces an
+overflow in unsigned 32-bit arithmetic. The C flag in the cpsr typically records unsigned
+overflows.

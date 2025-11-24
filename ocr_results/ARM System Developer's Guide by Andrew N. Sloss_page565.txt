@@ -1,0 +1,70 @@
+552 Chapter 15 The Future of the Architecture
+
+Table 15.3
+
+16-bit SIMD arithmetic operations with swap.
+
+Instruction
+
+Description
+
+SADDSUBX{<cond>} Rd, Rn, Rm
+UADDSUBX{<cond>} Rd, Rn, Rm
+QADDSUBX{<cond>} Rd, Rn, Rm
+UQADDSUBX{<cond>} Rd, Rn, Rm
+SSUBADDX{<cond>} Rd, Rn, Rm
+USUBADDX{<cond>} Rd, Rn, Rm
+QSUBADDX{<cond>} Rd, Rn, Rm
+
+UQSUBADDX{<cond>} Rd, Rn, Rm
+
+Signed upper add, lower subtract, with a swap of
+halfwords in Rm
+
+Unsigned upper add, lower subtract, with swap of
+halfwords in Rm
+
+Signed saturating upper add, lower subtract, with
+swap of halfwords in Rm
+
+Unsigned saturating upper add, lower subtract, with
+swap of halfwords in Rm
+
+Signed upper subtract, lower add, with a swap of
+halfwords in Rm
+
+Unsigned upper subtract, lower add, with swap of
+halfwords in Rm
+
+Signed saturating upper subtract, lower add, with
+swap of halfwords in Rm
+
+Unsigned saturating upper subtract, lower add, with
+swap of halfwords in Rm
+
+described in Section 2.2.5 is modified by adding four additional flag bits to represent each
+8-bit slice of the data path. The newly modified cpsr register with the GE bits is shown in
+Figure 15.1 and Table 15.4. The functionality of each GE bit is that of a “greater than or
+equal” flag for each slice through the datapath.
+
+Operating systems already save the cpsr register on a context switch. Adding these bits
+to the cpsr has little effect on OS support for the architecture.
+
+In addition to basic arithmetic operations on the SIMD data slices, there is considerable
+use for operations that allow the picking of individual data elements within the datapath and
+forming new ensembles of these elements. A select instruction SEL can independently select
+each eight-bit field from one source register Rn or another source register Rm, depending
+
+on the associated GE flag.
+
+31 30 2928 27 26 25 24 23 222120 1918 1716 1514131211109 876543210
+
+Res | J Res
+
+NZCVIQ
+
+GE [3:0]
+
+Res EA\|I FT mode
+
+Figure 15.1 cpsr layout for ARMv6.

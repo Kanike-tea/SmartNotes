@@ -1,0 +1,69 @@
+NODE deletefront()
+
+NODE temp;
+if(start == NULL)
+
+printf("\nLinked list is empty");
+
+return NULL;
+i
+if(start->link == NULL)
+{
+printf("\nThe Student node with usn:%s is deleted ",start->usn);
+count--;
+free(start);
+return NULL;
+}
+temp = start;
+
+start = start->link;
+
+printf("\nThe Student node with usn:%s is deleted" temp->usn);
+count--;
+
+free(temp);
+
+return start;
+
+}
+
+NODE insertend()
+{
+NODE cur.temp;
+temp = create();
+
+if(start == NULL)
+{
+return temp;
+
+}
+cur = start;
+while(cur->link !=NULL)
+{
+cur = cur->link;
+}
+cur->link = temp;
+return start;
+
+}
+
+NODE deleteend()
+
+{
+NODE cur,prev;
+if(start == NULL)
+
+printf("\nLinked List is empty");
+return NULL;
+}
+
+if(start->link == NULL)
+{
+
+printf("\nThe student node with the usn:%s is deleted" start->usn);
+
+free(start);
+count--;
+return NULL;
+
+25

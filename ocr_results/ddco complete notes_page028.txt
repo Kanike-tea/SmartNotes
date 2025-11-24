@@ -1,0 +1,29 @@
+Digital Design and Computer Organization(BCS302)
+
+module Simple Circuit (A, B, C, D, E);
+
+output D, E;
+input A, B, C;
+wire wl;
+
+and Gl (wl, A, B);
+not G2 (E, C);
+
+HDL describes a circuit that is specified with the following two Boolean
+expressions:
+
+E=A+ BC+ B'D
+F = B'C + BC'D'
+
+e beh(E, F, A, B, C, D);
+
+put E, F;
+
+input A, B, C, D;
+
+assign E=A || (B && C) II ((!B) && D)e
+assign F = ((!B) && C) || (B && (!C) && (!D))-
+endmodule
+
+Page
+29

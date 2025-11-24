@@ -1,0 +1,62 @@
+29.2 Characteristics of Data Warehouses
+
+may touch a small part of the database and transactions that deal with insertions or
+updates of a few tuples per relation to process. Thus, they cannot be optimized for
+OLAP, DSS, or data mining. By contrast, data warehouses are designed precisely to
+support efficient extraction, processing, and presentation for analytic and decision-
+making purposes. In comparison to traditional databases, data warehouses gener-
+ally contain very large amounts of data from multiple sources that may include
+databases from different data models and sometimes files acquired from indepen-
+dent systems and platforms.
+
+29.2 Characteristics of Data Warehouses
+
+To discuss data warehouses and distinguish them from transactional databases
+calls for an appropriate data model. The multidimensional data model (explained
+in more detail in Section 29.3) is a good fit for OLAP and decision-support tech-
+nologies. In contrast to multidatabases, which provide access to disjoint and
+usually heterogeneous databases, a data warehouse is frequently a store of inte-
+grated data from multiple sources, processed for storage in a multidimensional
+model. Unlike most transactional databases, data warehouses typically support
+time series and trend analyses along with what-if or predictive-type analyses, all
+of which require more historical data than is generally maintained in transac-
+tional databases.
+
+Compared with transactional databases, data warehouses are nonvolatile. This
+means that information in the data warehouse is typically not subject to modifica-
+tion and is often referred to as read/append/purge only. A data warehouse may be
+regarded as non-real-time with periodic insertions. In transactional systems, trans-
+actions are the unit and are the agent of change to the database; by contrast, data
+warehouse information is much more coarse-grained and is refreshed according to a
+careful choice of refresh policy, usually incremental. Warehouse insertions are han-
+dled by the warehouse’s ETL (extract, transform, load) process, which does a large
+amount of preprocessing and which is shown in Figure 29.1. We can also describe
+
+1103
+
+Figure 29.1
+
+Backflushing Overview of the general
+
+Data Warehouse
+
+OLAP.
+
+Data
+ta. | Extract, Transform, M 4
+
+Databases | | Load (ETL) |, Metadata |
+
+EIS
+
+Other data inputs
+A
+
+Updates/new data
+
+DSS ~
+
+Data mining —>|
+
+architecture of a data
+warehouse.

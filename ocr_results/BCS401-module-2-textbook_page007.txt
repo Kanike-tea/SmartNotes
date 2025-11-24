@@ -1,0 +1,38 @@
+Decrease-and-Conquer
+
+problem of size n
+
+subproblem
+of size n=
+
+y
+
+solution to
+the subproblem
+
+¥
+
+solution to
+the original problem
+
+FIGURE 4.1 Decrease-(by one)-and-conquer technique.
+
+ft—l-a_ ifn>0,
+
+fm= { 1 ifn =0 @d
+
+or “bottom up” by multiplying 1 by a n times. (Yes, it is the same as the brute-force
+algorithm, but we have come to it by a different thought process.) More interesting
+examples of decrease-by-one algorithms appear in Sections 4.1-4.3.
+
+The decrease-by-a-constant-factor technique suggests reducing a problem
+instance by the same constant factor on each iteration of the algorithm. In most
+applications, this constant factor is equal to two. (Can you give an example of such
+an algorithm?) The decrease-by-half idea is illustrated in Figure 4.2.
+
+For an example, let us revisit the exponentiation problem. If the instance of
+size n is to compute a”, the instance of half its size is to compute a”/”, with the
+obvious relationship between the two: a” = (a"/2)?, But since we consider here
+instances with integer exponents only, the former does not work for odd n. If n is
+odd, we have to compute a”! by using the rule for even-valued exponents and
+then multiply the result by a. To summarize, we have the following formula:

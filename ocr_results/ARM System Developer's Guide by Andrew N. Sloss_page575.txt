@@ -1,0 +1,51 @@
+562 Chapter 15 The Future of the Architecture
+
+Table 15.13
+
+Table 15.14
+
+Exception processing operations.
+
+Instruction Description
+
+SRS<addressing_mode>, #mode{!} Save return state (/r and spsr) on the stack
+addressed by sp in the specified mode.
+
+RFE <addressing mode>, Rn{!} Return from exception. Loads the pe and cpsr
+from the stack pointed to by Rn.
+
+CPS<effect> <iflags> {,#<mode>} Change processor state with interrupt enable
+or disable.
+
+CPS #<mode> Change processor state only.
+
+The ARM architecture has always had the SWP instruction for implementing semaphores to
+ensure consistency in such environments. As the SoC has become more complex, however,
+certain aspects of SWP cause a performance bottleneck in some instances. Recall that SWP is
+basically a “blocking” primitive that locks the external bus of the processor and uses most of
+its bandwidth just to wait for a resource to be released. In this sense the SWP instruction is
+considered “pessimistic”—no computation can continue until SWP returns with the freed
+resource.
+
+New instructions LDREX and STREX (load and store exclusive) were added to the
+ARMvé6 architecture to solve this problem. These instructions, listed in Table 15.14, are
+very straightforward in use and are implemented by having a system monitor out in the
+memory system. LDREX optimistically loads a value from memory into a register assuming
+that nothing else will change the value in memory while we are working on it. STREX stores
+a value back out to memory and returns an indication of whether the value in memory
+was changed or not between the original LDREX operation and this store. In this way the
+primitives are “optimistic”—you continue processing the data you loaded with LDREX
+even though some external device may also be modifying the value. Only if a modification
+actually took place externally is the value thrown away and reloaded.
+
+The big difference for the system is that the processor no longer waits around on the
+system bus fora semaphore to be free, and therefore leaves most of the system bus bandwidth
+available for other processes or processors.
+
+Load and store exclusive operations.
+
+Instructions Description
+
+LDREX{<cond>} Rd, [Rn] Load from address in Rn and set memory monitor
+STREX{<cond>} Rd, Rm, [Rn] Store to address in Rn and flag if successful in Rd
+(Rd = 0 if successful)

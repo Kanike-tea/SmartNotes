@@ -1,0 +1,50 @@
+746
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+processing in database systems. Section 20.3 presents the important properties of
+atomicity, consistency preservation, isolation, and durability or permanency—
+called the ACID properties—that are considered desirable in transaction process-
+ing systems. Section 20.4 introduces the concept of schedules (or histories) of
+executing transactions and characterizes the recoverability of schedules. Sec-
+tion 20.5 discusses the notion of serializability of concurrent transaction execution,
+which can be used to define correct execution sequences (or schedules) of concur-
+rent transactions. In Section 20.6, we present some of the commands that support
+the transaction concept in SQL, and we introduce the concepts of isolation levels.
+Section 20.7 summarizes the chapter.
+
+The two following chapters continue with more details on the actual methods and
+techniques used to support transaction processing. Chapter 21 gives an overview
+of the basic concurrency control protocols and Chapter 22 introduces recovery
+techniques.
+
+20.1 Introduction to Transaction Processing
+
+In this section, we discuss the concepts of concurrent execution of transactions and
+recovery from transaction failures. Section 20.1.1 compares single-user and multi-
+user database systems and demonstrates how concurrent execution of transactions
+can take place in multiuser systems. Section 20.1.2 defines the concept of transac-
+tion and presents a simple model of transaction execution based on read and write
+database operations. This model is used as the basis for defining and formalizing
+concurrency control and recovery concepts. Section 20.1.3 uses informal examples
+to show why concurrency control techniques are needed in multiuser systems.
+Finally, Section 20.1.4 discusses why techniques are needed to handle recovery
+from system and transaction failures by discussing the different ways in which
+transactions can fail while executing.
+
+20.1.1 Single-User versus Multiuser Systems
+
+One criterion for classifying a database system is according to the number of users
+who can use the system concurrently. A DBMS is single-user if at most one user at
+a time can use the system, and it is multiuser if many users can use the system—
+and hence access the database—concurrently. Single-user DBMSs are mostly
+restricted to personal computer systems; most other DBMSs are multiuser. For
+example, an airline reservations system is used by hundreds of users and travel
+agents concurrently. Database systems used in banks, insurance agencies, stock
+exchanges, supermarkets, and many other applications are multiuser systems. In
+these systems, hundreds or thousands of users are typically operating on the data-
+base by submitting transactions concurrently to the system.
+
+Multiple users can access databases—and use computer systems—simultaneously
+because of the concept of multiprogramming, which allows the operating system of
+the computer to execute multiple programs—or processes—at the same time. A single

@@ -1,0 +1,47 @@
+12.3 Cache Policy 421
+
+int setcount, value;
+volatile int *newstart;
+volatile int *start = (int *)0x20000;
+
+_asm
+{
+timesloop:
+MOV newstart, start
+MOV setcount, numset
+setloop:
+LOR value, [newstart, #0] ;
+ADD —_newstart newstart,, #0x40;
+SUBS setcount, setcount, #1;
+BNE set loop;
+SUBS times, times, #1;
+BNE timesloop;
+}
+return value;
+
+}
+
+We wrote the readSet routine to fill a single set in the cache. There are two arguments
+to the function. The first, times, is the number of times to run the test loop; this value
+increases the time it takes to run the test. The second, numset, is the number of set values
+to read; this value determines the number of cache lines the routine loads into the same
+set. Filling the set with values is done in a loop using an LOR instruction that reads a value
+from a memory location and then increments the address by 16 words (64 bytes) in each
+pass through the loop. Setting the value of numset to 64 will fill all the available cache lines
+in a set in an ARM940T. There are 16 words in a way and 64 cache lines per set in the
+ARM940T.
+
+Here are two calls to the round-robin test using two set sizes. The first reads and fills a
+set with 64 entries; the second attempts to fill the set with 65 entries.
+
+unsigned int times = 0x10000;
+unsigned int numset = 64;
+
+cache_RRtest(times, numset) ;
+numset = 65;
+cache_RRtest(times, numset) ;
+
+The console output of the two tests follows. The tests were run on an ARM940T core
+module simulated using the ARM ADS1.2 ARMulator with a core clock speed of 50 MHz
+and a memory read access time of 100 ns nonsequential and 50 ns sequential. The thing to
+notice is the change in timing for the round-robin test reading 65 set values.

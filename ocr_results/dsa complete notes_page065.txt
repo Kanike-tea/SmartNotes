@@ -1,0 +1,51 @@
+Data Structures and Applications(BCS304) Module 2
+
+Function to reverse a linked list
+NODE* reverse(struct NODE *first)
+{
+NODE *prev,*cur,*next;
+cur=first;
+prev=NULL;
+while(cur!=NULL)
+{
+next= cur->linkcur-
+>link=prev;prev= cur;
+cur=next;
+}
+return(prev);
+
+}
+
+Implementation of stack using linked list
+Ina stack elements are inserted and deleted at only one end. The order of insertion and deletion follows
+LIFO order. To implement stack the push operation can be implemented by using insertion in front.
+Pop operation can be implemented by deletion from front so that insertion and deletion is happening
+at the same end.
+
+Implementation of queue using linked list
+To implement a queue using a linked list we use two pointers the front and the rear. The front pointer
+will have the address of the first NODE and the rear pointer will have the address of the last NODE.
+A new NODE is always attached to the rear of the list and the NODE at the front will be deleted first.
+struct node
+{
+int info;
+struct node *link;
+
+typedef struct node NODE;
+NODE * front,*rear;
+front=NULL;
+rear=NULL;
+
+Boundary condition when front=NULL queue empty
+
+The function inserts an element at the rear of the queue
+void insert_rear(int item,NODE * rear)
+{
+
+NODE temp;
+temp=(NODE*)malloc(sizeof(NODE));
+if(temp==NULL)
+
+{
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 21

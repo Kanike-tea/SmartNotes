@@ -1,0 +1,52 @@
+20.5 Characterizing Schedules Based on Serializability
+
+20.5 Characterizing Schedules Based
+on Serializability
+
+In the previous section, we characterized schedules based on their recoverability
+properties. Now we characterize the types of schedules that are always considered
+to be correct when concurrent transactions are executing. Such schedules are known,
+as serializable schedules. Suppose that two users—for example, two airline reserva-
+tions agents—submit to the DBMS transactions T, and T) in Figure 20.2 at approx-
+imately the same time. If no interleaving of operations is permitted, there are only
+two possible outcomes:
+
+1. Execute all the operations of transaction Tj (in sequence) followed by all the
+operations of transaction T> (in sequence).
+
+2. Execute all the operations of transaction T> (in sequence) followed by all the
+operations of transaction T, (in sequence).
+
+These two schedules—called serial schedules—are shown in Figures 20.5(a) and (b),
+respectively. If interleaving of operations is allowed, there will be many possible
+orders in which the system can execute the individual operations of the trans-
+actions. Two possible schedules are shown in Figure 20.5(c). The concept of
+serializability of schedules is used to identify which schedules are correct when
+transaction executions have interleaving of their operations in the schedules. This
+section defines serializability and discusses how it may be used in practice.
+
+20.5.1 Serial, Nonserial, and Conflict-Serializable Schedules
+
+Schedules A and B in Figures 20.5(a) and (b) are called serial because the operations
+of each transaction are executed consecutively, without any interleaved operations
+from the other transaction. In a serial schedule, entire transactions are performed
+in serial order: T, and then T} in Figure 20.5(a), and T; and then T; in Figure 20.5(b).
+Schedules C and D in Figure 20.5(c) are called nonserial because each sequence
+interleaves operations from the two transactions.
+
+Formally, a schedule S is serial if, for every transaction T participating in the sched-
+ule, all the operations of T are executed consecutively in the schedule; otherwise, the
+schedule is called nonserial. Therefore, in a serial schedule, only one transaction at a
+time is active—the commit (or abort) of the active transaction initiates execution of
+the next transaction. No interleaving occurs in a serial schedule. One reasonable
+assumption we can make, if we consider the transactions to be independent, is that
+every serial schedule is considered correct. We can assume this because every transac-
+tion is assumed to be correct if executed on its own (according to the consistency
+preservation property of Section 20.3). Hence, it does not matter which transaction is
+executed first. As long as every transaction is executed from beginning to end in
+isolation from the operations of other transactions, we get a correct end result.
+
+The problem with serial schedules is that they limit concurrency by prohibiting
+interleaving of operations. In a serial schedule, if a transaction waits for an I/O
+
+763

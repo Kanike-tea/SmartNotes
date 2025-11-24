@@ -1,0 +1,43 @@
+the inputs of the latches through the combinational circuit. If the inputs applied to the latches change
+while the clock pulse is still at the logic-1 level, the latches will respond to new values and a new output
+state may occur. The result is an unpredictable situation, since the state of the latches may keep changing
+for as long as the clock pulse stays at the active level. Because of this unreliable operation, the output of
+a latch cannot be applied directly or through combinational logic to the input of the same or another latch
+when all the latches are triggered by a common clock source.
+
+Flip-flop circuits are constructed in such a way as to make them operate properly when they are part of
+a sequential circuit that employs a common clock. As shown in below Fig(a), a positive level response
+in the enable input allows changes in the output when the D input changes while the clock pulse stays at
+logic 1. The key to the proper operation of a flip-flop is to trigger it only during a signal transition. This
+can be accomplished by eliminating the feedback path that is inherent in the operation of the sequential
+circuit using latches. A clock pulse goes through two transitions: from 0 to 1 and the return from | to 0.
+As shown in below Fig, the positive transition is defined as the positive edge and the negative transition
+as the negative edge. There are two ways that a latch can be modified to form a flip-flop. One way is to
+employ two latches in a special configuration that isolates the output of the flip-flop and prevents it from
+being affected while the input to the flip-flop is changing. Another way is to produce a flip-flop that
+triggers only during a signal transition (from 0 to | or from 1 to 0) of the synchronizing signal (clock)
+and is disabled during the rest of the clock pulse.
+
+(a) Response to positive level
+f | ry | i f
+(b) Positive-edge response
+
+1 JiLsi sy
+
+(c) Negative-edge response
+
+Clock response in latch and flip-flop
+
+Edge-Triggered D Flip-Flop
+
+The construction of a D flip-flop with two D latches and an inverter is shown in Fig below. The first
+latch is called the master and the second the slave. The circuit samples the D input and changes its output
+Q only at the negative edge of the synchronizing or controlling clock (designated as Clk). When the
+clock is 0, the output of the inverter is 1. The slave latch is enabled, and its output Q is equal to the
+master output Y . The master latch is disabled because Clk = 0. When the input pulse changes to the
+logic-1 level, the data from the external D input are transferred to the master. The slave, however, is
+disabled as long as the clock remains at the | level, because its enable input is equal to 0. Any change in
+the input changes the master output at Y, but cannot affect the slave output. When the clock pulse returns
+to 0, the master is disabled and is isolated from the D input. At the same time, the slave is enabled and
+the value of Y is transferred to the output of the flip-flop at Q . Thus, a change in the output of the flip-
+flop can be triggered only by and during the transition of the clock from | to 0.

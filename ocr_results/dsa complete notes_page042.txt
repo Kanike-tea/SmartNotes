@@ -1,0 +1,47 @@
+Data Structures and Applications/BCS304 Module 1
+void tower(int n,char source,char temp,char dest)
+{
+if(m==1)
+{
+printf("Move disc 1 from %c to %c\n" source dest);
+count++;
+return;
+}
+tower(n-1,source,dest,temp);
+printf("Move disc %d from %c to %c\n" jn,source dest);
+count++;
+tower(n-1 ,temp,source dest);
+}
+Void main()
+{
+int n,count;
+printf("Enter the number of discs\n");
+scanf("%d" ,&n);
+tower(n,'A','B''C’);
+printf("The number of moves=%d\n" ,count);
+}
+Example: n=3 disks
+Tracing of function with n=3 disks
+_ 5 Tower(3,A,B,C)
+: Sy
+Tower(2,A,C\B) Move 3 A>C Tower(2,B,A,C)
+v y,-™_
+Tower(LAB,C)  Move2A>B —Tower(1C.A,B) Tower(I,B,C,A Move 2B>C Tower(LA,B,C)
+Move 1 A->e Move 1 C>B Move 1 B>A Move 1 A>C
+
+The moves for n=3 disk is summarized below.
+Move | from A to C
+Move 2 from A to B
+Move | from C to B
+Move 3 from A to C
+Move | from B to A
+Move 2 from B to C
+Move | from A to C
+
+Note: Ideal number of moves to solve Tower of Hanoi is given as 2"-1 where n is the total number of
+
+disks
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru
+
+Page 43

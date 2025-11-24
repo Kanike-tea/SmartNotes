@@ -1,0 +1,49 @@
+1124 Chapter 30 Database Security
+
+A security problem common to computer systems is that of preventing unauthor-
+ized persons from accessing the system itself, either to obtain information or to
+make malicious changes in a portion of the database. The security mechanism of a
+DBMS must include provisions for restricting access to the database system as a
+whole. This function, called access control, is handled by creating user accounts
+and passwords to control the login process by the DBMS. We discuss access control
+techniques in Section 30.1.3.
+
+Statistical databases are used to provide statistical information or summaries of
+values based on various criteria. For example, a database for population statistics
+may provide statistics based on age groups, income levels, household size, educa-
+tion levels, and other criteria. Statistical database users such as government statis-
+ticians or market research firms are allowed to access the database to retrieve
+statistical information about a population but not to access the detailed confiden-
+tial information about specific individuals. Security for statistical databases must
+ensure that information about individuals cannot be accessed. It is sometimes
+possible to deduce or infer certain facts concerning individuals from queries that
+involve only summary statistics on groups; consequently, this must not be per-
+mitted either. This problem, called statistical database security, is discussed
+briefly in Section 30.4. The corresponding control measures are called inference
+control measures.
+
+Another security issue is that of flow control, which prevents information from
+flowing in such a way that it reaches unauthorized users. Flow control is discussed
+in Section 30.6. Covert channels are pathways on which information flows implic-
+itly in ways that violate the security policy of an organization. We briefly discuss
+some issues related to covert channels in Section 30.6.1.
+
+A final control measure is data encryption, which is used to protect sensitive data
+(such as credit card numbers) that is transmitted via some type of communications
+network. Encryption can be used to provide additional protection for sensitive por-
+tions of a database as well. The data is encoded using some coding algorithm. An
+unauthorized user who accesses encoded data will have difficulty deciphering it,
+but authorized users are given decoding or decrypting algorithms (or keys) to deci-
+pher the data. Encrypting techniques that are very difficult to decode without a key
+have been developed for military applications. However, encrypted database
+records are used today in both private organizations and governmental and mili-
+tary applications. In fact, state and federal laws prescribe encryption for any system
+that deals with legally protected personal information. For example, according to
+Georgia Law (OCGA 10-1-911):
+
+“Personal information” means an individual's first name or first initial and last
+name in combination with any one or more of the following data elements,
+when either the name or the data elements are not encrypted or redacted:
+
+© Social security number;
+Driver's license number or state identification card number;

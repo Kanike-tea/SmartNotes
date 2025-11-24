@@ -1,0 +1,52 @@
+BCS304
+
+void unionZz{(int i, int j)
+{
+/* wenion the sets with roots i and j. i t= j, using
+the weighting rule. parent{i}] = -count{i} and
+parent(j) + -count(j] °/
+int temp = parent(i}] + parent[j];
+if (parentiil > parent{ij)) {
+parent{i) = j; /* maxe j the new root */
+parent[{j) = temp:
+)
+else {
+parent{j)] = i; /*make i the new root °/
+porent(i) = temp:
+)
+
+Union function
+Fig. Union function using weighting rule
+
+Definition [collapsing rule] : If j is a node on the path from i to its root and parent{i] != root(i),
+
+then set parent [j] to root(i).
+
+int find2({int i)
+{
+/* find the root of ghe tree containing»element i. Use the
+collapsing rule to €o0llapse all nodes from. to root */
+int root, trail, lead;
+for (root = i; parent {root] >= <Ag\root = parent {root))
+
+for (trail = ig trail ds foor? trail « lead) {
+lead = pafent{traill;
+parent{trall] © Poot;
+
+)
+
+rerurn roots
+
+Fig: Collapsing rule
+4.4.3. Application to equivalence classes
+
+The equivalence classes to be generated may be regarded as set. These sets are disjoint
+since no polygon can be in two equivalence classes. Initially, all n polygons are in an
+equivalence class of their own; thus parent{i} = -1, 0 < =i <n. If an equivalence pair, i = j,
+is to be processed, we must first determine the sets containing i and j. If they are different,
+then we replace the two sets by their union. If the two sets are the same, then we do nothing
+since the relation i = j is redundant: | and j are already in the same equivalence class. To
+
+process each equivalence pair, we need to perform two finds and at most one union.
+
+11

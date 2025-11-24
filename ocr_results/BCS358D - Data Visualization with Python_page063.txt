@@ -1,0 +1,58 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 06 (b)
+
+6 b) Write a Python program to illustrate liner plotting with line formatting using
+
+Matplotlib.
+
+Aim: Demonstration of how to draw a liner plotting with line formatting using Matplotlib.
+PROGRAM EXPLANATION
+
+The below program demonstrates how to draw a Pie chart using Matplotlib. Make sure you have
+
+Matplotlib installed before running this code. You can install it using pip if you haven't already:
+
+pip install matplotlib
+
+1. ‘import matplotlib.pyplot as plt’: This line imports the ‘matplotlib.pyplot’ module and
+assigns it the alias ‘plt’. This module provides a collection of functions for creating
+various types of plots and charts.
+
+2. Sample data for the linear plot:
+
+e ‘x’: A list of x-axis data points representing the independent variable.
+
+e ‘y’: A list of y-axis data points representing the dependent variable. Each y-value
+corresponds to an x-value.
+
+3. Creating the linear plot with line formatting:
+
+e ‘plt.plot(x, y, marker='o', color=blue’, linestyle='--', linewidth=2, markersize=8,
+label='Data Points')’: This line creates a line plot using the plot function. It takes
+several arguments:
+
+= ‘x’ and ‘y’ are the data points to be plotted.
+
+= marker='o' specifies circular markers at each data point.
+
+= color='blue' sets the color of the line and markers to blue.
+
+= linestyle='--' specifies that the line connecting the data points should be a
+dashed line.
+
+= linewidth=2 sets the line width to 2 points.
+
+= markersize=8 sets the marker size to 8 points.
+
+= label='Data Points' provides a label for this data series. This label is used
+to create a legend later.
+
+4. Adding labels and a title:
+
+e  plt.xlabel('X-Axis') and plt.ylabel('Y-Axis'): These two lines add labels to the x-
+axis and y-axis, respectively. In this code, 'X-Axis' is used as the x-axis label, and
+
+'Y-Axis' is used as the y-axis label.
+
+Dept. of CSE 48 GSSSIETW, Mysuru

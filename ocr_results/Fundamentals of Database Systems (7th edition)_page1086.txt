@@ -1,0 +1,54 @@
+1056
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+© Association rules. In the context of Web usage analysis, association rules
+refer to sets of pages that are accessed together with a support value
+exceeding some specified threshold. (See Section 28.2 on association
+rules.) These pages may not be directly connected to one another via
+hyperlinks. For example, association rule discovery may reveal a correla-
+tion between users who visited a page containing electronic products to
+those who visit a page about sporting equipment.
+
+© Clustering. In the Web usage domain, there are two kinds of interesting
+clusters to be discovered: usage clusters and page clusters. Clustering of
+users tends to establish groups of users exhibiting similar browsing pat-
+terns. Such knowledge is especially useful for inferring user demographics
+in order to perform market segmentation in e-commerce applications or
+provide personalized Web content to the users. Clustering of pages is
+based on the content of the pages, and pages with similar contents are
+grouped together. This type of clustering can be utilized in Internet search
+engines and in tools that provide assistance to Web browsing.
+
+Classification. In the Web domain, one goal is to develop a profile of
+users belonging to a particular class or category. This requires extraction
+and selection of features that best describe the properties of a given class
+or category of users. For example, an interesting pattern that may
+be discovered would be: 60% of users who placed an online order in
+/Product/Books are in the 18-25 age group and live in rented apartments.
+
+© Sequential patterns. These kinds of patterns identify sequences of Web
+accesses, which may be used to predict the next set of Web pages to be
+accessed by a certain class of users. These patterns can be used by market-
+ers to produce targeted advertisements on Web pages. Another type of
+sequential pattern pertains to which items are typically purchased follow-
+ing the purchase of a particular item. For example, after purchasing a
+computer, a printer is often purchased.
+
+| Dependency modeling. Dependency modeling aims to determine and
+model significant dependencies among the various variables in the Web
+domain. For example, one may be interested in building a model that rep-
+resents the various stages a visitor undergoes while shopping in an online
+store; this model would be based on user actions (e.g., being a casual visi-
+tor versus being a serious potential buyer).
+
+. Pattern analysis. The final step is to filter out those rules or patterns that
+
+are considered to be not of interest based on the discovered patterns. One
+common technique for pattern analysis is to use a query language such as
+SQL to detect various patterns and relationships. Another technique
+involves loading usage data into a data warehouse with ETL tools and per-
+forming OLAP operations to view the data along multiple dimensions (see
+Section 29.3). It is common to use visualization techniques, such as graph-
+ing patterns or assigning colors to different values, to highlight patterns or
+trends in the data.

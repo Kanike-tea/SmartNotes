@@ -1,0 +1,42 @@
+5.2 Relational Model Constraints and Relational Database Schemas 161
+EMPLOYEE
+Fname | Minit | Lname | Ssn | Bdate ] Address | Sex | Salary | Super_ssn| Dno
+DEPARTMENT
+Dname | Dnumber | Mgr_ssn | Mgr_start_date
+DEPT_LOCATIONS
+Dnumber | Dlocation
+PROJECT
+Pname | Pnumber | Plocation Dnum
+WORKS_ON
+Essn Pno Hours.
+Figure 5.5
+DEPENDENT Schema diagram for the
+. COMPANY relational
+Essn | Dependent_name | Sex | Bdate | Relationship database schema.
+
+called not valid, and a state that satisfies all the constraints in the defined set of
+integrity constraints IC is called a valid state.
+
+In Figure 5.5, the Dnumber attribute in both DEPARTMENT and DEPT_LOCATIONS
+stands for the same real-world concept—the number given to a department. That
+same concept is called Dno in EMPLOYEE and Dnum in PROJECT. Attributes that
+represent the same real-world concept may or may not have identical names in dif-
+ferent relations. Alternatively, attributes that represent different concepts may have
+the same name in different relations. For example, we could have used the attribute
+name Name for both Pname of PROJECT and Dname of DEPARTMENT; in this case, we
+would have two attributes that share the same name but represent different real-
+world concepts—project names and department names.
+
+In some early versions of the relational model, an assumption was made that the
+same real-world concept, when represented by an attribute, would have identical
+attribute names in all relations. This creates problems when the same real-world
+concept is used in different roles (meanings) in the same relation. For example, the
+concept of Social Security number appears twice in the EMPLOYEE relation of
+Figure 5.5: once in the role of the employee’s SSN, and once in the role of the
+supervisor's SSN. We are required to give them distinct attribute names—Ssn and
+Super_ssn, respectively—because they appear in the same relation and in order to
+distinguish their meaning.
+
+Each relational DBMS must have a data definition language (DDL) for defining a
+relational database schema. Current relational DBMSs are mostly using SQL for
+this purpose. We present the SQL DDL in Sections 6.1 and 6.2.

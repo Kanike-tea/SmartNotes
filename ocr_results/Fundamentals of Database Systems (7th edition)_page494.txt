@@ -1,0 +1,56 @@
+464 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+The semantics of the other two relation schemas in Figure 14.1 are slightly more
+complex. Each tuple in DEPT_LOCATIONS gives a department number (Dnumber)
+and one of the locations of the department (Dlocation). Each tuple in WORKS_ON
+gives an employee Social Security number (Ssn), the project number of one of the
+projects that the employee works on (Pnumber), and the number of hours per week
+that the employee works on that project (Hours). However, both schemas have a
+well-defined and unambiguous interpretation. The schema DEPT_LOCATIONS rep-
+resents a multivalued attribute of DEPARTMENT, whereas WORKS_ON represents
+an M:N relationship between EMPLOYEE and PROJECT. Hence, all the relation
+schemas in Figure 14.1 may be considered as easy to explain and therefore good
+from the standpoint of having clear semantics. We can thus formulate the following
+informal design guideline.
+
+Guideline 1. Design a relation schema so that it is easy to explain its meaning. Do
+not combine attributes from multiple entity types and relationship types into a sin-
+gle relation. Intuitively, if a relation schema corresponds to one entity type or one
+relationship type, it is straightforward to explain its meaning. Otherwise, if the rela-
+tion corresponds to a mixture of multiple entities and relationships, semantic ambi-
+guities will result and the relation cannot be easily explained.
+
+Examples of Violating Guideline 1. The relation schemas in Figures 14.3(a)
+and 14.3(b) also have clear semantics. (‘The reader should ignore the lines under the
+relations for now; they are used to illustrate functional dependency notation, dis-
+cussed in Section 14.2.) A tuple in the EMP_DEPT relation schema in Figure 14.3(a)
+represents a single employee but includes, along with the Dnumber (the identifier
+for the department he/she works for), additional information—namely, the
+name (Dname) of the department for which the employee works and the Social
+Security number (Dmgr_ssn) of the department manager. For the EMP_PROJ rela-
+tion in Figure 14.3(b), each tuple relates an employee to a project but also includes
+
+Figure 14.3
+
+Two relation schemas
+suffering from update
+anomalies.
+
+(a) EMP_DEPT and
+(b) EMP_PROJ.
+
+(a)
+
+EMP_DEPT
+Ename | Ssn | Bdate | Address | Dnumber | Dname | Dmgr_ssn_|
+
+a
+
+(b)
+EMP_PROJ
+Ssn_| Pnumber | Hours | Ename | Pname | Plocation
+
+FD1 4
+FD2
+
+FD3 |

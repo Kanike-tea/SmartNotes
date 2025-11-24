@@ -1,0 +1,51 @@
+18.7 Combining Operations Using Pipelining
+
+approach of projection followed by set difference causes temporary tables to be
+stored and processed multiple times.
+
+The right outer join can be converted to a left outer join by switching the operands
+and hence needs no separate discussion. Full outer join requires computing the
+result of inner join and then padding to the result extra tuples arising from
+unmatched tuples from both the left and right operand relations. Typically, full
+outer join would be computed by extending sort-merge or hashed join algorithms
+to account for the unmatched tuples.
+
+Implementing Semi-Join and Anti-Join. In Section 18.1, we introduced these types
+of joins as possible operations to which some queries with nested subqueries get
+mapped. The purpose is to be able to perform some variant of join instead of evaluat-
+ing the subquery multiple times. Use of inner join would be invalid in these cases, since
+for every tuple of the outer relation, the inner join looks for all possible matches on the
+inner relation. In semi-join, the search stops as soon as the first match is found and the
+tuple from outer relation is selected; in anti-join, search stops as soon as the first match
+is found and the tuple from outer relation is rejected. Both these types of joins can be
+implemented as an extension of the join algorithms we discussed in Section 18.4.
+
+Implementing Non-Equi-Join Join operation may also be performed when the
+join condition is one of inequality. In Chapter 6, we referred to this operation as
+theta-join.This functionality is based on a condition involving any operators, such
+as <, >, 2, S, #, and so on. All of the join methods discussed are again applicable
+here with the exception that hash-based algorithms cannot be used.
+
+18.7 Combining Operations Using Pipelining
+
+A query specified in SQL will typically be translated into a relational algebra expres-
+sion that is a sequence of relational operations. If we execute a single operation at a
+time, we must generate temporary files on disk to hold the results of these tempo-
+rary operations, creating excessive overhead. Evaluating a query by creating and
+storing each temporary result and then passing it as an argument for the next oper-
+ator is called materialized evaluation. Each temporary materialized result is then
+written to disk and adds to the overall cost of query processing.
+
+Generating and storing large temporary files on disk is time-consuming and can be
+unnecessary in many cases, since these files will immediately be used as input to the
+next operation. To reduce the number of temporary files, it is common to generate
+query execution code that corresponds to algorithms for combinations of opera-
+tions in a query.
+
+For example, rather than being implemented separately, a JOIN can be combined
+with two SELECT operations on the input files and a final PROJECT operation on
+the resulting file; all this is implemented by one algorithm with two input files and
+a single output file. Rather than creating four temporary files, we apply the algo-
+rithm directly and get just one result file.
+
+681

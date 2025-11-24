@@ -1,0 +1,39 @@
+1. Di
+8 rected Graphs ang
+
+we must find a Hamilton cycle C2 which is edge-disjoint with C,. If the same arran
+
+to be there on subsequent days, then for each day we have to find a Hamilton oe
+edge-disjoint with the Hamilton cycles found earlier, By Theorem 3 (above), the num is
+such cycles is exactly equal to }(n~1) = $(2k+1~1) = k. Therefore, the seating arrang,
+of the desired type can last only for k days.
+
+’
+(a) Show that the number of Hamilton cycles in the complete bipartite Fe
+Kya (for n 2 2) is $(n- Int,
+
+(b) How many different Hamilton paths are there in Ky»?
+
+> (a) Let X and Y be the bipartites of Knn, with X = (x1, x2,...,x,} and Y = WY... yh
+Then each edge of K,,, is of the form {xi,yj),i,7 = 1,2,...,n. Start with the Vertex 5,
+Since this vertex is on every Hamilton cycle of Knn, there are n choices for y,, Where
+(x1, y;} belongs to the cycle. From y; we have to return to X inn —-1 ways for the second
+edge {y;, x;} of the cycle where i = 2,3,...,n. Continuining in this manner we obtain
+(n—1)!n! number of cycles. Since directions are not involved, the total number of cycles
+is half this number, namely 3(n-1Inl.
+
+(b) Every Hamilton path in K,,, starts in either X or ¥ and terminates in the other. The
+
+number of such paths is (n!) x (n!) = (n!)?. 1
+
+Exercises
+
+1. Verify that the hyper cube Q, and the complete graph Ks are Hamilton graphs by finding &
+Hamilton cycle in each of them, ie
+
+2. Identify a Hamilton cycle in the hyper-cube Q; shown in Figure 1.40,
+
+_ 3. Identify five different Hamilton cycles in the following graph:
+
+s R
+Figure 1,136

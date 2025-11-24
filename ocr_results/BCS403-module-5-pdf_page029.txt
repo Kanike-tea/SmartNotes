@@ -1,0 +1,97 @@
+892
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+Figure 24.1
+
+Example of simple
+documents in
+MongoDB.
+
+(a) Denormalized
+document design
+with embedded
+subdocuments.
+
+(b) Embedded array of
+document references.
+() Normalized
+documents.
+
+(a) project document with an array of embedded workers:
+
+{
+_id:
+Pname:
+Plocation:
+Workers: [
+
+);
+
+“Pt,
+“ProductX",
+“Bellaire”,
+
+{ Ename: “John Smith”,
+Hours: 32.5
+
+iF
+
+{ Ename: “Joyce English”,
+Hours: 20.0
+
+}
+
+(b) project document with an embedded array of worker ids:
+
+{
+id:
+
+Pname:
+Plocation:
+
+Workerlds:
+
+{_id:
+Ename:
+Hours:
+
+{_id:
+Ename:
+Hours:
+
+}
+
+“Pt,
+“ProductX",
+“Bellaire”,
+['wi", “w2"]
+
+“John Smith”,
+32.5
+
+“Joyce English”,
+20.0
+
+(c) normalized project and worker documents (not a fully normalized design
+for M:N relationships):
+
+{
+_id:
+
+Pname:
+Plocation:
+
+{  _id:
+Ename:
+Projectld:
+
+Hours:
+
+“Pt,
+“ProductX",
+“Bellaire”
+
+“John Smith",
+“Pt,
+32.5

@@ -1,0 +1,58 @@
+21.1. Two-Phase Locking Techniques for Concurrency Control
+
+read_lock(X):
+B: if LOCK(X) = “unlocked”
+then begin LOCK(X) < “read-locked”;
+no_of_reads(X) <1
+end
+else if LOCK(X) = “read-locked”
+then no_of_reads(X) <— no_of_reads(X) + 1
+else begin
+wait (until LOCK(X) = “unlocked”
+and the lock manager wakes up the transaction);
+go toB
+end;
+write_lock(X):
+B: if LOCK(X) = “unlocked”
+then LOCK(X) < “write-locked”
+else begin
+wait (until LOCK(X) = “unlocked”
+and the lock manager wakes up the transaction);
+go toB
+end;
+unlock (X):
+if LOCK(X) = “write-locked”
+then begin LOCK(X) < “unlocked”;
+wakeup one of the waiting transactions, if any
+end
+else it LOCK(X) = “read-locked”
+then begin
+no_of_reads(X) <— no_of_reads(X) —1;
+if no_of_reads(X) =0
+then begin LOCK(X) = “unlocked”;
+
+Figure 21.2
+
+785
+
+Locking and unlocking
+operations for two-
+
+wakeup one of the waiting transactions, if any mode (read/write, or
+end shared/exclusive)
+end; locks.
+
+When we use the shared/exclusive locking scheme, the system must enforce the
+following rules:
+
+1. A transaction T must issue the operation read_lock(X) or write_lock(X) before
+any read_item(X) operation is performed in T.
+
+2. A transaction T must issue the operation write_lock(X) before any write_item(X)
+operation is performed in T.
+
+3. A transaction T must issue the operation unlock(X) after all read_item(X) and
+write_item(X) operations are completed in T.?
+
+SThis rule may be relaxed to allow a transaction to unlock an item, then lock it again later. However, two-
+phase locking does not allow this.

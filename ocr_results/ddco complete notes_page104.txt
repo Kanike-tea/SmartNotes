@@ -1,0 +1,37 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+Input Device DATAIN Buffer —» Processor
+Processor. » | DATAOUT Buffer ——» Output Device
+
+Input & Output registers —
+Various registers in keyboard and display devices -
+
+DATAIN
+
+i =
+
+ciel On
+oD aS
+7 6 5 4 3 2 1 0
+
+DATAIN register: is a part of input device. It is used to store the ASCII characters read from
+keyboard.
+
+DATAOUT register: is a part of output device. It is used to store the ASCII
+characters to bedisplayed on the output device.
+
+STATUS register stores the status of working of I/O devices —
+
+e SIN flag - This flag is set to 1, when DATAIN buffer contains the data
+from keyboard. The flag is set to O, after the data is passed from DATAIN
+buffer to the processor.
+
+¢ SOUT flag - This flag is set to 1, when DATAOUT buffer is empty and
+the data can be added to it by processor. The flag is set to 0, when
+DATAOUT buffer has the data to be displayed.
+
+¢ KIRQ (Keyboard Interrupt Request) -— By setting this flag to 1, keyboard
+requests the processor to obtain its service and an interrupt is sent to the
+processor. It is used along with the SIN flag.
+
+Dr.Ajay V G, Dept. of CSE 6

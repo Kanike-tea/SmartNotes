@@ -1,0 +1,75 @@
+134 Chapter 5 Efficient C Programming
+
+if (stages->stageB)
+{
+dostageB();
+}
+if (stages->stageC)
+{
+dostageC();
+}
+}
+
+Here, we use three bit-field flags to enable three possible stages of processing, The example
+
+compiles to
+
+dostages_vl
+
+STMFD —r13!,{r4,r14}
+Mov r4,r0
+
+LOR 0, [r0, #0]
+TsT r0,#1
+
+BLNE dostageA
+
+LOR r0, [r4, #0]
+Mov r0,r0,LSL #30
+cmp r0,#0
+
+BLLT dostageB
+
+LOR r0, [r4, #0]
+Mov 10,r0,LSL #29
+cmp r0,#0
+
+LOMLTFD r13!,{r4,r14}
+
+BLT dostageC
+LOMFD r13!,{r4,pc}
+
+stack r4, Ir
+move stages to r4
+r0 = stages bitfield
+if (stages->stageA)
+{dostageA();}
+r0 = stages bitfield
+shift bit 1 to bit 31
+if (bit31)
+{dostageB();}
+r0 = stages bitfield
+shift bit 2 to bit 31
+if (!bit31)
+return
+dostageC();
+return
+
+Note that the compiler accesses the memory location containing the bit-field three times.
+Because the bit-field is stored in memory, the dostage functions could change the value.
+Also, the compiler uses two instructions to test bit 1 and bit 2 of the bit-field, rather than
+
+a single instruction.
+
+You can generate far more efficient code by using an integer rather than a bit-field. Use
+enum or #define masks to divide the integer type into different fields.
+
+EXAMPLE
+
+5.9 bit-fields:
+
+typedef unsigned long Stages_v2;
+
+#define STAGEA (1ul <<0)
+
+The following code implements the dostages function using logical operations rather than

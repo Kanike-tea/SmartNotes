@@ -1,0 +1,54 @@
+7.2. Specifying Constraints as Assertions and Actions as Triggers
+
+Suppose we want to check whenever an employee’s salary is greater than the salary
+of his or her direct supervisor in the COMPANY database (see Figures 5.5 and 5.6).
+Several events can trigger this rule: inserting a new employee record, changing an
+employee’s salary, or changing an employee’s supervisor. Suppose that the action to
+take would be to call an external stored procedure SALARY_VIOLATION,° which will
+notify the supervisor. The trigger could then be written as in R5 below. Here we are
+using the syntax of the Oracle database system.
+
+R5: CREATE TRIGGER SALARY_VIOLATION
+BEFORE INSERT OR UPDATE OF SALARY, SUPERVISOR_SSN
+ON EMPLOYEE
+FOR EACH ROW
+WHEN ( NEW.SALARY > ( SELECT SALARY FROM EMPLOYEE
+WHERE SSN = NEW.SUPERVISOR_SSN ) )
+INFORM_SUPERVISOR(NEW.Supervisor_ssn,
+NEW.Ssn );
+
+The trigger is given the name SALARY_VIOLATION, which can be used to remove or
+deactivate the trigger later. A typical trigger which is regarded as an ECA (Event,
+Condition, Action) rule has three components:
+
+1. The event(s): These are usually database update operations that are explic-
+itly applied to the database. In this example the events are: inserting a new
+employee record, changing an employee’s salary, or changing an employee’s
+supervisor. The person who writes the trigger must make sure that all pos-
+sible events are accounted for. In some cases, it may be necessary to write
+more than one trigger to cover all possible cases. These events are specified
+after the keyword BEFORE in our example, which means that the trigger
+should be executed before the triggering operation is executed. An alterna-
+tive is to use the keyword AFTER, which specifies that the trigger should be
+executed after the operation specified in the event is completed.
+
+2. The condition that determines whether the rule action should be executed:
+Once the triggering event has occurred, an optional condition may be evalu-
+ated. If no condition is specified, the action will be executed once the event
+occurs. If a condition is specified, it is first evaluated, and only if it evaluates
+to true will the rule action be executed. The condition is specified in the
+WHEN clause of the trigger.
+
+3. The action to be taken: The action is usually a sequence of SQL statements,
+but it could also be a database transaction or an external program that will
+be automatically executed. In this example, the action is to execute the stored
+procedure INFORM_SUPERVISOR.
+
+Triggers can be used in various applications, such as maintaining database consis-
+tency, monitoring database updates, and updating derived data automatically. A
+complete discussion is given in Section 26.1.
+
+5Assuming that an appropriate external procedure has been declared, We discuss stored procedures in
+Chapter 10.
+
+227

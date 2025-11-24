@@ -1,0 +1,57 @@
+19.5 Cost Functions for the JOIN Operation
+
+For a primary index, we get
+
+Choc = bp + (RI * (xp + 1) + (Cis * [RI * |S))/bfres)
+
+Ifa hash key exists for one of the two join attributes—say, B of S—we get
+Chg = be + IR] * h) + (Gs * |R| * |S])/bfres)
+
+where h 2 1 is the average number of block accesses to retrieve a record,
+given its hash key value. Usually, h is estimated to be J for static and linear
+hashing and 2 for extendible hashing. This is an optimistic estimate, and typ-
+ically h ranges from 1.2 to 1.5 in practical situations.
+
+= J3—Sort-merge join. If the files are already sorted on the join attributes, the
+cost function for this method is
+
+Chaa = be + bs + ((js* |R| * |S|)/bfres)
+
+If we must sort the files, the cost of sorting must be added. We can use the
+formulas from Section 18.2 to estimate the sorting cost.
+
+= J4—Partition-hash join (or just hash join). The records of files R and S are
+partitioned into smaller files. The partitioning of each file is done using the
+same hashing function h on the join attribute A of R (for partitioning file R)
+and B of S (for partitioning file S). As we showed in Section 18.4, the cost of
+this join can be approximated to:
+
+Cg = 3* (bp + bs) + (Gs * [RI * |S))/bfres)
+
+19.5.1 Join Selectivity and Cardinality
+
+for Semi-Join and Anti-Join
+
+We consider these two important operations, which are used when unnesting cer-
+tain queries. In Section 18.1 we showed examples of subqueries that are transformed
+into these operations. The goal of these operations is to avoid the unnecessary effort
+of doing exhaustive pairwise matching of two tables based on the join condition.
+Let us consider the join selectivity and cardinality of these two types of joins.
+
+Semi-Join
+
+SELECT COUNT(*)
+
+FROM T1
+
+WHERE LX IN (SELECT T2.Y
+FROM 12);
+
+Unnesting of the query above leads to semi-join. (In the following query, the nota-
+tion “S=” for semi-join is nonstandard.)
+
+SELECT COUNT(*)
+FROM Tl, T2
+WHERE TLX S=T2.Y;
+
+719

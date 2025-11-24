@@ -1,0 +1,54 @@
+396
+
+Chapter 12 Object and Object-Relational Databases
+
+specified using the keyword class in ODL. In the object model, any user-defined
+object that is not a collection object is called an atomic object.””
+
+For example, in a UNIVERSITY database application, the user can specify an object
+type (class) for STUDENT objects. Most such objects will be structured objects; for
+example, a STUDENT object will have a complex structure, with many attributes,
+relationships, and operations, but it is still considered atomic because it is not a
+collection. Such a user-defined atomic object type is defined as a class by specify-
+ing its properties and operations. The properties define the state of the object and
+are further distinguished into attributes and relationships. In this subsection, we
+elaborate on the three types of components—attributes, relationships, and
+operations—that a user-defined object type for atomic (structured) objects can
+include. We illustrate our discussion with the two classes EMPLOYEE and DEPARTMENT
+shown in Figure 12.7.
+
+An attribute is a property that describes some aspect of an object. Attributes have
+values (which are typically literals having a simple or complex structure) that are
+stored within the object. However, attribute values can also be Object_ids of other
+objects. Attribute values can even be specified via methods that are used to calculate
+the attribute value. In Figure 12.7°* the attributes for EMPLOYEE are Name, Ssn,
+Birth_date, Sex, and Age, and those for DEPARTMENT are Dname, Dnumber, Mgr,
+Locations, and Projs. The Mgr and Projs attributes of DEPARTMENT have complex
+structure and are defined via struct, which corresponds to the tuple constructor of
+Section 12.1.3. Hence, the value of Mgr in each DEPARTMENT object will have two
+components: Manager, whose value is an Object_id that references the EMPLOYEE
+object that manages the DEPARTMENT, and Start_date, whose value is a date. The
+locations attribute of DEPARTMENT is defined via the set constructor, since each
+DEPARTMENT object can have a set of locations.
+
+A relationship is a property that specifies that two objects in the database are related.
+In the object model of ODMG, only binary relationships (see Section 3.4) are
+explicitly represented, and each binary relationship is represented by a pair of
+inverse references specified via the keyword relationship. In Figure 12.7, one rela-
+tionship exists that relates each EMPLOYEE to the DEPARTMENT in which he or she
+works—the Works_for relationship of EMPLOYEE. In the inverse direction, each
+DEPARTMENT is related to the set of EMPLOYEES that work in the DEPARTMENT—
+the Has_emps relationship of DEPARTMENT. The keyword inverse specifies that
+these two properties define a single conceptual relationship in inverse directions.””
+
+By specifying inverses, the database system can maintain the referential integrity of
+the relationship automatically. That is, if the value of Works_for for a particular
+
+27s mentioned earlier, this definition of atomic object in the ODMG object model is different from the
+definition of atom constructor given in Section 12.1.3, which is the definition used in much of the object-
+oriented database literature.
+
+?8We are using the Object Definition Language (ODL) notation in Figure 12.7, which will be discussed in
+more detail in Section 12.3.6.
+
+?°Section 7.4 discusses how a relationship can be represented by two attributes in inverse directions.

@@ -1,0 +1,74 @@
+A.3 Alphabetical List of ARM and Thumb Instructions
+
+= Rnand Rm must be different registers. Rn and Rd must be different registers.
+
+= Rnshould be aligned to the size of the memory transfer.
+
+= Ifa data abort occurs on the load, then the store does not occur. If a data abort occurs
+
+on the store, then Rd is not written.
+
+You can use the SWP instruction to implement 8-bit or 32-bit semaphores on ARMv5 and
+below. For ARMv6 use LDREX and STREX in preference. As an example, suppose a byte
+semaphore register pointed to by rl can have the value OxFF (claimed) or 0x00 (free).
+‘The following example claims the lock. If the lock is already claimed, then the code loops,
+
+waiting for an interrupt or task switch that will free the lock.
+
+loop
+
+MOV 0, #0xFF
+SWPB 0, r0, [ri]
+CMP 0, #0xFF
+BEQ loop
+
+value to claim the lock
+
+try and claim the lock
+
+3 check to see if it was already claimed
+if so wait for it to become free
+
+SXT
+SXTA
+
+Byte or halfword extract or extract with accumulate
+
+1. {S|U}XTB16<cond> Rd, Rm {, ROR#8*<rot> }
+
+2. {S|U}XTB<cond> Rd, _Rm {, ROR#8*<rot> }
+
+3. {S|U}XTH<cond> Rd, Rm {, ROR#8*<rot> }
+
+4, {S|U}XTAB16<cond> Rd, Rn, Rm {, ROR#8*<rot> }
+
+5. {S|U}XTAB<cond> Rd, Rn, Rm {, ROR#8*<rot> }
+
+6. {S|U}XTAH<cond> Rd, Rn, Rm {, ROR#8*<rot> }
+
+7. {S|U}XTB Ld, Lm
+
+8. {S|U}XTH Ld, Lm
+
+Action
+
+1, Rd[31:16] = extend(<shifted_Rm>[23:16]);
+Rd[15:00] = extend(<shifted_Rm>[07:00])
+
+2. Rd = extend(<shifted_Rm>[07:00])
+
+3. Rd = extend(<shifted_Rm>[15:00])
+
+4. Rd [31:16] = Rn[31:16] + extend(<shi fted_Rm>[23:16]);
+Rd[15:00] = Rn[15:00] + extend(<shifted_Rm>[07:00])
+
+5. Rd = Rn + extend(<shifted_Rm>[07:00])
+
+ARMv6
+ARMv6
+ARMv6
+ARMv6
+ARMv6
+ARMv6
+THUMBv3
+THUMBv3

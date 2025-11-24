@@ -1,0 +1,53 @@
+26.1 Active Database Concepts and Triggers
+
+action is executed whenever the triggering event occurs. The action updates both
+the old department and new department of the reassigned employees by adding
+their salary to Total_sal of their new department and subtracting their salary from
+Total_sal of their old department. Note that this should work even if the value of Dno
+is NULL, because in this case no department will be selected for the rule action.>
+
+It is important to note the effect of the optional FOR EACH ROW clause, which sig-
+nifies that the rule is triggered separately for each tuple. This is known as a row-
+level trigger. If this clause was left out, the trigger would be known as a
+statement-level trigger and would be triggered once for each triggering statement.
+To see the difference, consider the following update operation, which gives a 10%
+raise to all employees assigned to department 5. This operation would be an event
+that triggers rule R2:
+
+UPDATE EMPLOYEE
+SET Salary = 1.1» Salary
+WHERE Dno
+
+Because the above statement could update multiple records, a rule using row-level
+semantics, such as R2 in Figure 26.2, would be triggered once for each row, whereas
+a rule using statement-level semantics is triggered only once. The Oracle system
+allows the user to choose which of the above options is to be used for each rule.
+Including the optional FOR EACH ROW clause creates a row-level trigger, and leav-
+ing it out creates a statement-level trigger. Note that the keywords NEW and OLD
+can only be used with row-level triggers.
+
+As a second example, suppose we want to check whenever an employee’s salary is
+greater than the salary of his or her direct supervisor. Several events can trigger this
+rule: inserting a new employee, changing an employee’s salary, or changing an
+employee’s supervisor. Suppose that the action to take would be to call an external
+procedure inform_supervisor,° which will notify the supervisor. The rule could then
+be written as in R5 (see Figure 26.2(b)).
+
+Figure 26.3 shows the syntax for specifying some of the main options available in
+Oracle triggers. We will describe the syntax for triggers in the SQL-99 standard in
+Section 26.1.5.
+
+26.1.2 Design and Implementation Issues
+for Active Databases
+
+The previous section gave an overview of some of the main concepts for speci-
+fying active rules. In this section, we discuss some additional issues concerning
+how rules are designed and implemented. The first issue concerns activation,
+
+5R1, RQ, and R4 can also be written without a condition. However, it may be more efficient to execute
+them with the condition since the action is not invoked unless it is required.
+
+®Assuming that an appropriate external procedure has been declared, This is a feature that is available
+in SQL-99 and later standards.
+
+967

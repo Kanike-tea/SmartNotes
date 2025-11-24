@@ -1,0 +1,47 @@
+Bandwidth
+¢ It is defined as the number of bits or bytes that can be transferred in one second.
+¢ Bandwidth mainly depends on
+1) The speed of access to the stored data &
+2) The number of bits that can be accessed in parallel.
+
+DOUBLE DATA RATE SDRAM (DDR-SDRAM)
+© The standard SDRAM performs all actions on the rising edge of the clock signal.
+* The DDR-SDRAM transfer data on both the edges (loading edge, trailing edge).
+* The Bandwidth of DDR-SDRAM is doubled for long burst transfer.
+* To make it possible to access the data at high rate, the cell array is organized into two banks.
+« Each bank can be accessed separately.
+* Consecutive words of a given block are stored in different banks.
+¢ Such interleaving of words allows simultaneous access to two words.
+© The two words are transferred on successive edge of the clock.
+
+STRUCTURE OF LARGER MEMORIES
+Dynamic Memory System
+© The physical implementation is done in the form of memory-modules.
+© Ifa large memory is built by placing DRAM chips directly on the Motherboard,
+then it will occupy large amount of space on the board.
+These packaging consideration have led to the development of larger memory units known as SIMM"“s &
+DIMM*“s.
+1) SIMM 3 Single Inlinememory-module
+2) DIMM > Dual Inline memory-module
+¢ SIMM/DIMM consists of many memory-chips on small board that plugs into a socket on motherboard.
+
+MEMORY-SYSTEM CONSIDERATION- MEMORY CONTROLLER
+© To reduce the number of pins, the dynamic memory-chips use multiplexed-address inputs.
+© The address is divided into 2 parts:
+
+1) High Order Address Bit
+
+> Select a row in cell array.
+
+> It is provided first and latched into memory-chips under the control of RAS“ signal.
+2) Low Order Address Bit
+
+> Selects a column.
+
+> They are provided on same address pins and latched using CAS“ signals.
+
+Row/Column
+
+Figure 5.11 Use of a memory controller.
+
+Page 46

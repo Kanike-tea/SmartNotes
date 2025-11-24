@@ -1,0 +1,28 @@
+10.3 Summary 379
+
+10.3 SUMMARY
+
+This chapter covered the firmware. We defined firmware as the low-level code that interfaces
+the hardware with an application or operating system. We also defined the bootloader as
+the software that loads an operating system or application into memory and relinquishes
+control of the pc to that software.
+
+We introducted the ARM Firmware Suite and RedBoot. The ARM Firmware Suite is
+designed only for ARM-based systems. RedBoot, however, is more generic and can be used
+on other, non-ARM processors.
+
+Next we looked at a firmware example called Sandstone. Sandstone initializes the
+hardware and then loads and boots an image following this procedure:
+
+= Takes the Reset exception.
+
+= Starts initializing the hardware; sets the system register’s base address and initializes
+segment display hardware.
+
+= Remaps memory; ROM address = high addr and SRAM addr = 0x00000000.
+= Initializes the communication hardware output on the serial port.
+
+= Bootloader—toads an image into SRAM and relinquishes control of the peto the image
+(pe = 0x00000000).
+
+We now have a fully initialized ARM7TDMI embedded system.

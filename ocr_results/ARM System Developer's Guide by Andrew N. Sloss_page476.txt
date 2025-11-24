@@ -1,0 +1,53 @@
+13.1 Protected Regions 463
+
+13. 1 PROTECTED REGIONS
+
+Table 13.1
+
+There are currently four ARM cores that contain an MPU; the ARM740T, ARM940T,
+ARM946E-S, and the ARM1026EJ-S. The ARM740T, ARM946E-S, and ARM1026EJ-S each
+contain 8 protection regions; the ARM940T contains 16 (see Table 13.1).
+
+The ARM740T, ARM946E-S, and ARM1026EJ-S have unified instruction and data
+regions—the data region and instruction region are defined using the same register that sets
+the size and starting address. The memory access permission and cache policies are config-
+ured independently for instruction and data access in the ARM946E-S and ARM1026EJ-S
+cores; in the ARM740T the same access permission and cache policies are assigned to
+both instruction and data memory. Regions are independent of whether the core has a
+Von Neumann or Harvard architecture. Each region is referenced by an identifying number
+between zero and seven.
+
+Because the ARM940T has separate regions to control instruction and data memory,
+the core can maintain different region sizes and starting addresses for instruction and data
+regions. The separation of instruction and data regions results in eight additional regions
+in this cached core. Although the identifying region numbers in an ARM940T still range
+from zero to seven, each region number has a pair of regions, one data region and one
+instruction region.
+
+‘There are several rules that govern regions:
+
+1. Regions can overlap other regions.
+
+2. Regions are assigned a priority number that is independent of the privilege assigned to
+the region.
+
+3. When regions overlap, the attributes of the region with the highest priority number take
+precedence over the other regions. The priority only applies over the addresses within
+the areas that overlap.
+
+4. A region’s starting address must be a multiple of its size.
+
+w
+
+. A region’s size can be any power of two between 4 KB and 4 GB—in other words, any
+of the following values: 4 KB, 8 KB, 16 KB, 32 KB, 64 KB,..., 2 GB, 4 GB.
+
+Summary of ARM cores with protection units.
+
+Number of Separate instruction Separate configuration of
+ARM core regions and data regions instruction and data regions
+ARM740T 8 no no
+ARM940T 16 yes yes
+ARM946E-S 8 no yes
+
+ARM1026EJ-S 8 no yes

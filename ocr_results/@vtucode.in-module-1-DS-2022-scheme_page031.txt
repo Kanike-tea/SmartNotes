@@ -1,0 +1,56 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+void mmult (term a[ ], term b[ ], term d[ ] )
+{ /* multiply two sparse matrices */
+
+int i, j, column, totalb = b[].value, totald = 0;
+int rows_a = a[0].row, cols_a = a[0].col, totala = a[0].value;
+int cols_b = b[0].col,
+int row_begin = 1, row = a[1].row, sum =0;
+int new_b[MAX_TERMS] [3];
+if (cols_a != b[0].row)
+{
+fprintf (stderr, “Incompatible matrices\n”);
+exit (1);
+}
+
+fast_transpose(b, new_b);
+
+a[totalat1].row = rows_a; /* set boundary condition */
+new b[totalb+1].row = cols _b;
+new_b[totalbt+1].col = 0;
+
+for (i = 1; i <= totala; )
+{
+column = new_b[1].row;
+for (j = 1; j <= totalbt1;)
+{ /* mutiply row_of a by\column of b */
+if (a[i].row != row)
+{
+storesum(d, &totald, row, column, &sum);
+i = row_beging
+forg(; new_blj].row == column; j++);
+column =new_b[j].row
+}
+else
+switch (COMPARE (a[i].col, new_b[j].col))
+{
+case -1: i++; break; /* go to next term in a */
+case 0: /* add terms, go to next term in a
+and b */
+sum += (a[i++].value * new_b[j++].value);
+case 1: j++ /* advance to next term in b*/
+
+}
+} /* end of for j <= totalb+1 */
+for (; ali].row == row; i++);
+row_begin = i;
+row = a[i].row;
+} /* end of for i <=totala */
+d[0].row = rows_a;
+[0].col = cols_b;
+[0].value = totald;
+
+Sparse matrix multiplication
+
+vtucode.in 32

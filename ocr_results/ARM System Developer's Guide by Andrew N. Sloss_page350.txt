@@ -1,0 +1,51 @@
+9.3 Interrupt Handling Schemes 337
+
+Interrupt
+
+Enter interrupt handler
+
+- | Disable interrupt
+
+Save context |
+3.
+Return to task Complete Service \ Not complete
+
+| interrupt
+
+v
+
+4. | Restore context 5.| Prepare stack
+
+|
+
+6.| Switch to mode
+
+]
+
+7. | Start constructing
+
+a frame
+8.
+Finish Interrupt
+frame
+construction
+
+Return to task 10. f Complete
+
+Interrupt
+
+servicing
+| the interrupt |
+
+11. | Restore context
+
+Figure 9.9 Nested interrupt handler.
+
+Figure 9.9 shows a nested interrupt handler. As can been seen from the diagram, the han-
+dler is quite a bit more complicated than the simple nonnested interrupt handler described
+in Section 9.3.1.
+
+The nested interrupt handler entry code is identical to the simple nonnested interrupt
+handler, except that on exit, the handler tests a flag that is updated by the ISR. The flag
+indicates whether further processing is required. If further processing is not required, then
+the interrupt service routine is complete and the handler can exit. If further processing is

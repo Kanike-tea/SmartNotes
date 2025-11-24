@@ -1,0 +1,50 @@
+6.3 Basic Retrieval Queries in SQL
+
+referencing attribute for SET DEFAULT. The action for CASCADE ON DELETE is to
+delete all the referencing tuples, whereas the action for CASCADE ON UPDATE is to
+change the value of the referencing foreign key attribute(s) to the updated (new)
+primary key value for all the referencing tuples. It is the responsibility of the data-
+base designer to choose the appropriate action and to specify it in the database
+schema. As a general rule, the CASCADE option is suitable for “relationship” rela-
+tions (see Section 9.1) , such as WORKS_ON; for relations that represent multival-
+ued attributes, such as DEPT_LOCATIONS; and for relations that represent weak
+entity types, such as DEPENDENT.
+
+6.2.3 Giving Names to Constraints
+
+Figure 6.2 also illustrates how a constraint may be given a constraint name, follow-
+ing the keyword CONSTRAINT. The names of all constraints within a particular
+schema must be unique. A constraint name is used to identify a particular con-
+straint in case the constraint must be dropped later and replaced with another con-
+straint, as we discuss in Chapter 7. Giving names to constraints is optional. It is also
+possible to temporarily defer a constraint until the end of a transaction, as we shall
+discuss in Chapter 20 when we present transaction concepts.
+
+6.2.4 Specifying Constraints on Tuples Using CHECK
+
+In addition to key and referential integrity constraints, which are specified by spe-
+cial keywords, other table constraints can be specified through additional CHECK
+clauses at the end of a CREATE TABLE statement. These can be called row-based
+constraints because they apply to each row individually and are checked whenever
+a row is inserted or modified. For example, suppose that the DEPARTMENT table in
+Figure 6.1 had an additional attribute Dept_create_date, which stores the date when
+the department was created. Then we could add the following CHECK clause at the
+end of the CREATE TABLE statement for the DEPARTMENT table to make sure that a
+manager’s start date is later than the department creation date.
+
+CHECK (Dept_create_date <= Mgr_start_date);
+
+The CHECK clause can also be used to specify more general constraints using
+the CREATE ASSERTION statement of SQL. We discuss this in Chapter 7 because
+it requires the full power of queries, which are discussed in Sections 6.3
+and 7.1.
+
+6.3 Basic Retrieval Queries in SQL
+
+SQL has one basic statement for retrieving information from a database: the
+SELECT statement. The SELECT statement is not the same as the SELECT operation
+of relational algebra, which we shall discuss in Chapter 8. There are many options
+and flavors to the SELECT statement in SQL, so we will introduce its features grad-
+ually. We will use example queries specified on the schema of Figure 5.5 and will
+
+187

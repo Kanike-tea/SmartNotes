@@ -1,0 +1,81 @@
+282
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+i
+
+Find the names and addresses of all employees who work on at least one
+project located in Houston but whose department has no location in
+Houston.
+
+List the last names of all department managers who have no dependents.
+
+8.17. Consider the AIRLINE relational database schema shown in Figure 5.8, which
+was described in Exercise 5.12. Specify the following queries in relational
+algebra:
+
+a.
+
+d.
+
+e.
+
+For each flight, list the flight number, the departure airport for the first
+leg of the flight, and the arrival airport for the last leg of the flight.
+
+. List the flight numbers and weekdays of all flights or flight legs that depart
+
+from Houston Intercontinental Airport (airport code ‘iah’) and arrive in
+Los Angeles International Airport (airport code ‘lax’).
+
+. List the flight number, departure airport code, scheduled departure time,
+
+arrival airport code, scheduled arrival time, and weekdays of all flights or
+flight legs that depart from some airport in the city of Houston and arrive
+at some airport in the city of Los Angeles.
+
+List all fare information for flight number ‘co197’.
+
+Retrieve the number of available seats for flight number ‘col97’ on
+*2009-10-09°.
+
+. Consider the LIBRARY relational database schema shown in Figure 8.14, which
+
+is used to keep track of books, borrowers, and book loans. Referential integrity
+constraints are shown as directed arcs in Figure 8.14, as in the notation of Fig-
+ure 5.7. Write down relational expressions for the following queries:
+
+a,
+
+. How many copies of the book titled The Lost Tribe are owned by the
+
+library branch whose name is ‘Sharpstown’?
+
+. How many copies of the book titled The Lost Tribe are owned by each
+
+library branch?
+
+. Retrieve the names of all borrowers who do not have any books
+
+checked out.
+
+. For each book that is loaned out from the Sharpstown branch and whose
+
+Due_date is today, retrieve the book title, the borrower’s name, and the
+borrower’s address.
+
+. For each library branch, retrieve the branch name and the total number
+
+of books loaned out from that branch.
+
+Retrieve the names, addresses, and number of books checked out for all
+borrowers who have more than five books checked out.
+
+. For each book authored (or coauthored) by Stephen King, retrieve the
+
+title and the number of copies owned by the library branch whose name
+is Central.
+
+. Specify the following queries in relational algebra on the database schema
+
+given in Exercise 5.14:

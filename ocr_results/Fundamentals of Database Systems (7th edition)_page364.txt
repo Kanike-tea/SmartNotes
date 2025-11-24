@@ -1,0 +1,60 @@
+334 Chapter 10 Introduction to SQL Programming Techniques
+//Program Segment JDBC2: Figure 10.13
+0) import java.io.* ; Program segment JDBC2, a Java program
+
+1) import java.sql.*
+
+segment that uses JDBC for a query with a
+collection of tuples in its result.
+
+2) class printDepartmentEmps {
+
+17)
+18)
+19)
+20)
+21)
+22)
+23)
+24) }
+
+public static void main (String args [])
+throws SQLException, IOException {
+try { Class. forName("oracle. jdbc.driver.OracleDriver")
+} catch (ClassNotFoundException x) {
+System.out.print1n ("Driver could not be loaded") ;
+}
+String dbacct, passwrd, Iname ;
+Double salary ;
+Integer dno ;
+dbacct = readentry("Enter database account
+passwrd = readentry("Enter password:") ;
+Connection conn = DriverManager.getConnection
+("jdbc:oracle:oci8:" + dbacct + "/" + passwrd) ;
+dno = readentry("Enter a Department Number: ")
+String q = "select Lname, Salary from EMPLOYEE where Dno = " +
+dno.tostring() ;
+Statement s = conn.createStatement() ;
+ResultSet r = s.executeQuery(q) ;
+while (r.next()) {
+lname = r.getString(1) ;
+salary = r.getDouble(2) ;
+system.out.printline(1name + salary) ;
+
+8. Executing the SQL statement. Following these preparations, we can now
+execute the SQL statement referenced by the object p using the function
+executeQuery (line 19). There is a generic function execute in JDBC,
+plus two specialized functions: executeUpdate and executeQuery.
+executeUpdate is used for SQL insert, delete, or update statements, and
+returns an integer value indicating the number of tuples that were affected.
+executeQuery is used for SQL retrieval statements, and returns an object of
+type ResultSet, which we discuss next.
+
+9. Processing the ResultSet object. In line 19, the result of the query is
+returned in an object r of type ResultSet. This resembles a two-dimensional
+array or a table, where the tuples are the rows and the attributes returned are
+the columns. A ResultSet object is similar to a cursor in embedded SQL
+and an iterator in SQLJ. In our example, when the query is executed, r refers
+to a tuple before the first tuple in the query result. The r.next() function
+(line 20) moves to the next tuple (row) in the ResultSet object and returns
+NULL if there are no more objects. This is used to control the looping. The

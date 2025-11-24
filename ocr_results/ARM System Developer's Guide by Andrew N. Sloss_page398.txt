@@ -1,0 +1,49 @@
+11.2 Example: Simple Little Operating System 385
+
+Finally, the s]os/build/src/apps directory holds all the applications/tasks for a par-
+ticular configuration. For instance, for the Evaluator-7T implementation, there are three
+applications/tasks.
+
+11.2.2 INITIALIZATION
+
+There are three main stages of initializing SLOS—startup, executing process control block
+(PCB) setup code, and executing the C initialization code. The startup code sets up the
+FIQ registers and the system, SVC, and IRQ mode stacks. In the next stage, the PCB, which
+contains the state of each task, is set up, including all the ARM registers. It is used to store
+and restore task state during a context switch. The setup code sets the process control block
+to an initial start state. The final C initialization stage calls the device driver, event handler,
+and periodic timer initialization routines. Once complete, the first task can be invoked.
+
+Control is passed to SLOS through the reset vector. The vectorReset is a location in
+memory that holds the start address of the initialization code. It is assumed that the firmware
+has left the processor in SVC mode, which allows the operating system initialization code to
+have full access to the cpsr. The first operating system instruction loads the pe with the start
+address of the initialization code, or coreInitial ization. You can see from the vector
+table, shown here, that this instruction loads a word using the load pc-relative instruction.
+The assembler tool has already calculated the offset value using the difference between the
+peand the address of the vectorReset.
+
+AREA ENTRYSLOS,CODE,READONLY
+ENTRY
+
+LDR pc, vectorReset
+LDR pc, vectorUndefined
+LOR pe, vectorSWI
+
+LOR pc, vectorPrefetchAbort
+LOR pc, vectorDataAbort
+LDR pc, vectorReserved
+
+LOR pe, vector IRQ
+
+LOR pe, vectorF1Q
+
+vectorReset DCD —coreInitialize
+vectorUndef ined DCD —_coreUndefinedHandler
+vectorSWI DCD —coreSWIHandler
+vectorPrefetchAbort DCD —_corePrefetchAbortHandler
+vectorDataAbort DCD —_—coreDataAbortHandler
+vectorReserved DCD —_coreReservedHandler
+vector IRQ DCD —coreIRQHandler
+
+vectorFIQ DCD —coreFIQHandler

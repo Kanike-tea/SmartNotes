@@ -1,0 +1,50 @@
+22.5 The ARIES Recovery Algorithm
+
+To recover from a failure during transaction execution, it is sufficient to free the
+modified database pages and to discard the current directory. The state of the data-
+base before transaction execution is available through the shadow directory, and
+that state is recovered by reinstating the shadow directory. The database thus is
+returned to its state prior to the transaction that was executing when the crash
+occurred, and any modified pages are discarded. Committing a transaction corre-
+sponds to discarding the previous shadow directory. Since recovery involves nei-
+ther undoing nor redoing data items, this technique can be categorized as a
+NO-UNDO/NO-REDO technique for recovery.
+
+Ina multiuser environment with concurrent transactions, logs and checkpoints must
+be incorporated into the shadow paging technique. One disadvantage of shadow pag-
+ing is that the updated database pages change location on disk. This makes it difficult
+to keep related database pages close together on disk without complex storage man-
+agement strategies. Furthermore, if the directory is large, the overhead of writing
+shadow directories to disk as transactions commit is significant. A further complica-
+tion is how to handle garbage collection when a transaction commits. The old pages
+referenced by the shadow directory that have been updated must be released and
+added to a list of free pages for future use. These pages are no longer needed after the
+transaction commits. Another issue is that the operation to migrate between current
+and shadow directories must be implemented as an atomic operation.
+
+22.5 The ARIES Recovery Algorithm
+
+We now describe the ARIES algorithm as an example of a recovery algorithm used
+in database systems. It is used in many relational database-related products of IBM.
+ARIES uses a steal/no-force approach for writing, and it is based on three concepts:
+write-ahead logging, repeating history during redo, and logging changes during
+undo. We discussed write-ahead logging in Section 22.1.3. The second concept,
+repeating history, means that ARIES will retrace all actions of the database system
+prior to the crash to reconstruct the database state when the crash occurred. Trans-
+actions that were uncommitted at the time of the crash (active transactions) are
+undone. The third concept, logging during undo, will prevent ARIES from repeat-
+ing the completed undo operations if a failure occurs during recovery, which causes
+a restart of the recovery process.
+
+The ARIES recovery procedure consists of three main steps: analysis, REDO, and
+UNDO. The analysis step identifies the dirty (updated) pages in the buffer® and the
+set of transactions active at the time of the crash. The appropriate point in the log
+where the REDO operation should start is also determined. The REDO phase actu-
+ally reapplies updates from the log to the database. Generally, the REDO operation
+is applied only to committed transactions. However, this is not the case in ARIES.
+
+®The actual buffers may be lost during a crash, since they are in main memory. Additional tables stored in
+the log during checkpointing (Dirty Page Table, Transaction Table) allow ARIES to identify this information
+(as discussed later in this section).
+
+827

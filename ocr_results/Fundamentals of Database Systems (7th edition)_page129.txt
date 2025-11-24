@@ -1,0 +1,42 @@
+Exercises 99
+
+the game. Design an ER schema diagram for this application, stating any
+assumptions you make. Choose your favorite sport (e.g., soccer, baseball,
+football).
+
+3.23. Consider the ER diagram shown in Figure 3.22 for part of a BANK database.
+Each bank can have multiple branches, and each branch can have multiple
+accounts and loans.
+
+a. List the strong (nonweak) entity types in the ER diagram.
+
+b. Is there a weak entity type? If so, give its name, partial key, and identify-
+ing relationship.
+
+c. What constraints do the partial key and the identifying relationship of the
+weak entity type specify in this diagram?
+
+d. List the names of all relationship types, and specify the (min, max)
+
+constraint on each participation of an entity type in a relationship type.
+Justify your choices.
+
+Figure 3.22
+An ER diagram for a BANK database schema.
+
+1 N
+BANK BRANCHES BANK_BRANCH
+
+1
+
+ACCTS
+
+N
+[Account [_ COAN
+
+M M
+AC LC
+N
+N
+
+CUSTOMER

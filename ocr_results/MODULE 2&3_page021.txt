@@ -1,0 +1,48 @@
+Microcontrollers — BCS402
+
+High memory
+
+al
+{| Source
+
+90
+Copy
+memory
+location
+
+tot | Destination
+
+Low memory
+
+Fig 6: Block memory copy in the memory map
+Stack Operations
+
+The ARM architecture uses the load-store multiple instructions to carry out stack operations.
+The pop operation (removing data from a stack) uses a load multiple instruction; similarly,
+
+the push operation (placing data onto the stack) uses a store multiple instruction.
+
+When using a stack you have to decide whether the stack will grow up or down in memory. A
+stack is either ascending (A) or descending (D). Ascending stacks grow towards higher
+
+memory addresses; in contrast, descending stacks grow towards lower memory addresses.
+
+When you use a full stack (F), the stack pointer sp points to an address that is the last used or
+full location (i.e., sp points to the last item on the stack). In contrast, if you use an empty stack
+(E) the sp points to an address that is the first unused or empty location (i.e., it points after the
+
+last item on the stack).
+
+There are a number of load-store multiple addressing mode aliases available to support stack
+operations (see Table 11). Next to the pop column is the actual load multiple instruction
+equivalent. For example, a full ascending stack would have the notation FA appended to the
+
+load multiple instruction—LDMFA. This would be translated into an LDMDA instruction.
+
+ARM has specified an ARM-Thumb Procedure Call Standard (ATPCS) that defines how
+routines are called and how registers are allocated. In the ATPCS, stacks are defined as being
+full descending stacks. Thus, the LDMFD and STMFD instructions provide the pop and push
+
+functions, respectively.
+
+Dept. of ECE, GSSSIETW Page 22

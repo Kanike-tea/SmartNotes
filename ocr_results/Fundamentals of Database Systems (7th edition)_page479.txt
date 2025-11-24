@@ -1,0 +1,48 @@
+13.6 Extracting XML Documents from Relational Databases 449
+
+ale fs
+
+fn S
+
+M 1
+STUDENT > SD SECTION S-D "
+Sections Students Course Sections
+completed attended
+Figure 13.9
+
+COURSE
+
+Subset of the UNIVERSITY database schema
+needed for XML document extraction.
+
+from a database will only use a subset of the attributes, entity types, and relation-
+ships in the database. In this example, the subset of the database that is needed is
+shown in Figure 13.9.
+
+At least three possible document hierarchies can be extracted from the database
+subset in Figure 13.9. First, we can choose COURSE as the root, as illustrated in
+Figure 13.10. Here, each course entity has the set of its sections as subelements, and
+each section has its students as subelements. We can see one consequence of mod-
+eling the information in a hierarchical tree structure. If a student has taken multiple
+sections, that student’s information will appear multiple times in the document—
+once under each section. A possible simplified XML schema for this view is shown.
+in Figure 13.11. The Grade database attribute in the S-S relationship is migrated to
+the STUDENT element. This is because STUDENT becomes a child of SECTION in this
+hierarchy, so each STUDENT element under a specific SECTION element can have a
+
+COURSE [- =
+1
+Sections
+Number
+N
+SECTION Year)
+' Qtr
+Students
+attended
+STUDENT
+
+cai
+
+Figure 13.10
+Hierarchical (tree) view with
+COURSE as the root.

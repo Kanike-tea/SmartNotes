@@ -1,0 +1,56 @@
+7.1 More Complex SQL Retrieval Queries
+
+DEPENDENT tuples whose Essn value matches the EMPLOYEE Ssn; if the result is
+empty, no dependents are related to the employee, so we select that EMPLOYEE
+tuple and retrieve its Frame and Lname.
+
+Query 7. List the names of managers who have at least one dependent.
+
+a7: SELECT Fname, Lname
+
+FROM EMPLOYEE
+WHERE EXISTS ( SELECT *
+FROM DEPENDENT
+WHERE Ssn = Essn )
+AND
+EXISTS ( SELECT *
+
+FROM DEPARTMENT
+WHERE = Ssn = Mgr_ssn);
+
+One way to write this query is shown in Q7, where we specify two nested cor-
+related queries; the first selects all DEPENDENT tuples related to an EMPLOYEE,
+and the second selects all DEPARTMENT tuples managed by the EMPLOYEE. If at
+least one of the first and at least one of the second exists, we select the EMPLOYEE
+tuple. Can you rewrite this query using only a single nested query or no nested
+queries?
+
+The query Q3: Retrieve the name of each employee who works on all the projects con-
+trolled by department number 5 can be written using EXISTS and NOT EXISTS in
+SQL systems. We show two ways of specifying this query Q3 in SQL as Q3A and
+Q3B. This is an example of certain types of queries that require universal quantifica-
+tion, as we will discuss in Section 8.6.7. One way to write this query is to use the
+construct (S2 EXCEPT S1) as explained next, and checking whether the result is
+empty.! This option is shown as Q3A.
+
+Q3A: SELECT Fname, Lname
+
+FROM EMPLOYEE
+WHERE = NOTEXISTS ((SELECT — Pnumber
+FROM PROJECT
+WHERE = Dnum=5)
+EXCEPT (SELECT Pno
+FROM WORKS_ON
+WHERE Ssn = Essn) );
+
+In Q3<A, the first subquery (which is not correlated with the outer query) selects all
+projects controlled by department 5, and the second subquery (which is corre-
+lated) selects all projects that the particular employee being considered works on.
+If the set difference of the first subquery result MINUS (EXCEPT) the second sub-
+query result is empty, it means that the employee works on all the projects and is
+therefore selected.
+
+'Recall that EXCEPT is the set difference operator. The keyword MINUS is also sometimes used, for
+example, in Oracle.
+
+213

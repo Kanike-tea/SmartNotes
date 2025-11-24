@@ -1,0 +1,53 @@
+14.5 Boyce-Codd Normal Form
+
+If we apply the above 3NF definition to LOTS with the dependencies FD1 through
+FD4, we find that both FD3 and FD4 violate 3NF by the general definition above
+because the LHS County_name in FD3 is not a superkey. Therefore, we could
+decompose LOTS into LOTS1A, LOTS1B, and LOTS2 directly. Hence, the transitive
+and partial dependencies that violate 3NF can be removed in any order.
+
+14.4.3 Interpreting the General Definition of Third Normal Form
+
+A relation schema R violates the general definition of 3NF if a functional depen-
+dency X — A holds in R that meets either of the two conditions, namely (a) and (b).
+The first condition “catches” two types of problematic dependencies:
+
+= Anonprime attribute determines another nonprime attribute. Here we typi-
+cally have a transitive dependency that violates 3NF.
+
+= A proper subset of a key of R functionally determines a nonprime attribute.
+Here we have a partial dependency that violates 2NF.
+
+Thus, condition (a) alone addresses the problematic dependencies that were causes
+for second and third normalization as we discussed.
+
+Therefore, we can state a general alternative definition of 3NF as follows:
+
+Alternative Definition. A relation schema R is in 3NF if every nonprime attribute
+of R meets both of the following conditions:
+
+= Itis fully functionally dependent on every key of R.
+= It is nontransitively dependent on every key of R.
+
+However, note the clause (b) in the general definition of 3NF. It allows certain func-
+tional dependencies to slip through or escape in that they are OK with the 3NF
+definition and hence are not “caught” by the 3NF definition even though they may
+be potentially problematic. The Boyce-Codd normal form “catches” these depen-
+dencies in that it does not allow them. We discuss that normal form next.
+
+14.5 Boyce-Codd Normal Form
+
+Boyce-Codd normal form (BCNEF) was proposed as a simpler form of 3NF, but it
+was found to be stricter than 3NF. That is, every relation in BCNF is also in 3NF;
+however, a relation in 3NF is not necessarily in BCNF. We pointed out in the last
+subsection that although 3NF allows functional dependencies that conform to the
+clause (b) in the 3NF definition, BCNF disallows them and hence is a stricter defini-
+tion of a normal form.
+
+Intuitively, we can see the need for a stronger normal form than 3NF by going back to
+the LOTS relation schema in Figure 14.12(a) with its four functional dependencies FD1
+through FD4. Suppose that we have thousands of lots in the relation but the lots are
+from only two counties: DeKalb and Fulton. Suppose also that lot sizes in DeKalb
+County are only 0.5, 0.6, 0.7, 0.8, 0.9, and 1.0 acres, whereas lot sizes in Fulton County
+
+487

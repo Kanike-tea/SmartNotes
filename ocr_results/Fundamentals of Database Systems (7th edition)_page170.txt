@@ -1,0 +1,31 @@
+140 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+Model) (Capacity) (Weight
+Model Capacity) ‘9 M\worKs_on >} EMPLOYEE
+N
+PLANE_TYPE MAINTAIN
+Restr) CLic_num
+M
+1 M N
+FLIES PILOT
+SERVICE _||—CHours)
+N
+1
+AIRPLANE
+N Pdate
+STORED_IN OWNS > OWNER
+1 a)
+GAR CORPORATION Ssn | PERSON
+
+Figure 4.12
+EER schema for a SMALL_AIRPORT database.
+
+planes each pilot is authorized to fly [FLIES] and the types of planes each
+employee can do maintenance work on [WORKS_ON]. Show how the
+SMALL_AIRPORT EER schema in Figure 4.12 may be represented in UML
+notation. (Note: We have not discussed how to represent categories (union
+types) in UML, so you do not have to map the categories in this and the fol-
+lowing question.)
+
+4.22. Show how the UNIVERSITY EER schema in Figure 4.9 may be represented in
+UML notation.

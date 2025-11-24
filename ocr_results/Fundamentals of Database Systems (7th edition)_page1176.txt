@@ -1,0 +1,47 @@
+1146 Chapter 30 Database Security
+
+‘employee_id’ and input ‘2’ to the bind variable ‘password’ instead of directly pass-
+ing string parameters.
+
+Filtering Input (Input Validation). This technique can be used to remove escape
+characters from input strings by using the SQL Replace function. For example, the
+delimiter single quote (‘) can be replaced by two single quotes (°). Some SQL
+manipulation attacks can be prevented by using this technique, since escape charac-
+ters can be used to inject manipulation attacks. However, because there can be a
+large number of escape characters, this technique is not reliable.
+
+Function Security. Database functions, both standard and custom, should be
+restricted, as they can be exploited in the SQL function injection attacks.
+
+30.5 Introduction to Statistical
+Database Security
+
+Statistical databases are used mainly to produce statistics about various popula-
+tions. The database may contain confidential data about individuals; this informa-
+tion should be protected from user access. However, users are permitted to retrieve
+statistical information about the populations, such as averages, sums, counts, maxi-
+mums, minimums, and standard deviations. The techniques that have been devel-
+oped to protect the privacy of individual information are beyond the scope of this
+text. We will illustrate the problem with a very simple example, which refers to the
+relation shown in Figure 30.3. This is a PERSON relation with the attributes Name,
+Ssn, Income, Address, City, State, Zip, Sex, and Last_degree.
+
+A population is a set of tuples of a relation (table) that satisfy some selection condi-
+tion. Hence, each selection condition on the PERSON relation will specify a particu-
+lar population of PERSON tuples. For example, the condition Sex = ‘M’ specifies the
+male population; the condition ((Sex = ‘F)) AND (Last_degree = ‘M.S.’ OR Last_degree
+= ‘Ph.D.’)) specifies the female population that has an M.S. or Ph.D. degree as their
+highest degree; and the condition City = ‘Houston’ specifies the population that
+lives in Houston.
+
+Statistical queries involve applying statistical functions to a population of tuples.
+For example, we may want to retrieve the number of individuals in a population
+or the average income in the population. However, statistical users are not allowed
+to retrieve individual data, such as the income of a specific person. Statistical
+database security techniques must prohibit the retrieval of individual data. This
+can be achieved by prohibiting queries that retrieve attribute values and by allowing
+
+Figure 30.3
+The PERSON relation schema for illustrating statistical database security.
+PERSON
+Name | Ssn_ | Income | Address | City | State | Zip | Sex | Last_degree

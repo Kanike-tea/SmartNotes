@@ -1,0 +1,53 @@
+490
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+the normalization process: the nonadditive join property and the functional depen-
+dency preservation property. We are not able to meet the functional dependency
+preservation for any of the above BCNF decompositions as seen above; but we must
+meet the nonadditive join property. A simple test comes in handy to test the binary
+decomposition of a relation into two relations:
+
+NJB (Nonadditive Join Test for Binary Decompositions). A decomposition
+D = {Rj, Ry} of R has the lossless (nonadditive) join property with respect to a
+set of functional dependencies F on R if and only if either
+
+= The FD ((Ry 0 Rp) > (Ry — Ry) is in F*)5, or
+= The ED ((R, A R32) > (Rp — Rj) is in FX
+
+If we apply this test to the above three decompositions, we find that only the third
+decomposition meets the test. In the third decomposition, the Ry MR; for the above
+test is Instructor and R, — R, is Course. Because Instructor — Course, the NJB test
+is satisfied and the decomposition is nonadditive. (It is left as an exercise for the
+reader to show that the first two decompositions do not meet the NJB test.) Hence,
+the proper decomposition of TEACH into BCNF relations is:
+
+TEACH (Instructor, Course) and TEACH? (Instructor, Student)
+
+We make sure that we meet this property, because nonadditive decomposition is
+a must during normalization. You should verify that this property holds with
+respect to our informal successive normalization examples in Sections 14.3
+and 14.4 and also by the decomposition of LOTS1A into two BCNF relations
+LOTS1AX and LOTS1AY.
+
+In general, a relation R not in BCNF can be decomposed so as to meet the nonaddi-
+tive join property by the following procedure.'® It decomposes R successively into a
+set of relations that are in BCNF:
+
+Let R be the relation not in BCNF, let X CR, and let X > A be the FD that
+causes a violation of BCNF. R may be decomposed into two relations:
+R-A
+XA
+
+If either R -A or XA. is not in BCNF, repeat the process.
+
+The reader should verify that if we applied the above procedure to LOTSIA, we
+obtain relations LOTS1AX and LOTS1AY as before. Similarly, applying this proce-
+dure to TEACH results in relations TEACH] and TEACH2
+
+'5The notation F* refers to the cover of the set of functional dependencies and includes all f.d's implied
+by F.Itis discussed in detail in Section 15.1. Here, it is enough to make sure that one of the two fd's
+actually holds for the nonadditive decomposition into R, and Rp to pass this test.
+
+'®Note that this procedure is based on Algorithm 15.5 from Chapter 15 for producing BCNF schemas
+by decomposition of a universal schema.

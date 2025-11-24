@@ -1,0 +1,62 @@
+372 Chapter 12 Object and Object-Relational Databases
+
+Figure 12.2
+
+Adding operations to
+the definitions of
+EMPLOYEE and
+DEPARTMENT.
+
+define class EMPLOYEE
+
+type tuple (_ Fname: string;
+Minit: char;
+Lname: string;
+Ssn: string;
+Birth_date: DATE;
+Address: string;
+Sex: char;
+Salary: float;
+Supervisor: EMPLOYEE;
+Dept: DEPARTMENT; );
+
+operations age: integer;
+create_emp: EMPLOYEE;
+destroy_emp: boolean;
+
+end EMPLOYEE;
+define class DEPARTMENT
+
+type tuple (| Dname: string;
+Dnumber: integer;
+Mgr: tuple ( Manager: EMPLOYEE;
+Start_date:  DATE;);
+Locations: set (string);
+Employees: set (EMPLOYEE);
+Projects set(PROJECT); );
+operations no_of_emps: integer;
+create_dept: DEPARTMENT;
+destroy_dept: boolean;
+
+assign_emp(e: EMPLOYEE): boolean;
+
+(* adds an employee to the department *)
+
+remove_emp(e: EMPLOYEE): boolean;
+
+(* removes an employee from the department *)
+end DEPARTMENT;
+
+An operation is typically applied to an object by using the dot notation. For exam-
+ple, ifd is a reference to a DEPARTMENT object, we can invoke an operation such as
+no_of_emps by writing d.no_of_emps. Similarly, by writing d.destroy_dept, the object
+referenced by d is destroyed (deleted). The only exception is the constructor opera-
+tion, which returns a reference to a new DEPARTMENT object. Hence, it is custom-
+ary in some OO models to have a default name for the constructor operation that is
+the name of the class itself, although this was not used in Figure 12.2.” The dot notation
+is also used to refer to attributes of an object—for example, by writing d.Dnumber or
+d.Mgr_Start_date.
+
+Default names for the constructor and destructor operations exist in the C++ programming language.
+For example, for class EMPLOYEE, the default constructor name is EMPLOYEE and the default
+destructor name is ~EMPLOYEE. It is also common to use the new operation to create new objects.

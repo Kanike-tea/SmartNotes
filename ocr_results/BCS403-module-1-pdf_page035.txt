@@ -1,0 +1,55 @@
+Database Management System [BCS403]
+
+Attributes: Particular properties that describe entity. For example, an EMPLOYEE entity may
+
+be described by the employee’s name, age, address, salary, and job.
+
+—— Name= John Smith ra
+(_ |
+
+— Name = Sunco Oil
+
+Address = 2311 Kirby |
+
+— |
+
+/ ~~ Houston, Texas 77001 |
+ey fo -— Headquarters = Houston
+
+\ ———— Age=55 \
+
+—— Home_phone = 713-749-2630 — /President = John Smith
+
+Figure 3.2.1(a): Two entities, EMPLOYEE el, and COMPANY cl, and their attributes
+
+Types of attributes:
+1.Composite versus Simple (Atomic) Attributes
+2.Single-valued versus multivalued
+3.Stored versus derived
+4.NULL values
+5.Complex attributes
+1. Composite versus Simple (Atomic) Attributes
+
+Composite Attributes can be divided into smaller subparts, which represent more basic
+
+attributes with independent meanings.For example, the Address attribute of the
+
+EMPLOYEE entity can be subdivided into Street_address, City, State, and Zip.
+
+Composite attributes can form a hierarchy. For example, Street_address can be further
+
+subdivided into three simple component attributes: Number, Street, and
+
+Apartment_number. The value of a composite attribute is the concatenation of the values of
+
+its component simple attributes.
+Address
+Figure 3.2.1(b): A hierarchy of
+
+/ \ _ composite attributes.
+
+StreetAddress City State Zip
+
+Number Street Apart mentNumber
+
+https:/Ivtucode.in Page 36

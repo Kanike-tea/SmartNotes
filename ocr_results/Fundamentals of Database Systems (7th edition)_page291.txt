@@ -1,0 +1,55 @@
+8.4 Additional Relational Operations
+
+261
+
+R
+(a) | Dno | No_of employees ‘Average_sal (b) | Dno | Count_ssn ‘Average_salary
+
+5 4 33250 5 4 33250
+
+4 3 31000 4 3 31000
+
+1 1 55000 1 1 55000
+(© | Count_ssn Average_salary
+
+8 35125
+
+Figure 8.10
+
+The aggregate function operation.
+
+@. PR(Dno, No_of_employees, Average_sal)(Dno 3 COUNT Ssn, AVERAGE Salary (EMPLOYEE).
+b. dno S COUNT Ssn, AVERAGE Salary(EMPLOYEE).
+
+©. 3 COUNT Ssn, AVERAGE Salary/EMPLOYEE).
+
+The result of this operation on the EMPLOYEE relation of Figure 5.6 is shown in
+Figure 8.10(a).
+
+In the preceding example, we specified a list of attribute names—between parenthe-
+ses in the RENAME operation—for the resulting relation R. If no renaming is applied,
+then the attributes of the resulting relation that correspond to the function list will
+each be the concatenation of the function name with the attribute name in the form
+<function>_<attribute>.* For example, Figure 8.10(b) shows the result of the fol-
+lowing operation:
+
+Dno 3 COUNT Ssn, AVERAGE Salary(EMPLOYEE)
+
+If no grouping attributes are specified, the functions are applied to all the tuples
+in the relation, so the resulting relation has a single tuple only. For example, Fig-
+ure 8.10(c) shows the result of the following operation:
+
+3 Count Sen, AVERAGE Salary(EMPLOYEE)
+
+It is important to note that, in general, duplicates are not eliminated when an
+aggregate function is applied; this way, the normal interpretation of functions such
+as SUM and AVERAGE is computed.’ However, NULL values are not considered in
+the aggregation, as we discussed in Section 7.1.7. It is worth emphasizing that the
+result of applying an aggregate function is a relation, not a scalar number—even
+if it has a single value. This makes the relational algebra a closed mathematical
+system.
+
+®Note that this is an arbitrary notation, consistent with what SQL would do.
+
+Sin SQL, the option of eliminating duplicates before applying the aggregate function is available by
+including the keyword DISTINCT (see Section Section 4.4.4),

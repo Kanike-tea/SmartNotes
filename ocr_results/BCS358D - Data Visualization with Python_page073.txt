@@ -1,0 +1,54 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 08 (a)
+
+8 a) Write a Python program to explain working with bokeh line graph using Annotations
+
+and Legends.
+
+Aim: Demonstration of working with bokeh line graph using Annotations and Legends.
+
+PROGRAM EXPLANATION
+
+Bokeh is a Python library for interactive data visualization. It provides various types of plots and
+charts, such as line plots, bar plots, scatter plots, and more. To create different types of plots
+using Bokeh, you first need to install the library:
+
+pip install bokeh
+
+Here's a Python program that demonstrates how to create different types of plots using Bokeh:
+The provided Python program uses the Bokeh library to create a line graph with annotations and
+legends. Below is an explanation of the program step by step:
+
+1. Import necessary modules from Bokeh:
+
+e figure: Used to create the main plotting figure.
+
+¢ output_file: Used to specify the HTML output file where the plot will be saved.
+e show: Used to display the plot in a web browser.
+
+e Legend, LegendItem: Used to create a legend for the plot.
+
+¢ Title: Used to set the title for the plot.
+
+e Span: Used to add a vertical line annotation.
+
+2. Specify the output file: This line tells Bokeh to generate an HTML file called
+"line_graph_with_annotations.html" where the plot will be saved.
+
+3. Define sample data: Here, you have two sets of data for the x and y coordinates,
+represented as x, yl, and y2.
+
+4. Create a Bokeh figure: This line creates a Bokeh figure named p with a title, X-axis label,
+and Y-axis label.
+
+5. Add lines to the figure: This code adds two lines to the figure using the line method. It
+specifies the data (x, yl, and y2), line width, and line colors. The legend_label parameter
+assigns labels for each line, which will be used in the legend.
+
+6. Add an annotation (vertical line) using a Span: This code creates a vertical line at x=3
+using the Span model and adds it to the figure p. The location parameter specifies where
+
+the line should be located along the x-axis.
+
+Dept. of CSE 58 GSSSIETW, Mysuru

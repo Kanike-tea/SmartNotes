@@ -1,0 +1,69 @@
+Digital Design and Computer Organization(BCS302)
+
+construction of an positive edge-triggered D flip-flop uses three SR latches
+
+[>
+
+Chk _
+
+pi
+
+[
+a
+<a
+
+re
+
+D
+
+FIGURE 5.10
+D-type positive-edge-triggered flip-flop
+
+JK FLIPFLOP
+
+)
+
+Clk
+
+—D>
+[-
+
+Q
+
+sR QQ
+
+0 1
+Assume(previous output)
+
+1 1 0 1
+
+No Change
+
+1 1 No Change
+o 21 1 0
+
+1 1 No change
+
+1 Oo 0 1
+
+Table 5.1
+x—De ck Flip-Flop Characteristic Tables
+JK Flip-Flop
+Clk ck o K
+u K | Q@t+1)
+0 0 | ow No change
+(a) Circuit diagram (b) Graphic symbol o 1/0 Reset
+FIGURE 5.12 fi |i Set
+Ikflip-flop 1 1 | QW Complement
+
+When J = 1 and K = 0, D = Q’ + Q= 1, so the next clock edge sets the output to 1.
+
+When J = 0 and K = 1, D = 0, so the next clock edge resets the output to 0.
+
+When both J = K = 1 and D = Q, the next clock edge complements the output.
+
+When both J = K = 0 and D = Q, the clock edge leaves the output unchanged.
+
+Dr Ajay V G, Dept. of CSE , SVIT
+
+Page 35

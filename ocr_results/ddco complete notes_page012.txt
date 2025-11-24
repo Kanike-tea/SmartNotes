@@ -1,0 +1,27 @@
+Digital Design and Computer Organization(BCS302)
+
+FIGURE 3.9
+Map for Example 3.5, F(w, x, y, z) = %(0,1, 2, 4, 5, 6, 8, 9, 12, 13, 14) =.
+
+y+ w'z! + xz’
+
+2) Simplify the Boolean function
+F = A'B'C' + B'CD' + A'BCD' + AB'C'
+
++ F=A’B’C’(D+D))+B’CD(A+A))+A’BCD’+AB’C(D+D))
++ F=A’B’C’D’+A’B’C’D+AB’CD’+A’B’CD’ +A’BCD’+AB’C’D+AB’C’D’
+
+1 quad
+
+B’D’
+
+"4 A'BICD! = A'B'D
+D! + AB'CD’ = AB'D’
+A'B'D! + AB'D' = B'D'
+A'B'C’ + ABYC’ = BC’
+FIGURE 3.10
+Map for Example 3.6, A’B’C’ + B’CD' + A’BCD’ + AB'C’ = B'D' + B'C’ + A'CD
+
+The simplified function is
+Page
+13

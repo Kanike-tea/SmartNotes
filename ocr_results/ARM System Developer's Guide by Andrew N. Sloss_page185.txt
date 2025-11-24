@@ -1,0 +1,50 @@
+172 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+6.4.1 ALLOCATING VARIABLES TO REGISTER NUMBERS
+
+When you write an assembly routine, it is best to start by using names for the variables,
+rather than explicit register numbers. This allows you to change the allocation of variables
+to register numbers easily. You can even use different register names for the same physical
+register number when their use doesn’t overlap. Register names increase the clarity and
+readability of optimized code.
+
+For the most part ARM operations are orthogonal with respect to register number. In
+other words, specific register numbers do not have specific roles. Ifyou swap all occurrences
+of two registers Ra and Rb in a routine, the function of the routine does not change.
+However, there are several cases where the physical number of the register is important:
+
+= Argument registers. The ATPCS convention defines that the first four arguments to
+a function are placed in registers r0 to r3. Further arguments are placed on the stack.
+The return value must be placed in r0.
+
+= Registers used in a load or store multiple. Load and store multiple instructions LDM and
+STM operate on a list of registers in order of ascending register number. If r0 and rl
+appear in the register list, then the processor will always load or store r0 using a lower
+address than r1 and so on.
+
+= = Load and store double word. The LDRD and STRD instructions introduced in ARMv5E
+operate on a pair of registers with sequential register numbers, Rd and Rd + 1.
+Furthermore, Rd must be an even register number.
+
+For an example of how to allocate registers when writing assembly, suppose we want
+to shift an array of N bits upwards in memory by k bits. For simplicity assume that N is
+large and a multiple of 256. Also assume that 0 < k < 32 and that the input and output
+pointers are word aligned. This type of operation is common in dealing with the arithmetic
+of multiple precision numbers where we want to multiply by 2. It is also useful to block
+copy from one bit or byte alignment to a different bit or byte alignment. For example, the
+C library function memcpy can use the routine to copy an array of bytes using only word
+accesses.
+
+The C routine shi ft_bits implements the simple k-bit shift of N bits of data. It returns
+the k bits remaining following the shift.
+
+unsigned int shift_bits(unsigned int *out, unsigned int *in,
+unsigned int N, unsigned int k)
+
+{
+unsigned int carry=0, x;
+do
+{
+X= *intt;
+
+soutes = (x<<k) | carrys

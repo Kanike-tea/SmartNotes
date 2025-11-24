@@ -1,0 +1,50 @@
+18.4 Implementing the JOIN Operation 669
+
+join. For each record t in R (outer loop), retrieve every record s from S (inner
+loop) and test whether the two records satisfy the join condition t[A] = s[B].2
+
+= J2—Index-based nested-loop join (using an access structure to retrieve
+the matching records). If an index (or hash key) exists for one of the two
+join attributes—say, attribute B of file S—retrieve each record t in R (loop
+over file R), and then use the access structure (such as an index or a hash
+key) to retrieve directly all matching records s from S that satisfy s[B] = t{A].
+
+= J3—Sort-merge join. If the records of R and S are physically sorted (ordered)
+by value of the join attributes A and B, respectively, we can implement the join
+in the most efficient way possible. Both files are scanned concurrently in order
+of the join attributes, matching the records that have the same values for A and
+B. If the files are not sorted, they may be sorted first by using external sorting
+(see Section 18.2). In this method, pairs of file blocks are copied into memory
+buffers in order and the records of each file are scanned only once each for
+matching with the other file—unless both A and B are nonkey attributes, in
+which case the method needs to be modified slightly. A sketch of the sort-
+merge join algorithm is given in Figure 18.3(a). We use R(i) to refer to the ith
+record in file R. A variation of the sort-merge join can be used when secondary
+indexes exist on both join attributes. The indexes provide the ability to access
+(scan) the records in order of the join attributes, but the records themselves
+are physically scattered all over the file blocks, so this method may be ineffi-
+cient because every record access may involve accessing a different disk block.
+
+= J4—Partition-hash join (or just hash-join). The records of files R and S are
+partitioned into smaller files. The partitioning of each file is done using the
+same hashing function h on the join attribute A of R (for partitioning file R)
+and B of S (for partitioning file S$). First, a single pass through the file with
+fewer records (say, R) hashes its records to the various partitions of R; this is
+called the partitioning phase, since the records of R are partitioned into the
+hash buckets. In the simplest case, we assume that the smaller file can fit
+entirely in main memory after it is partitioned, so that the partitioned subfiles
+of R are all kept in main memory. The collection of records with the same
+value of h(A) are placed in the same partition, which is a hash bucket in a hash
+table in main memory. In the second phase, called the probing phase, a single
+pass through the other file (S) then hashes each of its records using the same
+hash function h(B) to probe the appropriate bucket, and that record is com-
+bined with all matching records from R in that bucket. This simplified descrip-
+tion of partition-hash join assumes that the smaller of the two files fits entirely
+into memory buckets after the first phase. We will discuss the general case of
+partition-hash join below that does not require this assumption. In practice,
+techniques J1 to J4 are implemented by accessing whole disk blocks of a file,
+rather than individual records. Depending on the available number of buffers
+in memory, the number of blocks read in from the file can be adjusted.
+
+"For disk files, it is obvious that the loops will be over disk blocks, so this technique has also been called
+nested-block join.

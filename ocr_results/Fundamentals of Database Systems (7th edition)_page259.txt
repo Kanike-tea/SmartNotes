@@ -1,0 +1,51 @@
+7.3 Views (Virtual Tables) in SQL
+
+229
+
+WORKS_ON1
+Fname Lname Pname Hours:
+Figure 7.2
+DEPT INFO Two views specified on
+— the database schema of
+Dept_name | No_of_emps | Total_sal Figure 5.5.
+
+In V1, we did not specify any new attribute names for the view WORKS_ON1
+(although we could have); in this case, WORKS_ON1 inherits the names of the
+view attributes from the defining tables EMPLOYEE, PROJECT, and WORKS_ON.
+View V2 explicitly specifies new attribute names for the view DEPT_INFO, using
+a one-to-one correspondence between the attributes specified in the CREATE
+VIEW clause and those specified in the SELECT clause of the query that defines
+the view.
+
+We can now specify SQL queries on a view—or virtual table—in the same way we
+specify queries involving base tables. For example, to retrieve the last name and first
+name of all employees who work on the ‘ProductX’ project, we can utilize the
+WORKS_ON1 view and specify the query as in QV1:
+
+QVi: SELECT —Fname, Lname
+FROM WORKS_ON1
+WHERE Pname = ‘ProductX’;
+
+The same query would require the specification of two joins if specified on the base
+relations directly; one of the main advantages of a view is to simplify the specifica-
+tion of certain queries. Views are also used as a security and authorization mecha-
+nism (see Section 7.3.4 and Chapter 30).
+
+A view is supposed to be always up-to-date; if we modify the tuples in the base
+tables on which the view is defined, the view must automatically reflect these
+changes. Hence, the view does not have to be realized or materialized at the time of
+view definition but rather at the time when we specify a query on the view. It is the
+responsibility of the DBMS and not the user to make sure that the view is kept up-
+to-date. We will discuss various ways the DBMS can utilize to keep a view up-to-
+date in the next subsection.
+
+If we do not need a view anymore, we can use the DROP VIEW command to dispose
+of it. For example, to get rid of the view V1, we can use the SQL statement in V1A:
+
+VIA: DROP VIEW WORKS_ON1;
+
+7.3.3 View Implementation, View Update, and Inline Views
+
+The problem of how a DBMS can efficiently implement a view for efficient querying
+is complex. Two main approaches have been suggested. One strategy, called query
+modification, involves modifying or transforming the view query (submitted by the

@@ -1,0 +1,59 @@
+526
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+(a) EMPLOYEE 1
+
+(b)
+
+Ename Ssn Bdate ‘Address
+Smith, John B. 123456789 | 1965-01-09 | 731 Fondren, Houston, TX
+Wong, Franklin T. | 333445555 | 1955-12-08 | 638 Voss, Houston, TX
+Zelaya, Alicia J. 999887777 | 1968-07-19 | 3321 Castle, Spring, TX
+
+Wallace, Jennifer S._ | 987654321 | 1941-06-20 | 291 Berry, Bellaire, TX
+
+Narayan, Ramesh K. | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX
+
+English, Joyce A. 453453453 | 1972-07-31 5631 Rice, Houston, TX
+
+Jabbar, Ahmad V. 987987987 | 1969-03-29 | 980 Dallas, Houston, TX
+
+Borg, James E.
+
+888665555 | 1937-11-10 | 450 Stone, Houston, TX
+
+Berger, Anders C. 999775555 | 1965-04-26 | 6530 Braes, Bellaire, TX
+
+Benitez, Carlos M. 888665555 | 1963-01-09 | 7654 Beech, Houston, TX
+
+EMPLOYEE 2 (©) EMPLOYEE 3
+Ssn Dnum ‘Ssn Dnum
+123456789 5 123456789 5
+333445555 5 333445555 5 .
+Figure 15.3
+999887777 4 999887777 4 The dangling tuple problem.
+987654321 4 987654321 4 (a) The relation EMPLOYEE_1 (includes
+666884444 5 666884444 5 all attributes of EMPLOYEE from
+Figure 15.2(a) except Dnum).
+453453453
+488453458 6 6 (b) The relation EMPLOYEE_2 (includes
+987987987 4 987987987 4 Dnum attribute with NULL values).
+888665555 1 888665555, 1 (c) The relation EMPLOYEE_3 (includes
+999775555 | NULL Dnum attribute but does not include
+tuples for which Dnum has NULL
+888664444 | NULL values)
+
+based on minimal cover. The design X produced the 3NF design as LOTS1A
+(Property_id, County, Lot#, Area) relation, which is in 3NF but not BCNF. Alternately,
+design Y produced three relations: S; (Property_id, Area, Lot#), S, (Lot#, County,
+Property_id), and S3 (Area, County). If we test each of these three relations, we find that
+they are in BCNF. We also saw previously that if we apply Algorithm 15.5 to LOTS1Y
+to decompose it into BCNF relations, the resulting design contains only S; and $3 asa
+BCNF design. In summary, the above examples of cases (called Case X and Case Y)
+driven by different minimum covers for the same universal schema amply illustrate
+that alternate designs will result by the application of the bottom-up design algo-
+rithms we presented in Section 15.3.
+
+Table 15.1 summarizes the properties of the algorithms discussed in this chapter
+so far.

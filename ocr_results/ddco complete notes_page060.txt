@@ -1,0 +1,44 @@
+Digital Design and Computer Organization(BCS302)
+
+not change. These conditions are listed in the function table accompanying the
+diagram.
+
+D latch(transparent latch)
+
+A D latch can store a bit value, either 1 or 0. When its Enable pin is HIGH, the value
+on the D pin will be stored on the Q output.
+
+The D Latch is a logic circuit most frequently used for storing data in digital systems.
+It is based on the S-R latch, but it doesn’t have an “undefined” or “invalid” state
+problem.
+
+Datain —D Qf Data out E d Q Description
+—_ Memory
+0 x Q
+E Q (no change)
+| 0 0 Reset Qto 0
+Dlatehymbal
+
+1 1 1 Set Qto1
+
+En D | Nextstate of Q
+
+En ——————+
+0 X | Nochange
+1 0 | Q=0; reset state
+, 1 1 | Q=Iysetstate
+>»
+(a) Logic diagram (b) Function table
+FIGURE 5.6
+Dlatch
+
+One way to eliminate the undesirable condition of the indeterminate state in the
+SR latch is to ensure that inputs S and R are never equal to 1 at the same time.
+This is done in the D latch, shown in Fig. 5.6 . This latch has only two inputs: D
+(data) and En (enable). The D input goes directly to the S input, and its
+complement is applied to the R input. As long as the enable input is at 0, the
+cross-coupled SR latch has both inputs at the 1 level and the circuit cannot
+
+change state regardless of the value of D . The D input is sampled when En = 1.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 32

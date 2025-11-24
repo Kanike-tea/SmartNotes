@@ -1,0 +1,51 @@
+15.4 About Nulls, Dangling Tuples, and Alternative Relational Designs
+
+BCNF. We illustrated the application of this algorithm to the TEACH relation
+schema from Figure 14.14; it is decomposed into TEACH (Instructor, Student)
+and TEACH2(Instructor, Course) because the dependency FD2 Instructor + Course
+violates BCNF.
+
+In step 2 of Algorithm 15.5, it is necessary to determine whether a relation schema
+Qis in BCNF or not. One method for doing this is to test, for each functional depen-
+dency X > Y in Q, whether X* fails to include all the attributes in Q, thereby deter-
+mining whether or not X is a (super) key in Q. Another technique is based on an
+observation that whenever a relation schema Q has a BCNF violation, there exists a
+pair of attributes A and B in Q such that {Q — {A, B} } > A; by computing the clo-
+sure {Q — {A, B} }* for each pair of attributes {A, B} of Q and checking whether the
+closure includes A (or B), we can determine whether Q is in BCNF.
+
+It is important to note that the theory of nonadditive join decompositions is based
+on the assumption that no NULL values are allowed for the join attributes. The next
+section discusses some of the problems that NULLs may cause in relational decom-
+positions and provides a general discussion of the algorithms for relational design
+by synthesis presented in this section.
+
+15.4 About Nulls, Dangling Tuples, and
+Alternative Relational Designs
+
+In this section, we discuss a few general issues related to problems that arise when
+relational design is not approached properly.
+
+15.4.1 Problems with NULL Values and Dangling Tuples
+
+We must carefully consider the problems associated with NULLs when designing a
+relational database schema. There is no fully satisfactory relational design theory as
+yet that includes NULL values. One problem occurs when some tuples have NULL
+values for attributes that will be used to join individual relations in the decomposi-
+tion. To illustrate this, consider the database shown in Figure 15.2(a), where two
+relations EMPLOYEE and DEPARTMENT are shown. The last two employee tuples—
+‘Berger’ and ‘Benitez’—represent newly hired employees who have not yet been
+assigned to a department (assume that this does not violate any integrity con-
+straints). Now suppose that we want to retrieve a list of (Ename, Dname) values for
+all the employees. If we apply the NATURAL JOIN operation on EMPLOYEE and
+DEPARTMENT (Figure 15.2(b)), the two aforementioned tuples will not appear in
+the result. The OUTER JOIN operation, discussed in Chapter 8, can deal with this
+problem. Recall that if we take the LEFT OUTER JOIN of EMPLOYEE with DEPARTMENT,
+tuples in EMPLOYEE that have NULL for the join attribute will still appear in the
+result, joined with an imaginary tuple in DEPARTMENT that has NULLs for all its
+attribute values. Figure 15.2(c) shows the result.
+
+In general, whenever a relational database schema is designed in which two or
+more relations are interrelated via foreign keys, particular care must be devoted to
+
+523

@@ -1,0 +1,49 @@
+14.9 The Fast Context Switch Extension 517
+
+Modified
+Virtual Domain virtual Caches Physical
+memory FCSE access memory  andTLB-——s memory
+Kernel +) Kemel +) Kernel HD (>| Kernel
+
+access Kemel
+Task 3 7
+no access ||] Task 3 ALLY pas 3 LL] Tsk 3
+0x6000000/-— > THEE a
+lic ~| Tas el ot:
+oxaoooo00 lias _Srecial access TY task 2 Hh pe} Task 1
+Task 1 7.
+register nae] Task
+eerie Task 2 |_|} Process nl Task 1 H+] Task 2
+(32 MB) running ID
+Task 2 running
+Modified
+Virtual Domain virtual Caches Physical
+memory FCSE access memory  andTLB memory
+Kernel Kemel 11! Kernel (>| Kernel
+Kernel
+Task 3 7:
+nc Te Task 3
+
+0x6000000 noaccess |] Task3 LL] gage 3 LL]
+
+10 access ‘as! T
+
+0x4000000 -— register “ee TLL task 2 be] Task 1
+Task 1 TakT
+alias client H+} Task 1
+
+02000000 ET -|_| [Proves ii access Frases Hlel task 2
+
+(32 MB) ID
+running
+
+Task 1 running
+
+Figure 14.14 Fast Context Switch Extension example showing task 1 before a context switch and task 2
+
+running after a context switch in a three-task multitasking environment.
+
+Example 14.4 shows a small routine process IDSet that sets the process ID in the FCSE.
+It can be called using the following function prototype:
+
+void processIDSet (unsigned value) ;

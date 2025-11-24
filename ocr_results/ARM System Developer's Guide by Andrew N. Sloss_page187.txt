@@ -1,0 +1,47 @@
+174 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+N RN 2
+k RN 3
+
+For the load multiple to work correctly, we must assign xo through x7 to sequentially
+increasing register numbers, and similarly for yo through y7. Notice that we finish with xo
+before starting with y,. In general, we can assign x, to the same register as y,,4.. Therefore,
+
+assign
+
+x0 RNS
+x1 RN6
+x2 RN7
+x3 RNB
+x4 RNQ
+x5 RN 10
+x6 RN11
+x7 RN 12
+yO RN4
+yl RNx0
+y2 RNx1
+y3  RNx2
+y4 RNx3
+y5 RNx4
+y6 RNx5
+y7 RNx6
+
+We are nearly finished, but there is a problem. There are two remaining variables carry
+and kr, but only one remaining free register Ir. There are several possible ways we can
+proceed when we run out of registers:
+
+= Reduce the number of registers we require by performing fewer operations in each
+loop. In this case we could load four words in each load multiple rather than eight.
+
+= Use the stack to store the least-used values to free up more registers. In this case we
+could store the loop counter N on the stack. (See Section 6.4.2 for more details on
+swapping registers to the stack.)
+
+= Alter the code implementation to free up more registers. This is the solution we consider
+in the following text. (For more examples, see Section 6.4.3.)
+
+We often iterate the process of implementation followed by register allocation several
+times until the algorithm fits into the 14 available registers. In this case we notice that the
+carry value need not stay in the same register at all! We can start off with the carry value
+in yo and then move it to y; when x is no longer required, and so on. We complete the
+routine by allocating kr to /r and recoding so that carry is not required.

@@ -1,0 +1,38 @@
+NUMERICAL METHODS - | ‘ 37
+
+(a) By Milne’s predictor-corrector method
+We have Milne’s..predictor formula —
+
+py °° 4h oy P
+yf" he a) (2y," — yy + 2y,')
+
+yf? = 2 2A) [2 (0.2003 ) — 0.4028 + 2-( 0.6097) ] = 2.1623
+
+Now y,’ = 2e%4~2.1623 = 0.8213
+We have Milne’s corrector formula,
+
+yfo)e es 2* : (yy + 4y,! +y4 )
+
+yf) = 2044 “2 [ 0.4028-+ 4 (0.6097) +0.8213 ] = 2.1621
+Now y," = 2e4-2.1621 = 0.8215
+Applying the corrector formula again we have,
+
+yf = 204452 [ 0.4028+ 4 ( 0.6097 ) + 0.8215] = 2.1621
+"Thus y(04) = 2.1621
+(b) By Adams - Bashforth predictor - corrector method
+
+We have, yf?) 4 “nth (55 ys’ -59 yp’ +37y)'-9yQ')
+
+yf?) = 2.09 +54 [ $5 0.6097 )—59 (0.4028 ) +37 (0,2003)-9 (0) ] = 2.1616
+
+Now, y, = 2¢"4-2.1616 = 0.822
+Next we have, yf o) = nie (9yq +19 y,'-5y,’+y,")
+
+SO
+y{O = 209+ [ 90.822) +19 (0.6097 )—5 (0.4028 ) + 02003 ] = 2.1615
+Now, y, = 204-2.1615 = 0.82215
+
+- Substituting again in the corrector formula, we obtain Wo = = 2.1615
+“Thus (04) = 21615 ;
+
+————————————

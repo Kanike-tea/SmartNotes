@@ -1,0 +1,45 @@
+56 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE,
+
+3.9
+
+ORR 0, rl, r2
+
+POST = rO = 0x12345678
+
+This example shows a more complicated logical instruction called BIC, which carries out
+a logical bit clear.
+
+PRE rl = 0b1111
+r2 = 0b0101
+
+BIC 0, rl, r2
+
+POST rO = 0b1010
+This is equivalent to
+d= Rn AND NOT(N)
+
+In this example, register r2 contains a binary pattern where every binary | in r2 clears
+a corresponding bit location in register rJ. This instruction is particularly useful when
+clearing status bits and is frequently used to change interrupt masks in the cpsr.
+
+The logical instructions update the cpsr flags only if the S suffix is present. These
+instructions can use barrel-shifted second operands in the same way as the arithmetic
+instructions.
+
+3.1.6 COMPARISON INSTRUCTIONS
+
+The comparison instructions are used to compare or test a register with a 32-bit value.
+They update the cpsr flag bits according to the result, but do not affect other registers.
+After the bits have been set, the information can then be used to change program flow by
+using conditional execution. For more information on conditional execution take a look
+at Section 3.8. You do not need to apply the S suffix for comparison instructions to update
+the flags.
+
+Syntax: <instruction>{<cond>} Rn, N
+
+| cMN compare negated flags set as a result of Rn +N
+| cMP compare flags set asa result of Rn — N
+| TEQ test for equality of two 32-bit values flags set as a result of Rn “ N
+| TST test bits of a 32-bit value flags set as a result of Rn & N

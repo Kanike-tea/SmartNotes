@@ -1,0 +1,31 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+void storesum(term d[ ], int *totald, int row, int column, int *sum)
+{
+
+/* if *sum != 0, then it along with its row and column position is
+stored as the *totald+l entry in d */
+
+if (*sum)
+if (*totald < MAX_TERMS)
+
+{
+
+d[++*totald] .row = row;
+d[*totald].col column;
+d[*totald].value = *sum;
+
+}
+
+else
+
+{
+
+fprintf(stderr, “Numbers of terms insproduct exceed %d\n”,
+MAX_TERMS); exit (1);
+
+}
+
+storesum function
+
+vtucode.in 33

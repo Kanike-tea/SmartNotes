@@ -1,0 +1,36 @@
+For example:
+
+The M:N relationship taught-by between entities COURSE and FACULTY should be
+represented as a new table. The structure of the table will include primary key of COURSE
+and primary key of FACULTY entities.
+
+TAUGHT-BY (ID (primary key of FACULTY table), course-id (primary key of COURSE
+table)
+
+N-ary Relationship:
+For each N-ary relationship type R where n>2, we create a new table S to represent R, We
+include as foreign key attributes in S the primary keys of the relations that represent the
+participating entity types. We also include any simple attributes of the N-ary relationship type
+(or simple components of complete attribute) as attributes of S. The primary key of S is
+usually a combination of all the foreign keys that reference the relations representing the
+participating entity types.
+
+Customer Loan
+
+Employee
+
+LOAN-SANCTION (cusomer-id, loanno, empno, sancdate, loan_amount)
+
+Multi-Valued Attributes:
+
+For each multivalued attribute ‘A’, we create a new relation R that includes an attribute
+corresponding to plus the primary key attributes k of the relation that represents the entity
+type or relationship that has as an attribute. The primary key of R is then combination of A
+and k.
+
+For example, if a STUDENT entity has rollno, name and phone number where phone number
+is a multivalued attribute then we will create table PHONE (rollno, phoneno) where primary
+key is the combination. In the STUDENT table we need not have phone number, instead if
+can be simply (rollno, name) only.
+
+PHONE(rollno, phoneno)

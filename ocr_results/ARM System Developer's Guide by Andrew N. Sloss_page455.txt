@@ -1,0 +1,54 @@
+442 Chapter 12. Caches
+
+{CPU} = "SA-110"
+MCR p15, 0, adr, c7, cl0, 1; clean D-cline@adr
+MCR p15, 0, adr, c7, c6, 1; flush D-cline@adr
+
+ELSE
+MCR p15, 0, adr, c7, cl4, 1 ; cleanflush D-cline@adr
+ENDIF
+ENDIF
+IF "Sop" = "IDcacheCleanFlush"
+IF {CPU} = "ARM9Z0T" = LOR: \
+{CPU} = "ARM922T" :\
+{CPU} = "ARM946E-S" :\
+{CPU} = "ARM926EJ-S" :\
+{CPU} = "ARM1022E" :\
+{CPU} = "ARM1026EJ-S"
+
+MCR p15, 0, adr, c7, cl4, 1 ;cleanflush D-cline@adr
+MCR p15, 0, adr, c7, c5, 1; flush I-cline@adr
+ENDIF
+F {CPU} = "XSCALE"
+MCR p15, 0, adr, c7, cl0, 1; clean D-cline@adr
+MCR p15, 0, adr, c7, c6, 1; flush D-cline@adr
+MCR p15, 0, adr, c7, c5, 1; flush I-cline@adr
+
+ENDIF
+ENDIF
+ADD adr, adr, #1<<CLINE 3 +1 next cline adr
+suss nl, nl, #1 1 cline counter
+BNE *BT10 3 flush # lines +1
+F {CPU} = "XSCALE"
+
+CPWAIT
+ENDIF
+MOV pc, Ir
+MEND
+
+F {CPU} = "SA-110"
+
+EXPORT cleanDCacheRegion
+
+EXPORT flushDCacheRegion
+
+EXPORT cleanFlushDCacheRegion
+cleanDCacheRegion
+
+CACHEBYREGION DcacheClean
+flushDCacheRegion
+
+CACHEBYREGION DcacheF1ush
+cleanFlushDCacheRegion
+
+CACHEBYREGION DcacheCleanFlush

@@ -1,0 +1,51 @@
+33.1. Depth-First Search and Breadth-First Search 181
+1. Assign the first vertex v; and insert this'vertex into the queue Q and initialize T as
+the tree made up of this one vertex v. (This vertex will turn out to be the root of the
+spanning tree T that develops).
+
+step
+
+Step 2. Delete v from the front of Q. When v is deleted, consider vg for each 2 < k < n. If the
+edge {v, vz} € E and v; has not been visited (considered) previously, attach this edge to
+T. If we examine all of the vertices previously visited and obtain no new edge, the tree
+T (generated to this point) is the desired spanning tree.
+
+Step 3. Insert the vertices adjacent to each v (from Step 2) at the rear of the queue Q, according
+to the order in which. they are (first) visited. Then return to Step 2-
+
+The spanning tree of G determined by using the above steps is called the breadth-first
+search spanning tree for G for the given order of vertices of G.
+
+We now illustrate the use of the BFS-algorithm by determining a spanning tree T for the
+graph shown in Figure 3.29 wherein the order _of the yertices are as indicated in the Figure.
+
+Start with vertex v,. Insert v; in Q and initialize’T as this vertex (which will turn out to be
+the root of the resulting tree T). ; :
+
+In Step 2, we delete v; from Q and visit the vertices adjacent to it, namely v2, v3, v4, Vo.
+(These vertices have not been previously visited). This results in our attaching to T the edges
+(5v2},'{v1,.¥3}, (v1 v4}, (v15¥6)- da iia lectimsbt art sagt FB and
+
+Continuing to Step 3, we insert v2, v3, V4, Vo (in the order) in Q and return to Step 2. Now v2,
+¥3, ¥4, V6 are deleted from Q, and the-vertices adjacent to them (and not previously visited) are
+Visited. This results in the vertices v7, vg and the edges {v2, v7} and {v4, vg} which are attached
+toT.
+
+Next, we go to Step 3 and insert v7, vg in Q. Returning to Step 2, we delete each of these
+Vertices from Q and visit the vertex vs which is adjacent to v7 and which is previously unvisited,
+and attach the edge {v7, vs} to 7. The, vertex yg has no previously unvisited adjacent vertex.
+
+At this stage, all the vertices of G have been visited, and we stop the process.
+
+Thus, a spanning tree that consists of the edges (v1, V2}, (v1, v3}, {v1, va}, (1, V6}, {2,07},
+i Vg}, {v7, vs} has been determined. This breadth-first search spanning tree is shown in Figure
+
+32, * /
+
+We observe that this spanning tree is not the same as the spanning tree shown in Figure
+330. Thus, for a given graph, the depth-first search and the breadth-first search spanning trees
+*€ Not necessarily identical (even for a given order of the vertices of G).
+
+As another illustration, we indicate that for the graph shown in Figure 3.31(a) — wherein
+
+Order of vertices is alphabetic — the breadth-frist search spanning tree consists of the edges

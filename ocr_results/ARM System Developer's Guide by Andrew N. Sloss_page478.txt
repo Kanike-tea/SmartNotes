@@ -1,0 +1,46 @@
+Figure 13.2
+
+13.2
+
+13.2 Initializing the MPU, Caches, and Write Buffer 465
+
+Task 3 Task 3 Task 3 .
+Region 3
+Task 2 Tsk? | pesion 3 Task 2
+Task! | Resion 3 Task 1 Task 1
+Region 0 Region 0 Region 0
+Task 1 Task 2 Task 3
+running running running
+
+(User access)
+
+(Privileged access)
+
+Using a background region to control task access.
+
+memory areas from unwanted access while another part of the background region is active
+under a different region’s control.
+
+For example, if an embedded system defines a large privileged background region, it
+can lay a smaller unprivileged region over this background. The location of the smaller
+region can be moved over different areas of the background region to reveal different user
+spaces. When the system moves the smaller user region from one location to another, the
+previously covered area becomes protected by the background region. So the user region is
+acting as a window allowing access to different parts of the privileged background but has
+user-level attributes (see Figure 13.2).
+
+Figure 13.2 shows a simple three-task protection scheme. Region 3 defines the protection
+attributes of the active task, and the background region 0 controls access to the other tasks
+when they are dormant. When task 1 is running, the background region protects tasks 2
+and 3 from task 1. When task 2 is running, tasks 1 and 3 are protected. Finally, when Task 3
+is running, tasks 1 and 2 are protected. The reason this works is that region 3 has higher
+priority than region 0, even though region 0 has higher privilege.
+
+We use a background region in the example code at the end of this chapter to
+demonstrate a simple multitasking protection scheme.
+
+INITIALIZING THE MPU, CACHES, AND WRITE
+BUFFER
+
+In order to initialize the MPU, caches, and write buffer, the control system must define the
+protection regions required during the target operation.

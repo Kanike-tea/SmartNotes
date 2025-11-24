@@ -1,0 +1,44 @@
+13.1 Structured, Semistructured, and Unstructured Data 427
+
+for representing semistructured data, often based on using tree or graph data struc-
+tures rather than the flat relational model structures.
+
+A key difference between structured and semistructured data concerns how the
+schema constructs (such as the names of attributes, relationships, and entity types)
+are handled. In semistructured data, the schema information is mixed in with the
+data values, since each data object can have different attributes that are not known
+in advance. Hence, this type of data is sometimes referred to as self-describing
+data. Many of the newer NOSQL systems adopt self-describing storage schemes
+(see Chapter 24). Consider the following example. We want to collect a list of bib-
+liographic references related to a certain research project. Some of these may be
+books or technical reports, others may be research articles in journals or conference
+proceedings, and still others may refer to complete journal issues or conference
+proceedings. Clearly, each of these may have different attributes and different types
+of information. Even for the same type of reference—say, conference articles—we
+may have different information. For example, one article citation may be com-
+plete, with full information about author names, title, proceedings, page numbers,
+and so on, whereas another citation may not have all the information available.
+New types of bibliographic sources may appear in the future—for instance, references
+to Web pages or to conference tutorials—and these may have new attributes that
+describe them.
+
+One model for displaying semistructured data is a directed graph, as shown in
+Figure 13.1. The information shown in Figure 13.1 corresponds to some of the
+structured data shown in Figure 5.6. As we can see, this model somewhat resem-
+bles the object model (see Section 12.1.3) in its ability to represent complex objects
+and nested structures. In Figure 13.1, the labels or tags on the directed edges
+represent the schema names: the names of attributes, object types (or entity types
+
+Company projects
+
+Project Project
+
+e
+"Product X’
+
+123456789' ‘Smith’ 32.5 435435435’ ‘Joyce’ 20.0
+
+Figure 13.1
+Representing
+semistructured data
+as a graph.

@@ -1,0 +1,56 @@
+30.1 Introduction to Database Security Issues
+
+such databases can be covered by access control, which is explained in the next
+section. The situation becomes tricky when some of the data is sensitive whereas
+other data is not.
+
+Several factors can cause data to be classified as sensitive:
+
+1. Inherently sensitive. The value of the data itself may be so revealing or con-
+fidential that it becomes sensitive—for example, a person’s salary or who a
+patient has HIV/AIDS.
+
+2. From a sensitive source. The source of the data may indicate a need for
+secrecy—for example, an informer whose identity must be kept secret.
+
+3. Declared sensitive. The owner of the data may have explicitly declared it as
+sensitive.
+
+4. A sensitive attribute or sensitive record. The particular attribute or record
+may have been declared sensitive—for example, the salary attribute of an
+employee or the salary history record in a personnel database.
+
+5. Sensitive in relation to previously disclosed data. Some data may not be
+sensitive by itself but will become sensitive in the presence of some other
+data—for example, the exact latitude and longitude information for a loca-
+tion where some previously recorded event happened that was later deemed
+sensitive.
+
+It is the responsibility of the database administrator and security administrator to
+collectively enforce the security policies of an organization. This dictates whether
+access should or should not be permitted to a certain database attribute (also known
+as a table column or a data element) for individual users or for categories of users.
+Several factors must be considered before deciding whether it is safe to reveal the
+data. The three most important factors are data availability, access acceptability,
+and authenticity assurance.
+
+1. Data availability. Ifa user is updating a field, then this field becomes inac-
+cessible and other users should not be able to view this data. This blocking
+is only temporary and only to ensure that no user sees any inaccurate data.
+This is typically handled by the concurrency control mechanism (see
+Chapter 21).
+
+2. Access acceptability. Data should only be revealed to authorized users. A
+database administrator may also deny access to a user request even if the
+request does not directly access a sensitive data item, on the grounds that the
+requested data may reveal information about the sensitive data that the user
+is not authorized to have.
+
+3. Authenticity assurance. Before granting access, certain external character-
+istics about the user may also be considered. For example, a user may only
+be permitted access during working hours. The system may track previous
+queries to ensure that a combination of queries does not reveal sensitive
+data. The latter is particularly relevant to statistical database queries (see
+Section 30.5).
+
+1127

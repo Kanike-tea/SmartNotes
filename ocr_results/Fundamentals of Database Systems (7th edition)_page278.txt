@@ -1,0 +1,47 @@
+248 Chapter 8 The Relational Algebra and Relational Calculus
+
+We will adopt the convention that the resulting relation has the same attribute
+names as the first relation R. It is always possible to rename the attributes in the
+
+result using the rename operator.
+
+Figure 8.4 illustrates the three operations. The relations STUDENT and INSTRUCTOR
+in Figure 8.4(a) are union compatible and their tuples represent the names of stu-
+dents and the names of instructors, respectively. The result of the UNION operation
+in Figure 8.4(b) shows the names of all students and instructors. Note that duplicate
+tuples appear only once in the result. The result of the INTERSECTION operation
+(Figure 8.4(c)) includes only those who are both students and instructors.
+
+Notice that both UNION and INTERSECTION are commutative operations; that is,
+
+RUS=SUR and RAS=SOAR
+
+Both UNION and INTERSECTION can be treated as n-ary operations applicable to
+any number of relations because both are also associative operations; that is,
+
+RU(SUT)=(RUS)UT and (RAS)AT=ROA(SOT)
+
+Figure 8.4
+
+The set operations UNION, INTERSECTION, and MINUS. (a) Two union-compatible relations.
+(b) STUDENT U INSTRUCTOR. (c) STUDENT 1 INSTRUCTOR. (d) STUDENT — INSTRUCTOR.
+(e) INSTRUCTOR — STUDENT.
+
+(a) STUDENT INSTRUCTOR
+Fn Ln Fname | Lname (b) Fn Ln
+Susan _| Yao John Smith Susan _| Yao
+Ramesh | Shah Ricardo | Browne Ramesh | Shah
+Johnny _| Kohler Susan | Yao Johnny | Kohler
+Barbara | Jones Francis Johnson Barbara | Jones
+Amy Ford Ramesh | Shah ‘Amy Ford
+Jimmy _ | Wang Jimmy _ | Wang
+Emest | Gilbert Emest | Gilbert
+John Smith
+Ricardo | Browne
+Francis | Johnson
+© Fn Ln (d) Fn Ln (e) | Fname | Lname
+Susan | Yao Johnny | Kohler John Smith
+Ramesh | Shah Barbara | Jones Ricardo | Browne
+Amy Ford Francis | Johnson
+Jimmy _ | Wang
+Emest | Gilbert

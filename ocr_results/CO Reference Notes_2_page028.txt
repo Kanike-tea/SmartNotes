@@ -1,0 +1,47 @@
+¢ The signal on the BR line is the logical OR of bus-requests from all devices connected to it.
+¢ Then, processor activates BG1 signal indicating to DMA controllers to use bus when it becomes free.
+¢ BGI signal is connected to all DMA controllers using a daisy-chain arrangement.
+¢ If DMA controller-1 is requesting the bus,
+Then, DMA controller-1 blocks propagation of grant-signal to other
+devices. Otherwise, DMA controller-1 passes the grant downstream by
+asserting BG2.
+© Current bus-master indicates to all devices that it is using bus by activating BBSY line.
+¢ The bus-arbiter is used to coordinate the activities of all devices requesting memory transfers.
+Arbiter ensures that only | request is granted at any given time according to a priority scheme.
+(BR > Bus-Request, BG > Bus-Grant, BBSY > Bus Busy).
+
+Figure 4.20 A simple arrangement for bus arbitration using a dai:
+
+chain.
+—> Time
+
+BR
+
+BGI
+
+BG2
+BBSY
+
+Bus | | |
+
+ater | > —
+" Processor DMA controller 2 Processor
+Figure 4.21 Sequence of signals during transfer of bus mastership for the devices in
+
+Figure 4.20.
+
+¢ The timing diagram shows the sequence of events for the devices connected to the processor.
+¢ DMA controller-2
+
+— requests and acquires bus-mastership and
+
+— later releases the bus. (Figure: 4.21).
+¢ After DMA controller-2 releases the bus, the processor resources bus-mastership.
+
+¢ All device participate in the selection of next bus-master (Figure 4.22).
+¢ Each device on bus is assigned a 4-bit identification number (ID).
+¢ When | or more devices request bus, they
+
+— assert Start-Arbitration signal &
+
+Page 29

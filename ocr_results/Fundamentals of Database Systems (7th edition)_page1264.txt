@@ -1,0 +1,190 @@
+1234 Index
+
+Queries (continued)
+quantifiers for, 274-276
+recursive, 223
+relation nodes, 273
+relational algebra for, 265-268
+select-from-where structure, 188-190
+selection condition, 189
+select-project-join, 189-190, 273
+spatial, 991
+SQL retrieval, 187-198, 207-225
+temporal constructs, 984-986
+‘TSQL2 language for, 984-986
+tuple relational calculus for, 272-276
+XML languages for, 443-447
+Query block, 657-658
+Query decomposition, DDBMS, 863-865
+Query execution
+aggregate functions for, 709
+cost components for, 711-712
+GROUP-BY view merging, 705-706
+incremental view maintenance, 707-710
+materialized views for, 707-710
+nested subqueries, 702-704
+query evaluation for, 701-702
+subquery (view) merging
+transformation for, 704-706
+Query graphs
+internal query representation by, 655
+notation, 692-694
+query optimization, 692-697
+tuple relational calculus, 273-274
+Query modification, SQL views, 229-230
+Query optimization
+cost estimation for, 657, 710-713,
+716-717
+cost functions for, 714-715, 717-
+cost-based optimization, 710-712, 716,
+726-728
+data warehouses, 731-733
+distributed databases (DDBs), 859-863
+dynamic programming, 716, 725-726
+execution plan, display of, 729
+heuristic rules for, 657, 692, 697-701
+histograms for, 713
+JOIN operation for, 717-726
+multirelation queries, 721-724
+operation size estimation, 729-730
+Oracle, 733-737
+physical optimization, 724
+plan caching, 730
+query execution and, 701-712
+query processing compared to,
+655-657
+query trees and graphs for, 692-697
+SELECT operation for, 714
+semantic query optimization, 737-738
+star-transformation optimization,
+731-733
+top-k results, 730
+transformation rules for relational
+algebra operations, 697-699
+Query optimizer, 655
+
+Query processing strategies
+aggregate operation implementation,
+678-679
+anti-join (AJ) operator for, 658-660
+distributed databases (DDBs), 859-863
+external sorting algorithms, 660-663
+importance of, 656-657
+JOIN operation implementation,
+668-676, 679-681
+parallel algorithms for, 683-687
+pipelining to combine operations,
+681-683
+PROJECT operation algorithm, 676-678
+query block for, 657-658
+query optimization compared to,
+655-657
+SELECT operation algorithms, 663-668
+semi-join (SJ) operator for, 658-660
+set operation algorithm, 676-678
+SQL query translation, 657-660
+steps for, 655-656
+Query results
+bound columns approach, 329
+cursor (iterator variable) for, 312,
+317-320
+embedded SQL, 312, 317-320
+impedance mismatch and, 312
+iterators for, 323-325
+OQL, 410-412
+path expressions, 386, 410-412
+PHP, 356-357
+SQUICLI processing, 329
+SQLJ processing of, 323-325
+Query retrieval
+aggregate functions in, 216-219
+alias for, 192
+arithmetic operators for, 196-197
+asterisk (*) uses, 193, 218
+attribute name qualification, 191
+Boolean (TRUE/FALSE) statements
+for, 212-214
+CASE clause for, 222-223
+clauses used in, 198-199
+comparison operators, 188-191, 195-197
+complex queries, 207-225
+EXISTS function for, 212-214
+explicit sets of values, 214-215
+FROM clause for, 188-189, 197, 232
+grouping, 216-222
+joined tables (relations), 215-216
+LIKE comparison operator, 195-196
+logical comparison operators for,
+188-190
+multiset of tuples, 188, 193-195
+nested queries, 209-212
+NULL values and, 208-209
+ORDER BY clause for, 197-198
+ordering results, 197
+PHP, 356-357
+QBE (Query-by-Example) language,
+1171-1175
+recursive queries, 223
+
+renaming attributes, 192, 214-215
+SELECT statement (clause) for,
+187-188, 194-195, 197
+select-from-where block, 188-191
+set operations for, 194-195
+set/multiset comparisons, 209-211
+SQL, 187-198, 207-225, 230-231
+substring pattern matching, 195-197
+table set relations, 193-195
+three-valued logic for comparisons,
+208-209
+tuple variables for, 192, 209-211
+UNIQUE function for, 212-214
+views (virtual tables) for, 230-231
+WHERE clause for, 188, 192-193, 197
+WITH clause for, 222-223
+Query server, two-tier client/server
+architecture, 49
+Query submission, PHP, 355
+Query tree
+defined, 257
+heuristic optimization of, 694-694
+internal query representation by, 655
+notation, 257-259, 692-694
+query optimization, 692-697
+RDBMS use of, 257-259
+semantic equivalence of, 694-695
+Query validation, 655
+Question answering (QA) systems,
+1061-1063
+RAID (redundant arrays of inexpensive
+disks) technology
+bit-level striping, 584, 586
+block-level striping, 584-585, 586
+data striping, 584-585
+levels, 586-588
+mirroring, (shadowing), 585
+parallelizing disk access using, 542,
+584-588
+performance, improvement with, 586
+reliability, improvement with,
+585-586
+Random-access memory (RAM), 543
+Random access storage devices, 554
+Range partitioning, 684, 886
+Range relations, tuple variables and,
+269-270
+RDBMS (Relational database
+management system)
+query tree notation, 257-259
+two-tier client/server architecture and,
+49
+RDBs (relational databases)
+application flexibility with, 24
+data abstraction in, 24
+indexing for, 643-646
+integrity constraints and, 160-163
+physical database design in, 643-646
+relation schema sets as, 160
+schemas, 160-163
+temporal databases incorporating time
+in, 977-982

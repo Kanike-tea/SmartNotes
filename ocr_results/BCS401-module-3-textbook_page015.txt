@@ -1,0 +1,13 @@
+7.1
+
+Sorting by Counting
+
+As a first example of applying the input-enhancement technique, we discuss its
+application to the sorting problem. One rather obvious idea is to count, for each
+element of a list to be sorted, the total number of elements smaller than this
+element and record the results in a table. These numbers will indicate the positions
+of the elements in the sorted list: e.g., if the count is 10 for some element, it should
+be in the 11th position (with index 10, if we start counting with 0) in the sorted
+array. Thus, we will be able to sort the list by simply copying its elements to their
+appropriate positions in a new, sorted list. This algorithm is called comparison-
+counting sort (Figure 7.1).

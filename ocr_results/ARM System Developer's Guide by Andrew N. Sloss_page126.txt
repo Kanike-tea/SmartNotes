@@ -1,0 +1,47 @@
+5.3 C Looping Structures 113
+
+It must do this because x is signed. In C on an ARM target, a divide by two is not a right
+shift if xis negative. For example, —3 >> 1 = —2 but —3/2 = —1. Division rounds towards
+zero, but arithmetic right shift rounds towards —oo.
+
+It is more efficient to use unsigned types for divisions. The compiler converts unsigned
+power of two divisions directly to right shifts. For general divisions, the divide routine in the
+C library is faster for unsigned types. See Section 5.10 for discussion on avoiding divisions
+completely.
+
+summary The Efficient Use of C Types
+
+= For local variables held in registers, don’t use a char or short type unless 8-bit or
+16-bit modular arithmetic is necessary. Use the signed or unsigned int types instead.
+Unsigned types are faster when you use divisions.
+
+= For array entries and global variables held in main memory, use the type with the
+smallest size possible to hold the required data. This saves memory footprint. The
+ARMv4 architecture is efficient at loading and storing all data widths provided you
+traverse arrays by incrementing the array pointer. Avoid using offsets from the base of
+the array with short type arrays, as LDRH does not support this.
+
+= Use explicit casts when reading array entries or global variables into local variables, or
+writing local variables out to array entries. The casts make it clear that for fast operation
+you are taking a narrow width type stored in memory and expanding it to a wider type
+in the registers. Switch on implicit narrowing cast warnings in the compiler to detect
+implicit casts.
+
+= Avoid implicit or explicit narrowing casts in expressions because they usually cost extra
+cycles. Casts on loads or stores are usually free because the load or store instruction
+performs the cast for you.
+
+= Avoid char and short types for function arguments or return values. Instead use the
+int type even if the range of the parameter is smaller. This prevents the compiler
+performing unnecessary casts.
+
+5.3 C LOOPING STRUCTURES
+
+This section looks at the most efficient ways to code for and whi e loops on the ARM. We
+start by looking at loops with a fixed number of iterations and then move on to loops with
+a variable number of iterations. Finally we look at loop unrolling.
+
+5.3.1 LOOPS WITH A FIXED NUMBER OF ITERATIONS
+
+What is the most efficient way to write a for loop on the ARM? Let’s return to our checksum
+example and look at the looping structure.

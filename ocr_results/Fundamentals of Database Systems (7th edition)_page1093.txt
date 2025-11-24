@@ -1,0 +1,52 @@
+27.9 Summary
+
+Query Generation: In this stage, the analyzed text is used to generate multiple
+queries using query normalization and expansion techniques for one or more
+underlying search engines in which the answers may be embedded. For example,
+in the question, “Which book of Shakespeare is about tragedy of lovers?”, the
+expanded queries can be “Shakespeare love story”, “novels of Shakespeare”, “tragic
+love story author Shakespeare”, “love story genre tragedy author Shakespeare”,
+and so on. Extracted keywords, answer types, synonyms information, and named
+
+entities are generally used in different combinations to create different queries.
+
+Search: In this stage, the queries are sent to different search engines and rele-
+vant passages are retrieved. Search engines where searches are performed can
+be online, such as Google or bing, and offline, such as Lucene or Indri.*”
+
+Candidate Answer Generation: Named entity extractors are used on retrieved
+passages and matched against desired answer types to come up with candidate
+answers. Depending on the desired granularity of the answer, candidate gen-
+eration and answer type matching algorithms are applied (e.g., surface pattern
+matching and structural matching). In surface pattern matching, regular
+expression templates are instantiated with arguments from the question and
+matched against lexical chunks of retrieved passages to extract answers. For
+example, focus words are aligned with passages containing potential answers to
+extract answer candidates. In the sentence, “Romeo and Juliet is a tragic love
+story by Shakespeare”, the phrase “Romeo and Juliet” can simply replace
+“Which book” in the question, “Which book is a tragic love story by Shake-
+speare?”. In structural matching, questions and retrieved passages are parsed
+and aligned together using syntactic and semantic alignment to find answer
+candidates. A sentence such as, “Shakespeare wrote the tragic love story Romeo
+and Juliet” cannot be surface matched with the aforementioned question, but
+with correct parsing and alignment will structurally match with the question.
+
+Answer Scoring: In this stage, confidence scores for the candidate answers are
+estimated. Similar answers are merged; knowledge sources can be reused to
+gather supporting evidence for different candidate answers.
+
+27.9 Summary
+
+In this chapter, we covered an important area called information retrieval (IR) that
+is closely related to databases. With the advent of the Web, unstructured data with
+text, images, audio, and video is proliferating at phenomenal rates. Although data-
+base management systems have a very good handle on structured data, the unstruc-
+tured data containing a variety of data types is being stored mainly on ad hoc
+information repositories on the Web that are available for consumption primarily
+via IR systems. Google, Yahoo, and similar search engines are IR systems that make
+the advances in this field readily available for the average end user and give end
+users a richer and continually improving search experience.
+
+SThttp://wwwlemurprojectorg/indri/
+
+1063

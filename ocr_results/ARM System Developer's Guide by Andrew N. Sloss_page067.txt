@@ -1,0 +1,48 @@
+54 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.4
+
+EXAMPLE
+
+3.5
+
+EXAMPLE
+
+3.6
+
+|
+lh
+
+Nis the result of the shifter operation. The syntax of shifter operation is shown in Table 3.3.
+
+This simple subtract instruction subtracts a value stored in register r2 from a value stored
+in register r/. The result is stored in register r0.
+
+PRE r0 = 0x00000000
+rl = 0x00000002
+r2 = 0x00000001
+
+SUB r0, rl, r2
+
+POST rO = 0x00000001
+
+This reverse subtract instruction (RSB) subtracts r] from the constant value #0, writing the
+result to r0. You can use this instruction to negate numbers.
+
+PRE r0 = 0x00000000
+rl = 0x00000077
+
+RSB 0, rl, #0; Rd = Ox0 - rl
+
+POST rO = -rl = Oxffffff89
+
+‘The SUBS instruction is useful for decrementing loop counters. In this example we subtract
+the immediate value one from the value one stored in register r/. The result value zero is
+written to register rl. The cpsr is updated with the ZC flags being set.
+
+PRE —cpsr = nzcvqiFt_USER
+rl = 0x00000001
+
+SUBS rl, rl, #1

@@ -1,0 +1,75 @@
+Two Address | Opcode Source, Destination Add A,B| Add the contents of | Move B,C
+memory-locations A & B. Add A,C
+Then, place the result into
+location B, replacing the
+original contents of this
+location.
+
+Operand B is both a source
+and a destination.
+
+One Address | Opcode Source/Destination Load A | Copy contents of memory- Load A
+location A into accumulator. | Add B
+Add B Add contents of memory- | Store C
+location B to contents of
+accumulator register &
+
+place sum back into
+accumulator.
+
+Store C | Copy the contents of the
+accumulator into location C.
+
+Zero Opcode [no Push Locations of all operands Not possible
+Address Source/Destination] are defined implicitly.
+The operands are stored in
+a pushdown stack.
+
+Access to data in the registers is much faster than to data stored in memory-locations.
+Let Ri represent a general |-purpose register. The instructions:
+Load ARi
+Store Ri,A
+Add ARi
+are generalizations of the Load, Store and Add Instructions for the single-accumulator case, in which
+register Ri performs the function of the accumulator.
+In processors, where arithmetic operations as allowed only on operands that are in registers, the task
+C<-[A]+[B] can be performed by the instruction sequence:
+Move A.Ri
+Move B,Rj
+Move Rj.c
+
+INSTRUCTION EXECUTION & STRAIGHT LINE SEQUENCING
++ The program is executed as follows:
+1) Initially, the address of the first instruction is loaded into PC (Figure 2.8).
+2) Then, the processor control circuits use the information in the PC to fetch and execute a
+instructions, one at a time, in the order of increasing addresses. This is called Straight-Line
+
+sequencing. ota
+
+3) During the execution of each instruction, PC is incremented by 4 to point to next instruction.
+* There are 2 phases for Instruction Execution:
+1) Fetch Phase: The instruction is fetched from the memory-location and placed in the IR.
+
+2) Execute Phase: The contents of IR is examined to determine which operation is to be ot
+
+performed. The specified-operation is then performed by the processor.
+
+a
+Toe BE
+
+No
+Fig 29. Astihlen pono
+
+Moe NMIRD
+aN
+aN
+
+aa Mien
+Moe nisin
+
+_
+i
+
+Figre2h Apo feo
+
+Page 10

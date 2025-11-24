@@ -1,0 +1,53 @@
+V3 Il P2
+V3 Il P3
+
+The given relation has a number of problems. For example:
+
+1. If vendor V1 has to supply to project P2, but the item is not yet decided, then a row with a
+blank for item code has to be introduced.
+2. The information about item I1 is stored twice for vendor V3.
+
+Observe that the relation given is in 3NF and also in BCNF. It still has the problem mentioned
+above. The problem is reduced by expressing this relation as two relations in the Fourth Normal
+Form (4NF). A relation is in 4NF if it has no more than one independent multi valued dependency
+or one independent multi valued dependency with a functional dependency.
+
+The table can be expressed as the two 4NF relations given as following. The fact that vendors are
+capable of supplying certain items and that they are assigned to supply for some projects in
+independently specified in the 4NF relation.
+
+Vendor-Supply
+Vendor CodelItem Code
+Vi I
+Vi 12
+v2 12
+v2 13
+v3 I
+
+Vendor-Project
+Vendor CodeProject No.
+
+Vi P
+Vi P3
+v2 P
+v3 P2
+
+Fifth Normal Form (5NF)
+
+These relations still have a problem. While defining the 4NF we mentioned that all the attributes
+depend upon each other. While creating the two tables in the 4NF, although we have preserved the
+dependencies between Vendor Code and Item code in the first table and Vendor Code and Item code
+in the second table, we have lost the relationship between Item Code and Project No. If there were a
+primary key then this loss of dependency would not have occurred. In order to revive this
+relationship we must add a new table like the following. Please note that during the entire process
+of normalization, this is the only step where a new table is created by joining two attributes, rather
+than splitting them into separate tables.
+
+Project No.Item Code
+
+Pl ll
+Pl 12
+P2 ll
+P3 ll
+
+P3 13

@@ -1,0 +1,48 @@
+Data Structures and Applications(BCS304) Module 2
+
+rr F queue (0) (1) (2) (3) 1 ESI (6) [71
+6 (CToTETFTS] [ATS]
+
+front = 5, rear =4
+(b) Flattened view of circular full queue
+
+front =
+(a) A full circular queue
+
+Figure (c) shows the array after array doubling by realloc.
+
+(0) (1) (2) (3) G4) C5) (6) C7F C8) EN (HO) (10) C42) E13) [14] [1S]
+: See
+front = 5, rear =4
+(c) Afier army doubling
+
+To get a proper circular queue configuration, The number of elements copied can be limited to capacity
+- | by customizing the array doubling code so as to obtain the configuration as shown below.
+
+(0) (1 12) (3) PAT TSE 16) T7E ESE OE THOP ENTE 112) G13) [147 LIS)
+
+front = 15, rear =6
+
+This configuration may be obtained as follows:
+1, Create a new array newQueue of twice the capacity.
+2. Copy the second segment (i.e., the elements queue [front + 1] through queue [capacity -
+1 }) to positions in newQueuebeginning at 0.
+3. Copy the first segment (i.e., the elements queue [0] through queue [rear]) to positions
+in newQueue beginning at capacity-front-1.
+
+Function to add to a circular queue has no change
+void addq(int item)
+
+rear = (rear+1) % capacity;
+if (front == (rear+1) % capacity)
+queueFull(); /* double capacity */
+
+else
+
+{
+rear = (rear+1) % capacity;
+queue[rear] = item;
+
+i
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 6

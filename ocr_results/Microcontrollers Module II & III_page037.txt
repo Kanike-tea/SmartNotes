@@ -1,0 +1,53 @@
+Microcontrollers — BCS402
+
+add_vl
+ADD rO,rO,rl,ASR #1 3; rO = (int)a + ((int)b>>1)
+Mov r0,r0,LSL #16
+MoV r0,r0,ASR #16 ; rd = (short)ro
+Mov pe, rl4 3; return r0
+
+The gcc compiler we used is more cautious and makes no assumptions about the range of
+argument value. This version of the compiler reduces the input arguments to the range of a
+
+short in both the caller and the callee. It also casts the return value to a short type.
+
+Here is the compiled code for add_v1:
+
+add_vl_gec
+MOV ro, rO, LSL #16
+MOV rl, rl, LSL #16
+MOV rl, rl, ASR #17 3 Pl = (int)b>>1
+ADD rl, rl, r0, ASR #16 3; rl += (int)a
+MOV rl, rl, LSL #16
+MOV ro, rl, ASR #16 ; rO = (short)rl
+MOV pe, Ir ; return ro
+
+Whatever the merits of different narrow and wide calling protocols, you can see that char or
+short type function arguments and return values introduce extra casts. These increase code
+size and decrease performance. It is more efficient to use the int type for function arguments
+
+and return values, even if you are only passing an 8-bit value.
+2.3 Signed versus Unsigned Types
+
+This section compares the efficiencies of signed int and unsigned int.
+
+If your code uses addition, subtraction, and multiplication, then there is no performance
+difference between signed and unsigned operations. However, there is a difference when it
+
+comes to division. Consider the following short example that averages two integers:
+
+int average vl(int a, int b)
+{
+
+return (atb) /2;
+}
+
+This compiles to
+
+average _vl
+‘ADD r0,r0, rl 3r0=a+b
+ADD r0,r0,rO,LSR #31 3 1f (r0<0) rot
+Mov r0,r0,ASR #1 370 = rO>>1
+Nov pe,rl4 3 return ro
+
+Dept. of ECE, GSSSIETW Page 38

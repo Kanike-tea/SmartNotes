@@ -1,0 +1,51 @@
+Microcontrollers - BCS402
+
+Figure 6 shows two typical memory layouts in a linear address space. The first layout, A, shows
+a traditional stack layout with the interrupt stack stored underneath the code segment. The
+second layout, B, shows the interrupt stack at the top of the memory above the user stack. The
+main advantage of layout B over A is that B does not corrupt the vector table when a stack
+overflow occurs, and so the system has a chance to correct itself when an overflow has been
+
+identified.
+
+Example: For each processor mode a stack has to be set up. This is carried out every time the
+processor is reset. Figure 7 shows an implementation using layout A. To help set up the memory
+
+layout, a set of defines are declared that map the memory region names with an absolute address.
+
+For instance, the User stack is given the label USR_Stack and is set to address 0x20000. The
+
+Supervisor stack is set to an address that is 128 bytes below the IRQ stack.
+
+USR_Stack EQU 0x20000
+IRQ_Stack EQU 0x8000
+SVC_Stack EQU IRQ_Stack-128
+
+To help change to the different processor modes, we declare a set of defines that map each
+processor mode with a particular mode bit pattern. These labels can then be used to set the cpsr
+
+to a new mode.
+
+Usr32md EQU 0x10 ; User mode
+
+FI.Q32md EQU Ox11l ; FIQ mode
+
+IRQ32md EQU 0x12 ; IRQ mode
+
+svC32md EQU Ox13 ; Supervisor mode
+
+Abt32md EQU Ox17 ; Abort mode
+
+Und32md EQU Oxlb ; Undefined instruction mode
+Sys32md EQU Oxlf ; System mode
+
+For safety reasons a define is declared to disable both the IRQ and FIQ exceptions in the cpsr:
+
+NoInt EQU  0xc0; Disable interrupts
+NoInt masks both interrupts by setting the masks to one.
+
+Initialization code starts by setting up the stack registers for each processor mode. The stack
+
+register r13 is one of the registers that is always banked when a mode change occurs.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 16

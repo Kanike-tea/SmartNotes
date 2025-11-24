@@ -1,0 +1,55 @@
+502 Chapter 14 Memory Management Units
+
+Table 14.2 Page tables used by the MMU.
+
+Name
+
+Memory consumed Number of page
+Type by page table (KB) Page sizes supported (KB) _table entries
+
+Master/section level 1 16 1024 4096
+
+Fine
+Coarse
+
+level 2 4 1, 4, or 64 1024
+level 2 1 4 or 64 256
+
+14.4.1
+
+as both a page directory of L2 page tables and a page table translating 1 MB virtual pages
+called sections. If the L1 table is acting as a directory, then the PTE contains a pointer to
+either an L2 coarse or L2 fine page table that represents 1 MB of virtual memory. If the L1
+master table is translating a 1 MB section, then the PTE contains the base address of the
+1 MB page frame in physical memory. The directory entries and 1 MB section entries can
+coexist in the master page table.
+
+A coarse L2 page table has 256 entries consuming 1 KB of main memory. Each PTE in
+a coarse page table translates a 4 KB block of virtual memory to a 4 KB block in physical
+memory. A coarse page table supports either 4 or 64 KB pages. The PTE in a coarse page
+contains the base address to either a 4 or 64 KB page frame; if the entry translates a 64 KB
+page, an identical PTE must be repeated in the page table 16 times for each 64 KB page.
+
+A fine page table has 1024 entries consuming 4 KB of main memory. Each PTE ina fine
+page translates a 1 KB block of memory. A fine page table supports 1, 4, or 64 KB pages
+in virtual memory. These entries contain the base address of a 1, 4, or 64 KB page frame
+in physical memory. If the fine table translates a 4 KB page, then the same PTE must be
+repeated 4 consecutive times in the page table. If the table translates a 64 KB page, then the
+same PTE must be repeated 64 consecutive times in the page table.
+
+Table 14.2 summarizes the characteristics of the three kinds of page table used in ARM
+memory management units.
+
+LEVEL 1 PAGE TABLE ENTRIES
+
+The level 1 page table accepts four types of entry:
+
+= A1MBsection translation entry
+= A directory entry that points to a fine L2 page table
+= A directory entry that points to a coarse L2 page table
+
+= A fault entry that generates an abort exception
+
+The system identifies the type of entry by the lower two bits [1:0] in the entry field. The
+format of the PTE requires the address of an L2 page table to be aligned on a multiple of its
+page size. Figure 14.6 shows the format of each entry in the L1 page table.

@@ -1,0 +1,36 @@
+AHB provides higher data throughput than ASB because it uses a centralized multiplexed bus
+scheme instead of ASB's bidirectional bus28 . AHB can run at higher clock speeds and supports
+widths of 64 and 128 bits28 . ARM introduced variations of AHB:
+
+Multi-layer AHB: Allows multiple active bus masters simultaneously, which is beneficial for systems
+with multiple processors29 ....
+
+AHB-Lite: A subset of AHB limited to a single bus master, designed for simpler systems30 .
+
+An example device might have multiple buses: an AHB for high-performance peripherals, an APB for
+slower peripherals, and potentially other buses for external or proprietary peripherals, connected via
+bridges29 . The physical level of a bus covers electrical characteristics and bus width, while the
+protocol level defines the logical rules for communication26 . Devices connected to the bus can be
+bus masters (capable of initiating data transfers) or bus slaves (only responding to transfer
+requests)25 ....
+
+5.
+ARM Processor Dataflow Diagram
+
+Figure 1 (not provided here, but described) shows the ARM core data flow model, illustrating how
+data and instructions move within the core31 .
+
+Data enters the core through the Data bus32 . The figure represents a Von Neumann
+implementation, where data items and instructions share the same bus32 . (Harvard
+implementations would use two separate buses32 ).
+
+The Instruction Decoder translates fetched instructions32 .
+
+The ARM core uses a load-store architecture, with Load instructions copying data from memory to
+registers and Store instructions copying data from registers to memory33 . Data processing
+instructions operate solely on registers33 .
+
+Data items are stored in the Register File, a bank of 32-bit registers34 .
+
+ARM instructions typically use two source registers (Rn and Rm) and one destination register (Rd).
+Source operands are read from the register file using internal buses A and B34 .

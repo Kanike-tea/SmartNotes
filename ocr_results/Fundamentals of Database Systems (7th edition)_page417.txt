@@ -1,0 +1,50 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 387
+
+important to note that many of the ideas embodied in the ODMG object model are
+based on two decades of research into conceptual modeling and object databases by
+many researchers.
+
+The incorporation of object concepts into the SQL relational database standard,
+leading to object-relational technology, was presented in Section 12.2.
+
+12.3.1 Overview of the Object Model of ODMG
+
+The ODMG object model is the data model upon which the object definition lan-
+guage (ODL) and object query language (OQL) are based. It is meant to provide a
+standard data model for object databases, just as SQL describes a standard data
+model for relational databases. It also provides a standard terminology in a field
+where the same terms were sometimes used to describe different concepts. We will
+try to adhere to the ODMG terminology in this chapter. Many of the concepts in
+the ODMG model have already been discussed in Section 12.1, and we assume the
+reader has read this section. We will point out whenever the ODMG terminology
+differs from that used in Section 12.1.
+
+Objects and Literals. Objects and literals are the basic building blocks of the
+object model. The main difference between the two is that an object has both an
+object identifier and a state (or current value), whereas a literal has a value
+(state) but no object identifier.'* In either case, the value can have a complex
+structure. The object state can change over time by modifying the object value. A
+literal is basically a constant value, possibly having a complex structure, but it
+does not change.
+
+An object has five aspects: identifier, name, lifetime, structure, and creation.
+
+1. The object identifier is a unique system-wide identifier (or Object_id).'°
+Every object must have an object identifier.
+
+2. Some objects may optionally be given a unique name within a particular
+ODMS-—this name can be used to locate the object, and the system should
+return the object given that name.*® Obviously, not all individual objects
+will have unique names. Typically, a few objects, mainly those that hold
+collections of objects of a particular object class/type—such as extents—will
+have a name. These names are used as entry points to the database; that is,
+by locating these objects by their unique name, the user can then locate
+other objects that are referenced from these objects. Other important
+objects in the application may also have unique names, and it is possible to
+give more than one name to an object. All names within a particular ODB
+must be unique.
+
+'8We will use the terms value and state interchangeably here.
+'8This corresponds to the OID of Section 12.1.2.
+
+2°This corresponds to the naming mechanism for persistence, described in Section 12.1.4.

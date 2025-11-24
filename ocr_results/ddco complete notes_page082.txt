@@ -1,0 +1,37 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+Address space : It is defined as number of bytes accessible to CPU and it depends on the
+number of address lines.
+
+5. BYTE ADDRESSABILITY
+
+In a 32 bit machine, each word is 32 bit and the successivejaddresses are 0,4,8,12,... and
+so on.
+Address 32 — bit word
+« >
+
+0000 0" byte 1™ byte 2"* byte 3™ byte
+
+0004 4" byte 5™ byte 6™ byte 7 byte
+
+0008 8™ byte 9” byte 10™ byte 11™ byte
+
+0012 12™ byte 13™ byte 14” byte 15™ byte
+
+n-3 n-3" byte n-2” byte n-1™ byte n™ byte
+
+Two ways in which byte addresses can be assigned in a word.
+
+Or
+Two ways in which a word is stored in memory.
+
+1. Big endian
+
+2. Little endian
+BIG ENDIAN ASSIGNMENT
+
+Words
+address Byte address
+psi = fe [7 |
+
+Dr. Ajay V G, Dept. of CSE, SVIT 15

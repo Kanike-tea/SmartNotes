@@ -1,0 +1,88 @@
+252 Chapter 7 Optimized Primitives
+
+We can implement the more difficult bit spreading permutation using four type B
+transforms. This is only 16 cycles ignoring the constant setups—much faster than any loop
+
+testing each bit one at a time.
+
+bit_spread
+PERMUTE_B 4,3 3
+PERMUTE_B 3,2 ;
+PERMUTE_B 2,1 ;
+PERMUTE_B 1,0 ;
+MOV pc, Ir
+
+>
+>
+>
+
+>
+
+Finally, type C permutations allow
+
+b4 b3 b2 bl bO ]
+b3 b4 b2 bl b0 ]
+b3 b2 b4 bl bO ]
+b3 b2 bl b4 bO ]
+b3 b2 bl bO b4 ]
+
+us to perform bit reversal and bit spreading at the
+
+same time and with the same number of cycles.
+
+bit_rev_spread 3ne
+PERMUTE_C 4,3 3
+PERMUTE_C 3,2 ;
+PERMUTE_C 2,1 ;
+PERMUTE_C 1,0 ;
+MOV pc, Ir
+
+>
+>
+>
+
+>
+
+7.6.3 BIT POPULATION COUNT
+
+b4 b3 b2 bl bO]
+1-b3 1-b4 b2 bl bO0]
+1-b3 1-b2 b4 bl bO0]
+
+1-b3 1-b2 1-b1 1-b4 b0 ]
+
+1-b3 1-b2 1-b1 1-b0 b4 ]
+
+A bit population count finds the number of bits set within a word. For example, this is
+useful if you need to find the number of interrupts set in an interrupt mask. A loop testing
+each bit is slow, since ADD instructions can be used to sum bits in parallel provided that the
+sums do not interfere with each other. The idea of the divide by three and conquer method
+is to split the 32-bit word into bit triplets. The sum of each bit triplet is a 2-bit number in
+the range 0 to 3. We calculate these in parallel and then sum them in a logarithmic fashion.
+
+Use the following code for bit population counts of a single word. The operation is
+10 cycles plus 2 cycles for setup of constants.
+
+bit_count 3 input n
+LOR =m, =0x49249249
+AND t, n, m, LSL #1 ;
+SUB on, n, t, LSR #1 ;
+AND t, n, m, LSR #1 ;
+ADD n,n, t 3
+
+XYZXYZXYZXYZXYZXYZXYZXYZXYZXYZXY
+01001001001001001001001001001001
+x00x00x00x00x00x00x00x00x00x00x0
+uuzuuzuuzuuzuuzuuzuuzuuzuuzuuzuu
+00z00z00z00z00z00z00z00z00z00z00
+vvOvv0vv0vv0vv0vvOvvOvvOvvOvvOvv
+
+3 triplets summed, uu=xty, vv=xty+z
+
+LOR =m, =OxC71C71C7,_ ;
+ADD n,n, ny LSR #3
+AND on, n, m
+
+11000111000111000111000111000111
+3 WwOVVWWWOVVuWWOVVHWWOVVWHWOV VW
+3 wwOOOwww00Owww000www000wwwOOOwww

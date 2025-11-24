@@ -1,0 +1,48 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+11. It iterates over each character (i) in the string representation of the number (n). For each
+character, it checks if it already exists as a key in the dictionary s. If it does, it increments
+the corresponding value by 1. If it doesn't, it adds the character as a key in the dictionary
+
+with a value of 1.
+12. Finally, the program prints the number of occurrences of each digit in the input number
+
+by displaying the contents of the dictionary s.
+The program provides various functionalities such as reversing a number, checking if it is a
+palindrome, finding the number of digits, and counting the occurrences of each digit in the input
+number. It demonstrates the usage of loops, conditionals, string conversions, and dictionaries in
+Python
+PROGRAM
+
+rev 0
+num = int (input ("Enter the number:") )
+
+temp = num
+n=str (temp)
+
+while num > 0:
+digit = num%10
+
+rev = rev*l0+digit
+num //= 10
+print ("Given Number is", temp)
+print ("Reversed Number is", rev)
+if temp == rev:
+print(temp, "is a Palindrome")
+else:
+print(temp, "is not a Palindrome")
+
+# Finding Number of Digits using built-in function
+print ("Number of Digits using Built-in Function: ", len(str(n)))
+
+#Finding the occurrences of each digit
+s={}
+for i inn:
+if iins:
+s[i]+=1
+else:
+s[i]=1
+print ("Number of occurrences of each digit in the input number are:")
+print (s)
+
+Dept. of CSE 19 GSSSIETW, Mysuru

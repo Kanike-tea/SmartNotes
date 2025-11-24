@@ -1,0 +1,49 @@
+1048 Chapter 27 Introduction to Information Retrieval and Web Search
+
+State of Florida University System, or a compilation of multiple external resources
+on the World Wide Web, such as Google Scholar or the IEEE/ACM index. These
+interfaces provide universal access to different types of content—such as books,
+articles, audio, and video—situated in different database systems and remote repos-
+itories. Similar to real libraries, these digital collections are maintained via a catalog
+and organized in categories for online reference. Digital libraries “include personal,
+distributed, and centralized collections such as online public-access catalogs
+(OPACs) and bibliographic databases, distributed document databases, scholarly
+and professional discussion lists and electronic journals, other online databases,
+forums, and bulletin boards.”*”
+
+27.7.1 Web Analysis and Its Relationship
+to Information Retrieval
+
+In addition to browsing and searching the Web, another important activity closely
+related to information retrieval is to analyze or mine information on the Web for
+new information of interest. (We discuss mining of data from files and databases
+in Chapter 28.) Application of data analysis techniques for discovery and analysis
+of useful information from the Web is known as Web analysis. Over the past few
+years, the World Wide Web has emerged as an important repository of informa-
+tion for many day-to-day applications for individual consumers, as well as a sig-
+nificant platform for e-commerce and for social networking. These properties
+make it an interesting target for data analysis applications. The Web mining and
+analysis field is an integration of a wide range of fields spanning information
+retrieval, text analysis, natural language processing, data mining, machine learn-
+ing, and statistical analysis.
+
+The goals of Web analysis are to improve and personalize search results relevance
+and to identify trends that may be of value to various businesses and organizations.
+We elaborate on these goals next.
+
+= Finding relevant information. People usually search for specific informa-
+tion on the Web by entering keywords in a search engine or browsing infor-
+mation portals and using services. Search services are heavily constrained by
+search relevance problems since search engines must map and approximate
+the information need of millions of users as an a priori task. Low precision
+(see Section 27.6) ensues due to results that are nonrelevant to the user. In
+the case of the Web, high recall (see Section 27.6) is impossible to determine
+due to the inability to index all the pages on the Web. Also, measuring recall
+does not make sense since the user is concerned with only the top few docu-
+ments. The most relevant results for the user are typically from only the top
+few results.
+
+= Personalization of the information. Different people have different con-
+tent and presentation preferences. Various customization tools used in
+
+?7Covi and Kling (1996), page 672.

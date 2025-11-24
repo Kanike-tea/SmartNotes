@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+SPARSE MATRIX REPRESENTATON
+
+A linked list representation for sparse matrices.
+
+In data representation, each column of a sparse matrix is represented as a circularly linked
+list with a header node. A similar representation is used for each row of a sparsematrix.
+Each node has a tag field, which is used to distinguish between header nodes and entry
+nodes.
+
+Header Node:
+
+e Each header node has three fields: down, right, and next as shown in figure (a).
+
+e The down field is used to link into a column list and the right field to link into a
+
+row list.
+
+e The next field links the header nodes together.
+
+e The header node for row i is also the header node for column i, and the total
+number of header nodes is max {number of rows, number of columns}.
+
+Element node:
+
+e Each element node has five fields in addition in addition to the tag field: row, col,
+down, right, value as shown) in figure (b).
+
+e The down field is used to link to. the next nonzero term in the same column and the
+right field to link to the next nonzero term in the same row. Thus, if aij # 0,
+thereis a node with tag field = entry, value = aij, row = i, and col = j as shown in
+figure (¢).
+
+¢ Welink this node into the circular linked lists for rowi and column j. Hence,
+
+it is simultaneously linked into two different lists.
+
+next row | col | value
+
+down right down right
+
+(a) header node b) element node
+
+head field is not shown
+
+Figure: Node structure for sparse matrices
+
+vtucode.in 3

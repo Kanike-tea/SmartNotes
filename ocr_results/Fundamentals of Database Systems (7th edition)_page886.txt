@@ -1,0 +1,50 @@
+856
+
+Chapter 23 Distributed Database Concepts
+
+Choosing a New Coordinator Site in Case of Failure. Whenever a coordina-
+tor site fails in any of the preceding techniques, the sites that are still running must
+choose a new coordinator. In the case of the primary site approach with no backup
+site, all executing transactions must be aborted and restarted in a tedious recovery
+process. Part of the recovery process involves choosing a new primary site and cre-
+ating a lock manager process and a record of all lock information at that site. For
+methods that use backup sites, transaction processing is suspended while the
+backup site is designated as the new primary site and a new backup site is chosen
+and is sent copies of all the locking information from the new primary site.
+
+If a backup site X is about to become the new primary site, X can choose the new
+backup site from among the system’s running sites. However, if no backup site
+existed, or if both the primary and the backup sites are down, a process called
+election can be used to choose the new coordinator site. In this process, any site Y
+that attempts to communicate with the coordinator site repeatedly and fails to do so
+can assume that the coordinator is down and can start the election process by send-
+ing a message to all running sites proposing that Y become the new coordinator. As
+soon as Y receives a majority of yes votes, Y can declare that it is the new coordina-
+tor. The election algorithm itself is complex, but this is the main idea behind the
+election method. The algorithm also resolves any attempt by two or more sites to
+become coordinator at the same time. The references in the Selected Bibliography
+at the end of this chapter discuss the process in detail.
+
+23.3.2 Distributed Concurrency Control Based on Voting
+
+The concurrency control methods for replicated items discussed earlier all use the
+idea of a distinguished copy that maintains the locks for that item. In the voting
+method, there is no distinguished copy; rather, a lock request is sent to all sites that
+includes a copy of the data item. Each copy maintains its own lock and can grant or
+deny the request for it. If a transaction that requests a lock is granted that lock by a
+majority of the copies, it holds the lock and informs all copies that it has been
+granted the lock. If a transaction does not receive a majority of votes granting it a
+lock within a certain time-out period, it cancels its request and informs all sites of
+the cancellation.
+
+The voting method is considered a truly distributed concurrency control method,
+since the responsibility for a decision resides with all the sites involved. Simulation
+studies have shown that voting has higher message traffic among sites than do the
+distinguished copy methods. If the algorithm takes into account possible site fail-
+ures during the voting process, it becomes extremely complex.
+
+23.3.3 Distributed Recovery
+
+The recovery process in distributed databases is quite involved. We give only a very
+brief idea of some of the issues here. In some cases it is difficult even to determine
+whether a site is down without exchanging numerous messages with other sites. For

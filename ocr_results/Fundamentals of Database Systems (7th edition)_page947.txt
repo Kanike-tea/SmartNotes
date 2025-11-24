@@ -1,0 +1,51 @@
+25.2 Introduction to MapReduce and Hadoop
+
+initial requirements for Hadoop were to run batch processing using cases with a
+high degree of scalability. However, the circa 2006 Hadoop could only run on a
+handful of nodes. Later, Yahoo set up a research forum for the company’s data sci-
+entists; doing so improved the search relevance and ad revenue of the search engine
+and at the same time helped to mature the Hadoop technology. In 2011, Yahoo
+spun off Hortonworks as a Hadoop-centered software company. By then, Yahoo’s
+infrastructure contained hundreds of petabytes of storage and 42,000 nodes in the
+cluster. In the years since Hadoop became an open source Apache project, thou-
+sands of developers worldwide have contributed to it. A joint effort by Google,
+IBM, and NSF used a 2,000-node Hadoop cluster at a Seattle data center and helped
+further universities’ research on Hadoop. Hadoop has seen tremendous growth
+since the 2008 launch of Cloudera as the first commercial Hadoop company and
+the subsequent mushrooming of a large number of startups. IDC, a software indus-
+try market analysis firm, predicts that the Hadoop market will surpass $800 million
+in 2016; IDC predicts that the big data market will hit $23 billion in 2016. For more
+details about the history of Hadoop, consult a four-part article by Harris.'!
+
+An integral part of Hadoop is the MapReduce programming framework. Before we
+go any further, let us try to understand what the MapReduce programming paradigm
+is all about. We defer a detailed discussion of the HDFS file system to Section 25.3.
+
+25.2.2 MapReduce
+
+The MapReduce programming model and runtime environment was first described
+by Jeffrey Dean and Sanjay Ghemawat (Dean & Ghemawat (2004)) based on their
+work at Google. Users write their programs in a functional style of map and reduce
+tasks, which are automatically parallelized and executed on large clusters of com-
+modity hardware. The programming paradigm has existed as far back as the lan-
+guage LISP, which was designed by John McCarthy in late 1950s. However, the
+reincarnation of this way of doing parallel programming and the way this paradigm
+was implemented at Google gave rise to a new wave of thinking that contributed to
+the subsequent developments of technologies such as Hadoop. The runtime system
+handles many of the messy engineering aspects of parallelization, fault tolerance,
+data distribution, load balancing, and management of task communication. As long
+as users adhere to the contracts laid out by the MapReduce system, they can just
+focus on the logical aspects of this program; this allows programmers without dis-
+tributed systems experience to perform analysis on very large datasets.
+
+The motivation behind the MapReduce system was the years spent by the authors
+and others at Google implementing hundreds of special-purpose computations on
+large datasets (e.g., computing inverted indexes from Web content collected via
+Web crawling; building Web graphs; and extracting statistics from Web logs, such
+as frequency distribution of search requests by topic, by region, by type of user,
+etc.). Conceptually, these tasks are not difficult to express; however, given the scale
+
+"Derreck Harris : ‘The history of Hadoop: from 4 nodes to the future of data? at https://gigaom.com/
+2013/03/04/the-history-of-hadoop-from-4-nodes-to-the-future-of-data/
+
+917

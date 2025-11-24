@@ -1,0 +1,52 @@
+764 — Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+(a)
+
+Time
+
+©
+
+Time
+
+Figure 20.5
+
+T, Tr ) T, Tp
+read_item(X); read_item(X);
+X=X-N; =X+M;
+write_item(X); write_item(X);
+read_item(Y); Time read_item(X);
+
+Y=Y+N; X=X-N;
+write_item(Y); write_item(X);
+read_item(X); read_item(Y);
+X=X+M; Y=Y+N;
+write_item(X); write_item(Y);
+Schedule A Schedule B
+qt Ts qt Ta
+read_item(X); read_item(X);
+XX Ns, read_item(X); x temiX):
+X=X+M; ,
+write_item(X); Time read_item(X);
+read_item(Y); X=X+M
+write_item(X);
+ite_item(X);
+Y=Y4+N; write_item(X); read_item(Y);
+write_item(Y); Y=YtN;
+write_item(Y);
+Schedule C Schedule D
+
+Examples of serial and nonserial schedules involving transactions T; and To. (a) Serial schedule A: T; followed by
+To. (b) Serial schedule B: To followed by 7}. (c) Two nonserial schedules C and D with interleaving of operations.
+
+operation to complete, we cannot switch the CPU processor to another transaction,
+thus wasting valuable CPU processing time. Additionally, if some transaction T is
+long, the other transactions must wait for T to complete all its operations before
+starting. Hence, serial schedules are unacceptable in practice. However, if we can
+determine which other schedules are equivalent to a serial schedule, we can allow
+these schedules to occur.
+
+To illustrate our discussion, consider the schedules in Figure 20.5, and assume that
+the initial values of database items are X = 90 and Y = 90 and that N = 3 and M = 2.
+After executing transactions T, and T , we would expect the database values to be
+X = 89 and Y = 93, according to the meaning of the transactions. Sure enough, exe-
+cuting either of the serial schedules A or B gives the correct results. Now consider

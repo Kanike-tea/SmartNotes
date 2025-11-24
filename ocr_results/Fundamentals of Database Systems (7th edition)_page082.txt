@@ -1,0 +1,51 @@
+52
+
+Chapter 2 Database System Concepts and Architecture
+
+Homogeneous DDBMSs use the same DBMS software at all the sites, whereas
+heterogeneous DDBMSs can use different DBMS software at each site. It is also
+possible to develop middleware software to access several autonomous preexisting
+databases stored under heterogeneous DBMSs. This leads to a federated DBMS (or
+multidatabase system), in which the participating DBMSs are loosely coupled and
+have a degree of local autonomy. Many DDBMSs use client-server architecture, as
+we described in Section 2.5.
+
+The fourth criterion is cost. It is difficult to propose a classification of DBMSs
+based on cost. Today we have open source (free) DBMS products like MySQL and
+PostgreSQL that are supported by third-party vendors with additional services.
+The main RDBMS products are available as free examination 30-day copy versions
+as well as personal versions, which may cost under $100 and allow a fair amount of
+functionality. The giant systems are being sold in modular form with components
+to handle distribution, replication, parallel processing, mobile capability, and so
+on, and with a large number of parameters that must be defined for the configura-
+tion. Furthermore, they are sold in the form of licenses—site licenses allow unlim-
+ited use of the database system with any number of copies running at the customer
+site. Another type of license limits the number of concurrent users or the number
+of user seats at a location. Standalone single-user versions of some systems like
+Microsoft Access are sold per copy or included in the overall configuration of a
+desktop or laptop. In addition, data warehousing and mining features, as well as
+support for additional data types, are made available at extra cost. It is possible to
+pay millions of dollars for the installation and maintenance of large database sys-
+tems annually.
+
+We can also classify a DBMS on the basis of the types of access path options for
+storing files. One well-known family of DBMSs is based on inverted file structures.
+Finally, a DBMS can be general purpose or special purpose. When performance is
+a primary consideration, a special-purpose DBMS can be designed and built for a
+specific application; such a system cannot be used for other applications without
+major changes. Many airline reservations and telephone directory systems devel-
+oped in the past are special-purpose DBMSs. These fall into the category of online
+transaction processing (OLTP) systems, which must support a large number of
+concurrent transactions without imposing excessive delays.
+
+Let us briefly elaborate on the main criterion for classifying DBMSs: the data
+model. The relational data model represents a database as a collection of tables,
+where each table can be stored as a separate file. The database in Figure 1.2 resem-
+bles a basic relational representation. Most relational databases use the high-level
+query language called SQL and support a limited form of user views. We discuss
+the relational model and its languages and operations in Chapters 5 through 8, and
+techniques for programming relational applications in Chapters 10 and 11.
+
+The object data model defines a database in terms of objects, their properties, and
+their operations. Objects with the same structure and behavior belong to a class,
+and classes are organized into hierarchies (or acyclic graphs). The operations of

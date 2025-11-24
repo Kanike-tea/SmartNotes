@@ -1,0 +1,52 @@
+1. The Memory Hierarchy and Cache Memory
+
+Figure | reviews some of this information to show where a cache and write buffer fit in the
+
+hierarchy.
+1
+1
+1
+Chip |
+i
+1
+sons 4
+1
+1
+! Main
+
+1 memory
+Board |
+1
+1
+1
+1
+1
+1
+omen 4
+1
+1
+|
+
+perice H Secondary
+
+| storage
+
+1
+
+Fig 1: Memory hierarchy
+
+The innermost level of the hierarchy is at the processor core. This memory is so tightly coupled
+to the processor that in many ways it is difficult to think of it as separate from the processor. This
+memory is known as a register file. These registers are integral to the processor core and provide
+
+the fastest possible memory access in the system.
+
+At the primary level, memory components are connected to the processor core through dedicated
+on-chip interfaces. It is at this level we find tightly coupled memory (TCM) and level | cache.
+
+We talk more about caches in a moment.
+
+Also at the primary level is main memory. It includes volatile components like SRAM and
+DRAM, and nonvolatile components like flash memory. The purpose of main memory is to hold
+
+programs while they are running on a system.

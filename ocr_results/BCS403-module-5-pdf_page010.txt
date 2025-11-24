@@ -1,0 +1,54 @@
+Database Management System [BCS403]
+
+This can happen if the transactions are short and each transaction locks only a few
+
+items, or if the transaction load is light.
+
+= On the other hand, if transactions are long and each transaction uses many items, or if
+the transaction load is quite heavy, it may be advantageous to use a deadlock
+prevention scheme.
+
+= A simple way to detect a state of deadlock is for the system to construct and maintain a
+wait-for graph.
+
+= One node is created in the wait-for graph for each transaction that is currently executing.
+
+= Whenever a transaction Ti is waiting to lock an item X that is currently locked by a
+transaction Tj, a directed edge (Ti— Tj) is created in the wait-for graph.
+
+= When 7j releases the lock(s) on the items that Ti was waiting for, the directed edge is
+dropped from the wait-for graph.We have a state of deadlock if and only if the wait-for
+graph has a cycle.
+
+= One problem with this approach is the matter of determining when the system should
+check for a deadlock.
+
+= One possibility is to check for a cycle every time an edge is added to the wait-for graph,
+but this may cause excessive overhead.
+
+= Criteria such as the number of currently executing transactions or the period of time
+several transactions have been waiting to lock items may be used instead to check for a
+cycle. Figure 22.5(b) shows the wait-for graph for the (partial) schedule shown in Figure
+22.5(a).
+
+— Ifthe system is in a state of deadlock, some of the transactions causing the deadlock
+must be aborted.
+
+= Choosing which transactions to abort is known as victim selection.
+
+— The algorithm for victim selection should generally avoid selecting transactions that have
+been running for a long time and that have performed many updates, and it should try
+instead to select transactions that have not made many changes (younger transactions).
+
+= Timeouts
+
+« Another simple scheme to deal with deadlock is the use of timeouts.
+
+* This method is practical because of its low overhead and simplicity.
+
+* In this method, if a transaction waits for a period longer than a system-defined
+timeout period, the system assumes that the transaction may be deadlocked and
+
+aborts it—regardless of whether a deadlock actually exists or not.
+
+https://vtucode.in 32

@@ -1,0 +1,50 @@
+1094 Chapter 28 Data Mining Concepts
+
+28.6 Applications of Data Mining
+
+Data mining technologies can be applied to a large variety of decision-making con-
+texts in business. In particular, areas of significant payoffs are expected to include
+the following:
+
+= Marketing. Applications include analysis of consumer behavior based on
+buying patterns; determination of marketing strategies, including adver-
+tising, store location, and targeted mailing; segmentation of customers,
+stores, or products; and design of catalogs, store layouts, and advertising
+campaigns.
+
+= Finance. Applications include analysis of creditworthiness of clients; seg-
+mentation of account receivables; performance analysis of finance invest-
+ments like stocks, bonds, and mutual funds; evaluation of financing options;
+and fraud detection.
+
+= Manufacturing. Applications involve optimization of resources like
+machines, personnel, and materials; and optimal design of manufacturing
+processes, shop-floor layouts, and product design, such as for automobiles
+based on customer requirements.
+
+= Healthcare. Applications include discovery of patterns in radiological
+images, analysis of microarray (gene-chip) experimental data to cluster
+genes and to relate to symptoms or diseases, analysis of side effects of drugs
+and effectiveness of certain treatments, optimization of processes within a
+hospital, and analysis of the relationship between patient wellness data and
+doctor qualifications.
+
+28.7 Commercial Data Mining Tools
+
+Currently, commercial data mining tools use several common techniques to extract
+knowledge. These include association rules, clustering, neural networks, sequenc-
+ing, and statistical analysis. We discussed these earlier. Also used are decision trees,
+which are a representation of the rules used in classification or clustering, and sta-
+tistical analyses, which may include regression and many other techniques. Other
+commercial products use advanced techniques such as genetic algorithms, case-
+based reasoning, Bayesian networks, nonlinear regression, combinatorial optimiza-
+tion, pattern matching, and fuzzy logic. In this chapter, we have already discussed
+some of these.
+
+Most data mining tools use the ODBC (Open Database Connectivity) interface.
+ODBC is an industry standard that works with databases; it enables access to data in
+most of the popular database programs such as Access, dBASE, Informix, Oracle,
+and SQL Server. Some of these software packages provide interfaces to specific
+database programs; the most common are Oracle, Access, and SQL Server. Most of
+the tools work in the Microsoft Windows environment and a few work in the UNIX
+operating system. The trend is for all products to operate under the Microsoft

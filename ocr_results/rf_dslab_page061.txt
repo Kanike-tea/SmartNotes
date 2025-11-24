@@ -1,0 +1,71 @@
+ContentBeyondSyllabus
+
+1) /* program swaps the nodes of linked list
+ratherthanswappingthefieldfromthenodes.*/
+
+#include<stdio.h>#
+include<stdlib.h>
+
+/* BK linked list node
+*/structNode
+{
+intdata;
+structNode*next;
+
+Mi
+
+/* Function to swap nodes x and y in linked list
+bychanginglinks */
+
+voidswapNodes (structNode**head_ref, intx, inty
+
+{
+// Nothing to do if x and y are
+sameif (x==y) return;
+
+// Search for x (keep track of prevX and
+CurrXstructNode*prevX=NULL, *currX=*head_ref;whil
+e(currXé&currXx->data!
+
+{
+
+prevX=currX;
+currX=currX->next;
+
+// Search for y (keep track of prevY and
+CurrYstructNode*prevY=NULL, *currY=*head_ref;whil
+e(currY&&currY->data!=y
+{
+
+prevY=currY;
+
+currY=currY->next;
+
+// If either x or y is not present, nothing to
+doif (currX==NULL| | currY==NULL)
+return;
+
+// If x is not head of linked
+
+listif (prevX!=NULL
+prevX->next=currY;
+
+else//Elsemakeyasnewhead
+*head_ref=currY;
+
+// If y is not head of linked
+listif (prevY!=NULL
+prevY->next=currX;
+
+else//Elsemakexasnewhead
+*head_ref=currX;
+
+//Swapnextpointers
+structNode*temp=currY-
+>next;currY->next = currX-
+>next;currX->next= temp;
+
+/* Function to add a node at the beginning of List
+*/voidpush (structNode**head_ref, intnew_data
+
+61

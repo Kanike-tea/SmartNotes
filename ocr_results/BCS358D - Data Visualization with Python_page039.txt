@@ -1,0 +1,50 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 02 (b)
+
+2 b) Develop a python program to convert binary to decimal, octal to hexadecimal using
+functions.
+
+Aim: Demonstrating creation of functions, passing parameters and return values
+
+PROGRAM EXPLANATION
+
+The below program provides two functions: binary_to_decimal and octal_to_hexadecimal,
+which perform conversions between different number systems. Let's go through the program and
+
+its functions step by step:
+
+1. The binary_to_decimal function takes a binary number as input and converts it to
+decimal. It initializes two variables: decimal to store the decimal value, and power to
+keep track of the current power of 2.
+
+2. Inside the while loop, the function performs the conversion by extracting the rightmost
+digit of the binary number using the modulo operator (%) and multiplying it by the
+appropriate power of 2. The resulting value is added to the decimal variable. The binary
+number is then divided by 10 (integer division) to remove the rightmost digit, and the
+power is incremented by 1.
+
+3. Once the entire binary number has been processed (when binary becomes 0), the function
+returns the calculated decimal value.
+
+4. The octal_to_hexadecimal function takes an octal number as input and converts it to
+hexadecimal. It follows a similar approach to the previous function. It initializes decimal
+and power, and then performs the conversion by multiplying the rightmost digit of the
+octal number by the appropriate power of 8.
+
+5. After converting the octal number to decimal, the function initializes an empty string
+hexadecimal to store the hexadecimal representation. It also defines the string hex_digits
+containing the hexadecimal digits from 0 to F.
+
+6. The function then enters another while loop to convert the decimal number to
+hexadecimal. Inside the loop, it calculates the remainder of the decimal number divided
+by 16 using the modulo operator. It uses this remainder to retrieve the corresponding
+hexadecimal digit from hex_digits and appends it to the hexadecimal string.
+
+7. Finally, the decimal number is divided by 16 (integer division) to remove the least
+
+significant digit, and the loop continues until the decimal number becomes 0.
+
+8. The function returns the resulting hexadecimal string.
+
+Dept. of CSE 24 GSSSIETW, Mysuru

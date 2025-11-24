@@ -1,0 +1,53 @@
+Data Structures and Applications/BCS304 Module 1
+
+The function push remains the same except that MAX_STACK_ SIZE is replaced with capacity
+
+void push(element item)
+
+{
+if (top >=capacity-1)
+stackFullQ);
+stack[++top] = item;
+i
+
+The code for the pop function remains unchanged element
+
+pop()
+{/* delete and return the top element from the stack */
+if (top == -1)
+return stackEmpty(); /* returns an error key */
+return stack[top--];
+
+Stackfull with Array doubling:The code for stackFull is changed. The new code for stackFull
+attempts to increase the capacity of the array stack so that we can add an additional element to the
+stack. In array doubling, the capacity of the array is doubled whenever it becomes necessary to increase
+the capacity of an array.
+
+void stackFull()
+
+{
+stack=(int*)realloc(stack, 2 * capacity * sizeof(int))
+capacity =capacity * 2;
+
+i
+
+Analysis
+
+e In the worst case, the realloc function needs to allocate 2*capacity *sizeof (*stack) bytes of
+memory and copy capacity*sizeof (*stack)) bytes of memory from the old array into the new
+one.
+
+e Under the assumptions that memory may be allocated in O(1) time and that a stack element
+can be copied in O(1) time, the time required by array doubling is O(capacity). The total time
+spent in array doubling is of O(n) where n is the total number of push operations.
+
+e Hence even with the time spent on array doubling in the total time of push over all n pushes in
+O(n). This conclusion is valid even the stack array is resized by a factor c>1.
+
+Application of stack
+
+> Conversion of Expression
+> Evaluation of expression
+> Recursion
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 34

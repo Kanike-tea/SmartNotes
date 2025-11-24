@@ -1,0 +1,56 @@
+Lecture-32
+
+Query Optimization
+
+To enable the system to achieve (or improve) acceptable performance by choosing a better (if not the
+best) strategy during the process of a query. One of the great strengths to the relational database.
+
+Automatic Optimization vs. Human Programmer
+
+1. A good automatic optimizer will have a wealth of information available to it that human
+programmers typically do not have.
+
+2. An automatic optimizer can easily reprocess the original relational request when the
+organization of the database is changed. For a human programmer, reorganization would
+involve rewriting the program.
+
+3. The optimizer is a program, and therefore is capable of considering literally hundreds of
+different implementation strategies for a given request, which is much more than a human
+programmer can.
+
+4. The optimizer is available to a wide range of users, in an efficient and cost-effective manner.
+
+The Optimization Process
+1. Cast the query into some internal representation, such as a query tree structure.
+2. Convert the internal representation to canonical form.
+
+*A subset (say C) of a set of queries (say Q) is said to be a set of canonical forms for Q if and only if
+every query Q is equivalent to just one query in C.
+
+During this step, some optimization is already achieved by transforming the internal representation
+to a better canonical form.
+Possible improvements
+
+a. Doing the restrictions (selects) before the join.
+
+b. Reduce the amount of comparisons by converting a restriction condition to an equivalent
+condition in conjunctive normal form- that is, a condition consisting of a set of restrictions
+that are ANDed together, where each restriction in turn consists of a set of simple comparisons
+connected only by OR's.
+
+. Asequence of restrictions (selects) before the join.
+. In a sequence of projections, all but the last can be ignored.
+
+eno
+
+. A restriction of projection is equivalent to a projection of a restriction.
+f. Others
+3. Choose candidate low-level procedures by evaluate the transformed query.
+*Access path selection: Consider the query expression as a series of basic operations (join,
+restriction, etc.), then the optimizer choose from a set of pre-defined, low-level
+implementation procedures. These procedures may involve the user of primary key, foreign
+key or indexes and other information about the database.
+
+4. Generate query plans and choose the cheapest by constructing a set of candidate query plans first,
+then choose the best plan. To pick the best plan can be achieved by assigning cost to each
+given plan. The costs is computed according to the number of disk I/O's involved.

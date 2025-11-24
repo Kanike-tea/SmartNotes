@@ -1,0 +1,83 @@
+606 Appendix A ARM and Thumb Assembler Instructions
+
+4. SMLSD{X}<cond>
+5.
+
+6. SMLAL<x><y><cond>
+7. SMLALD{X}<cond>
+8. SMLSLD{X}<cond>
+Action
+
+1. Rd Rn +
+2. Rd Rn +
+3. Rd Rn +
+4. Rd Rn +
+5. RdHi:RdLo = RdHi
+6. RdHi:RdLo = RdHi
+7. RdHi:RdLo = RdHi
+8. RdHi:RdLo = RdHi
+Notes
+
+Rd, Rm, Rs, Rn
+
+{U|S}MLAL<cond>{S} RdLo, RdHi, Rm, Rs
+
+RdLo, RdHi, Rm, Rs
+RdLo, RdHi, Rm, Rs
+
+RdLo, RdHi, Rm, Rs
+
+(Rm.<x> * Rs.<y>)
+
+ARMv6
+
+ARMv3M.
+
+ARMv5E.
+
+ARMv6
+
+ARMv6
+
+(((signed)Rm * Rs.<y>) >> 16)
+
+Rm.B*<rotated_Rs>.B + Rm
+
+Rm.B*<rotated_Rs>.B - Rm
+
+:RdLo + (Rm * Rs)
+:RdLo + (Rm.<x> * Rm.<y>)
+:RdLo + Rm.B*<rotated_Rs>
+
+:RdLo + Rm.B*<rotated_Rs>
+
+=< and <y> can be Bor T.
+
+.T*<rotated_Rs>.T
+
+.T*<rotated_Rs>.T
+
+«B + Rm.T*<rotated_Rs>.T
+
+«B - Rm.T*<rotated_Rs>.T
+
+= = Rm.Bis shorthand for (sign-extend)Rm[15:00], the bottom 16 bits of Rm.
+= Rm.Tis shorthand for (sign-extend)Rm{31:16], the top 16 bits of Rm.
+
+= = <rotated_Rs> is Rs if you do not specify the X suffix or Rs ROR 16 if you do specify the
+
+X suffix.
+
+= = RdHiand RdLo must be different registers. For format 5, Rm must be a different register
+
+from RdHi and RdLo.
+= Formats | to 4 update the cpsr Q-flag: Q = Q| <SignedOverflow>.
+
+= Format 5 implements an unsigned multiply with the U prefix or a signed multiply with
+
+the S prefix.
+
+= Format 5 updates the cpsr if the S suffix is present: N = RdHi[31], Z = (RdHi=='
+&& RdLo==0); the Cand V flags are unpredictable. Avoid using {U|S}MLALS because
+
+implementations often impose penalty cycles for this operation.

@@ -1,0 +1,50 @@
+27.4 Text Preprocessing
+
+for wildcard searches in Web search engines involves preprocessing overhead and is
+not generally implemented by many Web search engines today.!” Retrieval models do
+not directly provide support for this query type. Lucene’® provides support for certain
+types of wildcard queries. The query parser in Lucene computes a large Boolean query
+combining all combinations and expansions of words from the index.
+
+27.3.6 Natural Language Queries
+
+There are a few natural language search engines that aim to understand the structure
+and meaning of queries written in natural language text, generally as a question or nar-
+rative. This is an active area of research that employs techniques like shallow semantic
+parsing of text, or query reformulations based on natural language understanding. The
+system tries to formulate answers for such queries from retrieved results. Some search
+systems are starting to provide natural language interfaces to provide answers to spe-
+cific types of questions, such as definition and factoid questions, which ask for defini-
+tions of technical terms or common facts that can be retrieved from specialized
+databases. Such questions are usually easier to answer because there are strong linguis-
+tic patterns giving clues to specific types of sentences—for example, ‘defined as’ or
+‘refers to’. Semantic models can provide support for this query type.
+
+27.4 Text Preprocessing
+
+In this section, we review the commonly used text preprocessing techniques that
+are part of the text processing task in Figure 27.1.
+
+27.4.1 Stopword Removal
+
+Stopwords are very commonly used words in a language that play a major role in the
+formation of a sentence but that seldom contribute to the meaning of that sentence.
+Words that are expected to occur in 80% or more of the documents in a collection
+are typically referred to as stopwords, and they are rendered potentially useless.
+Because of the commonness and function of these words, they do not contribute
+much to the relevance of a document for a query search. Examples include words
+such as the, of, to, a, and, in, said, for, that, was, on, he, is, with, at, by, and it. These
+words are presented here with decreasing frequency of occurrence from a large cor-
+pus of documents called AP89.!° The fist six of these words account for 20% of all
+words in the listing, and the most frequent 50 words account for 40% of all text.
+
+Removal of stopwords from a document must be performed before indexing. Arti-
+cles, prepositions, conjunctions, and some pronouns are generally classified as stop-
+words. Queries must also be preprocessed for stopword removal before the actual
+retrieval process. Removal of stopwords results in elimination of possible spurious
+
+'7See http://wwwilivinginternet.com/w/wu_expert_wild.htm for further details.
+'8http://lucene.apache.org/
+'9For details, see Croft et al. (2009), pages 75-90.
+
+1037

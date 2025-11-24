@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+RESULTi RESULT2 RESULT
+
+Ssn Ssn Ssn
+123456789 333445555 123456789
+333445555 | 888665555 333445555
+666884444 666884444
+453453453 453453453
+888665555
+
+Single relational algebra expression:
+Result <— msn (6pno=s (EMPLOYEE) ) U  asuper_ssn (6dno=s (EMPLOYEE))
+
+UNION, INTERSECTION and SET DIFFERENCE are binary operations; that is, each is applied to
+two sets (of tuples). When these operations are adapted to relational databases, the two relations on
+which any of these three operations are applied must have the same type of tuples; this condition has
+been called union compatibility or type compatibility.
+
+Two relations R(Ai, Ao, ..., An) and S(Bi, Bos...., Bn) are said to be union compatible (or type
+
+compatible) if they have the same degree n and if dom(Ai) = dom(B)) for 1 <i < n.This means that
+the two relations have the same number of attributes and each corresponding pair of attributes has
+the same domain.
+
+Both UNION and INTERSECTION are commutative operations; that is,
+RUS=SURandRNS=SOR
+
+Both UNION and INTERSECTION can be treated as n-ary operations applicable to any number of
+relations because both are also associative operations; that is,
+
+RU(SUT)=(RUS)UTand(RNS)NT=RN(SNT)
+The MINUS operation is not commutative; that is, in general,
+R-S#S-R
+INTERSECTION can be expressed in terms of union and set difference as follows:
+RNS=(RUS)-(R-S))-(S—R)
+
+In SQL, there are three operations—UNION, INTERSECT, and EXCEPT—that correspond to the
+set operations
+
+https://vtucode.in Page 22

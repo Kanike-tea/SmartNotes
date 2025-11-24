@@ -1,0 +1,52 @@
+24.1 Introduction to NOSQL Systems
+
+= Some NOSQL systems, such as OrientDB, combine concepts from many of
+the categories discussed above.
+
+= In addition to the newer types of NOSQL systems listed above, it is also pos-
+sible to classify database systems based on the object model (see Chapter 12)
+or on the native XML model (see Chapter 13) as NOSQL systems, although
+they may not have the high-performance and replication characteristics of
+the other types of NOSQL systems.
+
+These are just a few examples of NOSQL systems that have been developed. There
+are many systems, and listing all of them is beyond the scope of our presentation.
+
+24.1.2 Characteristics of NOSQL Systems
+
+We now discuss the characteristics of many NOSQL systems, and how these sys-
+tems differ from traditional SQL systems. We divide the characteristics into two
+categories—those related to distributed databases and distributed systems, and
+those related to data models and query languages.
+
+NOSQL characteristics related to distributed databases and distributed
+systems. NOSQL systems emphasize high availability, so replicating the data is
+inherent in many of these systems. Scalability is another important characteristic,
+because many of the applications that use NOSQL systems tend to have data that
+keeps growing in volume. High performance is another required characteristic,
+whereas serializable consistency may not be as important for some of the NOSQL
+applications. We discuss some of these characteristics next.
+
+1. Scalability: As we discussed in Section 23.1.4, there are two kinds of scal-
+ability in distributed systems: horizontal and vertical. In NOSQL systems,
+horizontal scalability is generally used, where the distributed system is
+expanded by adding more nodes for data storage and processing as the vol-
+ume of data grows. Vertical scalability, on the other hand, refers to expand-
+ing the storage and computing power of existing nodes. In NOSQL systems,
+horizontal scalability is employed while the system is operational, so tech-
+niques for distributing the existing data among new nodes without inter-
+rupting system operation are necessary. We will discuss some of these
+techniques in Sections 24.3 through 24.6 when we discuss specific systems.
+
+2. Availability, Replication and Eventual Consistency: Many applications
+that use NOSQL systems require continuous system availability. To accom-
+plish this, data is replicated over two or more nodes in a transparent man-
+ner, so that if one node fails, the data is still available on other nodes.
+Replication improves data availability and can also improve read perfor-
+mance, because read requests can often be serviced from any of the repli-
+cated data nodes. However, write performance becomes more cumbersome
+because an update must be applied to every copy of the replicated data items;
+this can slow down write performance if serializable consistency is required
+(see Section 23.3). Many NOSQL applications do not require serializable
+
+885

@@ -1,0 +1,54 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+6. The resulting plot should show a histogram of the randomly generated data with 20 bins,
+displaying the distribution of values and their frequencies. The transparency (alpha) is set
+
+to 0.7, and the edges of the bins are colored black for better visibility.
+
+PROGRAM
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate random data for the histogram
+data = np.random.randn(1000) # Sample 1000 data points from a normal
+distribution
+
+# Create a histogram plot
+plt.hist (data, bins=20, edgecolor='black', alpha=0.7)
+
+# Add labels and a title
+
+plt.xlabel ('Values')
+
+plt.ylabel ('Frequency')
+plt.title('Histogram Plot Example')
+
+# Show the plot
+plt.show()
+
+OUTPUT
+
+o%) Figure 1
+
+Histogram Plot Example
+
+120
+
+100
+
+80
+
+60
+
+Frequency
+
+20
+
+3 —2
+Values
+
+| <|>| +/Q\=|
+
+SSR aR ook ako ak
+
+Dept. of CSE 40 GSSSIETW, Mysuru

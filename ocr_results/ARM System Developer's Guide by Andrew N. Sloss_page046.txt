@@ -1,0 +1,51 @@
+2.4 Exceptions, Interrupts, and the Vector Table 33
+
+2.4 EXCEPTIONS, INTERRUPTS, AND THE VECTOR
+TABLE
+
+Table 2.6
+
+When an exception or interrupt occurs, the processor sets the pe to a specific memory
+address. The address is within a special address range called the vector table. The entries
+in the vector table are instructions that branch to specific routines designed to handle a
+particular exception or interrupt.
+
+The memory map address 0x00000000 is reserved for the vector table, a set of 32-bit
+words. On some processors the vector table can be optionally located at a higher address
+in memory (starting at the offset Oxfff0000). Operating systems such as Linux and
+Microsoft’s embedded products can take advantage of this feature.
+
+When an exception or interrupt occurs, the processor suspends normal execution and
+starts loading instructions from the exception vector table (see Table 2.6). Each vector table
+entry contains a form of branch instruction pointing to the start of a specific routine:
+
+= Reset vector is the location of the first instruction executed by the processor when power
+is applied. This instruction branches to the initialization code.
+
+=~ Undefined instruction vector is used when the processor cannot decode an instruction.
+
+= Software interrupt vector is called when you execute a SWI instruction. The SWI
+instruction is frequently used as the mechanism to invoke an operating system routine.
+
+= Prefetch abort vector occurs when the processor attempts to fetch an instruction from an
+address without the correct access permissions. The actual abort occurs in the decode
+stage.
+
+=~ Data abort vector is similar to a prefetch abort but is raised when an instruction attempts
+to access data memory without the correct access permissions.
+
+= Interrupt request vector is used by external hardware to interrupt the normal execution
+flow of the processor. It can only be raised if IRQs are not masked in the cpsr.
+
+The vector table.
+
+Exception/interrupt Shorthand ‘Address High address
+Reset RESET 0x00000000 oxf##0000
+Undefined instruction UNDEF 0x00000004 Oxf ff #0004
+Software interrupt SWI 0x00000008 oxfff#0008
+Prefetch abort PABT 0x0000000c Oxf ff #000c
+Data abort DABT 0x00000010 oxff##0010
+Reserved = 0x00000014 oxfff#0014
+Interrupt request IRQ 0x00000018 oxfff#0018
+
+Fast interrupt request FIQ 0x0000001c Oxf fff001c

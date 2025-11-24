@@ -1,0 +1,54 @@
+8.1 Unary Relational Operations: SELECT and PROJECT
+
+Chapters 6 and 7 are based on the tuple relational calculus. The relational calculus
+is a formal language, based on the branch of mathematical logic called predicate
+calculus. In tuple relational calculus, variables range over tuples, whereas in
+domain relational calculus, variables range over the domains (values) of attributes.
+In Appendix C we give an overview of the Query-By-Example (QBE) language,
+which is a graphical user-friendly relational language based on domain relational
+calculus. Section 8.8 summarizes the chapter.
+
+For the reader who is interested in a less detailed introduction to formal relational
+languages, Sections 8.4, 8.6, and 8.7 may be skipped.
+
+8.1 Unary Relational Operations:
+SELECT and PROJECT
+
+8.1.1 The SELECT Operation
+
+The SELECT operation is used to choose a subset of the tuples from a relation that
+satisfies a selection condition.’ We can consider the SELECT operation to be a filter
+that keeps only those tuples that satisfy a qualifying condition. Alternatively, we can
+consider the SELECT operation to restrict the tuples in a relation to only those tuples
+that satisfy the condition. The SELECT operation can also be visualized as a horizon-
+tal partition of the relation into two sets of tuples—those tuples that satisfy the con-
+dition and are selected, and those tuples that do not satisfy the condition and are
+filtered out. For example, to select the EMPLOYEE tuples whose department is 4, or
+those whose salary is greater than $30,000, we can individually specify each of these
+two conditions with a SELECT operation as follows:
+
+Opno=4(EMPLOYEE)
+Gsalary>30000(EMPLOYEE)
+
+In general, the SELECT operation is denoted by
+
+G <selection condition>(R)
+
+where the symbol (sigma) is used to denote the SELECT operator and the selec-
+tion condition is a Boolean expression (condition) specified on the attributes of
+relation R. Notice that R is generally a relational algebra expression whose result is a
+relation—the simplest such expression is just the name of a database relation. The
+relation resulting from the SELECT operation has the same attributes as R.
+
+The Boolean expression specified in <selection condition> is made up of a number
+of clauses of the form
+
+<attribute name> <comparison op> <constant value>
+
+2in this chapter no familiarity with first-order predicate calculus—which deals with quantified variables
+and values—is assumed
+
+The SELECT operation is different from the SELECT clause of SQL. The SELECT operation chooses
+tuples from a table, and is sometimes called a RESTRICT or FILTER operation.
+
+241

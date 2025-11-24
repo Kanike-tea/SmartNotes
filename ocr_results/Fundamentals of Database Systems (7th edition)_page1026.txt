@@ -1,0 +1,51 @@
+996
+
+Chapter 26 Enhanced Data Models
+
+A typical image database query would be to find images in the database that are
+similar to a given image. The given image could be an isolated segment that con-
+tains, say, a pattern of interest, and the query is to locate other images that contain
+that same pattern. There are two main techniques for this type of search. The first
+approach uses a distance function to compare the given image with the stored
+images and their segments. If the distance value returned is small, the probability of
+a match is high. Indexes can be created to group stored images that are close in the
+distance metric so as to limit the search space. The second approach, called the
+transformation approach, measures image similarity by having a small number of
+transformations that can change one image’s cells to match the other image. Trans-
+formations include rotations, translations, and scaling. Although the transforma-
+tion approach is more general, it is also more time-consuming and difficult.
+
+A video source is typically represented as a sequence of frames, where each frame is
+a still image. However, rather than identifying the objects and activities in every
+individual frame, the video is divided into video segments, where each segment
+comprises a sequence of contiguous frames that includes the same objects/activi-
+ties. Each segment is identified by its starting and ending frames. The objects and
+activities identified in each video segment can be used to index the segments. An
+indexing technique called frame segment trees has been proposed for video index-
+ing. The index includes both objects, such as persons, houses, and cars, as well as
+activities, such as a person delivering a speech or two people talking. Videos are also
+often compressed using standards such as MPEG.
+
+Audio sources include stored recorded messages, such as speeches, class presenta-
+tions, or even surveillance recordings of phone messages or conversations by law
+enforcement. Here, discrete transforms can be used to identify the main character-
+istics of a certain person’s voice in order to have similarity-based indexing and
+retrieval. We will briefly comment on their analysis in Section 26.4.4.
+
+A text/document source is basically the full text of some article, book, or magazine.
+These sources are typically indexed by identifying the keywords that appear in the
+text and their relative frequencies. However, filler words or common words called
+stopwords are eliminated from the process. Because there can be many keywords
+when attempting to index a collection of documents, techniques have been devel-
+oped to reduce the number of keywords to those that are most relevant to the col-
+lection. A dimensionality reduction technique called singular value decomposition
+(SVD), which is based on matrix transformations, can be used for this purpose. An
+indexing technique called telescoping vector trees (TV-trees) can then be used to
+group similar documents. Chapter 27 discusses document processing in detail.
+
+26.4.1 Automatic Analysis of Images
+
+Analysis of multimedia sources is critical to support any type of query or search
+interface. We need to represent multimedia source data such as images in terms of
+features that would enable us to define similarity. The work done so far in this area
+uses low-level visual features such as color, texture, and shape, which are directly

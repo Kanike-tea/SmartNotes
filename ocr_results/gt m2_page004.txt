@@ -1,0 +1,38 @@
+large graph as a combination of small ones and to derive its properties from
+those of the small ones. Since graphs are defined in terms of the sets of vertices
+and edges, it is natural to employ the set-theoretical terminology to define
+operations between graphs. In particular:
+
+The union of two graphs G, = (Vj, E,) and Gy = (V», E>) is another graph G3
+(written as G3 = G, LU G2) whose vertex set V3 = V, LU V> and the edge set E3 =
+E, U Ep. Likewise, the intersection G, () Gz of graphs G, and G, is a graph Gy
+consisting only of those vertices and edges that are in both G, and G». The ring
+sum of two graphs G, and G, (written as G; ® G,) is a graph consisting of the
+vertex set V, LU V, and of edges that are either in G, or G,, but not in both. Two
+graphs and their union, intersection, and ring sum are shown in Fig. 2-14.
+
+It is obvious from their definitions that the three operations just mentioned are
+commutative. That is,
+
+G1UG2=G2UG1, 61 G2 = 621 G1,
+G1 ® Gp = Go @ Gy.
+
+If G, and Gy are edge disjoint, then G, () Gp is a null graph, and G; ® Gy =
+G, U G). If G, and G, are vertex disjoint, then G, () G, is empty. For any graph
+G,
+
+GUG=G[\G=G,
+and
+G ® G=anull graph.
+
+If g is a subgraph of G, then G © g is, by definition, that subgraph of G which
+remains after all the edges in g have been removed from G. Therefore, G @ g is
+written as G — g, whenever g C G. Because of this complementary nature, G ®
+g = G~g is often called the complement of g in G.
+
+Decomposition: A graph G is said to have been decomposed into two
+subgraphs g, and gp if
+
+m1U 92=6,
+and
+911) g2 =a null graph.

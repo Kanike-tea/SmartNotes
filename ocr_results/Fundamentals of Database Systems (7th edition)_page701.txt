@@ -1,0 +1,50 @@
+18.4 Implementing the JOIN Operation 671
+
+Figure 18.3 (continued)
+
+Implementing JOIN, PROJECT, UNION, INTERSECTION, and SET DIFFERENCE by using
+sort-merge, where R has n tuples and Shas m tuples. (c) Implementing the operation T— RU S.
+(d) Implementing the operation T<— RO S. (e) Implementing the operation TR - S.
+
+(©) sort the tuples in R and S using the same unique sort attributes;
+seti1,j1;
+while (i < n) and (j < m)
+do { if RU) > S(j)
+then { output S(j) to 7;
+setj—j+1
+}
+elseif R(i) < S(/)
+then { output R(i) to T;
+seticit+ 1
+}
+else set j<—j+1 (* R(i)=S(/), so we skip one of the duplicate tuples *)
+}
+if (i <n) then add tuples R(i) to R(n) to T;
+if (j < m) then add tuples S(j) to S(m) to T;
+
+(d.
+
+sort the tuples in R and S using the same unique sort attributes;
+seti1,j1;
+while (i < n) and (j< m)
+do {if RU) > S(/)
+then set /<—j+1
+elseif R(i) < S(/)
+then set /<—i+1
+else { output R(/) to T; (* R(i) = S(/), so we output the tuple *)
+seticittjoj+t
+}
+}
+
+(e) sort the tuples in R and S using the same unique sort attributes;
+seti1,j1;
+while (j < n) and (j < m)
+do { if RU) > S(/)
+then set /<—j+1
+elseif R(i) < S(/)
+then { output R(i) to T; (* R(/) has no matching S(/), so output R(/) *)
+setic—i+1
+}
+else seti i+ 1,f/jt+1
+}
+if (i <n) then add tuples R() to R(n) to T;

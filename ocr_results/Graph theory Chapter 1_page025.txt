@@ -1,0 +1,52 @@
+1. Directed Graphs and Gray,
+
+f the handshaking property.
+
+raph, the number of vertices of odd degrees is even.
+
+Proof: Consider a graph with 1 vertices. Suppose k of these vertices are of odd degree so thy
+Proot: te the vertices with odd degree by v,, ),
+
+the remaining n — k vertices are of even degree. Deno
+_, ve and the vertices with even degree by Vi+1, Vk+2+---* vn. Then the sum of the degree;
+
+The following theorem is a direct consequence 0:
+
+Theorem : In every 8
+
+V3505
+of the vertices is
+
+n k n
+
+Yi deg(vi) = dy dear) + » deg(vi) (1)
+i=l i=l i=k+1
+
+In view of the hand shaking property, the sum on the left hand side of the above expression
+
+is equal to twice the number of edges in the graph. As such, this sum is even. Further, the
+
+second sum in the right hand side is the sum of the degrees of vertices with even degrees. As
+
+such, this sum is also even. Therefore, the first sum in the right hand side must also be even,
+
+that is,
+
+Q)
+
+deg(v;) + deg(v2) + --» + deg(vz) = even.
+But, each of deg(v;), deg(v2), .--. deg(v,) is odd. Therefore, the number of terms in the left
+hand side of (2) must be even, that is, k is even.
+This completes the proof of the theorem.
+Note: According to the above theorem, in any graph, there is an even num!
+odd degrees. But, it is not true in general that a graph must have an odd number of vertices of
+even degrees. Observe that the graph shown in Figure 1.33 has an even number of vertices of
+
+ber of vertices of
+
+even degrees.
+
+For the graph shown in Figure 1.39, indicate the degree of each vertex and verify.
+the handshaking property:
+
+Figure 1.39

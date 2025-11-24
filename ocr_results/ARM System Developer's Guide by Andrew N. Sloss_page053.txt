@@ -1,0 +1,46 @@
+40 Chapter 2. ARM Processor Fundamentals
+
+Table 2.8
+
+Table 2.9
+
+Description of the cpsr.
+
+Parts Bits Architectures Description
+Mode 4:0 all processor mode
+T 5 ARMv4T Thumb state
+I&F 7:6 all interrupt masks
+J 24 ARMVSTEJ Jazelle state
+
+Q 27 ARMv5TE condition flag
+Vv 28 all condition flag
+Cc 29 all condition flag
+Zz 30 all condition flag
+N 31 all condition flag
+
+ARM family attribute comparison.
+
+ARM7 ARM9 ARM10 ARMII1
+Pipeline depth _ three-stage five-stage six-stage eight-stage
+Typical MHz 80 150 260 335
+mW/MHz* 0.06 mW/MHz —0.19mW/MHz —0.5mW/MHz 0.4 mW/MHz
+(+ cache) (+ cache) (+ cache)
+MIPS?/MHz 0.97 Ll 13 12
+Architecture Von Neumann Harvard Harvard Harvard
+Multiplier 8 x 32 8 x 32 16 x 32 16 x 32
+
+* Watts/MHz on the same 0.13 micron process.
+> MIPS are Dhrystone VAX MIPS.
+
+2.7.1. ARM7 FAMILY
+
+The ARM7 core has a Von Neumann-style architecture, where both data and instructions
+use the same bus. The core has a three-stage pipeline and executes the architecture ARMv4T
+instruction set.
+
+The ARM7TDMI was the first of a new range of processors introduced in 1995 by ARM.
+It is currently a very popular core and is used in many 32-bit embedded processors. It
+provides a very good performance-to-power ratio. The ARM7TDMI processor core has
+been licensed by many of the top semiconductor companies around the world and is
+the first core to include the Thumb instruction set, a fast multiply instruction, and the
+EmbeddedICE debug technology.

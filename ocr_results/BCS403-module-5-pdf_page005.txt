@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+= A transaction is said to follow the two-phase locking protocol if a// locking operations
+(read_lock, write_lock) precede the first unlock operation in the transaction
+= Such a transaction can be divided into two phases:
+= Expanding or growing (first) phase, during which new locks on items can be
+acquired but none can be released
+= Shrinking (second) phase, during which existing locks can be released but no
+new locks can be acquired
+= If lock conversion is allowed, then upgrading of locks (from read-locked to write-locked)
+
+must be done during the expanding phase, and downgrading of locks (from write-locked
+to read-locked) must be done in the shrinking phase.
+= Transactions 71 and T2 in Figure 22.3(a) do not follow the two-phase locking protocol
+because the write_lock(X) operation follows the unlock( Y) operation in 71, and similarly
+the write_lock(Y) operation follows the unlock(X) operation in 72.
+(a) T, T,
+4 3 (b) Initial values: X=20, Y=30
+read_lock(Y); read _lock(X);
+read_item(Y); tead,item(X); Result serial schedule T,
+unlock(Y); unlock(X); ‘ L
+write_lock(X); write_lock(Y); followed by Ty: X00, Y=80
+read_item(X); tead_item(Y);
+X=X+Y; Y=X+Y Result of serial schedule T,
+write_item(X); | write item(Y); followed by T,: X=70, Y=50
+unlock(X); unlock(Y);
+() T, T,
+read_lock(Y);
+read_item(Y);
+unlock(Y);
+read_lock(X);
+read_item(X);
+unlock(X);
+write_lock(Y);
+Ths read_item(Y);
+Y=X+Y
+write_item(Y);
+unlock(Y); Figure 21.3 Transactions that do not
+write_lock(X); obey two-phase locking (a) Two
+read_item(X); transactions 71 and 72 (b) Results of
+y cise possible serial schedules of 71 and T2
+unlock(x); (c) A nonserializable schedule S that
+uses locks
+
+https://vtucode.in 27

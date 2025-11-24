@@ -1,0 +1,63 @@
+114 Chapter 5 Efficient C Programming
+
+Here is the last version of the 64-word packet checksum routine we studied in
+Section 5.2. This shows how the compiler treats a loop with incrementing count i++.
+
+int checksum_v5(int *data)
+
+{
+unsigned int i;
+‘int sum=0;
+
+for (i=0; i<64; i++)
+{
+
+sum += *(datat+) ;
+}
+
+return sum;
+
+This compiles to
+
+checksum_v5
+
+Mov r2,r0
+Mov 10, #0
+Mov r1,#0
+checksum_v5_loop
+LOR r3, [2] #4
+ADD rl,rl,#l
+cmp 1, #0x40
+ADD 10,73, r0
+BCC checksum_v5_loop
+Mov pe, rl4
+
+13 =
+in
+compare i, 64
+
+sum += 73
+
+if (i<64) goto loop
+return sum
+
+*(datat+)
+
+It takes three instructions to implement the for loop structure:
+
+= AnADD to increment i
+
+= A compare to check if 4 is less than 64
+
+= A conditional branch to continue the loop if i < 64
+
+This is not efficient. On the ARM, a loop should only use two instructions:
+
+= A subtract to decrement the loop counter, which also sets the condition code flags on
+
+the result
+
+= A conditional branch instruction
+
+The key point is that the loop counter should count down to zero rather than counting
+up to some arbitrary limit. Then the comparison with zero is free since the result is stored

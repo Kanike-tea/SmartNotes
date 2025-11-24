@@ -1,0 +1,87 @@
+corresponding to each square can be obtained from the concatenation of the row number with the column
+
+number. For example, the numbers of the third row (11) and the second column (01), when concatenated,
+
+give the binary number 110
+
+second column represents mi
+
+interm m13.
+
+m
+
+ma
+
+ms
+
+my
+
+me
+
+my
+
+ms
+
+ms
+
+my
+
+ms
+
+my
+
+my
+
+my
+
+(a)
+
+, the binary equivalent of decimal 13. Thus, the square in the third row and
+
+OL] w'xy'z’ | w'xy'z | w'xyz | w'xyz’
+
+11} wxy’z’ | wxy'z | ways | wxyz
+
+10} wx'y'’ | we'y'z | wx'yz | wx'yz’
+
+(b)
+
+The map is considered to lie on a surface with the top and bottom edges, as well as the right and left
+
+edges, touching each other to form adjacent squares. For example, m0 and m2 form adjacent squares, as
+
+do m3 and m11. The combination of adjacent squares that is useful during the simplification process is
+
+easily determined from inspection of the four-variable map:
+
+e
+
+e
+
+e
+
+e
+
+e
+
+One square represents one minterm, giving a term with four literals.
+
+Two adjacent squares represent a term with three literals.
+
+Four adjacent squares represent a term with two literals.
+
+Eight adjacent squares represent a term with one literal.
+
+Sixteen adjacent squares produce a function that is always equal to 1.
+
+No other combination of squares can simplify the function
+
+e
+
+Simplify the Boolean function F (w, x, y, z) = X(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)
+
+w'yz!
+
+xyz’
+
+F=y'+ w'z'+ xz'

@@ -1,0 +1,31 @@
+Database Management System [BCS403]
+
+pad
+
+Workers behind the Scene
+
+1. DBMS system designers and implementers: design and implement the DBMS modules and
+interfaces as a software package. A DBMS is a very complex software system that consists of
+many components, or modules, including modules for implementing the catalog, query
+language processing, interface processing, accessing and buffering data, controlling
+concurrency, and handling data recovery and security.
+
+2. Tool developers: design and implement tools that facilitate database modeling and design,
+database system design, and improved performance.
+
+3. Operators and maintenance personnel (system administration personnel) : responsible for
+the actual running and maintenance of the hardware and software environment for the database
+
+system.
+
+1.3 Advantages of Using the DBMS Approach
+
+1. Controlling Redundancy
+Data redundancy such as tends to occur in the "file processing" approach leads to wasted
+storage space, duplication of effort and a higher likelihood of the introduction of
+inconsistency.
+In the database approach, the views of different user groups are integrated during database
+
+design. This is known as data normalization, and it ensures consistency and saves storage
+
+https://vtucode.in Page 11

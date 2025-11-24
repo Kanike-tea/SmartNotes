@@ -1,0 +1,48 @@
+Review Questions 909
+
+A full discussion of all the features and interfaces of Neo4j is outside the scope of
+our presentation. Full documentation of Neo4j is available online (see the biblio-
+graphic notes).
+
+24.7 Summary
+
+In this chapter, we discussed the class of database systems known as NOSQL sys-
+tems, which focus on efficient storage and retrieval of large amounts of “big data.”
+Applications that use these types of systems include social media, Web links, user
+profiles, marketing and sales, posts and tweets, road maps and spatial data, and
+e-mail. The term NOSQL is generally interpreted as Not Only SQL—rather than
+NO to SQL—and is meant to convey that many applications need systems other
+than traditional relational SQL systems to augment their data management needs.
+These systems are distributed databases or distributed storage systems, with a focus
+on semistructured data storage, high performance, availability, data replication,
+and scalability rather than an emphasis on immediate data consistency, powerful
+query languages, and structured data storage.
+
+In Section 24.1, we started with an introduction to NOSQL systems, their charac-
+teristics, and how they differ from SQL systems. Four general categories of NOSQL
+systems are document-based, key-value stores, column-based, and graph-based.
+In Section 24.2, we discussed how NOSQL systems approach the issue of consis-
+tency among multiple replicas (copies) by using the paradigm known as eventual
+consistency. We discussed the CAP theorem, which can be used to understand the
+emphasis of NOSQL systems on availability. In Sections 24.3 through 24.6, we
+presented an overview of each of the four main categories of NOSQL systems—
+starting with document-based systems in Section 24.3, followed by key-value
+stores in Section 24.4, then column-based systems in Section 24.5, and finally
+graph-based systems in Section 24.6. We also noted that some NOSQL systems
+may not fall neatly into a single category but rather use techniques that span two
+or more categories.
+
+Review Questions
+24.1. For which types of applications were NOSQL systems developed?
+
+24.2. What are the main categories of NOSQL systems? List a few of the NOSQL
+systems in each category.
+
+24.3. What are the main characteristics of NOSQL systems in the areas related to
+data models and query languages?
+
+24.4. What are the main characteristics of NOSQL systems in the areas related to
+distributed systems and distributed databases?
+
+24.5. What is the CAP theorem? Which of the three properties (consistency,
+availability, partition tolerance) are most important in NOSQL systems?

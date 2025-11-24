@@ -1,0 +1,54 @@
+346
+
+Chapter 11 Web Database Programming Using PHP
+
+dynamic arrays, with no fixed number of elements. They can be numerically
+indexed arrays whose indexes (positions) are numbered (0, 1, 2, ... ), or they
+can be associative arrays whose indexes can be any string values. For exam-
+ple, an associative array indexed based on color can have the indexes {“red”,
+“blue”, “green”}. In this example, $_Post is associatively indexed by the
+name of the posted value user_name that is specified in the name attribute of
+the input tag on line 10. Thus $_PostT[ 'user_name' ] will contain the value
+typed in by the user. We will discuss PHP arrays further in Section 11.2.2.
+
+5. When the Web page at http://www.myserver.com/example/greeting.php is
+first opened, the if condition in line 2 will evaluate to false because there is
+no value yet in $_POST[ 'user_name' ]. Hence, the PHP interpreter will
+process lines 6 through 15, which create the text for an HTML file that dis-
+plays the form shown in Figure 11.1(b). This is then displayed at the client
+side by the Web browser.
+
+6. Line 8 shows one way of creating long text strings in an HTML file. We will
+discuss other ways to specify strings later in this section. All text between an
+opening <<<_HTML_anda closing _HTML_; is printed into the HTML file as
+is. The closing _HTML_; must be alone on a separate line. Thus, the text
+added to the HTML file sent to the client will be the text between lines 9
+and 13. This includes HTML tags to create the form shown in Figure 11.1(b).
+
+7. PHP variable names start with a $ sign and can include characters, num-
+bers, and the underscore character _. The PHP auto-global (predefined)
+variable $_SERVER (line 9) is an array that includes information about the
+local server. The element $_SERVER[ 'PHP_SELF' ] in the array is the path
+name of the PHP file currently being executed on the server. Thus, the action
+attribute of the form tag (line 9) instructs the PHP interpreter to reprocess
+the same file, once the form parameters are entered by the user.
+
+8. Once the user types the name John Smith in the text box and clicks on the
+SUBMIT NAME button (Figure 11.1(c)), program segment P1 is repro-
+cessed. This time, $_PoST['user_name'] will include the string
+"John Smith", so lines 3 and 4 will now be placed in the HTML file sent to
+the client, which displays the message in Figure 11.1(d).
+
+As we can see from this example, a PHP program can create two different HTML
+commands depending on whether the user just started or whether they had already
+submitted their name through the form. In general, a PHP program can create
+numerous variations of HTML text in an HTML file at the server depending on the
+particular conditional paths taken in the program. Hence, the HTML sent to the
+client will be different depending on the interaction with the user. This is one way
+in which PHP is used to create dynamic Web pages.
+
+11.2 Overview of Basic Features of PHP
+
+In this section we give an overview of a few of the features of PHP that are useful in
+creating interactive HTML pages. Section 11.3 will focus on how PHP programs
+can access databases for querying and updating. We cannot give a comprehensive

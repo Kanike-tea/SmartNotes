@@ -1,0 +1,53 @@
+182
+
+Chapter 6 Basic SQL
+
+and stored as a file by the DBMS. Base relations are distinguished from virtual
+relations, created through the CREATE VIEW statement (see Chapter 7), which
+may or may not correspond to an actual physical file. In SQL, the attributes in a
+base table are considered to be ordered in the sequence in which they are speci-
+fied in the CREATE TABLE statement. However, rows (tuples) are not considered
+to be ordered within a table (relation).
+
+It is important to note that in Figure 6.1, there are some foreign keys that may cause
+errors because they are specified either via circular references or because they refer
+to a table that has not yet been created. For example, the foreign key Super_ssn in
+the EMPLOYEE table is a circular reference because it refers to the EMPLOYEE table
+itself. The foreign key Dno in the EMPLOYEE table refers to the DEPARTMENT table,
+which has not been created yet. To deal with this type of problem, these constraints
+can be left out of the initial CREATE TABLE statement, and then added later using
+the ALTER TABLE statement (see Chapter 7). We displayed all the foreign keys in
+Figure 6.1 to show the complete COMPANY schema in one place.
+
+6.1.3 Attribute Data Types and Domains in SOL
+
+The basic data types available for attributes include numeric, character string, bit
+string, Boolean, date, and time.
+
+= Numeric data types include integer numbers of various sizes (INTEGER or
+INT, and SMALLINT) and floating-point (real) numbers of various precision
+(FLOAT or REAL, and DOUBLE PRECISION). Formatted numbers can be
+declared by using DECIMAL(i, j)—or DEC(i, j) or NUMERIC(i, j) —where i, the
+precision, is the total number of decimal digits and j, the scale, is the number
+of digits after the decimal point. The default for scale is zero, and the default
+for precision is implementation-defined.
+
+= Character-string data types are either fixed length—CHAR(n) or
+CHARACTER(n), where n is the number of characters—or varying length—
+VARCHAR(n) or CHAR VARYING(1) or CHARACTER VARYING(1), where n is
+the maximum number of characters. When specifying a literal string value,
+it is placed between single quotation marks (apostrophes), and it is case sen-
+sitive (a distinction is made between uppercase and lowercase). For fixed-
+length strings, a shorter string is padded with blank characters to the right.
+For example, if the value ‘Smith’ is for an attribute of type CHAR(10), it is
+padded with five blank characters to become ‘Smith’ if needed. Padded
+blanks are generally ignored when strings are compared. For comparison
+purposes, strings are considered ordered in alphabetic (or lexicographic)
+order; if a string str1 appears before another string str2 in alphabetic order,
+then sfrl is considered to be less than str2.* There is also a concatenation
+operator denoted by || (double vertical bar) that can concatenate two strings
+
+SThis is not the case with SQL keywords, such as CREATE or CHAR. With keywords, SQL is case insen-
+sitive, meaning that SQL treats uppercase and lowercase letters as equivalent in keywords.
+
+“For nonalphabetic characters, there is a defined order.

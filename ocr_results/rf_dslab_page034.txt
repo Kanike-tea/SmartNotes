@@ -1,0 +1,66 @@
+void display()
+{
+
+if(cur == NULL)
+printf("\nNo Contents to display in DLL");
+while(cur!=NULL)
+
+{
+printf("\nENode: %dlISSN: %sIName: %s|Department: %s|Designation: %s|Salary:%d|IPhone no:%ld" , nodeno, cur->ssn, cur-
+>name,cur->dept, cur->designation, cur->sal, cur->phone);
+cur = cur->rlink;
+nodeno++;
+
+printf("\nNo of employee nodes is %d" count);
+
+}
+
+NODE deletefront()
+
+{
+NODE temp;
+if(first == NULL)
+
+printf("\nDoubly Linked List is empty");
+return NULL;
+
+i
+if(first->rlink== NULL)
+
+printf("\nThe employee node with the ssn:%s is deleted", first->ssn);
+free(first);
+count--;
+return NULL;
+}
+temp = first;
+first = first->rlink;
+temp->rlink = NULL;
+first->llink = NULL;
+printf("\nThe employee node with the ssn:%s is deleted" ,temp->ssn);
+free(temp);
+count--;
+return first;
+
+}
+
+NODE insertend()
+
+{
+NODE cur, temp;
+temp = create();
+
+if(first == NULL)
+
+{
+return temp;
+
+}
+
+cl first;
+while(cur->rlink!=NULL)
+{
+
+cur = cur->rlink;
+}
+
+34

@@ -1,0 +1,56 @@
+3.5 Weak Entity Types
+
+3.5 Weak Entity Types
+
+Entity types that do not have key attributes of their own are called weak entity types. In
+contrast, regular entity types that do have a key attribute—which include all the exam-
+ples discussed so far—are called strong entity types. Entities belonging to a weak entity
+type are identified by being related to specific entities from another entity type in com-
+bination with one of their attribute values. We call this other entity type the identifying
+or owner entity type,'° and we call the relationship type that relates a weak entity type
+to its owner the identifying relationship of the weak entity type.' A weak entity type
+always has a fotal participation constraint (existence dependency) with respect to its
+identifying relationship because a weak entity cannot be identified without an owner
+entity. However, not every existence dependency results in a weak entity type. For
+example, a DRIVER_LICENSE entity cannot exist unless it is related to a PERSON entity,
+even though it has its own key (License_number) and hence is not a weak entity.
+
+Consider the entity type DEPENDENT, related to EMPLOYEE, which is used to keep
+track of the dependents of each employee via a 1:N relationship (Figure 3.2). In our
+example, the attributes of DEPENDENT are Name (the first name of the dependent),
+Birth_date, Sex, and Relationship (to the employee). Two dependents of two distinct
+employees may, by chance, have the same values for Name, Birth_date, Sex, and
+Relationship, but they are still distinct entities. They are identified as distinct entities
+only after determining the particular employee entity to which each dependent is
+related. Each employee entity is said to own the dependent entities that are related to it.
+
+A weak entity type normally has a partial key, which is the attribute that can
+uniquely identify weak entities that are related to the same owner entity.’ In our
+example, if we assume that no two dependents of the same employee ever have the
+same first name, the attribute Name of DEPENDENT is the partial key. In the worst
+case, a composite attribute of all the weak entity’s attributes will be the partial key.
+
+In ER diagrams, both a weak entity type and its identifying relationship are distin-
+guished by surrounding their boxes and diamonds with double lines (see Fig-
+ure 3.2). The partial key attribute is underlined with a dashed or dotted line.
+
+Weak entity types can sometimes be represented as complex (composite, multival-
+ued) attributes. In the preceding example, we could specify a multivalued attribute
+Dependents for EMPLOYEE, which is a multivalued composite attribute with the
+component attributes Name, Birth_date, Sex, and Relationship. The choice of which
+representation to use is made by the database designer. One criterion that may be
+used is to choose the weak entity type representation if the weak entity type partici-
+pates independently in relationship types other than its identifying relationship type.
+
+In general, any number of levels of weak entity types can be defined; an owner
+entity type may itself be a weak entity type. In addition, a weak entity type may have
+
+more than one identifying entity type and an identifying relationship type of degree
+higher than two, as we illustrate in Section 3.9.
+
+'0The identifying entity type is also sometimes called the parent entity type or the dominant entity type.
+''The weak entity type is also sometimes called the child entity type or the subordinate entity type.
+
+'2The partial key is sometimes called the discriminator.
+
+79

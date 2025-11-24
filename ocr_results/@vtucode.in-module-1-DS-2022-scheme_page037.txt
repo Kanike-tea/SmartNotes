@@ -1,0 +1,53 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+THE STACK ABSTRACT DATA TYPE
+
+STACK
+
++ This is an ordered-list in which insertions(called push) and deletions(called pop) are made at
+one end called the top
+
+* Since last element inserted into a stack is first element removed, a stack is also known as a
+LIFO list(Last In First Out).
+
+When an element is inserted in a stack, the concept is called push, and when an element is
+removed from the stack, the concept is called pop.
+
+Trying to pop out an empty stack is called underflow and trying to push an element in a full
+
+stack is called overflow.
+
+D |«top +top
+
+Cc letop | Cc
+B |+top B B
+A | «top Aa A A
+
+Dpwoy
+
+: Inserting and deleting elements in astack
+
+As shown in above figure, the elements areadded in the stack in the order A, B, C, D, E, then
+E is the first element that is deleted from the stack and the last element is deleted from stack
+is A. Figure illustrates this sequence of operations.
+
+Since the last element inserted into.a stack is the first element removed, a stack is also known
+
+as a Last-In-First-Out (LIFO) list.
+
+SYSTEM STACK
+A stack used by a program at run-time to process function-calls is called system-stack.
++ When functions are invoked, programs
+— create a stack-frame (or activation-record) &
+— place the stack-frame on top of system-stack
++ Initially, stack-frame for invoked-function contains only
+— pointer to previous stack-frame &
+— return-address
++ The previous stack-frame pointer points to the stack-frame of the invoking-function while
+return-address contains the location of the statement to be executed after the function
+terminates.
+¢ If one function invokes another function, local variables and parameters of the invoking-
+
+function are added to its stack-frame.
+
+vtucode.in 38

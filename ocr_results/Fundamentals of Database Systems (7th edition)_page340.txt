@@ -1,0 +1,49 @@
+310
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+time, and changes to existing techniques are incorporated into newer system ver-
+sions and languages. An additional difficulty in presenting this topic is that although
+there are SQL standards, these standards themselves are continually evolving, and
+each DBMS vendor may have some variations from the standard. Because of this,
+we have chosen to give an introduction to some of the main types of database pro-
+gramming techniques and to compare these techniques, rather than study one par-
+ticular method or system in detail. The examples we give serve to illustrate the main
+differences that a programmer would face when using each of these database pro-
+gramming techniques. We will try to use the SQL standards in our examples rather
+than describe a specific system. When using a specific system, the materials in this
+chapter can serve as an introduction, but should be augmented with the system
+manuals or with books describing the specific system.
+
+We start our presentation of database programming in Section 10.1 with an over-
+view of the different techniques developed for accessing a database from programs.
+Then, in Section 10.2, we discuss the rules for embedding SQL statements into a
+general-purpose programming language, generally known as embedded SQL. This
+section also briefly discusses dynamic SQL, in which queries can be dynamically
+constructed at runtime, and presents the basics of the SQL] variation of embedded
+SQL that was developed specifically for the programming language Java. In Sec-
+tion 10.3, we discuss the technique known as SQL/CLI (Call Level Interface), in which
+a library of procedures and functions is provided for accessing the database. Various
+sets of library functions have been proposed. The SQL/CLI set of functions is the
+one given in the SQL standard. Another widely used library of functions is ODBC
+(Open Data Base Connectivity), which has many similarities to SQL/CLI; in fact,
+SQL/CLI can be thought of as the standardized version of ODBC. A third library of
+classes—which we do describe—is JDBC; this was developed specifically for access-
+ing databases from the Java object-oriented programming language (OOPL). In
+OOPL, a library of classes is used instead of a library of functions and procedures,
+and each class has its own operations and functions. In Section 10.4 we discuss
+SQL/PSM (Persistent Stored Modules), which is a part of the SQL standard that
+allows program modules—procedures and functions—to be stored by the DBMS
+and accessed through SQL; this also specifies a procedural database programming
+language for writing the persistent stored modules. We briefly compare the three
+approaches to database programming in Section 10.5, and provide a chapter sum-
+mary in Section 10.6.
+
+10.1 Overview of Database Programming
+Techniques and Issues
+
+We now turn our attention to the techniques that have been developed for access-
+ing databases from programs and, in particular, to the issue of how to access SQL
+databases from application programs. Our presentation of SQL in Chapters 6 and 7
+focused on the language constructs for various database operations—from schema
+definition and constraint specification to querying, updating, and specifying views.

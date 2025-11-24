@@ -1,0 +1,51 @@
+Table 14.7
+
+14.8 Coprocessor 15 and MMU Configuration 513
+
+Configuring the cache and write buffer for a page.
+
+Instruction cache Data cache
+
+Cache bit Page attribute Cache bit Buffer bit Page attribute
+
+0 not cached 0 0 not cached, not buffered
+1 cached 0 1 not cached, buffered
+
+1 0 cached, writethrough
+
+1 1 cached, writeback
+
+cache bit determines cache operation. When the bit is set, the page is cached, and when the
+bit is clear, the page is not cached.
+
+When configuring data pages, the write buffer bit has two uses: it enables or disables the
+write buffer for a page, and it sets the page cache write policy. The page cache bit controls
+the meaning of the write buffer bit. When the cache bit is zero, the buffer bit enables the
+write buffer when the buffer bit value is one, and disables the write buffer when the buffer
+bit value is zero. When the cache bit is set to one, the write buffer is enabled, and the state of
+the buffer bit determines the cache write policy. The page uses a writethrough policy if the
+buffer bit is zero and a writeback policy if the buffer bit is set; refer to Table 14.7, which gives
+a tabular view of the various states of the cache and write buffer bits and their meaning.
+
+14.8 COPROCESSOR 15 AND MMU CONFIGURATION
+
+We first introduced the procedure changeControl in Chapter 12. Example 14.3 revisits the
+procedure changeControl, which we use to enable the MMU, caches, and write buffer.
+
+The control register values that control MMU operation are shown in Table 14.8 and
+Figure 14.13. The ARM720T, ARM920T, and the ARM926EJ-S all have the MMU enable
+bit[0] and cache enable bit[2] in the same location in the control register. The ARM720T and
+ARM1022E have a write buffer enable, bit[3]. The ARM920T, ARM922T, and ARM926EJS
+have split instruction and data caches, requiring an extra bit to enable the I-cache, bit[12].
+All processor cores with an MMU support changing the vector table to high memory at
+address Oxf ff £0000, bit[13).
+
+Enabling a configured MMU is very similar for the three cores. To enable the MMU,
+caches, and write buffer, you need to change bit[12], bit[3], bit{2], and bit[0] in the control
+register.
+
+The procedure, changeControl, operates on register CP15:cl:c0:0 to change the values
+in the control register cl. Example 14.3 gives a small C routine that sets bits in the control
+register; it is called using the following function prototype:
+
+void controlSet(unsigned int value, unsigned int mask)

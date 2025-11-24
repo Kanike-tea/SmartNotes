@@ -1,0 +1,49 @@
+Review Questions
+
+Administration of a data warehouse will require far broader skills than are needed for
+traditional database administration. Often, different parts of a large organization view
+the data differently. A team of highly skilled technical experts with overlapping areas of
+expertise will likely be needed, rather than a single individual. The team must also pos-
+sess a thorough knowledge of the business and specifically the rules and regulations, the
+constraints and the policies of the enterprise. Like database administration, data ware-
+house administration is only partly technical; a large part of the responsibility requires
+working effectively with all the members of the organization who have an interest in the
+data warehouse. However difficult that can be at times for database administrators, it is
+that much more challenging for data warehouse administrators because the scope of
+their responsibilities is considerably broader than that faced by database administrators.
+
+Design of the management function and selection of the management team for a
+database warehouse are crucial. Managing the data warehouse in a large organiza-
+tion will surely be a major task. Many commercial tools are available to support
+management functions. Effective data warehouse management will be a team func-
+tion that requires a wide set of technical skills, careful coordination, and effective
+leadership. Just as we must prepare for the evolution of the warehouse, we must also
+recognize that the skills of the management team will, of necessity, evolve with it.
+
+29.8 Summary
+
+In this chapter, we surveyed the field known as data warehousing. Data warehousing
+can be seen as a process that requires a variety of activities to precede it. In contrast,
+data mining (see Chapter 28) may be thought of as an activity that draws knowledge
+from an existing data warehouse or other sources of data. We first introduced in Sec-
+tion 29.1 key concepts related to a data warehouse and defined terms such as OLAP
+and DSS and contrasted them with OLTP. We presented a general architecture of
+data warehousing systems. We discussed in Section 29.2 the fundamental characteris-
+tics of data warehouses and their different types. We then discussed in Section 29.3
+the modeling of data in warehouses using what is popularly known as the multidi-
+mensional data model. Different types of tables and schemas were discussed. We gave
+an elaborate account of the processes and design considerations involved in building
+a data warehouse in Section 29.4. We then presented the typical special functionality
+associated with a data warehouse in Section 29.5. The view concept from the rela-
+tional model was contrasted with the multidimensional view of data in data ware-
+houses in Section 29.6. We finally discussed in Section 29.7 the difficulties of
+implementing data warehouses and the challenges of data warehouse administration.
+
+Review Questions
+29.1. What is a data warehouse? How does it differ from a database?
+
+29.2. Define the following terms: OLAP (online analytical processing), ROLAP
+(relational OLAP), MOLAP (multidimensional OLAP), and DSS (decision-
+support systems).
+
+1117

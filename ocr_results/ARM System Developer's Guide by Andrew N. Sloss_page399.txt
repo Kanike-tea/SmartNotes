@@ -1,0 +1,57 @@
+386 Chapter 11 Embedded Operating Systems
+
+As part of the initialization process we have implemented a low-level debug system
+using the banked FIQ mode registers, as shown here. These registers are used to store status
+information. It is not always possible to use FIQ registers since they may be used for another
+purpose.
+
+bringupInitFIQRegisters
+
+MOV r2,r14 3 save r14
+
+BL switchToF1QMode 3 change FIQ mode
+MOV r8,#0 3 r8_fiq=0
+
+Mov. r9,#0 3 r9_fiq=0
+
+Mov. 10, #0 3 r10_fig=0
+
+BL switchToSVCMode 3 change SVC mode
+MOV pcyr2 3 return
+
+coreInitialize
+BL bringupInitF1QRegisters
+
+The next stage is to set up the SVC, IRQ, and System base stack registers. For the SVC
+stack, this is straightforward since the processor is already in SVC mode. The code is
+
+MOV sp, #0x80000 3 SVC stack
+
+MSR cpsr_c,#NoInt |SYS32md
+
+MOV sp, #0x40000 3 user/system stack
+MSR cpsr_c,#NoInt | IRQ32md
+
+MOV sp, #0x9000 3 IRQ stack
+
+MSR cpsr_c,#NoInt|SVC32md
+
+As you can see from the code, once the stacks are set up, the processor is switched back into
+SVC mode, which allows the rest of the initialization process to continue. Being in privileged
+mode allows the final initialization stage to unmask the IRQ interrupt by clearing the J bit
+and changing the processor to user mode.
+
+The results of executing the startup code are the following:
+
+= Low-level debug mechanism is initialized.
+
+= SVC, IRQ, and System base stacks are set.
+
+To start SLOS running, the PCB for each task has to be initialized. A PCB is a
+reserved data structure and holds a copy of the entire ARM register set (see Table 11.1).
+A task is made active by copying the appropriate task’s PCB data into the processor
+registers.
+
+The PCB of each task has to be set up prior to a context switch occurring since the switch
+will transfer the PCB data into registers r0 to r15 and cpsr. Left uninitialized, the context
+switch will copy garbage data into these registers.

@@ -1,0 +1,64 @@
+Microcontrollers-BCS402
+
+when the processor encounters an instruction that is undefined or not supported by the
+implementation. User mode is used for programs and applications.
+
+Processor mode.
+
+Mode Abbreviation Privileged Mode[4:0]
+Abort abt yes 10111
+Fast interrupt request fiq yes 10001
+Interrupt request irq yes 10010
+Supervisor svc yes 10011
+System sys yes 11111
+Undefined und yes 11011
+User usr no 10000
+
+Banked Register:
+
+Figure shows all 37 registers in the register file. Of those, 20 registers are hidden from a
+program at different times. These registers are called banked registers and are identified by
+the shading in the diagram. They are available only when the processor is in a particular
+mode; for example, abort mode has banked registers r13_abt, r14_abt and spsr_abt. Banked
+registers of a particular mode are denoted by an underline character post-fixed to the mode
+
+mnemonic or _mode.
+
+User and
+
+system
+
+r0
+
+rl
+
+12
+
+r3
+
+r4
+
+rs Fast
+
+76 interrupt
+
+17 request
+
+78 r8_fiq
+
+9 r9_fiq
+
+rl0 rl0_fiq
+
+rll T11_fiq Interrupt
+
+T12 T12_fiq request Supervisor Undefined Abort
+r13 sp r13_fig
+rl4 Ir rl4_fiq r14_undef
+r15 pe
+
+cpsr
+
+Fig: Complete ARM register set
+
+Dept. of ECE, GSSSIETW Page 19

@@ -1,0 +1,55 @@
+A change in state of the flip-flops is initiated only by a clock pulse transition—for example, when the
+value of the clock signals changes from 0 to 1. Thus, the transition from one state to the next occurs only
+at predetermined intervals dictated by the clock pulses.
+
+Storage Elements: Latches
+
+A storage element in a digital circuit can maintain a binary state indefinitely (as long as power is
+delivered to the circuit), until directed by an input signal to switch states. The major differences among
+various types of storage elements are in the number of inputs they possess and in the manner in which
+the inputs affect the binary state. Storage elements that operate with signal levels (rather than signal
+transitions) are referred to as latches; those controlled by a clock transition are flip-flops. Latches are
+said to be level sensitive devices; flip-flops are edge-sensitive devices. The two types of storage elements
+are related because latches are the basic circuits from which all flip-flops are constructed.
+
+SR Latch
+
+The SR latch is a circuit with two cross-coupled NOR gates or two cross-coupled NAND gates, and two
+inputs labeled S for set and R for reset. The SR latch constructed with two cross-coupled NOR gates is
+shown in Fig(a). The latch has two useful states. When output Q = | and Q'= 0, the latch is said to be in
+the set state. When Q = 0 and Q'= 1, it is in the reset state. Outputs Q and Q' are normally the complement
+of each other. However, when both inputs are equal to | at the same time, a condition in which both
+outputs are equal to 0 (rather than be mutually complementary) occurs. If both inputs are then switched
+to 0 simultaneously, the device will enter an unpredictable or undefined state or a metastable state.
+
+1 ——
+
+SR|QQ’
+i) R (reset) |
+Q 10/10
+0 0} 1 O (afterS=1,R=0)
+1 o1jo1
+0 0/0 1 (after S=0,R=1)
+Q e
+o—! 5 (set) Q 1 1|0 0 (forbidden)
+(a) Logic diagram (b) Function table
+
+SR latch with NOR gates
+
+As shown in the function table of above Fig(b), two input conditions cause the circuit to be in the set
+state. The first condition (S = 1, R = 0) is the action that must be taken by input S to bring the circuit to
+the set state. Removing the active input from S leaves the circuit in the same state. After both inputs
+return to 0, it is then possible to shift to the reset state by momentary applying a | to the R input. The |
+can then be removed from R, whereupon the circuit remains in the reset state. Thus, when both inputs S
+and R are equal to 0, the latch can be in either the set or the reset state, depending on which input was
+most recently a 1.
+
+If a 1 is applied to both the S and R inputs of the latch, both outputs go to 0. This action produces an
+undefined next state, because the state that results from the input transitions depends on the order in
+which they return to 0. It also violates the requirement that outputs be the complement of each other. In
+normal operation, this condition is avoided by making sure that 1’s are not applied to both inputs
+simultaneously.
+
+The SR latch with two cross-coupled NAND gates is shown in below Fig. It operates with both inputs
+normally at 1, unless the state of the latch has to be changed. The application of 0 to the S input causes
+output Q to go to 1, putting the latch in the set state. When the S input goes back to 1, the circuit remains

@@ -1,0 +1,31 @@
+Digital Design and Computer Organization(BCS302)
+
++ An encoder has 2” (or fewer) input lines and n output lines.
+* 4:2 Encoder(n=2)
+
+4:2 Encoder
+Outpus Inputs | Outputs
+D im D; D2 D; Dy} Q; ®
+- 0001/)00
+os ee > 00104071
+Inputs 2, Encoder 0100)10
+: Te.0 20550) | lige
+Ds 0000\xx
+
+8:3 Encoder
+
+* an encoder is the octal-to-binary encoder whose truth table is given in Table 4.7
+
+* It has eight inputs (one for each of the octal digits) and three outputs that generate the corresponding
+binary number. It is assumed that only one input has a value of | at any given time.
+
+* The encoder can be implemented with OR gates whose inputs are determined directly from the truth
+table
+
+* Output z is equal to 1 when the input octal digit is 1, 3,5, or 7.
+
+* Output y is | for octal digits 2,3, 6, or 7, and
+
+* output x is | for digits 4, 5, 6, or 7.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 16

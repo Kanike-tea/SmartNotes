@@ -1,0 +1,23 @@
+MODULE 5: BASIC PROCESSING UNIT
+
+SOME FUNDAMENTAL CONCEPTS
+
+The processing unit which executes machine instructions and coordinates the
+activities of other units of computer is called the Instruction Set Processor (ISP) or
+processor or Central Processing Unit (CPU).
+
+The primary function of a processor is to execute the instructions stored in memory.
+Instructions are fetched from successive memory locations and executed in
+processor, until a branch instruction occurs.
+
+¢ The operation specified by an instruction can be carried out by performing one or
+more of the following actions:
+
+1) Read the contents of a given memory-location and load them into a register.
+
+2) Read data from registers or memory location.
+
+3) Perform an arithmetic or logic operation and place the result into a register.
+
+4) Store data from a register into a given memory-location.
+¢ The hardware-components needed to perform these actions are shown in Figure 5.1.

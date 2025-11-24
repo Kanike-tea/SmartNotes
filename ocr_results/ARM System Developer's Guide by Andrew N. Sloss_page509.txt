@@ -1,0 +1,43 @@
+496 Chapter 14 Memory Management Units
+
+explanation we showed regions as a hardware component of the MPU architecture. In an
+MMU, regions are defined as groups of page tables and are controlled completely in software
+as sequential pages in virtual memory.
+
+Since a page in virtual memory has a corresponding entry in a page table, a block of
+virtual memory pages map to a set of sequential entries in a page table. Thus, a region can
+be defined as a sequential set of page table entries. The location and size of a region can be
+held in a software data structure while the actual translation data and attribute information
+is held in the page tables.
+
+Figure 14.3 shows an example of a single task that has three regions: one for text, one
+for data, and a third to support the task stack. Each region in virtual memory is mapped
+to different areas in physical memory. In the figure, the executable code is located in flash
+memory, and the data and stack areas are located in RAM. This use of regions is typical of
+operating systems that support sharing code between tasks.
+
+With the exception of the master level 1 (L1) page table, all page tables represent 1 MB
+areas of virtual memory. If a region’s size is greater than 1 MB or crosses over the 1 MB
+boundary addresses that separate page tables, then the description of a region must also
+
+Virtual Physical
+memory memory
+5 Page
+. tables — )
+i =] -|
+Gan 3 Stacl -|
+Q > RAM
+_. Data | 7]
+Region 2 -| +
+: |S
+=] 7
+e >| :
+fext ~| ~ nN
+: Cy D
+Region 1 -|
+7 L,|
+. Page PTE Fp rast
+Page
+frame J
+
+Figure 14.3 An example mapping pages to page frames in an ARM with an MMU.

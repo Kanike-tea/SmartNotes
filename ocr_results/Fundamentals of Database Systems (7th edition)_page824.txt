@@ -1,0 +1,54 @@
+794
+
+Chapter 21 Concurrency Control Techniques
+
+Basic Timestamp Ordering (TO). Whenever some transaction T tries to issue a
+read_item(X) or a write_item(X) operation, the basic TO algorithm compares the
+timestamp of T with read_TS(X) and write_TS(X) to ensure that the timestamp order
+of transaction execution is not violated. If this order is violated, then transaction T
+is aborted and resubmitted to the system as a new transaction with a new time-
+stamp. If Tis aborted and rolled back, any transaction T that may have used a value
+written by T must also be rolled back. Similarly, any transaction T that may have
+used a value written by T; must also be rolled back, and so on. This effect is known
+as cascading rollback and is one of the problems associated with basic TO, since
+the schedules produced are not guaranteed to be recoverable. An additional proto-
+col must be enforced to ensure that the schedules are recoverable, cascadeless, or
+strict. We first describe the basic TO algorithm here. The concurrency control algo-
+rithm must check whether conflicting operations violate the timestamp ordering in
+the following two cases:
+
+1. Whenever a transaction T issues a write_item(X) operation, the following
+check is performed:
+
+a. Ifread_TS(X) > TS(T) or if write_TS(X) > TS(T), then abort and roll back T
+and reject the operation. This should be done because some younger trans-
+action with a timestamp greater than TS(T)—and hence after T in the
+timestamp ordering—has already read or written the value of item X
+before T had a chance to write X, thus violating the timestamp ordering.
+
+b. If the condition in part (a) does not occur, then execute the write_item(X)
+operation of T and set write_TS(X) to TS(T).
+
+2. Whenever a transaction T issues a read_item(X) operation, the following
+check is performed:
+
+a. If write_TS(X) > TS(7), then abort and roll back T and reject the operation.
+This should be done because some younger transaction with timestamp
+greater than TS(T)—and hence after T in the timestamp ordering—has
+already written the value of item X before T had a chance to read X.
+
+b. If write TS(X) < TS(T), then execute the read_item(X) operation of T and
+set read_TS(X) to the larger of TS(T) and the current read_TS(X).
+
+Whenever the basic TO algorithm detects two conflicting operations that occur in
+the incorrect order, it rejects the later of the two operations by aborting the transac-
+tion that issued it. The schedules produced by basic TO are hence guaranteed to be
+conflict serializable. As mentioned earlier, deadlock does not occur with timestamp
+ordering. However, cyclic restart (and hence starvation) may occur if a transaction
+is continually aborted and restarted.
+
+Strict Timestamp Ordering (TO). A variation of basic TO called strict TO ensures
+that the schedules are both strict (for easy recoverability) and (conflict) serializable.
+In this variation, a transaction T issues a read_item(X) or write_item(X) such that
+TS(T) > write_TS(X) has its read or write operation delayed until the transaction T”
+that wrote the value of X (hence TS(T”) = write_TS(X)) has committed or aborted.

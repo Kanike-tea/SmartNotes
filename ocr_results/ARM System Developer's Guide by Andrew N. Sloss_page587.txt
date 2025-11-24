@@ -1,0 +1,34 @@
+574 Appendix A ARM and Thumb Assembler Instructions
+
+2. Rd = Rn + <shifted_Rm> + C Updated if S suffix specified
+3. Ld = Ld + Lm + C Updated (see Notes below)
+Notes
+
+= If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <UnsignedOverflow>, V = <SignedOverflow>.
+
+"= If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+
+Examples
+ADDS r0, r0, r2 3 first half of a 64-bit add
+ADC rl, rl, 73; second half of a 64-bit add
+ADCS r0, r0, r0 shift rO left, inserting carry (RLX)
+ADD Add two 32-bit values
+1. ADD<cond>S Rd, Rn, #<rotated_immed> ARMv1
+2. ADD<cond>$ Rd, Rn, Rm {, <shift>} ARMV1
+3. ADD Ld, Ln, #<immed3> THUMBv1
+4. ADD Ld, #<immed8> THUMBv1
+5. ADD ld, Ln, Lm THUMBv1
+6. ADD Hd, Lm THUMBv1
+7. ADD Ld, Hm THUMBv1
+8. ADD Hd, Hm THUMBv1
+9. ADD Ld, pc, #<immed8>*4 THUMBv1
+10. ADD Ld, sp, #<immed8>*4 THUMBv1
+11. ADD sp, #<immed7>*4 THUMBv1
+Action Effect on the cpsr
+
+1. Rd = Rn + <rotated_immed> Updated if S suffix specified

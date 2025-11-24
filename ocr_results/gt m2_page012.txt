@@ -1,0 +1,29 @@
+Fig. 2-24 Hamiltonian circuit; n is odd.
+
+This theorem enables us to solve the problem of the seating arrangement at a
+round table, introduced in Chapter 1, as follows:
+
+Representing a member x by a vertex and the possibility of his sitting next to
+another member y by an edge between x and y, we construct a graph G. Since
+every member is allowed to sit next to any other member, G is a complete graph
+of nine vertices—nine being the number of people to be seated around the table.
+Every Seating arrangement around the table is clearly a Hamiltonian circuit.
+
+The first day of their meeting they can sit in any order, and it will be a
+Hamiltonian circuit H,. The second day, if they are to sit such that every
+member must have different neighbors, we have to find another Hamiltonian
+circuit H, in G, with an entirely different set of edges from those in H,; that is,
+Hy, and Hp are edge-disjoint Hamiltonian circuits. From Theorem 2-8 the number
+of edge-disjoint Hamiltonian circuits in G is four; therefore, only four such
+arrangements exist among nine people.
+
+Another interesting result on the question of existence of Hamiltonian circuits
+in a graph, obtained by G. A. Dirac, is:
+
+THEOREM 2-9
+
+A sufficient (but by no means necessary) condition for a simple graph G to
+have a Hamiltonian circuit is that the degree of every vertex in G be at least n/2,
+where n is the number of vertices in G.
+
+Proof: For proof the reader is referred to the original paper by Dirac [2-3].

@@ -1,0 +1,44 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+5. Level-Order traversal:
+
+Visiting the nodes using the ordering suggested by the node numbering is called level ordering
+traversing.
+
+The nodes in a tree are numbered starting with the root on level | and so on.
+
+Firstly visit the root, then the root’s left child, followed by the root’s right child. Thus
+continuing in this manner, visiting the nodes at each new level from the leftmost node to the
+
+rightmost node.
+
+Level order traversal: 1 23 45
+
+Initially in the code for level order add the root to the queue. The function operates by
+deleting the node at the front of the queue, printing the nodes data field and adding the nodes
+left and right children to the queue.
+
+Function for level order traversal of a binary tree:
+
+void levelOrdef{treePointer ptr)
+{/* levelferder tree traversal */
+int g@front = rear)= 0;
+treePointer, quéue|MAX—QUEVE-SIZE);
+if Gtptrk eeturn; /* empty tree */
+addq(prr);
+fom Ga) i
+ptr_= deleteq();
+if (ptr) {
+Printé£ ("td", ptr—data);
+if (ptr-—leftcChild)
+addq(ptr-—leftChild);
+if (ptr-erightChild)
+addgq(ptr-—rightChild);
+
+lse break;
+
+®
+
+Program : Level-order traversal of a binary tree
+
+vtucode.in 23

@@ -1,0 +1,40 @@
+18 ENGINEERING MATHEMATICS - IV ~
+
+X, SX th =04, y (x) = y, = y (04) = ?
+‘Substituting in the Eulei’s formula,
+yf) = 1.2309 + 0.2 (1.3095) = 1.4928
+
+Next from modified Euler's formula,
+
+0.2
+yf?) = 12309 + [13095 +x, + x]
+
+= 1.2309 + 0.1 [1.3095 + 0.4 + V1.4928 ] = 1.524 -
+
+yf?) = 1.2309 + 0.1 [1.7095 + V1524] = 1.5253
+yf?) = 1.2309 + 0.1 [1.7095 + V15253 ] = 15254
+
+Also y{4) = 1.5254
+Thus (0.4) = 1.5254
+
+14. Use modified Euler’s method to compute y(0.1) given -that ax =< + y,
+
+y(0) =1 by taking h = 0.05" considering the accuracy upto two approximations in
+each step . .
+
+>> We need to compute y (0.05) first and use this value to compute y(01).
+Stage: By dataxy = 0, yy =1, f(%y) = v4 y,h= 0.05
+f(%y Yo) = P+ 1=1, x = Xp +h = 0.05
+y(%) =y¥y = y(0.05) =?
+From Euler's formula : yf = Yo t hf (xp ¥) we obtain
+yf) = 1 + (0.05) (1) = 1.05
+Next by modified Euler’s formula,
+
+h
+Ye =%yt> [so + fawn?)
+
+0.05
+=14 Pfr tHeg”|
+
+= 14 0.025 [1 + (0.05) + 1.05]
+= 1+ 0.025[1.0025 + 1.05] = 1.0513

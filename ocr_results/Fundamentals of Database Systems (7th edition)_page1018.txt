@@ -1,0 +1,60 @@
+988 Chapter 26 Enhanced Data Models
+
+spatial data. Queries posed on these spatial data, where predicates for selection deal
+with spatial parameters, are called spatial queries. For example, “What are the
+names of all bookstores within five miles of the College of Computing building at
+Georgia Tech?” is a spatial query. Whereas typical databases process numeric and
+character data, additional functionality needs to be added for databases to process
+spatial data types. A query such as “List all the customers located within twenty
+miles of company headquarters” will require the processing of spatial data types
+typically outside the scope of standard relational algebra and may involve consult-
+ing an external geographic database that maps the company headquarters and each
+customer to a 2-D map based on their address. Effectively, each customer will be
+associated to a <latitude, longitude> position. A traditional B*-tree index based on
+customers’ zip codes or other nonspatial attributes cannot be used to process this
+query since traditional indexes are not capable of ordering multidimensional coor-
+dinate data. Therefore, there is a special need for databases tailored for handling
+spatial data and spatial queries.
+
+Table 26.1 shows the common analytical operations involved in processing geo-
+graphic or spatial data.?> Measurement operations are used to measure some
+global properties of single objects (such as the area, the relative size of an object’s
+parts, compactness, or symmetry) and to measure the relative position of different
+objects in terms of distance and direction. Spatial analysis operations, which often
+use statistical techniques, are used to uncover spatial relationships within and
+among mapped data layers. An example would be to create a map—known as a
+prediction map—that identifies the locations of likely customers for particular
+products based on the historical sales and demographic information. Flow analysis
+operations help in determining the shortest path between two points and also the
+connectivity among nodes or regions in a graph. Location analysis aims to find if
+the given set of points and lines lie within a given polygon (location). The process
+involves generating a buffer around existing geographic features and then identify-
+ing or selecting features based on whether they fall inside or outside the boundary
+of the buffer. Digital terrain analysis is used to build three-dimensional models,
+
+Table 26.1 Common Types of Analysis for Spatial Data
+
+Analysis Type
+
+Measurements
+
+Type of Operations and Measurements
+
+Distance, perimeter, shape, adjacency, and direction
+
+Spatial analysis/statistics Pattern, autocorrelation, and indexes of similarity and topology using
+
+Flow analysis
+Location analysis
+Terrain analysis
+Search
+
+spatial and nonspatial data
+
+Connectivity and shortest path
+
+Analysis of points and lines within a polygon
+Slope/aspect, catchment area, drainage network
+Thematic search, search by region
+
+251 ist of GIS analysis operations as proposed in Albrecht (1996).

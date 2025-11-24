@@ -1,0 +1,52 @@
+“APPENDK-1 ce. 459
+I
+| APPENDIX- 1
+, _ Numerical Methods
+
+Picard’s Method for first order and first degree ODE
+
+This method gives the solution of the initial value problem in the form ofa power series
+in x from which’ we can find the value of y at any number of values of x in the
+neighbourhood of the initial value Xq. The method is as follows.
+
+‘Consider the first order differential equation: |
+
+a = f(x,y) with the initial condition ¥(%) =
+
+_ Thatis, dy = f(x,y) dx ; Y= Yo at x=x,
+
+Integrating LHS between Yo and y,RHS between X) and x we have,
+
+y x
+J dy = J fny) &
+
+% %
+ys x
+ie, oy | = J f(xy) a Or y- Y= J foxy) ae
+% % %o
+J
+Y= Yt J fay) dx .Q)
+
+Xy
+
+The first approximation y, is obtained by putting y = Yo in f(x,y) and
+
+integrating the same. That is,
+x
+
+Wy =Vot vice) dx
+
+%
+
+The second approximation Yp is obtained by putting y = y, in f (x,y) of (1) and
+integrating the same. That is
+x
+Yo =¥%y + J Flay, ) dx
+x,
+0
+Continuing like this we get a series of approximations y, , y> ,
+
+Y3r+.. Of the initial
+value problem each being a better approximation than the pr
+
+eceding one. This method

@@ -1,0 +1,33 @@
+Data Structures and Applications/BCS304 Module 1
+
+Function to convert an infix expression to postfix
+
+Assume the stack and the top is declared globally
+
+char s[25];
+int top=-1;
+int precd(char op)
+int r;
+switch(op)
+{
+Case ‘”’:
+Case ‘$’ r=3; break;
+case '*':
+case '/': r=2;break;
+case '+':
+
+e '-': r=1;break;
+case '(': r=0;break;
+case '#': r=-1;break;
+
+}
+return(r);
+}
+
+void infix_postfix(char infix[] char postfix[])
+
+{
+
+int i,p=0;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 36

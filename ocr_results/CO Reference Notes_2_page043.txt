@@ -1,0 +1,43 @@
+ASYNCHRONOUS DRAM DESCRIPTION
+© The 4 bit cells in each row are divided into 512 groups of 8 (Figure 5.7).
+© 21 bit address is needed to access a byte in the memory. 21 bit is divided as follows:
+1) 12 address bits are needed to select a row.
+i.e. A8-0 — specifies row-address of a byte.
+2) 9 bits are needed to specify a group of 8 bits in the selected row.
+i.e. A20-9 — specifies column-address of a byte.
+
+RAS
+
+4096 x (512 x8)
+cell array
+
+Agy-9/Ag-o
+
+CAS Dy Dp
+Figure 5.7 Internal organization of a 2M x 8 dynamic memory chip.
+
+© During Read/Write-operation,
+— row-address is applied first.
+— row-address is loaded into row-latch in response to a signal pulse on RAS? input of chip.
+(RAS = Row-address Strobe CAS = Column-address Strobe)
+© When a Read-operation is initiated, all cells on the selected row are read and refreshed.
+* Shortly after the row-address is loaded, the column-address is
+— applied to the address pins &
+— loaded into CAS’.
+The information in the latch is decoded.
+© The appropriate group of 8 Sense/Write circuits is selected.
+R/W’=I(read-operation) > Output values of selected circuits are transferred to data-lines DO-D7.
+R/W’=0(write-operation) > Information on DO-D7 are transferred to the selected circuits.
+RAS" & CAS" are active-low so that they cause latching of address when they change from high
+to low.
+© To ensure that the contents of DRAMs are maintained, each row of cells is accessed periodically.
+© A special memory-circuit provides the necessary control signals RAS" & CAS" that govern the timing.
+© The processor must take into account the delay in the response of the memory.
+
+Fast Page Mode
+> Transferring the bytes in sequential order is achieved by applying the consecutive sequence of
+column-address under the control of successive CAS" signals.
+> This scheme allows transferring a block of data at a fasterrate.
+> The block of transfer capability is called as fast page mode.
+
+Page 44

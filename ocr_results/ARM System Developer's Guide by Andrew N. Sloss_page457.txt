@@ -1,0 +1,57 @@
+444
+
+12.6.1
+
+Chapter 12 Caches
+
+Data or code locked in an ARM cache core is immune from replacement. However, when
+the cache is flushed, the information in lockdown is lost and the area remains unavailable
+as cache memory. The cache lockdown routine must be rerun to restore the lockdown
+information.
+
+LOCKING CODE AND DATA IN CACHE
+
+This section presents a procedure to lock code and data in cache. A typical sequence of C
+calls to lock code and data in cache is the following:
+
+int interrupt_state; /* saves the state of the FIQ and IRQ bits */
+int globalData[16] ;
+
+unsigned int *vectortable = (unsigned int *)0x0;
+
+int wayIndex;
+
+int vectorCodeSize = 212; /* vector table & FIQ handler in bytes*/
+
+interrupt_state = disable_interrupts();  /* no code provided */
+enableCache() ; /* see Chapters 13(MPU) and 14(MMU) */
+flushCache(); /* see code Example 12.2 */
+
+/* Lock Global Data Block */
+
+wayIndex = lockDcache((globalData, sizeof globalData) ;
+/* Lock Vector table and FIQ Handler */
+
+wayIndex = lockIcache((vectortable, vectorCodeSize) ;}
+
+enable_interrupts(interrupt_state) ; /* no code provided */
+
+To begin, interrupts are disabled and the cache enabled. The procedure that disables
+interrupts is not shown. The flushCache procedure is one selected from the previous
+examples; the actual call used depends on the cache configuration and may also include
+cleaning the cache.
+
+The function 1ockDCache locks a block of data in the D-cache; similarly, the function
+JockI cache locks a code block in the I-cache.
+
+The lockdown software routines themselves must be located in noncached main mem-
+ory. The code and data locked in cache must be located in cached main memory. It is
+important that the code and data locked in cache does not exist elsewhere in cache; in other
+words, if the contents of the cache are unknown, then flush the cache before loading. If
+the core is using a writeback D-cache, then clean the D-cache. Once the code and data are
+loaded in cache, reenable interrupts.
+
+We present the code for the two functions 1ockDCache and lockI cache three different
+times because there are three different lockdown methods used to lock code in cache,
+depending on the architectural implementation. The first method locks code and data in
+the cache using way addressing techniques. The second uses a set of lock bits. In the third,

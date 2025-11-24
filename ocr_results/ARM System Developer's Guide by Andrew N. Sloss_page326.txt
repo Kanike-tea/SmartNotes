@@ -1,0 +1,83 @@
+SUMMARY
+
+fft_table_arm¥e
+
+8.5 The Discrete Fourier Transform
+
+; FFT twiddle table of triplets E(3t), E(t), E(2t)
+3 Where E(t)=cos(t)+i*sin(t) at Q15
+
+3 Ne16 t=2*PI*k/N for k=0,1,2,..,
+DCW Ox7FfF,0x0000, Ox7FFF,0x0000,
+DCW Ox30Fc,0x7642, 0x7642,0x30fc,
+DCW Oxa57e,0x5a82, 0x5a82,0x5a82,
+DCW Ox89be,0xcf04, Ox30Fc,0x7642,
+3 N264 t=2*PI*k/N for k=0,1,2,..,
+DCW Ox7F¥F,0x0000, Ox7#FF,0x0000,
+DCW Ox7a7d,0x2528, 0x7#62,0x0c8c,
+DCW Ox6a6e,0x471d, 0x7d8a,0x1819,
+DCW 0x5134,0x62f2, Ox7a7d,0x2528,
+DCW Ox30Fc,0x7642, 0x7642,0x30fc,
+DCW OxOc8c,0x7#62, 0x70e3,0x3¢57,
+DCW 0xe707,0x7d8a, Ox6a6e,0x471d,
+DCW Oxc3a9,0x70e3, 0x6242,0x5134,
+DCW Oxa57e,0x5a82, 0x5a82,0x5a82,
+DCW Ox8F1d,0x3c57, 0x5134,0x62f2,
+DCW 0x8276,0x18f9, 0x471d, Ox6a6e,
+DCW 0x809e,0xf374, 0x3c57,0x70e3,
+DCW Ox89be,0xcf04, Ox30fc,0x7642,
+DCW Ox9d0e,0xaecc, 0x2528,0x7a7d,
+DCW Oxb8e3,0x9592, 0x18f9,0x7d8a,
+DCW Oxdad8,0x8583, Ox0c8c,0x7762,
+3 N=256 t=2*PI*k/N for k=0,1,2,..
+3 se++ Continue as required ....
+
+N/4-1
+Ox7 FF ,0x0000
+0x5a82, 0x5a82
+0x0000, 0x7 fff
+0xa57e, 0x5a82
+
+N/4-1
+Ox7F#F,0x0000
+0x7d8a,,0x18f9
+0x7642,0x30Fc
+Ox6a6e,0x471d
+0x5a82,0x5a82
+0x47 1d, Ox6a6e
+Ox30fc,0x7642
+0x189,0x7d8a
+0x0000, 0x7 fff
+0xe707 ,0x7d8a
+Oxc04,0x7642
+Oxb8e3, 0x6a6e
+0xa57e, 0x5a82
+0x9592,0x471d
+Ox89be, 0x30Fc
+0x8276, 0x18f9
+sN/4-1
+
+313
+
+Once again, the routine actually calculates DFT y(x)/N, so that there is no possibility
+of overflow. Section 8.6 gives benchmark results for the preceding code.
+Note that we use the CLZ instruction in ARMv5E to accelerate the bit-reversed count
+
+required for the bit reversal.
+
+DFT Implementations
+
+= Use a radix-4, decimation-in-time-based FFT implementation. If the number of points
+
+is not a power of four, then use radix-2 or
+
+radix-8 first stage.
+
+= Perform bit reversal at the start of the algorithm, as you read data for the first stage.
+Although you can perform an FFT without bit reversal, this often requires more registers
+
+in the inner loop than are available.
+
+= Ifa scalar multiply requires more than one cycle, then reduce a complex multiply to
+three scalar multiplies using the trick of Example 8.17. This is the case for a 16-bit FFT
+on ARM9TDMI or a 32-bit FFT on ARM9E.

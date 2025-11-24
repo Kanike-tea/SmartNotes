@@ -1,0 +1,35 @@
+chapter 1 7
+
+Indexing Structures for Files and
+Physical Database Design
+
+n this chapter, we assume that a file already exists with
+
+some primary organization such as the unordered,
+ordered, or hashed organizations that were described in Chapter 16. We will
+describe additional auxiliary access structures called indexes, which are used to
+speed up the retrieval of records in response to certain search conditions. The index
+structures are additional files on disk that provide secondary access paths, which
+provide alternative ways to access the records without affecting the physical place-
+ment of records in the primary data file on disk. They enable efficient access to
+records based on the indexing fields that are used to construct the index. Basically,
+any field of the file can be used to create an index, and multiple indexes on different
+fields—as well as indexes on multiple fields—can be constructed on the same file. A
+variety of indexes are possible; each of them uses a particular data structure to speed
+up the search. To find a record or records in the data file based on a search condi-
+tion on an indexing field, the index is searched, which leads to pointers to one or
+more disk blocks in the data file where the required records are located. The most
+prevalent types of indexes are based on ordered files (single-level indexes) and use
+tree data structures (multilevel indexes, B*-trees) to organize the index. Indexes can
+also be constructed based on hashing or other search data structures. We also dis-
+cuss indexes that are vectors of bits called bitmap indexes.
+
+We describe different types of single-level ordered indexes—primary, secondary,
+and clustering—in Section 17.1. By viewing a single-level index as an ordered file,
+one can develop additional indexes for it, giving rise to the concept of multilevel
+indexes. A popular indexing scheme called ISAM (indexed sequential access
+method) is based on this idea. We discuss multilevel tree-structured indexes in Sec-
+tion 17.2. In Section 17.3, we describe B-trees and B*-trees, which are data struc-
+tures that are commonly used in DBMSs to implement dynamically changing
+
+601

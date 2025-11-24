@@ -1,0 +1,18 @@
+128 Summary 459
+
+There are two policies available when writing data to cache memory. If the controller
+only updates cache memory, it is a writeback policy. If the cache controller writes to both
+the cache and main memory, it is a writethrough policy.
+
+There are two policies a cache controller uses to allocate a cache line on a cache
+miss. A read-allocate policy allocates a cache line when data is read from main memory.
+A write-allocate policy allocates a cache line on a write to main memory.
+
+ARM uses the term clean to mean forcing a copyback of data in the D-cache to main
+memory. ARM uses the term flush to mean invalidating the contents of a cache.
+
+Cache lockdown is a feature provided by some ARM cores. The lockdown feature allows
+code and data to be loaded into cache and marked as exempt from eviction.
+
+We also provided example code showing how to clean and flush ARM cached cores, and
+to lock code and data in cache.

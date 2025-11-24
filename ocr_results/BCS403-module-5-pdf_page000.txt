@@ -1,0 +1,47 @@
+Database Management System [BCS403]
+
+Module-5: Concurrency Control in Databases
+
+5.8 Introduction to Concurrency Control
+
++ Purpose of Concurrency Control
+
+- To enforce Isolation (through mutual exclusion) among conflicting transactions.
+-— To preserve database consistency through consistency preserving execution of
+transactions.
+
+— To resolve read-write and write-write conflicts.
+
++ Example:
+— In concurrent execution environment if T1 conflicts with T2 over a data item A, then
+the existing concurrency control decides if T1 or T2 should get the A and if the other
+
+transaction is rolled-back or waits.
+5.9 Two-Phase Locking Techniques for Concurrency Control
+
+= The concept of locking data items is one of the main techniques used for controlling the
+concurrent execution of transactions.
+
+= A lock is a variable associated with a data item in the database. Generally there is a lock
+for each data item in the database.
+
+= A lock describes the status of the data item with respect to possible operations that can be
+applied to that item.
+
+= Itis used for synchronizing the access by concurrent transactions to the database items.
+
+= A transaction locks an object before using it
+
+= When an object is locked by another transaction, the requesting transaction must wait
+
+5.9.1 Types of Locks and System Lock Tables
+
+1. Binary Locks
+
+= A binary lock can have two states or values: locked and unlocked (or 1
+and 0).
+
+= If the value of the lock on X is 1, item X cannot be accessed by a database
+operation that requests the item
+
+https://vtucode.in 22

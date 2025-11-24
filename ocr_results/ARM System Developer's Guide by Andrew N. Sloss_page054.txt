@@ -1,0 +1,66 @@
+Table 2.10 ARM processor variants.
+
+2.7 ARM Processor Families
+
+Al
+
+CPU core MMU/MPU Cache Jazelle Thumb ISA E*
+
+ARM7TDMI none none no yes v4T no
+
+ARM7EJ-S none none yes yes vSTEJ yes
+
+ARM720T MMU unified—8K cache no yes v4T no
+
+ARM920T MMU separate—16K /I6K D+I no yes v4T no
+cache
+
+ARM922T MMU separate—8K/8K D +I no yes v4T no
+cache
+
+ARM926EJ-S_ = MMU separate—cache and yes yes vSTEJ yes
+TCMs configurable
+
+ARM940T MPU separate—4K/4K D +I no yes v4T no
+cache
+
+ARM946E-S MPU separate—cache and no yes vSTE yes
+TCMs configurable
+
+ARM966E-S none separate—TCMs no yes vSTE yes
+configurable
+
+ARM1020E MMU separate—32K/32K D+I no yes vSTE yes
+cache
+
+ARM1022E MMU separate—16K/16K D+I no yes vSTE yes
+cache
+
+ARM1026EJ-S |» MMU and separate—cache and yes yes vSTE yes
+
+MPU TCMs configurable
+
+ARM1136J-S MMU separate—cache and yes yes v6 yes
+TCMs configurable
+
+ARM1136JF-S |» MMU separate—cache and yes yes v6 yes
+TCMs configurable
+
+* E extension provides enhanced multiply instructions and saturation.
+
+One significant variation in the ARM7 family is the ARM7TDMI-S. The ARM7TDMI-S
+
+has the same operating characteristics as a standard ARM7TDMI but is also synthesizable.
+
+ARM720T is the most flexible member of the ARM7 family because it includes an
+
+MMU. The presence of the MMU means the ARM720T is capable of handling the Linux
+and Microsoft embedded platform operating systems. The processor also includes a unified
+8K cache. The vector table can be relocated to a higher address by setting a coprocessor
+15 register.
+
+Another variation is the ARM7EJ-S processor, also synthesizable. ARM7EJ-S is quite
+
+different since it includes a five-stage pipeline and executes ARMvSTEJ instructions. This
+version of the ARM7 is the only one that provides both Java acceleration and the enhanced
+instructions but without any memory protection.

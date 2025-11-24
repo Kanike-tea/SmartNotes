@@ -1,0 +1,41 @@
+Add/Sub_
+contro!
+
+St 5, 5p
+
+Figure 9.3. Binary addition/ subtraction logic circuit.
+
+DESIGN OF FAST ADDERS
+¢ Drawback of ripple carry adder: If the adder is used to implement the addition/subtraction, all
+sum bits are available in 2n gate delays.
+© Two approaches can be used to reduce delay in adders:
+1) Use the fastest possible electronic-technology in implementing the ripple-carry design.
+2) Use an augmented logic-gate network structure.
+
+CARR Y-LOOKAHEAD ADDITIONS
+© The logic expression for si(sum) and ci+1(carry-out) of stage i are
+Si=Xit+yitci (1) ci+1=xiyi+xicit+yici---------- (2)
+* Factoring (2) into
+ci+1=xiyit+
+(xi+yi)ci we can write
+cit 1=GitPiCi where Gi=xiyi and Pi=xi+yi
+© The expressions Gi and Pj are called generate and propagate functions (Figure 9.4).
+If Gi=1, then ci+1=1, independent of the input carry ci. This occurs when both xi and yi are 1. Propagate
+function means that an input-carry will produce an output-carry when either xi=1 or yi=1.
+All Gi and Pi functions can be formed independently and in parallel in one logic-gate delay.
+¢ Expanding ci terms of i-1 subscripted variables and substituting into the ci+1 expression, we obtain
+ci+1=GitPiGi-1+PiPi-1Gi-2. .... - +P1G0+PiPi-1 POcO
+* Conclusion: Delay through the adder is 3 gate delays for all carry-bits &4
+gate delays for all sum-bits.
+© Consider the design of a 4-bit adder. The carries can be implemented as
+c1=G0+P0cO
+¢2=G1+P1G0+P1P0cO
+c3=G2+P2G1+P2P1G0+P2P1P0c0
+c4=G3+P3G2+P3P2G1+P3P2P1G0
++P3P2P1P0c0
+© The carries are implemented in the block labeled carry-lookahead logic. An adder implemented in this
+form is called a Carry-Lookahead Adder.
+¢ Limitation: If we try to extend the carry-lookahead adder for longer operands, we run into a problem of
+gate fan-in constraints.
+
+Page 65

@@ -1,0 +1,127 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 403
+
+Figure 12.10 (continued)
+Possible ODL schema for the UNIVERSITY database in Figure 12.8(b).
+
+class DEGREE
+
+{ attribute
+attribute
+attribute
+
+string College;
+string Degree;
+string Year; };
+
+class GRAD_STUDENT extends STUDENT
+
+(extent
+
+{ attribute
+relationship
+relationship
+void
+
+void
+
+GRAD_STUDENTS )
+
+set<Degree> Degrees;
+
+Faculty advisor inverse FACULTY::Advises;
+
+set<FACULTY> Committee inverse FACULTY::On_committee_of;
+
+assign_advisor(in string Lname; in string Fname)
+raises(faculty_not_valid);
+
+assign_committee_member(in string Lname; in string Fname)
+raises(faculty_not_valid); };
+
+class DEPARTMENT
+
+(extent
+key
+
+{ attribute
+attribute
+attribute
+attribute
+attribute
+relationship
+relationship
+relationship
+
+class COURSE
+
+(extent
+key
+
+{ attribute
+attribute
+attribute
+relationship
+relationship
+
+class SECTION
+
+(extent
+
+{ attribute
+attribute
+attribute
+
+relationship
+relationship
+
+DEPARTMENTS.
+
+Dname )
+
+string Dname;
+string Dphone;
+string Doffice;
+string College;
+FACULTY Chair;
+
+set<FACULTY> Has_faculty inverse FACULTY::Works_in;
+set<STUDENT> Has_majors inverse STUDENT::Majors_in;
+set<COURSE> Offers inverse COURSE::Offered_by; };
+
+COURSES
+Cno )
+
+string Cname;
+string Cno;
+
+string Description;
+
+set<SECTION> Has_sections inverse SECTION::Of_course;
+<DEPARTMENT> Offered_by inverse DEPARTMENT::Offers; };
+
+SECTIONS )
+
+short Sec_no;
+
+string Year;
+
+enum Quarter{Fall, Winter, Spring, Summer}
+tr;
+
+set<Grade> Students inverse Grade::Section;
+COURSE Of_course inverse COURSE::Has_sections; };
+
+class CURR_SECTION extends SECTION
+
+(extent
+{ relationship
+
+void
+
+CURRENT_SECTIONS )
+
+set<STUDENT> Registered_students
+inverse STUDENT::Registered_in
+
+register_student(in string Ssn)
+raises(student_not_valid, section_full); };

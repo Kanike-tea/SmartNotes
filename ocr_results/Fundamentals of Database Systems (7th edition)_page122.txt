@@ -1,0 +1,54 @@
+92
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+y 15
+
+participation arc (both M and N symbols stand for many or any number).’> Let us
+
+illustrate this constraint using the SUPPLY relationship in Figure 3.17.
+
+Recall that the relationship set of SUPPLY is a set of relationship instances (s, j, p),
+where s is a SUPPLIER, j is a PROJECT, and p is a PART. Suppose that the constraint
+exists that for a particular project-part combination, only one supplier will be used
+(only one supplier supplies a particular part to a particular project). In this case, we
+place 1 on the SUPPLIER participation, and M, N on the PROJECT, PART participa-
+tions in Figure 3.17. This specifies the constraint that a particular (j, p) combination
+can appear at most once in the relationship set because each such (PROJECT, PART)
+combination uniquely determines a single supplier. Hence, any relationship
+instance (s, j, p) is uniquely identified in the relationship set by its (j, p) combina-
+tion, which makes (j, p) a key for the relationship set. In this notation, the participa-
+tions that have a 1 specified on them are not required to be part of the identifying
+key for the relationship set.'° If all three cardinalities are M or N, then the key will
+be the combination of all three participants.
+
+The second notation is based on the (min, max) notation displayed in Figure 3.15
+for binary relationships. A (min, max) on a participation here specifies that each
+entity is related to at least min and at most max relationship instances in the rela-
+tionship set. These constraints have no bearing on determining the key of an n-ary
+relationship, where n > 2,'” but specify a different type of constraint that places
+restrictions on how many relationship instances each entity can participate in.
+
+3.10 Another Example: A UNIVERSITY Database
+
+We now present another example, a UNIVERSITY database, to illustrate the ER
+modeling concepts. Suppose that a database is needed to keep track of student
+enrollments in classes and students’ final grades. After analyzing the miniworld
+rules and the users’ needs, the requirements for this database were determined to be
+as follows (for brevity, we show the chosen entity type names and attribute names
+for the conceptual schema in parentheses as we describe the requirements; relation-
+ship type names are only shown in the ER schema diagram):
+
+= The university is organized into colleges (COLLEGE), and each college has a
+unique name (CName), a main office (COffice) and phone (CPhone), and a
+particular faculty member who is dean of the college. Each college adminis-
+ters a number of academic departments (DEPT). Each department has a
+unique name (DName), a unique code number (DCode), a main office
+(DOffice) and phone (DPhone), and a particular faculty member who chairs
+the department. We keep track of the start date (CStartDate) when that fac-
+ulty member began chairing the department.
+
+'5This notation allows us to determine the key of the relationship relation, as we discuss in Chapter 9.
+'8This is also true for cardinality ratios of binary relationships.
+
+"The (min, max) constraints can determine the keys for binary relationships.

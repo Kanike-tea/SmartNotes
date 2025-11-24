@@ -1,0 +1,39 @@
+Microcontrollers-BCS402
+
+The operating system provides an infrastructure to control applications and manage hardware
+system resources. Many embedded systems do not require a full operating system but merely
+a simple task scheduler that is either event or poll driven.
+
+The device drivers are the third component shown in Figure 6.1. They provide a consistent
+software interface to the peripherals on the hardware device.
+
+Finally, an application performs one of the tasks required for a device. For example, a mobile
+phone might have a diary application. There may be multiple applications running on the
+same device, controlled by the operating system.
+
+The software components can run from ROM or RAM. ROM code that is fixed on the device
+
+(for example, the initialization code) is called firmware.
+
+5.1 Initialization (Boot) Code
+Initialization code (or boot code) takes the processor from the reset state to a state where the
+operating system can run. It usually configures the memory controller and processor caches
+and initializes some devices. In a simple system the operating system might be replaced by a
+simple scheduler or debug monitor.
+The initialization code handles a number of administrative tasks prior to handing control over
+to an operating system image. This can be grouped into three different tasks:
+
+i) Initial hardware configuration
+
+ii) Diagnostics
+
+iii) Booting.
+Initial hardware configuration involves setting up the target platform so it can boot an
+image. Although the target platform itself comes up in a standard configuration, this
+configuration normally requires modification to satisfy the requirements of the booted image.
+For example, the memory system normally requires reorganization of the memory map.
+Example: Initializing or organizing memory is an important part of the initialization code
+
+because many operating systems expect a known memory layout before they can start.
+
+Dept. of ECE, GSSSIETW Page 12

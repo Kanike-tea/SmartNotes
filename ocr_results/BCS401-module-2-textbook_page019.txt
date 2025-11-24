@@ -1,0 +1,29 @@
+172
+
+5.1
+
+Divide-and-Conquer
+
+Mergesort
+
+Mergesort is a perfect example of a successful application of the divide-and-
+conquer technique. It sorts a given array A[0..n — 1] by dividing it into two halves
+A[0..[n/2] — 1] and A[|n/2]..n — 1], sorting each of them recursively, and then
+merging the two smaller sorted arrays into a single sorted one.
+
+‘i...
+as
+
+The merging of two sorted arrays can be done as follows. Two pointers (array
+indices) are initialized to point to the first elements of the arrays being merged.
+The elements pointed to are compared, and the smaller of them is added to a new
+array being constructed; after that, the index of the smaller element is incremented
+to point to its immediate successor in the array it was copied from. This operation
+is repeated until one of the two given arrays is exhausted, and then the remaining
+elements of the other array are copied to the end of the new array.
+
+| ——
+=
+
+The operation of the algorithm on the list 8, 3, 2, 9, 7, 1, 5, 4 is illustrated in
+Figure 5.2.

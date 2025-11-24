@@ -1,0 +1,70 @@
+address value NUM2 when the above instruction is executed in the second pass through the loop.
+
+ADDRESSING MODES
+* The different ways in which the location of an operand is specified in an instruction are referred to as
+Addressing Modes (Table 2.1).
+
+Table 2.1 Generic addressing modes
+
+Name Assembler syatax Addressing function
+Immediate #Value Operand = Value
+Register Ri EA=Ri
+Absolute (Direct) Loc EA=LOC
+Indirect iy EA=[Ri}
+
+(oc EA={LOC}
+
++ Index x(RI) EA=(Ri]+X
+Base with index (RiRj) FA= [Ri] +IRj]
+Base with index X(RERJ) “EA=(Ri}+(Rj]+X
+
+and offset
+
+Relative X(PC) EA=[PC1+X
+
+‘Autoincrement Ri) EA = (Rij;
+Tocrement Ri
+
+Antodecrement Ri) Decrement Ri;
+EA={Ri)
+
+EA = effective address
+
+Value = 0 signed number
+
+IMPLEMENTATION OF VARIABLE AND CONSTANTS
++ Variable is represented by allocating a memory-location to hold its value.
++ Thus, the value can be changed as needed using appropriate instructions.
++ There are 2 accessing modes to access the variables:
+1) Register Mode
+2) Absolute Mode
+Register Mode
++ The operand is the contents of a register.
++ The name (or address) of the register is given in the instruction.
++ Registers are used as temporary storage locations where the data in a register are accessed.
++ For example, the instruction
+Move RI, R2 sCopy content of register RI into register R2.
+Absolute (Direct) Mode
++ The operand is in a memory-location.
++ The address of memory-location is given explicitly in the instruction.
++ The absolute mode can represent global variables in the program.
++ For example, the instruction
+Move LOC, R2 ;Copy content of memory-location LOC into register
+R2.
+
+Immediate Mode
++ The operand is given explicitly in the instruction.
++ For example, the instruction
+Move #200, RO ;Place the value 200 in register RO.
+* Clearly, the immediate mode is only used to specify the value of a source-operand.
+
+INDIRECTION AND POINTERS
++ Instruction does not give the operand or its address explicitly.
++ Instead, the instruction provides information from which the new address of the operand can be
+determined.
++ This address is called Effective Address (EA) of the operand.
+Indirect Mode
+
++ The EA of the operand is the contents of a register(or memory-location).
+
+Page 13

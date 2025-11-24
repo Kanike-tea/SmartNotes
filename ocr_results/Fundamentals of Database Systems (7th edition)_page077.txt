@@ -1,0 +1,47 @@
+2.5 Centralized and Client/Server Architectures for DBMSs
+
+Terminals | Display Display ] ___ {Display
+Monitor Monitor Monitor
+Network
+Application Terminal Text
+Programs Display Control Editors
+DBMS Compilers
+Software
+Operating System
+( System Bus \
+I I l
+Controller Controller Controller
+I
+CPU /O Devices
+Memory Disk (Printers,
+Hardware/Firmware Tape Drives, .. )
+
+Figure 2.4
+A physical centralized
+architecture.
+
+47
+
+application program execution, and user interface processing were carried out on
+one machine. Figure 2.4 illustrates the physical components in a centralized archi-
+tecture. Gradually, DBMS systems started to exploit the available processing power
+at the user side, which led to client/server DBMS architectures.
+
+2.5.2 Basic Client/Server Architectures
+
+First, we discuss client/server architecture in general; then we discuss how it is
+applied to DBMSs. The client/server architecture was developed to deal with com-
+puting environments in which a large number of PCs, workstations, file servers,
+printers, database servers, Web servers, e-mail servers, and other software and
+equipment are connected via a network. The idea is to define specialized servers
+with specific functionalities. For example, it is possible to connect a number of PCs
+or small workstations as clients to a file server that maintains the files of the client
+machines. Another machine can be designated as a printer server by being con-
+nected to various printers; all print requests by the clients are forwarded to this
+machine. Web servers or e-mail servers also fall into the specialized server cate-
+gory. The resources provided by specialized servers can be accessed by many client
+machines. The client machines provide the user with the appropriate interfaces to
+utilize these servers, as well as with local processing power to run local applications.
+This concept can be carried over to other software packages, with specialized pro-
+grams—such as a CAD (computer-aided design) package—being stored on specific
+server machines and being made accessible to multiple clients. Figure 2.5 illustrates

@@ -1,0 +1,40 @@
+25.2 Introduction to MapReduce and Hadoop 919
+
+Figure 25.1
+
+Overview of MapReduce
+execution. (Adapted
+from T. White, 2012)
+
+Then the above lists of (word, 1) pairs are added up to output total counts of all
+words found in the document as follows:
+
+Reduce (String key, Iterator values) : // here the key is a word and values are
+lists of its counts //
+Int result =0;
+For each v in values :
+result += Parseint (v);
+Emit (key, Asstring (result));
+
+The above example in MapReduce programming appears as:
+
+map([LongWritable,Text] (key, value) : List[Text, LongWritable] = {
+String[] words = split(value)
+for(word : words) {
+context.out(Text(word), LongWritable(1))
+}
+}
+reduce[Text, Iterable[LongWritable] (key, values) : List[Text, LongWritable] = {
+LongWritable c = 0
+for( v: values) {
+c+=v
+}
+
+context.out(key,c)
+
+}
+
+The data types used in the above example are LongWritable and Text. Each
+MapReduce job must register a Map and Reduce function. The Map function
+receives each key-value pair and on each call can output 0 or more key-value pairs.
+The signature of the Map function specifies the data types of its input and output

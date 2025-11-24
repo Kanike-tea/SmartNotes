@@ -1,0 +1,58 @@
+4.8 Software Interrupt Instruction 99
+
+The link register /r is pushed onto the stack with register rJ. Upon return, register rJ is
+popped off the stack, as well as the return address being loaded into the pe. This returns
+
+from the subroutine.
+
+4.8 SOFTWARE INTERRUPT INSTRUCTION
+
+Similar to the ARM equivalent, the Thumb software interrupt (SWI) instruction causes
+a software interrupt exception. If any interrupt or exception flag is raised in Thumb state,
+the processor automatically reverts back to ARM state to handle the exception.
+
+Syntax: SWI immediate
+
+SWI | software interrupt
+
+Ir_sve = address of instruction following the SWI
+spsr_sve = cpsr
+
+pe =vectors + 0x8
+
+cpsr mode = SVC
+
+cpsr I= 1 (mask IRQ interrupts)
+
+cpsr T =0 (ARM state)
+
+‘The Thumb SWI instruction has the same effect and nearly the same syntax as the ARM
+equivalent. It differs in that the SWI number is limited to the range 0 to 255 and it is not
+
+conditionally executed.
+
+EXAMPLE This example shows the execution of a Thumb SWI instruction. Note that the processor
+4.8 goes from Thumb state to ARM state after execution.
+
+PRE —_cpsr = nzcVqifT_USER
+
+pc = 0x00008000
+Ir = Ox003 fff FF
+
+r0 = 0x12
+
+0x00008000 SWI
+
+3 Ir = rl4
+
+0x45
+
+POST —cpsr = nzcVqIft_svc
+spsr = nzcVqifT_USER
+
+pe
+Ir
+r0 = 0x12
+
+0x00000008
+0x00008002

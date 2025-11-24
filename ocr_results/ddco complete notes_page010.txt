@@ -1,0 +1,36 @@
+Digital Design and Computer Organization(BCS302)
+
+> The simplified expressions produced by the map are always in one of the
+two standard forms: sum of products or product of sums.
+
+> The simplest algebraic expression is an algebraic expression with a minimum
+number of terms and with the smallest possible number of literals(variable) in
+each term. This expression produces a circuit diagram with a minimum number
+of gates and the minimum number of inputs to each gate.
+
+FOUR-VARIABLE K-MAP
+
+11
+
+> The map for Boolean functions of four binary variables (w, x, y, z) is shown in Fig.
+3.8. In Fig. 3.8(a) are listed the 16 minterms and the squares assigned to each.
+
+> In Fig. 3.8(b), the map is redrawn to show the relationship between the squares
+and the four variables. The rows and columns are numbered in a Gray code
+sequence, with only one digit changing value between two adjacent rows or
+columns.
+
+> The minterm corresponding to each square can be obtained from the
+concatenation of the row number with the column number. For example, the
+numbers of the third row (11) and the second column (01), when concatenated,
+give the binary number 1101, the binary equivalent of decimal 13. Thus, the
+square in the third row and second column represents minterm m13.
+
+> One square represents one minterm, giving a term with four literals. Two
+adjacent squares represent a term with three literals.
+
+> Four adjacent squares represent a term with two literals. Eight adjacent squares
+
+represent a term with one literal.
+
+Page

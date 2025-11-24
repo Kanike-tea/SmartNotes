@@ -1,0 +1,60 @@
+A relation is said to be in
+unique combination of values. The above tab
+
+table in INF.
+
+NF if it contains no non-atomic values and each row can provide a
+
+le in UNF can be processed to create the following
+
+Emp-Name | Month | Sales Bank-Id Bank-Name
+Emp-Id
+E01 AA Jan | 1000 | BOL SBI
+E01 AA Feb | 1200 BOI SBI
+E01 AA Mar | 850 | BOL SBI
+E02 BB Jan | 2200) B02 UTI
+E02 BB Feb | 2500 B02 UTI
+E03 cc Jan | 1700 | BOL SBI
+E03 cc Feb | 1800 BOI SBI
+E03 cc Mar | 1850 BOL SBI
+E03 cc Apr | 1725 BOL SBI
+As you can see now, each row contains unique combination of values. Unlike in UNF, this relation
+
+contains on
+INF.
+
+ly atomic values, i.e. the rows can not be further decomposed, so the relation is now in
+
+Second Normal Form (2NF)
+
+A relation is said to be in 2NF f if it is already in I NF and each and every attribute fully depends on
+the primary key of the relation. Speaking inversely, if a table has some attributes which is not
+
+dependant on the primary key of that table, then it is not in 2NF.
+
+Let us explain. Emp-Id is the primary key of the above relation. Emp-Name, Month, Sales and
+
+Bank-Name all depend upon Emp-Ii
+
+ends on Bank-Id, which is
+
+not the primary key of the table. So the table is in INF, but not in 2NF. If this position can be
+
+removed into another relate:
+
+. But the attribute Bank-Name de
+relation, it would come to 2NF.
+mp-Id Emp-Name Month [Sales Bank-Id
+E01 AA | JAN |1000/ BOI
+E01 AA | FEB |1200/ BOI
+E01 AA | MAR / 850 BOL
+E02 BB JAN |2200° B02
+E02 BB FEB [2500 B02
+E03 cc JAN |1700/ BOI
+E03 cc FEB |1800) BOI
+E03 CC | MAR /1850,_ BOI
+E03 CC | APR [1726 BOI
+
+Bank-Id Bank-Name
+BOl | SBI
+BO2 | UTI

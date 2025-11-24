@@ -1,0 +1,32 @@
+Microcontrollers - BCS402
+
+A read-write allocate on cache miss policy allocates a cache line for either a read or write to
+memory. Any load or store operation made to main memory, which is not in cache memory,
+
+allocates a cache line. On memory reads the controller uses a read-allocate policy.
+
+On a write, the controller also allocates a cache line. If the victim cache line contains valid data,
+then it is first written back to main memory before the cache controller fills the victim cache line
+with new data from main memory. If the cache line is not valid, it simply does a cache line fill.
+After the cache line is filled from main memory, the controller writes the data to the
+corresponding data location within the cache line. The cached core also updates main memory if
+
+it is a writethrough cache.
+2.7 Coprocessor 15 and Caches
+
+There are several coprocessor 15 registers used to specifically configure and control ARM
+cached cores. The following table lists the coprocessor 15 registers that control cache
+configuration. Primary CP15 registers c7 and c9 control the setup and operation of cache.
+Secondary CP15:c7 registers are write only and clean and flush cache. The CP15:c9 register
+defines the victim pointer base address, which determines the number of lines of code or data
+
+that are locked in cache.
+
+Table Coprocessor 15 registers that configure and control cache operation.
+Function Primary register Secondary registers Opcode 2
+Clean and flush cache 7 5, 6, c7, c10, c13,cl4_ 01,2
+Drain write buffer 7 10 4
+Cache lockdown 9 0 0,1
+Round-robin replacement c15 0 0
+
+Dept. of ECE, GSSSIETW, Mysuru Page 45

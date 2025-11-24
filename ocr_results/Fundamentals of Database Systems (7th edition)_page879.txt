@@ -1,0 +1,51 @@
+23.2. Data Fragmentation, Replication, and Allocation Techniques for Distributed Database Design
+
+fragmentation is used). Notice that we could also apply a FULL OUTER JOIN opera-
+tion and get the same result for a complete vertical fragmentation, even when
+some horizontal fragmentation may also have been applied. The two vertical frag-
+ments of the EMPLOYEE relation with projection lists L; = {Ssn, Name, Bdate,
+Address, Sex} and L, = {Ssn, Salary, Super_ssn, Dno} constitute a complete vertical
+fragmentation of EMPLOYEE.
+
+Two horizontal fragments that are neither complete nor disjoint are those defined on
+the EMPLOYEE relation in Figure 5.5 by the conditions (Salary > 50000) and (Dno = 4);
+they may not include all EMPLOYEE tuples, and they may include common tuples.
+Two vertical fragments that are not complete are those defined by the attribute lists
+L, = {Name, Address} and L = {Ssn, Name, Salary}; these lists violate both conditions
+of a complete vertical fragmentation.
+
+Mixed (Hybrid) Fragmentation. We can intermix the two types of fragmenta-
+tion, yielding a mixed fragmentation. For example, we may combine the horizon-
+tal and vertical fragmentations of the EMPLOYEE relation given earlier into a mixed
+fragmentation that includes six fragments. In this case, the original relation can be
+reconstructed by applying UNION and OUTER UNION (or OUTER JOIN) operations
+in the appropriate order. In general, a fragment of a relation R can be specified by a
+SELECT-PROJECT combination of operations 1,(6¢(R)). If C = TRUE (that is, all
+tuples are selected) and L # ATTRS(R), we get a vertical fragment, and if C# TRUE and
+L=ATTRS(R), we get a horizontal fragment. Finally, if C# TRUE and L # ATTRS(R),
+we get a mixed fragment. Notice that a relation can itself be considered a fragment
+with C= TRUE and L = ATTRS(R). In the following discussion, the term fragment is
+used to refer to a relation or to any of the preceding types of fragments.
+
+A fragmentation schema of a database is a definition of set of fragments that includes
+all attributes and tuples in the database and satisfies the condition that the whole data-
+base can be reconstructed from the fragments by applying some sequence of OUTER
+UNION (or OUTER JOIN) and UNION operations. It is also sometimes useful—although
+not necessary—to have all the fragments be disjoint except for the repetition of pri-
+mary keys among vertical (or mixed) fragments. In the latter case, all replication
+and distribution of fragments is clearly specified at a subsequent stage, separately
+from fragmentation.
+
+An allocation schema describes the allocation of fragments to nodes (sites) of the
+DDBS; hence, it is a mapping that specifies for each fragment the site(s) at which it
+is stored. If a fragment is stored at more than one site, it is said to be replicated. We
+discuss data replication and allocation next.
+
+23.2.2 Data Replication and Allocation
+
+Replication is useful in improving the availability of data. The most extreme case is
+replication of the whole database at every site in the distributed system, thus creat-
+ing a fully replicated distributed database. This can improve availability remark-
+ably because the system can continue to operate as long as at least one site is up. It
+
+849

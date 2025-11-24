@@ -1,0 +1,69 @@
+3. Develop a menu driven Program in C for the following operations on STACK of Integers (Array
+Implementation of Stack with maximum size MAX)
+
+la. Push an Element on to Stack
+
+ib. Pop an Element from Stack
+
+\c. Demonstrate how Stack can be used to check Palindrome
+
+\d. Demonstrate Overflow and Underflow situations on Stack
+
+le. Display the status of Stack
+
+If. Exit
+
+Theory:
+
+A stack is a container of objects that are inserted and removed according to the last-in first-out(LIFO) principle. A stack is a
+limited access data structure - elements can be added and removed from the stack only at the top. Push adds an item to the top
+of the stack, pop removes the item from the top.
+
+Basic Operations on Stack
+
+In order to make manipulations in a stack, there are certain operations provided to us.
+push() to insert an element into the stack
+
+pop() to remove an element from the stack
+
+top() Returns the top element of the stack.
+
+isEmpty() returns true if stack is empty else false.
+
+isFull() returns true if stack is full else false.
+
+Program
+
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+
+int s[MAX];
+int top = -1;
+
+void push(int item);
+int pop();
+
+void palindrome();
+void display();
+
+void main()
+{
+int choice, item;
+while(1)
+{
+printf("\n\n\n\n-
+printf("\n=>1.Push an Element to Stack and Overflow demo ");
+printf("\n=>2.Pop an Element from Stack and Underflow demo");
+printf("\n=>3 Palindrome demo ");
+printf("\n=>4 Display ");
+printf("\n=>5.Exit");
+printf("\nEnter your choice: ");
+scanf("%d", &choice);
+
+switch(choice)
+{
+case 1: printf("\nEnter an element to be pushed: ");
+scanf("%d" , &item);
+push(item);
+break;

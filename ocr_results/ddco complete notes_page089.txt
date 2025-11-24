@@ -1,0 +1,45 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+b) One address instruction format : Its format is as follows
+opcode operand
+Ex1: LOAD B
+
+This instruction copies the contents of memory location whose symbolic name is given
+by ,,B“ into the Accumulator as shown in the figure.
+The mathematical representation of this instruction is as follows
+ACC < [B]
+
+Accumulator Memory
+
+rr
+
+Ex2: STORE B
+This instruction copies the contents of Accumulator into memory location whose
+symbolic name is given by ,,B“ as shown in the figure. The mathematical representation is as
+follows
+B<—[ACC].
+Memory
+Accumulator
+
+Ex3: ADD B
+
+. This instruction adds the contents of Accumulator with the contents of Memory
+location ,,B“ and result is stored in Accumulator.
+
+e The mathematical, representation of this instruction is as follows
+ACC —[ACC}+ [B]
+
+STRIGHT LINE SEQUENCING AND INSTRUCTION EXECUTION
+
+Consider the arithmetic expression
+C= A+B , Where A,B,C are the memory operands.
+The mathematical representation of this instruction is
+C=[A] + [B].
+The sequence of instructions using two address instruction format are as follows
+MOV A, Ro
+ADD B, Ro
+MOV Ro, C
+Such a program is called as 3 instruction program.
+NOTE: The size of each instruction is 32 bits.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 22

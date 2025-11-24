@@ -1,0 +1,82 @@
+32 RNB
+x0 RNS
+x1 RNG
+x2 RNT
+x3 RNG
+a0 RNB
+al RN9
+a2 RN 10
+a3 RN 1
+a4 RN12
+
+8.3 FIR filters
+
+; input samples
+
+3 output accumulators
+
+3 void fir_32byl6_arme
+3 (int *a,
+3 int *x,
+3 struct { short *c; unsigned int M; } *c,
+3 unsigned int N)
+fir_32byl6_arm9e
+
+SIMFD sp!, {r4-rl1, Ir}
+
+LOMIA cc, {c, M}
+next_sample32_arm9e
+
+STMFD sp!, {a, N, M}
+
+LOMIA x!, {x.0, x1, x2, x3}
+
+MOV a0, #0
+
+MOV al, #0
+
+MOV a2, #0
+
+MOV a3, #0
+
+MOV a4, #0
+
+next_tap32_arm9e
+3 perform next block of 5x4=20 taps
+
+LOMIA
+SUBS
+‘SMLAWB
+‘SMLAWB
+‘SMLAWB
+‘SMLAWB
+‘SMLAWT
+LOMIA
+‘SMLAWT
+‘SMLAWT
+‘SMLAWB
+‘SMLAWB
+‘SMLAWT
+LOMIA
+
+c!, {c_10, c 32}
+MM, #4
+
+a0, x_0, c_10, a0
+a_l, x_l, c_10, al
+a2, x2, c_10, a2
+a_3, x_3, c_l0, a3
+a0, x_l, c_10, a0
+
+x!, (x0, x1}
+al, x2, c_l0,a
+a2, x_3, c_l0, a.
+a0, x_2, c_32, a_
+a_l, x_3, c_32, a
+a0, x_3, c_32, a
+x!, (x2, x3}
+
+1
+olhlo!n le
+
+291

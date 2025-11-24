@@ -1,0 +1,51 @@
+676
+
+Chapter 18 Strategies for Query Processing
+
+(DEPARTMENT in OP6), the algorithm divides the buffer space among the M parti-
+tions such that all the blocks of the first partition of DEPARTMENT completely reside
+in main memory. For each of the other partitions, only a single in-memory buffer—
+whose size is one disk block—is allocated; the remainder of the partition is written to
+disk as in the regular partition-hash join. Hence, at the end of the first pass of the
+partitioning phase, the first partition of DEPARTMENT resides wholly in main mem-
+ory, whereas each of the other partitions of DEPARTMENT resides in a disk subfile.
+
+For the second pass of the partitioning phase, the records of the second file being
+joined—the larger file, EMPLOYEE in OP6—are being partitioned. If a record
+hashes to the first partition, it is joined with the matching record in DEPARTMENT
+and the joined records are written to the result buffer (and eventually to disk). If
+an EMPLOYEE record hashes to a partition other than the first, it is partitioned
+normally and stored to disk. Hence, at the end of the second pass of the partition-
+ing phase, all records that hash to the first partition have been joined. At this point,
+there are M — 1 pairs of partitions on disk. Therefore, during the second joining or
+probing phase, M — 1 iterations are needed instead of M. The goal is to join as
+many records during the partitioning phase so as to save the cost of storing those
+records on disk and then rereading them a second time during the joining phase.
+
+18.5 Algorithms for PROJECT
+and Set Operations
+
+A PROJECT operation Teattribute list>(R) from relational algebra implies that after
+projecting R on only the columns in the list of attributes, any duplicates are removed
+by treating the result strictly as a set of tuples. However, the SQL query:
+
+SELECT Salary
+FROM EMPLOYEE
+
+produces a list of salaries of all employees. If there are 10,000 employees and only 80
+distinct values for salary, it produces a one column result with 10,000 tuples. This oper-
+ation is done by simple linear search by making a complete pass through the table.
+
+Getting the true effect of the relational algebra Tattribute list>(R) operator is straight-
+forward to implement if <attribute list> includes a key of relation R, because in this
+case the result of the operation will have the same number of tuples as R, but with
+only the values for the attributes in <attribute list> in each tuple. If <attribute list>
+does not include a key of R, duplicate tuples must be eliminated. This can be done by
+sorting the result of the operation and then eliminating duplicate tuples, which
+appear consecutively after sorting. A sketch of the algorithm is given in Fig-
+ure 18.3(b). Hashing can also be used to eliminate duplicates: as each record is
+hashed and inserted into a bucket of the hash file in memory, it is checked against
+those records already in the bucket; if it is a duplicate, it is not inserted in the bucket.
+It is useful to recall here that in SQL queries, the default is not to eliminate dupli-
+cates from the query result; duplicates are eliminated from the query result only if
+the keyword DISTINCT is included.

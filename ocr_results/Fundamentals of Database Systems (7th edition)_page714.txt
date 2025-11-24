@@ -1,0 +1,52 @@
+684
+
+Chapter 18 Strategies for Query Processing
+
+The above difficulties have led to shared-nothing architecture becoming the most
+commonly used architecture in parallel database systems. In this architecture, each
+processor accesses its own main memory and disk storage. When a processor A
+requests data located on the disk Dg attached to processor B, processor A sends the
+request as a message over a network to processor B, which accesses its own disk Dg
+and ships the data over the network in a message to processor A. Parallel databases
+using shared-nothing architecture are relatively inexpensive to build. Today, com-
+modity processors are being connected in this fashion on a rack, and several racks
+can be connected by an external network. Each processor has its own memory and
+disk storage.
+
+The shared-nothing architecture affords the possibility of achieving parallelism in
+query processing at three levels, which we will discuss below: individual operator
+parallelism, intraquery parallelism, and interquery parallelism. Studies have shown
+that by allocating more processors and disks, linear speed-up—a linear reduction
+in the time taken for operations—is possible. Linear scale-up, on the other hand,
+refers to being able to give a constant sustained performance by increasing the
+number of processors and disks proportional to the size of data. Both of these are
+implicit goals of parallel processing.
+
+18.8.1 Operator-Level Parallelism
+
+In the operations that can be implemented with parallel algorithms, one of the main
+strategies is to partition data across disks. Horizontal partitioning of a relation
+corresponds to distributing the tuples across disks based on some partitioning
+method. Given n disks, assigning the ith tuple to disk i mod n is called round-robin
+partitioning. Under range partitioning, tuples are equally distributed (as much as
+possible) by dividing the range of values of some attribute. For example, employee
+tuples from the EMPLOYEE relation may be assigned to 10 disks by dividing the
+age range into 10 ranges—say 22-25, 26-28, 29-30, and so on—such that each has
+roughly one-tenth of the total number of employees. Range partitioning is a chal-
+lenging operation and requires a good understanding of the distribution of data
+along the attribute involved in the range clause. The ranges used for partitioning
+are represented by the range vector. With hash partitioning, tuple i is assigned to
+the disk h(i), where h is the hashing function. Next, we briefly discuss how parallel
+algorithms are designed for various individual operations.
+
+Sorting. If the data has been range partitioned on an attribute—say, age—into n
+disks on n processors, then to sort the entire relation on age, each partition can be
+sorted separately in parallel and the results can be concatenated. This potentially
+causes close to an n-fold reduction in the overall sorting time. If the relation has
+been partitioned using another scheme, the following approaches are possible:
+
+= Repartition the relation by using range partitioning on the same attribute
+that is the target for sorting; then sort each partition individually followed
+by concatenation, as mentioned above.
+
+= Usea parallel version of the external sort-merge algorithm shown in Figure 18.2.

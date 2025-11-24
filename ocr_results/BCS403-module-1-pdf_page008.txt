@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+A database typically has many users, each of whom may require a different perspectiveor
+viewof the database. A view may be a subset of the database or it may containvirtual data that
+is derived from the database files but is not explicitly stored. A multiuser DBMS whose users
+have a variety of distinct applications mustprovide facilities for defining multiple views. For
+example, one user of the databaseof Figure 1.2 may be interested only in accessing and printing
+
+the transcript of eachstudent; the view for this user is shown in Figure 1.2(b)
+
+Figl.2(
+TRANSCRIPT oy
+‘Student_transcript _
+Student_name —_ view
+Course_number Grade Semester Year Section_id derived
+CS1310 c Fall 08 1919 erve
+Smith from
+MATH2410 B Fall 03 12
+MATH2410 A Fall 07 a5 the
+CS1310 A Fall 07 02 univers
+Brown ity
+683820 B Spring 08 402
+CS3380 A Fall 08 485 databas
+
+e
+
+4, Sharing of Data and Multiuser Transaetion Processing
+
+A multiuser DBMS, as its name implies,must allow multiple users to access the database
+
+at the same time. This is essential if data for multiple applications is to be integratedand
+maintained in a single database. The DBMS must include concurrencycontrol software to ensure
+that several users trying to update the same data do so ina controlled manner so that the result of
+the updates is correct. For example, whenseveral reservation agents try to assign a seat on an
+airline flight, the DBMS shouldensure that each seat can be accessed by only one agent at a time
+for assignment to apassenger. These types of applications are generally called online transaction
+processing(OLTP) applications. A fundamental role of multiuser DBMS software is toensure that
+
+concurrent transactions operate correctly and efficiently.
+
+The concept of a transaction has become central to many database applications. Atransaction is an
+executing program or process that includes one or more databaseaccesses, such as reading or
+updating of database records. The DBMS must enforce several transaction properties. The
+isolation property ensures that each transaction appears to executein isolation from other
+transactions, even though hundreds of transactions may beexecuting concurrently. The atomicity
+
+property ensures that either all the databaseoperations in a transaction are executed or none are.
+
+https://vtucode.in Page 9

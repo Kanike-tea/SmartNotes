@@ -1,0 +1,56 @@
+12.2 Object Database Extensions to SQL
+
+a persistent collection (extent) or by explicit naming (assigning a unique
+name by which the object can be referenced/retrieved).
+
+= Type hierarchies and inheritance. Object types can be specified by using a
+type hierarchy, which allows the inheritance of both attributes and methods
+(operations) of previously defined types. Multiple inheritance is allowed in
+some models.
+
+= Extents. All persistent objects of a particular class/type C can be stored in an
+extent, which is a named persistent object of type set(C). Extents corre-
+sponding to a type hierarchy have set/subset constraints enforced on their
+collections of persistent objects.
+
+= Polymorphism and operator overloading. Operations and method names
+can be overloaded to apply to different object types with different imple-
+mentations.
+
+In the following sections we show how these concepts are realized, first in the SQL
+standard (Section 12.2) and then in the ODMG standard (Section 12.3).
+
+12.2 Object Database Extensions to SQL
+
+We introduced SQL as the standard language for RDBMSs in Chapters 6 and 7. As
+we discussed, SQL was first specified by Chamberlin and Boyce (1974) and under-
+went enhancements and standardization in 1989 and 1992. The language continued
+its evolution with a new standard, initially called SQL3 while being developed and
+later known as SQL:99 for the parts of SQL3 that were approved into the standard.
+Starting with the version of SQL known as SQL3, features from object databases
+were incorporated into the SQL standard. At first, these extensions were known as
+SQL/Object, but later they were incorporated in the main part of SQL, known as
+SQL/Foundation in SQL:2008.
+
+The relational model with object database enhancements is sometimes referred to
+as the object-relational model. Additional revisions were made to SQL in 2003 and
+2006 to add features related to XML (see Chapter 13).
+
+The following are some of the object database features that have been included in SQL:
+
+= Some type constructors have been added to specify complex objects. These
+include the row type, which corresponds to the tuple (or struct) constructor.
+An array type for specifying collections is also provided. Other collection
+type constructors, such as set, list, and bag constructors, were not part of the
+original SQL/Object specifications in SQL:99 but were later included in the
+standard in SQL:2008.
+
+= A mechanism for specifying object identity through the use of reference
+type is included.
+
+= Encapsulation of operations is provided through the mechanism of
+
+user-defined types (UDTs) that may include operations as part of their
+declaration. These are somewhat similar to the concept of abstract data
+
+379

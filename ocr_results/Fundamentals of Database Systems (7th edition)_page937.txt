@@ -1,0 +1,51 @@
+24.6 NOSQL Graph Databases and Neo4j 907
+
+Figure 24.4 (continued)
+Examples in Neodj using the Cypher language. (c) Basic syntax of Cypher queries. (d) Examples of Cypher queries.
+
+(c) Basic simplified syntax of some common Cypher clauses:
+Finding nodes and relationships that match a pattern: MATCH <pattern>
+Specifying aggregates and other query variables: WITH <specifications>
+Specifying conditions on the data to be retrieved: WHERE <condition>
+Specifying the data to be returned: RETURN <data>
+Ordering the data to be returned: ORDER BY <data>
+Limiting the number of returned data items: LIMIT <max number>
+Creating nodes: CREATE <node, optional labels and properties>
+Creating relationships: CREATE <relationship, relationship type and optional properties>
+Deletion: DELETE <nodes or relationships>
+Specifying property values and labels: SET <property values and labels>
+Removing property values and labels: REMOVE <property values and labels>
+
+(@
+
+Examples of simple Cypher queries:
+1. MATCH (d : DEPARTMENT {Dno: ‘5'}) — [ : LocatedIn ] — (loc)
+RETURN d.Dname , loc.Lname
+2. MATCH (e: EMPLOYEE {Empid: '2"}) — [ w: WorksOn ] — (p)
+RETURN e.Ename , w.Hours, p.Pname
+3. MATCH (e ) — [w: WorksOn ] — (p: PROJECT {Pno: 2})
+RETURN p.Pname, e.Ename , w.Hours
+4. MATCH (e) — [w: WorksOn ] — (p)
+RETURN e.Ename , w.Hours, p.Pname
+ORDER BY e.Ename
+5. MATCH (e) — [ w: WorksOn ] — (p)
+RETURN e.Ename , w.Hours, p.Pname
+ORDER BY e.Ename
+LIMIT 10
+6. MATCH (e) — [ w: WorksOn ] — (p)
+WITH e, COUNT(p) AS numOfprojs
+WHERE numOfprojs > 2
+RETURN e.Ename , numOfprojs
+ORDER BY numOfprojs
+7. MATCH (e) — [w: WorksOn ] — (p)
+RETURN e, w, p
+ORDER BY e.Ename
+LIMIT 10
+8. MATCH (e: EMPLOYEE {Empid: ‘2’})
+SET e.Job = ‘Engineer’
+
+Query 1 in Figure 24.4(d) shows how to use the MATCH and RETURN clauses in a
+query, and the query retrieves the locations for department number 5. Match speci-
+fies the pattern and the query variables (d and loc) and RETURN specifies the query
+result to be retrieved by refering to the query variables. Query 2 has three variables
+(e, w, and p), and returns the projects and hours per week that the employee with

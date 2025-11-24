@@ -1,0 +1,68 @@
+332
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+This will register the driver with the driver manager and make it available to the
+program. It is also possible to load and register the driver(s) needed in the com-
+mand line that runs the program, for example, by including the following in the
+command line:
+
+-Djdbe.drivers = oracle. jdbc.driver
+
+JDBC programming steps. The following are typical steps that are taken when
+writing a Java application program with database access through JDBC function
+calls. We illustrate the steps by referring to the example JDBC1 in Figure 10.12,
+which reads a Social Security number of an employee and prints the employee’s last
+name and salary.
+
+1. Import the JDBC class library. The JDBC library of classes must be
+imported into the Java program. These classes are called java.sql.*, and
+can be imported using line 1 in Figure 10.12. Any additional Java class
+libraries needed by the program must also be imported.
+
+//Program JDBC1: Figure 10.12
+0) import java.io.* ; Program segment JDBC1,
+
+1) import java.sql.*
+
+a Java program segment
+with JDBC.
+
+2) class getEmpInfo {
+
+17)
+
+20)
+21)
+22)
+23)
+24)
+25) }
+
+public static void main (String args []) throws SQLException, IOException {
+
+try { Class. forName("oracle. jdbc.driver.OracleDriver")
+} catch (ClassNotFoundException x) {
+
+System.out.print1n ("Driver could not be loaded") ;
+}
+String dbacct, passwrd, ssn, lname ;
+Double salary ;
+dbacct = readentry("Enter database account
+passwrd = readentry("Enter password:") ;
+Connection conn = DriverManager.getConnection
+
+("jdbc:oracle:oci8:" + dbacct + "/" + passwrd) ;
+String stmtl = "select Lname, Salary from EMPLOYEE where Ssn = ?" ;
+PreparedStatement p = conn.prepareStatement(stmt1l) ;
+ssn = readentry("Enter a Social Security Number: ") ;
+p-clearParameters() ;
+p-setString(1, ssn) ;
+ResultSet r = p.executeQuery() ;
+while (r.next()) {
+
+lname = r.getString(1) ;
+
+salary = r.getDouble(2) ;
+
+system.out.printline(1name + salary) ;

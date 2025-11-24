@@ -1,0 +1,72 @@
+1006 Chapter 26 Enhanced Data Models
+
+the predicates in the body of the rule by that interpretation. Hence, whenever a
+particular substitution (binding) to the variables in the rules is applied, if all the
+predicates in the body of a rule are true under the interpretation, the predicate in
+the head of the rule must also be true. The interpretation shown in Figure 26.13 is a
+model for the two rules shown, since it can never cause the rules to be violated.
+Notice that a rule is violated if a particular binding of constants to the variables
+makes all the predicates in the rule body true but makes the predicate in the rule
+head false. For example, if SUPERVISE(a, b) and SUPERIOR(}, c) are both true under
+some interpretation, but SUPERIOR(a, c) is not true, the interpretation cannot be a
+model for the recursive rule:
+
+SUPERIOR(X, Y) :- SUPERVISE(X, Z), SUPERIOR(Z, Y)
+
+In the model-theoretic approach, the meaning of the rules is established by provid-
+ing a model for these rules. A model is called a minimal model for a set of rules if
+we cannot change any fact from true to false and still get a model for these rules. For
+
+Figure 26.13
+An interpretation that
+is a minimal model.
+
+Rules
+SUPERIOR(X, Y) :- SUPERVISE(Y, Y).
+SUPERIOR(X, Y) :- SUPERVISE(X, Z), SUPERIOR(Z, Y).
+
+Interpretation
+
+Known Facts:
+SUPERVISE (franklin, john) is true.
+
+SUPERVISE (franklin, ramesh) is true.
+
+SUPERVISE (franklin, joyce) is true.
+
+SUPERVISE (jennifer, alicia) is true.
+
+SUPERVISE (jennifer, ahmad) is true.
+
+SUPERVISE (james, franklin) is true.
+
+SUPERVISE (james, jennifer) is true.
+
+SUPERVISE(X, ¥) is false for all other possible (X, Y) combinations
+
+Derived Facts:
+SUPERIOR (franklin, john) is true.
+
+SUPERIOR (franklin, ramesh) is true.
+
+SUPERIOR (franklin, joyce) is true.
+
+SUPERIOR (jennifer, alicia) is true.
+
+SUPERIOR (jennifer, ahmad) is true.
+
+SUPERIOR (james, franklin) is true.
+
+SUPERIOR (james, jennifer) is true.
+
+SUPERIOR (james, john) is true.
+
+SUPERIOR (james, ramesh) is true.
+
+SUPERIOR(james, joyce) is true.
+
+SUPERIOR(james, alicia) is true.
+
+SUPERIOR (james, ahmad) is true.
+
+SUPERIOR(X, ¥) is false for all other possible (X, Y) combinations

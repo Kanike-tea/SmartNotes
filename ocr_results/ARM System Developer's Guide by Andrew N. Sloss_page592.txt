@@ -1,0 +1,31 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 579
+
+BLX Branch with link and exchange (subroutine call with possible state switch)
+1. BLX <address25> ARMv5.
+2. BLX<cond> Rm ARMv5.
+3. BLX <address22> THUMBv2
+4. BLX Rm THUMBv2
+Action Effect on the cpsr
+1. Ir = ret#0; pe = <address25> T=1 (switch to Thumb state)
+2. Ir = ret+0; pe = Rm & Oxfffffffe T=Rm & 1
+3. Ir = rettl; pe = <address22> T=0 (switch to ARM state)
+4. Ir = rett+1; pc = Rm & Oxfffffffe T=Rm & 1
+Notes
+These instructions set /r to the address of the following instruction ret plus the current
+cpsr T-bit setting. Therefore you can return from the subroutine using BX 1¥ to resume
+execution address and ARM or Thumb state.
+Rm must not be pe.
+Rm & 3 must not be 2. This would cause a branch to an unaligned ARM instruction.
+Example
+BLX thumb_code ; call a Thumb subroutine from ARM state
+BLX ro ; call the subroutine pointed to by r0
+3 ARM code if rO0 even, Thumb if r0 odd
+BX Branch with exchange (branch with possible state switch)
+BXJ
+
+1. BX<cond> Rm ARMv4T.
+2. BX Rm THUMBv1
+3. BXJ<cond> Rm ARMv5d
+Action Effect on the cpsr
+
+1. pe = Rm & Oxfffffffe T=Rm & 1

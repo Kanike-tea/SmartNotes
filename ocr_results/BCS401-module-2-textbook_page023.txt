@@ -1,0 +1,48 @@
+5.2 Quicksort 177
+
+As before, we start by selecting a pivot—an element with respect to whose value
+we are going to divide the subarray. There are several different strategies for
+selecting a pivot; we will return to this issue when we analyze the algorithm’s
+efficiency. For now, we use the simplest strategy of selecting the subarray’s first
+element: p = A[/].
+
+Unlike the Lomuto algorithm, we will now scan the subarray from both ends,
+comparing the subarray’s elements to the pivot. The left-to-right scan, denoted
+below by index pointer i, starts with the second element. Since we want elements
+smaller than the pivot to be in the left part of the subarray, this scan skips over
+elements that are smaller than the pivot and stops upon encountering the first
+element greater than or equal to the pivot. The right-to-left scan, denoted below
+by index pointer j, starts with the last element of the subarray. Since we want
+elements larger than the pivot to be in the right part of the subarray, this scan
+skips over elements that are larger than the pivot and stops on encountering the
+first element smaller than or equal to the pivot. (Why is it worth stopping the scans
+after encountering an element equal to the pivot? Because doing this tends to yield
+more even splits for arrays with a lot of duplicates, which makes the algorithm run
+faster. For example, if we did otherwise for an array of n equal elements, we would
+have gotten a split into‘subarrays of sizes n — 1 and 0, reducing the problem size
+just by 1 after scanning the entire array.)
+
+After both scans stop, three situations may arise, depending on whether or not
+the scanning indices have crossed. If scanning indices i and j have not crossed, i.e.,
+i < j, we simply exchange A[i] and A[j] and resume the scans by incrementing i
+and decrementing j, respectively:
+
+p|allae<p [ep] --- | <p] allare>p
+
+If the scanning indices have crossed over, i.e., i > j, we will have partitioned the
+subarray after exchanging the pivot with A[j]:
+
+<j in
+
+p allare <p <p | =p all are > p
+
+Finally, if the scanning indices stop while pointing to the same element, ie., i = j,
+the value they are pointing to must be equal to p (why?). Thus, we have the
+subarray partitioned, with the split position s =i = j:
+ejsin
+
+p all are <p =p allare > p
+
+We can combine the last case with the case of crossed-over indices (i > j)) by
+exchanging the pivot with A[j] whenever i > j.
+Here is pseudocode implementing this partitioning procedure.

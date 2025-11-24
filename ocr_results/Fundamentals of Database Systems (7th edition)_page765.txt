@@ -1,0 +1,50 @@
+19.9 Overview of Query Optimization in Oracle
+
+Oracle’s query transformation techniques. Major among these transformations are
+group-by and distinct subquery merging (in the FROM clause of the query), sub-
+query unnesting, predicate move-around, common subexpression elimination, join
+predicate push down, OR expansion, subquery coalescing, join factorization,
+subquery removal through window function, star transformation, group-by placement,
+and bushy join trees.”!
+
+The cost-based transformation framework of Oracle 10g is a good example of the
+sophisticated approach taken to optimize SQL queries.
+
+19.9.3 Adaptive Optimization
+
+Oracle’s physical optimizer is adaptive and uses a feedback loop from the execu-
+tion level to improve on its previous decisions. The optimizer selects the most
+optimal execution plan for a given SQL statement using the cost model, which
+relies on object statistics (e.g., number of rows, distribution of column values,
+etc.) and system statistics (e.g., I/O bandwidth of the storage subsystem). The
+optimality of the final execution plan depends primarily on the accuracy of the
+statistics fed into the cost model as well as on the sophistication of the cost model
+itself. In Oracle, the feedback loop shown in Figure 19.7 establishes a bridge
+between the execution engine and the physical optimizer. The bridge brings
+valuable statistical information to enable the physical optimizer to assess the
+impact of its decisions and make better decisions for the current and future exe-
+cutions. For example, based on the estimated value of table cardinality, the opti-
+mizer may choose the index-based nested-loop join method. However, during
+the execution phase, the actual table cardinality may be detected to diverge sig-
+nificantly from the estimated value. This information may trigger the physical
+optimizer to revise its decision and dynamically change the index access join
+method to the hash join method.
+
+19.9.4 Array Processing
+
+One of the critical deficiencies of SQL implementations is its lack of support for
+N-dimensional array-based computation. Oracle has made extensions for analyt-
+ics and OLAP features; these extensions have been integrated into the Oracle
+RDBMS engine.”” We will illustrate the need for OLAP queries when we discuss
+data warehousing in Chapter 29. These SQL extensions involving array-based
+computations for complex modeling and optimizations include access structures
+and execution strategies for processing these computations efficiently. The com-
+putation clause (details are beyond our scope here) allows the Oracle RDBMS to
+treat a table as a multidimensional array and specify a set of formulas over it. The
+formulas replace multiple joins and UNION operations that must be performed
+for equivalent computation with current ANSI SQL (where ANSI stands for
+
+2'More details can be found in Ahmed et al. (2006, 2014).
+22See Witkowski et al. (2003) for more details.
+
+735

@@ -1,0 +1,50 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Stack ADT
++ The following operations make a stack an ADT. For simplicity, assume the data is an integer
+
+type.
+structure Stack is
+objects: a finite ordered list with zero or more elements.
+functions:
+
+for all stack € Stack, item € element, max-stack-size € positive integer
+
+Stack CreateS(max-—stack —size) :=
+create an empty stack whose maximum size is max—stack—size
+
+Boolean IsFull(stack, max—stack size) ::=
+if (number of elements in stack == max—stack—size)
+return TRUE
+else return FALSE
+
+Stack Add(stack, item) ::=
+if (IsFull(stack)) stack — full
+else insert item into top of stack and return
+
+Boolean \sEmpty(stack) ::=
+if (stack == CreateS(max-stack—size))
+return TRUE
+else return FALSE
+
+Element Delete(stack) ::=
+if (IsEmpty(stack)) return
+else remove and return the item on the top of the stack.
+
+Structure 3,1; Abstract data type Stack
+
+* Main stack operations
+— Push (int data): Inserts data onto stack.
+— int Pop(): Removes and returns the last inserted element from the stack.
++ Auxiliary stack operations
+— int Top(): Returns the last inserted element without removing it.
+— int Size(): Returns the number of elements stored in the stack.
+— int IsEmptyStack(): Indicates whether any elements are stored in the stack or not.
+— int IsFullStack(): Indicates whether the stack is full or not.
+« The easiest way to implement this ADT is by using a one-dimensional array, say, stack
+[MAX-STACK-SIZE], where MAX STACK SIZE is the maximum number of entries.
+e The first, or bottom, element of the stack is stored in stack[0], the second in stack[1] and
+
+the ith in stack [i-1].
+
+vtucode.in 40

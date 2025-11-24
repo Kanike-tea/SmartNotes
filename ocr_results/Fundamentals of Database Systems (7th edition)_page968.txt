@@ -1,0 +1,51 @@
+938
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+© Even with the use of Fair or Capacity scheduling (see our discussion in
+Section 25.4.2), dividing the cluster into fixed map and reduce slots meant
+the cluster was underutilized.
+= The latency involved in acquiring a cluster was high—a cluster would be
+granted only when enough nodes were available. Users started extending the
+lifetime of clusters and holding the clusters longer than they needed. This
+affected cluster utilization negatively.
+
+JobTracker Scalability. As the cluster sizes increased beyond 4,000 nodes, issues
+with memory management and locking made it difficult to enhance JobTracker to
+handle the workload. Multiple options were considered, such as holding data about
+Jobs in memory, limiting the number of tasks per Job, limiting the number of Jobs
+submitted per user, and limiting the number of concurrently running jobs. None of
+these seemed to fully satisfy all users; JobTracker often ran out of memory.
+
+A related issue concerned completed Jobs. Completed jobs were held in JobTracker
+and took up memory. Many schemes attempted to reduce the number and memory
+footprint of completed Jobs. Eventually, a viable solution was to offload this func-
+tion to a separate Job History daemon.
+
+As the number of TaskTrackers grew, the latencies for heartbeats (signals from
+TaskTracker to JobTracker) were almost 200 ms. This meant that heartbeat intervals
+for TaskTrackers could be 40 seconds or more when there were more than 200 task
+trackers in the cluster. Efforts were made to fix this but were eventually abandoned.
+
+JobTracker: Single Point of Failure. The recovery model of Hadoop v1 was
+very weak. A failure of JobTracker would bring down the entire cluster. In this
+event, the state of running Jobs was lost, and all jobs would have to be resubmitted
+and JobTracker restarted. Efforts to make the information about completed jobs
+persist did not succeed. A related issue was to deploy new versions of the software.
+This required scheduling a cluster downtime, which resulted in backlogs of jobs
+and a subsequent strain on JobTracker upon restart.
+
+Misuse of the MapReduce Programming Model. MR runtime was not a great
+fit for iterative processing; this was particularly true for machine learning algo-
+rithms in analytical workloads. Each iteration is treated as an MR job. Graph algo-
+rithms are better expressed using a bulk synchronous parallel (BSP) model, which
+uses message passing as opposed to the Map and Reduce primitives. Users got
+around these impediments by inefficient alternatives such as implementing
+machine learning algorithms as long-running Map-only jobs. These types of jobs
+initially read data from HDFS and executed the first pass in parallel; but then
+exchanged data with each other outside the control of the framework. Also, the
+fault tolerance was lost. The JobTracker was not aware of how these jobs operated;
+this lack of awareness led to poor utilization and instability in the cluster.
+
+Resource Model Issues. In Hadoop vl, a node is divided into a fixed number of
+Map and Reduce slots. This led to cluster underutilization because idle slots could

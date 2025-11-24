@@ -1,0 +1,62 @@
+"ing
+
+thar
+ices
+
+ces
+
+[ph
+
+25. 5. Graph Colouring 133
+
+p Thecycle being considered is shown in Figure 2.40. Obviously, this cycle cannot be properly
+coloured with a single colour. Assign two colours alternatively to the vertices, starting with v;
+Then, the odd vertices v;, v3, vs etc,, will have one colour a and the even vertices v2, v4, vg ete
+will have a different colour f.
+Suppose n is even. Then the vertex v, is an even vertex and therefore will have the colour
+Jjacent vertices v, and v, have different ky
+
+B. and the cycle gets properly coloured (because the 2
+2
+
+colours). Therefore, the cycle is 2-chromatic
+Suppose n is odd Then the vertex v,, is an odd vertex and therefore will have the colour @
+and the cycle is not properly coloured (because, then, the adjacent vertices v, and v, will have
+the same colour a) To make the cycle properly coloured, it is enough if v, is assigned a third
+.
+
+colour y. Thus, in this case, the cycle is 3-chromatic
+
+[Example 4] Find the chromatic number of the graph shown below
+
+Figure 2.41
+
+> We check that the given graph cannot be properly coloured with one or two colours, But it
+can be properly coloured with three colours. For example, we can assign colour a to vertices
+¥j and v3, colour f to vertices v2 and v4, and colour y to the vertex vs. Hence the chromatic
+
+number of o
+
+Suppose a graph G is 2-chromatic, Then it is non-null, and some vertices of G have one
+
+Colour, say @, and the rest of the vertices have another colour, say 6. Let V; be the set of
+
+given graph is three
+
+a graph G is 2-chromatic if and only if it is anon-null bipartite graph
+
+Wertices having colour a@ and V> be the set of vertices having colour 8. Then V; U V2 = V, the
+Vertex set of G, and V; M V2 = ®. Also, no two vertices of V; can be adjacent and no two
+
+- of V2 can be adjacent. As such, every edge in G has one end in V; and the other end in
+@ Hence G
+
+partite graph.
+
+‘ versely, suppose G is a non-null bipartite graph. Then the vertex set of G has two
+Panties | 1 . .
+nd V) such that every edge in G has one end in V, and another end in V2
+Conse : :
+‘ ), G cannot be properly coloured with one colour; because then vertices in V;
+
+the same colour and every edge has both of its ends of the same colour

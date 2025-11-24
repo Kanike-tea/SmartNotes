@@ -1,0 +1,62 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Linked Que
+The representation of m< MAX_QUEUES queues,
+
+#define MAX-QUEUES 10 /* maximum number of queues */
+Typedef struct queue *queuePointer;
+typedef struct {
+element data;
+queuePointer link;
+} queue;
+queuePointer front [MAX_QUEUES], rear [MAX QUEUES];
+
+The initial condition for the queues is:
+front [i] = NULL, 0 < i < MAX_QUEUES
+
+The boundary condition i:
+
+front[i] = NULL iff the ith queue is /empty
+
+Functions addq and deleteq implement the add and delete operations for multiple
+
+queues.
+
+void addq(i, item)
+
+{ /* add item to the rear of-queue i */
+queuePointer temp;
+MALLOC (temp, sizeof (*temp) );
+temp-data = item;
+temp-slink = NULL;
+if (front [i])
+rear[i] Slink = temp;
+else
+front[i] = temp;
+rear[i] = temp;
+
+Program: Add to the rear of a linked queue
+
+Function addq is more complex than push because we must check for an empty queue. If the
+queue is empty, then change front to point to the new node; otherwise change rear's link
+
+field to point to the new node. In either case, we then change rear to point to the new node.
+
+element deleteq(int 1)
+{/* delete an element from queue i */
+
+queuePointer temp = front[i];
+element item;
+if (! temp)
+
+return queueEmpty();
+item = temp-data;
+front{i]= temp+link;
+free (temp) ;
+return item;
+
+}
+
+Program: Delete from the front of a linked queue
+
+vtucode.in 21

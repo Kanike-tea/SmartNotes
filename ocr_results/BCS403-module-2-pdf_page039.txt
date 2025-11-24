@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+Step 3: Mapping of Binary 1:1 Relationship Types
+= For each binary 1:1 relationship type R in the ER schema, identify the relations S and T that
+correspond to the entity types participating in R
+= There are three possible approaches:
+- foreign key approach
+- merged relationship approach
+- crossreference or relationship relation approach
+1. The foreign key approach
+= Choose one of the relations—S, say—and include as a foreign key in S' the primary key of T.
+= It is better to choose an entity type with total participation in R in the role of S
+= Include all the simple attributes (or simple components of composite attributes) of the 1:1
+relationship type R as attributes of S.
+= In our example, we map the 1:1 relationship type by choosing the participating entity type
+DEPARTMENT to serve in the role of S because its participation in the MANAGES
+relationship type is total
+= We include the primary key of the EMPLOYEE relation as foreign key in the
+DEPARTMENT relation and rename it Mgr_ssn.
+= We also include the simple attribute Start_date of the MANAGES relationship type in the
+DEPARTMENT relation and rename it Mgr_start_date
+
+ad
+
+Merged relation approach:
+
+= merge the two entity types and the relationship into a single relation
+
+" This is possible when both participations are total, as this would indicate that the two
+
+tables will have the exact same number of tuples at all times.
+
+3.Cross-reference or relationship relation approach:
+
+* set up a third relation R for the purpose of cross-referencing the primary keys of the two
+relations S.and T representing the entity types.
+
+= required for binary M:N relationships
+
+= The relation R is called a relationship relation (or sometimes a lookup table), because each
+tuple in R represents a relationship instance that relates one tuple from S with one tuple
+from T
+
+= The relation R will include the primary key attributes of S and T as foreign keys to S and T.
+
+= The primary key of R will be one of the two foreign keys, and the other foreign key will be
+a unique key of R.
+
+https://vtucode.in Page 40

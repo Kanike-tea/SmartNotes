@@ -1,0 +1,33 @@
+LECTURE-14: Clustering Index
+
+Clustering Indexes:
+If the records of a file are physically ordered on a non key field that does not have a distinct value
+
+for each record, that filed is called the clustering filed of the file. We can create a different type of
+index called clustering index to speed up retrieval of records that have the same value for the
+clustering field. This differs from a primary index, which requires that the ordering field of the data
+file have a distinct value for each record.
+
+A clustering index is also an ordered file with two fields, the first field is of the same type as
+the clustering field of the data file and the second field is block pointer. There is one entry in the
+clustering index for each distinct value of the clustering field, containing that value and a pointer to
+the first block in the data file that has a record with that value for its clustering field.
+
+Acclustering index is another example of non dense index.
+
+Clustering field block pointer deptno —ename
+10 10
+10
+20 io
+30
+20
+
+30
+30
+
+Secondary Indexes:
+
+A secondary index also is an ordered file with two fields and as in the other indexes, the second
+filed is a pointer to a disk block. The first field is of the same type as some non ordering field of the
+data file. The field on which the secondary index is constructed is called an indexing field of the
+file. Whether its values are distinct for every record or not.

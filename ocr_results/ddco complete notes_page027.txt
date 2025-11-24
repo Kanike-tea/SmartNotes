@@ -1,0 +1,25 @@
+Digital Design and Computer Organization(BCS302)
+
+Write a Verilog program for OR gate using i)dataflow modelling ii)Behavioral
+modelling and iii)structural modelling.
+
+1 module dataflow(a, b, y); |module = b, vy):
+input 4, ?
+2 input a, b; output y;
+reg y;
+| output yr sigacs @ (a or b)
+- ire ‘ | begin
+4 assign y =a | by if ((a == 0) && (b= =0)) y= 0;
+5 else
+y=;
+6 end
+endmodule
+Bmodule structural(a, b, y);
+input a, b}
+output y;
+or gl(y,a,b);
+endmodule
+2)write a Verilog code for the following circuit.
+Page
+
+28

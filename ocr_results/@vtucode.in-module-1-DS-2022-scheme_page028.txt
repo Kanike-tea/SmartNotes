@@ -1,0 +1,83 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+SPARSE MATRIX REPRESENTATION
+
+* We can classify uniquely any element within a matrix by using the triple . Therefore, we
+
+can use an array of triples to represent a sparse matrix.
+
++ Sparse matrix contains many zero entries.
+
++ When a sparse matrix is represented as a 2-dimensional array, we waste space For ex, if
+
+100* 100 matrix contains only 100 entries then we waste 9900 out of 10000 memory spaces.
+
++ Solution: Store only the non-zero elements.
+
+col 1 col 2 col 3 coll col2 col3 cold colS col6
+roe [yp 3 rn rod [15° 0 0 22 0 —15
+wl! O 11 3 0 0 0
+
+row 2 6 82 -2
+wz} 0 0 0 -6 0 0
+
+row 3 109 64 a
+rows | O 0 0 0 0 0
+
+rows | 8 9
+rw /91 0 0 0 0 0
+
+rorS | ag oa at
+Lo { 2 { {
+
+Sug ow 0 0 23200 O] Ge
+
+(a) (b),
+
+Structure Sparse Matrix is
+
+objects: a set of triples, <row, column, value>, where row and column are
+integers and form a unique combifiatilon, andvalue comes from the set
+item.
+
+functions:
+
+for all a,
+
+= x € item, d, j, max_col, max_row € index
+Sparse_Marix Create (max_
+
+, max _01)
+
+return a Sparse matrix that can hold up to max_items = max
+_row *max{ cob and whoSe maximum row size is max_row and
+whose maximum jcolumn’ size is max_col.
+
+Sparse_Matrix(Pranspose(a) ::=
+
+return the matrix produced by interchanging the row and
+column value of every triple.
+
+Sparse |MatPix Add(a, b) ::=
+if the dimensions of a and b are the same
+
+xeturn the matrix produced by adding corresponding items,
+namely those with identical row and col values.
+
+else
+return error
+Sparse Matrix Multiply(a, b) ::=
+if number of columns in a equals number of rows in b
+xeturn the matrix d produced by multiplying a by b according
+
+to the formula:d [i] [j]=U(ali] [k] -b[k][j]) where d (i, j)
+is the (i,j)th element
+
+else
+return error.
+
+End Sparse Matrix
+
+vtucode.in
+
+29

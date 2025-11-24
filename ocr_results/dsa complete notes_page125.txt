@@ -1,0 +1,52 @@
+Data Structures and Applications (BCS304) Module V
+
+e Each list containing the synonyms for that bucket.
+e Search involves
+o Computing the hash address h(k), and
+o Examining the keys in the list of h(k)
+Example: Insert acos, atoi,char,define,exp,ceil cos, float, atol, floor , ctime into a 26 bucket hash
+table maintained as hash chain
+
+0] | ——~ | acos-> atoi-> atol
+
+1] | ——»| NULL
+
+2) | — | char -. Ceil-> cos -> ctime
+3] | ——> | define
+
+4) |——> [exp
+
+5] | —— | float-.floor
+
+6] | ——» | NULL
+
+25] | ——» | NULL
+
+5.74 Rehashing: When the hash table becomes nearly full, the number of collisions increases, thereby
+degrading the performance of insertion and search operations. In such cases, a better option is to create
+a new hash table with size double of the original hash table.
+
+All the entries in the original hash table will then have to be moved to the new hash table. This is done
+by taking each entry, computing its new hash value, and then inserting it in the new hash table. Though
+rehashing seems to be a simple process, it is quite expensive and must therefore not be done frequently.
+
+Example:
+Consider the hash table of size 5 given below. The hash function used is h(x)= x % 5.
+
+0 1 2 3 4
+| 26 | 31 | 43 | 17 |
+
+Rehash the entries into to anew hash table using hash function—h(x)= x % 10.
+
+o 4 #2 3 #4 #5 6 7 8 9
+31 43 26 | 17 |
+
+Dynamic hashing
+
+Limitation of static hashing: when the table tends to be full, overflow increases and reduces
+performance.
+
+To ensure good performance, it is necessary to increase the size of a hash table whenever the
+loading density exceeds a prescribed threshold.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 6

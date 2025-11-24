@@ -1,0 +1,50 @@
+608 Appendix A ARM and Thumb Assembler Instructions
+
+SMUL
+SMUA
+SMUS
+
+Signed multiply instructions
+
+1. SMUL<x><y><cond> Rd, Rm, Rs ARMv5E.
+2. SMULW<y><cond> Rd, Rm, Rs ARMv5E.
+3. SMUAD{X}<cond> Rd, Rm, Rs ARMV6
+4. SMUSD{X}<cond> Rd, Rm, Rs ARMV6
+5. {U|S}MULL<cond>{$} RdLo, RdHi, Rm, Rs ARMV3M
+Action
+
+1. Rd = Rm.<x> * Rs.<y>
+
+2. Rd = (Rm * Rs.<y>) >> 16
+
+3. Rd = Rm.B*<rotated_Rs>.B + Rm.T*<rotated_Rs>.T
+
+4. Rd = Rm.B*<rotated_Rs>.B - Rm.T*<rotated_Rs>.T
+
+5. RdHi:RdLo = Rm*Rs
+Notes
+
+<x> and <y> can be B or T.
+Rm.B is shorthand for (sign-extend)Rm[15:00], the bottom 16 bits of Rm.
+Rm.Tis shorthand for (sign-extend)Rm[31:16], the top 16 bits of Rm.
+
+<rotated_Rs> is Rs if you do not specify the X suffix or Rs ROR 16 if you do specify the
+X suffix.
+
+RdHiand RdLo must be different registers. For format 5, Rm must be a different register
+from RdHi and RdLo.
+
+Format 4 updates the cpsr Q-flag: Q = Q| <SignedOverflow>.
+Format 5 implements an unsigned multiply with the U prefix or a signed multiply with
+the S prefix.
+
+Format 5 updates the cpsr if the S suffix is present: N = RdHi[31], Z = (RdHi==
+&& RdLo==0); the Cand V flags are unpredictable. Avoid using {$|U}MULLS because
+implementations often impose penalty cycles for this operation.
+
+Implementations may terminate early on the value of Rs. For this reason use small or
+constant values for Rs where possible.
+
+The X suffix and multiply subtract versions are useful for packed complex num-
+bers. The following examples assume bits [15:00] hold the real part and [31:16] the
+imaginary part.

@@ -1,0 +1,50 @@
+632
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+3 precede those for department number 4. Thus <3, n> precedes <4, m> for any
+values of m and n. The ascending key order for keys with Dno = 4 would be <4, 18>,
+<4, 19>, <4, 20>, and so on. Lexicographic ordering works similarly to ordering of
+character strings. An index on a composite key of n attributes works similarly to
+any index discussed in this chapter so far.
+
+17.4.2 Partitioned Hashing
+
+Partitioned hashing is an extension of static external hashing (Section 16.8.2) that
+allows access on multiple keys. It is suitable only for equality comparisons; range
+queries are not supported. In partitioned hashing, for a key consisting of n compo-
+nents, the hash function is designed to produce a result with n separate hash
+addresses. The bucket address is a concatenation of these n addresses. It is then pos-
+sible to search for the required composite search key by looking up the appropriate
+buckets that match the parts of the address in which we are interested.
+
+For example, consider the composite search key <Dno, Age>. If Dno and Age are
+hashed into a 3-bit and 5-bit address respectively, we get an 8-bit bucket address.
+Suppose that Dno = 4 has a hash address ‘100’ and Age = 59 has hash address ‘10101’.
+Then to search for the combined search value, Dno = 4 and Age = 59, one goes to
+bucket address 100 10101; just to search for all employees with Age = 59, all buckets
+(eight of them) will be searched whose addresses are ‘000 10101’, ‘001 10101’, ...
+and so on. An advantage of partitioned hashing is that it can be easily extended to
+any number of attributes. The bucket addresses can be designed so that high-order
+bits in the addresses correspond to more frequently accessed attributes. Addition-
+ally, no separate access structure needs to be maintained for the individual attri-
+butes. The main drawback of partitioned hashing is that it cannot handle range
+queries on any of the component attributes. Additionally, most hash functions do
+not maintain records in order by the key being hashed. Hence, accessing records in
+lexicographic order by a combination of attributes such as <Dno, Age> used as a key
+would not be straightforward or efficient.
+
+17.4.3 Grid Files
+
+Another alternative is to organize the EMPLOYEE file as a grid file. If we want to
+access a file on two keys, say Dno and Age as in our example, we can construct a grid
+array with one linear scale (or dimension) for each of the search attributes. Fig-
+ure 17.14 shows a grid array for the EMPLOYEE file with one linear scale for Dno and
+another for the Age attribute. The scales are made in a way as to achieve a uniform
+distribution of that attribute. Thus, in our example, we show that the linear scale for
+Dno has Dno = 1, 2 combined as one value 0 on the scale, whereas Dno = 5 corre-
+sponds to the value 2 on that scale. Similarly, Age is divided into its scale of 0 to 5 by
+grouping ages so as to distribute the employees uniformly by age. The grid array
+shown for this file has a total of 36 cells. Each cell points to some bucket address
+where the records corresponding to that cell are stored. Figure 17.14 also shows the
+assignment of cells to buckets (only partially).

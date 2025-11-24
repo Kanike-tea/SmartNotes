@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+The rows and columns represent the values of the results of comparison conditions, which would
+typically appear in the WHERE clause of an SQL query.
+
+In select-project-join queries, the general rule is that only those combinations of tuples that evaluate
+the logical expression in the WHERE clause of the query to TRUE are selected. Tuple combinations
+that evaluate to FALSE or UNKNOWN are not selected.
+
+SQL allows queries that check whether an attribute value is NULL using the comparison operators
+IS or IS NOT.
+Example: Retrieve the names of all employees who do not have supervisors.
+SELECT Fname, Lname
+FROM EMPLOYEE
+WHERE Super_ssn IS NULL;
+1.1.2 Nested Queries, Tuples, and Set/Multiset Comparisons
+Some queries require that existing values in the database be fetched and then used in a
+comparison condition. Such queries can be conveniently formulated by using nested queries,
+which are complete select-from-where blocks within the WHERE clause of another query. That
+other query is called the outer query
+Example1: List the project numbers of projects that have an employee with last name ‘Smith’ as
+manager
+SELECT DISTINCT Pnumber FROM PROJECT WHERE
+Pnumber IN
+(SELECT Pnumber FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE Dnum=Dnumber AND Mgr_ssn=Ssn AND Lname='‘smith’);
+Example2; List the project numbers of projects that have an employee with last name ‘Smith’ as
+either manager or as worker.
+SELECT DISTINCT Pnumber FROM PROJECT WHERE
+Pnumber IN
+(SELECT Pnumber FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE Dnum=Dnumber AND Mgr_ssn=Ssn AND Lname='‘smith’)
+OR
+Pnumber IN
+(SELECT Pno FROM WORKS_ON, EMPLOYEE WHERE Essn=Ssn AND
+Lname='‘smith’);
+We make use of comparison operator IN, which compares a value v with a set (or multiset) of
+values V and evaluates to TRUE if vis one of the elements in V.
+
+page 19

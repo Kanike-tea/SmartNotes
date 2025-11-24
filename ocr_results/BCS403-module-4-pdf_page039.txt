@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+5.6 Characterizing Schedules Based on Serializability
+
+= schedules that are always considered to be correct when concurrent transactions are
+executing are known as serializable schedules
+
+= Suppose that two users—for example, two airline reservations agents—submit to the
+DBMS transactions T1 and T2 at approximately the same time. If no interleaving of
+operations is permitted, there are only two possible outcomes:
+1. Execute all the operations of transaction T1 (in sequence) followed by all the
+
+operations of transaction T2 (in sequence).
+
+2. Execute all the operations of transaction T2 (in sequence) followed by all the
+
+operations of transaction T1 (in sequence).
+
+Figure 21.5
+
+Examples of serial and nonserial schedules involving transactions{Tyland Tp. (a)
+Serial schedule A: T, followed by Tp. (b) Serial schedule B: 7g followed by.T,.
+(c) Two nonserial schedules C and D with interleaving of operations.
+
+(a) Ty = {b) Tr
+read_item(X); read_item(X);
+X=X-N; X=X+M;
+write_item(X); write_item(X);
+read_item(Y); read_item(X);
+
+Time Time =
+Y=Y4N: X=X-N;
+write_item(Y); write_item(X);
+teadvitem(x); read_item(Y);
+X=X+M; Y=Y+N;
+write_item(X); write_item(Y);
+Schedule A Schedule B
+(c) re Te qT, Th
+read_item(X); read_item(X);
+X=X-N; ‘ X=X-N;
+roar Boh write_item(X);
+Tima | | write item(x); , , Time read_item(X);
+read_item(Y); X=X+M,
+fs write_item(X);
+Y=Y4N; wie tem): read_item(Y);
+write_item(Y); Y=Y+N,
+write_item(Y);
+Schedule C Schedule D
+
+https://vtucode.in 15

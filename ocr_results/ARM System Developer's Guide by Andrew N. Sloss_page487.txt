@@ -1,0 +1,47 @@
+474 Chapter 13 Memory Protection Units
+
+void regionSetDEAP(unsigned region, unsigned ap)
+
+{
+unsigned c5f, shift;
+shift = 4*region; /* set bit field width */
+__asm{ MRC p15, 0, c5f, c5, cO, 2} /* load extended I AP */
+c5f = cSf & (Oxf<<shift); /* clear old AP bits */
+c5f = c5f | (ap<<shift); /* set new AP bits */
+__asm{ MCR p15, 0, c5f, c5, cO, 2} /* store extended I AP */
+}
+
+Each routine sets the specified region permissions by clearing its AP bits using a shifted
+mask value and then setting the AP bit field with the ap input parameter. The AP bit field
+location is calculated as the region size times the number of bits in the permission bit field;
+this is the shift variable. The value of the bit field is set by shifting the ap value and using
+an OR to modify the c5f core register.
+
+13.2.3. SETTING REGION CACHE AND WRITE BUFFER
+ATTRIBUTES
+
+Three CP15 registers control the cache and write buffer attributes for each core. Two
+registers, CP15:c2:c0:0 and CP15:c2:c0:1, hold the D-cache and I-cache region attributes.
+A third, CP15:c3:c0:0, holds the region write buffer attributes and applies to memory data
+regions. (Refer to Figure 13.5 and Table 13.7 for details.)
+
+Register CP15:c2:c0:1 contains the cache configuration data for all eight instruction
+regions, and register CP15:c2:c0:0 contains all eight data regions. Both registers use the
+same bit field encoding.
+
+The cache bit determines if the cache is enabled for a given address within the region.
+In the ARM740T and ARM940T, the cache is always searched, regardless of the state of the
+
+CP15:c2:c0:1—I-cache
+
+SBZ 7 | 6 | c5 | c4 | c3 | 2 | cf | cd
+31 7 6 5 4 3° 2° 7T 0
+
+CP15:c3:c0:0—write buffer
+
+SBZ 67 | b6| bS| b4 | b3| b2| b1| bO
+
+31 7 6 5 4 3 2 1 °0
+SBZ = “should be zero”
+
+Figure 13.5 CP15:c2 cache and CP15:c3 write buffer region registers.

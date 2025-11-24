@@ -1,0 +1,53 @@
+38
+
+Chapter 2 Database System Concepts and Architecture
+
+may change the conceptual schema to expand the database (by adding a
+record type or data item), to change constraints, or to reduce the database
+(by removing a record type or data item). In the last case, external schemas
+that refer only to the remaining data should not be affected. For example,
+the external schema of Figure 1.5(a) should not be affected by changing the
+GRADE_REPORT file (or record type) shown in Figure 1.2 into the one
+shown in Figure 1.6(a). Only the view definition and the mappings need to
+be changed in a DBMS that supports logical data independence. After the
+conceptual schema undergoes a logical reorganization, application pro-
+grams that reference the external schema constructs must work as before.
+Changes to constraints can be applied to the conceptual schema without
+affecting the external schemas or application programs.
+
+v
+
+. Physical data independence is the capacity to change the internal schema
+without having to change the conceptual schema. Hence, the external sche-
+mas need not be changed as well. Changes to the internal schema may be
+needed because some physical files were reorganized—for example, by cre-
+ating additional access structures—to improve the performance of retrieval
+or update. If the same data as before remains in the database, we should not
+have to change the conceptual schema. For example, providing an access
+path to improve retrieval speed of SECTION records (Figure 1.2) by semes-
+ter and year should not require a query such as list all sections offered in fall
+2008 to be changed, although the query would be executed more efficiently
+by the DBMS by utilizing the new access path.
+
+Generally, physical data independence exists in most databases and file environ-
+ments where physical details, such as the exact location of data on disk, and hard-
+ware details of storage encoding, placement, compression, splitting, merging of
+records, and so on are hidden from the user. Applications remain unaware of these
+details. On the other hand, logical data independence is harder to achieve because it
+allows structural and constraint changes without affecting application programs—a
+much stricter requirement.
+
+Whenever we have a multiple-level DBMS, its catalog must be expanded to include
+information on how to map requests and data among the various levels. The DBMS
+uses additional software to accomplish these mappings by referring to the mapping
+information in the catalog. Data independence occurs because when the schema is
+changed at some level, the schema at the next higher level remains unchanged; only
+the mapping between the two levels is changed. Hence, application programs refer-
+ring to the higher-level schema need not be changed.
+
+2.3 Database Languages and Interfaces
+
+In Section 1.4 we discussed the variety of users supported by a DBMS. The DBMS
+must provide appropriate languages and interfaces for each category of users. In
+this section we discuss the types of languages and interfaces provided by a DBMS
+and the user categories targeted by each interface.

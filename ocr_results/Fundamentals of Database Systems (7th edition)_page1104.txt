@@ -1,0 +1,56 @@
+1074 Chapter 28 Data Mining Concepts
+
+association states that if a customer buys X, he or she is also likely to buy Y. In general,
+any association rule has the form LHS (left-hand side) => RHS (right-hand side),
+where LHS and RHS are sets of items. The set LHS U RHS is called an itemset, the set
+of items purchased by customers. For an association rule to be of interest to a data
+miner, the rule should satisfy some interest measure. Two common interest measures
+are support and confidence.
+
+The support for a rule LHS => RHS is with respect to the itemset; it refers to how
+frequently a specific itemset occurs in the database. That is, the support is the per-
+centage of transactions that contain all of the items in the itemset LHS U RHS. If
+the support is low, it implies that there is no overwhelming evidence that items in
+LHS U RHS occur together because the itemset occurs in only a small fraction of
+transactions. Another term for support is prevalence of the rule.
+
+The confidence is with regard to the implication shown in the rule. The confidence
+of the rule LHS => RHS is computed as the support(LHS U RHS)/support(LHS).
+We can think of it as the probability that the items in RHS will be purchased given
+that the items in LHS are purchased by a customer. Another term for confidence is
+strength of the rule.
+
+Asan example of support and confidence, consider the following two rules: milk =>
+juice and bread => juice. Looking at our four sample transactions in Figure 28.1, we
+see that the support of {milk, juice} is 50% and the support of {bread, juice} is only
+25%. The confidence of milk => juice is 66.7% (meaning that, of three transactions
+in which milk occurs, two contain juice) and the confidence of bread => juice is
+50% (meaning that one of two transactions containing bread also contains juice).
+
+As we can see, support and confidence do not necessarily go hand in hand. The goal
+of mining association rules, then, is to generate all possible rules that exceed some
+minimum user-specified support and confidence thresholds. The problem is thus
+decomposed into two subproblems:
+
+1. Generate all itemsets that have a support that exceeds the threshold. These
+sets of items are called large (or frequent) itemsets. Note that large here
+means large support.
+
+2. For each large itemset, all the rules that have a minimum confidence are
+generated as follows: For a large itemset X and Y c X, let Z= X — Y; then if
+support(X)/support(Z) > minimum confidence, the rule Z => Y (that is,
+X—- Y=> Y) isa valid rule.
+
+Generating rules by using all large itemsets and their supports is relatively straight-
+forward. However, discovering all large itemsets together with the value for their
+
+Figure 28.1
+Sample transactions in
+market-basket model.
+
+Transaction_id Time Items_bought
+101 6:35 milk, bread, cookies, juice
+792 7:38 milk, juice
+1130 8:05 milk, eggs
+
+1735 8:40 bread, cookies, coffee

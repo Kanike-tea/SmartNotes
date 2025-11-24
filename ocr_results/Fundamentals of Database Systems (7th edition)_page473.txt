@@ -1,0 +1,50 @@
+13.5 XML Languages
+
+been designed using the ER graph-structured data model. Section 13.6.2
+discusses the problem of cycles and how to deal with it.
+
+All of these approaches have received considerable attention. We focus on the
+fourth approach in Section 13.6, because it gives a good conceptual understanding
+of the differences between the XML tree data model and the traditional database
+models based on flat files (relational model) and graph representations (ER model).
+But first we give an overview of XML query languages in Section 13.5.
+
+13.5 XML Languages
+
+There have been several proposals for XML query languages, and two query language
+standards have emerged. The first is XPath, which provides language constructs for
+specifying path expressions to identify certain nodes (elements) or attributes within
+an XML document that match specific patterns. The second is XQuery, which is a
+more general query language. XQuery uses XPath expressions but has additional con-
+structs. We give an overview of each of these languages in this section. Then we dis-
+cuss some additional languages related to HTML in Section 13.5.3.
+
+13.5.1 XPath: Specifying Path Expressions in XML
+
+An XPath expression generally returns a sequence of items that satisfy a certain pat-
+tern as specified by the expression. These items are either values (from leaf nodes)
+or elements or attributes. The most common type of XPath expression returns a col-
+lection of element or attribute nodes that satisfy certain patterns specified in the
+expression. The names in the XPath expression are node names in the XML docu-
+ment tree that are either tag (element) names or attribute names, possibly with
+additional qualifier conditions to further restrict the nodes that satisfy the pattern.
+Two main separators are used when specifying a path: single slash (/) and double
+slash (//). A single slash before a tag specifies that the tag must appear as a direct
+child of the previous (parent) tag, whereas a double slash specifies that the tag can
+appear as a descendant of the previous tag at any level. To refer to an attribute name
+instead of an element (tag) name, the prefix @ is used before the attribute name. Let
+us look at some examples of XPath as shown in Figure 13.6.
+
+The first XPath expression in Figure 13.6 returns the company root node and all its
+descendant nodes, which means that it returns the whole XML document. We
+should note that it is customary to include the file name in the XPath query. This
+allows us to specify any local file name or even any path name that specifies a file on
+the Web. For example, if the COMPANY XML document is stored at the location
+
+www.company.com/info.XML
+then the first XPath expression in Figure 13.6 can be written as
+doc(www.company.com/info.XML)/company
+
+This prefix would also be included in the other examples of XPath expressions.
+
+443

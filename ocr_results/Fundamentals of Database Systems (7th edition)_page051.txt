@@ -1,0 +1,50 @@
+1.6 Advantages of Using the DBMS Approach
+
+graphical user interfaces (GUIs). Many specialized languages and environments
+exist for specifying GUIs. Capabilities for providing Web GUI interfaces to a
+database—or Web-enabling a database—are also quite common.
+
+1.6.7 Representing Complex Relationships among Data
+
+A database may include numerous varieties of data that are interrelated in many
+ways. Consider the example shown in Figure 1.2. The record for ‘Brown’ in the
+STUDENT file is related to four records in the GRADE_REPORT file. Similarly,
+each section record is related to one course record and to a number of
+GRADE_REPORT records—one for each student who completed that section. A
+DBMS must have the capability to represent a variety of complex relationships
+among the data, to define new relationships as they arise, and to retrieve and
+update related data easily and efficiently.
+
+1.6.8 Enforcing Integrity Constraints
+
+Most database applications have certain integrity constraints that must hold for
+the data. A DBMS should provide capabilities for defining and enforcing these
+constraints. The simplest type of integrity constraint involves specifying a data
+type for each data item. For example, in Figure 1.3, we specified that the value of
+the Class data item within each STUDENT record must be a one-digit integer and
+that the value of Name must be a string of no more than 30 alphabetic characters.
+To restrict the value of Class between 1 and 5 would be an additional constraint
+that is not shown in the current catalog. A more complex type of constraint that
+frequently occurs involves specifying that a record in one file must be related to
+records in other files. For example, in Figure 1.2, we can specify that every section
+record must be related to a course record. This is known as a referential integrity
+constraint. Another type of constraint specifies uniqueness on data item values,
+such as every course record must have a unique value for Course_number. This is
+known as a key or uniqueness constraint. These constraints are derived from the
+meaning or semantics of the data and of the miniworld it represents. It is the
+responsibility of the database designers to identify integrity constraints during
+database design. Some constraints can be specified to the DBMS and automatically
+enforced. Other constraints may have to be checked by update programs or at the
+time of data entry. For typical large applications, it is customary to call such con-
+straints business rules.
+
+A data item may be entered erroneously and still satisfy the specified integrity con-
+straints. For example, if a student receives a grade of ‘A’ but a grade of ‘C’ is entered
+in the database, the DBMS cannot discover this error automatically because ‘C’ is a
+valid value for the Grade data type. Such data entry errors can only be discovered
+manually (when the student receives the grade and complains) and corrected later
+by updating the database. However, a grade of ‘Z’ would be rejected automatically
+by the DBMS because ‘Z’ is not a valid value for the Grade data type. When we dis-
+cuss each data model in subsequent chapters, we will introduce rules that pertain to
+
+21

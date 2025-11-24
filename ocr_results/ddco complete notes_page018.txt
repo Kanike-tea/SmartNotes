@@ -1,0 +1,51 @@
+Digital Design and Computer Organization(BCS302)
+
+S = ABCD + ABD + BC
+
+Solve S=F(A,B,C,D)=Zm(6,7,9,10,13)+d(1,4,5,11) using K map to get minimum SOP
+expression.
+
+S=ABC+CD+AB
+
+NAND AND NOR IMPLEMENTATION
+
+>
+
+>
+
+Digital circuits are frequently constructed with NAND or NOR gates rather than
+with AND and OR gates.
+
+NAND and NOR gates are easier to fabricate with electronic components and are
+the basic gates used in all IC digital logic families.
+
+NAND Circuits
+
+>
+
+19
+
+The NAND gate is said to be a universal gate because any logic circuit can be
+implemented with it. To show that any Boolean function can be implemented with
+NAND gates, we need only show that the logical operations of AND, OR, and
+complement can be obtained with NAND gates alone. This is indeed shown in Fig.
+3.16.
+
+The complement operation is obtained from a one-input NAND gate that behaves
+exactly like an inverter. The AND operation requires two NAND gates. The first
+produces the NAND operation and the second inverts the logical sense of the
+signal. The OR operation is achieved through a NAND gate with additional
+inverters in each input.
+
+A convenient way to implement a Boolean function with NAND gates is to obtain
+the simplified Boolean function in terms of Boolean operators and then convert
+the function to NAND logic.
+
+The conversion of an algebraic expression from AND, OR, and complement to
+NAND can be done by simple circuit manipulation techniques that change AND-
+OR diagrams to NAND diagrams.
+
+Two equivalent graphic symbols for the NAND gate are shown in Fig. 3.17. The
+AND-invert symbol has been defined previously and consists
+
+Page

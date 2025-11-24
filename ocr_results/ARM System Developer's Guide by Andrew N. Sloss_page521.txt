@@ -1,0 +1,42 @@
+508 Chapter 14 Memory Management Units
+
+entries in the L1 master page table. If the value in bits [1:0] is binary 10, then the PTE has a
+valid 1 MB page available. The data in the PTE is transferred to the TLB, and the physical
+address is translated by combining it with the offset portion of the virtual address.
+
+If the lower two bits are 00, then a fault is generated. If it is either of the other two values,
+the MMU performs a two-stage search.
+
+14.5.2) Two-STEP PAGE TABLE WALK
+
+If the MMU ends its search for a page that is 1, 4, 16, or 64 KB in size, then the page
+table walk will have taken two steps to find the address translation. Figure 14.10 details
+
+31 20 19 1211 0
+Virtual) 1) ofiset L2 offset Page offset
+address
+c a a aa 7
+Step 1 f
+LI master page table
+4095
+Step 2
+: LI page P
++L table entry Coarse
+{_—__| L2 page table
+055 L2 page
+oft table entry
+~2 |
+1
+0
+. | L2 page table
+Translation table base address
+base address
+Selects
+31 bu 0 physical
+; memory
+Physical | physical base Page offset |-—>
+address
+
+TT opie to 128
+
+Figure 14.10 Two-level virtual-to-physical address translation using coarse page tables and 4 KB pages.

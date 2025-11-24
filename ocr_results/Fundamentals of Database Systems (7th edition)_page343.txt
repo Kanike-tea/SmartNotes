@@ -1,0 +1,53 @@
+10.1 Overview of Database Programming Techniques and Issues
+
+Impedance mismatch is less of a problem when a special database programming
+language is designed that uses the same data model and data types as the database
+model. One example of such a language is Oracle’s PL/SQL. The SQL standard also
+has a proposal for such a database programming language, known as SQL/PSM. For
+object databases, the object data model (see Chapter 12) is quite similar to the data
+model of the Java programming language, so the impedance mismatch is greatly
+reduced when Java is used as the host language for accessing a Java-compatible
+object database. Several database programming languages have been implemented
+as research prototypes (see the Selected Bibliography).
+
+10.1.3 Typical Sequence of Interaction
+in Database Programming
+
+When a programmer or software engineer writes a program that requires access to
+a database, it is quite common for the program to be running on one computer
+system while the database is installed on another. Recall from Section 2.5 that a
+common architecture for database access is the three-tier client/server model,
+where a top-tier client program handles display of information on a laptop or
+mobile device usually as a Web client or mobile app, a middle-tier application
+program implements the logic of a business software application but includes some
+calls to one or more database servers at the bottom tier to access or update the
+data.? When writing such an application program, a common sequence of interac-
+tion is the following:
+
+1. When the application program requires access to a particular database, the
+program must first establish or open a connection to the database server.
+Typically, this involves specifying the Internet address (URL) of the machine
+where the database server is located, plus providing a login account name
+and password for database access.
+
+2. Once the connection is established, the program can interact with the database
+by submitting queries, updates, and other database commands. In general,
+most types of SQL statements can be included in an application program.
+
+3. When the program no longer needs access to a particular database, it should
+terminate or close the connection to the database.
+
+A program can access multiple databases if needed. In some database programming
+approaches, only one connection can be active at a time, whereas in other
+approaches multiple connections can be established simultaneously.
+
+In the next three sections, we discuss examples of each of the three main approaches
+to database programming. Section 10.2 describes how SQL is embedded into a pro-
+gramming language. Section 10.3 discusses how function calls and class libraries are
+used to access the database using SQL/CLI (similar to ODBC) and JDBC, and Sec-
+tion 10.4 discusses an extension to SQL called SQL/PSM that allows general-purpose
+
+2s we discussed in Section 2.5, there are two-tier and three-tier architectures; to keep our discussion
+simple, we will assume a two-tier client/server architecture here.
+
+313

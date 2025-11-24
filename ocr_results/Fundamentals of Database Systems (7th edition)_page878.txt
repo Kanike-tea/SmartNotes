@@ -1,0 +1,52 @@
+848
+
+Chapter 23 Distributed Database Concepts
+
+fragment contains the EMPLOYEE tuples working for a particular department. Sim-
+ilarly, we may define three horizontal fragments for the PROJECT relation, with the
+conditions (Dnum = 5), (Dnum = 4), and (Dnum = 1)—each fragment contains the
+PROJECT tuples controlled by a particular department. Horizontal fragmentation
+divides a relation horizontally by grouping rows to create subsets of tuples, where
+each subset has a certain logical meaning. These fragments can then be assigned to
+different sites (nodes) in the distributed system. Derived horizontal fragmentation
+applies the partitioning of a primary relation (DEPARTMENT in our example) to
+other secondary relations (EMPLOYEE and PROJECT in our example), which are
+related to the primary via a foreign key. Thus, related data between the primary and
+the secondary relations gets fragmented in the same way.
+
+Vertical Fragmentation. Each site may not need all the attributes of a relation,
+which would indicate the need for a different type of fragmentation. Vertical
+fragmentation divides a relation “vertically” by columns. A vertical fragment of a
+relation keeps only certain attributes of the relation. For example, we may want to
+fragment the EMPLOYEE relation into two vertical fragments. The first fragment
+includes personal information—Name, Bdate, Address, and Sex—and the second
+includes work-related information—Ssn, Salary, Super_ssn, and Dno. This vertical
+fragmentation is not quite proper, because if the two fragments are stored sepa-
+rately, we cannot put the original employee tuples back together since there is no
+common attribute between the two fragments. It is necessary to include the primary
+key or some unique key attribute in every vertical fragment so that the full relation
+can be reconstructed from the fragments. Hence, we must add the Ssn attribute to
+the personal information fragment.
+
+Notice that each horizontal fragment on a relation R can be specified in the rela-
+tional algebra by a G¢(R) (select) operation. A set of horizontal fragments whose
+conditions Cj, C2, ... , C, include all the tuples in R—that is, every tuple in R satis-
+fies (C) OR C) OR ... OR C,,)—is called a complete horizontal fragmentation of R.
+In many cases a complete horizontal fragmentation is also disjoint; that is, no tuple
+in R satisfies (C; AND CG) for any i # j. Our two earlier examples of horizontal frag-
+mentation for the EMPLOYEE and PROJECT relations were both complete and dis-
+joint. To reconstruct the relation R from a complete horizontal fragmentation, we
+need to apply the UNION operation to the fragments.
+
+A vertical fragment on a relation R can be specified by a %,,(R) operation in the
+relational algebra. A set of vertical fragments whose projection lists L), Ly, ... , Ly,
+include all the attributes in R but share only the primary key attribute of R is called
+a complete vertical fragmentation of R. In this case the projection lists satisfy the
+following two conditions:
+
+m L,UL,U...UL,=ATTRS(R)
+a LALj= PK(R) for any i #j, where ATTRS(R) is the set of attributes of R and
+PK(R) is the primary key of R
+
+To reconstruct the relation R from a complete vertical fragmentation, we apply
+the OUTER UNION operation to the vertical fragments (assuming no horizontal

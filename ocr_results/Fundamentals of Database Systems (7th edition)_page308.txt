@@ -1,0 +1,56 @@
+278
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+assigned values corresponding to a tuple of the specified relation R, then the atom is
+TRUE. In cases 2 and 3, if the domain variables are assigned values that satisfy the
+condition, then the atom is TRUE.
+
+In a similar way to the tuple relational calculus, formulas are made up of atoms,
+variables, and quantifiers, so we will not repeat the specifications for formulas here.
+Some examples of queries specified in the domain calculus follow. We will use low-
+ercase letters J, m, n, ... , x, y, z for domain variables.
+
+Query 0. List the birth date and address of the employee whose name is ‘John
+B. Smith’.
+
+Qo: {u, v | (Ag) (Ar) (As) (At) Aw) (Ax) (Ay) (Az)
+(EMPLOYEE(qrstuvwxyz) AND q=John’ AND r="B’ AND s=‘Smith’)}
+
+We need ten variables for the EMPLOYEE relation, one to range over each of the
+domains of attributes of EMPLOYEE in order. Of the ten variables q, r, s, ... , z,
+only u and v are free, because they appear to the left of the bar and hence should
+not be bound to a quantifier. We first specify the requested attributes, Bdate and
+Address, by the free domain variables u for BDATE and v for ADDRESS. Then we
+specify the condition for selecting a tuple following the bar (|)—namely, that the
+sequence of values assigned to the variables qrstuvwxyz be a tuple of the EMPLOYEE
+relation and that the values for q (Fname), r (Minit), and s (Lname) be equal to
+‘John’, ‘B’, and ‘Smith’, respectively. For convenience, we will quantify only those
+variables actually appearing in a condition (these would be q, r, and s in QO) in the
+rest of our examples.
+
+An alternative shorthand notation, used in QBE, for writing this query is to assign
+the constants ‘John’, ‘B’, and ‘Smith’ directly as shown in QOA. Here, all variables
+not appearing to the left of the bar are implicitly existentially quantified:'>
+
+QA: {u, v| EMPLOYEE(‘John’, ‘B’, ‘Smith’, ¢, u, v, w, x, y, Z)}
+
+Query 1. Retrieve the name and address of all employees who work for the
+‘Research’ department.
+
+a1: {q, s, v | (Az) (Al) Gm) (EMPLOYEE(qrstuvwxyz) AND
+DEPARTMENT(Imno) AND /=“Research’ AND m=z)}
+
+A condition relating two domain variables that range over attributes from two rela-
+tions, such as m = z in Q1, is a join condition, whereas a condition that relates a
+domain variable to a constant, such as | = ‘Research’, is a selection condition.
+
+Query 2. For every project located in ‘Stafford’, list the project number, the con-
+trolling department number, and the department manager’s last name, birth
+date, and address.
+
+'4Quantifying only the domain variables actually used in conditions and specifying a predicate such as
+EMPLOYEE(qrstuvwxyz) without separating domain variables with commas is an abbreviated notation
+used for convenience; it is not the correct formal notation.
+
+'Sagain, this is not a formally accurate notation.

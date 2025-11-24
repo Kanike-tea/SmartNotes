@@ -1,0 +1,50 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+General Tree Representations
+
+A general Tree Structure can be represented with the following three methods. Those
+methods are as follows...
+
+1. List Representation
+
+2. Left Child - Right Sibling Representation
+
+3. Degree two Representation (Binary Tree Representation) Consider the following tree...
+
+(A)
+
+TREE with 11 nodes and 10 edges
+
+(8) (©) - In any tree with ‘N’ nodes there
+will be maximum of ‘N-1\edges
+
+(D) (E) (F) (G) (H) - Ina tree every individual
+element is called as “NODE”
+OO W
+
+1, List Representation
+
+There are several ways to draw a tree. One useful way is as a list. The tree in the above figure
+could be written as the list (A(B(D,E(LJ),F),C(G(s),H)) — list representation (with rounded
+brackets).The information in the root node comes first followed by a list of the subtrees
+of that node.Now, how do we represent a tree in memory? If we wish to use linked lists, then
+a node must have a varying number of fields depending upon the number of branches.
+
+Possible node structure for a tree of degree k called k-ary tree
+
+Data ink 1 ink2 link k
+
+Each link field is used to point to a subtree. This node structure is cumbersome for the following
+reasons (1) Multiple node structure for different tree nodes (2) Waste of space (3) Excessive
+
+use of links.
+
+The other alternate method is to have linked list of child nodes which allocates memory only
+for the nodes which have children.
+
+In this representation, we use two types of nodes, one for representing the node with data and
+another for representing only references. We start with a node with data from root node in the
+
+tree. Then it is linked to an internal node through a reference node and is linked to any other
+
+vtucode.in 12

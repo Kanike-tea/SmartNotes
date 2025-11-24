@@ -1,0 +1,50 @@
+1148 Chapter 30 Database Security
+
+user cannot get indirectly in Y what he or she cannot get directly in X. Active flow
+control began in the early 1970s. Most flow controls employ some concept of security
+class; the transfer of information from a sender to a receiver is allowed only if the
+receiver's security class is at least as privileged as the sender’s. Examples of a flow con-
+trol include preventing a service program from leaking a customer’s confidential data,
+and blocking the transmission of secret military data to an unknown classified user.
+
+A flow policy specifies the channels along which information is allowed to move. The
+simplest flow policy specifies just two classes of information—confidential (C) and
+nonconfidential (N)—and allows all flows except those from class C to class N. This
+policy can solve the confinement problem that arises when a service program handles
+data such as customer information, some of which may be confidential. For example,
+an income-tax-computing service might be allowed to retain a customer’s address
+and the bill for services rendered, but not a customer’s income or deductions.
+
+Access control mechanisms are responsible for checking users’ authorizations for
+resource access: Only granted operations are executed. Flow controls can be
+enforced by an extended access control mechanism, which involves assigning a
+security class (usually called the clearance) to each running program. The program
+is allowed to read a particular memory segment only if its security class is as high as
+that of the segment. It is allowed to write in a segment only if its class is as low as
+that of the segment. This automatically ensures that no information transmitted by
+the person can move from a higher to a lower class. For example, a military pro-
+gram with a secret clearance can only read from objects that are unclassified and
+confidential and can only write into objects that are secret or top secret.
+
+Two types of flow can be distinguished: explicit flows, which occur as a consequence
+of assignment instructions, such as Y:= f(X,,X,,); and implicit flows, which are gen-
+erated by conditional instructions, such as if f(Xjy.1, .., Xn) then Y= f (X1,Xyn)-
+
+Flow control mechanisms must verify that only authorized flows, both explicit and
+implicit, are executed. A set of rules must be satisfied to ensure secure information
+flows. Rules can be expressed using flow relations among classes and assigned to
+information, stating the authorized flows within a system. (An information flow
+from A to B occurs when information associated with A affects the value of infor-
+mation associated with B. The flow results from operations that cause information
+transfer from one object to another.) These relations can define, for a class, the set
+of classes where information (classified in that class) can flow, or can state the spe-
+cific relations to be verified between two classes to allow information to flow from
+one to the other. In general, flow control mechanisms implement the controls by
+assigning a label to each object and by specifying the security class of the object.
+Labels are then used to verify the flow relations defined in the model.
+
+30.6.1 Covert Channels
+
+A covert channel allows a transfer of information that violates the security or the
+policy. Specifically, a covert channel allows information to pass from a higher
+classification level to a lower classification level through improper means. Covert

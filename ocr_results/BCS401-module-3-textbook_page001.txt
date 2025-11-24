@@ -1,0 +1,35 @@
+6.3 Balanced Search Trees 219
+
+FIGURE 6.2 (a) AVL tree. (b) Binary search tree that is not an AVL tree. The numbers
+above the nodes indicate the nodes’ balance factors.
+
+DEFINITION An AVL treeisa binary search tree in which the balance factor of
+every node, which is defined as the difference between the heights of the node’s
+left and right subtrees, is either 0 or +1 or —1. (The height of the empty tree is
+defined as —1. Of course, the balance factor can also be computed as the difference
+between the numbers of levels rather than the height difference of the node’s left
+and right subtrees.)
+
+For example, the binary search tree in Figure 6.2a is an AVL tree but the one
+in Figure 6.2b is not.
+
+If an insertion of a new node makes an AVL tree unbalanced, we transform
+the tree by a rotation. A rotation in an AVL tree is a local transformation of its
+subtree rooted at a node whose balance has become either +2 or —2. If there are
+several such nodes, we rotate the tree rooted at the unbalanced node that is the
+closest to the newly inserted leaf. There are only four types of rotations; in fact,
+two of them are mirror images of the other two. In their simplest form, the four
+rotations are shown in Figure 6.3.
+
+The first rotation type is called the single right rotation, or R-rotation. (Imag-
+ine rotating the edge connecting the root and its left child in the binary tree in
+Figure 6.3a to the right.) Figure 6.4 presents the single R-rotation in its most gen-
+eral form. Note that this rotation is performed after a new key is inserted into the
+left subtree of the left child of a tree whose root had the balance of +1 before the
+insertion.
+
+The symmetric single left rotation, or L-rotation, is the mirror image of the
+single R-rotation. It is performed after a new key is inserted into the right subtree
+of the right child of a tree whose root had the balance of —1 before the insertion.
+(You are asked to draw a diagram of the general case of the single L-rotation in
+the exercises.)

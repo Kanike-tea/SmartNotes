@@ -1,0 +1,58 @@
+Data Structures and Applications (BCS304) Module IV
+
+Example: Deleting Node 75 with exactly one children
+
+5 78 25 66
+4 \ / Deleting node 75 Lo \
+15 50 66 15 50
+/
+33 33
+\ \
+44 44
+
+Case 3: N has Two children. Let S(N) denote the inorder successor of N(S(N) does not have a left
+child).Then N is deleted from T by first deleting S(N) from T (by using case1 or cae 2) and then
+replacing node N in T by the node S(N).
+
+Example: Deleting Node 25 with two children
+4 60 ag
+
+25 75
+
+VA Ss SL To delete node 25,
+
+15 50 66 first delete its
+inorder successor
+
+aS
+
+33
+
+Ns
+
+44
+
+Now replace the node 25 with its inorder successor 33
+
+Ad SS
+33 76
+i Ne VA
+15 50 66
+
+44
+Recursive function to delete a node in a BST
+TreeNode *delete_element(TreeNode *node, int key)
+
+{
+
+TreeNode * temp;
+
+if (node == NULL)
+return node;
+
+if (key < node->data.key)
+node->Ichild = delete_element(node->Ichild, key);
+else if (key > node->data.key)
+node->rchild = delete_element(node->rchi
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 5

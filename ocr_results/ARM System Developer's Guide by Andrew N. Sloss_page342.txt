@@ -1,0 +1,46 @@
+9.2 Interrupts 329
+
+To enable and disable both the IRQ and FIQ exceptions requires a slight modification to
+the second instruction. The immediate value on the data processing BIC or ORR instruction
+has to be changed to 0xc0 to enable or disable both interrupts.
+
+9.2.4 BASIC INTERRUPT STACK DESIGN AND IMPLEMENTATION
+
+Exceptions handlers make extensive use of stacks, with each mode having a dedicated
+register containing the stack pointer. The design of the exception stacks depends upon
+these factors:
+
+=~ Operating system requirements—Each operating system has its own requirements for
+stack design.
+
+= Target hardware—The target hardware provides a physical limit to the size and
+positioning of the stack in memory.
+
+Two design decisions need to be made for the stacks:
+
+= The location determines where in the memory map the stack begins. Most ARM-based
+systems are designed with a stack that descends downwards, with the top of the stack
+at a high memory address.
+
+= Stack size depends upon the type of handler, nested or nonnested. A nested interrupt
+handler requires more memory space since the stack will grow with the number of
+nested interrupts.
+
+A good stack design tries to avoid stack overflow—where the stack extends beyond
+the allocated memory—because it causes instability in embedded systems. There are soft-
+ware techniques that identify overflow and that allow corrective measures to take place to
+repair the stack before irreparable memory corruption occurs. The two main methods are
+(1) to use memory protection and (2) to call a stack check function at the start of each
+routine.
+
+The IRQ mode stack has to be set up before interrupts are enabled—normally in the
+initialization code for the system. It is important that the maximum size of the stack is
+known in a simple embedded system, since the stack size is reserved in the initial stages of
+boot-up by the firmware.
+
+Figure 9.6 shows two typical memory layouts in a linear address space. The first layout,
+A, shows a traditional stack layout with the interrupt stack stored underneath the code
+segment. The second layout, B, shows the interrupt stack at the top of the memory above
+the user stack. The main advantage of layout B over A is that B does not corrupt the vector
+table when a stack overflow occurs, and so the system has a chance to correct itself when an
+overflow has been identified.

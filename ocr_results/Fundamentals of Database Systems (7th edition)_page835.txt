@@ -1,0 +1,50 @@
+21.6 Using Locks for Concurrency Control in Indexes
+
+21.6 Using Locks for Concurrency
+Control in Indexes
+
+Two-phase locking can also be applied to B-tree and B*-tree indexes (see Chap-
+ter 19), where the nodes of an index correspond to disk pages. However, holding
+locks on index pages until the shrinking phase of 2PL could cause an undue
+amount of transaction blocking because searching an index always starts at the
+root. For example, if a transaction wants to insert a record (write operation), the
+root would be locked in exclusive mode, so all other conflicting lock requests for
+the index must wait until the transaction enters its shrinking phase. This blocks all
+other transactions from accessing the index, so in practice other approaches to
+locking an index must be used.
+
+The tree structure of the index can be taken advantage of when developing a con-
+currency control scheme. For example, when an index search (read operation) is
+being executed, a path in the tree is traversed from the root to a leaf. Once a lower-
+level node in the path has been accessed, the higher-level nodes in that path will not
+be used again. So once a read lock on a child node is obtained, the lock on the par-
+ent node can be released. When an insertion is being applied to a leaf node (that is,
+when a key and a pointer are inserted), then a specific leaf node must be locked in
+exclusive mode. However, if that node is not full, the insertion will not cause
+changes to higher-level index nodes, which implies that they need not be locked
+exclusively.
+
+A conservative approach for insertions would be to lock the root node in exclusive
+mode and then to access the appropriate child node of the root. If the child node is
+not full, then the lock on the root node can be released. This approach can be
+applied all the way down the tree to the leaf, which is typically three or four levels
+from the root. Although exclusive locks are held, they are soon released. An alterna-
+tive, more optimistic approach would be to request and hold shared locks on the
+nodes leading to the leaf node, with an exclusive lock on the leaf. If the insertion
+causes the leaf to split, insertion will propagate to one or more higher-level nodes.
+Then, the locks on the higher-level nodes can be upgraded to exclusive mode.
+
+Another approach to index locking is to use a variant of the B*-tree, called the
+B-link tree. In a B-link tree, sibling nodes on the same level are linked at every level.
+This allows shared locks to be used when requesting a page and requires that the
+lock be released before accessing the child node. For an insert operation, the shared
+lock on a node would be upgraded to exclusive mode. If a split occurs, the parent
+node must be relocked in exclusive mode. One complication is for search opera-
+tions executed concurrently with the update. Suppose that a concurrent update
+operation follows the same path as the search and inserts a new entry into the leaf
+node. Additionally, suppose that the insert causes that leaf node to split. When the
+insert is done, the search process resumes, following the pointer to the desired leaf,
+only to find that the key it is looking for is not present because the split has moved
+that key into a new leaf node, which would be the right sibling of the original leaf
+
+805

@@ -1,0 +1,41 @@
+COMPUTER ORGANIZATION (21¢s34 Module 3
+
+‘Add 1000(R1),R2
+
+a i
+
+20 = offset
+
+oe
+
+f. RELATIVE ADDRESSING MODE:
+In this Addressing Mode EA of an operand is computed by the Index Addressing Mode. This
+
+Addressing Mode uses PC (Program Counter)to store the EA of the next instruction instead of
+
+GPR.
+
+The symbolic representation of this mode is X (PC).Where X is the offset value and PC is the
+
+Program Counter to store the address of the next instruction to beexecuted.
+
+It can be represented as
+EA of an operand= X + (PC).
+This Addressing Mode is useful to caleulatethe BA of the target memory location.
+
+Effective Address
+= Content of Program Counter + Address part of the instruction
+
+Opcode
+
+Operand
+
+Telatne Aadrantng Made | Adaresing Modes Memory
+
+Pc
+
+Relative Addressing Mode
+
+g. AUTO INCREMENT ADDRESSING MODE
+
+Dr. Ajay V G, Dept. of CSE, SVIT 30

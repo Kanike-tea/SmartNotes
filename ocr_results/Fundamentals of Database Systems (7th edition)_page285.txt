@@ -1,0 +1,52 @@
+8.3 Binary Relational Operations: JOIN and DIVISION
+
+This combines each project tuple with its controlling department tuple into a single
+tuple, and then combines that tuple with an employee tuple that is the department
+manager. The net result is a consolidated relation in which each tuple contains this
+project-department-manager combined information.
+
+In SQL, JOIN can be realized in several different ways. The first method is to specify
+the <join conditions> in the WHERE clause, along with any other selection condi-
+tions. This is very common and is illustrated by queries Q1, Q1A, Q1B, Q2, and Q8
+in Sections 6.3.1 and 6.3.2, as well as by many other query examples in Chapters 6
+and 7. The second way is to use a nested relation, as illustrated by queries Q4A
+and Q16 in Section 7.1.2. Another way is to use the concept of joined tables, as
+illustrated by the queries Q1A, Q1B, Q8B, and Q2A in Section 7.1.6. The construct
+of joined tables was added to SQL2 to allow the user to specify explicitly all the
+various types of joins, because the other methods were more limited. It also allows
+the user to clearly distinguish join conditions from the selection conditions in the
+WHERE clause.
+
+8.3.3 A Complete Set of Relational Algebra Operations
+
+It has been shown that the set of relational algebra operations {6, 1, U, p, -, x} isa
+complete set; that is, any of the other original relational algebra operations can be
+expressed as a sequence of operations from this set. For example, the INTERSECTION
+operation can be expressed by using UNION and MINUS as follows:
+
+RAS=(RUS)-((R-S)U(S-R))
+
+Although, strictly speaking, INTERSECTION is not required, it is inconvenient to
+specify this complex expression every time we wish to specify an intersection. As
+another example, a JOIN operation can be specified as a CARTESIAN PRODUCT fol-
+lowed by a SELECT operation, as we discussed:
+
+RM <condition>S = O<condition>(R X S)
+
+Similarly, a NATURAL JOIN can be specified as a CARTESIAN PRODUCT preceded by
+RENAME and followed by SELECT and PROJECT operations. Hence, the various
+JOIN operations are also not strictly necessary for the expressive power of the rela-
+tional algebra. However, they are important to include as separate operations
+because they are convenient to use and are very commonly applied in database
+applications. Other operations have been included in the basic relational algebra
+for convenience rather than necessity. We discuss one of these—the DIVISION
+operation—in the next section.
+
+8.3.4 The DIVISION Operation
+
+The DIVISION operation, denoted by =, is useful for a special kind of query that
+sometimes occurs in database applications. An example is Retrieve the names of
+employees who work on all the projects that ‘John Smith’ works on. To express
+this query using the DIVISION operation, proceed as follows. First, retrieve the
+
+255

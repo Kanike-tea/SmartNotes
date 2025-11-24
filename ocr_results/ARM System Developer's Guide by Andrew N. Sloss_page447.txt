@@ -1,0 +1,90 @@
+434 Chapter 12. Caches
+
+ENDIF
+IF "$op"
+MCR p15
+ENDIF
+ADD oc7f,
+Ist c7f,
+BEQ
+BIC c7f,
+ADDS c7f,
+BCC BTS
+MEND
+
+cleanDCache
+
+= "Dcleanflush"
+0, c7f, c7, cl4, 2
+
+cif, #1<<17SET
+#1<< (NSET+I7SET)
+
+c7f, #1<<(NSET+I7SET)
+c7f, #1<<I7WAY
+
+CACHECLEANBYWAY Dclean
+
+MOV pc,
+cleanFlushDCache
+
+Ir
+
+CACHECLEANBYWAY Dcleanflush
+
+MOV pc,
+cleanFlushCache
+
+Ir
+
+CACHECLEANBYWAY Dcleanflush
+
+MCR p15,0,r0,c7,c5,0
+
+MOV pc,
+ENDIF
+
+Ir
+
+3 cleanflush D-cline
+
++1 set index
+
+3 test index overflow
+
+; clear index overflow
+; +1 victim pointer
+; test way overflow
+
+3 flush I-cache
+
+12.5.5 CLEANING THE D-CACHE USING THE TEST-CLEAN
+
+COMMAND
+
+Two of the newer ARM cores, the ARM926EJ-S and ARM1026E)J-S, have commands to clean
+cache lines using a test-clean CP15:c7 register. The test clean command is a special clean
+instruction that can efficiently clean a cache when used in a software loop. The ARM926EJ-S
+and ARM1026EJ-S also support cleaning using set and way indexing; however, using the
+
+test clean command method of cleaning the D-cache is more efficient.
+
+We use the commands shown in Table 12.6 in the following routines to clean the
+ARM926EJ-S and ARM1026EJ-S cores. The cleanDCache, cleanFlushDCache, and
+
+Table 12.6 Commands to test clean a single D-cache line.
+
+Command
+
+MCR instruction
+
+Core Support
+
+Test, clean D-cache line by loop
+Test, clean, and flush D-cache by loop
+
+MCR pl5, 0, r15, c7, c10, 3
+MCR pl5, 0, r15, c7, cl4, 3
+
+ARM926EJ-S, ARM1026EJ-S
+ARM926EJ-S, ARM1026EJ-S

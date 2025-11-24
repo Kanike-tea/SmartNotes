@@ -1,0 +1,42 @@
+The condition flags set by these instructions are then used by conditional execution features of ARM
+instructions (like conditional branch instructions) to control program flow71 ....
+
+11a) RISC Design * The RISC (Reduced Instruction Set Computer) design philosophy aims to reduce
+the complexity of instructions performed by the hardware, shifting greater flexibility and intelligence
+to the software (compiler)17 . This philosophy is implemented with four major design rules16 : *
+Reduced Number of Instructions: RISC processors have a smaller set of instruction classes, each
+performing simple operations that can ideally execute in a single cycle16 . Complex operations are
+achieved by combining multiple simple instructions16 . * Fixed Length Instructions: Instructions in
+RISC are of a fixed length, which simplifies the process of fetching future instructions in the pipeline
+before decoding the current one2 . This contrasts with CISC processors that often have variable-
+length instructions2 . * Large General-Purpose Register Set: RISC machines feature a large number
+of general-purpose registers, where any register can hold either data or an address. These registers
+serve as fast local memory for all data processing operations18 . * Load-Store Architecture: RISC
+processors operate on data held in registers. Separate load and store instructions are used to
+transfer data between the register bank and external memory18 . Data processing instructions
+cannot directly manipulate data in memory33 . This separation aims to optimize performance by
+allowing multiple accesses to data within registers without repeated memory accesses19 .
+
+12.
+
+Processor Modes Associated with CPSR Register
+
+The processor mode is a part of the control field within the Current Program Status Register
+(cpsr)49 .... The processor mode determines several aspects of the processor's operationS0O :
+
+Which registers are active: The ARM architecture employs banked registers, where different
+processor modes have access to different sets of registers (e.g., r13 and r14 are banked for various
+exception modes)54 .... The current mode dictates which register bank is in use102 .
+
+Access rights to the cpsr itself: Processor modes are categorized as either privileged or non-
+privileged (User)50 . Privileged modes (Abort, FIQ, IRQ, Supervisor, System, Undefined) have full
+read-write access to the cpsr, allowing them to change the mode, interrupt masks, and flags5O . Non-
+privileged User mode only permits read access to the control field and read-write access to the
+condition flags53 .
+
+There are seven processor modes in total53 :
+
+User (usr): Non-privileged mode for executing applications54 .
+
+Supervisor (svc): Privileged mode the processor enters after reset and typically used by the operating
+system kernel53 ....

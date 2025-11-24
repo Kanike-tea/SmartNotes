@@ -1,0 +1,58 @@
+27.2 Retrieval Models
+
+27.2.2 Vector Space Model
+
+The vector space model provides a framework in which term weighting, ranking of
+retrieved documents, and determining the relevance of feedback are possible.
+Using individual terms as dimensions, each document is represented by an
+n-dimensional vector of values. The values themselves may be a Boolean value to
+represent the existence or absence of the term in that document; alternately, they
+may be a number representative of the weight or frequency in the document.
+Features are a subset of the terms in a set of documents that are deemed most relevant
+to an IR search for this particular set of documents. The process of selecting these
+important terms (features) and their properties as a sparse (limited) list out of the
+very large number of available terms (the vocabulary can contain hundreds of thou-
+sands of terms) is independent of the model specification. The query is also speci-
+fied as a terms vector (vector of features), and this is compared to the document
+vectors for similarity/relevance assessment.
+
+The similarity assessment function that compares two vectors is not inherent to the
+model—different similarity functions can be used. However, the cosine of the angle
+between the query and document vector is a commonly used function for similarity
+assessment. As the angle between the vectors decreases, the cosine of the angle
+approaches one, meaning that the similarity of the query with a document vector
+increases. Terms (features) are weighted proportional to their frequency counts to
+reflect the importance of terms in the calculation of relevance measure. This is dif-
+ferent from the Boolean model, which does not take into account the frequency of
+words in the document for relevance match.
+
+In the vector model, the document term weight Wij (for term i in document j) is
+represented based on some variation of the TF (term frequency) or TF-IDF (term
+frequency-inverse document frequency) scheme (as we will describe below). TF-IDF
+is a statistical weight measure that is used to evaluate the importance of a document
+word in a collection of documents. The following formula is typically used:
+
+Ml
+(4a) = x ij Wig
+
+4; ||x\lal| M2 M2
+, "i * ig
+
+In the formula given above, we use the following symbols:
+
+cosine(d; ,q)=
+il
+
+d; is the document vector for document j.
+qis the query vector.
+
+w; is the weight of term i in document j.
+Wig is the weight of term i in query vector q.
+
+|V| is the number of dimensions in the vector that is the total number of
+important keywords (or features).
+
+TF-IDF uses the product of normalized frequency of a term i (TF,) in document
+D and the inverse document frequency of the term i (IDF;) to weight a term in a
+
+1031

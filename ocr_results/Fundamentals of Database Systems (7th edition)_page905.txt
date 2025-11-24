@@ -1,0 +1,52 @@
+23.8 Distributed Catalog Management
+
+the sites at which the data referenced in the query or transaction resides. This
+property is called distribution transparency. Some DDBMSs do not provide distri-
+bution transparency, instead requiring that applications are aware of the details of
+data distribution.
+
+23.8 Distributed Catalog Management
+
+Efficient catalog management in distributed databases is critical to ensure satisfac-
+tory performance related to site autonomy, view management, and data distribu-
+tion and replication. Catalogs are databases themselves containing metadata about
+the distributed database system.
+
+Three popular management schemes for distributed catalogs are centralized cata-
+logs, fully replicated catalogs, and partitioned catalogs. The choice of the scheme
+depends on the database itself as well as the access patterns of the applications to
+the underlying data.
+
+Centralized Catalogs. In this scheme, the entire catalog is stored in one single
+site. Due to its central nature, it is easy to implement. On the other hand, the
+advantages of reliability, availability, autonomy, and distribution of processing
+load are adversely impacted. For read operations from noncentral sites, the
+requested catalog data is locked at the central site and is then sent to the
+requesting site. On completion of the read operation, an acknowledgment is
+sent to the central site, which in turn unlocks this data. All update operations
+must be processed through the central site. This can quickly become a perfor-
+mance bottleneck for write-intensive applications.
+
+Fully Replicated Catalogs. In this scheme, identical copies of the complete
+catalog are present at each site. This scheme facilitates faster reads by allowing
+them to be answered locally. However, all updates must be broadcast to all
+sites. Updates are treated as transactions, and a centralized two-phase commit
+scheme is employed to ensure catalog consistency. As with the centralized
+scheme, write-intensive applications may cause increased network traffic due
+to the broadcast associated with the writes.
+
+Partially Replicated Catalogs. The centralized and fully replicated schemes
+restrict site autonomy since they must ensure a consistent global view of the
+catalog. Under the partially replicated scheme, each site maintains complete
+catalog information on data stored locally at that site. Each site is also permit-
+ted to cache entries retrieved from remote sites. However, there are no guaran-
+tees that these cached copies will be the most recent and updated. The system
+tracks catalog entries for sites where the object was created and for sites that
+contain copies of this object. Any changes to copies are propagated immedi-
+ately to the original (birth) site. Retrieving updated copies to replace stale data
+may be delayed until an access to this data occurs. In general, fragments of rela-
+tions across sites should be uniquely accessible. Also, to ensure data distribu-
+tion transparency, users should be allowed to create synonyms for remote
+objects and use these synonyms for subsequent referrals.
+
+875

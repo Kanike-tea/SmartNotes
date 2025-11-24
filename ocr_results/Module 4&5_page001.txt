@@ -1,0 +1,38 @@
+Microcontrollers - BCS402
+
+1. Exception Handling
+
+An exception is any condition that needs to halt the normal sequential execution of instructions.
+Examples are when the ARM core is reset, when an instruction fetches or memory access fails,
+when an undefined instruction is encountered, when a software interrupt instruction is executed,
+
+or when an external interrupt has been raised.
+
+Exception handling is the method of processing these exceptions. Most exceptions have an
+associated software exception handler —a software routine that executes when an exception
+
+occurs. For instance, a Data Abort exception will have a Data Abort handler.
+
+The handler first determines the cause of the exception and then services the exception.
+Servicing takes place either within the handler or by branching to a specific service routine. The
+
+Reset exception is a special case since it is used to initialize an embedded system.
+1.1 ARM Processor Exceptions and Modes
+
+Table | lists the ARM processor exceptions. Each exception causes the core to enter a specific
+mode. In addition, any of the ARM processor modes can be entered manually by changing the
+
+cpsr.
+
+User and system mode are the only two modes that are not entered by a corresponding exception,
+
+in other words, to enter these modes you must modify the cpsr.
+When an exception causes a mode change, the core automatically
+
+e Saves the cpsr to the spsr of the exception mode
+e Saves the pe to the Ir of the exception mode
+e Sets the cpsr to the exception mode
+
+e Sets pe to the address of the exception handler
+
+Dept. of ECE, GSSSIETW, Mysuru Page 2

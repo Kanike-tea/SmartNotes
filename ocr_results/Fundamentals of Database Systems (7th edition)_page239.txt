@@ -1,0 +1,52 @@
+7.1 More Complex SQL Retrieval Queries
+
+In Tables 7.1(a) and 7.1(b), the rows and columns represent the values of the results
+of comparison conditions, which would typically appear in the WHERE clause of an
+SQL query. Each expression result would have a value of TRUE, FALSE, or
+UNKNOWN. The result of combining the two values using the AND logical connec-
+tive is shown by the entries in Table 7.1(a). Table 7.1(b) shows the result of using
+the OR logical connective. For example, the result of (FALSE AND UNKNOWN) is
+FALSE, whereas the result of (FALSE OR UNKNOWN) is UNKNOWN. Table 7.1(c)
+shows the result of the NOT logical operation. Notice that in standard Boolean logic,
+only TRUE or FALSE values are permitted; there is no UNKNOWN value.
+
+In select-project-join queries, the general rule is that only those combinations of
+tuples that evaluate the logical expression in the WHERE clause of the query to TRUE
+are selected. Tuple combinations that evaluate to FALSE or UNKNOWN are not
+selected. However, there are exceptions to that rule for certain operations, such as
+outer joins, as we shall see in Section 7.1.6.
+
+SQL allows queries that check whether an attribute value is NULL. Rather than using
+= or <> to compare an attribute value to NULL, SQL uses the comparison operators IS or
+IS NOT. This is because SQL considers each NULL value as being distinct from every
+other NULL value, so equality comparison is not appropriate. It follows that when a join
+condition is specified, tuples with NULL values for the join attributes are not included in
+the result (unless it is an OUTER JOIN; see Section 7.1.6). Query 18 illustrates NULL com-
+parison by retrieving any employees who do not have a supervisor.
+
+Query 18. Retrieve the names of all employees who do not have supervisors.
+
+ais: SELECT Fname, Lname
+FROM EMPLOYEE
+WHERE Super_ssn IS NULL;
+
+7.1.2 Nested Queries, Tuples,
+and Set/Multiset Comparisons
+
+Some queries require that existing values in the database be fetched and then used
+in a comparison condition. Such queries can be conveniently formulated by using
+nested queries, which are complete select-from-where blocks within another SQL
+query. That other query is called the outer query. These nested queries can also
+appear in the WHERE clause or the FROM clause or the SELECT clause or other
+SQL clauses as needed. Query 4 is formulated in Q4 without a nested query, but it
+can be rephrased to use nested queries as shown in Q4A. Q4A introduces the com-
+parison operator IN, which compares a value v with a set (or multiset) of values V
+and evaluates to TRUE if v is one of the elements in V.
+
+In Q4A, the first nested query selects the project numbers of projects that have an
+employee with last name ‘Smith’ involved as manager, whereas the second nested query
+selects the project numbers of projects that have an employee with last name ‘Smith’
+involved as worker. In the outer query, we use the OR logical connective to retrieve a
+PROJECT tuple if the PNUMBER value of that tuple is in the result of either nested query.
+
+209

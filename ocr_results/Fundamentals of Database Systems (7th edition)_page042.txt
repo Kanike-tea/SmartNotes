@@ -1,0 +1,52 @@
+12
+
+Chapter 1 Databases and Database Users
+
+1.3.2 Insulation between Programs and Data,
+and Data Abstraction
+
+In traditional file processing, the structure of data files is embedded in the applica-
+tion programs, so any changes to the structure of a file may require changing all
+programs that access that file. By contrast, DBMS access programs do not require
+such changes in most cases. The structure of data files is stored in the DBMS cata-
+log separately from the access programs. We call this property program-data
+independence.
+
+For example, a file access program may be written in such a way that it can access
+only STUDENT records of the structure shown in Figure 1.4. If we want to add
+another piece of data to each STUDENT record, say the Birth_date, such a program
+will no longer work and must be changed. By contrast, ina DBMS environment, we
+only need to change the description of STUDENT records in the catalog (Figure 1.3)
+to reflect the inclusion of the new data item Birth_date; no programs are changed.
+The next time a DBMS program refers to the catalog, the new structure of
+STUDENT records will be accessed and used.
+
+In some types of database systems, such as object-oriented and object-relational
+systems (see Chapter 12), users can define operations on data as part of the database
+definitions. An operation (also called a function or method) is specified in two
+parts. The interface (or signature) of an operation includes the operation name and
+the data types of its arguments (or parameters). The implementation (or method) of
+the operation is specified separately and can be changed without affecting the inter-
+face. User application programs can operate on the data by invoking these opera-
+tions through their names and arguments, regardless of how the operations are
+implemented. This may be termed program-operation independence.
+
+The characteristic that allows program-data independence and program-operation
+independence is called data abstraction. A DBMS provides users with a conceptual
+representation of data that does not include many of the details of how the data is
+stored or how the operations are implemented. Informally, a data model is a type of
+data abstraction that is used to provide this conceptual representation. The data
+model uses logical concepts, such as objects, their properties, and their interrela-
+tionships, that may be easier for most users to understand than computer storage
+concepts. Hence, the data model hides storage and implementation details that are
+not of interest to most database users.
+
+Looking at the example in Figures 1.2 and 1.3, the internal implementation of the
+STUDENT file may be defined by its record length—the number of characters
+(bytes) in each record—and each data item may be specified by its starting byte
+within a record and its length in bytes. The STUDENT record would thus be repre-
+sented as shown in Figure 1.4. But a typical database user is not concerned with the
+location of each data item within a record or its length; rather, the user is concerned
+that when a reference is made to Name of STUDENT, the correct value is returned.
+A conceptual representation of the STUDENT records is shown in Figure 1.2. Many
+other details of file storage organization—such as the access paths specified on a

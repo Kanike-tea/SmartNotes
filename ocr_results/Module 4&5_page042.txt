@@ -1,0 +1,40 @@
+Microcontrollers - BCS402
+
+Write Policy — WriteBack or WriteThrough
+Writethrough
+
+When the cache controller uses a writethrough policy, it writes to both cache and main memory
+when there is a cache hit on write, ensuring that the cache and main memory stay coherent at all
+times. Under this policy, the cache controller performs a write to main memory for each write to
+cache memory. Because of the write to main memory, a write through policy is slower than a
+
+writeback policy.
+Writeback
+
+When a cache controller uses a writeback policy, it writes to valid cache data memory and not to
+main memory. Consequently, valid cache lines and main memory may contain different data.
+The cache line holds the most recent data, and main memory contains older data, which has not
+
+been updated.
+
+Caches configured as writeback caches must use one or more of the dirty bits in the cache line
+status information block. When a cache controller in writeback writes a value to cache memory,
+it sets the dirty bit true. If the core accesses the cache line at a later time, it knows by the state of
+the dirty bit that the cache line contains data not in main memory. If the cache controller evicts a
+
+dirty cache line, it is automatically written out to main memory.
+
+The controller does this to prevent the loss of vital information held in cache memory and not in
+
+main memory
+Cache Line Replacement Policy
+
+On a cache miss, the cache controller must select a cache line from the available set in cache
+memory to store the new information from main memory. The cache line selected for
+replacement is known as a victim. If the victim contains valid, dirty data, the controller must
+write the dirty data from the cache memory to main memory before it copies new data into the
+victim cache line. The process of selecting and replacing a victim cache line is known as
+
+eviction.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 43

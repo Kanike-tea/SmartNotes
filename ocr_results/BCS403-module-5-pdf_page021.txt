@@ -1,0 +1,54 @@
+884
+
+NOSQL Databases and Big Data Storage Systems
+
+24.1 Introduction to NOSQL Systems
+
+24.1.1 Emergence of NOSQL Systems
+
+Many companies and organizations are faced with applications that store vast
+amounts of data. Consider a free e-mail application, such as Google Mail or Yahoo
+Mail or other similar service—this application can have millions of users, and each
+user can have thousands of e-mail messages. There is a need for a storage system
+that can manage all these e-mails; a structured relational SQL system may not be
+appropriate because (1) SQL systems offer too many services (powerful query lan-
+guage, concurrency control, etc.), which this application may not need; and (2) a
+structured data model such the traditional relational model may be too restrictive.
+Although newer relational systems do have more complex object-relational model-
+ing options (see Chapter 12), they still require schemas, which are not required by
+many of the NOSQL systems.
+
+As another example, consider an application such as Facebook, with millions of
+users who submit posts, many with images and videos; then these posts must be
+displayed on pages of other users using the social media relationships among the
+users. User profiles, user relationships, and posts must all be stored in a huge collec-
+tion of data stores, and the appropriate posts must be made available to the sets of
+users that have signed up to see these posts. Some of the data for this type of appli-
+cation is not suitable for a traditional relational system and typically needs multiple
+types of databases and data storage systems.
+
+Some of the organizations that were faced with these data management and storage
+applications decided to develop their own systems:
+
+= Google developed a proprietary NOSQL system known as BigTable, which is
+used in many of Google’s applications that require vast amounts of data stor-
+age, such as Gmail, Google Maps, and Web site indexing. Apache Hbase is an
+open source NOSQL system based on similar concepts. Google’s innovation
+led to the category of NOSQL systems known as column-based or wide
+column stores; they are also sometimes referred to as column family stores.
+
+= Amazon developed a NOSQL system called DynamoDB that is available
+through Amazon’s cloud services. This innovation led to the category known
+as key-value data stores or sometimes key-tuple or key-object data stores.
+
+= Facebook developed a NOSQL system called Cassandra, which is now open
+source and known as Apache Cassandra. This NOSQL system uses concepts
+from both key-value stores and column-based systems.
+
+= Other software companies started developing their own solutions and making
+them available to users who need these capabilities—for example, MongoDB
+and CouchDB, which are classified as document-based NOSQL systems or
+document stores.
+
+= Another category of NOSQL systems is the graph-based NOSQL systems,
+or graph databases; these include Neo4J and GraphBase, among others.

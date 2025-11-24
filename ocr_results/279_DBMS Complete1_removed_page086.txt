@@ -1,0 +1,46 @@
+After removing the portion into another relation we store lesser amount of data in two relations
+without any loss information. There is also a significant reduction in redundancy.
+
+Third Normal Form (3NF)
+
+A relation is said to be in 3NF, if it is already in 2NF and there exists no transitive dependency in
+that relation. Speaking inversely, if a table contains transitive dependency, then it is not in 3NF, and
+the table must be split to bring it into 3NF.
+
+What is a transitive dependency? Within a relation if we see
+A— B[B depends on A]
+
+An
+B-— C[C depends on B]
+Then we may derive
+A— C[C depends on A]
+
+Such derived dependencies hold well in most of the situations. For example if we have
+Roll > Marks
+
+An
+Marks — Grade
+
+Then we may safely derive
+Roll — Grade.
+
+This third dependency was not originally specified but we have derived it.
+
+The derived dependency is called a transitive dependency when such dependency becomes
+improbable. For example we have been given
+
+Roll > City
+
+And
+
+City > STDCode
+
+If we try to derive Roll -- STDCode it becomes a transitive dependency, because obviously the
+STDCode of a city cannot depend on the roll number issued by a school or college. In such a case
+the relation should be broken into two, each containing one of these two dependencies:
+
+Roll > City
+
+And
+
+City — STD code

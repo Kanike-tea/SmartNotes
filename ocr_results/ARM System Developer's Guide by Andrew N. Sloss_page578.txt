@@ -1,0 +1,50 @@
+Figure 15.5
+
+15.4 Future Technologies beyond ARMv6 565
+
+may be only available to the secure “state” through some new exported signals on the bus
+interface. The system states are shown in Figure 15.5.
+
+TrustZone is most useful in devices that will be carrying out content downloads such as
+cell phones or other portable devices with network connections. Details of this architecture
+are not public at the time of writing.
+
+Fixed entry
+points.
+
+Fixed entry
+points.
+
+Normal Secure
+
+Trusted code base
+
+Platform
+
+Privileged
+rivilege os
+
+' !
+1 i}
+f !
+ot !
+I I] s |! Ss
+A A A A Ali i} - {It >
+User Pile |} ep }i/pfye}i ifati | A
+P P P P Pit if Pi P
+! ie di fe
+| Ve
+
+Modified security structure using TrustZone technology.
+Source: Richard York, A New Foundation for CPU Systems Security: Security Extensions to
+the ARM Architecture, 2003.
+
+15.4.2) THUMB-2
+
+Thumb-2 is an architectural extension designed to increase performance at high code
+density. It allows for a blend of 32-bit ARM-like instructions with 16-bit Thumb instruc-
+tions. This combination enables you to have the code density benefits of Thumb with the
+additional performance benefits of access to 32-bit instructions.
+
+Thumb-2 was announced in October 2003 and will be implemented in the
+ARM1156T2-S processor. Details of this architecture are not public at the time of writing.

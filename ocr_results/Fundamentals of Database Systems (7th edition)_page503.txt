@@ -1,0 +1,57 @@
+14.2 Functional Dependencies
+
+dependencies may cease to exist in the real world if the relationship changes. For
+example, the FD Zip_code > Area_code used to exist as a relationship between postal
+codes and telephone number codes in the United States, but with the proliferation
+of telephone area codes it is no longer true.
+
+Consider the relation schema EMP_PROJ in Figure 14.3(b); from the semantics of
+the attributes and the relation, we know that the following functional dependencies
+should hold:
+
+a. Ssn > Ename
+b. Pnumber — {Pname, Plocation}
+
+c. {Ssn, Pnumber} —> Hours
+
+These functional dependencies specify that (a) the value of an employee’s Social
+Security number (Ssn) uniquely determines the employee name (Ename), (b) the
+value of a project’s number (Pnumber) uniquely determines the project name
+(Pname) and location (Plocation), and (c) a combination of Ssn and Pnumber values
+uniquely determines the number of hours the employee currently works on the
+project per week (Hours). Alternatively, we say that Ename is functionally deter-
+mined by (or functionally dependent on) Ssn, or given a value of Ssn, we know the
+value of Ename, and so on.
+
+A functional dependency is a property of the relation schema R, not of a particular
+legal relation state r of R. Therefore, an FD cannot be inferred automatically from a
+given relation extension r but must be defined explicitly by someone who knows
+the semantics of the attributes of R. For example, Figure 14.7 shows a particular
+state of the TEACH relation schema. Although at first glance we may think that
+Text > Course, we cannot confirm this unless we know that it is true for all possible
+legal states of TEACH. It is, however, sufficient to demonstrate a single counterexam-
+ple to disprove a functional dependency. For example, because ‘Smith’ teaches both
+‘Data Structures’ and “Database Systems,’ we can conclude that Teacher does not
+functionally determine Course.
+
+Given a populated relation, we cannot determine which FDs hold and which do not
+unless we know the meaning of and the relationships among the attributes. All we can
+say is that a certain FD may exist if it holds in that particular extension. We cannot
+guarantee its existence until we understand the meaning of the corresponding attri-
+butes. We can, however, emphatically state that a certain FD does not hold if there are
+
+473
+
+TEACH Figure 14.7
+Teacher Course Text
+Smith | Data Structures Bartram
+Smith | Data Management | Martin TEACHER — COURSE,
+Hall Compilers Hoffman TEXT — TEACHER and
+
+Brown Data Structures Horowitz
+
+A relation state of TEACH with a
+possible functional dependency
+TEXT — COURSE. However,
+
+COURSE = TEXT are ruled out.

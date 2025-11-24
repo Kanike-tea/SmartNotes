@@ -1,0 +1,32 @@
+18
+
+1. Directed Graphs and Graphy
+
+> The required diagrams are shown below:
+
+Figure 1.22
+
+Let P, Q, R, S, T represent five cricket teams. Suppose that the teams P, Q, R
+
+have played one game with each other, and the teams P, S, T have played one game with each
+other. Represent this situation in a graph.
+
+Hence determine (i) the teams that have not played with each other, and (ii) the number of
+games played by each team.
+
+> Let the teams be represented by vertices and an edge Tepresent the playing. Then the graph
+
+representing the given situation is as shown in Figure 1.23:
+
+P Q
+
+Figure 1.23
+
+We observe that there is no edge between Q and S, between Q and T, between R and 5,
+and between R and T. Therefore, the teams Q and S, Q and T, R and S, and R and T have no!
+played with each other.
+
+From the graph, we note that two edges are incident on each of the vertices Q, R, S, T and
+
+four edges are incident on P. Thus, the teams Q, R, S, T have played two games each and the
+team P has played four games, :

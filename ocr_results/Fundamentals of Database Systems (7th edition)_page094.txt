@@ -1,0 +1,44 @@
+64 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+ay Ci) a>
+CBdate) C Name) (Address) C Salary)
+CSD
+
+WORKS_FOR
+EMPLOYEE Start_date, € DEPARTMENT
+4
+u MANAGES
+CONTROLS
+Hours N
+M N
+WORKS_ON PROJECT
+Supervisor Supervisee \ 4
+1 N Name
+
+DEPENDENTS_OF
+
+umber 4 CLeeaton >
+
+IN
+DEPENDENT
+
+Name >) (Sex >) C Birth date
+
+Relationship
+
+Figure 3.2
+
+An ER schema diagram for the COMPANY database. The diagrammatic notation is introduced gradually throughout
+
+this chapter and is summarized in Figure 3.14,
+
+will have a value for each of its attributes. The attribute values that describe each
+
+entity become a major part of the data stored in the database.
+
+Figure 3.3 shows two entities and the values of their attributes. The EMPLOYEE
+entity e; has four attributes: Name, Address, Age, and Home_phone; their values
+are John Smith,’ ‘2311 Kirby, Houston, Texas 77001’, ‘55’, and ‘713-749-2630’,
+respectively. The COMPANY entity c, has three attributes: Name, Headquarters, and
+
+President; their values are ‘Sunco Oil’, ‘Houston’, and ‘John Smith’, respectively.

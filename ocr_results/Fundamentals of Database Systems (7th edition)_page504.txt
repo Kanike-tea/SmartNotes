@@ -1,0 +1,54 @@
+474 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Figure 14.8
+A relation R(A, B, C, D)
+with its extension.
+
+A B D
+
+al bl cl dl
+al b2 2 d2
+a2 b2 2 3
+a3 b3 c4 d3
+
+fo}
+
+tuples that show the violation of such an FD. See the illustrative example relation in
+Figure 14.8. Here, the following FDs may hold because the four tuples in the current
+extension have no violation of these constraints: B > C; C > B; {A, B}  C; {A, B} > D;
+and {C, D} > B. However, the following do not hold because we already have viola-
+tions of them in the given extension: A — B (tuples 1 and 2 violate this constraint);
+B-A (tuples 2 and 3 violate this constraint); D — C (tuples 3 and 4 violate it).
+
+Figure 14.3 introduces a diagrammatic notation for displaying FDs: Each FD is
+displayed as a horizontal line. The left-hand-side attributes of the FD are connected
+by vertical lines to the line representing the FD, whereas the right-hand-side attri-
+butes are connected by the lines with arrows pointing toward the attributes.
+
+We denote by F the set of functional dependencies that are specified on relation
+schema R. Typically, the schema designer specifies the functional dependencies that
+are semantically obvious; usually, however, numerous other functional dependen-
+cies hold in all legal relation instances among sets of attributes that can be derived
+from and satisfy the dependencies in F. Those other dependencies can be inferred
+or deduced from the FDs in F. We defer the details of inference rules and properties
+of functional dependencies to Chapter 15.
+
+14.3 Normal Forms Based on Primary Keys
+
+Having introduced functional dependencies, we are now ready to use them to spec-
+ify how to use them to develop a formal methodology for testing and improving
+relation schemas. We assume that a set of functional dependencies is given for each
+relation, and that each relation has a designated primary key; this information com-
+bined with the tests (conditions) for normal forms drives the normalization process
+for relational schema design. Most practical relational design projects take one of
+the following two approaches:
+
+= Perform a conceptual schema design using a conceptual model such as ER
+or EER and map the conceptual design into a set of relations.
+
+= Design the relations based on external knowledge derived from an existing
+implementation of files or forms or reports.
+
+Following either of these approaches, it is then useful to evaluate the relations for
+goodness and decompose them further as needed to achieve higher normal forms
+using the normalization theory presented in this chapter and the next. We focus in

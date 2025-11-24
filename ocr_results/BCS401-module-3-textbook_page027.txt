@@ -1,0 +1,52 @@
+266
+
+Space and Time Trade-Offs
+
+number of positions computed by the formula
+
+a=({4 ifk =0,
+
+max{d;, d>} ifk > 0, 73)
+
+where d; = max{t,(c) — k, 1}.
+
+Shifting by the maximum of the two available shifts when k > 0 is quite log-
+ical. The two shifts are based on the observations—the first one about.a text’s
+mismatched character, and the second one about a matched group of the pattern’s
+rightmost characters—that imply that shifting by less thand, and d) characters, re-
+spectively, cannot lead to aligning the pattern with a matching substring in the text:
+Since we are interested in shifting the pattern as far as possible without missing a
+possible matching substring, we take the maximum of these two numbers.
+
+EXAMPLE As a complete example, let us consider searching for the pattern
+BAOBAB in a text made of English letters and spaces. The bad-symbol table looks
+as follows:
+
+c JA)BIC}]D]... |O}... | Zz
+
+no) |d}2}6}6] 6 }3} 6 |6}le
+
+The good-suffix table is filled as follows:
+
+k pattern dy
+1 BAOBAB 2
+2  BAOBAB 5
+3 BAOBAB 5
+4  BAOBAB 5
+5 5
+
+BAOBAB
+
+The actual search for this pattern in the text given in Figure 7.3 proceeds as
+follows. After the last B of the pattern fails to match its counterpart K in the text,
+the algorithm retrieves t(K) = 6 from the bad-symbol table and shifts the pat-
+tern by d; = max{t,(K) — 0, 1} = 6 positions to the right. The new try successfully
+matches two pairs of characters. After the failure of the third comparison on the
+space character in the text, the algorithm retrieves 1(_) = 6 from the bad-symbol
+table and d, = 5 from the good-suffix table to shift the pattern by max{d;, d)} =
+max{6 — 2, 5} =5. Note that on this iteration it is the good-suffix rule that leads
+to a farther shift of the pattern.
+
+The next try successfully matches just one pair of B’s. After the failure of
+the next comparison on the space character in the text, the algorithm retrieves
+t(_) = 6 from the bad-symbol table and d) = 2 from the good-suffix table to shift

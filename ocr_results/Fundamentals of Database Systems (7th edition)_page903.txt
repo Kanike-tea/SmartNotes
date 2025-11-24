@@ -1,0 +1,56 @@
+23.7 Distributed Database Architectures
+
+Client
+User interface or presentation tier
+(Web browser, HTML, JavaScript, Visual Basic, . ..)
+
+HTTP Protocol
+
+'
+
+Application server
+Application (business) logic tier
+(Application program, JAVA, C/C++, C#,...)
+
+t
+
+ODBC, JDBC, SQL/CLI, SQL)
+
+!
+
+Database server
+Query and transaction processing tier
+(Database access, SQL, PSM, XML, .. .)
+
+Figure 23.10
+The three-tier client/server
+architecture.
+
+873
+
+Section 2.5. It is now more common to use a three-tier architecture rather than a
+two-tier architecture, particularly in Web applications. This architecture is illus-
+trated in Figure 23.10.
+
+In the three-tier client/server architecture, the following three layers exist:
+
+1. Presentation layer (client). This provides the user interface and interacts
+with the user. The programs at this layer present Web interfaces or forms to
+the client in order to interface with the application. Web browsers are often
+utilized, and the languages and specifications used include HTML, XHTML,
+CSS, Flash, MathML, Scalable Vector Graphics (SVG), Java, JavaScript,
+Adobe Flex, and others. This layer handles user input, output, and naviga-
+tion by accepting user commands and displaying the needed information,
+usually in the form of static or dynamic Web pages. The latter are employed
+when the interaction involves database access. When a Web interface is
+used, this layer typically communicates with the application layer via the
+HTTP protocol.
+
+2. Application layer (business logic). This layer programs the application
+logic. For example, queries can be formulated based on user input from the
+client, or query results can be formatted and sent to the client for presenta-
+tion. Additional application functionality can be handled at this layer, such
+as security checks, identity verification, and other functions. The application
+layer can interact with one or more databases or data sources as needed by
+connecting to the database using ODBC, JDBC, SQL/CLI, or other database
+access techniques.

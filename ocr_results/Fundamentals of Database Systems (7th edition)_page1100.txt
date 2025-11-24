@@ -1,0 +1,50 @@
+1070
+
+Chapter 28 Data Mining Concepts
+
+28.1 Overview of Data Mining Technology
+
+In reports such as the popular Gartner Report,’ data mining has been hailed as one
+of the top technologies for the near future. In this section, we relate data mining to
+the broader area called knowledge discovery and contrast the two by means of an
+illustrative example.
+
+28.1.1 Data Mining versus Data Warehousing
+
+The goal of a data warehouse (see Chapter 29) is to support decision making with
+data. Data mining can be used in conjunction with a data warehouse to help with
+certain types of decisions. Data mining can be applied to operational databases with
+individual transactions. To make data mining more efficient, the data warehouse
+should have an aggregated or summarized collection of data. Data mining helps in
+extracting meaningful new patterns that cannot necessarily be found by merely
+querying or processing data or meta-data in the data warehouse. Therefore, data
+mining applications should be strongly considered early, during the design of a data
+warehouse. Also, data mining tools should be designed to facilitate their use in con-
+junction with data warehouses. In fact, for very large databases running into tera-
+bytes and even petabytes of data, successful use of data mining applications will
+depend first on the construction of a data warehouse.
+
+28.1.2 Data Mining as a Part of the Knowledge
+Discovery Process
+
+Knowledge discovery in databases, frequently abbreviated as KDD, typically
+encompasses more than data mining. The knowledge discovery process comprises
+six phases:* data selection, data cleansing, enrichment, data transformation or
+encoding, data mining, and the reporting and display of the discovered information.
+
+As an example, consider a transaction database maintained by a specialty consumer
+goods retailer. Suppose the client data includes a customer name, zip code, phone
+number, date of purchase, item code, price, quantity, and total amount. A variety of
+new knowledge can be discovered by KDD processing on this client database. Dur-
+ing data selection, data about specific items or categories of items, or from stores in
+a specific region or area of the country, may be selected. The data cleansing process
+then may correct invalid zip codes or eliminate records with incorrect phone pre-
+fixes. Enrichment typically enhances the data with additional sources of informa-
+tion. For example, given the client names and phone numbers, the store may
+purchase other data about age, income, and credit rating and append them to each
+record. Data transformation and encoding may be done to reduce the amount of
+
+'The Gartner Report is one example of the many technology survey publications that corporate
+managers rely on to discuss and select data mining technology.
+
+2This discussion is largely based on Adriaans and Zantinge (1996).

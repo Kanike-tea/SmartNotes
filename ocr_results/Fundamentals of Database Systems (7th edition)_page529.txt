@@ -1,0 +1,65 @@
+14.27.
+
+14.28.
+
+14.29.
+
+14.30.
+
+14.31.
+
+b. Does the above relation have a potential candidate key? If it does, what is
+it? Ifit does not, why not?
+
+Consider a relation R(A, B, C, D, E) with the following dependencies:
+AB—C,CD—E, DEB
+Is AB a candidate key of this relation? If not, is ABD? Explain your answer.
+
+Consider the relation R, which has attributes that hold schedules of courses
+and sections at a university; R = {Course_no, Sec_no, Offering_dept,
+Credit_hours, Course_level, Instructor_ssn, Semester, Year, Days_hours, Room_no,
+No_of_students}. Suppose that the following functional dependencies hold on R:
+
+{Course_no} — {Offering_dept, Credit_hours, Course_level}
+
+{Course_no, Sec_no, Semester, Year} — {Days_hours, Room_no,
+No_of_students, Instructor_ssn}
+
+{Room_no, Days_hours, Semester, Year} — {Instructor_ssn, Course_no,
+Sec_no}
+
+Try to determine which sets of attributes form keys of R. How would you
+normalize this relation?
+
+Consider the following relations for an order-processing application data-
+base at ABC, Inc.
+
+ORDER (O#, Odate, Cust#, Total_amount)
+ORDER_ITEM(O#, I#, Qty_ordered, Total_price, Discount%)
+
+Assume that each item has a different discount. The Total_price refers to one
+item, Odate is the date on which the order was placed, and the Total_amount
+is the amount of the order. If we apply a natural join on the relations
+ORDER _ITEM and ORDER in this database, what does the resulting relation
+schema RES look like? What will be its key? Show the FDs in this resulting
+relation. Is RES in 2NF? Is it in 3NF? Why or why not? (State assumptions,
+if you make any.)
+
+Consider the following relation:
+CAR_SALE(Car#, Date_sold, Salesperson#, Commission%, Discount_amt)
+
+Assume that a car may be sold by multiple salespeople, and hence {Car#,
+Salesperson#} is the primary key. Additional dependencies are
+
+Date_sold —> Discount_amt and
+Salesperson# —> Commission%
+
+Based on the given primary key, is this relation in INF, 2NF, or 3NF? Why
+or why not? How would you successively normalize it completely?
+
+Consider the following relation for published books:
+
+BOOK (Book title, Author_name, Book type, List_price, Author_affil,
+Publisher)
+
+Exercises 499

@@ -1,0 +1,41 @@
+2.6. Map Colouring 151
+
+In Example 7 of Section 2.5 we have proved that every connected simple planar graph is
+6-colourable.
+
+The following theorem, known as the Five colour Theorem, is an improvement of the above
+stated result.
+
+Five Colour Theorem: The vertices of every connected simple planar graph can be properly
+coloured with five colours.
+
+(i Proof: Let be the number of vertices in a connected, simple planar graph. If n < 5, then the
+\ theorem is trivially true. Assume that the theorem is true for all graphs with n < k. Consider a
+graph G with k +1 vertices. Then, by virtue of Euler’s theorem, G contains a vertex v of degree
+\ at most 5*. If we consider the graph H = G — v, obtained by deleting v from G, then H has k
+| vertices. Therefore, by the assumption made, H is 5-colourable.
+| Since the degree of v is at most 5, v has at most 5 neighbours in G. Suppose v has 4 or
+\tess number of neighbours. Then the neighbours can be coloured with at most four different
+colours and v can be coloured with the fifth colour, all drawn from the colours used in H. Thus,
+a proper colouring of G can be done by using the five colours with which H can be coloured.
+Thus, G is 5-colourable.
+Next, suppose that v has 5 neighbours, say vj, v2, v3, v4, vs. Let us arrange them around
+v in anti-clockwise order as in Figure 2.62. If the vertices vj, v2, v3,...,V5 are all mutually
+adjacent, then they constitute Ks which is non-planar. This is not possible, because, being a
+planar graph, G cannot contain a non-planar graph as a subgraph. Therefore, at least two of v1,
+
+¥2,...,¥5, Say vy and v3, are non-adjacent. ae UA
+V3 | ><
+v4 Va. NR
+v v2 :
+V5 v1
+Figure 2.62
+
+Now, construct a graph G’ by merging the edges v3v and vy). The graph G’ will have
+kt lio. k —1 vertices (with v3vv, as the merged vertex). This graph is, therefore, 5-
+Cee: Let us assign a colour ay-to the merged vertex-v3vvj, a colour @2 to'v2, a colour a4
+
+“4 and a colour as to vs. With this scheme of colouring of vj, v2, v3, V4, Vs and with the use
+
+t ~
+See Section 2.2, Corollary 4.

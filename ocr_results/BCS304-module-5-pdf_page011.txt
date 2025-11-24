@@ -1,0 +1,46 @@
+DP1: Return an element with minimum priority.
+Dp2: Return an element with maximum priority.
+DP3: Insert an element with an arbitrary priority.
+DP4: Delete an element with minimum priority.
+DP5: Delete an element with maximum priority.
+
+Example: A DEPQ may be used to implement a network buffer. This buffer holds packets that are waiting
+their turn to be sent out over a network link; each packet has an associated priority. When the network link
+becomes available, a packet with the highest priority is transmitted. This corresponds to a DeleteMax
+operation. When a packet arrives at the buffer from elsewhere in the network, it is added to this buffer.
+This corresponds to an Insert operation. If the buffer is full, we must drop a packet with the minimum
+
+priority before we can insert one. This is achieved using a DeleteMin operation.
+5.0.7 Leftlist Trees
+
+Let n be the total number of elements in the two priority queues that are to be combined. If heaps are used
+to represent priority queues, then the combine operation takes O(n) time. Using a leftist tree, the combine
+operation as well as the normal priority queue operations take logarithmic time.
+
+Leftist trees, are defined using the concept of an extended binary tree. An extended binary tree is a binary
+tree in which all empty binary sub trees have been replaced by a square node. The square nodes in an
+extended binary tree are called external nodes. The original (circular) nodes of the binary tree are called
+internal nodes
+
+Let X be a node in an extended binary tree. Let left-child (x) and right-child (x), respectively, denote the
+left and right children of the internal node x. Define shortest (x) to be the length of a shortest path from x
+to an external node. It is easy to see that shortest (x) satisfies the following recurrence:
+
+oN ron
+
+1)
+y
+
+\
+Vox
+{ a)
+Paws
+dL
+Q
+a
+
+(a) (b)
+
+Figure : Two Binary Trees
+
+Page 12

@@ -1,0 +1,36 @@
+616 Appendix A ARM and Thumb Assembler Instructions
+
+If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+Examples
+suBS 0, r0, #1 3 r0-=1, setting flags
+SUB r0, rl, rl, LSL #2 3; r0 = -3*rl
+SUBS pc, Ir, #4 ; jump to Ir-4, set cpsr=spsr
+SWI Software interrupt
+1.  SWI<cond> <immed24> ARMv1
+2. SWI <immed8> THUMBv1
+The SWI instruction causes the ARM to enter supervisor mode and start executing from
+the SWI vector. The return address and cpsr are saved in Ir_svc and spsr_sve, respectively.
+The processor switches to ARM state and IRQ interrupts are disabled. The SWI vector is at
+address 0x00000008, unless high vectors are configured; then it is at address OxFFFFO008.
+The immediate operand is ignored by the ARM. It is normally used by the SWI exception
+handler as an argument determining which function to perform.
+Example
+SWI 0x123456 ; Used by the ARM tools to implement Semi-Hosting
+SWP. Swap a word in memory with a register, without interruption
+
+1. SWP<cond> Rd, Rm, [Rn] ARMv2a
+2. SWP<cond>B Rd, Rm, [Rn] ARMv2a
+Action
+
+1. temp=memory(Rn,4); memory(Rn,4)=Rm; Rd=temp;
+
+2. temp=(zero extend)memory(Rn,1); memory(Rn,1)=(char)Rm; Rd=temp;
+Notes
+
+The operations are atomic. They cannot be interrupted partway through.
+
+Rd, Rm, Rn must not be pe.

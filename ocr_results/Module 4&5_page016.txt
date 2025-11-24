@@ -1,0 +1,31 @@
+Microcontrollers - BCS402
+
+The code first initializes the IRQ stack. For safety reasons, it is always best to make sure that
+
+interrupts are disabled by using a bitwise OR between NolInt and the new mode.
+
+0x20000
+
+0x10000
+
+Ox8000 + code size
+
+0x&000
+Ox8000 - 128
+Ox8000 — 640
+0x20
+
+0x00
+
+Fig 7: Example implementation using layout A
+
+Each mode stack must be set up. Here is an example of how to set up three different stacks when
+the processor core comes out of reset. Note that, since this is a basic example, we do not
+
+implement a stack for the abort,
+
+FIQ, and undefined instruction modes. If these stacks are required, then very similar code is
+
+used.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 17

@@ -1,0 +1,36 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 583
+
+cPY Copy one ARM register to another without affecting the cpsr.
+1. CPY<cond> Rd, Rm ARMv6
+2. CPY Rd, Rm THUMBv3
+
+This assembles to MOV<cond> Rd, Rm except in the case of Thumb where Rd and Rm
+are low registers in the range r0 to r7. Then it is a new operation that sets Rd=Rm without
+affecting the cpsr.
+
+EOR Logical exclusive OR of two 32-bit values
+1. EOR<cond>{S} Rd, Rn, #<rotated_immed> ARM 1
+2. EOR<cond>{S} Rd, Rn, Rm {, <shift>} ARM 1
+3. EOR Ld, Lm THUMBV1
+Action Effect on the cpsr
+1. Rd = Rn * <rotated_immed> Updated if S suffix specified
+2. Rd = Rn ~ <shifted_Rm> Updated if S suffix specified
+3. Ld = Ld * Lm Updated (see Notes below)
+Notes
+
+= = If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <shifter_C> (see Table A.3), Vis preserved.
+
+= If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rnor Rmis pe, then the value used is the address of the instruction plus eight bytes.
+
+Example
+EOR r0, r0, #1<<16 3 toggle bit 16
+LDC Load to coprocessor single or multiple 32-bit values
+1. LDC<cond>{L} <copro>, Cd, [Rn {, #{-}<immed8>*4}] {!} ARMv2
+2. LDC<cond>{L} <copro>, Cd, [Rn], #{-}<immed8>*4 ARMv2
+
+3. LDC<cond>{L} <copro>, Cd, [Rn], <option> ARMV2

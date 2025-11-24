@@ -1,0 +1,34 @@
+Digital Design and Computer Organization(BCS302)
+F = (AB' + A'B)(C + D’) in Fig:3.25
+
+—D
+
+nplementing F = (AB’ + A’B)(C
+
++ D') with NOR gates
+
+The equivalent AND-OR diagram can be recognized from the NOR diagram by removing
+all the bubbles. To compensate for the bubbles in four inputs, it is necessary to
+complement the corresponding input literals.
+
+Hardware Description Language
+
+* A hardware description language (HDL) is a computer-based language that
+describes the hardware of digital systems in a textual form.
+
+* It resembles an ordinary computer programming language, such as C, but is
+specifically oriented to describing hardware structures and the behavior of
+logic circuits.
+
++ It can be used to represent logic diagrams, truth tables, Boolean expressions,
+and complex abstractions of the behavior of a digital system.
+
+* One way to view an HDL is to observe that it describes a relationship between
+signals that are the inputs to a circuit and the signals that are the outputs of the
+circuit.
+
+* For example, an HDL description of an AND gate describes how the logic value of
+the gate’s output is determined by the logic values of its inputs.
+
+Page
+26

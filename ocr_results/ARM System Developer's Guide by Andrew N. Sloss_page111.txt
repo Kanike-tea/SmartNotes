@@ -1,0 +1,51 @@
+98 Chapter 4 Introduction to the Thumb Instruction Set
+
+r3 = 0x00000003
+r4 = 0x9000
+
+STMIA r4!,{rl,r2,r3}
+
+POST —mem32[0x9000] = 0x00000001
+mem32[0x9004] = 0x00000002
+mem32[0x9008] = 0x00000003
+r4 = 0x900c
+
+4,7 STACK INSTRUCTIONS
+
+EXAMPLE
+
+4.7
+
+‘The Thumb stack operations are different from the equivalent ARM instructions because
+they use the more traditional POP and PUSH concept.
+
+Syntax: POP {low_register_list{, pc}}
+PUSH {low_register_list{, Ir}}
+
+| POP | pop registers from the stacks | Rd*" <- mem32[sp+4*N], sp=sp+4*N
+
+| PUSH | push registers on to the stack | Rd*" -> mem32[sp+4*N], sp=sp—4*N
+
+The interesting point to note is that there is no stack pointer in the instruction. This is
+because the stack pointer is fixed as register r13 in Thumb operations and sp is automatically
+updated. The list of registers is limited to the low registers r0 to r7.
+
+The PUSH register list also can include the link register In, similarly the POP register
+list can include the pc. This provides support for subroutine entry and exit, as shown in
+Example 4.7.
+
+The stack instructions only support full descending stack operations.
+
+In this example we use the POP and PUSH instructions. The subroutine ThumbRout ine is
+called using a branch with link (BL) instruction.
+
+3 Call subroutine
+
+BL ThumbRout ine
+3 continue
+
+ThumbRoutine
+PUSH {rl, Ir} 3 enter subroutine
+MoV. 0, #2
+
+POP {rl, pc} 3 return from subroutine

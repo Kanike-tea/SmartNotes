@@ -1,0 +1,53 @@
+320 Chapter 9 Exception and Interrupt Handling
+
+Table 9.2
+
+EXAMPLE
+
+9.1
+
+Figure 9.2
+
+Vector table and processor modes.
+
+Exception Mode — Vector table offset
+
+Reset Svc _+0x00
+Undefined Instruction UND +0x04
+Software Interrupt (SWI) SVC — +0x08
+
+Prefetch Abort ABT — +0x0c
+Data Abort ABT ~~ +0x10
+Not assigned _— +0x14
+IRQ IRQ +0x18
+FIQ FIQ +0x1c
+
+m= MOV pc, #immediate—This move instruction copies an immediate value into the pc.
+It lets you span the full address space but at limited alignment. The address must be an
+8-bit immediate rotated right by an even number of bits.
+
+You can also have other types of instructions in the vector table. For example, the FIQ
+handler might start at address offset +0x1c. Thus, the FIQ handler can start immediately
+at the FIQ vector location, since it is at the end of the vector table. The branch instructions
+cause the pc to jump to a specific location that can handle the specific exception.
+
+Table 9.2 shows the exception, mode, and vector table offset for each exception.
+
+Figure 9.2 shows a typical vector table. The Undefined Instruction entry is a branch instruc-
+tion to jump to the undefined handler. The other vectors use an indirect address jump with
+the LDR load to pc instruction.
+
+Notice that the FIQ handler also uses the LDR load to pc instruction and does not take
+advantage of the fact that the handler can be placed at the FIQ vector entry location.
+
+0x00000000: Oxe59ffa38 RESET: > Idr pc, [pc, #reset]
+0x00000004: Oxea000502 UNDEF: b undInstr
+0x00000008: Oxe59ffa38 SWI : Idr pc, [pc, #swi]
+0x0000000c: Oxe59ffa38 PABT : dr pc, [pc, #prefetch]
+0x00000010: Oxe59ffa38 DABT : dr pc, [pc, #data]
+
+0x00000014: Oxe59ffa38_ - : Idr_pc, [pc, #notassigned]
+0x00000018: Oxe59ffa38 IRQ : dr pc, [pc, #irq]
+0x0000001c: Oxe59ffa38 FIQ : dr pc, [pc, #fiq]
+
+Example vector table.

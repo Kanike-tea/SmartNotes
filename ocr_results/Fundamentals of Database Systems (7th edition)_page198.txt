@@ -1,0 +1,52 @@
+168 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+reference another default valid tuple. Notice that if a referencing attribute that
+causes a violation is part of the primary key, it cannot be set to NULL; otherwise, it
+would violate entity integrity.
+
+Combinations of these three options are also possible. For example, to avoid having
+operation 3 cause a violation, the DBMS may automatically delete all tuples from
+WORKS_ON and DEPENDENT with Essn = ‘333445555’. Tuples in EMPLOYEE with
+Super_ssn = ‘333445555’ and the tuple in DEPARTMENT with Mgr_ssn = ‘333445555
+can have their Super_ssn and Mgr_ssn values changed to other valid values or to
+NULL. Although it may make sense to delete automatically the WORKS_ON and
+DEPENDENT tuples that refer to an EMPLOYEE tuple, it may not make sense to delete
+other EMPLOYEE tuples or a DEPARTMENT tuple.
+
+In general, when a referential integrity constraint is specified in the DDL, the DBMS
+will allow the database designer to specify which of the options applies in case of a
+violation of the constraint. We discuss how to specify these options in the SQL DDL
+in Chapter 6.
+
+5.3.3 The Update Operation
+
+The Update (or Modify) operation is used to change the values of one or more
+attributes in a tuple (or tuples) of some relation R. It is necessary to specify a condi-
+tion on the attributes of the relation to select the tuple (or tuples) to be modified.
+Here are some examples.
+
+= Operation:
+Update the salary of the EMPLOYEE tuple with Ssn = ‘999887777’ to 28000.
+Result: Acceptable.
+
+= Operation:
+Update the Dno of the EMPLOYEE tuple with Ssn = 999887777’ to 1.
+Result: Acceptable.
+
+= Operation:
+Update the Dno of the EMPLOYEE tuple with Ssn = ‘999887777’ to 7.
+Result: Unacceptable, because it violates referential integrity.
+
+= Operation:
+Update the Ssn of the EMPLOYEE tuple with Ssn = 999887777’ to ‘9876543217
+Result: Unacceptable, because it violates primary key constraint by repeating
+a value that already exists as a primary key in another tuple; it violates refer-
+ential integrity constraints because there are other relations that refer to the
+existing value of Ssn.
+
+Updating an attribute that is neither part of a primary key nor part of a foreign key
+usually causes no problems; the DBMS need only check to confirm that the new
+value is of the correct data type and domain. Modifying a primary key value is simi-
+lar to deleting one tuple and inserting another in its place because we use the pri-
+mary key to identify tuples. Hence, the issues discussed earlier in both Sections 5.3.1
+(Insert) and 5.3.2 (Delete) come into play. If a foreign key attribute is modified, the

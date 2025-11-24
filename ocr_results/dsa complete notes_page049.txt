@@ -1,0 +1,22 @@
+Data Structures and Applications(BCS304) Module 2
+
+e Initially when front=0 rear=0 i.e when front == rear the queue is empty now after 6 insertions
+are made again fron=0 and rear= 0 that is the queue is full. So, we cannot distinguish between
+an empty and a full queue.
+
+To avoid the resulting confusion, the value of the rear is incremented before we check for the
+condition front == rear for queue overflow.
+
+= aS = aS
+
+e To add an element to a full queue, we must first increase the size of this array using a function
+such as realloc.
+
+As with dynamically allocated stacks, we use array doubling. However, it isn't sufficient to
+simply double array size using realloc.
+
+Consider the full queue . This figure shows a queue with seven elements in an array whose
+capacity is 8. To visualize array doubling when a circular queue is used, the array is flattened
+out as shown in the array of Figure (b).
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 5

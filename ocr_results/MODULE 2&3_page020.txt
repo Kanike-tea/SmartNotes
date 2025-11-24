@@ -1,0 +1,46 @@
+Microcontrollers — BCS402
+
+; 19 points to start of source data
+
+; 110 points to start of destination data
+
+3111 points to end of the source
+
+loop
+
+; load 32 bytes from source and update r9 pointer
+LDMIA 191, {r0-r7}
+
+; store 32 bytes to destination and update r10 pointer
+STMIA 110!, {10-17} ; and store them
+
+; have we reached the end
+
+CMP 19, rll
+
+BNE loop
+
+This routine relies on registers r9, r10, and r11 being set up before the code is executed.
+
+Registers r9 and rll determine the data to be copied, and register r10 points to the
+destination in memory for the data. LDMIA loads the data pointed to by register r9 into
+registers r0 to r7. It also updates r9 to point to the next block of data to be copied. STMIA
+copies the contents of registers r0 to r7 to the destination memory address pointed to by
+
+register r10.
+
+It also updates r10 to point to the next destination location. CMP and BNE compare pointers
+r9 and r11 to check whether the end of the block copy has been reached. If the block copy is
+complete, then the routine finishes; otherwise the loop repeats with the updated values of
+register r9 and rl0. The BNE is the branch instruction B with a condition mnemonic NE (not
+equal). If the previous compare instruction sets the condition flags to not equal, the branch
+
+instruction is executed.
+
+Figure 6 shows the memory map of the block memory copy and how the routine moves
+through memory. Theoretically this loop can transfer 32 bytes (8 words) in two instructions,
+for a maximum possible throughput of 46 MB/second being transferred at 33 MHz. These
+
+numbers assume a perfect memory system with fast memory.
+
+Dept. of ECE, GSSSIETW Page 21

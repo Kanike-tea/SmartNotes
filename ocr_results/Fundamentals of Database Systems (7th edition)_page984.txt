@@ -1,0 +1,51 @@
+954 — Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Finally, we presented a general discussion of some issues related to MapReduce/Hadoop
+technology. We briefly commented on the study done for this architecture vis-a-vis
+parallel DBMSs. There are circumstances where one is superior over the other, and
+claims about the superiority of parallel DBMSs for batch jobs are becoming less rele-
+vant due to architectural advancements in the form of YARN-related developments.
+We discussed the relationship between big data and cloud technologies and the work
+being done to address data locality issues in cloud storage for big data analytics. We
+stated that YARN is being considered as a generic data services platform, and we
+listed the challenges for this technology as outlined in a paper authored by a group of
+database experts. We concluded with a summary of ongoing projects in the field of
+big data.
+
+Review Questions
+25.1. What is data analytics and what is its role in science and industry?
+25.2. How will the big data movement support data analytics?
+
+25.3. What are the important points made in the McKinsey Global Institute report
+of 2012?
+
+25.4. How do you define big data?
+25.5. What are the various types of analytics mentioned in the IBM (2014) book?
+
+25.6. What are the four major characteristics of big data? Provide examples drawn
+from current practice of each characteristic.
+
+25.7. What is meant by veracity of data?
+
+25.8. Give the chronological history of the development of MapReduce/Hadoop
+technology.
+
+25.9. Describe the execution workflow of the MapReduce programming envi-
+ronment.
+
+25.10. Give some examples of MapReduce applications.
+
+25.11. What are the core properties of a job in MapReduce?
+
+25.12. What is the function of JobTracker?
+
+25.13. What are the different releases of Hadoop?
+
+25.14. Describe the architecture of Hadoop in your own words.
+
+25.15. What is the function of the NameNode and secondary NameNode in HDFS?
+25.16. What does the Journal in HDFS refer to? What data is kept in it?
+
+25.17. Describe the heartbeat mechanism in HDFS.
+
+25.18. How are copies of data (replicas) managed in HDFS?

@@ -1,0 +1,48 @@
+4.3 Constraints and Characteristics of Specialization and Generalization Hierarchies 113
+
+generalized superclass VEHICLE. We use the term generalization to refer to the pro-
+cess of defining a generalized entity type from the given entity types.
+
+Notice that the generalization process can be viewed as being functionally the
+inverse of the specialization process; we can view {CAR, TRUCK} as a specialization
+of VEHICLE rather than viewing VEHICLE as a generalization of CAR and TRUCK. A
+diagrammatic notation to distinguish between generalization and specialization is
+used in some design methodologies. An arrow pointing to the generalized super-
+class represents a generalization process, whereas arrows pointing to the special-
+ized subclasses represent a specialization process. We will not use this notation
+because the decision as to which process was followed in a particular situation is
+often subjective.
+
+So far we have introduced the concepts of subclasses and superclass/subclass rela-
+tionships, as well as the specialization and generalization processes. In general, a
+superclass or subclass represents a collection of entities of the same type and hence
+also describes an entity type; that is why superclasses and subclasses are all shown in
+rectangles in EER diagrams, like entity types.
+
+4.3 Constraints and Characteristics
+of Specialization and Generalization
+Hierarchies
+
+First, we discuss constraints that apply to a single specialization or a single general-
+ization. For brevity, our discussion refers only to specialization even though it
+applies to both specialization and generalization. Then, we discuss differences
+between specialization/generalization lattices (multiple inheritance) and hierarchies
+(single inheritance), and we elaborate on the differences between the specialization
+and generalization processes during conceptual database schema design.
+
+4.3.1 Constraints on Specialization and Generalization
+
+In general, we may have several specializations defined on the same entity type (or
+superclass), as shown in Figure 4.1. In such a case, entities may belong to subclasses
+in each of the specializations. A specialization may also consist of a single subclass
+only, such as the {MANAGER} specialization in Figure 4.1; in such a case, we do not
+use the circle notation.
+
+In some specializations we can determine exactly the entities that will become
+members of each subclass by placing a condition on the value of some attribute of
+the superclass. Such subclasses are called predicate-defined (or condition-defined)
+subclasses. For example, if the EMPLOYEE entity type has an attribute Job_type, as
+shown in Figure 4.4, we can specify the condition of membership in the
+SECRETARY subclass by the condition (Job_type = ‘Secretary’), which we call the
+defining predicate of the subclass. This condition is a constraint specifying that
+exactly those entities of the EMPLOYEE entity type whose attribute value for Job_type

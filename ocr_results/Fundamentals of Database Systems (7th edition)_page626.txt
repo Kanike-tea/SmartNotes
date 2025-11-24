@@ -1,0 +1,64 @@
+596
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+16.36.
+
+16.37.
+
+16.38.
+
+c. Calculate the average time it takes to find a record by doing a linear search
+on the file if (i) the file blocks are stored contiguously, and double buffer-
+ing is used; (ii) the file blocks are not stored contiguously.
+
+d. Assume that the file is ordered by Ssn; by doing a binary search, calculate
+the time it takes to search for a record given its Ssn value.
+
+Suppose that only 80% of the STUDENT records from Exercise 16.28 have a
+value for Phone, 85% for Major_dept_code, 15% for Minor_dept_code, and 90%
+for Degree_program; and suppose that we use a variable-length record file.
+Each record has a 1-byte field type for each field in the record, plus the 1-byte
+deletion marker and a 1-byte end-of-record marker. Suppose that we use a
+spanned record organization, where each block has a 5-byte pointer to the
+next block (this space is not used for record storage).
+
+a. Calculate the average record length R in bytes.
+b. Calculate the number of blocks needed for the file.
+
+Suppose that a disk unit has the following parameters: seek time s = 20 msec;
+rotational delay rd = 10 msec; block transfer time btt = 1 msec; block size
+B = 2400 bytes; interblock gap size G = 600 bytes. An EMPLOYEE file has
+the following fields: Ssn, 9 bytes; Last_name, 20 bytes; First_name, 20 bytes;
+Middle_init, 1 byte; Birth_date, 10 bytes; Address, 35 bytes; Phone, 12 bytes;
+Supervisor_ssn, 9 bytes; Department, 4 bytes; Job_code, 4 bytes; deletion
+marker, 1 byte. The EMPLOYEE file has r = 30,000 records, fixed-length
+format, and unspanned blocking. Write appropriate formulas and calculate
+the following values for the above EMPLOYEE file:
+
+a. Calculate the record size R (including the deletion marker), the blocking
+factor bfr, and the number of disk blocks b.
+
+b. Calculate the wasted space in each disk block because of the unspanned
+organization.
+
+c. Calculate the transfer rate tr and the bulk transfer rate btr for this disk
+unit (see Appendix B for definitions of tr and btr).
+
+d. Calculate the average number of block accesses needed to search for an
+arbitrary record in the file, using linear search.
+
+e. Calculate in msec the average time needed to search for an arbitrary
+record in the file, using linear search, if the file blocks are stored on con-
+secutive disk blocks and double buffering is used.
+
+f. Calculate in msec the average time needed to search for an arbitrary
+record in the file, using linear search, if the file blocks are not stored on
+consecutive disk blocks.
+
+g. Assume that the records are ordered via some key field. Calculate the
+average number of block accesses and the average time needed to search
+for an arbitrary record in the file, using binary search.
+
+A PARTS file with Part# as the hash key includes records with the following
+Part# values: 2369, 3760, 4692, 4871, 5659, 1821, 1074, 7115, 1620, 2428,

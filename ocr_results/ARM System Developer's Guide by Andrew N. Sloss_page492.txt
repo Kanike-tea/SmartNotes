@@ -1,0 +1,45 @@
+13.3 Demonstration of an MPU system 479
+
+13.3.1 SYSTEM REQUIREMENTS
+
+The demonstration system has the following hardware characteristics:
+
+= An ARM core with an MPU
+= 256 KB of physical memory starting at 0x0 and ending at 0x40000
+
+= Several memory-mapped peripherals spaced over several megabytes from 0x10000000
+to 0x12000000
+
+In this demonstration, all the memory-mapped peripherals are considered a single area of
+memory that needs protection (see Table 13.10).
+The demonstration system has the following software components:
+
+= The system software is less than 64 KB in size. It includes the vector table, exception
+handlers, and data stacks to support the exceptions. The system software must be
+inaccessible from user mode; that is, a user mode task must make a system call to run
+code or access data in this region.
+
+= There is shared software that is less than 64 KB in size. It contains commonly used
+libraries and data space for messaging between user tasks.
+
+= There are three user tasks that control independent functions in the system. These tasks
+are less than 32 KB in size. When these tasks are running, they must be protected from
+access by the other two tasks.
+
+The software is linked to place the software components within the regions assigned to
+them. Table 13.10 shows the software memory map for the example. The system software
+has system-level access permission. The shared software area is accessible by the entire
+system. The task software areas contain user-level tasks.
+
+Table 13.10 Memory map of example protection system.
+
+Function Access level Starting address__—_Size Region
+Protect memory-mapped peripheral devices system 0x10000000 2MB 4
+Protected system system 0x00000000 4GB 1
+Shared system user 0x00010000 64 KB 2
+
+User task 1 user 0x00020000 32 KB 3
+
+User task 2 user 0x00028000 32 KB 3
+
+User task 3 user 0x00030000 32 KB 3

@@ -1,0 +1,54 @@
+28.1 Overview of Data Mining Technology
+
+data. For instance, item codes may be grouped in terms of product categories into
+audio, video, supplies, electronic gadgets, camera, accessories, and so on. Zip codes
+may be aggregated into geographic regions, incomes may be divided into ranges,
+and so on. In Figure 29.1, we will show a process called extraction, transformation,
+and load (ETL) as a precursor to the data warehouse creation. If data mining is
+based on an existing warehouse for this retail store chain, we would expect that the
+cleaning has already been applied. It is only after such preprocessing that data min-
+ing techniques are used to mine different rules and patterns.
+
+The result of mining may be to discover the following types of new information:
+
+= Association rules—for example, whenever a customer buys video equip-
+ment, he or she also buys another electronic gadget.
+
+= Sequential patterns—for example, suppose a customer buys a camera, and
+within three months he or she buys photographic supplies, then within six
+months he is likely to buy an accessory item. This defines a sequential pattern
+of transactions. A customer who buys more than twice in lean periods may be
+likely to buy at least once during the December holiday shopping period.
+
+= Classification trees—for example, customers may be classified by frequency
+of visits, types of financing used, amount of purchase, or affinity for types of
+items; some revealing statistics may be generated for such classes.
+
+As this retail store example shows, data mining must be preceded by significant
+data preparation before it can yield useful information that can directly influence
+business decisions.
+
+The results of data mining may be reported in a variety of formats, such as listings,
+graphic outputs, summary tables, and visualizations.
+
+28.1.3 Goals of Data Mining and Knowledge Discovery
+
+Data mining is typically carried out with some end goals or applications. Broadly
+speaking, these goals fall into the following classes: prediction, identification, clas-
+sification, and optimization.
+
+= Prediction. Data mining can show how certain attributes within the data
+will behave in the future. Examples of predictive data mining include the
+analysis of buying transactions to predict what consumers will buy under
+certain discounts, how much sales volume a store will generate in a given
+period, and whether deleting a product line will yield more profits. In such
+applications, business logic is used coupled with data mining. In a scientific
+context, certain seismic wave patterns may predict an earthquake with high
+probability.
+
+= Identification. Data patterns can be used to identify the existence of an
+item, an event, or an activity. For example, intruders trying to break a sys-
+tem may be identified by the programs executed, files accessed, and CPU
+time per session. In biological applications, existence of a gene may be
+
+1071

@@ -1,0 +1,50 @@
+1.7 A Brief History of Database Applications
+
+to relational databases, since they provided more general data structures. They also
+incorporated many of the useful object-oriented paradigms, such as abstract data
+types, encapsulation of operations, inheritance, and object identity. However, the
+complexity of the model and the lack of an early standard contributed to their lim-
+ited use. They are now mainly used in specialized applications, such as engineering
+design, multimedia publishing, and manufacturing systems. Despite expectations
+that they will make a big impact, their overall penetration into the database prod-
+ucts market remains low. In addition, many object-oriented concepts were incor-
+porated into the newer versions of relational DBMSs, leading to object-relational
+database management systems, known as ORDBMSs.
+
+1.7.4 Interchanging Data on the Web
+for E-Commerce Using XML
+
+The World Wide Web provides a large network of interconnected computers.
+Users can create static Web pages using a Web publishing language, such as Hyper-
+Text Markup Language (HTML), and store these documents on Web servers where
+other users (clients) can access them and view them through Web browsers. Docu-
+ments can be linked through hyperlinks, which are pointers to other documents.
+Starting in the 1990s, electronic commerce (e-commerce) emerged as a major
+application on the Web. Much of the critical information on e-commerce Web
+pages is dynamically extracted data from DBMSs, such as flight information, prod-
+uct prices, and product availability. A variety of techniques were developed to allow
+the interchange of dynamically extracted data on the Web for display on Web
+pages. The eXtended Markup Language (XML) is one standard for interchanging
+data among various types of databases and Web pages. XML combines concepts
+from the models used in document systems with database modeling concepts.
+Chapter 13 is devoted to an overview of XML.
+
+1.7.5 Extending Database Capabilities
+for New Applications
+
+The success of database systems in traditional applications encouraged devel-
+opers of other types of applications to attempt to use them. Such applications
+traditionally used their own specialized software and file and data structures.
+Database systems now offer extensions to better support the specialized require-
+ments for some of these applications. The following are some examples of these
+applications:
+
+= Scientific applications that store large amounts of data resulting from scien-
+tific experiments in areas such as high-energy physics, the mapping of the
+human genome, and the discovery of protein structures
+
+= Storage and retrieval of images, including scanned news or personal photo-
+graphs, satellite photographic images, and images from medical procedures
+such as x-rays and MRI (magnetic resonance imaging) tests
+
+25

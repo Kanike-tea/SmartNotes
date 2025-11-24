@@ -1,0 +1,52 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees
+
+and Pjeas, we should reduce the block size by the amount of space needed for all such
+information. The next example illustrates how we can calculate the number of
+entries in a B*-tree.
+
+Example 7. Suppose that we construct a B*-tree on the field in Example 6. To
+calculate the approximate number of entries in the B*-tree, we assume that each
+node is 69% full. On the average, each internal node will have 34 * 0.69 or approxi-
+mately 23 pointers, and hence 22 values. Each leaf node, on the average, will hold
+0.69 * pieag = 0.69 * 31 or approximately 21 data record pointers. A B*-tree will have
+the following average number of entries at each level:
+
+Root: 1 node 22 key entries 23 pointers
+Level 1: 23 nodes 506 key entries 529 pointers
+Level 2: 529 nodes 11,638 key entries 12,167 pointers
+
+Leaf level: 12,167 nodes 255,507 data record pointers
+
+For the block size, pointer size, and search field size as in Example 6, a three-level
+B*-tree holds up to 255,507 record pointers, with the average 69% occupancy of
+nodes. Note that we considered the leaf node differently from the nonleaf nodes
+and computed the data pointers in the leaf node to be 12,167 * 21 based on 69%
+occupancy of the leaf node, which can hold 31 keys with data pointers. Compare
+this to the 65,535 entries for the corresponding B-tree in Example 5. Because a
+B-tree includes a data/record pointer along with each search key at all levels of
+the tree, it tends to accommodate less number of keys for a given number of
+index levels. This is the main reason that B*-trees are preferred to B-trees as
+indexes to database files. Most DBMSs, such as Oracle, are creating all indexes as
+B*-trees.
+
+Search, Insertion, and Deletion with B*-Trees. Algorithm 17.2 outlines the
+procedure using the B*-tree as the access structure to search for a record. Algo-
+rithm 17.3 illustrates the procedure for inserting a record in a file with a B*-tree
+access structure. These algorithms assume the existence of a key search field, and
+they must be modified appropriately for the case of a B*-tree on a nonkey field. We
+illustrate insertion and deletion with an example.
+
+Algorithm 17.2. Searching for a Record with Search Key Field Value K, Using
+a B*-Tree
+
+n © block containing root node of B*-tree;
+read block n;
+while (n is not a leaf node of the B*-tree) do
+begin
+q < number of tree pointers in node n;
+if K< n.K, (*n.K; refers to the ith search field value in node n*)
+then n — n.P, (*n.P; refers to the ith tree pointer in node n*)
+else if K> n.Ky
+then n= n.Py
+
+625

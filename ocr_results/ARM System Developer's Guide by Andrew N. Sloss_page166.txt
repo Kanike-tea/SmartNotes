@@ -1,0 +1,40 @@
+5.13 Portability Issues 153
+
+SMULBB r3,r3,r14 5 3 = v3 * 14
+QDADD §rl2,r12,r3. 5 a = sat(atsat(2*r3))
+
+BNE sat_v3_loop ; if (N!=0) goto loop
+Mov r0,r12 3 r0=a
+LOR pc, [r13],#4 5 return r0
+
+Other instructions that are not usually available from C include coprocessor
+instructions. Example 5.18 shows how to access these.
+
+EXAMPLE This example writes to coprocessor 15 to flush the instruction cache. You can use similar
+5.18 code to access other coprocessor numbers.
+
+void flush_Icache(void)
+{
+#ifdef _ARMCC_VERSION /* armcc */
+__asm {MCR p15, 0, 0, c7, c5, 0}
+#endif
+#ifdef _GNUC__ /* gcc */
+asm ( "MCR p15, 0, r0, c7, c5, 0" );
+#endif
+}
+
+Summary Inline Functions and Assembly
+
+= Use inline functions to declare new operations or primitives not supported by the
+C compiler.
+
+= Use inline assembly to access ARM instructions not supported by the C compiler.
+Examples are coprocessor instructions or ARMV5E extensions.
+
+5. 13 PORTABILITY ISSUES
+
+Here is a summary of the issues you may encounter when porting C code to the ARM.
+
+= The char type. On the ARM, char is unsigned rather than signed as for many other
+processors. A common problem concerns loops that use a char loop counter i and
+the continuation condition i > 0, they become infinite loops. In this situation, armcc

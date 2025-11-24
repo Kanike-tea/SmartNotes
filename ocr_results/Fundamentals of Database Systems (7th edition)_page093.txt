@@ -1,0 +1,51 @@
+3.3 Entity Types, Entity Sets, Attributes, and Keys
+
+= The company is organized into departments. Each department has a unique
+name, a unique number, and a particular employee who manages the depart-
+ment. We keep track of the start date when that employee began managing
+the department. A department may have several locations.
+
+= A department controls a number of projects, each of which has a unique
+name, a unique number, and a single location.
+
+= The database will store each employee’s name, Social Security number,”
+address, salary, sex (gender), and birth date. An employee is assigned to one
+department, but may work on several projects, which are not necessarily
+controlled by the same department. It is required to keep track of the cur-
+rent number of hours per week that an employee works on each project, as
+well as the direct supervisor of each employee (who is another employee).
+
+= The database will keep track of the dependents of each employee for insur-
+ance purposes, including each dependent’s first name, sex, birth date, and
+relationship to the employee.
+
+Figure 3.2 shows how the schema for this database application can be displayed by
+means of the graphical notation known as ER diagrams. This figure will be
+explained gradually as the ER model concepts are presented. We describe the step-
+by-step process of deriving this schema from the stated requirements—and explain
+the ER diagrammatic notation—as we introduce the ER model concepts.
+
+3.3 Entity Types, Entity Sets, Attributes,
+and Keys
+
+The ER model describes data as entities, relationships, and attributes. In Section 3.3.1
+we introduce the concepts of entities and their attributes. We discuss entity types
+and key attributes in Section 3.3.2. Then, in Section 3.3.3, we specify the initial con-
+ceptual design of the entity types for the COMPANY database. We describe relation-
+ships in Section 3.4.
+
+3.3.1 Entities and Attributes
+
+Entities and Their Attributes. The basic concept that the ER model represents is
+an entity, which is a thing or object in the real world with an independent existence.
+An entity may be an object with a physical existence (for example, a particular per-
+son, car, house, or employee) or it may be an object with a conceptual existence (for
+instance, a company, a job, or a university course). Each entity has attributes—the
+particular properties that describe it. For example, an EMPLOYEE entity may be
+described by the employee’s name, age, address, salary, and job. A particular entity
+
+?The Social Security number, or SSN, is a unique nine-digit identifier assigned to each individual in the
+United States to keep track of his or her employment, benefits, and taxes. Other countries may have
+similar identification schemes, such as personal identification card numbers.
+
+63

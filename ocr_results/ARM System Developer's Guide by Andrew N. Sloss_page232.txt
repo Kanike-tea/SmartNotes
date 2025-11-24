@@ -1,0 +1,208 @@
+MOV
+RSBS
+BCC
+RSBS
+BCC
+MOV
+ORR
+RSBS
+BCC
+RSBS
+BCC
+MOV
+ORR
+RSBS
+MOVCS
+ORRCS
+RSBS
+BCC
+RSBS
+BCS
+
+3 fall
+
+div_loop
+Moves
+div 8bits
+RSBS
+suBcS
+ADC
+RSBS
+suBcS
+ADC
+RSBS
+suBcS
+ADC
+RSBS
+suBCS
+ADC
+div_4bits
+RSBS
+suBcS
+ADC
+div_3bits
+RSBS
+suBcS
+
+a
+
+#0
+
+t, d, r, LSRE3
+div_3bits
+
+t, d, r, LSR#B
+div_8bits
+
+d, d, LSL#8
+
+a
+
+a
+
+#0xFF000000
+
+t, d, r, LSREG
+div_4bits
+t, d, r, LSR#B
+div_8bits
+
+d,
+q
+t,
+d,
+q
+t,
+
+d,
+a
+d
+d,
+a
+d
+
+LSL#8
+#0x00FF0000
+r, LSR#8
+LSL#8
+#0x0000F FOO
+r, LSR#4
+
+div_4bits
+t, d, #0
+div_by_0
+through to the loop with C=0
+
+qd,
+
+t,
+vs
+a
+t,
+vs
+a
+t,
+vs
+a
+t,
+vs
+%
+
+t,
+vs
+q
+
+t,
+vs
+
+q
+
+vs
+
+LSR#8.
+
+r, LSR#7
+d, LSL#7
+q
+
+r, LSR#6
+d, LSL#6
+
+r, LSR#5
+d, LSL#5
+
+r, LSR#4
+d, LSL#4
+
+r, LSR#3
+d, LSL#3
+
+r, LSR#2
+LSL#2
+
+Es
+
+7.3 Division 219
+
+zero quotient
+
+if ((r>>3)>=d) C=1; else C=05
+quotient fits in 3 bits
+
+if ((r>>8)>=d) C=1; else C=0;
+quotient fits in 8 bits
+
+d = d*256
+
+make div_loop iterate twice
+if ((r>>4)>=d) C=1; else C=05
+quotient fits in 12 bits
+
+if ((r>>8)>=d) C=1; else C=0;
+quotient fits in 16 bits
+
+d = d*256
+
+3 make div_loop iterate 3 times
+3 if ((r>>8)>=d)
+3 { d = d*256;
+
+make div_loop iterate 4 times}
+
+3 if ((r>>4)<d)
+
+r/d quotient fits in 4 bits
+
+3 if (0 >= d)
+
+goto divide by zero trap
+
+if (next loop) d = d/256
+calculate 8 quotient bits
+
+if ((r>>7)>=d) C=1; else C=05
+if (C) r -= d<<75
+q=(q<<1)+C;
+
+if ((r>>6)>=d) C=1; else C=0;
+if (C) r -= d<<6;
+q=(q<<1)+C;
+
+if ((r>>5)>=d) C=1; else C=05
+if (C) r -= d<<5;
+a=(q<<1)+C;
+
+if ((r>>4)>=d) C=1; else C=05
+if (C) r -= d<<4;
+q=(q<<1)+C;
+
+calculate 4 quotient bits
+
+if ((r>>3)>=d) C=1; else C=05
+if (C) r -= d<<3;
+a=(q<<1)+C;
+
+calculate 3 quotient bits
+
+if ((r>>2)>=d) C=1; else C=0;
+if (C) r -= d<<2;

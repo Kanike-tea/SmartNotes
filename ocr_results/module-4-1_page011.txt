@@ -1,0 +1,51 @@
+Data Structures and Applications (15CS33)
+
+2. Preorder: Preorder is the procedure of visiting a node, traverse left and continue. When you
+cannot continue, move right and begin again or move back until you can move right and resume.
+
+Recursion function:
+
+The Preorder traversal of a binary tree can be recursively defined as
+e Visit the root
+e Traverse the left subtree in preorder.
+e Traverse the right subtree in preorder
+
+void preorder (treepointerptr)
+
+{
+
+if (ptr)
+
+{
+printf (“%d”,ptr—data)
+preorder (ptr—leftchild);
+preorder (ptr—rightchild);
+
+}
+}
+
+3.Postorder: Postorder traversal calls for moving down the tree towards the left until you can
+go no further. Then move to the right node and then visit the node and continue.
+
+Recursion function:
+The Postorder traversal of a binary tree can be recursively defined as
+e Traverse the left subtree in postorder.
+
+e Traverse the right subtree in postorder.
+e Visit the root
+
+void postorder(treepointerptr)
+
+{
+
+if (ptr)
+
+{
+postorder (ptr—leftchild);
+postorder (ptr—rightchild);
+printf (“%d’,ptr—data) ;
+
+}
+}
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

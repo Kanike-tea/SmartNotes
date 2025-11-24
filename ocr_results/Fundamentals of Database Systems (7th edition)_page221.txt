@@ -1,0 +1,53 @@
+6.3 Basic Retrieval Queries in SQL
+
+The join condition Dnum = Dnumber relates a project tuple to its controlling depart-
+ment tuple, whereas the join condition Mgr_ssn = Ssn relates the controlling depart-
+ment tuple to the employee tuple who manages that department. Each tuple in the
+result will be a combination of one project, one department (that controls the proj-
+ect), and one employee (that manages the department). The projection attributes
+are used to choose the attributes to be displayed from each combined tuple. The
+result of query Q2 is shown in Figure 6.3(c).
+
+6.3.2 Ambiguous Attribute Names, Aliasing,
+Renaming, and Tuple Variables
+
+In SQL, the same name can be used for two (or more) attributes as long as the
+attributes are in different tables. If this is the case, and a multitable query refers to
+two or more attributes with the same name, we must qualify the attribute name
+with the relation name to prevent ambiguity. This is done by prefixing the rela-
+tion name to the attribute name and separating the two by a period. To illustrate
+this, suppose that in Figures 5.5 and 5.6 the Dno and Lname attributes of the
+EMPLOYEE relation were called Dnumber and Name, and the Dname attribute of
+DEPARTMENT was also called Name; then, to prevent ambiguity, query Q1 would
+be rephrased as shown in Q1A. We must prefix the attributes Name and Dnumber
+in Q1A to specify which ones we are referring to, because the same attribute
+names are used in both relations:
+
+QA: SELECT Fname, EMPLOYEE.Name, Address
+FROM EMPLOYEE, DEPARTMENT
+WHERE DEPARTMENT.Name = ‘Research’ AND
+DEPARTMENT.Dnumber = EMPLOYEE.Dnumber;
+
+Fully qualified attribute names can be used for clarity even if there is no ambi-
+guity in attribute names. Q1 can be rewritten as Q1’ below with fully qualified
+attribute names. We can also rename the table names to shorter names by creat-
+ing an alias for each table name to avoid repeated typing of long table names
+(see Q8 below).
+
+at’: SELECT EMPLOYEE.Fname, EMPLOYEE.LName,
+EMPLOYEE.Address
+FROM EMPLOYEE, DEPARTMENT
+WHERE DEPARTMENT.DName = ‘Research’ AND
+DEPARTMENT.Dnumber = EMPLOYEE.Dno;
+
+The ambiguity of attribute names also arises in the case of queries that refer to the
+same relation twice, as in the following example.
+
+Query 8. For each employee, retrieve the employee’s first and last name and the
+first and last name of his or her immediate supervisor.
+
+Q8: SELECT _E-Fname, E.Lname, S.Fname, S.Lname
+FROM EMPLOYEE AS E, EMPLOYEE AS S
+WHERE _E.Super_ssn = S.Ssn;
+
+191

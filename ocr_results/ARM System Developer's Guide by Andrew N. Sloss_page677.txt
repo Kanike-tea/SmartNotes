@@ -1,0 +1,42 @@
+664 Appendix D Instruction Cycle Timings
+
+Table D.14  ARM11 (ARMv6) instruction cycle timings. (Continued.)
+
+Instruction class Cycles Notes
+PLD A
+QxADD, QxSUB 1 Rdis not available for one cycle. Rn is required one cycle early
+for QDADD and QDSUB.
+REV, REV16, REVSH 1 Rmis required one cycle early.
+{S,SH,Q,U,UH,UQ} 1 Rdis not available for one cycle for saturating or halving
+ADD16, ADDSUBX, operations (SH, Q, UH, UQ prefix).
+SUBADDX, SUB16, Rmis required one cycle early for ADDSUBX and SUBADDX
+ADD8, SUB8 operations.
+SEL 1
+SETEND 1
+SMULxy, SMLAxy, 1 Rdis not available for two cycles, except as an accumulator input
+SMULWy, SMLAWy for another multiply accumulate when it is not available for
+SMUAD, SMLAD, one cycle.
+SMUSD, SMLSD Rmand Rsare required one cycle early.
+SMLALxy, SMLALD{X}, 2 RdLo is not available for one cycle. RdHi is not available for
+SMLSLD{X} two cycles. Reduce these latencies by one if these registers are
+used as accumulator inputs for another multiply accumulate.
+Rmand Rsare required one cycle early. RdHi is not required
+until the second cycle.
+SMMUL{R}, SMMLA{R}, 2 Rd is not available for two cycles, except as an accumulator
+SMMLS{R} input for another multiply accumulate when it is not available
+for one cycle.
+Rmand Rsare required one cycle early. Rn is not required until
+the second cycle.
+SSAT, USAT, SSAT16, 1 Rdis not available for one cycle. Rmis required one cycle early
+USAT16 for SSAT and USAT.
+STR/B/H/D A If the store is potentially unaligned (base or offset unaligned),
+then you cannot start a memory access on the next cycle.
+For STRD you cannot start another instruction that writes to
+R(d + 1) for one cycle.
+STM 1 You cannot start another memory access for the next
+(N + a — 1)/2 cycles, where ais bit 2 of the address.
+You cannot start an instruction that writes to the kth register in
+the list for k/2 cycles.
+SWI 8
+SWP/B 2 Rdis not available for one cycle.
+SXT, UXT 1 Rmis required one cycle early.

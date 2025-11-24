@@ -1,0 +1,48 @@
+Whenever a transaction performs a write, it is essential that the log record for that write be created
+before the database is modified. Once a log record exists, we can output the modification that has
+already been output to the database. Also we have the ability to undo a modification that has already
+been output to the database, by using the old-value field in the log records.
+
+For log records to be useful for recovery from system and disk failures, the log must reside on
+stable storage. However, since the log contains a complete record of all database activity, the
+volume of data stored in the log may become unreasonable large.
+
+Deferred Database Modification
+The deferred-modification technique ensures transaction atomicity by recording all database
+modifications in the log, but deferring all write operations of a transaction until the transaction
+partially commits (i.e., once the final action of the transaction has been executed). Then the
+information in the logs is used to execute the deferred writes. If the system crashes or if the
+transaction aborts, then the information in the logs is ignored.
+Let TO be transaction that transfers $50 from account A to account B:
+TO: read (A);
+A: = A-50;
+Write (A);
+Read (B);
+B: =B +50;
+Write (B).
+
+Immediate Database Modification
+The immediate-update technique allows database modifications to be output to the database while
+the transaction is still in the active state. These modifications are called uncommitted modifications.
+In the event of a crash or transaction failure, the system must use the old-value field of the log
+records to restore the modified data items.
+
+Transactions TO and T1 executed one after the other in the order TO followed by T1. The
+portion of the log containing the relevant information concerning these two transactions appears in
+the following,
+
+Portion of the system log corresponding to TO and T1
+< TO start >
+< TO, A, 1000, 950 >
+<TO, B, 2000, 2050 >
+<TO commit >
+<TI start >
+<T1,C, 700, 600 >
+<TO commit >
+Checkpoints
+When a system failure occurs, we must consult the log to determine those transactions that need to
+be redone and those that need to be undone. Rather than reprocessing the entire log, which is time-
+consuming and much of it unnecessary, we can use checkpoints:
+¢ Output onto stable storage all the log records currently residing in main memory.
+¢ Output to the disk all modified buffer blocks.
+¢ Output onto stable storage a log record, <checkpoint>.

@@ -1,0 +1,37 @@
+4.4 Modeling of UNION Types Using Categories 121
+
+BANK
+
+Ssn PERSON COMPANY
+
+Lien_or_regular
+
+OWNS
+
+N License_plate_no
+
+REGISTERED_VEHICLE
+
+Vehicle_id U Vehicle_id
+
+Gm Cosas)
+CAR TRUCK
+
+Figure 4.8
+year) Ciyear Two categories (union
+
+Cmodel Tmodel types): OWNER and
+REGISTERED_VEHICLE.
+
+Attribute inheritance works more selectively in the case of categories. For exam-
+ple, in Figure 4.8 each OWNER entity inherits the attributes of a COMPANY, a
+PERSON, or a BANK, depending on the superclass to which the entity belongs. On
+the other hand, a shared subclass such as ENGINEERING_MANAGER (Figure 4.6)
+
+inherits all the attributes of its superclasses SALARIED_EMPLOYEE, ENGINEER,
+and MANAGER.
+
+It is interesting to note the difference between the category REGISTERED_VEHICLE
+(Figure 4.8) and the generalized superclass VEHICLE (Figure 4.3(b)). In Fig-
+ure 4.3(b), every car and every truck is a VEHICLE; but in Figure 4.8, the
+REGISTERED_VEHICLE category includes some cars and some trucks but not necessarily

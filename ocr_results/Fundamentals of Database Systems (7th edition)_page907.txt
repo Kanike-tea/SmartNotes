@@ -1,0 +1,88 @@
+Review Questions
+
+Review Questions
+
+23.1.
+
+23.2.
+23.3.
+
+23.4.
+
+23.5.
+
+23.6.
+
+23.7.
+
+23.8.
+
+23.9.
+
+23.10.
+
+23.11.
+
+23.12.
+23.13.
+23.14,
+
+23.15.
+
+23.16.
+
+23.17.
+
+What are the main reasons for and potential advantages of distributed
+databases?
+
+What additional functions does a DDBMS have over a centralized DBMS?
+
+Discuss what is meant by the following terms: degree of homogeneity of a
+DDBMS, degree of local autonomy of a DDBMS, federated DBMS, distribu-
+tion transparency, fragmentation transparency, replication transparency,
+multidatabase system.
+
+Discuss the architecture of a DDBMS. Within the context of a centralized
+DBMS, briefly explain new components introduced by the distribution of
+data.
+
+What are the main software modules of a DDBMS? Discuss the main
+functions of each of these modules in the context of the client/server
+architecture.
+
+Compare the two-tier and three-tier client/server architectures.
+
+What is a fragment of a relation? What are the main types of fragments?
+Why is fragmentation a useful concept in distributed database design?
+
+Why is data replication useful in DDBMSs? What typical units of data are
+replicated?
+
+What is meant by data allocation in distributed database design? What typi-
+cal units of data are distributed over sites?
+
+How is a horizontal partitioning of a relation specified? How can a relation
+be put back together from a complete horizontal partitioning?
+
+How is a vertical partitioning of a relation specified? How can a relation be
+put back together from a complete vertical partitioning?
+
+Discuss the naming problem in distributed databases.
+What are the different stages of processing a query ina DDBMS?
+
+Discuss the different techniques for executing an equijoin of two files located
+at different sites. What main factors affect the cost of data transfer?
+
+Discuss the semijoin method for executing an equijoin of two files located at
+different sites. Under what conditions is an equijoin strategy efficient?
+
+Discuss the factors that affect query decomposition. How are guard condi-
+tions and attribute lists of fragments used during the query decomposition
+process?
+
+How is the decomposition of an update request different from the decompo-
+sition of a query? How are guard conditions and attribute lists of fragments
+used during the decomposition of an update request?
+
+877

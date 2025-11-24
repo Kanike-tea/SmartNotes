@@ -1,0 +1,23 @@
+«Temporary Registers - There are 3 temporary registers in the processor. Registers
+- Y, Z & Temp are used for temporary storage during program-execution. The
+programmer cannot access these 3 registers.
+
+In ALU, 1) “A“ input gets the operand from the output of the multiplexer (MUX).
+
+2) “B™ input gets the operand directly from the processor-bus.
+
+¢ There are 2 options provided for “A“ input of the ALU.
+
+« MUX is used to select one of the 2 inputs.
+
+¢ MUX selects either
+
+— output of Y or
+
+— constant-value 4( which is used to increment PC content).
+
+Figure 7.1 Single-bus organizotion of the datopath inside a processor.
+
+¢ An instruction is executed by performing one or more of the following operations:
+1) Transfer a word of data from one register to another or to the ALU.
+2) Perform arithmetic or a logic operation and store the result in a register.

@@ -1,0 +1,54 @@
+19.2 Choice of Query Execution Plans
+
+19.2.4 Materialized Views
+
+We discussed the concept of views in Section 7.3 and also introduced the concept
+of materialization of views. A view is defined in the database as a query, and a
+materialized view stores the results of that query. Using materialized views to
+avoid some of the computation involved in a query is another query optimiza-
+tion technique. A materialized view may be stored temporarily to allow more
+queries to be processed against it or permanently, as is common in data ware-
+houses (see Chapter 29). A materialized view constitutes derived data because its
+content can be computed as a result of processing the defining query of the
+materialized view. The main idea behind materialization is that it is much
+cheaper to read it when needed and query against it than to recompute it from
+scratch. The savings can be significant when the view involves costly operations
+like join, aggregation, and so forth.
+
+Consider, for example, view V2 in Section 7.3, which defines the view as a relation
+by joining the DEPARTMENT and EMPLOYEE relations. For every department, it
+computes the total number of employees and the total salary paid to employees in
+that department. If this information is frequently required in reports or queries,
+this view may be permanently stored. The materialized view may contain data
+related only to a fragment or sub-expression of the user query. Therefore, an
+involved algorithm is needed to replace only the relevant fragments of the query
+with one or more materialized views and compute the rest of the query in a conven-
+tional way. We also mentioned in Section 7.3 three update (also known as refresh)
+strategies for updating the view:
+
+= Immediate update, which updates the view as soon as any of the relations
+participating in the view are updated
+
+= Lazy update, which recomputes the view only upon demand
+
+= Periodic update (or deferred update), which updates the view later, possibly
+with some regular frequency
+
+When immediate update is in force, it constitutes a large amount of overhead to keep
+the view updated when any of the underlying base relations have a change in the form
+of insert, delete, and modify. For example, deleting an employee from the database, or
+changing the salary of an employee, or hiring a new employee affects the tuple corre-
+sponding to that department in the view and hence would require the view V2 in
+Section 7.3 to be immediately updated. These updates are handled sometimes manu-
+ally by programs that update all views defined on top of a base relation whenever the
+base relation is updated. But there is obviously no guarantee that all views may be
+accounted for. Triggers (see Section 7.2) that are activated upon an update to the base
+relation may be used to take action and make appropriate changes to the materialized
+views. The straightforward and naive approach is to recompute the entire view for
+every update to any base table and is prohibitively costly. Hence incremental view
+maintenance is done in most RDBMSs today. We discuss that next.
+
+Incremental View Maintenance. The basic idea behind incremental view mainte-
+nance is that instead of creating the view from scratch, it can be updated incrementally
+
+707

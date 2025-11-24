@@ -1,0 +1,55 @@
+272
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+8.6.4 Sample Queries in Tuple Relational Calculus
+
+We will use some of the same queries from Section 8.5 to give a flavor of how the
+same queries are specified in relational algebra and in relational calculus. Notice
+that some queries are easier to specify in the relational algebra than in the relational
+calculus, and vice versa.
+
+Query 1. List the name and address of all employees who work for the ‘Research’
+department.
+
+Q1: {t.Fname, t.Lname, t.Address | EMPLOYEE(/) AND (3d)(DEPARTMENT(d)
+AND d.Dname=‘Research’ AND d.Dnumber=t.Dno)}
+
+The only free tuple variables in a tuple relational calculus expression should be those
+that appear to the left of the bar (|). In Q1, fis the only free variable; it is then bound
+successively to each tuple. If a tuple satisfies the conditions specified after the bar in
+Ql, the attributes Fname, Lname, and Address are retrieved for each such tuple. The
+conditions EMPLOYEE(f) and DEPARTMENT(d) specify the range relations for t
+and d. The condition d.Dname = ‘Research’ is a selection condition and corre-
+sponds to a SELECT operation in the relational algebra, whereas the condition
+d.Dnumber = ¢.Dno is a join condition and is similar in purpose to the (INNER) JOIN
+operation (see Section 8.3).
+
+Query 2. For every project located in ‘Stafford’, list the project number, the con-
+trolling department number, and the department manager’s last name, birth
+date, and address.
+
+Q2: {p.Pnumber, p.Dnum, m.Lname, m.Bdate, m.Address | PROJECT(p) AND
+EMPLOYEE(m) AND p.Plocation=‘Stafford’ AND ((Sd)(DEPARTMENT(d)
+AND p.Dnum=d.Dnumber AND d.Mgr_ssn=m.Ssn))}
+
+In Q2 there are two free tuple variables, p and m. Tuple variable d is bound to the
+existential quantifier. The query condition is evaluated for every combination of
+tuples assigned to p and m, and out of all possible combinations of tuples to which
+pand mare bound, only the combinations that satisfy the condition are selected.
+
+Several tuple variables in a query can range over the same relation. For example, to
+specify Q8—for each employee, retrieve the employee’s first and last name and the
+first and last name of his or her immediate supervisor—we specify two tuple vari-
+ables e and s that both range over the EMPLOYEE relation:
+
+Q8: {e.Fname, e.Lname, s.Fname, s.Lname | EMPLOYEE(e) AND EMPLOYEE(s)
+AND e.Super_ssn=s.Ssn}
+
+Query 3’. List the name of each employee who works on some project controlled
+by department number 5. This is a variation of Q3 in which all is changed to
+some. In this case we need two join conditions and two existential quantifiers.
+
+Q0’: {e.Lname, e.Fname | EMPLOYEE(e) AND ((Sx)(4iw)(PROJECT(x) AND
+WORKS_ON(w) AND x.Dnum=5 AND w.Essn=e.Ssn AND
+x.Pnumber=w.Pno))}

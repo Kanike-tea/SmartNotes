@@ -1,0 +1,50 @@
+The nw
+
+service
+
+3.5 PROGR
+
+3.5 Program Status Register Instructions 75
+
+STMFD  sp!, {r0-r12, Ir}
+
+; Read the SWI instruction
+LOR rl0, [Ir, #-4]
+
+3 Mask off top 8 bits
+BIC rl0, r10, #0xff000000
+
+; r10 - contains the SWI number
+BL service_routine
+
+3 return from SWI handler
+LOMFD sp!, {r0-rl2, pc}*
+
+imber in register r10 is then used by the SWI handler to call the appropriate SWI
+routine.
+
+AM STATUS REGISTER INSTRUCTIONS
+
+The ARM instruction set provides two instructions to directly control a program status
+
+register
+
+(psr). The MRS instruction transfers the contents of either the cpsr or spsr into
+
+a register; in the reverse direction, the MSR instruction transfers the contents of a register
+into the cpsr or spsr. Together these instructions are used to read and write the cpsr and spsr.
+
+In the syntax you can see a label called fields. This can be any combination of control
+(c), extension (x), status (s), and flags (f). These fields relate to particular byte regions in
+a psr, as shown in Figure 3.9.
+
+Syntax: MRS{<cond>} Rd,<cpsr|spsr>
+MSR{<cond>} <cpsr|spsr>_<fields>,Rm
+MSR{<cond>} <cpsr|spsr>_<fields>, #immediate
+Fields | Flags (24:31) | Status [16:23] _ eXtension [8:15] | _ Control [0:7]
+Bit 31 3029 28 7654 0
+In|z\clv Mode
+
+Figure 3.9 _ psrbyte
+
+fields.

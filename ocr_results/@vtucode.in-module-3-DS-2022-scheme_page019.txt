@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304
+
+MODULE 3
+
+(a) (b)
+
+Figure: Linked representation of the binar
+
+- | =
+cj 0} AUT [O[E]O] [o|F{o}] [ojcro
+
+tree
+
+BINARY TREE TRAVERSALS
+
+Visiting each node in a tree exactly once is called tree traversal The different methods of
+
+traversing a binary tree are:
+1. Preorder
+
+. Inorder
+
+2
+
+3. Postorder
+4. Iterative inorder Traversal
+5
+
+. Level-Order traversal
+
+1. Inorder: Inorder traversal calls for moving down the tree toward the left until you cannot
+
+go further. Then visit the node, move one node to the right and continue. If no move can be
+
+done, then go back one more node.
+
+Let ptr is the pointer which contains the location of the node N currently being scanned. L(N)
+
+denotes the leftchild of node N and R(N) is the right child of node N
+
+ptr
+
+N
+aN
+Ley’ ROY
+
+vtucode.in
+
+20

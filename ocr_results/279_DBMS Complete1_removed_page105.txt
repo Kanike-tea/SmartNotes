@@ -1,0 +1,65 @@
+A System Crash A hardware, software or network error causes the transaction to fail.
+
+‘Transaction or System |Some operation in the transaction may cause the failure or the user may
+
+error interrupt the transaction.
+Local Errors or Conditions occur during the transaction that results in transaction
+Exceptions cancellation.
+
+‘Concurrency Control —_|Several transactions may be in deadlock so the transaction may be aborted
+Enforcement to be restarted later.
+
+Disk Failure Read Write error on the physical disk.
+
+Physical Problems ‘This can be any range of physical problems, such as power failure,
+mounting wrong disk or tape by operator, wiring problems etc
+
+Catastrophe Situations |Large scale threats to the system and the data for example fire, cyclone,
+security breaches etc.
+
+Transaction errors, system errors, system crashes, concurrency problems and local errors or
+exceptions are the more common causes of system failure. The system must be able to recover
+from such failures without loss of data.
+
+Log-Based Recover y
+
+COMMIT
+
+Signals the successful end of a transaction
+
++ Any changes made by the transaction should be saved
+* These changes are now visible to other transactions
+
+ROLLBACK
+
+Signals the unsuccessful end of a transaction
+
++ Any changes made by the transaction should be undone
++ It is now as if the transaction never existed
+
+Log-Based Recovery
+
+The most widely used structure for recording database modifications is the log. The log is a
+sequence of log records and maintains a history of all update activities in the database. There are
+several types of log records
+An update log record describes a single database write:
+
+e Transactions identifier.
+
+e Data-item identifier.
+
+e Old value.
+
+e New value.
+
+Other special log records exist to record significant events during transaction processing, such as
+the start of a transaction and the commit or abort of a transaction. We denote the various types of
+log records as:
+
+¢ <Tistart>.Transaction Ti has started.
+
+e <Ti, Xj, V1, V2> Transaction Ti has performed a write on data item Xj. Xj had value V1
+
+before write, and will have value V2 after the write.
+¢ <Ticommit> Transaction Ti has committed.
+e <Tiabort> Transaction Ti has aborted.

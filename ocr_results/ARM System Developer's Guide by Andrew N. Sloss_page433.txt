@@ -1,0 +1,55 @@
+420 Chapter 12. Caches
+
+Table 12.1
+
+ARM cached core policies.
+
+Core Write policy Replacement policy Allocation policy
+ARM720T writethrough random read-miss
+ARM740T writethrough random read-miss
+ARM920T writethrough, writeback random, round-robin _ read-miss
+ARM940T writethrough, writeback random read-miss
+ARM926EJS writethrough, writeback random, round-robin _ read-miss
+ARM946E writethrough, writeback random, round-robin _ read-miss
+ARM10202E writethrough, writeback random, round-robin _ read-miss
+ARM1026EJS writethrough, writeback random, round-robin _ read-miss
+
+Intel StrongARM — writeback round-robin read-miss
+
+Intel XScale writethrough, writeback round-robin read-miss, write-miss
+
+#include <stdio.h>
+#include <time.h>
+
+void cache RRtest(int times, int numset)
+
+{
+
+clock_t count;
+
+printf("Round Robin test size = %d\r\n", numset) ;
+
+enableRoundRobin() ;
+cleanFlushCache() ;
+count = clock();
+
+readSet (times, numset) ;
+count = clock() - count;
+
+printf("Round Robin enabled = %.2f seconds\r\n",
+(float) count /CLOCKS_PER_SEC);
+
+enableRandom() ;
+cleanFlushCache() ;
+count = clock();
+readSet (times, numset);
+count = clock() - count;
+
+printf("Random enabled = %.2f seconds\r\n\r\n",
+(float) count /CLOCKS_PER_SEC);
+
+}
+
+int readSet( int times, int numset)
+
+{

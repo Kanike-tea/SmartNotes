@@ -1,0 +1,46 @@
+232 Chapter 7 Optimized Primitives
+
+7.3.3.2. Theory: Accuracy of the Newton-Raphson Fraction Iteration
+
+This section analyzes the error introduced by each fractional Newton-Raphson iteration:
+Xig1 = 2xj — dx? (7.26)
+
+It is often slow to calculate this iteration exactly. As xj is only accurate to at most kj of
+precision, there is not much point in performing the calculation to more than 2k; bits
+of precision. The following steps give a practical method of calculating the iteration. The
+iterations preserve the limits for x; and e; that we defined in Section 7.3.3.
+
+1. Calculate x? exactly:
+1 2
+x= (G - «) and lies in the range 0 < x? < 4— 24% 4 242k (7.27)
+2. Calculate an underestimate d; to d, usually d to around 2k; bits. We only actually
+require that
+0.5<dj=d-f; and 0<f,<24 (7.28)
+
+3. Calculate, y;, a kj4.1 +1 bit estimate to djx? in the range 0 < y; < 4. Make y; as accurate
+as possible. However, we only require that the error g; satisfy
+
+yi=dixt—g and —2? <g, < 29K —2-Kin (7.29)
+4. Calculate the new estimate xj; = 2x; — yj; using an exact subtraction. We will prove
+
+that 0 < xj, <2and so the result fits in kj41 bits.
+
+e must show that the new kj4;—bit estimate x;+1 satisfies the properties mentione
+We t show that th kj41—bit estimate xj+1 satisfies the properti ‘tioned
+prior to Section 7.3.3.1 and calculate a formula for the new error ¢;+. First, we check the
+range of x41!
+
+Xig1 = 2xj — dix? + gj < 2xj — 0.5x7 + gi (7.30)
+
+The latter polynomial in x; has positive gradient for xj < 2 and so reaches its maximum
+value when xj is maximum. Therefore, using our bound on gi,
+
+xin <2 (2 =P) —0.5 (4 = 2th 21K) gy x2 2b (7.31)
+
+On the other hand, since |¢;| < 0.5 and gj > —0. 25, it follows that
+Xi41 2 2x; — 15x) + gi 20 (7.32)
+Finally, we calculate the new error:
+1 1
+cist = GX = Gx + (d — fix? — gi = de? — fix? — g; (7.33)
+
+It is easy to check that Jej41| < 0.5.

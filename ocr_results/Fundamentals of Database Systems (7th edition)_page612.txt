@@ -1,0 +1,52 @@
+582
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+When n = M after being incremented, this signifies that all the original buckets have
+been split and the hash function h;, applies to all records in the file. At this point,
+nis reset to 0 (zero), and any new collisions that cause overflow lead to the use of a
+new hashing function h;,2(K) = K mod 4M. In general, a sequence of hashing func-
+tions h;,j(K) = K mod (2/M) is used, where j = 0, 1, 2, ... ; a new hashing function
+hj, jx; is needed whenever all the buckets 0, 1, ..., (2/M) — 1 have been split and n is
+reset to 0. The search for a record with hash key value K is given by Algorithm 16.3.
+
+Splitting can be controlled by monitoring the file load factor instead of by splitting
+whenever an overflow occurs. In general, the file load factor / can be defined as
+1 = r/(bfr * N), where r is the current number of file records, bfr is the maximum
+number of records that can fit in a bucket, and Nis the current number of file buck-
+ets. Buckets that have been split can also be recombined if the load factor of the file
+falls below a certain threshold. Blocks are combined linearly, and N is decremented
+appropriately. The file load can be used to trigger both splits and combinations; in
+this manner the file load can be kept within a desired range. Splits can be triggered
+when the load exceeds a certain threshold—say, 0.9—and combinations can be trig-
+gered when the load falls below another threshold—say, 0.7. The main advantages
+of linear hashing are that it maintains the load factor fairly constantly while the file
+
+grows and shrinks, and it does not require a directory.'*
+
+Algorithm 16.3. The Search Procedure for Linear Hashing
+ifn=0
+then m <— hy (K) (*m is the hash value of record with hash key K*)
+else begin
+m — hj(K)s
+ifm<nthen me his (RK)
+end;
+
+search the bucket whose hash value is m (and its overflow, if any);
+
+16.9 Other Primary File Organizations
+
+16.9.1 Files of Mixed Records
+
+The file organizations we have studied so far assume that all records of a particular
+file are of the same record type. The records could be of EMPLOYEEs, PROJECTs,
+STUDENTs, or DEPARTMENTs, but each file contains records of only one type. In
+most database applications, we encounter situations in which numerous types of
+entities are interrelated in various ways, as we saw in Chapter 7. Relationships among
+records in various files can be represented by connecting fields.'° For example, a
+
+'®For details of insertion and deletion into Linear hashed files, refer to Litwin (1980) and Salzberg (1988).
+
+'8The concept of foreign keys in the relational data model (Chapter 3) and references among objects in
+
+object-oriented models (Chapter 11) are examples of connecting fields.

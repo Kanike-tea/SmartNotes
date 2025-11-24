@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Function deleteq is similar to pop since nodes are removing that is currently at the start
+of the list. Typical function calls would be addq (i, item); and item = deleteq (i);
+APPLICATIONS OF LINKED LISTS —~ POLYNOMIALS
+
+L. Representation of the polynomial:
+
+0
+
+A(X) = yx" + 0+ Hagx®
+where the ai are nonzero coefficients and the ei are nonnegative integer exponents such that
+em-l>em-2 >...>el >e0 > 0.
+
+Present each term as a node containing coefficient and exponent fields, as well as a pointer
+tothe next term.
+
+Assuming that the coefficients are integers, the type declarations are:
+
+typedef struct polyNode
+*polyPointer; typedef struct {
+int coef; int expon;
+polyPointer link;
+} polyNode;
+polyPointer a,b;
+
+We draw polynomial nodes as:
+
+coef | expon | link
+
+Figure shows howawe would stote the polynomials
+
+@= 3x £2754 |
+
+and ;
+P= Sxl* — 3x! + 10x°
+a 13 114 218 J 1]7o0!0
+(a)
+b 13 | 14 [10] —| +1076] 0
+
+Figure: Representation of 3x!4+2x8+1 and 8x4—3x!°+10x°
+
+vtucode.in 22

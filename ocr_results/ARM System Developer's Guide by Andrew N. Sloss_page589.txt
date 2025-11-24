@@ -1,0 +1,39 @@
+576 Appendix A ARM and Thumb Assembler Instructions
+
+and so can access a wider range of addresses. If the assembler cannot generate an instruction
+sequence reaching the address, then it will generate an error.
+
+The following example shows how to call the function pointed to by r9. We use ADR to
+set Ir to the return address; in this case, it will assemble to ADD Ir, pc, #4. Recall that pc
+reads as the address of the current instruction plus eight in this case.
+
+ADR Ir, return_address ; set return address
+MOV r0, #0 3 set a function argument
+BX ro 3 call the function
+return_address 3 resume
+AND Logical bitwise AND of two 32-bit values
+1. AND<cond>{S} Rd, Rn, #<rotated_immed> ARMv1
+2. AND<cond>{$} Rd, Rn, Rm {, <shift>} ARMv1
+3. AND Ld, Lm THUMBv1
+Action Effect on the cpsr
+1. Rd = Rn & <rotated_immed> Updated if S suffix specified
+2. Rd = Rn & <shifted_Rm> Updated if S suffix specified
+3. Ld = Ld & Lm Updated (see Notes below)
+Notes
+
+= If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <shifter_C> (see Table A.3), Vis preserved.
+
+"= If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+Examples
+‘AND r0, r0, #0xFF 3 extract the lower 8 bits of a byte
+ANDS = r0, r0, #1<<31 5 extract sign bit
+
+ASR Arithmetic shift right for Thumb (see MOV for the ARM equivalent)
+
+1. ASR Ld, Lm, #<immed5> THUMBv1
+2. ASR Ld, Ls THUMBv1

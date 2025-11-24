@@ -1,0 +1,55 @@
+724
+
+Chapter 19 Query Optimization
+
+the optimizer’s standpoint with respect to join ordering is to find an ordering that
+will reduce the size of the temporary results, since the temporary results (pipelined
+or materialized) are used by subsequent operators and hence affect the execution
+cost of those operators.
+
+19.5.4 Physical Optimization
+
+For a given logical query plan based on the heuristics we have been discussing so
+far, each operation needs a further decision in terms of executing the operation by a
+specific algorithm at the physical level. This is referred to as physical optimization.
+If this optimization is based on the relative cost of each possible implementation,
+we call it cost-based physical optimization. The two sets of approaches to this deci-
+sion making may be broadly classified as top-down and bottom-up approaches. In
+the top-down approach, we consider the options for implementing each operation
+working our way down the tree and choosing the best alternative at each stage. In
+the bottom-up approach, we consider the operations working up the tree, evaluat-
+ing options for physical execution, and choosing the best at each stage. Theoreti-
+cally, both approaches amount to evaluation of the entire space of possible
+implementation solutions to minimize the cost of evaluation; however, the bottom-
+up strategy lends itself naturally to pipelining and hence is used in commercial
+RDBMSs. Among the most important physical decisions is the ordering of join
+operations, which we will briefly discuss in Section 19.5.5. There are certain heuris-
+tics applied at the physical optimization stage that make elaborate cost computa-
+tions unnecessary. These heuristics include:
+
+= For selections, use index scans wherever possible.
+
+= Ifthe selection condition is conjunctive, use the selection that results in the
+smallest cardinality first.
+
+= If the relations are already sorted on the attributes being matched in a join,
+then prefer sort-merge join to other join methods.
+
+= For union and intersection of more than two relations, use the associative
+rule; consider the relations in the ascending order of their estimated car-
+dinalities.
+
+= If one of the arguments in a join has an index on the join attribute, use that
+as the inner relation.
+
+= If the left relation is small and the right relation is large and it has index on
+the joining column, then try index-based nested-loop join.
+
+= Consider only those join orders where there are no Cartesian products or
+where all joins appear before Cartesian products.
+
+The following are only some of the types of physical level heuristics used by the
+optimizer. If the number of relations is small (typically less than 6) and, there-
+fore, possible implementations options are limited, then most optimizers would
+elect to apply a cost-based optimization approach directly rather than to explore
+heuristics.

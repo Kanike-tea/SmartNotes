@@ -1,0 +1,51 @@
+514
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+semantics by which Plocation gives the location of one of the projects on which an
+employee works. Joining EMP_LOCS with PROJECT(Pname, Pnumber, Plocation,
+Dnum) in Figure 14.2—which is in BCNF—using Plocation as a joining attribute also
+gives rise to spurious tuples. This underscores the need for other criteria that,
+together with the conditions of 3NF or BCNF, prevent such bad designs. In the next
+three subsections we discuss such additional conditions that should hold on a
+decomposition D as a whole.
+
+15.2.2 Dependency Preservation Property
+of a Decomposition
+
+It would be useful if each functional dependency X — Y specified in F either
+appeared directly in one of the relation schemas R; in the decomposition D or
+could be inferred from the dependencies that appear in some Rj. Informally, this
+is the dependency preservation condition. We want to preserve the dependencies
+because each dependency in F represents a constraint on the database. If one of
+the dependencies is not represented in some individual relation R; of the decom-
+position, we cannot enforce this constraint by dealing with an individual relation.
+We may have to join multiple relations so as to include all attributes involved in
+that dependency.
+
+It is not necessary that the exact dependencies specified in F appear themselves in
+individual relations of the decomposition D. It is sufficient that the union of the
+dependencies that hold on the individual relations in D be equivalent to F. We now
+define these concepts more formally.
+
+Definition. Given a set of dependencies F on R, the projection of F on R;,
+denoted by zg (F) where R; is a subset of R, is the set of dependencies X > Y in
+F* such that the attributes in X U Y are all contained in R;. Hence, the projection
+of F on each relation schema R; in the decomposition D is the set of functional
+dependencies in F', the closure of F, such that all the left- and right-hand-side
+attributes of those dependencies are in R;. We say that a decomposition
+D = {Rj, Ro, ... ; Rm} of R is dependency-preserving with respect to F if the
+union of the projections of F on each R; in D is equivalent to F; that is,
+((tr,(F)) UK U (tr, (F)))* =F
+
+If a decomposition is not dependency-preserving, some dependency is lost in
+the decomposition. To check that a lost dependency holds, we must take the
+JOIN of two or more relations in the decomposition to get a relation that
+includes all left- and right-hand-side attributes of the lost dependency, and
+then check that the dependency holds on the result of the JOIN—an option that
+is not practical.
+
+An example of a decomposition that does not preserve dependencies is shown in
+Figure 14.13(a), in which the functional dependency FD2 is lost when LOTS1A is
+decomposed into {LOTS1AX, LOTS1AY}. The decompositions in Figure 14.12, how-
+ever, are dependency-preserving. Similarly, for the example in Figure 14.14, no

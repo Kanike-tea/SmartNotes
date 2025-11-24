@@ -1,0 +1,54 @@
+8.5 The Discrete Fourier Transform 305
+
+The ARM barrel shifter is positioned before the add or subtract in ARM instruction
+operations, so the ARM is better suited to the decimation-in-time algorithm.
+
+We won't go into the details of coding a radix-2 FFT, since a radix-4 FFT gives better
+performance. We look at this in the next section.
+
+8.5.1.2 The Radix-4 Fast Fourier Transform
+
+This is very similar to the radix-2 transform except we treat Nas a power of four, N = 4?.
+We use the decimation-in-time decomposition, R = 4°! and S$ = 4. Then the radix-4
+butterfly is
+
+(y[m], y[R + m], y[2R + m], y[3R + m])
+= DFT, (ulm), wiu[R + ml], wy" u[2R + m], wy" u[3R + m]) (8.48)
+
+The four-point DFT does not require any complex multiplies. Therefore, the decimation-
+in-time radix-4 algorithm requires bN/4 radix-4 butterflies with three complex multiplies in
+each. The radix-2 algorithm requires 2bN/2 radix-2 butterflies with one complex multiply
+in each. Therefore, the radix-4 algorithm saves 25% of the multiplies.
+
+It is tempting to consider a radix-8 transform. However, you can only save a small
+percentage of the multiplies. This gain will usually be outweighed by the extra load and
+store overhead required. The ARM has too few registers to support the general radix-8
+butterfly efficiently. The radix-4 butterfly is at a sweet spot: It saves a large number of
+multiplies and will fit neatly into the 14 available ARM registers.
+
+To implement the radix-4 butterfly efficiently, we use a radix-2 FFT to calculate DFT.
+Provided that the input is bit-reversed, we can calculate a four-point DFT in place, in eight
+ARM registers. The following C_FFT4 macro lies at the heart of our FFT implementations.
+It performs the four-point DFT and input scale at the same time, which makes good use of
+the ARM barrel shifter. To prevent overflow, we also divide the answer by four.
+
+x0_r RN 4  ; data register (real part)
+x0_i RN5  ; data register (imaginary part)
+xlr —RN6
+
+x1i | RNT
+
+x2r RNB
+
+x2_i RN
+
+x3_r RN 10
+
+x31 RN 11
+
+y3_r RN x3
+y3i RN x3_r
+
+; Four-point complex Fast Fourier Transform
+
+3 (x0,x1,x2,y3)=DFT4(x0,x2>>s,x1>>s,x3>>s) /4

@@ -1,0 +1,47 @@
+64 Chapter 3 Introduction to the ARM Instruction Set
+
+Table 3.6 Examples of LDR instructions using different addressing modes.
+
+Instruction r0= ri+=
+Preindex LDR r0,[r1,#0x4]! mem32[r1 + 0x4] 0x4
+with
+writeback
+LOR r0,[r1,r2]! mem32[r1+r2] r2
+LOR r0,[r1,r2,LSR#0x4] ! mem32[r1+(r2 LSR 0x4)] (r2 LSR 0x4)
+Preindex LOR r0,[r1,#0x4] mem32[r1 + 0x4] not updated
+LDR r0,[r1,r2] mem32[r1+r2] not updated
+LDR r0,[r1,-r2,LSR #0x4] mem32[r1-(r2 LSR 0x4)] not updated
+Postindex LDR r0,[r1],#0x4 mem32[r1] 0x4
+LOR r0,[r1],r2 mem32[r1] r2
+LDR r0,[r1],r2,LSR #0x4 mem32[r1] (r2 LSR 0x4)
+Table 3.7 Single-register load-store addressing, halfword, signed halfword, signed byte, and
+doubleword.
+Addressing? mode and index method Addressing? syntax
+Preindex immediate offset [Rn, #+/-offset_8]
+Preindex register offset [Rn, +/-Rm]
+Preindex writeback immediate offset [Rn, #+/-offset_8]!
+Preindex writeback register offset [Rn, +/-Rm] !
+Immediate postindexed [Rn], #+/-offset_8
+Register postindexed [Rn], +/-Rm
+Table 3.8 Variations of STRH instructions.
+Instruction Result rl+=
+Preindex with STRH r0,[r1,#0x4] ! mem16[r1+0x4]=r0 0x4
+writeback
+STRH r0,[rl1,r2]! mem16[r1+r2]=r0 r2
+
+Preindex STRH r0, [r1,#0x4]
+STRH r0,[r1,r2]
+Postindex STRH r0,[r1],#0x4
+
+STRH r0,[r1],r2
+
+mem16[r1+0x4] =r0
+mem16[r1+r2]=r0
+mem16[r1]=r0
+mem16[r1]=r0
+
+not updated
+not updated
+0x4
+
+r2

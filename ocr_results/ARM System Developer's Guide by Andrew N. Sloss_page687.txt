@@ -1,0 +1,100 @@
+674
+
+Index
+
+Current program status register (continued)
+saving of, 26
+state instruction sets, 26-27
+
+Cycle counter, 163
+
+Cyclic redundancy check, 107
+
+D
+
+DATA, 625-626
+Data
+C code
+function argument, 111-112
+local variable, 107-110
+overview of, 105-107
+signed, 112-113
+unsigned, 112-113
+unaligned
+description of, 136-140
+handling of, 201-203
+Data abort, 318t, 321
+Data abort vector, 33
+Data bus, 19
+Data encryption standard permutation, 249t
+Data pointers, 154
+Data processing instructions
+arithmetic instructions, 53-55
+barrel shifter. see Barrel shifter
+comparison instructions, 56-57
+logical instructions, 55-56
+move instructions, 50
+multiply instructions, 57-58
+Thumb instruction set, 93-95
+Data streaming, 410
+D-cache cleaning
+description of, 423, 428
+in Intel XScale SA-110 and Intel StrongARM.
+cores, 435-438
+procedural methods for, 428t, 428-431
+test-clean command for, 428t, 434-435
+way and set index addressing for, 428t,
+431-434
+DCB, 626
+DCD, 626
+DCI, 626
+DCQ, 626
+DCW, 626
+Decimation-in-time radix-2 butterfly, 304
+
+Decode, 164
+Decremented counted loops, 183-184
+Defines, 339
+Descending stack, 70
+Device driver, 369, 398-400
+Diagnostics, 13
+Digital signal processing
+advanced
+complex arithmetic support, 554-555
+cryptographic multiplication extensions,
+559
+dual 16-bit multiply instructions, 557-558
+most significant word multiplies, 558-559
+packing instructions, 554
+saturation instructions, 555-556
+single instruction multiple data arithmetic
+operations, 550-554
+sum of absolute differences instructions,
+556-557
+applications of, 259
+on ARM9E, 275-277
+on ARMI1OE, 277-278
+on ARM7TDMI, 270-272
+on ARM9TDMI, 272-274
+description of, 259-260
+discrete Fourier transform
+definition of, 303
+fast Fourier transform
+benchmarks, 314t
+description of, 303-304
+radix-2, 304-305
+radix-4, 305-313
+function of, 303
+finite impulse response filters
+block, 282-294
+definition of, 280
+description of, 280-281
+fixed-point representation signals
+addition of, 265-266
+description of, 262-263
+division of, 267
+multiplication of, 266-267
+operating on values stored in, 264
+square root of, 267-268
+subtraction of, 265-266
+summary of, 268

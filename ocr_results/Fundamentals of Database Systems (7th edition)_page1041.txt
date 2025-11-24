@@ -1,0 +1,55 @@
+26.5 Introduction to Deductive Databases
+
+applied to nonrecursive Datalog queries. We use the fact and rule base shown in
+Figures 26.14 and 26.15 to illustrate our discussion.
+
+If a query involves only fact-defined predicates, the inference becomes one of
+searching among the facts for the query result. For example, a query such as
+
+DEPARTMENT(X, Research)?
+
+is a selection of all employee names X who work for the Research department. In
+relational algebra, it is the query:
+
+Ts1 (Os2 = “Research” (DEPARTMENT))
+
+which can be answered by searching through the fact-defined predicate
+department(X, Y). The query involves relational SELECT and PROJECT operations
+ona base relation, and it can be handled by the database query processing and opti-
+mization techniques discussed in Chapter 19.
+
+When a query involves rule-defined predicates, the inference mechanism must
+compute the result based on the rule definitions. If a query is nonrecursive and
+involves a predicate p that appears as the head of a rule p :- pj, p>, ... , Py the strat-
+egy is first to compute the relations corresponding to pj, po, ... , Py, and then to
+compute the relation corresponding to p. It is useful to keep track of the depen-
+dency among the predicates of a deductive database in a predicate dependency
+graph. Figure 26.17 shows the graph for the fact and rule predicates shown in Fig-
+ures 26.14 and 26.15. The dependency graph contains a node for each predicate.
+Whenever a predicate A is specified in the body (RHS) of a rule, and the head
+(LHS) of that rule is the predicate B, we say that B depends on A, and we draw a
+directed edge from A to B. This indicates that in order to compute the facts for the
+predicate B (the rule head), we must first compute the facts for all the predicates A
+in the rule body. If the dependency graph has no cycles, we call the rule set nonre-
+cursive. If there is at least one cycle, we call the rule set recursive. In Figure 26.17,
+there is one recursively defined predicate—namely, SUPERIOR—which has a
+recursive edge pointing back to itself. Additionally, because the predicate subordi-
+nate depends on SUPERIOR, it also requires recursion in computing its result.
+
+A query that includes only nonrecursive predicates is called a nonrecursive query.
+In this section we discuss only inference mechanisms for nonrecursive queries. In
+Figure 26.17, any query that does not involve the predicates SUBORDINATE or
+SUPERIOR is nonrecursive. In the predicate dependency graph, the nodes corre-
+sponding to fact-defined predicates do not have any incoming edges, since all fact-
+defined predicates have their facts stored in a database relation. The contents of a
+fact-defined predicate can be computed by directly retrieving the tuples in the cor-
+responding database relation.
+
+The main function of an inference mechanism is to compute the facts that corre-
+spond to query predicates. This can be accomplished by generating a relational
+expression involving relational operators as SELECT, PROJECT, JOIN, UNION, and
+SET DIFFERENCE (with appropriate provision for dealing with safety issues) that,
+when executed, provides the query result. The query can then be executed by utilizing
+the internal query processing and optimization operations of a relational database
+
+1011

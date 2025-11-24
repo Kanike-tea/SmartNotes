@@ -1,0 +1,23 @@
+Logic synthesis is the process of deriving a list of physical components and their interconnections (called
+
+a netlist) from the model of a digital system described in an HDL.
+
+Timing verification confirms that the fabricated, integrated circuit will operate at a specified speed.
+Because each logic gate in a circuit has a propagation delay, a signal transition at the input of a circuit
+
+cannot immediately cause a change in the logic value of the output of a circuit.
+
+Verilog model is composed of text using keywords, of which there are about 100. Keywords are
+predefined lowercase identifiers that define the language constructs. Examples of keywords are module,
+endmodule, input, output, wire, and, or, and not. For clarity, keywords will be displayed in boldface in
+the text in all examples of code and wherever it is appropriate to call attention to their use. Any text
+between two forward slashes ( // ) and the end of the line is interpreted as a comment and will have no
+effect on a simulation using the model. Multiline comments begin with / * and terminate with * /. Blank
+spaces are ignored, but they may not appear within the text of a key Iword, a user-specified identifier,
+an operator, or the representation of a number. Verilog is case sensitive, which means that uppercase
+and lowercase letters are distinguishable (e.g., not is not the same as NOT). The term module refers to
+the text enclosed by the keyword pair module . . . endmodule. A module is the fundamental descriptive
+
+unit in the Verilog language. It is declared by the keyword module and must always be terminated by
+
+the keyword endmodule.

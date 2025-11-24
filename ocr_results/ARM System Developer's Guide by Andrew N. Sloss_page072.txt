@@ -1,0 +1,90 @@
+EXAMPLE
+
+3.13
+
+3.2 Branch Instructions 59
+
+The change of execution flow forces the program counter pc to point to a new address.
+The ARMVv5E instruction set includes four different branch instructions.
+
+Syntax: B{<cond>} label
+BL{<cond>} label
+BX{<cond>} Rm
+
+BLX{<cond>} label | Rm
+B | branch pc= label
+BL | branch with link pc= label
+
+lr=address of the next instruction after the BL
+
+BX | branch exchange
+
+pc=Rm & Oxfffffffe, T=Rm & 1
+
+BLX | branch exchange with link
+
+pc=label, T=1
+pc=Rm & Oxfffffffe, T=Rm & 1
+Ir=address of the next instruction after the BLX
+
+The address label is stored in the instruction as a signed pc-relative offset and must be
+within approximately 32 MB of the branch instruction. T refers to the Thumb bit in the
+cpsr. When instructions set T, the ARM switches to Thumb state.
+
+This example shows a forward and backward branch. Because these loops are address
+specific, we do not include the pre- and post-conditions. The forward branch skips three
+instructions. The backward branch creates an infinite loop.
+
+B
+
+ADD
+
+ADD
+
+ADD
+forward
+
+SUB
+
+backward
+ADD
+SUB
+ADD
+B
+
+forward
+
+rl,
+r0,
+13,
+
+rl,
+
+rl,
+rl,
+
+r2,
+r6,
+r7,
+
+r2,
+
+r2,
+r2,
+
+#4
+#2
+#4
+
+#4
+
+#4
+#4
+
+r4, 16, r7
+backward
+
+Branches are used to change execution flow. Most assemblers hide the details of a branch
+instruction encoding by using labels. In this example, forward and backward are the labels.
+‘The branch labels are placed at the beginning of the line and are used to mark an address
+that can be used later by the assembler to calculate the branch offset.

@@ -1,0 +1,47 @@
+Data Structures and Applications (BCS304) Module III
+
+Almost Complete Binary Tree: A binary tree of depth d is an almost complete binary tree if
+
+a. Anode nat level less than d-1 has two sons
+b. For any node n in the tree with a right descendant at level d, n must have a left son and every
+
+left descendant of n is either a leaf at level d or has two sons
+
+Example
+
+Almost Complete Binary Tree.
+
+Binary Tree representations
+Array Representation: If a complete binary tree with n nodes is represented sequentially,
+then for any node with index i, 1 <i<n, we have
+
+> parent (i) is at [i/ 2] ifi# 1. Ifi=1, iis at the root and has no parent.
+> leftChild (i) is at 2i if 2i<n. If 2i>n, then i has no left child.
+> rightChild (i) is at 21+ 1 if 2i+ 1 <n. If 2i+ 1 >n, then i has no right child.
+
+Example
+LeveL
+a CA t
+= = =
+3 5B = Fr G 3
+6 a t +
+= @ = ms
+ee ree
+101 = =
+mi A A
+RI BE B
+BI c
+41 c dD
+Is} E
+16] F |
+71 = Gc |
+Bi D Ir
+191 oe
+Tree of Figure (>
+6! Ee
+
+Tree of Figure (a)
+
+Array representation of tree
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 14

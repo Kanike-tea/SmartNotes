@@ -1,0 +1,45 @@
+“oaN
+
+94 1, Directed Graphs ang Graph,
+
+Ata committee meeting of 10 people, every member of the committee has Pee |
+ously sat next to at most four other members round a circular table. Show that the Member,
+may be seated in such a way that no one is next to some one they have Previously sat beside
+
+» Consider a graph with 10 vertices representing the 10 members. Let two vertices be joiney q
+by an edge if the corresponding members have not previously sat next to each other. Since
+member has not previously sat next to at least five members, the degree of every vertex is a
+least five (which is one-half of the number of vertices). Therefore, by Theorem 2, the graph
+has a Hamilton cycle. This cycle provides a seating arrangement of the desired type 4
+
+Show that the graph shown in Figure 1.129 does not contain a Hamilton cycle.
+> We first note that the graph G in Figure 1.129 has 9 vertices and 12 edges. If there isa.
+Hamilton cycle in G, it must pass through all the 9 vertices and must therefore contain 9 edges
+We observe that three edges are incident at each of the six vertices A, C, D, F,G,1. Of thes
+three edges only two can be included in a Hamilton cycle (if it exists). Thus, at every one of
+these six vertices one edge has to be excluded. By actual counting, we find that the number.
+of edges to be excluded is four (for example, the edges AD, CI, FE, GH). Consequently, the
+number of edges that remain in the graph will be 12 — 4 = 8. These eight edges are insufficient
+to form a Hamilton cycle in the graph, '
+Show that the Peterson graph has no Hamilton cycle in it but that it has a Hai.
+ton path. : : aie
+> The Peterson graph is a 3-regular graph with 10 vertices and 15 edges *. The graph is shown
+below with the vertices labeled as A, B, C, D, E, L, M, N, P, Q. :
+
+B Che
+
+XX
+AA
+
+Figure 1.131
+
+D
+
+Since the graph has 10 vertices and 15 ed:
+
+ges, a Hamilton cycle if any in the graph re
+pass through all the 10 vertices and must have :
+
+15 edges.
+
+"See Figure 1.37,

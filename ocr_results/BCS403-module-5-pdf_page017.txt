@@ -1,0 +1,55 @@
+Database Management System [BCS403]
+
+5.16
+
+During transaction execution, all updates are applied to /oca/ copies of the data items
+
+that are kept for the transaction
+
+At the end of transaction execution, a validation phase checks whether any of the
+
+transaction’s updates violate serializability.
+
+There are three phases for this concurrency control protocol:
+
+1. Read phase. A transaction can read values of committed data items from the
+database. However, updates are applied only to local copies (versions) of the data
+items kept in the transaction workspace.
+
+2. Validation phase. Checking is performed to ensure that serializability will not be
+violated if the transaction updates are applied to the database.
+
+3. Write phase. If the validation phase is successful, the transaction updates are
+applied to the database; otherwise, the updates are discarded and the transaction is
+restarted.
+
+The idea behind optimistic concurrency control is to do all the checks at once; hence,
+transaction execution proceeds with a minimum of overhead until the validation phase is
+reached
+The techniques are called optimistic because they assume that little interference will
+occur and hence that there is no need to do checking during transaction execution.
+The validation phase for Ti checks that, for each such transaction 7j that is either
+committed or is in its validation phase, one of the following conditions holds:
+1. Transaction Tj completes its write phase before Ti starts its read phase.
+2. Tistarts its write phase after Tj completes its write phase, and the read_set
+of Ti has no items in common with the write_set of Tj.
+3. Both the read_set and write_set of 7i have no items in common with the
+write_set of 7j, and Tj completes its read phase before Ti completes its read
+phase.
+
+Granularity of Data Items and Multiple Granularity Locking
+
+All concurrency control techniques assume that the database is formed of a number
+of named data items. A database item could be chosen to be one of the following:
+
+u A database record
+
+uA field value of a database record
+
+m A disk block
+
+= A whole file
+
+https://vtucode.in
+
+39

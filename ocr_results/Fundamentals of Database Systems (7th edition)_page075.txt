@@ -1,0 +1,53 @@
+2.4 The Database System Environment
+
+buffering of disk pages. The DBMS also interfaces with compilers for general-
+purpose host programming languages, and with application servers and client pro-
+grams running on separate machines through the system network interface.
+
+2.4.2 Database System Utilities
+
+In addition to possessing the software modules just described, most DBMSs have
+database utilities that help the DBA manage the database system. Common utili-
+ties have the following types of functions:
+
+= Loading. A loading utility is used to load existing data files—such as text
+files or sequential files—into the database. Usually, the current (source) for-
+mat of the data file and the desired (target) database file structure are speci-
+fied to the utility, which then automatically reformats the data and stores it
+in the database. With the proliferation of DBMSs, transferring data from
+one DBMS to another is becoming common in many organizations. Some
+vendors offer conversion tools that generate the appropriate loading pro-
+grams, given the existing source and target database storage descriptions
+(internal schemas).
+
+= Backup. A backup utility creates a backup copy of the database, usually by
+dumping the entire database onto tape or other mass storage medium. The
+backup copy can be used to restore the database in case of catastrophic disk
+failure. Incremental backups are also often used, where only changes since
+the previous backup are recorded. Incremental backup is more complex, but
+saves storage space.
+
+= Database storage reorganization. This utility can be used to reorganize a
+set of database files into different file organizations and create new access
+paths to improve performance.
+
+= Performance monitoring. Such a utility monitors database usage and pro-
+vides statistics to the DBA. The DBA uses the statistics in making decisions
+such as whether or not to reorganize files or whether to add or drop indexes
+to improve performance.
+
+Other utilities may be available for sorting files, handling data compression,
+monitoring access by users, interfacing with the network, and performing other
+functions.
+
+2.4.3 Tools, Application Environments,
+and Communications Facilities
+Other tools are often available to database designers, users, and the DBMS. CASE
+
+tools!? are used in the design phase of database systems. Another tool that can be
+quite useful in large organizations is an expanded data dictionary (or data repository)
+
+'2although CASE stands for computer-aided software engineering, many CASE tools are used primarily
+for database design.
+
+45

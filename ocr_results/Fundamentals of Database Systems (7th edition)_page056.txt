@@ -1,0 +1,56 @@
+26
+
+Chapter 1 Databases and Database Users
+
+= Storage and retrieval of videos, such as movies, and video clips from news
+or personal digital cameras
+
+= Data mining applications that analyze large amounts of data to search for
+the occurrences of specific patterns or relationships, and for identifying
+unusual patterns in areas such as credit card fraud detection
+
+= Spatial applications that store and analyze spatial locations of data, such as
+weather information, maps used in geographical information systems, and
+automobile navigational systems
+
+= Time series applications that store information such as economic data at
+regular points in time, such as daily sales and monthly gross national
+product figures
+
+It was quickly apparent that basic relational systems were not very suitable for many
+of these applications, usually for one or more of the following reasons:
+
+= More complex data structures were needed for modeling the application
+than the simple relational representation.
+
+= New data types were needed in addition to the basic numeric and character
+string types.
+
+= New operations and query language constructs were necessary to manipu-
+late the new data types.
+
+= New storage and indexing structures were needed for efficient searching on
+the new data types.
+
+This led DBMS developers to add functionality to their systems. Some functionality
+was general purpose, such as incorporating concepts from object-oriented data-
+bases into relational systems. Other functionality was special purpose, in the form
+of optional modules that could be used for specific applications. For example, users
+could buy a time series module to use with their relational DBMS for their time
+series application.
+
+1.7.6 Emergence of Big Data Storage Systems
+and NOSQL Databases
+
+In the first decade of the twenty-first century, the proliferation of applications and
+platforms such as social media Web sites, large e-commerce companies, Web search
+indexes, and cloud storage/backup led to a surge in the amount of data stored on
+large databases and massive servers. New types of database systems were necessary
+to manage these huge databases—systems that would provide fast search and
+retrieval as well as reliable and safe storage of nontraditional types of data, such as
+social media posts and tweets. Some of the requirements of these new systems were
+not compatible with SQL relational DBMSs (SQL is the standard data model and
+language for relational databases). The term NOSQL is generally interpreted as Not
+Only SQL, meaning that in systems than manage large amounts of data, some of the
+data is stored using SQL systems, whereas other data would be stored using NOSQL,
+depending on the application requirements.

@@ -1,0 +1,51 @@
+154 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+Ordering of Tuples in a Relation. A relation is defined as a set of tuples. Math-
+ematically, elements of a set have no order among them; hence, tuples in a relation
+do not have any particular order. In other words, a relation is not sensitive to the
+ordering of tuples. However, in a file, records are physically stored on disk (or in
+memory), so there always is an order among the records. This ordering indicates
+first, second, ith, and last records in the file. Similarly, when we display a relation as
+a table, the rows are displayed in a certain order.
+
+Tuple ordering is not part of a relation definition because a relation attempts to rep-
+resent facts at a logical or abstract level. Many tuple orders can be specified on the
+same relation. For example, tuples in the STUDENT relation in Figure 5.1 could be
+ordered by values of Name, Ssn, Age, or some other attribute. The definition of a rela-
+tion does not specify any order: There is no preference for one ordering over another.
+Hence, the relation displayed in Figure 5.2 is considered identical to the one shown in
+Figure 5.1. When a relation is implemented as a file or displayed as a table, a particular
+ordering may be specified on the records of the file or the rows of the table.
+
+Ordering of Values within a Tuple and an Alternative Definition of a Relation.
+According to the preceding definition of a relation, an n-tuple is an ordered list of n
+values, so the ordering of values in a tuple—and hence of attributes in a relation
+schema—is important. However, at a more abstract level, the order of attributes
+and their values is not that important as long as the correspondence between attri-
+butes and values is maintained.
+
+An alternative definition of a relation can be given, making the ordering of values
+ina tuple unnecessary. In this definition, a relation schema R = {A}, Ap, ..., Ay} isa
+set of attributes (instead of an ordered list of attributes), and a relation state r(R) is
+a finite set of mappings r = {f), t, ... , fm}, where each tuple f; is a mapping from R
+to D, and D is the union (denoted by V) of the attribute domains; that is, D =
+dom(A;) U dom(A2) U ... U dom(A,). In this definition, t{A;] must be in dom(A;)
+for 1 <$i<n for each mapping ¢ in r. Each mapping f; is called a tuple.
+
+According to this definition of tuple as a mapping, a tuple can be considered as a
+set of (<attribute>, <value>) pairs, where each pair gives the value of the mapping
+from an attribute A; to a value v; from dom(A)). The ordering of attributes is not
+important, because the attribute name appears with its value. By this definition, the
+
+Figure 5.2
+
+The relation STUDENT from Figure 5.1 with a different order of tuples.
+STUDENT
+
+Name Ssn Home_phone ‘Address Office_phone | Age] Gpa
+
+Dick Davidson | 422-11-2320 | NULL 3452 Elgin Road (817)749-1253 | 25 | 3.53
+Barbara Benson | 533-69-1238 | (817)839-8461 | 7384 Fontana Lane NULL. 19 | 3.25
+Rohan Panchal | 489-22-1100 | (817)376-9821 | 265 Lark Lane (817)749-6492 | 28 | 3.93
+Chung-cha Kim | 381-62-1245 | (817)375-4409 | 125 Kirby Road NULL 18 | 2.89
+Benjamin Bayer | 305-61-2435 | (817)373-1616 | 2918 Bluebonnet Lane | NULL 19 | 3.21

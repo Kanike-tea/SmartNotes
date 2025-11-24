@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+SUPERVISION
+(Borg's Ssn is 888665555)
+(Ssn) (Super_ssn) RESULTi
+Ssni Ssn2 Ssn
+123456789 | 333445555 933445555
+333445555 | 888665555 | 987654321 |
+
+999887777 | 987654321
+987654321 | 888665555
+666884444 | 333445555
+° 453453453 | 393445555
+987987987 | 987654321
+888665555 | null
+
+(Supervised by Borg)
+
+To retrieve all employees supervised by Borg at level 2—that is, all employees e”’ supervised by
+some employee e’ who is directly supervised by Borg—we can apply another JOIN to the result
+
+of the first query, as follows:
+RESULT2(Ssn) — r5,,,(SUPERVISION D4 .., 5 RESULT1)
+
+RESULT2)
+Ssn
+123456789
+999887777
+666884444
+453453453
+987987987
+
+(Supervised by
+Borg’s subordinates)
+
+To get both sets of employees supervised at levels 1 and 2 by ‘James Borg’, we can apply the
+
+UNION operation to the two results, as follows:
+
+RESULT + RESULT2 U RESULT1
+
+2.5.4 OUTER JOIN Operations
+
+The JOIN operations match tuples that satisfy the join condition. For example, for a NATURAL
+JOIN operation R * S, only tuples from R that have matching tuples in S—and vice versa—
+
+appear in the result. Hence, tuples without a matching (or related) tuple are eliminated from the
+
+https://vtucode.in Page 34

@@ -1,0 +1,16 @@
+¢ The control-signals that govern a particular transfer are asserted at the start of the
+Internal processor
+bus
+
+Figure 7.2 Input and output gating for the registers in Figure 7.3. Input and output gating for one register bit.
+Figure 7.1.
+
+clock cycle.
+Input & Output Gating for one Register Bit
+¢A 2-input multiplexer is used to select the data applied to the input of an edge-
+triggered D flip-flop.
+. Riin=1 0 mux selects data on bus. This data will be loaded into flip-flop at rising-edge
+of clock. Riin=0 4 mux feeds back the value currently stored in flip-flop (Figure 7.3).
+. Q output of flip-flop is connected to bus via a tri-state gate. Riout=0 1 gate's output is
+in the high-impedance state.
+Riout=1 [1 the gate drives the bus to 0 or 1, depending on the value of Q

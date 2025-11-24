@@ -1,0 +1,99 @@
+EXAMPLE
+
+6.11
+
+6.4 Register Allocation 175
+
+This assembly shows our final shi ft_bits routine. It uses all 14 available ARM registers.
+
+kr RN Ir
+
+shift_bits
+STMFD
+RSB
+Mov
+
+loop
+LOMIA
+ORR
+Mov
+ORR
+Mov
+ORR
+Mov
+ORR
+Mov
+ORR
+Mov
+ORR
+Mov
+ORR
+Mov
+ORR
+STMIA
+Mov
+suBS
+BNE
+Mov
+LOMFD
+
+sp!, {r4-rll, Ir}
+kr, k, #32
+y_0, #0
+
+int, {x0-x_7}
+y_0, y_0, x0, LSL
+y_l, x0, LSR kr
+yl, yl, x1, LSL
+y_2, x1, LSR kr
+y2, y_2, x2, LSL
+y_3, x2, LSR kr
+y3, y_3, x3, LSL
+y_4, x3, LSR kr
+y4, y4, x4, LSL
+y_5, x4, LSR kr
+y_5, y_5, x5, LSL
+y_6, x5, LSR kr
+y_6, y_6, x6, LSL
+y_7, x6, LSR kr
+yy yT, x7, LSL
+out!, {y_0-y_7}
+y_0, x7, LSR kr
+N,N, #256
+
+loop
+
+r0, y_0
+
+sp!, {r4-rl1, pc}
+
+save registers
+kr = 32-k;
+initial carry
+
+load 8 words
+shift the 8 words
+recall x 0= yl
+
+store 8 words
+
+N -= (8 words * 32 bits)
+if (N!=0) goto loop;
+return carry;
+
+6.4.2 USING MORE THAN 14 LOCAL VARIABLES
+
+EXAMPLE
+
+6.12
+
+If you need more than 14 local 32-bit variables in a routine, then you must store some
+variables on the stack. The standard procedure is to work outwards from the inner-
+most loop of the algorithm, since the innermost loop has the greatest performance
+
+impact.
+
+This example shows three nested loops, each loop requiring state information inherited
+from the loop surrounding it. (See Section 6.6 for further ideas and examples of looping
+
+constructs.)

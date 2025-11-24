@@ -1,0 +1,53 @@
+6.3 Basic Retrieval Queries in SQL 193
+
+Queries 9 and 10. Select all EMPLOYEE Ssns (Q9) and all combinations of
+EMPLOYEE Ssn and DEPARTMENT Dname (Q10) in the database.
+
+Qs: SELECT Ssn
+FROM EMPLOYEE;
+
+Q10: SELECT Ssn, Dname
+FROM EMPLOYEE, DEPARTMENT;
+
+It is extremely important to specify every selection and join condition in the WHERE
+clause; if any such condition is overlooked, incorrect and very large relations may
+result. Notice that Q10 is similar to a CROSS PRODUCT operation followed by a
+PROJECT operation in relational algebra (see Chapter 8). If we specify all the attri-
+butes of EMPLOYEE and DEPARTMENT in Q10, we get the actual CROSS PRODUCT
+(except for duplicate elimination, if any).
+
+To retrieve all the attribute values of the selected tuples, we do not have to list the
+attribute names explicitly in SQL; we just specify an asterisk (*), which stands for all
+the attributes. The * can also be prefixed by the relation name or alias; for example,
+EMPLOYEE.’ refers to all attributes of the EMPLOYEE table.
+
+Query QI1C retrieves all the attribute values of any EMPLOYEE who works in
+DEPARTMENT number 5 (Figure 6.3(g)), query Q1D retrieves all the attributes of an
+EMPLOYEE and the attributes of the DEPARTMENT in which he or she works for
+every employee of the ‘Research’ department, and Q10A specifies the CROSS
+PRODUCT of the EMPLOYEE and DEPARTMENT relations.
+
+Qic: SELECT *
+FROM EMPLOYEE
+WHERE Dno=5;
+
+Q1D: SELECT *
+FROM EMPLOYEE, DEPARTMENT
+WHERE Dname = ‘Research’ AND Dno = Dnumber;
+
+Q10A: SELECT *
+FROM EMPLOYEE, DEPARTMENT;
+
+6.3.4 Tables as Sets in SQL
+
+As we mentioned earlier, SQL usually treats a table not as a set but rather as a multiset;
+duplicate tuples can appear more than once in a table, and in the result of a query.
+SQL does not automatically eliminate duplicate tuples in the results of queries, for
+the following reasons:
+
+= Duplicate elimination is an expensive operation. One way to implement it is
+to sort the tuples first and then eliminate duplicates.
+= The user may want to see duplicate tuples in the result of a query.
+
+= When an aggregate function (see Section 7.1.7) is applied to tuples, in most
+cases we do not want to eliminate duplicates.

@@ -1,0 +1,42 @@
+76 Chapter 3 Introduction to the ARM Instruction Set
+
+| MRS | copy program status register to a general-purpose register Rd=psr
+
+| MSR | move a general-purpose register to a program status register | psr[field] = Rm
+
+| MSR | move an immediate value to a program status register psr[field] = immediate
+
+The c field controls the interrupt masks, Thumb state, and processor mode.
+Example 3.26 shows how to enable IRQ interrupts by clearing the J mask. This opera-
+tion involves using both the MRS and MSR instructions to read from and then write to
+the cpsr.
+
+EXAMPLE The MSR first copies the cpsr into register r1. The BIC instruction clears bit 7 of r1. Register
+3.26 lis then copied back into the cpsr, which enables IRQ interrupts. You can see from this
+example that this code preserves all the other settings in the cpsr and only modifies the I bit
+
+in the control field.
+
+PRE —cpsr = nzcvqIFt_SVC
+
+MRS rl, cpsr
+BIC rl, rl, #0x80 ; 0b01000000
+MSR cpsr_c, rl
+
+POST cpsr = nzcvqiFt_SVC
+
+This example is in SVC mode. In user mode you can read all cpsr bits, but you can only
+update the condition flag field f
+
+3.5.1 COPROCESSOR INSTRUCTIONS
+
+Coprocessor instructions are used to extend the instruction set. A coprocessor can either
+provide additional computation capability or be used to control the memory subsystem
+including caches and memory management. The coprocessor instructions include data
+processing, register transfer, and memory transfer instructions. We will provide only a short
+overview since these instructions are coprocessor specific. Note that these instructions are
+only used by cores with a coprocessor.
+
+Syntax: CDP{<cond>} cp, opcodel, Cd, Cn {, opcode2}
+<MRC|MCR>{<cond>} cp, opcodel, Rd, Cn, Cm {, opcode2}
+<LDC|STC>{<cond>} cp, Cd, addressing

@@ -1,0 +1,58 @@
+6.2 Specifying Constraints in SQL 185
+
+CREATE TABLE EMPLOYEE
+Dno INT NOT NULL DEFAULT 1,
+CONSTRAINT EMPPK
+PRIMARY KEY (Ssn),
+CONSTRAINT EMPSUPERFK
+FOREIGN KEY (Super_ssn) REFERENCES EMPLOYEE(Ssn)
+ON DELETE SET NULL ON UPDATE CASCADE,
+CONSTRAINT EMPDEPTFK
+FOREIGN KEY(Dno) REFERENCES DEPARTMENT (Dnumber)
+ON DELETE SET DEFAULT ON UPDATE CASCADE);
+CREATE TABLE DEPARTMENT
+Mgr_ssn CHAR(9) NOT NULL DEFAULT ‘888665555’,
+
+CONSTRAINT DEPTPK
+PRIMARY KEY(Dnumben),
+CONSTRAINT DEPTSK
+UNIQUE (Dname),
+CONSTRAINT DEPTMGRFK
+FOREIGN KEY (Mgr_ssn) REFERENCES EMPLOYEE (Ssn)
+ON DELETE SET DEFAULT — ON UPDATE CASCADE);
+CREATE TABLE DEPT_LOCATIONS
+PRIMARY KEY (Dnumber, location),
+FOREIGN KEY (Dnumber) REFERENCES DEPARTMENT (Dumber)
+
+Figure 6.2
+
+Example illustrating
+how default attribute
+values and referential
+integrity triggered
+actions are specified
+
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+in SQL.
+
+new tuple if an explicit value is not provided for that attribute. Figure 6.2 illustrates
+an example of specifying a default manager for a new department and a default
+department for a new employee. If no default clause is specified, the default default
+value is NULL for attributes that do not have the NOT NULL constraint.
+
+Another type of constraint can restrict attribute or domain values using the CHECK
+clause following an attribute or domain definition.® For example, suppose that
+department numbers are restricted to integer numbers between 1 and 20; then, we
+can change the attribute declaration of Dnumber in the DEPARTMENT table (see Fig-
+ure 6.1) to the following:
+
+Dnumber INT NOT NULL CHECK (Dnumber > 0 AND Dnumber < 21);
+
+The CHECK clause can also be used in conjunction with the CREATE DOMAIN state-
+ment. For example, we can write the following statement:
+
+CREATE DOMAIN D_NUM AS INTEGER
+CHECK (D_NUM > 0 AND D_NUM < 21);
+
+®The CHECK clause can also be used for other purposes, as we shall see

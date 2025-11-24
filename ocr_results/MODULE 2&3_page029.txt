@@ -1,0 +1,45 @@
+Microcontrollers — BCS402
+
+Syntax: LDR Rd, =constant
+
+ADR Rd, label
+
+LDR | load constant pseudoinstruction | Rd=32-bit constant
+
+ADR | load address pseudoinstruction Rd = 32-bit relative address
+
+The first pseudo instruction writes a 32-bit constant to a register using whatever instructions
+are available. It defaults to a memory read if the constant cannot be encoded using other
+
+instructions.
+
+The second pseudo instruction writes a relative address into a register, which will be encoded
+
+using a pc relative expression.
+Example 1:
+
+LDR 10, [pc, #constant_number-8-{PC}] ; loading a 32-bit constant OxffOOffff into register
+10.
+
+constant_number
+DCD OxffOOffff
+This example involves a memory access to load the constant, which can be expensive for
+
+time-critical routines.
+
+Example 2: Shows an alternative method to load the same constant into register r0 by using
+an MVN instruction. Loading the constant Oxff0Offff using an MVN.
+MVYN 10, #0x00ff0000
+
+PRE: none... POST: r0 = OxffOOffff
+
+Compilers and assemblers use clever techniques to avoid loading a constant from memory.
+These tools have algorithms to find the optimal number of instructions required to generate a
+constant in a register and make extensive use of the barrel shifter. If the tools cannot generate
+the constant by these methods, then it is loaded from memory. The LDR pseudo instruction
+either inserts an MOV or MVN instruction to generate a value (if possible) or generates an
+LDR instruction with a pe relative address to read the constant from a literal pool a data area
+
+embedded within the code.
+
+Dept. of ECE, GSSSIETW Page 30

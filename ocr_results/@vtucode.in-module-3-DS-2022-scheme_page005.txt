@@ -1,0 +1,32 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Doubly Linked List
+1. The difficulties with single linked lists are that, it is possible to traversal only
+in one direction, ie., direction of the links.
+2. The only way to find the node that precedes p is to start at the beginning of the
+list. The same problem arises when one wishes to delete an arbitrary node from
+
+a singly linked list.Hence the solution is to use doubly linked list
+
+Doubly linked list: It is a linear collection of data elements, called nodes, where each node
+N isdivided into three parts:
+1. An information field INFO which contains the data of N
+2. A pointer field LLINK (FORW) which contains the location of the next node in
+the list
+3. A pointer field RLINK (BACK) which contains the location of the
+
+preceding node inthe list
+
+A node in a doubly linked list has at least three fields, a left link field (ink), a data
+field (data), and a right link field (riink). The necessary declarations are:
+
+typedef struct node *nodePointer;
+typedef struct {
+nodePointer lbink;
+element data;
+nodePointer rlink;
+} node;
+
+Header Node
+
+vtucode.in 6

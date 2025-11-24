@@ -1,0 +1,48 @@
+142 Chapter 5 Efficient C Programming
+
+p.y = offset / bytes_per_line;
+p.x = offset - p.y * bytes_per_line;
+return p;
+
+}
+
+It appears that we have saved a division by using a subtract and multiply to calculate p.x,
+but in fact, it is often more efficient to write the function with the modulus or remainder
+operation.
+
+Examece In getxy_v2, the quotient and remainder operation only require a single call to a division
+
+5.12 routine:
+
+point getxy_v2(unsigned int offset, unsigned int bytes_per_line)
+
+{
+point p;
+
+p.x = offset % bytes_per_line;
+p.y = offset / bytes_per_line;
+return p;
+
+}
+
+There is only one division call here, as you can see in the following compiler output. In
+fact, this version is four instructions shorter than getxy_v1. Note that this may not be the
+case for all compilers and C libraries.
+
+getxy_v2
+STMFD r13!,{r4, r14}; stack r4, Ir
+MOV rr 3 move p to rd
+MOV rO,r2 3 r0 = bytes_per_line
+BL _rt_udiv 3 (r0,r1) = (r1/r0, r1%r0)
+stR v0, [r4,#4] 3 p-y = offset / bytes_per_line
+stR rl, [r4,#0] 3 p.x = offset % bytes _per_line
+
+LOMFD r13!,{r4,pc} —s_ return
+
+5.10.1 REPEATED UNSIGNED DIVISION WITH REMAINDER
+
+Often the same denominator occurs several times in code. In the previous example,
+bytes_per_1line will probably be fixed throughout the program. If we project from three
+to two cartesian coordinates, then we use the denominator twice:
+
+(x,y,z) > (x/z, y/z)

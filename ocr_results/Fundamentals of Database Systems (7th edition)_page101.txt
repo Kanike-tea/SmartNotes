@@ -1,0 +1,37 @@
+3.3 Entity Types, Entity Sets, Attributes, and Keys 71
+
+DEPARTMENT |—C Manager >
+
+Location
+
+PROJECT
+
+Controlling department
+
+EMPLOYEE
+
+Department
+
+Figure 3.8
+Preliminary design of
+entity types for the
+
+Birth_dais CSex) Employee COMPANY database.
+Some of the shown
+Relationship attributes will be refined
+
+DEPENDENT into relationships.
+
+our example, Name is modeled as a composite attribute, whereas Address is
+not, presumably after consultation with the users.
+
+4. An entity type DEPENDENT with attributes Employee, Dependent_name, Sex,
+Birth_date, and Relationship (to the employee).
+
+Another requirement is that an employee can work on several projects, and the
+database has to store the number of hours per week an employee works on each
+project. This requirement is listed as part of the third requirement in Section 3.2,
+and it can be represented by a multivalued composite attribute of EMPLOYEE
+called Works_on with the simple components (Project, Hours). Alternatively, it
+can be represented as a multivalued composite attribute of PROJECT called
+Workers with the simple components (Employee, Hours). We choose the first

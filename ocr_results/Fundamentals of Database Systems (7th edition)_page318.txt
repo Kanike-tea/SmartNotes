@@ -1,0 +1,52 @@
+288
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+8.38. Specify and execute the following queries for the database in Exercise 5.16
+using the RA interpreter.
+a. Retrieve the names of students who have enrolled in a course that uses a
+textbook published by Addison-Wesley-Longman.
+b. Retrieve the names of courses in which the textbook has been changed at
+least once.
+
+c. Retrieve the names of departments that adopt textbooks published by
+Addison-Wesley only.
+
+d. Retrieve the names of departments that adopt textbooks written by
+Navathe and published by Addison-Wesley.
+
+e. Retrieve the names of students who have never used a book (in a course)
+written by Navathe and published by Addison-Wesley.
+
+8.39. Repeat Laboratory Exercises 8.34 through 8.38 in domain relational calculus
+(DRC) by using the DRC interpreter.
+
+Selected Bibliography
+
+Codd (1970) defined the basic relational algebra. Date (1983a) discusses outer joins.
+Work on extending relational operations is discussed by Carlis (1986) and Ozsoyo-
+glu et al. (1985). Cammarata et al. (1989) extends the relational model integrity
+constraints and joins.
+
+Codd (1971) introduced the language Alpha, which is based on concepts of tuple
+relational calculus. Alpha also includes the notion of aggregate functions, which
+goes beyond relational calculus. The original formal definition of relational calculus
+was given by Codd (1972), which also provided an algorithm that transforms any
+tuple relational calculus expression to relational algebra. The QUEL (Stonebraker et
+al., 1976) is based on tuple relational calculus, with implicit existential quantifiers,
+but no universal quantifiers, and was implemented in the INGRES system as a com-
+mercially available language. Codd defined relational completeness of a query lan-
+guage to mean at least as powerful as relational calculus. Ullman (1988) describes a
+formal proof of the equivalence of relational algebra with the safe expressions of
+tuple and domain relational calculus. Abiteboul et al. (1995) and Atzeni and deAn-
+tonellis (1993) give a detailed treatment of formal relational languages.
+
+Although ideas of domain relational calculus were initially proposed in the QBE
+language (Zloof, 1975), the concept was formally defined by Lacroix and Pirotte
+(1977a). The experimental version of the Query-By-Example system is described in
+Zloof (1975). The ILL (Lacroix & Pirotte, 1977b) is based on domain relational cal-
+culus. Whang et al. (1990) extends QBE with universal quantifiers. Visual query
+languages, of which QBE is an example, are being proposed as a means of querying
+databases; conferences such as the Visual Database Systems Working Conference
+(e.g., Arisawa & Catarci (2000) or Zhou & Pu (2002)) present a number of propos-
+als for such languages.

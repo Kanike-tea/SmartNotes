@@ -1,0 +1,52 @@
+772 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+called view serializability. Two schedules S and S’ are said to be view equivalent if
+the following three conditions hold:
+
+1. The same set of transactions participates in S and S’, and S and S’ include the
+same operations of those transactions.
+
+2. For any operation r;(X) of T; in S, if the value of X read by the operation has
+been written by an operation wj(X) of Tj (or if it is the original value of X
+before the schedule started), the same condition must hold for the value of X
+read by operation r,(X) of T; in S’.
+
+3. If the operation w;,(Y) of T;, is the last operation to write item Y in S, then
+w,(Y) of T;, must also be the last operation to write item Y in S’.
+
+The idea behind view equivalence is that, as long as each read operation of a trans-
+action reads the result of the same write operation in both schedules, the write
+operations of each transaction must produce the same results. The read operations
+are hence said to see the same view in both schedules. Condition 3 ensures that the
+final write operation on each data item is the same in both schedules, so the data-
+base state should be the same at the end of both schedules. A schedule S is said to be
+view serializable if it is view equivalent to a serial schedule.
+
+The definitions of conflict serializability and view serializability are similar if a
+condition known as the constrained write assumption (or no blind writes) holds
+on all transactions in the schedule. This condition states that any write operation
+w;(X) in T; is preceded by a r((X) in T; and that the value written by w;(X) in T;
+depends only on the value of X read by rj(X). This assumes that computation of
+the new value of X is a function f(X) based on the old value of X read from the
+database. A blind write is a write operation in a transaction T on an item X that is
+not dependent on the old value of X, so it is not preceded by a read of X in the
+transaction T.
+
+The definition of view serializability is less restrictive than that of conflict serializ-
+ability under the unconstrained write assumption, where the value written by an
+operation w;(X) in T; can be independent of its old value. This is possible when.
+blind writes are allowed, and it is illustrated by the following schedule S, of three
+transactions T): r)(X); w,(X); Ty: w2(X); and T3: w3(X):
+
+Sgt r(X)3 wo(X)s wi (Xs w3(X)5 €15 C25 €35
+
+In S, the operations w(X) and w3(X) are blind writes, since T, and T; do not read
+the value of X. The schedule S, is view serializable, since it is view equivalent to the
+serial schedule T,, T;, T3. However, S, is not conflict serializable, since it is not con-
+flict equivalent to any serial schedule (as an exercise, the reader should construct
+the serializability graph for S, and check for cycles). It has been shown that any
+conflict-serializable schedule is also view serializable but not vice versa, as illus-
+trated by the preceding example. There is an algorithm to test whether a schedule S
+is view serializable or not. However, the problem of testing for view serializability
+has been shown to be NP-hard, meaning that finding an efficient polynomial time
+algorithm for this problem is highly unlikely.

@@ -1,0 +1,66 @@
+194 Chapter 6 Basic SQL
+
+Figure 6.4
+
+Results of additional
+
+SQL queries when
+applied to the
+
+COMPANY database
+
+state shown in
+Figure 5.6. (a) Q11
+(b) Q11A. (c) Q16.
+(a) a18
+
+(a) | Salary (b) | Salary (©) | Fname | Lname
+30000 30000
+40000 40000
+25000 25000
+43000 43000
+38000 38000 (d) [ Fname | Lname
+25000 55000 James | Borg
+25000
+55000
+
+An SQL table with a key is restricted to being a set, since the key value must be dis-
+tinct in each tuple.!° If we do want to eliminate duplicate tuples from the result of
+an SQL query, we use the keyword DISTINCT in the SELECT clause, meaning that
+only distinct tuples should remain in the result. In general, a query with SELECT
+DISTINCT eliminates duplicates, whereas a query with SELECT ALL does not. Speci-
+fying SELECT with neither ALL nor DISTINCT—as in our previous examples—is
+equivalent to SELECT ALL. For example, Q11 retrieves the salary of every employee;
+if several employees have the same salary, that salary value will appear as many
+times in the result of the query, as shown in Figure 6.4(a). If we are interested only
+in distinct salary values, we want each value to appear only once, regardless of how
+many employees earn that salary. By using the keyword DISTINCT as in Q11A, we
+accomplish this, as shown in Figure 6.4(b).
+
+Query 11. Retrieve the salary of every employee (Q11) and all distinct salary
+values (Q11A).
+
+Q11: SELECT
+FROM
+
+ALL Salary
+EMPLOYEE;
+
+Q11A: SELECT
+FROM
+
+DISTINCT Salary
+EMPLOYEE;
+
+SQL has directly incorporated some of the set operations from mathematical set
+theory, which are also part of relational algebra (see Chapter 8). There are set union
+(UNION), set difference (EXCEPT),!! and set intersection (INTERSECT) operations.
+The relations resulting from these set operations are sets of tuples; that is, duplicate
+tuples are eliminated from the result. These set operations apply only to type-
+compatible relations, so we must make sure that the two relations on which we apply
+the operation have the same attributes and that the attributes appear in the same
+order in both relations. The next example illustrates the use of UNION.
+
+'ln general, an SQL table is not required to have a key, although in most cases there will be one.
+
+"In some systems, the keyword MINUS is used for the set difference operation instead of EXCEPT.

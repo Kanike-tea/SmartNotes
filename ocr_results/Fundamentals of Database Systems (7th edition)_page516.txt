@@ -1,0 +1,53 @@
+486
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Based on the two candidate keys Property_id# and {County_name, Lot#}, the func-
+tional dependencies FD1 and FD2 in Figure 14.12(a) hold. We choose Property_id#
+as the primary key, so it is underlined in Figure 14.12(a), but no special consider-
+ation will be given to this key over the other candidate key. Suppose that the follow-
+ing two additional functional dependencies hold in LOTS:
+
+FD3: County_name —> Tax_rate
+FD4: Area — Price
+
+In words, the dependency FDS says that the tax rate is fixed for a given county (does
+not vary lot by lot within the same county), whereas FD4 says that the price of a lot
+is determined by its area regardless of which county it is in. (Assume that this is the
+price of the lot for tax purposes.)
+
+The LOTS relation schema violates the general definition of 2NF because Tax_rate is
+partially dependent on the candidate key {County_name, Lot#}, due to FD3. To nor-
+malize LOTS into 2NF, we decompose it into the two relations LOTS1 and LOTS2,
+shown in Figure 14.12(b). We construct LOTS1 by removing the attribute Tax_rate
+that violates 2NF from LOTS and placing it with County_name (the left-hand side of
+FDS that causes the partial dependency) into another relation LOTS2. Both LOTS1
+and LOTS2 are in 2NF. Notice that FD4 does not violate 2NF and is carried over to
+LOTS1.
+
+14.4.2 General Definition of Third Normal Form
+
+Definition. A relation schema R is in third normal form (3NE) if, whenever a
+nontrivial functional dependency X > A holds in R, either (a) X is a superkey
+of R, or (b) A is a prime attribute of RB
+
+According to this definition, LOTS2 (Figure 14.12(b)) is in 3NF. However, FD4 in
+LOTS1 violates 3NF because Area is not a superkey and Price is not a prime attribute
+in LOTS1. To normalize LOTS1 into 3NF, we decompose it into the relation sche-
+mas LOTS1A and LOTS1B shown in Figure 14.12(c). We construct LOTS1A by
+removing the attribute Price that violates 3NF from LOTS1 and placing it with Area
+(the left-hand side of FD4 that causes the transitive dependency) into another rela-
+tion LOTS1B. Both LOTS1A and LOTS1B are in 3NF.
+
+Two points are worth noting about this example and the general definition of 3NF:
+
+= LOTS1 violates 3NF because Price is transitively dependent on each of the
+candidate keys of LOTS1 via the nonprime attribute Area.
+
+= This general definition can be applied directly to test whether a relation schema
+is in 3NF; it does not have to go through 2NF first. In other words, ifa relation
+passes the general 3NF test, then it automatically passes the 2NF test.
+
+'8Note that based on inferred f.d's (which are discussed in Section 15.1), the f.d. Y > YA also holds
+whenever Y > Ais true. Therefore, a slightly better way of saying this statement is that {A-X} is a prime
+attribute of R.

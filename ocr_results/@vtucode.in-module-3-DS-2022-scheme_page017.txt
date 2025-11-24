@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+BINARY TREE REPRESENTATION
+The storage representation of binary trees can be classified as
+. Array representation
+
+Linked representation.
+
+Array representation:
+
+A tree can be represented using an array, which is called sequential representation.
+
+The nodes are numbered from | to n, and one dimensional array can be used to store the
+nodes.
+
+Position 0 of this array is left empty and the node numbered 7 is mapped to,position i of
+the array.
+
+Below figure shows the array representation for both the trees of figure (a).
+
+A (A)
+By oe
+< <
+SS - .
+> Bw ©
+( exe
+(EB) Figure 1(b) Complete binary tree
+
+Figure 1(a) Skewed binary tree
+
+tree tree
+10) \fe= } 10)
+mm A | ul
+123 hj 8 | (2)
+BI = 31
+14) ecu i4)
+1s} = | is}
+(6) - (6)
+71 - 71
+181 D 831 |
+TC) 11 |
+t
+f16) [ E {16} |
+(a). Tree of figure 1(a) (b). Tree of figure 1(b)
+
+e For complete binary tree the array representation is ideal, as no space is wasted.
+e For the skewed tree less than half the array is utilized.
+
+vtucode.in 18

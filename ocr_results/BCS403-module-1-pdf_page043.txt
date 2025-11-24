@@ -1,0 +1,29 @@
+Database Management System [BCS403]
+
+Each entity type that participates in a relationship type plays a particular role in the relationship.
+
+The role name signifies the role that a participating entity from the entity type plays in each relationship
+instance, and helps to explain what the relationship means.For example, in the WORKS_FOR relationship
+type, EMPLOYEE plays the role of employee or worker and DEPARTMENT plays the role of
+
+department or employer.
+
+The SUPERVISION relationship type relates an employee.to a supervisor, where both employee and
+supervisor entities are members of the same EMPLOYEE entity set. Hence, the EMPLOYEE entity type
+participates twice in SUPERVISION: once in the role of supervisor (or boss), and once in the role of
+supervisee (or subordinate). Each relationship instance r; in SUPERVISION associates two employee
+
+entities e; and ex , one of which plays the role of supervisor and the other the role of supervisee.
+
+EMPLOYEE, ‘SUPERVISION
+
+Figure 3.4.2(b): A recursive relationship
+SUPERVISION between EMPLOYEE in the supervisor role (1) and EMPLOYEE in the subordinate role
+(2).
+
+3.4.3, Constraints on Binary Relationship Types
+Relationship types usually have certain constraints that limit the possible combinations of entities that
+
+may participate in the corresponding relationship set. These constraints are determined from the
+
+https://vtucode.in Page 44

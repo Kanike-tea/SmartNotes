@@ -1,0 +1,53 @@
+668
+
+Chapter 18 Strategies for Query Processing
+
+(|r(R)|/i)/|r(R)| or 1/i, assuming that the records are evenly or uniformly distributed
+among the distinct values. Under this assumption, |r(R)|/i records will satisfy an
+equality condition on this attribute. For a range query with the selection condition,
+
+A2v, assuming uniform distribution,
+sl = 0 ifv > max (A, R)
+sl = max (A, R) - v/ max (A, R) - min (A, R)
+
+In general, the number of records satisfying a selection condition with selectivity sl is
+estimated to be |r(R)| * sl. The smaller this estimate is, the higher the desirability of
+using that condition first to retrieve records. For a nonkey attribute with NDV (A, R)
+distinct values, it is often the case that those values are not uniformly distributed.
+
+If the actual distribution of records among the various distinct values of the attribute
+is kept by the DBMS in the form of a histogram, it is possible to get more accurate
+estimates of the number of records that satisfy a particular condition. We will discuss
+the catalog information and histograms in more detail in Section 19.3.3.
+
+18.4 Implementing the JOIN Operation
+
+The JOIN operation is one of the most time-consuming operations in query pro-
+cessing. Many of the join operations encountered in queries are of the EQUUOIN
+and NATURAL JOIN varieties, so we consider just these two here since we are only
+giving an overview of query processing and optimization. For the remainder of this
+chapter, the term join refers to an EQUUOIN (or NATURAL JOIN).
+
+There are many possible ways to implement a two-way join, which is a join on two
+files. Joins involving more than two files are called multiway joins. The number of
+possible ways to execute multiway joins grows rapidly because of the combinatorial
+explosion of possible join orderings. In this section, we discuss techniques for
+implementing only two-way joins. To illustrate our discussion, we refer to the rela-
+tional schema shown in Figure 5.5 once more—specifically, to the EMPLOYEE,
+DEPARTMENT, and PROJECT relations. The algorithms we discuss next are for a join
+operation of the form:
+
+RM ApS
+
+where A and B are the join attributes, which should be domain-compatible attri-
+butes of R and S, respectively. The methods we discuss can be extended to more
+general forms of join. We illustrate four of the most common techniques for per-
+forming such a join, using the following sample operations:
+
+OP6: EMPLOYEE ™ pno-Dnumber DEPARTMENT
+OP?7: DEPARTMENT ™ nigy_ssn=Sen EMPLOYEE
+
+18.4.1 Methods for Implementing Joins
+
+= J1—Nested-loop join (or nested-block join). This is the default (brute force)
+algorithm because it does not require any special access paths on either file in the

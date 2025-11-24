@@ -1,0 +1,55 @@
+662 Chapter 18 Strategies for Query Processing
+
+Figure 18.2
+Outline of the
+sort-merge
+
+algorithm for
+
+external sorting.
+
+set 1-1;
+jab; {size of the file in blocks}
+ke ng; {size of buffer in blocks}
+mel (jh |; {number of subfiles- each fits in buffer}
+{Sorting Phase}
+while (i<m)
+do {
+
+read next k blocks of the file into the buffer or if there are less than k blocks
+remaining, then read in the remaining blocks;
+sort the records in the buffer and write as a temporary subfile;
+ici+d
+}
+{Merging Phase: merge subfiles until only 1 remains}
+set 11;
+p< log,-1m | {p is the number of passes for the merging phase}
+jem;
+while (i < p)
+do {
+net;
+q<(jMk-1)]; {number of subfiles to write in this pass}
+while (n < q)
+do {
+read next k-1 subfiles or remaining subfiles (from previous pass)
+one block at a time;
+merge and write as new subfile one block at a time;
+nent;
+}
+im 4
+ieitd
+
+The performance of the sort-merge algorithm can be measured in terms of the
+number of disk block reads and writes (between the disk and main memory)
+before the sorting of the whole file is completed. The following formula approxi-
+mates this cost:
+
+(2 * b) + (2* b+ (logay nr)
+
+The first term (2 * b) represents the number of block accesses for the sorting phase,
+since each file block is accessed twice: once for reading into a main memory buffer
+and once for writing the sorted records back to disk into one of the sorted subfiles.
+The second term represents the number of block accesses for the merging phase.
+During each merge pass, a number of disk blocks approximately equal to the original
+file blocks b is read and written. Since the number of merge passes is (logy Np), We
+get the total merge cost of (2 * b * (logan np)).

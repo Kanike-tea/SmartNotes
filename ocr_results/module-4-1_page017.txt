@@ -1,0 +1,41 @@
+Data Structures and Applications (15CS33)
+
+When trees are represented in memory, it should be able to distinguish between threads and
+pointers. This can be done by adding two additional fields to node structure, ie., leftThread
+and rightThread
+
+e If ptrsleftThread = TRUE, then ptr—leftChild contains a thread,
+otherwise it contains a pointer to the left child.
+e If ptrsrightThread = TRUE, then ptr-rightChild contains a thread,
+
+otherwise it contains a pointer to the right child.
+
+Node Structure:
+The node structure is given in C declaration
+
+typedef struct threadTree *threadPointer
+typedef struct{
+short int leftThread;
+threadPointer leftChild;
+char data;
+threadPointer rightChild;
+short int rightThread;
+}threadTree;
+
+left_thread left_child data right_child right_thread
+TRUE . | — | : ] FALSE |
+
+Figure An empty threaded tree
+
+The complete memory representation for the tree of figure is shown in Figure C
+root
+
+rout - > (#LEL le}
+
+f|-[al.[¢
+£|.[c].[¢]
+Le} CL TFEL¢) (Leb) |
+f = FALSE
+t = TRUE
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

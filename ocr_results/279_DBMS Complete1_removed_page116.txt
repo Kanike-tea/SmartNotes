@@ -1,0 +1,72 @@
+(recovery transparency).
+
+Performance transparency mandates that the DDBMS should have a comparable level of
+performance to a centralized DBMS. Query optimizers can be used to speed up response time.
+
+Types of DDB Design
+Non-Partitioned, Non-Replicated
+Partitioned, Non-Replicated
+Non-Partitioned, Replicated
+Partitioned, Replicated
+
+Advantages of DDBMS's
+
+- Reflects organizational structure
+
+- Improved share ability
+
+- Improved availability
+
+- Improved reliability
+
+- Improved performance
+
+- Data are located nearest the greatest demand site and are dispersed to match business
+requirements.
+
+- Faster Data Access because users only work with a locally stored subset of the data.
+
+- Faster data processing because the data is processed at several different sites.
+
+-Growth Facilitation: New sites can be added without compromising the operations of other sites.
+-Improved communications because local sites are smaller and closer to customers.
+
+- Reduced operating costs: It is more cost-effective to add workstations to a network rather than
+update a mainframe system.
+
+- User Friendly interface equipped with an easy-to-use GUI.
+
+- Less instances of single-point failure because data and workload are distributed among other
+workstations.
+
+- Processor independence: The end user is able to access any available copy of data.
+
+Disadvantages of DDBMS
+
+- Increased Cost
+
+-Integrity control more difficult,
+
+-Lack of standards,
+
+-Database design more complex.
+
+- Complexity of management and control. Applications must recognize data location and they must
+be able to stitch together data from various sites.
+
+- Technologically difficult: Data integrity, transaction management, concurrency control, security,
+backup, recovery, query optimization, access path selection are all issues that must be addressed
+and resolved
+
+- Security lapses have increased instances when data are in multiple locations.
+
+- Lack of standards due to the absence of communication protocols can make the processing and
+distribution of data difficult.
+
+- Increased storage and infrastructure requirements because multiple copies of data are required at
+various separate locations which would require more disk space.
+
+- Increased costs due to the higher complexity of training.
+
+- Requires duplicate infrastructure (personnel, software and __ licensing, _ physical
+location/environment) and these can sometimes offset any operational savings.

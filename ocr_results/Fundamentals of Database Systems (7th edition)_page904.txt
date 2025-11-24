@@ -1,0 +1,54 @@
+874
+
+Chapter 23 Distributed Database Concepts
+
+3. Database server. This layer handles query and update requests from the
+application layer, processes the requests, and sends the results. Usually SQL
+is used to access the database if it is relational or object-relational, and stored
+database procedures may also be invoked. Query results (and queries) may
+be formatted into XML (see Chapter 13) when transmitted between the
+application server and the database server.
+
+Exactly how to divide the DBMS functionality among the client, application server,
+and database server may vary. The common approach is to include the functional-
+ity ofa centralized DBMS at the database server level. A number of relational DBMS
+products have taken this approach, in which an SQL server is provided. The appli-
+cation server must then formulate the appropriate SQL queries and connect to the
+database server when needed. The client provides the processing for user interface
+interactions. Since SQL is a relational standard, various SQL servers, possibly pro-
+vided by different vendors, can accept SQL commands through standards such as
+ODBC, JDBC, and SQL/CLI (see Chapter 10).
+
+In this architecture, the application server may also refer to a data dictionary
+that includes information on the distribution of data among the various SQL
+servers, as well as modules for decomposing a global query into a number of
+local queries that can be executed at the various sites. Interaction between an
+application server and database server might proceed as follows during the pro-
+cessing of an SQL query:
+
+1. The application server formulates a user query based on input from the cli-
+ent layer and decomposes it into a number of independent site queries. Each
+site query is sent to the appropriate database server site.
+
+2. Each database server processes the local query and sends the results to the
+application server site. Increasingly, XML is being touted as the standard for
+data exchange (see Chapter 13), so the database server may format the query
+result into XML before sending it to the application server.
+
+3. The application server combines the results of the subqueries to produce the
+result of the originally required query, formats it into HTML or some other
+form accepted by the client, and sends it to the client site for display.
+
+The application server is responsible for generating a distributed execution plan for
+a multisite query or transaction and for supervising distributed execution by send-
+ing commands to servers. These commands include local queries and transactions
+to be executed, as well as commands to transmit data to other clients or servers.
+Another function controlled by the application server (or coordinator) is that of
+ensuring consistency of replicated copies of a data item by employing distributed
+(or global) concurrency control techniques. The application server must also ensure
+the atomicity of global transactions by performing global recovery when certain
+sites fail.
+
+If the DDBMS has the capability to hide the details of data distribution from the
+application server, then it enables the application server to execute global queries
+and transactions as though the database were centralized, without having to specify

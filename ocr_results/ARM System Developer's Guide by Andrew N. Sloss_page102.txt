@@ -1,0 +1,70 @@
+Table 4.1 Thumb instruction set.
+
+4.1 Thumb Register Usage 89
+
+Mnemonics THUMBISA Description
+
+ADC vl add two 32-bit values and carry
+
+ADD vl add two 32-bit values
+
+AND vl logical bitwise AND of two 32-bit values
+
+ASR vl arithmetic shift right
+
+B vl branch relative
+
+BIC vl logical bit clear (AND NOT) of two 32-bit values
+BKPT v2 breakpoint instructions
+
+BL vl relative branch with link
+
+BLX v2 branch with link and exchange
+
+BX vl branch with exchange
+
+MN vl compare negative two 32-bit values
+
+CMP vl compare two 32-bit integers
+
+EOR vl logical exclusive OR of two 32-bit values
+
+LOM vl load multiple 32-bit words from memory to ARM registers
+LDR vl load a single value from a virtual address in memory
+LSL vl logical shift left
+
+LSR vl logical shift right
+
+MOV vl move a 32-bit value into a register
+
+MUL vl multiply two 32-bit values
+
+MVN vl move the logical NOT of 32-bit value into a register
+NEG vl negate a 32-bit value
+
+ORR vl logical bitwise OR of two 32-bit values
+
+POP. vl pops multiple registers from the stack
+
+PUSH vl pushes multiple registers to the stack
+
+ROR vl rotate right a 32-bit value
+
+SBC vl subtract with carry a 32-bit value
+
+STM vl store multiple 32-bit registers to memory
+
+STR vl store register to a virtual address in memory
+
+SUB vl subtract two 32-bit values
+
+SWI vl software interrupt
+
+TST vl test bits of a 32-bit value
+
+4.1 THUMB REGISTER USAGE
+
+In Thumb state, you do not have direct access to all registers. Only the low registers r0
+to r7 are fully accessible, as shown in Table 4.2. The higher registers r8 to r12 are only
+accessible with MOV, ADD, or CMP instructions. CMP and all the data processing instructions
+that operate on low registers update the condition flags in the cpsr.

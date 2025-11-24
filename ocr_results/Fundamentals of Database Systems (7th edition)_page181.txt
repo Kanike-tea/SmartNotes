@@ -1,0 +1,56 @@
+5.1 Relational Model Concepts
+
+Class, and Major—specify how to interpret the data values in each row, based on the
+column each value is in. All values in a column are of the same data type.
+
+In the formal relational model terminology, a row is called a tuple, a column
+header is called an attribute, and the table is called a relation. The data type
+describing the types of values that can appear in each column is represented by a
+domain of possible values. We now define these terms—domain, tuple, attribute,
+and relation—formally.
+
+5.1.1 Domains, Attributes, Tuples, and Relations
+
+A domain D is a set of atomic values. By atomic we mean that each value in the
+domain is indivisible as far as the formal relational model is concerned. A common
+method of specifying a domain is to specify a data type from which the data values
+forming the domain are drawn. It is also useful to specify a name for the domain, to
+help in interpreting its values. Some examples of domains follow:
+
+= Usa_phone_numbers. The set of ten-digit phone numbers valid in the United
+States.
+
+= Local_phone_numbers. The set of seven-digit phone numbers valid within a
+particular area code in the United States. The use of local phone numbers is
+quickly becoming obsolete, being replaced by standard ten-digit numbers.
+
+™ Social_security_numbers. The set of valid nine-digit Social Security numbers.
+(This is a unique identifier assigned to each person in the United States for
+employment, tax, and benefits purposes.)
+
+= Names: The set of character strings that represent names of persons.
+
+™ Grade_point_averages. Possible values of computed grade point averages;
+each must be a real (floating-point) number between 0 and 4.
+
+= Employee_ages. Possible ages of employees in a company; each must be an
+integer value between 15 and 80.
+
+™ Academic_department_names. The set of academic department names in a
+university, such as Computer Science, Economics, and Physics.
+
+™ Academic_department_codes. The set of academic department codes, such as
+‘CS’, ‘ECON’, and ‘PHYS’.
+
+The preceding are called logical definitions of domains. A data type or format is
+also specified for each domain. For example, the data type for the domain
+Usa_phone_numbers can be declared as a character string of the form (ddd)ddd-dddd,
+where each d is a numeric (decimal) digit and the first three digits form a valid
+telephone area code. The data type for Employee_ages is an integer number between
+15 and 80. For Academic_department_names, the data type is the set of all character
+strings that represent valid department names. A domain is thus given a name, data
+type, and format. Additional information for interpreting the values of a domain
+can also be given; for example, a numeric domain such as Person_weights should
+have the units of measurement, such as pounds or kilograms.
+
+151

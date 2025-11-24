@@ -1,0 +1,53 @@
+Table 3.9
+
+EXAMPLE
+
+3.17
+
+3.3 Load-Store Instructions 65
+
+Load-store multiple instructions can increase interrupt latency. ARM implementations
+do not usually interrupt instructions while they are executing. For example, on an ARM7
+a load multiple instruction takes 2 + Nt cycles, where N is the number of registers to load
+and tis the number of cycles required for each sequential access to memory. If an interrupt
+has been raised, then it has no effect until the load-store multiple instruction is complete.
+
+Compilers, such as armcc, provide a switch to control the maximum number of registers
+being transferred on a load-store, which limits the maximum interrupt latency.
+
+Syntax: <LDM|STM>{<cond>}<addressing mode> Rn{!},<registers>{”}
+
+LDM | load multiple registers {Rd}*N <- mem32[start address + 4*N] optional Rn updated
+
+STM | save multiple registers {Rd}*N -> mem32[start address + 4*N] optional Rn updated
+
+Table 3.9 shows the different addressing modes for the load-store multiple instructions.
+Here Nis the number of registers in the list of registers.
+
+Any subset of the current bank of registers can be transferred to memory or fetched
+from memory. The base register Rn determines the source or destination address for a load-
+store multiple instruction. This register can be optionally updated following the transfer.
+This occurs when register Rn is followed by the ! character, similiar to the single-register
+load-store using preindex with writeback.
+
+Addressing mode for load-store multiple instructions.
+
+Addressing
+
+mode Description Start address End address Rn!
+
+IA increment after Rn Rn+4*N -—4 Rn+4*N
+IB increment before Rn+4 Rn+4*N Rn+4*N
+DA decrement after Rn—-4*N+4 Rn Rn —4*N
+DB decrement before Rn—4*N Rn-4 Rn —4*N
+
+In this example, register r0 is the base register Rn and is followed by !, indicating that the
+register is updated after the instruction is executed. You will notice within the load multiple
+instruction that the registers are not individually listed. Instead the “-” character is used to
+identify a range of registers. In this case the range is from register r1 to r3 inclusive.
+
+Each register can also be listed, using a comma to separate each register within
+“{” and “}” brackets.
+
+PRE —_ mem32[0x80018] = 0x03
+mem32[0x80014] = 0x02

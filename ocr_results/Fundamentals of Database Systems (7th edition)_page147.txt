@@ -1,0 +1,39 @@
+4.3 Constraints and Characteristics of Specialization and Generalization Hierarchies 117
+
+Sex > Wdres Figure 4.7
+Name (Sex) Address > A specialization lattice
+— —— with multiple inheritance
+Gen PERSON Birth_date) fora UNIVERSITY
+database.
+_ ° —
+om | Citajor_dept)
+EMPLOYEE ALUMNUS STUDENT
+
+— d
+S Percent time)
+STAFF FACULTY STUDENT_ GRADUATE_ UNDERGRADUATE_
+ASSISTANT STUDENT STUDENT
+Project) SX Course)
+
+I
+RESEARCH_ASSISTANT TEACHING ASSISTANT
+
+The requirements for the part of the UNIVERSITY database shown in Figure 4.7
+are the following:
+
+1. The database keeps track of three types of persons: employees, alumni, and
+students. A person can belong to one, two, or all three of these types. Each
+person has a name, SSN, sex, address, and birth date.
+
+2. Every employee has a salary, and there are three types of employees: fac-
+ulty, staff, and student assistants. Each employee belongs to exactly one
+of these types. For each alumnus, a record of the degree or degrees that
+he or she earned at the university is kept, including the name of the
+degree, the year granted, and the major department. Each student has a
+major department.
+
+3. Each faculty has a rank, whereas each staff member has a staff position. Stu-
+dent assistants are classified further as either research assistants or teaching
+assistants, and the percent of time that they work is recorded in the database.
+Research assistants have their research project stored, whereas teaching
+assistants have the current course they work on.

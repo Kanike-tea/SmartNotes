@@ -1,0 +1,56 @@
+Microcontrollers — BCS402
+
+int checksum_vl0(int *data, unsigned int N)
+{
+
+unsigned int i;
+
+int sum=0;
+
+for (i=N/4; i!=0; i--)
+
+{
+sum += *(datat+) ;
+sum += *(data++) ;
+sum += *(datat++) ;
+sum += *(datat+);
+
+}
+
+for (i=N&3; i!=0; i--)
+
+{
+
+sum += *(datat+);
+}
+
+return sum;
+
+The second for loop handles the remaining cases when N is not a multiple of four. Note that
+
+both N/4 and N&3 can be zero, so we can’t use do-while loops.
+Writing Loops Efficiently
+
+Use loops that count down to zero. Then the compiler does not need to allocate a register to
+
+hold the termination value, and the comparison with zero is free.
+
+Use unsigned loop counters by default and the continuation condition i!=0 rather than i>0.
+
+This will ensure that the loop overhead is only two instructions.
+
+Use do-while loops rather than for loops when you know the loop will iterate at least once.
+
+This saves the compiler checking to see if the loop count is zero.
+
+Unroll important loops to reduce the loop overhead. Do not over unroll. If the loop overhead
+is small as a proportion of the total, then unrolling will increase code size and hurt the
+
+performance of the cache.
+
+Try to arrange that the number of elements in arrays is multiples of four or eight. You can
+then unroll loops easily by two, four, or eight times without worrying about the leftover array
+
+elements.
+
+Dept. of ECE, GSSSIETW Page 45

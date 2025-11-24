@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+« Another naming consideration involves choosing binary relationship names to make the ER
+
+diagram of the schema readable from left to right and from top to bottom.
+
+3.6.3 Design Choices for ER Conceptual Design
+
+In general, the schema design process should be considered an iterative refinement process, where
+an initial design is created and then iteratively refined until the most suitable design is reached.
+Some of the refinements that are often used include the following:
+= A concept may be first modeled as an attribute and then refined into a relationship because
+it is determined that the attribute is a reference to another entity type. It.is.often the case
+that a pair of such attributes that are inverses of one another are refined into a binary
+relationship.
+= Similarly, an attribute that exists in several entity types may, be elevated or promoted to an
+independent entity type. For example, suppose that several entity types in a UNIVERSITY
+database, such as STUDENT, INSTRUCTOR, and COURSE, each has an attribute
+Department in the initial design; the designer may then choose to create an entity type
+DEPARTMENT with a single attribute Dept_name and relate it to the three entity types
+(STUDENT, INSTRUCTOR, and COURSE) via appropriate relationships.
+= An inverse refinement to the previous case may be applied—for example, if an entity type
+DEPARTMENT exists in the initial design with a single attribute Dept_name and is related
+to only one other entity type, STUDENT. In this case, DEPARTMENT may be reduced or
+demoted to an attribute of STUDENT.
+
+3.6.4 Alternative Notations for ER Diagrams
+
+There are many alternative diagrammatic notations for displaying ER diagrams. One alternative
+ER notation for specifying structural constraints on relationships, which replaces the cardinality
+ratio (1:1, 1:N, M:N) and single/double line notation for participation constraints. This notation
+involves associating a pair of integer numbers (min, max) with each participation of an entity type
+E ina relationship type R, where 0 < min < max and max > 1.
+
+The numbers mean that for each entity e in E, e must participate in at least min and at most max
+relationship instances in R at any point in time. In this method, min = 0 implies partial
+
+participation, whereas min > 0 implies total participation.
+
+https:/ivtucode.in Page 50

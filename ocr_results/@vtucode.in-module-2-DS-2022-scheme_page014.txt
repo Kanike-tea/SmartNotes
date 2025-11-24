@@ -1,0 +1,33 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+REPRESENTATION OF LINKED LISTS IN MEMORY
+Let LIST be a linked list. Then LIST will be maintained in memory as follows.
+1. LIST requires two linear arrays such as DATA and LINK-such that DATA[K] and
+LINK[K] contains the information part and the nextpointer field of a node of LIST.
+2. LIST also requires a variable name such as START which contains the location of
+the beginning of the list, and a nextpointer sentinel denoted by NULL-which
+indicates the end of the list.
+3. The subscripts of the arrays DATA and LINK will be positive, so choose NULL =
+0, unless otherwise stated.
+The following examples of linked lists indicate that the nodes of a list need not occupy
+adjacent elements in the arrays DATA and LINK, and that more than one list may be
+maintained in the same linear arrays DATA and LINK. However, each list must have its
+
+own pointer variable giving the location of its first node.
+
+DATA LINK
+1 HAT 15
+2
+3 CAT 4
+4 EAT 9
+5 GAT d
+6
+7 WAT 0
+8 BAT 3
+9 FAT 5
+10
+nu «| MAT 7
+
+Insert GAT to data[5]
+
+vtucode.in 15

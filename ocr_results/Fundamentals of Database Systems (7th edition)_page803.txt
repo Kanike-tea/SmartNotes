@@ -1,0 +1,50 @@
+20.6 Transaction Support in SQL
+
+20.5.5 Other Types of Equivalence of Schedules
+
+Serializability of schedules is sometimes considered to be too restrictive as a
+condition for ensuring the correctness of concurrent executions. Some applica-
+tions can produce schedules that are correct by satisfying conditions less strin-
+gent than either conflict serializability or view serializability. An example is the
+type of transactions known as debit-credit transactions—for example, those
+that apply deposits and withdrawals to a data item whose value is the current
+balance of a bank account. The semantics of debit-credit operations is that they
+update the value of a data item X by either subtracting from or adding to the
+value of the data item. Because addition and subtraction operations are com-
+mutative—that is, they can be applied in any order—it is possible to produce
+correct schedules that are not serializable. For example, consider the following
+transactions, each of which may be used to transfer an amount of money
+between two bank accounts:
+
+Ty: 71(X); X {equal} X — 10; w1(X); iY); Y {equal} Y + 10; wy(Y);
+Ty: r(Y); Y {equal} Y — 20; w2(¥); r2(X); X :{equal} X + 20; w2(X);
+
+Consider the following nonserializable schedule S), for the two transactions:
+Sie (Xs wi (Xs r2(V)s wal ¥)s m1 (Y)s wi (Ys 120s waX)s
+
+With the additional knowledge, or semantics, that the operations between each
+r() and w;(I) are commutative, we know that the order of executing the
+sequences consisting of (read, update, write) is not important as long as each
+(read, update, write) sequence by a particular transaction T; on a particular item
+Tis not interrupted by conflicting operations. Hence, the schedule Sj, is consid-
+ered to be correct even though it is not serializable. Researchers have been work-
+ing on extending concurrency control theory to deal with cases where
+serializability is considered to be too restrictive as a condition for correctness of
+schedules. Also, in certain domains of applications, such as computer-aided
+design (CAD) of complex systems like aircraft, design transactions last over a
+long time period. In such applications, more relaxed schemes of concurrency
+control have been proposed to maintain consistency of the database, such as
+eventual consistency. We shall discuss eventual consistency in the context of dis-
+tributed databases in Chapter 23.
+
+20.6 Transaction Support in SQL
+
+In this section, we give a brief introduction to transaction support in SQL. There
+are many more details, and the newer standards have more commands for trans-
+action processing. The basic definition of an SQL transaction is similar to our
+already defined concept of a transaction. That is, it is a logical unit of work and is
+guaranteed to be atomic. A single SQL statement is always considered to be
+atomic—either it completes execution without an error or it fails and leaves the
+database unchanged.
+
+773

@@ -1,0 +1,60 @@
+Data Structures and Applications/BCS304 Module 1
+
+e The definition is recursive since the function refers to itself for all value of n>0.
+
+e The value of n! is explicitly given as 1 when the value of n=0 which can be taken as the base
+value.
+
+e This can be implemented by the code
+factorial(int n)
+{
+f=1;
+for(i=1;i<=n;i++)
+f=f*i;
+return(f)
+
+This is the iterative implementation of the factorial function
+The factorial function can be implemented as a recursive function.
+
+For example
+factorial (5)=5*factorial(4)
+factorial (4)=4*factorial(3)
+factorial (3)=3*factorial(2)
+factorial(2)=2*factorial(1)
+
+factorial(int n)
+
+{
+if n==0 )
+return(1);
+else
+
+return(n*factorial(n-1))
+
+Fibonacci numbers in C
+
+e Fibonacci sequence is a sequence of integers.0 11235 8..... fib(0) =0 and fib(1)=1 then
+each element in this sequence is the sum of the previous two numbers.
+
+e = fib(n)=n if n=0 or if n=1
+
+e = fib(n)=fib(n-2)+ fib(n-1) if n>=2
+
+Recursive function to generate the nth Fibonacci number
+
+int fib(int n)
+{
+if (n<=1)
+return(n);
+else
+return(fibo(n-1)+fibo(n-2));
+}
+Example:
+
+Fibo(4)= fibo(3)+fibo(2)
+=fibo(2)+fibo(1)+fibo(2)
+=fibo(1)+fibo(0)4fibo(1)+ fibo(2)
+= 1+ fibo(0)+fibo(1)+ fibo(2)
+=140 + fibo(1)+ fibo(2)
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 41

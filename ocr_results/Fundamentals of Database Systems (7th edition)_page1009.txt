@@ -1,0 +1,53 @@
+26.2 Temporal Database Concepts
+
+entered in the database on May 15, 2003, at 8:52:12 a.m., say, even though the salary
+change in the real world is effective on June 1, 2003. This is called a proactive
+update, since it is applied to the database before it becomes effective in the real
+world. If the update is applied to the database after it becomes effective in the real
+world, it is called a retroactive update. An update that is applied at the same time
+as it becomes effective is called a simultaneous update.
+
+The action that corresponds to deleting an employee in a nontemporal database
+would typically be applied to a valid time database by closing the current version of
+the employee being deleted. For example, if Smith leaves the company effective
+January 19, 2004, then this would be applied by changing Vet of the current version
+of Smith from now to 2004-01-19. In Figure 26.8, there is no current version for
+Brown, because he presumably left the company on 2002-08-10 and was logically
+deleted. However, because the database is temporal, the old information on Brown
+is still there.
+
+The operation to insert a new employee would correspond to creating the first tuple
+version for that employee and making it the current version, with the Vst being the
+effective (real world) time when the employee starts work. In Figure 26.7, the tuple
+on Narayan illustrates this, since the first version has not been updated yet.
+
+Notice that in a valid time relation, the nontemporal key, such as Ssn in EMPLOYEE,
+is no longer unique in each tuple (version). The new relation key for EMP_VT is a
+combination of the nontemporal key and the valid start time attribute Vst,'° so we
+use (Ssn, Vst) as primary key. This is because, at any point in time, there should be
+at most one valid version of each entity. Hence, the constraint that any two tuple
+versions representing the same entity should have nonintersecting valid time periods
+should hold on valid time relations. Notice that if the nontemporal primary key value
+may change over time, it is important to have a unique surrogate key attribute,
+whose value never changes for each real-world entity, in order to relate all versions of
+the same real-world entity.
+
+Valid time relations basically keep track of the history of changes as they become
+effective in the real world. Hence, if all real-world changes are applied, the database
+keeps a history of the real-world states that are represented. However, because updates,
+insertions, and deletions may be applied retroactively or proactively, there is no
+record of the actual database state at any point in time. If the actual database states are
+important to an application, then one should use transaction time relations.
+
+Transaction Time Relations. In a transaction time database, whenever a change
+is applied to the database, the actual timestamp of the transaction that applied the
+change (insert, delete, or update) is recorded. Such a database is most useful when
+changes are applied simultaneously in the majority of cases—for example, real-time
+stock trading or banking transactions. If we convert the nontemporal database in
+Figure 26.1 into a transaction time database, then the two relations EMPLOYEE and
+DEPARTMENT are converted into transaction time relations by adding the attri-
+butes Tst (Transaction Start Time) and Tet (Transaction End Time), whose data
+
+18 combination of the nontemporal key and the valid end time attribute Vet could also be used.
+
+979

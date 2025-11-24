@@ -1,0 +1,44 @@
+470 Chapter 13 Memory Protection Units
+
+{
+case 0: { SET_REGION(0); break;}
+case 1: { SET_REGION(1); break;}
+case 2: { SET_REGION(2); break;}
+case 3: { SET_REGION(3); break;}
+case 4: { SET_REGION(4); break;}
+case 5: { SET_REGION(5); break;}
+case 6: { SET_REGION(6); break;}
+case 7: { SET_REGION(7); break;}
+default: { break; }
+
+}
+
+The code starts by merging the region attributes of starting address, sizeN, and
+enable into an unsigned integer named céf. The routine then branches to one of eight
+regionSet routines created using the macro SET_REGION, which sets the region’s starting
+address, size, and enable state by writing to CP15:c6 secondary register for the region
+defined.
+
+13.2.2 ACCESS PERMISSION
+
+There are two sets of access permission schemes available, a standard set and an extended
+set. All four cores support the standard set, which provides four levels of permission. The
+newer ARM946E-S and ARM1026EJ-S support an extended set, which adds an additional
+two levels of permission (see Table 13.5). The extended set AP (access permission) bit
+field encoding supports 12 additional permission values. Only two of these bits have been
+allocated to date. Using an undefined encoding results in unpredictable behavior.
+
+Table 13.5 CP15 register 5 access permissions.
+
+Supervisor User Standard AP value encoding Extended AP value encoding
+No access no access 00 0000
+Read/write no access ol 0001
+Read/write read only 10 0010
+Read/write read/write 11 0011
+Unpredictable unpredictable = — 0100
+
+Read only no access — 0101
+
+Read only read only — 0110
+Unpredictable unpredictable = — oul
+Unpredictable unpredictable — 1000 to 1111

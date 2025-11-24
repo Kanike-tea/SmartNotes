@@ -1,0 +1,44 @@
+314 Chapter 8 Digital Signal Processing
+
+= To prevent overflow, scale down by kin each radix-k stage. Alternatively ensure that the
+inputs to an N-point DFT have room to grow by N times. This is often the case when
+implementing a 32-bit FFT.
+
+8.6 SUMMARY
+
+Table 8.9
+
+Table 8.10
+
+Tables 8.9 and 8.10 summarize the performance obtained using the code examples of this
+chapter. It’s always possible to tune these routines further by unrolling, or coding for a
+specific application. However, these figures should give you a good idea of the sustained
+DSP performance obtainable in practice on an ARM system. The benchmarks include all
+load, store, and loop overheads assuming zero-wait-state memory or cache hits in the case
+of a cached core.
+
+In this chapter we have looked at efficient ways of implementing fixed-point DSP algo-
+rithms on the ARM. We've looked in detail at four common algorithms: dot-product,
+block FIR filter, block IIR filter, and Discrete Fourier Transform. We've also considered the
+differences between different ARM architectures and implementations.
+
+ARM filtering benchmarks.
+
+16-bit dot- 16-bit block 32-bit block 16-bit block
+product FIR filter FIR filter IIR filter
+Processor core (cycles/tap) (cycles/tap) (cycles/tap) (cycles/biquad)
+ARM7TDMI 7.6 5.2 9.0 22.0
+ARM9TDMI 7.0 48 8.3 22.0
+StrongARM 48 3.8 5.2 16.5
+ARM9E 2.5 13 4.3 8.0
+XScale 18 13 3.7 7.7
+
+ARM FFT benchmarks.
+
+16-bit complex FFT (radix-4) _ARM9TDMI (cycles/FFT) | ARM9E (cycles/FFT)
+
+64 point 3,524 2,480
+256 point 19,514 13,194
+1,024 point 99,946 66,196
+
+4,096 point 487,632 318,878

@@ -1,0 +1,25 @@
+502 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Since DBD is implemented in Prolog, use of uppercase terms is reserved for vari-
+ables in the language and therefore lowercase constants are used to code the attri-
+butes. For further details on using the DBD system, please refer to the laboratory
+manual.
+
+14.37. Using the DBD system, verify your answers to the following exercises:
+a. 14.24 (3NF only)
+b. 14.25
+c. 14.27
+d. 14.28
+
+Selected Bibliography
+
+Functional dependencies were originally introduced by Codd (1970). The original
+definitions of first, second, and third normal form were also defined in Codd
+(1972a), where a discussion on update anomalies can be found. Boyce-Codd nor-
+mal form was defined in Codd (1974). The alternative definition of third normal
+form is given in Ullman (1988), as is the definition of BCNF that we give here. UIl-
+man (1988), Maier (1983), and Atzeni and De Antonellis (1993) contain many of
+the theorems and proofs concerning functional dependencies. Date and Fagin
+(1992) give some simple and practical results related to higher normal forms.
+
+Additional references to relational design theory are given in Chapter 15.

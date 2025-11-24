@@ -1,0 +1,51 @@
+30.2 Discretionary Access Control Based on Granting and Revoking Privileges
+
+about information collection, told in advance what will be done with their informa-
+tion, and given a reasonable opportunity to approve or disapprove of such use of the
+information. A related concept, trust, relates to both security and privacy and is seen
+as increasing when it is perceived that both security and privacy are provided for.
+
+30.2 Discretionary Access Control Based
+on Granting and Revoking Privileges
+
+The typical method of enforcing discretionary access control in a database system
+is based on the granting and revoking of privileges. Let us consider privileges in the
+context of a relational DBMS. In particular, we will discuss a system of privileges
+somewhat similar to the one originally developed for the SQL language (see Chap-
+ters 7 and 8). Many current relational DBMSs use some variation of this technique.
+The main idea is to include statements in the query language that allow the DBA
+and selected users to grant and revoke privileges.
+
+30.2.1 Types of Discretionary Privileges
+
+In SQL2 and later versions,’ the concept of an authorization identifier is used to
+refer, roughly speaking, to a user account (or group of user accounts). For simplic-
+ity, we will use the words user or account interchangeably in place of authorization
+identifier. The DBMS must provide selective access to each relation in the database
+based on specific accounts. Operations may also be controlled; thus, having an
+account does not necessarily entitle the account holder to all the functionality pro-
+vided by the DBMS. Informally, there are two levels for assigning privileges to use
+the database system:
+
+= The account level. At this level, the DBA specifies the particular privileges
+that each account holds independently of the relations in the database.
+
+= The relation (or table) level. At this level, the DBA can control the privilege
+to access each individual relation or view in the database.
+
+The privileges at the account level apply to the capabilities provided to the account
+itself and can include the CREATE SCHEMA or CREATE TABLE privilege, to create a
+schema or base relation; the CREATE VIEW privilege; the ALTER privilege, to apply
+schema changes such as adding or removing attributes from relations; the DROP
+privilege, to delete relations or views; the MODIFY privilege, to insert, delete, or
+update tuples; and the SELECT privilege, to retrieve information from the database
+by using a SELECT query. Notice that these account privileges apply to the account
+in general. If a certain account does not have the CREATE TABLE privilege, no rela-
+tions can be created from that account. Account-level privileges are not defined as
+part of SQL2; they are left to the DBMS implementers to define. In earlier versions
+of SQL, a CREATETAB privilege existed to give an account the privilege to create
+tables (relations).
+
+3Piscretionary privileges were incorporated into SQL2 and are applicable to later versions of SOL.
+
+1129

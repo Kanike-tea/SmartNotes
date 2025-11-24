@@ -1,0 +1,51 @@
+504 Chapter 14 Memory Management Units
+
+Figure 14.7
+
+EXAMPLE
+
+14.1
+
+31 14 13 0
+
+TTB SBZ
+
+SBZ = should be zero
+
+Translation table base address CP15 register 2.
+
+Here is a routine named ttbSet that sets the TTB of the master L1 page table. The ttbSet
+routine uses an MRC instruction to write to CP15:c2:c0:0. The routine is defined using the
+following function prototype:
+
+void ttbSet (unsigned int ttb);
+
+The only argument passed to the procedure is the base address of the translation table. The
+TTB address must be aligned on a 16 KB boundary in memory.
+
+void ttbSet (unsigned int ttb)
+{
+
+ttb 8 Oxffffc000;
+
+__asm{MRC p15, 0, ttb, c2, cO, 0} /* set translation table base */
+}
+
+14.4.3. LEVEL 2 PAGE TABLE ENTRIES
+
+There are four possible entries used in L2 page tables:
+
+= A large page entry defines the attributes for a 64 KB page frame.
+= A small page entry defines a 4 KB page frame.
+= A tiny page entry defines a 1 KB page frame.
+
+= A fault page entry generates a page fault abort exception when accessed.
+
+Figure 14.8 shows the format of the entries in an L2 page table. The MMU identifies the
+type of L2 page table entry by the value in the lower two bits of the entry field.
+
+A large PTE includes the base address of a 64 KB block of physical memory. The entry
+also has four sets of permission bit fields, as well as the cache and write buffer attributes
+for the page. Each set of access permission bit fields represents one-fourth of the page in
+virtual memory. These entries may be thought of as 16 KB subpages providing finer control
+of access permission within the 64 KB page.

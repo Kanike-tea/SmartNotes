@@ -1,0 +1,47 @@
+7.1 Sorting by Counting 255
+
+Array A[0..5] 62 | 31 | 84 | 96 | 19 | 47
+Initially Counti}[ 0] 0]0]0 ]0]0
+After pass i = 0 Count [] | 3 [ 0 1 1 0] 0
+After pass i = 1 Count (] 1 2/2 [0 1
+Afterpassi=2  Countll af3fo]1
+After pass i = 3 Count [] 5 [0 1
+After pass i = 4 Count [] 0 | 2
+Final state Count [] 0 [2
+Array S[0..5) 19 | 31 | 47] 62 | 84 | 96
+FIGURE 7.1 Example of sorting by comparison counting.
+ALGORITHM = ComparisonCountingSort(A[0..n —1])
+
+//Sorts an array by comparison counting
+//Input: An array A[0..n — 1] of orderable elements
+//Output: Array S[0..n — 1] of A’s elements sorted in nondecreasing order
+for i — 0 ton —1do Count[i] —0
+fori —0ton—2do
+for j —i+1ton—1do
+if A[i] < A[j]
+Count[j] << Count[j]+1
+
+else Count[i] — Count[i] +1
+for i —0 ton —1do S[Count[i}] <— Afi]
+return S
+
+What is the time efficiency of this algorithm? It should be quadratic because
+the algorithm considers all the different pairs of an n-element array. More formally,
+the number of times its basic operation, the comparison A[i] < A[j], is executed
+is equal to the sum we have encountered several times already:
+
+n—2 n-1 n-2 n—2
+
+cH=y° 12 Yl) -G +4 =o 1-) =,
+
+i=0 j=i+l — i=0 i=0
+
+Thus, the algorithm makes the same number of key comparisons as selection sort
+and in addition uses a linear amount of extra space. On the positive side, the
+algorithm makes the minimum number of key moves possible, placing each of
+them directly in their final position in a sorted array.
+
+The counting idea does work productively in a situation in which elements
+to be sorted belong to a known small set of values. Assume, for example, that
+we have to sort a list whose values can be either 1 or 2. Rather than applying a
+general sorting algorithm, we should be able to take advantage of this additional

@@ -1,0 +1,98 @@
+SUMMARY
+
+EXAMPLE
+
+8.2 Introduction to DSP on the ARM 279
+
+code you've optimized for the ARM9E should run efficiently on XScale. See Section D.7 in
+Appendix D for details of the XScale core cycle timings.
+
+Writing DSP Code for the Intel XScale
+
+=~ Theload double word instruction LDRD can transfer two words ina single cycle. Schedule
+
+the code so that you do not use the first loaded register for two cycles and the second
+for three cycles.
+
+= Ensure data arrays are 64-bit aligned so that you can use the 64-bit load instruction
+LDRD.
+
+= The result of a multiply is not available immediately. Following a multiply with
+
+another multiply may introduce stalls. Schedule code so that multiply instructions
+
+are interleaved with load instructions to prevent processor stalls.
+
+= The multiply operations do not early terminate. Therefore you should only use MUL and
+MLA for multiplying 32-bit integers. For 16-bit values use SMULxy and SMLAxy.
+
+In this example we use LDRD instructions to improve load bandwidth. The input arrays
+must be 64-bit aligned. The number of samples N is a multiple of eight.
+
+x
+c
+
+N
+
+accO
+accl
+x_10
+x_32
+x_54
+x76
+10
+32
+54
+c76
+
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+
+0
+1
+2
+3
+
+11
+
+input array x{] (64-bit aligned)
+input array c[] (64-bit aligned)
+number of samples (a multiple of 8)
+accumulators
+
+packed elements from array x[]
+
+packed elements from array c[]
+
+dot_16by16_xscale
+STMFD
+LORD
+LORD
+
+MOV
+MOV
+loop_xscale
+
+sp!, {r4-rl1, Ir}
+
+x10, [x], #8 5 preload x_10, x_32
+c_10, [c], #8 ; preload c_10, c 32
+acc0, #0
+
+accl, #0
+
+3 accumulate 8 products
+suBS
+
+N,N, #8

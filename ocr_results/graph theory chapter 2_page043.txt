@@ -1,0 +1,42 @@
+2. Planar Graph:
+144 pseu Cootring
+
+Let us redesignate the graph G, as H and denote the edge {v1, Vs} as f. Then the Braphs
+fi
+
+and H’, would appear as shown below:
+
+v1
+e
+
+¥5 v2 vs(= v1) v2
+V4 V3 V4 v3
+Hy Hy
+Figure 2.54
+
+Applying the decomposition theorem to the graphs G and H we find that
+
+P(G, a) = P(Ge,a) - P(G,, a)
+~ = P(H,a)- PG, a)
+= (P(H;, a) - P(Hy,a)) - P(G,, a) i
+
+We observe that both of the graphs Gi, and H, are the graph Ky. Accordingly,
+- —_
+P(G., a) = P(H’,, A) = P(K4, a) = A(A— 1)(A - 2) - 3) (i)
+
+We note that the graph Hy is a disconnected graph having N; (-null graph of order |
+consisting of the single vertex v,) and K4 as components. Accordingly, by the Product Rule,
+
+P(Hy,A) = P(N, A) + P(K4, a)
+
+=A-A(A- 1)A-2)(A- 3) (i
+Using expressions (ii) and (iii), expression (i) gives
+PIG, A) =A-AMA-1)A- 2)(A — 3) - 2A(A — 1)(A = 2)(A - 3)
+= AA-1)A-2)a —3)(A-2)
+= AA ~ 1A - 27a - 3)
+s
+
+This is the chromatic polynomial for the given graph. *
+
+eee
+“This resalt agrees with that obtained in Example 6 above.

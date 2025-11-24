@@ -1,0 +1,49 @@
+4.3 Constraints and Characteristics of Specialization and Generalization Hierarchies 119
+
+possible combinations of classes that may have some entity that belongs to all
+these classes simultaneously. For example, in the overlapping specialization of
+PERSON into (EMPLOYEE, ALUMNUS, STUDENT} (or {E, A, S} for short), it would
+be necessary to create seven subclasses of PERSON in order to cover all possible
+types of entities: E, A, S, E_A, E_S, A_S, and E_A_S. Obviously, this can lead to
+extra complexity.
+
+Although we have used specialization to illustrate our discussion, similar concepts
+apply equally to generalization, as we mentioned at the beginning of this section.
+Hence, we can also speak of generalization hierarchies and generalization lattices.
+
+4.3.3 Utilizing Specialization and Generalization in
+Refining Conceptual Schemas
+
+Now we elaborate on the differences between the specialization and generalization
+processes and how they are used to refine conceptual schemas during conceptual
+database design. In the specialization process, the database designers typically start
+with an entity type and then define subclasses of the entity type by successive spe-
+cialization; that is, they repeatedly define more specific groupings of the entity
+type. For example, when designing the specialization lattice in Figure 4.7, we may
+first specify an entity type PERSON for a university database. Then we discover
+that three types of persons will be represented in the database: university employ-
+ees, alumni, and students and we create the specialization {EMPLOYEE, ALUMNUS,
+STUDENT}. The overlapping constraint is chosen because a person may belong
+to more than one of the subclasses. We specialize EMPLOYEE further into
+{STAFF, FACULTY, STUDENT_ASSISTANT}, and specialize STUDENT into
+{GRADUATE_STUDENT, UNDERGRADUATE_STUDENT}. Finally, we specialize
+STUDENT_ASSISTANT into {RESEARCH_ASSISTANT, TEACHING_ASSISTANT}.
+This process is called top-down conceptual refinement. So far, we have a hier-
+archy; then we realize that STUDENT_ASSISTANT is a shared subclass, since it is
+also a subclass of STUDENT, leading to the lattice.
+
+It is possible to arrive at the same hierarchy or lattice from the other direction. In
+such a case, the process involves generalization rather than specialization and cor-
+responds to a bottom-up conceptual synthesis. For example, the database design-
+ers may first discover entity types such as STAFF, FACULTY, ALUMNUS,
+GRADUATE_STUDENT, UNDERGRADUATE_STUDENT, RESEARCH_ASSISTANT,
+TEACHING_ASSISTANT, and so on; then they generalize {@GRADUATE_STUDENT,
+UNDERGRADUATE_STUDENT} into STUDENT; then {RESEARCH_ASSISTANT,
+TEACHING_ASSISTANT} into STUDENT_ASSISTANT; then {STAFF, FACULTY,
+STUDENT_ASSISTANT} into EMPLOYEE; and finally (EMPLOYEE, ALUMNUS, STUDENT}
+into PERSON.
+
+The final design of hierarchies or lattices resulting from either process may be
+identical; the only difference relates to the manner or order in which the schema
+superclasses and subclasses were created during the design process. In practice, it
+is likely that a combination of the two processes is employed. Notice that the

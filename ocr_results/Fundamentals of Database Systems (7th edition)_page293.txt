@@ -1,0 +1,49 @@
+8.4 Additional Relational Operations 263
+
+SUPERVISION
+(Borg’s Ssn is 888665555)
+(Ssn) (Super_ssn)
+Ssnt Ssn2
+123456789 | 333445555
+333445555 | 888665555,
+999887777 | 987654321
+987654321 | 888665555,
+666884444 | 333445555,
+453453453 | 333445555
+987987987 | 987654321
+888665555 | null
+
+RESULT1 RESULT2 RESULT
+Ssn Ssn Ssn
+333445555, 123456789 123456789
+987654321 999887777 999887777
+(Supervised by Borg) 666884444 666884444
+453453453 453453453
+987987987 987987987
+(Supervised by 333445555
+Borg's subordinates) 987654321
+
+(RESULT1 U RESULT2)
+
+Figure 8.11
+A two-level recursive
+
+query.
+
+operation R * S, only tuples from R that have matching tuples in S—and vice
+versa—appear in the result. Hence, tuples without a matching (or related) tuple
+are eliminated from the JOIN result. Tuples with NULL values in the join attri-
+butes are also eliminated. This type of join, where tuples with no match are elim-
+inated, is known as an inner join. The join operations we described earlier in
+Section 8.3 are all inner joins. This amounts to the loss of information if the user
+wants the result of the JOIN to include all the tuples in one or more of the com-
+ponent relations.
+
+A set of operations, called outer joins, were developed for the case where the user
+wants to keep all the tuples in R, or all those in S, or all those in both relations in
+the result of the JOIN, regardless of whether or not they have matching tuples in
+the other relation. This satisfies the need of queries in which tuples from two
+tables are to be combined by matching corresponding rows, but without losing
+any tuples for lack of matching values. For example, suppose that we want a list of
+all employee names as well as the name of the departments they manage if they
+happen to manage a department; if they do not manage one, we can indicate it

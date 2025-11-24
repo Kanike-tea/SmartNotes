@@ -1,0 +1,50 @@
+1054 Chapter 27 Introduction to Information Retrieval and Web Search
+
+example, an intelligent agent retrieves product information from a variety of
+vendor sites using only general information about the product domain.
+
+= Information filtering/categorization is another technique that utilizes
+Web agents for categorizing Web documents. These Web agents use meth-
+ods from information retrieval, as well as semantic information based on
+the links among various documents, to organize documents into a concept
+hierarchy.
+
+= Personalized Web agents are another type of Web agents that utilize the
+personal preferences of users to organize search results, or to discover infor-
+mation and documents that could be of value for a particular user. User
+preferences could be learned from previous user choices, or from other indi-
+viduals who are considered to have similar preferences to the user.
+
+The database-based approach aims to infer the structure of the Web site or to
+transform a Web site to organize it as a database so that better information man-
+agement and querying on the Web become possible. This approach of Web con-
+tent analysis primarily tries to model the data on the Web and integrate it so that
+more sophisticated queries than keyword-based search can be performed. These
+could be achieved by finding the schema of Web documents or building a Web
+document warehouse, a Web knowledge base, or a virtual database. The database-
+based approach may use a model such as the Object Exchange Model (OEM),*!
+which represents semistructured data by a labeled graph. The data in the OEM is
+viewed as a graph, with objects as the vertices and labels on the edges. Each object
+is identified by an object identifier and a value that is either atomic—such as inte-
+ger, string, GIF image, or HTML document—or complex in the form of a set of
+object references.
+
+The main focus of the database-based approach has been with the use of multilevel
+databases and Web query systems. A multilevel database at its lowest level is a
+database containing primitive semistructured information stored in various Web
+repositories, such as hypertext documents. At the higher levels, metadata or gener-
+alizations are extracted from lower levels and organized in structured collections
+such as relational or object-oriented databases. In a Web query system, informa-
+tion about the content and structure of Web documents is extracted and organized
+using database-like techniques. Query languages similar to SQL can then be used to
+search and query Web documents. These types of queries combine structural que-
+ries, based on the organization of hypertext documents, and content-based queries.
+
+27.7.6 Web Usage Analysis
+
+Web usage analysis is the application of data analysis techniques to discover usage
+patterns from Web data, in order to understand and better serve the needs of Web-
+based applications. This activity does not directly contribute to information
+retrieval; but it is important for improving and enhancing users’ search experiences.
+
+*"See Kosala and Blockeel (2000).

@@ -1,0 +1,42 @@
+610 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Figure 17.4
+A dense secondary index (with block pointers) on a nonordering key field of a file.
+Index file Data file
+(<K(i), P(i)> entries) Indexing field
+(secondary
+key field)
+Index Block 9
+field value _ pointer 5
+1 .
+3 > 13
+°
+8
+3 .
+4 °
+~
+5 « - 6
+> 15
+6 .
+a 3
+7 -
+3 . 17
+> 21
+9 ‘ — i
+10 . i< 16
+i . 2
+12 «
+13 ° a 24
+14 . < 10
+15 . > 20
+16 . 1
+17 . i 4
+18 a = 23
+19 . 18
+20 ° 14
+21 *
+22 * a 12
+23 . = 7
+>
+24 . 19
+22

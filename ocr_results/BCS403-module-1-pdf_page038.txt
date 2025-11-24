@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+An entity type describes the schema or intension for a set of entities that share the same structure.
+The collection of entities of a particular entity type is grouped into an entity set, which is also
+called the extension of the entity type.
+
+An entity type is represented in ER diagrams a rectangular box enclosing the entity type name.
+Attribute names are enclosed in ovals and are attached to their entity type by straight lines.
+Composite attributes are attached to their component attributes by straight lines. Multivalued
+
+attributes are displayed in double ovals
+
+Key Attributes of an Entity Type
+
+An entity type usually has one or more attributes whose values are distinct for each individual
+entity in the entity set. Such an attribute is called a key attribute, and its values can be used to
+identify each entity uniquely. For example, the Name attribute is a key of the COMPANY entity
+because no two companies are allowed to have the same name.
+
+In ER diagrammatic notation, each key attribute has its name underlined inside the oval.Some
+entity types have more than one key attribute. For example, each of the Vehicle_id and
+
+Registration attributes of the entity type CAR is a key in its own right
+
+Example: The CAR entity type with two key attributes, Registration and Vehicle_id.
+
+CAR
+Registration (Number, State), Vehicle_id, Make, Model, Year, {Color}
+
+CAR,
+((ABC 123, TEXAS), TK629, Ford Mustang, convertible, 2004 {red, black)
+
+CARy
+
+((ABC 123, NEW YORK), WP9872, Nissan Maxima, 4-door, 2005, {blue})
+|—Catodel))
+— CARg
+
+((VSY 720, TEXAS), TD729, Chrysler LeBaron, 4-door, 2002, {white, blue})
+
+Figure 3.2.2(b) : ER diagram notation Entity set with three entities.
+
+Value Sets (Domains) of Attributes
+
+Each simple attribute of an entity type is associated with a value set (or domain of values), which
+specifies the set of values that may be assigned to that attribute for each individual entity. For
+example, if the range of ages allowed for employees is between 16 and 70, we can specify the
+value set of the Age attribute of EMPLOYEE to be the set of integer numbers between 16 and 70.
+
+https://vtucode.in Page 39

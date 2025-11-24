@@ -1,0 +1,122 @@
+AND
+
+AND
+
+ORR
+ENDIF
+MEND
+
+MACRO
+
+t,
+n
+n
+
+7.6 Endian Reversal and Bit Operations 251
+
+m, n, LSR#(1<<$k) 5 get bits with index b_k=1
+n,m 3 get bits with index b_k=0
+t, n, LSL#(1<<$k) 5 swap them over
+
+PERMUTE_B $j, $k
+
+30...
+
+LOR
+EOR
+AND
+EOR
+EOR
+MEND
+
+MACRO
+
+bj.
+
+m,
+t
+t,
+n
+
+n
+
+bk... ]>0.. bk. bg. ] and jek
+
+= (mask$j:AND: :NOT:mask$k) 3 set when b_j=0 b_k=1
+n, n, LSR#(1<<$j)-(1<<$k)
+
+t, m 3 get bits where b_j!=b_k
+
+n, t, LSL#(1<<$j)-(1<<$k) ; change if bj=1 bk=0
+nt 3 change when b_j=0 b_k=1
+
+PERMUTE_C $j, $k
+
+30...
+
+LOR
+EOR
+AND
+EOR
+EOR
+MEND
+
+bj..
+
+m,
+t
+t,
+n
+
+n
+
+bk... ]->[ .. Lebk .. 1-b_j .. ] and jek
+
+= (mask$j:AND:mask$k) 3 set when b_j=0 b_k=0
+n, n, LSR#(1<<$j)+(1<<$k)
+
+t, m 3 get bits where b_j==b_k
+
+n, t, LSL#(1<<$j)+(1<<$k) 5 change if bj=1 bk=1
+nt ; change when b_j=0 b_k=0
+
+7.6.2.2 Bit Permutation Examples
+
+Now, let’s see how these macros will help us in practice. Bit reverse moves the bit at
+position b to position 31 — b; in other words, it inverts each bit of the five-bit position
+index b. We can use five type A transforms to implement bit reversal, logically inverting
+each bit index position in turn.
+
+bit_reverse
+
+PERMUTE_A 0
+PERMUTE_A 1
+PERMUTE_A 2
+PERMUTE_A 3
+PERMUTE_A 4
+
+MOV
+
+b4 b3 b2 bl bO J
+b4 b3b2- sibs 1-b0 ]
+b4 b3b2-s 1-b1 1-b0 ]
+b4 b3-1-b2 1-b1 1-b0 ]
+b4 1-b3 1-b2 1-b1 1-b0 ]
+1-b4 1-b3 1-b2 1-b1l 1-b0 ]
+
+>
+>
+>
+
+>
+
+C
+c
+c
+c
+c
+c
+
+v
+
+pe, Ir

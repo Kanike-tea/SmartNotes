@@ -1,0 +1,45 @@
+6.4 Register Allocation 171
+
+Summary _ Instruction Scheduling
+
+= ARM cores have a pipeline architecture. The pipeline may delay the results of certain
+instructions for several cycles. If you use these results as source operands in a following
+instruction, the processor will insert stall cycles until the value is ready.
+
+= Load and multiply instructions have delayed results in many implementations. See
+Appendix D for the cycle timings and delay for your specific ARM processor core.
+
+= You have two software methods available to remove interlocks following load instruc-
+tions: You can preload so that loop iloads the data for loop i+ 1, or you can unroll the
+loop and interleave the code for loops iand i+ 1.
+
+6.4 REGISTER ALLOCATION
+
+You can use 14 of the 16 visible ARM registers to hold general-purpose data. The other two
+registers are the stack pointer r]3 and the program counter r15. For a function to be ATPCS
+compliant it must preserve the callee values of registers r4 to rll. ATPCS also specifies that
+the stack should be eight-byte aligned; therefore you must preserve this alignment if calling
+subroutines. Use the following template for optimized assembly routines requiring many
+registers:
+
+routine_name
+STMFD sp!, {r4-rl2, Ir} ; stack saved registers
+3 body of routine
+; the fourteen registers r0-rl2 and Ir are available
+LOMFD sp!, {r4-rl2, pc} 3 restore registers and return
+
+Our only purpose in stacking r12 is to keep the stack eight-byte aligned. You need not stack
+r12if your routine doesn’t call other ATPCS routines. For ARMv5 and above you can use
+the preceding template even when being called from Thumb code. If your routine may be
+called from Thumb code on an ARMvAT processor, then modify the template as follows:
+
+routine_name
+STMFD sp!, {r4-r12, Ir} 3 stack saved registers
+; body of routine
+3 registers r0-r12 and Ir available
+LOMFD sp!, {r4-r12, Ir} 3 restore registers
+BX Ir 3 return, with mode switch
+
+In this section we look at how best to allocate variables to register numbers for register-
+intensive tasks, how to use more than 14 local variables, and how to make the best use of
+the 14 available registers.

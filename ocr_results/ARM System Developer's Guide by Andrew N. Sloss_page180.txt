@@ -1,0 +1,41 @@
+6.3 Instruction Scheduling 167
+
+Pipeline
+Cyele 1
+Cycle 2
+Cycle 3
+Cycle 4
+Cycle 5
+
+Figure 6.4 _ Pipeline flush caused by a branch.
+
+ExampLe This example shows why a branch instruction takes three cycles. The processor must flush
+6.8 the pipeline when jumping to a new address.
+
+MOV orl, #1
+B casel
+AND r0, r0, rl
+EOR r2, r2, r3
+
+casel
+suB r0, rd, rl
+
+The three executed instructions take a total of five cycles. The MOV instruction executes on
+the first cycle. On the second cycle, the branch instruction calculates the destination address.
+‘This causes the core to flush the pipeline and refill it using this new pe value. The refill takes
+two cycles, Finally, the SUB instruction executes normally. Figure 6.4 illustrates the pipeline
+state on each cycle. The pipeline drops the two instructions following the branch when the
+branch takes place.
+
+6.3.1 SCHEDULING OF LOAD INSTRUCTIONS
+
+Load instructions occur frequently in compiled code, accounting for approximately one-
+third ofall instructions. Careful scheduling of load instructions so that pipeline stalls don’t
+occur can improve performance. The compiler attempts to schedule the code as best it
+can, but the aliasing problems of C that we looked at in Section 5.6 limits the available
+optimizations. The compiler cannot move a load instruction before a store instruction
+unless it is certain that the two pointers used do not point to the same address.
+
+Let’s consider an example of a memory-intensive task. The following function,
+str_tolower, copies a zero-terminated string of characters from in to out. It converts
+the string to lowercase in the process.

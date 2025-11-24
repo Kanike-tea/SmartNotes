@@ -1,0 +1,51 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees
+
+When a leaf node is full and a new entry is inserted there, the node overflows and
+must be split. The first j =| ((Piear + 1)/2) | entries in the original node are kept there,
+and the remaining entries are moved to a new leaf node. The jth search value is
+replicated in the parent internal node, and an extra pointer to the new node is cre-
+ated in the parent. These must be inserted in the parent node in their correct
+sequence. If the parent internal node is full, the new value will cause it to overflow
+also, so it must be split. The entries in the internal node up to P;—the jth tree pointer
+after inserting the new value and pointer, where j = Lap + 1)/2)|—are kept, whereas the
+jth search value is moved to the parent, not replicated. A new internal node will hold the
+entries from Pjx1 to the end of the entries in the node (see Algorithm 17.3). This
+splitting can propagate all the way up to create a new root node and hence a new
+level for the B*-tree.
+
+Figure 17.13 illustrates deletion from a B*-tree. When an entry is deleted, it is
+always removed from the leaf level. If it happens to occur in an internal node, it
+must also be removed from there. In the latter case, the value to its left in the leaf
+node must replace it in the internal node because that value is now the rightmost
+entry in the subtree. Deletion may cause underflow by reducing the number of
+entries in the leaf node to below the minimum required. In this case, we try to find
+a sibling leaf node—a leaf node directly to the left or to the right of the node with
+underflow—and redistribute the entries among the node and its sibling so that
+both are at least half full; otherwise, the node is merged with its siblings and the
+number of leaf nodes is reduced. A common method is to try to redistribute
+entries with the left sibling; if this is not possible, an attempt to redistribute with
+the right sibling is made. If this is also not possible, the three nodes are merged
+into two leaf nodes. In such a case, underflow may propagate to internal nodes
+because one fewer tree pointer and search value are needed. This can propagate
+and reduce the tree levels.
+
+Notice that implementing the insertion and deletion algorithms may require par-
+ent and sibling pointers for each node, or the use of a stack as in Algorithm 17.3.
+Each node should also include the number of entries in it and its type (leaf or
+internal). Another alternative is to implement insertion and deletion as recursive
+procedures.!*
+
+Variations of B-Trees and B*-Trees. To conclude this section, we briefly men-
+tion some variations of B-trees and B*-trees. In some cases, constraint 5 on the
+B-tree (or for the internal nodes of the B*-tree, except the root node), which
+requires each node to be at least half full, can be changed to require each node to be
+at least two-thirds full. In this case the B-tree has been called a B*-tree. In general,
+some systems allow the user to choose a fill factor between 0.5 and 1.0, where the
+latter means that the B-tree (index) nodes are to be completely full. It is also possi-
+ble to specify two fill factors for a B*-tree: one for the leaf level and one for the
+internal nodes of the tree. When the index is first constructed, each node is filled up
+
+'8For more details on insertion and deletion algorithms for B*-trees, consult Ramakrishnan and
+Gehrke (2008).
+
+629

@@ -1,0 +1,50 @@
+158 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+Section 6.1 starts with an introduction to assembly programming on the ARM. It shows
+you how to replace a C function by an assembly function that you can then optimize for
+performance.
+
+We describe common optimization techniques, specific to writing ARM assembly.
+Thumb assembly is not covered specifically since ARM assembly will always give better
+performance when a 32-bit bus is available. Thumb is most useful for reducing the com-
+piled size of C code that is not critical to performance and for efficient execution on a 16-bit
+data bus. Many of the principles covered here apply equally well to Thumb and ARM.
+
+The best optimization of a routine can vary according to the ARM core used in your
+target hardware, especially for signal processing (covered in detail in Chapter 8). However,
+you can often code a routine that is reasonably efficient for all ARM implementations. To be
+consistent this chapter uses ARM9TDMI optimizations and cycle counts in the examples.
+However, the examples will run efficiently on all ARM cores from ARM7TDMI to ARMIOE.
+
+6.1 WRITING ASSEMBLY CODE
+
+EXAMPLE
+
+6.1
+
+This section gives examples showing how to write basic assembly code. We assume you are
+familiar with the ARM instructions covered in Chapter 3; a complete instruction reference
+is available in Appendix A. We also assume that you are familiar with the ARM and Thumb
+procedure call standard covered in Section 5.4.
+
+As with the rest of the book, this chapter uses the ARM macro assembler armasm for
+examples (see Section A.4 in Appendix A for armasm syntax and reference). You can also
+use the GNU assembler gas (see Section A.5 for details of the GNU assembler syntax).
+
+This example shows how to convert a C function to an assembly function—usually the
+first stage of assembly optimization. Consider the simple C program main.c following that
+prints the squares of the integers from 0 to 9:
+
+#include <stdio.h>
+int square(int i);
+
+int main(void)
+{
+int i;
+for (i=0; i<10; i++)
+{
+printf("Square of %d is %d\n", i, square(i));
+}
+}
+
+int square(int i)

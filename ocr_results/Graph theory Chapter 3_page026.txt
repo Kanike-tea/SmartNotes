@@ -1,0 +1,43 @@
+-First Search and B -
+33.1. Depth-First and Breadth-First Search ~
+
+step 3- If v = v1, the tree 7 is the spanning tree for the order specified:
+
+Step 4. For v # v1, back track from v. If w is the parent of the vertex assigned to v in T, then
+assign u to v and return to Step 2.
+
+The spanning tree of G determined by using the above steps is called the depth-first search
+spanning tree for G for the given order of vertices of G,
+
+We now illustrate the use of the DFS algorithm by determining a spanning tree T for the
+graph shown below (Figure 3.29) wherein the order of the vertices are as indicated in the a
+
+a demik- = hry He Kal
+
+4 Vy BI Me
+iS Nes Ae
+Vik lo A
+BN &
+vg < vS
+~*~ Figure 3.29 <e
+
+First we assign the first vertex vy . the variable v and initialize ? T as just the vertex v; (the
+Moot). Going to Step 2, we find that the vertex v2 is the first vertex w such that {v1,w} € E and
+whas not been visited (consideréd) earlier. So, we attach the edge (vy, va) to T, assign v2 to v,
+andretumn the Step 2. _
+
+Atv = vy) we find that the first adjacent vertex (not visited earlier) that provides an edge
+for T is v7. Consequently, the edge {v2, v7} is attached to T, v7 is assigned to v, and we again
+"tum to Step 2.
+
+Aty = V7 we find that the first adjacent vertex (not visited earlier) that provides an edge for
+Sig Consequently, the edge {v7, v3} is gy to T, v3 is assed to v and we return to
+
+Now, we note that there is no new vertex which we can obtain from v3, because the adjacent
+“1 has already been visited: So'we go to Step 3. Since v = v3 and v3 is not the first vertex,
+80 to Step 4. Now, we back track from v3 and assign the vertex v7 to v, and then we return
+
+fog
+tep 2, At this time we sée that the edge {v7, vs} can be added to T. fon vel Go thi
+Ve in is
+et) ty 7 aed the process, we-attach the edges {v1, v4}, {v4,v} and finally {vs.¥6

@@ -1,0 +1,42 @@
+140 Decrease-and-Conquer
+
+os) i)
+& 9)
+
+FIGURE 4.6
+
+) i) C5, The pSMeiMbccior
+C3 C4, C5, C4, C3, C1, C2
+C33 The topologically sorted list:
+
+ey (5) C14 C25 C2. Ci-+C3—+C4-e5
+QA
+(a) (b) (c)
+FIGURE 4.7 (anDi
+
+arbitrary digraph, but it is easy to'see that the problem cannot have a solution
+if a digraph has a directed cycle. Thus, for topological sorting to be possible, a
+digraph in question must be a dag. It turns out that being a dag is not only necessary
+but also sufficient for topological sorting to be possible; i.e., if a digraph has no
+directed cycles, the topological sorting problem for it has a solution. Moreover,
+there are two efficient algorithms that both verify whether a digraph is a dag
+and, if it is, produce an ordering of vertices that solves the topological sorting
+problem.
+
+The first algorithm is a simple application of depth-first search: perform a DFS
+traversal and note the order in which vertices become dead-ends (i.e., popped
+off the traversal stack). Reversing this order yields a solution to the topological
+sorting problem, provided, of course, no back edge has been encountered during
+the traversal. If a back edge has been encountered, the digraph is not a dag, and
+topological sorting of its vertices is impossible.
+
+Why does the algorithm work? When a vertex v is popped off a DFS stack,
+no vertex u with an edge from u to v can be among the vertices popped off before
+v. (Otherwise, (wu, v) would have been a back edge.) Hence, any such vertex u will
+be listed after v in the popped-off order list, and before v in the reversed list.
+
+Figure 4.7 illustrates an application of this algorithm to the digraph in Fig-
+ure 4.6. Note that in Figure 4.7c, we have drawn the edges of the digraph, and
+they all point from left to right as the problem’s statement requires. It is a con-
+venient way to check visually the correctness of a solution to an instance of the
+topological sorting problem.

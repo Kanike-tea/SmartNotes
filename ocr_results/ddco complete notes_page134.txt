@@ -1,0 +1,49 @@
+Digital Design and Computer Organization (BCS302)
+
+Consider how the idea of pipelining can be used in a computer. The processor executes
+a program by fetching and executing instructions, one after the other.
+
+Let Fi and Ei refer to the fetch and execute steps for instruction Ii . Execution of a
+program consists of a sequence of fetch and execute steps, as shown in Figure a.
+
+—» Time
+
+Instruction
+fetch
+unit
+
+Execution
+unit
+
+(b) Hardware organization
+
+Now consider a computer that has two separate hardware units, one for fetching
+instructions and another for executing them, as shown in Figure b. The instruction
+fetched by the fetch unit is deposited in an intermediate storage buffer, B1. This buffer
+is needed to enable the execution unit to execute the instruction while the fetch unit is
+fetching the next instruction. The results of execution are deposited in the destination
+location specified by the instruction.
+
+The computer is controlled by a clock.
+
+any instruction fetch and execute steps completed in one clock cycle.
+
+Operation of the computer proceeds as in Figure 8.1c.
+
+In the first clock cycle, the fetch unit fetches an instruction I1 (step F1) and
+stores it in buffer B1 at the end of the clock cycle.
+
+In the second clock cycle, the instruction fetch unit proceeds with the fetch
+operation for instruction 12 (step F2). Meanwhile, the execution unit performs the
+operation specified by instruction I1, which is available to it in buffer B1 (step E1).
+By the end of the second clock cycle, the execution of instruction I1 is completed
+and instruction I2 is available. Instruction I2 is stored in B1, replacing I1, which is
+no longer needed.
+
+Step E2 is performed by the execution unit during the third clock cycle, while
+instruction I3 is being fetched by the fetch unit. In this manner, both the fetch and
+execute units are kept busy all the time. If the pattern in Figure 8.1c can be
+sustained for a long time, the completion rate of instruction execution will be twice
+that achievable by the sequential operation depicted in Figure a.
+
+Dr Ajay V G, Dept. of CSE,SVIT

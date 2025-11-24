@@ -1,0 +1,50 @@
+456 Chapter 12. Caches
+
+ENDIF
+
+IF "Sop" = "DcacheRAM"
+MCR p15, 0, adr, c7, c2, 5 3 Allocate d-cache line
+MCR p15, 0, adr, c7, cl0, 4; drain write buffer
+
+sTRD tmp, [adr], #8 5 init 2 zero & adr=+2
+sTRD tmp, [adr], #8 5 init 2 zero & adr=+2
+sTRD tmp, [adr], #8 5 init 2 zero & adr=+2
+sTRD tmp, [adr], #8 5 init 2 zero & adr=+2
+
+ENDIF
+
+SuBS size, size, #1
+
+BNE BTS
+
+IF "Sop" = "Dcache" :LOR: "Sop" = "DcacheRAM"
+MCR p15, 0, adr, c7, cl0, 4 ; drain write buffer
+MCR p15, 0, tmp, c9, c2, 0 5 lock data cache
+
+CPWAIT
+ENDIF
+1
+Mov. rd, #0
+MOV pc, Ir
+MEND
+lockICache
+CACHELOCKREGION Icache
+lockDCache
+CACHELOCKREGION Dcache
+lockDCacheRAM
+CACHELOCKREGION DcacheRAM
+ENDIF
+
+Finally, the macro is used three times to create the lockICache, lockDCache, and
+JockDCacheRAM functions.
+
+12.7 CACHES AND SOFTWARE PERFORMANCE
+
+Here are a few simple rules to help write code that takes advantage of cache architecture.
+
+Most regions in a memory system are configured to have both the caches and write
+buffer enabled, taking maximum advantage of the cache architecture to reduce average
+memory access time. For more information on regions and the configuration of cache and
+write buffers operation within them, refer to Chapter 13 if you are using an ARM processor
+core with a memory protection unit and Chapter 14 if you are using an ARM processor
+core with a memory management unit.

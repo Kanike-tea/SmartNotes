@@ -1,0 +1,61 @@
+12.6 Cache Lockdown 443
+
+ELSE
+
+EXPORT flushICacheRegion
+
+EXPORT flushDCacheRegion
+
+EXPORT flushCacheRegion
+
+EXPORT cleanDCacheRegion
+
+EXPORT cleanFlushDCacheRegion
+
+EXPORT cleanFlushCacheRegion
+flushICacheRegion
+
+CACHEBYREGION IcacheFlush
+flushDCacheRegion
+
+CACHEBYREGION DcacheF lush
+flushCacheRegion
+
+CACHEBYREGION IDcacheFlush
+cleanDCacheRegion
+
+CACHEBYREGION DcacheClean
+cleanFlushDCacheRegion
+
+CACHEBYREGION DcacheCleanFlush
+cleanFlushCacheRegion
+
+CACHEBYREGION IDcacheCleanFlush
+
+ENDIF
+ENDIF
+
+Finally, using the CACHEBYREGION macro, we either create three procedures if the core
+is an Intel StrongARM, which has a limited command set, or all six procedures for the
+remainder of the processors that have split caches.
+
+12.6 CACHE LOCKDOWN
+
+Cache lockdown is a feature that enables a program to load time-critical code and data into
+cache memory and mark it as exempt from eviction. Code or data in lockdown provides
+faster system response because it is held in the cache memory. Cache lockdown avoids the
+problem of unpredictable execution times that result from the cache line eviction process,
+a normal part of cache operation.
+
+The purpose of locking information in cache is to avoid the cache miss penalty. However,
+because any cache memory used for lockdown is unavailable for caching other parts of main
+memory, the useful cache size is reduced.
+
+The ARM core allocates fixed units of the cache for lockdown. The unit size that ARM
+cores allocate in lockdown is a way. For example, a four-way set associative cache allows
+locking code or data in units that are 1/4th of the cache size. The cached core always reserves
+at least one way for normal cache operation.
+
+Some instructions that are candidates for locking in cache are the vector interrupt table,
+interrupt service routines, or code for a critical algorithm that the system uses extensively.
+On the data side, frequently used global variables are good candidates for lockdown.

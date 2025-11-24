@@ -1,0 +1,55 @@
+1004 Chapter 26 Enhanced Data Models
+
+It can be shown that any formula can be converted into clausal form. For our pur-
+poses, we are mainly interested in the form of the individual clauses, each of which
+is a disjunction of literals. Recall that literals can be positive literals or negative liter-
+als. Consider a clause of the form:
+
+NOT(P,) OR NOT(P3) OR ... OR NOT(P,,) OR Q; OR Q; OR... OR Quy ()
+
+This clause has n negative literals and m positive literals. Such a clause can be trans-
+formed into the following equivalent logical formula:
+
+P, AND P; AND ... AND P,, = Q, OR Q; OR... OR Q,, (2)
+
+where = is the implies symbol. The formulas (1) and (2) are equivalent, meaning
+that their truth values are always the same. This is the case because if all the P;
+
+literals (i = 1, 2, ... , n) are true, the formula (2) is true only if at least one of the
+Qs is true, which is the meaning of the > (implies) symbol. For formula (1), ifall
+the P; literals (i = 1, 2, ... , n) are true, their negations are all false; so in this case
+
+formula (1) is true only if at least one of the Q;’s is true. In Datalog, rules are
+expressed as a restricted form of clauses called Horn clauses, in which a clause
+can contain at most one positive literal. Hence, a Horn clause is either of the form
+
+NOT (P,) OR NOT(P2) OR ... OR NOT(P,,) OR Q (3)
+or of the form
+
+NOT (P,) OR NOT(P3) OR ... ORNOT(P,,) (4)
+The Horn clause in (3) can be transformed into the clause
+
+P, AND P; AND ... AND P,, > Q (5)
+which is written in Datalog as the following rule:
+
+Qe Pyy Pay ves Pre (6)
+The Horn clause in (4) can be transformed into
+
+P, AND P AND ... AND P,, > (7)
+which is written in Datalog as follows:
+
+Py, Py... Pye (8)
+
+A Datalog rule, as in (6), is hence a Horn clause, and its meaning, based on form-
+ula (5), is that if the predicates P; AND P) AND ... AND P,, are all true for a particular
+binding to their variable arguments, then Q is also true and can hence be inferred.
+The Datalog expression (8) can be considered as an integrity constraint, where all
+the predicates must be true to satisfy the query.
+
+In general, a query in Datalog consists of two components:
+
+= A Datalog program, which is a finite set of rules
+= A literal P(X), Xo, ... ,X,), where each X; is a variable or a constant
+
+A Prolog or Datalog system has an internal inference engine that can be used to
+process and compute the results of such queries. Prolog inference engines typically

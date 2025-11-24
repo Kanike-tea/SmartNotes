@@ -1,0 +1,246 @@
+Database security
+access acceptability and, 1127
+access control, 1126
+additional forms of protection, 1123
+authenticity assurance and, 1127
+challenges for maintaining, 1154-1155
+control measures, 1123-1125
+data availability and, 1127
+database administrator (DBA) and,
+1125-1126
+discretionary action control, 1121,
+1129-1134
+discretionary privileges, types of,
+1129-1130
+discretionary security mechanisms, 1123
+encryption, 1149-1153
+flow control, 1147-1149
+GRANT command for, 1131
+GRANT OPTION for, 1131
+granting and revoking privileges,
+1129-1134
+information privacy relationship to,
+1128-1129
+label-based security policy, 1139-1140,
+1155-1158
+limiting privilege propagation,
+1133-1134
+mandatory access control (MAC),
+1121, 1134-1137
+mandatory security mechanisms, 1123
+Oracle, 1155-1158
+precision compared to security, 1128
+privacy issues and preservation,
+1153-1154
+privilege specification using views,
+1130-1131
+propagation of privileges, 1131,
+1133-1134
+revoking of privileges, 1131
+role-based access control (RBAC),
+1121, 1137-1139
+row-level access control, 1139-1140,
+sensitivity of data and, 1126-1127
+SQL injection, 1143-1146
+statistical database security, 1146-1147
+system log modifications and, 1125
+threats to databases, 1122
+types of security for, 1122
+XML access control, 1140-1141
+Database security and authorization
+subsystem, DBMS, 1123
+Database server, 44
+Database storage
+organization of, 545-546
+reorganization, 45
+Database system
+architectures, 46-51
+catalog, 10-11, 35, 42-45
+communication software, 46
+current state, 35,
+data models, 32-34
+
+DBMS classification, 51-53
+
+defined, 6
+
+environment
+
+environment of, 6-7, 42-46
+
+extension of, 35
+
+initial state, 35
+
+instances, 35
+
+interfaces, 40-42
+
+languages, 38-40
+
+module functions in, 31, 42-45
+
+populating (loading), 35
+
+schemas, 34-38
+
+tools, 45-46
+
+utilities, 45
+
+valid state, 35
+
+Databases
+
+big data storage systems and, 26
+
+DBMS (database management
+systems) for, 6, 9, 17-23, 27
+
+active systems, 4, 22
+
+application programs for, 6
+
+backing up, magnetic tape storage for,
+555-556
+
+backup and recovery subsystem, 20
+
+big data storage, 3
+
+characteristics of, 10-14
+
+cloud storage, 3
+
+constructing, 6, 9
+
+data abstraction, 12-13
+
+data relationship complexity and, 21
+
+database users and, 3-29
+
+deductive systems, 22
+
+defined, 4
+
+development time reduction, 22-23
+
+economies of scale, 23
+
+employment concerning, 15-17
+
+eXtended Markup Language (XML)
+and, 25
+
+extending capabilities of, 25
+
+extracting XML documents from,
+442-443, 447-453
+
+file processing, 10-11
+
+flexibility of, 23
+
+hierarchical and network systems used
+as, 23-24
+
+history of applications, 23-26
+
+information retrieval (IR) systems
+compared to, 1025-1026
+
+integrity constraints, 21-22
+
+interchanging Web data, 25
+
+maintenance, 6
+
+manipulating, 6, 9
+
+meta-data, 6, 10
+
+multiple user interfaces, 20-21
+
+multiple views of, 13
+
+multiuser transaction processing, 13-14
+
+NOSQL system, 3, 26
+
+object-oriented (OODB), 24-25,
+
+object-oriented systems and, 19
+
+online transaction processing
+(OLTP), 14
+
+Index 1221
+
+persistent storage, 19-20
+program-data independence, 12
+program-operation independence, 12
+properties of, 5
+protection, 6
+queries, 6, 20
+real-time technology, 4
+redundancy control, 18-19
+relational, 24
+rules for inferencing information, 22
+search techniques, 4
+self-describing data, 10
+sharing, 6
+Structured Query Language (SQL), 26
+standards enforced by, 22
+traditional applications, 3
+transactions, 6, 14
+triggers for, 22
+unauthorized access restriction, 19
+updating information, 23
+
+Datalog language
+clausal form, 1003-1005
+deductive databases, 1001, 1002-1003
+Horn clauses, 1004
+notation, 1000-1003
+program safety, 1007-1010
+queries in, 1004, 1010-1012
+
+DATE data type, 183
+
+DBA (database administrators)
+interfaces for, 42
+role of, 15
+
+DBMIN method, transaction processing,
+
+757
+
+DBMS (database management systems)
+advantages of approach, 17-23
+access path options, 52
+backup and recovery subsystem, 20
+bottom-tier database server as, 344
+centralized, 51
+centralized architecture of, 46-47
+classification of, 51-53
+client/server architectures, 47-49
+component modules, 42-45
+conceptual design phase, 9
+concurrency control software for, 13-14
+data complexity and, 21
+data models and, 51-53
+defined, 6
+disadvantages of, 27
+distributed, 51
+federated, 52
+general purpose, 52
+heterogeneous, 52
+homogeneous, 52
+integrity constraints, 21-22
+interfaces, 40-42
+language, 38-40
+logical design phase, 9
+multiple user interfaces, 20-21
+multiuser systems, 51
+number of sites for, 51-52

@@ -1,0 +1,41 @@
+Microcontrollers-BCS402
+
+time. With an operating system controlling these resources, they can be efficiently used by
+different applications running within the operating system environment.
+ARM processors support over 50 operating systems. The operating systems can be divide into
+two main categories:
+
+i) Real-time operating systems (RTOSs)
+
+ii) Platform operating systems.
+RTOSs provide guaranteed response times to events. Different operating systems have
+different amounts of control over the system response time. A hard real-time application
+requires a guaranteed response to work at all. In contrast, a soft real-time application requires
+a good response time, but the performance degrades more gracefully if the response time
+overruns. Systems running an RTOS generally do not have secondary storage.
+Platform operating systems require a memory management unit to manage large, non real
+time applications and tend to have secondary storage. The Linux operating system is a typical
+
+example of a platform operating system.
+
+5.3 Applications
+
+The operating system schedules applications—code dedicated to handling a particular task.
+An application implements a processing task; the operating system controls the environment.
+An embedded system can have one active application or several applications running
+simultaneously.
+
+ARM processors are found in numerous market segments, including networking, automotive,
+mobile and consumer devices, mass storage, and imaging. Within each segment ARM
+processors can be found in multiple applications.
+
+The mobile device segment is the largest application area for ARM processors because of
+mobile phones. ARM processors are also found in mass storage devices such as hard drives
+and imaging products such as inkjet printers—applications that are cost sensitive and high
+volume.
+
+In contrast, ARM processors are not found in applications that require leading-edge high
+
+performance. Because these applications tend to be low volume and high cost.
+
+Dept. of ECE, GSSSIETW Page 14

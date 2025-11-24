@@ -1,0 +1,58 @@
+Digital Design and Computer Organization(BCS302)
+
+x o 1 1 o o
+
+) ) o [1 1 ]10
+° A—_ \F=ABC ht G=A+B+C+D
+AND: x - y 0 o fi 0 0 BS c—
+3 c—
+D
+OR:x +5 0 1 1 I 0
+NOT: x’ 1 0 0 1 1 (a) Three-input AND gate (b) Four-input OR gate
+
+Gates with multiple inputs
+Input-Output Signals for gates. Timing Diagram
+
+BASIC THEOREMS AND PROPERTIES OF BOOLEAN ALGEBRA:
+Duality:
+
+> The important property of Boolean algebra is called the duality principle
+and states that every algebraic expression deducible from the postulates of
+Boolean algebra remains valid if the operators and identity elements are
+interchanged.
+
+> Ina two-valued Boolean algebra, the identity elements and the elements of
+the set Bare the same: 1 and O. The duality principle has many applications.
+
+> If the dual of an algebraic expression is desired, we simply interchange OR
+and AND operators and replace 1’s by 0’s and 0’s by 1’s.
+
+Basic Theorems
+
+> Table 1 lists out six theorems of Boolean algebra and four of its postulates. The
+theorems and postulates listed are the most basic relationships in Boolean
+algebra.
+
+> The theorems, like the postulates, are listed in pairs; each relation is the dual of
+the one paired with it. The postulates are basic axioms of the algebraic structure
+and need no proof.
+
+> The theorems must be proven from the postulates.
+
+Table 2.1
+
+Postulates and Theorems of Boolean Algebra
+
+Postulate 2 (a) x +0 (b) xel=x
+Postulate 5 (a) x+x'=1 (b) 0
+Theorem 1 (a) x+x=x (b) x
+Theorem 2 (a) x+1=1 (b) x-0=0
+Theorem 3, involution (x')' =x
+
+Postulate 3,commutative (a) x+y=yt+x (b) xy = yx
+Theorem 4, associative (a) x+(yt+tzj=(x+y)+z (b) xX(yz) = (xy)z
+Postulate 4, distributive (a) xX(y +z) =xy + xz (b) x +yz =(x + y)(x +z)
+Theorem 5, DeMorgan (a) c'y’ (b) (xy)' =x'+y’
+Theorem 6, absorption (a) (b) x(x +y)=x
+
+Page 3

@@ -1,0 +1,49 @@
+21.5 Granularity of Data Items and Multiple Granularity Locking 803
+Is Ix Ss SIX Xx
+Is Yes Yes Yes Yes No
+Ix Yes Yes No No No
+s Yes No Yes No No
+Six Yes No No No No
+
+Figure 21.8
+x No No No No No Lock compatibility matrix for
+
+multiple granularity locking.
+
+3. Shared-intention-exclusive (SIX) indicates that the current node is locked in
+shared mode but that one or more exclusive locks will be requested on some
+descendant node(s).
+
+The compatibility table of the three intention locks, and the actual shared and
+exclusive locks, is shown in Figure 21.8. In addition to the three types of intention
+locks, an appropriate locking protocol must be used. The multiple granularity
+locking (MGL) protocol consists of the following rules:
+
+1. The lock compatibility (based on Figure 21.8) must be adhered to.
+
+2. The root of the tree must be locked first, in any mode.
+
+3. A node N can be locked by a transaction T in S$ or IS mode only if the parent
+node N is already locked by transaction T in either IS or IX mode.
+
+4. Anode N can be locked by a transaction T in X, IX, or SIX mode only if the
+parent of node Nis already locked by transaction T in either IX or SIX mode.
+
+5. A transaction T can lock a node only if it has not unlocked any node (to
+enforce the 2PL protocol).
+
+6. A transaction T can unlock a node, N, only if none of the children of node N
+are currently locked by T.
+
+Rule 1 simply states that conflicting locks cannot be granted. Rules 2, 3, and 4 state
+the conditions when a transaction may lock a given node in any of the lock modes.
+Rules 5 and 6 of the MGL protocol enforce 2PL rules to produce serializable sched-
+ules. Basically, the locking starts from the root and goes down the tree until the
+node that needs to be locked is encountered, whereas unlocking starts from the
+locked node and goes up the tree until the root itself is unlocked. To illustrate the
+MGL protocol with the database hierarchy in Figure 21.7, consider the following
+three transactions:
+
+1. T; wants to update record 1; and record 111.
+2. Tz wants to update all records on page p12.
+3. T3 wants to read record rj;j and the entire f; file.

@@ -1,0 +1,55 @@
+26.2 Temporal Database Concepts 977
+
+other interpretations are intended for time, the user can define the semantics and
+program the applications appropriately, and this interpretation of time is called a
+user-defined time.
+
+The next section shows how these concepts can be incorporated into relational
+databases, and Section 26.2.3 shows an approach to incorporate temporal concepts
+into object databases.
+
+26.2.2 Incorporating Time in Relational Databases
+Using Tuple Versioning
+
+Valid Time Relations. Let us now see how the different types of temporal databases
+may be represented in the relational model. First, suppose that we would like to include
+the history of changes as they occur in the real world. Consider again the database in
+Figure 26.1, and let us assume that, for this application, the granularity is day. Then,
+we could convert the two relations EMPLOYEE and DEPARTMENT into valid time
+relations by adding the attributes Vst (Valid Start Time) and Vet (Valid End Time),
+whose data type is DATE in order to provide day granularity. This is shown in Fig-
+ure 26.7(a), where the relations have been renamed EMP_VT and DEPT_VT, respectively.
+
+Consider how the EMP_VT relation differs from the nontemporal EMPLOYEE rela-
+tion (Figure 26.1).!° In EMP_VT, each tuple V represents a version of an employee’s
+
+(a) EMP_VT Figure 26.7
+
+Different types of temporal
+relational databases. (a) Valid
+DEPT VT time database schema.
+
+= (b) Transaction time database
+schema. (c) Bitemporal
+database schema.
+
+Name | Ssn | Salary | Dno | Supervisor_ssn | Vst | Vet
+
+Dname | Dno | Total_sal | Manager_ssn | Vst | Vet
+
+(b)  EMP_TT
+Name | Ssn | Salary | Dno | Supervisor_ssn | Tst | Tet
+
+DEPT_TT
+
+Dname | Dno | Total_sal | Manager_ssn | Ist | Tet
+
+(©) EMP_BT
+Name | Ssn | Salary | Dno | Supervisor_ssn | Vst | Vet | Ist | Tet
+
+DEPT_BT
+
+Dname | Dno | Total_sal | Manager_ssn | Vst | Vet | Tst | Tet
+
+15 nontemporal relation is also called a snapshot relation because it shows only the current snapshot
+or current state of the database.

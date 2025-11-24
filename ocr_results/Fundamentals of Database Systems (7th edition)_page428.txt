@@ -1,0 +1,51 @@
+398
+
+Chapter 12 Object and Object-Relational Databases
+
+has one operation: reassign_emp, and the DEPARTMENT class has two operations:
+add_emp and change_manager.
+
+12.3.5 Extents, Keys, and Factory Objects
+
+In the ODMG object model, the database designer can declare an extent (using the
+keyword extent) for any object type that is defined via a class declaration. The extent
+is given a name, and it will contain all persistent objects of that class. Hence, the
+extent behaves as a set object that holds all persistent objects of the class. In Fig-
+ure 12.7 the EMPLOYEE and DEPARTMENT classes have extents called ALL EMPLOYEES
+and ALL_DEPARTMENTS, respectively. This is similar to creating two objects—one
+of type set<EMPLOYEE> and the second of type set<DEPARTMENT>—and making
+them persistent by naming them ALL_EMPLOYEES and ALL_DEPARTMENTS. Extents
+are also used to automatically enforce the set/subset relationship between the
+extents of a supertype and its subtype. If two classes A and B have extents ALL_A and
+ALL_B, and class B is a subtype of class A (that is, class B extends class A), then the
+collection of objects in ALL_B must be a subset of those in ALL_A at any point. This
+constraint is automatically enforced by the database system.
+
+A class with an extent can have one or more keys. A key consists of one or more
+properties (attributes or relationships) whose values are constrained to be unique
+for each object in the extent. For example, in Figure 12.7 the EMPLOYEE class has
+the Ssn attribute as key (each EMPLOYEE object in the extent must have a unique
+Ssn value), and the DEPARTMENT class has two distinct keys: Dname and Dnumber
+(each DEPARTMENT must have a unique Dname and a unique Dnumber). For a
+composite key*® that is made of several properties, the properties that form the
+key are contained in parentheses. For example, if a class VEHICLE with an extent
+ALL_VEHICLES has a key made up of a combination of two attributes State and
+License_number, they would be placed in parentheses as (State, License_number) in
+the key declaration.
+
+Next, we present the concept of factory object—an object that can be used to gen-
+erate or create individual objects via its operations. Some of the interfaces of factory
+objects that are part of the ODMG object model are shown in Figure 12.8. The
+interface ObjectFactory has a single operation, new(), which returns a new object
+with an Object_id. By inheriting this interface, users can create their own factory
+interfaces for each user-defined (atomic) object type, and the programmer can
+implement the operation new differently for each type of object. Figure 12.8 also
+shows a DateFactory interface, which has additional operations for creating a new
+calendar_date and for creating an object whose value is the current_date, among other
+operations (not shown in Figure 12.8). As we can see, a factory object basically pro-
+vides the constructor operations for new objects.
+
+Finally, we discuss the concept of a database. Because an ODB system can create
+many different databases, each with its own schema, the ODMG object model has
+
+3° composite key is called a compound key in the ODMG report.

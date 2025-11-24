@@ -1,0 +1,52 @@
+11.3 Overview of PHP Database Programming
+
+5. $_SERVER[ 'QUERY_STRING' }. This provides the string that holds parame-
+ters in a URL after a question mark (?) at the end of the URL. This can hold
+search parameters, for example.
+
+6. $_SERVER[ 'DOCUMENT_ROOT' ]. This is the root directory that holds the
+files on the Web server that are accessible to client users.
+
+These and other entries in the $_SERVER array are usually needed when creating
+the HTML file to be sent to the client for display.
+
+Another important PHP auto-global built-in array variable is called $_Post. This
+provides the programmer with input values submitted by the user through HTML
+forms specified in the HTML <1nput> tag and other similar tags. For example, in
+Figure 11.4, line 14, the variable $_PosT[ 'user_name' ] provides the programmer
+with the value typed in by the user in the HTML form specified via the <INPUT> tag
+on line 8 in Figure 11.4. The keys to this array are the names of the various input
+parameters provided via the form, for example by using the name attribute of the
+HTML <rnput> tag as on line 8. When users enter data through forms, the data
+values are stored in this array.
+
+11.3 Overview of PHP Database Programming
+
+There are various techniques for accessing a database through a programming lan-
+guage. We discussed some of the techniques in Chapter 10, in the overviews of how
+to access an SQL database using the C and Java programming languages. In particu-
+lar, we discussed embedded SQL, JDBC, SQL/CLI (similar to ODBC), and SQL]. In
+this section we give an overview of how to access the database using the script lan-
+guage PHP, which is suitable for creating Web interfaces for searching and updat-
+ing databases, as well as dynamic Web pages.
+
+There is a PHP database access function library that is part of PHP Extension and
+Application Repository (PEAR), which is a collection of several libraries of func-
+tions for enhancing PHP. The PEAR DB library provides functions for database
+access. Many database systems can be accessed from this library, including Oracle,
+MySQL, SQLite, and Microsoft SQLServer, among others.
+
+We will discuss several functions that are part of PEAR DB in the context of some
+examples. Section 11.3.1 shows how to connect to a database using PHP. Sec-
+tion 11.3.2 discusses how data collected from HTML forms can be used to insert a
+new record in a database table. Section 11.3.3 shows how retrieval queries can be
+executed and have their results displayed within a dynamic Web page.
+
+11.3.1 Connecting to a Database
+
+To use the database functions in a PHP program, the PEAR DB library module
+called DB. php must be loaded. In Figure 11.6, this is done in line 0 of the example.
+The DB library functions can now be accessed using DB: :<function_name>.
+The function for connecting to a database is called DB: :connect('string'),
+
+353

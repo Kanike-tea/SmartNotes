@@ -1,0 +1,60 @@
+6.9 Handling Unaligned Data 201
+
+= Use the switch value to index a table of function pointers or to branch to short
+sections of code at regular intervals. The second technique is position independent;
+the first isn’t.
+
+6.9 HANDLING UNALIGNED DATA
+
+EXAMPLE
+
+6.30
+
+Recall that a load or store is unaligned if it uses an address that is not a multiple of the data
+transfer width. For code to be portable across ARM architectures and implementations,
+you must avoid unaligned access. Section 5.9 introduced unaligned accesses and ways of
+handling them in C. In this section we look at how to handle unaligned accesses in assembly
+code.
+
+The simplest method is to use byte loads and stores to access one byte at a time. This
+is the recommended method for any accesses that are not speed critical. The following
+example shows how to access word values in this way.
+
+This example shows how to read or write a 32-bit word using the unaligned address p. We
+use three scratch registers t0, t1, t2 to avoid interlocks. All unaligned word operations
+take seven cycles on an ARM9TDMI. Note that we need separate functions for 32-bit words
+stored in big- or little-endian format.
+
+P RN O
+x RN 1
+to RN 2
+tl RN 3
++2 RN 12
+
+3 int load_32_little(char *p)
+load_32_little
+
+ORB. x, [p]
+
+LORB- tO, [p, #1]
+
+LoRB- tl, [p, #2]
+
+LORB 2, [p, #3]
+
+ORR x, x, tO, LSL#8
+
+ORR x, x, tl, LSL#16
+
+ORR =r, x, t2, LSL#24
+
+MOV pc, Ir
+
+3 int load_32_big(char *p)
+load_32_big
+
+ORB. x, [p]
+
+LORB- tO, [p, #1]
+
+LoRB- tl, [p, #2]

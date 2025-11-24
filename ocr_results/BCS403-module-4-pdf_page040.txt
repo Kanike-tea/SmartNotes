@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+= Serial schedule:
+- Aschedule S is serial if, for every transaction T participating in the schedule, all
+the operations of T are executed consecutively in the schedule.
+« Otherwise, the schedule is called nonserial schedule.
+= Serializable schedule:
+- Aschedule S is serializable if it is equivalent to some serial schedule of the same
+n transactions.
+= Result equivalent:
+— Two schedules are called result equivalent if they produce the same final state of
+the database.
+= Conflict equivalent:
+- Two schedules are said to be conflict equivalent if the order of any two conflicting
+operations is the same in both schedules.
+= Conflict serializable:
+- Aschedule S is said to be conflict serializable if it is conflict equivalent to some
+serial schedule S’.
+
+= Being serializable is not the same as being serial
+= Being serializable implies that the schedule is a correct schedule.
+— It will leave the database in a consistent state.
+— The interleaving is appropriate and will result in a state as if the transactions
+were serially executed, yet will achieve efficiency due to concurrent execution.
+
+5.6.1 Testing conflict serializability of a Schedule S
+
+For each transaction. Ti participating in schedule S,create a node labeled Ti in the
+precedence graph.
+
+For.each case in S where Tj executes a read_item(X) after Ti executes a write_item(X),
+create an edge (Ti>T}) in the precedence graph.
+
+For each case in S where Tj executes a write_item(X) after Ti executes a read_item (X)
+,create an edge (Ti>T)) in the precedence graph.
+
+For each case in S where Tj executes a write_item(X) after Ti executes a write_item(X),
+create an edge (Ti>T}) in the precedence graph.
+
+The schedule S is serializable if and only if the precedence graph has no cycles.
+
+https://vtucode.in 16

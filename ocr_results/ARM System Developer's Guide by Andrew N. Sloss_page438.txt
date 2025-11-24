@@ -1,0 +1,59 @@
+Table 12.3
+
+12.5 Flushing and Cleaning Cache Memory 425
+
+CP15:c7:Cm commands to flush the entire cache.
+
+Command
+
+MCR instruction Core support
+
+Flush cache
+
+MCR pl5, 0, Rd, c7,c7,0 ARM720T, ARM920T, ARM922T, ARM926E)J-S,
+ARM1022E, ARM1026EJ-S, StrongARM, XScale
+
+Flush data cache MCR p15, 0, Rd, c7,c6,0 =ARM920T, ARM922T, ARM926EJ-S, ARM940T,
+
+ARM946E-S, ARM1022E, ARM1026E)-S,
+StrongARM, XScale
+
+Flush instruction cache MCR p15, 0, Rd, c7, 5,0 ARM920T, ARM922T, ARM926EJ-S, ARM940T,
+
+ARM946E-S, ARM1022E, ARM1026E)-S,
+StrongARM, XScale
+
+EXAMPLE
+
+12.2
+
+= flushCache flushes both the I-cache and D-cache.
+
+The routines have no input parameters and are called from C with the following
+prototypes:
+
+void flushCache(void);  /* flush all cache */
+void flushDCache(void);  /* flush D-cache */
+void flushICache(void); /* flush I-cache */
+
+This example begins by filtering the cores into groups based on the commands that they
+support.
+
+We use a macro called CACHEFLUSH to help in the creation of the routines. The
+macro starts by setting the core register written to the CP15:c7:Cm to zero. Then it inserts
+the specific MCR instruction depending on the type of cache operation needed and its
+availability within each core.
+
+IF {CPU} ‘ARM720T" :LOR: \
+{CPU} ‘ARM920T" :LOR: \
+{CPU} ‘ARM922T" :LOR: \
+{CPU} ARM926EJ-S"  :LOR: \
+{CPU} ‘ARM940T" :LOR: \
+{CPU} ARM946E-S" —:LOR: \,
+{CPU} ‘ARM1022E" :LOR: \
+{CPU} ‘ARM1026EJ-S" :LOR: \,
+{CPU} = "SA-110" :LOR: \
+
+{CPU} = "XSCALE"
+
+c7f RN 0 ; register in CP17:c7 format

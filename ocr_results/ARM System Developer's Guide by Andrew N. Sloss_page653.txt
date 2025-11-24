@@ -1,0 +1,36 @@
+Table B.1 ARM instruction decode table. (Continued.)
+
+Instruction classes (indexed by op) 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 1312111098 765 43210
+STRH | LDRH pre cond 0 0 0 1/U 0 Wop Rn Rd 0.0 0 OfLJO1]1] Rm
+STRH | LORH pre cond |0 0.0 1|U 1 Wop] Rn Rd _ iforli a
+LORD | STRD | LORSB | LORSH pre cond 0 0 0 1/U 0 Wop Rn Rd 0 0 0 Of1}lopjl]| Rm
+LORD | STRD | LDRSB | LORSH pre cond [0 0 0 1]U 1 Wop] Rn Rd _ 1) 1 opt ee
+AD eer 1 sec ("asc cond |0 01 0] op |S| Rn Rd rotate immed
+MSR cpsr, #imm | MSR spsr, #imm cond 0 0 1 1[0fop 1 Off s x cli 1 1 1 rotate immed
+TST | TEQ | CMP | CMN cond [0 0 1 1]0| op [1] Rn 00 0 0| rotate immed
+ORR BIC cond 0 0 1 I{lljop 0 S Rn Rd rotate immed
+MOV MVN cond 0 0 1 I{ljop 1 S|0 000 Rd rotate immed
+STR | LDR | STRB | LDRB post cond [0 1 0 0|U op Top| Rn Rd immedI2
+STR | LDR | STRB | LDRB pre cond [0 1 0 1|U op Wop| Rn Rd immedI2
+STR | LDR | STRB | LDRB post cond [0 1 1 0|U op T op| Rn Rd Shifi_size __[shifi [0] _Rm
+{ |S|Q{SH] |U|UQ|UH}ADD16 cond [0 1 1 O[0] op Rn Rd 111 1000/1] Rm
+{ |S[Q|SH] |U|UQ|UH)ADDSUBX cond [0 1 1 Of0| op Ri Rd T11ij001f] Rm
+{ |S[Q|SH| |U|UQ|UH)SUBADDX cond [0 1 1 O[0| op Rn Rd 111 i1f010fi[ Rm
+{ |S[Q|SH] |U|UQ|UH}SUB16 cond [0 1 1 0[0| op Rn Rd 111 ij01i1fi] Rm
+{ |S[Q{SH] |U|UQ|UH})ADD8 cond [0 1 1 Of0| op Ri Rd T1i1i{100f| Rm
+{ |S[Q{SH] |U|UQ|UH)SuB8 cond [0 1 1 0[0| op Rn Rd Tiiifiiifil Rm
+PKHBT | PKHTB cond 0 11 0;1/0 00 Rn Rd shift_size jop 0 [1] Rm
+{S|U}SAT cond [0 1 1 0|1[op 1] __immeds Rd shifi_size_|sh0 [1] _Rm
+{S|U}SAT16 cond 0 11 Ojljop 10 immed4 Rd 111 1/0 01{1] Rm
+SEL cond 0 11 0;1/0 00 Rn Rd 111 1) o01{i] Rm
+REV REV16 | | REVSH cond O11 Ofljop 1 1flt iil Rd 111 lfopO1{i] Rm
+{S|U}XTAB16 cond 0 1.1 Ojljop 0 0} Ral=11ll Rd rot |0 OJO 11/1} Rm
+{S|U}XTB16 cond O11 Ofljop 0 Of) 111 Rd rot |0 O]O 11 /]1] Rm
+{S|U}XTAB cond O 1 1 Oflfop 1 0} Ral=1lll Rd rot |0 0/0 11 /]1] Rm
+{S|U}XTB cond O11 Ojljop 1 Ofl 111 Rd rot |0 OJO 11/1} Rm
+{S|U}XTAH cond O 1 1 Oflfop 1 1] Ral=llll Rd rot |0 OJO 11 ]1] Rm
+{S|U}XTH cond O11 Ofljop 1 1fl iid Rd rot |0 O}O 11 ]1] Rm
+STR | LDR | STRB | LDRB pre cond [0 1 1 1|U op Wop| Rn Rd shifi_size _[shifi]O[ Rm
+SMLAD | SMLSD cond 011 ii1{0/0 00 Rd Rnl=1111 Rs_ [0 opX|1|_ Rm
+SMUAD | SMUSD cond o11ii1{0j/0 00 Rd Pili Rs_|O0 opX|1|_ Rm
+SMLALD | SMLSLD cond 011 i1/0)/1 00 RdHi RdLo Rs |O opX}1) Rm

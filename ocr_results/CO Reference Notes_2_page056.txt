@@ -1,0 +1,41 @@
+VIRTUAL MEMORY ADDRESS TRANSLATION
+¢ All programs and data are composed of fixed length units called Pages (Figure 8.25).
+The Page consists of a block-of-words. The words occupy contiguous locations in the memory.
+The pages are commonly range from 2K to 16K bytes in length.
+¢ Cache Bridge speed-up the gap between main-memory and secondary-storage.
+¢ Each virtual-address contains
+1) Virtual Page number (Low order bit) and
+2) Offset (High order bit).
+Virtual Page number + Offset > specifies the location of a particular word within a page.
+¢ Page-table: It contains the information about
+— memory-address where the page is stored &
+— current status of the page.
+¢ Page-frame: An area in the main-memory that holds one page.
+¢ Page-table Base Register: It contains the starting address of the page-table.
+. Virtual Page Number + Page-table Base register > Gives the starting
+address of the page if that page currently resides in memory.
+¢ Control-bits in Page-table: The Control-bits is used to
+1) Specify the status of the page while it is in memory.
+2) Indicate the validity of the page.
+3) Indicate whether the page has been modified during its stay in the memory.
+
+Virtual address from processor
+
+Page table base register |
+
+Page table address
+
+Control Page frame
+bits in memory
+
+Physical address in main memory
+Figure 8.25 Virtual-memory address translation.
+
+TRANSLATION LOOKASIDE BUFFER (TLB)
+e The Page-table information is used by MMU for every read/write access (Figure 8.26).
+e The Page-table is placed in the memory but a copy of small portion of the page-table is located within
+MMU. This small portion is called TLB (Translation LookAside Buffer).
+e TLB consists of the page-table entries that corresponds to the most recently accessed pages.
+e  TLB also contains the virtual-address of the entry.
+
+Page 57

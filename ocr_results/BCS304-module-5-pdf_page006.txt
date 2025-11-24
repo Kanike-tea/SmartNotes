@@ -1,0 +1,60 @@
+37
+
+49
+
+4. Rehashing
+
+When the hash table becomes nearly full, the number of collisions increases, thereby degrading
+
+the performance of insertion and search operations. In such cases, a better option is to create a
+
+new hash table with size double of the original hash table.
+
+All the entries in the original hash table will then have to be moved to the new hash table.
+
+This is done by taking each entry, computing its new hash value, and then inserting it in the new hash
+
+table.
+Though re
+
+ashing seems to be a simple process, it is quite expensive and must therefore not
+
+be done frequently.
+
+Consider tl
+
+e hash table of size 5 given below. The hash function used is h(x) = x % 5. Rehash the entries
+
+into to a new hash table.
+
+0
+
+1 2 3 4
+
+2 [ 31 | 43°] 7
+
+Note that the new hash table is of 10 locations, double the size of the original table.
+
+0 1 2 3 4 5 6 7 8 9
+
+Now, rehash the key values from the old hash table into the new one using hash function—h(x)
+
+=x % 10.
+
+31 43 26 17
+
+wm
+
+. Chaining
+
+Chaining technique avoids collision using an array of liked lists (run time).If more than one key
+has same hash value, then all the keys will be inserted at the end of the list (insert rear) one by
+one and thus collision is avoided.
+
+Example: Construct a hash table of size and store the following words: like, a, tree, you, first,
+a, place, to
+
+Let H(str)=P0+P1+P2+...... +Pn-1; where Pi is position of letter in English alphabet series.
+Then calculate the hash address = Sum % 5
+
+Page 7

@@ -1,0 +1,33 @@
+548 Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Track
+Read/write
+Actuator Arm head Spindle Disk rotation
+(b) []
+Cylinder
+-— of tracks
+(imaginary)
+Actuator movement
+
+Figure 16.1
+
+(a) A single-sided disk with read/write hardware. (b) A disk pack with read/write hardware.
+
+Figure 16.2 (a) Track Sector (arc of track)
+
+Different sector
+organizations on disk.
+(a) Sectors subtending
+a fixed angle.
+
+(b) Sectors maintaining
+a uniform recording
+density,
+
+(b)
+
+Three sectors
+
+Two sectors
+
+‘—One sector

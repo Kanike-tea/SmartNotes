@@ -1,0 +1,43 @@
+440 Chapter 12. Caches
+
+Figure 12.12
+
+ARM920T, ARM922T, ARM926EJ-S, ARM1026EJ-S
+31
+
+54 0
+Modified virtual address SBZ
+ARM946E-S
+31 54 0
+Physical address SBZ
+ARM1022E
+31 5432 0
+Modified virtual address WB| SBZ
+Intel StrongARM, Intel XScale
+54 0
+Modified virtual address SBZ
+
+CP15:c7 Register Format when cleaning and flushing a cache line referenced by its origin
+in main memory.
+
+All the procedures have two arguments passed to them, the starting address in main
+memory (adr) and the size of the region in bytes (b). The C function prototypes are
+
+void flushICacheRegion(int * adr, unsigned int b);
+void flushDCacheRegion(int * adr, unsigned int b);
+
+void cleanDCacheRegion(int * adr, unsigned int b);
+void cleanFlushDcacheRegion(int * adr, unsigned int b);
+
+void flushCacheRegion(int * adr, unsigned int b);
+void cleanFlushCacheRegion(int * adr, unsigned int b);
+
+Care should be taken when using the clean cache region procedures. The use of these
+procedures is most successful on small memory regions. If the size of the region is sev-
+eral times larger than the cache itself, it is probably more efficient to clean the entire
+cache using one of the clean cache procedures provided in Sections 12.5.4, 12.5.5, and
+12.5.6.
+
+The region procedures are available on a limited set of ARM cores. Figure 12.12 lists the
+cores that support cleaning and flushing by address. They are also listed at the start of the
+code in the following example.

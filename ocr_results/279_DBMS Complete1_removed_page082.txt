@@ -1,0 +1,38 @@
+LECTURE-27
+CLOSURE OF A SET OF FUNCTIONAL DEPEDENCIES
+
+Given a relational schema R, a functional dependencies f on R is logically implied by a set of
+functional dependencies F on R if every relation instance r(R) that satisfies F also satisfies f.
+
+The closure of F, denoted by F*, is the set of all functional dependencies logically implied by F.
+The closure of F can be found by using a collection of rules called Armstrong axioms.
+Reflexivity rule: If A is a set of attributes and B is subset or equal to A, then AB holds.
+Augmentation rule: IfA—B holds and C is a set of attributes, then CA—CB holds
+Transitivity rule: If A-B holds and BC holds, then A>C holds.
+
+Union rule: If A—B holds and AC then ABC holds
+
+Decomposition rule: If A—BC holds, then AB holds and AC holds.
+
+Pseudo transitivity rule: If AB holds and BC—D holds, then ACD holds.
+
+Suppose we are given a relation schema R=(A,B,C,G,H,I) and the set of function dependencies
+{A—B,A—>C,CG—H,CG—1,B—H}
+We list several members of F* here:
+1. AH, since AB and BH hold, we apply the transitivity rule.
+2. CG—HI. Since CGH and CG-1 , the union rule implies that CG-HI
+3. AGI, since AC and CGI, the pseudo transitivity rule implies that AG—I holds
+
+Algorithm of compute F+ :
+To compute the closure of a set of functional dependencies F:
+F+=F
+repeat
+for each functional dependency f in F+
+apply reflexivity and augmentation rules on f
+add the resulting functional dependencies to F+
+for each pair of functional dependencies fland f2 in F+
+if f1 and f2 can be combined using transitivity
+then add the resulting functional dependency to F+
+until F+ does not change any further
+
+large.

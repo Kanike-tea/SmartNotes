@@ -1,0 +1,76 @@
+Data Structures and Applications/BCS304
+
+Module 1
+
+Stack CreateS(maxStackSize) ::=
+
+create an empty stack whose maximum size is
+
+maxStackSize
+
+BooleanIsFull(stack, maxStackSize)
+
+if (number of elements in stack == maxStackSize)
+returnTRUE
+else returnFALSE
+
+StackPush(stack, item) ::=
+
+if (IsFull(stack)) stackFull
+
+else insert item into top of stack and return
+BooleanIsEmpty(stack) n= if
+CreateS(maxStackSize))
+
+returnTRUE
+
+else returnFALSE
+
+(stack
+
+ElementPop(stack) ::=
+
+if (IsEmpty(stack)) return
+else remove and return the element at the top of the stack.
+
+Array Implementation of a stack of integers
+
+}#include<stdio.h>
+#define MAX 10
+int top= -1,stack[MAX];
+
+void push(int item)
+
+if (top==MAX-1)
+printf("Stack Overflow\n");
+else
+
+stack[++top]=item;
+
+t
+int pop)
+{
+int itemdel;
+if (top==-1)
+return 0;
+else
+{
+itemdel=stack[top--];
+return itemdel;
+t
+t
+void display()
+{
+int i;
+if(top==-1)
+printf("Stack Empty\n");
+else
+{
+
+printf("Elements Are:\n");
+
+for(i=top;i>=0;i--)
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru
+
+Page 32

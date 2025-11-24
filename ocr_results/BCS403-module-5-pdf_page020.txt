@@ -1,0 +1,30 @@
+Database Management System [BCS403]
+
+IS Yes Yes Yes Yes No
+IX Yes Yes No No No
+NS) Yes No Yes No No
+
+SIX Yes No No No No
+
+xX No No No No No
+
+Figure 22.8: Lock compatibility matrix for multiple granularity locking.
+
+= The multiple granularity locking (MGL) protocol consists of the following rules:
+1. The lock compatibility (based on Figure 22.8) must be adhered to.
+2. The root of the tree must be locked first, in any mode.
+3. Anode N can be locked by a transaction. Tin S or IS mode only if the parent
+node Nis already locked by transaction Tin either IS or IX mode.
+4. Anode N can be locked by a transaction T in X, IX, or SIX mode only if the
+parent of node Nis already locked by transaction T in either IX or SIX mode.
+5. A'transaction T can lock a node only if it has not unlocked any node (to
+enforce the 2PL protocol).
+6. A transaction Tcan unlock a node, N, only if none of the children of node N
+are currently locked by T.
+= The multiple granularity level protocol is especially suited when processing a mix of
+transactions that include
+(1) short transactions that access only a few items (records or fields) and
+
+(2) long transactions that access entire files.
+
+https://vtucode.in 42

@@ -1,0 +1,49 @@
+27.3 Types of Queries in IR Systems
+
+The development of a sophisticated semantic system requires complex knowledge
+bases of semantic information as well as retrieval heuristics. These systems often
+require techniques from artificial intelligence and expert systems. Knowledge bases
+like Cyc!> and WordNet" have been developed for use in knowledge-based IR sys-
+tems based on semantic models. The Cyc knowledge base, for example, is a repre-
+sentation of a vast quantity of commonsense knowledge. It presently contains 15.94
+million assertions, 498,271 atomic concepts, and 441,159 nonatomic derived con-
+cepts for reasoning about the objects and events of everyday life. WordNet is an
+extensive thesaurus (over 117,000 concepts) that is very popular and is used by
+many systems and is under continuous development (see Section 27.4.3).
+
+27.3 Types of Queries in IR Systems
+
+Different keywords are associated with the document set during the process of
+indexing. These keywords generally consist of words, phrases, and other character-
+izations of documents such as date created, author names, and type of document.
+They are used by an IR system to build an inverted index (see Section 27.5), which
+is then consulted during the search. The queries formulated by users are compared
+to the set of index keywords. Most IR systems also allow the use of Boolean and
+other operators to build a complex query. The query language with these operators
+enriches the expressiveness of a user’s information need.
+
+27.3.1 Keyword Queries
+
+Keyword-based queries are the simplest and most commonly used forms of IR que-
+ries: the user just enters keyword combinations to retrieve documents. The query
+keyword terms are implicitly connected by a logical AND operator. A query such as
+“database concepts’ retrieves documents that contain both the words ‘database’ and
+‘concepts’ at the top of the retrieved results. In addition, most systems also retrieve
+documents that contain only ‘database’ or only ‘concepts’ in their text. Some sys-
+tems remove most commonly occurring words (such as a, the, of, and so on, called
+stopwords) as a preprocessing step before sending the filtered query keywords to
+the IR engine. Most IR systems do not pay attention to the ordering of these words
+in the query. All retrieval models provide support for keyword queries.
+
+27.3.2 Boolean Queries
+
+Some IR systems allow using the AND, OR, NOT, (), +, and — Boolean operators in
+combinations of keyword formulations. AND requires that both terms be found.
+OR lets either term be found. NOT means any record containing the second term
+will be excluded. ‘( )’ means the Boolean operators can be nested using parentheses.
+“+ is equivalent to AND, requiring the term; the ‘+’ should be placed directly in front
+
+'8See Lenat (1995).
+'€See Miller (1990) for a detailed description of WordNet.
+
+1035

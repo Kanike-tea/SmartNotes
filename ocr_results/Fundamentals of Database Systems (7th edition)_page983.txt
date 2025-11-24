@@ -1,0 +1,51 @@
+25.7 Summary
+
+RDDs are built on the capabilities of Scala language collections*” that are able to
+re-create themselves from their input. RDDs can be configured based on how their
+data is distributed and how their data is represented: it can be always re-created
+from input, and it can be cached on disk or in memory. In-memory representa-
+tions vary from serialized Java objects to highly optimized columnar formats that
+have all the advantages of columnar databases (e.g., speed, footprint, operating in
+serialized form).
+
+The capabilities of a unified programming model and in-memory datasets will
+likely be incorporated into the Hadoop ecosystem. Spark is already available as a
+service in YARN (http://spark.apache.org/docs/1.0.0/running-on-yarn.html).
+Detailed discussion of Spark and related technologies in the Berkeley Data Analysis
+Stack is beyond our scope here. Agneeswaran (2014) discusses the potential of
+Spark and related products; interested readers should consult that source.
+
+25.7 Summary
+
+In this chapter, we discussed big data technologies. Reports from IBM, Mckinsey,
+and Tearadata scientist Bill Franks all predict a vibrant future for this technology,
+which will be at the center of future data analytics and machine learning applications
+and which is predicted to save businesses billions of dollars in the coming years.
+
+We began our discussion by focusing on developments at Google with the Google
+file system and MapReduce (MR), a programming paradigm for distributed pro-
+cessing that is scalable to huge quantities of data reaching into the petabytes. After
+giving a historical development of the technology and mentioning the Hadoop eco-
+system, which spans a large number of currently active Apache projects, we dis-
+cussed the Hadoop distributed file system (HDFS) by outlining its architecture and
+its handling of file operations; we also touched on the scalability studies done on
+HDEFS. We then gave details of the MapReduce runtime environment. We provided
+examples of how the MapReduce paradigm can be applied to a variety of contexts;
+we gave a detailed example of its application to optimizing various relational join
+algorithms. We then presented briefly the developments of Pig and Hive, the sys-
+tems that provide an SQL-like interface with Pig Latin and HiveQL on top of the
+low-level MapReduce programming. We also mentioned the advantages of the
+joint Hadoop/MapReduce technology.
+
+Hadoop/MapReduce is undergoing further development and is being repositioned
+as version 2, known as MRv2 or YARN; version 2 separates resource management
+from task/job management. We discussed the rationale behind YARN, its architec-
+ture, and other ongoing frameworks based on YARN, including Apache Tez, a
+workflow modeling environment; Apache Giraph, a large-scale graph processing
+system based on Pregel of Google; and Hoya, a Hortonworks rendering of HBase
+elastic clusters on YARN.
+
+37See htip://docs.scala-lang.org/overviews/core/architecture-of-scala-collections.him| for more information
+on Scala Collections.
+
+953

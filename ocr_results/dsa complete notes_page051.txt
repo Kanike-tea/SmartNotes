@@ -1,0 +1,50 @@
+Data Structures and Applications(BCS304) Module 2
+
+Function to double queue capacity
+void queueFull()
+{
+int* newQueue;
+newQueue=(int*)malloc( 2 * capacity * sizeof(int));
+/* copy from queue to newQueue */
+int start = (front+1) % capacity;
+if (start < 2)
+copy(queue+start, queue+start+capacity-1, newQueue);
+else
+{ /* queue wraps around */
+copy(queue+start, queue+capacity, newQueue);
+copy(queue, queuetrear+1, newQueue+capacity-start);
+
+/* switch to newQueue */
+front= 2 * capacity - 1;
+rear = capacity - 2;
+capacity *= 2;
+free(queue);
+
+queue = newQueue;
+
+}
+
+The function copy(a,b,c) copies elements from locations a through b-1 to locations beginning at c
+
+Deques: A deque (pronounced either as deck or dequeue) is a linear list in which elements
+can be added or removed at either end but not in the middle. The term deque is a contraction
+of the namedouble ended queue.
+
+Representation: It is represented as a circular array deque with pointers left and right, which point to
+the two ends of the queue. It is assumed that the elements extend from the left end to the right end in
+
+the array. The term circular comes from the fact that DEQUE[0] comes after DEQUE[n-1] in the array.
+Examplel:
+Left=2 A B Cc
+Right=4
+[0] 0) [2] [3] [4] [5] [6]
+Example2:
+Left=5 | A B D E
+Right=1
+[0] (1) [2] [3] [4] [5] [6]
+
+There are two types of deque:
+e Input restricted:- insertion is allowed only at one end, deletion is allowed at both ends.
+¢ Output restricted: deletion is allowed only at one end, insertion is allowed at both ends
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 7

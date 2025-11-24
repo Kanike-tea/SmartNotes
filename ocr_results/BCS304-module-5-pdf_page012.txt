@@ -1,0 +1,27 @@
+(a) (b)
+
+Figure : Extended binary trees corresponding to above binary Trees
+
+1) Height-Biased Leftist Trees.
+
+shortest (x) = ( if.x is an external node
+7 | 1 + min (shortest (left child (x)), shortest (right —child (x))} otherwise
+
+Definition: A /eftist sree is a binary tree such that if it is not empty, then
+
+shortest (left —child (x)) 2 shortest (right — child (x))
+
+for every internal node +.
+
+» Definition of A Min (Max) Leftist Tree
+
+» Amin leftist tree is a leftist tree in which the key value in each node is smaller than
+the key value in its children (if any).
+
+A max leftist tree is a leftist tree in which the key value in each node is greater than
+the key value in its children (if any).
+
+» Amin(max) leftist tree is a leftist tree that is also a min(max) tree
+Example of min leftist tree :
+
+Page 13

@@ -1,0 +1,51 @@
+3.7 ER Diagrams, Naming Conventions, and Design Issues
+
+3.7 ER Diagrams, Naming Conventions,
+and Design Issues
+3.7.1 Summary of Notation for ER Diagrams
+
+Figures 3.9 through 3.13 illustrate examples of the participation of entity types in
+relationship types by displaying their entity sets and relationship sets (or
+extensions)—the individual entity instances in an entity set and the individual rela-
+tionship instances in a relationship set. In ER diagrams the emphasis is on repre-
+senting the schemas rather than the instances. This is more useful in database
+design because a database schema changes rarely, whereas the contents of the entity
+sets may change frequently. In addition, the schema is obviously easier to display,
+because it is much smaller.
+
+Figure 3.2 displays the COMPANY ER database schema as an ER diagram. We now
+review the full ER diagram notation. Regular (strong) entity types such as
+EMPLOYEE, DEPARTMENT, and PROJECT are shown in rectangular boxes. Relation-
+ship types such as WORKS_FOR, MANAGES, CONTROLS, and WORKS_ON are
+shown in diamond-shaped boxes attached to the participating entity types with
+straight lines. Attributes are shown in ovals, and each attribute is attached by a straight
+line to its entity type or relationship type. Component attributes of a composite attri-
+bute are attached to the oval representing the composite attribute, as illustrated by the
+Name attribute of EMPLOYEE. Multivalued attributes are shown in double ovals, as
+illustrated by the Locations attribute of DEPARTMENT. Key attributes have their names
+underlined. Derived attributes are shown in dotted ovals, as illustrated by the
+Number_of_employees attribute of DEPARTMENT.
+
+Weak entity types are distinguished by being placed in double rectangles and by
+having their identifying relationship placed in double diamonds, as illustrated by
+the DEPENDENT entity type and the DEPENDENTS _OF identifying relationship type.
+The partial key of the weak entity type is underlined with a dotted line.
+
+In Figure 3.2 the cardinality ratio of each binary relationship type is specified
+by attaching a 1, M, or N on each participating edge. The cardinality ratio
+of DEPARTMENT:EMPLOYEE in MANAGES is 1:1, whereas it is 1:N for
+DEPARTMENT: EMPLOYEE in WORKS_FOR, and M:N for WORKS_ON. The partici-
+pation constraint is specified by a single line for partial participation and by double
+lines for total participation (existence dependency).
+
+In Figure 3.2 we show the role names for the SUPERVISION relationship type
+because the same EMPLOYEE entity type plays two distinct roles in that relation-
+ship. Notice that the cardinality ratio is 1:N from supervisor to supervisee because
+each employee in the role of supervisee has at most one direct supervisor, whereas
+an employee in the role of supervisor can supervise zero or more employees.
+
+Figure 3.14 summarizes the conventions for ER diagrams. It is important to note
+that there are many other alternative diagrammatic notations (see Section 3.7.4 and
+Appendix A).
+
+81

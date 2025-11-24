@@ -1,0 +1,50 @@
+Microcontrollers — BCS402
+
+If C function needs more than four arguments, or your C++ method more than three explicit
+arguments, then it is almost always more efficient to use structures. Group related arguments
+
+into structures, and pass a structure pointer rather than multiple arguments.
+
+There are other ways of reducing function call overhead if function is very small and corrupts
+few registers (uses few local variables). Put the C function in the same C file as the functions
+that will call it. The C compiler then knows the code generated for the callee function and can
+
+make optimizations in the caller function:
+
+e The caller function need not preserve registers that it can see the callee doesn’t
+corrupt. Therefore the caller function need not save all the ATPCS corruptible
+registers.
+
+e Ifthe callee function is very small, then the compilers can inline the code in the caller
+
+function. This removes the function call overhead completely.
+
+Calling Functions Efficiently
+e Try to restrict functions to four arguments. This will make them more efficient to call.
+Use structures to group related arguments and pass structure pointers instead of
+multiple arguments.
+e Define small functions in the same source file and before the functions that call them.
+The compiler can then optimize the function call or inline the small function.
+
+¢ Critical functions can be inlined using the __inline keyword.
+
+6. Pointer Aliasing
+
+Two pointers are said to alias when they point to the same address. If you write to one
+pointer, it will affect the value you read from the other pointer. In a function, the compiler
+often doesn’t know which pointers can alias and which pointers can’t. The compiler must be
+very pessimistic and assume that any write to a pointer may affect the value read from any
+other pointer, which can significantly reduce code efficiency.
+
+Example: The following function increments two timer values by a step amount:
+
+void timers vl(int *timerl, int *timer2, int *step)
+{
+
+*timerl += *step;
+
+*timer2 += *step;
+
+}
+
+Dept. of ECE, GSSSIETW Page 48

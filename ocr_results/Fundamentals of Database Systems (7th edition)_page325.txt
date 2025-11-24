@@ -1,0 +1,52 @@
+9.1 Relational Database Design Using ER-to-Relational Mapping
+
+1:1 or 1:N relationship types) because of the M:N cardinality ratio; we must create a
+separate relationship relation S.
+
+In our example, we map the M:N relationship type WORKS_ON from Figure 9.1 by
+creating the relation WORKS_ON in Figure 9.2. We include the primary keys of the
+PROJECT and EMPLOYEE relations as foreign keys in WORKS_ON and rename
+them Pno and Essn, respectively (renaming is not required; it is a design choice).
+We also include an attribute Hours in WORKS_ON to represent the Hours attribute
+of the relationship type. The primary key of the WORKS_ON relation is the combi-
+nation of the foreign key attributes {Essn, Pno}. This relationship relation is
+shown in Figure 9.3(c).
+
+The propagate (CASCADE) option for the referential triggered action (see Sec-
+tion 4.2) should be specified on the foreign keys in the relation corresponding to the
+relationship R, since each relationship instance has an existence dependency on
+each of the entities it relates. This can be used for both ON UPDATE and ON DELETE.
+
+Although we can map 1:1 or 1:N relationships in a manner similar to M:N relation-
+ships by using the cross-reference (relationship relation) approach, as we discussed
+earlier, this is only recommended when few relationship instances exist, in order to
+avoid NULL values in foreign keys. In this case, the primary key of the relationship
+relation will be only one of the foreign keys that reference the participating entity
+relations. For a 1:N relationship, the primary key of the relationship relation will be
+the foreign key that references the entity relation on the N-side. For a 1:1 relation-
+ship, either foreign key can be used as the primary key of the relationship relation.
+
+Step 6: Mapping of Multivalued Attributes. For each multivalued attribute A,
+create a new relation R. This relation R will include an attribute corresponding to A,
+plus the primary key attribute K—as a foreign key in R—of the relation that repre-
+sents the entity type or relationship type that has A as a multivalued attribute. The
+primary key of R is the combination of A and K. If the multivalued attribute is com-
+posite, we include its simple components.
+
+In our example, we create a relation DEPT_LOCATIONS (see Figure 9.3(d)).
+The attribute Dlocation represents the multivalued attribute LOCATIONS of
+DEPARTMENT, whereas Dnumber—as foreign key—represents the primary key of the
+DEPARTMENT relation. The primary key of DEPT_LOCATIONS is the combination of
+{Dnumber, Dlocation}. A separate tuple will exist in DEPT_LOCATIONS for each loca-
+tion that a department has. It is important to note that in more recent versions of
+the relational model that allow array data types, the multivalued attribute can be
+mapped to an array attribute rather than requiring a separate table.
+
+The propagate (CASCADE) option for the referential triggered action (see Sec-
+tion 6.2) should be specified on the foreign key in the relation R corresponding to the
+multivalued attribute for both ON UPDATE and ON DELETE. We should also note
+that the key of R when mapping a composite, multivalued attribute requires some
+analysis of the meaning of the component attributes. In some cases, when a multi-
+valued attribute is composite, only some of the component attributes are required
+
+295

@@ -1,0 +1,50 @@
+506 Chapter 14 Memory Management Units
+
+= The smaller the page size, the less the internal fragmentation. Internal fragmentation is
+the unused memory area in a page. For example, a task 9 KB in size can fit in three 4 KB
+pages or one 64 KB page. In the first case, using 4 KB pages, there are 3 KB of unused
+space. In the case using 64 KB pages, there are 55 KB of unused page space.
+
+"The larger the page size, the more likely the system will load referenced code and data.
+= Large pages are more efficient as the access time to secondary storage increases.
+
+m= As the page size increases, each TLB entry represents more area in memory. Thus,
+the system can cache more translation data, and the faster the TLB is loaded with all
+translation data for a task.
+
+= Each page table consumes 1 KB of memory if you use L2 coarse pages. Each L2 fine
+page table consumes 4 KB. Each L2 page table translates 1 MB of address space. Your
+maximum page table memory use, per task, is
+
+((task size/1 megabyte) + 1) # (L2 page table size) (14.1)
+
+14.5 THE TRANSLATION LOOKASIDE BUFFER
+
+The TLB isa special cache of recently used page translations. The TLB maps a virtual page
+to an active page frame and stores control data restricting access to the page. The TLB is
+a cache and therefore has a victim pointer and a TLB line replacement policy. In ARM
+processor cores the TLB uses a round-robin algorithm to select which relocation register to
+replace on a TLB miss.
+
+The TLB in ARM processor cores does not have many software commands available to
+control its operation. The TLB supports two types of commands: you can flush the TLB,
+and you can lock translations in the TLB.
+
+During a memory access, the MMU compares a portion of the virtual address to all the
+values cached in the TLB. If the requested translation is available, it is a TLB hit, and the
+TLB provides the translation of the physical address.
+
+If the TLB does not contain a valid translation, it is a TLB miss. The MMU automatically
+handles TLB misses in hardware by searching the page tables in main memory for valid
+translations and loading them into one of the 64 lines in the TLB. The search for valid
+translations in the page tables is known as a page table walk. If there is a valid PTE, the
+hardware copies the translation address from the PTE to the TLB and generates the physical
+address to access main memory. If, at the end of the search, there is a fault entry in the page
+table, then the MMU hardware generates an abort exception.
+
+During a TLB miss, the MMU may search up to two page tables before loading data
+to the TLB and generating the needed address translation. The cost of a miss is generally
+one or two main memory access cycles as the MMU translation table hardware searches
+the page tables. The number of cycles depends on which page table the translation data is
+found in. A single-stage page table walk occurs if the search ends with the L1 master page
+table; there is a two-stage page table walk if the search ends with an L2 page table.

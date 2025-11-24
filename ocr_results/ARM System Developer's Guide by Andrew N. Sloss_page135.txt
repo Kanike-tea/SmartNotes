@@ -1,0 +1,51 @@
+122. Chapter 5 Efficient C Programming
+
+SUMMARY
+
+If the compiler does need to swap out variables, then it chooses which variables to swap
+out based on frequency of use. A variable used inside a loop counts multiple times. You can
+guide the compiler as to which variables are important by ensuring these variables are used
+within the innermost loop.
+
+The register keyword in C hints that a compiler should allocate the given variable to
+a register. However, different compilers treat this keyword in different ways, and different
+architectures have a different number of available registers (for example, Thumb and ARM).
+Therefore we recommend that you avoid using regi ster and rely on the compiler’s normal
+register allocation routine.
+
+Efficient Register Allocation
+
+= Try to limit the number of local variables in the internal loop of functions to 12. The
+compiler should be able to allocate these to ARM registers.
+
+= You can guide the compiler as to which variables are important by ensuring these
+variables are used within the innermost loop.
+
+5.5 FUNCTION CALLS
+
+The ARM Procedure Call Standard (APCS) defines how to pass function arguments and
+return values in ARM registers. The more recent ARM-Thumb Procedure Call Standard
+(ATPCS) covers ARM and Thumb interworking as well.
+
+The first four integer arguments are passed in the first four ARM registers: r0, rl, r2,
+and r3. Subsequent integer arguments are placed on the full descending stack, ascending in
+memory as in Figure 5.1. Function return integer values are passed in r0.
+
+This description covers only integer or pointer arguments. Two-word arguments such as
+Jong long or doub]e are passed in a pair of consecutive argument registers and returned in
+r0, rl. The compiler may pass structures in registers or by reference according to command
+line compiler options.
+
+The first point to note about the procedure call standard is the four-register rule.
+Functions with four or fewer arguments are far more efficient to call than functions with
+five or more arguments. For functions with four or fewer arguments, the compiler can
+pass all the arguments in registers. For functions with more arguments, both the caller
+and callee must access the stack for some arguments. Note that for C++ the first argument
+to an object method is the this pointer. This argument is implicit and additional to the
+explicit arguments.
+
+If your C function needs more than four arguments, or your C++ method more
+than three explicit arguments, then it is almost always more efficient to use structures.
+Group related arguments into structures, and pass a structure pointer rather than mul-
+tiple arguments. Which arguments are related will depend on the structure of your
+software.

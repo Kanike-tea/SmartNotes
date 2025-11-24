@@ -1,0 +1,42 @@
+#
+
+emer
+
+1.3. Jsomorphism
+
+in other words, two graphs G and G’ are said to be isomorphic (to each other) if there
+js a one-to-one correspondence between their vertices and between their edges such that the
+adjacency of vertices is preserved’. Such graphs will have the same structure; they differ
+only in the way their vertices and edges are labeled or only in the way they are represented
+geometrically. For many purposes, we regard them as essentially the same graphs.
+
+When G and G’ are isomorphic, we write G = G’,
+
+When a vertex A of G corresponds to the vertex A’ = f(A) of G’ under a one-to-one
+correspondence f : G — G’, we write A + A’. Similarly, we write (A, B} @ {A’, BY} to mean
+that the edge AB of G and the edge A’ B’ of G’ correspond to each other, under f.
+
+For example, look at the two graphs shown in Figure 1.45.
+
+A B Pp Q
+D Cc s
+(a) (b)
+Figure 1.45
+
+Consider the following one-to-one correspondence between the vertices of these two graphs:
+
+AGP, BeQd, CeR, Des.
+Under this correspondence, the edges in the two graphs correspond with each other, as
+indicated below:
+{A,B} 2 {P,Q}, {A.C} @ {PR}, {4,D} @ {PS},
+(B,C) 9 {Q,R), {B,D} (2,5), {C.D} {RS}
+
+We check that the above-indicated one-to-one correspondence between the vertices/edges
+f the two graphs preserves the adjacency of the vertices. The existence of this correspondence
+Toves that the two graphs are isomorphic. (Note that both the graphs represent the complete
+Taph Ky)
+Next, consider the two graphs shown in Figure 1.46.
+
+OE "
+adjacency of vertices is preserved” means that, for any two vertices w and v in G, if u, v are adjacent in G then
+Somresponding vertices u’, ¥ in G’ are also adjacent in G’. ie tts

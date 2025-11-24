@@ -1,0 +1,39 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 605
+
+Action
+1. Rd [31:16] = (Rn[31:16] + Rm[31:16]) >> 1;
+Rd [15:00] = (Rn[15:00] + Rm[15:00]) >>1
+2. Rd[31:16] = (Rn[31:16] + Rm[15:00]) >>1;
+Rd [15:00] = (Rn[15:00] - Rm[31:16]) >>1
+3. Rd[31:16] = (Rn[31:16] - Rm[15:00]) >>1;
+Rd [15:00] = (Rn[15:00] + Rm[31:16]) >>1
+4. Rd[31:16] = (Rn[31:16] - Rm[31:16]) >>1;
+Rd [15:00] = (Rn[15:00] - Rm[15:00]) >>1
+5. Rd[31:24] = (Rn[31:24] + Rm[31:24]) >> 1;
+Rd [23:16] = (Rn[23:16] + Rm[23:16]) >>15
+Rd[ 15:08] = (Rn[15:08] + Rm[15:08]) >>15
+Rd [07:00] = (Rn[07:00] + Rm[07:00]) >>1
+6. Rd[31:24] = (Rn[31:24] - Rm[31:24]) >>1;
+Rd [23:16] = (Rn[23:16] - Rm[23:16]) >>15
+Rd [15:08] = (Rn[15:08] - Rm[15:08]) >>1;
+Rd [07:00] = (Rn[07:00] - Rm[07:00]) >>1
+Notes
+
+= If you use the $ prefix, then all operations are signed and values are sign-extended
+before the addition.
+
+= Ifyou use the U prefix, then all operations are unsigned and values are zero-extended
+before the addition.
+
+= Rd, Rn, and Rm must not be pe.
+
+= These operations provide parallel arithmetic that cannot overflow, which is useful for
+DSP processing of normalized signals.
+
+SMLA Signed multiply accumulate instructions
+
+SMLS
+1. SMLA<x><y><cond> Rd, Rm, Rs, Rn ARMVSE
+2. SMLAW<y><cond> Rd, Rm, Rs, Rn ARMVSE
+
+3. SMLAD{X}<cond> Rd, Rm, Rs, Rn ARMV6

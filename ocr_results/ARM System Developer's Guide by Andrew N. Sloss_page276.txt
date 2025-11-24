@@ -1,0 +1,37 @@
+8.1 Representing a Digital Signal 263
+
+8.1.1.1 Saturating Fixed-Point Representation
+
+Suppose the maximum value of the signal is not known, but there is a clear range in which
+the vast majority of samples lie. In this case you can use a fixed-point representation based
+on the common range. You then saturate or clip any out-of-range samples to the closest
+available sample in the normal range. This approach gives greater accuracy at the expense
+of some distortion of very loud signals. See Section 7.7 for hints on efficient saturation.
+
+8.1.1.2 Block-Floating Representation
+
+When small sample values are close to large sample values, they are usually less important.
+In this case, you can divide the signal into blocks or frames of samples. You can use
+a different fixed-point scaling on each block or frame according to the strength of the signal
+in that block or frame.
+
+This is similar to floating point except that we associate a single exponent with a whole
+frame rather than a single sample. You can use efficient fixed-point operations to operate
+on the samples within the frame, and you only need costly, exponent-related operations
+when comparing values among frames.
+
+8.1.1.3 Logarithmic Representation
+
+Suppose your signal x[t] has a large dynamic range. Suppose also that multiplication
+operations are far more frequent than addition. Then you can use a base-two logarithmic
+representation. For this representation we consider the related signal y[t]:
+
+ylt] = logy (x[t]) (8.5)
+Represent y[t] using a fixed-point format. Replace operations of the form
+xa] = x[b] x x[c] by y[a] = y[b] + yle] (8.6)
+and operations of the form
+x{a] = x[b] + x{e] by ya] = y[b] + log, (1 + laste) (8.7)
+
+In the second case we arrange that y[c] < y[b]. Calculate the function f(x) = log,(1 + 2*)
+by using lookup tables and/or interpolation. See Section 7.5 for efficient implementations
+of logy(x) and 2°.

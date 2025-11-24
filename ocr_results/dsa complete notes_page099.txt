@@ -1,0 +1,42 @@
+Data Structures and Applications (BCS304) Module III
+
+Memory representation of threaded Tree
+
+The variable root points to the header node of the tree, while root > leftChild points to the start of
+the first node of the actual tree.
+
+46.1 Inorder Traversal of a Threaded Binary Tree
+
+By using the threads, we can perform an inorder traversal without making use of a stack.
+e For any node, ptr, in a threaded binary tree, if ptr — rightThread = TRUE, the
+inorder successor of ptr is ptr — rightChild by definition of the threads.
+e Otherwise we obtain the inorder successor of ptr by following a path of left-child links from
+the right-child of ptr until we reach a node with leftThread = TRUE.
+
+Finding the inorder successor of a node: The function insuce finds the inorder successor of any
+node in a threaded tree without using a stack.
+
+ThreadNode * insucc(ThreadNode *tree)
+
+{
+
+ThreadNode * temp;
+
+temp = tree—rightChild;
+
+if (tree—rightThread—’f)
+
+while (temp—leftThread==’f’)
+
+temp = temp—leftChild;
+return temp;
+
+}
+
+Inorder traversal of a threaded binary tree
+
+¢ To perform an inorder traversal we make repeated calls to insucc
+e This function assumes that the tree is pointed to by the header node's left child and that the
+header node's right thread is FALSE.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 24

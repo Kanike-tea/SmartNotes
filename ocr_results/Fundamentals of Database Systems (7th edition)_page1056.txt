@@ -1,0 +1,52 @@
+1026
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+to a user request in an IR query represents the IR system’s best attempt at retrieving
+the information most relevant to that query. Whereas database systems maintain a
+large amount of metadata and allow their use in query optimization, the operations
+in IR systems rely on the data values themselves and their occurrence frequencies.
+Complex statistical analysis is sometimes performed to determine the relevance of
+each document or parts of a document to the user request.
+
+27.1.3 A Brief History of IR
+
+Information retrieval has been a common task since the times of ancient civiliza-
+tions, which devised ways to organize, store, and catalog documents and records.
+Media such as papyrus scrolls and stone tablets were used to record documented
+information in ancient times. These efforts allowed knowledge to be retained and
+transferred among generations. With the emergence of public libraries and the
+printing press, large-scale methods for producing, collecting, archiving, and dis-
+tributing documents and books evolved. As computers and automatic storage sys-
+tems emerged, the need to apply these methods to computerized systems arose.
+Several techniques emerged in the 1950s, such as the seminal work of H. P. Luhn,°
+who proposed using words and their frequency counts as indexing units for docu-
+ments, and using measures of word overlap between queries and documents as the
+retrieval criterion. It was soon realized that storing large amounts of text was not
+difficult. The harder task was to search for and retrieve that information selectively
+for users with specific information needs. Methods that explored word distribution
+statistics gave rise to the choice of keywords based on their distribution properties®
+and also led to keyword-based weighting schemes.
+
+The earlier experiments with document retrieval systems such as SMART” in the 1960s
+adopted the inverted file organization based on keywords and their weights as the
+method of indexing (see Section 17.6.4 on inverted indexing). Serial (or sequential)
+organization proved inadequate if queries required fast, near real-time response times.
+Proper organization of these files became an important area of study; document clas-
+sification and clustering schemes ensued. The scale of retrieval experiments remained
+a challenge due to lack of availability of large text collections. This soon changed with
+the World Wide Web. Also, the Text Retrieval Conference (TREC) was launched by
+NIST (National Institute of Standards and Technology) in 1992 as a part of the
+TIPSTER program* with the goal of providing a platform for evaluating information
+retrieval methodologies and facilitating technology transfer to develop IR products.
+
+A search engine is a practical application of information retrieval to large-scale docu-
+ment collections. With significant advances in computers and communications tech-
+nologies, people today have interactive access to enormous amounts of user-generated
+
+®See Luhn (1957) ‘A statistical approach to mechanized encoding and searching of literary information?
+®See Salton, Yang, and Yu (1975).
+
+7For details, see Buckley et al. (1993).
+
+®For details, see Harman (1992).

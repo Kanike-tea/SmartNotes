@@ -1,0 +1,51 @@
+132 Chapter 5 Efficient C Programming
+
+Table 5.5
+
+a good idea to insert any padding that you cannot get rid of into the structure manually.
+This way the structure layout is not ambiguous. It is easier to link code between compiler
+versions and compiler vendors if you stick to unambiguous structures.
+
+Another point of ambiguity is enum. Different compilers use different sizes for an enu-
+merated type, depending on the range of the enumeration. For example, consider the type
+
+typedef enum {
+FALSE,
+TRUE
+
+} Bool;
+
+The armcc in ADS1.1 will treat Bool as a one-byte type as it only uses the values 0 and 1.
+Bool will only take up 8 bits of space in a structure. However, gcc will treat Bool as a word
+and take up 32 bits of space in a structure. To avoid ambiguity it is best to avoid using enum
+types in structures used in the API to your code.
+
+Another consideration is the size of the structure and the offsets of elements within the
+structure. This problem is most acute when you are compiling for the Thumb instruction
+set. Thumb instructions are only 16 bits wide and so only allow for small element offsets
+from a structure base pointer. Table 5.5 shows the load and store base register offsets
+available in Thumb.
+
+Therefore the compiler can only access an 8-bit structure element with a single instruc-
+tion if it appears within the first 32 bytes of the structure. Similarly, single instructions can
+only access 16-bit values in the first 64 bytes and 32-bit values in the first 128 bytes. Once
+you exceed these limits, structure accesses become inefficient.
+
+The following rules generate a structure with the elements packed for maximum
+efficiency:
+
+= Place all 8-bit elements at the start of the structure.
+= Place all 16-bit elements next, then 32-bit, then 64-bit.
+= Place all arrays and larger elements at the end of the structure.
+
+= If the structure is too big for a single instruction to access all the elements, then group
+the elements into substructures. The compiler can maintain pointers to the individual
+substructures.
+
+Thumb load and store offsets.
+
+Instructions Offset available from the base register
+LDRB, LDRSB, STRB 0 to 31 bytes
+LDRH, LDRSH, STRH 0 to 31 halfwords (0 to 62 bytes)
+
+LDR, STR 0 to 31 words (0 to 124 bytes)

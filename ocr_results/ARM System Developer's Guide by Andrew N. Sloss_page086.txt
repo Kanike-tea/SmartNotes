@@ -1,0 +1,80 @@
+PRE
+
+POST
+
+3.4 Software Interrupt Instruction 73
+
+mem32[0x9000] = 0x12345678
+0x00000000
+0x11112222
+0x00009000
+
+r0 =
+rl =
+r2 =
+
+‘SWP
+
+r0, rl, [r2]
+
+mem32[0x9000] = 0x11112222
+0x12345678
+0x11112222
+0x00009000
+
+r0
+rl =
+r2 =
+
+This instruction is particularly useful when implementing semaphores and mutual
+
+exclusion in an operating system. You can see from the syntax that this instruction can also
+
+have a byte size qualifier B, so this instruction allows for both a word and a byte swap.
+
+EXAMPLE This example shows a simple data guard that can be used to protect data from being written
+3.23 by another task. The SWP instruction “holds the bus” until the transaction is complete.
+
+spin
+
+Mov
+Mov
+swP
+cP
+BEQ
+
+rl,
+r2,
+r3,
+r3,
+
+spin
+
+=semaphore
+fl
+r2, [rl] ; hold the bus until complete
+fl
+
+The address pointed to by the semaphore either contains the value 0 or 1. When the
+semaphore equals 1, then the service in question is being used by another process. The
+
+routine will continue to loop around until the service is released by the other process—in
+
+other words, when the semaphore address location contains the value 0.
+
+3.4 SOFTWARE INTERRUPT INSTRUCTION
+
+A software interrupt instruction (SWI) causes a software interrupt exception, which provides
+
+a mechanism for applications to call operating system routines.
+
+Syntax: SWI{<cond>} SWI_number
+
+SWI
+
+software interrupt | [r_sve= address of instruction following the SWI
+
+spsr_sve= cpsr
+pe=vectors + 0x8
+cpsr mode = SVC
+cpsr I= 1 (mask IRQ interrupts)

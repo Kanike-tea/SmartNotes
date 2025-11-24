@@ -1,0 +1,36 @@
+Zz
+chapter ~~)
+
+Data Modeling Using the Entity-
+Relationship (ER) Model
+
+( onceptual modeling is a very important phase in
+designing a successful database application. Gener-
+
+ally, the term database application refers to a particular database and the associ-
+ated programs that implement the database queries and updates. For example, a
+BANK database application that keeps track of customer accounts would include
+programs that implement database updates corresponding to customer deposits
+and withdrawals. These programs would provide user-friendly graphical user inter-
+faces (GUIs) utilizing forms and menus for the end users of the application—the
+bank customers or bank tellers in this example. In addition, it is now common to
+provide interfaces to these programs to BANK customers via mobile devices using
+mobile apps. Hence, a major part of the database application will require the
+design, implementation, and testing of these application programs. Traditionally,
+the design and testing of application programs has been considered to be part of
+software engineering rather than database design. In many software design tools, the
+database design methodologies and software engineering methodologies are inter-
+twined since these activities are strongly related.
+
+In this chapter, we follow the traditional approach of concentrating on the database
+structures and constraints during conceptual database design. The design of appli-
+cation programs is typically covered in software engineering courses. We present
+the modeling concepts of the entity-relationship (ER) model, which is a popular
+high-level conceptual data model. This model and its variations are frequently used
+for the conceptual design of database applications, and many database design tools
+employ its concepts. We describe the basic data-structuring concepts and con-
+straints of the ER model and discuss their use in the design of conceptual schemas
+for database applications. We also present the diagrammatic notation associated
+with the ER model, known as ER diagrams.
+
+59

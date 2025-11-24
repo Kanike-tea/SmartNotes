@@ -1,0 +1,51 @@
+26.3 Spatial Database Concepts
+
+time series involve temporal aggregation over higher granularity intervals—for
+example, finding the average or maximum weekly closing stock price or the maxi-
+mum and minimum monthly closing stock price from the daily information.
+
+As another example, consider the daily sales dollar amount at each store of a chain
+of stores owned by a particular company. Again, typical temporal aggregates would
+be retrieving the weekly, monthly, or yearly sales from the daily sales information
+(using the sum aggregate function), or comparing same store monthly sales with
+previous monthly sales, and so on.
+
+Because of the specialized nature of time series data and the lack of support for it in
+older DBMSs, it has been common to use specialized time series management
+systems rather than general-purpose DBMSs for managing such information. In
+such systems, it has been common to store time series values in sequential order in
+a file and apply specialized time series procedures to analyze the information. The
+problem with this approach is that the full power of high-level querying in languages
+such as SQL will not be available in such systems.
+
+More recently, some commercial DBMS packages began offering time series exten-
+sions, such as the Oracle time cartridge and the time series data blade of Informix
+Universal Server. In addition, the TSQL2 language provides some support for time
+series in the form of event tables.
+
+26.3 Spatial Database Concepts”*
+
+26.3.1 Introduction to Spatial Databases
+
+Spatial databases incorporate functionality that provides support for databases that
+keep track of objects in a multidimensional space. For example, cartographic data-
+bases that store maps include two-dimensional spatial descriptions of their objects—
+from countries and states to rivers, cities, roads, seas, and so on. The systems
+that manage geographic data and related applications are known as geographic
+information systems (GISs), and they are used in areas such as environmental
+applications, transportation systems, emergency response systems, and battle man-
+agement. Other databases, such as meteorological databases for weather information,
+are three-dimensional, since temperatures and other meteorological information are
+related to three-dimensional spatial points. In general, a spatial database stores
+objects that have spatial characteristics that describe them and that have spatial rela-
+tionships among them. The spatial relationships among the objects are important,
+and they are often needed when querying the database. Although a spatial database
+can in general refer to an n-dimensional space for any n, we will limit our discussion
+to two dimensions as an illustration.
+
+A spatial database is optimized to store and query data related to objects in space,
+including points, lines and polygons. Satellite images are a prominent example of
+
+?4The contribution of Pranesh Parimala Ranganathan to this section is appreciated,
+
+987

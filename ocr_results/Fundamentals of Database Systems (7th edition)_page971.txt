@@ -1,0 +1,60 @@
+25.5 Hadoop v2 alias YARN
+
+The following advantages accrue from the separation of Resource Management
+from Application Management in the YARN architecture:
+
+= A rich diversity of Data Services is available to utilize the cluster. Each of
+these can expose its own programming model.
+
+= Application Masters are free to negotiate resources in patterns that are opti-
+mized for their work: for example, machine learning Apps may hold Con-
+tainers for long durations.
+
+= The Resource and Container model allows nodes to be utilized in a dynamic
+manner, which increases the overall utilization of the cluster.
+
+= The ResourceManager does only one thing—manage resources; hence it is
+highly scalable to tens of thousands of nodes.
+
+= With ApplicationMasters managing Jobs, it is possible to have multiple ver-
+sions of an Application running on the cluster. There is no need for a global
+cluster update, which would require that all Jobs be stopped.
+
+Failure of an ApplicationMaster affects only Jobs managed by it. The Resource-
+Manager provides some degree of management of ApplicationMasters. Let us
+briefly consider each of the components of the YARN environment.
+
+Resource Manager (RM). The Resource Manager is only concerned with allo-
+cating resources to Applications, and not with optimizing the processing within
+Applications. The policy of resource allocation is pluggable. Application Masters
+are supposed to request resources that would optimize their workload.
+
+The Resource Manager exposes the following interfaces:
+
+1. An API for clients to start ApplicationMasters
+
+2. A protocol for ApplicationMasters to negotiate for cluster resources
+
+3. A protocol for NodeManagers to report on node resources and be managed
+by the Resource Manager
+
+The scheduler in the ResourceManager matches the Resource Requirements sub-
+mitted by Applications against the global state of the cluster resources. The alloca-
+tion is based on the policies of the pluggable Scheduler (such as capacity or fairness).
+Resources are requested by ApplicationMasters as Resource Requests. A Resource
+Request specifies:
+
+= The number of containers needed
+
+= The physical resources (CPU, memory) needed per container
+
+= The locality preferences (physical node, rack) of the containers
+
+= The priority of the request for the Application
+The scheduler satisfies these requests based on the state of the cluster as reported by
+the NodeManager heartbeats. The locality and priority guides the scheduler toward
+
+alternatives: for example, if a requested node is busy, the next best alternative is
+another node on the same rack.
+
+941

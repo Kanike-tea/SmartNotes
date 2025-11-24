@@ -1,0 +1,39 @@
+8 Chapter 1 Databases and Database Users
+
+Figure 1.2
+
+A database that stores
+student and course
+information.
+
+STUDENT
+Name | Student_number | Class Major
+‘Smith 17 1 cs
+Brown 8 2 cs
+COURSE
+Course_name Course_number | Credit_hours | Department
+Intro to Computer Science | CS1310 4 cs
+Data Structures CS3320 4 cs
+Discrete Mathematics MATH2410 3 MATH
+Database CS3380 3 cs
+SECTION
+Section_identifier | Course_number | Semester | Year | Instructor
+85 MATH2410 Fall 07 «| «King
+92 CS1310 Fall 07 | Anderson
+102 CS3320 Spring 08 | Knuth
+112 MATH2410 Fall 08 | Chang
+119 CS1310 Fall 08 | Anderson
+135 CS3380 Fall 08 | Stone
+GRADE_REPORT
+Student_number | Section _identifier Grade
+17 112 B
+17 119 c
+8 85 A
+8 92 A
+8 102 B
+8 135 A
+PREREQUISITE
+Course_number | Prerequisite_number
+CS3380 CS3320
+CS3380 MATH2410
+CS3320 CS1310

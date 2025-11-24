@@ -1,0 +1,54 @@
+352 Chapter 11 Web Database Programming Using PHP
+
+“Computer Architecture’. A few comments about this example and about PHP
+functions in general:
+
+= The built-in PHP array function array_key_exists($k, $a) returns true
+if the value in variable $k exists as a key in the associative array in the vari-
+able $a. In our example, it checks whether the $course value provided
+exists as a key in the array $teaching_assignments (line 1 in Figure 11.5).
+
+= Function arguments are passed by value. Hence, in this example, the calls in
+lines 11 and 13 could not change the array $teaching provided as argu-
+ment for the call. The values provided in the arguments are passed (copied)
+to the function arguments when the function is called.
+
+= Return values of a function are placed after the RETURN keyword. A function
+can return any type. In this example, it returns a string type. Two different
+strings can be returned in our example, depending on whether the $course
+key value provided exists in the array or not.
+
+= Scope rules for variable names apply as in other programming languages.
+Global variables outside of the function cannot be used unless they are referred
+to using the built-in PHP array $GLoBaLs. Basically, $¢LOBALS[ 'abc' ] will
+access the value in a global variable $abc defined outside the function. Other-
+wise, variables appearing inside a function are local even if there is a global
+variable with the same name.
+
+The previous discussion gives a brief overview of PHP functions. Many details are
+not discussed since it is not our goal to present PHP in detail.
+
+11.2.4 PHP Server Variables and Forms
+
+There are a number of built-in entries in a PHP auto-global built-in array variable
+called $_SERVER that can provide the programmer with useful information about
+the server where the PHP interpreter is running, as well as other information. These
+may be needed when constructing the text in an HTML document (for example, see
+line 7 in Figure 11.4). Here are some of these entries:
+
+1. $_SERVER[ 'SERVER_NAME' ]. This provides the Web site name or the Uni-
+form Resource Locator (URL) of the server computer where the PHP inter-
+preter is running. For example, if the PHP interpreter is running on the
+Web site http://www.uta.edu, then this string would be the value in
+$_SERVER[ 'SERVER_NAME' ].
+
+2. $_SERVER['REMOTE_ADDRESS' }. This is the IP (Internet Protocol) address
+of the client user computer that is accessing the server; for example,
+129.107.61.8.
+
+3. $_SERVER['REMOTE_HoST' ]. This is the Web site name (URL) of the client
+user computer; for example, abc.uta.edu. In this case, the server will need to
+translate the name into an IP address to access the client.
+
+4. $_SERVER['PATH_INFO']. This is the part of the URL address that comes
+after a backslash (/) at the end of the URL.

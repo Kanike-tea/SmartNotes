@@ -1,0 +1,54 @@
+382 Chapter 11 Embedded Operating Systems
+
+Initialization is the first code of the operating system to execute and involves setting up
+internal data structures, global variables, and the hardware. Initialization starts after the
+firmware hands over control. For hardware initialization an operating system sets up various
+control registers, initializes the device drivers, and, if the operating system is preemptive,
+sets up a periodic interrupt.
+
+Memory handling involves setting up the system and task stacks. The positioning of the
+stacks determines how much memory is available for either the tasks or the system. The
+decision as to where the system stack is placed is normally carried out during operating
+system initialization. Setting up the task stack depends upon whether the task is static or
+dynamic.
+
+A static task is defined at build time and is included in the operating system image.
+For these tasks the stack can be set up during operating system initialization. For example,
+SLOS is a static-task-based operating system.
+
+‘A dynamic task loads and executes after the operating system is installed and executing
+and is not part of the operating system image. The stack is set up when the task is created
+(for example, as in Linux). Memory handling varies in complexity from one operating
+system to another. It depends upon a number of factors, such as the ARM processor core
+selected, the capabilities of the microcontroller, and the physical memory layout of the end
+target hardware.
+
+The example operating system, SLOS, in Section 11.2 uses a static memory design. It
+simply configures a set of registers within the microcontroller and positions the stacks.
+Because there is no form of dynamic memory management, you will not find an imple-
+mentation of malloc() and free(). These functions are normally found in the standard
+C library.
+
+The method for handling interrupts and exceptions is part of the architecture design of
+the operating system. You have to decide how to handle the various exceptions: Data Abort,
+Fast Interrupt Request, Interrupt Request, Prefetch Abort, Reset, and Software Interrupt
+(SWI).
+
+Not all of the exceptions require a handler. For instance, if you have a target board that
+does not use the FIQ interrupt, then a specific FIQ handler is not required. It is always safer
+to provide an infinite loop as a default handler for unused exceptions. This approach makes
+it easy to debug: when you break, it is clear that you have trapped at a specific handler. It
+also protects the system from unexpected exceptions.
+
+A preemptive operating system like SLOS requires a periodic interrupt, which is normally
+produced by a counter/timer device on the target hardware. As part of the initialization
+stage, an operating system sets the periodic interrupt frequency. This is normally achieved
+by setting a specified value into one of the counter/timer memory-mapped registers.
+
+When activated, the counter/timer will start to decrement this value. Once the value
+reaches zero, an interrupt is raised. This interrupt is then handled by the appropriate ISR
+for periodic interrupts. The ISR first reinitializes the counter/timer with a new start value
+and then calls either a scheduler or another specialized routine.
+
+In contrast, a nonpreemptive operating system does not require a periodic interrupt
+and will use a different technique, for example, polling—the continuous checking for a state

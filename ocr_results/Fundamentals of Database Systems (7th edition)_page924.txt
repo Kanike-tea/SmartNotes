@@ -1,0 +1,51 @@
+894
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+24.3.3 MongoDB Distributed Systems Characteristics
+
+Most MongoDB updates are atomic if they refer to a single document, but MongoDB
+also provides a pattern for specifying transactions on multiple documents. Since
+MongoDB is a distributed system, the two-phase commit method is used to ensure
+atomicity and consistency of multidocument transactions. We discussed the atomi-
+city and consistency properties of transactions in Section 20.3, and the two-phase
+commit protocol in Section 22.6.
+
+Replication in MongoDB. The concept of replica set is used in MongoDB to create
+multiple copies of the same data set on different nodes in the distributed system, and
+it uses a variation of the master-slave approach for replication. For example, suppose
+that we want to replicate a particular document collection C. A replica set will have
+one primary copy of the collection C stored in one node N1, and at least one
+secondary copy (replica) of C stored at another node N2. Additional copies can be
+stored in nodes N3, N4, etc., as needed, but the cost of storage and update (write)
+increases with the number of replicas. The total number of participants in a replica set
+must be at least three, so if only one secondary copy is needed, a participant in the
+replica set known as an arbiter must run on the third node N3. The arbiter does not
+hold a replica of the collection but participates in elections to choose a new primary if
+the node storing the current primary copy fails. If the total number of members in a rep-
+lica set is n (one primary plus i secondaries, for a total of n = i + 1), then n must be an odd
+number; if it is not, an arbiter is added to ensure the election process works correctly if
+the primary fails. We discussed elections in distributed systems in Section 23.3.1.
+
+In MongoDB replication, all write operations must be applied to the primary copy
+and then propagated to the secondaries. For read operations, the user can choose
+the particular read preference for their application. The default read preference
+processes all reads at the primary copy, so all read and write operations are per-
+formed at the primary node. In this case, secondary copies are mainly to make sure
+that the system continues operation if the primary fails, and MongoDB can ensure
+that every read request gets the latest document value. To increase read perfor-
+mance, it is possible to set the read preference so that read requests can be processed
+at any replica (primary or secondary); however, a read at a secondary is not guaran-
+teed to get the latest version of a document because there can be a delay in propa-
+gating writes from the primary to the secondaries.
+
+Sharding in MongoDB. When a collection holds a very large number of docu-
+ments or requires a large storage space, storing all the documents in one node can
+lead to performance problems, particularly if there are many user operations
+accessing the documents concurrently using various CRUD operations. Sharding
+of the documents in the collection—also known as horizontal partitioning—
+divides the documents into disjoint partitions known as shards. This allows the
+system to add more nodes as needed by a process known as horizontal scaling of
+the distributed system (see Section 23.1.4), and to store the shards of the collection
+on different nodes to achieve load balancing. Each node will process only those
+operations pertaining to the documents in the shard stored at that node. Also, each

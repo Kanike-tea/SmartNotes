@@ -1,0 +1,50 @@
+16.10 Parallelizing Disk Access Using RAID Technology 585
+
+>
+AoTAvTAs]As[AsIAs[As] Ar] | AclAd | | LALtAs) | | [As| As | As| Ar
+Bo 16:82] Bs] 8.1 8s[80[ 87] BelBsl ) 1818s) J [ [B21 Bs) J | [Bel B
+(a) Data Disk 0 Disk 1 Disk 2 Disk 3
+File A:
+Block A,] [Block A,] | Block Ag] [Block A, | A | [a ‘a fa
+(b) Disk 0 Disk 1 Disk 2 Disk 3
+
+Figure 16.13
+Striping of data
+across multiple disks.
+(a) Bit-level striping
+across four disks.
+
+(b) Block-level striping
+across four disks.
+
+disks using parity or some other error-correction code, reliability can be improved.
+In Sections 16.10.1 and 16.10.2, we discuss how RAID achieves the two important
+objectives of improved reliability and higher performance. Section 16.10.3 discusses
+RAID organizations and levels.
+
+16.10.1 Improving Reliability with RAID
+
+For an array of n disks, the likelihood of failure is n times as much as that for one
+disk. Hence, if the MTBF (mean time between failures) of a disk drive is assumed to
+be 200,000 hours or about 22.8 years (for the disk drive in Table 16.1 called Seagate
+Enterprise Performance 10K HDD, it is 1.4 million hours), the MTBF for a bank of
+100 disk drives becomes only 2,000 hours or 83.3 days (for a bank of 1,000 Seagate
+Enterprise Performance 10K HDD disks it would be 1,400 hours or 58.33 days).
+Keeping a single copy of data in such an array of disks will cause a significant loss of
+reliability. An obvious solution is to employ redundancy of data so that disk failures
+can be tolerated. The disadvantages are many: additional I/O operations for write,
+extra computation to maintain redundancy and to do recovery from errors, and
+additional disk capacity to store redundant information.
+
+One technique for introducing redundancy is called mirroring or shadowing.
+Data is written redundantly to two identical physical disks that are treated as one
+logical disk. When data is read, it can be retrieved from the disk with shorter
+queuing, seek, and rotational delays. If a disk fails, the other disk is used until the
+first is repaired. Suppose the mean time to repair is 24 hours; then the mean time
+to data loss of a mirrored disk system using 100 disks with MTBF of 200,000
+hours each is (200,000)"/(2 * 24) = 8.33 * 10° hours, which is 95,028 years.'® Disk
+mirroring also doubles the rate at which read requests are handled, since a read
+can go to either disk. The transfer rate of each read, however, remains the same as
+that for a single disk.
+
+18The formulas for MTBF calculations appear in Chen et al. (1994).

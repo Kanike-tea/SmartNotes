@@ -1,0 +1,52 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 04 (b)
+4b) Write a Python program to Demonstrate how to Draw a Scatter Plot using Matplotlib.
+
+Aim: Demonstration of how to draw a Scatter Plot using Matplotlib.
+
+PROGRAM EXPLANATION
+
+The below program demonstrates how to draw a scatter plot using Matplotlib. Make sure you
+have Matplotlib installed before running this code. You can install it using pip if you haven't
+already:
+
+pip install matplotlib
+
+1. Import Matplotlib: The script begins by importing the ‘pyplot’ module from the
+Matplotlib library as ‘p1t’. Matplotlib is a popular data visualization library in Python,
+and ‘pyplot’ is a subpackage that provides a simple interface for creating various types
+of plots, including scatter plots.
+
+2. Define Sample Data: Two lists, ‘x’ and ‘y’ , are defined. These lists represent the data
+points that will be plotted on the scatter plot. In this example, ‘x’ represents the x-axis
+values, and ‘y’ represents the corresponding y-axis values.
+
+3. Create a Scatter Plot: The ‘plt.scatter()’ function is used to create a scatter plot.
+This function takes several arguments:
+
+e ‘x’ and ‘y’ are the data points to be plotted on the x and y axes.
+
+e ‘label’ is set to 'Data Points’, which is used for the legend.
+
+© ‘color’ is set to 'blue', specifying the color of the markers in the scatter plot.
+
+e ‘marker’ is set to 'o', which indicates that circular markers (dots) should be used
+for each data point.
+
+4. Add Labels and Title: The ‘plt.xlabel()’, ‘plt.ylabel()’, and
+
+‘plt.title()’ functions are used to add labels to the x-axis, y-axis, and a title to the
+
+scatter plot. In this example, 'X-Axis' is set as the x-axis label, 'Y-Axis' as the y-axis
+label, and 'Scatter Plot Example' as the title.
+
+5. Add a Legend: The ‘plt.legend()’ function is called to add a legend to the scatter
+plot. The legend displays the label 'Data Points' to indicate what the data points on the
+plot represent.
+
+6. Show the Plot: Finally, the ‘plt.show()’ function is called to display the created
+
+scatter plot on the screen. This function should be the last line of the script.
+
+Dept. of CSE 35 GSSSIETW, Mysuru

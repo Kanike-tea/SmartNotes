@@ -1,0 +1,70 @@
+330
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+10. Retrieving column values. Finally, in order to retrieve the column values into
+the C program variables, the function SoLFetch is used (line 17). This func-
+tion is similar to the FETCH command of embedded SQL. Ifa query result has
+a collection of tuples, each soLFetch call gets the next tuple and returns its
+column values into the bound program variables. soLFetch returns an excep-
+tion (nonzero) code if there are no more tuples in the query result.!®
+
+As we can see, using dynamic function calls requires a lot of preparation to set up
+the SQL statements and to bind statement parameters and query results to the
+appropriate program variables.
+
+In CLI] a single tuple is selected by the SQL query. Figure 10.11 shows an example
+of retrieving multiple tuples. We assume that appropriate C program variables have
+been declared as in Figure 10.1. The program segment in CLI2 reads (inputs) a
+
+9)
+10)
+
+11)
+12)
+13)
+14)
+15)
+16)
+17)
+18)
+19)
+20)
+21)
+22)
+23)
+
+//Program Segment CLI2: Figure 10.11
+#include sqlcli.h ; Program segment CLI2, a C program segment
+void printDepartmentEmps() { that uses SQL/CLI for a query with a collection
+
+SQLHSTMT stmtl ; of tuples in its result
+
+SQLHDBC conl ;
+SQLHENV envl ;
+SQLRETURN retl, ret2, ret3, ret4 ;
+retl = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &envl) ;
+if (!retl) ret2 = SQLAllocHandle(SQL_HANDLE DBC, envl, &conl) else exit ;
+if (!ret2) ret3 = SQLConnect(conl, "dbs", SQL_NTS, "js", SQL_NTS, "xyz",
+SQL_NTS) else exit ;
+if (!ret3) ret4 = SQLAllocHandle(SQL_HANDLE_STMT, conl, &stmtl) else exit ;
+sQLPrepare(stmtl, "select Lname, Salary from EMPLOYEE where Dno = ?"
+SQL_NTS) ;
+prompt ("Enter the Department Number: ", dno) ;
+SQLBindParameter(stmtl, 1, SQL_INTEGER, &dno, 4, &fetchlenl) ;
+retl = SQLExecute(stmtl) ;
+if (!retl) {
+SQLBindCol(stmt1, 1, SQL_CHAR, &lname, 15, &fetchlenl) ;
+SQLBindCol(stmtl, 2, SQL_FLOAT, ssalary, 4, &fetchlen2) ;
+ret2 = SQLFetch(stmtl) ;
+while (!ret2) {
+printf(lname, salary) ;
+ret2 = SQLFetch(stmtl) ;
+}
+
++
+
+'®if unbound program variables are used, SQLFetch returns the tuple into a temporary program area.
+Each subsequent SOLGetCol (or SQLGetData) returns one attribute value in order. Basically, for each
+row in the query result, the program should iterate over the attribute values (columns) in that row. This is
+useful if the number of columns in the query result is variable.

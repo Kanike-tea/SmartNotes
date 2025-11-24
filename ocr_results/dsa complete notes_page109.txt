@@ -1,0 +1,57 @@
+Data Structures and Applications (BCS304) Module IV
+
+{
+
+TreeNode *temp,*prev;
+temp==node;
+prev=NULL;
+If(temp==NULL)
+return(NULL);
+while(temp!=NULL)
+{
+if(temp->data.key==k)
+{
+printf(“element already found”);
+return(NULL);
+
+i
+if(key<temp->data.key)
+
+{
+Prev=temp;
+temp=temp->rechild;
+
+else
+
+{
+Prev=temp;
+Temp=temp->rchild;
+
+}
+
+retrun(prev);
+
+}
+
+Deletion from a binary search tree: Suppose T is a a binary search tree. The function to
+delete an item from tree T first search the tree to find the location of the node with the item
+and the location of the parent of N and the deletion of the node N depends on three cases:
+
+Case 1: N has no children. Then N is deleted from T by replacing the location of the node N in the
+parent(N) by the NULL pointer
+
+Example: Deleting Node 66 with NO children
+
+60 oo
+25 75 25 75
+YN / ; a-
+15 50 66 Deleting node 15 50
+/ /
+33 33
+\ \
+\ 44
+
+Case 2: If N has exactly one child. Then N is deleted from T by replacing the location of N in Parent
+(N) by the location of the only child of N.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 4

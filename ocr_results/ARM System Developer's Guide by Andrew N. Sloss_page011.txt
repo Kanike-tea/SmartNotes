@@ -1,0 +1,43 @@
+PREFACE
+
+Increasingly, embedded systems developers and system-on-chip designers select specific
+microprocessor cores and a family of tools, libraries, and off-the-shelf components to
+quickly develop new microprocessor-based products. A major player in this industry is
+ARM. Over the last 10 years, the ARM architecture has become the most pervasive 32-bit
+architecture in the world, with more than 2 billion ARM-based processors shipped at the
+time of this writing. ARM processors are embedded in products ranging from cell/mobile
+phones to automotive braking systems. A worldwide community of ARM partners and
+third-party vendors has developed among semiconductor and product design companies,
+including hardware engineers, system designers, and software developers. To date, no book
+has directly addressed their need to develop the system and software for an ARM-based
+embedded design. This text fills that gap.
+
+Our goal has been to describe the operation of the ARM core from a product developer’s
+perspective with a clear emphasis on software. Because we have written this book specifically
+for engineers who are experienced with embedded systems development but who may be
+unfamiliar with the ARM architecture, we have assumed no previous ARM experience.
+
+To help our readers become productive as quickly as possible, we have included a suite
+of ARM software examples that can be integrated into commercial products or used as
+templates for the quick creation of productive software. The examples are numbered so
+that readers can easily locate the source code on the publisher’s Web site. The examples are
+also valuable to people with ARM design experience who want to make the most efficient
+use of an ARM-based embedded system.
+
+ORGANIZATION OF THE BOOK
+
+‘The book begins by briefly noting the ARM processor design philosophy and discussing how
+and why it differs from the traditional RISC philosophy. The first chapter also introduces a
+simple embedded system based on the ARM processor.
+
+Chapter 2 digs more deeply into the hardware, focusing on the ARM processor core and
+presenting an overview of the ARM cores currently in the marketplace.
+
+The ARM and Thumb instruction sets are the focus of Chapters 3 and 4, respectively,
+and form the fundamental basis for the rest of the book. Explanations of key instructions
+include complete examples, so these chapters also serve as a tutorial on the instruction sets.
+
+Chapters 5 and 6 demonstrate how to write efficient code with scores of example that we
+have developed while working with ARM customers. Chapter 5 teaches proven techniques
+
+xi

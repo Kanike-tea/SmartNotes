@@ -1,0 +1,78 @@
+778
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+20.15.
+20.16.
+
+20.17.
+
+20.18.
+
+20.19.
+
+20.20.
+
+20.21.
+
+20.22.
+
+20.23.
+
+Discuss the final result of the different schedules in Figures 20.3(a) and (b),
+where M = 2 and N = 2, with respect to the following questions: Does adding
+the above condition change the final outcome? Does the outcome obey the
+implied consistency rule (that the capacity of X is 90)?
+
+Repeat Exercise 20.14, adding a check in T, so that Y does not exceed 90.
+
+Add the operation commit at the end of each of the transactions T; and T)
+in Figure 20.2, and then list all possible schedules for the modified transac-
+tions. Determine which of the schedules are recoverable, which are cascade-
+less, and which are strict.
+
+List all possible schedules for transactions T, and T, in Figure 20.2, and
+determine which are conflict serializable (correct) and which are not.
+
+How many serial schedules exist for the three transactions in Figure 20.8(a)?
+What are they? What is the total number of possible schedules?
+
+Write a program to create all possible schedules for the three transactions
+in Figure 20.8(a), and to determine which of those schedules are conflict
+serializable and which are not. For each conflict-serializable schedule,
+your program should print the schedule and list all equivalent serial
+schedules.
+
+Why is an explicit transaction end statement needed in SQL but not an
+explicit begin statement?
+
+Describe situations where each of the different isolation levels would be use-
+ful for transaction processing.
+
+Which of the following schedules is (conflict) serializable? For each serializ-
+able schedule, determine the equivalent serial schedules.
+
+a. ry(X)5 r3(X)5 wi(X)5 r(X)s w3(X)s
+
+b. ry(X)5 r3(X)5 w3(X)5 4 (X)5 19(X)s
+
+cc. 73(X)5 r(X)53 w3(X)5 7(X)s 4 (X)5
+
+dl. r3(X)5 r2(X)5 71 (X)s w3(X)s wi (X)5
+
+Consider the three transactions T), T2, and T3, and the schedules S; and S;
+given below. Draw the serializability (precedence) graphs for S; and S,, and
+state whether each schedule is serializable or not. If a schedule is serializable,
+write down the equivalent serial schedule(s).
+
+Ty: ry (X)s ry (Z)s wy (X)5
+
+Ty: ry (Z)s 12 (Y)s we (Z)s we (Y)s
+
+T3: 73 (X)3 13 (Y)3 w3 (Ys
+
+Sqr ry (X)5 rz (Z)s 1m (Z)s 3 (X)s 3 (Ys wr (X)s w3 (Y)s 12 (Ys we (Z)s
+w2(Y);
+
+Sot ry (X)5 2 (Z)s. 73 O51 (Z)s 2 (Ys v3, (Ys wi 05 we (Z)s ws (Y)5
+w2 (Y);

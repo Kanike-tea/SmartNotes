@@ -1,0 +1,55 @@
+10.1 Firmware and Bootloader 371
+
+standard API. Consequently, when a port takes place, the various hardware-specific parts
+must be implemented in accordance with the various HAL API functions.
+
+This has the advantage of making the porting process relatively straightforward since
+you have a standard function framework to work within. Once the firmware is ported, the
+task of moving an operating system over to the new target platform can take place. The
+speed of this activity depends upon whether the OS takes advantage of the ported ~HAL
+API call to access the hardware.
+
+“HAL supports these main features:
+
+= System initialization—setting up the target platform and processor core. Depending
+upon the complexity of the target platform, this can either be a simple or complicated
+task.
+
+= Polled serial driver—used to provide a basic method of communication with a host.
+
+= LED support—allows control over the LEDs for simple user feedback. This provides an
+application the ability to display operational status.
+
+=~ Timer support—allows a periodic interrupt to be set up. This is essential for preemptive
+context switching operating systems that require this mechanism.
+
+= Interrupt controllers—support for different interrupt controllers.
+
+The boot monitor in HAL contains a CLI.
+
+The second technology, Angel, allows communication between a host debugger and
+a target platform. It allows you to inspect and modify memory, download and execute
+images, set breakpoints, and display processor register contents. All this control is through
+the host debugger. The Angel debug monitor must have access to the SWI and IRQ or FIQ
+vectors.
+
+Angel uses SWI instructions to provides a set of APIs that allow a program to open,
+read, and write to a host filing system. IRQ/FIQ interrupts are used for communication
+purposes with the host debugger.
+
+10.1.2) RED HAT REDBooT
+
+RedBoot is a firmware tool developed by Red Hat. It is provided under an open source
+
+license with no royalties or up front fees. RedBoot is designed to execute on different CPUs
+
+(for instance, ARM, MIPS, SH, and so on). It provides both debug capability through GNU
+
+Debugger (GDB), as well as a bootloader. The RedBoot software core is based on a HAL.
+RedBoot supports these main features:
+
+=~ Communication—configuration is over serial or Ethernet. For serial, X-Modem proto-
+col is used to communicate with the GNU Debugger (GDB). For Ethernet, TCP is used
+to communicate with GDB. RedBoot supports a range of network standards, such as
+
+bootp, telnet, and tftp.

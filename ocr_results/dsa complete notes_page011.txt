@@ -1,0 +1,68 @@
+Data Structures and App! 's/BCS304 Module-1
+
+Example : When the compiler encounters an array declaration such as int A[3][4] it creates an array
+A and allocates 20 consecutive memory locations. Each memory location is large enough to hold a
+single integer.
+
+Let a be the address of the first element A[0][0], is called the base address
+
+Considering Row major order: Using the bases address we can calculate the addresses of other
+element
+
+Address of A[O][1] = 100 +2[0*4+ 1]= 100 +2=102
+
+Address of A[0][2] = 100 +2[0*4+ 2]= 100 +4=104
+
+Address of A[1][0] = 100 +2[1*4+ 0]= 100 +8=108
+
+Addres of A[2][3]= 100 +2[2*4+3]= 100+22= 122
+
+J=
+]=
+
+Representation of Multidimensional Arrays: In C, multidimensional arrays are represented using
+the array-of-arrays representation The linear list is then stored in consecutive memory just as we store
+a one-dimensional array.
+
+If an n-dimensional array a is declared as a[upperO][upperl] --- [wppern-1]; then the number of
+elements in the array is: uppero*upperi*...... uppefn-1 also represented as
+
+Thepper;
+
+i=
+where I] is the product of the upperi's. For instance, if we declare a as a[10][10][10], then we require
+10-10-10 = 1000 memory cell to hold the array. There are two common ways to represent
+multidimensional arrays: row major order and column major order. We consider only row major order
+here. As its name implies, row major order stores multidimensional arrays by rows.
+
+Two dimensional arrays
+
+e For instance, we interpret the two dimensional Array A[upper0][upper1] as upper0 rows, , each
+row containing upper! elements.
+If we assume that a the base address is the address of A[0][0]
+Then the address of an arbitrary element,
+
+Address( a[i][j])= o + i: upperl + j----------- qd)
+
+e Here the size is not considered. Considering the size the formula can be written as
+
+Address (a[i][j]) = & + w(i- upper! + j) where w is the size of each unit of memory location.
+
+Representation of a three-dimensional array
+e A[upper0][upper1][upper2], we interpret the array as upperO two dimensional arrays of
+dimension upper! x upper2.
+
+address of A[i][j][k]=Ua + i-upperl-upper2 + j-upper2 + k --------- (2)
+
+Representation of a fourth-dimensional array
+e A[upper0][upper! ][upper2][upper3]
+e We interpret the array as upper0 three dimensional arrays of dimension upper! x upper2 x
+upper3 .
+address of A [i][j][k][]=Lo + i-upperl-upper2.upper3 + j-upper2..upper3 + k.upper3 +1
+
+Representation of an n-dimensional array
+e Generalizing on the preceding discussion, we can obtain the addressing formula for any
+element A[iO][il] ... [in-1] in an n dimensional array declared as:
+A[upper0][upper1] ... [uppern-1]
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 12

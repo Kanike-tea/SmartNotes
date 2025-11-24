@@ -1,0 +1,51 @@
+21.1. Two-Phase Locking Techniques for Concurrency Control
+
+of its exclusive (write) locks until after it commits or aborts. Hence, no other trans-
+action can read or write an item that is written by T unless T has committed, lead-
+ing to a strict schedule for recoverability. Strict 2PL is not deadlock-free. A more
+restrictive variation of strict 2PL is rigorous 2PL, which also guarantees strict
+schedules. In this variation, a transaction T does not release any of its locks (exclu-
+sive or shared) until after it commits or aborts, and so it is easier to implement
+than strict 2PL.
+
+Notice the difference between strict and rigorous 2PL: the former holds write-locks
+until it commits, whereas the latter holds all locks (read and write). Also, the differ-
+ence between conservative and rigorous 2PL is that the former must lock all its
+items before it starts, so once the transaction starts it is in its shrinking phase; the
+latter does not unlock any of its items until after it terminates (by committing or
+aborting), so the transaction is in its expanding phase until it ends.
+
+Usually the concurrency control subsystem itself is responsible for generating
+the read_lock and write_lock requests. For example, suppose the system is to enforce
+the strict 2PL protocol. Then, whenever transaction T issues a read_item(X), the
+system calls the read_lock(X) operation on behalf of T. If the state of LOCK(X) is
+write_locked by some other transaction 7”, the system places T in the waiting queue
+for item X; otherwise, it grants the read_lock(X) request and permits the read_item(X)
+operation of T to execute. On the other hand, if transaction T issues a write_item(X),
+the system calls the write_lock(X) operation on behalf of T. If the state of LOCK(X) is
+write_locked or read_locked by some other transaction T’, the system places T in
+the waiting queue for item X; if the state of LOCK(X) is read_locked and T itself is
+the only transaction holding the read lock on X, the system upgrades the lock to
+write_locked and permits the write_item(X) operation by T. Finally, if the state of
+LOCK(X) is unlocked, the system grants the write_lock(X) request and permits the
+write_item(X) operation to execute. After each action, the system must update its
+lock table appropriately.
+
+Locking is generally considered to have a high overhead, because every read or
+write operation is preceded by a system locking request. The use of locks can also
+cause two additional problems: deadlock and starvation. We discuss these problems
+and their solutions in the next section.
+
+21.1.3 Dealing with Deadlock and Starvation
+
+Deadlock occurs when each transaction T in a set of two or more transactions is
+waiting for some item that is locked by some other transaction T” in the set. Hence,
+each transaction in the set is in a waiting queue, waiting for one of the other trans-
+actions in the set to release the lock on an item. But because the other transaction is
+also waiting, it will never release the lock. A simple example is shown in Fig-
+ure 21.5(a), where the two transactions T;’ and T’ are deadlocked in a partial
+schedule; T;’ is in the waiting queue for X, which is locked by T;’, whereas Ty’ is in
+the waiting queue for Y, which is locked by T;’. Meanwhile, neither Ty’ nor T>’ nor
+any other transaction can access items X and Y.
+
+789

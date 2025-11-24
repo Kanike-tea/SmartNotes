@@ -1,0 +1,47 @@
+29.3 Data Modeling for Data Warehouses
+
+Other terms frequently encountered in the context of data warehousing are
+as follows:
+
+= Operational data store (ODS): This term is commonly used for intermedi-
+ate form of databases before they are cleansed, aggregated, and transformed
+into a data warehouse.
+
+= Analytical data store (ADS): Those are the database that are built for the
+purpose of conducting data analysis. Typically, ODSs are reconfigured and
+repurposed into ADSs through the processes of cleansing, aggregation, and
+transformation.
+
+29.3 Data Modeling for Data Warehouses
+
+Multidimensional models take advantage of inherent relationships in data to popu-
+late data in multidimensional matrices called data cubes. (These may be called hyper-
+cubes if they have more than three dimensions.) For data that lends itself to
+multidimensional modeling, query performance in multidimensional matrices can
+be much better than in the relational data model. Three examples of dimensions in a
+corporate data warehouse are the corporation’s fiscal periods, products, and regions.
+
+A standard spreadsheet is a two-dimensional matrix. One example would be a
+spreadsheet of regional sales by product for a particular time period. Products could
+be shown as rows, with columns comprising sales revenues for each region. (Fig-
+ure 29.2 shows this two-dimensional organization.) Adding a time dimension, such
+as an organization’s fiscal quarters, would produce a three-dimensional matrix,
+which could be represented using a data cube.
+
+Figure 29.3 shows a three-dimensional data cube that organizes product sales data by
+fiscal quarters and sales regions. Each cell could contain data for a specific product,
+
+1105
+
+A two-dimensional matrix
+
+Region Figure 29.2
+Reg 1 Reg 2 Reg 3 see model.
+P123
+P124
+3
+3
+8
+é P125
+
+P126

@@ -1,0 +1,52 @@
+956
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Selected Bibliography
+
+The technologies for big data discussed in this chapter have mostly sprung up in the
+last ten years or so. The origin of this wave is traced back to the seminal papers from
+Google, including the Google file system (Ghemawat, Gobioff, & Leung, 2003) and
+the MapReduce programming paradigm (Dean & Ghemawat, 2004). The Nutch
+system with follow-on work at Yahoo is a precursor of the Hadoop technology and
+continues as an Apache open source project (nutch.apache.org). The BigTable sys-
+tem from Google (Fay Chang et al., 2006) describes a distributed scalable storage
+system for managing structured data in the petabytes range over thousands of com-
+modity servers.
+
+It is not possible to name a specific single publication as “the” Hadoop paper. Many
+studies related to MapReduce and Hadoop have been published in the past decade.
+We will list only a few landmark developments here. Schvachko (2012) outlines the
+limitations of the HDFS file system. Afrati and Ullman (2010) is a good example of
+using MapReduce programming in various contexts and applications; they demon-
+strate how to optimize relational join operations in MapReduce. Olston et al. (2008)
+describe the Pig system and introduce Pig Latin as a high-level programming lan-
+guage. Thusoo et al. (2010) describe Hive as a petabyte- scale data warehouse on top
+of Hadoop. A system for large-scale graph processing called Pregel at Google is
+described in Malewicz et al. (2010). It uses the bulk synchronous parallel (BSP)
+model of parallel computation originally proposed by Valiant (1990). In Pavlo et al.
+(2009), a number of database technology experts compared two parallel RDBMSs
+with Hadoop/MapReduce and showed how the parallel DBMS can actually per-
+form better under certain conditions. The results of this study must not be consid-
+ered definitive because of the significant performance improvements achieved in
+Hadoop v2 (YARN). The approach of resilient distributed datasets (RDDs) for in-
+memory cluster computing is at the heart of the Berkeley's Spark system, developed
+by Zaharia et al. (2013). A recent paper by Jagadish et al. (2014) gives the collective
+opinion of a number of database experts about the challenges faced by the current
+big data technologies.
+
+The definitive resource for Hadoop application developers is the book Hadoop: The
+Definitive Guide, by Tom White (2012), which is in its third edition. A book by
+YARN project founder Arun Murthy with Vavilapalli (2014) describes how YARN
+increases scalability and cluster utilization, enables new programming models and
+services, and extends applicability beyond batch applications and Java. Agneeswaran
+(2014) has written about going beyond Hadoop, and he describes the Berkeley Data
+Analysis Stack (BDAS) for real-time analytics and machine learning; the Stack
+includes Spark, Mesos, and Shark. He also describes Storm, a complex event-pro-
+cessing engine from Twitter widely used in industry today for real-time computing
+and analytics.
+
+The Hadoop wiki is at Hadoop.apache.org. There are many open source, big data
+projects under Apache, such as Hive, Pig, Oozie, Sqoop, Storm, and HBase. Up-to-
+date information about these projects can be found in the documentation at the
+projects’ Apache Web sites and wikis. The companies Cloudera, MapR, and Hor-

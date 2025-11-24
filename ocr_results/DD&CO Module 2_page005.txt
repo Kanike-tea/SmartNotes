@@ -1,0 +1,53 @@
+adders or a chain of one-half adder and n-1 full adders. Figure below shows the interconnection of four
+full-adder (FA) circuits to provide a four-bit binary ripple carry adder.
+B; A; By A; By A, By Ao
+G GQ CQ
+FA | FA | FA \« FA |x Go
+Cy S3 Sz Si So
+
+Four-bit Adder
+
+The augend bits of A and the addend bits of B are designated by subscript numbers from right to left,
+with subscript 0 denoting the least significant bit. The carries are connected in a chain through the full
+adders. The input carry to the adder is Co, and it ripples through the full adders to the output carry C4.
+The S outputs generate the required sum bits. An n -bit adder requires n full adders, with each output
+carry connected to the input carry of the next higher order full adder. To demonstrate with a specific
+example, consider the two binary numbers A = 1011 and B = 0011. Their sum S = 1110 is formed with
+the four-bit adder as follows:
+
+Subscript i: 3 2 1 0
+
+Input carry 0 1 1 0 G
+
+Augend 1 0 1 1 A;
+
+Addend 0 0 1 1 B;
+
+Sum 1 1 1 0 Si
+
+Output carry 0 0 1 1 Cit
+
+The bits are added with full adders, starting from the least significant position (subscript 0), to form the
+sum bit and carry bit. The input carry Co in the least significant position must be 0. The value of C+: in
+a given significant position is the output carry of the full adder. This value is transferred into the input
+carry of the full adder that adds the bits one higher significant position to the left. The sum bits are thus
+generated starting from the rightmost position and are available as soon as the corresponding previous
+carry bit is generated. All the carries must be generated for the correct sum bits to appear at the outputs.
+
+The four-bit adder is a typical example of a standard component. It can be used in many applications
+involving arithmetic operations. Observe that the design of this circuit by the classical method would
+require a truth table with 2° = 512 entries, since there are nine inputs to the circuit. By using an iterative
+method of cascading a standard function, it is possible to obtain a simple and straightforward
+implementation.
+
+Carry Propagation
+
+The addition of two binary numbers in parallel implies that all the bits of the augend and addend are
+available for computation at the same time. As in any combinational circuit, the signal must propagate
+through the gates before the correct output sum is available in the output terminals. The total propagation
+time is equal to the propagation delay of a typical gate, times the number of gate levels in the circuit.
+The longest propagation delay time in an adder is the time it takes the carry to propagate through the full
+adders. Since each bit of the sum output depends on the value of the input carry, the value of Sj at any
+given stage in the adder will be in its steady-state final value only after the input carry to that stage has
+been propagated. In this regard, consider output S3 in Four-Bit Adder (above Fig). Inputs A3 and B3 are
+available as soon as input signals are applied to the adder. However, input carry C3 does not settle to its

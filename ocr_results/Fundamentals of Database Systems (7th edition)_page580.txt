@@ -1,0 +1,74 @@
+550 — Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Table 16.2 (b) Internal Drive Characteristics of 300 GB-900 GB Seagate Drives
+
+Drive capacity
+
+Read/write data
+heads
+
+Bytes per track
+Bytes per surface
+
+Tracks per surface
+(total)
+
+Tracks per inch
+Peak bits per inch
+Areal density
+
+Disk rotation speed
+
+Avg rotational
+latency
+
+ST900MMO0006 ST6OOMMO0006 ST450MM0006 ST300MMO006
+ST900MM0026 ST600MM0026 ST450MM0026 ST300MM0026
+ST900MM0046 ST600MM0046 ST450MM0046 ST300MMO0046
+ST900MM0036
+
+900 600 450 300 GB (formatted,
+rounded off value)
+
+6 4 3 2
+
+997.9 997.9 997.9 997.9 KBytes (avg, rounded
+off values)
+
+151,674 151,674 151,674 151,674 MB (unformatted,
+rounded off value)
+
+152 152 152 152 KTracks (user
+accessible)
+
+279 279 279 279 KTPI (average)
+
+1925 1925 1925 1925 KBPI
+
+538 538 538 538 Gb/in2
+
+10K 10K 10K 10K rpm
+
+2.9 2.9 2.9 2.9 ms
+
+from 512 to 8192 bytes. A disk with hard-coded sectors often has the sectors subdi-
+vided or combined into blocks during initialization. Blocks are separated by fixed-
+size interblock gaps, which include specially coded control information written
+during disk initialization. This information is used to determine which block on the
+track follows each interblock gap. Table 16.2 illustrates the specifications of typical
+disks used on large servers in industry. The 10K prefix on disk names refers to the
+rotational speeds in rpm (revolutions per minute.
+
+There is continuous improvement in the storage capacity and transfer rates associ-
+ated with disks; they are also progressively getting cheaper—currently costing only
+a fraction of a dollar per megabyte of disk storage. Costs are going down so rapidly
+that costs as low as $100/TB are already on the market.
+
+A disk is a random access addressable device. Transfer of data between main mem-
+ory and disk takes place in units of disk blocks. The hardware address of a block—
+a combination of a cylinder number, track number (surface number within the
+cylinder on which the track is located), and block number (within the track)—is
+supplied to the disk I/O (input/output) hardware. In many modern disk drives, a
+single number called LBA (logical block address), which is a number between 0 and
+n (assuming the total capacity of the disk is n + 1 blocks), is mapped automatically
+to the right block by the disk drive controller. The address of a buffer—a contiguous

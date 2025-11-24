@@ -1,0 +1,51 @@
+25.4 MapReduce: Additional Details
+
+p=i. Then we only need to join the ith file of \(R\) R with the corresponding ith file
+of S. One way to do this is to perform a variation of the Map-Side join we discussed
+above: have the Mapper handling the ith partition of the larger table read the ith
+partition from the smaller table. This strategy can be expanded to work even when
+the two tables do not have the same number of partitions. It is sufficient for one to
+be a multiple of the other. For example, if table A is divided into two partitions and
+table B is divided into four partitions, then partition 1 from table A needs to join
+with partitions 1 and 3 of B, and partition 2 of A needs to join with partitions 2 and 4
+of B. The opportunity to perform Bucketed Join (see below) is also common: for
+example, assume R and S are outputs of previous sort-merge joins. The output of
+the sort-merge join is partitioned in the joining expressions. Further joining this
+dataset allows us to avoid a shuffle.
+
+Bucket Joins. This is a combination of Map-Side and Partition Joins. In this case
+only one relation, say the right side relation, is Partitioned. We can then run Map-
+pers on the left side relation and perform a Map Join against each Partition from
+the right side.
+
+N-Way Map-Side Joins. A join on R(A, B, C, D), S(B, E), and T(C, F) can be
+achieved in one MR job provided the rows for a key for all small tables can be buffered
+in memory. The join is typical in Data Warehouses (see Chapter 29), where R is a fact
+table and S and T are dimension tables whose keys are B and C, respectively. Typi-
+cally, in a Data Warehouse query filters are specified on Dimensional Attributes.
+Hence each Map task has enough memory to hold the hash map of several small
+Dimensional tables. As Fact table rows are being read into the Map task, they can be
+hash joined with all the dimensional tables that the Map task has read into memory.
+
+Simple N-Way Joins. A join on R(A, B), S(B, C), and T(B, D) can be achieved in
+one MR job provided the rows for a key for all small tables can be buffered in mem-
+ory. Suppose R is a large table and S and T are relatively smaller tables. Then it is
+typically the case that for any given key value B, the number of rows in S or T will fit
+in a Task’s memory. Then, by giving the large table the largest tag, it is easy to gen-
+eralize the Sort-Merge join to an N-way join where the joining expressions are the
+same. In a Reducer for a key value of B, the reducer will first receive the S rows, then
+the T rows, and finally the R rows. Since the assumption is that there aren’t a large
+number of S and T rows, the reducer can cache them. As it receives R rows, it can do
+across product with the cached S$ and T rows and output the result of join.
+
+In addition to the above strategies for performing joins using the MapReduce para-
+digm, algorithms have been proposed for other types joins (e.g., the general multi-
+way natural join with special cases of chain-join or star-join in data warehouses have
+been shown to be handled as a single MR job).'* Similarly, algorithms have been
+proposed to deal with skew in the join attributes (e.g., in a sales fact table, certain
+days may have a disproportionate number of transactions). For joins on attributes
+with skew, a modified algorithm would let the Partitioner assign unique values to the
+
+'4See Afrati and Ullman (2010).
+
+931

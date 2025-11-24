@@ -1,0 +1,51 @@
+588
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+using a minimum of four disks. Other nonstandard RAID levels include: RAID 1.5,
+RAID 7, RAID-DP, RAID S or Parity RAID, Matrix RAID, RAID-K, RAID-Z,
+RAIDn, Linux MD RAID 10, IBM ServeRAID 1E, and unRAID. A discussion of
+these nonstandard levels is beyond the scope of this text. Designers of a RAID setup
+for a given application mix have to confront many design decisions such as the level
+of RAID, the number of disks, the choice of parity schemes, and grouping of disks
+for block-level striping. Detailed performance studies on small reads and writes
+(referring to I/O requests for one striping unit) and large reads and writes (referring
+to I/O requests for one stripe unit from each disk in an error-correction group) have
+been performed.
+
+16.11 Modern Storage Architectures
+
+In this section, we describe some recent developments in storage systems that are
+becoming an integral part of most enterprise’s information system architectures.
+We already mentioned the SATA and SAS interface, which has almost replaced the
+previously popular SCSI (small computer system interface) in laptops and small
+servers. The Fibre Channel (FC) interface is the predominant choice for storage
+networks in data centers. We review some of the modern storage architectures next.
+
+16.11.1 Storage Area Networks
+
+With the rapid growth of electronic commerce, enterprise resource planning (ERP)
+systems that integrate application data across organizations, and data warehouses
+that keep historical aggregate information (see Chapter 29), the demand for storage
+has gone up substantially. For today’s Internet-driven organizations, it has become
+necessary to move from a static fixed data center-oriented operation to a more flex-
+ible and dynamic infrastructure for the organizations’ information processing
+requirements. The total cost of managing all data is growing so rapidly that in many
+instances the cost of managing server-attached storage exceeds the cost of the server
+itself. Furthermore, the procurement cost of storage is only a small fraction—typi-
+cally, only 10 to 15% of the overall cost of storage management. Many users of
+RAID systems cannot use the capacity effectively because it has to be attached in a
+fixed manner to one or more servers. Therefore, most large organizations have
+moved to a concept called storage area networks (SANs). In a SAN, online storage
+peripherals are configured as nodes on a high-speed network and can be attached
+and detached from servers in a very flexible manner.
+
+Several companies have emerged as SAN providers and supply their own proprie-
+tary topologies. They allow storage systems to be placed at longer distances from
+the servers and provide different performance and connectivity options. Existing
+storage management applications can be ported into SAN configurations using
+Fibre Channel networks that encapsulate the legacy SCSI protocol. As a result, the
+SAN-attached devices appear as SCSI devices.
+
+Current architectural alternatives for SAN include the following: point-to-point
+connections between servers and storage systems via Fiber Channel; use of a Fiber

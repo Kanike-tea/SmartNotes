@@ -1,0 +1,52 @@
+12.3 Cache Policy 419
+
+transient variables is a local variable that overflows onto a cached stack because there are
+not enough registers in the register file to hold the variable.
+
+12.3.2 CACHE LINE REPLACEMENT POLICIES
+
+EXAMPLE
+
+12.1
+
+On a cache miss, the cache controller must select a cache line from the available set in
+cache memory to store the new information from main memory. The cache line selected
+for replacement is known as a victim. If the victim contains valid, dirty data, the controller
+must write the dirty data from the cache memory to main memory before it copies new
+data into the victim cache line. The process of selecting and replacing a victim cache line is
+known as eviction.
+
+The strategy implemented in a cache controller to select the next victim is called its
+replacement policy. The replacement policy selects a cache line from the available associative
+member set; thatis, it selects the way to use in the next cache line replacement. To summarize
+the overall process, the set index selects the set of cache lines available in the ways, and the
+replacement policy selects the specific cache line from the set to replace.
+
+ARM cached cores support two replacement policies, either pseudorandom or
+round-robin.
+
+= ~Round-robin or cyclic replacement simply selects the next cache line in a set to replace.
+The selection algorithm uses a sequential, incrementing victim counter that increments
+each time the cache controller allocates a cache line. When the victim counter reaches
+a maximum value, it is reset to a defined base value.
+
+= ~Pseudorandom replacement randomly selects the next cache line in a set to replace. The
+selection algorithm uses a nonsequential incrementing victim counter. In a pseudoran-
+dom replacement algorithm the controller increments the victim counter by randomly
+selecting an increment value and adding this value to the victim counter. When the
+victim counter reaches a maximum value, it is reset to a defined base value.
+
+Most ARM cores support both policies (see Table 12.1 for a comprehensive list of ARM
+cores and the policies they support). The round-robin replacement policy has greater pre-
+dictability, which is desirable in an embedded system. However, a round-robin replacement
+policy is subject to large changes in performance given small changes in memory access. To
+show this change in performance, we provide Example 12.1.
+
+This example determines the time it takes to execute a software routine using the round-
+robin and random replacement policies. The test routine cache_RRtest collects timings
+using the clock function available in the C library header time.h. First, it enables a round
+robin policy and runs a timing test, and then enables the random policy and runs the
+same test.
+
+The test routine readSet is written specifically for an ARM940T and intentionally shows
+a worst-case abrupt change in cache behavior using a round-robin replacement policy.

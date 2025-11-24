@@ -1,0 +1,43 @@
+Microcontrollers-BCS402
+
+compared with an ARM7. The maximum core frequency attainable using an ARM9 is also
+
+higher.
+
+The ARM1O0 increases the pipeline length still further by adding a sixth stage, as shown in
+Figure 7.
+
+([ Fetch} Issue} Decode }-+f] Execute}+f[Memory}—+f} Write }
+
+Fig 7: ARM10 six-stage pipeline
+
+ARM1O0 can process on average 1.3 Dhrystone MIPS per MHz, about 34% more throughputs
+than an ARM7 processor core, but again at a higher latency cost.
+
+Even though the ARM9 and ARM1O pipelines are different, they still use the same pipeline
+executing characteristics as an ARM7. Code written for the ARM7 will execute on an ARM9
+or ARM1O.
+
+Pipeline Executing Characteristics
+The ARM pipeline has not processed an instruction until it passes completely through the
+execute stage. For example, an ARM7 pipeline (with three stages) has executed an instruction
+only when the fourth instruction is fetched.
+Fetch Decode Execute
+Time | Cycle! (WSR) Fr sve
+
+Cycle2 (ADD Inve
+
+Cycles (AND ADD ) CS) Giresve
+
+Cycles [ SUB AND } { abo
+
+Fig 8: ARM instruction sequence
+
+Figure 8 shows an instruction sequence on an ARM7 pipeline. The MSR instruction is used
+
+to enable IRQ interrupts, which only occurs once the MSR instruction completes the execute
+stage of the pipeline. It clears the I bit in the cpsr to enable the IRQ interrupts. Once the ADD
+
+instruction enters the execute stage of the pipeline, IRQ interrupts are enabled.
+
+Dept. of ECE, GSSSIETW Page 25

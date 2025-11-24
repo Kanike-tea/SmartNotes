@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+PROJ_DEPT — PROJECT * DEPT
+The attribute Dnum is called the join attribute for the NATURAL JOIN operation, because it is the
+
+only attribute with the same name in both relations.
+
+PROJ DEPT
+Pname Pnumber | Plocation | Dnum Dname Mgr_ssn Mgr_start_date
+
+ProductX 1 Bellaire 5 Research 333445555 1988-05-22
+ProductY 2 Sugarland 5 Research 333445555 1988-05-22
+ProductZ 3 Houston 5 Research 333445555 1988-05-22
+Computerization 10 Stafford a Administration | 987654321 1995-01-01
+Reorganization 20 Houston 1 Headquarters | 888665555 1981-06-49
+Newbenefits 30 Stafford 4 Administration | 987654321] 1995-01-01
+
+If the attributes on which the natural join is specified already have the same names in both relations,
+renaming is unnecessary. For example, to apply a natural join on the Dnumber attributes of
+DEPARTMENT and DEPT_LOCATIONS, it is sufficient to write
+
+DEPT_LOCS <— DEPARTMENT * DEPT LOCATIONS
+
+DEPT_LOCS
+Dname Dnumber Mgr_ssn. Mgr_start_date Location
+Headquarters 1 888665555 1981-06419 Houston
+Administration 4 987654321 1995-01-01 Stafford
+Research 5 333445555 1988-05-22 Bellaire
+Research 5 333445555 1988-05-22 Sugarland
+Research 5 « )| 333445555 1988-05-22 Houston
+
+In general, the join condition for NATURAL JOIN is constructed by equating each pair of join
+attributes that have the same name in the two relations and combining these conditions with AND.
+
+Tf no combination of tuples satisfies the join condition, the result of a JOIN is an empty relation with
+
+zero tuples.
+A more general, but nonstandard definition for NATURAL JOIN is
+QeR * (<tist>),( <list2: 5
+where,
+
+<list1>: list of i attributes from R,
+<list2> : list of 7 attributes from S
+
+The lists are used to form equality comparison conditions between pairs of corresponding attributes
+and then the conditions are then ANDed together. Only the list corresponding to attributes of the first
+relation R—<list!1>— is kept in the result Q.
+
+https://vtucode.in Page 26

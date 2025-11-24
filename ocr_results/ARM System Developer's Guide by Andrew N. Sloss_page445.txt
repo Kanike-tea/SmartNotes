@@ -1,0 +1,37 @@
+432 Chapter 12. Caches
+
+Table 12.5 CP15:c7 Commands to clean cache using way and set index addressing.
+
+Command MCR instruction Core support
+
+Flush instruction cache line MCR pl5, 0, Rd, c7, 5,2 ARM926EJ-S, ARM940T, ARM1026EJ-S
+
+Flush data cache line MCR pl5, 0, Rd, c7, c6, 2. ARM926EJ-S, ARM940T, ARM1026EJ-S
+
+Clean data cache line MCR pl5, 0, Rd, c7,cl10,2 + ARM920T, ARM922T, ARM926E)J-S,
+ARM940T, ARM946E-S, ARM1022E,
+ARM1026EJ-S
+
+Clean and flush datacacheline MCR p15, 0, Rd, c7,cl4,2 ARM920T, ARM922T ARM926EJ-S,
+ARM940T, ARM946E-S, ARM1022E,
+
+ARM1026EJ-S
+ARM920T
+31 26 25 87 54 0
+Way SBZ Set SBZ
+ARM922T
+31 26 25 7654 0
+Way SBZ Set SBZ
+ARM940T
+31 26 25 6543 0
+Way SBZ Set] SBZ
+ARM926EJ-S, ARM946E-S, ARM1026EJ-S
+313029 yx 54 }
+Way SBZ Set SBZ
+ARM1022E
+31 26 25 87 5432 0
+Way SBZ Set | WB SBZ
+
+SBZ = should be zero
+
+Figure 12.11 Format of CP15:c7:Cm register Rd when cleaning cache by way and set index addressing.

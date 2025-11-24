@@ -1,0 +1,43 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 05 (b)
+
+5 b) Write a Python program to Demonstrate how to Draw a Pie Chart using Matplotlib.
+
+Aim: Demonstration of how to draw a Pie chart using Matplotlib.
+
+PROGRAM EXPLANATION
+The below program demonstrates how to draw a Pie chart using Matplotlib. Make sure you have
+
+Matplotlib installed before running this code. You can install it using pip if you haven't already:
+
+pip install matplotlib
+
+1. ‘import matplotlib.pyplot as plt’: This line imports the ‘matplotlib.pyplot’ module and
+assigns it the alias ‘plt’. This module provides a collection of functions for creating
+various types of plots and charts.
+
+2. Sample data for the pie chart:
+
+‘labels’: A list containing labels for each category or segment of the pie chart.
+e ‘sizes’: A list containing the sizes or values for each category. These values
+represent the proportions of each category in the whole pie.
+e ‘colors’: A list of colors to be used for each category. In this case, four colors are
+defined: gold, lightcoral, lightgreen, and lightskyblue.
+e ‘explode’: A tuple that specifies whether to "explode" a slice of the pie chart.
+When a value is greater than 0, it separates that particular slice from the rest of the
+chart. In this code, explode is set to ‘(0.1, 0,0, 0)’, which means that the first slice
+(Category A) will be slightly separated from the rest.
+3. Creating the pie chart:
+e ‘plt.pie()’: This function is used to create the pie chart. It takes several arguments,
+including ‘sizes’ (the data values), ‘explode’ (to specify exploding slices), ‘labels’
+(the labels for each category), ‘colors’ (the colors for each slice), ‘autopct’ (a
+string specifying how to display the percentage values on the chart), and
+‘startangle’ (the angle at which the first slice starts in degrees).
+4. Adding a title:
+e ‘plt.title()’: This function is used to set a title for the pie chart. In this code, the
+title is set to 'Pie Chart Example'.
+
+5. Displaying the plot:
+
+Dept. of CSE 41 GSSSIETW, Mysuru

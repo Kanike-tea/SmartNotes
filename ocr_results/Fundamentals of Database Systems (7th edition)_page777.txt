@@ -1,0 +1,48 @@
+20.1 Introduction to Transaction Processing 747
+
+re — : c | CPU,
+yt : 2 ' D ' CPU,
+Ct : Ct i
+
+—
+
+Figure 20.1
+Interleaved
+processing versus
+parallel processing
+of concurrent
+transactions.
+
+central processing unit (CPU) can only execute at most one process at a time. How-
+ever, multiprogramming operating systems execute some commands from one pro-
+cess, then suspend that process and execute some commands from the next process,
+and so on. A process is resumed at the point where it was suspended whenever it gets
+its turn to use the CPU again. Hence, concurrent execution of processes is actually
+interleaved, as illustrated in Figure 20.1, which shows two processes, A and B, execut-
+ing concurrently in an interleaved fashion. Interleaving keeps the CPU busy when a
+process requires an input or output (I/O) operation, such as reading a block from disk.
+The CPU is switched to execute another process rather than remaining idle during I/O
+time. Interleaving also prevents a long process from delaying other processes.
+
+If the computer system has multiple hardware processors (CPUs), parallel processing
+of multiple processes is possible, as illustrated by processes C and D in Figure 20.1.
+Most of the theory concerning concurrency control in databases is developed in terms
+of interleaved concurrency, so for the remainder of this chapter we assume this model.
+In a multiuser DBMS, the stored data items are the primary resources that may be
+accessed concurrently by interactive users or application programs, which are con-
+stantly retrieving information from and modifying the database.
+
+20.1.2 Transactions, Database Items, Read
+and Write Operations, and DBMS Buffers
+
+A transaction is an executing program that forms a logical unit of database pro-
+cessing. A transaction includes one or more database access operations—these can
+include insertion, deletion, modification (update), or retrieval operations. The
+database operations that form a transaction can either be embedded within an
+application program or they can be specified interactively via a high-level query
+language such as SQL. One way of specifying the transaction boundaries is by
+specifying explicit begin transaction and end transaction statements in an appli-
+cation program; in this case, all database access operations between the two are
+considered as forming one transaction. A single application program may contain
+more than one transaction if it contains several transaction boundaries. If the
+database operations in a transaction do not update the database but only retrieve

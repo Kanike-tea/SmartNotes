@@ -1,0 +1,51 @@
+26.2 Temporal Database Concepts
+
+In this section, we will introduce some of the concepts that have been developed to deal
+with the complexity of temporal database applications. Section 26.2.1 gives an over-
+view of how time is represented in databases, the different types of temporal informa-
+tion, and some of the different dimensions of time that may be needed. Section 26.2.2
+discusses how time can be incorporated into relational databases. Section 26.2.3 gives
+some additional options for representing time that are possible in database models that
+allow complex-structured objects, such as object databases. Section 26.2.4 introduces
+operations for querying temporal databases and gives a brief overview of the TSQL2
+language, which extends SQL with temporal concepts. Section 26.2.5 focuses on time
+series data, which is a type of temporal data that is very important in practice.
+
+26.2.1 Time Representation, Calendars,
+and Time Dimensions
+
+For temporal databases, time is considered to be an ordered sequence of points in
+some granularity that is determined by the application. For example, suppose that
+some temporal application never requires time units that are less than one second.
+Then, each time point represents one second using this granularity. In reality, each
+second is a (short) time duration, not a point, since it may be further divided into
+milliseconds, microseconds, and so on. Temporal database researchers have used
+the term chronon instead of point to describe this minimal granularity for a par-
+ticular application. The main consequence of choosing a minimum granularity—
+say, one second—is that events occurring within the same second will be considered
+to be simultaneous events, even though in reality they may not be.
+
+Because there is no known beginning or ending of time, one needs a reference point
+from which to measure specific time points. Various calendars are used by various
+cultures (such as Gregorian (Western), Chinese, Islamic, Hindu, Jewish, Coptic, and
+so on) with different reference points. A calendar organizes time into different time
+units for convenience. Most calendars group 60 seconds into a minute, 60 minutes
+into an hour, 24 hours into a day (based on the physical time of earth’s rotation
+around its axis), and 7 days into a week. Further groupings of days into months and
+months into years either follow solar or lunar natural phenomena and are generally
+irregular. In the Gregorian calendar, which is used in most Western countries, days
+are grouped into months that are 28, 29, 30, or 31 days, and 12 months are grouped
+into a year. Complex formulas are used to map the different time units to one another.
+
+In SQL2, the temporal data types (see Chapter 4) include DATE (specifying Year,
+Month, and Day as YYYY-MM-DD), TIME (specifying Hour, Minute, and Second
+as HH:MM5SS), TIMESTAMP (specifying a Date/Time combination, with options for
+including subsecond divisions if they are needed), INTERVAL (a relative time
+duration, such as 10 days or 250 minutes), and PERIOD (an anchored time duration
+with a fixed starting point, such as the 10-day period from January 1, 2009, to Jan-
+uary 10, 2009, inclusive).!!
+
+"Unfortunately, the terminology has not been used consistently. For example, the term interval is often
+used to denote an anchored duration. For consistency, we will use the SQL terminology.
+
+975

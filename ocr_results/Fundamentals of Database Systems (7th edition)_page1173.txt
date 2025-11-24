@@ -1,0 +1,54 @@
+30.4 SQL Injection
+
+30.4 SQL Injection
+
+SQL injection is one of the most common threats to a database system. We will discuss
+it in detail later in this section. Some of the other frequent attacks on databases are:
+
+= Unauthorized privilege escalation. This attack is characterized by an indi-
+vidual attempting to elevate his or her privilege by attacking vulnerable
+points in the database systems.
+
+= Privilege abuse. Whereas unauthorized privilege escalation is done by an
+unauthorized user, this attack is performed by a privileged user. For exam-
+ple, an administrator who is allowed to change student information can use
+this privilege to update student grades without the instructor’s permission.
+
+= Denial of service. A denial of service (DOS) attack is an attempt to make
+resources unavailable to its intended users. It is a general attack category in
+which access to network applications or data is denied to intended users by
+overflowing the buffer or consuming resources.
+
+= Weak authentication. If the user authentication scheme is weak, an attacker
+can impersonate the identity of a legitimate user by obtaining her login
+credentials.
+
+30.4.1 SQL Injection Methods
+
+As we discussed in Chapter 11, Web programs and applications that access a data-
+base can send commands and data to the database, as well as display data retrieved
+from the database through the Web browser. In an SQL injection attack, the
+attacker injects a string input through the application, which changes or manipu-
+lates the SQL statement to the attacker’s advantage. An SQL injection attack can
+harm the database in various ways, such as unauthorized manipulation of the data-
+base or retrieval of sensitive data. It can also be used to execute system-level com-
+mands that may cause the system to deny service to the application. This section
+describes types of injection attacks.
+
+SQL Manipulation. A manipulation attack, which is the most common type of
+injection attack, changes an SQL command in the application—for example, by add-
+ing conditions to the WHERE-clause of a query, or by expanding a query with addi-
+tional query components using set operations such as UNION, INTERSECT, or MINUS.
+Other types of manipulation attacks are also possible. A typical manipulation attack
+occurs during database login. For example, suppose that a simplistic authentication
+procedure issues the following query and checks to see if any rows were returned:
+
+SELECT * FROM users WHERE username = ‘jake’ and PASSWORD =
+‘jakespassw@’ ;
+The attacker can try to change (or manipulate) the SQL statement by changing it as
+follows:
+
+SELECT * FROM users WHERE username = ‘jake’ and (PASSWORD =
+‘jakespasswd’ or ‘x’ = ‘x’) ;
+
+1143

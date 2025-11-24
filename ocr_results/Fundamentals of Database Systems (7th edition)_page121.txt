@@ -1,0 +1,49 @@
+3.9 Relationship Types of Degree Higher than Two
+
+91
+
+G Figure 3.19
+Name name A weak entity type
+INTERVIEW with a
+
+COMPANY ternary identifying
+relationship type.
+
+CANDIDATE
+
+Department
+
+INTERVIEW JOB_OFFER
+
+we cannot infer the instances of CAN_TEACH; therefore, TAUGHT_DURING and
+OFFERED_DURING are redundant and can be left out.
+
+Although in general three binary relationships cannot replace a ternary relation-
+ship, they may do so under certain additional constraints. In our example, if the
+CAN_TEACH relationship is 1:1 (an instructor can teach only one course, and a
+course can be taught by only one instructor), then the ternary relationship OFFERS
+can be left out because it can be inferred from the three binary relationships
+CAN_TEACH, TAUGHT_DURING, and OFFERED_DURING. The schema designer
+must analyze the meaning of each specific situation to decide which of the binary
+and ternary relationship types are needed.
+
+Notice that it is possible to have a weak entity type with a ternary (or n-ary) identi-
+fying relationship type. In this case, the weak entity type can have several owner
+entity types. An example is shown in Figure 3.19. This example shows part of a
+database that keeps track of candidates interviewing for jobs at various companies,
+which may be part of an employment agency database. In the requirements, a can-
+didate can have multiple interviews with the same company (for example, with dif-
+ferent company departments or on separate dates), but a job offer is made based on
+one of the interviews. Here, INTERVIEW is represented as a weak entity with two
+owners CANDIDATE and COMPANY, and with the partial key Dept_date. An
+INTERVIEW entity is uniquely identified by a candidate, a company, and the combi-
+nation of the date and department of the interview.
+
+3.9.2 Constraints on Ternary (or Higher-Degree)
+Relationships
+
+There are two notations for specifying structural constraints on n-ary relationships,
+and they specify different constraints. They should thus both be used if it is impor-
+tant to fully specify the structural constraints on a ternary or higher-degree rela-
+tionship. The first notation is based on the cardinality ratio notation of binary
+relationships displayed in Figure 3.2. Here, a 1, M, or N is specified on each

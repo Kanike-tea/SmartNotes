@@ -1,0 +1,23 @@
+Data Structures and Applications (BCS304) Module III
+
+Examplel: A+B * C can be represented as follows
+
+When the binary expression trees are traversed preorder we get the preorder expression. When we
+traverse the tree postorder we get the postorder expression . When we traverse it inorder we get the
+inorder expression.
+
+For Example : consider the traversals for the tree given above
+
+Inorder traversal giving rise to infix expression A+B*C
+Preorder traversal giving rise to prefix expression +A*BC
+
+Postorder traversal giving rise to postfix expression ABC*+
+
+Example2: A+(B-C)*D$(E*F) is represented as follows
+
+Inorder traversal giving rise to infix expression A+(B-C)*D$(E*F)
+Preorder traversal giving rise to prefix expression : +A*-BC$D*EF
+
+Postorder traversal giving rise to postfix expressionABC-DEF*$*+
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 18

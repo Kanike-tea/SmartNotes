@@ -1,0 +1,85 @@
+658 Appendix D Instruction Cycle Timings
+
+D.6 ARM10E INSTRUCTION CYCLE TIMINGS
+
+‘The ARM10E core is based on a five-stage pipeline with branch prediction. There is usually
+a one-cycle delay following a load or multiply instruction before you can use the data. The
+ARMIOE uses a 64-bit-wide data bus, so load and store instructions can transfer 64 bits
+per cycle. The multiplier does not use early termination. Table D.10 gives the ARM10E
+instruction cycle timings.
+
+Table D.10 | ARMIOE (ARMv5TE) instruction cycle timings.
+
+Instruction class
+
+Cycles Notes
+
+ALU
+
+B, BX
+
+BL, BLX
+
+CDP
+
+LDC
+LDR/B/H/SB/SH
+Rd not pe
+
+LDR Ris pe
+
+LORD
+LDM not loading pe
+
+LDM loading pe
+MCR, MCCR
+MR{R}C Rd not pe
+MRC Rd is pe
+
+MRS
+
+MSR to cpsr
+
+MSR to spsr
+
+MUL, MLA
+MULS, MLAS
+XxMULL, xMLAL
+XxMULLS, xMLALS
+
++1 if a register-specified shift, or RRX, is used.
++4 if Rd is pe.
+
+‘An exception is MOV pc, Rn. This takes 4 cycles.
++4 if the branch is mispredicted.
+
++4 if the branch is mispredicted.
+
+Data availability depends on the coprocessor.
+
+Rais not available for one cycle.
+
++1 if the addressing mode is register preindexed with the option of a
+(constant) shift.
+
++1 if the offset (pre- or postindex) is a shifted register.
+
+(2 cycles if not executed].
+
+Rdand R(d + 1) are not available for one cycle.
+
+The first data item is not available for one cycle. Once the address is 8-byte
+aligned, data items are loaded in pairs, at two per cycle. Therefore the kth
+data item will be available after (k + a + 1)/2 cycles, where ais bit 2 of the
+base address. You cannot start another load or store until this one has
+finished.
+
+L=(N + a)/2, and ais bit 2 of the base address.
+
+Rais not available for one cycle.
++3 if any of the csx fields are updated.
+[2 if the instruction is not executed.]
+
+Rd is not available for one cycle.
+
+RdHiis not available for one cycle.

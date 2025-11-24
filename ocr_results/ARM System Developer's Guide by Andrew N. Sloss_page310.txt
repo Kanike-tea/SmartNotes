@@ -1,0 +1,97 @@
+x1
+al
+a2
+bi
+b2
+sl
+s2
+accO
+accl
+
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+
+biquad coefficient -a[1] at Q14
+biquad coefficient -a[2] at Q14
+biquad coefficient +b[1] at Q14
+biquad coefficient +b[2] at Q14
+s[t-1] then s[t-2] (alternates)
+; s[t-2] then s[t-1] (alternates)
+; accumulators
+
+Res
+
+; typedef struct {
+int al,a2; /* coefficients -a[1],-a[2] at Q14 */
+int b1,b2; /* coefficients +b[1],+b[2] at Q14 */
+
+int sl,s2; /* s[t-1], s[t-2] */
+
+3} biquad;
+
+3 void iir_ql4_arm7m
+
+(
+
+int *y,
+int *x,
+
+struct { biquad *b; unsigned int M; } *b,
+unsigned int N);
+
+iir_gl4_arm7m
+STMFD sp!, {r4-ri1, Ir}
+
+LOMIA b, {b, M}
+
+next_biquad_arm7m
+
+LOMIA b!, {al, a2, b1, b2, 51, s 2}
+STMFD sp! {b, N, M}
+
+next_sample_arm7m
+
+3 use a 2x1 block IIR
+
+LOMIA x!, {x_0, x_1}
+
+3 apply biquad to sample 0 (x_0)
+
+MUL
+MLA
+MUL
+MLA
+ADD
+ADD
+
+acc0, sl, al
+acc0, s_2, a2, acc0
+accl, s_1, b1
+
+accl, s_2, b_2, accl
+s_2, x0, accO, ASR #14
+x0, s_2, accl, ASR #14
+
+3 apply biquad to sample 1 (x_1)
+
+MUL
+MLA
+MUL
+MLA
+ADD
+
+acc, s_2, al
+accO, s_1, a_2, accO
+accl, s_2, b1
+
+accl, s_1, b_2, accl
+s_l, x1, accO, ASR #14
+
+8.4 IIR Filters 297

@@ -1,0 +1,52 @@
+962
+
+Chapter 26 Enhanced Data Models
+
+only a brief introduction to each. In fact, each of these areas can serve as the sole
+topic of a complete book.
+
+In Section 26.1, we introduce the topic of active databases, which provide addi-
+tional functionality for specifying active rules. These rules can be automatically
+triggered by events that occur, such as database updates or certain times being
+reached, and can initiate certain actions that have been specified in the rule declara-
+tion to occur if certain conditions are met. Many commercial packages include
+some of the functionality provided by active databases in the form of triggers.
+Triggers are now part of the SQL-99 and later standards.
+
+In Section 26.2, we introduce the concepts of temporal databases, which permit
+the database system to store a history of changes and allow users to query both cur-
+rent and past states of the database. Some temporal database models also allow
+users to store future expected information, such as planned schedules. It is impor-
+tant to note that many database applications are temporal, but they are often imple-
+mented without having much temporal support from the DBMS package—that is,
+the temporal concepts are implemented in the application programs that access the
+database. The ability to create and query temporal data has been added to the SQL
+standard in SQL:2011 and is available in the DB2 system, but we do not discuss it
+here. The interested reader is referred to the end-of-chapter bibliography.
+
+Section 26.3 gives a brief overview of spatial database concepts. We discuss types of
+spatial data, different kinds of spatial analyses, operations on spatial data, types of
+spatial queries, spatial data indexing, spatial data mining, and applications of spatial
+databases. Most commercial and open source relational systems provide spatial
+support in their data types and query languages as well as providing indexing and
+efficient query processing for common spatial operations.
+
+Section 26.4 is devoted to multimedia database concepts. Multimedia databases
+provide features that allow users to store and query different types of multimedia
+information, which includes images (such as pictures and drawings), video clips
+(such as movies, newsreels, and home videos), audio clips (such as songs, phone
+messages, and speeches), and documents (such as books and articles). We discuss
+automatic analysis of images, object recognition in images, and semantic tagging
+of images.
+
+In Section 26.5, we discuss deductive databases,’ an area that is at the intersection of
+databases, logic, and artificial intelligence or knowledge bases. A deductive
+database system includes capabilities to define (deductive) rules, which can deduce
+or infer additional information from the facts that are stored in a database. Because
+part of the theoretical foundation for some deductive database systems is mathe-
+matical logic, such rules are often referred to as logic databases. Other types of
+systems, referred to as expert database systems or knowledge-based systems, also
+incorporate reasoning and inferencing capabilities; such systems use techniques
+
+'Section 265 is a summary of Deductive Databases. The full chapter from the third edition, which provides
+a more comprehensive introduction, is available on the book's Web site.

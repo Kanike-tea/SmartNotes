@@ -1,0 +1,74 @@
+644 Appendix B ARM and Thumb Instruction Encodings
+
+Table B.5 Thumb instruction decode table. (Continued.)
+
+Instruction classes (indexed by op)
+
+STR | LOR Ld, Esp, d#immed*4]
+ADD Ld, pc, #immed*4
+ADD Ld, sp, #immed*4
+ADD sp, #immed*4 | SUB sp
+#immed*4
+SXTH | SXTB | UXTH | UXTB
+REV | REV16 REVSH
+PUSH | POP
+SETEND LE | SETEND BE
+CPSIE | CPSID
+BKPT immed8
+STMIA | LDMIA Ln!, (register-list)
+
+B<cond> instruction_address+
+4toffset*2
+
+Undefined and expected to remain so
+
+SWI immed8
+
+B instruction_address+4+offset*2
+
+BLX ((instruction+4+
+(poff<<12)+offset*4) &~ 3)
+This must be preceded by a branch prefix
+instruction.
+
+This is the branch prefix instruction. It must be
+followed by a relative BL or BLX instruction.
+
+BL instruction+4+ (poff<<12)
+offset*2 This must be preceded by a
+branch prefix instruction.
+
+1 14 13 121110 9 8 7 6 5 4 32 10
+
+10 0 ilo Ld immed8
+
+1 0 1 O|op Ld immed8
+
+1 0 1 1/0/]0 0 |0 |e jimmed7
+
+10 1 ifofo i/o|l Lm 7
+
+10 1 ififo i/ol Lm 7
+
+10 1 ifoli ofR register_list
+
+i 0 i if{o/i ifojlo i 0 1fp 0 00
+
+10 1 ifo0/i ifolo ii lo «if
+
+10 1 i{i/i7 ifo immed8
+
+1 1 0 Ole Ln register_list
+
+1 1 0 1] cond< iio signed 8-bit offset
+
+1 1 0 1 1 1 1 0 x
+
+1 1 0 1 1 1 1 1 immed8
+
+ii i ojo signed 11-bit offset
+
+1 1 1 Of] unsigned 10-bit offset 0
+1 1 1fo signed 11-bit prefix offset poff
+
+1 1 1 1] unsigned 11-bit offset

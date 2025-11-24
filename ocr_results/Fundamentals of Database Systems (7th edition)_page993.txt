@@ -1,0 +1,50 @@
+26.1 Active Database Concepts and Triggers
+
+that were developed in the field of artificial intelligence, including semantic net-
+works, frames, production systems, or rules for capturing domain-specific knowl-
+edge. Section 26.6 summarizes the chapter.
+
+Readers may choose to peruse the particular topics they are interested in, as the sec-
+tions in this chapter are practically independent of one another.
+
+26.1 Active Database Concepts and Triggers
+
+Rules that specify actions that are automatically triggered by certain events have
+been considered important enhancements to database systems for quite some time.
+In fact, the concept of triggers—a technique for specifying certain types of active
+rules—has existed in early versions of the SQL specification for relational databases,
+and triggers are now part of the SQL-99 and later standards. Commercial relational
+DBMSs—such as Oracle, DB2, and Microsoft SQLServer—have various versions of
+triggers available. However, much research into what a general model for active
+databases should look like has been done since the early models of triggers were
+proposed. In Section 26.1.1, we will present the general concepts that have been
+proposed for specifying rules for active databases. We will use the syntax of the
+Oracle commercial relational DBMS to illustrate these concepts with specific exam-
+ples, since Oracle triggers are close to the way rules are specified in the SQL stan-
+dard. Section 26.1.2 will discuss some general design and implementation issues for
+active databases. We give examples of how active databases are implemented in the
+STARBURST experimental DBMS in Section 26.1.3, since STARBURST provides
+for many of the concepts of generalized active databases within its framework. Sec-
+tion 26.1.4 discusses possible applications of active databases. Finally, Section 26.1.5
+describes how triggers are declared in the SQL-99 standard.
+
+26.1.1 Generalized Model for Active Databases
+and Oracle Triggers
+
+The model that has been used to specify active database rules is referred to as
+the event-condition-action (ECA) model. A rule in the ECA model has three
+components:
+
+1. The event(s) that triggers the rule: These events are usually database
+update operations that are explicitly applied to the database. However, in
+the general model, they could also be temporal events” or other kinds of
+external events.
+
+2. The condition that determines whether the rule action should be executed:
+Once the triggering event has occurred, an optional condition may be evalu-
+ated. If no condition is specified, the action will be executed once the event
+
+2An example would be a temporal event specified as a periodic time, such as: Trigger this rule every day
+at 5:30 am.
+
+963

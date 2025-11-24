@@ -1,0 +1,42 @@
+6, Walks and their classification 73
+
+_ V;, v3 is in V2, and so on. Thus, the vertices in the cycle belong to V}, V2 alternately. Since the
+
+terminal vertex of the cycle is vo and it is in V,, the number of edges that belong to the cycle
+cannot be 3 or 5 or 7 or any odd number,
+
+Thus, G has no cycle of odd length. s
+
+_ Remark: The converse of the result proved in the above example is also true.
+
+If G is a simple graph with no cycles, prove that G has at least one pendant
+vertex.
+
+> Consider a path p in G which has a maximum number of vertices. Let u be an end vertex
+of p. Then every neighbour of u belongs to p. If u has at least two neighbours, say v and v’,
+en v and v’ both belong to p, and then the edges (u, v), (v, v’), (v’, u) form a cycle (See Figure
+1.107). This is not possible, because G has no cycles, Hence u can have only one neighbour,
+Accordingly, u is a pendant vertex. Thus, G has at least one pendant vertex.
+
+Figure 1.107 a
+
+eT oees Prove that a simple graph in which the degree of every vertex is at least two
+ust have a cycle.
+
+Consider a path p in G which has a maximum number of vertices. Let u be an end vertex
+f p. Then every neighbour of u belongs to p. Since the degree of every vertex in G is at least
+(0, the degree of u is at least two and as such it has at least two neighbours, say v and y’, both
+f which belong to p. Then, the edgess (u,v), (v, v’) and (v’, u) constitute a cycle (See Figure
+-107). Thus, G has at least one cycle. a
+
+LN RN Prove that, in a graph, there is au —v trail if and only if there isau =v path.
+Since every path is a trail, if there is a u~ v path, it is automatic that there is a u — v trail.
+erefore, we need only to prove that if there is u ~ v trail then there is au—v path.
+
+Assume that there is a u — v trail in the graph being considered. Among these trails, choose
+trail of minimum length, and denote it by
+
+VOV1V2 ... Vp @
+
+: "Because if a neighbour x of u does not belong to p, then we can obtain a path p’ by extending p to x, and then
+Sno longer a path with maximum number of vertices.

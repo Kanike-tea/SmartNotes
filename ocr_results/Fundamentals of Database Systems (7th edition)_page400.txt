@@ -1,0 +1,61 @@
+370 Chapter 12 Object and Object-Relational Databases
+
+Figure 12.1
+Specifying the object
+types EMPLOYEE,
+DATE, and
+DEPARTMENT using
+type constructors.
+
+define type EMPLOYEE
+
+tuple ( Fname: string;
+Minit : char;
+Lname: string;
+Ssn: string;
+Birth_date: DATE;
+Address: string;
+Sex: char;
+Salary: float;
+Supervisor: EMPLOYEE;
+Dept: DEPARTMENT;
+
+define type DATE
+
+tuple (Year: integer;
+Month: integer;
+Day: integer; );
+
+define type DEPARTMENT
+
+tuple ( Dname: string;
+Dnumber: integer;
+Mgr: tuple (Manager: EMPLOYEE;
+
+Start_date: | DATE;);
+
+Locations: set(string);
+Employees:  set(EMPLOYEE);
+Projects: set(PROJECT); );
+
+of EMPLOYEE is of type DEPARTMENT and hence is used to refer to a specific
+DEPARTMENT object (the DEPARTMENT object where the employee works). The
+value of such an attribute would be an OID for a specific DEPARTMENT object. A
+binary relationship can be represented in one direction, or it can have an inverse
+reference. The latter representation makes it easy to traverse the relationship in both
+directions. For example, in Figure 12.1 the attribute Employees of DEPARTMENT has
+as its value a set of references (that is, a set of OIDs) to objects of type EMPLOYEE;
+these are the employees who work for the DEPARTMENT. The inverse is the refer-
+ence attribute Dept of EMPLOYEE. We will see in Section 12.3 how the ODMG stan-
+dard allows inverses to be explicitly declared as relationship attributes to ensure
+that inverse references are consistent.
+
+12.1.4 Encapsulation of Operations
+and Persistence of Objects
+
+Encapsulation of Operations. The concept of encapsulation is one of the main
+characteristics of OO languages and systems. It is also related to the concepts of
+abstract data types and information hiding in programming languages. In tradi-
+tional database models and systems this concept was not applied, since it is cus-
+tomary to make the structure of database objects visible to users and external
+programs. In these traditional models, a number of generic database operations

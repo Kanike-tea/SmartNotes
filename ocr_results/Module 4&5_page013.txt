@@ -1,0 +1,55 @@
+Microcontrollers - BCS402
+
+Table 5 shows how IRQ and FIQ interrupts are enal
+
+led. The procedure uses three ARM
+
+instructions. The first instruction MRS copies the contents of the cpsr into register rl. The
+
+second instruction clears the IRQ or FIQ mask bit. The tl
+contents in register rl back into the cpsr, enabling the int
+
+that the bit field being updated is the control field bit [7:0
+
+ird instruction then copies the updated
+errupt request. The postfix _c identifies
+
+of the cpsr.
+
+Table 5: Enabling an interrupt
+
+cpsrvalue IRQ FIQ
+Pre nzevqjIFt_SVC nzcvqjIFt_SVC
+Code enable _irg enable fig
+MRS rl, cpsr MRS rl, cpsr
+BIC rl, rl, #0x80 BIC rl, rl, #0x40
+MSR cpsr_c, rl MSR cpsr_c, rl
+Post nzevqjiFt_SVC nazcvqjIft_SVC
+Table 6: Disabling an interrupt
+cpsr_ IRQ FIQ
+Pre nazcvqjift SVC nzevqjift SVC
+
+Code disable irg
+MRS rl, cpsr
+ORR rl, rl, #0x80
+MSR cpsr_c, rl
+Post — nacvqjIft_SVC
+
+disable fig
+MRS rl, cpsr
+ORR rl, rl, #0x40
+MSR cpsr_c, rl
+nzcvgqjiFt_SVC
+
+Table 6 shows a similar procedure to disable or mask an interrupt request. It is important to
+understand that the interrupt request is either enabled or disabled only once the MSR instruction
+has completed the execution stage of the pipeline. Interrupts can still be raised or masked prior to
+
+the MSR completing this stage.
+2.4 Basic Interrupt Stack Design and Implementation
+
+Exceptions handlers make extensive use of stacks, with each mode having a dedicated register
+
+containing the stack pointer. The design of the exception stacks depends upon these factors:
+
+Dept. of ECE, GSSSIETW, Mysuru Page 14

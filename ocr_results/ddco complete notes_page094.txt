@@ -1,0 +1,32 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+i) Indirect Addressing Mode through GPRs
+
+In this Addressing Mode the effective address of an operand is stored in the one of the General
+
+Purpose Register of the CPU.
+
+Ex: ADD (Ri), Ro ; Where R1 and Ro are GPRs
+
+This instruction adds the data from the memory location whose address is stored in Ri with the
+
+contents of Ro Register and the result is stored in Ro register aSshown in the fig.
+
+The diagrammatic representation of this addressing mode is as shown in the fig.
+
+Add (R1),RO
+
+Register Set
+
+Register Indirect Addressing Mode
+
+ii) Indirect Addréssing Mode through Memory Location.
+
+In this Addressing Mode, effective address of an operand is stored in the memory location.
+Ex: ADD (X), Ro
+
+This instruction adds\the data‘from the memory location whose address is stored in ,,X“
+
+memory location with the contents of Ro and result is stored in Ro register.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 27

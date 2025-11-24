@@ -1,0 +1,50 @@
+46
+
+Chapter 2 Database System Concepts and Architecture
+
+system. In addition to storing catalog information about schemas and constraints,
+the data dictionary stores other information, such as design decisions, usage stan-
+dards, application program descriptions, and user information. Such a system is
+also called an information repository. This information can be accessed directly by
+users or the DBA when needed. A data dictionary utility is similar to the DBMS
+catalog, but it includes a wider variety of information and is accessed mainly by
+users rather than by the DBMS software.
+
+Application development environments, such as PowerBuilder (Sybase)
+or JBuilder (Borland), have been quite popular. These systems provide an environ-
+ment for developing database applications and include facilities that help in many
+facets of database systems, including database design, GUI development, querying
+and updating, and application program development.
+
+The DBMS also needs to interface with communications software, whose function
+is to allow users at locations remote from the database system site to access the
+database through computer terminals, workstations, or personal computers. These
+are connected to the database site through data communications hardware such as
+Internet routers, phone lines, long-haul networks, local networks, or satellite com-
+munication devices. Many commercial database systems have communication
+packages that work with the DBMS. The integrated DBMS and data communica-
+tions system is called a DB/DC system. In addition, some distributed DBMSs are
+physically distributed over multiple machines. In this case, communications net-
+works are needed to connect the machines. These are often local area networks
+(LANs), but they can also be other types of networks.
+
+2.5 Centralized and Client/Server
+Architectures for DBMSs
+
+2.5.1 Centralized DBMSs Architecture
+
+Architectures for DBMSs have followed trends similar to those for general com-
+puter system architectures. Older architectures used mainframe computers to pro-
+vide the main processing for all system functions, including user application
+programs and user interface programs, as well as all the DBMS functionality. The
+reason was that in older systems, most users accessed the DBMS via computer ter-
+minals that did not have processing power and only provided display capabilities.
+Therefore, all processing was performed remotely on the computer system housing
+the DBMS, and only display information and controls were sent from the computer
+to the display terminals, which were connected to the central computer via various
+types of communications networks.
+
+As prices of hardware declined, most users replaced their terminals with PCs and
+workstations, and more recently with mobile devices. At first, database systems
+used these computers similarly to how they had used display terminals, so that the
+DBMS itself was still a centralized DBMS in which all the DBMS functionality,

@@ -1,0 +1,48 @@
+9a)
+
+The proper coloring which is of interest to us is one that requires the minimum
+number of colors. A graph G that requires x different colors for its proper
+coloring, and no less, is called a k-chromatic graph, and the number x is called
+
+the chromatic number of G. You can verify that the graph in Fig. 8-1 is 3-
+chromatic.
+
+b)
+
+Proof: Let G be a connected graph with circuits of only even lengths.
+Consider a spanning tree T in G. Using the coloring procedure and the result of
+Theorem 8-1, let us properly color T with two colors. Now add the chords to T
+one by one. Since G had no circuits of odd length, the end vertices of every
+chord being replaced are differently colored in T. Thus G is colored with two
+colors, with no adjacent vertices having the same color. That is, G is 2-
+chromatic.
+
+Conversely, if G has a circuit of odd length, we would need at least three
+colors just for that circuit (observation 4 in this section). Thus the theorem. m
+
+In general, a given graph G of n vertices can be properly colored in many
+different ways using a sufficiently large number of colors. This property of a
+graph is expressed elegantly by means of a polynomial. This polynomial is
+called the chromatic polynomial of G and is defined as follows :
+
+The value of the chromatic polynomial P,(A) of a graph with n vertices gives
+the number of ways of properly coloring the graph, using A or fewer colors.
+
+Let c; be the different ways of properly coloring G using exactly i different
+colors. Since i colors can be chosen out of A colors in
+
+a
+( ') different ways,
+
+there are <(') different ways of properly coloring G using exactly i colors out of A
+colors.
+
+Since i can be any positive integer from 1 to n (it is not possible to use more
+than n colors on n vertices), the chromatic polynomial is a sum of these terms;
+that is,
+
+=» [dh
+PQ => of ')
+=A + AAD + ¢,A@= DAD...
+4 A= DA=2)--A=n+ 0),
+7 nl.

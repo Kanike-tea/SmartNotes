@@ -1,0 +1,31 @@
+F=xy'+x"y+z
+
+(b) (c)
+
+The procedure described in the previous example indicates that a Boolean function can be implemented
+with two levels of NAND gates. The procedure for obtaining the logic diagram from a Boolean function
+
+is as follows:
+
+1. Simplify the function and express it in sum-of-products form.
+
+2. Draw a NAND gate for each product term of the expression that has at least two literals. The
+inputs to each NAND gate are the literals of the term. This procedure produces a group of first-
+level gates.
+
+3. Draw a single gate using the AND-invert or the invert-OR graphic symbol in the second level,
+with inputs coming from outputs of first-level gates.
+
+4. A term with a single literal requires an inverter in the first level. However, if the single literal is
+
+complemented, it can be connected directly to an input of the second-level NAND gate.
+
+Multilevel NAND Circuits
+
+The standard form of expressing Boolean functions results in a two-level implementation. There are
+occasions, however, when the design of digital systems results in gating structures with three or more
+levels. The most common procedure in the design of multilevel circuits is to express the Boolean
+
+function in terms of AND, OR, and complement operations. Consider, for example, the Boolean function
+
+F=A(CD+B)+BC’

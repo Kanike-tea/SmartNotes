@@ -1,0 +1,40 @@
+17.1 Types of Single-Level Ordered Indexes 607
+
+(Clustering Data file
+field)
+Dept_number | Name | Ssn | Job |Birth_date | Salary
+>———— | 1
+>—| 1
+1
+2
+Index file en 2
+(<K(i), P(i)> entries) 3
+3
+Clustering Block 3
+field value pointer
+1 * Lad 3
+2 * 3
+3 . 4
+4 . 4
+5 .
+6 e - 5
+8 . 5
+5
+5
+Lg 6
+6
+6
+6
+(| 6
+8
+Figure 17.2 8
+A clustering index on the Dept_number
+ordering nonkey field of an EMPLOYEE file 8
+
+There is some similarity between Figures 17.1, 17.2, and 17.3 and Figures 16.11
+and 16.12. An index is somewhat similar to dynamic hashing (described in Sec-
+tion 16.8.3) and to the directory structures used for extendible hashing. Both are
+searched to find a pointer to the data block containing the desired record. A main
+difference is that an index search uses the values of the search field itself, whereas a
+hash directory search uses the binary hash value that is calculated by applying the
+hash function to the search field.

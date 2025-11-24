@@ -1,0 +1,53 @@
+984
+
+Chapter 26 Enhanced Data Models
+
+using the object definition language (ODL) notation for object databases (see
+Chapter 11). Here, we assumed that name and Social Security number are non-
+time-varying attributes, whereas salary, department, and supervisor are time-
+varying attributes (they may change over time). Each time-varying attribute is
+represented as a list of tuples <Valid_start_time, Valid_end_time, Value>, ordered by
+valid start time.
+
+Whenever an attribute is changed in this model, the current attribute version is
+closed and a new attribute version for this attribute only is appended to the list.
+This allows attributes to change asynchronously. The current value for each attri-
+bute has now for its Valid_end_time. When using attribute versioning, it is useful to
+include a lifespan temporal attribute associated with the whole object whose value
+is one or more valid time periods that indicate the valid time of existence for the
+whole object. Logical deletion of the object is implemented by closing the lifespan.
+The constraint that any time period of an attribute within an object should be a
+subset of the object’s lifespan should be enforced.
+
+For bitemporal databases, each attribute version would have a tuple with five
+components:
+
+<Valid_start_time, Valid_end_time, Trans_start_time, Trans_end_time, Value>
+
+The object lifespan would also include both valid and transaction time dimensions.
+Therefore, the full capabilities of bitemporal databases can be available with attri-
+bute versioning. Mechanisms similar to those discussed earlier for updating tuple
+versions can be applied to updating attribute versions.
+
+26.2.4 Temporal Querying Constructs
+and the TSQL2 Language
+
+So far, we have discussed how data models may be extended with temporal con-
+structs. Now we give a brief overview of how query operations need to be extended
+for temporal querying. We will briefly discuss the TSQL2 language, which extends
+SQL for querying valid time and transaction time tables, as well as for querying of
+bitemporal relational tables.
+
+In nontemporal relational databases, the typical selection conditions involve attri-
+bute conditions, and tuples that satisfy these conditions are selected from the set of
+current tuples. Following that, the attributes of interest to the query are specified by
+a projection operation (see Chapter 6). For example, in the query to retrieve the
+names of all employees working in department 5 whose salary is greater than 30000,
+the selection condition would be as follows:
+
+((Salary > 30000) AND (Dno = 5))
+
+The projected attribute would be Name. In a temporal database, the conditions
+may involve time in addition to attributes. A pure time condition involves only
+time—for example, to select all employee tuple versions that were valid on a cer-
+tain time point T or that were valid during a certain time period [T, T)]. In this

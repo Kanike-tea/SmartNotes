@@ -1,0 +1,112 @@
+Embedded operating systems (continued)
+instruction set for, 6
+memory. see Memory
+memory handling, 382
+nonpreemptive, 382
+peripherals, 11-12
+round-robin algorithm, 383
+scheduler, 383
+schematic diagram of, 7f
+simple little operating system
+
+context switch, 396-398
+device driver framework, 398-400
+directory layout, 384-385
+exceptions handling
+description of, 389
+IRQ exception, 393-394
+reset exception, 390
+SWI exception, 390-393
+initialization, 385-389
+interrupts, 389
+memory model, 389
+overview of, 383-384
+periodic timer, 388
+scheduler, 394-396
+service routines, 384
+software, 12-16
+
+Embedded trace macrocell, 42
+
+EmbeddedICE macrocell, 38
+
+END, 626
+
+.end, 633
+
+END directive, 159
+
+ENDFUNC, 626
+
+Endian reversal, 248-249
+
+Endianness, 137, 154
+
+-endif, 633
+
+.endm, 633
+
+ENTRY, 626
+
+enum, 132
+
+EOR instruction, 55, 94, 583
+
+equ, 633
+
+EQU (alias *), 626-627
+
+sett, 633
+
+Eviction, 410, 419
+
+Exception handling
+ARM processor, 318-319
+description of, 317-318
+
+fast interrupt request, 326-329
+interrupt request, 326-329
+link register offsets, 322-324
+prioritizing, 321-322
+simple little operating system
+description of, 389
+IRQ exception, 393-394
+reset exception, 390
+SWI exception, 390-393
+vector table, 319-320
+Executable and linking format, 370
+.exitm, 633
+Exponentiation, base-two, 244-245
+EXPORT (alias GLOBAL), 627
+EXPORT directive, 159
+EXTERN, 627
+
+F
+
+Fast context switch extension.
+definition of, 515
+domains used by, 518-519
+features of, 515-516
+hints for, 519-520
+page tables used by, 518-519
+schematic diagram of, 517f
+virtual addresses modified by, 516
+Fast Fourier transform
+benchmarks, 314t
+description of, 303-304
+radix-2, 304-305
+radix-4, 305-313
+Fast interrupt mode, 23, 26t
+Fast interrupt request
+description of, 23, 27, 318t, 321-322
+exceptions, 326-329
+Fast interrupt request vector, 34
+Fetch, 164
+FIELD (alias #), 627
+Filters
+benchmarks for, 314t
+finite impulse response
+block, 282-294
+definition of, 280
+description of, 280-281
+infinite impulse response, 294-302

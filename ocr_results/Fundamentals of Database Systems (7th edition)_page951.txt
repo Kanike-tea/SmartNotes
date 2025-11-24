@@ -1,0 +1,56 @@
+25.3 Hadoop Distributed File System (HDFS)
+
+the Input that the Job is to run on: typically specified as an HDFS path(s)
+the Format(Structure) of the Input
+
+the Output path
+
+the Output Structure
+
+the Reduce-side parallelism
+
+A Job is submitted to the JobTracker, which then schedules and manages the exe-
+cution of the Job. It provides a set of interfaces to monitor running Jobs. See the
+Hadoop Wiki! for further details about the workings of the JobTracker.
+
+25.2.3 Hadoop Releases
+
+Since the advent of Hadoop as a new distributed framework to run MapReduce
+programs, various releases have been produced:
+
+The 1.x releases of Hadoop are a continuation of the original 0.20 code base.
+Subreleases with this line have added Security, additional HDFS and MapReduce
+improvements to support HBase, a better MR programming model, as well as
+other improvements.
+
+The 2.x releases include the following major features:
+
+5 YARN (Yet Another Resource Navigator) is a general resource manager
+extracted out of the JobTracker from MR version1.
+
+o Anew MRruntime that runs on top of YARN.
+
+© Improved HDFS that supports federation and increased availability.
+
+At the time of this writing, Hadoop 2.0 has been around for about a year. The
+adoption is rapidly picking up; but a significant percentage of Hadoop deployments
+still run on Hadoop v1.
+
+25.3 Hadoop Distributed File System (HDFS)
+
+As we said earlier, in addition to MapReduce, the other core component of Hadoop
+is the underlying file system HDFS. In this section, we will first explain the architec-
+ture of HDFS, then describe the file input/output operations supported in HDFS,
+and finally comment on the scalability of HDFS.
+
+25.3.1 HDFS Preliminaries
+
+The Hadoop Distributed File System (HDFS) is the file system component of
+Hadoop and is designed to run on a cluster of commodity hardware. HDFS is pat-
+terned after the UNIX file system; however, it relaxes a few POSIX (portable oper-
+ating system interface) requirements to enable streaming access to file system data.
+HDEFS provides high-throughput access to large datasets. HDFS stores file system
+
+'8Hadoop Wiki is at htip://hadoop.apache.org/
+
+921

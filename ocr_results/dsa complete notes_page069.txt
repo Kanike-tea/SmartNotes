@@ -1,0 +1,18 @@
+Data Structures and Applications(BCS304) Module 2
+
+Circular Linked List
+
+A singly linked list in which the last NODE has a null link is called a chain. If the link field of the
+last NODE points to the first NODE in the list, then such a linked list is called a circular list.
+
+> > > < last
+
+By keeping a pointer at the last instead of the front we can now insert easily at the front and end of
+the list
+
+Function inserts an element to the front of the list
+
+void insertFront(NODE *last, NODE * New)
+{/* insert an item at the front of the circular list whose last NODE is last */
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 25

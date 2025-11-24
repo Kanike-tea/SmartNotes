@@ -1,0 +1,64 @@
+Program Explanation
+* Consider the program for adding a list of n numbers (Figure 2.9).
+
+* The Address of the memory-locations containing the n numbers are symbolically given as
+NUMI1, NUM2.....NUMn.
+
++ Separate Add instruction is used to add each number to the contents of register RO.
+
++ After all the numbers have been added, the result is placed in memory-location SUM.
+
+BRANCHING
+* Consider the task of adding a list of ,,n" numbers (Figure 2.10).
++ Number of entries in the list ,,n" is stored in memory-location N.
++ Register R1 is used as a counter to determine the number of times the loop is executed.
+* Content-location N is loaded into register R1 at the beginning of the program.
+. The Loop is a straight line sequence of instructions executed as many times as
+needed. The loop starts at location LOOP and ends at the instruction Branch>0.
++ During each pass,
+— address of the next list entry is determined and
+— that entry is fetched and added to RO.
+* The instruction Decrement RI reduces the contents of R1 by 1 each time through the loop.
+* Then Branch Instruction loads a new value into the program counter. As a result, the
+processor fetches and executes the instruction at this new address called the Branch Tar get.
++ A Conditional Branch Instruction causes a branch only if a specified condition is satisfied. If the
+condition is not satisfied, the PC is incremented in the normal way, and the next instruction in
+sequential address order is fetched and executed.
+
+Moe NR
+=— RO
+Loop
+| Determine attra tf
+Resins
+Pega “NGEE Mane Sid
+Cop
+Desenent
+Tranivd LOOP
+es
+x 7
+Num
+une
+Num
+Figure 2.10 Using o loop to add m numbers.
+CONDITION CODES
+
+* The processor keeps track of information about the results of various operations. This is
+accomplished by recording the required information in individual bits, called Condition Code
+Flags.
+* These flags are grouped together in a special processor-register called the condition code register
+(or statue register).
++ Four commonly used flags are:
+
+1) N (negative) set to 1 if the result is negative, otherwise cleared to 0.
+
+2) Z (zero) set to 1 if the result is 0; otherwise, cleared to 0.
+
+3) V (overflow) set to 1 if arithmetic overflow occurs; otherwise, cleared to 0.
+
+4) C (carry) set to 1 if a carry-out results from the operation; otherwise cleared to 0.
+
+INDIRECTION AND POINTERS
+
+* Instruction does not give the operand or its address explicitly.
+
+Page 11

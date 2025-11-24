@@ -1,0 +1,35 @@
+592 Appendix A ARM and Thumb Assembler Instructions
+
+= If Rmis pc, then the value used is the address of the instruction plus eight bytes.
+
+= If Hmis pc, then the value used is the address of the instruction plus four bytes.
+
+Examples
+MOV v0, #0x00ff0000 ; rO = Ox00ff0000
+MOV v0, rl, LSL#2 ; rO = 4*rl
+MOV pe, Ir 3 return from subroutine (pc=1r)
+MOVS pc, Ir 3 return from exception (pc=Ir, cpsr=spsr)
+MRC Move to ARM register from a coprocessor
+MRRC
+1. MRC<cond> <copro>, <opl>, Rd, Cn, Cm , <op2> ARMv2
+2. MRC2 <copro>, <op1>, Rd, Cn, Cm , <op2> ARMV5
+3. MRRC<cond> <copro>, <opl>, Rd, Rn, Cm ARMVS5E
+4. MRRC2 <copro>, <opl>, Rd, Rn, Cm ARMV6
+These instructions transfer a 32-bit value from the indicated coprocessor to the ARM register
+Rd. Formats 3 and 4 also transfer a second 32-bit value to Rn. <copro> is the number of
+the coprocessor in the range p0 to p15. The core takes an undefined instruction trap if the
+coprocessor is not present. The coprocessor operation specifiers <op1> and <op2>, and the
+coprocessor register numbers Cn, Cm, are interpreted by the coprocessor and ignored by
+the ARM. For formats 1 and 2, if Rd is pc, then the top four bits of the cpsr (the NZCV
+condition code flags) are set from the top four bits of the 32-bit value transferred; pc is not
+affected. For other formats, Rd and Rn must be distinct and not pc.
+Coprocessor p15 controls memory management options (see Chapters 12 and 13). For
+example, the following instruction reads the main ID register from p15:
+MRC pl5, 0, r0, cO, cO 3 read the MMU ID register, cO
+MRS Move to ARM register from status register (cpsr or spsr )
+1. MRS<cond> Rd, cpsr ARMv3
+2. MRS<cond> Rd, spsr ARMv3
+These instructions set Rd = cpsr and Rd = spsr, respectively. Rd must not be pe.
+MSR Move to status register (cpsr or spsr ) from an ARM register
+
+1. MSR<cond> cpsr_<fields>, #<rotated_immed> ARMv3

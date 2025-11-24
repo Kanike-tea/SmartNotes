@@ -1,0 +1,35 @@
+Database Management System [BCS403]
+
+creating the subclass HOURLY_EMPLOYEE of EMPLOYEE and relating the subclass to
+an entity type TRADE_UNION via the BELONGS_TO relationship type
+In summary, the specialization process allows us to do the following:
+= Define a set of subclasses of an entity type
+« Establish additional specific attributes with each subclass
+« Establish additional specific relationship types between each subclass and other entity types
+or other subclasses
+3.8.2 Generalization
+Generalization process can be viewed as being functionally the inverse of the specialization
+process. It is a process of defining a generalized entity type from the given entity types.
+Generalization is the reverse process of abstraction in which we suppress the differences among
+
+several entity types, identify their common features, and generalize them into a single superclass
+
+For example, consider the entity types CAR and TRUCK shown in Figure 3.8.2(a).
+
+—— Ro of passengers> Bio ot axles)
+CMaxcspecd> | g |
+Cee yy |~CPrise)) CPrise TRUCK
+
+— — Lon a —
+CS _ DE eicenae. prate no
+icense: nN Cicense fate 1)
+
+Figure 3.8.2(a): Two entity types, CAR and TRUCK
+
+VEHICLE
+
+cc Ho of aes)
+
+Figure 3.8.2(b): Generalizing CAR and TRUCK into the superclass VEHICLE.
+
+https://vtucode.in Page 57

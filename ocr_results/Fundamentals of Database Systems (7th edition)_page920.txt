@@ -1,0 +1,50 @@
+890
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+NOSQL systems known as key-value stores. In Section 24.5, we give an overview of
+column-based NOSQL systems, with a discussion of Hbase as a representative sys-
+tem. Finally, we introduce graph-based NOSQL systems in Section 24.6.
+
+24.3 Document-Based NOSQL Systems
+and MongoDB
+
+Document-based or document-oriented NOSQL systems typically store data as
+collections of similar documents. These types of systems are also sometimes known
+as document stores. The individual documents somewhat resemble complex objects
+(see Section 12.3) or XML documents (see Chapter 13), but a major difference
+between document-based systems versus object and object-relational systems and
+XML is that there is no requirement to specify a schema—rather, the documents are
+specified as self-describing data (see Section 13.1). Although the documents in a
+collection should be similar, they can have different data elements (attributes), and
+new documents can have new data elements that do not exist in any of the current
+documents in the collection. The system basically extracts the data element names
+from the self-describing documents in the collection, and the user can request that
+the system create indexes on some of the data elements. Documents can be speci-
+fied in various formats, such as XML (see Chapter 13). A popular language to spec-
+ify documents in NOSQL systems is JSON (JavaScript Object Notation).
+
+There are many document-based NOSQL systems, including MongoDB and
+CouchDB, among many others. We will give an overview of MongoDB in this sec-
+tion. It is important to note that different systems can use different models, lan-
+guages, and implementation methods, but giving a complete survey of all
+document-based NOSQL systems is beyond the scope of our presentation.
+
+24.3.1 MongoDB Data Model
+
+MongoDB documents are stored in BSON (Binary JSON) format, which is a varia-
+tion of JSON with some additional data types and is more efficient for storage than
+JSON. Individual documents are stored in a collection. We will use a simple exam-
+ple based on our COMPANY database that we used throughout this book. The
+operation createCollection is used to create each collection. For example, the fol-
+lowing command can be used to create a collection called project to hold PROJECT
+objects from the COMPANY database (see Figures 5.5 and 5.6):
+
+db.createCollection(“project’, { capped : true, size : 1310720, max : 500 } )
+
+The first parameter “project” is the name of the collection, which is followed by an
+optional document that specifies collection options. In our example, the collection
+is capped; this means it has upper limits on its storage space (size) and number of
+documents (max). The capping parameters help the system choose the storage
+options for each collection. There are other collection options, but we will not dis-
+cuss them here.

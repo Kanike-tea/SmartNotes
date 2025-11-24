@@ -1,0 +1,76 @@
+Data Structures and Applications/BCS304 Module-1
+
+e Ifais the address for A[0][0] ... [0] the base address Then
+Address of a[i0][0][0][0] ... [0] = Na+ i0 upper! upper2 ... upper n-1
+// address of a[i0][i1][0] ... [0] = a+i0 upper! upper2 ... uppern-1 + il upper2 upper3 ...
+uppern-1
+e Repeating in this way the address for A[iO][il] ... [in-1] is=
+
+Q@ + igupper upper... uppern—
++ i,;upper upper... upper, —,
++ inupper3uppers ... uppern—\
+
++ in ouppery-1
+
+tina
+n=l
+
+a;= JI upper, 0Sj<n-l
+kej+l
+
+a,-1 =1
+
+a-l
+= a+ ) ija; where:
+j=0
+
+Array Operations: Operations that can be performed on any linear structure whether it is
+anarray or a linked list include the following
+
+Traversal- processing each element in the list
+
+Search- Finding the location of the element with a given key.
+
+Insertion- Adding a new element to the list
+
+Deletion- Removing an element from the list.
+
+Sorting- Arranging the elements in some type of order.
+
+Merging- combining two list into a single list.
+
+mo epoge
+
+Traversing WinearArrays: Traversing an array is accessing and processing each element exactly
+once. Considering the processing applied during traversal as display of elements the array can be
+traversed as follows
+
+void displayarray(int a[])
+
+{
+
+int i;
+
+printf("The Array Elements are:\n");
+for(i=0;i<n;i++)
+
+printf("%d\t" a[i});
+
+Insertion
+
+e Inserting an element at the end of the array can be done provided the memory space allocated
+for the array is large enough to accommodate the additional element.
+
+e  Ifan element needs to be inserted in the middle then all the elements form the specified position
+to the end of the array should be moved down wards to accommodate the new element and to
+keep the order of the other element.
+
+e The following function inserts an element at the specified position
+
+void insertelement(int item, int pos int *n, int a[],)
+{
+int i;
+if (pos<0 II pos>n)
+printf("Invalid Position\n");
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 13

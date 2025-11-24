@@ -1,0 +1,31 @@
+Data Structures and Applications/BCS304 Module 1
+
+Disadvantages of using Recursion
+¢ Non recursive version of the program is more efficient when compared to recursive version interms of
+time and space
+e Non recursive versions do not have the overhead of entering and exiting from the block.
+e In recursive program the local variables have to be maintained using a stack,which can beavoided
+in an iterative(non recursive) version
+
+Advantage of using Recursion
+e Recursive program is the most natural and logical way of solving some of the problems
+
+e Ifa stack can be eliminated in a recursive program without having any local variables thenthey can
+be as fast its non recursive version,
+
+Difference between iterative and recursive functions
+
+Iterative Recursive
+
+Implemented using —_ looping | Implemented using recursive calls to
+statements functions
+
+Executes faster Takes more time to execute
+
+Memory utilization is Less Memory utilization is more
+
+Lines of code are more Lines of code are lesser
+
+Does not require stack Implementation requires stack
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 45

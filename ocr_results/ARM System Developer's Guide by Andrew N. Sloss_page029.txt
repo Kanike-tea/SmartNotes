@@ -1,0 +1,17 @@
+16 Chapter 1 ARM Embedded Systems
+
+= It improves code density and performance by conditionally executing instructions.
+
+= It includes enhanced instructions to perform digital signal processing type functions.
+
+‘An embedded system includes the following hardware components: ARM processors
+are found embedded in chips. Programmers access peripherals through memory-mapped
+registers. There is a special type of peripheral called a controller, which embedded systems
+use to configure higher-level functions such as memory and interrupts. The AMBA on-chip
+bus is used to connect the processor and peripherals together.
+
+An embedded system also includes the following software components: Initialization
+code configures the hardware to a known state. Once configured, operating systems can be
+loaded and executed. Operating systems provide a common programming environment for
+the use of hardware resources and infrastructure. Device drivers provide a standard interface
+to peripherals. An application performs the task-specific duties of an embedded system.

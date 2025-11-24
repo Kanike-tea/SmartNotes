@@ -1,0 +1,53 @@
+798
+
+Chapter 21 Concurrency Control Techniques
+
+21.4 Validation (Optimistic) Techniques and
+Snapshot Isolation Concurrency Control
+
+In all the concurrency control techniques we have discussed so far, a certain degree
+of checking is done before a database operation can be executed. For example, in
+locking, a check is done to determine whether the item being accessed is locked. In
+timestamp ordering, the transaction timestamp is checked against the read and
+write timestamps of the item. Such checking represents overhead during transac-
+tion execution, with the effect of slowing down the transactions.
+
+In optimistic concurrency control techniques, also known as validation or
+certification techniques, no checking is done while the transaction is executing.
+Several concurrency control methods are based on the validation technique. We
+will describe only one scheme in Section 21.4.1. Then, in Section 21.4.2, we discuss
+concurrency control techniques that are based on the concept of snapshot isolation.
+The implementations of these concurrency control methods can utilize a combina-
+tion of the concepts from validation-based techniques and versioning techniques,
+as well as utilizing timestamps. Some of these methods may suffer from anomalies
+that can violate serializability, but because they generally have lower overhead than
+2PL, they have been implemented in several relational DBMSs.
+
+21.4.1 Validation-Based (Optimistic) Concurrency Control
+
+In this scheme, updates in the transaction are not applied directly to the database
+items on disk until the transaction reaches its end and is validated. During transac-
+tion execution, all updates are applied to local copies of the data items that are
+kept for the transaction.® At the end of transaction execution, a validation phase
+checks whether any of the transaction’s updates violate serializability. Certain
+information needed by the validation phase must be kept by the system. If serializ-
+ability is not violated, the transaction is committed and the database is updated
+from the local copies; otherwise, the transaction is aborted and then restarted later.
+
+There are three phases for this concurrency control protocol:
+
+1. Read phase. A transaction can read values of committed data items from the
+database. However, updates are applied only to local copies (versions) of the
+data items kept in the transaction workspace.
+
+2. Validation phase. Checking is performed to ensure that serializability will
+not be violated if the transaction updates are applied to the database.
+
+3. Write phase. If the validation phase is successful, the transaction updates
+are applied to the database; otherwise, the updates are discarded and the
+transaction is restarted.
+
+The idea behind optimistic concurrency control is to do all the checks at once; hence,
+transaction execution proceeds with a minimum of overhead until the validation
+
+®Note that this can be considered as keeping multiple versions of items!

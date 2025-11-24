@@ -1,0 +1,41 @@
+Exercises 141
+
+4.23. Consider the entity sets and attributes shown in the following table. Place a
+checkmark in one column in each row to indicate the relationship between
+the far left and far right columns.
+
+a. The left side has a relationship with the right side.
+b. The right side is an attribute of the left side.
+
+c. The left side is a specialization of the right side.
+
+d. The left side is a generalization of the right side.
+
+(a) Has a (b) Has an @lsa @) Isa
+Relationship Attribute Specialization Generalization _Entity Set
+Entity Set with that is of of or Attribute
+1. MOTHER PERSON
+2. DAUGHTER MOTHER
+3, STUDENT PERSON
+4, STUDENT Student_id
+5. SCHOOL STUDENT
+6. SCHOOL CLASS_ROOM
+7 ANIMAL HORSE
+8. HORSE Breed
+9. HORSE Age
+10. EMPLOYEE SSN
+11. FURNITURE CHAIR
+12. CHAIR Weight
+13. HUMAN WOMAN
+14. SOLDIER PERSON
+15._ENEMY_COMBATANT PERSON
+
+4.24. Draw a UML diagram for storing a played game of chess in a database.
+You may look at http://www.chessgames.com for an application similar to
+what you are designing. State clearly any assumptions you make in your
+UML diagram. A sample of assumptions you can make about the scope is
+as follows:
+
+1. The game of chess is played between two players.
+
+2. The game is played on an 8 x 8 board like the one shown below:

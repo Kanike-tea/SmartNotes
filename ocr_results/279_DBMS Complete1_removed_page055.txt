@@ -1,0 +1,77 @@
+table El and do not belong to table E2. So, applying a selection con
+
+difference is equivalent to applying the selection condition on the individual tables and then
+applying set difference. This will reduce the number of comparisons in t
+
+12.
+
+Explanation: Applying individual projections before computing the wu
+more optimal than the left expression, i.e. applying projection after the u
+
+Projection operation distributes over the union operation.
+
+INPUT
+SELECT Ename FROM Employee, Proj_Assigned WHERE
+Employee.Eno = Proj_Assigned.Eno AND DOP > 10;
+
+»
+
+ition on the entire set
+e set difference step.
+
+nion of El and E2 is
+inion step.
+
+Step 1 [PARSING]
+What does it do? — Checks for correct attribute names, table names, and the
+
+privileges given to the user who wrote this query. If everything fine, then we can
+move on to next stage, Translation
+
+Where do get this information? — Data Dictionary (Systern Catalogue)
+
+1
+
+Step 2 [TRANSLATION]
+
+What does it do? — Converts the parsed SQL query into its Relational Algebra
+equivalent.
+
+Eni eiétional A é 5
+TTenane( Opor=10 A Employee Eno=Proj_Assigned.Eno(Employee X
+Prof_Assigned))
+
+y
+
+Step 3 [OPTIMIZER]
+‘What does it do? — Tries to develop several alternate relational algebra
+expressions for the given RA expression in Step 2.
+
+How does it do? — It uses Data Dictionary (System Catalogue) to get
+statistical information about the tables in question
+
+1
+
+Step 4 [EXECUTION PLAN]
+‘What do we have now? — From Step 3, we can have a set of one or few equivalent
+
+Relational Algebra expressions that are equivalent to the RA expression in Step 2.
+This is along with the cost (Time as well as Space)
+
+Equivalent Relati E
+
+TTename(Employee NJeno (Opor-10 (Prof_Assigned)))
+
+t
+
+‘Step 5 [EVALUATION]
+‘What does it do? — Calculates the cost involved in executing the query using
+every Execution plan that we have derived at the previous step. After
+
+calculation, it chooses best plan among them. And executes the query with the
+chosen plan by accessing the database.
+
+y
+
+OUTPUT
+Set of tuples (records) as requested through the Query

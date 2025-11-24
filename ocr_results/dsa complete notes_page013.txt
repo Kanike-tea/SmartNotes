@@ -1,0 +1,61 @@
+Data Structures and Applications/BCS304 Module-1
+
+else
+{
+for(i=n-1;i>=pos;i--)
+a{i+1]=al[i]; //Make space for the new element in the given position
+a[pos]=element;
+*nt+;
+}
+}
+Deletion
+
+e  Ifan element needs to be deleted in the middle then all the elements form the specified position
+to the end of the array should be moved upwards to fill up the array.
+e The following function deletes an element at the specified position
+
+void deleteelement(int a[],int pos,int* n)
+{
+int i;
+if (pos<0 Il pos>n-1)
+printf("Invalid Position\n");
+else
+
+{
+printf("The Deleted Element is %d\n" a[pos]);
+for(i=pos;i<n;i++)
+
+a[iJ=a[i+1]; //Delete by pushing up other elements
+
+*n-;
+i
+i
+
+Sorting: Sorting refers to the operation of rearranging the elements of an array in increasing or
+decreasing order.
+
+Example: Write a program to sort the elements of the array in ascending order using bubble
+sort.
+
+#include<stdio.h>
+
+void main()
+
+int a[10],i,j,temp.n;
+
+printf("enter the size of the array : ");
+scanf("%d" ,&n);
+
+printf("enter the elements of the array\n");
+for(i=0;i<n;i++)
+
+scanf("%d" ,&af[i]);
+
+for(i=1;i<=n-1;i++)
+for(j=0;j<n-i ;j++)
+if (a[j] >alj+1])
+{
+temp=al[j];
+aljJ-alj+;
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 14

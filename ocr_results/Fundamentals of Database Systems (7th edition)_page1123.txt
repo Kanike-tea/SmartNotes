@@ -1,0 +1,53 @@
+28.5 Approaches to Other Data Mining Problems
+
+28.5.5 Genetic Algorithms
+
+Genetic algorithms (GAs) are a class of randomized search procedures capable
+of adaptive and robust search over a wide range of search space topologies. Mod-
+eled after the adaptive emergence of biological species from evolutionary mecha-
+nisms, and introduced by Holland,° GAs have been successfully applied in such
+diverse fields as image analysis, scheduling, and engineering design.
+
+Genetic algorithms extend the idea from human genetics of the four-letter
+alphabet (based on the A, C, T, G nucleotides) of the human DNA code. The
+construction of a genetic algorithm involves devising an alphabet that encodes
+the solutions to the decision problem in terms of strings of that alphabet.
+Strings are equivalent to individuals. A fitness function defines which solu-
+tions can survive and which cannot. The ways in which solutions can be com-
+bined are patterned after the cross-over operation of cutting and combining
+strings from a father and a mother. An initial population of a well-varied pop-
+ulation is provided, and a game of evolution is played in which mutations
+occur among strings. They combine to produce a new generation of individu-
+als; the fittest individuals survive and mutate until a family of successful solu-
+tions develops.
+
+The solutions produced by GAs are distinguished from most other search
+techniques by the following characteristics:
+
+= AGA search uses a set of solutions during each generation rather than a
+single solution.
+
+= The search in the string-space represents a much larger parallel search in the
+space of encoded solutions.
+
+= The memory of the search done is represented solely by the set of solutions
+available for a generation.
+
+= A genetic algorithm is a randomized algorithm since search mechanisms use
+probabilistic operators.
+
+= While progressing from one generation to the next, a GA finds near-optimal
+balance between knowledge acquisition and exploitation by manipulating
+encoded solutions.
+
+Genetic algorithms are used for problem solving and clustering problems. Their
+ability to solve problems in parallel provides a powerful tool for data mining. The
+drawbacks of GAs include the large overproduction of individual solutions, the
+random character of the searching process, and the high demand on computer pro-
+cessing. In general, substantial computing power is required to achieve anything of
+significance with genetic algorithms.
+
+®Holland’s seminal work (1976) entitled Adaptation in Natural and Artificial Systems introduced the idea
+of genetic algorithms.
+
+1093

@@ -1,0 +1,55 @@
+722
+
+Chapter 19 Query Optimization
+
+there are n! join orders; Cartesian products are included in this total number. Esti-
+mating the cost of every possible join tree for a query with a large number of joins
+will require a substantial amount of time by the query optimizer. Hence, some
+pruning of the possible query trees is needed. Query optimizers typically limit the
+structure of a (join) query tree to that of left-deep (or right-deep) trees. A left-deep
+join tree is a binary tree in which the right child of each non-leaf node is always a
+base relation. The optimizer would choose the particular left-deep join tree with the
+lowest estimated cost. Two examples of left-deep trees are shown in Figure 19.5(a).
+(Note that the trees in Figure 19.2 are also left-deep trees.) A right-deep join tree is
+a binary tree where the left child of every leaf node is a base relation (Figure 19.5(b)).
+
+A bushy join tree is a binary tree where the left or right child of an internal node
+may be an internal node. Figure 19.5(b) shows a right-deep join tree whereas Fig-
+ure 19.5(c) shows a bushy one using four base relations. Most query optimizers con-
+sider left-deep join trees as the preferred join tree and then choose one among the
+n! possible join orderings, where n is the number of relations. We discuss the join
+ordering issue in more detail in Sections 19.5.4 and 19.5.5. The left-deep tree has
+exactly one shape, and the join orders for N tables in a left-deep tree are given by N!.
+In contrast, the shapes of a bushy tree are given by the following recurrence relation
+(ie., recursive function), with S(n) defined as follows: S(1) = 1.
+
+ml
+
+S(n) = Y S(i) * S(n-i)
+
+isl
+
+The above recursive equation for S(n) can be explained as follows. It states that, for
+i between 1 and N - 1 as the number of leaves in the left subtree, those leaves may
+be rearranged in S(i) ways. Similarly, the remaining N — i leaves in the right subtree
+can be rearranged in S(N - i) ways. The number of permutations of the bushy trees
+is given by:
+
+P(n) =n! * S(n) = (2n - 2)!/(n - 1)!
+
+Table 19.1 shows the number of possible left-deep (or right-deep) join trees and
+bushy join trees for joins of up to seven relations.
+
+It is clear from Table 19.1 that the possible space of alternatives becomes rapidly
+unmanageable if all possible bushy tree alternatives were to be considered. In certain
+
+Table19.1_ Number of Permutations of Left-Deep and Bushy Join Trees of n Relations
+
+No. of Left-Deep No. of Bushy No. of Bushy Trees
+No. of Relations N Trees NI Shapes S(N) (2N— 2)I/(N— 1)!
+2 2 1 2
+3 6 2 12
+4 24 5 120
+5 120 14 1,680
+6 720 42 30,240
+7 5,040 132 665,280

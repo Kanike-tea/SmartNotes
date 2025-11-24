@@ -1,0 +1,96 @@
+adr
+size
+tmp
+tmpl
+
+12.6 Cache Lockdown 455
+
+IF {CPU} = "XSCALE"
+EXPORT lockICache
+EXPORT lockDCache
+EXPORT lockDCacheRAM
+INCLUDE cache.h
+
+RN O
+RN 1
+RN 2
+RN 3
+MACRO
+
+5 current address of code or data
+5; memory size in bytes
+
+cpcl5:c9 31 (load 5:0 victim pointer)
+scratch register for LDR instruction
+
+CACHELOCKREGION $op
+
+ADD
+BIC
+MOV
+TST
+SUB
+MOV
+ADDNE
+
+cP
+BEQ
+
+IF
+MCR
+MOV
+MCR
+
+size, adr, size size = end address
+
+adr, adr, #(1<<CLINE)-1 ; align to CLINE
+
+tmp, #(1<<CLINE)-1 3 scratch CLINE mask
+
+size, tmp CLINE end fragment ?
+size, size, adr add alignment bytes
+
+size, size, Isr #CLINE convert size 2 # CLINE
+size, size, #1 add CLINE to hold fragment
+
+size, #0 3 no lockdown requested
+%FTL 3 exit return size =0
+
+"Sop" = "Deache" :LOR: "Sop" = "DcacheRAM"
+p15, 0, adr, c7, cl0, 4; drain write buffer
+tmp, #1
+pls, 0, tmp, c9, c2, 0 5 unlock data cache
+
+CPWAIT
+
+MOV
+ENDIF
+IF
+
+MOV
+ENDIF
+
+IF
+MCR
+ADD
+
+ENDIF
+
+IF
+MCR
+MCR
+LDR
+
+tmp, #0 3 even words to zero
+
+"Sop" = "DcacheRAM"
+tmp1, #0 3 init odd words to zero
+
+"Sop" = "Icache"
+p15, 0, adr, c9, cl, 0; lock ICache line
+adr, adr, #1<<CLINE
+
+"$op" = "Dcache"
+pls, 0, adr, c7, cl0, 1; clean dirty line
+pls, 0, adr, c7, c6, 1 5 Flush d-cache line
+tmp, [adr], #1<<CLINE ; load data cache line

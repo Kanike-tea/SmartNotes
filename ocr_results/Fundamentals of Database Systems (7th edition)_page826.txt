@@ -1,0 +1,55 @@
+796
+
+Chapter 21 Concurrency Control Techniques
+
+several commercial systems (see Section 21.4) can be implemented by keeping
+older versions of items in a temporary store.
+
+21.3.1 Multiversion Technique Based on Timestamp Ordering
+
+In this method, several versions X,, Xo, ... , X, of each data item X are maintained.
+For each version, the value of version X; and the following two timestamps associated
+with version X; are kept:
+
+1. read_TS(X;). The read timestamp of X; is the largest of all the timestamps
+of transactions that have successfully read version X;.
+
+2. write_TS(X;). The write timestamp of X; is the timestamp of the transac-
+tion that wrote the value of version X;.
+
+Whenever a transaction T is allowed to execute a write_item(X) operation, a new ver-
+sion X;,1 of item X is created, with both the write_TS(X;,;) and the read_TS(X;,1) set to
+TS(T). Correspondingly, when a transaction T is allowed to read the value of version
+X;, the value of read_TS(X;) is set to the larger of the current read_TS(X;) and TS(T).
+
+To ensure serializability, the following rules are used:
+
+1. If transaction T issues a write_item(X) operation, and version i of X has the
+highest write_TS(X;) of all versions of X that is also less than or equal to TS(T),
+and read_TS(X;) > TS(T), then abort and roll back transaction T; otherwise,
+create a new version X; of X with read_TS(Xj) = write_TS(X;j) =TS(T).
+
+2. If transaction T issues a read_item(X) operation, find the version i of X that
+has the highest write_TS(X;) of all versions of X that is also less than or equal
+to TS(T); then return the value of X; to transaction T, and set the value of
+read_TS(X;) to the larger of TS(T) and the current read_TS(X;).
+
+As we can see in case 2, a read_item(X) is always successful, since it finds the appro-
+priate version X; to read based on the write_TS of the various existing versions of X.
+In case 1, however, transaction T may be aborted and rolled back. This happens if T
+attempts to write a version of X that should have been read by another transaction
+T’ whose timestamp is read_TS(X;); however, T” has already read version X;, which
+was written by the transaction with timestamp equal to write_TS(X;). If this conflict
+occurs, T is rolled back; otherwise, a new version of X, written by transaction T, is
+created. Notice that if T is rolled back, cascading rollback may occur. Hence, to
+ensure recoverability, a transaction T should not be allowed to commit until after
+all the transactions that have written some version that T has read have committed.
+
+21.3.2 Multiversion Two-Phase Locking Using Certify Locks
+
+In this multiple-mode locking scheme, there are three locking modes for an item—
+read, write, and certify—instead of just the two modes (read, write) discussed previ-
+ously. Hence, the state of LOCK(X) for an item X can be one of read-locked,
+write-locked, certify-locked, or unlocked. In the standard locking scheme, with
+only read and write locks (see Section 21.1.1), a write lock is an exclusive lock. We
+can describe the relationship between read and write locks in the standard scheme

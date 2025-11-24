@@ -1,0 +1,42 @@
+Microcontrollers — BCS402
+
+ADC | add two 32-bit values and carry Rd = Rn+ N+ carry
+ADD | add two 32-bit values Rd = Rn+N
+RSB | reverse subtract of two 32-bit values Rd=N-—Rn
+
+RSC | reverse subtract with carry of two 32-bit values | Rd = N — Rn—'(carry flag)
+
+SBC | subtract with carry of two 32-bit values Rd = Rn— N—‘(carry flag)
+
+SUB | subtract two 32-bit values Rd = Rn—N
+
+Where N is the result of the shifter operation
+
+Example 1:
+SUB r0,r1,r2; rO=rl —r2
+
+This simple subtract instruction subtracts a value stored in register r2 from a value stored in
+
+register rl. The result is stored in register r0.
+PRE 10 = 0x00000000, rl = 0x00000002, r2 = 0x00000001 POST r0 = 0x00000001
+Example 2:
+
+RSB r0,r1, #0 ; Rd = 0x0 - rl
+
+This reverse subtract instruction (RSB) subtracts rl from the constant value #0, writing the
+
+result to r0. This instruction can be used to negate numbers.
+PRE 10 = 0x00000000, rl = 0x00000077 POST 10 = -rl = Oxffffff89
+Example 3:
+
+SUBS rl,rl1,#1; rl =rl-1
+
+The SUBS instruction is useful for decrementing loop counters. In this example we subtract
+the immediate value one from the value one stored in register rl. The result value zero is
+
+written to register rl. The cpsr is updated with the ZC flags being set.
+PRE cpsr = nzcvqiFt_USER, rl = 0x00000001
+
+POST cepsr = nZCvqiFt_USER, rl = 0x00000000
+
+Dept. of ECE, GSSSIETW Page 7

@@ -1,0 +1,36 @@
+Figure 9-2 Example of pipeline processing.
+
+Aj B fon
+
+|
+
+«The five registers are loaded with new data every clock pulse. The effect of eachclock is shown
+in Table 9-1.
+
+TABLE 9-1 Content of Registers in Pipeline, Example
+
+Clock Segment 1 Segment 2 Segment 3
+Pulse — SS =. | ——_
+Number Ri R2 R3 R4 RS
+1 Ay Bi — — —
+2 Az Bz Ay* By Cc _-
+3 Az Bs Az * Bz Q A,*B, + C,
+4 As B, \A3*Bs Cs; A2*B2+ CG,
+Ss As Bs As*B, Cy A;*B,+ C;
+6 Ag Be As* Bs Cs As*Bat+ Ca
+7 Ay Br, Ac*Be Co As*Bs+ Cs
+8 = _ A;*B, G Ac* Bs + Co
+9 _ _ _ = A;* B+ Cy
+
+General considerations
+
+«Any operation that can be decomposed into a sequence of sub operations of aboutthe same
+complexity can be implemented by a pipeline processor.
+
+«The general structure of a four-segment pipeline is illustrated in Fig. 9-3.
+
+«© We define a task as the total operation performed going through all the segments inthe pipeline.
+
+e The behavior of a pipeline can be illustrated with a space-time diagram.
+
+o It shows the segment utilization as a function of time.

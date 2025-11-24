@@ -1,0 +1,52 @@
+774 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+With SQL, there is no explicit Begin_Transaction statement. Transaction initiation is
+done implicitly when particular SQL statements are encountered. However, every
+transaction must have an explicit end statement, which is either a COMMIT or a
+ROLLBACK. Every transaction has certain characteristics attributed to it. These
+characteristics are specified by a SET TRANSACTION statement in SQL. The charac-
+teristics are the access mode, the diagnostic area size, and the isolation level.
+
+The access mode can be specified as READ ONLY or READ WRITE. The default is
+READ WRITE, unless the isolation level of READ UNCOMMITTED is specified (see
+below), in which case READ ONLY is assumed. A mode of READ WRITE allows select,
+update, insert, delete, and create commands to be executed. A mode of READ ONLY,
+as the name implies, is simply for data retrieval.
+
+The diagnostic area size option, DIAGNOSTIC SIZE n, specifies an integer value n,
+which indicates the number of conditions that can be held simultaneously in the
+diagnostic area. These conditions supply feedback information (errors or excep-
+tions) to the user or program on the n most recently executed SQL statement.
+
+The isolation level option is specified using the statement ISOLATION LEVEL <isolation>,
+where the value for <isolation> can be READ UNCOMMITTED, READ COMMITTED,
+REPEATABLE READ, or SERIALIZABLE.'° The default isolation level is SERIALIZABLE,
+although some systems use READ COMMITTED as their default. The use of the term
+SERIALIZABLE here is based on not allowing violations that cause dirty read, unre-
+peatable read, and phantoms,'® and it is thus not identical to the way serializability
+was defined earlier in Section 20.5. If a transaction executes at a lower isolation level
+than SERIALIZABLE, then one or more of the following three violations may occur:
+
+1. Dirty read. A transaction T, may read the update of a transaction T>, which
+has not yet committed. If T fails and is aborted, then T; would have read a
+value that does not exist and is incorrect.
+
+2. Nonrepeatable read. A transaction T; may read a given value from a table.
+If another transaction T> later updates that value and T) reads that value
+again, T} will see a different value.
+
+3. Phantoms. A transaction T, may read a set of rows from a table, perhaps
+based on some condition specified in the SQL WHERE-clause. Now suppose
+that a transaction T; inserts a new row r that also satisfies the WHERE-clause
+condition used in Tj, into the table used by T,. The record r is called a
+phantom record because it was not there when T; starts but is there when
+T, ends. T, may or may not see the phantom, a row that previously did not
+exist. If the equivalent serial order is T, followed by T,, then the record r
+should not be seen; but if it is T, followed by Tj,then the phantom record
+should be in the result given to T;. If the system cannot ensure the correct
+behavior, then it does not deal with the phantom record problem.
+
+'8These are similar to the isolation levels discussed briefly at the end of Section 20.3.
+
+'®The dirty read and unrepeatable read problems were discussed in Section 20.1.3. Phantoms are dis-
+cussed in Section 22.7.1

@@ -1,0 +1,57 @@
+Microcontrollers — BCS402
+
+int checksum_v9(int *data, unsigned int N)
+{
+
+int sum=0;
+
+do
+
+{
+sum += *(datat+);
+sum += *(datat++);
+sum += *(data++);
+sum += *(datat+);
+N -= 4;
+
+} while ( NI=0);
+
+return sum;
+
+}
+
+This compiles to
+
+checksum_v9
+MOV r2, #0 3 sum = 0
+checksum_v9_loop
+
+LDR r3, [ro], #4 3 73 = *(datat+)
+SUBS rl,rl, #4 3; N -= 4&8 set flags
+ADD r2,r3,7r2 3 sum += 73
+
+LDR r3, [ro], #4 3 73 = *(datat+)
+ADD r2,73, 12 3 Sum += 73
+
+LDR r3, [ro], #4 3 73 = *(datat++)
+ADD 2,73, 172 3 sum += 13
+
+LDR r3, [ro], #4 3 73 = *(datatt+)
+ADD r2,73, 12 3 sum += 73
+
+BNE checksum_v9_loop ; if (N!=0) goto loop
+MoV ro,r2 3; rO = sum
+
+Mov pe, rl4 ; return ro
+
+Here the loop overhead is reduced from 4N cycles to (4N)/4=N cycles. On the ARM7TDMI,
+this accelerates the loop from 8 cycles per accumulate to 20/4 = 5 cycles per accumulate,
+nearly doubling the speed! For the ARM9TDMI, which has a faster load instruction, the
+
+benefit is even higher.
+
+Example 2: This example handles the checksum of any size of data packet using a loop that
+
+has been unrolled four times.
+
+Dept. of ECE, GSSSIETW Page 44

@@ -1,0 +1,32 @@
+be &
+a
+ZS
+
+Fig. 2-20 Hamiltonian circuits.
+
+A circuit in a connected graph G is said to be Hamiltonian if it includes every
+vertex of G. Hence a Hamiltonian circuit in a graph of n vertices consists of
+exactly n edges.
+
+Obviously, not every connected graph has a Hamiltonian circuit. For example,
+neither of the graphs shown in Figs. 2-17 and 2-18 has a Hamiltonian circuit.
+This raises the question: What is a necessary and sufficient condition for a
+connected graph G to have a Hamiltonian circuit?
+
+ah ety
+we 7
+
+Fig. 2-21 Dodecahedron and its graph shown with a Hamiltonian circuit.
+
+This problem, first posed by the famous Irish mathematician Sir William
+Rowan Hamilton in 1859, is still unsolved. As was mentioned in Chapter 1,
+Hamilton made a regular dodecahedron of wood [see Fig. 2-21(a)], each of
+whose 20 corners was marked with the name of a city. The puzzle was to start
+from any city and find a route along the edge of the dodecahedron that passes
+through every city exactly once and returns to the city of origin. The graph of the
+dodecahedron is given in Fig. 2-21(b), and one of many such routes (a
+Hamiltonian circuit) is shown by heavy lines.
+
+The resemblance between the problem of an Euler line and that of a
+Hamiltonian circuit is deceptive. The latter is infinitely more complex. Although
+one can find Hamiltonian circuits in many specific graphs, such as those shown

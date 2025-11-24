@@ -1,0 +1,51 @@
+describes the basic relational model, its integrity constraints, and update
+operations. Chapter 6 describes some of the basic parts of the SQL standard
+for relational databases, including data definition, data modification opera-
+tions, and simple SQL queries. Chapter 7 presents more complex SQL que-
+ries, as well as the SQL concepts of triggers, assertions, views, and schema
+modification. Chapter 8 describes the formal operations of the relational
+algebra and introduces the relational calculus. The material on SQL (Chap-
+ters 6 and 7) is presented before our presentation on relational algebra and
+calculus in Chapter 8 to allow instructors to start SQL projects early in a
+course if they wish (it is possible to cover Chapter 8 before Chapters 6 and 7
+if the instructor desires this order). The final chapter in Part 2, Chapter 9,
+covers ER- and EER-to-relational mapping, which are algorithms that can be
+used for designing a relational database schema from a conceptual ER/EER
+schema design.
+
+Part 4 (Chapters 10 and 11) are the chapters on database programming tech-
+niques; these chapters can be assigned as reading materials and augmented
+with materials on the particular language used in the course for program-
+ming projects (much of this documentation is readily available on the Web).
+Chapter 10 covers traditional SQL programming topics, such as embedded
+SQL, dynamic SQL, ODBC, SQLJ, JDBC, and SQL/CLI. Chapter 11 introduces
+Web database programming, using the PHP scripting language in our exam-
+ples, and includes new material that discusses Java technologies for Web
+database programming.
+
+Part 5 (Chapters 12 and 13) covers the updated material on object-relational
+and object-oriented databases (Chapter 12) and XML (Chapter 13); both of
+these chapters now include a presentation of how the SQL standard incorpo-
+rates object concepts and XML concepts into more recent versions of the
+SQL standard. Chapter 12 first introduces the concepts for object databases,
+and then shows how they have been incorporated into the SQL standard in
+order to add object capabilities to relational database systems. It then covers
+the ODMG object model standard, and its object definition and query lan-
+guages. Chapter 13 covers the XML (eXtensible Markup Language) model
+and languages, and discusses how XML is related to database systems. It
+presents XML concepts and languages, and compares the XML model to
+traditional database models. We also show how data can be converted
+between the XML and relational representations, and the SQL commands
+for extracting XML documents from relational tables.
+
+Part 6 (Chapters 14 and 15) are the normalization and relational design
+theory chapters (we moved all the formal aspects of normalization algo-
+rithms to Chapter 15). Chapter 14 defines functional dependencies, and
+the normal forms that are based on functional dependencies. Chapter 14
+also develops a step-by-step intuitive normalization approach, and includes
+the definitions of multivalued dependencies and join dependencies.
+Chapter 15 covers normalization theory, and the formalisms, theories,
+
+Preface
+
+ix

@@ -1,0 +1,45 @@
+1.3 Embedded System Hardware 7
+
+ROM
+ARM | SRAM
+FLASHROM
+
+essor
+ees |___{ Memory controller
+| DRAM
+(interrupt controller an en.
+AHB-external bridge External bus.
+ABB arbiter
+AHB-APB bridge
+
+Ethernet
+
+Ethernet
+Real-time clock Ethernet j ere
+
+physical
+Counter/timers driver
+
+Console
+
+ARM } (Controllers } { Peripherals } Bus
+
+Figure 1.2 An example of an ARM-based embedded device, a microcontroller.
+
+Figure 1.2 shows a typical embedded device based on an ARM core. Each box represents
+a feature or function. The lines connecting the boxes are the buses carrying data. We can
+separate the device into four main hardware components:
+
+= The ARM processor controls the embedded device. Different versions of the ARM pro-
+cessor are available to suit the desired operating characteristics. An ARM processor
+comprises a core (the execution engine that processes instructions and manipulates
+data) plus the surrounding components that interface it with a bus. These components
+can include memory management and caches.
+
+= Controllers coordinate important functional blocks of the system. Two commonly
+found controllers are interrupt and memory controllers.
+
+= The peripherals provide all the input-output capability external to the chip and are
+responsible for the uniqueness of the embedded device.
+
+= A busis used to communicate between different parts of the device.

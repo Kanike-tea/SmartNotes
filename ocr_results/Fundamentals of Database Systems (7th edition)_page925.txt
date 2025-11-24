@@ -1,0 +1,51 @@
+24.4 NOSQL Key-Value Stores
+
+shard will contain fewer documents than if the entire collection were stored at one
+node, thus further improving performance.
+
+There are two ways to partition a collection into shards in MongoDB—range
+partitioning and hash partitioning. Both require that the user specify a particular
+document field to be used as the basis for partitioning the documents into shards.
+The partitioning field—known as the shard key in MongoDB—must have two
+characteristics: it must exist in every document in the collection, and it must have an
+index. The Objectld can be used, but any other field possessing these two character-
+istics can also be used as the basis for sharding. The values of the shard key are
+divided into chunks either through range partitioning or hash partitioning, and the
+documents are partitioned based on the chunks of shard key values.
+
+Range partitioning creates the chunks by specifying a range of key values; for example,
+if the shard key values ranged from one to ten million, it is possible to create ten
+ranges—1 to 1,000,000; 1,000,001 to 2,000,000; ... ; 9,000,001 to 10,000,000—and
+each chunk would contain the key values in one range. Hash partitioning applies a
+hash function h(K) to each shard key K, and the partitioning of keys into chunks is
+based on the hash values (we discussed hashing and its advantages and disadvantages
+in Section 16.8). In general, if range queries are commonly applied to a collection (for
+example, retrieving all documents whose shard key value is between 200 and 400),
+then range partitioning is preferred because each range query will typically be submit-
+ted to a single node that contains all the required documents in one shard. If most
+searches retrieve one document at a time, hash partitioning may be preferable because
+it randomizes the distribution of shard key values into chunks.
+
+When sharding is used, MongoDB queries are submitted to a module called the query
+router, which keeps track of which nodes contain which shards based on the particu-
+lar partitioning method used on the shard keys. The query (CRUD operation) will be
+routed to the nodes that contain the shards that hold the documents that the query is
+requesting. If the system cannot determine which shards hold the required docu-
+ments, the query will be submitted to all the nodes that hold shards of the collection.
+Sharding and replication are used together; sharding focuses on improving perfor-
+mance via load balancing and horizontal scalability, whereas replication focuses on
+ensuring system availability when certain nodes fail in the distributed system.
+
+There are many additional details about the distributed system architecture and com-
+ponents of MongoDB, but a full discussion is outside the scope of our presentation.
+MongoDB also provides many other services in areas such as system administration,
+indexing, security, and data aggregation, but we will not discuss these features here.
+Full documentation of MongoDB is available online (see the bibliographic notes).
+
+24.4 NOSQL Key-Value Stores
+
+Key-value stores focus on high performance, availability, and scalability by storing
+data in a distributed storage system. The data model used in key-value stores is rela-
+tively simple, and in many of these systems, there is no query language but rather a
+
+895

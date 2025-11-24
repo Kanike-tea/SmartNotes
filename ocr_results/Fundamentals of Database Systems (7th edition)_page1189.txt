@@ -1,0 +1,51 @@
+Review Questions
+
+presented in Section 30.2, is generally referred to as discretionary access control
+(DAC). We presented some SQL commands for granting and revoking privileges,
+and we illustrated their use with examples. Then in Section 30.3 we gave an over-
+view of mandatory access control (MAC) mechanisms that enforce multilevel
+security. These require the classifications of users and data values into security
+classes and enforce the rules that prohibit flow of information from higher to
+lower security levels. Some of the key concepts underlying the multilevel rela-
+tional model, including filtering and polyinstantiation, were presented. Role-
+based access control (RBAC) was introduced in Section 30.3.2, which assigns
+privileges based on roles that users play. We introduced the notion of role hierar-
+chies, mutual exclusion of roles, and row- and label-based security. We explained
+the main ideas behind the threat of SQL injection in Section 30.4, the methods in
+which it can be induced, and the various types of risks associated with it. Then we
+gave an idea of the various ways SQL injection can be prevented.
+
+We briefly discussed in Section 30.5 the problem of controlling access to statistical
+databases to protect the privacy of individual information while concurrently pro-
+viding statistical access to populations of records. The issues related to flow control
+and the problems associated with covert channels were discussed next in Sec-
+tion 30.6, as well as encryption and public-versus-private key-based infrastructures
+in Section 30.7. The idea of symmetric key algorithms and the use of the popular
+asymmetric key-based public key infrastructure (PKI) scheme was explained in
+Section 30.7.3. We also covered in Sections 30.7.4 and 30.7.5 the concepts of digital
+signatures and digital certificates. We highlighted in Section 30.8 the importance of
+privacy issues and hinted at some privacy preservation techniques. We discussed in
+Section 30.9 a variety of challenges to security, including data quality, intellectual
+property rights, and data survivability. We ended the chapter in Section 30.10 by
+introducing the implementation of security policies by using a combination of
+label-based security and virtual private databases in Oracle 11g.
+
+Review Questions
+
+30.1. Discuss what is meant by each of the following terms: database authoriza-
+tion, access control, data encryption, privileged (system) account, database
+audit, audit trail.
+
+30.2. Which account is designated as the owner of a relation? What privileges
+does the owner of a relation have?
+
+30.3. How is the view mechanism used as an authorization mechanism?
+30.4. Discuss the types of privileges at the account level and those at the relation level.
+30.5. What is meant by granting a privilege? What is meant by revoking a privilege?
+
+30.6. Discuss the system of propagation of privileges and the restraints imposed
+by horizontal and vertical propagation limits.
+
+30.7. List the types of privileges available in SQL.
+
+1159

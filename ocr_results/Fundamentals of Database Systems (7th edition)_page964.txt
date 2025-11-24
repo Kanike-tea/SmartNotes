@@ -1,0 +1,55 @@
+934 Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Figure 25.2
+Hive system architecture
+and components.
+
+HIVE
+
+Command Line
+Interface (CLI) JDBC ope
+
+Thrift Interface Metadata
+
+Query Engine Store
+Y eng) . Meta Data
+Parse = Compile » Optimize >|
+Service
+—> Execute
+
+f
+!
+
+HADOOP CLUSTER
+(MAP REDUCE + HDFS)
+
+remote services. It comes with a runtime and code generation engine that can be
+used to develop remote services in many languages, including Java, C++, Python,
+and Ruby. Apache Thrift supports JSON-based and binary protocols; it supports
+http, socket, and file transports.
+
+The Hive query language HiveQL includes a subset of SQL that includes all types of
+joins, Group By operations, as well as useful functions related to primitive and com-
+plex data types. We comment below on some of the highlights of the Hive system.
+
+Interfacing with HDFS:
+
+= Tables in Hive are linked to directories in HDFS. Users can define parti-
+tions within tables. For example, a Web log table can be partitioned by day
+and within day by the hour. Each partition level introduces a level of direc-
+tories in HDFS. A table may also be stored as bucketed on a set of columns.
+This means that the stored data is physically partitioned by the column(s).
+For example, within an hour directory, the data may be bucketed by Userid;
+this means that each hour’s data is stored in a set of files, each file rep-
+resents a bucket of Users, and the bucket is based on the hashing of the
+Userid column. Users can specify how many buckets the data should be
+divided into.
+
+= The SerDe (Serialization/Deserialization) plugin architecture lets users
+specify how data in native file formats is exposed as rows to Hive SQL oper-
+ators. Hive comes with a rich set of SerDe functions and supported File
+formats (e.g., CSV, JSON, SequenceFile); columnar formats (e.g., RCFile,
+ORCFile, Parquet); and support for Avro—another data serialization sys-
+tem. The different StorageHandlers expand on the SerDe mechanism to
+allow pluggable behavior for how data is read/written and the ability to
+push predicates down to the Storage Handler for early evaluation. For

@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+2. Condition (optional): If the condition is true, the trigger executes, otherwise
+skipped
+
+3. Action: The actions performed by the trigger
+
+When the Event occurs and Condition is true, execute the Action
+
+Create Trigger ABC Create Trigger XYZ
+Before Insert On After Update On Students
+Students cee
+This trigger is activated when an insert statement Ue ees ee he eee is
+is issued, but before the new record is inserted execufSal P
+
+Does the trigger execute for each updated or deleted record, or once for the entire
+statement ?. We define such granularity as follows:
+
+Create Trigger <name> This is the event
+Before| After Insert] Update] Delete
+
+For Each Row | For Each Statement
+
+~~
+
+This is the granularity
+
+Create Trigger XYZ
+After Update ON <tablename>
+For each statement
+
+Create Trigger XYZ
+Before Delete ON <tablename>
+For each row
+
+, =
+
+This trigger is activated once (per UPDATE
+
+This trigger is activated before deleting each
+statement) after all records are updated
+
+record
+
+https://vtucode.in page 34

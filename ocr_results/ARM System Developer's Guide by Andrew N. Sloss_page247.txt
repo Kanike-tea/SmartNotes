@@ -1,0 +1,51 @@
+234 Chapter 7 Optimized Primitives
+
+ADDPL q, q, #1 318: qt
+BX Ir 319: return q
+overflow 15
+LOR oq, =Ox7FFF 3 20: q = OX7FFF
+BX Ir 3 21: return q
+
+; table for fractional Newton-Raphson division
+3 table[a] = (int) ((511*(128-a)) /(257#2*a)) 0<=a<128
+
+t15 DCB Oxfe, Oxfa, Oxf6, Oxf2, Oxef, Oxeb, Oxe7, Oxed
+DCB Oxe0, Oxdd, Oxd9, Oxd6, Oxd2, Oxcf, Oxcc, Oxc9
+DCB Oxc6, Oxc2, Oxbf, Oxbc, Oxb9, Oxb6, Oxb3, Oxb1
+DCB Oxae, Oxab, Oxa8, Oxa5, 0xa3, Oxa0, Ox9d, Ox9b
+DCB 0x98, 0x96, 0x93, 0x91, Ox8e, Ox8c, Ox8a, 0x87
+DCB 0x85, 0x83, 0x80, Ox7e, Ox7c, Ox7a, 0x78, 0x75
+DCB 0x73, Ox71, Ox6f, Ox6d, Ox6b, 0x69, 0x67, 0x65
+DCB 0x63, 0x61, Ox5f, Ox5e, Ox5c, Ox5a, 0x58, 0x56
+DCB 0x54, 0x53, Ox51, Ox4f, Oxde, Oxdc, Oxda, 0x49
+DCB 0x47, 0x45, Ox44, 0x42, 0x40, Ox3f, Ox3d, Ox3c
+DCB Ox3a, 0x39, 0x37, 0x36, 0x34, 0x33, 0x32, 0x30
+DCB Ox2f, Ox2d, Ox2c, Ox2b, 0x29, 0x28, 0x27, 0x25
+DCB 0x24, 0x23, Ox21, 0x20, Oxlf, Oxle, Oxlc, Oxlb
+DCB Oxla, 0x19, 0x17, 0x16, Ox15, Ox14, 0x13, Ox12
+DCB 0x10, OxOf, Ox0e, Ox0d, Ox0c, OxOb, Ox0a, 0x09
+DCB 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01
+
+Proor The routine starts by normalizing dand nso that 2!* < d < 2!° in instructions 101, 102, 103,
+
+7.3
+
+106. This doesn’t affect the result since we shift the numerator and denominator left by the
+same number of places. Considering d as a Q15 format fixed-point fraction, 0.5 < d <1.
+109 and [14 are overflow traps that catch the case that n > d. This includes the case d = 0.
+Assuming from now on that there is no overflow, 104, 105, 107 set q to the 9-bit Q8 initial
+estimate x9 to d~! as described in Section 7.3.1.1. Since d is in the range 0.5 < d <1, we
+subtract 128 on the table lookup so that 0.5 corresponds to the first entry of the table.
+
+Next we perform one Newton-Raphson iteration. 108 sets a to the exact Q16 square of
+Xo, and I10 sets a to the exact Q31 value of dx2. There is a subtlety here. We need to check
+that this value will not overflow an unsigned Q31 representation. In fact:
+
+2
+axe = 9 = (14% - aa ) (7.34)
+
+Xo + & Xo +
+
+This term reaches its maximum value when xp is as large as possible and e9 as negative
+as possible, which occurs when d = 0.5 + 278 — 275, where xp = 2— 277 and dye <
+2-2 <2.

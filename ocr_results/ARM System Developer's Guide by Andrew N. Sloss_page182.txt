@@ -1,0 +1,53 @@
+EXAMPLE
+
+6.10
+
+6.3 Instruction Scheduling 169
+
+c RN 2 ; character loaded
+t RN 3; scratch register
+3 void str_tolower_preload(char “out, char *in)
+str_tolower_preload
+LORB oc, [in], #1 3 c= *(in#+)
+loop
+SUB. t, c, #'A" p tec
+
+cMP ot, #'Z'~AY 3 if (t
+
+ADDLS c,c, #a'-'A' gc t= 3
+
+TRB c, [out], #1 3 *(out++) = (char)cs
+
+TEQ cc, #0 ; test if c==0
+
+LORNEB c, [in], #1 3 if (cl=0) { c=*ints;
+BNE loop ; goto loop; }
+MOV pc, Ir 3 return
+
+The scheduled version is one instruction longer than the C version, but we save two
+cycles for each inner loop iteration. This reduces the loop from 11 cycles per character to
+9 cycles per character on an ARM9TDMI, giving a 1.22 times speed improvement.
+
+The ARM architecture is particularly well suited to this type of preloading because
+instructions can be executed conditionally. Since loop i is loading the data for loop i + 1
+there is always a problem with the first and last loops. For the first loop, we can preload data
+by inserting extra load instructions before the loop starts. For the last loop it is essential that
+the loop does not read any data, or it will read beyond the end of the array. This could cause
+a data abort! With ARM, we can easily solve this problem by making the load instruction
+conditional. In Example 6.9, the preload of the next character only takes place if the loop
+will iterate once more. No byte load occurs on the last loop.
+
+6.3.1.2 Load Scheduling by Unrolling
+
+This method of load scheduling works by unrolling and then interleaving the body of the
+loop. For example, we can perform loop iterations i, i+ 1, i+ 2 interleaved. When the result
+of an operation from loop iis not ready, we can perform an operation from loop i+ 1 that
+avoids waiting for the loop i result.
+
+The assembly applies load scheduling by unrolling to the str_tolower function.
+
+out RNO — ; pointer to output string
+in RN 1 ; pointer to input string
+cad RN2 5 character 0
+
+t RN 3; scratch register

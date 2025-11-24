@@ -1,0 +1,56 @@
+27.2 Retrieval Models
+
+Here, D, stands for document-relevant (D,) and D,,, stands for document-nonrelevant
+(Dy,); these terms represent relevant and nonrelevant document sets, respectively.
+Terms from relevant and nonrelevant documents get added to the original query
+vector with positive and negative weights, respectively, to create the modified query
+vector. a, B, and y are parameters of the equation. The summation over d, repre-
+sents summation over all relevant terms of document d,. Similarly, summation over
+dy, represents summation over all nonrelevant terms of document d,,,. The values
+of these parameters determine how the feedback affects the original query, and
+these may be determined after a number of trial-and-error experiments.
+
+27.2.3 Probabilistic Model
+
+The similarity measures in the vector space model are somewhat ad hoc. For exam-
+ple, the model assumes that those documents closer to the query in cosine space are
+more relevant to the query vector. In the probabilistic model, a more concrete and
+definitive approach is taken: ranking documents by their estimated probability of
+relevance with respect to the query and the document. This is the basis of the prob-
+ability ranking principle developed by Robertson.'!
+
+In the probabilistic framework, the IR system must decide whether the documents
+belong to the relevant set or the nonrelevant set for a query. To make this decision, it
+is assumed that a predefined relevant set and nonrelevant set exist for the query, and
+the task is to calculate the probability that the document belongs to the relevant set and
+compare that with the probability that the document belongs to the nonrelevant set.
+
+Given the document representation D of a document, estimating the relevance R
+and nonrelevance NR of that document involves computation of conditional prob-
+ability P(R|D) and P(NR|D). These conditional probabilities can be calculated using
+Bayes’ rule:!*
+
+P(R|D) = P(D|R) x P(R)/P(D)
+
+P(NR|D) = P(D|NR) x P(NR)/P(D)
+A document D is classified as relevant if P(R|D) > P(NR|D). Discarding the constant
+P(D), this is equivalent to saying that a document is relevant if:
+
+P(D|R) x P(R) > P(DINR) x P(NR)
+
+The likelihood ratio P(D|R)/P(D|NR) is used as a score to determine the likelihood
+of the document with representation D belonging to the relevant set.
+
+The term independence or naive Bayes assumption is used to estimate P(D|R) using
+computation of P(t|R) for term t;. The likelihood ratios P(D|R)/P(D|NR) of documents
+are used as a proxy for ranking based on the assumption that highly ranked documents
+will have a high likelihood of belonging to the relevant set.!?
+
+"For a description of the Cheshire II system, see Robertson (1997).
+
+'2Bayes’ theorem is a standard technique for measuring likelihood; see Howson and Urbach (1998),
+for example.
+
+'3Readers should refer to Crott et al. (2009) pages 246-247 for a detailed description.
+
+1033

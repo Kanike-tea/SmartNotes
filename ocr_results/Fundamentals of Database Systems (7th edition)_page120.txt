@@ -1,0 +1,48 @@
+90 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Figure 3.18
+Another example of
+ternary versus binary
+relationship types.
+
+Gomes’) year)
+
+TAUGHT_DURING
+
+INSTRUCTOR SEMESTER
+
+CAN_TEACH OFFERED_DURING
+
+COURSE
+
+Some database design tools are based on variations of the ER model that permit
+only binary relationships. In this case, a ternary relationship such as SUPPLY must
+be represented as a weak entity type, with no partial key and with three identifying
+relationships. The three participating entity types SUPPLIER, PART, and PROJECT
+are together the owner entity types (see Figure 3.17(c)). Hence, an entity in the
+weak entity type SUPPLY in Figure 3.17(c) is identified by the combination of its
+three owner entities from SUPPLIER, PART, and PROJECT.
+
+It is also possible to represent the ternary relationship as a regular entity type by
+introducing an artificial or surrogate key. In this example, a key attribute Supply_id
+could be used for the supply entity type, converting it into a regular entity type.
+Three binary N:1 relationships relate SUPPLY to each of the three participating
+entity types.
+
+Another example is shown in Figure 3.18. The ternary relationship type OFFERS
+represents information on instructors offering courses during particular semesters;
+hence it includes a relationship instance (i, s, c) whenever INSTRUCTOR i offers
+COURSE c during SEMESTER s. The three binary relationship types shown in Fig-
+ure 3.18 have the following meanings: CAN_TEACH relates a course to the instruc-
+tors who can teach that course, TAUGHT_DURING relates a semester to the instructors
+who taught some course during that semester, and OFFERED_DURING relates a
+semester to the courses offered during that semester by any instructor. These ter-
+nary and binary relationships represent different information, but certain
+constraints should hold among the relationships. For example, a relationship
+instance (i, s, c) should not exist in OFFERS unless an instance (i, s) exists in
+TAUGHT_DURING, an instance (s, c) exists in OFFERED_DURING, and an instance
+(i, c) exists in CAN_TEACH. However, the reverse is not always true;
+we may have instances (i, s), (s, c), and (i, c) in the three binary relationship types
+with no corresponding instance (i, s, c) in OFFERS. Note that in this example,
+based on the meanings of the relationships, we can infer the instances of
+TAUGHT_DURING and OFFERED_DURING from the instances in OFFERS, but

@@ -1,0 +1,44 @@
+2.5.1, Chromatic Polynomials 137
+
+Lastly, consider the graph L, which is a path consisting of n vertices v1, v2,....Vn Shown
+below:
+
+Yat
+
+v3 %.
+
+YW V4 Vn
+
+Figure 2.45
+
+This graph cannot be properly coloured with one colour, but can be properly coloured
+with 2 colours - by assigning one colour to v1, v3, vs,-.. and another colour to v2, v4, V6,----
+Suppose there are A > 2 number of colours available. Then, for a proper colouring of the graph,
+the vertex vj can be assigned any one of the A colours and each of the remaining vertices can
+be assigned any one of A — 1 colours. (Bear in mind that alternative vertices can have the same
+colour). Thus, the graph L, can be properly coloured in A(A — 1)"~! different ways.
+
+The number of different ways of properly colouring a graph G with A number of colours
+is denoted by P(G, A). Thus, from what is seen in the above three illustrate examples, we note
+that
+
+(i) P(Np, a) = a"
+(ii) P(K,,a) = 0 if A<n,
+P(Ky,a)=1 if A=n, and
+P(Ky,a) = AA 1A 2)... A= n+) if A>n,
+(iii) Py, a) = AA=-1)"! if A>B2.
+
+We alierve that in each of the above cases, P(G, A) is a polynomial. Motivated by these
+Cases, we take that P(G, A) is a polynomial for all graphs G. This polynomial is called the
+Chromatic Polynomial.
+
+Thus, the chromatic polynomial P(G, A) of a graph G represents the number of ways of
+Properly colouring G with 2 number of colours.
+
+It follows that if a graph G is made up of n parts Gi, G2,...Gy, then P(G, A) is given by
+the following Product Rule:
+
+P(G, A) = P(G;, A) « P(G2, A)... P(Gn, a).
+In Particular, if G is made up of two parts G; and G», then we have
+
+P(G, A) = P(G;, A) - P(G2, A)

@@ -1,0 +1,54 @@
+Database Management System [BCS403]
+
+In the action, you may want to reference:
+* The new values of inserted or updated records (:new)
+* The old values of deleted or updated records (old)
+
+Create Trigger EmpSal
+
+After Insert or Update On Employee Inside “When”, the “new” and
+For Each Row —_— “old” should not have “:”
+When (new.salary >150,000)
+Begin
+
+Trigger body if (:new.salary < 100,000) ...
+End;
+
+Inside the trigger body, they
+should have “:”
+
+Examples:
+
+1) If the employee salary increased by more than 10%, then increment the rank field by 1.
+
+In the case of Update event only, we can specify which columns
+
+Create Trigger EmpS:
+Before Update Of salary On Employee
+For Each Row
+Begin
+IF (:new.salary > (:old.salary*1.1)) Then
+tnew.rank := :old.rank + 1;
+End IF;
+End;
+L
+
+We changed the new value of rank field
+
+The assignment operator has “:”
+
+2) Keep the bonus attribute in Employee table always 3% of the salary attribute
+
+Create Trigger EmpBonus —— Indicate two events at the same time
+Before Insert Or Update On Employee
+
+For Each Row
+Begin
+:new.bonus := :new.salary * 0.03;
+
+End; a
+The bonus value is always computed
+
+automatically
+
+https://vtucode.in Page 35

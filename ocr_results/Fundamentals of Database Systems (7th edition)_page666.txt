@@ -1,0 +1,52 @@
+636
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+= To retrieve a count of rows that qualify for the condition C, = Vj, the “1”
+entries in the corresponding bitvector are counted.
+
+= Queries with negation, such as C, + = Vj, can be handled by applying the
+Boolean complement operation on the corresponding bitmap.
+
+Consider the example relation EMPLOYEE in Figure 17.16 with bitmap indexes
+on Sex and Zipcode. To find employees with Sex = F and Zipcode = 30022, we
+intersect the bitmaps “01011001” and “01010010” yielding Row_ids 1 and 3.
+Employees who do not live in Zipcode = 94040 are obtained by complementing
+the bitvector “10000001” and yields Row_ids 1 through 6. In general, if we assume
+uniform distribution of values for a given column, and if one column has 5 distinct
+values and another has 10 distinct values, the join condition on these two can be
+considered to have a selectivity of 1/50 (= 1/5 * 1/10). Hence, only about 2% of the
+records would actually have to be retrieved. If a column has only a few values, like
+the Sex column in Figure 17.16, retrieval of the Sex = M condition on average
+would retrieve 50% of the rows; in such cases, it is better to do a complete scan
+rather than use bitmap indexing.
+
+In general, bitmap indexes are efficient in terms of the storage space that they need.
+If we consider a file of 1 million rows (records) with record size of 100 bytes per
+row, each bitmap index would take up only one bit per row and hence would use 1
+million bits or 125 Kbytes. Suppose this relation is for 1 million residents of a state,
+and they are spread over 200 ZIP Codes; the 200 bitmaps over Zipcodes contribute
+200 bits (or 25 bytes) worth of space per row; hence, the 200 bitmaps occupy only
+25% as much space as the data file. They allow an exact retrieval of all residents who
+live in a given ZIP Code by yielding their Row_ids.
+
+When records are deleted, renumbering rows and shifting bits in bitmaps becomes
+expensive. Another bitmap, called the existence bitmap, can be used to avoid this
+expense. This bitmap has a 0 bit for the rows that have been deleted but are still
+physically present and a 1 bit for rows that actually exist. Whenever a row is inserted
+in the relation, an entry must be made in all the bitmaps of all the columns that have
+a bitmap index; rows typically are appended to the relation or may replace deleted
+rows to minimize the impact on the reorganization of the bitmaps. This process still
+constitutes an indexing overhead.
+
+Large bitvectors are handled by treating them as a series of 32-bit or 64-bit vectors,
+and corresponding AND, OR, and NOT operators are used from the instruction set
+to deal with 32- or 64-bit input vectors in a single instruction. This makes bitvector
+operations computationally very efficient.
+
+Bitmaps for B*-Tree Leaf Nodes. Bitmaps can be used on the leaf nodes of
+B*-tree indexes as well as to point to the set of records that contain each specific value
+of the indexed field in the leaf node. When the B*-tree is built on a nonkey search
+field, the leaf record must contain a list of record pointers alongside each value of
+the indexed attribute. For values that occur very frequently, that is, in a large per-
+centage of the relation, a bitmap index may be stored instead of the pointers. As an

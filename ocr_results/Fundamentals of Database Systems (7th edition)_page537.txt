@@ -1,0 +1,53 @@
+15.1 Further Topics in Functional Dependencies: Inference Rules, Equivalence, and Minimal Cover
+
+Each of the preceding inference rules can be proved from the definition of functional
+dependency, either by direct proof or by contradiction. A proof by contradiction
+assumes that the rule does not hold and shows that this is not possible. We now prove
+that the first three rules IR1 through IR3 are valid. The second proof is by contradiction.
+
+Proof of IR1. Suppose that X > Y and that two tuples f; and f exist in some rela-
+tion instance r of R such that t; [X] = tf [X]. Then f;[Y] = t;[Y] because XD Y;
+hence, X — Y must hold in r.
+
+Proof of IR2 (by contradiction). Assume that X > Y holds ina relation instance
+r of R but that XZ — YZ does not hold. Then there must exist two tuples
+and fin r such that (1) f [X] = t [X], (2) h [Y] = b [Y], (3) th [XZ] = b [XZ],
+and (4) t; [YZ] # ft) [YZ]. This is not possible because from (1) and (3) we
+deduce (5) t; [Z] = t) [Z], and from (2) and (5) we deduce (6) t; [YZ] = t [YZ],
+contradicting (4).
+
+Proof of IR3. Assume that (1) X — Y and (2) Y > Z both hold in a relation r.
+‘Then for any two tuples t, and f in r such that ft; [X] = f [X], we must have (3)
+t, [Y] = t [Y], from assumption (1); hence we must also have (4) ty [Z] = t [Z]
+from (3) and assumption (2); thus X — Z must hold in r.
+
+There are three other inference rules that follow from IR1, IR2 and IR3. They are
+as follows:
+
+IR4 (decomposition, or projective, rule): {X > YZ} |=X > Y.
+IR5 (union, or additive, rule): {X > Y, X > Z} |=X > YZ.
+IR6 (pseudotransitive rule): {X > Y, WY > Z} |=WX > Z.
+
+The decomposition rule (IR4) says that we can remove attributes from the right-
+hand side of a dependency; applying this rule repeatedly can decompose the
+FD X > {Aj, Ad, ... , An} into the set of dependencies {X + Aj, X > Ap, ...,X > Ay}.
+The union rule (IR5) allows us to do the opposite; we can combine a set of depen-
+dencies {X — Aj, X > A, ..., X > A,} into the single FD X — {A), Ag, ... , An}-
+The pseudotransitive rule (IR6) allows us to replace a set of attributes Y on the left-
+hand side of a dependency with another set X that functionally determines Y, and
+can be derived from IR2 and IR3 if we augment the first functional dependency
+X — Ywith W (the augmentation rule) and then apply the transitive rule.
+
+One important cautionary note regarding the use of these rules: Although X > A and
+X — Bimplies X — AB by the union rule stated above, X — A and Y > B does imply
+that XY — AB. Also, XY — A does not necessarily imply either X A or YA.
+
+Using similar proof arguments, we can prove the inference rules IR4 to IR6 and any
+additional valid inference rules. However, a simpler way to prove that an inference
+rule for functional dependencies is valid is to prove it by using inference rules that
+have already been shown to be valid. Thus IR4, IRS, and IR6 are regarded as a corol-
+lary of the Armstrong’s basic inference rules. For example, we can prove IR4 through
+IR6 by using /R1 through IR3. We present the proof of IR5 below. Proofs of IR4 and IR6
+using IR1 through IR3 are left as an exercise for the reader.
+
+507

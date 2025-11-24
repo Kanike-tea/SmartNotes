@@ -1,0 +1,54 @@
+28.3 Classification 1087
+
+RID Married Salary Acct_balance Age Loanworthy
+
+1 no >=50K <5K >=25 yes
+2 yes >=50K >=5K >=25 yes
+3 yes 20K...50K <5K <25 no
+4 no <20k >=5K <25 no
+5 no <20k <5K >=25 no
+6 yes 20K...50K >=5K >=25 yes
+
+Figure 28.6
+Sample training data
+for classification
+algorithm
+
+U(syj, ---» Sj) can be defined using the formulation for I(s;, ... , s,) with p; being replaced
+by pi where p;j=sj/s. Now the information gain by partitioning on attribute A, Gain(A),
+is defined as I(sj, ..., s,) — E(A). We can use the sample training data from Fig-
+ure 28.6 to illustrate the algorithm.
+
+The attribute RID represents the record identifier used for identifying an individual
+record and is an internal attribute. We use it to identify a particular record in our
+example. First, we compute the expected information needed to classify the training
+data of 6 records as I(s;, s3) where there are two classes: the first class label value
+corresponds to yes and the second to no. So
+
+1(3,3) = — 0.5og, 0.5 ~ 0.5log, 0.5 = 1
+
+Now, we compute the entropy for each of the four attributes as shown below. For
+Married = yes, we have $1 = 2, s3; = 1 and I(s,1, $21) = 0.92. For Married = no, we have
+$12 = 1, 822 =2 and (519, 822) = 0.92. So the expected information needed to classify a
+sample using attribute Married as the partitioning attribute is
+
+E(Martied) = 3/6 I(s;, $21) + 3/6 I(s135 $2) = 0.92
+
+The gain in information, Gain(Married), would be 1 — 0.92 = 0.08. If we follow simi-
+lar steps for computing the gain with respect to the other three attributes we end up
+with
+
+E(Salary) = 0.33 and Gain(Salary) = 0.67
+E(Acct_balance) = 0.92 and Gain(Acct_balance) = 0.08
+E(Age) = 0.54 and Gain(Age) = 0.46
+
+Since the greatest gain occurs for attribute Salary, it is chosen as the partitioning
+attribute. The root of the tree is created with label Salary and has three branches,
+one for each value of Salary. For two of the three values, that is, < 20K and > 50K, all
+the samples that are partitioned accordingly (records with RIDs 4 and 5 for < 20K
+and records with RIDs 1 and 2 for > 50K) fall within the same class loanworthy no
+and loanworthy yes, respectively, for those two values. So we create a leaf node for
+each. The only branch that needs to be expanded is for the value 20K ... 50K with
+two samples, records with RIDs 3 and 6 in the training data. Continuing the process
+using these two records, we find that Gain(Married) is 0, Gain(Acct_balance) is 1, and
+Gain(Age) is 1.

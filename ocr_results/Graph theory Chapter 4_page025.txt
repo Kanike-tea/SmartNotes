@@ -1,0 +1,32 @@
+43. Network Flows 239
+
+6, Find the edge-connectivity and the vertex-connectivity of the graphs shown below: ”
+
+Figure 4.46
+
+Answers
+
+2 P=tvivsh P= (v2.03, v4) 3. capacity = 13
+5, capacity of S; =3, capacity of S2 = 14.
+6. (a) Edge-connectivity =2. Vertex-connectivity = 1.
+
+(b) Edge-connectivity = Vertex-connectivity = 3.
+
+4.3 Network Flows
+
+In several transport networks, like the networks-of-telephone lines, rail roads, oil or water
+Pipelines, a knowledge about the maximum rate of flow that is possible from one station to
+another is essential. Such knowledge can be acquired through a study of weighted connected’
+graphs in which the vertices represent stations and the edges represent the lines of the network.
+Insuch graphs, the weight of an edge represents the capacity of the line; namely, the maximum
+amount of flow possible per unit of time. :
+
+Ina graphical study of transport networks of the type mentioned above, it will be assumed
+that, at each vertex representing an intermediate station, the total rate of commodity (number
+of telephone calls, number of trains, amounts of water or oil) entering is equal to the rate
+of leaving and that the flow through a vertex is limited only by the’ capacities of the edges
+Tepreseriting the network lines incident on it. In other words, it will be assumed that there is'no
+‘ccumulation or generation of the commodity at any vertex along the way and that the vertex
+‘self can handle as much flow as allowed through the edges. It will further be assumed that the
+
+les are lossless. ‘ Gwin ie ah dr wing fools

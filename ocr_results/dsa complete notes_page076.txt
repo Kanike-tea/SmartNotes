@@ -1,0 +1,51 @@
+Data Structures and Applications (BCS304) Module III
+
+MODULE - 3
+ILINKED LISTS : Sparse Matrices, Doubly Linked List.
+
+(TREES: Introduction, Binary Trees, Binary Tree Traversals, Threaded Binary Trees.
+
+e We can save space and computing time by retaining only the nonzero terms of sparse
+matrices.
+
+e In the sequential scheme each nonzero term was represented by a NODE with three fields:
+row, column, and value. These NODEs were organized sequentially. However, we found that
+when we performed matrix operations such as addition, subtraction, or multiplication, the
+number of nonzero terms varied.
+
+e In this section, we study a linked list representation for sparse matrices. Usually, linked lists
+allow us to efficiently represent structures that vary in size, a benefit that also applies to
+sparse matrices.
+
+e In our data representation, we represent each column of a sparse matrix as a circularly linked
+list with a header NODE. We use a similar representation for each row of a sparse matrix.
+
+e Each NODE has a tag field, which we use to distinguish between header NODEs and entry
+NODEs.
+
+« Bach header NODE has threé additional fields: down, right, and next.
+UiLidown field links into a column list and the
+||| tight field links into a row list.
+||| /The next field links the header NODES together.
+oo
+of header NODEs is max {number of rows, number of columns}.
+
+next
+down | right
+
+Header Node
+
+e Each entry NODE consist of the following structure
+
+row | col | value
+down | _ right
+
+Entry Node
+
+e Each header NODE is in three lists: a list of rows, a list of columns, and a list of header
+NODES. The list of header NODEs also has a header NODE that has the same structure as an
+entry NODE.
+
+e The row and col value of the header NODE consist of the dimension of the matrix
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 1

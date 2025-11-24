@@ -1,0 +1,48 @@
+8.4 Additional Relational Operations
+
+™ P.Pnumber,P.Dnum,E.Lname,E.Address,E.Bdate
+
+(3)
+* D.Mgr_ssn=E.Ssn
+
+Figure 8.9
+
+259
+
+Query tree corresponding
+
+(2)
+* P_Dnum=D.Dnumber EMPLOYEE
+(1) a
+© P Plocation= ‘Stafford’ DEPARTMENT
+PROJECT
+
+to the relational algebra
+expression for Q2,
+
+node (2) must begin to execute and produce results before node (3) can start execution,
+and so on. In general, a query tree gives a good visual representation and understand-
+ing of the query in terms of the relational operations it uses and is recommended as
+an additional means for expressing queries in relational algebra. We will revisit query
+trees when we discuss query processing and optimization in Chapters 18 and 19.
+
+8.4 Additional Relational Operations
+
+Some common database requests—which are needed in commercial applications
+for RDBMSs—cannot be performed with the original relational algebra operations
+described in Sections 8.1 through 8.3. In this section we define additional opera-
+tions to express these requests. These operations enhance the expressive power of
+the original relational algebra.
+
+8.4.1 Generalized Projection
+
+The generalized projection operation extends the projection operation by allowing
+functions of attributes to be included in the projection list. The generalized form
+can be expressed as:
+
+Tri, F2, .., Fn (R)
+
+where F), F, ... , F, are functions over the attributes in relation R and may involve
+arithmetic operations and constant values. This operation is helpful when devel-
+oping reports where computed values have to be produced in the columns of a
+query result.

@@ -1,0 +1,47 @@
+188 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+We represent each matrix by a lowercase pointer of the same name, pointing to an array
+of words organized by row. For example, the element at row i, column j, Ali, j], is at the
+byte address
+
+BALi,j] = a + 4*(i*T+j)
+A simple C implementation of the matrix multiply uses three nested loops i, j, and k:
+
+#define R 40
+#define S 40
+#define T 40
+
+void ref_matrix_mul(int *a, int *b, int *c)
+{
+
+unsigned int i,j,k;
+
+int sum;
+
+for (i=0; i<R; i++)
+{
+for (j=0; j<T; j++)
+{
+/* calculate a[i,j] */
+sum = 03
+for (k=0; k<S; k++)
+{
+/* add bli,k]*clk,j] */
+sum += b[i*S+k] *c[k*T+j] ;
+}
+
+a[i*T+j] = sum;
+
+There are many ways to improve the efficiency here, starting by removing the address
+indexing calculations, but we will concentrate on the looping structure. We allocate
+a register counter count containing all three loop counters i, j, k:
+
+Bit 31 24 23 16 15 87 0
+count = 0 S-1-k | T-1-j] R-1-i
+
+Note that § — 1 — k counts from S$ — 1 down to 0 rather than counting from 0 to S — 1 as k
+does. The following assembly implements the matrix multiply using this single counter in
+register count:
+
+R EQU 40
+S EQU 40

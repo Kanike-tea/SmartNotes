@@ -1,0 +1,50 @@
+12.6 Cache Lockdown 453
+
+IF "$op" = "Deache"
+MCR p15, 0, adr, c9, cO, 0 ; set d-cache lock bits
+
+ENDIF
+1
+MOV 0, tmp1 ; return allocated way
+MOV pc, Ir
+MEND
+TockDCache
+CACHELOCKBYLBIT Dcache
+lockICache
+CACHELOCKBYLBIT Icache
+ENDIF
+
+The next seven lines check the c9f register to see if there is a way available to store code
+or data; if not, the routine exits. If there is an available way, then the c9f format is modified
+in the next four lines to select the way in which to lock data. The c9f register is then used in
+the MCR instruction to select the way.
+
+At this point the code enters a loop that fills the cache with locked code or data. If the
+procedure is locking code in the I-cache, it executes a prefetch I-cache line command. If
+locking data from external memory, it cleans, flushes, and loads a new cache line into the
+D-cache.
+
+The macro exits by merging the saved L bits with the newly locked page and uses the
+result to create a new c9f register. The macro uses the c9f register in an MCR instruction to
+set the L bits in the CP15:c9:c0 cache lockdown register.
+
+Finally, the CACHELOCKBYLBIT macro is used twice to create the lockDCache and
+JockICache functions.
+
+12.6.4 LOCKING CACHE LINES IN THE INTEL XSCALE SA-110
+
+The Intel XScale processor also has the capability to lock code and data into cache.
+This method requires the use of a set of CP15:c9 cache lockdown commands, shown in
+Table 12.13. The format of the CP15:c9:c2 register is shown in Figure 12.16. It also requires
+the CP15:c7 allocate D-cache line command we used to clean the D-cache in Example 12.5;
+this command is shown in Table 12.7.
+
+In the Intel XScale processor, each set in the cache has a dedicated round-robin pointer
+that is increased sequentially each time an additional cache line in the cache is locked.
+Up to 28 of the 32 cache lines within a set can be locked in cache. Attempting to lock
+more than 28 cache lines in a set results in the line being allocated but not locked in
+cache.
+
+The Intel XScale processor supports two uses for locking data in the D-cache. The first
+use simply locks main memory locations into the D-cache. In the second use, the allocate
+cache line command is used to reconfigure a portion of the cache as data RAM; in that case,

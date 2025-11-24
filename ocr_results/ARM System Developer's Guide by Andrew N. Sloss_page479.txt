@@ -1,0 +1,51 @@
+466 Chapter 13 Memory Protection Units
+
+Table 13.2
+
+Coprocessor registers that control the MPU.
+
+Function Primary register Secondary registers
+System control cl 0
+
+Region cache attributes 2 0
+
+Region write buffer attributes 3 0
+
+Region access permissions ry 0
+
+Region size and location 6 0 to c7
+
+Ata minimum the control system must define at least one data region and one instruc-
+tion region before it can enable the protection unit. The protection unit must be enabled
+before or at the same time as the caches and write buffer are enabled.
+
+The control system configures the MPU by setting primary CP15 registers cl, c2, c3, c5,
+and c6. Table 13.2 lists the primary registers needed to control the operation of the MPU.
+Register cl is the primary control register.
+
+Configuring registers c2 and c3 sets the cache and write buffer attributes of regions.
+Register c5 controls region access permissions. There are 8 or 16 secondary registers in
+register c6 that define the location and size of each region. There are other configuration
+registers in the ARM740T, ARM940T, ARM946E-S, and ARM1026EJ-S, but their use does
+not involve the basic operation of the MPU. To review the use of coprocessor 15 registers,
+refer to Section 3.5.2.
+
+The following steps are required to initialize the MPU, caches, and write buffer:
+
+1. Define the size and location of the instruction and data regions using CP15:c6.
+2. Set the access permission for each region using CP15:c5.
+
+3. Set the cache and write buffer attributes for each region using CP15:c2 for cache and
+CP15:c3 for the write buffer.
+
+4. Enable the caches and the MPU using CP 15:cl.
+
+For each of these steps, there is a chapter section that follows describing the coprocessor
+15 commands needed to configure each register. There is also example code showing the
+commands used in a routine that completes the step in the initialization process.
+
+13.2.1 DEFINING REGION SIZE AND LOCATION
+
+To define the size and address range of each region, the embedded system writes to one
+of the eight secondary registers, CP15:c6:c0:0 to CP15:c6:c7:0. Each secondary coprocessor
+register number maps to the corresponding region number identifier.

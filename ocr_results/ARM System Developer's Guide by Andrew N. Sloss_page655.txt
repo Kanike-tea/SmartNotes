@@ -1,0 +1,40 @@
+642 Appendix B ARM and Thumb Instruction Encodings
+
+Table B.2 Decoding table for cond.
+
+Binary Hex cond Binary Hex cond
+0000 0 EQ 1000 8 HI
+0001 1 NE 1001 9 LS
+0010 2 CS/HS 1010 A GE
+0011 3 cc/LO 1011 B LT
+0100 4 MI 1100 c GT
+0101 5 PL 1101 D LE
+0110 6 VS 1110 E {AL}
+0111 7 vc
+
+Table B.3 Decoding table for mode.
+Binary Hex mode
+10000 0x10 user mode (_usr)
+10001 0x11 FIQ mode (_fiq)
+10010 0x12 IRQ mode (_irq)
+10011 0x13 supervisor mode (_svc)
+10111 0x17 abort mode (_abt)
+11011 0x1B undefined mode (_und)
+11111 Ox1F system mode
+
+Table B.4 Decoding table for shift, shift_size, and Rs.
+shift shift_size Rs Shift action
+00 0 to 31 N/A LSL #shift_size
+00 N/A Rs LSL Rs
+01 0 N/A LSR #32
+01 lto 31 N/A LSR #shift_size
+01 N/A Rs LSR Rs
+10 0 N/A ASR #32
+10 lto 31 N/A ASR #shift_size
+10 N/A Rs ASR Rs
+11 0 N/A RRX
+11 lto 31 N/A ROR #shift_size
+11 N/A Rs ROR Rs
+N/A Oto 31 N/A The shift value is implicit: For PKHBT it is 00.
+
+For PKHTB it is 10. For SAT it is 2*sh.

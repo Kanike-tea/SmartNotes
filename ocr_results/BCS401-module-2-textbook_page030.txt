@@ -1,0 +1,56 @@
+184
+
+Divide-and-Conquer
+
+the tree is empty for every internal and external node. Therefore, to ascertain the
+algorithm’s efficiency, we need to know how many external nodes an extended
+binary tree with n internal nodes can have. After checking Figure 5.5 and a few
+similar examples, it is easy to hypothesize that the number of external nodes x is
+always 1 more than the number of internal nodes n:
+
+x=n+l. (5.2)
+
+To prove this equality, consider the total number of nodes, both internal and
+external. Since every node, except the root, is one of the two children of an internal
+node, we have the equation
+
+2n+1=x+n,
+
+which immediately implies equality (5.2).
+
+Note that equality (5.2) also applies to any nonempty full binary tree, in
+which, by definition, every node has either zero or two children: for a full binary
+tree, n and x denote the numbers of parental nodes and leaves, respectively.
+
+Returning to algorithm Height, the number of comparisons to check whether
+the tree is empty is
+
+C(n)=n+x=2n+1,
+and the number of additions is
+An) =n.
+
+The most important divide-and-conquer algorithms for binary trees are the
+three classic traversals: preorder, inorder, and postorder. All three traversals visit
+nodes of a binary tree recursively, i.e., by visiting the tree’s root and its left and
+right subtrees. They differ only by the timing of the root’s visit:
+
+In thepreorder traversal, the root is visited before the left and right subtrees
+order).
+
+Injthe inorder"traversal, the root is visited after visiting its left subtree but
+beforejvisiting the right subtree.
+
+Injthepostorder traversal, the root is visited after visiting the left and right
+subtrees (in that order).
+
+These traversals are illustrated in Figure 5.6. Their pseudocodes are quite
+straightforward, repeating the descriptions given above. (These traversals are also
+a standard feature of data structures textbooks.) As to their efficiency analysis, it
+is identical to the above analysis of the Height algorithm because a recursive call
+is made for each node of an extended binary tree.
+
+Finally, we should note that, obviously, not all questions about binary trees
+require traversals of both left and right subtrees. For example, the search and insert
+operations for a binary search tree require processing only one of the two subtrees.
+Accordingly, we considered them in Section 4.5 not as applications of divide-and-
+conquer but rather as examples of the variable-size-decrease technique.

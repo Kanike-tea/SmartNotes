@@ -1,0 +1,48 @@
+Table 3.12
+
+EXAMPLE
+
+3.29
+
+3.7 ARMv5E Extensions 79
+
+LDR pseudoinstruction conversion.
+
+Pseudoinstruction Actual instruction
+
+LDR rO, =Oxff MOV r0, #0xff
+LDR r0, =0x55555555 LDR r0, [pc, #offset_12]
+
+Loading the constant Oxf f00f fff using an MVN.
+PRE none...
+
+MVN r0, #0x00ff0000
+POST 0 = OxffOOfffF
+
+As you can see, there are alternatives to accessing memory, but they depend upon the
+constant you are trying to load. Compilers and assemblers use clever techniques to avoid
+loading a constant from memory. These tools have algorithms to find the optimal number
+of instructions required to generate a constant in a register and make extensive use of
+the barrel shifter. If the tools cannot generate the constant by these methods, then it is
+loaded from memory. The LDR pseudoinstruction either inserts an MOV or MVN instruction
+to generate a value (if possible) or generates an LDR instruction with a pc-relative address
+to read the constant from a literal pool—a data area embedded within the code.
+
+Table 3.12 shows two pseudocode conversions. The first conversion produces a simple
+MOV instruction; the second conversion produces a pc-relative load. We recommended that
+you use this pseudoinstruction to load a constant. To see how the assembler has handled
+a particular load constant, you can pass the output through a disassembler, which will list
+the instruction chosen by the tool to load the constant.
+
+Another useful pseudoinstruction is the ADR instruction, or address relative. This instruc-
+tion places the address of the given label into register Rd, using a pc-relative add or
+subtract.
+
+3.7 ARMVSE EXTENSIONS
+
+The ARMvSE extensions provide many new instructions (see Table 3.13). One of the most
+important additions is the signed multiply accumulate instructions that operate on 16-bit
+data. These operations are single cycle on many ARMv5E implementations.
+
+ARMVSE provides greater flexibility and efficiency when manipulating 16-bit values,
+which is important for applications such as 16-bit digital audio processing.

@@ -1,0 +1,53 @@
+4.5 A Sample UNIVERSITY EER Schema, Design Choices, and Formal Definitions
+
+types, relationship types, and attributes to represent a particular miniworld sit-
+uation as an ER schema. In this section, we discuss design guidelines and
+choices for the EER concepts of specialization/generalization and categories
+
+(union types).
+
+As we mentioned in Section 3.7.3, conceptual database design should be considered
+as an iterative refinement process until the most suitable design is reached. The fol-
+lowing guidelines can help to guide the design process for EER concepts:
+
+= In general, many specializations and subclasses can be defined to make
+the conceptual model accurate. However, the drawback is that the
+design becomes quite cluttered. It is important to represent only those
+subclasses that are deemed necessary to avoid extreme cluttering of the
+conceptual schema.
+
+= Ifa subclass has few specific (local) attributes and no specific relationships,
+it can be merged into the superclass. The specific attributes would hold NULL
+values for entities that are not members of the subclass. A type attribute
+could specify whether an entity is a member of the subclass.
+
+= Similarly, if all the subclasses of a specialization/generalization have few spe-
+cific attributes and no specific relationships, they can be merged into the
+superclass and replaced with one or more type attributes that specify the
+subclass or subclasses that each entity belongs to (see Section 9.2 for how
+this criterion applies to relational databases).
+
+= Union types and categories should generally be avoided unless the situation
+definitely warrants this type of construct, which does occur in some practi-
+cal situations. If possible, we try to model using specialization/generaliza-
+tion as discussed at the end of Section 4.4.
+
+= The choice of disjoint/overlapping and total/partial constraints on special-
+ization/generalization is driven by the rules in the miniworld being mod-
+eled. If the requirements do not indicate any particular constraints, the
+default would generally be overlapping and partial, since this does not spec-
+ify any restrictions on subclass membership.
+
+As an example of applying these guidelines, consider Figure 4.6, where no specific
+(local) attributes are shown. We could merge all the subclasses into the EMPLOYEE
+entity type and add the following attributes to EMPLOYEE:
+
+= An attribute Job_type whose value set {‘Secretary’, ‘Engineer’, “Technician’}
+would indicate which subclass in the first specialization each employee
+belongs to.
+
+= An attribute Pay_method whose value set {‘Salaried’, ‘Hourly’} would
+indicate which subclass in the second specialization each employee
+belongs to.
+
+125

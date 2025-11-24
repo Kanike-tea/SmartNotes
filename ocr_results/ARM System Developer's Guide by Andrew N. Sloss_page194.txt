@@ -1,0 +1,52 @@
+EXAMPLE
+
+6.17
+
+EXAMPLE
+
+6.18
+
+6.5 Conditional Execution 181
+
+assembler defaults to the execute always condition (AL). The other 14 conditions split into
+seven pairs of complements. The conditions depend on the four condition code flags N, Z,
+C, Vstored in the cpsr register. See Table A.2 in Appendix A for the list of possible ARM
+conditions. Also see Sections 2.2.6 and 3.8 for an introduction to conditional execution.
+
+By default, ARM instructions do not update the N, Z, C, V flags in the ARM epsr. For
+most instructions, to update these flags you append an S suffix to the instruction mnemonic.
+Exceptions to this are comparison instructions that do not write to a destination register.
+Their sole purpose is to update the flags and so they don’t require the S suffix.
+
+By combining conditional execution and conditional setting of the flags, you can imple-
+ment simple if statements without any need for branches. This improves efficiency since
+branches can take many cycles and also reduces code size.
+
+The following C code converts an unsigned integer 0 < i < 15 toa hexadecimal character c:
+
+if (i<10)
+{
+c=it 05
+}
+else
+{
+c=itta
+}
+
+We can write this in assembly using conditional execution rather than conditional
+branches:
+
+cMP i, #10
+ADDLO cc, i, #0"
+ADDHS cc, i, #'A'-10
+
+The sequence works since the first ADD does not change the condition codes. The second
+
+ADD is still conditional on the result of the compare. Section 6.3.1 shows a similar use of
+conditional execution to convert to lowercase.
+
+Conditional execution is even more powerful for cascading conditions.
+
+The following C code identifies if c is a vowel:
+
+vowel ++;

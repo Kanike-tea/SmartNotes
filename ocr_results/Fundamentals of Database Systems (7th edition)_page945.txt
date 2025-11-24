@@ -1,0 +1,53 @@
+25.1 What Is Big Data?
+
+Velocity. The definition of big data goes beyond the dimension of volume; it
+includes the types and frequency of data that are disruptive to traditional database
+management tools. The Mckinsey report on big data’ described velocity as the
+speed at which data is created, accumulated, ingested, and processed. High velocity
+is attributed to data when we consider the typical speed of transactions on stock
+exchanges; this speed reaches billions of transactions per day on certain days. If we
+must process these transactions to detect potential fraud or we must process bil-
+lions of call records on cell phones daily to detect malicious activity, we face the
+velocity dimension. Real-time data and streaming data are accumulated by the likes
+of Twitter and Facebook at a very high velocity. Velocity is helpful in detecting
+trends among people that are tweeting a million tweets every three minutes. Pro-
+cessing of streaming data for analysis also involves the velocity dimension.
+
+Variety. Sources of data in traditional applications were mainly transactions
+involving financial, insurance, travel, healthcare, retail industries, and governmen-
+tal and judicial processing. The types of sources have expanded dramatically and
+include Internet data (e.g., clickstream and social media), research data (e.g., sur-
+veys and industry reports), location data (e.g., mobile device data and geospatial
+data), images (e.g., surveillance, satellites and medical scanning), e-mails, supply
+chain data (e.g., EDI—electronic data interchange, vendor catalogs), signal data
+(e.g. sensors and RFID devices), and videos (YouTube enters hundreds of minutes
+of video every minute). Big data includes structured, semistructured, and unstruc-
+tured data (see discussion in Chapter 26) in different proportions based on context.
+
+Structured data feature a formally structured data model, such as the relational
+model, in which data are in the form of tables containing rows and columns, and a
+hierarchical database in IMS, which features record types as segments and fields
+within a record.
+
+Unstructured data have no identifiable formal structure. We discussed systems like
+MongoDB (in Chapter 24), which stores unstructured document-oriented data,
+and Neo4j, which stores data in the form of a graph. Other forms of unstructured
+data include e-mails and blogs, PDF files, audio, video, images, clickstreams, and
+Web contents. The advent of the World Wide Web in 1993-1994 led to tremen-
+dous growth in unstructured data. Some forms of unstructured data may fit into a
+format that allows well-defined tags that separate semantic elements; this format
+may include the capability to enforce hierarchies within the data. XML is hierarchi-
+cal in its descriptive mechanism, and various forms of XML have come about in
+many domains; for example, biology (bioML—biopolymer markup language), GIS
+(gML—geography markup language), and brewing (BeerXML—language for
+exchange of brewing data), to name a few. Unstructured data constitutes the major
+challenge in today’s big data systems.
+
+Veracity. The veracity dimension of big data is a more recent addition than the
+
+advent of the Internet. Veracity has two built-in features: the credibility of the
+source, and the suitability of data for its target audience. It is closely related to trust;
+
+7See Mckinsey (2018).
+
+915

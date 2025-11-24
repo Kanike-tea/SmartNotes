@@ -1,0 +1,41 @@
+APPENDIX - 2 : 483
+IY
+Ll, =hg (f + hy +h, Yo +1;)
+1, = (0.1) g (0.1, 1.1005, 1.11) = (0.1) [1.1005 + 0.1] = 0.12005
+
+1
+We have, (fy +h) = x9 + © (ky + 2ky + 2k; + ky)
+E 1
+y(t +h) =Y teh +21, +21, +1)
+1
+xX(01) a1 + é [0.1 + 2(0.1) + 2( 0.1005) + 0.101]
+
+; 1
+y (01) = 1+ — [0.1 + 2(0.11) + 2(0.11) + 0.12005]
+
+Thus x(0.1) =:1.100333 = 11 ; y (0.1) = 11100083 = 1.11
+Note: The values of Lk, 1, 1, is got simply by applying the definition of g(t, x,y)
+In the subsequent problems we do not give the formula associated with “g”
+
+Zs Solve = 1+ 2x, & sy =0, y(0)=0, z(0) =1 atx =03
+by applying fourth order Runge-Kutta method .
+>> Let f(x, y,2)=1+2x, g(x, y,z) =- xy; % =9, yj =0,2)=1.
+Let us choose i = 0.3 and we shall first compute the following :
+ky = hf (xq) Yor %)
+k, =-(0.3) f(0, 0, 1) = (0.3) [1+ 1x 0] = 03
+I, = (0.3) (-0 x 0) = 0, by applying the definition of ‘g’ n
+; h ky A
+k= rap Yt ZimtD
+k, = (03) (0.15, 0.15, 1) = (0.3) [1 + (1) (0.15)] = 0.345
+
+L, (0.3) [-(0.15) (0.15)] = —0.00675
+
+2
+
+; 7 h k, )
+ky ule tor Mota %t 2]
+ky = (0.3) f( 0.15, 0.1725, 0,996625) = (0.3) [ 1+ (0.996625 ) (0.15) ] = 0.34485
+
+1, = (0.3) [-(0.15 ) (0.1725) ] = -0.0077625
+
+ky = Af (%q + hy Yo + ky 2 + i)

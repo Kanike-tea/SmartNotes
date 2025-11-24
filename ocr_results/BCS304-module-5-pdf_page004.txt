@@ -1,0 +1,42 @@
+H(92) = 92 mod 10 =2
+
+Collision occurred since 2 is already filled. So go to next position — 3, which is also already filled, go to
+next position — 4 which is also already filled. So go to 5 — which is not filled — so insert the key 92 in
+position 5.
+0 1:2 3 4 5 6 7 8 9
+
+-1 | 81 | 72 | 63 | 24 | 92 | 36 | 27 | -1 | -1
+
+H(101) = 101 mod 10 = 1
+
+Collision occurred since | is already filled. Do linear probing and the next position free is 8, so insert key
+101 in position 8.
+
+Oo 1 2 3 4 5 6 7 8 9
+
+-1 | 81 | 72 | 63 | 24 | 92 | 36 | 27 | 101 | -1
+Key Home | Actual | Search
+address | Address | length
+0
+81 1 1 1
+22 2 2 1
+63 3 3 1
+24 4 4 1
+92 2 5 4
+36 6 6 1
+27 7 7 1
+101 1 8 8
+9
+
+Average search length = (1+1+1+14+4+1+1+8)/ 8 = 2.25
+2. Quadratic Probing
+
+A variation of the linear probing idea is called quadratic probing. Instead of using a
+
+constant “skip” value, if the first hash value that has resulted in collision is h, the succ
+
+values which are probed are h+1, h+4, h+9, h+16, and so on. In other words, quadratic
+
+probing uses a skip consisting of successive perfect squares.
+
+Page 5

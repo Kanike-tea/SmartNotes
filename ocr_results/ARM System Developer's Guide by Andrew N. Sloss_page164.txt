@@ -1,0 +1,53 @@
+EXAMPLE
+
+5.16
+
+5.12 Inline Functions and Inline Assembly 151
+
+if (a + 2*i > a)
+
+{
+/* the accumulate saturated */
+return - 0x80000000;
+}
+return a + 2*i;
+}
+
+We can now use this new operation to calculate a saturating correlation. In other words,
+we calculate a = 2x9 yo + +++ 2xy—1yN-—1 with saturation.
+
+int sat_correlate(short *x, short *y, unsigned int N)
+
+{
+int a=0;
+do
+{
+a = qmac(a, *(x++), *(y++));
+} while (--N);
+return a;
+}
+
+The compiler replaces each qmac function call with inline code. In other words it inserts the
+code for qmac instead of calling qmac. Our C implementation of qmac isn’t very efficient,
+requiring several if statements. We can write it much more efficiently using assembly. The
+inline assembler in the C compiler allows us to use assembly in our inline C function.
+
+‘This example shows an efficient implementation of qmac using inline assembly. The example
+supports both armce and gcc inline assembly formats, which are quite different. In the gcc
+format the "cc" informs the compiler that the instruction reads or writes the condition
+code flags. See the armcc or gcc manuals for further information.
+
+__inline int qmac(int a, int x, int y)
+{
+
+int i;
+
+const int mask = 0x80000000;
+
+i= x*y3
+#ifdef _ ARMCC_VERSION /* check for the armcc compiler */
+__asm
+{
+ADDS i, i, i /* double */
+
+EORVS i, mask, i, ASR 31 /* saturate the double */

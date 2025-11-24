@@ -1,0 +1,44 @@
+476 Chapter 13 Memory Protection Units
+
+Table 13.8 Control of the cache and write buffer.
+
+Instruction cache Data cache
+Cache bit Region Cache bit Buffer bit Region attribute
+CP15:¢2:c0:1 attribute CP15:c2:c0:0 CP15:c3:c0:0
+0 not cached 0 0 NCNB (not cached, not buffered)
+1 cached 0 1 NCB (not cached, buffered)
+1 0 WT (cached, writethrough)
+1 1 WB (cached, writeback)
+
+policy they control, and the instruction cache bit stands alone. From a system view, merging
+the state of the caches and write buffer into a single value for each region makes it easier to
+group region information into a region control block (discussed in Section 13.3.3).
+
+The set cache and buffer routine, called regionSetCB, is shown in Example 13.4 and
+has the following C function prototype:
+
+void regionSetCB(unsigned region, unsigned CB);
+
+The routine has two input parameters. The first parameter, region, is the region number,
+and the second, CB, combines the region instruction cache attributes and the data cache
+and write buffer attributes. The second parameter has a format that uses the lower three
+bits of the unsigned integer: the instruction cache bit in bit [3], the data cache bit in bit [1],
+and the data buffer bit in bit [0].
+
+EXAMPLE The routine sequentially sets the data write buffer bit, the data cache bit, and the instruction
+13.4 cache bit. To do this, for each bit it reads the CP15 register, clears the old bit value, sets the
+new bit value, and writes the value back into the CP15 register.
+
+void regionSetCB(unsigned region, unsigned CB)
+
+{
+unsigned c3f, tempCB;
+tempCB = CB
+__asm{MRC p15, 0, c3f, c3, cO, 0} — /* load buffer register */
+C3f = c3f & (Ox1<<region); /* clear old buffer bit */
+
+c3f = c3f | ((tempCB & 0x1) <<region); /* set new buffer bit */
+__asm{MCR p15, 0, c3f, c3, cO, 0} /* store buffer info */
+
+tempCB = CB>>0x1; /* shift to D-cache bit */
+__asm{MRC p15, 0, c3f, c2, c0, 0} — /* load D-cache register */

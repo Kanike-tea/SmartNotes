@@ -1,0 +1,53 @@
+758
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+= Isolation. A transaction should appear as though it is being executed in iso-
+lation from other transactions, even though many transactions are execut-
+ing concurrently. That is, the execution of a transaction should not be
+interfered with by any other transactions executing concurrently.
+
+= Durability or permanency. The changes applied to the database by a com-
+mitted transaction must persist in the database. These changes must not be
+lost because of any failure.
+
+The atomicity property requires that we execute a transaction to completion. It is
+the responsibility of the transaction recovery subsystem of a DBMS to ensure atomi-
+city. Ifa transaction fails to complete for some reason, such as a system crash in the
+midst of transaction execution, the recovery technique must undo any effects of the
+transaction on the database. On the other hand, write operations of a committed
+transaction must be eventually written to disk.
+
+The preservation of consistency is generally considered to be the responsibility of
+the programmers who write the database programs and of the DBMS module
+that enforces integrity constraints. Recall that a database state is a collection of
+all the stored data items (values) in the database at a given point in time. A
+consistent state of the database satisfies the constraints specified in the schema
+as well as any other constraints on the database that should hold. A database
+program should be written in a way that guarantees that, if the database is in a
+consistent state before executing the transaction, it will be in a consistent state
+after the complete execution of the transaction, assuming that no interference
+with other transactions occurs.
+
+The isolation property is enforced by the concurrency control subsystem of the
+DBMS.* If every transaction does not make its updates (write operations) visible to
+other transactions until it is committed, one form of isolation is enforced that
+solves the temporary update problem and eliminates cascading rollbacks (see
+Chapter 22) but does not eliminate all other problems.
+
+The durability property is the responsibility of the recovery subsystem of the DBMS.
+In the next section, we introduce how recovery protocols enforce durability and
+atomicity and then discuss this in more detail in Chapter 22.
+
+Levels of Isolation. There have been attempts to define the level of isolation of a
+transaction. A transaction is said to have level 0 (zero) isolation if it does not over-
+write the dirty reads of higher-level transactions. Level 1 (one) isolation has no lost
+updates, and level 2 isolation has no lost updates and no dirty reads. Finally, level 3
+isolation (also called true isolation) has, in addition to level 2 properties, repeatable
+reads.° Another type of isolation is called snapshot isolation, and several practical
+concurrency control methods are based on this. We shall discuss snapshot isolation
+in Section 20.6, and again in Chapter 21, Section 21.4.
+
+8We will discuss concurrency control protocols in Chapter 21.
+
+°The SQL syntax for isolation level discussed in Section 206 is closely related to these levels.

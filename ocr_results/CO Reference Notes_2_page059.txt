@@ -1,0 +1,11 @@
+well as the control information that indicates how far the execution has progressed. The alternative of
+re-executing the instruction from the beginning requires a capability to reverse any changes that may
+have been caused by the partial execution of the instruction.
+
+may be suspended by a page fault. The first possibility is to save the state of instruction execution.
+This involves saving more information (temporary programmer- transparent registers, etc.) than
+needed when a program is interrupted between instructions. The second possibility is to °unwind” the
+effects of the portion of the instruction completed when the page fault occurred, and then execute the
+instruction from the beginning when the program is resumed.
+
+Page 60

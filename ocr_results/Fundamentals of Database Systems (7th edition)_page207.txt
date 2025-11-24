@@ -1,0 +1,36 @@
+=
+chapter 9)
+
+Basic SQL
+
+T* SQL language may be considered one of the
+major reasons for the commercial success of rela-
+tional databases. Because it became a standard for relational databases, users were
+less concerned about migrating their database applications from other types of
+database systems—for example, older network or hierarchical systems—to rela-
+tional systems. This is because even if the users became dissatisfied with the partic-
+ular relational DBMS product they were using, converting to another relational
+DBMS product was not expected to be too expensive and time-consuming because
+both systems followed the same language standards. In practice, of course, there
+are differences among various commercial relational DBMS packages. However,
+if the user is diligent in using only those features that are part of the standard,
+and if two relational DBMSs faithfully support the standard, then conversion
+between two systems should be simplified. Another advantage of having such a
+standard is that users may write statements in a database application program
+that can access data stored in two or more relational DBMSs without having to
+change the database sublanguage (SQL), as long as both/all of the relational
+DBMSs support standard SQL.
+
+This chapter presents the practical relational model, which is based on the SQL
+standard for commercial relational DBMSs, whereas Chapter 5 presented the most
+important concepts underlying the formal relational data model. In Chapter 8 (Sec-
+tions 8.1 through 8.5 ), we shall discuss the relational algebra operations, which are
+very important for understanding the types of requests that may be specified on a
+relational database. They are also important for query processing and optimization
+ina relational DBMS, as we shall see in Chapters 18 and 19. However, the relational
+algebra operations are too low-level for most commercial DBMS users because a
+query in relational algebra is written as a sequence of operations that, when exe-
+cuted, produces the required result. Hence, the user must specify how—that is, in
+what order—to execute the query operations. On the other hand, the SQL language
+
+177

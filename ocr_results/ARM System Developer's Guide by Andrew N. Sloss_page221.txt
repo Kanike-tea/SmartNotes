@@ -1,0 +1,45 @@
+208 Chapter 7 Optimized Primitives
+
+See Section A.4 in Appendix for help on the assembler format. You could equally well use
+the GNU assembler gas. See Section A.5 for help on the gas assembler format.
+
+You will also notice that we use the Ckeyword_value_in_regs. On the ARM compiler
+armcc this indicates that a function argument, or return value, should be passed in registers
+rather than by reference. In practical applications this is not an issue because you will inline
+the operations for efficiency.
+
+We use the notation Qk throughout this chapter to denote a fixed-point representation
+with binary point between bits k — 1 and k. For example, 0.75 represented at Q15 is the
+integer value 0x6000. See Section 8.1 for more details of the Qk representation and fixed-
+point arithmetic. We say “d < 0.5 at Q15” to mean that d represents the value d2~!5 and
+that this is less than one half.
+
+7.1 DOUBLE-PRECISION INTEGER MULTIPLICATION
+
+You can multiply integers up to 32 bits wide using the UMULL and SMULL instructions.
+The following routines multiply 64-bit signed or unsigned integers, giving a 64-bit or
+128-bit result. They can be extended, using the same ideas, to multiply any lengths of
+integer. Longer multiplication is useful for handling the long long C type, emulating
+double-precision fixed- or floating-point operations, and in the long arithmetic required
+by public-key cryptography.
+
+We use a little-endian notation for multiword values. Ifa 128-bit integer is stored in four
+registers a3, a, a1, a9, then these store bits [127:96], [95:64], [63:32], [31:0], respectively
+(see Figure 7.1).
+
+7.1.1 long long MULTIPLICATION
+
+Figure 7.1
+
+Use the following three-instruction sequence to multiply two 64-bit values (signed or
+unsigned) b and c to give a new 64-bit long long value a. Excluding the ARM Thumb
+Procedure Call Standard (ATPCS) wrapper and with worst-case inputs, this operation
+takes 24 cycles on ARM7TDMI and 25 cycles on ARM9TDMI. On ARMOE the operation
+takes 8 cycles. One of these cycles is a pipeline interlock between the first UMULL and MLA,
+which you could remove by interleaving with other code.
+
+127 96 95 64 63 32 31 0
+
+a3 a coal 4,
+
+Representation of a 128-bit value as four 32-bit values.

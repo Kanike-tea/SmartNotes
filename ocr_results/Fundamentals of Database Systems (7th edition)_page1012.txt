@@ -1,0 +1,51 @@
+982
+
+Chapter 26 Enhanced Data Models
+
+Next, let us illustrate how a delete operation would be implemented on a bitempo-
+ral relation by considering the tuples Vy and Vjo in the EMP_BT relation of Fig-
+ure 26.9. Here, employee Brown left the company effective August 10, 2002, and the
+logical delete is carried out by a transaction T with TS(T) = 2002-08-12,10:11:07.
+Before this, V9 was the current version of Brown, and its Tet was uc. The logical
+delete is implemented by setting Vo.Tet to 2002-08-12,10:11:07 to invalidate it, and
+creating the final version V9 for Brown, with its Vet = 2002-08-10 (see Figure 26.9).
+Finally, an insert operation is implemented by creating the first version as illus-
+trated by Vj, in the EMP_BT table.
+
+Implementation Considerations. There are various options for storing the
+tuples in a temporal relation. One is to store all the tuples in the same table, as
+shown in Figures 26.8 and 26.9. Another option is to create two tables: one for the
+currently valid information and the other for the rest of the tuples. For example, in
+the bitemporal EMP_BT relation, tuples with uc for their Tet and now for their Vet
+would be in one relation, the current table, since they are the ones currently valid
+(that is, represent the current snapshot), and all other tuples would be in another
+relation. This allows the database administrator to have different access paths, such
+as indexes for each relation, and keeps the size of the current table reasonable.
+Another possibility is to create a third table for corrected tuples whose Tet is not uc.
+
+Another option that is available is to vertically partition the attributes of the temporal
+relation into separate relations so that if a relation has many attributes, a whole new
+tuple version is created whenever any one of the attributes is updated. If the attributes
+are updated asynchronously, each new version may differ in only one of the attri-
+butes, thus needlessly repeating the other attribute values. Ifa separate relation is cre-
+ated to contain only the attributes that always change synchronously, with the primary
+key replicated in each relation, the database is said to be in temporal normal form.
+However, to combine the information, a variation of join known as temporal
+intersection join would be needed, which is generally expensive to implement.
+
+Itis important to note that bitemporal databases allow a complete record of changes.
+Even a record of corrections is possible. For example, it is possible that two tuple
+versions of the same employee may have the same valid time but different attribute
+values as long as their transaction times are disjoint. In this case, the tuple with the
+later transaction time is a correction of the other tuple version. Even incorrectly
+entered valid times may be corrected this way. The incorrect state of the database
+will still be available as a previous database state for querying purposes. A database
+that keeps such a complete record of changes and corrections is sometimes called
+an append-only database.
+
+26.2.3 Incorporating Time in Object-Oriented Databases
+Using Attribute Versioning
+The previous section discussed the tuple versioning approach to implementing
+
+temporal databases. In this approach, whenever one attribute value is changed, a
+whole new tuple version is created, even though all the other attribute values will

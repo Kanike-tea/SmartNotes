@@ -1,0 +1,63 @@
+Data Structures and Applications/BCS304 Module 1
+
+The following function evaluates a postfix expression using a stack and a stack of float elements is
+declared globally
+
+float s[25];
+int top;
+
+float Evaluate(char *postfix)
+{
+int i=0;
+float res=0,op 1 ,op2;
+char symbol;
+while(postfix[i]!="\0’)
+{
+
+symbol=postfix[i];
+if isdigit(symbol)
+{
+
+}
+
+else
+
+{
+
+push(symbol-‘0’);
+
+op2=pop():
+op|=pop():
+res=operation(symbol,op1 ,op2);
+push(res);
+i
+i
+res=pop();
+return(res);
+
+}
+
+float operation(char op, float op1.float op2)
+{
+float res;
+switch(op)
+{
+case '+': res= op|+op2;
+case '-': res= op1-op2;
+case *': res= op1*op2;
+case '/': res= op1/op2;
+case '\': res= pow(op1,op2);
+
+}
+
+return (res);
+
+Limitations of the program
+
+> It does not check if the postfix expression is valid or not. If we input erroneous expression it
+returns wrong result
+
+> We cannot enter negative numbers, as the symbol to indicate negation will be misinterpreted
+as subtraction operation
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 39

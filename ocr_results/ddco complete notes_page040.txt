@@ -1,0 +1,34 @@
+Digital Design and Computer Organization(BCS302)
+
+DECODERS
+
+A Decoder is a combinational circuit that converts binary information from n input
+lines to a maximum of 2” unique output lines.
+
+* The decoders presented here are called n -to- m -line decoders, where m ... 2” . Their
+purpose is to generate the 2” (or fewer) minterms of n input variables.
+
+* Each combination of inputs will assert a unique output. The name decoder is also
+used in conjunction with other code converters, such as a BCD-to-seven-segment
+decoder.
+
+2:4 decoder ( 1 of 4 decoder)
+
+A 2 to 4 decoder is a combinational logic circuit that takes two input lines, typically labeled
+A and B, and generates four output lines, usually labeled QO, Q1, Q2, and Q3. The decoder
+analyzes the input combination and activates the corresponding output line
+
+Inputs Outputs Truth Table
+A Qo
+B 2to4 Q;
+Binary |
+Decoder Q>
+Q;
+ABAEB
+
+Binary Decoded
+Inputs _ Output
+
+Data Lines
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 12

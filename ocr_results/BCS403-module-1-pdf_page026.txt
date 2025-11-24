@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+« Database storage reorganization: used to reorganize a set of database files into different
+file organizations, and create new access paths to improve performance.
+
+= Performance monitoring: monitors database usage and provides statistics to the DBA. The
+DBA uses the statistics in making decisions such as whether or not to reorganize files or
+
+whether to add or drop indexes to improve performance.
+
+Other utilities may be available for sorting files, handling data compression, monitoring
+
+access by users, interfacing with the network, and performing other functions.
+
+2.4.3 Tools, Application Environments, and Communications Facilities
+
+> Tools
+= CASE: used in the design phase of database systems
+
+= Data dictionary : In addition to storing catalog information about schemas and
+constraints, the data dictionary stores other information, suchas design decisions,
+usage standards, application program descriptions, and. user information. Such a
+system is also called an information repository. This information can be accessed
+directly by users or the DBA when needed.
+> Application development environments
+= PowerBuilder (Sybase) or JBuilder (Borland): provide an environment for
+developing database applications including database design, GUI evelopment, querying
+and updating, and application program development.
+= Communications software: allow users at locations remote from the database system
+site to access the database through computer terminals, workstations, or personal
+computers. Integrated DBMS and data communications system is called a DB/DC
+system
+
+2.5 Centralized and Client/Server Architectures for DBMSs
+2.5.1 Centralized DBMSs Architecture
+
+All DBMS functionality, application program execution, and user interface processing
+
+carried out on one machine
+
+https://vtucode.in Page 27

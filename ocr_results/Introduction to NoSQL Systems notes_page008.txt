@@ -1,0 +1,42 @@
+4. Use Cases of Key-Value Stores
+
+Key-value databases are used in a wide range of applications where speed and simplicity
+are essential:
+
+« Caching: Store frequently accessed data (e.g., Redis used to cache web pages or
+user sessions).
+
+« Session Management: Store user sessions for websites and applications.
+
+« User Preferences and Profiles: Quickly retrieve and update settings for individual
+
+users.
+« Real-Time Data: Store live analytics data, leaderboard scores, or sensor readings.
+
+« Shopping Cart Data: Temporary storage of e-commerce cart items for quick
+retrieval and updates.
+
+Example:
+plaintext
+CopyEdit
+Key: user123
+
+Value: {"name": "Alice", "email": "alice@example.com", "age": 30}
+
+To retrieve this data: GET user123
+
+5. Advantages of Key-Value Stores
+
+« High Performance: Optimized for speed with constant time complexity for
+read/write operations.
+
+« Simplicity: Minimal overhead; easy to implement and use.
+e Scalability: Designed for horizontal scaling in distributed environments.
+
+e Flexibility: Can store any type of value; does not require a rigid schema.
+
+6. Limitations of Key-Value Stores
+Despite their speed and simplicity, key-value databases are not suitable for every scenario:
+
+e Lack of Structure: There is no querying based on values; data must be retrieved by
+key only.

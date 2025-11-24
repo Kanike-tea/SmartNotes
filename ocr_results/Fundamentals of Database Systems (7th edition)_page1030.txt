@@ -1,0 +1,52 @@
+1000
+
+Chapter 26 Enhanced Data Models
+
+based on logic has used Prolog as a starting point. A variation of Prolog called
+Datalog is used to define rules declaratively in conjunction with an existing set of
+relations, which are themselves treated as literals in the language. Although the lan-
+guage structure of Datalog resembles that of Prolog, its operational semantics—that
+is, how a Datalog program is executed—is still different.
+
+A deductive database uses two main types of specifications: facts and rules. Facts
+are specified in a manner similar to the way relations are specified, except that it is
+not necessary to include the attribute names. Recall that a tuple in a relation
+describes some real-world fact whose meaning is partly determined by the attribute
+names. In a deductive database, the meaning of an attribute value in a tuple is deter-
+mined solely by its position within the tuple. Rules are somewhat similar to rela-
+tional views. They specify virtual relations that are not actually stored but that can
+be formed from the facts by applying inference mechanisms based on the rule spec-
+ifications. The main difference between rules and views is that rules may involve
+recursion and hence may yield virtual relations that cannot be defined in terms of
+basic relational views.
+
+The evaluation of Prolog programs is based on a technique called backward chain-
+ing, which involves a top-down evaluation of goals. In the deductive databases that
+use Datalog, attention has been devoted to handling large volumes of data stored in
+a relational database. Hence, evaluation techniques have been devised that resemble
+those for a bottom-up evaluation. Prolog suffers from the limitation that the order
+of specification of facts and rules is significant in evaluation; moreover, the order of
+literals (defined in Section 26.5.3) within a rule is significant. The execution tech-
+niques for Datalog programs attempt to circumvent these problems.
+
+26.5.2 Prolog/Datalog Notation
+
+The notation used in Prolog/Datalog is based on providing predicates with unique
+names. A predicate has an implicit meaning, which is suggested by the predicate
+name, and a fixed number of arguments. If the arguments are all constant values,
+the predicate simply states that a certain fact is true. If, on the other hand, the pred-
+icate has variables as arguments, it is either considered as a query or as part of a rule
+or constraint. In our discussion, we adopt the Prolog convention that all constant
+values in a predicate are either numeric or character strings; they are represented as
+identifiers (or names) that start with a lowercase letter, whereas variable names
+always start with an uppercase letter.
+
+Consider the example shown in Figure 26.11, which is based on the relational data-
+base in Figure 3.6, but in a much simplified form. There are three predicate names:
+supervise, superior, and subordinate. The SUPERVISE predicate is defined via a set of
+facts, each of which has two arguments: a supervisor name, followed by the name of
+a direct supervisee (subordinate) of that supervisor. These facts correspond to the
+actual data that is stored in the database, and they can be considered as constituting
+a set of tuples in a relation SUPERVISE with two attributes whose schema is
+
+SUPERVISE (Supervisor, Supervise)

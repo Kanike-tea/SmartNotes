@@ -1,0 +1,48 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+5. deleteq( )
+
+element deleteq(int *front, int *rear)
+{ /* remove element at the front of the queue */
+if (front == rear)
+return queue_Empty( ); /* return an error key
+
+return queue[++front];
+
+}
+
+Program: Delete from a queue
+
+6. queueFull( )
+
+The queueFull function which prints an error message and terminates execution
+
+void queueFull()
+{
+
+fprintf(stderr, "Queue is full, cannot add element");
+
+exit(EXIT_FAILURE);
+
+Example: Job scheduling
+
+© Queues are frequently used in creation of a job queue by an operating system. If the
+
+operating system does not use priorities, then the jobs are processed in the order
+
+they enter the system.
+
+Figure illustrates how an operating system process jobs using a sequential
+
+representation for its queue.
+
+front | rear | Q(0] Q[1] Q[2] Q[3] Conunents
+
+-1 -1 Queue is empty
+-1 0 fl Job 1 is added
+-1 1 Jl J2 Job 2 is added
+-1 2 fl J2 33 Job 3 is added
+0 2 J2 J3 Job 1 is deleted
+1 2 J3 Job 2 is deleted
+
+vtucode.in 4

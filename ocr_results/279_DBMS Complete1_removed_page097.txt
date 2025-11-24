@@ -1,0 +1,49 @@
+lock_item (X).:
+
+B: if LOCK (X)=0 (* item is unlocked *)
+then LOCK (X)+1 (* lock the item *)
+else begin
+wait (until lock (X)=0 and
+the lock manager wakes up the transaction);
+gotoB
+end;
+
+unlock_item (Xx);
+
+LOCK (X)+-0; (* unlock the item *)
+if any transactions are waiting
+then wakeup one of the waiting transactions;
+
+>Shared/Read and Exclusive/Write Lock
+
+The binary lock is too restrictive for data items because at most one transaction can hold on a given
+item whether the transaction is reading or writing. To improve it we have shared and exclusive
+Jocks in which more than one transaction can access the same item for reading purposes.i.e. the read
+operations on the same item by different transactions are not conflicting.
+
+In this types of lock, system supports two kinds of lock :
+
+e Exclusive(or Write) Locks and
+e Shared(or Read) Locks.
+
+Shared Locks
+
+Ifa transaction Ti has locked the data item A in shared mode, then a request from another
+transaction Tj on A for :
+
+¢ Write operation on A: Denied. Transaction Tj has to wait until transaction Ti unlock A.
+e Read operation on A: Allowed.
+
+Exclusive Locks
+
+Ifa transaction Ti has locked a data item a in exclusive mode then request from some another
+transaction Tj for
+
+¢ Read operation on A: Denied
+e Write operation on A: Denied
+
+Operations Used with Shared and Exclusive Locks
+
+1. Read_lock(A) or s(A)
+2. Write_lock(A) or X(A)
+3. Unlock(X) or U(A)

@@ -1,0 +1,56 @@
+242 Chapter 8 The Relational Algebra and Relational Calculus
+
+or
+<attribute name> <comparison op> <attribute name>
+
+where <attribute name> is the name of an attribute of R, <comparison op> is nor-
+mally one of the operators {=, <, <, >, 2, #}, and <constant value> is a constant
+value from the attribute domain. Clauses can be connected by the standard Boolean
+operators and, or, and not to form a general selection condition. For example, to
+select the tuples for all employees who either work in department 4 and make over
+$25,000 per year, or work in department 5 and make over $30,000, we can spec:
+the following SELECT operation:
+
+© (Dno=4 AND Salary>25000) OR (Dno=6 AND Salary>30000)(EMPLOYEE)
+The result is shown in Figure 8.1(a).
+
+Notice that all the comparison operators in the set {=, <, <, >, 2, #} can apply to
+attributes whose domains are ordered values, such as numeric or date domains.
+Domains of strings of characters are also considered to be ordered based on the col-
+lating sequence of the characters. If the domain of an attribute is a set of unordered
+values, then only the comparison operators in the set {=, #} can be used. An exam-
+ple of an unordered domain is the domain Color = { ‘red’, ‘blue’, ‘green’, ‘white’,
+‘yellow’, ...}, where no order is specified among the various colors. Some domains
+allow additional types of comparison operators; for example, a domain of character
+strings may allow the comparison operator SUBSTRING_OF.
+
+Figure 8.1
+
+Results of SELECT and PROJECT operations. (a) 6(0no=4 AND Salary>25000) OR (Dno=5 AND Salary>30000) (EMPLOYEE)
+(b) Mname, Fname, Salary(EMPLOYEE). (c) sex, Salary(EMPLOYEE).
+
+(a)
+
+Fname | Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn |Dno
+Franklin | T | Wong | 333445555 | 1955-12-08 | 638 Voss, Houston, TX | M | 40000 |ssse65555 | 5
+Jennifer | S| Wallace | 987654321 | 1941-06-20 | 291 Berry, Bellaire, TX _| F | 43000/sssees555 | 4
+Ramesh |_K__ | Narayan | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX] M_|38000|333445555 | 5
+(b) (©)
+
+Lname | Fname | Salary Sex | Salary
+
+Smith | John 30000 M_| 30000
+
+Wong | Franklin | 40000 M | 40000
+
+Zelaya | Alicia | 25000 F_| 25000
+
+Wallace | Jennifer | 43000 F_| 43000
+
+Narayan | Ramesh | 38000 M_| 38000
+
+English | Joyce | 25000 M_| 25000
+
+Jabbar | Ahmad | 25000 M_| 55000
+
+Borg James | 55000

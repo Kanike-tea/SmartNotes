@@ -1,0 +1,62 @@
+320
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+The ORDER BY clause orders the tuples so that the FETCH command will fetch them
+in the specified order. It is specified in a similar manner to the corresponding clause
+for SQL queries (see Section 6.3.6). The last two options when declaring a cursor
+(INSENSITIVE and WITH HOLD) refer to transaction characteristics of database pro-
+grams, which we will discuss in Chapter 20.
+
+10.2.3 Specifying Queries at Runtime Using Dynamic SQL
+
+In the previous examples, the embedded SQL queries were written as part of the
+host program source code. Hence, anytime we want to write a different query, we
+must modify the program code and go through all the steps involved (compiling,
+debugging, testing, and so on). In some cases, it is convenient to write a program
+that can execute different SQL queries or updates (or other operations) dynamically
+at runtime. For example, we may want to write a program that accepts an SQL.
+query typed from the monitor, executes it, and displays its result, such as the inter-
+active interfaces available for most relational DBMSs. Another example is when a
+user-friendly interface generates SQL queries dynamically for the user based on
+user input through a Web interface or mobile App. In this section, we give a brief
+overview of dynamic SQL, which is one technique for writing this type of database
+program, by giving a simple example to illustrate how dynamic SQL can work. In
+Section 10.3, we will describe another approach for dealing with dynamic queries
+using function libraries or class libraries.
+
+Program segment E3 in Figure 10.4 reads a string that is input by the user (that
+string should be an SQL update command in this example) into the string program
+variable sq/updatestring in line 3. It then prepares this as an SQL command in
+line 4 by associating it with the SQL variable sq/icommand. Line 5 then executes
+the command. Notice that in this case no syntax check or other types of checks
+on the command are possible at compile time, since the SQL command is not
+available until runtime. This contrasts with our previous examples of embedded
+SQL, where the query could be checked at compile time because its text was in
+the program source code.
+
+In £3, the reason for separating PREPARE and EXECUTE is that if the command is to
+be executed multiple times in a program, it can be prepared only once. Preparing
+the command generally involves syntax and other types of checks by the system, as
+
+0)
+1)
+2)
+
+3)
+4)
+5)
+
+//Program Segment E3: Figure 10.4
+
+EXEC SQL BEGIN DECLARE SECTION ;
+varchar sqlupdatestring [256] ;
+
+Program segment E3, a C program segment
+that uses dynamic SQL for updating a table.
+
+EXEC SQL END DECLARE SECTION ;
+
+prompt("Enter the Update Command: ", sqlupdatestring) ;
+EXEC SQL PREPARE sqlcommand FROM :sqlupdatestring ;
+EXEC SQL EXECUTE sqlcommand ;

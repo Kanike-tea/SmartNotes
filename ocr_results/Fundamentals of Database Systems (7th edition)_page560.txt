@@ -1,0 +1,48 @@
+530
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+15.5.3 Nonadditive Join Decomposition into 4NF Relations
+
+Whenever we decompose a relation schema R into R; = (X U Y) and R; = (R- Y)
+based on an MVD X —» Y that holds in R, the decomposition has the nonadditive
+join property. It can be shown that this is a necessary and sufficient condition for
+decomposing a schema into two schemas that have the nonadditive join property,
+as given by Property NJB’ that is a further generalization of Property NJB given
+earlier in Section 14.5.1. Property NJB dealt with FDs only, whereas NJB’ deals with
+both FDs and MVDs (recall that an FD is also an MVD).
+
+Property NJB’. The relation schemas R; and R) form a nonadditive join
+decomposition of R with respect to a set F of functional and multivalued depen-
+dencies if and only if
+(Ry 0 Ro) — (Ri = Ro)
+or, by symmetry, if and only if
+(Ry. Ro) > (Ro = Ri)
+We can use a slight modification of Algorithm 15.5 to develop Algorithm 15.7,
+which creates a nonadditive join decomposition into relation schemas that are in
+
+ANF (rather than in BCNF). As with Algorithm 15.5, Algorithm 15.7 does not nec-
+essarily produce a decomposition that preserves FDs.
+
+Algorithm 15.7. Relational Decomposition into 4NF Relations with Nonad-
+ditive Join Property
+Input: A universal relation R and a set of functional and multivalued depen-
+dencies F
+1. Set D:={R};
+2. While there is a relation schema Q in D that is not in 4NF, do
+{ choose a relation schema Q in D that is not in 4NF;
+find a nontrivial MVD X —» Y in Q that violates 4NF;
+replace Q in D by two relation schemas (Q — Y) and (XU Y);
+}s
+
+15.6 Other Dependencies and Normal Forms
+
+15.6.1 Join Dependencies and the Fifth Normal Form
+
+We already introduced another type of dependency called join dependency (JD) in
+Section 14.7. It arises when a relation is decomposable into a set of projected rela-
+tions that can be joined back to yield the original relation. After defining JD, we
+defined the fifth normal form based on it in Section 14.7. Fifth normal form has also
+been known as project join normal form or PJNF (Fagin, 1979). A practical problem
+with this and some additional dependencies (and related normal forms such as
+DKNF, which is defined in Section 15.6.3) is that they are difficult to discover.

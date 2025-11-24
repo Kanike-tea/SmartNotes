@@ -1,0 +1,52 @@
+Microcontrollers - BCS402
+
+During a cache line fill the cache controller may forward the loading data to the core at the same
+time it is copying it to cache; this is known as data streaming. Streaming allows a processor to
+
+continue execution while the cache controller fills the remaining words in the cache line.
+
+If valid data exists in this cache line but represents another address block in main memory, the
+entire cache line is evicted and replaced by the cache line containing the requested address. This
+process of removing an existing cache line as part of servicing a cache miss is known as
+eviction—returning the contents of a cache line to main memory from the cache to make room
+
+for new data that needs to be loaded in cache.
+
+A direct-mapped cache is a simple solution, but there is a design cost inherent in having a single
+location available to store a value from main memory. Direct-mapped caches are subject to high
+
+levels of thrashing—asoftware battle for the same location in cache memory.
+
+The result of thrashing is the repeated loading and eviction of a cache line. The loading and
+eviction result from program elements being placed in main memory at addresses that map to the
+
+same cache line in cache memory.
+
+4 KB,
+direct-mapped
+unified cache
+: OxFFF
+Data array 0x00002480
+0x00002000
+Routine B }}2%00001460 0x40
+0x00001000 ‘a
+Routine A} | 0x00000480
+0x00000000 0x000
+Main memory Cache memory
+
+do
+
+routineA();
+routineB();
+
+} while (x>0)
+
+Software procedure
+
+Fig 6: Thrashing: two functions replacing each other in a direct-mapped cache
+
+Figure 6 takes Figure 5 and overlays a simple, contrived software procedure to demonstrate
+
+thrashing. The procedure calls two routines repeatedly in a do while loop.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 37

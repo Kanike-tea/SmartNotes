@@ -1,0 +1,41 @@
+41, Connected and Disconnected Graphs 81
+
+Then from the assumption made in the Preceding paragraph we have m, 2 &—-1. Consequently,
+m+ > (k+lj-1,
+
+But, mg + 1 is the number of edges in Gy, and & +1 is the number of vertices in Gy}.
+Thus, the result m 2 n-1 holds forn = k+1 when it holds for n = & = 2. Hence, by induction,
+the result holds for all integers n > 2. This completes the proof. °
+
+Theorem 4 «A graph G is disconnected if and only if its vertex set V can be partitioned into
+
+two non-empty disjoint subsets V, and V2 such that there exists no edge in G whose one end
+verex is in Vj and the other is in V>, :
+
+Proof: First, suppose that G is a disconnected graph. Consider a vertex v in G. Let V; be the
+set of all vertices in G that are connected to v. Since G is disconnected, V; does not include all
+vertices of G, This means that V; is a proper subset of V. Let V2.= V— V,. Then V;N V2 = ®,
+V = V, U V2 and no vertex in V; is connected to any vertex in V2. Hence, V; and Vz forma
+partition of V of the desired type.
+
+Conversely, suppose two subsets V; and V2 of V form a partition of V of the desired type.
+Consider two arbitrary vertices v and u in G, such that v € V; and u € V>. Then there exists no
+path between v and u. Hence G is not connected.
+
+This completes the proof of the theorem. °
+
+eum Let G be a graph with n vertices where n is even and > 2. If the degree of every
+vertex in G is 4(n — 2), disprove that G is connected.
+> Consider the disconnected graph shown below:
+
+ZS
+
+Figure 1.115
+
+In this graph the number of vertices is n = 6 which is even and greater than 2, and the
+
+feree of every vertex is 2 = (6 - 2)/2.= (n - 2)/2.
+_ Thus, the graph considered meets the given conditions and is disconnected. This counter
+2
+
+&xample disproves that G is connected.

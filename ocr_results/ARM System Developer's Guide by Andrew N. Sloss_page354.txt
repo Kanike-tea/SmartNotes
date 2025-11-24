@@ -1,0 +1,55 @@
+Table 9.7
+
+Table 9.8
+
+SUMMARY
+
+9.3 Interrupt Handling Schemes 341
+
+SVC stack frame.
+
+Label Offset Register
+FRAMERO +0 9 —
+FRAME RI +400 —
+FRAME. R2 +8 9 —
+FRAME_R3 0 +120 —
+FRAME_R4 +16 rd
+FRAME_R5 +2015
+FRAME_R6 +24 16
+FRAME_R7 +28 17
+FRAME_R8 +3218
+FRAME_RQ +3619
+FRAME_R10 +40 — rl0
+FRAME_RI1L +44 = rll
+FRAME_RI2Z +48 9 —
+FRAME PSR +5200 —
+FRAME_LR = +56 —
+FRAME_PC +60 —
+
+Data retrieved from the IRQ stack.
+
+Registers (SVC)
+
+Retrieved IRQ registers
+
+rd 10
+15 rl
+
+16 12
+
+17 3
+
+8 rl2
+
+9 r14 (return address)
+Nested Interrupt Handler
+
+= Handles multiple interrupts without a priority assignment.
+
+= Medium to high interrupt latency.
+
+=~ Advantage—can enable interrupts before the servicing of an individual interrupt is
+complete reducing interrupt latency.
+
+=~ Disadvantage—does not handle prioritization of interrupts, so lower priority interrupts
+can block higher priority interrupts.

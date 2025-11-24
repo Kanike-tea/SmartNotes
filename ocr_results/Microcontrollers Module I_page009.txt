@@ -1,0 +1,40 @@
+Microcontrollers-BCS402
+
+Static random access memory (SRAM) :
+e It is faster than the more traditional DRAM, but requires more silicon area.
+e¢ SRAM is static so that it does not require refreshing.
+e The access time for SRAM is considerably shorter than the equivalent DRAM
+because SRAM does not require a pause between data accesses.
+e The cost is high hence; it is used for smaller high-speed tasks, such as fast memory
+and caches.
+Synchronous dynamic random access memory (SDRAM):
+e  Jtcan run at much higher clock speeds than conventional memory.
+e¢ SDRAM synchronizes itself with the processor bus because it is clocked.
+e Internally the data is fetched from memory cells, pipelined, and finally brought out on
+the bus in a burst.
+
+e The old-style DRAM is asynchronous, so does not burst as efficiently as SDRAM.
+
+44 Peripherals
+In Embedded systems the peripherals are used to interact with the outside world. A peripheral
+device performs input and output functions for the chip by connecting to other devices or
+sensors that are off-chip. Each peripheral device usually performs a single function and may
+reside on-chip.
+Peripherals range from a simple serial communication device to a more complex 802.11
+wireless device.
+All ARM peripherals are memory mapped; the programming interface is a set of Memory
+addressed registers. The address of these registers is an offset from a specific peripheral base
+address.
+Controllers are specialized peripherals that implement higher levels of functionality within an
+embedded system. Two important types of controllers are memory controllers and interrupt
+controllers.
+
+1. Memory Controllers
+Memory controllers connect different types of memory to the processor bus. On power-up, a
+memory controller is configured in hardware to allow certain memory devices to be active.
+These memory devices allow the initialization code to be executed. Some memory devices
+must be set up by software; for example, when using DRAM, first have to set up the memory
+
+timings and refresh rate before it can be accessed.
+
+Dept. of ECE, GSSSIETW Page 10

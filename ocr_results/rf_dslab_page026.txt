@@ -1,0 +1,75 @@
+3
+
+prev = NULL;
+cur = start;
+while(cur->link!=NULL)
+{
+
+prev = cur;
+
+cur = cur->link;
+
+3
+
+printf("\nThe student node with the usn:%s is deleted" ,cur->usn);
+free(cur);
+
+prev->link = NULL;
+
+count--;
+
+return start;
+
+}
+void display()
+{
+
+NODE cur;
+int num=1;
+
+if(start == NULL)
+{
+
+printf("\nNo Contents to display in SLL \n");
+return;
+
+}
+
+printf("\nThe contents of SLL: \n");
+cur = start;
+
+while(cur!=NULL)
+
+printf("\nll%dll USN: %s! Name: %sl Branch: %s| Sem:%dl Ph: %ldI" num,cur->usn, cur->name,cur->branch, cur-
+>sem,cur->phone);
+
+cur = cur->link;
+
+num++;
+
+printf("\n No of student nodes is Yd \n" count);
+
+}
+
+void stackdemo()
+{
+
+int ch;
+
+while(1)
+
+printf("\nStack Demo using SLL\n");
+
+printf("\n1:Push operation \n2: Pop operation \n3: Display \n4:Exit \n");
+printf("\nEnter your choice for stack demo");
+
+scanf("%d" ,&ch);
+
+switch(ch)
+{
+case 1: start = insertfront();
+break;
+case 2: start = deletefront();
+break;
+
+26

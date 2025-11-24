@@ -1,0 +1,45 @@
+Microcontrollers - BCS402
+
+Each exception is dealt with according to the priority level set out in Table 3. The following is a
+
+summary of the exceptions and how they should be handled, starting with the highest.
+
+The Reset exception is the highest priority exception and is always taken whenever it is signaled.
+
+The reset handler initializes the system, including setting up memory and caches.
+
+External interrupt sources should be initialized before enabling IRQ or FIQ interrupts to avoid
+the possibility of spurious interrupts occurring before the appropriate handler has been set up.
+
+The reset handler must also set up the stack pointers for all processor modes.
+
+During the first few instructions of the handler, it is assumed that no exceptions or interrupts will
+occur. The code should be designed to avoid SWIs, undefined instructions, and memory accesses
+that may abort, that is, the handler is carefully implemented to avoid further triggering of an
+
+exception.
+
+Data Abort exceptions occur when the memory controller or MMU indicates that an invalid
+memory address has been accessed (for example, if there is no physical memory for an address)
+or when the current code attempts to read or write to memory without the correct access
+permissions. An FIQ exception can be raised within a Data Abort handler since FIQ exceptions
+are not disabled. When the FIQ is completely serviced, control is returned back to the Data Abort
+
+handler.
+
+A Fast Interrupt Request (FIQ) exception occurs when an external peripheral sets the FIQ pin to
+nFIQ. An FIQ exception is the highest priority interrupt. The core disables both IRQ and FIQ
+exceptions on entry into the FIQ handler. Thus, no external source can interrupt the processor
+unless the IRQ and/or FIQ exceptions are re enabled by software. It is desirable that the FIQ
+handler (and also the abort, SWI, and IRQ handlers) is carefully designed to service the
+
+exception efficiently.
+
+An Interrupt Request (IRQ) exception occurs when an external peripheral sets the IRQ pin to
+nIRQ. An IRQ exception is the second-highest priority interrupt. The IRQ handler will be
+entered if neither an FIQ exception nor Data Abort exception occurs. On entry to the IRQ
+handler, the IRQ exceptions are disabled and should remain disabled until the current interrupt
+
+source has been cleared.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 6

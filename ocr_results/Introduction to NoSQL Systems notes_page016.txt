@@ -1,0 +1,45 @@
+contain properties (key-value pairs). This flexibility allows developers to store rich,
+interconnected data and traverse relationships easily.
+
+Neo4j introduces the Cypher query language, which is specifically designed for graph
+pattern matching. Cypher is both expressive and readable, enabling developers to write
+complex graph queries in a form similar to natural language. For example, a Cypher query
+like:
+
+cypher
+
+CopyEdit
+
+MATCH (p:Person)-[:FRIEND_OF]->(f:Person)
+WHERE p.name = ‘Alice’
+
+RETURN f.name;
+
+This query finds the names of all people who are friends with "Alice". Cypher supports
+powerful features like pattern matching, filtering, aggregations, and path analysis, making
+it an ideal language for graph querying.
+
+Applications and Use Cases
+
+Neo4j is widely adopted across industries due to its versatility and powerful relationship-
+handling capabilities. Some notable use cases include:
+
+* Social Networks: To model users and their connections, likes, comments, and
+shared interests.
+
+« Recommendation Engines: To suggest friends, products, or content based ona
+user's behavior and connections.
+
+« Fraud Detection: By identifying suspicious patterns of transactions and
+relationships between accounts.
+
+« Knowledge Graphs: To link entities and concepts, enabling semantic search and
+intelligent inference.
+
+«¢ Supply Chain and Logistics: For route optimization, dependency tracking, and
+supplier relationship analysis.
+
+Advantages of Graph Databases
+
+« Efficient Relationship Handling: Perform deep traversals in milliseconds, even with
+millions of nodes.

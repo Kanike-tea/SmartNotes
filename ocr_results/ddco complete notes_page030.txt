@@ -1,0 +1,45 @@
+Digital Design and Computer Organization(BCS302)
+
+The n input binary variables come from an external source; the m output variables are
+produced by the internal combinational logic circuit and go to an external destination.
+
+Each input and output variable exists physically as an analog signal whose values are
+interpreted to be a binary signal that represents logic 1 and logic 0.
+
++ If the registers are included with the combinational gates, then the total circuit must
+be considered to be a sequential circuit.
+
++ Forn input variables, there are 2" possible combinations of the binary inputs.
+
++ For each possible input combination, there is one possible value for each output
+variable. Thus, a combinational circuit can be specified with a truth table that lists the
+output values for each combination of input variables.
+
+Design procedure
+The procedure to design combinational circiut involves the following steps:
+
+1. From the specifications of the circuit, Determine the required number of inputs
+and outputs and assign a symbol to each.
+
+2. Derive the truth table that defines the required relationship between inputs and
+outputs.
+
+3. Obtain the simplified Boolean functions for each output as a function of the
+input variables.
+
+4. Draw the logic diagram and verify the correctness of the design (manually or by
+simulation).
+
+Example for design Procedure
+Code Conversion (Convert BCD to Excess-3 Code)
+
++ A code converter is a circuit that makes the two systems compatible even though
+each uses a different binary code.
+
++ Since each code uses four bits to represent a decimal digit, there must be four input
+variables and four output variables. We designate the four input binary variables by
+the symbols A, B, C, and D, and the four output variables by w, x,y , and z.
+
++ ADD 3 to BCD to get Excess -3 Code
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 2

@@ -1,0 +1,54 @@
+LECTURE-15: B* Tree Index
+B+-Tree Index Files:
+
+B+-tree indices are an alternative to indexed-sequential files.
+
+1. Disadvantage of indexed-sequential files: performance degrades as file grows, since many
+overflow blocks get created. Periodic reorganization of entire file is required.
+
+2. Advantage of B+-tree index files: automatically reorganizes itself with small, local,
+changes, in the face of insertions and deletions. Reorganization of entire file is not required
+to maintain performance.
+
+3. Disadvantage of B+-trees: extra insertion and deletion overhead, space overhead.
+
+4. Advantages of B+-trees outweigh disadvantages, and they are used extensively.
+
+AB+-tree is a rooted tree satisfying the following properties:
+
+1. All paths from root to leaf are of the same length
+
+2. Each node that is not a root or a leaf has between [n/2] and n children.
+
+3. A leaf node has between [(n—1)/2] and n—1 values
+
+4. Special cases:
+
+a. Ifthe root is not a leaf, it has at least 2 children.
+b. If the root is a leaf (that is, there are no other nodes in the tree), it can have between
+0 and (n—1) values.
+
+Bt-Tree Node Structure
+
+Typical node
+
+P, | Kj | PB |... | Ppa] Kaa | Ph
+
+Pi are pointers to children (for non-leaf nodes) or pointers
+to records or buckets of records (for leaf nodes).
+The search-keys in a node are ordered
+K1<K2<K3<...<Kn
+
+Example of a B+-tree
+
+| Perey
+
+B+-Tree File Organization
+1. Index file degradation problem is solved by using B+-Tree indices. Data file degradation
+
+problem is solved by using B+-Tree File Organization.
+
+2. The leaf nodes in a B+-tree file organization store records, instead of pointers.
+
+3. Since records are larger than pointers, the maximum number of records that can be stored in
+a leaf node is less than the number of pointers in a non leaf node.

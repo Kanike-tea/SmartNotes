@@ -1,0 +1,56 @@
+12.4 Object Database Conceptual Design
+
+12.4.2 Mapping an EER Schema to an ODB Schema
+
+It is relatively straightforward to design the type declarations of object classes
+for an ODBMS from an EER schema that contains neither categories nor n-ary
+relationships with n > 2. However, the operations of classes are not specified in
+the EER diagram and must be added to the class declarations after the struc-
+tural mapping is completed. The outline of the mapping from EER to ODL is
+as follows:
+
+Step 1. Create an ODL class for each EER entity type or subclass. The type of the
+ODL class should include all the attributes of the EER class.** Multivalued attributes
+are typically declared by using the set, bag, or list constructors.*° If the values of the
+multivalued attribute for an object should be ordered, the list constructor is chosen;
+if duplicates are allowed, the bag constructor should be chosen; otherwise, the set
+constructor is chosen. Composite attributes are mapped into a tuple constructor (by
+using a struct declaration in ODL).
+
+Declare an extent for each class, and specify any key attributes as keys of the extent.
+
+Step 2. Add relationship properties or reference attributes for each binary relation-
+ship into the ODL classes that participate in the relationship. These may be created
+in one or both directions. If a binary relationship is represented by references in both
+directions, declare the references to be relationship properties that are inverses of
+one another, if such a facility exists.*° If a binary relationship is represented by a
+reference in only one direction, declare the reference to be an attribute in the refer-
+encing class whose type is the referenced class name.
+
+Depending on the cardinality ratio of the binary relationship, the relationship
+properties or reference attributes may be single-valued or collection types. They
+will be single-valued for binary relationships in the 1:1 or N:1 directions; they will
+be collection types (set-valued or list-valued*’) for relationships in the 1:N or
+M:N direction. An alternative way to map binary M:N relationships is discussed in
+step 7.
+
+If relationship attributes exist, a tuple constructor (struct) can be used to create a
+structure of the form <reference, relationship attributes>, which may be included
+instead of the reference attribute. However, this does not allow the use of the inverse
+constraint. Additionally, if this choice is represented in both directions, the attribute
+values will be represented twice, creating redundancy.
+
+34This implicitly uses a tuple constructor at the top level of the type declaration, but in general, the tuple
+constructor is not explicitly shown in the ODL class declarations.
+
+85Further analysis of the application domain is needed to decide which constructor to use because this
+information is not available from the EER schema.
+
+38The ODL standard provides for the explicit definition of inverse relationships. Some ODBMS products
+may not provide this support; in such cases, programmers must maintain every relationship explicitly by
+coding the methods that update the objects appropriately.
+
+S"The decision whether to use set or list is not available from the EER schema and must be determined
+from the requirements.
+
+407

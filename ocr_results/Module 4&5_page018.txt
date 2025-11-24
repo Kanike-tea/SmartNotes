@@ -1,0 +1,45 @@
+Microcontrollers - BCS402
+
+Using separate stacks for each mode rather than processing using a single stack has one main
+
+advantage: errant tasks can be debugged and isolated from the rest of the system.
+3. Firmware
+
+3.1 Firmware and bootloader
+
+The firmware is the deeply embedded, low-level software that provides an interface between the
+hardware and the application/operating system level software. It resides in the ROM and
+executes when power is applied to the embedded hardware system. Firmware can remain active
+
+after system initialization and supports basic system operations.
+
+The bootloader is a small application that installs the operating system or application onto a
+hardware target. The bootloader only exists up to the point that the operating system or
+
+application is executing, and it is commonly incorporated into the firmware.
+
+Firmware execution flow.
+
+Stage Features
+
+Set up target platform — Program the hardware system registers
+Platform identification
+Diagnostics
+Debug interface
+Command line interpreter
+
+Abstract the hardware | Hardware Abstraction Layer
+Device driver
+
+Load a bootable image _ Basic filing system
+
+Relinquish control Alter the pe to point into the new image
+
+The first stage is to set up the target platform—in other words, prepare the environment to boot
+an operating system since an operating system expects a particular type of environment before it
+can operate. This step involves making sure that the platform is correctly initialized. Diagnostics
+software provides a useful way for quickly identifying basic hardware malfunctions. Because of
+
+the nature of this type of software, it tends to be specific to a particular piece of hardware.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 19

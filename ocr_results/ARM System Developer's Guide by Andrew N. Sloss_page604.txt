@@ -1,0 +1,38 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 591
+
+=~ Rdand Rm must be different registers.
+
+= Implementations may terminate early on the value of the Rs operand. For this reason
+use small or constant values for Rs where possible. See Appendix D.
+
+= If the cpsr is updated, then N = <Negative>, Z = <Zero>, C is unpredictable, and V
+is preserved. Avoid using the instruction MLAS because implementations often impose
+penalty cycles for this operation. Instead use MLA followed by a compare, and schedule
+the compare to avoid multiply result use interlocks.
+
+MOV Move a 32-bit value into a register
+
+1. MOV<cond>{S} Rd, #<rotated_immed> ARMV1
+2. MOV<cond>{$} Rd, Rm {, <shift>} ARMV1
+3. MOV Ld, #<immed8> THUMBv1
+4. MOV Ld, Ln THUMBv1
+5. MOV Hd, Lm THUMBv1
+6. MOV Ld, Hm THUMBv1
+7. MOV Hd, Hm THUMBv1
+Action Effect on the cpsr
+1. Rd = <rotated_immed> Updated if S suffix specified
+2. Rd = <shifted_Rm> Updated if S suffix specified
+3. Ld = <immed8> Updated (see Notes below)
+4. Ld = Ln Updated (see Notes below)
+5. Hd = Lm Preserved
+6. Ld = Hm Preserved
+7. Hd = Hm Preserved
+Notes
+
+= = If the operation updates the cpsr and Rd is not pe, then N = <Negative>, Z = <Zero>,
+C= <shifter_C> (see Table A.3), and Vis preserved.
+
+= If Rd or Hd is pc, then the instruction effects a jump to the calculated address. If the
+
+operation updates the cpsr, then the processor mode must have an spsr; in this case, the
+cpsr is set to the value of the spsr.

@@ -1,0 +1,52 @@
+17.5 Other Types of Indexes
+
+Dno EMPLOYEE file Bucket pool
+0 1,2 5 |
+1 | 3,4 4
+2 5 3
+3 | 6,7 2 —a|
+4 8 1
+5 9,10 0
+Linear scale 0 1 2 3
+for Dno
+Linear Scale for Age
+0 1 2 3 4 5 Figure 17.14
+<20 |21-25 |26-30|31-40|41-50| >50
+
+Bucket pool
+
+633
+
+Example of a grid array on
+Dno and Age attributes.
+
+Thus our request for Dno = 4 and Age = 59 maps into the cell (1, 5) corresponding
+to the grid array. The records for this combination will be found in the correspond-
+ing bucket. This method is particularly useful for range queries that would map into
+a set of cells corresponding to a group of values along the linear scales. If a range
+query corresponds to a match on the some of the grid cells, it can be processed by
+accessing exactly the buckets for those grid cells. For example, a query for Dno < 5
+and Age > 40 refers to the data in the top bucket shown in Figure 17.14.
+
+The grid file concept can be applied to any number of search keys. For example, for
+n search keys, the grid array would have n dimensions. The grid array thus allows a
+partitioning of the file along the dimensions of the search key attributes and provides
+an access by combinations of values along those dimensions. Grid files perform well
+in terms of reduction in time for multiple key access. However, they represent a
+space overhead in terms of the grid array structure. Moreover, with dynamic files, a
+frequent reorganization of the file adds to the maintenance cost.!*
+
+17.5 Other Types of Indexes
+
+17.5.1 Hash Indexes
+
+It is also possible to create access structures similar to indexes that are based on
+hashing. The hash index is a secondary structure to access the file by using hashing
+ona search key other than the one used for the primary data file organization. The
+index entries are of the type <K, Pr> or <K, P>, where Pr is a pointer to the record
+containing the key, or P is a pointer to the block containing the record for that key.
+The index file with these index entries can be organized as a dynamically expand-
+able hash file, using one of the techniques described in Section 16.8.3; searching for
+an entry uses the hash search algorithm on K. Once an entry is found, the pointer Pr
+
+'4insertion/deletion algorithms for grid files may be found in Nievergelt et al. (1984).

@@ -1,0 +1,39 @@
+162 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+Figure 5.6
+One possible database state for the COMPANY relational database schema.
+EMPLOYEE
+Fname | Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn | Dno
+John B_| Smith | 123456789 | 1965-01-09 |731 Fondren, Houston, TX] M_ {30000 |333445555 |_5
+Franklin | T | Wong | 383445555 | 1955-12-08 |638 Voss, Houston, TX | M [40000 |sssees555 | 5
+Alicia J__| Zelaya | 999887777 | 1968-01-19 |3321 Castle, Spring, TX | F |25000 |987654321 | 4
+Jennifer | S| Wallace | 987654321 | 1941-06-20 |291 Berry, Bellaire, TX F |43000 |ssseess55 | 4
+Ramesh| K | Narayan | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX] M [38000 |333445555 | 5
+Joyce A_ | English | 453453453 | 1972-07-31 |5631 Rice, Houston, TX | F |25000 |333445555 | 5
+Ahmad | V_ | Jabbar | 987987987 | 1969-03-29 | 980 Dallas, Houston, TX | M |25000 |987654321 | 4
+James | E | Borg | 888665555 | 1937-11-10 | 450 Stone, Houston, TX | M |55000 |NULL 1
+DEPARTMENT DEPT_LOCATIONS
+Dname Dnumber Mgr_ssn Mgr_start_date Dnumber ] Diocation
+Research 5 333445555 1988-05-22 1 Houston
+Administration 4 987654321 1995-01-01 4 Stafford
+Headquarters 1 888665555 1981-06-19 5 Bellaire
+5 Sugarland
+5 Houston
+WORKS_ON PROJECT
+Essn Pno | Hours Pname Pnumber | Plocation Dnum
+123456789 1 32.5 ProductX 1 Bellaire 5
+123456789 2 75 ProductY Sugarland 5
+666884444 3 40.0 ProductZ Houston 5
+453453453 1 20.0 Computerization | 10 Stafford 4
+453453453 2 20.0 Reorganization 20 Houston 1
+333445555 2 10.0 Newbenefits 30 Stafford 4
+333445555 3 10.0
+333445555 10 | 10.0 DEPENDENT
+333445555 20 10.0 Essn Dependent_name | Sex Bdate Relationship
+999887777 30 30.0 333445555 Alice F | 1986-04-05 | Daughter
+999887777 10 |_ 10.0 333445555 | Theodore M_ | 1983-10-25 | Son
+987987987 10 | 35.0 333445555 | Joy F | 1958-05-03 | Spouse
+987987987 30 5.0 987654321 Abner M | 1942-02-28 | Spouse
+987654321 30 | 200 123456789 Michael M_ | 1988-01-04 | Son
+987654321 20 | 15.0 123456789 | Alice F | 1988-12-30 | Daughter
+888665555 20} NULL 123456789 | Elizabeth F | 1967-05-05 | Spouse

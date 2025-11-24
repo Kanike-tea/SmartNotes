@@ -1,0 +1,47 @@
+406 Chapter 12. Caches
+
+Word, byte access
+
+Processor Main
+core Slow | memory
+Noncached system
+Word, byte Block
+access transfer
+Processor |. cS Cache |. | Main
+ane Fast Slow memory
+
+|. __,|
+Fast} Write Iefow
+buffer
+Word, byte access
+¥ Slow
+
+Cached system
+
+Figure 12.2 Relationship that a cache has between the processor core and main memory.
+
+12.1.1 CACHES AND MEMORY MANAGEMENT UNITS
+
+Ifa cached core supports virtual memory, it can be located between the core and the memory
+management unit (MMU), or between the MMU and physical memory. Placement of the
+cache before or after the MMU determines the addressing realm the cache operates in
+and how a programmer views the cache memory system. Figure 12.3 shows the difference
+between the two caches.
+
+A logical cache stores data in a virtual address space. A logical cache is located between
+the processor and the MMU. The processor can access data from a logical cache directly
+without going through the MMU. A logical cache is also known as a virtual cache.
+
+A physical cache stores memory using physical addresses. A physical cache is located
+between the MMU and main memory. For the processor to access memory, the MMU
+must first translate the virtual address to a physical address before the cache memory can
+provide data to the core.
+
+ARM cached cores with an MMU use logical caches for processor families ARM7
+through ARM10, including the Intel StrongARM and Intel XScale processors. The ARM11
+processor family uses a physical cache. See Chapter 14 for additional information on the
+operation of the MMU.
+
+The improvement a cache provides is possible because computer programs execute
+in nonrandom ways. Predictable program execution is the key to the success of cached
+systems. If a program’s accesses to memory were random, a cache would provide little

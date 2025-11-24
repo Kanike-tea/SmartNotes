@@ -1,0 +1,62 @@
+Lab Manual
+
+BCS358D-Data Visualization with Python Laboratory
+
+9. The program prompts the user to enter a binary number and converts it to decimal using
+
+the binary_to_decimal function. The decimal value
+
+decimal_number and printed.
+
+is stored in the variable
+
+10. Similarly, the program prompts the user to enter an octal number and converts it to
+
+hexadecimal using the octal_to_hexadecimal function. The hexadecimal value is stored in
+
+the variable hexadecimal_number and printed.
+
+By using these conversion functions, you can easily convert binary numbers to decimal and octal
+
+numbers to hexadecimal. The program demonstrates the basic principles of number system
+
+conversion by performing the necessary calculations using loops and arithmetic operations.
+
+PROGRAM
+
+def binary _to_decimal (binary):
+decimal = 0
+power = 0
+
+def
+
+while binary > 0:
+decimal += (binary % 10) * (2 ** power
+binary //= 10
+power += 1
+
+return decimal
+
+octal_to_hexadecimal (octal):
+decimal = 0
+power = 0
+
+while octal > 0:
+decimal += (octal % 10) * (8 ** power
+octal //= 10
+power += 1
+
+hexadecimal = "™
+hex_digits = "0123456789ABCDEF"
+
+while decimal > 0:
+
+remainder = decimal 16
+hexadecimal = hex_digits[remainder] + hexadecimal
+decimal //= 16
+return hexadecimal
+binary number = int(input("Enter a binary number: "))
+
+Dept. of CSE 25
+
+GSSSIETW, Mysuru

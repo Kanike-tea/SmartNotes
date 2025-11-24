@@ -1,0 +1,49 @@
+1064 Chapter 27 Introduction to Information Retrieval and Web Search
+
+We started in Section 27.1 by first introducing the field of IR in section 27.1.1 and
+comparing IR and database technologies in Section 27.1.2. A brief history of IR was
+presented in Section 27.1.3, and the query and browsing modes of interaction in IR
+systems were introduced in Section 27.1.4.
+
+We presented in Section 27.2 the various retrieval models used in IR, including
+Boolean, vector space, probabilistic, and semantic models. These models allow us to
+measure whether a document is relevant to a user query and provide similarity
+measurement heuristics. In Section 27.3 we presented different types of queries—in
+addition to keyword-based queries, which dominate, there are other types, includ-
+ing Boolean, phrase, proximity, natural language, and others for which explicit sup-
+port needs to be provided by the retrieval model. Text preprocessing is important in
+IR systems, and we discussed in Section 27.4 various activities like stopword
+removal, stemming, and the use of thesauruses. We then discussed the construction
+and use of inverted indexes in Section 27.5, which are at the core of IR systems and
+contribute to factors involving search efficiency. We then discussed in Section 27.6
+various evaluation metrics, such as recall precision and F-score, to measure the
+goodness of the results of IR queries. The Lucene open source indexing and search
+engine and its extension called Solr was discussed. Relevance feedback was briefly
+addressed—it is important to modify and improve the retrieval of pertinent infor-
+mation for the user through his interaction and engagement in the search process.
+
+We provided in Section 27.7 a somewhat detailed introduction to analysis of the Web
+as it relates to information retrieval. We divided this treatment into the analysis of
+content, structure, and usage of the Web. Web search was discussed, including an
+analysis of the Web link structure (Section 27.7.3), including an introduction to algo-
+rithms for ranking the results from a Web search such as PageRank and HITS. Finally,
+we briefly discussed current trends, including faceted search, social search, and con-
+versational search. We also presented probabilistic modeling of topics of documents
+and a popular technique called latent Dirichlet allocation. We ended the chapter with
+a discussion of question answering systems (Section 27.7.5), which are becoming very
+popular and use tools like Siri from Apple and Cortana from Microsoft.
+
+This chapter provided an introductory treatment of a vast field. The interested
+reader should refer to the end-of-chapter bibliography for specialized texts on
+information retrieval and search engines.
+
+Review Questions
+
+27.1. What is structured data and what is unstructured data? Give an example of
+each from your experience.
+
+27.2. Give a general definition of information retrieval (IR). What does informa-
+tion retrieval involve when we consider information on the Web?
+
+27.3. Discuss the types of data and the types of users in today’s information
+retrieval systems.

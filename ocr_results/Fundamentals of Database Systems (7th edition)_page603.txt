@@ -1,0 +1,36 @@
+16.8 Hashing Techniques 573
+
+(a) Name | Ssn | Job | Salary Figure 16.8
+Internal hashing data structures. (a) Array
+o of M positions for use in internal hashing.
+1 (b) Collision resolution by chaining records.
+2
+3
+M-2
+M-1
+Data fields Overflow pointer
+(b) 0 =1 f
+1 M
+2 =
+3 =
+4 M+2
+: Address space
+M-2 M+1
+M-1 = Y
+M M+5 4
+M+1 4
+M+2 M+4
+: Overflow space
+M+0-2
+M+0-1 Y
+
++ null pointer =-1
++ overflow pointer refers to position of next record in linked list
+
+Noninteger hash field values can be transformed into integers before the mod func-
+tion is applied. For character strings, the numeric (ASCII) codes associated with
+characters can be used in the transformation—for example, by multiplying those
+code values. For a hash field whose data type is a string of 20 characters, Algo-
+rithm 16.2(a) can be used to calculate the hash address. We assume that the code
+function returns the numeric code of a character and that we are given a hash field
+value K of type K: array [1..20] of char (in Pascal) or char K[20] (in C).

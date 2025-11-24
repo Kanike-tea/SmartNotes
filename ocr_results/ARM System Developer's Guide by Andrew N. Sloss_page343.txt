@@ -1,0 +1,49 @@
+330 Chapter 9 Exception and Interrupt Handling
+
+Figure 9.6
+
+EXAMPLE
+
+9.7
+
+A [servic T] B Interrupt stack
+
+Heap t
+Heap t
+Code
+Code
+0x00008000
+Interrupt
+0x00000000 Vector table 0x00000000 Vector table
+
+Typical memory layouts.
+
+For each processor mode a stack has to be set up. This is carried out every time the processor
+is reset. Figure 9.7 shows an implementation using layout A. To help set up the memory
+layout, a set of defines are declared that map the memory region names with an absolute
+address.
+
+For instance, the User stack is given the label USR_Stack and is set to address 0x20000.
+The Supervisor stack is set to an address that is 128 bytes below the IRQ stack.
+
+USR_Stack EQU 0x20000
+IRQ_Stack EQU 0x8000
+SVC_Stack EQU IRQ _Stack-128
+
+To help change to the different processor modes, we declare a set of defines that map
+each processor mode with a particular mode bit pattern. These labels can then be used to
+set the cpsr to a new mode.
+
+Usr32md EQU 0x10 ; User mode
+
+F1Q32md EQU Ox11 3 FIQ mode
+
+1RQ32md EQU 0x12 3 IRQ mode
+
+SVC32md EQU 0x13 ; Supervisor mode
+
+Abt32md EQU 0x17 ; Abort mode
+
+Und32md EQU Ox1b 3 Undefined instruction mode
+
+Sys32md EQU Oxlf System mode

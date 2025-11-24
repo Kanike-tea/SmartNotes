@@ -1,0 +1,35 @@
+628 — Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Figure 17.12
+An example of insertion in a B*-tree with p = 3 and pleat = 2
+
+Insertion sequence: 8, 5, 1, 7,3, 12, 9,6
+
+S12} [81°] | [+ — insert 1: overtiow (new level)
+5 «| Tree node pointer
+vy y 0| Data pointer
+ui ie Slo |<— Insert 7 Null tree pointer
+Y
+7/0 8/0
+Insert 12: overflow (split, propagates,
+Del elle new level)
+(split) | |
+il Y
+1}0 3}o0 5/0 7/0 Bio |
+|| 5 :
+y A
+Si l> pl | 8 7
+I Insert 9
+{ Y ' Y |
+1]o] [S]o]|+4>} [s[o ole} [7]0] [fo] |} [r2]o
+“| [5] fy
+y Y
+1 3 7 || 8 7
+| il 1 y
+1]o] [S]o]|+4=} [sfo ole] [7] 0] [fo] |+teI [eo | [t2]0
+|| 5 r}
+Insert 6: overflow (split, propagates)
+y Y
+1 3 7 pl] 7 7 8 .
+' 1 !
+1] 0 alo +e|[9]o | [12] 0

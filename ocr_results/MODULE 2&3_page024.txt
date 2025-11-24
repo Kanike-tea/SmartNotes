@@ -1,0 +1,40 @@
+Microcontrollers — BCS402
+
+SWP | swap a word between memory and a register | tmp =mem32(Rn]
+mem32[Rn] = Rm
+Rd=tmp
+
+SWPB | swap a byte between memory and a register | tmp =mem8(Rn]
+mem8[Rn] = Rm
+Rd=tmp
+
+Swap cannot be interrupted by any other instruction or any other bus access. We say the
+
+system “holds the bus” until the transaction is complete.
+
+Example 1:
+
+PRE mem32[0x9000] = 0x 12345678, r0 = 0x00000000, rl = 0x11112222, r2 = 0x00009000
+SWP r0,r1, [r2]
+
+POST mem32[0x9000] = 0x11112222, rO = 0x12345678, rl = Ox11112222, 12 =
+0x00009000
+
+This instruction is particularly useful when implementing semaphores and mutual exclusion
+in an operating system. You can see from the syntax that this instruction can also have a byte
+
+size qualifier B, so this instruction allows for both a word and a byte swap.
+Example 2:
+
+This example shows a simple data guard that can be used to protect data from being written
+
+by another task. The SWP instruction “holds the bus” until the transaction is complete.
+spin
+MOV rl, =semaphore
+MOV 12, #1
+SWP 13, r2, [r1] ; hold the bus until complete
+CMP 13, #1
+
+BEQ spin
+
+Dept. of ECE, GSSSIETW Page 25

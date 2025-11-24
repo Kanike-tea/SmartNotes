@@ -1,0 +1,53 @@
+238 Chapter 7 Optimized Primitives
+
+STMFD sp! {Ir}
+
+ANDS sign, d, #1<<31 3 sign=(d<0 ? 1<<31 : 0);
+RSBMI sd, dy #0 3 if (d<0) d=-d;
+
+EORS sign, sign, r, ASR#32 ; if (r<0) sign=~sign;
+RsBcS. ory ry #0 3 if (r<0) r=-r3
+
+BL udiv_32by32_arm?m 3 (dyr)=(r/d,r%d)
+
+MOVS sign, sign, LSL#1 3 Cesign[31], N=sign[30]
+
+RsBcs dy dy #0
+RSBMI. ry ry #0
+LOMFD sp! {pc}
+
+if (sign[31]) ¢
+if (sign[30]) r
+
+We use r12 to hold the signs of the quotient and remainder as udiv_32by32_arm7m
+preserves r12 (see Section 7.3.1.1).
+
+7A SQUARE ROOTS
+
+Square roots can be handled by the same techniques we used for division. You have a choice
+between trial subtraction and Newton-Raphson iteration based implementations. Use trial
+subtraction for a low-precision result less than 16 bits, but switch to Newton-Raphson
+for higher-precision results. Sections 7.4.1 and 7.4.2 cover trial subtraction and Newton-
+Raphson, respectively.
+
+7.4.1 SQUARE ROOT BY TRIAL SUBTRACTION
+
+We calculate the square root of a 32-bit unsigned integer d. The answer is a 16-bit unsigned
+integer q and a 17-bit unsigned remainder r such that
+
+d=q+r and 0<r<2q. (7.43)
+
+We start by setting q = 0 and r = d. Next we try and set each bit of q in turn, counting
+down from the highest possible bit, bit 15. We can set the bit if the new remainder is
+positive. Specifically if we set bit n by adding 2” to q, then the new remainder is
+
+Tnew = d = (q+ 2") = (d=?) = 2" qgQ— 2" = roa —2"(2q +2") (7-44)
+
+So, to calculate the new remainder we try to subtract the value 2"(2q + 2”). If the
+subtraction succeeds with a nonnegative result, then we set bit n of q. The follow-
+ing C code illustrates the algorithm, calculating the N-bit square root q of a 2N-bit
+input d:
+
+unsigned usgr_simple(unsigned d, unsigned N)
+
+{

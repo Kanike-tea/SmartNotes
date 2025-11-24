@@ -1,0 +1,53 @@
+2.1. Data Models, Schemas, and Instances
+
+2.1.1 Categories of Data Models
+
+Many data models have been proposed, which we can categorize according to
+the types of concepts they use to describe the database structure. High-level or
+conceptual data models provide concepts that are close to the way many users per-
+ceive data, whereas low-level or physical data models provide concepts that describe
+the details of how data is stored on the computer storage media, typically magnetic
+disks. Concepts provided by physical data models are generally meant for computer
+specialists, not for end users. Between these two extremes is a class of representational
+(or implementation) data models,’ which provide concepts that may be easily
+understood by end users but that are not too far removed from the way data is orga-
+nized in computer storage. Representational data models hide many details of data
+storage on disk but can be implemented on a computer system directly.
+
+Conceptual data models use concepts such as entities, attributes, and relationships.
+An entity represents a real-world object or concept, such as an employee or a project
+from the miniworld that is described in the database. An attribute represents some
+property of interest that further describes an entity, such as the employee’s name or
+salary. A relationship among two or more entities represents an association among
+the entities, for example, a works-on relationship between an employee and a
+project. Chapter 3 presents the entity-relationship model—a popular high-level
+conceptual data model. Chapter 4 describes additional abstractions used for advanced
+modeling, such as generalization, specialization, and categories (union types).
+
+Representational or implementation data models are the models used most fre-
+quently in traditional commercial DBMSs. These include the widely used relational
+data model, as well as the so-called legacy data models—the network and
+hierarchical models—that have been widely used in the past. Part 3 of the text is
+devoted to the relational data model, and its constraints, operations, and languages.°
+The SQL standard for relational databases is described in Chapters 6 and 7. Repre-
+sentational data models represent data by using record structures and hence are
+sometimes called record-based data models.
+
+We can regard the object data model as an example of a new family of higher-level
+implementation data models that are closer to conceptual data models. A standard
+for object databases called the ODMG object model has been proposed by the
+Object Data Management Group (ODMG). We describe the general characteristics
+of object databases and the object model proposed standard in Chapter 12. Object
+data models are also frequently utilized as high-level conceptual models, particu-
+larly in the software engineering domain.
+
+Physical data models describe how data is stored as files in the computer by repre-
+senting information such as record formats, record orderings, and access paths. An
+
+“The term implementation data model is not a standard term; we have introduced it to refer to the avail-
+able data models in commercial database systems.
+
+5A summary of the hierarchical and network data models is included in Appendices D and E. They are
+accessible from the book's Web site.
+
+33

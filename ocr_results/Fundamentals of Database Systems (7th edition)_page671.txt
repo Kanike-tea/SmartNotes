@@ -1,0 +1,51 @@
+17.6 Some General Issues Concerning Indexing
+
+dense index such as a unique secondary index will have an index pointer for each
+record. Sybase provides clustering indexes as sparse indexes in the form of
+B*-trees, whereas INGRES provides sparse clustering indexes as ISAM files and
+dense clustering indexes as B*-trees. In some versions of Oracle and DB2, the
+option of setting up a clustering index is limited to a dense index, and the DBA
+has to work with this limitation.
+
+17.6.4 Additional Issues Related to Storage
+of Relations and Indexes
+
+Using an Index for Managing Constraints and Duplicates: It is common to
+use an index to enforce a key constraint on an attribute. While searching the index
+to insert a new record, it is straightforward to check at the same time whether
+another record in the file—and hence in the index tree—has the same key attribute
+value as the new record. If so, the insertion can be rejected.
+
+If an index is created on a nonkey field, duplicates occur; handling of these dupli-
+cates is an issue the DBMS product vendors have to deal with and affects data stor-
+age as well as index creation and management. Data records for the duplicate key
+may be contained in the same block or may span multiple blocks where many
+duplicates are possible. Some systems add a row id to the record so that records
+with duplicate keys have their own unique identifiers. In such cases, the B*-tree
+index may regard a <key, Row_id> combination as the de facto key for the index,
+turning the index into a unique index with no duplicates. The deletion of a key K
+from such an index would involve deleting all occurrences of that key K—hence the
+deletion algorithm has to account for this.
+
+In actual DBMS products, deletion from B*-tree indexes is also handled in various
+ways to improve performance and response times. Deleted records may be marked
+as deleted and the corresponding index entries may also not be removed until a
+garbage collection process reclaims the space in the data file; the index is rebuilt
+online after garbage collection.
+
+Inverted Files and Other Access Methods: A file that has a secondary index
+on every one of its fields is often called a fully inverted file. Because all indexes are
+secondary, new records are inserted at the end of the file; therefore, the data file
+itself is an unordered (heap) file. The indexes are usually implemented as Bt-trees,
+so they are updated dynamically to reflect insertion or deletion of records. Some
+commercial DBMSs, such as Software AG’s Adabas, use this method extensively.
+
+We referred to the popular IBM file organization called ISAM in Section 17.2.
+Another IBM method, the virtual storage access method (VSAM), is somewhat
+similar to the B*-tree access structure and is still being used in many commercial
+systems.
+
+Using Indexing Hints in Queries: DBMSs such as Oracle have a provision for
+allowing hints in queries that are suggested alternatives or indicators to the query
+
+641

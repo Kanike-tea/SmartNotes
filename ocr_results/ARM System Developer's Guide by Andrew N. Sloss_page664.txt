@@ -1,0 +1,31 @@
+APPENDIX
+
+INSTRUCTION
+CYCLE TIMINGS
+
+This appendix lists the instruction cycle timings for some common ARM implementions.
+Timings can vary between different revisions of an implementation and are also affected by
+external events such as interrupts, memory speed, and cache misses. You should treat these
+numbers as a guide only and verify performance measurements on real hardware. Refer to
+the manufacturer’s data sheets for the latest timing information.
+
+ARM cores use pipelined implementations. The number of cycles that an instruction
+takes may depend on the previous and following instructions. When you optimize code,
+you need to be aware of these interactions, described in the “Notes” column of the timing
+tables.
+
+D.1 USING THE INSTRUCTION CYCLE TIMING TABLES
+
+Use the following steps to calculate the number of cycles taken by an instruction:
+
+= Use Table C.3 in Appendix C to find which ARM core you are using. For example,
+ARM7xx parts usually contain an ARM7TDMI core; ARM9xx parts, an ARM9TDMI
+core; and ARM9xxE, parts an ARM9E core.
+
+= Find the table in this appendix for the ARM core you are using.
+
+= Find the relevant instruction class in the left-hand column of the table. The class “ALU”
+is shorthand for all of the arithmetic and logical instructions: ADD, ADC, SUB, RSB, SBC,
+RSC, AND, ORR, BIC, EOR, CMP, CMN, TEQ, TST, MOV, MVN, CLZ.
+
+651

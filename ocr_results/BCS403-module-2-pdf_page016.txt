@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+The SELECT operator is unary; that is, it is applied to a single relation. The degree of the relation
+resulting from a SELECT operation is the same as the degree of R.The number of tuples in the
+resulting relation is always less than or equal to the number of tuples in R. That is,
+|oc (R)| <|R| for any condition C
+The fraction of tuples selected by a selection condition is referred to as the selectivity of the
+condition.
+The SELECT operation is commutative; that is,
+6<cond1>(G<cond2>(R)) = 6<cond2>(G<condi>(R))
+
+Hence, a sequence of SELECTs can be applied in any order.we can always combine a cascade (or
+sequence) of SELECT operations into a single SELECT operation, with a conjunctive (AND)
+condition; that is,
+
+G<condi>(6<cond2>(...(G<condn>(R)) «.-)) = 6<conai> AND<cona2> AND +» AND <conan>(R)
+In SQL, the SELECT condition is specified in the WHERE clause of a query.For example, the
+following operation:
+
+6pno=4 AND Salary>25000 (EMPLOYEE)
+would to the following SQL query:
+
+SELECT * FROM EMPLOYEE WHERE Dno=4 AND Salary>25000;
+
+2.2.2 The PROJECT Operation
+
+The PROJECT operation denoted by z (pi) selects certain columns from the table and discards the
+other columns, Used when we are interested in only certain attributes of a relation. The result of the
+PROJECT operation can be visualized as a vertical partition of the relation into two relations:
+- one has the needed columns (attributes) and contains the result of the operation
+- the other contains the discarded columns
+The general form.of the PROJECT operation is
+Ti<attribute list>(R)
+where
+1 (pi) - symbol used to represent the PROJECT operation,
+<attributelist> - desired sublist of attributes from the attributes of relation R.
+The result of the PROJECT operation has only the attributes specified in <attribute list> in the same
+order as they appear in the list. Hence, its degree is equal to the number of attributes in <attribute
+
+list>
+
+https://vtucode.in Page 17

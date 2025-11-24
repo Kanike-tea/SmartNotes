@@ -1,0 +1,47 @@
+2 ; 433
+STOCHASTIC PROCESS :
+
+" This’ is called the stationary distribution of the markov chain and
+V =i(,, U, +:+¥,,).is called the stationary (fixed) probability vector of the Markov
+chain. .
+
+Referring to the Illustrative Example - 2, the tp.m of the Markov chain is
+
+[0.1.0
+PSl.0 0°11
+| 1/2172 0
+
+P is (1/5, -2/5;, 2/5),
+
+Hence we conclude that in the long.run (1 -> cc) A will have thrown the ball 20%
+of the time, while B and C will have thrown the ball 40% of the time.
+
+Noté: A Markov chain is said tobeirreducible if every state canbe reached from every
+other state in a finite number of steps. That is to say that ae > 0 forsome n 2 1.
+This is equivalent. to saying that a Markov chain is irreducible if the associated
+transition probability matrix is regular...
+
+° Absorbing state of a Markov chain
+
+and by Worked Problem iS 56 the’ unique fixed probability vector of
+
+In a Markov chain the process reaches to a certain state after which it continues to
+remain in the same state. Such a state is called an absorbing state of the Markov chain.
+In an absorbing state the transition probabilities p, j atesuch that
+
+- Pj =1-for i=; and Pj; = 0 otherwise.
+
+Thus a state a; . of the Markov chain is absorbing if the i” row of the t.p.m has 1 on
+the principal diagonal and zeroes elsewhere.
+
+Examples :
+os a
+a
+a bee - D 0 Tansaie' a, is absorbing.
+| o 4 4
+ay . ar We
+[1/4 1/4 1/2 0
+t Te ay 1/2 0 0 1/2) Thestates a, and a, are absorbing.
+a; 0 O 1,0
+0 0 01
+M4 :

@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+1. Write an assertion to specify the constraint that the Sum of loans taken by a customer does not
+exceed 100,000
+CREATE ASSERTION sumofloans
+CHECK (100000> = ALL
+SELECT customer_name,sum(amount)
+FROM borrower b, loan |
+WHERE b.loan_number=l.loan_number
+GROUP BY customer_name );
+2. Write an assertion to specify the constraint that the Number of accounts for each.customer in a
+
+given branch is at most two
+
+CREATE ASSERTION NumAccounts
+
+CHECK( 2>=ALL
+
+SELECT customer_name,branch_name, count(*)
+FROM account A, depositor D
+
+WHERE A.account_number = D.account_ number
+GROUP BY customer_name, branch_name );
+
+1.2.2 Introduction to Triggers in SQL
+A trigger is a procedure that runsautomatically when a certain event occurs in the DBMS. In many
+cases it is convenient to specify the type of action to be taken when certain events occur and when
+certain conditions are satisfied. The CREATE TRIGGER statement is used to implement such
+actions in SQL.
+General form:
+CREATE TRIGGER <name>
+BEFORE | AFTER | <events>
+FOR EACH ROW |FOR EACH STATEMENT
+WHEN (<condition>)
+<action>
+A trigger has three components
+1. Event: When this event happens, the trigger is activated
+e Three event types : Insert, Update, Delete
+¢ Two triggering times: Before the event
+After the event
+
+Page 33

@@ -1,0 +1,46 @@
+Selected Bibliography 1099
+
+28.20. Consider the following set of two-dimensional records:
+
+RID Dimension1 Dimension2
+1 8 4
+2 5 4
+3 2 4
+4 2 6
+5 2 8
+6 8 6
+
+Also consider two different clustering schemes: (1) where Cluster, contains
+records {1, 2, 3} and Cluster, contains records {4, 5, 6}, and (2) where Cluster,
+contains records {1, 6} and Cluster contains records {2, 3, 4, 5}. Which scheme
+is better and why?
+
+28.21. Use the k-means algorithm to cluster the data from Exercise 28.20. We can
+use a value of 3 for K, and we can assume that the records with RIDs 1, 3,
+and 5 are used for the initial cluster centroids (means).
+
+28.22. The k-means algorithm uses a similarity metric of distance between a record
+and a cluster centroid. If the attributes of the records are not quantitative but
+categorical in nature, such as Income_level with values {low, medium, high}
+or Married with values {Yes, No} or State_of_residence with values {Alabama,
+Alaska, ..., Wyoming}, then the distance metric is not meaningful. Define a
+more suitable similarity metric that can be used for clustering data records
+that contain categorical data.
+
+Selected Bibliography
+
+Literature on data mining comes from several fields, including statistics, mathe-
+matical optimization, machine learning, and artificial intelligence. Chen et al.
+(1996) give a good summary of the database perspective on data mining. The book
+by Han and Kamber (2006) is an excellent text and describes in detail the different
+algorithms and techniques used in the data mining area. Work at IBM Almaden
+Research has produced a large number of early concepts and algorithms as well as
+results from some performance studies. Agrawal et al. (1993) report the first major
+study on association rules. Their apriori algorithm for market-basket data in
+Agrawal and Srikant (1994) is improved by using partitioning in Savasere et al.
+(1995); Toivonen (1996) proposes sampling as a way to reduce the processing effort.
+Cheung et al. (1996) extends the partitioning to distributed environments; Lin and
+Dunham (1998) propose techniques to overcome problems with data skew. Agrawal
+et al. (1993b) discuss the performance perspective on association rules. Mannila et
+al. (1994), Park et al. (1995), and Amir et al. (1997) present additional efficient algo-
+rithms related to association rules. Han et al. (2000) present the FP-tree algorithm

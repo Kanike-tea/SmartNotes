@@ -1,0 +1,44 @@
+A.5 GNU Assembler Quick Reference 631
+
+These directives name a list of ARM registers or a single ARM register. For example, the
+following code names r0 as arg and the ATPCS preserved registers as saved.
+
+arg RNO
+saved RLIST {r4-r11}
+
+ROUT
+
+The ROUT directive defines a new local label area. See Section A.4.2.
+
+SETA, SETL, SETS
+
+These directives set the values of arithmetic, logical, and string variables, respectively.
+See Section A.4.1.
+
+SPACE (alias %)
+
+{<label>} SPACE <numeric_expression>
+This directive reserves <numeric_expression> bytes of space. The bytes are zero initialized.
+
+WHILE, WEND
+
+‘These directives supply an assemble-time looping structure. WHILE is followed by a logical
+expression. While this expression is true, the assembler repeats the code between WHILE
+and WEND. The following example shows how to create an array of powers of two from 1 to
+65,536.
+
+GBLA count,
+count SETA 1
+WHILE — count<=65536
+
+DCD count
+count SETA 2*count
+WEND
+
+A.5 GNU ASSEMBLER QUICK REFERENCE
+This section summarizes the more useful commands and expressions available with the
+GNU assembler, gas, when you target this assembler for ARM. Each assembly line has the
+
+format
+
+{<label>:} {<instruction or directive} @ comment

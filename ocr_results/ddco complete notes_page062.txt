@@ -1,0 +1,101 @@
+Digital Design and Computer Organization(BCS302)
+
+Dp ———_D D
+D latch
+
+(master)
+
+Clk 1
+
+2
+D latch 2
+
+(slave)
+
+Donecice D flip-flop
+
+The construction of a D flip-flop with two D latches and an inverter is shown in
+Fig. 5.9 . The first latch is called the master and the second the slave. The
+circuit samples the D input and changes its output Q only at the negative edge
+of the synchronizing or controlling clock (designated as Clk ). When the clock is
+0, the output of the inverter is 1. The slave latch is enabled, and its output Q is
+equal to the master output Y . The master latch is disabled because Clk = 0.
+When the input pulse changes to the logic-1 level, the data from the external D
+input are transferred to the master. The slave, however, is disabled as long as
+the clock remains at the 1 level, because its enable input is equal to 0. Any
+change in the input changes the master output at Y, but cannot affect the slave
+output. When the clock pulse returns to 0, the master is disabled and is isolated
+from the D input. At the same time, the slave is enabled and the value of Y is
+transferred to the output of the flip-flop at Q . Thus, a change in the output of
+the flip-flop can be triggered only by and during the transition of the clock from
+1 to 0.
+
+Comparison between Latch and Flipflop
+
+LATCH
+
+FLIP — FLOP
+
+Latches do not require clock signal_
+
+Flip — flops have clock signals
+
+‘A latch is an asynchronous device
+
+‘A flip — flop is a synchronous
+device.
+
+Latches are transparent devicesie.
+
+when they are enabled, the output
+
+changes immediately if the input
+changes
+
+A latch is a Level Sensitive device
+(Level Triggering is involved)
+
+‘A transition from low to high or high
+to low of the clock signal will cause
+the flip — flop to either change its
+output or retain it depending on the
+input signal
+‘A flip — flop is an edge sensitive
+device (Edge Triggering is
+involved).
+
+Latches are simpler to design as
+there is no clock signal (ne careful
+routing of clock signal is required),
+
+‘The operation of a latch is faster as
+they do not have to wait for any
+clock signal
+
+‘When compare to latches, flip —
+flops are more complex to design as
+they have clock signal and it has to
+be carefully routed. This is because
+all the flip — flops in a design should
+have a clock signal and the delay in
+the clock reaching each flip — flop
+must be minimum or negligible.
+Flip - flops are comparatively slower
+than latches due te clock signal.
+
+The power requirement of a lateh is
+less.
+
+Power requirement of a flip — flop is
+more,
+
+A latch works based on the enable
+signal
+
+Dr Ajay V G, Dept. of CSE , SVIT
+
+A flip — flop works based on the
+
+clock signal
+
+Page 34

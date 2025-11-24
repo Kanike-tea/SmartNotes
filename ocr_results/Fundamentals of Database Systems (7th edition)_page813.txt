@@ -1,0 +1,49 @@
+21.1 Two-Phase Locking Techniques for Concurrency Control 783
+lock_item(X):
+B: if LOCK(X) =0 (titem is unlocked*)
+then LOCK(X) <1 __(*lock the item*)
+else
+begin
+wait (until LOCK(X) = 0
+and the lock manager wakes up the transaction);
+goto B
+end;
+unlock_item(X):
+LOCK(X) — 0; (* unlock the item *) Figure 21.1
+if any transactions are waiting Lock and unlock operations
+then wakeup one of the waiting transactions; for binary locks
+
+LOCK(X) = 1, the transaction is forced to wait. If LOCK(X) = 0, it is set to 1 (the
+transaction locks the item) and the transaction is allowed to access item X. When
+the transaction is through using the item, it issues an unlock_item(X) operation,
+which sets LOCK(X) back to 0 (unlocks the item) so that X may be accessed by
+other transactions. Hence, a binary lock enforces mutual exclusion on the data
+item. A description of the lock_item(X) and unlock_item(X) operations is shown in
+Figure 21.1.
+
+Notice that the lock_item and unlock_item operations must be implemented as indi-
+visible units (known as critical sections in operating systems); that is, no interleav-
+ing should be allowed once a lock or unlock operation is started until the operation
+terminates or the transaction waits. In Figure 21.1, the wait command within the
+lock_item(X) operation is usually implemented by putting the transaction in a wait-
+ing queue for item X until X is unlocked and the transaction can be granted access
+to it. Other transactions that also want to access X are placed in the same queue.
+Hence, the wait command is considered to be outside the lock_item operation.
+
+It is simple to implement a binary lock; all that is needed is a binary-valued variable,
+LOCK, associated with each data item X in the database. In its simplest form, each
+lock can be a record with three fields: <Data_item_name, LOCK, Locking_transaction>
+plus a queue for transactions that are waiting to access the item. The system needs
+to maintain only these records for the items that are currently locked in a lock table,
+which could be organized as a hash file on the item name. Items not in the lock
+table are considered to be unlocked. The DBMS has a lock manager subsystem to
+keep track of and control access to locks.
+
+If the simple binary locking scheme described here is used, every transaction must
+obey the following rules:
+
+1. A transaction T must issue the operation lock_item(X) before any
+read_item(X) or write_item(X) operations are performed in T.
+
+2. A transaction T must issue the operation unlock_item(X) after all read_item(X)
+and write_item(X) operations are completed in T.

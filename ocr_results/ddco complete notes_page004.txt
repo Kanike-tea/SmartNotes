@@ -1,0 +1,45 @@
+Digital Design and Computer Organization(BCS302)
+
+=x(y + 1) 3(a)
+=x.l 2(a)
+=x 2(b)
+
+THEOREM 6(b): x(x + y) = x by duality.
+
+> The theorems of Boolean algebra can be proven by means of truth tables.
+
+> In truth tables, both sides of the relation are checked to see whether they yield
+identical results for all possible combinations of the variables involved.
+
+> The following truth table verifies the first absorption theorem:
+
+o/lo o| o
+
+1/0 0 1
+
+The truth table for the first DeMorgan’s theorem, (x + y)' = x'y', is as follows:
+
+x y(xty| (x+y) x' | y' | xy’
+0 0 0 1 1 1 1
+0 1 1 0 1/0] 0
+1 0} 1 0 0} 1 0
+1 1 1 0 0 0 0
+
+The operator precedence for evaluating Boolean expressions is
+(1) parentheses, (2) NOT, (3) AND, and (4) OR
+BOOLEAN FUNCTIONS
+
+> Boolean algebra is an algebra that deals with binary variables and logic
+operations.
+
+> A Boolean function described by an algebraic expression consists of binary
+variables, the constants 0 and 1, and the logic operation symbols.
+
+> For a given value of the binary variables, the function can be equal to either 1 or
+0.
+
+Consider the Boolean function F1 = x + y'z The function F1 is equal to 1 if x is equal
+to 1 or if both y' and z are equal to 1. F1 is equal to 0 otherwise. Therefore, F1 = 1 if x
+= lorify=Oandz=1.
+
+Page 5

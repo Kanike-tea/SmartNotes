@@ -1,0 +1,44 @@
+Data Structures and Applications(BCS304) Module 2
+
+temp—coef = c;
+temp—expon =e;
+temp->link =rear->link;
+rear->link=temp;
+rear=temp;
+return(rear);
+
+}
+
+Analysis of Polynomial function
+The number of non zero terms in A and in B are the most important factors in the time complexity
+
+Therefore, let m and n be the number of nonzero terms in A and B, respectively.
+A(x)= am-1xm-1 + a0x0
+B(x)= bm-1xn-1 + bOx0
+
+If m > 0 and n > 0, the while loop is entered. Each iteration of the loop requires O(1) time.At each
+iteration, either a or b moves to the next term or both move to the next term. Since the iteration
+terminates when either a or b reaches the end of the list, therefore, the number of iterations is bounded
+bym+n- 1.
+
+The time for the remaining two loops is bounded by O(n +m). The first loop can iterate m times and
+the second can iterate n times. So, the asymptotic computing time of this algorithm is O(n +m).
+
+Erasing a circular list
+
+If we wish to compute more polynomials, it would be useful to reclaim the NODEs that are being
+used. This function erases a circular list pointed by ptr and adds the NODE to the availability list.
+void cerase(POLY *ptr)
+
+{
+POLY* temp;
+if (ptr )
+{
+temp = ptr>link ptr-
+>link=avail avail =
+temp;
+*ptr = NULL;
+t
+i
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 31

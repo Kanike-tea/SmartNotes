@@ -1,0 +1,32 @@
+32. Chapter 2. ARM Processor Fundamentals
+
+Fetch Decode Execute
+Time | Cycle 1 (sR) ee svc
+Cycle 2 (usr ) IR Svc
+Cycle3 (CAND ) (‘00 ) (sr ) mane
+Cycle4 { suB } ( ano ) ( ap )
+
+Figure 2.11 ARM instruction sequence.
+
+Time 0x8000 LDR pc, [pc, #0]
+0x8004 NOP
+0x8008 DCD jumpAddress
+
+(0x8000 + 8)
+
+Figure2.12 Example: pc= address + 8.
+
+architectural characteristic across all the pipelines. Note when the processor is in Thumb
+state the pcis the instruction address plus 4.
+
+There are three other characteristics of the pipeline worth mentioning. First, the exe-
+cution of a branch instruction or branching by the direct modification of the pc causes the
+ARM core to flush its pipeline.
+
+Second, ARM10 uses branch prediction, which reduces the effect of a pipeline flush by
+predicting possible branches and loading the new branch address prior to the execution of
+the instruction.
+
+Third, an instruction in the execute stage will complete even though an interrupt has
+been raised. Other instructions in the pipeline will be abandoned, and the processor will
+start filling the pipeline from the appropriate entry in the vector table.

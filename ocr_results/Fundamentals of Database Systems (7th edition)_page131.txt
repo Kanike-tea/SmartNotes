@@ -1,0 +1,57 @@
+3.26.
+
+3.27.
+
+3.28.
+
+Consider an entity type SECTION in a UNIVERSITY database, which describes
+the section offerings of courses. The attributes of SECTION are
+Section_number, Semester, Year, Course_number, Instructor, Room_no (where
+section is taught), Building (where section is taught), Weekdays (domain is
+the possible combinations of weekdays in which a section can be offered
+{‘MWP’, ‘MW’, ‘TT’, and so on}), and Hours (domain is all possible
+time periods during which sections are offered {‘9-9:50 a.m.’, ‘10-10:50
+AM.’,..., ‘3:30-4:50 p.m.’, ‘5:30-6:20 p.m.’, and so on}). Assume that
+Section_number is unique for each course within a particular semes-
+ter/year combination (that is, if a course is offered multiple times during
+a particular semester, its section offerings are numbered 1, 2, 3, and so
+on). There are several composite keys for section, and some attributes
+are components of more than one key. Identify three composite keys,
+and show how they can be represented in an ER schema diagram.
+
+Cardinality ratios often dictate the detailed design of a database. The cardi-
+nality ratio depends on the real-world meaning of the entity types involved
+and is defined by the specific application. For the following binary relation-
+ships, suggest cardinality ratios based on the common-sense meaning of the
+entity types. Clearly state any assumptions you make.
+
+Entity 1 Cardinality Ratio Entity 2
+1. STUDENT SOCIAL_SECURITY_CARD
+2. STUDENT TEACHER
+3. CLASSROOM WALL
+4. COUNTRY CURRENT_PRESIDENT
+5. COURSE TEXTBOOK
+6. ITEM (that can be found ORDER
+in an order)
+7. STUDENT CLASS
+8. CLASS INSTRUCTOR
+9. INSTRUCTOR OFFICE
+10. EBAY_AUCTION_ITEM EBAY_BID
+
+Consider the ER schema for the MOVIES database in Figure 3.25.
+
+Assume that MOVIES is a populated database. ACTOR is used as a generic term
+and includes actresses. Given the constraints shown in the ER schema, respond
+to the following statements with True, False, or Maybe. Assign a response of
+Maybe to statements that, although not explicitly shown to be True, cannot be
+proven False based on the schema as shown. Justify each answer.
+
+a. There are no actors in this database that have been in no movies.
+b. There are some actors who have acted in more than ten movies.
+c. Some actors have done a lead role in multiple movies.
+
+d. A movie can have only a maximum of two lead actors.
+
+Exercises
+
+101

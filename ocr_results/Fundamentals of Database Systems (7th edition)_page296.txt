@@ -1,0 +1,56 @@
+266
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+This query could be specified in other ways; for example, the order of the JOIN
+and SELECT operations could be reversed, or the JOIN could be replaced by a
+NATURAL JOIN after renaming one of the join attributes to match the other join
+attribute name.
+
+Query 2. For every project located in ‘Stafford; list the project number, the con-
+trolling department number, and the department manager’s last name, address,
+and birth date.
+
+STAFFORD_PROJS < Gpiocation='Stafford'(PROJECT)
+
+CONTR_DEPTS < (STAFFORD_PROJS ™ ppum-=DnumberDEPARTMENT)
+PROJ_DEPT_MGRS < (CONTR_DEPTS ™ gr. son=Sone MPLOYEE)
+RESULT < Tpnumber, Daum, Lname, Address, Bdate(PROJ_DEPT_MGRS)
+
+In this example, we first select the projects located in Stafford, then join them with
+their controlling departments, and then join the result with the department manag-
+ers. Finally, we apply a project operation on the desired attributes.
+
+Query 3. Find the names of employees who work on all the projects controlled
+by department number 5.
+
+DEPTS_PROJS € PPro) TePrumber(Sdunas(PROJECT)))
+EMP_PROJ < (ssn, Pro)(Tessn, Po(WORKS_ON))
+RESULT_EMP_SSNS < EMP_PROJ + DEPTS_PROJS
+RESULT Ti, name, Fname(RESULT_EMP_SSNS * EMPLOYEE)
+
+In this query, we first create a table DEPT5_PROJS that contains the project
+numbers of all projects controlled by department 5. Then we create a table
+EMP_PROJ that holds (Ssn, Pno) tuples, and apply the division operation. Notice
+that we renamed the attributes so that they will be correctly used in the division
+operation. Finally, we join the result of the division, which holds only Ssn val-
+ues, with the EMPLOYEE table to retrieve the Fname, Lname attributes from
+EMPLOYEE.
+
+Query 4. Make a list of project numbers for projects that involve an employee
+whose last name is ‘Smith; either as a worker or as a manager of the department
+that controls the project.
+
+SMITHS(Essn) < Tgen (Giname='Smith(EMPLOYEE))
+
+SMITH_WORKER_PROJS < Tippo(WORKS_ON * SMITHS)
+
+MGRS © Tiname, Dnumber( EMPLOYEE PS gon-gr_ssnDEPARTMENT)
+SMITH_MANAGED_DEPTS(Dnum) < Tipaumber (Giname=Smith(MGRS))
+SMITH_MGR_PROJS(Pno) < Tpnumber(SMITH_MANAGED_DEPTS * PROJECT)
+RESULT < (SMITH_WORKER_PROJS U SMITH_MGR_PROJS)
+
+In this query, we retrieved the project numbers for projects that involve an employee
+named Smith as a worker in SMITH_WORKER_PROJS. Then we retrieved the proj-
+ect numbers for projects that involve an employee named Smith as manager of the
+department that controls the project in SMITH_MGR_PROJS. Finally, we applied the

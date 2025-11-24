@@ -1,0 +1,55 @@
+658
+
+Chapter 18 Strategies for Query Processing
+
+and HAVING clauses if these are part of the block. Hence, nested queries within a
+query are identified as separate query blocks. Because SQL includes aggregate
+operators—such as MAX, MIN, SUM, and COUNT—these operators must also be
+included in the extended algebra, as we discussed in Section 8.4.
+
+Consider the following SQL query on the EMPLOYEE relation in Figure 5.5:
+
+SELECT Lname, Fname
+
+FROM EMPLOYEE
+
+WHERE Salary > ( SELECT MAX (Salary)
+FROM EMPLOYEE
+WHERE Dno=S );
+
+This query retrieves the names of employees (from any department in the com-
+pany) who earn a salary that is greater than the highest salary in department 5. The
+query includes a nested subquery and hence would be decomposed into two blocks.
+The inner block is:
+
+( SELECT MAX (Salary)
+FROM EMPLOYEE
+WHERE Dno=5 )
+
+This retrieves the highest salary in department 5. The outer query block is:
+
+SELECT Lname, Fname
+FROM EMPLOYEE
+WHERE Salary > c
+
+where c represents the result returned from the inner block. The inner block could
+be translated into the following extended relational algebra expression:
+
+‘Sax Salary(Gono=5(EMPLOYEE))
+and the outer block into the expression:
+TeLname,Fname(OSalary>c(EMPLOYEE))
+
+The query optimizer would then choose an execution plan for each query block.
+Notice that in the above example, the inner block needs to be evaluated only once to
+produce the maximum salary of employees in department 5, which is then used—as
+the constant c—by the outer block. We called this a nested subquery block (which is
+uncorrelated to the outer query block) in Section 7.1.2. It is more involved to opti-
+mize the more complex correlated nested subqueries (see Section 7.1.3), where a
+tuple variable from the outer query block appears in the WHERE-clause of the inner
+query block. Many techniques are used in advanced DBMSs to unnest and optimize
+correlated nested subqueries.
+
+18.1.1 Additional Operators Semi-Join and Anti-Join
+
+Most RDBMSs currently process SQL queries arising from various types of enterprise
+applications that include ad hoc queries, standard canned queries with parameters,

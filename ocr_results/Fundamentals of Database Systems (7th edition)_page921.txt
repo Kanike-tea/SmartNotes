@@ -1,0 +1,53 @@
+24.3 Document-Based NOSQL Systems and MongoDB
+
+For our example, we will create another document collection called worker to
+hold information about the EMPLOYEEs who work on each project; for
+example:
+
+db.createCollection(“worker’, { capped : true, size : 5242880, max : 2000 } ) )
+
+Each document in a collection has a unique ObjectId field, called _id, which is
+automatically indexed in the collection unless the user explicitly requests no index
+for the _id field. The value of ObjectId can be specified by the user, or it can be
+system-generated if the user does not specify an _id field for a particular document.
+System-generated Objectlds have a specific format, which combines the timestamp
+when the object is created (4 bytes, in an internal MongoDB format), the node id
+(3 bytes), the process id (2 bytes), and a counter (3 bytes) into a 16-byte Id value.
+User-generated ObjectsIds can have any value specified by the user as long as it
+uniquely identifies the document and so these Ids are similar to primary keys in
+relational systems.
+
+A collection does not have a schema. The structure of the data fields in documents
+is chosen based on how documents will be accessed and used, and the user can
+choose a normalized design (similar to normalized relational tuples) or a denor-
+malized design (similar to XML documents or complex objects). Interdocument
+references can be specified by storing in one document the Objectld or Objectlds of
+other related documents. Figure 24.1(a) shows a simplified MongoDB document
+showing some of the data from Figure 5.6 from the COMPANY database example
+that is used throughout the book. In our example, the _id values are user-defined,
+and the documents whose _id starts with P (for project) will be stored in the “project”
+collection, whereas those whose _id starts with W (for worker) will be stored in the
+“worker” collection.
+
+In Figure 24.1(a), the workers information is embedded in the project document; so
+there is no need for the “worker” collection. This is known as the denormalized pat-
+tern, which is similar to creating a complex object (see Chapter 12) or an XML
+document (see Chapter 13). A list of values that is enclosed in square brackets [ ... ]
+within a document represents a field whose value is an array.
+
+Another option is to use the design in Figure 24.1(b), where worker references are
+embedded in the project document, but the worker documents themselves are
+stored in a separate “worker” collection. A third option in Figure 24.1(c) would
+use a normalized design, similar to First Normal Form relations (see Sec-
+tion 14.3.4). The choice of which design option to use depends on how the data
+will be accessed.
+
+It is important to note that the simple design in Figure 24.1(c) is not the general nor-
+malized design for a many-to-many relationship, such as the one between employees
+and projects; rather, we would need three collections for “project”, “employee”, and
+“works_on”, as we discussed in detail in Section 9.1. Many of the design tradeoffs
+that were discussed in Chapters 9 and 14 (for first normal form relations and for ER-
+to-relational mapping options), and Chapters 12 and 13 (for complex objects and
+XML) are applicable for choosing the appropriate design for document structures
+
+891

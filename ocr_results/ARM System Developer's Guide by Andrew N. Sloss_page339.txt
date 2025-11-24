@@ -1,0 +1,52 @@
+326 Chapter 9 Exception and Interrupt Handling
+
+The second method involves prioritization. You program the interrupt controller to
+ignore interrupts of the same or lower priority than the interrupt you are handling, so only
+a higher-priority task can interrupt your handler. You then reenable interrupts.
+
+The processor spends time in the lower-priority interrupts until a higher-priority inter-
+rupt occurs. Therefore higher-priority interrupts have a lower average interrupt latency
+than the lower-priority interrupts, which reduces latency by speeding up the completion
+time on the critical time-sensitive interrupts.
+
+9.2.3. IRQ AND FIQ EXCEPTIONS
+
+EXAMPLE
+
+9.5
+
+IRQ and FIQ exceptions only occur when a specific interrupt mask is cleared in the cpsr. The
+ARM processor will continue executing the current instruction in the execution stage of the
+pipeline before handling the interrupt—an important factor in designing a deterministic
+interrupt handler since some instructions require more cycles to complete the execution
+stage.
+
+An IRQ or FIQ exception causes the processor hardware to go through a standard
+procedure (provided the interrupts are not masked):
+
+1. The processor changes to a specific interrupt request mode, which reflects the interrupt
+being raised.
+
+2. The previous mode’s cpsr is saved into the spsr of the new interrupt request mode.
+3. The pcis saved in the /r of the new interrupt request mode.
+
+4. Interrupt/s are disabled—either the IRQ or both IRQ and FIQ exceptions are disabled
+in the cpsr. This immediately stops another interrupt request of the same type being
+raised.
+
+5. The processor branches to a specific entry in the vector table.
+
+‘The procedure varies slightly depending upon the type of interrupt being raised. We will
+illustrate both interrupts with an example. The first example shows what happens when
+an IRQ exception is raised, and the second example shows what happens when an FIQ
+exception is raised.
+
+Figure 9.4 shows what happens when an IRQ exception is raised when the processor is in
+user mode. The processor starts in state 1. In this example both the IRQ and FIQ exception
+bits in the cpsr are enabled.
+
+When an IRQ occurs the processor moves into state 2. This transition automatically
+sets the IRQ bit to one, disabling any further IRQ exceptions. The FIQ exception, however,
+remains enabled because FIQ has a higher priority and therefore does not get disabled when
+a low-priority IRQ exception is raised. The cpsr processor mode changes to IRQ mode. The
+user mode cpsr is automatically copied into spsr_irq.

@@ -1,0 +1,26 @@
+1. Directed Graphs and q,.
+82 Cra
+
+If G isa simple graph with n vertices in which the degree of every verter ;
+least (n — 1)/2, prove that G is connected. :
+> Take any two vertices u and v of G. Then they are either adjacent or not adjacent, [f
+
+the degree of every vertex is at least (n — 1)/2. Therefore, u and v taken together have at}
+n— 1 neighbours. But, since G has a total of n vertices; the total number of neighbours Whig
+wand v together can have is only n — 2. Therefore, at least one vertex, say x, 1S a neighbour
+
+Thus, there is a path between u and v. As such, G must be connected.
+
+Prove that a connected graph G\remains connected after removing an edge
+from G if and only if e is a part of some cycle in G. het i
+
+» Suppose e is a part of some cycle C in G: ‘Then the end vertices of @ (say, A’and B) ar |
+joined by at least two paths, one of which is‘e and the other C ~'e. (See Figure'1/1'16 whe i 3
+e is shown by thick arc). Hence the removal of e from G will not affect the connectivity of
+
+G;. because even after the removal of ’e the énd vertices of'e (i.e.,-A and ’B) remain conn
+(through the path C - e). a
+
+B
+
+Figure 1.116

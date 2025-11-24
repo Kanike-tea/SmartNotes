@@ -1,0 +1,75 @@
+case '$! : while( prec(stack[top]) >= prec(symb) )
+
+{
+temp = pop0);
+postfix[j] = temp;
+Jes
+}
+push(symb);
+break;
+default: postfix[j] = symb;
+jee
+3
+}
+while(top > 0)
+{
+
+temp = pop0);
+
+postfix[j] = temp;
+
+jn
+}
+postfix[j] =
+
+i
+void push(char item)
+
+top = top+1;
+stack[top] = item;
+
+}
+char pop()
+{
+
+char item;
+
+item = stack[top];
+top = top-1;
+return item;
+
+i
+int prec(char symb)
+
+int p;
+switch(symb)
+
+{
+
+case '#'
+
+case '(':
+case ')'
+
+case '+':
+case '-':
+
+case '*"
+case '/':
+
+case '%!' +
+
+case ''::
+
+break;
+
+p=0;
+break;
+
+pal:
+break;
+
+p=2:
+break;
+
+15

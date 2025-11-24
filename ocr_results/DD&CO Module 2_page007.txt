@@ -1,0 +1,43 @@
+The three Boolean functions for C1, C2, and C3 are implemented in the carry lookahead generator shown
+in Fig below.
+
+G
+
+G
+
+-_ JUY
+
+p
+
+Po y—— a
+
+Logic diagram of carry lookahead generator
+
+The construction of a four-bit adder with a carry lookahead scheme is shown in Fig below. Each sum
+output requires two exclusive-OR gates. The output of the first exclusive-OR gate generates the Pi
+variable, and the AND gate generates the Gi variable. The carries are propagated through the carry
+lookahead generator. Thus, outputs S1 through S3 have equal propagation delay times
+
+G Cy
+Bs 5
+As—> ® || Ps
+sy
+— c
+Gs
+Bs 4H p.
+Ay * Pa
+° s
+—, c
+G
+i Carry
+Lookahead
++ F Generator
+A+ 1 A, .
+—, GQ 1
+G
+Bo
+Po Po
+
+a,
+
+Four-bit adder with carry lookahead

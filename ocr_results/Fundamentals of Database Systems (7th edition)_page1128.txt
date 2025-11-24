@@ -1,0 +1,133 @@
+1098 Chapter 28 Data Mining Concepts
+
+Exercises
+
+28.14. Apply the apriori algorithm to the following data set.
+
+28.15.
+28.16.
+
+28.17.
+28.18.
+
+28.19.
+
+Trans_id
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+
+Items_purchased
+milk, bread, eggs
+milk, juice
+
+juice, butter
+milk, bread, eggs
+coffee, eggs
+coffee
+
+coffee, juice
+milk, bread, cookies, eggs
+cookies, butter
+milk, bread
+
+The set of items is {milk, bread, cookies, eggs, butter, coffee, juice}. Use 0.2
+for the minimum support value.
+
+Show two rules that have a confidence of 0.7 or greater for an itemset con-
+taining three items from Exercise 28.14.
+
+For the partition algorithm, prove that any frequent itemset in the database
+must appear as a local frequent itemset in at least one partition.
+
+Show the FP-tree that would be made for the data from Exercise 28.14.
+
+Apply the FP-growth algorithm to the FP-tree from Exercise 28.17 and show
+the frequent itemsets.
+
+Apply the classification algorithm to the following set of data records. The
+class attribute is Repeat_customer.
+
+RID
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+
+Age
+
+20...
+20...
+31...
+51...
+31...
+41...
+41...
+20...
+20...
+20...
+
+30
+30
+40
+60
+40
+50
+50
+30
+30
+30
+
+City
+NY
+SF
+
+NY
+NY
+LA
+
+NY
+NY
+LA
+
+NY
+NY
+
+Gender Education
+college
+graduate
+college
+college
+high school
+college
+graduate
+college
+high school
+college
+
+mnzimn ems S07
+
+Repeat_customer
+YES
+YES
+YES
+NO
+NO
+YES
+YES
+YES
+NO
+YES

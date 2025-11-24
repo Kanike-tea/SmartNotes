@@ -1,0 +1,53 @@
+16.11 Modern Storage Architectures
+
+Channel switch to connect multiple RAID systems, tape libraries, and so on to serv-
+ers; and the use of Fiber Channel hubs and switches to connect servers and storage
+systems in different configurations. Organizations can slowly move up from sim-
+pler topologies to more complex ones by adding servers and storage devices as
+needed. We do not provide further details here because they vary among SAN ven-
+dors. The main advantages claimed include:
+
+= Flexible many-to-many connectivity among servers and storage devices
+using Fiber Channel hubs and switches
+
+= Up to 10 km separation between a server and a storage system using appro-
+priate fiber optic cables
+
+= Better isolation capabilities allowing nondisruptive addition of new periph-
+erals and servers
+
+= High-speed data replication across multiple storage systems. Typical tech-
+nologies use synchronous replication for local and asynchronous replication
+for disaster recovery (DR) solutions.
+
+SANs are growing very rapidly but are still faced with many problems, such as com-
+bining storage options from multiple vendors and dealing with evolving standards
+of storage management software and hardware. Most major companies are evaluat-
+ing SANs as a viable option for database storage.
+
+16.11.2 Network-Attached Storage
+
+With the phenomenal growth in digital data, particularly generated from multi-
+media and other enterprise applications, the need for high-performance storage
+solutions at low cost has become extremely important. Network-attached storage
+(NAS) devices are among the storage devices being used for this purpose. These
+devices are, in fact, servers that do not provide any of the common server services,
+but simply allow the addition of storage for file sharing. NAS devices allow vast
+amounts of hard-disk storage space to be added to a network and can make that
+space available to multiple servers without shutting them down for maintenance
+and upgrades. NAS devices can reside anywhere on a local area network (LAN) and
+may be combined in different configurations. A single hardware device, often called
+the NAS box or NAS head, acts as the interface between the NAS system and net-
+work clients. These NAS devices require no monitor, keyboard, or mouse. One or
+more disk or tape drives can be attached to many NAS systems to increase total
+capacity. Clients connect to the NAS head rather than to the individual storage
+devices. A NAS can store any data that appears in the form of files, such as e-mail
+boxes, Web content, remote system backups, and so on. In that sense, NAS devices
+are being deployed as a replacement for traditional file servers.
+
+NAS systems strive for reliable operation and easy administration. They include
+built-in features such as secure authentication, or the automatic sending of e-mail
+alerts in case of error on the device. The NAS devices (or appliances, as some ven-
+dors refer to them) are being offered with a high degree of scalability, reliability,
+
+589

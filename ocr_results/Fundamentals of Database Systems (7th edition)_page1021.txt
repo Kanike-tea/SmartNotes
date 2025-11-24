@@ -1,0 +1,54 @@
+26.3 Spatial Database Concepts
+
+update. A representative example of dynamic operations would be updating a spa-
+tial object that can be subdivided into translate (shift position), rotate (change ori-
+entation), scale up or down, reflect (produce a mirror image), and shear (deform).
+
+Spatial Queries. Spatial queries are requests for spatial data that require the
+use of spatial operations. The following categories illustrate three typical types of
+spatial queries:
+
+= Range queries. Find all objects of a particular type that are within a given
+spatial area; for example, find all hospitals within the Metropolitan Atlanta
+city area. A variation of this query is to find all objects within a particular
+distance from a given location; for example, find all ambulances within a
+five mile radius of an accident location.
+
+= Nearest neighbor queries. Finds an object of a particular type that is closest
+to a given location; for example, find the police car that is closest to the loca-
+tion of a crime. This can be generalized to find the k nearest neighbors, such
+as the 5 closest ambulances to an accident location.
+
+= Spatial joins or overlays. Typically joins the objects of two types based on
+some spatial condition, such as the objects intersecting or overlapping spa-
+tially or being within a certain distance of one another. For example, find all
+townships located on a major highway between two cities or find all homes
+that are within two miles of a lake. The first example spatially joins township
+objects and highway object, and the second example spatially joins lake
+objects and home objects.
+
+26.3.4 Spatial Data Indexing
+
+A spatial index is used to organize objects into a set of buckets (which correspond
+to pages of secondary memory), so that objects in a particular spatial region can be
+easily located. Each bucket has a bucket region, a part of space containing all objects
+stored in the bucket. The bucket regions are usually rectangles; for point data struc-
+tures, these regions are disjoint and they partition the space so that each point
+belongs to precisely one bucket. There are essentially two
+
+1. Specialized indexing structures that allow efficient search for data objects
+based on spatial search operations are included in the database system.
+These indexing structures would play a similar role to that performed by
+B*-tree indexes in traditional database systems. Examples of these indexing
+structures are grid files and R-trees. Special types of spatial indexes, known as
+spatial join indexes, can be used to speed up spatial join operations.
+
+2. Instead of creating brand new indexing structures, the two-dimensional (2-D)
+spatial data is converted to single-dimensional (1-D) data, so that traditional
+indexing techniques (B*-tree) can be used. The algorithms for converting
+from 2-D to 1-D are known as space filling curves. We will not discuss these
+methods in detail (see the Selected Bibliography for further references).
+
+We give an overview of some of the spatial indexing techniques next.
+
+991

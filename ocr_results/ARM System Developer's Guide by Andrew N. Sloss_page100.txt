@@ -1,0 +1,33 @@
+CHAPTER
+
+INTRODUCTION
+TO THE THUMB
+INSTRUCTION SET
+
+This chapter introduces the Thumb instruction set. Thumb encodes a subset of the 32-bit
+ARM instructions into a 16-bit instruction set space. Since Thumb has higher performance
+than ARM on a processor with a 16-bit data bus, but lower performance than ARM on
+a 32-bit data bus, use Thumb for memory-constrained systems.
+
+Thumb has higher code density—the space taken up in memory by an executable
+program—than ARM. For memory-constrained embedded systems, for example, mobile
+phones and PDAs, code density is very important. Cost pressures also limit memory size,
+width, and speed.
+
+On average, a Thumb implementation of the same code takes up around 30% less
+memory than the equivalent ARM implementation. As an example, Figure 4.1 shows the
+same divide code routine implemented in ARM and Thumb assembly code. Even though the
+Thumb implementation uses more instructions, the overall memory footprint is reduced.
+Code density was the main driving force for the Thumb instruction set. Because it was also
+designed as a compiler target, rather than for hand-written assembly code, we recommend
+that you write Thumb-targeted code in a high-level language like C or C++.
+
+Each Thumb instruction is related to a 32-bit ARM instruction. Figure 4.2 shows
+a simple Thumb ADD instruction being decoded into an equivalent ARM ADD instruction.
+
+Table 4.1 provides a complete list of Thumb instructions available in the THUMBv2
+architecture used in the ARMv5TE architecture. Only the branch relative instruction
+can be conditionally executed. The limited space available in 16 bits causes the barrel
+shift operations ASR, LSL, LSR, and ROR to be separate instructions in the Thumb ISA.
+
+87

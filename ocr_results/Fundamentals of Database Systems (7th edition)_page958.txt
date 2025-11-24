@@ -1,0 +1,54 @@
+928
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Task process, launching the Task JVM, monitoring the process and coordinat-
+ing with the JobTracker to perform management operations like cleanup on
+Task exit, and killing Tasks on failure conditions. The TaskTracker also pro-
+vides the Shuffle Service to Tasks; we describe this when we discuss the Shuffle
+Procedure below.
+
+Job completion Once the last Task in a Job is completed, the JobTracker runs
+the Job cleanup task (which is used to clean up intermediate files in both HDFS
+and the local file systems of TaskTrackers).
+
+Fault Tolerance in MapReduce
+
+There are three kinds of failures: failure of the Task, failure of the TaskTracker,
+and failure of the JobTracker.
+
+Task failure This can occur if the Task code throws a Runtime exception, or if
+the Java Virtual Machine crashes unexpectedly. Another issue is when the Task-
+Tracker does not receive any updates from the Task process for a while (the time
+period is configurable). In all these cases the TaskTracker notifies the JobTracker
+that the Task has failed. When the JobTracker is notified of the failure, it will
+reschedule execution of the task.
+
+TaskTracker failure A TaskTracker process may crash or become disconnected
+from the JobTracker. Once the JobTracker marks a TaskTracker as failed, any
+map tasks completed by the TaskTracker are put back on the queue to be
+rescheduled. Similarly, any map task or reduce task in progress on a failed Task-
+Tracker is also rescheduled.
+
+JobTracker failure In Hadoop v1, JobTracker failure is not a recoverable failure.
+The JobTracker is a Single Point of Failure. The JobTracker has to be manually
+restarted. On restart all the running jobs have to be resubmitted. This is one of
+the drawbacks of Hadoop v1 that have been addressed by the next generation of
+Hadoop MapReduce called YARN.
+
+Semantics in the presence of failure When the user-supplied map and reduce
+operators are deterministic functions of their input values, the MapReduce sys-
+tem produces the same output as would have been produced by a nonfaulting
+sequential execution of the entire program. Each task writes its output to a pri-
+vate task directory. If the JobTracker receives multiple completions for the same
+Task, it ignores all but the first one. When a Job is completed, Task outputs are
+moved to the Job output directory.
+
+The Shuffle Procedure
+
+A key feature of the MapReduce (MR) programming model is that the reducers
+get all the rows for a given key together. This is delivered by what is called the
+MR shuffle. The shuffle is divided into the Map, Copy, and Reduce phases.
+
+Map phase: When rows are processed in Map tasks, they are initially held in an
+in-memory buffer, the size of which is configurable (the default is 100 MB). A

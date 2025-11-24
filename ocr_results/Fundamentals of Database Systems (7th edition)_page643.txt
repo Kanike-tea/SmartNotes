@@ -1,0 +1,59 @@
+17.2 Multilevel Indexes 613
+
+Table 17.1 Types of Indexes Based on the Properties of the Indexing Field
+
+Index Field Used for Physical Index Field Not Used for Physical
+Ordering of the File Ordering of the File
+Indexing field is key Primary index Secondary index (Key)
+Indexing field is nonkey Clustering index Secondary index (NonKey)
+
+Table 17.2 Properties of Index Types
+
+Number of (First-Level) Dense or Nondense
+Type of Index Index Entries (Sparse)
+Primary Number of blocks in data file Nondense
+Clustering Number of distinct index field Nondense
+
+values
+Secondary (key) Number of records in data file Dense
+Secondary (nonkey) Number of records? or number Dense or Nondense
+
+of distinct index field values“
+
+Block Anchoring
+on the Data File
+
+Yes
+Yes/no*
+
+No
+No
+
+Yes if every distinct value of the ordering field starts a new block; no otherwise.
+For option 1
+‘For options 2 and 3.
+
+17.2 Multilevel Indexes
+
+The indexing schemes we have described thus far involve an ordered index file. A
+binary search is applied to the index to locate pointers to a disk block or to a record
+(or records) in the file having a specific index field value. A binary search requires
+approximately (log b;) block accesses for an index with b; blocks because each step
+of the algorithm reduces the part of the index file that we continue to search by a
+factor of 2. This is why we take the log function to the base 2. The idea behind a
+multilevel index is to reduce the part of the index that we continue to search by
+bfr;, the blocking factor for the index, which is larger than 2. Hence, the search
+space is reduced much faster. The value bfr; is called the fan-out of the multilevel
+index, and we will refer to it by the symbol fo. Whereas we divide the record search
+space into two halves at each step during a binary search, we divide it n-ways
+(where n = the fan-out) at each search step using the multilevel index. Searching a
+multilevel index requires approximately (log;, b;) block accesses, which is a sub-
+stantially smaller number than for a binary search if the fan-out is larger than 2. In
+most cases, the fan-out is much larger than 2. Given a blocksize of 4,096, which is
+most common in today’s DBMSs, the fan-out depends on how many (key + block
+pointer) entries fit within a block. With a 4-byte block pointer (which would
+accommodate 2 — 1 = 4.2 *10° blocks) and a 9-byte key such as SSN, the fan-out
+comes to 315.
+
+A multilevel index considers the index file, which we will now refer to as the first
+(or base) level of a multilevel index, as an ordered file with a distinct value for each

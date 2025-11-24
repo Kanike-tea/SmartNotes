@@ -1,0 +1,54 @@
+15.3 Algorithms for Relational Database Schema Design
+
+15.3 Algorithms for Relational Database
+Schema Design
+
+We now give two algorithms for creating a relational decomposition from a universal
+relation. The first algorithm decomposes a universal relation into dependency-
+preserving 3NF relations that also possess the nonadditive join property. The second
+algorithm decomposes a universal relation schema into BCNF schemas that possess the
+nonadditive join property. It is not possible to design an algorithm to produce BCNF
+relations that satisfy both dependency preservation and nonadditive join decomposition
+
+15.3.1. Dependency-Preserving and Nonadditive (Lossless)
+Join Decomposition into 3NF Schemas
+
+By now we know that it is not possible to have all three of the following: (1) guaran-
+teed nonlossy (nonadditive) design, (2) guaranteed dependency preservation, and
+(3) all relations in BCNF. As we have stressed repeatedly, the first condition is a
+must and cannot be compromised. The second condition is desirable, but not a
+must, and may have to be relaxed if we insist on achieving BCNF. The original lost
+FDs can be recovered by a JOIN operation over the results of decomposition. Now
+we give an algorithm where we achieve conditions 1 and 2 and only guarantee 3NF.
+Algorithm 15.4 yields a decomposition D of R that does the following:
+
+= Preserves dependencies
+= Has the nonadditive join property
+= Is such that each resulting relation schema in the decomposition is in 3NF
+
+Algorithm 15.4 Relational Synthesis into 3NF with Dependency Preservation
+and Nonadditive Join Property
+
+Input: A universal relation R and a set of functional dependencies F on the
+attributes of R.
+
+1. Find a minimal cover G for F (use Algorithm 15.2).
+
+2. For each left-hand-side X of a functional dependency that appears in G, create
+a relation schema in D with attributes {X U {Aj} U {A}} ... U {Ag} }, where
+X— A}, X— A), ..., X > A; are the only dependencies in G with X as left-
+hand side (X is the key of this relation).
+
+3. If none of the relation schemas in D contains a key of R, then create one
+more relation schema in D that contains attributes that form a key of R.
+(Algorithm 15.2(a) may be used to find a key.)
+
+4. Eliminate redundant relations from the resulting set of relations in the rela-
+tional database schema. A relation R is considered redundant if R is a projec-
+tion of another relation S in the schema; alternately, R is subsumed by S.
+
+Note that there is an additional type of dependency: R is a projection of the join of two or more relations
+in the schema. This type of redundancy is considered join dependency, as we discussed in Section 15.7.
+Hence, technically, it may continue to exist without disturbing the SNF status for the schema.
+
+519

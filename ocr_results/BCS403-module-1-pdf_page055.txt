@@ -1,0 +1,36 @@
+Database Management System [BCS403]
+
+SECRETARY—are attached to the rectangle representing that subclass. These are called specific
+
+attributes (or local attributes) of the subclass.
+
+Similarly, a subclass can participate in specific relationship types, such as_ the
+HOURLY_EMPLOYEE subclass participating in the BELONGS_TO relationship in Figure
+Figure 3.8.1(b).
+
+SECRETARY
+
+EMPLOYEE ‘ )
+ey :
+e ENGINEER
+
+Figure 3.8.1(b): Instances of a specialization
+
+Figure 3.8.1 (b) shows a few entity instances that belong to subclasses of the {SECRETARY,
+ENGINEER, TECHNICIAN} specialization. An entity that belongs to a subclass represents the
+same real-world entity as the entity connected to it in the EMPLOYEE superclass, even though the
+same entity is shown twice; for example, e1 is shown in both EMPLOYEE and SECRETARY.
+There are two main reasons for including class/subclass relationships and specializations in a data
+model.
+
+« The first is that certain attributes may apply to some but not all entities of the superclass. A
+subclass is defined in order to group the entities to which these attributes apply. The
+members of the subclass may still share the majority of their attributes with the other
+members of the superclass.
+
+= The second reason for using subclasses is that some relationship types may be participated
+in only by entities that are members of the subclass. For example, if only
+
+HOURLY_EMPLOYEES can belong to a trade union, we can represent that fact by
+
+https://vtucode.in Page 56

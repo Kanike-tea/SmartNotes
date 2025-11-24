@@ -1,0 +1,42 @@
+e IfTS(Ti) < TS(T)) — that is Ti, which is requesting a conflicting lock, is older than Tj — then
+T; is allowed to wait until the data-item is available.
+
+e IfTS(Ti) > TS(t;) — that is T; is younger than Tj — then T; dies. T; is restarted later with a
+random delay but with the same timestamp.
+
+This scheme allows the older transaction to wait but kills the younger one.
+
+Wound-Wait Scheme
+In this scheme, if a transaction requests to lock a resource (data item), which is already held with
+conflicting lock by some another transaction, one of the two possibilities may occur —
+
+e IfTS(Ti) < TS(T)), then Tj forces Tj to be rolled back — that is T; wounds Tj. Tj is restarted
+later with a random delay but with the same timestamp.
+e IfTS(T;) > TS(T)), then T; is forced to wait until the resource is available.
+
+This scheme, allows the younger transaction to wait; but when an older transaction requests an item
+held by a younger one, the older transaction forces the younger one to abort and release the item.
+
+In both the cases, the transaction that enters the system at a later stage is aborted.
+
+Multi-version Concurrency Control Techniques:
+
+This concurrency control technique keeps the old values of a data item when the item is updated.
+These are known as multiversion concurrency control, because several versions (values) of an item
+are maintained.
+
+When a transaction requires access to an item, an appropriate version is chosen to maintain the
+serializability of the currently executing schedule, if possible. The idea is that some read operations
+that would be rejected in other techniques can still be accepted by reading an older version of the
+item to maintain serializability. When a transaction writes an item, it writes a new version and the
+old version of the item is retained. Some multiversion concurrency control algorithms use the
+concept of view serializability rather than conflict serializability.
+
+An obvious drawback of multiversion techniques is that more storage is needed to maintain
+multiple versions of the database items. However, older versions may have to be maintained
+anyway—for example, for recovery purposes. In addition, some database applications require older
+versions to be kept to maintain a history of the evolution of data item values.
+
+>The extreme case is a temporal database, which keeps track of all changes and the times at which
+they occurred. In such cases, there is no additional storage penalty for multiversion techniques,
+since older versions are already maintained.

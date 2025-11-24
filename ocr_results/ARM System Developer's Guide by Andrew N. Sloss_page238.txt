@@ -1,0 +1,54 @@
+7.3 Division 225
+
+The equation f(x) = 0 has a solution at x = 2Nd@! and derivative f"(x) = 2Nx~?.
+By substitution, the Newton-Raphson iteration is given by
+
+d—2Nx! dx
+
+Sut = Bn yer = Bn ot (7.4)
+In one sense the iteration has turned our division upside-down. Instead of multiplying
+
+by 2" and dividing by d, we are now multiplying by d and dividing by 2. There are two
+
+cases that are particularly useful:
+
+=) =N = 32 and dis an integer. In this case we can approximate 2*7d~! quickly and use
+this approximation to calculate n/d, the ratio of two unsigned 32-bit numbers. See
+Section 7.3.2.1 for iterations using N = 32.
+
+= N = 0 and disa fraction represented in fixed-point format with 0.5 < d <1.In
+this case we can calculate d~! using the iteration, which is useful to calculate nd~! for
+a range of fixed-point values n. See Section 7.3.3 for iterations using N = 0.
+
+7.3.2.1 Unsigned 32/32-Bit Divide by Newton-Raphson
+
+This section gives you an alterative to the routine of Section 7.3.1.1. The following routine
+has very good worst-case performance and makes use of the faster multiplier on ARM9E.
+We use Newton-Raphson iteration with N = 32 and integral d to approximate the integer
+2°?/d. We then multiply this approximation by n and divide by 2” to get an estimate of the
+quotient q = n/d. Finally, we calculate the remainder r = n — qd and correct quotient and
+remainder for any rounding error.
+
+RN O 3 input denominator d, output quotient q
+RN 1; input numerator n, output remainder r
+RN 2 3 scratch register
+RN 3 3 scratch register
+RN 12 ; scratch register
+
+e3usa
+
+; _value_in_regs struct { unsigned q, r3 }
+; _ udiv_32by32_arm9e(unsigned d, unsigned n)
+udiv_32by32_arm9e ; instruction number : comment
+
+cz sy q 3 01: find normalizing shift
+MOVS a, q, LSL s 3 02 : perform a lookup on the
+ADD a, pc, a, LSRF25 3 03 : most significant 7 bits
+LORNEB a, [a, #t32-b32-64] 04 : of divisor
+
+b32 SUBS. s,s, #7 3 05 : correct shift
+RSB m, qs #0 3 06: m= -d
+MOVPL q, a, LSL s 3 07 : q approx (1<<32)/d
+
+; Ist Newton iteration follows
+MULPL a, q, m 3 08 : a= -q*d

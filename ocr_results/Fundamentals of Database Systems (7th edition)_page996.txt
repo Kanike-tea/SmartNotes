@@ -1,0 +1,88 @@
+966
+
+Chapter 26 Enhanced Data Models
+
+Figure 26.2
+Specifying active rules
+as triggers in Oracle
+notation. (a) Triggers
+for automatically
+maintaining the
+consistency of Total_sal
+of DEPARTMENT.
+
+(b) Trigger for R2:
+
+comparing an
+employee's salary with
+that of his or her
+supervisor.
+
+R3:
+
+R4:
+
+(b) R5:
+
+(a) Rt:
+
+CREATE TRIGGER Total_sal1
+
+AFTER INSERT ON EMPLOYEE
+
+FOR EACH ROW
+
+WHEN ( NEW.Dno IS NOT NULL )
+UPDATE DEPARTMENT
+SET Total_sal = Total_sal + NEW.Salary
+WHERE Dno = NEW.Dno;
+
+CREATE TRIGGER Total_sal2
+
+AFTER UPDATE OF Salary ON EMPLOYEE
+
+FOR EACH ROW
+
+WHEN ( NEW.Dno IS NOT NULL )
+UPDATE DEPARTMENT
+SET Total_sal = Total_sal + NEW.Salary - OLD.Salary
+WHERE Dno = NEW.Dno;
+
+CREATE TRIGGER Total_sal3
+AFTER UPDATE OF Dno ON EMPLOYEE
+FOR EACH ROW
+
+BEGIN
+
+UPDATE DEPARTMENT
+
+SET Total_sal = Total_sal + NEW.Salary
+
+WHERE Dno = NEW.Dno;
+
+UPDATE DEPARTMENT
+
+SET Total_sal = Total_sal - OLD.Salary
+
+WHERE Dno = OLD.Dno;
+
+END;
+
+CREATE TRIGGER Total_sal4
+
+AFTER DELETE ON EMPLOYEE
+
+FOR EACH ROW
+
+WHEN ( OLD.Dno IS NOT NULL)
+UPDATE DEPARTMENT
+SET Total_sal = Total_sal - OLD.Salary
+WHERE Dno = OLD.Dno;
+
+CREATE TRIGGER Inform_supervisor1
+BEFORE INSERT OR UPDATE OF Salary, Supervisor_ssn
+ON EMPLOYEE
+FOR EACH ROW
+WHEN ( NEW.Salary > ( SELECT Salary FROM EMPLOYEE
+WHERE Ssn = NEW.Supervisor_ssn ) )
+inform_supervisor(NEW.Supervisor_ssn, NEW.Ssn );

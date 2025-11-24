@@ -1,0 +1,63 @@
+11.3 Overview of PHP Database Programming
+
+0) require 'DB.php';
+
+1) $d = DB::connect('oci8://acct1:pass12@www.host.com/dbname' );
+
+2) if (DB::isError($d)) { die("cannot connect - " . $d->getMessage()); }
+
+3) $d->setErrorHandling(PEAR_ERROR_DIE);
+
+4) $q = $d->query('SELECT Name, Dno FROM EMPLOYEE' );
+
+5) while ($r = $q->fetchRow()) {
+
+6) print “employee $r[{0] works for department $r[{1] \n" ;
+
+7) ¥
+
+8) $q = $d->query('SELECT Name FROM EMPLOYEE WHERE Job = ? AND Dno = ?',
+
+9) array($_POST['emp_job'], $_POST['emp_dno']) );
+
+10) print "employees in dept $ POST['emp_dno'] whose job is
+$_POST['emp_job']: \n"
+
+11) while ($r = $q->fetchRow()) {
+
+12) print “employee $r[0] \n" ;
+
+13) }
+
+14) $allresult = $d->getAll('SELECT Name, Job, Dno FROM EMPLOYEE' );
+
+15) foreach ($allresult as $r) {
+
+357
+
+16) print “employee $r[0] has job $r[1] and works for department $r[{2] \n" ;
+
+17) }
+
+Figure 11.7
+Illustrating database retrieval queries.
+
+specific job and work for a particular department. The particular job and
+department number are entered through a form in the array variables
+$POST['emp_job'] and $PosT['emp_dno']. If the user had entered
+‘Engineer’ for the job and 5 for the department number, the query would select
+the names of all engineers who worked in department 5. As we can see, this is a
+dynamic query whose results differ depending on the choices that the user
+enters as input. We used two ? placeholders in this example, as discussed at the
+end of Section 11.3.2.
+
+The last query (lines 14 to 17) shows an alternative way of specifying a query and
+looping over its rows. In this example, the function ¢d=>getA11 holds all the
+records in a query result in a single variable, called $allresult. To loop over the
+individual records, a foreach loop can be used, with the row variable $r iterating
+over each row in $allresult.”
+
+As we can see, PHP is suited for both database access and creating dynamic
+Web pages.
+
+°The $r variable is similar to the cursors and iterator variables discussed in Chapters 10 and 12.

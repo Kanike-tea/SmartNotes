@@ -1,0 +1,50 @@
+132
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+The abstraction of association is used to associate objects from several independent
+classes. Hence, it is somewhat similar to the second use of aggregation. It is repre-
+sented in the EER model by relationship types, and in UML by associations. This
+abstract relationship is called IS-ASSOCIATED-WITH.
+
+In order to understand the different uses of aggregation better, consider the ER
+schema shown in Figure 4.11(a), which stores information about interviews by
+job applicants to various companies. The class COMPANY is an aggregation of
+the attributes (or component objects) Cname (company name) and Caddress
+(company address), whereas JOB_APPLICANT is an aggregate of Ssn, Name,
+Address, and Phone. The relationship attributes Contact_name and Contact_phone
+represent the name and phone number of the person in the company who is
+responsible for the interview. Suppose that some interviews result in job offers,
+whereas others do not. We would like to treat INTERVIEW as a class to associate it
+with JOB_OFFER. The schema shown in Figure 4.11(b) is incorrect because it
+requires each interview relationship instance to have a job offer. The schema
+shown in Figure 4.11(c) is not allowed because the ER model does not allow rela-
+tionships among relationships.
+
+One way to represent this situation is to create a higher-level aggregate class com-
+posed of COMPANY, JOB_APPLICANT, and INTERVIEW and to relate this class to
+JOB_OFFER, as shown in Figure 4.11(d). Although the EER model as described in
+this book does not have this facility, some semantic data models do allow it and call
+the resulting object a composite or molecular object. Other models treat entity
+types and relationship types uniformly and hence permit relationships among rela-
+tionships, as illustrated in Figure 4.11(c).
+
+To represent this situation correctly in the ER model as described here, we need to
+create a new weak entity type INTERVIEW, as shown in Figure 4.11(e), and relate it to
+JOB_OFFER. Hence, we can always represent these situations correctly in the ER
+model by creating additional entity types, although it may be conceptually more
+desirable to allow direct representation of aggregation, as in Figure 4.11(d), or to
+allow relationships among relationships, as in Figure 4.11(c).
+
+The main structural distinction between aggregation and association is that when
+an association instance is deleted, the participating objects may continue to exist.
+However, if we support the notion of an aggregate object—for example, a CAR that
+is made up of objects ENGINE, CHASSIS, and TIRES—then deleting the aggregate
+CAR object amounts to deleting all its component objects.
+
+4.7.5 Ontologies and the Semantic Web
+
+In recent years, the amount of computerized data and information available on
+the Web has spiraled out of control. Many different models and formats are used.
+In addition to the database models that we present in this text, much information
+is stored in the form of documents, which have considerably less structure than

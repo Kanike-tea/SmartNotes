@@ -1,0 +1,45 @@
+13.2 Initializing the MPU, Caches, and Write Buffer 467
+
+Base address SBZ NE
+
+31 2 65 10
+
+Figure 13.3 CP15:c6 register format setting size and location of a region.
+
+Table 13.3 _ Bit field description of registers CP15:c6:c0 to CP15:c6:c7.
+
+Field name Bit fields Comments
+
+Base address [31:12] Address greater than 4 KB must be a
+multiple of the size represented in [5:1]
+
+SBZ [11:6] Value “should be zero”
+
+N (5:1] Size of region is 2N+!, where 11 < N <31
+
+E [0] Region enable, 1 = enable, 0 = disable
+
+‘The starting address for each region must be aligned on an address that is a multiple
+of its size. For example, if a region is 128 KB in size, it can start at any address multiple of
+0x20000. The size of a region can be any power of two from 4 KB to 4 GB.
+
+The bit fields and the format of the eight secondary registers CP15:c6:c0 to CP15:c6:c7
+are shown in Figure 13.3 and Table 13.3. The starting address is stored in the top bit field
+[31:20] and must be a multiple of the size bit field [5:1]. The E field bit [0] enables or
+disables the region; that is, a region can be defined and disabled so that its attributes are
+not enforced until the enable bit is set. The unused bits in the CP15:c6 secondary registers
+should be set to zero.
+
+To define the size of a region, you can use the formula, size = 2+! or look up the
+value in Table 13.4 . To set the size, place the exponent value N in the size bit field of the
+CP15:c6 register. The value of Nis limited by the hardware design to be any integer between
+11 and 31, representing 4 KB to 4 GB. The binary value provides the exact bit field for the
+size entry. Once you have determined the size of a region, the starting address of the region
+can be any integer value times the size calculated from the formula, or if you like, taken
+from Table 13.4. The region size and starting address are determined by the memory map
+of your system and the areas the control system must protect. The demonstration system
+at the end of this chapter shows how to set up regions given a system memory map.
+
+The ARM740T, ARM946E-S, and ARM1026EJ-S processors each have eight regions. To
+set the size and location of a region requires a write to a secondary register in CP15:c6:cX.
+For example, the instruction syntax needed to set the location and size of region 3 to start

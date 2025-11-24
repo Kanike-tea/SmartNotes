@@ -1,0 +1,60 @@
+24.3 Document-Based NOSQL Systems and MongoDB 893
+
+{ id: “we", Figure 24.1
+Ename: “Joyce English”, (continued)
+Projectld: “PL, Example of simple
+
+Hours: 20.0 documents in
+
+}
+
+MongoDB. (d) Inserting
+
+the documents in
+
+(d) inserting the documents in (c) into their collections “project” and “worker”:
+
+Figure 24.1(c) into
+
+db.project.insert( { _id: “P1”, Pname: “ProductX”, Plocation: “Bellaire” } ) their collections.
+
+db.worker.insert( [ { id: “W1", Ename: “John Smith’, Projectld: “P1”, Hours: 32.5 },
+{_id: "W2", Ename: "Joyce English”, Projectld: “P1”,
+Hours: 20.0 }])
+
+and document collections, so we will not repeat the discussions here. In the design
+in Figure 24.1(c), an EMPLOYEE who works on several projects would be repre-
+sented by multiple worker documents with different _id values; each document
+would represent the employee as worker for a particular project. This is similar to
+the design decisions for XML schema design (see Section 13.6). However, it is again
+important to note that the typical document-based system does not have a schema,
+so the design rules would have to be followed whenever individual documents are
+inserted into a collection.
+
+24.3.2 MongoDB CRUD Operations
+
+MongoDb has several CRUD operations, where CRUD stands for (create, read,
+update, delete). Documents can be created and inserted into their collections using
+the insert operation, whose format is:
+
+db.<collection_name>.insert(<document(s)>)
+
+The parameters of the insert operation can include either a single document or an
+array of documents, as shown in Figure 24.1(d). The delete operation is called
+remove, and the format is:
+
+db.<collection_name>.remove(<condition>)
+
+The documents to be removed from the collection are specified by a Boolean con-
+dition on some of the fields in the collection documents. There is also an update
+operation, which has a condition to select certain documents, and a $set clause to
+specify the update. It is also possible to use the update operation to replace an
+existing document with another one but keep the same Objectld.
+
+For read queries, the main command is called find, and the format is:
+db.<collection_name>.find(<condition>)
+
+General Boolean conditions can be specified as <condition>, and the documents in
+the collection that return true are selected for the query result. For a full discussion
+of the MongoDb CRUD operations, see the MongoDB online documentation in the
+chapter references.

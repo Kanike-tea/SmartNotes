@@ -1,0 +1,53 @@
+Function of DBMS:
+
+1. Defining database schema: it must give facility for defining the database structure also
+specifies access rights to authorized users.
+
+2. Manipulation of the database: The dbms must have functions like insertion of record into
+database, updation of data, deletion of data, retrieval of data
+
+3. Sharing of database: The DBMS must share data items for multiple users by maintaining
+consistency of data.
+
+4. Protection of database: It must protect the database against unauthorized users.
+
+5. Database recovery: If for any reason the system fails DBMS must facilitate data base
+recovery.
+
+Reduction of redundancies:
+
+Centralized control of data by the DBA avoids unnecessary duplication of data and effectively
+reduces the total amount of data storage required avoiding duplication in the elimination of the
+inconsistencies that tend to be present in redundant data files.
+
+Sharing of Data:
+A database allows the sharing of data under its control by any number of application programs or
+users.
+
+Data Integrity:
+Data integrity means that the data contained in the database is both accurate and consistent.
+
+Therefore data values being entered for storage could be checked to ensure that they fall with in a
+specified range and are of the correct format.
+
+Data Security:
+The DBA who has the ultimate responsibility for the data in the dbms can ensure that proper access
+
+procedures are followed including proper authentication to access to the DataBase System and
+additional check before permitting access to sensitive data.
+
+Conflict Resolution:
+DBA resolve the conflict on requirements of various user and applications. The DBA chooses the
+best file structure and access method to get optional performance for the application.
+
+Data Independence:
+Data independence is usually considered from two points of views; physically data independence
+
+and logical data independence.
+
+Physical Data Independence allows changes in the physical storage devices or organization of the
+files to be made without requiring changes in the conceptual view or any of the external views and
+hence in the application programs using the data base.
+
+Logical Data Independence indicates that the conceptual schema can be changed without affecting
+the existing external schema or any application program.

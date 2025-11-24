@@ -1,0 +1,57 @@
+280 Chapter 8 Digital Signal Processing
+
+LORD = -x_54, [x], #8 5 load x_54, x_76
+SMLABB accO, x_10, c_10, accO
+
+SMLATT accl, x_10, c_10, accl
+
+LORD c_54, [c], #8 5 load c_54, c_76
+SMLABB acc, x_32, c_32, accO
+
+SMLATT accl, x_32, c_32, accl
+
+LDRGTD x_10, [x], #8 3 load x_10, x 32
+SMLABB accO, x_54, c_54, accO
+
+SMLATT accl, x_54, c_54, accl
+
+LDRGTD c_10, [c], #8 3 load c_10, c_32
+SMLABB  accO, x_76, c_76, accO
+
+SMLATT accl, x_76, c_76, accl
+
+BGT loop_xscale
+
+ADD r0, accO, accl
+
+LOMFD sp!, {r4-rl1, pc}
+
+The inner loop requires 14 cycles to accumulate 8 products, a rating of 1.75 cycles
+per tap.
+
+8.3 FIR FILTERS
+
+The finite impulse response (FIR) filter is a basic building block of many DSP applications
+and worth investigating in some detail. You can use a FIR filter to remove unwanted fre-
+quency ranges, boost certain frequencies, or implement special effects. We will concentrate
+on efficient implementation of the filter on the ARM. The FIR filter is the simplest type of
+digital filter. The filtered sample y; depends linearly on a fixed, finite number of unfiltered
+samples x;. Let M be the length of the filter. Then for some filter coefficients, ¢;:
+
+M-1
+
+=O cixi (8.21)
+0
+
+Some books refer to the coefficients cj as the impulse response. If you feed the impulse
+signal x = (1,0,0,0,...) into the filter, then the output is the signal of filter coefficients
+y =(@; C1, 0,--.)-
+
+Let’s look at the issue of dynamic range and possible overflow of the output signal.
+Suppose that we are using Qn and Qyn fixed-point representations X[t] and C[i] for x; and
+ci, respectively. In other words:
+
+X{[t] = round(2"x,) and C[i] = round(2""¢) (8.22)
+We implement the filter by calculating accumulated values A[t]:
+
+Aft] = C[O]X[t] + C(1X[t — 1 +---+ CIM — 1)X[t-M+1] (8.23)

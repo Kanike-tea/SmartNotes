@@ -1,0 +1,50 @@
+410 Chapter 12. Caches
+
+The controller then checks the valid bit to determine if the cache line is active, and
+compares the cache-tag to the tag field of the requested address. If both the status check
+and comparison succeed, it is a cache hit. If either the status check or comparison fails, it is
+acache miss.
+
+Ona cache miss, the controller copies an entire cache line from main memory to cache
+memory and provides the requested code or data to the processor. The copying of a cache
+line from main memory to cache memory is known as a cache line fill.
+
+On a cache hit, the controller supplies the code or data directly from cache memory to
+the processor. To do this it moves to the next step, which is to use the data index field of
+the address request to select the actual code or data in the cache line and provide it to the
+processor.
+
+12.2.3. THE RELATIONSHIP BETWEEN CACHE AND MAIN MEMORY
+
+Having a general understanding of basic cache memory architecture and how the cache
+controller works provides enough information to discuss the relationship that a cache has
+with main memory.
+
+Figure 12.5 shows where portions of main memory are temporarily stored in cache
+memory. The figure represents the simplest form of cache, known as a direct-mapped cache.
+Ina direct-mapped cache each addressed location in main memory maps to a single location
+in cache memory. Since main memory is much larger than cache memory, there are many
+addresses in main memory that map to the same single location in cache memory. The
+figure shows this relationship for the class of addresses ending in 0x824.
+
+The three bit fields introduced in Figure 12.4 are also shown in this figure. The set index
+selects the one location in cache where all values in memory with an ending address of
+0x824 are stored. The data index selects the word/halfword/byte in the cache line, in this
+case the second word in the cache line. The tag field is the portion of the address that is
+compared to the cache-tag value found in the directory store. In this example there are one
+million possible locations in main memory for every one location in cache memory. Only
+one of the possible one million values in the main memory can exist in the cache memory
+at any given time. The comparison of the tag with the cache-tag determines whether the
+requested data is in cache or represents another of the million locations in main memory
+with an ending address of 0x824.
+
+During a cache line fill the cache controller may forward the loading data to the core at
+the same time it is copying it to cache; this is known as data streaming. Streaming allows a
+processor to continue execution while the cache controller fills the remaining words in the
+cache line.
+
+If valid data exists in this cache line but represents another address block in main
+memory, the entire cache line is evicted and replaced by the cache line containing the
+requested address. This process of removing an existing cache line as part of servicing a
+cache miss is known as eviction—returning the contents of a cache line to main memory
+from the cache to make room for new data that needs to be loaded in cache.

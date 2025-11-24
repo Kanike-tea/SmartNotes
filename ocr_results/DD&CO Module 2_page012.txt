@@ -1,0 +1,62 @@
+Encoders
+
+An encoder is a digital circuit that performs the inverse operation of a decoder. An encoder has 2n (or
+fewer) input lines and n output lines. The output lines, as an aggregate, generate the binary code
+corresponding to the input value. An example of an encoder is the octal-to-binary encoder whose truth
+table is given in Table
+
+Truth Table of an Octal-to-Binary Encoder
+
+Inputs Outputs
+Do Di Dz Dz; Ds Ds De Dy x oy 2
+1 0 0 0 0 60 0 0 o o 0
+o 1 0 0 0 0 0 0 o o 1
+0 0 1 0 0 0 0 0 0 1 0
+o 0 0 1t 0 0 0 0 o 1 1
+0 0 0 0 1 0 0 0 1 0 0
+o 0 0 0 0 1 0 0 1 0
+
+o 0 0 0 60 0 1 0 1 1
+
+1
+
+ror
+
+1
+
+z=D,+D3+ Ds+D;
+y = D, + D3 + De + Dz
+x = D,+ Ds + De + Dy
+
+It has eight inputs (one for each of the octal digits) and three outputs that generate the corresponding
+binary number. It is assumed that only one input has a value of | at any given time.
+
+The encoder defined in Table above has the limitation that only one input can be active at any given
+time. If two inputs are active simultaneously, the output produces an undefined combination. For
+example, if D3 and D6 are | simultaneously, the output of the encoder will be 111 because all three
+outputs are equal to 1. The output 111 does not represent either binary 3 or binary 6. To resolve this
+ambiguity, encoder circuits must establish an input priority to ensure that only one input is encoded. If
+we establish a higher priority for inputs with higher subscript numbers, and if both D3 and D6 are | at
+the same time, the output will be 110 because D6 has higher priority than D3.
+
+Priority Encoder
+
+A priority encoder is an encoder circuit that includes the priority function. The operation of the priority
+encoder is such that if two or more inputs are equal to | at the same time, the input having the highest
+priority will take precedence. The truth table of a four-input priority encoder is given in Table. In addition
+to the two outputs x and y , the circuit has a third output designated by V ; this is a valid bit indicator
+that is set to 1 when one or more inputs are equal to 1. If all inputs are 0, there is no valid input and V is
+equal to 0. The other two outputs are not inspected when V equals 0 and are specified as don’t-care
+conditions. Note that whereas X ’s in output columns represent don’t-care conditions, the X ’s in the
+input columns are useful for representing a truth table in condensed form. Instead of listing all 16
+minterms of four variables, the truth table uses an X to represent either 1 or 0. For example, X 100
+represents the two minterms 0100 and 1100.
+Truth Table of a Priority Encoder
+
+Inputs Outputs
+D D, OD, dD; x y Vv
+0 0 0 0 xX xX 0
+1 0 0 0 0 0 1
+x 1 0 0 0 1 1
+x x 1 0 1 0 1
+x x x 1 1 1 1

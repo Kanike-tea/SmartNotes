@@ -1,0 +1,39 @@
+522 Chapter 14 Memory Management Units
+
+Virtual
+memory
+
+Peripherals
+region
+0x10000000
+
+Page table
+region _| 0x00018000
+Shared
+region | 0x00010000
+Kernel
+region | 0x00000000
+
+Figure 14.17 Fixed regions in virtual memory.
+
+14.10.2 STEP 2: DEFINE VIRTUAL MEMORY MAPS FOR EACH
+TASK
+
+There are three user tasks that run during three time slice intervals. Each task has an identical
+virtual memory map.
+
+Each task sees two regions in its memory map: a dedicated 32 KB taskregion at 0x400000,
+and a 32 KB shared memory region at 0x8000 (see Figure 14.18).
+
+The task region contains the text, data, and stack of the running user task. When the
+scheduler transfers control from one task to another, it must remap the task region by
+changing the L1 page table entry to point to the upcoming task’s L2 page table. After the
+entry is made, the task region points to the physical location of the next running task.
+
+The shared region is a fixed system software region. Its function is described in
+Section 14.10.1.
+
+14.10.3 STEP 3: LOCATE REGIONS IN PHYSICAL MEMORY
+
+The regions we defined for the demonstration must be located in physical memory at
+addresses that do not overlap or conflict. Table 14.10 shows where we located all the

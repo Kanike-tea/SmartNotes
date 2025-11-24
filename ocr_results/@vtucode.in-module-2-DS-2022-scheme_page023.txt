@@ -1,0 +1,58 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+The complete addition algorithm is specified by padd( )
+
+polyPointer padd(polyPointer a, polyPointer b)
+{/* return a polynomial which is the sum of a and b */
+polyPointer c, rear, temp;
+int sum;
+MALLOC (rear, sizeof (*rear));
+c = rear;
+while (a &«& b)
+switch (COMPARE(a—expon,b—expon)) {
+case —1: /* a-expon < bexpon */
+attach (b>co
+
+£,b—expon, &rear) ;
+
+b = blink;
+break;
+case 0: /* a-expon = bexpon */
+
+sum = a-coef + b-coef;
+if (sum) attach(sum,a—expon, &@6aB) ;
+a = a->link; b = blink; break§
+case 1: /* atexpon > boexpon */
+attach (a-coef, aexpon, érearVy
+a = a->link;
+}
+/* copy rest of list a am@=t@hen Wisi Bet,
+for (; a; a = a>link) @t@ach (a—-G@etpaSexpon, &rear);
+for (; b; b = blink) @tta@ch (bmgoef, b->expon, &rear) ;
+rearlink = NULL;
+/* delete extra init@adjnode*y)
+temp = c; c = c—3d@ink Nisietee (Temp) ;
+return c;
+
+Program ;’Add two polynomials
+
+void attach(float coefficient, int exponent,
+
+polyPointer *ptr)
+
+{/* create a new node with coef = coefficient and expon =
+exponent, attach it to the node pointed to by ptr.
+ptr is updated to point to this new node */
+
+polyPointer temp;
+MALLOC (temp, sizeof (*temp) );
+
+tempcoef = coefficient;
+temp—expon = exponent;
+(*ptr)—-link = temp;
+
+*ptr = temp;
+
+Program: Attach a node to the end of a list
+
+vtucode.in 24

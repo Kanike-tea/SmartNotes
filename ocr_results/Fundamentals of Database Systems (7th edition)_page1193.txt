@@ -1,0 +1,32 @@
+appendix \
+
+Alternative Diagrammatic
+Notations for ER Models
+
+Frise A.1 shows a number of different diagram-
+matic notations for representing ER and EER
+model concepts. Unfortunately, there is no standard notation: different database
+design practitioners prefer different notations. Similarly, various CASE (computer-
+aided software engineering) tools and OOA (object-oriented analysis) methodolo-
+gies use various notations. Some notations are associated with models that have
+additional concepts and constraints beyond those of the ER and EER models
+described in Chapters 7 through 9, while other models have fewer concepts and
+constraints. The notation we used in Chapter 7 is quite close to the original notation
+for ER diagrams, which is still widely used. We discuss some alternate notations
+here.
+
+Figure A.1(a) shows different notations for displaying entity types/classes, attri-
+butes, and relationships. In Chapters 7 through 9, we used the symbols marked (i) in
+Figure A.1(a)—namely, rectangle, oval, and diamond. Notice that symbol (ii) for
+entity types/classes, symbol (ii) for attributes, and symbol (ii) for relationships are
+similar, but they are used by different methodologies to represent three different
+concepts. The straight line symbol (iii) for representing relationships is used by
+several tools and methodologies.
+
+Figure A.1(b) shows some notations for attaching attributes to entity types. We used
+notation (i). Notation (ii) uses the third notation (iii) for attributes from Figure A.1(a).
+The last two notations in Figure A.1(b)—(iii) and (iv)—are popular in OOA meth-
+odologies and in some CASE tools. In particular, the last notation displays both the
+attributes and the methods of a class, separated by a horizontal line.
+
+1163

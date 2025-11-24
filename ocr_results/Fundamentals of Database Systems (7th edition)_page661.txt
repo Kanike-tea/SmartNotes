@@ -1,0 +1,54 @@
+17.4 Indexes on Multiple Keys
+
+17.4 Indexes on Multiple Keys
+
+In our discussion so far, we have assumed that the primary or secondary keys on
+which files were accessed were single attributes (fields). In many retrieval and
+update requests, multiple attributes are involved. If a certain combination of attri-
+butes is used frequently, it is advantageous to set up an access structure to provide
+efficient access by a key value that is a combination of those attributes.
+
+For example, consider an EMPLOYEE file containing attributes Dno (department
+number), Age, Street, City, Zip_code, Salary and Skill_code, with the key of Ssn (Social
+Security number). Consider the query: List the employees in department number 4
+whose age is 59. Note that both Dno and Age are nonkey attributes, which means
+that a search value for either of these will point to multiple records. The following
+alternative search strategies may be considered:
+
+1. Assuming Dno has an index, but Age does not, access the records having
+Dno = 4 using the index, and then select from among them those records
+that satisfy Age = 59.
+
+2. Alternately, if Age is indexed but Dno is not, access the records having
+Age = 59 using the index, and then select from among them those records that
+satisfy Dno = 4.
+
+3. If indexes have been created on both Dno and Age, both indexes may be
+used; each gives a set of records or a set of pointers (to blocks or records). An
+intersection of these sets of records or pointers yields those records or point-
+ers that satisfy both conditions.
+
+All of these alternatives eventually give the correct result. However, if the set of
+records that meet each condition (Dno = 4 or Age = 59) individually are large, yet
+only a few records satisfy the combined condition, then none of the above is an effi-
+cient technique for the given search request. Note also that queries such as “find the
+minimum or maximum age among all employees” can be answered just by using the
+index on Age, without going to the data file. Finding the maximum or minimum age
+within Dno = 4, however, would not be answerable just by processing the index
+alone. Also, listing the departments in which employees with Age = 59 work will also
+not be possible by processing just the indexes. A number of possibilities exist that
+would treat the combination <Dno, Age> or <Age, Dno> as a search key made up of
+multiple attributes. We briefly outline these techniques in the following sections. We
+will refer to keys containing multiple attributes as composite keys.
+
+17.4.1 Ordered Index on Multiple Attributes
+
+All the discussion in this chapter so far still applies if we create an index on a search
+key field that is a combination of <Dno, Age>. The search key is a pair of values
+<4, 59> in the above example. In general, if an index is created on attributes
+<A), A, ..., A,>, the search key values are tuples with n values: <vj, V2, ... , ¥,>-
+
+A lexicographic ordering of these tuple values establishes an order on this compos-
+ite search key. For our example, all of the department keys for department number
+
+631

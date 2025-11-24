@@ -1,0 +1,53 @@
+13.3 XML Documents, DTD, and XML Schema
+
+and upper bounds on the number of occurrences of an element in any XML
+document that conforms to the schema specifications. If they are not speci-
+fied, the default is exactly one occurrence. These serve a similar role to the *,
++, and ? symbols of XML DTD.
+
+6. Specifying keys. In XML schema, it is possible to specify constraints that
+correspond to unique and primary key constraints in a relational database
+(see Section 5.2.2), as well as foreign keys (or referential integrity) con-
+straints (see Section 5.2.4). The xsd:unique tag specifies elements that cor-
+respond to unique attributes in a relational database. We can give each
+such uniqueness constraint a name, and we must specify xsd:selector and
+xsd:field tags for it to identify the element type that contains the unique ele-
+ment and the element name within it that is unique via the xpath attribute.
+This is illustrated by the departmentNameUnique and projectNameUnique ele-
+ments in Figure 13.5. For specifying primary keys, the tag xsd:key is used
+instead of xsd:unique, as illustrated by the projectNumberKey, department-
+NumberKey, and employeeSSNKey elements in Figure 13.5. For specifying
+foreign keys, the tag xsd:keyref is used, as illustrated by the six xsd:keyref
+elements in Figure 13.5. When specifying a foreign key, the attribute refer
+of the xsd:keyref tag specifies the referenced primary key, whereas the tags
+xsd:selector and xsd:field specify the referencing element type and foreign
+key (see Figure 13.5).
+
+7. Specifying the structures of complex elements via complex types. The
+next part of our example specifies the structures of the complex elements
+Department, Employee, Project, and Dependent, using the tag xsd:complexType
+(see Figure 13.5). We specify each of these as a sequence of subelements cor-
+responding to the database attributes of each entity type (see Figure 7.7)by
+using the xsd:sequence and xsd:element tags of XML schema. Each element is
+given a name and type via the attributes name and type of xsd:element. We can
+also specify minOccurs and maxOccurs attributes if we need to change the
+default of exactly one occurrence. For (optional) database attributes where
+null is allowed, we need to specify minOccurs = 0, whereas for multivalued
+database attributes we need to specify maxOccurs = “unbounded” on the cor-
+responding element. Notice that if we were not going to specify any key con-
+straints, we could have embedded the subelements within the parent element
+definitions directly without having to specify complex types. However, when
+unique, primary key and foreign key constraints need to be specified; we
+must define complex types to specify the element structures.
+
+8. Composite (compound) attributes. Composite attributes from Figure 9.2
+are also specified as complex types in Figure 13.7, as illustrated by the
+Address, Name, Worker, and WorksOn complex types. These could have been
+directly embedded within their parent elements.
+
+This example illustrates some of the main features of XML schema. There are other
+features, but they are beyond the scope of our presentation. In the next section, we
+discuss the different approaches to creating XML documents from relational data-
+bases and storing XML documents.
+
+44

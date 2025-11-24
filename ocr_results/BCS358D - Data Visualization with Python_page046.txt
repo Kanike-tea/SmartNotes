@@ -1,0 +1,70 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+similarity calculations. The ratio() method used in the example calculates a similarity ratio
+
+ranging from 0.0 to 1.0, where 0.0 indicates no similarity and 1.0 indicates an exact match.
+
+PROGRAM
+import difflib
+def string_similarity(strl, str2):
+result = difflib.SequenceMatcher (a=strl.lower(), b=str2.lower())
+return result.ratio()
+strl = 'Python Exercises’
+str2 = 'Python Exercises
+
+or strl = input("Enter a sentence: ")
+' or str2 = input("Enter a sentence: ")
+print ("Original string:")
+
+print (str1l)
+
+print (str2)
+
+print ("Similarity between two said strings:")
+
+print (string _similarity(str1,str2))
+
+strl = 'Python Exercises’ or strl = input("Enter a sentence: ")
+str2 = 'Python Exercise' or str2 = input("Enter a sentence: ")
+print ("\nOriginal string:")
+
+print (str1l)
+
+print (str2)
+
+print ("Similarity between two said strings:")
+
+print (string _similarity(str1,str2))
+
+OUTPUT
+
+Original string:
+
+Python Exercises
+
+Python Exercises
+
+Similarity between two said strings:
+1.0
+
+Original string:
+
+Python Exercises
+
+Python Exercise
+
+Similarity between two said strings:
+0.967741935483871
+
+Exercise Programs strings and string methods
+1. Write a python program to Count the Number of Characters in a String.
+2. Write a python program to Convert a String to Uppercase.
+3. Write a python program to Check if a String is Palindrome.
+
+4. Write a python program to Split a String into Words.
+
+5
+
+Write a python program to Replace Substrings in a String.
+
+Dept. of CSE 31 GSSSIETW, Mysuru

@@ -1,0 +1,54 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+The single bus organization consists of
+
+Memory
+
+Processor
+
+System bus
+
+1/O device
+
+The system bus consists of 3 types of buses:
+
+oo0o°o
+
+o Address bus (Unidirectional)
+o Data bus (Bidirectional)
+o Control bus (Bidirectional)
+
+The system bus enables all the devices connected to it to involve in the data
+transfer operation.
+
+The system bus establishes data communication between I/O device and
+processor.
+
+Each I/O device is assigned a unique set of address.
+
+When processor places an address on address-lines, the intended-
+device responds to thecommand.
+
+The processor requests either a read or write-operation.
+
+The requested data are transferred over the data-lines
+
+Steps for input operation:
+
+The address bus of system bus holds the address of the input device.
+The control unit of CPU generates IORD Control signal.
+When this control signal is activated the processor reads the data from
+
+the input device(DATAIN) into the CPU register.
+
+Steps for output operation:
+
+The address bus of system bus holds the address of the output device.
+
+The control unit of CPU generates IOWR control signal.
+
+When this control signal is enabled CPU transfers the data from processor
+
+register to outputdevice(/DATAOUT)
+
+Dr.Ajay V G, Dept. of CSE 2

@@ -1,0 +1,44 @@
+Microcontrollers — BCS402
+
+Notice that the compiler adds one to the sum before shifting by right if the sum is negative. In
+
+other words it replaces x/2 by the statement:
+(x<0) 2 ((xt1) >>1): (x>>1)
+
+It must do this because x is signed. In C on an ARM target, a divide by two is not a right shift
+if x is negative. For example, —3»1 = -2 but — 3/2 = —1. Division rounds towards zero, but
+
+arithmetic right shift rounds towards —oo.
+
+It is more efficient to use unsigned types for divisions. The compiler converts unsigned
+power of two divisions directly to right shifts. For general divisions, the divide routine in the
+
+C library is faster for unsigned types.
+The Efficient Use of C Types
+
+e For local variables held in registers, don’t use a char or short type unless 8-bit or 16-
+bit modular arithmetic is necessary. Use the signed or unsigned int types instead.
+Unsigned types are faster when you use divisions.
+
+e For array entries and global variables held in main memory, use the type with the
+smallest size possible to hold the required data. This saves memory footprint. The
+ARMv4 architecture is efficient at loading and storing all data widths provided you
+traverse arrays by incrementing the array pointer. Avoid using offsets from the base of
+the array with short type arrays, as LDRH does not support this.
+
+e Use explicit casts when reading array entries or global variables into local variables,
+or writing local variables out to array entries. The casts make it clear that for fast
+operation you are taking a narrow width type stored in memory and expanding it to a
+wider type in the registers. Switch on implicit narrowing cast warnings in the
+compiler to detect implicit casts.
+
+e Avoid implicit or explicit narrowing casts in expressions because they usually cost
+extra cycles. Casts on loads or stores are usually free because the load or store
+instruction performs the cast for you.
+
+e Avoid char and short types for function arguments or return values. Instead use the int
+type even if the range of the parameter is smaller. This prevents the compiler
+
+performing unnecessary casts.
+
+Dept. of ECE, GSSSIETW Page 39

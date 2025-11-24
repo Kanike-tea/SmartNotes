@@ -1,0 +1,53 @@
+16.10 Parallelizing Disk Access Using RAID Technology
+
+RAID level 0 uses data striping, has no redundant data, and hence has the best write
+performance since updates do not have to be duplicated. It splits data evenly across
+two or more disks. However, its read performance is not as good as RAID level 1,
+which uses mirrored disks. In the latter, performance improvement is possible by
+scheduling a read request to the disk with shortest expected seek and rotational
+delay. RAID level 2 uses memory-style redundancy by using Hamming codes,
+which contain parity bits for distinct overlapping subsets of components. Thus, in
+one particular version of this level, three redundant disks suffice for four original
+disks, whereas with mirroring—as in level 1—four would be required. Level 2
+includes both error detection and correction, although detection is generally not
+required because broken disks identify themselves.
+
+RAID level 3 uses a single parity disk relying on the disk controller to figure out
+which disk has failed. Levels 4 and 5 use block-level data striping, with level 5 dis-
+tributing data and parity information across all disks. Figure 16.14(b) shows an
+illustration of RAID level 5, where parity is shown with subscript p. If one disk fails,
+the missing data is calculated based on the parity available from the remaining
+disks. Finally, RAID level 6 applies the so-called P + Q redundancy scheme using
+Reed-Soloman codes to protect against up to two disk failures by using just two
+redundant disks.
+
+Rebuilding in case of disk failure is easiest for RAID level 1. Other levels require
+the reconstruction of a failed disk by reading multiple disks. Level 1 is used for
+critical applications such as storing logs of transactions. Levels 3 and 5 are pre-
+ferred for large volume storage, with level 3 providing higher transfer rates. Most
+popular use of RAID technology currently uses level 0 (with striping), level 1 (with
+mirroring), and level 5 with an extra drive for parity. A combination of multiple
+RAID levels are also used—for example, 0 + 1 combines striping and mirroring
+
+587
+
+Ly <>
+———_
+File A File A
+File B File B
+File C File C
+File D File D
+eee KE
+
+(a) Disk 0 Disk 1
+
+(b) P Nt disks.
+
+Figure 16.14
+
+| Some popular levels of RAID.
+(a) RAID level 1: Mirroring of
+B, data on two disks. (b) RAID
+CG c, level 5: Striping of data with
+° distributed parity across four
+D; D, Ds parity

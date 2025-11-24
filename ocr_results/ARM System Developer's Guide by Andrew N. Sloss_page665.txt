@@ -1,0 +1,41 @@
+652 Appendix D Instruction Cycle Timings
+
+Table D.1
+
+Standard cycle abbreviations.
+
+Abbreviation — Meaning
+
+B
+
+M
+
+The number of busy-wait cycles issued by a coprocessor. This depends
+on the coprocessor design.
+
+The number of multiplier iteration cycles. This depends on the value in
+register Rs. Each implementation section contains a table showing how
+to calculate M from Rs for that implementation.
+
+The number of words to transfer in a load or store multiple. This includes
+pcif it is in the register list. N must be at least one.
+
+Read the value in the “Cycles” column. This is the number of cycles the instruction
+usually takes, assuming the instruction passes its condition codes and there are no inter-
+actions with other instructions. The cycle count may depend on one of the abbreviations
+in Table D.1.
+
+If the “Notes” column contains any notes of the form +k if condition, then add on to
+your cycle count all the additions that apply.
+
+Look for interlock conditions that will cause the processor to stall. These are occasions
+where an instruction attempts to use the result of a previous instruction before it
+is ready. Unless otherwise stated, input registers are required on the first cycle of the
+instruction and output results are available at the end of the last cycle of the instruction.
+However, implementations with multiple execute stage pipelines can require input
+operands early and produce output operands later. Table D.2 defines the statements
+we use in the “Notes” sections to describe this.
+
+If your instruction fails its condition codes, then it is not executed. Usually this costs
+one cycle. However, on some implementations, instructions may cost multiple cycles
+even if they are not executed. Look for a note of the form “[k cycles if not executed].”

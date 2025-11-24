@@ -1,0 +1,52 @@
+178
+
+Chapter 6 Basic SQL
+
+provides a higher-level declarative language interface, so the user only specifies
+what the result is to be, leaving the actual optimization and decisions on how to
+execute the query to the DBMS. Although SQL includes some features from rela-
+tional algebra, it is based to a greater extent on the tuple relational calculus, which
+we describe in Section 8.6. However, the SQL syntax is more user-friendly than
+either of the two formal languages.
+
+The name SQL is presently expanded as Structured Query Language. Originally,
+SQL was called SEQUEL (Structured English QUEry Language) and was designed
+and implemented at IBM Research as the interface for an experimental relational
+database system called SYSTEM R. SQL is now the standard language for com-
+mercial relational DBMSs. The standardization of SQL is a joint effort by the
+American National Standards Institute (ANSI) and the International Standards
+Organization (ISO), and the first SQL standard is called SQL-86 or SQL1. A
+revised and much expanded standard called SQL-92 (also referred to as SQL2)
+was subsequently developed. The next standard that is well-recognized is
+SQL:1999, which started out as SQL3. Additional updates to the standard are
+SQL:2003 and SQL:2006, which added XML features (see Chapter 13) among
+other updates to the language. Another update in 2008 incorporated more object
+database features into SQL (see Chapter 12), and a further update is SQL:2011.
+We will try to cover the latest version of SQL as much as possible, but some of the
+newer features are discussed in later chapters. It is also not possible to cover the
+language in its entirety in this text. It is important to note that when new features
+are added to SQL, it usually takes a few years for some of these features to make it
+into the commercial SQL DBMSs.
+
+SQL is a comprehensive database language: It has statements for data definitions,
+queries, and updates. Hence, it is both a DDL and a DML. In addition, it has facili-
+ties for defining views on the database, for specifying security and authorization,
+for defining integrity constraints, and for specifying transaction controls. It also has
+rules for embedding SQL statements into a general-purpose programming lan-
+guage such as Java or C/C++."
+
+The later SQL standards (starting with SQL:1999) are divided into a core specifica-
+tion plus specialized extensions. The core is supposed to be implemented by all
+RDBMS vendors that are SQL compliant. The extensions can be implemented as
+optional modules to be purchased independently for specific database applications
+such as data mining, spatial data, temporal data, data warehousing, online analyti-
+cal processing (OLAP), multimedia data, and so on.
+
+Because the subject of SQL is both important and extensive, we devote two chap-
+ters to its basic features. In this chapter, Section 6.1 describes the SQL DDL com-
+mands for creating schemas and tables, and gives an overview of the basic data
+types in SQL. Section 6.2 presents how basic constraints such as key and referen-
+tial integrity are specified. Section 6.3 describes the basic SQL constructs for
+
+Originally, SQL had statements for creating and dropping indexes on the files that represent relations,
+but these have been dropped from the SQL standard for some time.

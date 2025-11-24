@@ -1,0 +1,63 @@
+186 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+MOV oc7,c
+
+SUB ON, N, #128 ; bytes left after next block
+loopl28 ; write 32 words = 128 bytes
+
+STMIA s!, {c, c_l-c_6, c_7} 3 write 8 words
+
+STMIA s!, {c, c_l-c_6, c_7} ; write 8 words
+
+STMIA s!, {c, c_l-c_6, c_7} ; write 8 words
+
+STMIA s!, {c, c_l-c_6, c_7} ; write 8 words
+
+SUBS N, N, #128 ; bytes left after next block
+Joop128
+N,N, #128 ; number of bytes left
+
+sp!, {c_2-c_6} ; restore corrupted registers
+
+; Third section deals with left over bytes
+memset_4ByteB1k
+
+SUBS oN, N, #4 3 try doing 4 bytes
+loop4 ; write 4 bytes
+
+STRGE c, [s], #4
+
+SUBGES N,N, #4
+
+BGE —loop4
+
+ADD ON, N, #4 ; number of bytes left
+memset_1ByteB1k
+
+suBS oN, N, #1
+loop] ; write 1 byte
+
+STRGEB c, [s], #1
+
+SUBGES N,N, #1
+
+BGE loop
+
+MOV pc, Ir ; finished so return
+
+It remains to find the best values for the thresholds T, and T). To determine these we
+need to analyze the cycle counts for different ranges of N. Since the algorithm operates on
+blocks of size 128 bytes, 4 bytes, and 1 byte, respectively, we start by decomposing N with
+respect to these block sizes:
+
+N = 128N,+4Nm +N, where 0 < Ny, <32 and 0<N, <4
+
+We now partition into three cases. To follow the details of these cycle counts, you will
+need to refer to the instruction cycle timings in Appendix D.
+
+m= Case 0 < N < Tj: The routine takes 5N + 6 cycles on an ARM9TDMI including the
+return.
+
+= Case T; < N < T): The first algorithm block takes 6 cycles if the s array is word aligned
+and 10 cycles otherwise. Assuming each alignment is equally likely, this averages to
+(6 + 10 + 10 + 10)/4 = 9 cycles. The second algorithm block takes 6 cycles. The final

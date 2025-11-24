@@ -1,0 +1,50 @@
+538 Chapter 14 Memory Management Units
+
+PTE |= (region->CB & 0x3) <2; /* set cache & WB attribu */
+PTE |= 0x35 /* set as TINY PAGE */
+
+/* fill table with PTE for region; from last to first */
+for (i =(region->numPages) - 1; i >= 03 i--)
+{
+*PTEptr-- = PTE + (i<<10); /* i = 1B tiny page */
+}
+break;
+}
+default:
+{
+printf ("mmuMapFineTableRegion: Incorrect page size\n");
+return -1;
+}
+}
+return 05
+
+}
+#endif
+
+The routine begins by setting a local variable tempAP that holds the access permission
+for pages or subpages in the region. This routine does not support subpages with different
+access permissions. Next, the routine sets the variable PTEptr to point to the base of the
+page table that will hold the mapped fine-paged region.
+
+The routine then switches to handle the three cases of a large, small, or tiny page. The
+algorithm for each of the three cases is the same; only the format of the PTE and the way
+values are written into the page table differ.
+
+At this point the variable PTEptr contains the starting address of the L2 page table. The
+routine then takes the starting address of the region region->vAddress and calculates an
+index to the first region entry in the page table. This index value is added to the PTEptr.
+The next line determines the size of the region and adds this value to PTEptr. PTEptr now
+points to the last PTE for the region.
+
+Next the routine constructs the PTE for a either a large, small, or tiny entry from the
+values in the region. A series of ORs constructs the PTE from the starting physical address,
+the access permission, and cache and write buffer attributes. Figure 14.8 shows the formats
+for large, small, and tiny page table entries.
+
+The PTE now contains a pointer to the physical address of the first page frame and
+attributes for the region. A counter variable i is used for two purposes: It is an offset into
+the page table, and it is added to the PTE variable to change the address translation so
+it points to the next lower page frame in physical memory. The procedure concludes by
+looping until all the PTEs for the region are mapped in the page table. Note the nested
+loop in the LARGEPAGE and SMALLPAGE cases: the j loop writes the required identical PTE
+to properly map the given page in a fine page table.

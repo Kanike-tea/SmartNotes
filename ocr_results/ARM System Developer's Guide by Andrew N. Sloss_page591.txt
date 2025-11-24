@@ -1,0 +1,40 @@
+578 Appendix A ARM and Thumb Assembler Instructions
+
+= If Rdis po, then the instruction effects a jump to the calculated address. If the operation
+
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+
+Examples
+
+BIC 0, r0, #1<<22 3 clear bit 22 of r0
+
+BKPT Breakpoint instruction
+1. BKPT <immed16> ARMv5,
+2.  BKPT <immed8> THUMBv2
+The breakpoint instruction causes a prefetch data abort, unless overridden by debug
+hardware. The ARM ignores the immediate value. This immediate can be used to hold
+debug information such as the breakpoint number.
+BL Relative branch with link (subroutine call)
+
+1. BL<cond> <address25> ARMv1
+2. BL <address22> THUMBV1
+Action Effect on the cpsr
+
+1. Ir = ret#0; pc = <address25> None
+
+2. Ir = ret+l; pe = <address22> None
+
+Note
+
+= These instructions set /r to the address of the following instruction ret plus the current
+
+cpsr T-bit setting. Therefore you can return from the subroutine using BX 1r to resume
+execution address and ARM or Thumb state.
+
+Examples
+
+BL subroutine ; call subroutine (return with MOV pc,1r)
+BLVS overflow call subroutine on an overflow

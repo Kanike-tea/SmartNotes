@@ -1,0 +1,54 @@
+462 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+In general, the easier it is to explain the semantics of the relation—or in other words,
+what a relation exactly means and stands for—the better the relation schema design
+will be. To illustrate this, consider Figure 14.1, a simplified version of the COMPANY
+relational database schema in Figure 5.5, and Figure 14.2, which presents an example
+of populated relation states of this schema. The meaning of the EMPLOYEE relation
+schema is simple: Each tuple represents an employee, with values for the employee’s
+name (Ename), Social Security number (Ssn), birth date (Bdate), and address
+(Address), and the number of the department that the employee works for (Dnumber).
+The Dnumber attribute is a foreign key that represents an implicit relationship between
+EMPLOYEE and DEPARTMENT. The semantics of the DEPARTMENT and PROJECT
+schemas are also straightforward: Each DEPARTMENT tuple represents a department
+entity, and each PROJECT tuple represents a project entity. The attribute Dmgr_ssn of
+DEPARTMENT relates a department to the employee who is its manager, whereas
+Dnum of PROJECT relates a project to its controlling department; both are foreign key
+attributes. The ease with which the meaning ofa relation’s attributes can be explained
+is an informal measure of how well the relation is designed.
+
+Figure 14.1 EMPLOYEE FI.
+A simplified COMPANY relational
+database schema.
+
+Ename| Ssn | Bdate | Address | Dnumber
+PK.
+
+DEPARTMENT FI.
+
+Dname | Dnumber | Dmgr_ssn
+PK.
+
+DEPT_LOCATIONS
+Fk.
+
+Dnumber | Dlocation
+
+_———
+
+PK.
+
+PROJECT FK,
+
+Pname | Pnumber | Plocation | Dnum
+PK.
+
+WORKS_ON
+
+FK, FK.
+
+Ssn_| Pnumber | Hours
+
+a
+
+PK.

@@ -1,0 +1,39 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+node directly. This process repeats for all the nodes in the tree.
+
+The above tree example can be represented using List representation as follows...
+
+BO
+El-CI4-C1e] (sft -[eTo]
+
+2. Left Child - Right Sibling Representation
+
+In this representation, we use list with one type of node which consists of three fields namely
+Data field, Left child reference field and Right sibling reference field.
+
+To convert the tree of Figure (A) into this representation:
+1. First note that every.node has at most one leftmost child
+2. At most one closest right sibling.
+
+e In Figure (A), the leftmost child of A is B, and, the leftmost child of D is H.
+
+e The closest right sibling of B is C, and the closest right sibling of H is I.
+
+© Choose the nodes based on how the tree is drawn. The left child field of each node points
+to its leftmost child (if any), and the right sibling field points to its closest right
+sibling (if any).
+
+e Figure (D) shows the tree of Figure (A) redrawn using the left child-right sibling
+
+(a)
+
+B (Cc) D
+Ef) G OOO)
+®}—) (M)
+
+Figure (D): Left child-right sibling representation of tree of figure (A)
+
+representation.
+
+vtucode.in 13

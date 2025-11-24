@@ -1,0 +1,52 @@
+1142
+
+Chapter 30 Database Security
+
+common that the Web application itself is the user rather than a duly authorized
+individual. This gives rise to a situation where the DBMS’s access control mecha-
+nisms are bypassed and the database becomes just a relational data store to the sys-
+tem. In such environments, vulnerabilities like SQL injection (which we cover in
+depth in Section 30.4) become significantly more dangerous bacause it may lead to
+a total data breach rather than being limited to data that a particular account is
+authorized to access.
+
+To protect against data breaches in these systems, a first requirement is a compre-
+hensive information security policy that goes beyond the technical access control
+mechanisms found in mainstream DBMSs. Such a policy must protect not only
+traditional data, but also processes, knowledge, and experience.
+
+A second related requirement is the support for content-based access control.
+Content-based access control allows one to express access control policies that
+take the protection object content into account. In order to support content-based
+access control, access control policies must allow inclusion of conditions based on
+the object content.
+
+A third requirement is related to the heterogeneity of subjects, which requires
+access control policies based on user characteristics and qualifications rather than
+on specific and individual characteristics (for example, user Ids). A possible solu-
+tion that will allow better accounting of user profiles in the formulation of access
+control policies, is to support the notion of credentials. A credential is a set of prop-
+erties concerning a user that are relevant for security purposes (for example, age or
+position or role within an organization). For instance, by using credentials, one can
+simply formulate policies such as Only permanent staff with five or more years of
+service can access documents related to the internals of the system.
+
+XML is expected to play a key role in access control for e-commerce applications®
+because XML is becoming the common representation language for document
+interchange over the Web, and is also becoming the language for e-commerce.
+Thus, on the one hand, there is the need to make XML representations secure by
+providing access control mechanisms specifically tailored to the protection of
+XML documents. On the other hand, access control information (that is, access
+control policies and user credentials) can be expressed using XML itself. The
+Directory Services Markup Language (DSML) is a representation of directory
+service information in XML syntax. It provides a foundation for a standard for
+communicating with the directory services that will be responsible for providing
+and authenticating user credentials. The uniform presentation of both protection
+objects and access control policies can be applied to policies and credentials them-
+selves. For instance, some credential properties (such as the user name) may be
+accessible to everyone, whereas other properties may be visible only to a restricted
+class of users. Additionally, the use of an XML-based language for specifying cre-
+dentials and access control policies facilitates secure credential submission and
+export of access control policies.
+
+®See Thuraisingham et al. (2001).

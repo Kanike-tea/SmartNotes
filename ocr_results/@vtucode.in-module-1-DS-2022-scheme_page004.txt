@@ -1,0 +1,53 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+General form of pointer declaration is —
+type* name;
+where type represent the type to which pointer thinks it is pointing to.
+
+Pointers to machine defined _as well as user-defined types can_be made Pointer
+
+Intialization:
+
+variable _type *pointer_name = 0;
+or variable_type *pointer_name = NULL;
+
+char *pointer_name = "string value here";
+
+DYNAMIC MEMORY ALLOCATION
+
+This is process of allocating memory-space during execution-time (or run-time).
+
++ This is used if there is an unpredictable storage requirement.
+
+* Memory-allocation is done on a heap.
+
+* Memory management functions include:
+
+— malloc (memory allocate)
+
+— calloc (contiguous memory allocate)
+
+— realloc (resize memory)
+
+— free (deallocate memory)
+
+* malloc function is used to,allocate required amount of memory-space during run-time.
++ If memory allocation succeeds, then address of first byte of allocated space is returned. If
+memory allocation fails, then NULL is returned.
+
++ free() function is used to deallocate(or free) an area of memory previously allocated by
+
+malloc() or calloc().
+
+#include void main()
+{
+int i,*pi;
+pi=(int*)malloc(sizeof (int) );
+*pi=1024;
+printf("an integer =%d",pi);
+
+free(pi);
+
+Prg: Allocation and deallocation of memor
+
+vtucode.in 5

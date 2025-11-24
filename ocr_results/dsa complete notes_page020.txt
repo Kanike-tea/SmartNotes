@@ -1,0 +1,66 @@
+Data Structures and Applications/BCS304 Module-1
+
+Example
+Col0_ Coll Col2 Col3 Col4 _Col5 Row Col Value
+
+Row0| 15 0 0 22 0 -15 a[0] 6 6 8
+Row | 0 ll 3 0 0 0 a{1] 0 0 15
+Row2 | 0 0 0 -6 0 0 a[2] 0 3 22
+Row3 | 0 0 0 0 0 0 a[3] 0 5 -15
+Row4 | 91 0 0 0 0 0 a[4] 1 1 ll
+Row5 |_0. 0 28 «0 0 0 a[5] 1 2 3
+
+a[6] 2 3 -6
+
+a[7] 4 0 91
+
+a[8] 5 2 28
+
+a)Two dimensional array b) Sparse matrix stored as triples
+
+Figure 1.4 two dimensional array and its sparse matrix stored as triples
+
+Write a program to store a sparse matrix in triplet form and search an element specified by
+the user
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+struct sparse
+t :
+
+int r;
+
+int c;
+
+int v;
+i
+struct poly s[100];
+int ele,ij,k.nsm,key;
+printf("enter the size of the array ; ");
+scanf("%d %d" ,&m,&n);
+k=1;
+
+s[0].r=m;
+
+s[0].c=n;
+
+printf(\n enter the elements of the array\n");
+for(i=0;i<m;i++)
+
+for(j=0;j<n;j++)
+
+{
+
+scanf("%d" &ele);
+
+if(ele !=0)
+
+{
+s[k].1=i;
+s[k].c=j;
+s[k].v= ele;
+k++;
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 21

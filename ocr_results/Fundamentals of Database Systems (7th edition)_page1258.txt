@@ -1,0 +1,187 @@
+1228 Index
+
+INTERSECT operation, SQL sets,
+194-195
+INTERSECTION operation, 247-249
+INTERVAL data type, 184
+INTO clause, 317
+Intraquery parallelism, 687
+inverse references, 366, 370, 396-397
+Inverse relationships, ODMG objects,
+396-397
+Inverted files, 641
+Inverted indexing
+construction of, 1041-1042
+defined, 1041
+information retrieval (IR), 1040-1044
+Lucern indexing/search engine for,
+1043-1044
+process of, 1042
+IS-A relationship, 109, 126
+IS/IS NOT comparison operators, 209
+Isolation. See also Snapshot isolation
+levels of in transactions, 758
+property, transactions, 14, 158
+Iterator object, ODMG models, 393,
+Iterator variables
+query results and, 312
+OQL, 409-410
+Iterators
+defined, 682
+pipelining implementation using,
+682-683
+SQLJ query result processing with,
+323-325
+Java
+embedding SQL commands (SQLJ),
+321-325
+exceptions for error handling, 322-323
+Web programming technologies, 358
+Java server pages (JSP), 358
+Java servlets, 358
+JavaScript, 358
+JavaScript Object Notation (JSON), 358
+JDBC (Java Database Connectivity)
+class library imported from, 331, 332
+drivers, 331-332
+programming steps, 332-335
+SQL class library, 326, 331-335
+two-tier client/server architecture and,
+49
+Join attribute, 253
+Join condition, 189, 191, 252, 278
+Join dependency (JD), SNF, 494-495
+JOIN operations
+aggregate operation implementation
+and, 678-679
+anti-join (AJ) operator, 658-660,
+677-678, 681, 719-720
+attributes, 668
+bucket join, 931
+buffer space and, 672-673
+cardinality, 719-720
+cost functions for, 717-726
+
+distributed query processing, 862-863
+dynamic programming approach to
+ordering, 725-726
+EQUIJOIN (=) comparison operator,
+253
+hybrid-hash join, 675-676
+index-based nested-loop join, 559,
+718-719
+inner/outer, 254, 263-264
+join selectivity (js) operator, 717-718
+‘MapReduce (MR), 930-932
+map-side hash join, 930
+multiway joins, 668
+N-way joins, 931-932
+NATURAL JOIN (*__) comparison
+operator, 253, 262-263
+nested-loop join, 558-559, 672-673, 718
+non-equi-join, 681
+optimization based on cost formulas,
+720-721
+ordering choices in multirelational
+queries, 721-724
+OUTER JOIN operations, 262-264,
+679-681
+parallel algorithms, 685-686
+partition-hash join, 559, 674-675, 719,
+930-931
+performance of, 673-674
+physical optimization, 724
+query processing implementation,
+668-676, 679-681
+recursive closure operations, 262
+relational algebra and, 251-255,
+262-264
+semi-join (SJ) operator, 658-660, 681,
+719-720, 862-863
+SQL query retrieval, 215-216
+SQL relations, 215-216
+sort-merge join, 559, 719, 930
+two-way join, 668
+k-means algorithm, 1088-1089
+Key constraints
+attributes, 68-69, 302
+database integrity and, 21
+integrity constraints and, 163-165
+referential integrity constraints and,
+163-165
+relational modeling and, 158-160,
+163-165
+relational schema and, 157-165
+surrogate, 302
+uniqueness property, 68-69, 159
+Key field, records, 568
+Key-value storage (data models), 34, 51, 53
+Key-value stores, NOSQL, 888, 895-900
+Keys
+attributes, 477
+candidate key, 159-160, 477
+composite keys, 631
+defined, 476
+foreign keys, 163-165, 186-187
+
+indexes with, 631-633
+multiple keys, 631-633
+normal forms and, 476-477
+ODMG object model, 398
+primary key, 159, 186-187, 441, 477
+SQL, 186-187
+superkey, 158-159, 476-477
+unique keys, 160
+XML schema specification, 441
+Keyword-based data search, 41
+Keyword queries, 1035
+Knowledge discovery in databases
+(KDD), 1070-1073
+Knowledge representation (KR)
+abstraction concepts, 129-133
+domain of knowledge for, 129
+EER modeling and, 128-129
+ontology and, 129
+reasoning mechanisms, 129
+Label-based security policy
+architecture, 1156-1157
+multilevel security, 1139-1140
+Oracle, 1155-1158
+Virtual private database (VPD)
+technology, 1156
+Language design for database
+programming, 312, 339
+Latches, concurrency control and, 807
+Late (dynamic) binding, 377
+Lattices
+EER models, 116-119
+generalization, 119
+inheritance and, 117-118
+specialization, 116-119
+Lazy updates, SQL views, 230
+Leaf class, 127
+Leaf nodes, tree structures, 257, 617, 623
+Least recently used (LRU) strategy,
+buffering, 559
+Legacy data models, 33, 51, 53
+Legal relation states (extensions), 472
+Level trigger, 967
+Library of functions or classes
+application programming interface
+(API), 312, 326
+database programming approach, 311,
+338-339
+JDBC: SQL class library, 326, 331-335,
+SQU/CLI (SQ call level interface),
+326-331
+Lifetime of an object, 388
+LIKE comparison operator, SQL,
+195-196
+Linear hashing, 580-582
+Linear regression, data mining, 1092
+Linear scale-up, 684
+Linear search, files, 564, 567-568
+Linear speed-up, 684
+Link structure analysis, Web search and,
+1050-1051
+Linked allocation, file blocks, 564

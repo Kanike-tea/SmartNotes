@@ -1,0 +1,53 @@
+8.7 The Domain Relational Calculus
+
+in general, include tuples (and hence values) from outside the EMPLOYEE relation;
+such values are not in the domain of the expression. All of our other examples are
+safe expressions.
+
+8.7 The Domain Relational Calculus
+
+There is another type of relational calculus called the domain relational calculus, or
+simply domain calculus. Historically, while SQL (see Chapters 6 and 7), which was
+based on tuple relational calculus, was being developed by IBM Research at San
+Jose, California, another language called QBE (Query-By-Example), which is
+related to domain calculus, was being developed almost concurrently at the IBM
+T. J. Watson Research Center in Yorktown Heights, New York. The formal specifi-
+cation of the domain calculus was proposed after the development of the QBE lan-
+guage and system.
+
+Domain calculus differs from tuple calculus in the type of variables used in formu-
+las: Rather than having variables range over tuples, the variables range over single
+values from domains of attributes. To form a relation of degree n for a query result,
+we must have n of these domain variables—one for each attribute. An expression
+of the domain calculus is of the form
+
+{xq X25 ony Xp | COND (Xq, X95 os Xp Xp at 429 > Xnem)}
+
+where x}, X2, --- 5 Xp» Xpe1> Xn42> ++ » Xn+m are domain variables that range over
+domains (of attributes), and COND is a condition or formula of the domain
+relational calculus.
+
+A formula is made up of atoms. The atoms of a formula are slightly different from
+those for the tuple calculus and can be one of the following:
+
+1. An atom of the form R(x;, x2, ... , xj), where R is the name of a relation of
+degree j and each xj, 1 < i<j, isa domain variable. This atom states that a list
+of values of <x}, x2... 5 xj> must be a tuple in the relation whose name is R,
+where x; is the value of the ith attribute value of the tuple. To make a domain
+calculus expression more concise, we can drop the commas in a list of vari-
+ables; thus, we can write:
+
+{X1, X25 0 Xn | R(xy X2 x3) AND ...}
+instead of:
+{X1, X25 + Xn | R(x1, X2, x3) AND ...}
+2. Anatom of the form x; op x;, where op is one of the comparison operators in
+the set {=, <, s, >, 2, #}, and x; and x; are domain variables.
+
+3. An atom of the form x; op c or c op x where op is one of the comparison
+operators in the set {=, <, <, >, 2, #}, xj and x; are domain variables, and c is
+a constant value.
+
+As in tuple calculus, atoms evaluate to either TRUE or FALSE for a specific set of
+values, called the truth values of the atoms. In case 1, if the domain variables are
+
+277

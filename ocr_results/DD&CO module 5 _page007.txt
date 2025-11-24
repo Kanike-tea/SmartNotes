@@ -1,0 +1,19 @@
+FETCHING A WORD FROM MEMORY
+. To fetch instruction/data from memory, processor transfers required address to MAR.
+At the same time, processor issues Read signal on control-lines of memory-bus.
+e When requested-data are received from memory, they are stored in MDR. From
+MDR, they are transferred to other registers.
+¢ The response time of each memory access varies (based on cache miss, memory-
+mapped I/O). To accommodate this, MFC is used. (MFC 7] Memory Function
+Completed).
+¢ MFC is a signal sent from addressed-device to the processor. MFC informs the
+processor that the requested operation has been completed by addressed-device.
+¢ Consider the instruction Move (R1),R2. The sequence of steps is (Figure 7.5):
+1) Rlout, MARin, Read ;desired address is loaded into MAR & Read command is issued.
+
+2) MDRinE, WMFC ;load MDR from memory-bus & Wait for MFC response from
+memory.
+3) MDRout, R2in jload R2 from MDR.
+
+where WMFCscontrol-signal that causes processor's control. circuitry to wait for
+arrival of MFC signal.

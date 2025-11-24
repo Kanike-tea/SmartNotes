@@ -1,0 +1,54 @@
+6.3 Balanced Search Trees 223
+
+by logarithmic functions. Specifically, the height h of any AVL tree with n nodes
+satisfies the inequalities
+
+[logy nJ <h < 1.4405 logy(n + 2) — 1.3277.
+
+(These weird-looking constants are round-offs of some irrational numbers related
+to Fibonacci numbers and the golden ratio—see Section 2.5.)
+
+The inequalities immediately imply that the operations of searching and in-
+sertion are @(log m) in the worst case. Getting an exact formula for the average
+height of an AVL tree constructed for random lists of keys has proved to be dif-
+ficult, but it is known from extensive experiments that it is about 1.01log,n + 0.1
+except when n is small [Knulll, p. 468]. Thus, searching in an AVL tree requires,
+on average, almost the same number of comparisons as searching in a sorted array
+by binary search.
+
+The operation of key deletion in an AVL tree is considerably more difficult
+than insertion, but fortunately it turns out to be in the same efficiency class as
+insertion, i.e., logarithmic.
+
+These impressive efficiency characteristics come at a price, however. The
+drawbacks of AVL trees are frequent rotations and the need to maintain bal-
+ances for its nodes. These drawbacks have prevented AVL trees from becoming
+the standard structure for implementing dictionaries. At the same time, their un-
+derlying idea—that of rebalancing a binary search tree via rotations—has proved
+to be very fruitful and has led to discoveries of other interesting variations of the
+classical binary search tree.
+
+2-3 Trees
+
+As mentioned at the beginning of this section, the second idea of balancing a
+search tree is to allow more than one key in the same node of such a tree. The
+simplest implementation of this idea is 2-3 trees, introduced by the U.S. computer
+scientist John Hopcroft in 1970. A 2-3 tree is a tree that can have nodes of two
+kinds: 2-nodes and 3-nodes. A 2-node contains a single key K and has two children:
+the left child serves as the root of a subtree whose keys are less than K, and the
+right child serves as the root of a subtree whose keys are greater than K. (In other
+words, a 2-node is the same kind of node we have in the classical binary search
+tree.) A 3-node contains two ordered keys K; and K2 (K; < K2) and has three
+children. The leftmost child serves as the root of a subtree with keys less than Kj,
+the middle child serves as the root of a subtree with keys between K, and K»,
+and the rightmost child serves as the root of a subtree with keys greater than Ky
+(Figure 6.7).
+
+The last requirement of the 2-3 tree is that all its leaves must be on the same
+level. In other words, a 2-3 tree is always perfectly height-balanced: the length of
+a path from the root to a leaf is the same for every leaf. It is this property that we
+“buy” by allowing more than one key in the same node of a search tree.
+
+Searching for a given key K in a 2-3 tree is quite straightforward. We start
+at the root. If the root is a 2-node, we act as if it were a binary search tree: we
+either stop if K is equal to the root’s key or continue the search in the left or right

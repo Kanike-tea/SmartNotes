@@ -1,0 +1,53 @@
+188
+
+Chapter 6 Basic SQL
+
+refer to the sample database state shown in Figure 5.6 to show the results of some
+of these queries. In this section, we present the features of SQL for simple retrieval
+queries. Features of SQL for specifying more complex retrieval queries are pre-
+sented in Section 7.1.
+
+Before proceeding, we must point out an important distinction between the practical
+SQL model and the formal relational model discussed in Chapter 5: SQL allows a
+table (relation) to have two or more tuples that are identical in all their attribute
+values. Hence, in general, an SQL table is not a set of tuples, because a set does not
+allow two identical members; rather, it is a multiset (sometimes called a bag) of
+tuples. Some SQL relations are constrained to be sets because a key constraint has
+been declared or because the DISTINCT option has been used with the SELECT state-
+ment (described later in this section). We should be aware of this distinction as we
+discuss the examples.
+
+6.3.1 The SELECT-FROM-WHERE Structure
+of Basic SOL Queries
+
+Queries in SQL can be very complex. We will start with simple queries, and then
+progress to more complex ones in a step-by-step manner. The basic form of the
+SELECT statement, sometimes called a mapping or a select-from-where block, is
+formed of the three clauses SELECT, FROM, and WHERE and has the following form:
+
+SELECT <attribute list>
+FROM <table list>
+WHERE <condition>;
+
+where
+
+= <attribute list> is a list of attribute names whose values are to be retrieved by
+the query.
+= <table list> is a list of the relation names required to process the query.
+
+= <condition> is a conditional (Boolean) expression that identifies the tuples
+to be retrieved by the query.
+
+In SQL, the basic logical comparison operators for comparing attribute values with
+one another and with literal constants are =, <, <=, >, >=, and <>. These correspond
+to the relational algebra operators =, <, <, >, =, and #, respectively, and to the
+C/C++ programming language operators =, <, <=, >, >=, and !=. The main syntactic
+difference is the not equal operator. SQL has additional comparison operators that
+we will present gradually.
+
+We illustrate the basic SELECT statement in SQL with some sample queries. The
+queries are labeled here with the same query numbers used in Chapter 8 for easy
+cross-reference.
+
+®The SELECT and FROM clauses are required in all SQL queries. The WHERE is optional (see Sec-
+tion 6.3.3).

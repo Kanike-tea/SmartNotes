@@ -1,0 +1,52 @@
+216 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+an EMPLOYEE tuple whose value for Super_ssn is NULL is excluded. If the user
+requires that all employees be included, a different type of join called OUTER JOIN
+must be used explicitly (see Section 8.4.4 for the definition of OUTER JOIN in rela-
+tional algebra). There are several variations of OUTER JOIN, as we shall see. In the
+SQL standard, this is handled by explicitly specifying the keyword OUTER JOIN ina
+joined table, as illustrated in Q8B:
+
+Q8B: SELECT —_ E.Lname AS Employee_name,
+S.Lname AS Supervisor_name
+FROM (EMPLOYEE AS E LEFT OUTER JOIN EMPLOYEE AS S
+ON E.Super_ssn = S.Ssn);
+
+In SQL, the options available for specifying joined tables include INNER JOIN (only
+pairs of tuples that match the join condition are retrieved, same as JOIN), LEFT
+OUTER JOIN (every tuple in the left table must appear in the result; if it does not have
+a matching tuple, it is padded with NULL values for the attributes of the right table),
+RIGHT OUTER JOIN (every tuple in the right table must appear in the result; if it does
+not have a matching tuple, it is padded with NULL values for the attributes of the left
+table), and FULL OUTER JOIN. In the latter three options, the keyword OUTER may be
+omitted. If the join attributes have the same name, one can also specify the natural
+join variation of outer joins by using the keyword NATURAL before the operation (for
+example, NATURAL LEFT OUTER JOIN). The keyword CROSS JOIN is used to specify
+the CARTESIAN PRODUCT operation (see Section 8.2.2), although this should be
+used only with the utmost care because it generates all possible tuple combinations.
+
+It is also possible to nest join specifications; that is, one of the tables in a join may
+itself be a joined table. This allows the specification of the join of three or more tables
+as a single joined table, which is called a multiway join. For example, Q2A is a differ-
+ent way of specifying query Q2 from Section 6.3.1 using the concept of a joined table:
+
+Q2A: SELECT —Pnumber, Dnum, Lname, Address, Bdate
+FROM ((PROJECT JOIN DEPARTMENT ON Dnum = Dnumber)
+JOIN EMPLOYEE ON Mgr_ssn = Ssn)
+WHERE Plocation = ‘Stafford’;
+
+Not all SQL implementations have implemented the new syntax of joined tables. In
+some systems, a different syntax was used to specify outer joins by using the compari-
+son operators + =, = +, and + = + for left, right, and full outer join, respectively, when
+specifying the join condition. For example, this syntax is available in Oracle. To specify
+the left outer join in Q8B using this syntax, we could write the query Q8C as follows:
+
+Q8c: SELECT —_E.Lname, S.Lname
+FROM EMPLOYEE E, EMPLOYEE S
+WHERE E,Super_ssn + = S.Ssn;
+
+7.1.7 Aggregate Functions in SQL
+
+Aggregate functions are used to summarize information from multiple tuples
+into a single-tuple summary. Grouping is used to create subgroups of tuples
+before summarization. Grouping and aggregation are required in many database

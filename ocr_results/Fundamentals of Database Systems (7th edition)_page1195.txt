@@ -1,0 +1,49 @@
+Appendix A Alternative Diagrammatic Notations for ER Models
+
+Figure A.1(c) shows various notations for representing the cardinality ratio of
+binary relationships. We used notation (i) in Chapters 7 through 9. Notation (ii)—
+known as the chicken feet notation—is quite popular. Notation (iv) uses the arrow as
+a functional reference (from the N to the 1 side) and resembles our notation for for-
+eign keys in the relational model (see Figure 9.2); notation (v)—used in Bachman
+diagrams and the network data model—uses the arrow in the reverse direction (from
+the 1 to the N side). For a 1:1 relationship, (ii) uses a straight line without any
+chicken feet; (iii) makes both halves of the diamond white; and (iv) places arrow-
+heads on both sides. For an M:N relationship, (ii) uses chicken feet at both ends of
+the line; (iii) makes both halves of the diamond black; and (iv) does not display any
+arrowheads.
+
+Figure A.1(d) shows several variations for displaying (min, max) constraints, which
+are used to display both cardinality ratio and total/partial participation. We mostly
+used notation (i). Notation (ii) is the alternative notation we used in Figure 7.15 and
+discussed in Section 7.7.4. Recall that our notation specifies the constraint that each
+entity must participate in at least min and at most max relationship instances.
+Hence, for a 1:1 relationship, both max values are 1; for M:N, both max values are n.
+A min value greater than 0 (zero) specifies total participation (existence depen-
+dency). In methodologies that use the straight line for displaying relationships, it is
+common to reverse the positioning of the (min, max) constraints, as shown in (iii); a
+variation common in some tools (and in UML notation) is shown in (v). Another
+popular technique—which follows the same positioning as (iii)—is to display the
+min as 0 (“oh” or circle, which stands for zero) or as | (vertical dash, which stands
+for 1), and to display the max as | (vertical dash, which stands for 1) or as chicken
+feet (which stands for n), as shown in (iv).
+
+Figure A.1(e) shows some notations for displaying specialization/generalization. We
+used notation (i) in Chapter 8, where a d in the circle specifies that the subclasses
+(S1, $2, and S3) are disjoint and an o in the circle specifies overlapping subclasses.
+Notation (ii) uses G (for generalization) to specify disjoint, and Gs to specify over-
+lapping; some notations use the solid arrow, while others use the empty arrow
+(shown at the side). Notation (iii) uses a triangle pointing toward the superclass,
+and notation (v) uses a triangle pointing toward the subclasses; it is also possible to
+use both notations in the same methodology, with (iii) indicating generalization
+and (v) indicating specialization. Notation (iv) places the boxes representing
+subclasses within the box representing the superclass. Of the notations based on
+(vi), some use a single-lined arrow, and others use a double-lined arrow (shown
+at the side).
+
+The notations shown in Figure A.1 show only some of the diagrammatic symbols
+that have been used or suggested for displaying database conceptual schemes. Other
+notations, as well as various combinations of the preceding, have also been used. It
+would be useful to establish a standard that everyone would adhere to, in order to
+prevent misunderstandings and reduce confusion.
+
+1165

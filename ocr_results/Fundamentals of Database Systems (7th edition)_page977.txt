@@ -1,0 +1,54 @@
+25.6 General Discussion
+
+25.6.2 Big Data in Cloud Computing
+
+The cloud computing movement and the big data movement have been proceeding
+concurrently for more than a decade. It is not possible to address the details of
+cloud computing issues in the present context. However, we state some compelling
+reasons why big data technology is in some sense dependent on cloud technology
+not only for its further expansion, but for its continued existence.
+
+= The cloud model affords a high degree of flexibility in terms of management
+of resources: “scaling out,” which refers to adding more nodes or resources;
+“scaling up,” which refers to adding more resources to a node in the system;
+or even downgrading are easily handled almost instantaneously.
+
+= The resources are interchangeable; this fact, coupled with the design of dis-
+tributed software, creates a good ecosystem where failure can be absorbed
+easily and where virtual computing instances can be left unperturbed. For
+the cost of a few hundred dollars, it is possible to perform data mining oper-
+ations that involve complete scans of terabyte databases, and to crawl huge
+Web sites that contain millions of pages.
+
+= It is not uncommon for big data projects to exhibit unpredictable or peak
+computing power and storage needs. These projects are faced with the chal-
+lenge of providing for this peak demand on an as-needed and not necessar-
+ily continuous basis. At the same time, business stakeholders expect swift,
+inexpensive, and dependable products and project outcomes. To meet with
+these conflicting requirements, cloud services offer an ideal solution.
+
+= A common situation in which cloud services and big data go hand-in-hand
+is as follows: Data is transferred to or collected in a cloud data storage sys-
+tem, like Amazon’s $3, for the purpose of collecting log files or exporting
+text-formatted data. Alternatively, database adapters can be utilized to
+access data from databases in the cloud. Data processing frameworks like
+Pig, Hive, and MapReduce, which we described above in Section 25.4, are
+used to analyze raw data (which may have originated in the cloud).
+
+= Big data projects and startup companies benefit a great deal from using a
+cloud storage service. They can trade capital expenditure for operational
+expenditure; this is an excellent trade because it requires no capital outlay or
+risk. Cloud storage provides reliable and scalable storage solutions of a qual-
+ity otherwise unachievable.
+
+= Cloud services and resources are globally distributed. They ensure high avail-
+ability and durability unattainable by most but the largest organizations.
+
+The Netflix Case for Marrying Cloud and Big Data.?* Netflix is a large orga-
+nization characterized by a very profitable business model and an extremely inex-
+pensive and reliable service for consumers. Netflix provides video streaming
+services to millions of customers today thanks to a highly efficient information
+
+24Based on hitp://techblog.nettlix.com/2013/0 1 /hadoop-platform-as-service-in-cloud htm!
+
+947

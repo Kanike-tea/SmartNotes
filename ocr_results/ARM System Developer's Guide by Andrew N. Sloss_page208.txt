@@ -1,0 +1,48 @@
+6.7 Bit Manipulation 195
+
+6.7.3. VARIABLE-WIDTH BITSTREAM UNPACKING
+
+EXAMPLE
+
+6.25
+
+Figure 6.7
+
+It is much harder to unpack a bitstream of variable-width codes than to pack it. The
+problem is that we usually don’t know the width of the codes we are unpacking! For
+Huffman-encoded bitstreams you must derive the length of each code by looking at the
+next sequence of bits and working out which code it can be.
+
+Here we will use a lookup table to speed up the unpacking process. The idea is to take
+the next N bits of the bitstream and perform a lookup in two tables, look_codebits{] and
+look_code[], each of size 2" entries. If the next N bits are sufficient to determine the code,
+then the tables tell us the code length and the code value, respectively. If the next N bits
+are insufficient to determine the code, then the 1ook_codebits table will return an escape
+value of OXFF. An escape value is just a flag to indicate that this case is exceptional.
+
+Ina sequence of Huffman codes, common codes are short and rare codes are long. So,
+we expect to decode most common codes quickly, using the lookup tables. In the following
+example we assume that N = 8 and use 256-entry lookup tables.
+
+This example provides three functions to unpack a big-endian bitstream stored in a
+bytestream. As with Example 6.24, these functions are not ATPCS compliant and will
+normally be inlined. The function bitstream_read_start initializes the process, start-
+ing to decode a bitstream at byte address bitstream. Each call to bitstream_read_code
+returns the next code in register code. The function only handles short codes that can
+be read from the lookup table. Long codes are trapped at the label long_code, but the
+implementation of this function depends on the codes you are decoding.
+
+The code uses a register bitbuffer that contains N + bitsleft code bits starting at the
+most significant bit (see Figure 6.7).
+
+bitstream RN QO 3; current byte address in the input bitstream
+look_code RN 2; lookup table to convert next N bits to a code
+look_codebits RN 3 ; lookup table to convert next N bits to a code length
+code RN 4  ; code read
+codebits RN 5 3 length of code read
+bitbuffer RN 6 ; 32-bit input buffer (big endian)
+bitsleft RN 7; number of valid bits in the buffer - N
+
+31 0
+bitbuffer = N bits bitsleft bits 0
+Format of bitbuffer.

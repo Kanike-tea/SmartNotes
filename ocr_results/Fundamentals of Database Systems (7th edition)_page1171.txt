@@ -1,0 +1,51 @@
+30.3 Mandatory Access Control and Role-Based Access Control for Multilevel Security
+
+complete document. Additionally, the XML signature specification defines mecha-
+nisms for countersigning and transformations—so-called canonicalization—to
+ensure that two instances of the same text produce the same digest for signing even
+if their representations differ slightly; for example, in typographic white space.
+
+The XML Encryption Syntax and Processing specification defines XML vocabulary
+and processing rules for protecting confidentiality of XML documents in whole or in
+part and of non-XML data as well. The encrypted content and additional processing
+information for the recipient are represented in well-formed XML so that the result
+can be further processed using XML tools. In contrast to other commonly used tech-
+nologies for confidentiality, such as SSL (Secure Sockets Layer—a leading Internet
+security protocol) and virtual private networks, XML encryption also applies to parts
+of documents and to documents in persistent storage. Database systems such as
+PostgreSQL or Oracle support JSON (JavaScript Object Notation) objects as a data
+format and have similar facilities for JSON objects like those defined above for XML.
+
+30.3.5 Access Control Policies for the Web
+and Mobile Appplications
+
+Publicly accessible Web application environments present a unique challenge to
+database security. These systems include those responsible for handling sensitive or
+private information and include social networks, mobile application API servers,
+and e-commerce transaction platforms.
+
+Electronic commerce (e-commerce) environments are characterized by any trans-
+actions that are done electronically. They require elaborate access control policies
+that go beyond traditional DBMSs. In conventional database environments, access
+control is usually performed using a set of authorizations stated by security officers
+or users according to some security policies. Such a simple paradigm is not well
+suited for a dynamic environment like e-commerce. Furthermore, in an e-com-
+merce environment the resources to be protected are not only traditional data but
+also knowledge and experience. Such peculiarities call for more flexibility in speci-
+fying access control policies. The access control mechanism must be flexible enough
+to support a wide spectrum of heterogeneous protection objects.
+
+Because many reservation, ticketing, payment, and online shopping systems pro-
+cess information that is protected by law, the security architecture that goes beyond
+simple database access control must be put in place to protect the information.
+When an unauthorized party inappropriately accesses protected information, it
+amounts to a data breach, which has significant legal and financial consequences.
+This unauthorized party could be an adversary that actively seeks to steal protected
+information or may be an employee who overstepped his or her role or incorrectly
+distributed protected information to others. Inappropriate handling of credit card
+data, for instance, has led to significant data breaches at major retailers.
+
+In conventional database environments, access control is usually performed using a
+set of authorizations stated by security officers. But in Web applications, it is all too
+
+1141

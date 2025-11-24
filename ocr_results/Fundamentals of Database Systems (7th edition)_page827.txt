@@ -1,0 +1,46 @@
+21.3 Multiversion Concurrency Control Techniques 797
+
+(a) Read Write
+Read Yes No
+Write No No
+(b) Read Write Certify
+Figure 21.6
+Read Yes Yes No Lock compatibility tables.
+(a) Lock compatibility table for
+Write Yes No No read/write locking scheme.
+(b) Lock compatibility table for
+Certify No No No read/write/certify locking
+scheme.
+
+by means of the lock compatibility table shown in Figure 21.6(a). An entry of Yes
+means that if a transaction T holds the type of lock specified in the column header
+on item X and if transaction T’ requests the type of lock specified in the row header
+on the same item X, then T” can obtain the lock because the locking modes are com-
+patible. On the other hand, an entry of No in the table indicates that the locks are
+not compatible, so T” must wait until T releases the lock.
+
+In the standard locking scheme, once a transaction obtains a write lock on an item,
+no other transactions can access that item. The idea behind multiversion 2PL is to
+allow other transactions T’ to read an item X while a single transaction T holds a
+write lock on X. This is accomplished by allowing two versions for each item X; one
+version, the committed version, must always have been written by some commit-
+ted transaction. The second local version X’ can be created when a transaction T
+acquires a write lock on X. Other transactions can continue to read the committed
+version of X while T holds the write lock. Transaction T can write the value of X’ as
+needed, without affecting the value of the committed version X. However, once T is
+ready to commit, it must obtain a certify lock on all items that it currently holds
+write locks on before it can commit; this is another form of lock upgrading. The
+certify lock is not compatible with read locks, so the transaction may have to delay
+its commit until all its write-locked items are released by any reading transactions
+in order to obtain the certify locks. Once the certify locks—which are exclusive
+locks—are acquired, the committed version X of the data item is set to the value of
+version X’, version X’ is discarded, and the certify locks are then released. The lock
+compatibility table for this scheme is shown in Figure 21.6(b).
+
+In this multiversion 2PL scheme, reads can proceed concurrently with a single write
+operation—an arrangement not permitted under the standard 2PL schemes. The
+cost is that a transaction may have to delay its commit until it obtains exclusive
+certify locks on all the items it has updated. It can be shown that this scheme avoids
+cascading aborts, since transactions are only allowed to read the version X that was
+written by a committed transaction. However, deadlocks may occur, and these
+must be handled by variations of the techniques discussed in Section 21.1.3.

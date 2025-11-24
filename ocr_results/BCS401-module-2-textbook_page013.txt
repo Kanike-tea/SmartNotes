@@ -1,0 +1,38 @@
+4.2 Topological Sorting 139
+
+(a) (v)
+FIGURE 4.5 (a) Digraph. (b) DFS forest of the digraph for the DFS traversal started at a.
+
+Depth-first search and breadth-first search are principal traversal algorithms
+for traversing digraphs as well, but the structure of corresponding forests can be
+more complex than for undirected graphs. Thus, even for the simple example of
+Figure 4.5a, the depth-first search forest (Figure 4.5b) exhibits all four types of
+edges possible in a DFS forest of a directed graph: tree edges (ab, be, de), back
+edges (ba) from vertices to their ancestors, forward edges (ac) from vertices to
+their descendants in the tree other than their children, and cross edges (dc), which
+are none of the aforementioned types.
+
+Note that a back edge ina DFS forest of a directed graph can connect a vertex
+to its parent. Whether or not it is the case, the presence of a back edge indicates
+that the digraph has a directed cycle. A directed cycle in a digraph is a sequence
+of three or more of its vertices that starts and ends with the same vertex and in
+which every vertex is connected to its immediate predecessor by an edge directed
+from the predecessor to the successor. For example, a, b, a is a directed cycle in
+the digraph in Figure 4.5a. Conversely, if a DFS forest of a digraph has no back
+edges, the digraph is a dag, an acronym for directed acyclic graph.
+
+Edge directions lead to new questions about digraphs that are either meaning-
+less or trivial for undirected graphs. In this section, we discuss one such question.
+As a motivating example, consider a set of five required courses {C1, C2, C3, C4,
+C5} a part-time student has to take in some degree program. The courses can be
+taken in any order as long as the following course prerequisites are met: C1 and
+C2 have no prerequisites, C3 requires C1 and C2, C4 requires C3, and C5 requires
+C3 and C4. The student can take only one course per term. In which order should
+the student take the courses?
+
+The situation can be modeled by a digraph in which vertices represent courses
+and directed edges indicate prerequisite requirements (Figure 4.6). In terms of
+this digraph, the question is whether we can list its vertices in such an order that
+for every edge in the graph, the vertex where the edge starts is listed before the
+vertex where the edge ends. (Can you find such an ordering of this digraph’s
+vertices?) This problem is called topological sorting. It can be posed for an

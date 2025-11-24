@@ -1,0 +1,53 @@
+MICROCONTROLLER(BCS402)
+
+MODULE-4
+
+Exception and Interrupt Handling: Exception handling, ARM
+processor exceptions and modes, vector table, exception priorities, link
+register offsets, interrupts, assigning interrupts, interrupt latency, IRQ and
+FIQ exceptions, basic interrupt stack design and implementation.
+Firmware: Firmware and bootloader, ARM firmware suite, Red Hat
+redboot, Example: sandstone, sandstone
+directory layout, sandstone code structure.
+Textbook 1: Chapter 9.1 and 9.2, Chapter 10
+RBT: L1,L2,L3
+Introduction:
+Exceptions and interrupts are unexpected events which will disrupt the
+normal flow of execution of instruction. An exception i$ an unexpected
+event from within the processor. Interrupt is an unexpected event from
+outside the process.Whenever an exception or interrupt occurs, the
+hardware starts executing the code that performs an action in response to
+the exception.
+
+The following types of action can cause an exception:
+
+@ Reset is called by the processor when power is applied. This
+instruction branches to the initialization code.
+
+@ Undefined instruction is used when the processor cannot decode an
+instruction.
+
+© Software interrupt is called when we execute a SWI instruction. The
+SWI instruction is frequently used as the mechanism to invoke an
+operating system routine.
+
+@ Prefetch.abort occurs when the processor attempts to fetch an
+instruction from an address without the correct access permissions.
+The actual abort occurs in the decode stage.
+
+@ Data abort is similar to a prefetch abort but is raised when an
+instruction attempts to access data memory without the correct access
+permissions.
+
+@ Interrupt request is used by external hardware to interrupt the normal
+execution flow of the processor. It can only be raised if IRQs are not
+masked in the cpsr.
+
+4.1 Exception handling
+
+An exception is any condition that needs to halt the normal sequential
+execution of instructions.
+
+Example for exceptions are: ARM core reset, instruction fetch or
+memory access failure, an undefined instruction fetch ,execution of
+software interrupt instruction ,when an external interrupt has been raised.

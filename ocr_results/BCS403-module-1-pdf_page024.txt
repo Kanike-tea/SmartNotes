@@ -1,0 +1,68 @@
+Database Management System [BCS403]
+
+keystrokes required for each request.
+
+7. Tniterfacesforthe DBA: Most database systems contain privileged commands
+that can be used only by the DBA staff. These include commands for creating
+accounts, setting system parameters, granting account authorization, changing a
+
+schema, and reorganizing the storage structures of a database.
+
+2.4 The Database System Environment
+
+2.4.1. DBMS Component Modules
+
+Users: DBA Staff Casual Users Application Parametric Users
+Programmers
+DDL Priviloged ‘| Interactive ‘Application
+Atatemants Commands Onary Programs
+
+t Hi
+DDL Query [Precameter | o™
+. guage
+Compiler Compiler Proc Giaeiam Compiler
+t ¥
+‘Query DML Compiled )
+Optimizer Compilor Transactions
+
+DBAGammands,
+
+qaatcl acewueee
+\
+
+z Queries, and Transactions
+-— = Stored
+—
+Systom ec tw ee
+Catalogs ‘Concurrency Control/ ieee
+
+Data Backup/Recovery
+
+Dictionary Subsystems
+
+Ss ee
+¥
+
+Stored Database Input/Output
+
+Query and Transaction {ror Dalabase
+
+Execution:
+
+The top part of the figure refers to the various users of the database environment and
+
+their interfaces. The lower part shows the internals of the DBMS responsible for storage
+
+of data and processing of transactions.
+
+DDL _ compiler-processes schema definitions, specified in the DDL, and_ stores
+descriptions of the schemas (meta-data) in the DBMS catalog.
+
+Interactive query interface: interface for Casual users and persons with occasional need for
+information from the database.
+
+Query compiler- validates for correctness of the query syntax, the names of files and data
+
+elements & compiles them into an internal form.
+
+https://vtucode.in Page 25

@@ -1,0 +1,54 @@
+930
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+that they may not be able to meet the service-level agreements (SLAs) of their
+applications. The Capacity Scheduler is designed to give each tenant guarantees
+about cluster capacity using the following provisions:
+
+© There is support for multiple queues, with hard and soft limits in terms of
+fraction of resources.
+
+© Access control lists (ACLs) are used that determine who can submit, view,
+and modify the Jobs in a queue.
+
+o Excess capacity is evenly distributed among active Queues.
+
+o Tenants have usage limits; such limits prevent tenants from monopoliz-
+ing the cluster.
+
+25.4.2 Example: Achieving Joins in MapReduce
+
+To understand the power and utility of the MapReduce programming model, it is
+instructive to consider the most important operation of relational algebra, called
+Join, which we introduced in Chapter 6. We discussed its use via SQL queries
+(Chapters 7 and 8) and its optimization (Chapters 18 and 19). Let us consider the
+problem of joining two relations R(A, B) with S(B, C) with the join condition
+R.A = S.B. Assume both tables reside on HDFS. Here we list the many strategies
+that have been devised to do equi-joins in the MapReduce environment.
+
+Sort-Merge Join. The broadest strategy for performing a join is to utilize the Shuffle
+to partition and sort the data and have the reducers merge and generate the output.
+We can set up an MR job that reads blocks from both tables in the Map phase. We
+set up a Partitioner to hash partition rows from R and S on the value of the B column.
+The key output from the Map phase includes a table tag. So the key has the form
+(tag, (key)). In MR, we can configure a custom Sort for the Job’s shuffle; the custom
+Sort sorts the rows that have the same key. In this case, we Sort rows with the same
+B value based on the tag. We give the smaller table a tag of 0 and the larger table a tag
+of 1. Soa reducer will see all rows with the same B value in the order: smaller table rows
+first, then larger table rows. The Reducer can buffer smaller table rows; once it starts to
+receive large table rows, it can do an in-memory cross-product with the buffered small
+table rows to generate the join output. The cost of this strategy is dominated by the
+shuffle cost, which will write and read each row multiple times.
+
+Map-Side Hash Join. For the case when one of R or S is a small table that can be
+loaded in the memory of each task, we can have the Map phase operate only on the
+large table splits. Each Map task can read the entire small table and create an in-
+memory hash map based on Bas the hash key. Then it can perform a hash join. This
+is similar to Hash Joins in databases. The cost of this task is roughly the cost of read-
+ing the large table.
+
+Partition Join. Assume that both R and S are stored in such a way that they are
+partitioned on the join keys. Then all rows in each Split belong to a certain identifi-
+able range of the domain of the join field, which is B in our example. Assume both
+Rand S are stored as p files. Suppose file (i) contains rows such that (Value B mod

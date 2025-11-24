@@ -1,0 +1,57 @@
+20.1 Introduction to Transaction Processing 751
+
+Figure 20.3
+Some problems that occur when concurrent execution is uncontrolled. (a) The lost update
+problem. (b) The temporary update problem. (c) The incorrect summary problem.
+
+(a) ih ih
+
+read_item(X);
+X=X-N;
+
+Time | | write_item(X);
+
+read_item(Y); Item X has an incorrect value because
+
+write_item(X); its update by T, is Jost (overwritten).
+
+Y=YtN;
+y write_item(Y);
+
+(b) 7 Te
+
+read_item(X);
+X=X-N;
+write_item(X);
+
+Time read_item(X);
+X=X+M,;
+
+write_item(X);
+Transaction T, fails and must change
+
+read_item(Y); the value of X back to its old value;
+y meanwhile T, has read the temporary
+incorrect value of X.
+
+(©) qt Ts
+
+sum = 0;
+read_item(A);
+sum = sum + A;
+
+read_item(X);
+X=X-N;
+write_item(X);
+read_item(X);
+sum = sum + X;
+read_item(Y);
+sum = sum + Y;
+
+Ty reads X after Nis subtracted and reads
+~<— Y before N is added; a wrong summary
+is the result (off by NV).
+
+read_item(Y);
+Y=YtN
+write_item(Y);

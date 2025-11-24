@@ -1,0 +1,43 @@
+* Numerical Methods . 1
+
+R
+é
+
+- cetNG MATH
+2 Module - 1 ‘a
+
+‘Numerical Solution of Ordinary Differential Equations of First
+Order and First Degree
+
+We have studied various analytical ( theoretical’) methods of solving differential
+equations, applicable only to equations in some specific form. But the differential
+equations arising out of many physical problems do not belong to a specific form and
+some times analytical solution may not even exist. Insome cases it may be very difficult
+
+’ to solve by analytical methods. In such cases Numerical Methods assumes importance
+and computers help in many numerical methods for obtaining the result to the highest
+degree of accuracy.
+
+Numerical methods for initial value problems
+
+Consider a differential equation of first order and first degree in the form
+
+ra = f(x,y) with the initial condition y(xy) = yp, thatis y = Yo at x =X.
+
+* This problem of finding y iscalled an initial value problem. .
+
+We discuss several numerical methods for solving an initial value problem.
+
+, Taylor's series method
+
+: : a
+Consider the initial value problem : = = f(x,y) and y(x) = yy
+
+The solution y(x) is approximated to a power series iri (x — xy) using Taylor's
+series. Then we can find the value of y for variousvvalues of x in theneighbouthood
+Of Xq % ,
+
+We have Taylor's series expansion of y(2.) about the point x, in the form:
+
+(x-3)) (2-4)
+y(*) = y(%q) + (4-29) y"(4q) + SY" (ay) 31 y"" (xg) +e

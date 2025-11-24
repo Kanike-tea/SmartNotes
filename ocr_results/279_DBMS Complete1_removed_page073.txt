@@ -1,0 +1,52 @@
+values(“Sadar”, “A-9732”, 1200)
+
+Provide for all loan customers of the Sadar branch a new Rs 200 saving account
+for each loan account they have. Where loan-number serve as the account number
+for these accounts.
+
+insert into Account
+
+select branch-name, loan-number, 200
+
+from Loan
+
+where branch-name = “Sadar”
+
+Updates
+Used to change a value in a tuple without changing all values in the tuple.
+Suppose that annual interest payments are being made, and all balances are to be
+increased by 5 percent.
+update Account
+set balance = balance * 1.05
+Suppose that accounts with balances over Rs10000 receive 6 percent interest,
+whereas all others receive 5 percent.
+update Account
+set balance = balance * 1.06
+where balance > 10000
+update Account
+set balance = balance * 1.05
+where balance <= 10000
+Data Definition Language
+Data Types in SQL
+char(n): fixed length character string, length n.
+varchar(n): variable length character string, maximum length n.
+int: an integer.
+smallint: a small integer.
+numeric(p,d): fixed point number, p digits( plus a sign), and d of the p digits are
+to right of the decimal point.
+real, double precision: floating point and double precision numbers.
+float(n): a floating point number, precision at least n digits.
+date: calendar date; four digits for year, two for month and two for day of month.
+time: time of day n hours minutes and seconds.
+Domains can be defined as
+create domain person-name char(20).
+the domain name person-name can be used to define the type of an attribute just like
+built-in domain.
+Schema Definition in SQL
+create table command is used to define relations.
+create table r (AID1, A2D2,... , AnDn,
+<integrity constraint 1>,
+
+<integrity constraintk>)
+
+where r is relation name, each Ai is the name of attribute, Di is the domain type of

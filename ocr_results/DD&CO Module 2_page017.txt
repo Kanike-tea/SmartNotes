@@ -1,0 +1,47 @@
+input. When the control input is 0, the output is disabled and the gate goes to a high-impedance state,
+regardless of the value in the normal input. The high-impedance state of a three-state gate provides a
+special feature not available in other gates. Because of this feature, a large number of three-state gate
+outputs can be connected with wires to form a common line without endangering loading effects.
+
+Normal input A Output ¥ = AifC=1
+High-impedance if C = 0
+Control input C
+
+Graphic symbol for a three-state buffer
+
+The construction of multiplexers with three-state buffers is demonstrated in Fig below. The construction
+of a two-to-one-line multiplexer with 2 three-state buffers and an inverter. The two outputs are connected
+together to form a single output line. When the select input is 0, the upper buffer is enabled by its control
+input and the lower buffer is disabled. Output Y is then equal to input A. When the select input is 1, the
+lower buffer is enabled and Y is equal to B.
+
+A——_ Y
+
+—pe—_
+
+B
+
+Select ——4——______
+
+2-to-1-line mux using three state gates
+
+The construction of a four-to-one-line multiplexer is shown in Fig below. The outputs of 4 three-state
+buffers are connected together to form a single output line. The control inputs to the buffers determine
+which one of the four normal inputs Io through Is will be connected to the output line. No more than one
+buffer may be in the active state at any given time. The connected buffers must be controlled so that only
+1 three-state buffer has access to the output while all other buffers are maintained in a highimpedance
+state. One way to ensure that no more than one control input is active at any given time is to use a
+decoder, as shown in the diagram. When the enable input of the decoder is 0, all of its four outputs are
+0 and the bus line is in a high-impedance state because all four buffers are disabled. When the enable
+input is active, one of the threestate buffers will be active, depending on the binary value in the select
+inputs of the decoder.
+
+h
+
+—s,
+Select 2x4 1
+decoder
+
+Enable EN
+
+4-to-1-line MUX using three state gates and decoder

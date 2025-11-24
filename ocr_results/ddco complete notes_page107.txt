@@ -1,0 +1,41 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+The following steps takes place when the interrupt related instruction is
+executed:
+
+e It suspends the execution of current instruction i.
+e Transfer the execution control to sub program from main program.
+e Increments the content of PC by 4 memory location.
+
+e It decrements SP by 4 memory locations.
+
+e Pushes the contents of PC into the stack segment memory whose address is
+stored in SP.
+
+e It loads PC with the address of the first instruction of the sub program.
+
+The following steps takes place when ‘return’ instruction is executed in ISR -
+e It transfers the execution control from ISR to user program.
+
+e It retrieves the content of stack memory location whose address is stored in SP
+into the PC.
+
+e After retrieving the return address from stack memory location into the PC
+it increments theContent of SP by 4 memory location.
+Interrupt Latency / interrupt response time is the delay between the time
+taken for receiving aninterrupt request and start of the execution of the ISR.
+
+Generally, the long interrupt latency is unacceptable.
+
+e The external device (I/O device) sends interrupt request to the processor by
+activating a bus lineand called as interrupt request line.
+e All1/O device uses the same single interrupt-request line.
+
+e¢ One end of this interrupt request line is connected to input power supply by
+means of a register.
+
+e The another end of interrupt request line is connected to INTR (Interrupt
+
+request) signal ofprocessor as shown in the fig.
+
+Dr.Ajay V G, Dept. of CSE 9

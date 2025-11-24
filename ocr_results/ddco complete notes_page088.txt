@@ -1,0 +1,58 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+Consider the second statement to add data between two registers
+
+. “Add the contents of Ro with the contents of Ri and result is stored in Ro”
+. The assembly language notation of this statement is given by
+ADD Ro, Ri, R2
+
+Opcode sourcel, Source2, Destination
+
+This instruction adds the contents of Ro with the contents of R: and result is stored in Ro
+. The mathematical representation of this statement is givemby
+
+R2 —[Ro] + [Ri].
+
+Such a notations are called as “Assembly Language Notations”
+
+BASIC INSTRUCTION TYPES
+There are 3 types basic instructions namely,
+il, Three address instruction format
+Do Two address instruction format
+Bo One address instruction format
+
+Consider the arithmetic expression Z = A + B, Where A,B,Z are the Memory locations.
+Steps for evaluation
+
+Access the first memory operand whose symbolic name is given by A.
+
+Access thessecond memory operand whose symbolic name is given by B.
+
+Perform the addition operation between two memory operands.
+
+Storethé result into the 3" memory location Z.
+
+The mathematical representation is Z [A] + [B].
+
+APYwYN ES
+
+a) Three address instruction format : Its format is as follows
+opcode Source-1 Source-2 destination
+
+Destination <— [source-1] + [source-2]
+Ex: ADD A,B, Z
+
+Z —[A] +[B]
+a) Two address instruction format : Its format is as follows
+opcode Source Source/destination
+
+Destination — [source] + [destination]
+The sequence of two address m/c instructions to evaluate the arithmetic expression
+Z<— A+Bareas follows
+
+MOV A, Ro
+MOV B, Ri
+ADD Ro, Ri
+MOV RZ
+
+Dr. Ajay V G, Dept. of CSE, SVIT 21

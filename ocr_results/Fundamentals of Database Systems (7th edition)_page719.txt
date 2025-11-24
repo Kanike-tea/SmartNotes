@@ -1,0 +1,51 @@
+Selected Bibliography 689
+
+18.5. Discuss alternative ways of eliminating duplicates when a
+“SELECT Distinct <attribute>” query is evaluated.
+
+18.6. How are aggregate operations implemented?
+18.7. How are outer join and non-equi-join implemented?
+18.8. What is the iterator concept? What methods are part of an iterator?
+
+18.9. What are the three types of parallel architectures applicable to database sys-
+tems? Which one is most commonly used?
+
+18.10. What are the parallel implementations of join?
+
+18.11. What are intraquery and interquery parallelisms? Which one is harder to
+achieve in the shared-nothing architecture? Why?
+
+18.12. Under what conditions is pipelined parallel execution of a sequence of oper-
+ations prevented?
+
+Exercises
+
+18.13. Consider SQL queries Q1, Q8, QIB, and Q4 in Chapter 6 and Q27 in
+Chapter 7.
+
+a. Draw at least two query trees that can represent each of these queries.
+Under what circumstances would you use each of your query trees?
+
+b. Draw the initial query tree for each of these queries, and then show how
+the query tree is optimized by the algorithm outlined in Section 18.7.
+
+c. For each query, compare your own query trees of part (a) and the initial
+and final query trees of part (b).
+
+18.14. A file of 4,096 blocks is to be sorted with an available buffer space of 64
+blocks. How many passes will be needed in the merge phase of the external
+sort-merge algorithm?
+
+18.15. Cana nondense index be used in the implementation of an aggregate opera-
+tor? Why or why not? Illustrate with an example.
+
+18.16. Extend the sort-merge join algorithm to implement the LEFT OUTER JOIN
+operation.
+
+Selected Bibliography
+
+We will give references to the literature for the query processing and optimization
+area together at the end of Chapter19. Thus the Chapter19 references apply to this
+chapter and the next chapter. It is difficult to separate the literature that addresses
+just query processing strategies and algorithms from the literature that discusses
+the optimization area.

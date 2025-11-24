@@ -1,0 +1,43 @@
+7.5. Transcendental Functions: log, exp, sin, cos 241
+
+MUL q, a,b 3 q = q*(3-d*q*q)/2 at Q31
+3 q is now a Q31 estimate to 1/sqrt(d)
+UMULL b, ad, q 3 a = d*q at Q31
+Mov s,s, LSR #1 3 square root halves the shift
+UMULL b, a, qa 3 a = d*q*q at 930
+RSB s,s, #15 3 reciprocal inverts the shift
+RSB a, a, #3<<30 3 a = (3-d*q*q) at Q30
+UMULL b, qa, q 3 q = q*(3-d*q*q)/2 at Q31
+3 q is now a good Q31 estimate to 1/sqrt(d)
+Mov gq, a, LSR s 3 undo the normalization shift
+BX Ir 3 return q
+div_by zero
+MoV gq) #0x7FFFFFFF 3 maximum positive answer
+BX Ir 3 return q
+
+tab 5 tab[k] = round(256.0/sqrt((k+32.3)/128.0)) - 256
+DCB Oxfe, Oxf6, Oxef, Oxe7, Oxel, Oxda, Oxd4, Oxce
+DCB Oxc8, Oxc3, Oxbd, Oxb8, Oxb3, Oxae, Oxaa, Oxad
+DCB Oxal, Ox9c, 0x98, 0x94, 0x90, Ox8d, 0x89, 0x85
+DCB 0x82, Ox7f, Ox7b, 0x78, 0x75, 0x72, Ox6f, Ox6c
+DCB 0x69, 0x66, Ox64, 0x61, Ox5e, Ox5c, 0x59, 0x57
+DCB 0x55, 0x52, 0x50, Ox4e, Oxdc, 0x49, 0x47, 0x45
+DCB 0x43, Ox41, Ox3f, Ox3d, Ox3b, Ox3a, 0x38, 0x36
+DCB 0x34, 0x32, 0x31, Ox2f, Ox2d, Ox2c, Ox2a, 0x29
+DCB 0x27, 0x26, 0x24, 0x23, 0x21, 0x20, Oxle, Oxid
+DCB Oxic, Oxla, 0x19, 0x18, 0x16, 0x15, Ox14, 0x13
+DCB Ox11, 0x10, Ox0F, Ox0e, OxOd, OxOb, Ox0a, 0x09
+DCB 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01
+
+=1
+Similarly, to calculate dF you can use the Newton-Raphson iteration for the equation
+f(x) =d—-x*=0.
+
+7.5 TRANSCENDENTAL FUNCTIONS:
+LOG, EXP, SIN, COS
+
+You can implement transcendental functions by using a combination of table lookup and
+series expansion. We examine how this works for the most common four transcendental
+operations: log, exp, sin, and cos. DSP applications use logarithm and exponentiation
+functions to convert between linear and logarithmic formats. The trigonometric functions
+sine and cosine are useful in 2D and 3D graphics and mapping calculations.

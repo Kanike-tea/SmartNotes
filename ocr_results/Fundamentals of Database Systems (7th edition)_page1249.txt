@@ -1,0 +1,190 @@
+locks used for, 782-786, 796-797,
+805-806
+multiple granularity locking, 801-804
+multiversion concurrency control,
+781, 795-797
+phantom records and, 806-807
+snapshot isolation, 781, 799-800
+timestamp ordering (TO), 792-795, 796
+timestamps, 781, 790-791, 793
+two-phase locking (2PL), 782-792,
+796-797
+validation (optimistic) of transactions,
+781, 798-799
+Conditions
+constraint parentheses () for
+assertions, 226
+trigger component in SQL, 227
+Conflict equivalence, schedules, 765-766
+Conjunctive selection, search methods
+for, 665-666
+CONNECT TO command, SQL, 315
+Connecting fields for mixed records,
+582-583
+Connecting to a database
+embedded SQL, 315-316
+PHP, 353-355
+Connection record, SQL/CLI, 327-328
+Connection to database server, 313
+Consistency preservation, transactions,
+737
+Constant nodes, query graphs, 273
+Constraint specification language, 165
+Constraints
+application-based (semantic), 158
+assertions in SQL, 58, 165, 225-226
+attribute defaults and, 184-186
+attribute-defined specialization, 114
+binary relationships, 76-78
+business rules, 21
+CHECK clauses for, 187
+completeness (totalness), 115
+conditions in parentheses () for
+assertions, 226
+database applications, 21-22, 160-163
+disjointness (d notation), 114-115
+domain, 158
+EER models and, 113-116
+ER models and, 76-78, 91-92
+existence dependency, 77-78
+foreign keys, 163, 186-187
+generalization, 113-116
+indexes for management of, 641
+inherent model-based (implicit), 157
+inherent rules, 22
+insert operation and, 166-167
+integrity, 21-22, 160-163
+key, 21, 158-160, 163-165, 186-187
+minimum cardinality, 77
+naming, 187
+NULL value and, 160, 163
+participation, 77-78
+predicate-defined subclasses, 113-114
+
+referential integrity, 21, 186-187
+relational database schemas, 160-163
+relational models and, 157-167
+relationships and, 76-78
+row-based, 187
+schema-based (explicit), 157
+semantics and, 21
+specialization, 113-116
+SQL specifications, 165, 184-187,
+225-226
+state, 165
+structural, 78
+table-based, 184-187
+ternary relationships, 91-92
+transition, 165,
+triggers in SQL, 58, 165
+UML notation for, 127-128
+uniqueness, 21
+user-defined subclasses, 114
+violations, 166-167
+Constructor function, SQL
+encapsulation, 384
+Constructors, see Type constructors
+Constructs, 35
+Content-based access control, 1142
+Content-based retrieval, 995
+Contiguous allocation, file blocks, 564
+Control measures, database security,
+1123-1125
+Conversational information access, IR,
+1059
+Conversion of locks, 786
+Core specifications, SQL, 178
+Correlated nested queries, SQL, 211-212
+Cost-based query optimization
+approach, 710-712
+defined, 710
+dynamic programming compared to,
+716
+illustration of, 726-728
+Cost estimation
+catalog information in cost functions
+for, 712
+histograms for, 713
+JOIN optimization based on cost
+formulas, 720-721
+query execution components, 710-712
+query optimization technique, 657,
+710-713, 716-717
+selection based on cost formulas,
+716-717
+Cost functions
+JOIN operation use of, 717-726
+query optimization, 714-715, 717-726
+SELECT operation use of, 714
+COUNT function
+grouping, 260
+SQL, 217
+Covert channels, flow control and,
+1148-1149
+CREATE ASSERTION statement, SQL,
+225-226
+
+Index 1219
+
+CREATE SCHEMA statement, 179-180
+CREATE TABLE command, SQL,
+180-182
+CREATE TRIGGER statement, SQL,
+225, 226-227
+CREATE TYPE command, 184, 380-383
+CREATE VIEW statement, SQL,
+228-229
+Credentials, access control and, 1142
+CROSS PRODUCT operation
+relational algebra set theory, 249-251
+SQL tuple combinations, 192-193
+CRUD (create, read, update, and delete)
+operations, NOSQL, 887, 893, 903
+Cursors
+declaration of, 317, 319-320
+impedance mismatch and, 312
+iterator as, 318
+SQL query result processing, 312,
+317-320
+updating records, 318
+Cypher query language, Neo4j system,
+905-908
+Dangling tuples, RDB design problems,
+523-524
+Data
+Big data technology for, 914-916
+complex relationships among, 21
+conceptual representation of, 12
+databases and, 7-8, 12-14
+defined, 4
+directed graph representation of,
+427-428
+elements, 7
+eXtended Markup Language (XML)
+and, 25, 426-430
+granularity of data items, 800-801
+insulation from programs and, 12-13
+integrity constraints, 21-22
+interchanging on the Web, 25
+logical independence, 37-38
+multiple views of, 13
+multiuser transactions and, 13-14
+physical independence, 38
+records, 6-7
+requirements collection and analysis,
+60-61
+self-describing, 10, 427
+semantics and, 21
+semistructured, 426-428
+sharing, 13-14
+storage, 3-4
+structured, 426
+tag notation and use, HTML, 428-430
+three-schema architecture and, 37-38
+type, 7-8
+unstructured, 428-430
+variety of, 915
+velocity of, 915
+veracity of, 915-916
+volume of, 914
+virtual, 13

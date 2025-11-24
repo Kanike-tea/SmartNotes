@@ -1,0 +1,56 @@
+10
+
+Chapter 1 Databases and Database Users
+
+1.3 Characteristics of the Database Approach
+
+A number of characteristics distinguish the database approach from the much
+older approach of writing customized programs to access data stored in files. In
+traditional file processing, each user defines and implements the files needed for a
+specific software application as part of programming the application. For example,
+one user, the grade reporting office, may keep files on students and their grades.
+Programs to print a student’s transcript and to enter new grades are implemented
+as part of the application. A second user, the accounting office, may keep track of
+students’ fees and their payments. Although both users are interested in data about
+students, each user maintains separate files—and programs to manipulate these
+files—because each requires some data not available from the other user’s files.
+This redundancy in defining and storing data results in wasted storage space and
+in redundant efforts to maintain common up-to-date data.
+
+In the database approach, a single repository maintains data that is defined once
+and then accessed by various users repeatedly through queries, transactions, and
+application programs. The main characteristics of the database approach versus the
+file-processing approach are the following:
+
+Self-describing nature of a database system
+Insulation between programs and data, and data abstraction
+
+.
+.
+= Support of multiple views of the data
+.
+
+Sharing of data and multiuser transaction processing
+
+We describe each of these characteristics in a separate section. We will discuss addi-
+tional characteristics of database systems in Sections 1.6 through 1.8.
+
+1.3.1 Self-Describing Nature of a Database System
+
+A fundamental characteristic of the database approach is that the database system
+contains not only the database itself but also a complete definition or description of
+the database structure and constraints. This definition is stored in the DBMS cata-
+log, which contains information such as the structure of each file, the type and stor-
+age format of each data item, and various constraints on the data. The information
+stored in the catalog is called meta-data, and it describes the structure of the pri-
+mary database (Figure 1.1). It is important to note that some newer types of data-
+base systems, known as NOSQL systems, do not require meta-data. Rather the data
+is stored as self-describing data that includes the data item names and data values
+together in one structure (see Chapter 24).
+
+The catalog is used by the DBMS software and also by database users who need
+information about the database structure. A general-purpose DBMS software
+package is not written for a specific database application. Therefore, it must refer
+to the catalog to know the structure of the files in a specific database, such as the
+type and format of data it will access. The DBMS software must work equally well
+with any number of database applications—for example, a university database, a

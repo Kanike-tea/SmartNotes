@@ -1,0 +1,46 @@
+SQL: select s.name, g.grade from Student s, Grades g where s.roll=g.roll and s.marks>50;
+Uses two skeleton tables:
+Student name roll marks
+PA _X >50
+And
+Grades roll grade
+_X PB
+
+Insertions in QBE:
+
+Uses operator I. on the table.
+
+Example: Consider the following query on Student table
+SQL: insert into student values (‘abc’,10,60);
+
+Student name roll marks
+
+1. abe 10 60
+
+Multiple insertions can be represented by separate rows in skeleton table.
+
+Deletions in QBE:
+
+Uses operator D. on the table.
+
+Example: Consider the following query on Student table
+SQL: delete from student where marks=0;
+
+Student name roll marks
+
+D. 0
+
+Multiple deletions can be represented by separate rows in skeleton table.
+Deletions without any condition can truncate the entire table.
+
+Updation in QBE:
+
+Uses operator U. on the table.
+Example: Consider the following query on Student table
+SQL: update student set mark=50 where roll=40;
+
+Student name roll marks
+
+U. 50
+
+40

@@ -1,0 +1,50 @@
+Exercises 835
+
+22.18. What do the terms steal/no-steal and force/no-force mean with regard to buf-
+fer management for transaction processing?
+
+22.19. Describe the two-phase commit protocol for multidatabase transactions.
+
+22.20. Discuss how disaster recovery from catastrophic failures is handled.
+
+Exercises
+
+22.21. Suppose that the system crashes before the [read_item, T3, A] entry is written to
+the log in Figure 22.1(b). Will that make any difference in the recovery process?
+
+22.22. Suppose that the system crashes before the [write_item, T, D, 25, 26] entry is
+written to the log in Figure 22.1(b). Will that make any difference in the
+recovery process?
+
+22.23. Figure 22.6 shows the log corresponding to a particular schedule at the point
+of a system crash for four transactions T), T>, T3, and Ty. Suppose that we
+use the immediate update protocol with checkpointing. Describe the recov-
+ery process from the system crash. Specify which transactions are rolled
+back, which operations in the log are redone and which (if any) are undone,
+and whether any cascading rollback takes place.
+
+Figure 22.6
+A sample schedule and its
+corresponding log.
+
+[start_transaction, T,]
+[read_item, T,, A]
+[read_item, T,, D]
+[write_item, T,, D, 20, 25]
+[commit, 7,]
+
+[checkpoint]
+[start_transaction, T»]
+[read_item, T,, B]
+[write_item, 7, B, 12, 18]
+[start_transaction, T,]
+[read_item, Ts, D]
+[write_item, T,, D, 25, 15]
+[start_transaction, Ts]
+[write_item, T,, C, 30, 40]
+[read_item, Ts, Al
+[write_item, T,, A, 30, 20]
+[commit, 74]
+
+[read_item, T,, D]
+[write_item, Tp, D, 15, 25] |~«—— System crash

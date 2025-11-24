@@ -1,0 +1,12 @@
+MDRing
+
+Figure 7.5 Timing of o memory Recd operation.
+
+Storing a Word in Memory
+¢ Consider the instruction Move R2,(R1). This requires the following sequence:
+
+1) Rlout, MARin ;desired address is loaded into MAR.
+2) R2out, MDRin, Write ;data to be written are loaded into MDR & Write command
+is issued.
+
+3) MDRoutE, WMFC jload data into memory-location pointed by R1 from MDR.

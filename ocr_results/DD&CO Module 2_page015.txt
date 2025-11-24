@@ -1,0 +1,48 @@
+Quadruple two-to-one-line multiplexer
+
+Multiplexer circuits can be combined with common selection inputs to provide multiple-bit selection
+logic. As an illustration, a quadruple 2-to-1-line multiplexer is shown in Fig below. The circuit has four
+multiplexers, each capable of selecting one of two input lines. Output Yo can be selected to come from
+either input Ao or input Bo. Similarly, output Y1 may have the value of Aj or Bi, and so on. Input selection
+line S selects one of the lines in each of the four multiplexers. The enable input E must be active (i.e.,
+asserted) for normal operation. Although the circuit contains four 2-to-1-line multiplexers, we are more
+likely to view it as a circuit that selects one of two 4-bit sets of data lines. As shown in the function table,
+the unit is enabled when E = 0. Then, if S = 0, the four A inputs have a path to the four outputs. If, by
+contrast, S = 1, the four B inputs are applied to the outputs. The outputs have all 0’s when E = 1,
+regardless of the value of S.
+
+Ao \
+{__/ ) Yo
+Ay t \
+a } %
+Ay >
++— J ) Y>
+A; [
++
+a ) Y.
+Bo ,
+B E S$ | OutputY
+1) 7} +4), |
+Trey J 1 X | all's
+0 0 | select A
+B ool select B
+7 Function table
+s—f +
+(select)
+E
+
+(enable)
+
+Quadruple two-to-one-line multiplexer
+
+Boolean Function Implementation using MUX
+1. Consider the Boolean function F (x, y, z) = X(1, 2, 6, 7).
+
+This function of three variables can be implemented with a four-to-one-line multiplexer as shown in fig
+below. The two variables x and y are applied to the selection lines in that order; x is connected to the S;
+input and y to the So input. The values for the data input lines are determined from the truth table of the
+function. When xy = 00, output F is equal to z because F = 0 when z = 0 and F = 1 when z = 1. This
+requires that variable z be applied to data input 0. The operation of the multiplexer is such that when
+xy = 00, data input 0 has a path to the output, and that makes F equal to z . In a similar fashion, we can
+determine the required input to data lines 1, 2, and 3 from the value of F when xy = 01, 10, and 11,
+respectively. This particular example shows all four possibilities that can be obtained for the data inputs.

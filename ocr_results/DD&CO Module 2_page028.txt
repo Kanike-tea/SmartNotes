@@ -1,0 +1,45 @@
+En D | Nextstate of @
+
+En ——}——"4
+0 X | Nochange
+1 0 | Q=0;reset state
+1 1 | Q=1;setstate
+Q
+i}
+L
+(a) Logic diagram (b) Function table
+D latch
+
+The D input goes directly to the S input, and its complement is applied to the R input. As long as the
+enable input is at 0, the cross-coupled SR latch has both inputs at the | level and the circuit cannot
+change state regardless of the value of D. The D input is sampled when En = 1. If D = 1, the Q output
+goes to 1, placing the circuit in the set state. If D = 0, output Q goes to 0, placing the circuit in the reset
+state.
+
+The binary information present at the data input of the D latch is transferred to the Q output when the
+enable input is asserted. The output follows changes in the data input as long as the enable input is
+asserted. This situation provides a path from input D to the output, and for this reason, the circuit is often
+called a transparent latch.
+
+The graphic symbols for the various latches are shown in Fig. 5.7 . A latch is designated by a rectangular
+block with inputs on the left and outputs on the right. One output designates the normal output, and the
+other (with the bubble designation) designates the complement output. The graphic symbol for the SR
+latch has inputs S and R indicated inside the block. In the case of a NAND gate latch, bubbles are added
+to the inputs to indicate that setting and resetting occur with a logic-0 signal. The graphic symbol for the
+D latch has inputs D and En indicated inside the block.
+
+SR 5
+
+Graphic symbols for latches
+
+Storage Elements: Flip-Flops
+
+The state of a latch or flip-flop is switched by a change in the control input. This momentary change is
+called a trigger, and the transition it causes is said to trigger the flip-flop. The D latch with pulses in its
+control input is essentially a flip-flop that is triggered every time the pulse goes to the logic-1 level.
+
+As we know, a sequential circuit has a feedback path from the outputs of the flip-flops to the input of
+the combinational circuit. Consequently, the inputs of the flip-flops are derived in part from the outputs
+of the same and other flip-flops. When latches are used for the storage elements, a serious difficulty
+arises. The state transitions of the latches start as soon as the clock pulse changes to the logic-1 level.
+The new state of a latch appears at the output while the pulse is still active. This output is connected to

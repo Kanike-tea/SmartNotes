@@ -1,0 +1,55 @@
+Data Structures and Applications/BCS304 Module-1
+
+startB++;
+break;
+
+case 0: coefficient = terms[startA].coef + terms[startB].coef;
+if (coefficient)
+attach(coefficient,terms[startA].expon);
+
+startA++;
+startB++;
+break;
+case |: attach(terms[startA ].coef,terms[startA ].expon);
+startA++;
+}
+}
+while(startA <= finishA)
+{
+attach(terms[startA].coef,terms[startA].expon); /* add in remaining terms of A(x) */
+startA++;
+}
+While(startB <= finishB)
+{
+attach(terms[startB].coef, terms[startB].expon); /* add in remaining terms of B(x) */
+startB++;
+}
+
+*finishD = avail-1;
+
+i
+/* add a new term to the polynomial */
+
+void attach(float coefficient, int exponent)
+{
+if (avail >= MAX_TERMS)
+{
+fprintf(stderr,"Too many terms in the polynomial\n") ;
+exit(EXIT_FAILURE);
+i
+terms[avail].coef = coefficient;
+terms[avail].expon = exponent;
+avail++;
+
+}
+
+Time complexity analysis
+e¢ The number of non zero terms in A and in B are the most important factors in the time
+complexity.
+e The first loop can iterate m times and the second can iterate n times. So, the asymptotic
+computing time of this algorithm is O(n +m).
+
+e Ifa matrix contains m rows and n columns the total number of elements in such a matrix is
+m*n. If m equals n the matrix is a square matrix.
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 19

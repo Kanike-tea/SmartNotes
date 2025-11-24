@@ -1,0 +1,56 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+* On successful resizing, it returns a pointer to the start of the new block. On failure, it returns
+the value NULL.
+* To create clean and readable programs, the REALLOC macro can be created as shown
+
+below:
+
+#define REALLOC (p,s)
+
+if ((p=realloc(p,s) )==NULL)
+
+{
+printf ("insufficient memory");
+exit (0);
+
+STRUCTURES AND UNIONS
+
+Structures
+
+Arrays are collections of data of the same type. In C there is an alternate way of grouping data
+that permits the data to vary in type. This mechanism is called the»struct, short for structure. A
+structure (called a record in many other programming languages) is a collection of data items,
+where each item is identified as to its type and name.
+
+struct {
+char name[10];
+int age;
+float salary;
+} person;
+
+> Creates a variable whose name is person and that has three fields:
+e aname that is a character array
+e an integer value representing the age of the person
+e afloat value representing the salary of the individual
+
+> Dot operator(.) is used to access a particular member of the structure.
+
+strepy (person.name, "james")
+person. age
+person.salary = 35000;
+
+> We can create our own structure data types by using the typedef statement as below:
+
+typedef struct human— typedef struct {
+being { char name[10];
+
+char name[10]; int age;
+
+int age; -OR- float salary;
+
+float salary; } human-being;
+
+he
+
+vtucode.in 20

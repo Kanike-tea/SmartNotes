@@ -1,0 +1,36 @@
+CHAPTER
+
+DIGITAL SIGNAL
+PROCESSING
+
+Microprocessors now wield enough computational power to process real-time digitized
+signals. You are probably familiar with mp3 audio players, digital cameras, and digital
+mobile/cellular telephones. Processing digitized signals requires high memory bandwidths
+and fast multiply accumulate operations. In this chapter we will look at ways you can
+maximize the performance of the ARM for digital signal processing (DSP) applications.
+
+Traditionally an embedded or portable device would contain two types of processor:
+A microcontroller would handle the user interface, and a separate DSP processor would
+manipulate digitized signals such as audio. However, now you can often use a single
+microprocessor to perform both tasks because of the higher performance and clock fre-
+quencies available on microprocessors today. A single-core design can reduce cost and
+power consumption over a two-core solution.
+
+Additions to the ARM architecture mean that ARM is well suited for many DSP
+applications. The ARMVSTE extensions available in the ARM9E and later cores provide
+efficient multiply accumulate operations. With careful coding, the ARM9E processor will
+perform decently on the DSP parts of an application while outperforming a DSP on the
+control parts of the application.
+
+DSP applications are typically multiply and load-store intensive. A basic operation
+is a multiply accumulate multiplying two 16-bit signed numbers and accumulating onto
+a 32-bit signed accumulator. Table 8.1 shows the increase in performance available on
+different generations of the ARM core. The second column gives cycles for a signed 16-bit
+by 16-bit multiply with 32-bit accumulate; the third column, cycles for a signed 32-bit by
+32-bit multiply with a 64-bit accumulate. The latter is especially useful for high-quality
+audio algorithms such as mp3.
+
+Table 8.1 assumes that you use the most efficient instruction for the task and that you
+can avoid any postmultiply interlocks. We cover this in detail in Section 8.2.
+
+259

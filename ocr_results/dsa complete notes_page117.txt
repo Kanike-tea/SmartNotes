@@ -1,0 +1,22 @@
+Data Structures and Applications (BCS304) Module IV
+
+Example:
+
+Elementary Graph Operations
+
+Given an undirected graph G=(V,E) and a vertex v in V(G) ,there are two ways to find all the
+vertices that are reachable from v or are connected to v .
+
+e Depth First Search and
+e Breadth First Search
+
+A recursive implementation of depth first search is shown below.
+
+A global array visited is maintained , it is initialized to false, when we visit a vertex i we change the
+visited[i] to true.
+
+Global Declaraions
+
+aS
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 12

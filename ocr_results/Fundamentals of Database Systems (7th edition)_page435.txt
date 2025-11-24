@@ -1,0 +1,49 @@
+12.4 Object Database Conceptual Design
+
+GRADE.” These relationships are represented by the following relationship proper-
+ties: Completed_sections of STUDENT; Section and Student of GRADE; and Students of
+SECTION (see Figure 12.10). Finally, the class DEGREE is used to represent the com-
+posite, multivalued attribute degrees of GRAD_STUDENT (see Figure 8.10).
+
+Because the previous example does not include any interfaces, only classes, we now
+utilize a different example to illustrate interfaces and interface (behavior) inheri-
+tance. Figure 12.11 (a) is part of a database schema for storing geometric objects. An
+interface GeometryObject is specified, with operations to calculate the perimeter and
+area of a geometric object, plus operations to translate (move) and rotate an object.
+Several classes (RECTANGLE, TRIANGLE, CIRCLE, ...) inherit the GeometryObject
+interface. Since GeometryObject is an interface, it is noninstantiable—that is, no
+objects can be created based on this interface directly. However, objects of type
+RECTANGLE, TRIANGLE, CIRCLE, ... can be created, and these objects inherit all the
+operations of the GeometryObject interface. Note that with interface inheritance,
+only operations are inherited, not properties (attributes, relationships). Hence, if a
+property is needed in the inheriting class, it must be repeated in the class defini-
+tion, as with the Reference_point attribute in Figure 12.11(b). Notice that the inher-
+ited operations can have different implementations in each class. For example, the
+implementations of the area and perimeter operations may be different for
+RECTANGLE, TRIANGLE, and CIRCLE.
+
+Multiple inheritance of interfaces by a class is allowed, as is multiple inheritance of
+interfaces by another interface. However, with extends (class) inheritance, multiple
+inheritance is not permitted. Hence, a class can inherit via extends from at most one
+class (in addition to inheriting from zero or more interfaces).
+
+12.4 Object Database Conceptual Design
+
+Section 12.4.1 discusses how object database (ODB) design differs from relational
+database (RDB) design. Section 12.4.2 outlines a mapping algorithm that can be
+used to create an ODB schema, made of ODMG ODL class definitions, from a con-
+ceptual EER schema.
+
+12.4.1 Differences between Conceptual Design
+of ODB and RDB
+
+One of the main differences between ODB and RDB design is how relationships are
+handled. In ODB, relationships are typically handled by having relationship prop-
+erties or reference attributes that include OID(s) of the related objects. These can be
+considered as OID references to the related objects. Both single references and col-
+lections of references are allowed. References for a binary relationship can be
+
+33This is similar to how an M:N relationship is mapped in the relational model (see Section 9.1) and in
+the legacy network model (see Appendix E).
+
+405

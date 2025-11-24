@@ -1,0 +1,40 @@
+1.8. Euler circuits and Euler trails 85
+
+1.8 Euler circuits and Euler trails
+
+Consider a connected graph G. If there is a circuit in G that contains all the edges of G, then
+that circuit is agg an Euler circuit (or Eulerian line, or Euler tour) in G. Vf there is a trail
+in G that contains all the edges of G, then that trail is called an Euler trail (or unicursal line)
+inG.
+
+Recall that in a trail and a circuit no edge can appear more than once but a vertex can appear
+more than once. This property is carried to Euler trails and Eular circuits also.
+
+Since Euler circuits and Euler trails include all edges, they automatically should include all
+vertices as well.
+
+A connected graph that contains an Euler circuit is called an Euler graph (or Eulerian
+graph).
+
+A connected graph that contains an Euler trail is called a semi-Euler graph (or a semi-
+Eulerian graph or unicursal graph).
+: For example, in the graph shown in Figure 1.119 the closed walk
+
+Pe; Qe2Re3Pe4S esRegTe7P.
+
+an Euler circuit. Therefore, this graph is an Euler graph.
+
+P. £4 Ss
+5
+a
+& 7
+Q 2 R 6 -
+Figure 1.119
+
+onsider the graph shown in Figure 1.120. We observe that, in this graph, every sequence
+¢s which starts and ends with the same vertex and which includes all edges will contain
+st one repeated edge. Thus, this graph has no Eular circuits. Hence this graph is not an
+Braph.
+
+Imay be seen that in the graph in Figure 1.120 the trail Ae BexDe3CegAesD is an Euler
+‘This graph is therefore a semi-Euler graph.

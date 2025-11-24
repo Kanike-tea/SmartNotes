@@ -1,0 +1,59 @@
+MICROCONTROLLER(BCS402)
+
+i) The processor starts in state |.In this mode both the IRQ and FIQ exception
+bits in the cpsr are enabled.
+
+ii) When an FIQ occurs the processor moves into state 2.->
+
+a) This transition automatically sets the IRQ bit and FIQ to one, disabling
+both IRQ and FIQ exceptions,
+
+b) The cpsr processor mode changes to FIQ mode,
+
+c) The user mode epsr is automatically copied into spsr_fiq,
+
+d) Register rl4_fiq is assigned the value of the pe when the interrupt was
+raised,
+
+e) The pc is then set to the FIQ entry +0xIc in the vector table.
+
+iii ) In state 3 the software handler takes over and calls the appropriate interrupt
+service routine to service the source of the interrupt. After completion, the
+processor mode reverts back to the original user mode code in state 1.
+
+iv) When processor changes from user mode to FIQ mode, there is no
+requirement to save registers r8 to rl2 since these registers are banked in FIQ
+mode. These registers can be used to hold temporary data, such as buffer
+pointers or counters. This makes FIQ ideal for servicing a single-source,high-
+priority, low-latency interrupt.
+
+4.2.3.1 Enabling and Disabling FIQ and IRQ Exceptions
+
+The ARM processor core has a simple procedure to. manually enable and
+disable interrupts by modifying the cpsr when the processor is in a
+privileged mode.
+
+The procedure uses three ARM instructions.
+
+1)The instruction MRS copies the contents of the cpsr into register rl.
+2)The instruction BIC clears the IRQ or FIQ mask bit.
+
+3) The instruction MSR then copies the updated contents in register r1
+back into the cpsr, to enable the interrupt request.
+
+Table 4.5 shows how IRQ and FIQ interrupts are enabled.
+
+The postfix _c identifies that the bit field being updated is the control
+field bit [7:0] of the cpsr.
+
+cpsrvalue IRQ FIQ
+Pre nzcvqjIFt_SVC nzcvqjlFt_SVC
+Code enable_irq enable_fiq
+MRS rl, cpsr MRS rl, cpsr
+BIC rl, rl, #0x80 BIC rl, rl, #0x40
+MSR cpsr_c, rl MSR cpsr_c, rl
+Post nzcvqjiFt_SVC nzcvqjlft_SVC
+
+Table 4.5 Enabling an interrupt.
+
+10

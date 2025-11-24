@@ -1,0 +1,46 @@
+Microcontrollers - BCS402
+
+Table 1: ARM processor exceptions and associated modes
+
+Exception Mode Main purpose
+
+Fast Interrupt Request FIQ fast interrupt request handling
+
+Interrupt Request IRQ interrupt request handling
+
+SWI and Reset SVC protected mode for operating systems
+
+Prefetch Abort and Data Abort — abort virtual memory and/or memory protection handling
+Undefined Instruction undefined software emulation of hardware coprocessors
+
+Reset
+Data Abort
+
+Undefined
+
+Exceptions
+
+Modes.
+
+Fig 1: Exceptions and associated modes
+
+Figure 1 shows a simplified view of exceptions and associated modes. Note that when an
+
+exception occurs, the ARM processor always switches to ARM state.
+
+1.2 Vector Table
+
+Vector table — a table of addresses that the ARM core branches to when an exception is raised.
+
+These addresses commonly contain branch instructions of one of the following forms:
+
+B <address> —This branch instruction provides a branch relative from the pc.
+
+LDR pe, [pe, #offset] —This load register instruction loads the handler address from
+memory to the pc. The address is an absolute 32-bit value stored close to the vector table.
+Loading this absolute literal value results in a slight delay in branching to a specific
+handler due to the extra memory access. However, you can branch to any address in
+
+memory.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 3

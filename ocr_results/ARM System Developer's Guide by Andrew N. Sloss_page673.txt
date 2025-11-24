@@ -1,0 +1,70 @@
+660 Appendix D Instruction Cycle Timings
+
+Table D.12 Intel XScale (ARMv5TE) instruction cycle timings.
+
+Instruction class Cycles Notes
+
+ALU 1 +1 ifa register-specified shift, or RRX, is used.
++4 if Rdis pe.
+
+B, BL 1 +4 if the branch is mispredicted.
+
+BX, BLX 5 [1 cycle if not executed. ]
+
+LDR/B/H/SB/SH Rdnot pe 1 Rdis not available for two cycles.
+
+LDR Rais pe 8 [2 cycles if not executed. ]
+
+LDRD 1 Rd is not available for two cycles. R(d + 1) is not available for
+three cycles.
++1 if Rdis r12.
+
+LDM not loading pe 2+N__ The last value loaded is not available for two cycles. The value
+previous to that is not available for one cycle.
+
+LDM loading pe 7+N__ Increase to 10 cycles if N <3.
+[3 +N cycles if not executed. ]
+
+MCR to copro 15 2
+
+MRC from copro 15 4
+
+MRS 1 Ris not available for one cycle.
+
+MSR 2 +4 if any of the csx fields are updated.
+
+MUL, MLA 1 Rd is not available for M cycles. You cannot start another
+multiply in the next M — | cycles.
+
+MULS, MLAS 1+M
+
+xMULL 1 RdHiis not available for M + 1 cycles. RdLo is not available for
+M cycles. You cannot start another multiply in the next M_
+cycles.
+
+xMLAL 2 RdHiis not available for M cycles. RdLo is not available for
+M — 1 cycles. You cannot start another multiply in the next
+M — lcycles.
+
+xMULLS, xMLALS 2+M
+
+PLD 1
+
+QxADD, QxSUB 1 Rd is not available for one cycle.
+
+SMULxy, SMLAxy 1 Rdis not available for one cycle.
+
+SMULWx, SMLAWx 1 Rd is not available for two cycles. You cannot start another
+multiply for one cycle.
+
+SMLALxy 2 RdHiis not available for one cycle.
+
+STR/B/H 1
+
+STRD 2
+
+STM 2+N
+
+SWI 6
+
+SWP/B 5

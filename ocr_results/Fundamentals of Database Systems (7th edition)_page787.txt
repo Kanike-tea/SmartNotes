@@ -1,0 +1,51 @@
+20.3 Desirable Properties of Transactions
+
+dled via the basic LRU (least recently used) page replacement. Although this
+achieves better performance on average that basic LRU, it is a static algorithm, and
+so does not adapt to dynamically changing loads because the number of available
+buffers for each domain is predetermined. Several variations of the DS page
+replacement policy have been proposed, which add dynamic load-balancing fea-
+tures. For example, the GRU (Group LRU) gives each domain a priority level and
+selects pages from the lowest-priority level domain first for replacement, whereas
+another method dynamically changes the number of buffers in each domain based
+on current workload.
+
+Hot Set Method. This page replacement algorithm is useful in queries that have
+to scan a set of pages repeatedly, such as when a join operation is performed using
+the nested-loop method (see Chapter 18). If the inner loop file is loaded completely
+into main memory buffers without replacement (the hot set), the join will be per-
+formed efficiently because each page in the outer loop file will have to scan all the
+records in the inner loop file to find join matches. The hot set method determines
+for each database processing algorithm the set of disk pages that will be accessed
+repeatedly, and it does not replace them until their processing is completed.
+
+The DBMIN Method. This page replacement policy uses a model known as QLSM
+(query locality set model), which predetermines the pattern of page references for
+each algorithm for a particular type of database operation. We discussed various
+algorithms for relational operations such as SELECT and JOIN in Chapter 18.
+Depending on the type of access method, the file characteristics, and the algorithm
+used, the QLSM will estimate the number of main memory buffers needed for each
+file involved in the operation. The DBMIN page replacement policy will calculate a
+locality set using QLSM for each file instance involved in the query (some queries
+may reference the same file twice, so there would be a locality set for each file
+instance needed in the query). DBMIN then allocates the appropriate number of
+buffers to each file instance involved in the query based on the locality set for that
+file instance. The concept of locality set is analogous to the concept of working set,
+which is used in page replacement policies for processes by the operating system
+but there are multiple locality sets, one for each file instance in the query.
+
+20.3 Desirable Properties of Transactions
+
+Transactions should possess several properties, often called the ACID properties;
+they should be enforced by the concurrency control and recovery methods of the
+DBMS. The following are the ACID properties:
+
+= Atomicity. A transaction is an atomic unit of processing; it should either be
+performed in its entirety or not performed at all.
+
+= Consistency preservation. A transaction should be consistency preserving,
+meaning that if it is completely executed from beginning to end without
+interference from other transactions, it should take the database from one
+consistent state to another.
+
+757

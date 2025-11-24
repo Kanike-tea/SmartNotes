@@ -1,0 +1,29 @@
+CHAPTER
+
+INTRODUCTION
+TO THE ARM
+INSTRUCTION SET
+
+This introduction to the ARM instruction set is a fundamental chapter since the infor-
+mation presented here is used throughout the rest of the book. Consequently, it is
+placed here before we start going into any depth on optimization and efficient algo-
+rithms. This chapter introduces the most common and useful ARM instructions and builds
+on the ARM processor fundamentals covered in the last chapter. Chapter 4 introduces
+the Thumb instruction set, and Appendix A gives a complete description of all ARM
+instructions.
+
+Different ARM architecture revisions support different instructions. However, new
+revisions usually add instructions and remain backwardly compatible. Code you write for
+architecture ARMv4T should execute on an ARMVSTE processor. Table 3.1 provides a
+complete list of ARM instructions available in the ARMv5E instruction set architecture
+(ISA). This ISA includes all the core ARM instructions as well as some of the newer features
+in the ARM instruction set. The “ARM ISA” column lists the ISA revision in which the
+instruction was introduced. Some instructions have extended functionality in later archi-
+tectures; for example, the CDP instruction has an ARMV5 variant called CDP2. Similarly,
+instructions such as LDR have ARMV5 additions but do not require a new or extended
+mnemonic.
+
+We illustrate the processor operations using examples with pre- and post-conditions,
+describing registers and memory before and after the instruction or instructions are
+
+47

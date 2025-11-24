@@ -1,0 +1,33 @@
+zy
+appendix Cs
+
+Overview of the QBE
+Language
+
+T* Query-By-Example (QBE) language is impor-
+tant because it is one of the first graphical query
+languages with minimum syntax developed for database systems. It was developed
+at IBM Research and is available as an IBM commercial product as part of the QMF
+(Query Management Facility) interface option to DB2. The language was also
+implemented in the Paradox DBMS, and is related to a point-and-click type inter-
+face in the Microsoft Access DBMS. It differs from SQL in that the user does not
+have to explicitly specify a query using a fixed syntax; rather, the query is formulated
+by filling in templates of relations that are displayed on a monitor screen. Figure C.1
+shows how these templates may look for the database of Figure 3.5. The user does
+not have to remember the names of attributes or relations because they are dis-
+played as part of these templates. Additionally, the user does not have to follow rigid
+syntax rules for query specification; rather, constants and variables are entered in
+the columns of the templates to construct an example related to the retrieval or
+update request. QBE is related to the domain relational calculus, as we shall see, and
+its original specification has been shown to be relationally complete.
+
+C.1 Basic Retrievals in QBE
+
+In QBE retrieval queries are specified by filling in one or more rows in the templates
+of the tables. For a single relation query, we enter either constants or example
+elements (a QBE term) in the columns of the template of that relation. An example
+element stands for a domain variable and is specified as an example value preceded
+by the underscore character (_). Additionally, a P. prefix (called the P dot operator)
+is entered in certain columns to indicate that we would like to print (or display)
+
+1171

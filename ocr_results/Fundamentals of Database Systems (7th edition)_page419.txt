@@ -1,0 +1,92 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 389
+
+(a) nterface Object {
+
+boolean
+object
+void
+
+};
+
+(b) Class Date : Object {
+enum
+
+enum
+
+unsigned short
+unsigned short
+unsigned short
+
+boolean
+boolean
+Class Time : Object {
+
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+
+boolean
+boolean
+
+Time
+Time
+Interval
+
+class Timestamp : Object {
+
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+unsigned short
+
+Timestamp
+
+Figure 12.5
+Overview of the interface definitions
+same_as(in object other_object); for part of the ODMG object model.
+(a) The basic Object interface, inherited
+copy(); -
+delete): by all objects, (b) Some standard
+7 interfaces for structured literals.
+Weekday
+
+{ Sunday, Monday, Tuesday, Wednesday,
+Thursday, Friday, Saturday };
+Month
+{ January, February, March, April, May, June,
+July, August, September, October, November,
+December };
+year();
+month();
+day();
+
+is_equal(in Date other_date);
+is_greater(in Date other_date);
+
+hour();
+minute();
+second();
+millisecond();
+
+is_equal(in Time a_time);
+is_greater(in Time a_time);
+
+add_interval(in Interval an_interval);
+subtract_interval(in Interval an_interval);
+subtract_time(in Time other_time); };
+
+year();
+month();
+day();
+
+hour();
+minute();
+second();
+millisecond();
+
+plus(in Interval an_interval);
+(continues)

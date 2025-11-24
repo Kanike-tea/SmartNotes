@@ -1,0 +1,34 @@
+364 Chapter 9 Exception and Interrupt Handling
+
+This routine saves the context and s psr_irq before clearing the interrupt source. Once this is
+complete, the IRQ exceptions can be reenabled by clearing the ibit, and the processor mode
+is set to system mode. The service routine can then process the interrupt in system mode.
+Once complete, the IRQ exceptions are disabled by setting the i bit, and the processor mode
+is switched back to IRQ mode.
+
+The spsr_irq is restored from the IRQ stack, preparing the routine to return to the
+interrupted task.
+
+The service routine then writes to the VICVectorAdqdr register in the controller. Writing
+to this address indicates to the priority hardware that the interrupt has been serviced.
+
+Note that since the VIC is basically a hardware interrupt handler, the array of ISR
+addresses must be preprogrammed into the VIC before it is activated.
+
+9.4 SUMMARY
+
+An exception changes the normal sequential execution of instructions. There are seven
+exceptions: Data Abort, Fast Interrupt Request, Interrupt Request, Prefetch Abort, Soft-
+ware Interrupt, Reset, and Undefined Instruction. Each exception has an associated ARM.
+processor mode. When an exception is raised, the processor goes into a specific mode and
+branches to an entry in the vector table. Each exception also has a priority level.
+
+Interrupts are a special type of exception that are caused by an external peripheral.
+The IRQ exception is used for general operating system activities. The FIQ exception is
+normally reserved for a single interrupt source. Interrupt latency is the interval of time from
+an external interrupt request signal being raised to the first fetch of an instruction of a
+specific interrupt service routine (ISR).
+
+We covered eight interrupt handling schemes, from a very simple nonnested interrupt
+handler that handles and services individual interrupts, to an advanced prioritized grouped
+interrupt handler that handles interrupts that are grouped into different priority levels.

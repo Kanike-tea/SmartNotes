@@ -1,0 +1,53 @@
+5.2 Quicksort 179
+o 1 2 3 4 5 6 7
+i
+5 3 1 9 8 2 4 7
+1
+5 3 1 9 8 2 4 7
+I
+5 3 1 4 8 2 89 7
+5 3 1 4 8 2 9 7
+ii
+5 3 1 4 2 8 9 7
+i; of
+5 3 1 4 2 8 9 7
+2 3 1 4 5 8 9 7
+1 } 0, r=7
+23 1 4 Sz
+i i
+2 3 1 4
+ii 7 3
+> i 4 4 [=0, 7-3 5, r=7
+Io = =6
+21 3 4
+12 3 4
+1 [00 [2,73] [5 r=5 [=7, =7
+ij =
+304
+I i
+30 4 [27=1 3,73
+4
+i i
+8 97 (b)
+i ma
+5 Waa
+I i
+87 9
+7 8 9
+7
+9
+(a)
+
+FIGURE 5.3 Example of quicksort operation. (a) Array's transformations with pivots
+shown in bold. (b) Tree of recursive calls to Quicksort with input values /
+and r of subarray bounds and split position s of a partition obtained.
+
+<j in
+
+Al0] All]
+
+Aln-1]
+
+So, after making n + 1 comparisons to get to this partition and exchanging the
+pivot A[0] with itself, the algorithm will be left with the strictly increasing array
+A[1..n — 1] to sort. This sorting of strictly increasing arrays of diminishing sizes will

@@ -1,0 +1,37 @@
+x x2 x xX
+
+xX Xs x3 xX
+
+(a) (b)
+
+Fig. 9-5 Graphs of symmetric binary relation.
+
+Reflexive Relation: For some relation R it may happen that every element is in
+relation R to itself. For example, a number is always equal to itself, or a line is
+always parallel to itself. Such a relation R on set X that satisfies
+
+X)RX;
+
+for every x; € X is called a reflexive relation. The digraph of a reflexive relation
+will have a self-loop at every vertex. Such a digraph representing a reflexive
+binary relation on its vertex set may be called a reflexive digraph. A digraph in
+which no vertex has a self-ioop is called an irreflexive digraph.
+
+Symmetric Relation: For some relation R it may happen that for all x; and x; if
+x;Rx; holds, then x)Rx; also holds.
+
+Such.a relation is called a symmetric relation. “Is spouse of” is a symmetric but
+irreflexive relation. “Is equal to” is both symmetric and reflexive.
+
+The digraph of a symmetric relation is a symmetric digraph because for every
+directed edge from vertex x; to x; there is a directed edge from x; to x;. Figure 9-
+5(a) shows the graph of an irreflexive, symmetric binary relation on a set of four
+elements. The same relation can also be represented by drawing just one
+undirected edge between every pair of vertices that are related, as in Fig. 9-5(b).
+Thus every undirected graph is a representation of some symmetric binary
+relation (on the set of its vertices). Furthermore, every undirected graph with e
+edges can be thought of as a symmetric digraph with 2e directed edges. (A two-
+way Street is equivalent to two one-way streets pointed in opposite directions.)
+
+Transitive Relation: A relation R is said to be transitive if for any three
+elements x;, x;, and x; in the set,

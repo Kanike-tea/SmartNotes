@@ -1,0 +1,51 @@
+436
+
+Chapter 13. XML: Extensible Markup Language
+
+the same file system as the XML document and should be given the file name
+proj.dtd. Alternatively, we could include the DTD document text at the beginning of
+the XML document itself to allow the checking.
+
+Figure 13.4(b) shows another DTD document called Company to illustrate the use
+of IDREF. A Company document can have any number of Department, Employee,
+and Project elements, with IDs DeptID, Empld, and ProjID, respectively. The
+Employee element has an attribute DeptId of type IDREF, which is a reference to
+the Department element where the employee works; this is similar to a foreign key.
+The Project element has an attribute Workers of type IDREFS, which will hold a list
+of Employee EmpIDs that work on that project; this is similar to a collection or list
+of foreign keys. The #IMPLIED keyword means that this attribute is optional. It is
+also possible to provide a default value for any attribute.
+
+Although XML DTD is adequate for specifying tree structures with required,
+optional, and repeating elements, and with various types of attributes, it has several
+limitations. First, the data types in DTD are not very general. Second, DTD has its
+own special syntax and thus requires specialized processors. It would be advanta-
+geous to specify XML schema documents using the syntax rules of XML itself so
+that the same processors used for XML documents could process XML schema
+descriptions. Third, all DTD elements are always forced to follow the specified
+ordering of the document, so unordered elements are not permitted. These draw-
+backs led to the development of XML schema, a more general but also more com-
+plex language for specifying the structure and elements of XML documents.
+
+13.3.2 XML Schema
+
+The XML schema language is a standard for specifying the structure of XML docu-
+ments. It uses the same syntax rules as regular XML documents, so that the same pro-
+cessors can be used on both. To distinguish the two types of documents, we will use the
+term XML instance document or XML document for a regular XML document that con-
+tains both tag names and data values, and XML schema document for a document that
+specifies an XML schema. An XML schema document would contain only tag names,
+tree structure information, constraints, and other descriptions but no data values. Fig-
+ure 13.5 shows an XML schema document corresponding to the COMPANY database
+shown in Figure 5.5. Although it is unlikely that we would want to display the whole
+database as a single document, there have been proposals to store data in native XML
+format as an alternative to storing the data in relational databases. The schema in Fig-
+ure 13.5 would serve the purpose of specifying the structure of the COMPANY database
+if it were stored in a native XML system. We discuss this topic further in Section 13.4.
+
+As with XML DTD, XML schema is based on the tree data model, with elements and
+attributes as the main structuring concepts. However, it borrows additional concepts
+from database and object models, such as keys, references, and identifiers. Here we
+describe the features of XML schema in a step-by-step manner, referring to the sam-
+ple XML schema document in Figure 13.5 for illustration. We introduce and describe
+some of the schema concepts in the order in which they are used in Figure 13.5.

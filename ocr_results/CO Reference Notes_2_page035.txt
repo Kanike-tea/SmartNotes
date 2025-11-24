@@ -1,0 +1,47 @@
+PRINTER INTERFACED TO PROCESSOR
+
+Output interface
+
+Data
+
+Address DISP_DATA
+
+Processor Display
+
+DISP_STATUS
+es
+
+Figure 7.13 Display to processor connection.
+
+¢ Keyboard is connected to a processor using a parallel-port.
+¢ Processor uses
+— memory-mapped I/O and
+— asynchronous bus protocol.
+© On the processor-side of the interface, we have:
+— Data-lines
+— Address-lines
+— Control or R/W line
+— Master-Ready signal and
+— Slave-Ready signal.
+© On the keyboard-side of the interface, we have:
+— Encoder-circuit which generates a code for the key pressed.
+— Debouncing-circuit which eliminates the effect of a key.
+— Data-lines which contain the code for the key.
+— Valid line changes from 0 to 1 when the key is pressed. This causes the code to be
+loaded into DATAIN and SIN to be set to 1.
+
+GENERAL 8 BIT PARALLEL PROCESSING
+
+My address
+
+RS2
+RSI Status cl
+RSO and
+RW contol e
+Ready
+Accept
+ink
+
+Figure 4.34: General 8 bit parallel interface
+
+Page 36

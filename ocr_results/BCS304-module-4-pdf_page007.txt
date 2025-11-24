@@ -1,0 +1,44 @@
+BCS304
+
+Binary tree representation of forest
+4.3.2 Forest Traversal
+
+Preorder Traversal:
+
+The preorder traversal of T is equivalent to visiting the nodes of Fin wee preorder. We define
+
+this as:
+
+1. If F is empty, then return.
+
+2. Visit the root of the first tree of F.
+
+3. Traverse the subtrees of the first tree in tree preorder.
+4. Traverse the remaining trees of F in preorder.
+
+Inorder Traversal:
+
+Inorder traversal of T is equivalent to visiting the nodes of F in tree inorder, which is defined
+
+as:
+
+1. If F is empty, then return.
+2. Traverse the subtrees of the first tree in tree inorder.
+
+3. Visit the root of the first tree.
+4. Traverse the remaining trees in tree inorder.
+
+Postorder Traversal:
+
+There is no natural analog for the postorder traversal of the corresponding binary tree ofa
+
+forest. Nevertheless, we can define the postorder traversal of a forest, F, as:
+
+If F is empty, then return.
+Traverse the subtrees of the first tree of F in tree postorder.
+
+Traverse the remaining trees of F in tree postorder.
+
+PF WN bP
+
+Visit the root of the first tree of F.

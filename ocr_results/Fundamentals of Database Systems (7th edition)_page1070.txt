@@ -1,0 +1,50 @@
+1040
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+Hyphens and punctuation marks may be handled in different ways. Either the
+entire phrase with the hyphens/punctuation marks may be used, or they may be
+eliminated. In some systems, the character representing the hyphen/punctuation
+mark may be removed, or may be replaced with a space. Different information
+retrieval systems follow different rules of processing. Handling hyphens automati-
+cally can be complex: it can either be done as a classification problem, or more com-
+monly by some heuristic rules. For example, the StandardTokenizer in Lucene™*
+treats the hyphen as a delimeter to break words—with the exception that if there is
+a number in the token, the words are not split (for example, words like AK-47,
+phone numbers, etc.). Many domain-specific terms like product catalogs, different
+versions of a product, and so on have hyphens in them. When search engines crawl
+the Web for indexing, it becomes difficult to automatically treat hyphens correctly;
+therefore, simpler strategies are devised to process hyphens.
+
+Most information retrieval systems perform case-insensitive search, converting
+all the letters of the text to uppercase or lowercase. It is also worth noting that
+many of these text preprocessing steps are language specific, such as involving
+accents and diacritics and the idiosyncrasies that are associated with a particular
+language.
+
+27.4.5 Information Extraction
+
+Information extraction (IE) is a generic term used for extracting structured con-
+tent from text. Text analytic tasks such as identifying noun phrases, facts, events,
+people, places, and relationships are examples of IE tasks. These tasks are also
+called named entity recognition tasks and use rule-based approaches with either a
+thesaurus, regular expressions and grammars, or probabilistic approaches. For IR
+and search applications, IE technologies are mostly used to identify named entities
+that involve text analysis, matching, and categorization for improving the rele-
+vance of search systems. Language technologies using part-of-speech tagging are
+applied to semantically annotate the documents with extracted features to aid
+search relevance.
+
+27.5 Inverted Indexing
+
+The simplest way to search for occurrences of query terms in text collections can be
+performed by sequentially scanning the text. This kind of online searching is only
+appropriate when text collections are small. Most information retrieval systems
+process the text collections to create indexes and operate upon the inverted index
+data structure (refer to the indexing task in Figure 27.1). An inverted index struc-
+ture comprises vocabulary and document information. Vocabulary is a set of dis-
+tinct query terms in the document set. Each term in a vocabulary set has an
+associated collection of information about the documents that contain the term,
+such as document id, occurrence count, and offsets within the document where the
+
+24See further details on StandardTokenizer at https://lucene.apache.org/

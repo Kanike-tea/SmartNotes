@@ -1,0 +1,190 @@
+RDB design and, 461-465, 472-473
+relation schema and, 152, 461-465
+relational algebra, 245-246
+relational model domains and,
+152-153
+relationships as, 74
+relationships types of, 78
+renaming, 192, 214-215, 245-246
+roles for a domain, 152
+semantics for, 461-465
+simple (atomic), 65-66
+single-valued, 66
+SQL use of, 184-186, 191-192
+stored, 66
+subclass specialization, 114
+tree-structured data models, XML, 433
+tuple modification for, 166, 168-169
+update (modify) operation for,
+168-169
+value sets (domains) of, 69-70
+versioning, 982-984
+visible/hidden, 371, 375
+XML, 433, 441
+Audio data source analysis, 999
+Audio sources, multimedia databases,
+996
+Audit trail, 1127
+Authorization, SQL views as mechanisms
+of, 232
+AUTHORIZATION command, SQL, 315
+Authorization identifier, SQL schemas,
+179
+Automated storage tiering (AST), 591
+Autonomy, DDBs, 845-846
+Auxiliary access structure, 546
+Availability
+DDBs, 844-845
+loss of, database threat of, 1122
+NOSQL, 885-886
+AVERAGE function, grouping, 260
+AVG function, SQL, 217
+Axioms, 1005
+B-trees
+dynamic multilevel indexes
+implementation, 617-622
+file organization and, 583
+dynamic multilevel index
+implementation, 617-622
+physical database design and, 601-602,
+617-622
+unbalanced, 617
+variations of, 629-630
+B*-trees
+bitmaps for leaf nodes of, 636-637
+dynamic multilevel index
+implementation, 622-625
+physical database design and, 601-602,
+622-630
+search, insert and deletion with,
+625-629
+variations of, 629-630
+Backup and recovery subsystem, 20
+
+Backup utility, 45
+Bag constructor, 369
+Base class, 127
+Base tables (relations), 180, 182
+Before image (BFIM) updating, 816
+Behavior inheritance, 393
+BETWEEN comparison operator, SQL,
+196-197
+Bidirectional associations, UML class
+diagrams, 87
+Big data storage systems, 3, 26, 31, 51
+Big data technologies
+‘Apache systems, 932-936, 943-944
+cloud computing, 947-949
+distributed and database combination,
+841
+Hadoop, 916-917, 921-926
+‘MapReduce (MR), 917-921, 926-936
+parallel RDBMS compared to, 944-946
+technological development of,
+911-913
+variety of data, 915
+velocity of data, 915
+veracity of data, 915-916
+volume of data, 914
+YARN (Hadoop v2), 936-944, 949-953
+Binary association, UML class diagrams,
+87
+Binary locks, 782-784
+Binary operations
+complete set of, 255
+DIVISION operation, 255-257
+JOIN operation, 251-255
+OUTER JOIN operations, 262-264
+query tree notation, 257-259
+relational algebra and, 240, 251-259,
+262-264
+set theory for, 247
+Binary relationships
+cardinality ratios for, 76-77
+constraints on, 76-78
+degree of, 73
+ER models, 73-74, 76-78
+ER-to-relational mapping, 293-295
+existence dependency, 77-78
+participation constraints, 77-78
+relationship type, 73-74
+ternary relationships compared to,
+88-91
+Binary search, files, 570
+Bind variables, SQL injection and,
+1145-1146
+Binding
+C++ language binding, 417-418
+early (static), 344
+JDBC statement parameters, 333
+late (dynamic), 377
+OBDs, 377
+ODMG standards and, 386, 417-418
+programming language, 312
+polymorphism and, 377
+SQLICLI statement parameters, 329
+
+Index 1217
+
+BIRCH algorithm, 1090
+Bitemporal relations, 980-982
+Bit-level striping, RAID, 584, 586
+Bit-string data types, 183
+Bits of data, 547
+Bitmap indexes, 634-637, 1109-1110
+BLOBs (binary large objects, 560-561
+Block-level striping, RAID, 584-585, 586
+Block transfer time, disk devices, 552
+Blocking factor, records, 563
+Blocking records, 563-564
+Boolean data types, 183
+Boolean model, IR, 1030
+Boolean queries, 1035-1036
+Boolean (TRUE/FALSE) statements
+OQL, 414
+relational algebra expressions, 241-242
+SQL query retrieval, 212-214
+tuple relational calculus formulas,
+270-271
+Bottom-tier database server, DBMS as,
+344
+Bottom-up conceptual synthesis, 119
+Bottom-up method, RDB design, 460,
+504
+Bound columns approach, SQL/CLI
+query results, 329
+Boyce-Codd normal form (BCNF)
+decomposition of relations not in,
+489-491
+definition of, 488
+nonadditive join test for binary
+decomposition (NJB), 490
+relations in, 487-489
+Browsing, 1027
+Browsing interfaces, 40
+Bucket join, MapReduce (MR), 931
+Buckets, hashing, 575-576
+Buffer, disk blocks, 550-551
+Buffer replacement policy, 749
+Buffer space, nested-loop join and,
+672-673
+Buffering
+buffer management, 557-558
+buffer replacement strategies, 559-560
+CPU processing and, 556-557
+data using disk devices, 552
+database recovery, 815-816
+disk blocks, 541, 556-560, 815-816
+double buffering technique, 556-557
+Buffering (caching) modules, 20, 42
+Built-in functions, UDT, 384
+Built-in interfaces, ODMG models,
+393-396
+Built-in variables, PHP, 352-353
+Bulk loading process, indexes, 639
+Bulk transfer time, disk devices, 552
+Business rules, 21
+Bytes of data, 547
+C language, SQL/CLI (SQI call level
+interface), 326-331
+C++ language binding, ODMG, 417-418

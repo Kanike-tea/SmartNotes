@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+Example: For every project located in ‘Stafford’, list the project number, the controlling department
+
+number, and the department manager’s last name, address, and birth date.
+
+TPnumber, Daum, Lname, Address, Bdate| ((Opocation='stafford( PROJECT))
+a) (DEPARTMENT)) Pt gr (EMPLOYEE) )
+
+Dnum=Dnumber _ssn=Ssn
+
+* P.Pnumber,P.Onum,E.Lname,E.Address,E.Bdate
+
+(3)
+™ D.Mgr_ssn=E.Ssn
+
+oo \,
+
+** P.Dnum=D.Dnumber EMPLOYEE
+
+(1) Lo
+© P Plocation= ‘Stafford’ &, [[DEPARTVENT |
+
+Osta
+
+Leaf nodes P, D, and E represent the three relations PROJECT, DEPARTMENT, and EMPLOYEE.
+
+The relational algebra operations in the expression are represented by internal tree nodes. The query
+tree signifies an explicit order of execution in the following sense. The node marked (1) must begin
+execution before node (2) because some resulting tuples of operation (1) must be available before
+we can begin to execute operation (2). Similarly, node (2) must begin to execute and produce results
+
+before node (3) can start execution, and so on.
+
+A query tree gives a good visual representation and understanding of the query in terms of the
+relational operations it uses and is recommended as an additional means for expressing queries in
+
+relational algebra.
+
+https://vtucode.in Page 31

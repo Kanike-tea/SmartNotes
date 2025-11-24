@@ -1,0 +1,51 @@
+1002
+
+Chapter 26 Enhanced Data Models
+
+mean the subordinate of some subordinate down to any number of levels. Thus
+SUPERIOR(X, Y) stands for the fact that X is a superior of Y through direct or indirect
+supervision. We can write two rules that together specify the meaning of the new
+predicate. The first rule under Rules in the figure states that for every value of X and
+Y, if SUPERVISE(X, Y)—the rule body—is true, then SUPERIOR(X, Y)—the rule
+head—is also true, since Y would be a direct subordinate of X (at one level down).
+This rule can be used to generate all direct superior/subordinate relationships from
+the facts that define the SUPERVISE predicate. The second recursive rule states that if
+SUPERVISE(X, Z) and SUPERIOR(Z, Y) are both true, then SUPERIOR(X, Y) is also
+true. This is an example of a recursive rule, where one of the rule body predicates in
+the RHS is the same as the rule head predicate in the LHS. In general, the rule body
+defines a number of premises such that if they are all true, we can deduce that the
+conclusion in the rule head is also true. Notice that if we have two (or more) rules
+with the same head (LHS predicate), it is equivalent to saying that the predicate is
+true (that is, that it can be instantiated) if either one of the bodies is true; hence, it is
+equivalent to a logical OR operation. For example, if we have two rules X :- Y and
+X :- Z, they are equivalent to a rule X :- Y OR Z. The latter form is not used in deduc-
+tive systems, however, because it is not in the standard form of rule, called a Horn
+clause, as we discuss in Section 26.5.4.
+
+A Prolog system contains a number of built-in predicates that the system can inter-
+pret directly. These typically include the equality comparison operator = (X, Y),
+which returns true if X and Y are identical and can also be written as X = Y by using
+the standard infix notation.*! Other comparison operators for numbers, such as
+<, <=, >, and >=, can be treated as binary predicates. Arithmetic functions such as
++,-,*, and / can be used as arguments in predicates in Prolog. In contrast, Datalog
+(in its basic form) does not allow functions such as arithmetic operations as argu-
+ments; indeed, this is one of the main differences between Prolog and Datalog.
+However, extensions to Datalog have been proposed that do include functions.
+
+A query typically involves a predicate symbol with some variable arguments, and
+its meaning (or answer) is to deduce all the different constant combinations that,
+when bound (assigned) to the variables, can make the predicate true. For example,
+the first query in Figure 26.11 requests the names of all subordinates of james at any
+level. A different type of query, which has only constant symbols as arguments,
+returns either a true or a false result, depending on whether the arguments pro-
+vided can be deduced from the facts and rules. For example, the second query in
+Figure 26.11 returns true, since SUPERIOR(james, joyce) can be deduced.
+
+26.5.3 Datalog Notation
+
+In Datalog, as in other logic-based languages, a program is built from basic objects
+called atomic formulas. It is customary to define the syntax of logic-based lan-
+guages by describing the syntax of atomic formulas and identifying how they can be
+combined to form a program. In Datalog, atomic formulas are literals of the form
+
+31,4 Prolog system typically has a number of different equality predicates that have different interpretations.

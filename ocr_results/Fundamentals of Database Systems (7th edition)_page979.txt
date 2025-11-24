@@ -1,0 +1,52 @@
+25.6 General Discussion
+
+Recently, caching techniques have been shown to improve the performance of
+MapReduce jobs for various workloads.”° The PACMan framework provides sup-
+port for in-memory caching, and the MixApart system provides support for disk-
+based caching when the data is stored in an enterprise storage server within the
+same site. Caching techniques allow flexibility in that data is stored in a separate
+storage infrastructure that allows prefetching and caching of the most essential
+data. Recent work*” has addressed the big data caching problem in the context of
+privacy-conscious scenarios, wherein data stored in encrypted form in a public
+cloud must be processed in a separate, secure enterprise site.
+
+In addition to the data locality problem, one of the most challenging goals for cloud
+providers is to optimally provision virtual clusters for jobs while minimizing the
+overall consumption cost of the cloud data center.
+
+An important focus of cloud resource optimization is to optimize globally across all
+jobs in the cloud as opposed to per-job resource optimizations. A good example of
+a globally optimized cloud- managed system is the recent Google BigQuery sys-
+tem,”8 which allows Google to run SQL-like queries against very large datasets with
+potentially billions of rows using an Excel-like interface. In the BigQuery service,
+customers only submit the queries to be processed on the large datasets, and the
+cloud system intelligently manages the resources for the SQL-like queries. Simi-
+larly, the Cura resource optimization model”? proposed for MapReduce in a cloud
+achieves global resource optimization by minimizing the overall resource utiliza-
+tion in the cloud as opposed to per-job or per-customer resource optimization.
+
+25.6.4 YARN as a Data Service Platform
+
+The separation of resource management from application management has taken
+Hadoop to another level as a platform. Hadoop v1 was all about MapReduce. In
+Hadoop v2, MapReduce is one of the many application frameworks that can run on.
+the cluster. As we discussed in Section 25.5, this has opened the door for many services
+(with their own programming models) to be provided on YARN. There is no need to
+translate all data processing techniques and algorithms into a set of MapReduce jobs.
+MapReduce is presently being used only for batch-oriented processing such as the
+ETL (extract, transform, load) process in data warehouses (see Chapter 29). The
+emerging trend is to see Hadoop as a data lake, where a significant portion of enter-
+prise data resides and where processing happens. Traditionally, HDFS has been
+where an enterprise’s historical data resides because HDFS can handle the scale of
+such data. Most new sources of data, which in today’s search and social networking
+applications come from Web and machine logs, clickstream data, message data (as
+in Twitter) and sensor data, also is being stored largely in HDFS.
+
+28See the PACMAN framework by Ananthanarayanan et al. (2012) and the MixApart system by
+Mihailescu et al. (2013).
+
+27See Palanisamy et al. (201 4a).
+28For the Google BigQuery system, see https://developers.google.com/bigquery/
+?9Palanisamy et al. (201 4b).
+
+949

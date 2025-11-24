@@ -1,0 +1,46 @@
+492 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+(a) EMP (©) SUPPLY
+Ename | Pname | Dname Sname | Part_name | Proj_name
+Smith x John Smith Bolt ProjX
+Smith Y Anna Smith Nut ProjY
+Smith x Anna ‘Adamsky Bolt ProjY
+Smith Y John Walton Nut ProjZ
+‘Adamsky Nail ProjX
+‘Adamsky | Bolt Prox |
+(b) EMP_PROJECTS EMP_DEPENDENTS Smith Bolt Proj
+Ename | Pname Ename | Dname
+Smith x Smith | John
+Smith Y Smith Anna
+d) R, Ry Ry
+Sname | Part name Sname | Proj_name Part name | Proj name
+Smith Bolt Smith ProjX Bolt ProjX
+Smith Nut Smith ProjY Nut ProjY
+‘Adamsky Bolt ‘Adamsky ProjY Bolt ProjY
+Walton Nut Walton ProjZ Nut ProjZ
+Adamsky Nail Adamsky ProjX Nail ProjX
+Figure 14.15
+
+Fourth and fifth normal forms.
+(a) The EMP relation with two MVDs: Ename — Pname and Ename —> Dname.
+(b) Decomposing the EMP relation into two 4NF relations EMP_PROJECTS and
+
+EMP_DEPENDE!
+
+NTS.
+
+(c) The relation SUPPLY with no MVDs is in 4NF but not in 5NF if it has the JD(Ri, Ro, Ra).
+(d) Decomposing the relation SUPPLY into the 5NF relations Ri, Ro, Rs
+
+relation state r of R: If two tuples ¢, and f, exist in r such that t;[X] = t,[X], then
+two tuples f; and t, should also exist in r with the following properties,” where
+we use Z to denote (R - (XU Y)):?°
+= t3[X] = ta[X] = 4[X] = b[X]
+
+= 6[Y] =4[Y] and 4[Y] = 6[Y]
+
+= t{Z] = f{Z] and 412] = 4 {21
+
+'8The tuples t1, to, tz, and ty are not necessarily distinct.
+
+207 is shorthand for the attributes in R after the attributes in (X U Y) are removed from R.

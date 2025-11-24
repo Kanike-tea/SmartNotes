@@ -1,0 +1,49 @@
+case 3: display();
+break;
+default : return;
+3
+i
+return;
+
+}
+
+int main()
+{
+int ch,in;
+while(1)
+{
+printf("\nMenu");
+printf("\nEnter your choice for SLL operation \n");
+printf("\nl:Create SLL of Student Nodes");
+printf("\n2:DisplayStatus");
+printf("\n3:InsertAtEnd");
+printf("\n4:DeleteAtEnd");
+printf("\n5:Stack Demo using SLL(Insertion and Deletion at Front)");
+printf("\n6:Exit \n");
+printf("\nEnter your choice:");
+scanf("%d" &ch);
+
+switch(ch)
+{
+case | : printf("\nEnter the no of students: ");
+scanf("%d" &n);
+for(i=1;i i++)
+start ertfront();
+break;
+
+case 2: display();
+break;
+
+case 3: start = insertend();
+break;
+
+case 4: start = deleteend();
+break;
+
+case 5: stackdemo();
+break;
+
+case 6: exit(0);
+default: printf("\nPlease enter the valid choice");
+
+}

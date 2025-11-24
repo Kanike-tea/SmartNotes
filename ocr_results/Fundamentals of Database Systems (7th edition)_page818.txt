@@ -1,0 +1,49 @@
+788 Chapter 21 Concurrency Control Techniques
+
+Ty’ 1,
+read_lock(Y); read_lock(X);
+read_item(Y); read_item(X);
+write_lock(X); write_lock(Y);
+unlock(Y) unlock(X)
+
+Figure 21.4 read_item(X); read_item(Y);
+Transactions T;’ and Ty’, which are the X=X4+Y¥; Y=X+Y;
+same as T; and Tp in Figure 21.3 but write_item(X); write_item(Y);
+follow the two-phase locking protocol. unlock(X); unlock(Y);
+Note that they can produce a deadlock.
+
+It can be proved that, if every transaction in a schedule follows the two-phase lock-
+ing protocol, the schedule is guaranteed to be serializable, obviating the need to test
+for serializability of schedules. The locking protocol, by enforcing two-phase lock-
+ing rules, also enforces serializability.
+
+Two-phase locking may limit the amount of concurrency that can occur in a sched-
+ule because a transaction T may not be able to release an item X after it is through
+using it if T must lock an additional item Y later; or, conversely, T must lock the
+additional item Y before it needs it so that it can release X. Hence, X must remain
+locked by T until all items that the transaction needs to read or write have been
+locked; only then can X be released by T. Meanwhile, another transaction seeking to
+access X may be forced to wait, even though T is done with X; conversely, if Y is
+locked earlier than it is needed, another transaction seeking to access Y is forced to
+wait even though T is not using Y yet. This is the price for guaranteeing serializabil-
+ity of all schedules without having to check the schedules themselves.
+
+Although the two-phase locking protocol guarantees serializability (that is, every
+schedule that is permitted is serializable), it does not permit all possible serializable
+schedules (that is, some serializable schedules will be prohibited by the protocol).
+
+Basic, Conservative, Strict, and Rigorous Two-Phase Locking. There are a
+number of variations of two-phase locking (2PL). The technique just described is
+known as basic 2PL. A variation known as conservative 2PL (or static 2PL)
+requires a transaction to lock all the items it accesses before the transaction begins
+execution, by predeclaring its read-set and write-set. Recall from Section 21.1.2 that
+the read-set of a transaction is the set of all items that the transaction reads, and the
+write-set is the set of all items that it writes. If any of the predeclared items needed
+cannot be locked, the transaction does not lock any item; instead, it waits until all
+the items are available for locking. Conservative 2PL is a deadlock-free protocol, as
+we will see in Section 21.1.3 when we discuss the deadlock problem. However, it is
+difficult to use in practice because of the need to predeclare the read-set and write-
+set, which is not possible in some situations.
+
+In practice, the most popular variation of 2PL is strict 2PL, which guarantees strict
+schedules (see Section 21.4). In this variation, a transaction T does not release any

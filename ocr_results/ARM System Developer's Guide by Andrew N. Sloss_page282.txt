@@ -1,0 +1,50 @@
+8.2 Introduction to DSP onthe ARM 269
+
+x>> (-s) if s<0 and rounding is not required
+(xtround) >>(-s) if s<O and rounding is required
+
+round := (1<<(-1-s)) if 0.5 should round up
+(1<<(-1-s))-1 if 0.5 should round down
+
+You must always check the precision and dynamic range of the intermediate and
+output values. Ensure that there are no overflows or unacceptable losses of precision.
+These considerations determine the representations and size to use for the container
+integers.
+
+These equations are the most general form. In practice, for addition and subtraction we
+usually take d= n = m. For multiplication we usually take d= n + mor d= n. Since you
+know d, n, and m, at compile time, you can eliminate shifts by zero.
+
+8.2 INTRODUCTION TO DSP ON THE ARM
+
+SUMMARY
+
+This section begins by looking at the features of the ARM architecture that are useful
+for writing DSP applications. We look at each common ARM implementation in turn,
+highlighting its strengths and weaknesses for DSP.
+
+The ARM core is not a dedicated DSP. There is no single instruction that issues
+a multiply accumulate and data fetch in parallel. However, by reusing loaded data you can
+achieve a respectable DSP performance. The key idea is to use block algorithms that calcu-
+late several results at once, and thus require less memory bandwidth, increase performance,
+and decrease power consumption compared with calculating single results.
+
+The ARM also differs from a standard DSP when it comes to precision and saturation. In
+general, ARM does not provide operations that saturate automatically. Saturating versions
+of operations usually cost additional cycles. Section 7.7 covered saturating operations on
+the ARM. On the other hand, ARM supports extended-precision 32-bit multiplied by 32-bit
+to 64-bit operations very well. These operations are particularly important for CD-quality
+audio applications, which require intermediate precision at greater than 16 bits.
+
+From ARM9 onwards, ARM implementations use a multistage execute pipeline for loads
+and multiplies, which introduces potential processor interlocks. Ifyou load a value and then
+use it in either of the following two instructions, the processor may stall for a number of
+cycles waiting for the loaded value to arrive. Similarly if you use the result of a multiply in
+the following instruction, this may cause stall cycles. It is particularly important to schedule
+code to avoid these stalls. See the discussion in Section 6.3 on instruction scheduling.
+
+Guidelines for Writing DSP Code for ARM
+= Design the DSP algorithm so that saturation is not required because saturation will
+
+cost extra cycles. Use extended-precision arithmetic or additional scaling rather than
+saturation.

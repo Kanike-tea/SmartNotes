@@ -1,0 +1,40 @@
+NUMA Node.
+
+Scakble
+Network
+
+¢ Cluster (shared nothing + shared disk: SAN/NAS), which is formed by a group of connected
+computers.
+
+Distributed Database:
+
+><A centralized distributed database management system (DDBMS) manages the database as if it
+were all stored on the same computer. The DDBMS synchronizes all the data periodically and, in
+cases where multiple users must access the same data, ensures that updates and deletes performed
+on the data at one location will be automatically reflected in the data stored elsewhere.
+
+>The users and administrators of a distributed system, should, with proper implementation,
+interact with the system as if the system was centralized. This transparency allows for the
+functionality desired in such a structured system without special programming requirements,
+allowing for any number of local and/or remote tables to be accessed at a given time across the
+network.
+
+The different types of transparency sought after ina DDBMS are
+1. data distribution transparency,
+
+2. heterogeneity transparency,
+3. transaction transparency, and
+4. performance transparency.
+
+Data distribution transparency requires that the user of the database should not have to know
+how the data is fragmented (fragmentation transparency), know where the data they access is
+actually located (location transparency), or be aware of whether multiple copies of the data exist
+(replication transparency).
+
+Heterogeneity transparency requires that the user should not be aware of the fact that they are
+using a different DBMS if they access data from a remote site. The user should be able to use the
+same language that they would normally use at their regular access point and the DDBMS should
+handle query language translation if needed.
+
+Transaction transparency requires that the DDBMS guarantee that concurrent transactions do not
+interfere with each other (concurrency transparency) and that it must also handle database recovery

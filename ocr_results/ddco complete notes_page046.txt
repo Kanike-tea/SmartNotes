@@ -1,0 +1,48 @@
+Digital Design and Computer Organization(BCS302)
+
+that an output with all 0’s is generated when all the inputs are 0; but this output is the same as when DO is
+equal to 1. The discrepancy can be resolved by providing one more output to indicate whether at least one
+
+input is equal to 1.
+Priority Encoder
+
+* A priority encoder is an encoder circuit that includes the priority function.
+* The operation of the priority encoder is such that if two or more inputs are equal to 1 at the same
+time, the input having the highest priority will take precedence.
+
+* The truth table of a four-input priority encoder is given in Table 4.8
+
+Table 4.8
+Truth Table of a Priority Encoder
+Inputs Outputs
+Do Di Dz OD; x y Vv
+0 0 0 0 Xx Xx 0
+1 0 0 0 0 0 1
+Xx 1 0 0 0 1 1
+x x 1 0 1 0 1
+x x x 1 1 1 1
+
++ In addition to the two outputs x and y , the circuit has a third output designated by V ; this is a
+valid bit indicator that is set to 1 when one or more inputs are equal to 1.
+
++. If all inputs are O, there is no valid input and V is equal to 0. The other two outputs are not
+inspected when V equals 0 and are specified as don’t-care conditions.
+
+* Input D3 has the highest priority, so, regardless of the values of the other inputs, when this input is
+1, the output for xy is 11 (binary 3).
+
+* D2 has the next priority level. The output is 10 if D2 = 1, provided that D3 = 0, regardless of the
+values of the other two lower priority inputs. The output for D1 is generated only if higher priority
+
+inputs are 0.
+
+DO D1 D2 D3 x Y Vv
+
+DsDs —i D:D; —_
+
+DDN 0 ol _10 DD; o om i 10
+
+0 0 0 1 1 1 1 bi
+00] Xx
+
+Dy

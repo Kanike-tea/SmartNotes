@@ -1,0 +1,50 @@
+16.2 Secondary Storage Devices
+
+16.2 Secondary Storage Devices
+
+In this section, we describe some characteristics of magnetic disk and magnetic tape
+storage devices. Readers who have already studied these devices may simply browse
+through this section.
+
+16.2.1 Hardware Description of Disk Devices
+
+Magnetic disks are used for storing large amounts of data. The device that holds the
+disks is referred to as a hard disk drive, or HDD. The most basic unit of data on the
+disk is a single bit of information. By magnetizing an area on a disk in certain ways,
+one can make that area represent a bit value of either 0 (zero) or 1 (one). To code
+information, bits are grouped into bytes (or characters). Byte sizes are typically 4 to
+8 bits, depending on the computer and the device; 8 bits is the most common. We
+assume that one character is stored in a single byte, and we use the terms byte and
+character interchangeably. The capacity of a disk is the number of bytes it can store,
+which is usually very large. Small floppy disks were used with laptops and desk-
+tops for many years—they contained a single disk typically holding from 400 KB
+to 1.5 MB; they are almost completely out of circulation. Hard disks for personal
+computers currently hold from several hundred gigabytes up to a few terabytes; and
+large disk packs used with servers and mainframes have capacities of hundreds of
+gigabytes. Disk capacities continue to grow as technology improves.
+
+Whatever their capacity, all disks are made of magnetic material shaped as a thin
+circular disk, as shown in Figure 16.1(a), and protected by a plastic or acrylic cover.
+A disk is single-sided if it stores information on one of its surfaces only and double-
+sided if both surfaces are used. To increase storage capacity, disks are assembled
+into a disk pack, as shown in Figure 16.1(b), which may include many disks and
+therefore many surfaces. The two most common form factors are 3.5 and 2.5 inch
+diameter. Information is stored on a disk surface in concentric circles of small
+width,” each having a distinct diameter. Each circle is called a track. In disk packs,
+tracks with the same diameter on the various surfaces are called a cylinder because
+of the shape they would form if connected in space. The concept of a cylinder is
+important because data stored on one cylinder can be retrieved much faster than if
+it were distributed among different cylinders.
+
+The number of tracks on a disk ranges from a few thousand to 152,000 on the disk
+drives shown in Table 16.2, and the capacity of each track typically ranges from tens
+of kilobytes to 150 Kbytes. Because a track usually contains a large amount of infor-
+mation, it is divided into smaller blocks or sectors. The division of a track into
+sectors is hard-coded on the disk surface and cannot be changed. One type of sector
+organization, as shown in Figure 16.2(a), calls a portion of a track that subtends a
+fixed angle at the center a sector. Several other sector organizations are possible,
+one of which is to have the sectors subtend smaller angles at the center as one moves
+
+°In some disks, the circles are now connected into a kind of continuous spiral.
+
+547

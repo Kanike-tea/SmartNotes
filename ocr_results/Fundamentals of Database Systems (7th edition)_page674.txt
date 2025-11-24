@@ -1,0 +1,50 @@
+644
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+the other hand, the attributes listed in item 4 are candidates for avoiding an access
+structure, since modifying them will require updating the access structures.
+
+B. Analyzing the Expected Frequency of Invocation of Queries and
+Transactions. Besides identifying the characteristics of expected retrieval que-
+ries and update transactions, we must consider their expected rates of invocation.
+This frequency information, along with the attribute information collected on
+each query and transaction, is used to compile a cumulative list of the expected
+frequency of use for all queries and transactions. This is expressed as the expected
+frequency of using each attribute in each file as a selection attribute or a join attri-
+bute, over all the queries and transactions. Generally, for large volumes of pro-
+cessing, the informal 80-20 rule can be used: approximately 80% of the processing
+is accounted for by only 20% of the queries and transactions. Therefore, in practi-
+cal situations, it is rarely necessary to collect exhaustive statistics and invocation
+rates on all the queries and transactions; it is sufficient to determine the 20% or so
+most important ones.
+
+C. Analyzing the Time Constraints of Queries and Transactions. Some que-
+ries and transactions may have stringent performance constraints. For example, a
+transaction may have the constraint that it should terminate within 5 seconds on
+95% of the occasions when it is invoked, and that it should never take more than 20
+seconds. Such timing constraints place further priorities on the attributes that are
+candidates for access paths. The selection attributes used by queries and transac-
+tions with time constraints become higher-priority candidates for primary access
+structures for the files, because the primary access structures are generally the most
+efficient for locating records in a file.
+
+D. Analyzing the Expected Frequencies of Update Operations. A minimum
+number of access paths should be specified for a file that is frequently updated,
+because updating the access paths themselves slows down the update operations. For
+example, if a file that has frequent record insertions has 10 indexes on 10 different
+attributes, each of these indexes must be updated whenever a new record is inserted.
+The overhead for updating 10 indexes can slow down the insert operations.
+
+E. Analyzing the Uniqueness Constraints on Attributes. Access paths should
+be specified on all candidate key attributes—or sets of attributes—that are either the
+primary key ofa file or unique attributes. The existence of an index (or other access
+path) makes it sufficient to search only the index when checking this uniqueness
+constraint, since all values of the attribute will exist in the leaf nodes of the index.
+For example, when inserting a new record, if key attribute value of the new record
+already exists in the index, the insertion of the new record should be rejected, since
+it would violate the uniqueness constraint on the attribute.
+
+Once the preceding information is compiled, it is possible to address the physical
+database design decisions, which consist mainly of deciding on the storage struc-
+tures and access paths for the database files.

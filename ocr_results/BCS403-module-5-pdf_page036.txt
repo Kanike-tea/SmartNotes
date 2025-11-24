@@ -1,0 +1,51 @@
+24.4 NOSQL Key-Value Stores
+
+= The h(k) values that fall in the parts of the circle marked as range 1 in Fig-
+ure 24.2(a) will have their (k, v) items stored in node A because that is the node
+whose label follows h(k) on the ring in a clockwise direction; those in range 2
+are stored in node B; and those in range 3 are stored in node C. This scheme
+allows horizontal scalability because when a new node is added to the distrib-
+uted system, it can be added in one or more locations on the ring depending
+on the node capacity. Only a limited percentage of the (k, v) items will be reas-
+signed to the new node from the existing nodes based on the consistent hash-
+ing placement algorithm. Also, those items assigned to the new node may not
+all come from only one of the existing nodes because the new node can have
+multiple locations on the ring. For example, if a node D is added and it has two
+placements on the ring as shown in Figure 24.2(b), then some of the items
+from nodes B and C would be moved to node D. The items whose keys hash to
+range 4 on the circle (see Figure 24.2(b)) would be migrated to node D. This
+scheme also allows replication by placing the number of specified replicas of
+an item on successive nodes on the ring in a clockwise direction. The sharding
+is built into the method, and different items in the store (file) are located on
+different nodes in the distributed cluster, which means the items are horizon-
+tally partitioned (sharded) among the nodes in the distributed system. When
+anode fails, its load of data items can be distributed to the other existing nodes
+whose labels follow the labels of the failed node in the ring. And nodes with
+higher capacity can have more locations on the ring, as illustrated by node C
+in Figure 24.2(a), and thus store more items than smaller-capacity nodes.
+
+= Consistency and versioning. Voldemort uses a method similar to the one
+developed for DynamoDB for consistency in the presence of replicas. Basi-
+cally, concurrent write operations are allowed by different processes so there
+could exist two or more different values associated with the same key at dif-
+ferent nodes when items are replicated. Consistency is achieved when the
+item is read by using a technique known as versioning and read repair. Con-
+current writes are allowed, but each write is associated with a vector clock
+value. When a read occurs, it is possible that different versions of the same
+value (associated with the same key) are read from different nodes. If the
+system can reconcile to a single final value, it will pass that value to the read;
+otherwise, more than one version can be passed back to the application,
+which will reconcile the various versions into one version based on the
+application semantics and give this reconciled value back to the nodes.
+
+24.4.3 Examples of Other Key-Value Stores
+
+In this section, we briefly review three other key-value stores. It is important to note
+that there are many systems that can be classified in this category, and we can only
+mention a few of these systems.
+
+Oracle key-value store. Oracle has one of the well-known SQL relational data-
+base systems, and Oracle also offers a system based on the key-value store concept;
+this system is called the Oracle NoSQL Database.
+
+899

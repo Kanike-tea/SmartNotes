@@ -1,0 +1,58 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL 401
+
+Figure 12.9
+(a) Interface An example of a database schema.
+
+(a) Graphical notation for representing ODL
+schemas. (b) A graphical object database
+
+Class STUDENT schema for part of the UNIVERSITY
+database (GRADE and DEGREE classes
+—__—> 1:1 are not shown).
+Relationships <<» + iN
+
+—+\_+______»—» M:N
+
+Interface(is-a) Class inheritance
+Inheritance inheritance using extends
+using “:”
+(b) | Has_faculty
+Has_majors Offers
+PERSON DEPARTMENT |«——___
+Works_in Majors_in oO
+ffered_b
+Completed_sections ered by }
+
+COURSE
+ry
+
+STUDENT
+
+FACULTY
+
+Registered_in
+
+Has_sections
+
+Students
+
+Advisor
+
+SECTION ~+~—+—
+Of_course
+
+GRAD_STUDENT
+
+On_committee_of Committee
+
+CURR_SECTION
+
+Registered_students
+
+GRAD_STUDENTs will be a subset of STUDENTs. At the same time, individual
+STUDENT and FACULTY objects will inherit the properties (attributes and rela-
+tionships) and operations of PERSON, and individual GRAD_STUDENT objects
+will inherit those of STUDENT.
+
+The classes DEPARTMENT, COURSE, SECTION, and CURR_SECTION in Figure 12.10
+are straightforward mappings of the corresponding entity types in Figure 12.9(b).

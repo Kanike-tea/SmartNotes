@@ -1,0 +1,43 @@
+Main
+memory
+
+Block 0
+
+Block |
+
+lag
+
+Tag
+
+t
+
+zi Block 127
+
+Tag Word
+2
+
+geste oumetaia
+
+Figure 8.17 —Associative-mapped cache.
+
+* It gives complete freedom in choosing the cache-location.
+
+« A new block that has to be brought into the cache has to replace an existing block if the cache is full.
+« The memory has to determine whether a given block is in the cache.
+
+« Advantage: It is more flexible than direct mapping technique.
+
+* Disadvantage: Its cost is high.
+
+¢ It is the combination of direct and associative mapping. (Figure 8.18).
+© The blocks of the cache are grouped into sets.
+© The mapping allows a block of the main-memory to reside in any block of the specified set.
+© The cache has 2 blocks per set, so the memory-blocks 0, 64, 128........ 4032 maps into cache set ,,0°.
+© The cache can occupy either of the two block position within the set.
+6 bit set field
+> Determines which set of cache contains the desired block.
+6 bit tag field
+> The tag field of the address is compared to the tags of the two blocks of the set.
+> This comparison is done to check if the desired block is present.
+
+Page 53

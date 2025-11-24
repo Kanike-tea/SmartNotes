@@ -1,0 +1,50 @@
+25.5 Hadoop v2 alias YARN
+
+25.5.3 Other Frameworks on YARN
+
+The YARN architecture described above has made it possible for other application
+frameworks to be developed as well as other programming models to be supported
+that can provide additional services on the shared Hadoop cluster. Here we list
+some of the Frameworks that have become available in YARN at the time this text
+was written.
+
+Apache Tez. Tez is an extensible framework being developed at Hortonworks for
+building high-performance applications in YARN; these applications will handle
+large datasets up to petabytes. Tez allows users to express their workflow as a
+directed acyclic graph (DAG) of tasks. Jobs are modeled as DAGs, where Vertices
+are tasks or operations and Edges represent interoperation dependencies or flows
+of data. Tez supports the standard dataflow patterns like pipeline, scatter-gather,
+and broadcast. Users can specify the concurrency in a DAG, as well as the failover
+characteristics, such as whether to store task output in persistent storage or to
+recompute it. The DAG can be changed at runtime based on job and cluster state.
+The DAG model is a more natural fit (than executing as one or more MapReduce
+jobs) for Pig scripts and SQL physical plans. Both Hive and Pig now provide a mode
+in which they run on Tez. Both have benefitted in terms of simpler plans and sig-
+nificant performance improvements. An often cited performance optimization is
+the Map-Reduce-Reduce pattern; an SQL query that has a Join followed by a Group-
+By normally is translated to two MR jobs: one for the Join and one for the Group-
+By. In the first MR stage, the output of the join will be written to HDFS and read
+back in the Map phase of the second MR for the Group-By Job. In Tez, this extra
+write and read to/from HDFS can be avoided by having the Join Vertex of the DAG
+stream resulting rows to the Group-By Vertex.
+
+Apache Giraph. Apache Giraph is the open source implementation of Google’s
+Pregel system,'* which was a large-scale graph processing system used to calculate
+Page-Rank. (See Section 27.7.3 for a definition of Page-Rank.) Pregel was based on
+the bulk synchronous processing (BSP) model of computation. Giraph added sev-
+eral features to Pregel, including sharded aggregators (sharding, as defined in
+Chapter 24, refers to a form of partitioning) and edge-oriented input. The Hadoop
+v1 version of Giraph ran as MR jobs, which was not a very good fit. It did this by
+running long-running Map-only Jobs. On YARN, the Giraph implementation
+exposes an iterative processing model. Giraph is currently used at Facebook to ana-
+lyze the social network users’ graph, which has users as nodes and their connections
+as edges; the current number of users is approximately 1.3 billion.
+
+Hoya: HBase on YARN. The Hortonworks Hoya (HBase on YARN) project pro-
+vides for elastic HBase clusters running on YARN with the goal of more flexibility
+and improved utilization of the cluster. We discussed HBase in Section 24.5 as a
+
+18Pregel is described in Malewicz et al. (2010).
+'9BSP is a model for designing parallel algorithms and was originally proposed by Valiant (1990).
+
+943

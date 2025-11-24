@@ -1,0 +1,49 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+3. I/O Operations: The instructions are designed to perform INPUT and OUTPUT
+operations. The processor uses MOV instruction to perform I/O operations.
+The input Device consists of one temporary register called as DATAIN register and output register
+consists of one temporary register called as DATAOUT register.
+a) Input Operation: It is a process of transferring one WORD of data from DATA IN
+register to processor register.
+Ex: MOV DATAIN, RO
+The mathematical representation of this instruction is as follows,
+Ro [DATAIN]
+b) Output Operation: It is a process of transferring one WORD of data from processor
+register to DATAOUT register.
+Ex: MOV Ro, DATAOUT
+The mathematical representation of this instruction is as follows,
+[Ro] DATAOUT
+
+REGISTER TRANSFER NOTATION
+e There are 3 locations to store the operands during the execution of the programynamely 1.
+Register 2. Memory location 3, I/O Port. Location is the storage space used to store the
+data.
+e The instructions are designed to transfer data from one location to another location.
+Consider the first statement to transfer data from one location to another location
+e “Transfer the contents of Memory location whose symbolic name is given by AMOUNT into
+processor register Ro.”
+¢ The mathematical representation of this statement is given by
+Ro — [AMOUNT]
+Consider,the second statement to add data between two registers
+e “Add the contents,of Ro with the contents of Rj and result is stored in Ro”
+¢ The mathematical representation of this statement is given by
+Ro [Ro] + [Ri].
+Such a notations called as “Register Transfer Notation”.
+It uses two symbols
+1. A pair of square brackets [] to indicate the contents of Memory location and
+2. < to indicate the data transfer operation.
+
+ASSEMBLY LANGUAGE NOTATION
+Consider the first statement to transfer data from one location to another location
+. “ Transfer the contents of Memory location whose symbolic name is given by
+AMOUNT into processor register Ro.”
+. The assembly language notation of this statement is given by
+MOV AMOUNT, Ro
+Opcode — Source Destination
+This instruction transfers 1 word of data from Memory location whose symbolic name is given by
+AMOUNT into the processor register Ro.
+. The mathematical representation of this statement is given by
+Ro <— [AMOUNT]
+
+Dr. Ajay V G, Dept. of CSE, SVIT 20

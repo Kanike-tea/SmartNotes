@@ -1,0 +1,57 @@
+void min-union(leftist-tree *a, leftist—tree *b)
+{
+¢* recursively combine two nonempty min leftist trees */
+leftist_tree temp;
+¢* set a to be the tree with smaller root */
+if ({({*a)—>data.key > (*b)—>data.key)
+SWAP (*a,*b, temp);
+¢* create binary tree such that the smallest key in each
+subtree is in the root */
+if (!(*a)—->right—child)
+(*a)—>right—child = *b;
+else
+min—union(&(*a)—>right—child, b);
+/*leftist tree property */
+if ({!(*a)—>left—child) {
+(*a)—>left—child = {*a)—>right—child;
+(*a)—>right—child = NULL ;
++
+else if ((*a)—>left—child—sshortest <
+(*a)—>right—child-—>shortest)
+SWAP ((*a)—->left—child, (*a)—>right—child, »temp);
+(*a)—>shortest = (!(*a)—>right—child) )? 1-:
+(*a)—>right—child—->shortest + 13
+
+The operations on the min (max) leftist trees are insert, delete, and meld(combine).
+The insert and delete-min operations can both be done by using the combine operation.
+
+To insert an element x into a min leftist tree, we first create a min leftist tree that contains the
+single element x. Then we combine the two min leftist trees.
+
+To delete the min element from a nonempty min leftist tree, we combine the min leftist trees
+root->LeftChild and root->RightChild and delete the node root.
+
+To meld(combine) two min-leftist trees
+Choose minimum root of the two trees, A and B.
+
+Leave the left subtree of smaller root (suppose A) unchanged and combine the right subtree
+of A with B. Back to step 1, until no remaining vertices.
+
+Compare shortest(x) and swap to make it satisfy the definition of leftist trees.
+
+2 Weight-Biased Leftist Trees.
+
+Here we consider number of nodes in the subtree rather than the length of a shortest
+root to external node path
+
+» w(x) be the weight of a node x
+fe) if x is an external node
+w(x) =
+
+1+ sum of the weights of the children otherwise
+
+Definition : A binary tree is a Weight Biased Leftist Tree (WBLT) iff at every internal node
+the w value of the left child is greater than or equal to the w value of the right child.
+» Amax(min) WBLT is a max(min) tree that is also a WBLT
+
+Page 16

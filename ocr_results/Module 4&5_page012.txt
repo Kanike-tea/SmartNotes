@@ -1,0 +1,42 @@
+Microcontrollers - BCS402
+
+exception is raised. The cpsr processor mode changes to IRQ mode. The user mode cpsr is
+
+automatically copied into spsr_irq.
+
+Register r14_irq is assigned the value of the pe when the interrupt was raised. The pc is then set
+to the IRQ entry +0x 18 in the vector table. In state 3 the software handler takes over and calls the
+appropriate interrupt service routine to service the source of the interrupt. Upon completion, the
+
+processor mode reverts back to the original user mode code in state 1.
+
+Example 2: Figure 5 shows an example of an FIQ exception. The processor goes through a
+similar procedure as with the IRQ exception, but instead of just masking further IRQ exceptions
+from occurring, the processor also masks out further FIQ exceptions. This means that both
+
+interrupts are disabled when entering the software handler in state 3.
+
+2.| nzcvqjIFt_fiq
+
+Return to spsr_fiq=cpsr
+
+user mode r14_fig=pe
+code pc=Oxlc
+
+- | Software
+handler
+
+Fig 5: Fast Interrupt Request (FIQ)
+
+Changing to FIQ mode means there is no requirement to save registers r8 to rl2 since these
+registers are banked in FIQ mode. These registers can be used to hold temporary data, such as
+buffer pointers or counters. This makes FIQ ideal for servicing a single-source, high-priority,
+
+low-latency interrupt.
+Enabling and Disabling FIQ and IRQ Exceptions
+
+The ARM processor core has a simple procedure to manually enable and disable interrupts that
+
+involves modifying the cpsr when the processor is in a privileged mode.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 13

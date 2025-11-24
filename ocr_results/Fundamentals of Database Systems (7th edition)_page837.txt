@@ -1,0 +1,50 @@
+21.8 Summary
+
+One solution to the phantom record problem is to use index locking, as discussed
+in Section 21.6. Recall from Chapter 19 that an index includes entries that have an
+attribute value plus a set of pointers to all records in the file with that value. For
+example, an index on Dno of EMPLOYEE would include an entry for each distinct
+Dno value plus a set of pointers to all EMPLOYEE records with that value. If the index
+entry is locked before the record itself can be accessed, then the conflict on the
+phantom record can be detected, because transaction T’ would request a read lock
+on the index entry for Dno = 5, and T would request a write lock on the same entry
+before it could place the locks on the actual records. Since the index locks conflict,
+the phantom conflict would be detected.
+
+A more general technique, called predicate locking, would lock access to all records
+that satisfy an arbitrary predicate (condition) in a similar manner; however, predi-
+cate locks have proved to be difficult to implement efficiently. If the concurrency
+control method is based on snapshot isolation (see Section 21.4.2), then the trans-
+action that reads the items will access the database snapshot at the time the transac-
+tion starts; any records inserted after that will not be retrieved by the transaction.
+
+21.7.2 Interactive Transactions
+
+Another problem occurs when interactive transactions read input and write output
+to an interactive device, such as a monitor screen, before they are committed. The
+problem is that a user can input a value of a data item to a transaction T that is
+based on some value written to the screen by transaction T’, which may not have
+committed. This dependency between T and T’ cannot be modeled by the system
+concurrency control method, since it is only based on the user interacting with the
+two transactions.
+
+An approach to dealing with this problem is to postpone output of transactions to
+the screen until they have committed.
+
+21.7.3 Latches
+
+Locks held for a short duration are typically called latches. Latches do not follow
+the usual concurrency control protocol such as two-phase locking. For example, a
+latch can be used to guarantee the physical integrity of a disk page when that page is
+being written from the buffer to disk. A latch would be acquired for the page, the
+page written to disk, and then the latch released.
+
+21.8 Summary
+
+In this chapter, we discussed DBMS techniques for concurrency control. We
+started in Section 21.1 by discussing lock-based protocols, which are commonly
+used in practice. In Section 21.1.2 we described the two-phase locking (2PL) pro-
+tocol and a number of its variations: basic 2PL, strict 2PL, conservative 2PL, and
+rigorous 2PL. The strict and rigorous variations are more common because of
+
+807

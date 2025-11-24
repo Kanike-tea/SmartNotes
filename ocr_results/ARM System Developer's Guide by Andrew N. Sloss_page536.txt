@@ -1,0 +1,36 @@
+14.10 Demonstration: A Small Virtual Memory System 523
+
+Virtual
+memory
+
+Task
+region
+
+0x4000000
+
+Shared
+region
+
+0x00010000
+
+Figure 14.18 Virtual memory as seen by the running task.
+
+Table 14.10 Region placement in the MMU example.
+
+Region Virtual base Page © Number Physical
+
+Region Addressing size address size of pages __ base address.
+Kernel fixed 64KB  0x00000000 4KB 16 0x00000000
+Shared fixed 32KB  0x00010000 4KB 8 0x00010000
+Page table fixed 32KB —0x00018000 4KB 8 0x00018000
+Peripheral _ fixed 256MB  0x10000000 1MB 256 —0x10000000
+Task 1 dynamic  32KB —0x00400000 4 KB 8 0x00020000
+Task 2 dynamic 32KB ~—-0x00400000 4 KB 8 0x00028000
+Task 3 dynamic 32KB ~—-0x00400000 4 KB 8 0x00030000
+
+regions in physical memory as well as their virtual addresses and size. The table also lists
+our choice of page size for each region and the number of pages that need to be translated
+to support the size of each region.
+
+Table 14.10 lists the four regions that use fixed page tables during system operation: the
+kernel, shared memory, page table, and peripheral regions.

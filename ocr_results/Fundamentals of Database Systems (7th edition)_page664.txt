@@ -1,0 +1,59 @@
+634 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Figure 17.15
+Hash-based
+indexing,
+
+Bucket 0 Emp_id Lastname. Sex| .....
+
+73646 | «. seeee a
+
+21124 | e =| 12676 Marcus M
+
+>| 13646 Hanson M
+
+Bucket 1 > | 21124 Dunhill M
+
+23402 | «
+
+sires | > [28402 Clarke F
+| 34723 Ferragamo F
+
+Bucket 2 wee wee
+
+51024 | = | 41301 Zara F
+
+12676 . ceeee eee
+
+veeee = | 51024 Bass M
+
+Bucket 3 | 62104 England M
+
+2104 |. ceeee eee
+
+71221 — em | 71221 Abercombe F
+
+— = | 81165 Gucci F
+
+Bucket 9
+
+34723 °
+
+41301 °
+
+(or P) is used to locate the corresponding record in the data file. Figure 17.15 illus-
+trates a hash index on the Emp_id field for a file that has been stored as a sequential
+file ordered by Name. The Emp_id is hashed to a bucket number by using a hashing
+function: the sum of the digits of Emp_id modulo 10. For example, to find Emp_id
+51024, the hash function results in bucket number 2; that bucket is accessed first. It
+contains the index entry < 51024, Pr >; the pointer Pr leads us to the actual record
+in the file. In a practical application, there may be thousands of buckets; the bucket
+number, which may be several bits long, would be subjected to the directory
+schemes discussed in the context of dynamic hashing in Section 16.8.3. Other
+search structures can also be used as indexes.
+
+17.5.2 Bitmap Indexes
+
+The bitmap index is another popular data structure that facilitates querying on
+multiple keys. Bitmap indexing is used for relations that contain a large number of
+rows. It creates an index for one or more columns, and each value or value range in

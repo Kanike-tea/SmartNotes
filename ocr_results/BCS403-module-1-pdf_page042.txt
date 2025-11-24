@@ -1,0 +1,38 @@
+Database Management System [BCS403]
+
+In ER diagrams, relationship types are displayed as diamond-shaped boxes, which are connected by
+straight lines to the rectangular boxes representing the participating entity types. The relationship name is
+
+displayed in the diamond-shaped box.
+
+3.4.2 Relationship Degree, Role Names, and Recursive Relationships
+Degree of a Relationship Type
+The degree of a relationship type is the number of participating entity types. A relationship type of
+
+degree two is called binary, and one of degree three is called ternary An example of a binary
+
+relationship WORKS_FOR and ternary relationship is SUPPLY
+
+SUPPLIER SUPPLY
+
+PROJECT
+
+Figure 3.4.2(a): Some relationship instances in the SUPPLY ternary relationship set.
+
+Each relationship instance rj associates three entities—a supplier s, a part p and a project j—whenever s
+
+supplies part p to project j.
+
+Relationships as Attributes
+
+It is sometimes convenient to think of a binary relationship type in terms of attributes. Consider the
+WORKS FOR relationship type. One can think of an attribute called Department of the EMPLOYEE
+entity type, where the value of Department for each EMPLOYEE entity is a reference to the
+DEPARTMENT entity for which that employee works. This concept of representing relationship types as
+attributes is used in a class of data models called functional data models.
+
+In relational databases, foreign keys are a type of reference attribute used to represent relationships.
+
+Role Names and Recursive Relationships
+
+https://vtucode.in Page 43

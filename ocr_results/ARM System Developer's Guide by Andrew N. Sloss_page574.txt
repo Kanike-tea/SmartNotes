@@ -1,0 +1,39 @@
+15.2 System and Multiprocessor Support Additions to ARMv6 561
+
+REV {<cond>} Rd, Rm
+
+Reverse order of all four bytes in a 32-bit word
+
+Rm
+31 24 16 8
+
+B3 | B2 Bl | BO
+
+BO | BL B2 | B3
+
+Rd
+
+REV16 {<cond>} Rd, Rm
+
+Reverse order of byte pairs in upper and
+lower half
+
+Rm
+31 24 16 8
+
+B3 | B2 Bl BO
+
+B2 | B3 BO | BI
+
+Rd
+
+REVSH {<cond>} Rd, Rm
+
+Reverse byte order of the signed halfword
+
+Rm
+31 24 16 8
+
+B3 | B2 Bl | BO
+
+Figure 15.3 Reverse instructions in ARMv6.

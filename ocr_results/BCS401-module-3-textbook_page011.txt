@@ -1,0 +1,18 @@
+6.4 Heaps and Heapsort 229
+
+FIGURE 6.11 Bottom-up construction of a heap for the list:2"9n7;16m5, Siiherdouble-
+headed arrows show key comparisons verifying:theyparental dominance.
+
+dominance holds for the key in this node: If it does not, the algorithm exchanges
+the node’s key K with the larger key of its children and checks whether the
+parental dominance holds for K in its new position. This process continues until
+the parental dominance for K is satisfied. (Eventually, it has to because it holds
+automatically for any key in a leaf.) After completing the “heapification” of the
+subtree rooted at the current parental node, the algorithm proceeds to do the same
+for the node’s immediate predecessor. The algorithm stops after this is done for
+the root of the tree.
+
+fi):
+
+How efficient is this algorithm in the worst case? Assume, for simplicity,
+that n =2* — 1 so that a heap’s tree is full, i-e., the largest possible number of

@@ -1,0 +1,42 @@
+2.2 Current Program Status Register 23
+
+, Flags Status Extension Control
+Fields tt 1 1 1
+Bit 31302928 71654 0
+INIZ|CIV) I|F|T| Mode
+Function
+Condition Interrupt Processor
+flags Masks mode
+Thumb
+state
+
+Figure 2.3 A generic program status register (psr).
+
+8-bit instructions. We will discuss Jazelle more in Section 2.2.3. It is highly probable that
+future designs will assign extra bits for the monitoring and control of new features.
+For a full description of the cpsr, refer to Appendix B.
+
+2.2.1 PROCESSOR MODES
+
+‘The processor mode determines which registers are active and the access rights to the cpsr
+register itself. Each processor mode is either privileged or nonprivileged: A privileged mode
+allows full read-write access to the cpsr. Conversely, a nonprivileged mode only allows read
+access to the control field in the cpsr but still allows read-write access to the condition flags.
+
+There are seven processor modes in total: six privileged modes (abort, fast interrupt
+request, interrupt request, supervisor, system, and undefined) and one nonprivileged mode
+(user).
+
+The processor enters abort mode when there is a failed attempt to access memory. Fast
+interrupt request and interrupt request modes correspond to the two interrupt levels available
+on the ARM processor. Supervisor mode is the mode that the processor is in after reset and
+is generally the mode that an operating system kernel operates in. System mode is a special
+version of user mode that allows full read-write access to the cpsr. Undefined mode is used
+when the processor encounters an instruction that is undefined or not supported by the
+implementation. User mode is used for programs and applications.
+
+2.2.2 BANKED REGISTERS
+
+Figure 2.4 shows all 37 registers in the register file. Of those, 20 registers are hidden from
+a program at different times. These registers are called banked registers and are identified
+by the shading in the diagram. They are available only when the processor is in a particular

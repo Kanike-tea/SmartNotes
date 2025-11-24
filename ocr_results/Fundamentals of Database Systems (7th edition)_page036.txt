@@ -1,0 +1,52 @@
+6
+
+Chapter 1 Databases and Database Users
+
+database management system. Of course, we are only concerned with computer-
+ized databases in this text.
+
+A database management system (DBMS) is a computerized system that enables
+users to create and maintain a database. The DBMS is a general-purpose software
+system that facilitates the processes of defining, constructing, manipulating, and
+sharing databases among various users and applications. Defining a database
+involves specifying the data types, structures, and constraints of the data to be
+stored in the database. The database definition or descriptive information is also
+stored by the DBMS in the form of a database catalog or dictionary; it is called
+meta-data. Constructing the database is the process of storing the data on some
+storage medium that is controlled by the DBMS. Manipulating a database includes
+functions such as querying the database to retrieve specific data, updating the data-
+base to reflect changes in the miniworld, and generating reports from the data.
+Sharing a database allows multiple users and programs to access the database
+simultaneously.
+
+An application program accesses the database by sending queries or requests for
+data to the DBMS. A query” typically causes some data to be retrieved; a transaction
+may cause some data to be read and some data to be written into the database.
+
+Other important functions provided by the DBMS include protecting the database
+and maintaining it over a long period of time. Protection includes system protec-
+tion against hardware or software malfunction (or crashes) and security protection
+against unauthorized or malicious access. A typical large database may have a life
+cycle of many years, so the DBMS must be able to maintain the database system by
+allowing the system to evolve as requirements change over time.
+
+It is not absolutely necessary to use general-purpose DBMS software to implement
+a computerized database. It is possible to write a customized set of programs to cre-
+ate and maintain the database, in effect creating a special-purpose DBMS software
+for a specific application, such as airlines reservations. In either case—whether we
+use a general-purpose DBMS or not—a considerable amount of complex software
+is deployed. In fact, most DBMSs are very complex software systems.
+
+To complete our initial definitions, we will call the database and DBMS software
+together a database system. Figure 1.1 illustrates some of the concepts we have
+discussed so far.
+
+1.2 An Example
+
+Let us consider a simple example that most readers may be familiar with: a
+UNIVERSITY database for maintaining information concerning students, courses,
+and grades in a university environment. Figure 1.2 shows the database structure
+and a few sample data records. The database is organized as five files, each of which
+
+The term query, originally meaning a question or an inquiry, is sometimes loosely used for all types of
+interactions with databases, including modifying the data.

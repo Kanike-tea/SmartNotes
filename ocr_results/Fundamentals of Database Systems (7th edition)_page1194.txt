@@ -1,0 +1,47 @@
+1164 Appendix A Alternative Diagrammatic Notations for ER Models
+
+Figure A.1
+
+Alternative notations. (a) Symbols for entity type/class, attribute, and relationship. (b) Displaying
+attributes. (c) Displaying cardinality ratios. (d) Various (min, max) notations. (e) Notations for
+displaying specialization/generalization.
+
+(a) Entity type/class symbols. (i) [| E (i) | E
+
+Attribute symbols IS @ {4) (i) ——O a
+Relationship symbols () <> Ww) CR) iy —B
+
+Ssn
+EMPLOYEE {Foam (iii) (EMPLOYEE \ (iv) EMPLOYEE
+
+Address ‘Ssn Ssn
+EMPLOYEE Name Name
+Address Address
+1 N 1 N - -
+© 1 @ (0 HO Hire_emp
+\ (0,n) (1,1) Fire_emp
+
+(i)
+rn) <>
+(11) n)
+
+iii) ——_
+
+(iv) <>
+(iv) 4-+———_o0-«
+
+(vy) —————
+1.1 0..n
+
+(i) ~———+
+
+(e) (i) iS (ii) Cc i] (iii) Cc
+
+Si S2 S3 Si S2 S3 Si S2 S3
+
+liv} c (v) Cc (vi)
+
+als)
+=>
+
+Si S2 S3 Si S2 S3 S1 S2 S3

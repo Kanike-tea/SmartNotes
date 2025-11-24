@@ -1,0 +1,51 @@
+25.6 General Discussion 951
+
+are used primarily for analytics applications. These concerns include the
+following:
+
+= Heterogeneity of information: Heterogeneity in terms of data types, data
+formats, data representation, and semantics is unavoidable when it comes to
+sources of data. One of the phases in the big data life cycle involves integra-
+tion of this data. The cost of doing a clean job of integration to bring all data
+into a single structure is prohibitive for most applications, such as health-
+care, energy, transportation, urban planning, and environmental modeling.
+Most machine learning algorithms expect data to be fed into them in a uni-
+form structure. The data provenance (which refers to the information about
+the origin and ownership of data) is typically not maintained in most analyt-
+ics applications. Proper interpretation of data analysis results requires large
+amounts of metadata.
+
+= Privacy and confidentiality: Regulations and laws regarding protection of
+confidential information are not always available and hence not applied
+strictly during big data analysis. Enforcement of HIPAA regulations in the
+healthcare environment is one of few instances where privacy and confiden-
+tiality are strictly enforced. Location-based applications (such as on smart
+phones and other GPS-equipped devices), logs of user transactions, and
+clickstreams that capture user behavior all reveal confidential information.
+User movement and buying patterns can be tracked to reveal personal iden-
+tity. Because it is now possible to harness and analyze billions of users’ records
+via the technologies described in this chapter, there is widespread concern
+about personal information being compromised (e.g., data about individuals
+could be leaked from social data networks that are in some way linked to
+other data networks). Data about customers, cardholders, and employees is
+held by organizations and thus is subject to breaches of confidentiality. Jag-
+adish et al. (2014) voiced a need for stricter control over digital rights man-
+agement of data similar to the control exercised in the music industry.
+
+= Need for visualization and better human interfaces: Huge volumes of data
+are crunched by big data systems, and the results of analyses must be inter-
+preted and understood by humans. Human preferences must be accounted
+for and data must be presented in a properly digestible form. Humans are
+experts at detecting patterns and have great intuition about data they are
+familiar with. Machines cannot match humans in this regard. It should be
+possible to bring together multiple human experts to share and interpret
+results of analysis and thereby increase understanding of those results. Mul-
+tiple modes of visual exploration must be possible to make the best use of
+data and to properly interpret results that are out of range and thus are clas-
+sified as outlier values.
+
+= Inconsistent and incomplete information: This has been a perennial prob-
+Jem in data collection and management. Future big data systems will allow
+multiple sources to be handled by multiple coexisting applications, so prob-
+Jems due to missing data, erroneous data, and uncertain data will be com-
+pounded. The large volume and built-in redundancy of data in fault-tolerant

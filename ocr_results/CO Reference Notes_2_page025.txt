@@ -1,0 +1,42 @@
+SIMULTANEOUS REQUESTS
+© The processor must have some mechanisms to decide which request to service when simultaneous
+requests arrive.
+¢ INTR line is common to all devices (Figure 4.8a).
+¢ INTA line is connected in a daisy-chain fashion.
+¢ INTA signal propagates serially through devices.
+* When several devices raise an interrupt-request, INTR line is activated.
+Processor responds by setting INTA line to 1. This signal is received by device 1.
+* Device-1 passes signal on to device 2 only if it does not require any service.
+¢ If device-1 has a pending-request for interrupt, the device-1
+— blocks INTA signal &
+— proceeds to put its identifying-code on data-lines.
+© Device that is electrically closest to processor has highest priority.
+¢ Advantage: It requires fewer wires than the individual connections.
+
+Arrangement of Priority Groups
+Here, the devices are organized in groups & each group is connected at a different priority level.
+¢ Within a group, devices are connected in a daisy chain. (Figure 4.8b).
+
+(a) Daisy chain
+INTRI
+
+Priority arbitration
+circuit
+
+{b) Arrangement of priority groups
+Figure 4.8 Interrupt priority schemes.
+EXCEPTIONS
+¢ An interrupt is an event that causes
+— execution of one program to be suspended &
+— execution of another program to begin.
+¢ Exception refers to any event that causes an interruption. For ex: I/O interrupts.
+
+1. Recovery from Errors
+¢ These are techniques to ensure that all hardware components are operating properly.
+¢ For ex: Many computers include an ECC in memory which allows detection of errors in stored-
+data. (ECC > Error Checking Code, ESR > Exception Service Routine).
+e If an error occurs, control-hardware
+— detects the errors &
+— informs processor by raising an interrupt.
+
+Page 26

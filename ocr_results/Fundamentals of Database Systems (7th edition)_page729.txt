@@ -1,0 +1,50 @@
+19.1 Query Trees and Heuristics for Query Optimization 699
+
+Anip «> Ant of Rand Brit > Bmp of S are involved in the join condition c
+but are not in the projection list L, the operations commute as follows:
+m, (Rog, 8) =m ((May,.. Bay(S)))
+
+Ay Arete» Anak RD) PC MB Bae Brats o> Bmp
+
+n+l
+For x, there is no condition c, so the first transformation rule always applies
+by replacing ><, with x.
+
+8. Commutativity of set operations. The set operations U and Q are commu-
+tative, but — is not.
+
+9. Associativity of», x, U, and -. These four operations are individually asso-
+ciative; that is, if both occurrences of @ stand for the same operation that is
+any one of these four operations (throughout the expression), we have:
+
+(ROS) 0 T=RO (SOT)
+
+10. Commuting o with set operations. The 6 operation commutes with U, A,
+and -—. If @ stands for any one of these three operations (throughout the
+expression), we have:
+
+G- (RBS) = (6; (R)) 8 (0 (S))
+11. The x operation commutes with U.
+me (RU S) = (my (R)) V (tt (S))
+
+12. Converting a (o, x) sequence into >. If the condition c of a G that follows a x
+corresponds to a join condition, convert the (G, x) sequence into ap<as follows:
+
+(@, (R x S)) = (Roe S)
+13. Pushing o in conjunction with set difference.
+G. (R- S) = 0, (R) -  (S)
+However, 6 may be applied to only one relation:
+6, (R - S)=6, (R) -S
+14. Pushing o to only one argument in 4.
+If in the condition 0, all attributes are from relation R, then:
+O.(RAS)=6,(R) AS
+15. Some trivial transformations.
+If S is empty, then RUS=R
+If the condition c in 6, is true for the entire R, then 6, (R) = R.
+
+There are other possible transformations. For example, a selection or join condition
+c can be converted into an equivalent condition by using the following standard
+rules from Boolean algebra (De Morgan’s laws):
+
+NOT (c; AND 3) = (NOT c;) OR (NOT c;)
+NOT (c; OR cy) = (NOT cy) AND (NOT c>)

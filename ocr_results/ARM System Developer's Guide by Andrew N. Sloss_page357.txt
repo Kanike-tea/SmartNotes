@@ -1,0 +1,54 @@
+344 Chapter 9 Exception and Interrupt Handling
+
+EXAMPLE
+
+9.10
+
+It is paramount to prioritize interrupts in a reentrant interrupt handler. If the interrupts
+are not prioritized, the system latency degrades to that of a nested interrupt handler because
+lower-priority interrupts will be able to preempt the servicing of a higher-priority interrupt.
+This in turn leads to the locking out of higher-priority interrupts for the duration of the
+servicing of a lower-priority interrupt.
+
+It is assumed that register r13_irq has been set up to point to a 12-byte data structure and
+does not point to a standard IRQ stack. Offsets such as IRQ_SPSR are used to point into the
+data structure. As with all interrupt handlers, there are some standard definitions that are
+required to modify the cpsr and spsr registers.
+
+1RQ_RO EQU 0
+
+IRQ_spsr EQU 4
+
+1RQ_R14 EQU 8
+
+Maskmd EQU Ox1f 3 mask mode
+svc32md EQU 0x13 3 SVC mode
+LBit EQU 0x80 3 IRQ bit
+ic Base EQU 0x80000000
+
+IRQStatus EQU 0x0
+
+IRQRawStatus — EQU Ox4
+
+IRQEnable EQU 0x8
+
+IRQEnableSet — EQU 0x8
+IRQEnableClear EQU Oxc
+
+IRQ_Entry ; instruction state : comment
+suB_ orld, ria, #4 3 2: rl4_irg-=4
+STR rl4, [r13, #1RQ_R14] 3 2: save rl4_irq
+MRS rl4, spsr 3 2 : copy spsr
+STR rl4, [r13, #IRQ_spsr] 3 2: save spsr
+STR r0, [r3, #1RQ_RO] 3 2: save r0
+MOV. v0, 13 3 2: copy rl3_irq
+MRS rl4, cpsr 3 3 : copy cpsr
+BIC rl, rl4, #Maskmd 33:
+ORR = rl4, r14, #SVC32md 33
+MSR cpsr_c, ria 3 3: enter SVC mode
+STR rl4, [r13, #-8]! 34: save rl4
+LOR srl, [r0, #1RQ_R14] 34: rl4_svc=rl4_irg
+STR rl4, [r13, #4] 3 4: save rl4_irg
+LOR srl, [r0, #IRQ_spsr] 3 4: r14_svc=spsr_irq
+LOR sr, [r0, #1RQ_RO] 3 4: restore r0
+STMDB r13!, {r0-r3,r8,r12,r14} ; 4 : save context

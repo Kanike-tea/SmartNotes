@@ -1,0 +1,50 @@
+28.2 Association Rules
+
+found from the sample by using, for example, the apriori algorithm, with a lowered
+minimum support.
+
+In rare cases, some frequent itemsets may be missed and a second scan of the data-
+base is needed. To decide whether any frequent itemsets have been missed, the con-
+cept of the negative border is used. The negative border with respect to a frequent
+itemset, S, and set of items, J, is the minimal itemsets contained in PowerSet(I) and
+not in S. The basic idea is that the negative border of a set of frequent itemsets con-
+tains the closest itemsets that could also be frequent. Consider the case where a set
+X is not contained in the frequent itemsets. If all subsets of X are contained in the
+set of frequent itemsets, then X would be in the negative border.
+
+We illustrate this with the following example. Consider the set of items I= {A, B, C,
+D, E} and let the combined frequent itemsets of size 1 to 3 be S= {{A}, {B}, {C}, {D},
+{AB}, {AC}, {BC}, {AD}, {CD}, {ABC}}. The negative border is {{E}, {BD}, {ACD}}.
+The set {E} is the only 1-itemset not contained in S, {BD} is the only 2-itemset not
+in S but whose 1-itemset subsets are, and {ACD} is the only 3-itemset whose 2-item-
+set subsets are all in S. The negative border is important since it is necessary to
+determine the support for those itemsets in the negative border to ensure that no
+large itemsets are missed from analyzing the sample data.
+
+Support for the negative border is determined when the remainder of the database
+is scanned. If we find that an itemset, X, in the negative border belongs in the set of
+all frequent itemsets, then there is a potential for a superset of X to also be frequent.
+If this happens, then a second pass over the database is needed to make sure that all
+frequent itemsets are found.
+
+28.2.4 Frequent-Pattern (FP) Tree and FP-Growth Algorithm
+
+The frequent-pattern tree (FP-tree) is motivated by the fact that apriori-based algo-
+rithms may generate and test a very large number of candidate itemsets. For example,
+with 1,000 frequent 1-itemsets, the apriori algorithm would have to generate
+
+("")
+
+or 499,500 candidate 2-itemsets. The FP-growth algorithm is one approach that
+eliminates the generation of a large number of candidate itemsets.
+
+The algorithm first produces a compressed version of the database in terms of an
+FP-tree (frequent-pattern tree). The FP-tree stores relevant itemset information
+and allows for the efficient discovery of frequent itemsets. The actual mining pro-
+cess adopts a divide-and-conquer strategy, where the mining process is decom-
+posed into a set of smaller tasks that each operates on a conditional FP-tree, a subset
+(projection) of the original tree. To start with, we examine how the FP-tree is con-
+structed. The database is first scanned and the frequent 1-itemsets along with their
+support are computed. With this algorithm, the support is the count of transactions
+
+1077

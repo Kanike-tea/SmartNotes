@@ -1,0 +1,50 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+2. BUS STRUCTURE
+
+Bus is defined as set of parallel wires used for data communication between different parts of
+computer. Each wire carries | bit of data. There are 3 types of buses, namely
+
+1. Address bus
+
+2. Data bus and
+
+3. Control bus1!.
+1. Address bus :
+
+. It is unidirectional.
+
+. The processor (CPU) sends the address of an I/O device of Memory device by means of
+this bus.
+
+2. Data bus
+
+. It is a bidirectional bus.
+
+. The CPU sends data from Memory to CPU and vice versa as welljas from I/O to CPU
+and vice versa by means of this bus.
+
+3. Control bus:
+
+a This bus carries control signals for Memory and\I/O devices. It generates control signals
+for Memory namely MEMRD and MEMWR and control signals for I/O devices namely IORD
+and IOWR.
+
+The structure of single bus organization is as\shown in the figure.
+
+J NY Muar, =
+
+. The I/O devices, Memory and CPU are connected to this bus is as shown in the figure.
+. It establishes communication between two devices, at a time.
+
+Features of Single bus organization are
+> Less Expensive
+> Flexible to connect I/O devices.
+> Poor performance due to single bus.
+There is a variation in the devices connected to this bus in terms of speed of operation.
+Few devices like keyboard, are very slow. Devices like optical disk are faster. Memory and
+processor are faster, but all these devices uses the same bus. Hence to provide the synchronization
+between two devices, a buffer register is attached to each device. It holds the data temporarily
+during the data transfer between two devices.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 11

@@ -1,0 +1,37 @@
+BCS304 CEC
+
+we opt to replace it with the largest element in the left subtree. We move the 55 into the root
+of the subtree. We then make the left child of the node that previously contained the 55 the
+right child of the node containing 50, and we free the old node containing 55. Figure 5.33(b)
+shows the final result. One may verify that the largest and smallest elements in a subtree are
+
+always in a node of degree zero or one.
+
+an @ Pas S
+ao 3960 on 0
+4 82
+
+s
+
+() tree before deletion of ()) tree after deletion of 0
+
+Figure 5.33: Deletion of a node with two children
+4.1.3 Joining and splitting Binary search tree:
+
+In a binary search tree, the following additional operations are useful in certain applications.
+(a) three Way Join (small, mid, big): This creates a binary search tree consisting of the pairs
+initially in the binary search trees small and big, as well as the pair mid. It is assumed that each
+key in small is smaller than mid, key and that each key in big s greater than mid. key. Following
+the join, both small and big are empty.
+
+(b) two Way Join (small, big): This joins the two binary search trees small and big to obtain a
+single binary search tree that contains all the pairs originally in smalt and big. It is assumed
+that all keys of small are smaller than all keys of big and that following the join both small and
+big are empty.
+
+(c) split (theTree ,k, small, mid, big): The binary search tree the Tree is split into three parts:
+small is a binary search tree that contains all pairs of the Tree that have key less than k; mid is
+the pair (if any) in the Tree whose key is k, and big is a binary search tree that contains all pairs
+of the Tree that have key larger than k. Following the split operation theTree is empty. When
+the Tree has no pair whose key is k, mid.key is set to -1 (this assumes that-1 is not a valid key
+for a dictionary pair).

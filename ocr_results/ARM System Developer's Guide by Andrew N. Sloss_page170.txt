@@ -1,0 +1,32 @@
+CHAPTER
+
+WRITING AND
+OPTIMIZING ARM
+ASSEMBLY CODE
+
+Embedded software projects often contain a few key subroutines that dominate system
+performance. By optimizing these routines you can reduce the system power consumption
+and reduce the clock speed needed for real-time operation. Optimization can turn an
+infeasible system into a feasible one, or an uncompetitive system into a competitive one.
+
+If you write your C code carefully using the rules given in Chapter 5, you will have
+a relatively efficient implementation. For maximum performance, you can optimize critical
+routines using hand-written assembly. Writing assembly by hand gives you direct control
+of three optimization tools that you cannot explicitly use by writing C source:
+
+= Instruction scheduling: Reordering the instructions in a code sequence to avoid processor
+stalls. Since ARM implementations are pipelined, the timing of an instruction can be
+affected by neighboring instructions. We will look at this in Section 6.3.
+
+= Register allocation: Deciding how variables should be allocated to ARM registers or stack
+locations for maximum performance. Our goal is to minimize the number of memory
+accesses. See Section 6.4.
+
+= Conditional execution: Accessing the full range of ARM condition codes and conditional
+instructions. See Section 6.5.
+
+It takes additional effort to optimize assembly routines so don’t bother to optimize
+noncritical ones. When you take the time to optimize a routine, it has the side benefit of
+giving you a better understanding of the algorithm, its bottlenecks, and dataflow.
+
+157

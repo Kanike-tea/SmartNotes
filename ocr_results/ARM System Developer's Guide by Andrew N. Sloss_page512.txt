@@ -1,0 +1,55 @@
+14.2 How Virtual Memory Works 499
+
+To switch between tasks requires the following steps:
+
+. Save the active task context and place the task in a dormant state.
+. Flush the caches; possibly clean the D-cache if using a writeback policy.
+
+. Flush the TLB to remove translations for the retiring task.
+
+ewe Ne
+
+. Configure the MMU to use new page tables translating the virtual memory execution
+area to the awakening task’s location in physical memory.
+
+w
+
+. Restore the context of the awakening task.
+
+6. Resume execution of the restored task.
+
+Note: to reduce the time it takes to perform a context switch, a writethrough cache
+policy can be used in the ARM9 family. Cleaning the data cache can require hundreds of
+writes to CP15 registers. By configuring the data cache to use a writethrough policy, there is
+no need to clean the data cache during a context switch, which will provide better context
+switch performance. Using a writethrough policy distributes these writes over the life of
+the task. Although a writeback policy will provide better overall performance, it is simply
+easier to write code for small embedded systems using a writethrough policy.
+
+This simplification applies because most systems use flash memory for nonvolatile
+storage, and copy programs to RAM during system operation. If your system has a file
+system and uses dynamic paging then it is time to switch to a write-back policy because the
+access time to file system storage are tens to hundreds of thousands of times slower than
+access to RAM memory.
+
+If, after some performance analysis, the efficiency of a writethrough system is not
+adequate, then performance can be improved using a writeback cache. If you are using a
+disk drive or other very slow secondary storage, a writeback policy is almost mandatory.
+
+This argument only applies to ARM cores that use logical caches. If a physical cache
+is present, as in the ARM11 family, the information in cache remains valid when the
+MMU changes its virtual memory map. Using a physical cache eliminates the need to
+perform cache management activities when changing virtual memory addresses. For further
+information on caches, refer to Chapter 12.
+
+14.2.3. MEMORY ORGANIZATION IN A VIRTUAL MEMORY SYSTEM
+
+Typically, page tables reside in an area of main memory where the virtual-to-physical
+address mapping is fixed. By “fixed,” we mean data in a page table doesn’t change during
+normal operation, as shown in Figure 14.5. This fixed area of memory also contains the
+operating system kernel and other processes. The MMU, which includes the TLB shown
+in Figure 14.5, is hardware that operates outside the virtual or physical memory space; its
+function is to translate addresses between the two memory spaces.
+
+The advantage of this fixed mapping is seen during a context switch. Placing system
+software at a fixed virtual memory location eliminates some memory management tasks

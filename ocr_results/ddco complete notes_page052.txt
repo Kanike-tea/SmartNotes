@@ -1,0 +1,60 @@
+Digital Design and Computer Organization(BCS302)
+
+Implement using multiplexer F (A, B, C, D) = (1, 3, 4, 11, 12, 13, 14, 15)
+
+A BC DIF
+0 0 0 0/0 gun Bx 7:
+o 0 0 1f1 1 MUX
+oo 1 olo c Sy
+oo 1 14/14 B Si
+o 10 of1 A Sa
+0 1 0 1/0 “~~?
+D ’ + 0
+0 1 0/0 pio A
+o 1 1 14/0 — F
++ 2
+1 0 0 0f]0 49 0 3
+1 0 1}o ri
+10 1 o]o gL 5
+1 o 1 iii 4? 1 -
+1 1 0 oft pL 7
+1 1 0 1ji “=!
+1 1 1 of1 _
+11a aja >!
+
+FIGURE 4.28
+Implementing a four-input function with a multiplexer
+
+Three-State Gates
+
+A multiplexer can be constructed with three-state gates—digital circuits that exhibit
+three states.
+
+Two of the states are signals equivalent to logic 1 and logic O as in a conventional
+gate.
+
+The third state is a high-impedance state in which
+
+(1) the logic behaves like an open circuit, which means that the output appears to be
+disconnected,
+
+(2) the circuit has no logic significance, and
+
+(3) the circuit connected to the output of the three-state gate is not affected by the
+inputs to the gate. Three-state gates may perform any conventional logic, such as
+AND or NAND. However, the one most commonly used is the buffer gate.
+
+The graphic symbol for a three-state buffer gate is
+
+Normal input A Output Y= AifC=1
+High-impedance if C = 0
+
+Control input C
+
+The buffer has a normal input, an output, and a control input that determines the state of the
+output. When the control input is equal to 1, the output is enabled and the gate behaves like
+a conventional buffer, with the output equal to the normal input. When the control input is
+0, the output is disabled and the gate goes to a high-impedance state, regardless of the value
+in the normal input. The high-impedance state of a three-state gate provides a special
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 24

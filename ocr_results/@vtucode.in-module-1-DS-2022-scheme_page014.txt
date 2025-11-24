@@ -1,0 +1,52 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+ARRAYS
+e AnArray is defined as, an ordered set of similar data items. All the data items of an
+array are stored in consecutive memory locations.
+e The data items of an array are of same type and each data items can be accessed using
+the same name but different index value.
+e Anarray is a set of pairs, such that each index has a value associated with it. It can be
+called as corresponding or a mapping
+Ex: <index, value>
+<0 ,25> list{0]=25
+<1,15> list{1]=15
+<2 ,20> list[2]=20
+<3 ,17> list{3]=17
+<4,35> list[4]=35
+
+Here, list is the name of array. By using, list [0] to list [4] the data items in list can be accessed.
+
+Structure Array is
+
+objects: A set of pairs <index, value> where for each value of
+index there is a value from the set item. Index is a finite
+ordered set of one or more dimenSions, for example,
+{0, .. , n-1} for onesdimension,
+{(0,0), (0,1), (0,2) 4 (1,0), (171), (1,2), (2,0), (2,1), (2,2) } for
+two dimensions, etc.
+
+Functions:
+
+for all, A e€Array,»i ¢index, x € item, j, size € integer
+
+Array Create(j, list) .::= return an array of j dimensions where
+list is a j-tuple whose ith element is
+the size of the ith dimension. Items arel
+undefined.
+
+Item Retrieve(A, i) ::= aif (i eindex)
+
+return the item associated with
+index value i in array A
+else
+return error
+Array Store(A, i, x) :1= if (i in index)
+return an array that is identical
+to array A except the new pair
+<i, x> has been inserted
+else
+return error
+end array
+Abstract data type Array
+
+vtucode.in 15

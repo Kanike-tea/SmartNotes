@@ -1,0 +1,36 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+e The left parenthesis complicates matters because it behaves like a low-precedence
+operator when it is on the stack and a high-precedence one when it is not. It is
+placed in the stack whenever it is found in the expression, but it is unstacked only
+when its matching right parenthesis is found.
+
+e There are two types of precedence, in-stack precedence (isp) and incoming
+
+precedence (icp).
+
+The declarations that establish the precedence’s are:
+
+/* isp and icp arrays-index is value of precedence Iparen rparen, plus, minus, times,
+divide, mod, eos */
+
+int isp[] = {0,19,12,12,13,13,13,0};
+
+int icp[] = {20,19,12,12,13,13,13,0};
+
+void postfix(void)
+{
+char
+symbol;
+precede
+nce
+token;
+int n = 0,top = 0; /* place eos on
+stack */ stack[0] = eos;
+for (token = getToken(&symbol, &n); token != eos; token =
+getToken(&symbol,& n ))
+{
+
+if (token == operand)
+
+vtucode.in 47

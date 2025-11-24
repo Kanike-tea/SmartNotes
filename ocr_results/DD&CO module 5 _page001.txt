@@ -1,0 +1,40 @@
+Control
+circuitry
+
+Register
+
+file
+
+Instruction
+address
+generator
+
+pc
+
+Figure 5.1 Main hardware components ofa processor.
+
+SINGLE BUS ORGANIZATION
+
+¢ Here the processor contain only a single bus for the movement of data, address and
+instructions.
+¢ ALU and all the registers are interconnected via a Single Common Bus (Figure 7.1).
+¢ Data & address lines of the external memory-bus is connected to the internal
+processor-bus via MDR & MAR respectively.
+
+(MDR -> Memory Data Register, MAR -> Memory Address Register).
+e¢MDR has 2 inputs and 2 outputs. Data may be loaded
+— into MDR either from memory-bus (external) or
+— from processor-bus (internal).
+¢ MAR'’s input is connected to internal-bus; MAR's output is connected to external-
+bus. (address sent from processor to memory only)
+
+¢Instruction Decoder & Control Unit is responsible for
+
+— Decoding the instruction and issuing the control-signals to all the units inside the
+processor.
+
+— implementing the actions specified by the instruction (loaded in the IR).
+
+¢ Processor Registers - Register RO through R(n-1) are also called as General
+Purpose Register.
+The programmer can access these registers for general-purpose use.

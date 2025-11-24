@@ -1,0 +1,61 @@
+Database Management System [BCS403]
+
+Similarly, a NATURAL JOIN can be specified as a CARTESIAN PRODUCT preceded by
+RENAME and followed by SELECT and PROJECT operations. Hence, the various JOIN operations
+
+are also not strictly necessary for the expressive power of the relational algebra.
+
+2.4.4 The DIVISION Operation
+
+The DIVISION operation, denoted by ~, is useful for a special kind of query that sometimes occurs
+
+in database applications. An example is Retrieve the names of employees who work on all the
+
+projects that ‘John Smith’ works on. To express this query using the DIVISION operation, proceed
+
+as follows.
+
+First, retrieve the list of project numbers that ‘John Smith’ works on in the intermediate
+relation SMITH_PNOS:
+
+SSN_PNOS © me... po(WORKS_ON)
+
+Next, create a relation that includes a tuple <Pno, Essn> whenever the employee whose Ssn is
+
+Essn works on the project whose number is Pno in the intermediate relation SSN_PNOS:
+
+SMITH © Gf,csne-\fohw’ AND Lnamo-simtii( EMPLOYEE)
+SMITH_PNOS © zppg( WORKSZON ™* 5205, SenSMITH)
+
+Finally, apply the DIVISION operation to the two relations, which gives the desired
+
+employees’ Social Security numbers:
+
+SSNS(Ssn) — SSN_PNOS + SMITH_PNOS
+RESULT — ame, tname( SSNS * EMPLOYEE)
+
+(a)
+SSN_PNOS
+
+am | Pro SSNS
+
+123456780 [1
+Ssn
+
+4234567689 | 2
+eeess4da4 | 3 123456789
+459453403 | 1
+45453453 | 2 453453453
+sagaassss | 2
+gag445555 | 3
+gag445555 | 10
+33445055 | 20
+999887777 | 30 SMITH_PNOS
+999807777 | 10 [Pro]
+ee7ee7087 | 10 o.
+987987987 | 30 1
+987654321 | 30
+987654321 | 20 2
+88665555 | 20
+
+https://vtucode.in Page 28

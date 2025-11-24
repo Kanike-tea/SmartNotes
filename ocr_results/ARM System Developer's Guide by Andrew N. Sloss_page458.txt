@@ -1,0 +1,48 @@
+12.6 Cache Lockdown 445
+
+Table 12.9 Methods of cache lockdown.
+
+Example Procedural method Processor core
+
+Example 12.7 way addressing ARM920T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S
+
+Example 12.8 lock bits ARM926EJ-S, ARM1026EJ-S
+
+Example 12.9 special allocate command XScale
+
+code and data are locked in cache using a combination of a special allocate command and
+reading a dedicated block of main memory.
+
+Table 12.9 lists the three examples that implement the two procedures lockDcache and
+lockIcache, the methods used, and the associated processors.
+
+12.6.2.) LOCKING A CACHE BY INCREMENTING THE WAY INDEX
+
+The ARM920T, ARM926EJ-S, ARM940T, ARM946E-S, ARM1022E, and ARM1026EJ-S use
+way and set index addressing for lockdown. Two CP15:c9:c0 registers contain the victim
+counter reset registers described in Section 12.3.2. One of the registers controls the I-cache,
+and the other controls the D-cache. These registers are used to select the cache line within
+the way in which to lock the code or data.
+
+The value written to the CP15:c7 register sets the victim reset value—the value that the
+victim counter is reset to when it increments beyond the number of ways in the core. The
+reset value is zero at power-up and is only changed by software if some portion of the cache
+is used for lockdown. When a portion of the cache is used for lockdown, the number of
+cache lines for caching information decreases by the number of cache lines locked down.
+Reading the register returns the current victim reset value. The MRC and MCR instructions to
+read and write to the two registers are shown in Table 12.10.
+
+Table 12.10 Commands that lock data in cache by referencing its way.
+
+MRC and
+Command MCR instructions Processor core
+
+Read D-cache lockdown base MRC p15, 0, Rd, 9, c0,0 ARM920T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S
+Write D-cache lockdown base MCR p15, 0, Rd, c9,c0,0 ARM920T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S
+Read I-cache lockdown base = MRC p15, 0, Rd, c9, c0, 1 +ARM920T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S
+Write I-cache lockdown base = MCR p15, 0, Rd, c9, c0, 1 = ARM920T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S

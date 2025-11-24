@@ -1,0 +1,50 @@
+756
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+tem can be sure that all these new_values have been written to the actual database
+on disk from the main memory buffers.”
+
+20.2.3 Commit Point of a Transaction
+
+A transaction T reaches its commit point when all its operations that access the
+database have been executed successfully and the effect of all the transaction opera-
+tions on the database have been recorded in the log. Beyond the commit point, the
+transaction is said to be committed, and its effect must be permanently recorded in
+the database. The transaction then writes a commit record [commit, T] into the log.
+If a system failure occurs, we can search back in the log for all transactions T that
+have written a [start_transaction, T] record into the log but have not written their
+[commit, T] record yet; these transactions may have to be rolled back to undo their
+effect on the database during the recovery process. Transactions that have written
+their commit record in the log must also have recorded all their WRITE operations
+in the log, so their effect on the database can be redone from the log records.
+
+Notice that the log file must be kept on disk. As discussed in Chapter 16, updating
+a disk file involves copying the appropriate block of the file from disk to a buffer in
+main memory, updating the buffer in main memory, and copying the buffer to
+disk. As we mentioned earlier, it is common to keep one or more blocks of the log
+file in main memory buffers, called the log buffer, until they are filled with log
+entries and then to write them back to disk only once, rather than writing to disk
+every time a log entry is added. This saves the overhead of multiple disk writes of
+the same log file buffer. At the time of a system crash, only the log entries that have
+been written back to disk are considered in the recovery process if the contents of
+main memory are lost. Hence, before a transaction reaches its commit point, any
+portion of the log that has not been written to the disk yet must now be written to
+the disk. This process is called force-writing the log buffer to disk before commit-
+ting a transaction.
+
+20.2.4 DBMS-Specific Buffer Replacement Policies
+
+The DBMS cache will hold the disk pages that contain information currently being
+processed in main memory buffers. If all the buffers in the DBMS cache are occu-
+pied and new disk pages are required to be loaded into main memory from disk, a
+page replacement policy is needed to select the particular buffers to be replaced.
+Some page replacement policies that have been developed specifically for database
+systems are briefly discussed next.
+
+Domain Separation (DS) Method. In a DBMS, various types of disk pages
+exist: index pages, data file pages, log file pages, and so on. In this method, the
+DBMS cache is divided into separate domains (sets of buffers). Each domain han-
+dles one type of disk pages, and page replacements within each domain are han-
+
+7Undo and redo are discussed more fully in Chapter 22.

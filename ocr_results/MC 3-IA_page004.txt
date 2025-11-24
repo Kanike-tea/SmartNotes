@@ -1,0 +1,52 @@
+Microcontrollers - BCS402
+
+The next level is secondary storage—large, slow, relatively inexpensive mass storage devices
+such as disk drives or removable memory. Also included in this level is data derived from
+peripheral devices, which are characterized by their extremely long access times. Secondary
+memory is used to store unused portions of very large programs that do not fit in main memory
+
+and programs that are not currently executing.
+
+It is useful to note that a memory hierarchy depends as much on architectural design as on the
+technology surrounding it. For example, TCMand SRAM are of the same technology yet differ
+
+in architectural placement: TCM is located on the chip, while SRAM is located on a board.
+
+A cache may be incorporated between any level in the hierarchy where there is a significant
+access time difference between memory components. A cache can improve system performance
+whenever such a difference exists. A cache memory system takes information stored in a lower
+
+level of the hierarchy and temporarily moves it to a higher level.
+
+Figure | includes a level 1 (L1) cache and write buffer. The LI cache is an array of high-speed,
+on-chip memory that temporarily holds code and data from a slower level. A cache holds this
+information to decrease the time required to access both instructions and data. The write buffer is
+
+a very small FIFO buffer that supports writes to main memory from the cache.
+
+An L2 (Level 2 cache not shown in fig) cache is located between the LI cache and slower
+
+memory. The L1 and L2 caches are also known as the primary and secondary caches.
+
+Word, byte access
+
+_| Main
+Slow |_memory
+
+Noncached system
+
+Word, byte Block
+transfer
+STow
+
+access
+
+core Fast
+
+Fast
+
+Word, byte access
+
+Cached system
+
+Fig 2: Relationship that a cache has between the processor core and main memory

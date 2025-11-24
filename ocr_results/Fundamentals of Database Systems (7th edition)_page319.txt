@@ -1,0 +1,31 @@
+chapter ‘)
+
+Relational Database
+Design by ER- and
+EER-to-Relational Mapping
+
+Ts chapter discusses how to design a relational
+database schema based on a conceptual schema
+design. Figure 3.1 presented a high-level view of the database design process. In this
+chapter we focus on the logical database design step of database design, which is
+also known as data model mapping. We present the procedures to create a rela-
+tional schema from an entity-relationship (ER) or an enhanced ER (EER) schema.
+Our discussion relates the constructs of the ER and EER models, presented in
+Chapters 3 and 4, to the constructs of the relational model, presented in Chapters 5
+through 8. Many computer-aided software engineering (CASE) tools are based on
+the ER or EER models, or other similar models, as we have discussed in Chapters 3
+and 4. Many tools use ER or EER diagrams or variations to develop the schema
+graphically and collect information about the data types and constraints, then con-
+vert the ER/EER schema automatically into a relational database schema in the
+DDL of a specific relational DBMS. The design tools employ algorithms similar to
+the ones presented in this chapter.
+
+We outline a seven-step algorithm in Section 9.1 to convert the basic ER model
+constructs—entity types (strong and weak), binary relationships (with various
+structural constraints), n-ary relationships, and attributes (simple, composite,
+and multivalued)—into relations. Then, in Section 9.2, we continue the mapping
+algorithm by describing how to map EER model constructs—specializa-
+tion/generalization and union types (categories)—into relations. Section 9.3 sum-
+marizes the chapter.
+
+289

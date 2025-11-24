@@ -1,0 +1,44 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 585
+
+Table A.6 LDM addressing modes.
+
+‘Addressing Lowest address Highest address Value written back
+mode accessed accessed to Rnif | specified
+{IA|FD} Rn Rn + N*4 - 4 Rn + N*4
+{IB|ED} Rn + 4 Rn + N*4. Rn + N*4
+{DA|FA} Rn - N*4 + 4 Rn Rn - N*4
+{DB|EA} Rn - N*4 Rn - 4 Rn - N*4
+
+N= the number of registers in <register_list>
+start = the lowest address accessed given in Table A.6
+for (i=0; i<N; itt)
+<register_list>[i] = memory(start+i*4, 4);
+if (! specified) then update Rn according to Table A.6
+
+Note that memory(a, 4) returns the four bytes at address a packed according to the
+current processor data endianness. If a is not a multiple of four, then the load is unaligned.
+Because the behavior of an unaligned load depends on the architecture revision, memory
+system, and system coprocessor (CP15) configuration, it’s best to avoid unaligned loads if
+possible. Assuming that the external memory system does not abort unaligned loads, then
+the following rules usually apply:
+
+= Ifthe core has a system coprocessor and bit 1 (A-bit) or bit 22 (U-bit) of CP15:cl:c0:0
+is set, then unaligned load multiples cause an alignment fault data abort exception.
+
+= Otherwise the access ignores the bottom two address bits.
+
+Table A.6 lists the possible addressing modes specified by <amode>. If you specify the !,
+then the base address register is updated according to Table A.6; otherwise it is preserved.
+Note that the lowest register number is always read from the lowest address.
+
+The first half of the addressing mode mnemonics stands for Increment After, Increment
+Before, Decrement After, and Decrement Before, respectively. Increment modes load
+the registers sequentially forward, starting from address Rn (increment after) or Rn + 4
+(increment before). Decrement modes have the same effect as if you loaded the regis-
+ter list backwards from sequentially descending memory addresses, starting from address
+Rn (decrement after) or Rn — 4 (decrement before).
+
+‘The second half of the addressing mode mnemonics stands for the stack type you can
+implement with that address mode: Full Descending, Empty Descending, Full Ascending,
+and Empty Ascending, With a full stack, Rn points to the last stacked value; with an empty
+stack, Rn points to the first unused stack location. ARM stacks are usually full descending.

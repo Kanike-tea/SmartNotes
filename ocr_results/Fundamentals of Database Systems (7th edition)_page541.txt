@@ -1,0 +1,59 @@
+15.1 Further Topics in Functional Dependencies: Inference Rules, Equivalence, and Minimal Cover
+
+If several sets of FDs qualify as minimal covers of E by the definition above, it is
+customary to use additional criteria for minimality. For example, we can choose the
+minimal set with the smallest number of dependencies or with the smallest total
+length (the total length of a set of dependencies is calculated by concatenating the
+dependencies and treating them as one long character string).
+
+Algorithm 15.2. Finding a Minimal Cover F for a Set of Functional Depen-
+dencies E
+
+Input: A set of functional dependencies E.
+
+Note: Explanatory comments are given at the end of some of the steps. They
+
+follow the format: (+comment).
+
+1. Set F:= E.
+
+2. Replace each functional dependency X — {Aj, Ap, ... , A,} in F by the n
+functional dependencies X A, X >A), ..., X > A,,. («This places the FDs
+in a canonical form for subsequent testing*)
+
+3. For each functional dependency X > A in F
+
+for each attribute B that is an element of X
+if { {F - {X > A} } U { (X - {B} ) > A} } is equivalent to F
+then replace X > A with (X - {B}) > A in F.
+(This constitutes removal of an extraneous attribute B contained in the left-
+hand side X of a functional dependency X > A when possible+)
+
+4. For each remaining functional dependency X — A in F
+if {F — {X — A} } is equivalent to F,
+then remove X > A from F. (+This constitutes removal of a redundant func-
+tional dependency X — A from F when possible*)
+
+We illustrate the above algorithm with the following examples:
+
+Example 1: Let the given set of FDs be E: {B > A, D> A, AB > D}. We have to
+find the minimal cover of E.
+
+= All above dependencies are in canonical form (that is, they have only one
+attribute on the right-hand side), so we have completed step 1 of Algo-
+rithm 15.2 and can proceed to step 2. In step 2 we need to determine if
+AB— Dhas any redundant (extraneous) attribute on the left-hand side; that
+is, can it be replaced by B— D or A > D?
+
+= Since B — A, by augmenting with B on both sides (IR2), we have BB > AB,
+or B — AB (i). However, AB > Das given (ii).
+
+= Hence by the transitive rule (IR3), we get from (i) and (ii), B > D. Thus
+AB — D may be replaced by B > D.
+
+= We now have a set equivalent to original E, say E’: {B > A, D> A, B > D}.
+
+No further reduction is possible in step 2 since all FDs have a single attribute
+on the left-hand side.
+
+511

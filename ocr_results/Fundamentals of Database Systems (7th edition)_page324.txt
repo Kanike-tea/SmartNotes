@@ -1,0 +1,50 @@
+294 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+tuple in R represents a relationship instance that relates one tuple from S
+with one tuple from T. The relation R will include the primary key attributes
+of S and Tas foreign keys to S and T. The primary key of R will be one of the
+two foreign keys, and the other foreign key will be a unique key of R. The
+drawback is having an extra relation, and requiring extra join operations
+when combining related tuples from the tables.
+
+Step 4: Mapping of Binary 1:N Relationship Types. There are two possible
+approaches: (1) the foreign key approach and (2) the cross-reference or relationship
+relation approach. The first approach is generally preferred as it reduces the num-
+ber of tables.
+
+1. The foreign key approach: For each regular binary 1:N relationship type R,
+
+identify the relation S that represents the participating entity type at the
+N-side of the relationship type. Include as foreign key in S the primary key of
+the relation T that represents the other entity type participating in R; we do
+this because each entity instance on the N-side is related to at most one
+entity instance on the 1-side of the relationship type. Include any simple
+attributes (or simple components of composite attributes) of the 1:N rela-
+tionship type as attributes of S.
+To apply this approach to our example, we map the 1:N relationship types
+WORKS_FOR, CONTROLS, and SUPERVISION from Figure 9.1. For
+WORKS_FOR we include the primary key Dnumber of the DEPARTMENT relation
+as foreign key in the EMPLOYEE relation and call it Dno. For SUPERVISION we
+include the primary key of the EMPLOYEE relation as foreign key in the
+EMPLOYEE relation itself—because the relationship is recursive—and call it
+Super_ssn. The CONTROLS relationship is mapped to the foreign key attri-
+bute Dnum of PROJECT, which references the primary key Dnumber of the
+DEPARTMENT relation. These foreign keys are shown in Figure 9.2.
+
+2. The relationship relation approach: An alternative approach is to use the
+relationship relation (cross-reference) option as in the third option for
+binary 1:1 relationships. We create a separate relation R whose attributes are
+the primary keys of $ and T, which will also be foreign keys to S and T. The
+primary key of R is the same as the primary key of S. This option can be used
+if few tuples in S participate in the relationship to avoid excessive NULL val-
+ues in the foreign key.
+
+Step 5: Mapping of Binary M:N Relationship Types. In the traditional rela-
+tional model with no multivalued attributes, the only option for M:N relationships
+is the relationship relation (cross-reference) option. For each binary M:N rela-
+tionship type R, create a new relation S to represent R. Include as foreign key attri-
+butes in S the primary keys of the relations that represent the participating entity
+types; their combination will form the primary key of S. Also include any simple
+attributes of the M:N relationship type (or simple components of composite attri-
+butes) as attributes of S. Notice that we cannot represent an M:N relationship type
+by a single foreign key attribute in one of the participating relations (as we did for

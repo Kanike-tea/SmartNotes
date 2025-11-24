@@ -1,0 +1,44 @@
+NUMERICAL’ METHODS - 1 : " e ; 19
+
+yp: = 1+ 0.025 [1.0025 + 10513 = 1.0513
+»Thus (0.05) = 1.0513
+Tl Stage: Now, let x= 0.05, ¥9 ='1.0513
+
+Fly) =? + y 5 Fl xq¥9) = (0.05)? + 1.0513 = 1.0538
+
+XS Xt h = 0.1, yx) =y¥,= y(0.1) =?
+sileemeneaet in the Euler’s formula,
+y=
+
+Next from the modified Euler’ Ss formula,
+
+= 1.0513 + 0.05 ( 1.0538 ) = 1.104-
+
+4s = sis + 8 [8 0 +K?]
+
+i}
+
+1.0513 + 0.025 [1.0538 +. (0.1) + 1.104]
+1.0513 + 0.025 [ 1.0638 + 1.104] = 1.1055
+
+2): = 1.0513 + 0.025 [1.0638 + 1.1055] = 1.1055
+Thus the’ eqjuited y (0.1) = 1.1055
+
+d
+15. Using Euler’s predictor and corrector alias solve = = x+y at x = 0.2 given
+that y(0) =1. ,
+
+>> Weneed to¢ompute y (0.2) and since nie step size is not specified we shall take
+it to be 0.2 itself.
+
+By data we have, %=0,y=1, fase =x+y and h = 0.2 (assumed)
+f(tyy) = O+1 51x, =x) +h = 02,
+y(%) =y, =y(02) =? —
+
+We ian Buler’s formula (predictor formula)
+
+(0)
+
+Ny = Yo +. Af (y Yq) =1+(02)1=
+
+‘Next consider modified Euler’s formula (corrector formula)

@@ -1,0 +1,52 @@
+Selected Bibliography
+
+related to recovery in distributed databases. Elections in distributed systems are
+discussed in Garcia-Molina (1982). Lamport (1978) discusses problems with gener-
+ating unique timestamps in a distributed system. Rahimi and Haug (2007) discuss a
+more flexible way to construct query critical metadata for P2P databases. Ouzzani
+and Bouguettaya (2004) outline fundamental problems in distributed query pro-
+cessing over Web-based data sources.
+
+A concurrency control technique for replicated data that is based on voting is pre-
+sented by Thomas (1979). Gifford (1979) proposes the use of weighted voting, and
+Paris (1986) describes a method called voting with witnesses. Jajodia and Mutchler
+(1990) discuss dynamic voting. A technique called available copy is proposed by
+Bernstein and Goodman (1984), and one that uses the idea of a group is presented
+in ElAbbadi and Toueg (1988). Other work that discusses replicated data includes
+Gladney (1989), Agrawal and ElAbbadi (1990), ElAbbadi and Toueg (1989), Kumar
+and Segev (1993), Mukkamala (1989), and Wolfson and Milo (1991). Bassiouni
+(1988) discusses optimistic protocols for DDB concurrency control. Garcia-Molina
+(1983) and Kumar and Stonebraker (1987) discuss techniques that use the seman-
+tics of the transactions. Distributed concurrency control techniques based on lock-
+ing and distinguished copies are presented by Menasce et al. (1980) and Minoura
+and Wiederhold (1982). Obermark (1982) presents algorithms for distributed
+deadlock detection. In more recent work, Vadivelu et al. (2008) propose using
+backup mechanism and multilevel security to develop algorithms for improving
+concurrency. Madria et al. (2007) propose a mechanism based on a multiversion
+two-phase locking scheme and timestamping to address concurrency issues specific
+to mobile database systems. Boukerche and Tuck (2001) propose a technique that
+allows transactions to be out of order to a limited extent. They attempt to ease the
+load on the application developer by exploiting the network environment and pro-
+ducing a schedule equivalent to a temporally ordered serial schedule. Han et al.
+(2004) propose a deadlock-free and serializable extended Petri net model for Web-
+based distributed real-time databases.
+
+A survey of recovery techniques in distributed systems is given by Kohler (1981).
+Reed (1983) discusses atomic actions on distributed data. Bhargava (1987) presents
+an edited compilation of various approaches and techniques for concurrency and
+reliability in distributed systems.
+
+Federated database systems were first defined in McLeod and Heimbigner (1985).
+Techniques for schema integration in federated databases are presented by Elmasri
+et al. (1986), Batini et al. (1987), Hayne and Ram (1990), and Motro (1987).
+Elmagarmid and Helal (1988) and Gamal-Eldin et al. (1988) discuss the update
+problem in heterogeneous DDBSs. Heterogeneous distributed database issues are
+discussed in Hsiao and Kamel (1989). Sheth and Larson (1990) present an exhaus-
+tive survey of federated database management.
+
+Since the late 1980s, multidatabase systems and interoperability have become
+important topics. Techniques for dealing with semantic incompatibilities among
+multiple databases are examined in DeMichiel (1989), Siegel and Madnick (1991),
+Krishnamurthy et al. (1991), and Wang and Madnick (1989). Castano et al. (1998)
+
+881

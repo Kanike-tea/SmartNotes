@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+SELECT Fname, Lname
+FROM WORKS_ON1
+WHERE Pname='‘ProductX’;
+
+The same query would require the specification of two joins if specified on the base relations
+directly. one of the main advantages of a view is to simplify the specification of certain queries.
+Views are also used as a security and authorization mechanism.
+
+A view is supposed to be always up-to-date; if we modify the tuples in the base tables on which the
+view is defined, the view must automatically reflect these changes. Hence, the view is not realized
+or materialized at the time of view definition but rather at the time when we specify a query on the
+view. It is the responsibility of the DBMS and not the user to make sure that the view is kept up-to-
+date.
+
+If we do not need a view any more, we can use the DROP VIEW command to dispose of it. For
+example : DROP VIEW WORKS_ON1;
+
+1.3.3 View Implementation, View Update and Inline Views
+The problem of efficiently implementing a view for querying is complex. Two main approaches have
+been suggested.
+= One strategy, called query modification, involves modifying or transforming the view query
+(submitted by the user) into a query on the underlying base tables. For example, the query
+SELECT Fname, Lname
+FROM WORKS_ON1
+WHERE Pname='ProductX’;
+
+would be automatically modified to the following query by the DBMS:
+SELECT Fname, Lname
+FROM EMPLOYEE, PROJECT, WORKS_ON
+WHERE Ssn=Essn AND Pno=Pnumber
+AND Pname=‘Productx’;
+
+The disadvantage of this approach is that it is inefficient for views defined via complex queries that
+are time-consuming to execute, especially if multiple queries are going to be applied to the same
+view within a short period of time.
+
+= The second strategy, called view materialization, involves physically creating a temporary view
+table when the view is first queried and keeping that table on the assumption that other queries
+on the view will follow. In this case, an efficient strategy for automatically updating the view table
+when the base tables are updated must be developed in order to keep the view up-to-date.
+
+https://vtucode.in page 39

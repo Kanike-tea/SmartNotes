@@ -1,0 +1,54 @@
+Data Structures and Applications/BCS304 Module-1
+
+Multi dimensional arrays
+
+Two dimensional arrays: C uses the array of array representation to represent a multidimensional
+array. In this representation a 2 dimensional array is represented as a one dimensional array in which
+each element is itself a one dimensional array.
+e A two dimensional m X n array A is a collection of m* n data elements such that each element
+is specified by a pair of integers called subscripts.
+An element with subscript i and j will be represented as A[i][j
+Declaration: int A[3][5];
+// It declares an array A that contains three elements where each element is a one
+dimensional array. Each one dimensional array has 5 integer elements.
+
+Example : A 2 dimensional array A[3][4] is represented as
+
+0 1 2 3
+© | AfO}(0] | ALOI[1] | ALO][2] | ALO][3]
+Rows 1 | A[1J[0] | AL1[1) | Al1J[2] | ALJ)
+2 LAL2I10] | A211 | AL2I12) | A2I3)
+
+REPESentationlohiWwoldimensionallaraysummiemory: A two dimensional m X narray A is stored
+
+in the memory as a collection of m*n sequential memory locations.If the array is stored column by
+column it is called column major order and if the array is stored row by row it is called row major
+order.
+
+Example: Representation of the two dimensional array A[3][4] in row major order and column major
+order
+A Subscript A Subscript
+A[0][0 A[0][0. Column!
+A(O][1 A[1][0.
+AOI ROO A[2I[0.
+A[O}[3 A(O}{1 Column2
+A{1][0. AU
+Att A(2]{1
+ALI Bow. A(OIL2 Column3
+A(1IB AI
+A[2][0. A(2][2
+A(2][1 A[0][3 Column4
+ADIL2 pows ALI
+A[2][3 A[2][3
+Row Major Order Column major order
+
+Figure 1.1 Representation of Two Dimensional array
+
+e Using the base address , the address of any element in an array A of size row X col can be
+calculated using the formula.
+e Row Major order
+Address (A[i][j]) = Base address + w[ i*col+ j] considering the array indexing starts at 0
+e Column Major order
+Address (A[i][j]) = Base address + w[ i+row.j] considering the array indexing starts at 0
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 11

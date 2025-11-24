@@ -1,0 +1,53 @@
+1032
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+document. The idea is that terms that capture the essence of a document occur
+frequently in the document (that is, their TF is high), but if such a term were to be
+a good term that discriminates the document from others, it must occur in only a
+few documents in the general population (that is, its IDF should be high as well).
+
+IDF values can be easily computed for a fixed collection of documents. In case of
+Web search engines, taking a representative sample of documents approximates
+IDF computation. The following formulas can be used:
+
+Thi] Dh
+isl to|V|
+IDF, =log(N/n,)
+In these formulas, the meaning of the symbols is:
+
+TF, is the normalized term frequency of term iin document Dj.
+fi is the number of occurrences of term i in document Dj.
+
+IDF; is the inverse document frequency weight for term i.
+
+Nis the number of documents in the collection.
+
+n; is the number of documents in which term i occurs.
+
+Note that if a term i occurs in all documents, then n; = N and hence IDF; = log(1)
+becomes zero, nullifying its importance and creating a situation where division by
+zero can occur. The weight of term i in document j, wip is computed based on its
+TF-IDF value in some techniques. To prevent division by zero, it is common to add
+a 1 to the denominator in the formulae such as the cosine formula above.
+
+Sometimes, the relevance of the document with respect to a query (rel(Dj,Q)) is
+directly measured as the sum of the TF-IDF values of the terms in the query Q:
+
+rel(D,,Q)= ) jeg TF x IDF;
+
+The normalization factor (similar to the denominator of the cosine formula) is
+incorporated into the TF-IDF formula itself, thereby measuring relevance of a doc-
+ument to the query by the computation of the dot product of the query and docu-
+ment vectors.
+
+The Rocchio" algorithm is a well-known relevance feedback algorithm based on
+the vector space model that modifies the initial query vector and its weights in
+response to user-identified relevant documents. It expands the original query vec-
+tor q to a new vector q, as follows:
+
+B y
+qe = aq +— yy d,-—— dip
+. ID iep  WPula’ep,
+
+'See Rocchio (1971).

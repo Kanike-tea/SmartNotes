@@ -1,0 +1,49 @@
+3.3 Entity Types, Entity Sets, Attributes, and Keys 65
+
+Name = John Smith Name = Sunco Oil
+
+Address = 2311 Kirby
+Houston, Texas 77001
+
+e C1 Headquarters = Houston
+
+Age =55
+
+Home_phone = 713-749-2630 President = John Smith
+
+Figure 3.3
+
+Two entities,
+EMPLOYEE ej, and
+COMPANY cy, and
+their attributes.
+
+Several types of attributes occur in the ER model: simple versus composite, single-
+valued versus multivalued, and stored versus derived. First we define these attribute
+types and illustrate their use via examples. Then we discuss the concept of a NULL
+value for an attribute.
+
+Composite versus Simple (Atomic) Attributes. Composite attributes can be
+divided into smaller subparts, which represent more basic attributes with indepen-
+dent meanings. For example, the Address attribute of the EMPLOYEE entity shown
+in Figure 3.3 can be subdivided into Street_address, City, State, and Zip,° with the
+values ‘2311 Kirby’, ‘Houston’, ‘Texas’, and ‘77001’. Attributes that are not divisible
+are called simple or atomic attributes. Composite attributes can form a hierarchy;
+for example, Street_address can be further subdivided into three simple component
+attributes: Number, Street, and Apartment_number, as shown in Figure 3.4. The value
+of a composite attribute is the concatenation of the values of its component simple
+attributes.
+
+Composite attributes are useful to model situations in which a user sometimes
+refers to the composite attribute as a unit but at other times refers specifically to its
+
+Address
+Street_address City State Zip
+Number Street. Apartment_number
+
+8Zip Code is the name used in the United States for a five-digit postal code, such as 76019, which can
+be extended to nine digits, such as 76019-0015. We use the five-digit Zip in our examples.
+
+Figure 3.4
+A hierarchy of
+composite attributes.

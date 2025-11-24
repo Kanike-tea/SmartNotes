@@ -1,0 +1,54 @@
+18.8 Parallel Algorithms for Query Processing
+
+Selection. For a selection based on some condition, if the condition is an equality
+condition, <A = v> and the same attribute A has been used for range partitioning, the
+selection can be performed on only that partition to which the value v belongs. In other
+cases, the selection would be performed in parallel on all the processors and the results
+merged. If the selection condition is vl < A < v2 and attribute A is used for range par-
+titioning, then the range of values (v1, v2) must overlap a certain number of partitions.
+The selection operation needs to be performed only in those processors in parallel.
+
+Projection and Duplicate Elimination. Projection without duplicate elimination
+can be achieved by performing the operation in parallel as data is read from each
+partition. Duplicate elimination can be achieved by sorting the tuples and discard-
+ing duplicates. For sorting, any of the techniques mentioned above can be used
+based on how the data is partitioned.
+
+Join. The basic idea of parallel join is to split the relations to be joined, say R and S,
+in such a way that the join is divided into multiple n smaller joins, and then perform
+these smaller joins in parallel on n processors and take a union of the result. Next,
+we discuss the various techniques involved to achieve this.
+
+a. Equality-based partitioned join: If both the relations R and S are parti-
+tioned into n partitions on n processors such that partition r; and parti-
+tion s; are both assigned to the same processor Pj, then the join can be
+computed locally provided the join is an equality join or natural join.
+Note that the partitions must be non-overlapping on the join key; in that
+sense, the partitioning is a strict set-theoretic partitioning. Furthermore,
+the attribute used in the join condition must also satisfy these conditions:
+
+O It is the same as that used for range partitioning, and the ranges used
+for each partition are also the same for both R and S. Or,
+
+5 It is the same as that used to partition into n partitions using hash
+partitioning. The same hash function must be used for R and S. If the
+distributions of values of the joining attribute are different in R and S,
+it is difficult to come up with a range vector that will uniformly distrib-
+ute both R and S$ into equal partitions. Ideally, the size of | r; | + | s;|
+should be even for all partitions i. Otherwise, if there is too much data
+skew, then the benefits of parallel processing are not fully achieved.
+The local join at each processor may be performed using any of the
+techniques discussed for join: sort merge, nested loop, and hash join.
+
+b. Inequality join with partitioning and replication: If the join condition
+is an inequality condition, involving <, <, >, 2, #, and so on, then it is not
+possible to partition R and S in such a way that the ith partition of R—
+namely, r;— joins the jth partition of S—namely, s; only. Such a join can
+be parallelized in two ways:
+
+O Asymmetric case: Partitioning a relation R using one of the partitioning
+schemes; replicating one of the relations (say S) to all the n partitions;
+and performing the join between rj and the entire S at processor Pj.
+This method is preferred when S is much smaller than R.
+
+685

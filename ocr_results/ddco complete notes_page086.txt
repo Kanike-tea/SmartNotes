@@ -1,0 +1,51 @@
+COMPUTER ORGANIZATION (21834) Module 3
+a) Data transfer between two registers.
+
+Format: Opcode Sourcel , Destination
+The processor uses MOV instruction to perform data transfer operation between two registers
+The mathematical representation of this instruction is Rl > R2.
+Ex: MOV R1i,R2: Rl and R2 are the registers.
+Where MOV is the operation code, R1 is the source operand and R2 is the destination operand.
+This instruction transfers the contents of R1 to R2.
+EX: Before the execution of MOV R1,R2, the contents of RI’and R2 are as follows
+R1=34h and R2=65h
+After the execution of MOV R1, R2, the contents of R1_and R2 are as follows
+R1=34H and R2=34H
+
+b) Data transfer from memory to register
+The processor uses LOAD instruction to perform data transfer operation from memory to
+register. The mathematical representation of this instruction is
+[LOCA] — ACC. Where ACC is the Accumulator.
+Format: opcode operand
+Ex: LOAD LOCA
+For this instruction Memory Location is the source and Accumulator is the destination.
+
+c) Data transfer from Aceumulator register to memory
+The processonuses STORE instruction to perform data transfer operation from
+Accumulator register to memory,location. The mathematical representation of this instruction is
+[ACC] — LOCA. Where, ACC is the Accumulator.
+Format: opcode, operand
+Ex: STORE LOCA
+For this instruction accumulator is the source and memory location is the destination.
+
+2. ALU Operations
+
+The instructions are designed to perform arithmetic operations such as Addition, Subtraction,
+Multiplication and Division as well as logical operations such as AND, OR and NOT operations.
+Ex1: ADD Ro, Ri
+
+The mathematical representation of this instruction is as follows:
+
+Ri [Ro] + [Ri]; Adds the content of Ro with the content of Ri and result is placed in Ri.
+Ex2: SUB Ro, Ri
+
+The mathematical representation of this instruction is as follows:
+
+Ri< [Ro] - [Ri] ; Subtracts the content of Ro from the content of Ri and result is placed
+
+inR.
+EX3: AND Ro,R1 ; It Logically multiplies the content of Ro with the content of Ri and result is
+stored in Ri, (Ri= Ro AND R1)
+Ex4: NOT Ro ; It performs the function of complementation.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 19

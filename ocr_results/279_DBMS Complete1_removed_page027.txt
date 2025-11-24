@@ -1,0 +1,17 @@
+A Account Craven >
+
+generalisation eye ge
+specialisation
+Is-a
+Saving Current
+
+Converting Generalisation /Specification Hierarchy to Tables:
+
+A simple rule for conversion may be to decompose all the specialized entities into table in
+case they are disjoint, for example, for the figure we can create the three tables as:
+
+Account (account_no, name, branch, balance)
+
+Saving_Account (account-no, intrest)
+
+Current_Account (account-no, charges)

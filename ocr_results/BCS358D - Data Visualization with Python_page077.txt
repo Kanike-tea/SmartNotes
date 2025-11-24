@@ -1,0 +1,48 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+3. Scatter Plot: We generate random data and create a scatter plot to visualize the data
+
+points.
+
+We use the figure function to create plots, customize their appearance, and add data. Then, we
+arrange the plots in a layout using the column layout function and save them to an HTML file
+
+using output_file. Finally, we display the plots with show.
+
+PROGRAM
+
+import numpy as np
+
+from bokeh.io import output_file
+from bokeh.io import show
+
+from bokeh.layouts import row, column
+from bokeh.plotting import figure
+
+# Create a new plot object.
+fig = figure (plot_width=500, plot_height=300, title='Different Types
+of Plots')
+
+# Add data to the plot.
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Add a line glyph to the plot.
+fig.line(x, y, line_width=2, legend_label='Line Plot")
+
+# Add a bar chart to the plot.
+fig.vbar(x=x, top=y, legend_label='Bar Chart', width=0.5, bottom=0)
+
+# Add a scatter plot to the plot.
+fig.circle(x, y, size=10, color='red', legend_label='Scatter Plot')
+
+# Customize the plot appearance.
+
+fig.xaxis.axis_label = 'X Axis'
+fig.yaxis.axis_ label = 'Y Axis'
+fig.legend.location = 'top_left'
+
+# Show the plot.
+show (fig)
+
+Dept. of CSE 62 GSSSIETW, Mysuru

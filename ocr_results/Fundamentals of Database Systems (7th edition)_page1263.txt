@@ -1,0 +1,192 @@
+PEAR (PHP Extension and Application
+Repository), 353-354
+Performance, Big data technology and, 945
+Performance monitoring, 45
+Periodic updates, SQL views, 230
+Persistent data, storage of, 545
+Persistent objects, 365, 373-374
+Persistent storage, 19-20
+Persistent storage modules, 336
+Phantom records, concurrency control
+and, 806-807
+PHP (Hypertext processor)
+arrays, 345-346, 348-350
+built-in variables, 352-353
+comments in, 345
+connecting to a database, 353-355
+data collection and records, 355-356
+error checking, 355
+Extension and Application Repository
+(PEAR), 353-354
+functions, 350-352
+here documents, 347-348
+HTML and, 343-346
+middle-tier Web server as, 344
+numeric data types for, 348
+placeholders, 356
+predefined variables, 345-346
+query retrieval, 356-357
+query submission, 355
+text strings in, 346, 347-348
+use of, 343-345
+variable names for, 346, 347
+Web programming using, 343-359
+Phrase queries, 1036
+Physical clustering, mixed records, 583
+Physical data independence, 38
+Physical data models, 33-34
+Physical database design
+data storage and, 546
+indexing design decisions, 645-646
+indexing structures, 601-652
+job mix factors for, 643-645
+multilevel indexes, 613-617
+relational databases (RDBs) with,
+643-646
+single-level ordered indexes, 602-613
+Physical database file structures, 641. See
+also Indexes
+Physical design, data modeling, 62
+Physical index, 638-639
+Physical optimization, queries, 724
+Physical optimizer, Oracle, 733-734
+Pin count, buffer management, 558
+Pin-unpin bit, database recovery cache, 816
+Pipelined parallelism, 687
+Pipelining
+combining operations using, 681-683
+iterators for implementation of, 682-683
+materialized evaluation and, 681
+pipelined evaluation, 682
+processing information, 1028-1029
+query processing using, 681-683
+
+Placeholders, PHP, 356
+Plan caching, query optimi:
+Pointers
+B-trees, 620, 623-624
+file records, 563, 575-576
+Polymorphism (operator overloading)
+binding and, 377
+ODBs, 366, 377
+Populating (loading) databases, 35
+Positional iterator, SQLJ, 323
+Practical relational model, 177-206.
+See also SQL (Structured Query
+Language) system
+Precompiler
+DML command extraction, 44
+embedded SQL and, 311, 314
+Predefined variables, PHP, 345-346
+Predicate, relation schema and, 156
+Predicate-defined subclasses, 113, 126
+Prefix compression, string indexing, 640
+PreparedStatement objects, JDBC, 333
+Preprocessor, embedded SQL and, 311, 314
+Primary file organization, 546
+Primary indexes, 602, 603-606
+Primary keys
+arbitrary designation of, 477
+normal form based on, 483-495,
+relational data modeling, 159
+SQL constraints, 186-187
+XML specification, 441
+Primary storage, 542, 543
+Prime/nonprime attributes, 477
+Printer servers, client/server architecture,
+47
+Privacy issues and preservation,
+1153-1154
+Privileged software use, 19
+Privileges, granting and revoking in SQL,
+202
+Probabilistic model, IR, 1033-1034
+Probabilistic topic modeling, IR,
+1059-1061
+Program variables
+embedded SQL, 314-315
+file operations, 565-566
+Program-data independence, 12
+Programming, see Database
+programming; SQL programming
+Programming languages
+DBMS, 38-40
+declarative, 40
+design for database programming,
+312-313, 339
+impendence mismatch, 312-313
+Java, 321-325, 358
+PHP (Hypertext processor), 343-359
+QBE (Query-by-Example), 1171-1178
+XML, 434, 436-447
+Programming model, MapReduce (MR),
+918-921
+Program-operation independence, 12
+Project attributes, 189
+
+tion, 730
+
+Index 1233
+
+PROJECT operation
+degree of relations, 244
+duplicate elimination and, 244-245
+query processing, algorithms for,
+676-678
+relational algebra using, 243-245
+Prolog language, deductive databases,
+1000-1003
+Proof by contradiction, 507
+Proof-theoretic interpretation of rules,
+1005
+Properties of decomposition
+attribute preservation condition, 513
+dependency preservation, 514-515
+insufficiency of normal forms,
+513-514
+nonadditive (lossless) join, 515-517,
+519-523
+RDB design and, 504, 513-518
+universal relations and, 513
+Protection, databases, 6
+Proximity queries, 1036
+Public key encryption, 1151-1152
+Pure distributed database architecture,
+869-871
+QBE (Query-by-Example) language
+aggregate functions in, 1175-1177
+grouping, 1175-1177
+modifying the database, 1177-1178
+retrievals in, 1171-1175
+Qualified association, UML class
+diagrams, 88
+Qualifier conditions, XML, 443
+Quantifiers
+domain relational calculus, 279
+existential, 271, 274
+queries using, 274-276
+transformation of, 274
+tuple relational calculus, 271, 274-276
+universal, 271, 274-276
+Queries
+buffering (caching) modules for, 20, 42
+compiler, 43-44
+complex retrieval, 207-225
+constant nodes, 273
+Datalog language, 1004, 1010-1012
+defined, 6
+indexes for, 20
+indexing hints in, 641-642
+information retrieval (IR) systems,
+1035-1037
+interactive interface, 43-44
+join condition, 189, 191
+keyword-based, 41
+named specification, OQL, 412-413
+nested, 209-212
+nonrecursive evaluation, 1010-1012
+object query language (OQL), 408-416
+ODMG model for, 408-416
+optimizer, 44
+outer, 209
+processing in databases, 20

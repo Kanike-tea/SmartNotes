@@ -1,0 +1,55 @@
+7.2 Input Enhancement in String Matching 263
+
+Boyer-Moore Algorithm
+
+Now we outline the Boyer-Moore algorithm itself. If the first comparison of the
+rightmost character in the pattern with the corresponding character c in the text
+fails, the algorithm does exactly the same thing as Horspool’s algorithm. Namely,
+it shifts the pattern to the right by the number of characters retrieved from the
+table precomputed as explained earlier.
+
+The two algorithms act differently, however, after some positive number k
+(0 <k <m) of the pattern’s characters are matched successfully before a mismatch
+is encountered:
+
+SO ee c Sicks1 -+- Si aed) Spey text
+ll
+
+K ll
+
+Po -*+ Pm-k-1 Pinks Pm pattern
+
+In this situation, the Boyer-Moore algorithm determines the shift size by consid-
+ering two quantities. The first one is guided by the text’s character c that caused
+a mismatch with its counterpart in the pattern. Accordingly, it is called the bad-
+symbol shift. The reasoning behind this shift is the reasoning we used in Hor-
+spool’s algorithm. If c isnot in the pattern, we shift the pattern to just pass this
+c in the text. Conveniently, the size of this shift can be computed by the formula
+t(c) — k where t;(c) is the entry in the precomputed table used by Horspool’s
+algorithm (see above) and k is the number of matched characters:
+
+SQ c Sinkt1 2. Si es Spay text
+qt ll Il
+Po +--+ Pm-k-1— Pm=k > Pm-1 pattern
+Po oo Pm-1
+
+For example, if we search for the pattern BARBER in some text and match the last
+two characters before failing on letter S in the text, we can shift the pattern by
+t(S)—2 = 6 —2=4 positions:
+
+Soe: SER cee Spd
+Hill
+BARBER
+BARBER
+
+The same formula can also be used when the mismatching character c of the
+text occurs in the pattern, provided t;(c) — k > 0. For example, if we search for the
+pattern BARBER in some text and match the last two characters before failing on
+letter A, we can shift the pattern by (A) — 2 = 4 — 2 =2 positions:
+
+50 Sn-1
+
+a7
+ros >
+ypm=m
+nr=7

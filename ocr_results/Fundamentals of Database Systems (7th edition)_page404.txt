@@ -1,0 +1,45 @@
+374 — Chapter 12 Object and Object-Relational Databases
+define class DEPARTMENT_SET
+type set (DEPARTMENT);
+operations add_dept(d: DEPARTMENT): boolean;
+(* adds a department to the DEPARTMENT. SET object *)
+remove_dept(d: DEPARTMENT): boolean;
+(* removes a department from the DEPARTMENT_SET object *)
+create_dept_set: DEPARTMENT_SET;
+destroy_dept_set: boolean;
+end Department_Set;
+persistent name ALL_DEPARTMENTS: DEPARTMENT_SET;
+(* ALL_DEPARTMENTS is a persistent named object of type DEPARTMENT_SET *)
+d:= create_dept;
+Figure 12.3 (* create a new DEPARTMENT object in the variable d *)
+Creating persistent .
+objects by naming b:= ALL_DEPARTMENTS.add_dept(d);
+and reachability. (* make d persistent by adding it to the persistent set ALL_DEPARTMENTS *)
+
+same type and class declarations of the ODL and the OOPL. In general, it is possible
+to define several persistent collections for the same class definition, if desired.
+
+12.1.5 Type Hierarchies and Inheritance
+
+Simplified Model for Inheritance. Another main characteristic of ODBs is that
+they allow type hierarchies and inheritance. We use a simple OO model in this
+section—a model in which attributes and operations are treated uniformly—since
+both attributes and operations can be inherited. In Section 12.3, we will discuss the
+inheritance model of the ODMG standard, which differs from the model discussed
+here because it distinguishes between two types of inheritance. Inheritance allows
+the definition of new types based on other predefined types, leading to a type (or
+class) hierarchy.
+
+A type is defined by assigning it a type name and then defining a number of attri-
+butes (instance variables) and operations (methods) for the type.'? In the simplified
+model we use in this section, the attributes and operations are together called func-
+tions, since attributes resemble functions with zero arguments. A function name
+can be used to refer to the value of an attribute or to refer to the resulting value of an
+operation (method). We use the term function to refer to both attributes and oper-
+ations, since they are treated similarly in a basic introduction to inheritance.!*
+
+'2In this section we will use the terms type and class as meaning the same thing—namely, the attributes
+and operations of some type of object.
+
+'8We will see in Section 12.3 that types with functions are similar to the concept of interfaces as used in
+ODMG ODL.

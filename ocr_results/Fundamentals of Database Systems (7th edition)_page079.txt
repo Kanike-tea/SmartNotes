@@ -1,0 +1,49 @@
+2.5 Centralized and Client/Server Architectures for DBMSs
+
+machines. Two main types of basic DBMS architectures were created on this under-
+lying client/server framework: two-tier and three-tier.'* We discuss them next.
+
+2.5.3 Two-Tier Client/Server Architectures for DBMSs
+
+In relational database management systems (RDBMSs), many of which started
+as centralized systems, the system components that were first moved to the
+client side were the user interface and application programs. Because SQL (see
+Chapters 6 and 7) provided a standard language for RDBMSs, this created a
+logical dividing point between client and server. Hence, the query and transac-
+tion functionality related to SQL processing remained on the server side. In
+such an architecture, the server is often called a query server or transaction
+server because it provides these two functionalities. In an RDBMS, the server is
+also often called an SQL server.
+
+The user interface programs and application programs can run on the client side.
+When DBMS access is required, the program establishes a connection to the
+DBMS (which is on the server side); once the connection is created, the client
+program can communicate with the DBMS. A standard called Open Database
+Connectivity (ODBC) provides an application programming interface (API),
+which allows client-side programs to call the DBMS, as long as both client and
+server machines have the necessary software installed. Most DBMS vendors pro-
+vide ODBC drivers for their systems. A client program can actually connect to
+several RDBMSs and send query and transaction requests using the ODBC API,
+which are then processed at the server sites. Any query results are sent back to the
+client program, which can process and display the results as needed. A related
+standard for the Java programming language, called JDBC, has also been defined.
+This allows Java client programs to access one or more DBMSs through a stan-
+dard interface.
+
+The architectures described here are called two-tier architectures because the soft-
+ware components are distributed over two systems: client and server. The advan-
+tages of this architecture are its simplicity and seamless compatibility with existing
+systems. The emergence of the Web changed the roles of clients and servers, leading
+to the three-tier architecture.
+
+2.5.4 Three-Tier and n-Tier Architectures
+for Web Applications
+Many Web applications use an architecture called the three-tier architecture,
+
+which adds an intermediate layer between the client and the database server, as
+illustrated in Figure 2.7(a).
+
+'3There are many other variations of client/server architectures. We discuss the two most basic ones
+here.
+
+49

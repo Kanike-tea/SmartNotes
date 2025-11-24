@@ -1,0 +1,52 @@
+12.1 Overview of Object Database Concepts
+
+are applicable to objects of all types. For example, in the relational model, the oper-
+ations for selecting, inserting, deleting, and modifying tuples are generic and may
+be applied to any relation in the database. The relation and its attributes are visible
+to users and to external programs that access the relation by using these opera-
+tions. The concept of encapsulation is applied to database objects in ODBs by
+defining the behavior of a type of object based on the operations that can be exter-
+nally applied to objects of that type. Some operations may be used to create (insert)
+or destroy (delete) objects; other operations may update the object state; and oth-
+ers may be used to retrieve parts of the object state or to apply some calculations.
+Still other operations may perform a combination of retrieval, calculation, and
+update. In general, the implementation of an operation can be specified in a
+general-purpose programming language that provides flexibility and power in
+defining the operations.
+
+The external users of the object are only made aware of the interface of the oper-
+ations, which defines the name and arguments (parameters) of each operation.
+The implementation is hidden from the external users; it includes the definition
+of any hidden internal data structures of the object and the implementation of the
+operations that access these structures. The interface part of an operation is
+sometimes called the signature, and the operation implementation is sometimes
+called the method.
+
+For database applications, the requirement that all objects be completely encapsu-
+lated is too stringent. One way to relax this requirement is to divide the structure of
+an object into visible and hidden attributes (instance variables). Visible attributes
+can be seen by and are directly accessible to the database users and programmers
+via the query language. The hidden attributes of an object are completely encapsu-
+lated and can be accessed only through predefined operations. Most ODMSs
+employ high-level query languages for accessing visible attributes. In Section 12.5
+we will describe the OQL query language that is proposed as a standard query lan-
+guage for ODBs.
+
+The term class is often used to refer to a type definition, along with the definitions
+of the operations for that type.® Figure 12.2 shows how the type definitions in Fig-
+ure 12.1 can be extended with operations to define classes. A number of operations
+are declared for each class, and the signature (interface) of each operation is
+included in the class definition. A method (implementation) for each operation
+must be defined elsewhere using a programming language. Typical operations
+include the object constructor operation (often called new), which is used to create
+a new object, and the destructor operation, which is used to destroy (delete) an
+object. A number of object modifier operations can also be declared to modify the
+states (values) of various attributes of an object. Additional operations can retrieve
+information about the object.
+
+8This definition of class is similar to how it is used in the popular C++ programming language. The
+ODMG standard uses the word interface in addition to class (see Section 12.3). In the EER model, the
+term class was used to refer to an object type, along with the set of all objects of that type (see
+Chapter 8).
+
+371

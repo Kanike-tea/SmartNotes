@@ -1,0 +1,49 @@
+574 Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Algorithm 16.2. Two simple hashing algorithms: (a) Applying the mod hash
+function to a character string K. (b) Collision resolution by open addressing.
+(a) temp — 1;
+for i 1 to 20 do temp < temp * code(K[i] ) mod M;
+hash_address — temp mod M;
+(b) i < hash_address(K); a < i;
+if location i is occupied
+then begin i < (i+ 1) mod M;
+while (i # a) and location i is occupied
+do i< (i+1) mod M;
+if (i= a) then all positions are full
+else new_hash_address < i;
+end;
+
+Other hashing functions can be used. One technique, called folding, involves apply-
+ing an arithmetic function such as addition or a logical function such as exclusive or
+to different portions of the hash field value to calculate the hash address (for exam-
+ple, with an address space from 0 to 999 to store 1,000 keys, a 6-digit key 235469
+may be folded and stored at the address: (235+964) mod 1000 = 199). Another tech-
+nique involves picking some digits of the hash field value—for instance, the third,
+fifth, and eighth digits—to form the hash address (for example, storing 1,000
+employees with Social Security numbers of 10 digits into a hash file with 1,000 posi-
+tions would give the Social Security number 301-67-8923 a hash value of 172 by this
+hash function).!4 The problem with most hashing functions is that they do not
+guarantee that distinct values will hash to distinct addresses, because the hash field
+space—the number of possible values a hash field can take—is usually much larger
+than the address space—the number of available addresses for records. The hash-
+ing function maps the hash field space to the address space.
+
+A collision occurs when the hash field value of a record that is being inserted hashes
+to an address that already contains a different record. In this situation, we must
+insert the new record in some other position, since its hash address is occupied. The
+process of finding another position is called collision resolution. There are numer-
+ous methods for collision resolution, including the following:
+
+= Open addressing. Proceeding from the occupied position specified by the
+hash address, the program checks the subsequent positions in order until an
+unused (empty) position is found. Algorithm 16.2(b) may be used for this
+purpose.
+
+= Chaining. For this method, various overflow locations are kept, usually by
+extending the array with a number of overflow positions. Additionally, a
+pointer field is added to each record location. A collision is resolved by plac-
+ing the new record in an unused overflow location and setting the pointer of
+the occupied hash address location to the address of that overflow location.
+
+14 A detailed discussion of hashing functions is outside the scope of our presentation.

@@ -1,0 +1,35 @@
+in Figs. 2-20 and 2-21, there is no known criterion we can apply to determine the
+existence of a Hamiltonian circuit in general. There are, however, certain types
+of graphs that always contain Hamiltonian circuits, as will be presently shown.
+
+Hamiltonian Path: If we remove any one edge from a Hamiltonian circuit, we
+are left with a path. This path is called a Hamiltonian path. Clearly, a
+Hamiltonian path in a graph G traverses every vertex of G. Since a Hamiltonian
+path is a subgraph of a Hamiltonian circuit (which in turn is a subgraph of
+another graph), every graph that has a Hamiltonian circuit also has a
+Hamiltonian path. There are, however, many graphs with Hamiltonian paths that
+have no Hamiltonian circuits (Problem 2-23). The length of a Hamiltonian path
+(if it exists) in a connected graph of n vertices isn — 1.
+
+In considering the existence of a Hamiltonian circuit (or path), we need only
+consider simple graphs. This is because a Hamiltonian circuit (or path) traverses
+every vertex exactly once. Hence it cannot include a self-loop or a set of parallel
+edges. Thus a general graph may be made simple by removing parallel edges and
+self-loops before looking for a Hamiltonian circuit in it.
+
+It is left as an exercise for the reader to show that neither of the two graphs
+shown in Fig. 2-22 has a Hamiltonian circuit (or Hamiltonian path). See Problem
+2-24,
+
+(a) (b)
+
+Fig. 2-22 Graphs without Hamiltonian circuits.
+
+What general class of graphs is guaranteed to have a Hamiltonian circuit?
+Complete graphs of three or more vertices constitute one such class.
+
+Complete Graph: A simple graph in which there exists an edge between every
+pair of vertices is called a complete graph. Complete graphs of two, three, four,
+and five vertices are shown in Fig. 2-23. A complete graph is sometimes also
+referred to as a universal graph or a clique. Since every vertex is joined with
+every other vertex through one edge, the degree of every vertex isn - lina

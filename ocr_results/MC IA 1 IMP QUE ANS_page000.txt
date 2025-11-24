@@ -1,0 +1,45 @@
+1.
+
+Pipeline and Interrupts in ARM Processors
+
+Pipeline: A pipeline is a mechanism used by RISC processors like ARM to speed up instruction
+execution . It breaks down the processing of instructions into smaller units that can be executed in
+parallel . For example, a three-stage pipeline involves Fetch (loading an instruction from memory),
+Decode (identifying the instruction), and Execute (processing the instruction and writing the result to
+a register) . While one instruction is being executed, the next instruction can be decoded, and the
+one after that can be fetched1 .... This allows the processor to achieve a higher throughput by
+executing an instruction (ideally) every cycle once the pipeline is full2 .... Different ARM families have
+pipelines of varying lengths, such as the three-stage pipeline in ARM71 , the five-stage pipeline in
+ARM9S , and the six-stage pipeline in ARM106 . A key characteristic is that the program counter (pc)
+in the execute stage typically points to the address of the instruction plus 8 bytes (for ARM state),
+representing two instructions ahead7 . Branch instructions or direct modification of the pc cause the
+pipeline to be flushed .
+
+Interrupts: When an exception or interrupt occurs, the processor suspends normal execution and
+sets the program counter (pc) to a specific memory address within the vector table9 . The vector
+table, usually located at address 0x00000000 (or optionally at Oxffff0000), contains instructions that
+branch to specific routines designed to handle that particular exception or interrupt9 .... The source
+describes several vectors, including Interrupt Request (IRQ), used by external hardware to interrupt
+normal execution if IRQs are not masked in the Current Program Status Register (cpsr), and Fast
+Interrupt Request (FIQ), reserved for hardware needing faster response times, which requires FIQs
+to be unmasked in the cpsr11 .... When an interrupt occurs, the processor may also change its mode
+(e.g., from User mode to Interrupt Request mode), and certain registers (like r13 and r14) might be
+banked to save the user mode context13 .... An interrupt controller provides programmable policies
+to manage which peripheral or device can interrupt the processor15 .
+
+2.
+
+Differences Between RISC and CISC Architectures
+
+RISC (Reduced Instruction Set Computer): Emphasizes compiler complexity over hardware
+complexity16 . RISC processors have a reduced number of instruction classes that provide simple
+operations, with most executing in a single cycle at a high clock speed16 nstructions in RISC are
+of fixed length, facilitating instruction fetching for the pipeline2 . RISC machines typically have a large
+set of general-purpose registers, where any register can hold data or an address18 . They employ a
+load-store architecture, meaning the processor operates on data in registers, and separate load and
+store instructions are used for transferring data between registers and external memory18 ....
+
+CISC (Complex Instruction Set Computer): Emphasizes hardware complexity16 . CISC relies more on
+the hardware for instruction functionality, resulting in more complicated instructions16 .... CISC
+processors often have instructions of variable size that can take multiple cycles to execute2 . They
+may have dedicated registers for specific purposes, rather than a large set of general-purpose

@@ -1,0 +1,63 @@
+300 Chapter 8 Digital Signal Processing
+
+Table 8.7
+
+EXAMPLE
+
+8.16
+
+ARMv4T IIR timings.
+Processor Cycles per loop Cycles per biquad-sample
+ARM9TDMI 44 22
+StrongARM 33 16.5
+The timings on ARM9TDMI and StrongARM are shown in Table 8.7.
+With ARMVSTE processors, we can pack two 16-bit values into each register. This means
+we can store the state and coefficients for two biquads in registers at the same time. This
+
+example implements a 2 x 2 block IIR filter. Each iteration of the inner loop applies two
+biquad filters to the next two input samples.
+
+The format of the input arrays is the same as for Example 8.14, except that we use
+16-bit arrays. The biquad array must be 32-bit aligned. The number of samples N and
+number of biquads M must be even.
+
+As with the ARM9E FIR, the routine only works for a little-endian memory system. See
+the discussion in Example 8.11 on how to write endian-neutral DSP code using macros.
+
+y RN 0  ; address for output samples y(]
+
+x RN 1; address of input samples x[]
+
+b RN 2; address of biquads (32-bit aligned)
+
+N RN 3 number of samples to filter (a multiple of 2)
+M RN 4 — ; number of biquads to apply (a multiple of 2)
+x0 RN2_— ; input samples
+
+x1 RNG
+
+s0  RN5  ; new state
+
+b0_a21 RN 6 biquad 0, packed -a[2], -a1]
+
+bO_b21 RN 7 biquad 0, packed +b[2], +b[1]
+
+bO_s 1 RN8 biquad 0, s[t-1]
+
+bO_s 2 RNQ biquad 0, s[t-2]
+
+bl_a21 RN 10 ; biquad 1, packed -a(2], -a[1]
+
+b1_b21 RN 11 ; biquad 1, packed +b[2], +b[1]
+
+bls1 RN12  ; biquad 1, s[t-1]
+
+bls 2 RN14  ; biquad 1, s[t-2]
+
+3 typedef struct {
+
+3 short al,a2; /* coefficients -a[1],-a[2] at Ql4 */
+3; short b1,b2; /* coefficients +b[1],+b[2] at Ql4 */
+3 short sl,s2; /* s[t-1], s[t-2] */
+
+3 } biquad;

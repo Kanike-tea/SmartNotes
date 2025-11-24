@@ -1,0 +1,52 @@
+570
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+shows an ordered file with Name as the ordering key field (assuming that employees
+have distinct names).
+
+Ordered records have some advantages over unordered files. First, reading the
+records in order of the ordering key values becomes extremely efficient because no
+sorting is required. The search condition may be of the type < key = value>, or a
+range condition such as < valuel < key < value2>. Second, finding the next record
+from the current one in order of the ordering key usually requires no additional
+block accesses because the next record is in the same block as the current one
+(unless the current record is the last one in the block). Third, using a search condi-
+tion based on the value of an ordering key field results in faster access when the
+binary search technique is used, which constitutes an improvement over linear
+searches, although it is not often used for disk files. Ordered files are blocked and
+stored on contiguous cylinders to minimize the seek time.
+
+A binary search for disk files can be done on the blocks rather than on the records.
+Suppose that the file has b blocks numbered 1, 2, ..., b; the records are ordered by
+ascending value of their ordering key field; and we are searching for a record whose
+ordering key field value is K. Assuming that disk addresses of the file blocks are
+available in the file header, the binary search can be described by Algorithm 16.1. A
+binary search usually accesses log>(b) blocks, whether the record is found or not—an
+improvement over linear searches, where, on the average, (b/2) blocks are accessed
+when the record is found and b blocks are accessed when the record is not found.
+
+Algorithm 16.1. Binary Search on an Ordering Key of a Disk File
+1<—1;u€ b; (*b is the number of file blocks*)
+while (u>1) do
+begin i < (J+ u) div 2;
+read block i of the file into the buffer;
+if K < (ordering key field value of the first record in block i )
+then u<i-1
+else if K > (ordering key field value of the /ast record in block i )
+then] ~i+1
+else if the record with ordering key field value = K is in the buffer
+then goto found
+else goto notfound;
+end;
+goto notfound;
+
+A search criterion involving the conditions >, <, 2, and < on the ordering field is
+efficient, since the physical ordering of records means that all records satisfying the
+condition are contiguous in the file. For example, referring to Figure 16.7, if the
+search criterion is (Name > ‘G’)—where > means alphabetically before—the records
+satisfying the search criterion are those from the beginning of the file up to the first
+record that has a Name value starting with the letter ‘G’.
+
+Ordering does not provide any advantages for random or ordered access of the
+records based on values of the other nonordering fields of the file. In these cases, we

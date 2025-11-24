@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+whenever supplier s can supply part p (to any project). USES between PROJECT and PART,
+includes an instance ( j, p) whenever project j uses part p. SUPPLIES between SUPPLIER and
+PROJECT, includes an instance (s, j) whenever supplier s supplies some part to project j.
+
+Some database design tools are based on variations of the ER model that permit only binary
+relationships. In this case, a ternary relationship such as SUPPLY must be represented as a weak
+
+entity type, with no partial key and with three identifying relationships.
+
+Fig
+3.7.
+
+su
+SUPPLIER SUPPLY PROJECT PP
+N LY
+
+rep
+Part_no res
+———- ent
+
+ed
+PART asa
+
+ak entity type
+
+The three participating entity types SUPPLIER, PART, and PROJECT are together the owner
+entity types.Hence, an entity in the weak entity type is identified by the combination of its three
+owner entities from SUPPLIER, PART, and PROJECT.
+
+3.7.2 Constraints on Ternary (or Higher-Degree) Relationships
+There are two notations for specifying structural constraints on n-ary relationships
+1. based on the cardinality ratio notation of binary relationships displayed
+- 1, M, or N is specified on each participation arc (both M and N' symbols stand for
+many or any number)
+2. based on the (min, max) notation
+- specifies that each entity is related to at least min and at most max relationship
+
+instances in the relationship set
+
+https://vtucode.in Page 54

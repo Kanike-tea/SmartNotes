@@ -1,0 +1,43 @@
+898 Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+An item (k, v) will be stored on the node whose position in the ring follows
+the position of h(k) on the ring in a clockwise direction. In Figure 24.2(a), we
+assume there are three nodes in the distributed cluster labeled A, B, and C,
+where node C has a bigger capacity than nodes A and B. Ina typical system,
+there will be many more nodes. On the circle, two instances each of A and B
+are placed, and three instances of C (because of its higher capacity), in a
+pseudorandom manner to cover the circle. Figure 24.2(a) indicates which
+(k, v) items are placed in which nodes based on the h(k) values.
+
+Figure 24.2 Range 3
+Example of consistent
+hashing. (a) Ring
+having three nodes A,
+B, and C, with C having Range 2
+greater capacity. The
+1(K) values that map to
+the circle points in
+range 1 have their (k, v)
+items stored in node A,
+range 2 in node B,
+range 3 in node C.
+
+(b) Adding a node D to
+the ring, Items in
+
+range 4 are moved to
+the node D from node
+B (range 2 is reduced)
+
+Range 3
+
+and node C (range 3 is
+
+reduced). Range 1 Cc a 3
+
+Range 2
+
+Range 3 c
+(reduced) {
+
+Range 4

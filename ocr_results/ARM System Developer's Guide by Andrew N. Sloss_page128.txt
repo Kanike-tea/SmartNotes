@@ -1,0 +1,54 @@
+EXAMPLE
+
+5.2
+
+5.3 C Looping Structures 115
+
+in the condition flags. Since we are no longer using i as an array index, there is no problem
+in counting down rather than up.
+
+This example shows the improvement if we switch to a decrementing loop rather than an
+incrementing loop.
+
+int checksum_v6(int *data)
+
+{
+unsigned int i;
+int sum=0;
+
+for (i=64; i!=0;
+{
+
+sum += *(data++);
+
+}
+
+return sum;
+
+}
+
+This compiles to
+
+checksum_v6
+
+Mov r2,r0 3 r2 = data
+Mov r0,#0 3 sum = 0
+Mov v1, #0x40 3 i = 64
+checksum_v6_loop
+LOR r3, [2] #4 3 73 = *(data++)
+suBS rl,rl,#l 3 i-- and set flags
+ADD r0,r3,r0 3 sum += 13
+BNE checksum_v6 loop ; if (i!=0) goto loop
+Mov pe, rl4 3 return sum
+
+The SUBS and BNE instructions implement the loop. Our checksum example now has
+the minimum number of four instructions per loop. This is much better than six for
+checksum_v1 and eight for checksum_v3.
+
+For an unsigned loop counter i we can use either of the loop continuation conditions
+i !=0 or i>0. As i can’t be negative, they are the same condition. For a signed loop counter,
+it is tempting to use the condition i>0 to continue the loop. You might expect the compiler
+to generate the following two instructions to implement the loop:
+
+SuBS rl,rl,#1 ; compare i with 1, i=i-1
+BGT loop 3 if (i#1>1) goto loop

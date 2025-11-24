@@ -1,0 +1,55 @@
+986
+
+Chapter 26 Enhanced Data Models
+
+tuples with uc as their transaction end times. However, if the query needs to be
+applied to a previous database state, an AS_OF T clause is appended to the query,
+which means that the query is applied to the valid time tuples that were correct in
+the database at time T.
+
+In addition to pure time conditions, other selections involve attribute and time
+conditions. For example, suppose we wish to retrieve all EMP_VT tuple versions T
+for employees who worked in department 5 at any time during 2002. In this case,
+the condition is
+
+[T.Vst, T.Vet] OVERLAPS [2002-01-01, 2002-12-31] AND (T.Dno = 5)
+
+Finally, we give a brief overview of the TSQL2 query language, which extends SQL
+with constructs for temporal databases. The main idea behind TSQL2 is to allow
+users to specify whether a relation is nontemporal (that is, a standard SQL relation)
+or temporal. The CREATE TABLE statement is extended with an optional AS clause
+to allow users to declare different temporal options. The following options are
+available:
+
+= AS VALID STATE <GRANULARITY> (valid time relation with valid time
+period)
+
+™ AS VALID EVENT <GRANULARITY> (valid time relation with valid time
+point)
+
+= AS TRANSACTION (transaction time relation with transaction time period)
+
+= AS VALID STATE <GRANULARITY> AND TRANSACTION (bitemporal relation,
+valid time period)
+
+™ AS VALID EVENT <GRANULARITY> AND TRANSACTION (bitemporal relation,
+valid time point)
+
+The keywords STATE and EVENT are used to specify whether a time period or time
+point is associated with the valid time dimension. In TSQL2, rather than have the
+user actually see how the temporal tables are implemented (as we discussed in the
+previous sections), the TSQL2 language adds query language constructs to specify
+various types of temporal selections, temporal projections, temporal aggregations,
+transformation among granularities, and many other concepts. The book by Snod-
+grass et al. (1995) describes the language.
+
+26.2.5 Time Series Data
+
+Time series data is used very often in financial, sales, and economics applications. They
+involve data values that are recorded according to a specific predefined sequence of
+time points. Therefore, they are a special type of valid event data, where the event’s
+time points are predetermined according to a fixed calendar. Consider the example of
+closing daily stock prices of a particular company on the New York Stock Exchange.
+The granularity here is day, but the days that the stock market is open are known (non-
+holiday weekdays). Hence, it has been common to specify a computational procedure
+that calculates the particular calendar associated with a time series. Typical queries on

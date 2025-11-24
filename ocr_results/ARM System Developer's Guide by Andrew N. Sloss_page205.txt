@@ -1,0 +1,47 @@
+192 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+AND rl, mask, rO, LSR#4
+
+3 unsigned unpack with no mask
+MOV rl, r0, LSL#16 ; discard bits 16-31
+MOV rl, rl, LSR#20 ; discard bits 0-3 and zero extend
+
+3 signed unpack
+MOV rl, 10, LSL#16 ; discard bits 16-31
+MOV rl, rl, ASR#20 ; discard bits 0-3 and sign extend
+
+EXAMPLE Packing the value rl into the bit-packed register r0 requires one cycle if rl is already
+6.23 restricted to the correct range and the corresponding field of r0 is clear. In this example, r1
+is a 12-bit number to be inserted at bit 4 of r0.
+
+3 pack rl into r0
+ORR v0, 0, ri, LSL #4
+
+Otherwise you need a mask register set up:
+
+3 pack rl into r0
+; mask=0x00O00FFF set up in advance
+
+AND rl, rl, mask 3 restrict the rl range
+
+BIC r0, r0, mask, LSL#4 ; clear the destination bits
+ORR = r0, v0, ri, LSL#4 —; pack in the new data
+
+6.7.2. VARIABLE-WIDTH BITSTREAM PACKING
+
+Our task here is to pack a series of variable-length codes to create a bitstream. Typically
+we are compressing a datastream and the variable-length codes represent Huffman or
+arithmetic coding symbols. However, we don’t need to make any assumptions about what
+the codes represent to pack them efficiently.
+
+We do need to be careful about the packing endianness. Many compressed file formats
+use a big-endian bit-packing order where the first code is placed at the most significant bits
+of the first byte. For this reason we will use a big-endian bit-packing order for our examples.
+This is sometimes known as network order. Figure 6.5 shows how we form a bytestream out
+of variable-length bitcodes using a big-endian packing order. High and low represent the
+most and least significant bit ends of the byte.
+
+To implement packing efficiently on the ARM we use a 32-bit register as a buffer to
+hold four bytes, in big-endian order. In other words we place byte 0 of the bytestream in
+the most significant 8 bits of the register. Then we can insert codes into the register one at
+a time, starting from the most significant bit and working down to the least significant bit.

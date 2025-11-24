@@ -1,0 +1,35 @@
+74 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Figure 3.10
+Some relationship
+instances in the
+SUPPLY ternary
+relationship set.
+
+SUPPLIER SUPPLY PROJECT
+
+generally be of any degree, but the ones most common are binary relationships.
+Higher-degree relationships are generally more complex than binary relationships;
+we characterize them further in Section 3.9.
+
+Relationships as Attributes. It is sometimes convenient to think of a binary rela-
+tionship type in terms of attributes, as we discussed in Section 3.3.3. Consider the
+WORKS _FOR relationship type in Figure 3.9. One can think of an attribute called
+Department of the EMPLOYEE entity type, where the value of Department for each
+EMPLOYEE entity is (a reference to) the DEPARTMENT entity for which that
+employee works. Hence, the value set for this Department attribute is the set of all
+DEPARTMENT entities, which is the DEPARTMENT entity set. This is what we did in
+Figure 3.8 when we specified the initial design of the entity type EMPLOYEE for the
+COMPANY database. However, when we think of a binary relationship as an attribute,
+we always have two options or two points of view. In this example, the alternative point
+of view is to think of a multivalued attribute Employees of the entity type
+DEPARTMENT whose value for each DEPARTMENT entity is the set of EMPLOYEE enti-
+ties who work for that department. The value set of this Employees attribute is the power
+set of the EMPLOYEE entity set. Either of these two attributes—Department of
+EMPLOYEE or Employees of DEPARTMENT—can represent the WORKS_FOR relation-
+ship type. If both are represented, they are constrained to be inverses of each other.
+
+®This concept of representing relationship types as attributes is used in a class of data models called
+functional data models. In object databases (see Chapter 12), relationships can be represented by
+reference attributes, either in one direction or in both directions as inverses. In relational databases
+(see Chapter 5), foreign keys are a type of reference attribute used to represent relationships.

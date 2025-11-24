@@ -1,0 +1,114 @@
+Definition
+
+Digital Design and Computer Organization(BCS302)
+
+Combinational Legic
+Circuits
+
+At any instant of time, the output
+is only Gependent om the current
+state of the inputs.
+
+Time ts not an important
+
+Tis parameter
+
+dependency
+
+The output is solely dependent
+(on Inputs only. No need ror
+memory.
+
+Easy to design and implement
+witn tne neip of basic logic
+
+Memory
+
+Design
+
+Differentiate between combinational logic and sequential logic
+
+Sequential Logic Circuits
+
+At any instant of time, the output is
+determined by inputs and previous
+outputs.
+
+Time 1s an important parameter For
+timing and synchronizing of different
+Circuit elements, a clack signal is
+necessary
+
+Memory is required to store the
+previous state of the system
+
+The design of these systems requires
+basic logic gates ana tip ops
+
+gates.
+There is no feedback. There is at least one memory
+element in the recdpack patn
+They are difficult to implement but
+
+less costly than sequential circuits
+
+Feeanac
+
+They are easier to implement but
+costly, due to hardware. Their
+Implementation requires more
+hardware.
+
+ney are taster since all inputs
+are applied at the same time
+
+Hardware &
+cost
+
+They are slower, because of tne
+
+Speea secondary inputs. So, there is a
+
+aelay in between inputs. Ana tne
+output Is gated by a clock signal.
+
+» The storage elements (memory) used in clocked sequential circuits are
+called flipflops.
+
+> A flip-flop is a binary storage device capable of storing one bit of
+information.
+
+Inputs > Outputs
+Combinational
+
+circuit
+
+—__]
+
+Flip-flops
+
+Clock pulses
+
+(@) Block diagram
+
+(b) Timing diagram of clock pulses
+
+FIGURE 5.2
+
+Synchronous clocked sequential circuit
+
+Storage Elements:
+
+1)Latches:
+
+» Latches are digital circuits that serve as basic building blocks in the
+
+construction of sequential logic circuits.
+
+» They are bistable, meaning they have two stable states and can be
+used to store binary information. Latches are often used for
+
+temporary storage of data within a digital system.
+» There are several types of latches, with the most common being the
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 29

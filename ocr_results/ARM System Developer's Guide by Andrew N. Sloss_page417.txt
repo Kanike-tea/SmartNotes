@@ -1,0 +1,39 @@
+404 Chapter 12. Caches
+
+12.1
+
+Because data may or may not be present in cache at any given point in time, the execution
+time of a routine may vary slightly from run to run due to the difference between the time
+it takes to use data immediately out of cache memory and the time it takes to load a cache
+line from main memory.
+
+So, with that caveat, we begin by showing where caches fit in a standard memory hier-
+archy and introduce the principle of locality of reference to explain why a cache improves
+system performance. We then describe cache architectures in general and define a set of
+terms used by the ARM community. We end the chapter with example code showing how
+to clean and flush caches and to lock code and data segments in cache.
+
+THE MEMORY HIERARCHY AND CACHE MEMORY
+
+In Chapter 1 we introduced the memory hierarchy in a computer system. Figure 12.1
+reviews some of this information to show where a cache and write buffer fit in the
+hierarchy.
+
+RESET Register file
+core
+1 = 1
+t r r
+Tightly coupled\ | t i
+|
+memory Level I cache }--+] Write buffer
+ry , 1
+SRAM H
+Main ae
+memory
+Flash and other board-level nonvolatile memory
+I
+t Read path
+Secondary Disk, tape, and network storage ~ -
+storage Write path
+
+Figure 12.1 Memory hierarchy.

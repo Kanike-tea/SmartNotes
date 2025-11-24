@@ -1,0 +1,61 @@
+28.4 Clustering
+
+Algorithm 28.4. k-Means Clustering Algorithm
+Input: a database D, of m records, r), ..., 7, and a desired number of clusters k
+Output: set of k clusters that minimizes the squared error criterion
+
+Begin
+randomly choose k records as the centroids for the k clusters;
+repeat
+assign each record, r;, to a cluster such that the distance between r;
+and the cluster centroid (mean) is the smallest among the k clusters;
+recalculate the centroid (mean) for each cluster based on the records
+assigned to the cluster;
+until no change;
+End;
+
+The algorithm begins by randomly choosing k records to represent the centroids
+(means), mj, ..., my, of the clusters, C), ..., Cy. All the records are placed in a
+given cluster based on the distance between the record and the cluster mean. If
+the distance between m; and record rj is the smallest among all cluster means,
+then record r; is placed in cluster C;. Once all records have been initially placed in
+a cluster, the mean for each cluster is recomputed. Then the process repeats, by
+examining each record again and placing it in the cluster whose mean is closest.
+Several iterations may be needed, but the algorithm will converge, although it
+may terminate at a local optimum. The terminating condition is usually the
+squared-error criterion. For clusters Cj, ..., C, with means mj, ..., mj, the error is
+defined as:
+
+k
+Error= XY Dy Distance(r; Mm; y
+
+isl WrjeC;
+
+We will examine how Algorithm 28.4 works with the (two-dimensional) records in
+Figure 28.8. Assume that the number of desired clusters k is 2. Let the algorithm
+choose records with RID 3 for cluster C, and RID 6 for cluster C3 as the initial cluster
+centroids. The remaining records will be assigned to one of those clusters during
+the first iteration of the repeat loop. The record with RID 1 has a distance from C, of
+22.4 and a distance from C of 32.0, so it joins cluster C;. The record with RID 2 has
+
+1089
+
+2
+is}
+
+50 25
+
+30 10
+55, 25
+
+Oankrona
+
+Age Years_of_service Figure 28.8
+
+30 5 Sample two-dimensional
+records for clustering
+example (the RID
+
+50 15 column is not
+
+25 5 considered).

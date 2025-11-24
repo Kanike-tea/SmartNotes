@@ -1,0 +1,48 @@
+2. Planar Gi and
+wo
+
+|
+in Figure 2.37, the first rwo graphs are properly coloured whereas the third graph is ,, }
+; t
+
+properly coloured. ;
+By examining the first two graphs in Figure 2.37 which are properly coloured, we note "
+(1) A graph can have more than one proper colouring.
+
+(2) Two non-adjacent vertices in a properly coloured graph can have the same colour,
+
+Chromatic Number
+A graph G is said to be k-colourable if we can properly colour it with k (number of) colours.
+A graph G which is k-colourable but not (k ~ 1)-colourable is called a k-chromatic graph.
+
+In other words, a k-chromatic graph is a graph that can be properly coloured with & colours
+but not with less than k colours,
+
+If a graph G is k-chromatic, then k is called the chromatic number of G.
+Thus, the chromatic number of a graph is the minimum number of colours with which the
+
+graph can be properly coloured. =
+‘omatic number of a graph G is usually denoted by y(G).
+Some Results
+
+The following results are direct consequences of the definition of the chromatic number
+
+(1) A graph consisting of only isolated vertices (ie, Null graph) is 1-chromatic. (Bece**
+no two vertices of such a graph are adjacen and therefore we can assign the same coe
+to all vertices).
+
+(2) A graph with One or more edges is at least 2-chromatic. (Because, such a graph bas #
+least one pair of adjacent vertices which should have different colours).
+
+(3) Ma graph G contains a graph Gy as a subgraph, then x(G) > 4(G)
+
+(4) If G is a graph of n vertices, then X(G) <n,
+
+5) The ch ti ber of the ¢ . t
+(9) The chromatic number of the complete graph Ky is n (that is :y(Ka) = ®) ene |
+
+(Because, in K,, every two vertices are adj : :
+; acent, and as such vertices
+have different colours), “i os Fach elt Wie a
+
+(6) If a graph G contains Ky as a subgraph, then XG) >a

@@ -1,0 +1,50 @@
+12.5 Flushing and Cleaning Cache Memory 431
+
+All values in the header file are either a size expressed in log base two or a field locator.
+If the value is a locator, it represents the lowest bit in a bit field in a CP15 register. For exam-
+ple, the constant J7WAY points to the lowest bit in the way selection field in the CP15:c7:c5
+register. Just to be clear, the value of I7WAY is 26 in an ARM920T, ARM922T, ARM940T,
+and ARM1022E, and the value is 30 in the ARM926EJ-S, ARM946E-S, and ARM1026EJ-S
+(see Figure 12.11). The values are stored in this format to support bit manipulation of the
+core register (Rm) moved into a CP15:Cd:Cm register when a clean command is issued
+using an MCR instruction.
+
+The six constants in the header file that depend on the core architecture are the following:
+
+=~ CSIZEis the log base two of the size of the cache in bytes; in other words, the cache size
+is (1CSIZE) bytes.
+
+= CLINE is the log base two of the length of a cache line in bytes; the cache line length
+would be (1KCLINE) bytes.
+
+= NWAYis the number of ways and is the same as the set associativity.
+
+= I7SET is the number of bits that the set index is shifted to the left in the CP15:c7
+command register. This value is also used to increment or decrement the set index
+portion of the CP15:c7 register when sequentially accessing the cache.
+
+= ~I7WAY is the number of bits that the way index is shifted to the left in the CP15:c7
+command register. This value is also used to increment or decrement the way index
+portion of the CP15:c7 register when sequentially accessing the cache.
+
+= = I9WAY is the number of bits that the way index is shifted to the left in the CP15:c9
+command register. This value is also used to increment or decrement the way index
+portion of the CP15:c9 register when sequentially accessing the cache.
+
+There are two constants calculated from the core specific data:
+
+= SWAY is the log base two of the size of a way in bytes. The size of a way would be
+(1KSWAY) bytes.
+
+= NSETis the number of cache lines per way. This is the log base two of the size of the set
+index. The number of sets would be (INSET).
+
+12.5.4 CLEANING THE D-CACHE USING WAY AND SET INDEX
+ADDRESSING
+
+Some ARM cores support cleaning and flushing a single cache line using the way and set
+index to address its location in cache. The commands available to clean and flush a cache
+line by way are shown as MCR instructions in Table 12.5. Two commands flush a cache line,
+one flushes an instruction cache line, and another flushes a data cache line. The remaining
+two commands clean the D-cache: one cleans a cache line and another cleans and flushes a
+cache line.

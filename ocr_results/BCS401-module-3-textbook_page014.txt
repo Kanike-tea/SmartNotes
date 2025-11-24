@@ -1,0 +1,44 @@
+232
+
+Transform-and-Conquer
+
+Stage 1 (heap construction) Stage 2 (maximum deletions)
+297658 968 2 5 7
+298657 7 6 8 2 519
+298657 8 6 7 2 5
+928657 5 6 7 218
+968257 7 6 5.2
+
+2 6 517
+6 2.5
+5 216
+5 2
+215
+
+2
+
+FIGURE 6.14 Sorting the array 2, 9, 7, 6,5, 8 by heapsort.
+
+in Figure 6,11 is intentionally used so that you can compare the tree and array
+implementations of the bottom-up heap construction algorithm.)
+
+Since we already know that the heap construction stage of the algorithm is in
+O(n), we have to investigate just the time efficiency of the second stage. For the
+number of key comparisons, C(n), needed for eliminating the root keys from the
+heaps of diminishing sizes from n to 2, we get the following inequality:
+
+n-1
+C(n) < 2[logy(n — 1)J + 2[logy(n — 2)J + ++» + 2[logy 1) <2} log, i
+isl
+n=1
+<2) logy(n = 1) =2(n = 1) logy(n = 1) < 2n logy n.
+
+i=l
+
+This means that C(n) € O(n log n) for the second stage of heapsort. For both stages,
+we get
+
+casespThus, heapsort’s time efficiency falls in the same class as that of mergesort.
+Unlike the latter, heapsort is in-place, i.e., it does not require any extra storage.
+Timing experiments on random files show that heapsort runs more slowly than
+quicksort but can be competitive with mergesort.

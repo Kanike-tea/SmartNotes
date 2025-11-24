@@ -1,0 +1,38 @@
+Microcontrollers - BCS402
+
+Example 3: The final example uses the interrupt stack to store the link register. This method first
+
+subtracts an offset from the link register and then stores it onto the interrupt stack.
+
+handler
+SUB rl4, rl4, #4 3 rl4-=
+
+STMFD = r13!,{r0-r3, rl4} ; store context
+<handler code>
+LDMFD = rl3!,{r0-r3, pc}~ ; return
+
+To return to normal execution, the LDM instruction is used to load the pc. The * symbol in the
+
+instruction forces the cpsr to be restored from the spsr.
+2. Interrupts
+
+There are two types of interrupts available on the ARM processor. The first type of interrupt
+causes an exception raised by an external peripheral—namely, IRQ and FIQ. The second type is
+a specific instruction that causes an exception—the SWI instruction. Both types suspend the
+
+normal flow of a program.
+In this section we will focus mainly on IRQ and FIQ interrupts. We will cover these topics:
+
+e Assigning interrupts
+e Interrupt latency
+e IRQ and FIQ exceptions
+
+e Basic interrupt stack design and implementation
+2.1 Assigning Interrupts
+
+A system designer can decide which hardware peripheral can produce which interrupt request.
+This decision can be implemented in hardware or software (or both) and depends upon the
+
+embedded system being used.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 9

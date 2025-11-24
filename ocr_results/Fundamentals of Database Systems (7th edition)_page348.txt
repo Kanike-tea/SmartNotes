@@ -1,0 +1,79 @@
+318
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+clause. The cursor variable is basically an iterator that iterates (loops) over the
+tuples in the query result—one tuple at a time.
+
+To determine when all the tuples in the result of the query have been processed, the
+communication variable SQLCODE (or, alternatively, SQLSTATE) is checked. If a
+FETCH command is issued that results in moving the cursor past the last tuple in the
+result of the query, a positive value (SQLCODE > 0) is returned in SQLCODE,
+indicating that no data (tuple) was found (or the string ‘02000’ is returned in
+SQLSTATE). The programmer uses this to terminate the loop over the tuples in the
+query result. In general, numerous cursors can be opened at the same time. A
+CLOSE CURSOR command is issued to indicate that we are done with processing
+the result of the query associated with that cursor.
+
+An example of using cursors to process a query result with multiple records is shown
+in Figure 10.3, where a cursor called EMP is declared in line 4. The EMP cursor
+is associated with the SQL query declared in lines 5 through 6, but the query
+is not executed until the OPEN EMP command (line 8) is processed. The
+OPEN <cursor name> command executes the query and fetches its result as a table
+into the program workspace, where the program can loop through the individual
+rows (tuples) by subsequent FETCH <cursor name> commands (line 9). We assume
+
+Figure 10.3
+Program segment E2, a C program segment that uses
+cursors with embedded SQL for update purposes.
+
+0)
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+17)
+18)
+
+//Program Segment E2:
+prompt ("Enter the Department Name: ", dname) ;
+
+EXEC SQL
+
+SELECT Dnumber INTO :dnumber
+FROM DEPARTMENT WHERE Dname = :dname ;
+EXEC SQL DECLARE EMP CURSOR FOR
+SELECT Ssn, Fname, Minit, Lname, Salary
+FROM EMPLOYEE WHERE Dno = :dnumber
+FOR UPDATE OF Salary ;
+EXEC SQL OPEN EMP ;
+EXEC SQL FETCH FROM EMP INTO :ssn, :fname, :minit, :lname, :salary ;
+while (SQLCODE = = 0) {
+
+printf£("Employee name is
+prompt("Enter the raise amount: ", raise)
+
+EXEC SQL
+
+Fname, Minit, Lname) ;
+
+UPDATE EMPLOYEE
+SET Salary = Salary + :raise
+WHERE CURRENT OF EMP ;
+EXEC SQL FETCH FROM EMP INTO :ssn, :fname, :minit, :lname, :salary ;
+
++
+
+19) EXEC SQL CLOSE EMP ;

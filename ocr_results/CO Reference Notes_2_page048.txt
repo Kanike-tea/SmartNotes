@@ -1,0 +1,62 @@
+EEPROM (ELECTRICALLY ERASABLE ROM)
+« Advantages:
+1) It can be both programmed and erased electrically.
+2) It allows the erasing of all cell contents selectively.
+* Disadvantage: It requires different voltage for erasing, writing and reading the stored data.
+
+FLASH MEMORY
+
+« In EEPROM, it is possible to read & write the contents of a single cell.
+
+In Flash device, it is possible to read contents of a single cell & write entire contents of a block.
+
+¢ Prior to writing, the previous contents of the block are erased.
+Eg. In MP3 player, the flash memory stores the data that represents sound.
+
+¢ Single flash chips cannot provide sufficient storage capacity for embedded-system.
+
+« Advantages:
+1) Flash drives have greater density which leads to higher capacity & low cost per bit.
+2) It requires single power supply voltage & consumes less power.
+
+© There are 2 methods for implementing larger memory: 1) Flash Cards & 2) Flash Drives
+
+1) Flash Cards
+> One way of constructing larger module is to mount flash-chips on a small card.
+> Such flash-card have standard interface.
+> The card is simply plugged into a conveniently accessible slot.
+> Memory-size of the card can be 8, 32 or 64MB.
+> Eg: A minute of music can be stored in 1MB of memory. Hence 64MB flash cards can store an
+hour of music.
+2) Flash Drives
+
+> Larger flash memory can be developed by replacing the hard disk-drive.
+> The flash drives are designed to fully emulate the hard disk.
+> The flash drives are solid state electronic devices that have no movable parts.
+
+Advantages:
+1) They have shorter seek & access time which results in faster response.
+2) They have low power consumption. .". they are attractive for battery driven
+application.
+3) They are insensitive to vibration.
+Disadvantages:
+1) The capacity of flash drive (<1GB) is less than hard disk (>1GB).
+2) It leads to higher cost per bit.
+3) Flash memory will weaken after it has been written a number of times (typically at
+least 1 million times).
+SPEED, SIZE COST
+Characteristics | SRAM DRAM Magnetis Disk
+Speed Very Fast Slower Much slower than
+DRAM
+Size Large Small Small
+Cost Expensive Less Expensive Low price
+Memory Speed Size Cost
+Registers Very high Lower Very Lower
+Primary cache High Lower Low
+Secondary cache Low Low Low
+Main memory Lower than High High
+Seconadry cache
+Secondary Very low Very High Very High
+Memory
+
+Page 49

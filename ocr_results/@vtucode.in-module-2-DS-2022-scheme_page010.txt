@@ -1,0 +1,40 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+copy(queue, queue+capacity, newQueue);
+copy(queue, queue+rear+1, newQueue+capacity-start);
+}
+/* switch to newQueue*/
+front = 2*capacity — 1;
+rear = capacity — 2;
+capacity * =2;
+free(queue);
+
+queue= newQueue;
+
+Program: queueFull
+
+MULTIPLE STACKS AND QUEUES
+
+e In multiple stacks, we examine only sequential mappings of stacks into an array.
+The array is one dimensional which is memory[MEMORY_SIZE]. Assume n
+stacks are needed, and then divide the available memory into n segments. The array
+is divided in proportion if the expected sizes of the various stacks are known.
+Otherwise, divide the memory into equal segments.
+
+e Assume.that i refers to the stack number of one of the n stacks. To establish this
+stack, create indices for both the bottom and top positions of this stack.
+boundary[i] points to the position immediately to the left of the bottom element of
+
+stack i, top[i] points to the top element. Stack i is empty iff boundary[i]=top[i].
+
+The declarations are:
+
+#define MEMORY_SIZE 100 /* size of memory */
+#define MAX_STACKS 10 /* max number of stacks plus | */
+element memory[MEMORY_SIZE]; /* global memory declaration */
+
+int top [MAX_STACKS];
+int boundary [MAX_STACKS] ;
+int n; /*number of stacks entered by the user */
+
+vtucode.in ll

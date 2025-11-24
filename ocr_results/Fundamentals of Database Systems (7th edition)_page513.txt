@@ -1,0 +1,51 @@
+14.4 General Definitions of Second and Third Normal Forms
+
+14.3.6 Third Normal Form
+
+Third normal form (3NF) is based on the concept of transitive dependency. A func-
+tional dependency X — Y in a relation schema R is a transitive dependency if there
+exists a set of attributes Z in R that is neither a candidate key nor a subset of any key of
+R,' and both X > Zand Z > Y hold. The dependency Ssn — Dmgr_ssn is transitive
+through Dnumber in EMP_DEPT in Figure 14.3(a), because both the dependencies
+Ssn — Dnumber and Dnumber —> Dmgr_ssn hold and Dnumber is neither a key itself nor a
+subset of the key of EMP_DEPT. Intuitively, we can see that the dependency of Dmgr_ssn
+on Dnumber is undesirable in EMP_DEPT since Dnumber is not a key of EMP_DEPT.
+
+Definition. According to Codd’s original definition, a relation schema R is in
+3NF if it satisfies 2NF and no nonprime attribute of R is transitively dependent
+on the primary key.
+
+The relation schema EMP_DEPT in Figure 14.3(a) is in 2NF, since no partial depen-
+dencies on a key exist. However, EMP_DEPT is not in 3NF because of the transitive
+dependency of Dmgr_ssn (and also Dname) on Ssn via Dnumber. We can normalize
+EMP_DEPT by decomposing it into the two 3NF relation schemas ED1 and ED2
+shown in Figure 14.11(b). Intuitively, we see that ED1 and ED2 represent indepen-
+dent facts about employees and departments, both of which are entities in their
+own right. A NATURAL JOIN operation on ED1 and ED2 will recover the original
+relation EMP_DEPT without generating spurious tuples.
+
+Intuitively, we can see that any functional dependency in which the left-hand side is
+part (a proper subset) of the primary key, or any functional dependency in which the
+left-hand side is a nonkey attribute, is a problematic FD. 2NF and 3NF normalization
+remove these problem FDs by decomposing the original relation into new relations. In
+terms of the normalization process, it is not necessary to remove the partial dependen-
+cies before the transitive dependencies, but historically, 3NF has been defined with the
+assumption that a relation is tested for 2NF first before it is tested for 3NF. Moreover,
+the general definition of 3NF we present in Section 14.4.2 automatically covers the
+condition that the relation also satisfies 2NF. Table 14.1 informally summarizes the
+three normal forms based on primary keys, the tests used in each case, and the corre-
+sponding remedy or normalization performed to achieve the normal form.
+
+14.4 General Definitions of Second
+and Third Normal Forms
+
+In general, we want to design our relation schemas so that they have neither partial
+nor transitive dependencies because these types of dependencies cause the update
+anomalies discussed in Section 14.1.2. The steps for normalization into 3NF rela-
+tions that we have discussed so far disallow partial and transitive dependencies on
+
+''This is the general definition of transitive dependency. Because we are concerned only with primary
+keys in this section, we allow transitive dependencies where X is the primary key but Z may be (a subset
+of) a candidate key.
+
+483

@@ -1,0 +1,44 @@
+11, Directed Graphs _ 7
+a een eerie enenpciepts-usiicsonjanpoetsgetsihennseninapenaieiteanhgacetds
+
+For the digraph shown in Figure 1.7, the out-degrees and the in-degrees of the vertices are
+as given below:
+
+a(y)=2, d-(y)=1,
+ayy=1,  d-(vn) =3,
+d*(vy)=1, — d°(v3) =2,
+d*(v4)=0, — d-(v4) =0,
+d*(v5)=2, — d-(vs) =1,
+d*(v6)=2, — d7(v6) = 1.
+We note that, in the above digraph, there is a directed loop at the vertex v3 and this loop
+contributes a count | to each of d*(v3) and d~(v3),
+
+We further observe that the above digraph has 6 vertices and 8 edges and that the sums of
+the out-degrees and in-degrees of its vertices are
+
+6 6
+» d*(vj)=8, SY \d-(y) =8.
+‘ i=\ .
+
+fai
+This illustrates the following property common to all digraphs. This property is referred to
+as the First Theorem of the Digraph Theory.
+
+Property : In every digraph D, the sum of the out-degrees of all vertices is equal to the sum of
+the in-degrees of all vertices, each sum being equal to the number of edges in D.
+
+Proof: Suppose D has n vertices vj, v2,...,V_ and m edges. Let r; be the number of edges
+going out of vy, r2 be the number of edges going out of v2, and so on. Then
+
+d*(vy)=r, d*(v2)=12,..., d*(vn) =r.
+Since every edge terminates at some vertex and since there are m edges, we should have
+
+n+ ter ti =m,
+
+Accordingly,
+
+A" (yj) +d" (V2) +0 +d (Un) = ry tn ty =m.
+_ Similarly, if 5; is the number of edges coming into vj, s2 is the number of edges coming
+into v2, and so on, we get
+
+d-(v1) +d" (v2) ++ +d (Vp) = 5, + 8) Hoo + 5, =m. a

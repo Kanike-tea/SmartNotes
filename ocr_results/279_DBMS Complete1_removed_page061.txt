@@ -1,0 +1,23 @@
+Rename Operation:
+It can be used in two ways :
+o Px (2) return the result of expression E in the table named x.
+0 Pal Aig Aly sty) (2) return the result of expression E in the table named x with the attributes
+renamed to Aj, Ao,..., An.
+e It’s benefit can be understood by the solution of the query “ Find the largest account balance
+in the bank”
+It can be solved by following steps:
+e Find out the relation of those balances which are not largest.
+¢ Consider Cartesion product of Account with itself i.e. Account x Account
+« Compare the balances of first Account table with balances of second Account table in the
+product.
+e For that we should rename one of the account table by some other name to avoid the
+confusion
+It can be done by following operation
+
+IT xccount.balance (G Account balance < d.balance(Account x pa(Account))
+
+¢ So the above relation contains the balances which are not largest.
+
+e Subtract this relation from the relation containing all the balances i.e . /Toaiance (Account).
+So the final statement for solving above query is
+TTpatance (Account)- ITaccount.balance (OAccount balance < d.balance(Account x pa(Account))

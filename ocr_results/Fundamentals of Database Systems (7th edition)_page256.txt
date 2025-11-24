@@ -1,0 +1,49 @@
+226 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+The constraint name SALARY_CONSTRAINT is followed by the keyword CHECK,
+which is followed by a condition in parentheses that must hold true on every data-
+base state for the assertion to be satisfied. The constraint name can be used later to
+disable the constraint or to modify or drop it. The DBMS is responsible for ensur-
+ing that the condition is not violated. Any WHERE clause condition can be used,
+but many constraints can be specified using the EXISTS and NOT EXISTS style of
+SQL conditions. Whenever some tuples in the database cause the condition of an
+ASSERTION statement to evaluate to FALSE, the constraint is violated. The con-
+straint is satisfied by a database state if no combination of tuples in that database
+state violates the constraint.
+
+The basic technique for writing such assertions is to specify a query that selects any
+tuples that violate the desired condition. By including this query inside a NOT EXISTS
+clause, the assertion will specify that the result of this query must be empty so that
+the condition will always be TRUE. Thus, the assertion is violated if the result of the
+query is not empty. In the preceding example, the query selects all employees whose
+salaries are greater than the salary of the manager of their department. If the result
+of the query is not empty, the assertion is violated.
+
+Note that the CHECK clause and constraint condition can also be used to specify
+constraints on individual attributes and domains (see Section 6.2.1) and on indi-
+vidual tuples (see Section 6.2.4). A major difference between CREATE
+ASSERTION and the individual domain constraints and tuple constraints is that
+the CHECK clauses on individual attributes, domains, and tuples are checked in
+SQL only when tuples are inserted or updated in a specific table. Hence, con-
+straint checking can be implemented more efficiently by the DBMS in these
+cases. The schema designer should use CHECK on attributes, domains, and tuples
+only when he or she is sure that the constraint can only be violated by insertion or
+updating of tuples. On the other hand, the schema designer should use CREATE
+ASSERTION only in cases where it is not possible to use CHECK on attributes,
+domains, or tuples, so that simple checks are implemented more efficiently by
+the DBMS.
+
+7.2.2 Introduction to Triggers in SQL
+
+Another important statement in SQL is CREATE TRIGGER. In many cases it is con-
+venient to specify the type of action to be taken when certain events occur and
+when certain conditions are satisfied. For example, it may be useful to specify a
+condition that, if violated, causes some user to be informed of the violation. A man-
+ager may want to be informed if an employee’s travel expenses exceed a certain
+limit by receiving a message whenever this occurs. The action that the DBMS must
+take in this case is to send an appropriate message to that user. The condition is
+thus used to monitor the database. Other actions may be specified, such as execut-
+ing a specific stored procedure or triggering other updates. The CREATE TRIGGER
+statement is used to implement such actions in SQL. We discuss triggers in detail in
+Section 26.1 when we describe active databases. Here we just give a simple example
+of how triggers may be used.

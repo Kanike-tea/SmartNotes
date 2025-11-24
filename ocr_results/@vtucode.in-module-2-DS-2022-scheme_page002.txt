@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Implementation of the queue operations as follows.
+
+1. Queue Create
+
+Queue CreateQ(maxQueueSize) ::=
+#define MAX_QUEUE_SIZE 100 /* maximum queue size */
+typedef struct
+{
+int key;
+/* other fields */
+} element;
+element queue[MAX_QUEUE_SIZE];
+int rear = -1;
+
+int front = -1;
+
+2. Boolean IsEmptyQ(queue) ::= front ==rear
+3. Boolean IsFullQ(queue) ::= rear == MAX_QUEUE. SIZE-1
+
+In the queue, two variables are used which are front and rear. The queue increments rear in
+
+addq( ) and front in delete( ). The function calls would be addq (item); and item =delete( );
+
+4. addq(item)
+
+void addq(int *rear, element item)
+{
+// add an item to the queue
+if (rear == MAX_QUEUE_ SIZE-1)
+{ queue_Full();
+return;
+t
+queue [++rear] = item;
+
+}
+
+Program: Add to a queue
+
+vtucode.in 3

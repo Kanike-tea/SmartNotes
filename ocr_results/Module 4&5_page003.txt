@@ -1,0 +1,43 @@
+Microcontrollers - BCS402
+
+e¢ LDR pe, [pc, #-0xff0] —This load register instruction loads a specific interrupt service
+routine address from address Oxfffff030 to the pc. This specific instruction is only used
+when a vector interrupt controller is present (VIC PL190).
+
+¢ MOV pc, #4immediate —This move instruction copies an immediate value into the pc. It
+lets you span the full address space but at limited alignment. The address must be an 8-bit
+
+immediate rotated right by an even number of bits.
+
+Other types of instructions can also be in the vector table. For example, the FIQ handler
+
+might start at address offset +0xlc. Thus, the FIQ handler can start immediately at the FIQ
+vector location, since it is at the end of the vector table. The branch instructions cause the pe
+to jump to a specific location that can handle the specific exception. Table 2 shows the
+
+exception, mode, and vector table offset for each exception.
+
+Table 2: Vector table and processor modes
+
+Exception Mode Vector table offset
+
+Reset SVC +0x00
+Undefined Instruction UND +0x04
+Software Interrupt(SWI) SVC — +0x08
+
+Prefetch Abort ABT — +0x0c
+Data Abort ABT +0x10
+Not assigned _ +0x14
+IRQ IRQ +0x18
+FIQ FIQ +0xlc
+
+Example: Figure 2 shows a typical vector table. The Undefined Instruction entry is a branch
+instruction to jump to the undefined handler. The other vectors use an indirect address jump with
+
+the LDR load to pc instruction.
+
+Notice that the FIQ handler also uses the LDR load to pc instruction and does not take advantage
+
+of the fact that the handler can be placed at the FIQ vector entry location.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 4

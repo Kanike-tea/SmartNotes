@@ -1,0 +1,44 @@
+insert(76) insert(40) insert(48) imsert(5) insert(55)
+
+FO%7 =6 40%7 = 5 AS%7 =6 S%7=5 55% 7 = 6
+
+° ° ° ag a7 47
+
+1 1 1 1 1
+
+2 2 2 25 25
+
+4 4 4 4 4
+
+5 5} 40 >) 40 >) 40 5) 40
+
+°| 76 °| 76 °\ 76 ®\ 76 ° 76)
+probes: 1 1 2 Zi 3
+
+Probe sequence th n+ 17 =2? N= 3? oe eee eee eee h+i?
+
+H(dd)=(h+i? % Tablesize
+3. Double Hashing
+In double hashing, we use two hash functions rather than a single function. Double hashing
+uses the idea of applying a second hash function to the key when a collision occurs. The
+result of the second hash function will be the number of positions form the point of collision
+to insert.There are a couple of requirements for the second function:
+* it must never evaluate to 0
+* must make sure that all cells can be probed
++ A popular second hash function is: Hash2(key) = M - ( key % M ) where M is a prime number
+that is smaller than the size of the table. But any independent hash function may also be used.
+Example: 37,90,45,22,17,49,55
+H(key)=key%10
+H)(key)=7-(key%7)
+After collision
+
+(Hi(key)+1*Ha(key))%10
+
+90
+17
+22
+
+45
+55
+
+Page 6

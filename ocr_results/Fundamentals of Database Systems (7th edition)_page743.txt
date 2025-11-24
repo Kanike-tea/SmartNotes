@@ -1,0 +1,51 @@
+19.3 Use of Selectivities in Cost-Based Optimization
+
+19.3.3 Histograms
+
+Histograms are tables or data structures maintained by the DBMS to record infor-
+mation about the distribution of data. It is customary for most RDBMSs to store
+histograms for most of the important attributes. Without a histogram, the best
+assumption is that values of an attribute are uniformly distributed over its range
+from high to low. Histograms divide the attribute over important ranges (called
+buckets) and store the total number of records that belong to that bucket in that
+relation. Sometimes they may also store the number of distinct values in each
+bucket as well. An implicit assumption is made sometimes that among the distinct
+values within a bucket there is a uniform distribution. All these assumptions are
+oversimplifications that rarely hold. So keeping a histogram with a finer granularity
+(ie., larger number of buckets) is always useful. A couple of variations of histo-
+grams are common: in equi-width histograms, the range of values is divided into
+equal subranges. In equi-height histograms, the buckets are so formed that each
+one contains roughly the same number of records. Equi-height histograms are con-
+sidered better since they keep fewer numbers of more frequently occurring values
+in one bucket and more numbers of less frequently occurring ones in a different
+bucket. So the uniform distribution assumption within a bucket seems to hold bet-
+ter. We show an example of a histogram for salary information in a company in
+Figure 19.4. This histogram divides the salary range into five buckets that may cor-
+respond to the important sub-ranges over which the queries may be likely because
+they belong to certain types of employees. It is neither an equi-width nor an equi-
+height histogram.
+
+713
+
+Figure 19.4
+Histogram of salary in the relation EMPLOYEE.
+
+700 5
+
+600 +
+
+500 5
+
+400 5
+
+300 5
+
+No. of Employees
+
+200 +
+
+100 5
+
+30k-40k = 40k-70k = 70k-120k =120k-200k 200k-500k
+
+Salary

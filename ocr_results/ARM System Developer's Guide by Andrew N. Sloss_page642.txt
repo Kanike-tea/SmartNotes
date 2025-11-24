@@ -1,0 +1,46 @@
+A.4 ARM Assembler Quick Reference 629
+
+KEEP
+KEEP {<symbo1>}
+
+By default the assembler does not include local symbols in the object file, only exported
+symbols (see EXPORT). Use KEEP to include all local symbols or a specified local symbol.
+This aids the debug view.
+
+LCLA, LCLL, LCLS
+
+These directives declare macro-local arithmetic, logical, and string variables, respectively.
+See Section A.4.1.
+
+LTORG
+
+Use LTORG to insert a literal pool. The assembler uses literal pools to store the constants
+appearing in the LDR Rd,=<value> instruction. See LDR format 19. Usually the assembler
+inserts literal pools automatically, at the end of each area. However, if an area is too large,
+then the LDR instruction cannot reach this literal pool using pc-relative addressing. Then
+you need to insert a literal pool manually, near the LDR instruction.
+
+MACRO, MEXIT, MEND
+
+Use these directives to declare a new assembler macro or pseudoinstruction. The syntax is
+
+MACRO
+
+{$<arg_0>} <macro_name> {$<arg_1>} {,$<arg_2>} ... {,$<arg_k>}
+<macro_code>
+MEND
+
+The macro parameters are stored in the dummy variables $<arg_i>. This argument is set
+to the empty string if you don’t supply a parameter when calling the macro. The MEXIT
+directive terminates the macro early and is usually used inside IF statements. For example,
+the following macro defines a new pseudoinstruction SMUL, which evaluates to a SMULBB on
+an ARMV5TE processor, and an MUL otherwise.
+
+MACRO
+$label SMUL $a, $b, $c
+F {ARCHITECTURE}="5TE"
+$label  SMULBB $a, $b, $c
+MEXIT
+ENDIF
+$label MUL $a, $b, $c
+MEND

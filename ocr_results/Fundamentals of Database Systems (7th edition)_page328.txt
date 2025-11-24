@@ -1,0 +1,50 @@
+298
+
+Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+In the relational schema we create a separate relation for each multivalued attribute.
+For a particular entity with a set of values for the multivalued attribute, the key
+attribute value of the entity is repeated once for each value of the multivalued attri-
+bute in a separate tuple because the basic relational model does not allow multiple
+values (a list, or a set of values) for an attribute in a single tuple. For example,
+because department 5 has three locations, three tuples exist in the DEPT_LOCATIONS
+relation in Figure 3.6; each tuple specifies one of the locations. In our example, we
+apply EQUUOIN to DEPT_LOCATIONS and DEPARTMENT on the Dnumber attribute to
+get the values of all locations along with other DEPARTMENT attributes. In the result-
+ing relation, the values of the other DEPARTMENT attributes are repeated in separate
+tuples for every location that a department has.
+
+The basic relational algebra does not have a NEST or COMPRESS operation that
+would produce a set of tuples of the form {<‘l’, ‘Houston’>, <‘4’, ‘Stafford’>, <‘5’,
+{ ‘Bellaire’, ‘Sugarland’, ‘Houston’}>} from the DEPT_LOCATIONS relation in Figure 3.6.
+This is a serious drawback of the basic normalized or flat version of the relational
+model. The object data model and object-relational systems (see Chapter 12) do
+allow multivalued attributes by using the array type for the attribute.
+
+9.2 Mapping EER Model Constructs
+to Relations
+
+In this section, we discuss the mapping of EER model constructs to relations by
+extending the ER-to-relational mapping algorithm that was presented in Sec-
+tion 9.1.1.
+
+9.2.1 Mapping of Specialization or Generalization
+
+There are several options for mapping a number of subclasses that together form a
+specialization (or alternatively, that are generalized into a superclass), such as the
+{SECRETARY, TECHNICIAN, ENGINEER} subclasses of EMPLOYEE in Figure 4.4. The
+two main options are to map the whole specialization into a single table, or to map
+it into multiple tables. Within each option are variations that depend on the con-
+straints on the specialization/generalization.
+
+We can add a further step to our ER-to-relational mapping algorithm from Sec-
+tion 9.1.1, which has seven steps, to handle the mapping of specialization. Step 8,
+which follows, gives the most common options; other mappings are also possible.
+We discuss the conditions under which each option should be used. We use Attrs(R)
+to denote the attributes of a relation R, and PK(R) to denote the primary key of R.
+First we describe the mapping formally, then we illustrate it with examples.
+
+Step 8: Options for Mapping Speci: ion or Generalization. Convert
+each specialization with m subclasses {S), So, ... , S,,} and (generalized) super-
+class C, where the attributes of C are {k, ay, ... , a,} and k is the (primary) key, into
+relation schemas using one of the following options:

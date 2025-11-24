@@ -1,0 +1,57 @@
+30.4 SQL Injection
+
+useful information from the database server—located at the URL that is passed as
+a parameter—and send it to the Web server (that calls the TRANSLATE function).
+
+30.4.2 Risks Associated with SQL Injection
+
+SQL injection is harmful and the risks associated with it provide motivation for
+attackers. Some of the risks associated with SQL injection attacks are explained below.
+
+= Database fingerprinting. The attacker can determine the type of database
+being used in the backend so that he can use database-specific attacks that
+correspond to weaknesses in a particular DBMS.
+
+= Denial of service. The attacker can flood the server with requests, thus
+denying service to valid users, or the attacker can delete some data.
+
+= Bypassing authentication. This is one of the most common risks, in which
+the attacker can gain access to the database as an authorized user and per-
+form all the desired tasks.
+
+= Identifying injectable parameters. In this type of attack, the attacker gathers
+important information about the type and structure of the back-end database
+of a Web application. This attack is made possible by the fact that the default
+error page returned by application servers is often overly descriptive.
+
+= Executing remote commands. This provides attackers with a tool to exe-
+cute arbitrary commands on the database. For example, a remote user can
+execute stored database procedures and functions from a remote SQL inter-
+active interface.
+
+= Performing privilege escalation. This type of attack takes advantage of log-
+ical flaws within the database to upgrade the access level.
+
+30.4.3 Protection Techniques against SQL Injection
+
+Protection against SQL injection attacks can be achieved by applying certain pro-
+gramming rules to all Web-accessible procedures and functions. This section
+describes some of these techniques.
+
+Bind Variables (Using Parameterized Statements). The use of bind variables
+(also known as parameters; see Chapter 10) protects against injection attacks and
+also improves performance.
+
+Consider the following example using Java and JDBC:
+
+PreparedStatement stmt = conn.prepareStatement( “SELECT * FROM
+EMPLOYEE WHERE EMPLOYEE_ID=? AND PASSWORD=?”);
+
+stmt.setString(1, employee_id);
+
+stmt.setString(2, password);
+
+Instead of embedding the user input into the statement, the input should be bound
+to a parameter. In this example, the input ‘I’ is assigned (bound) to a bind variable
+
+1145

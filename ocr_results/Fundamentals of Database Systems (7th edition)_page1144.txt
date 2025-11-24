@@ -1,0 +1,49 @@
+1114 Chapter 29 Overview of Data Warehousing and OLAP
+
+ParAccel of Tableau Software. Big data analytics have driven Hadoop and other
+specialized databases such as graph and key-value stores into the next generation of
+data warehousing (see Chapter 25 for a discussion of big data technology based on
+Hadoop). Data virtualization platforms such as the one from Cisco* will enable
+such logical data warehouses to be built in the future.
+
+29.5 Typical Functionality of a Data Warehouse
+
+Data warehouses exist to facilitate complex, data-intensive, and frequent ad hoc
+queries. Accordingly, data warehouses must provide far greater and more efficient
+query support than is demanded of transactional databases. The data warehouse
+access component supports enhanced spreadsheet functionality, efficient query
+processing, structured queries, ad hoc queries, data mining, and materialized views.
+In particular, enhanced spreadsheet functionality includes support for state-of-the-
+art spreadsheet applications (for example, MS Excel) as well as for OLAP applica-
+tions programs. These enhanced spreadsheet products offer preprogrammed
+functionalities such as the following:
+
+= Roll-up (also drill-up). Data is summarized with increasing generalization
+
+(for example, weekly to quarterly to annually).
+
+= Drill-down. Increasing levels of detail are revealed (the complement of
+roll-up).
+Pivot. Cross tabulation (also referred to as rotation) is performed.
+Slice and dice. Projection operations are performed on the dimensions.
+Sorting. Data is sorted by ordinal value.
+Selection. Data is filtered by value or range.
+
+Derived (computed) attributes. Attributes are computed by operations on
+stored and derived values.
+
+Because data warehouses are free from the restrictions of the transactional environ-
+ment, there is an increased efficiency in query processing. Among the tools and
+techniques used are query transformation; index intersection and union; special
+ROLAP (relational OLAP) and MOLAP (multidimensional OLAP) functions; SQL
+extensions; advanced join methods; and intelligent scanning (as in piggy-backing
+multiple queries).
+
+There is also a HOLAP (hybrid OLAP) option available that combines both ROLAP
+and MOLAP. For summary-type information, HOLAP leverages cube technology
+(using MOLAP) for faster performance. When detailed information is needed,
+HOLAP can “drill through” from the cube into the underlying relational data
+(which is in the ROLAP component).
+
+4See the description of Cisco's Data Virtualization Platform at http://www.compositesw.com/products-
+services/data-virtualization-platform/

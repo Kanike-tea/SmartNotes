@@ -1,0 +1,30 @@
+CHAPTER
+
+EFFICIENT C
+PROGRAMMING
+
+The aim of this chapter is to help you write C code in a style that will compile efficiently
+on the ARM architecture. We will look at many small examples to show how the compiler
+translates C source to ARM assembler. Once you have a feel for this translation process,
+you can distinguish fast C code from slow C code. The techniques apply equally to C++,
+but we will stick to plain C for these examples.
+
+We start with an overview of C compilers and optimization, which will give an idea
+of the problems the C compiler faces when optimizing your code. By understanding these
+problems you can write source code that will compile more efficiently in terms of increased
+speed and reduced code size. The following sections are grouped by topic.
+
+Sections 5.2 and 5.3 look at how to optimize a basic C loop. These sections use a data
+packet checksum as a simple example to illustrate the ideas. Sections 5.4 and 5.5 look at
+optimizing a whole C function body, including how the compiler allocates registers within
+a function and how to reduce the overhead of a function call.
+
+Sections 5.6 through 5.9 look at memory issues, including handling pointers and how to
+pack data and access memory efficiently. Sections 5.10 through 5.12 look at basic operations
+that are usually not supported directly by ARM instructions. You can add your own basic
+operations using inline functions and assembler.
+
+‘The final section summarizes problems you may face when porting C code from another
+architecture to the ARM architecture.
+
+103

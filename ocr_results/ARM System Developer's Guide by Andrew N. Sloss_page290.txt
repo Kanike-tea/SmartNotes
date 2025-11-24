@@ -1,0 +1,54 @@
+8.2 Introduction to DSP on the ARM 277
+
+SMLATT acc, x_32, c_32, acc
+BGT  loop_9e
+MOV v0, acc
+LOMFD sp!, {r4-r5, r9-r10, pc}
+
+We have unrolled eight times, assuming that Nis a multiple of eight. Each load instruc-
+tion reads two 16-bit values, giving a high memory bandwidth. The inner loop requires
+20 cycles to accumulate 8 products, a rating of 20/8 = 2.5 cycles per tap. A block filter gives
+even greater efficiency.
+
+8.2.5 DSP ON THE ARM1OE
+
+SUMMARY
+
+EXAMPLE
+
+8.6
+
+Like ARM9E, the ARMIOE core also implements ARM architecture ARMV5TE. The range
+and speed of multiply operations is the same as for the ARM9E, except that the 16-bit
+multiply accumulate requires two cycles rather than one. For details of the ARM10E core
+cycle timings, see Section D.6 in Appendix D.
+
+‘The ARM1OE implements a background loading mechanism to accelerate load and store
+multiples. A load or store multiple instruction issues in one cycle. The operation will run in
+the background, and if you attempt to use the value before the background load completes,
+then the core will stall. ARM10E uses a 64-bit-wide data path that can transfer two registers
+on every background cycle. If the address isn’t 64-bit aligned, then only 32 bits can be
+transferred on the first cycle.
+
+Writing DSP Code for the ARM10E
+
+= Load and store multiples run in the background to give a high memory bandwidth. Use
+load and store multiples whenever possible. Be careful to schedule the code so that it
+does not use data before the background load has completed.
+
+= Ensure data arrays are 64-bit aligned so that load and store multiple operations can
+transfer two words per cycle.
+
+= The multiply operations do not early terminate. Therefore you should only use MUL and
+MLA for multiplying 32-bit integers. For 16-bit values use SMULxy and SMLAxy.
+
+= The SMLAxy instruction takes one cycle more than SMULxy. It may be useful to split
+a multiply accumulate into a separate multiply and add.
+
+In the example code the number of samples Nis a multiple of 10.
+
+x RN O — ; input array xf]
+c RN 1; input array cf]
+N RN 2; number of samples (a multiple of 10)
+
+acc RN 3 accumulator

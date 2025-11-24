@@ -1,0 +1,42 @@
+LECTURE-24
+
+Integrity Constraints
+
+Integrity Constraints guard against accidental damage to the database.
+Integrity constraints are predicates pertaining to the database.
+Domain Constraints:
+Predicates defined on the domains are Domain constraints.
+Simplest Domain constraints are defined by defining standard data types of the attributes
+like Integer, Double, Float, etc.
+We can define domains by create domain clause also we can define the constraints on such
+domains as follows:
+create domain hourly-wage numeric(5,2)
+constraint wage-value-test check(value >= 4.00)
+So we can use hourly-wage as data type for any attribute where DBMS will automatically
+allow only values greater than or equal to 4.00.
+Other examples for defining Domain constraints are as follows:
+create domain account-number char(10)
+constraint account-number-null-test check(value not null)
+create domain account-type char(10)
+constraint account-type-test
+
+check (value in ( “Checking”, “Saving”))
+
+By using the later domain of two above the DBMS will allow only values for any attribute having
+type as account-type i.e. Checking and Saving.
+
+Referential Integrity:
+
+Foreign Key: If two table R and S are related to each other, K1 and K2 are primary keys of
+the two relations also K1 is one of the attribute in S. Suppose we want that every row in S
+must have a corresponding row in R, then we define the K1 in S as foreign key. Example in
+our original database of library we had a table for relation BORROWEDBY, containing two
+fields Card No. and Acc. No. . Every row of BORROWEDBY relation must have
+corresponding row in USER Table having same Card No. and a row in BOOK table having
+same Acc. No.. Then we will define the Card No. and Acc. No. in BORROWEDBY relation
+as foreign keys.
+
+In other way we can say that every row of BORROWEDBY relation must refer to some row
+in BOOK and also in USER tables.
+
+Such referential requirement in one table to another table is called Referential Integrity.

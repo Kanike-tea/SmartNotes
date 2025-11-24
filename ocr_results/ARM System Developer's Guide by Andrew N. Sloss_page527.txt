@@ -1,0 +1,33 @@
+514 Chapter 14 Memory Management Units
+
+Table 14.8 Description of the bit fields in the control register CP15:c1 that control MMU operation.
+Bit Letter designator Function enabled Control
+0 M MMU 0 = disabled, 1 = enabled
+2 Cc (data) cache 0 = disabled, 1 = enabled
+3 WwW write buffer 0 = disabled, 1 = enabled
+8 s system shown in Table 14.6
+9 R rom shown in Table 14.6
+12 I instruction cache 0 = disabled, 1 = enabled
+13 Vv high vector table 0 = vector table at 0x00000000
+1 = vector table at 0xFFFFO000
+ARM720T
+31 14131211109 876543210
+Vv R/S Iwic| IM
+ARM920T, ARM922T, ARM926EJ-S, ARM1026EJ-S
+31 14131211109 876543210
+vt R/S ic} |M|
+ARM1022E
+31 14131211109 8 7 6 3.210
+vit RIS wic] IM
+
+Figure 14.13
+
+CP15:cl register control bits in the MMU.
+
+The first parameter passed to the procedure is an unsigned integer containing the state of
+the control values you want to change. The second parameter, mask, is a bit pattern that
+selects the bits that need changing. A bit set to one in the mask variable changes the bit in
+the CP15:clc0 register to the value of the same bit in the value input parameter. A zero
+leaves the bit in the control register unchanged, regardless of the bit state in the value
+
+parameter.

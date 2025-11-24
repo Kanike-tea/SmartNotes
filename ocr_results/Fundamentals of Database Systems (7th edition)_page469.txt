@@ -1,0 +1,52 @@
+13.3 XML Documents, DTD, and XML Schema
+
+439
+
+Figure 13.5 (continued)
+An XML schema file called company.
+
+<xsd:complexType name="Project">
+<xsd:sequence>
+<xsd:element name="projectName" type="xsd:string” />
+<xsd:element name=“projectNumber” type="xsd:string” />
+<xsd:element name="projectLocation” type="xsd:string” />
+<xsd:element name="projectDepartmentNumber” type="xsd:string” />
+<xsd:element name="projectWorker” type="Worker” minOccurs="1" maxOccurs="unbounded” />
+</xsd:sequence>
+<Ixsd:complexType>
+<xsd:complexType name="Dependent">
+<xsd:sequence>
+<xsd:element name=“dependentName” type="xsd:string” />
+<xsd:element name=“dependentSex” type="xsd:string” />
+<xsd:element name=“dependentBirthDate” type="xsd:date” />
+<xsd:element name=“dependentRelationship” type="xsd:string” />
+</xsd:sequence>
+<Ixsd:complexType>
+<xsd:complexType name="Address">
+<xsd:sequence>
+<xsd:element name=“number” type="xsd:string” />
+<xsd:element name="street” type="xsd:string” />
+<xsd:element name="city” type="xsd:string” />
+<xsd:element name="state” type="xsd:string” />
+</xsd:sequence>
+<Ixsd:complexType>
+<xsd:complexType name="Name"
+<xsd:sequence>
+<xsd:element name="firstName” type="xsd:string” />
+<xsd:element name="middleName” type="xsd:string” />
+<xsd:element name="lastName” type="xsd:string” />
+</xsd:sequence>
+<Ixsd:complexType>
+<xsd:complexType name="Worker">
+<xsd:sequence>
+<xsd:element name="SSN" type="xsd:string” />
+<xsd:element name="hours” type="xsd:float” />
+</xsd:sequence>
+<Ixsd:complexType>
+<xsd:complexType name="WorksOn">
+<xsd:sequence>
+<xsd:element name=“projectNumber” type="xsd:string” />
+<xsd:element name="hours” type="xsd:float” />
+</xsd:sequence>
+<Ixsd:complexType>
+</xsd:schema>

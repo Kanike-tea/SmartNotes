@@ -1,0 +1,56 @@
+COMPUTER ORGANIZATION (21¢834) Module 3
+
+1. BASIC OPERATIONAL CONCEPTS:
+
+The program to be executed is stored in memory. Instructions are accessed from memory to the
+processor one by one and executed.
+STEPS FOR INSTRUCTION EXECUTION
+Consider the following instruction
+Ex: 1 Add LOCA, Ro
+This instruction is in the form of the following instruction format
+Opcode Source, Destination
+Where Add is the operation code, LOCA is the Memory operand and Ro is Register operand
+This instruction adds the contents of memory location LOCA with the contents of Register Ro and
+the result is stored in Ro Register.
+The symbolic representation of this instruction is
+Ro [LOCA] + [Ro]
+
+The contents of memory location LOCA and Register Ro before and after the execution of this
+instruction is as follows
+
+Before instruction execution After instruction execution
+LOCA = 23H LOCA = 23H
+Ro = 22H Ro = 45H
+
+The steps for instruction execution are as follows
+1. Fetch the instruction from memory into the IR (instruction register in CPU).
+
+2. Decode the instruction 1111000000 10011010
+
+3. Access the Memory Operand
+
+4. Access the Register Operand
+
+5. Perform the operation according to the Operation Code.
+
+6. Store the result into the Destination Memory location or Destination Register.
+
+Ex:2 Add Ri, R2, R3
+
+This instruction is in the form of the following instruction format
+Opcode, Source-1, Source-2, Destination
+
+Where R1 is Source Operand-1, R2 is the Source‘Operand-2 and R3, is the Destination. This
+instruction adds the contents of Register R1 withthe contents of R2 and the result is placed in R3
+Register.
+
+The symbolic representation of this instruction is
+
+R3<—R1] + [R2]
+The contents of Registers R1,R2,R3 before and after the execution of this instruction is as follows.
+Before instruction execution After instruction execution
+R1 =24H R1 = 24H
+R2 = 34H R2 = 34H
+R3 = 38H R3 =58H
+
+Dr. Ajay V G, Dept. of CSE, SVIT 7

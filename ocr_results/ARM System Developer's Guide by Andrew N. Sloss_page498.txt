@@ -1,0 +1,47 @@
+13.3 Demonstration of an MPU system 485.
+
+regionSet (region->number, region->baseaddress,
+region->size, R_DISABLE) ;
+
+/* Step 2 - Set access permission for each region using CP15:c5 */
+
+if (region->type == STANDARD)
+{
+
+regionSetISAP(region->number, region->IAP);
+regionSetDSAP(region->number, region->DAP) ;
+
+else if (region->type == EXTENDED)
+
+{
+regionSetIEAP(region->number, region->IAP);
+regionSetDEAP(region->number, region->DAP) ;
+}
+/* Step 3 - Set the cache and write buffer attributes */
+/* for each region using CP15:c2 for cache */
+/* and CP15:c3 for the write buffer. */
+
+regionSetCB(region->number, region->CB) ;
+
+/* Step 4 - Enable the caches, write buffer and the MPU */
+/* using CP15:c6 and CP15:cl */
+
+regionSet (region->number, region->baseaddress,
+region->size, region->enable) ;
+
+13.3.5 PUTTING IT ALL TOGETHER, INITIALIZING THE MPU
+
+For the demonstration, we use the RCB to store data describing all regions. To initialize the
+MPU we use a top-level routine named initActiveRegions. The routine is called once
+for each active region when the system starts up. To complete the initialization, the routine
+also enables the MPU. The routine has the following C function prototype:
+
+void initActiveRegions();
+
+The routine has no input parameters.
+
+ExamMPLeE The routine first calls configRegion once for each region that is active at system startup:
+13.7 the kernelRegion, the sharedRegion, the peripheralRegion, and the task1Region.
+In this demonstration task 1 is the first task entered. The last routine called is control Set,
+
+which enables the caches and MPU.

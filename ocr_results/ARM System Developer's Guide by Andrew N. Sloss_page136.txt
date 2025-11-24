@@ -1,0 +1,78 @@
+Figure 5.1
+
+5.5 Function Calls 123
+
+sp+16
+sp+12
+sp+8
+sp+4
+
+Sp
+
+‘Argument 8
+
+‘Argument 7
+
+‘Argument 6
+
+‘Argument 5
+
+‘Argument 4
+
+‘Argument 3
+
+‘Argument 2
+
+‘Argument 1
+
+‘Argument 0
+
+Return value
+
+ATPCS argument passing.
+
+The next example illustrates the benefits of using a structure pointer. First we show a
+typical routine to insert N bytes from array data into a queue. We implement the queue using
+a cyclic buffer with start address Q_start (inclusive) and end address Q_end (exclusive).
+
+char *queue_bytes_v1(
+*Q start,
+*Qend,
+
+*Q ptr,
+
+*data,
+
+char
+char
+char
+char
+
+unsigned int N)
+
+do
+{
+
+y*
+/*
+/*
+/*
+/*
+
+*(Q_ptrt++) = *(datat+);
+
+if (Q.ptr == Q end)
+
+{
+}
+
+} while (--N);
+return Q_ptr;
+
+Qptr = Q start;
+
+Queue buffer start address */
+Queue buffer end address */
+Current queue pointer position */
+Data to insert into the queue */
+Number of bytes to insert */

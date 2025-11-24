@@ -1,0 +1,53 @@
+972
+
+Chapter 26 Enhanced Data Models
+
+inserted in a single insert statement, we have to check if at least one of the newly
+inserted employee tuples is related to a department. In R1S, the condition
+
+EXISTS (SELECT + FROM INSERTED WHERE Dno IS NOT NULL )
+
+is checked, and if it evaluates to true, then the action is executed. The action updates in
+a single statement the DEPARTMENT tuple(s) related to the newly inserted employee(s)
+by adding their salaries to the Total_sal attribute of each related department. Because
+more than one newly inserted employee may belong to the same department, we use
+the SUM aggregate function to ensure that all their salaries are added.
+
+Rule R2S is similar to R1S, but is triggered by an UPDATE operation that updates
+the salary of one or more employees rather than by an INSERT. Rule R3S is triggered
+by an update to the Dno attribute of EMPLOYEE, which signifies changing one or
+more employees’ assignment from one department to another. There is no condi-
+tion in R3S, so the action is executed whenever the triggering event occurs.’ The
+action updates both the old department(s) and new department(s) of the reassigned
+employees by adding their salary to Total_sal of each new department and subtract-
+ing their salary from Total_sal of each old department.
+
+In our example, it is more complex to write the statement-level rules than the row-
+level rules, as can be illustrated by comparing Figures 26.2 and 26.5. However, this
+is not a general rule, and other types of active rules may be easier to specify when
+using statement-level notation than when using row-level notation.
+
+The execution model for active rules in STARBURST uses deferred consideration.
+That is, all the rules that are triggered within a transaction are placed in a set—
+called the conflict set—which is not considered for evaluation of conditions and
+execution until the transaction ends (by issuing its COMMIT WORK command).
+STARBURST also allows the user to explicitly start rule consideration in the middle
+of a transaction via an explicit PROCESS RULES command. Because multiple rules
+must be evaluated, it is necessary to specify an order among the rules. The syntax
+for rule declaration in STARBURST allows the specification of ordering among the
+rules to instruct the system about the order in which a set of rules should be consid-
+ered.'° Additionally, the transition tables—INSERTED, DELETED, NEW-UPDATED,
+and OLD-UPDATED—contain the net effect of all the operations within the transac-
+tion that affected each table, since multiple operations may have been applied to
+each table during the transaction.
+
+26.1.4 Potential Applications for Active Databases
+
+We now briefly discuss some of the potential applications of active rules. Obvi-
+ously, one important application is to allow notification of certain conditions that
+
+As in the Oracle examples, rules R1S and R2S can be written without a condition. However, it may be
+more efficient to execute them with the condition since the action is not invoked unless it is required.
+
+'lf no order is specified between a pair of rules, the system default order is based on placing the rule
+declared first ahead of the other rule,

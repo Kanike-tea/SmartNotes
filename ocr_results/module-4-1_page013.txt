@@ -1,0 +1,50 @@
+Data Structures and Applications (15CS33)
+
+Function for level order traversal of a binary tree:
+
+void levelOrder(treePointer ptr)
+(/* 1 order tree traversal */
+int front = rear = 0;
+treePointer queue [MAX-QUEVE-SIZE);
+if (!ptr) return; /* empty tree */
+addq (ptr);
+for (77) {
+ptr = deleteq();
+if (ptr) {
+printf ("%td" r-data);
+if(ptr-leftChild)
+addq(ptr->leftChild);
+if (ptr-righ rild)
+addq(ptr-srightChild);
+
+)
+
+else break;
+}
+
+Program _ : Level-order traversal of a binary tree
+ADDITIONAL BINARY TREE OPERATIONS
+
+1. Copying a Binary tree
+
+This operations will perform a copying of one binary tree to another.
+
+C function to copy a binary tree:
+
+treepointer copy(treepointer original)
+{ if(original)
+
+{ MALLOC(temp,sizeof(*temp));
+temp—leftchild=copy(original—leftchild);
+temp—rightchild=copy(original—rightchild) ;
+temp—data=original—data;
+return temp;
+
+}
+return NULL;
+
+2. Testing Equality
+This operation will determin the equivalance of two binary tree. Equivalance binary tree have
+the same strucutre and the same information in the corresponding nodes.
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

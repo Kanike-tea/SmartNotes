@@ -1,0 +1,50 @@
+Data Structures and Applications(BCS304) Module 2
+
+If the position is on the border then there are less than eight directions. To avoid checking for border
+conditions the maze can be surrounded by a border of ones. Thus an m*p maize will require an
+(m+2)*(p+2) array the entrance is at position [1][1] and exit is at [m][p]. The possible direction to
+move can be predefined in an array move as shown below where the eight possible directions are
+numbered from 0 to 7. For each direction we indicate the vertical and horizontal offset.
+
+typedef struct offset
+{
+
+Int vert;
+
+Int horiz;
+
+Offset move[8];
+
+Table of moves: The array moves is initialized according to the table given below.
+
+Name | Dir | Move[dir].vert Move[dir]horiz
+N 0 -1 0
+
+NE 1 -1 1
+
+E 2 0 1
+
+SE 3 1 1
+
+Ss 4 1 0
+
+SW 5 1 -1
+
+WwW 6 0 -1
+
+NW 7 -1 -1
+
+As we move through the maze, we may have the choice of several directions of movement. Since we
+do not know the best choice we save our current position and arbitrarily pick a possible move. By
+saving the current position we can return to it and try another path. A second two dimensional array
+can be maintained to keep track of the visited locations. The maze can be implemented by making use
+of a stack where the element is defined as follows.
+
+typedef struct element
+
+{
+int row;
+int col;
+int dir;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 11

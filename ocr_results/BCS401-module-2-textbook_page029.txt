@@ -1,0 +1,41 @@
+5.3 Binary Tree Traversals and Related Properties 183
+
+and right subtrees plus 1. (We have to add 1 to account for the extra level of the
+root.) Also note that it is convenient to define the height of the empty tree as —1.
+Thus, we have the following recursive algorithm.
+
+ALGORITHM = Height(T)
+//Computes recursively the height of a binary tree
+/Anput: A binary tree T
+//Output: The height of T
+if T = return —1
+else return max{Height(T).y,), Height(T,ign:)} + 1
+
+We measure the problem’s instance size by the number of nodes n(T) ina
+given binary tree 7. Obviously, the number of comparisons made to compute
+the maximum of two numbers and the number of additions A(n(7)) made by the
+algorithm are the same. We have the following recurrence relation for A(n(T)):
+
+A(T) = AQ Tieg)) + ATrighd) +b, for n(T) > 0,
+A(0) = 0.
+
+Before we solve this recurrence (can you tell what its solution is?), let us note
+that addition is not the most frequently executed operation of this algorithm. What
+is? Checking—and this is very typical for binary tree algorithms—that the tree is
+not empty. For example, for the empty tree, the comparison T = @ is executed
+once but there are no additions, and for a single-node tree, the comparison and
+addition numbers are 3 and 1, respectively.
+
+It helps in the analysis of tree algorithms to draw the tree’s extension by
+replacing the empty subtrees by special nodes. The extra nodes (shown by little
+squares in Figure 5.5) are called external; the original nodes (shown by little
+circles) are called internal. By definition, the extension of the empty binary tree
+is a single external node.
+
+Itis easy to see that the Height algorithm makes exactly one addition for every
+internal node of the extended tree, and it makes one comparison to check whether
+
+(a) (v)
+
+FIGURE 5.5 Binary tree (on the left) and its extension (on the right). Internal nodes are
+shown as circles; external nodes are shown as squares.

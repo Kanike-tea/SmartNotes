@@ -1,0 +1,55 @@
+16.5 Operations on Files
+
+Consider an EMPLOYEE file with fields Name, Ssn, Salary, Job_code, and Department.
+A simple selection condition may involve an equality comparison on some field
+value—for example, (Ssn = 123456789’) or (Department = ‘Research’). More com-
+plex conditions can involve other types of comparison operators, such as > or 2 ; an
+example is (Salary = 30000). The general case is to have an arbitrary Boolean expres-
+sion on the fields of the file as the selection condition.
+
+Search operations on files are generally based on simple selection conditions. A
+complex condition must be decomposed by the DBMS (or the programmer) to
+extract a simple condition that can be used to locate the records on disk. Each
+located record is then checked to determine whether it satisfies the full selection
+condition. For example, we may extract the simple condition (Department =
+‘Research’) from the complex condition ((Salary => 30000) AND (Department =
+‘Research’)); each record satisfying (Department = ‘Research’) is located and then
+tested to see if it also satisfies (Salary > 30000).
+
+When several file records satisfy a search condition, the first record—with respect
+to the physical sequence of file records—is initially located and designated the
+current record. Subsequent search operations commence from this record and
+locate the next record in the file that satisfies the condition.
+
+Actual operations for locating and accessing file records vary from system to sys-
+tem. In the following list, we present a set of representative operations. Typically,
+high-level programs, such as DBMS software programs, access records by using
+these commands, so we sometimes refer to program variables in the following
+descriptions:
+
+= Open. Prepares the file for reading or writing. Allocates appropriate buffers
+(typically at least two) to hold file blocks from disk, and retrieves the file
+header. Sets the file pointer to the beginning of the file.
+
+= Reset. Sets the file pointer of an open file to the beginning of the file.
+
+= Find (or Locate). Searches for the first record that satisfies a search condi-
+tion. Transfers the block containing that record into a main memory buffer
+(if it is not already there). The file pointer points to the record in the buffer
+and it becomes the current record. Sometimes, different verbs are used to
+indicate whether the located record is to be retrieved or updated.
+
+= Read (or Get). Copies the current record from the buffer to a program vari-
+able in the user program. This command may also advance the current
+record pointer to the next record in the file, which may necessitate reading
+the next file block from disk.
+
+= FindNext. Searches for the next record in the file that satisfies the search
+condition. Transfers the block containing that record into a main memory
+buffer (if it is not already there). The record is located in the buffer and
+becomes the current record. Various forms of FindNext (for example,
+FindNext record within a current parent record, FindNext record of a given
+type, or FindNext record where a complex condition is met) are available in
+legacy DBMSs based on the hierarchical and network models.
+
+565

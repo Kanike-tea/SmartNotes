@@ -1,0 +1,43 @@
+Table A.12
+
+A.3 Alphabetical List of ARM and Thumb Instructions 613
+
+6. STR<cond>{H} Rd, [Rn, {-}Rm] {!} ARMV4
+7, STR<cond>{H} Rd, [Rn], #{-}<immed8> ARMV4
+8. STR<cond>{H} Rd, [Rn], {-}Rm ARMV4
+9. STR<cond>D Rd, [Rn, {, #{-}<immed8>}]{!}  ARMVSE
+10. STR<cond>D Rd, [Rn, {-}Rm] {!} ARMV5E
+11. STR<cond>D Rd, [Rn], #{-}<immed8> ARMV5E
+12. STR<cond>D Rd, [Rn], {-}Rm ARMV5E
+13. STREX<cond> Rd, Rm, [Rn] ARMV6
+14. STR{|B|H} Ld, [Ln, #<immed5>*<size>] THUMBV1
+15. STR{|B|H} Ld, (Ln, Lm] THUMBV1
+16. STR Ld, [sp, #<immed8>*4] THUMBV1
+17. STR<cond><type> Rd, <Tabel> MACRO
+
+Formats | to 16 store a single data item of the type specified by the opcode suffix, using
+a preindexed or postindexed addressing mode. Tables A.12 and A.13 show the different
+addressing modes and data types.
+
+In Table A.13, memory(a, n) refers to n sequential bytes at address a. The bytes are
+packed according to the configured processor data endianness. memoryT (a, n) performs
+the access with user mode privileges, regardless of the current processor mode. The act
+of function IsExclusive(a) used by STREX depends on address a. If a has the shared
+TLB attribute, then IsExclusive(a) is true if address a is marked as exclusive for this
+processor. It then clears any exclusive accesses on this processor and any exclusive accesses
+to address a on other processors in the system. If a does not have the shared TLB attribute,
+then IsExclusive(a) is true if there is an outstanding exclusive access on this processor.
+It then clears any such outstanding access.
+
+STR addressing modes.
+
+Addressing format Address a accessed Value written back to Rn
+[Rn {,#{-}<immed>}] Rn + {{-}<immed>} Rn preserved
+
+[Rn {,#{-}<immed>}]! Rn + {{-}<immed>} Rn + {{-}<immed>}
+[Rn, {-}Rm {,<shift>}] Rn + {-}<shifted_Rm> Rn preserved
+
+[Rn, {-}Rm {,<shift>}]! Rn + {-}<shifted_Rm> Rn + {-}<shifted_Rm>
+[Rn], #{-}<immed> Rn Rn + {-}<immed>
+
+[Rn], {-}Rm {,<shift>} Rn Rn + {-}<shifted_Rm>

@@ -1,0 +1,53 @@
+Microcontrollers-BCS402
+
+Every processor mode except user mode can change mode by writing directly to the mode
+bits of the cpsr. All processor modes except system mode have a set of associated banked
+registers that are a subset of the main 16 registers. A banked register maps one-to-one onto a
+user mode register. If you change processor mode, a banked register from the new mode will
+
+replace an existing register.
+
+For example, when the processor is in the interrupt request mode, the instructions you
+execute still access registers named r13 and r14. However, these registers are the banked
+registers r13_irq and r14_irq. The user mode registers r13_usr and r14_usr are not affected
+by the instruction referencing these registers. A program still has normal access to the other
+
+registers r0 to r12.
+
+The processor mode can be changed by a program that writes directly to the cpsr (the
+processor core has to be in privileged mode) or by hardware when the core responds to an
+exception or interrupt. The following exceptions and interrupts cause a mode change: reset,
+interrupt request, fast interrupt request, software interrupt, data abort, prefetch abort, and
+undefined instruction. Exceptions and interrupts suspend the normal execution of sequential
+
+instructions and jump to a specific location.
+
+User mode
+
+r0
+rl
+12
+13
+r4
+rs
+ro
+17
+8
+
+rg
+T10 Interrupt
+
+TII request
+mode
+
+rl2
+r13 sp
+r14 Ir
+r15 pe
+
+cpsr
+- a spsr_irq
+
+Fig: Changing mode on an exception
+
+Dept. of ECE, GSSSIETW Page 20

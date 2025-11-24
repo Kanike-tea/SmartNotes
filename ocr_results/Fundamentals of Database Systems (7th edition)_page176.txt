@@ -1,0 +1,41 @@
+146
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+ERwin or Rational Rose in Lab Exercise 3.31. Modify this diagram by clas-
+sifying COURSES as either UNDERGRAD_COURSES or GRAD_COURSES
+and INSTRUCTORS as either JUNIOR_PROFESSORS or SENIOR_PROFESSORS.
+Include appropriate attributes for these new entity types. Then establish
+relationships indicating that junior instructors teach undergraduate courses
+whereas senior instructors teach graduate courses.
+
+Selected Bibliography
+
+Many papers have proposed conceptual or semantic data models. We give a repre-
+sentative list here. One group of papers, including Abrial (1974), Senko’s DIAM
+model (1975), the NIAM method (Verheijen and VanBekkum 1982), and Bracchi
+et al. (1976), presents semantic models that are based on the concept of binary rela-
+tionships. Another group of early papers discusses methods for extending the rela-
+tional model to enhance its modeling capabilities. This includes the papers by
+Schmid and Swenson (1975), Navathe and Schkolnick (1978), Codd’s RM/T model
+(1979), Furtado (1978), and the structural model of Wiederhold and Elmasri (1979).
+
+The ER model was proposed originally by Chen (1976) and is formalized in Ng
+(1981). Since then, numerous extensions of its modeling capabilities have been pro-
+posed, as in Scheuermann et al. (1979), Dos Santos et al. (1979), Teorey et al. (1986),
+Gogolla and Hohenstein (1991), and the entity-category-relationship (ECR) model
+of Elmasri et al. (1985). Smith and Smith (1977) present the concepts of generaliza-
+tion and aggregation. The semantic data model of Hammer and McLeod (1981)
+introduces the concepts of class/subclass lattices, as well as other advanced model-
+ing concepts.
+
+A survey of semantic data modeling appears in Hull and King (1987). Eick (1991)
+discusses design and transformations of conceptual schemas. Analysis of con-
+straints for n-ary relationships is given in Soutou (1998). UML is described in detail
+in Booch, Rumbaugh, and Jacobson (1999). Fowler and Scott (2000) and Stevens
+and Pooley (2000) give concise introductions to UML concepts.
+
+Fensel (2000, 2003) discusses the Semantic Web and application of ontologies.
+Uschold and Gruninger (1996) and Gruber (1995) discuss ontologies. The June
+2002 issue of Communications of the ACM is devoted to ontology concepts and
+applications. Fensel (2003) discusses ontologies and e-commerce.

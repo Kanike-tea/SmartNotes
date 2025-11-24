@@ -1,0 +1,52 @@
+Review Questions
+
+4.8 Summary
+
+In this chapter we discussed extensions to the ER model that improve its repre-
+sentational capabilities. We called the resulting model the enhanced ER or EER
+model. We presented the concept of a subclass and its superclass and the related
+mechanism of attribute/relationship inheritance. We saw how it is sometimes
+necessary to create additional classes of entities, either because of additional spe-
+cific attributes or because of specific relationship types. We discussed two main
+processes for defining superclass/subclass hierarchies and lattices: specialization
+and generalization.
+
+Next, we showed how to display these new constructs in an EER diagram. We also
+discussed the various types of constraints that may apply to specialization or gener-
+alization. The two main constraints are total/partial and disjoint/overlapping. We
+discussed the concept of a category or union type, which is a subset of the union of
+two or more classes, and we gave formal definitions of all the concepts presented.
+
+We introduced some of the notation and terminology of UML for representing
+specialization and generalization. In Section 4.7, we briefly discussed the discipline
+of knowledge representation and how it is related to semantic data modeling. We
+also gave an overview and summary of the types of abstract data representation
+concepts: classification and instantiation, identification, specialization and gener-
+alization, and aggregation and association. We saw how EER and UML concepts
+are related to each of these.
+
+Review Questions
+4.1. What is a subclass? When is a subclass needed in data modeling?
+
+4.2. Define the following terms: superclass of a subclass, superclass/subclass rela-
+tionship, IS-A relationship, specialization, generalization, category, specific
+(local) attributes, and specific relationships.
+
+4.3. Discuss the mechanism of attribute/relationship inheritance. Why is it use-
+ful?
+
+4.4. Discuss user-defined and predicate-defined subclasses, and identify the dif-
+ferences between the two.
+
+4.5. Discuss user-defined and attribute-defined specializations, and identify the
+differences between the two.
+
+4.6. Discuss the two main types of constraints on specializations and generalizations.
+
+4.7. What is the difference between a specialization hierarchy and a specializa-
+tion lattice?
+
+4.8. What is the difference between specialization and generalization? Why do
+we not display this difference in schema diagrams?
+
+135

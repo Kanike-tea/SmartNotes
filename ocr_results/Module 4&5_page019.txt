@@ -1,0 +1,47 @@
+Microcontrollers - BCS402
+
+Debug capabiliy is provided in the form of a module or monitor that provides software assistance
+
+for debugging code running on a hardware target. This assistance includes the following:
+
+e Setting up breakpoints in RAM. A breakpoint allows a program to be interrupted and the
+state of the processor core to be examined.
+
+e Listing and modifying memory (using peek and poke operations).
+
+e Showing current processor register contents.
+
+e Disassembling memory into ARM and Thumb instruction mnemonics.
+
+These are interactive functions: One can either send the commands through a command line
+interpreter (CLI) or through a dedicated host debugger attached to the target platform. Unless the
+firmware has access to the internal hardware debug circuitry, only RAM images can be
+
+debugged through a software debug mechanism.
+
+The second stage is to abstract the hardware. The Hardware Abstraction Layer (HAL) is a
+software layer that hides the underlying hardware by providing a set of defined programming
+interfaces. When you move to a new target platform, these programming interfaces remain
+
+constant but the underlying implementation changes.
+
+The HAL software that communicates with specific hardware peripherals is called a device
+driver. A device driver provides a standard application programming interface (API) to read and
+
+write to a specific peripheral.
+
+The third stage is to load a bootable image. The ability of firmware to carry out this activity
+depends upon the type of media used to store the image. Note that not all operating system
+images or application images need to be copied into RAM. The operating system image or
+
+application image can simply execute directly from ROM.
+3.2 ARM Firmware Suite
+
+ARM has developed a firmware package called the ARM Firmware Suite (AFS). AFS is
+designed purely for ARM-based embedded systems. It provides support for a number of boards
+
+and processors including the Intel XScale and StrongARM processors.
+
+The package includes two major pieces of technology,
+
+Dept. of ECE, GSSSIETW, Mysuru Page 20

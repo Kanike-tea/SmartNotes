@@ -1,0 +1,53 @@
+17.7 Physical Database Design in Relational Databases
+
+17.7.2 Physical Database Design Decisions
+
+Most relational systems represent each base relation as a physical database file. The
+access path options include specifying the type of primary file organization for each
+relation and the attributes that are candidates for defining individual or composite
+indexes. At most, one of the indexes on each file may be a primary or a clustering
+index. Any number of additional secondary indexes can be created.
+
+Design Decisions about Indexing. The attributes whose values are required
+in equality or range conditions (selection operation) are those that are keys or
+that participate in join conditions (join operation) requiring access paths, such
+as indexes.
+
+The performance of queries largely depends upon what indexes or hashing schemes
+exist to expedite the processing of selections and joins. On the other hand, during
+insert, delete, or update operations, the existence of indexes adds to the overhead.
+This overhead must be justified in terms of the gain in efficiency by expediting que-
+ries and transactions.
+
+The physical design decisions for indexing fall into the following categories:
+
+1. Whether to index an attribute. The general rules for creating an index on
+an attribute are that the attribute must either be a key (unique), or there
+must be some query that uses that attribute either in a selection condition
+(equality or range of values) or in a join condition. One reason for creating
+multiple indexes is that some operations can be processed by just scanning
+the indexes, without having to access the actual data file.
+
+2. What attribute or attributes to index on. An index can be constructed on a
+single attribute, or on more than one attribute if it is a composite index. If
+multiple attributes from one relation are involved together in several que-
+ries, (for example, (Garment_style_#, Color) in a garment inventory database),
+a multiattribute (composite) index is warranted. The ordering of attributes
+within a multiattribute index must correspond to the queries. For instance,
+the above index assumes that queries would be based on an ordering of col-
+ors within a Garment_style_# rather than vice versa.
+
+3. Whether to set up a clustered index. At most, one index per table can be a
+primary or clustering index, because this implies that the file be physically
+ordered on that attribute. In most RDBMSs, this is specified by the keyword
+CLUSTER. (If the attribute is a key, a primary index is created, whereas a
+clustering index is created if the attribute is not a key.) If a table requires sev-
+eral indexes, the decision about which one should be the primary or cluster-
+ing index depends upon whether keeping the table ordered on that attribute
+is needed. Range queries benefit a great deal from clustering. If several attri-
+butes require range queries, relative benefits must be evaluated before decid-
+ing which attribute to cluster on. If a query is to be answered by doing an
+index search only (without retrieving data records), the corresponding index
+should not be clustered, since the main benefit of clustering is achieved
+
+645

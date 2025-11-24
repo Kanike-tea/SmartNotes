@@ -1,0 +1,42 @@
+Microcontrollers - BCS402
+
+An interrupt controller connects multiple external interrupts to one of the two ARM interrupt
+requests. Sophisticated controllers can be programmed to allow an external interrupt source to
+
+cause either an IRQ or FIQ exception.
+When it comes to assigning interrupts, system designers have adopted a standard design practice:
+
+¢ Software Interrupts are normally reserved to call privileged operating system routines.
+For example, an SWI instruction can be used to change a program running in user mode
+to a privileged mode.
+
+e Interrupt Requests are normally assigned for general-purpose interrupts. For example, a
+periodic timer interrupt to force a context switch tends to be an IRQ exception. The IRQ
+exception has a lower priority and higher interrupt latency (to be discussed in the next
+section) than the FIQ exception.
+
+e Fast Interrupt Requests are normally reserved for a single interrupt source that requires a
+fast response time—for example, direct memory access specifically used to move blocks
+of memory. Thus, in an embedded operating system design, the FIQ exception is used for
+a specific application, leaving the IRQ exception for more general operating system
+
+activities.
+2.2 Interrupt Latency
+
+Interrupt latency—the interval of time from an external interrupt request signal being raised to
+
+the first fetch of an instruction of a specific interrupt service routine (ISR).
+
+Interrupt latency depends on a combination of hardware and software. System architects must
+balance the system design to handle multiple simultaneous interrupt sources and minimize
+interrupt latency. If the interrupts are not handled in a timely manner, then the system will
+
+exhibit slow response times.
+
+Software handlers have two main methods to minimize interrupt latency. The first method is to
+use a nested interrupt handler, which allows further interrupts to occur even when currently
+servicing an existing interrupt (see Figure 3). This is achieved by re enabling the interrupts as
+
+soon as the interrupt source has been serviced (so it won’t generate more interrupts) but before
+
+Dept. of ECE, GSSSIETW, Mysuru Page 10

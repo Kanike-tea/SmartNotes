@@ -1,0 +1,50 @@
+9.1 Exception Handling 321
+
+9.1.3. EXCEPTION PRIORITIES
+
+Table 9.3
+
+Exceptions can occur simultaneously, so the processor has to adopt a priority mechanism.
+Table 9.3 shows the various exceptions that occur on the ARM processor and their associ-
+ated priority level. For instance, the Reset exception is the highest priority and occurs when
+power is applied to the processor. Thus, when a reset occurs, it takes precedence over all
+other exceptions. Similarly, when a Data Abort occurs, it takes precedence over all other
+exceptions apart from a Reset exception. The lowest priority level is shared by two excep-
+tions, the Software Interrupt and Undefined Instruction exceptions. Certain exceptions
+also disable interrupts by setting the J or F bits in the cpsr, as shown in Table 9.3.
+
+Each exception is dealt with according to the priority level set out in Table 9.3. The
+following is a summary of the exceptions and how they should be handled, starting with
+the highest.
+
+The Reset exception is the highest priority exception and is always taken whenever it is
+signaled. The reset handler initializes the system, including setting up memory and caches.
+External interrupt sources should be initialized before enabling IRQ or FIQ interrupts to
+avoid the possibility of spurious interrupts occurring before the appropriate handler has
+been set up. The reset handler must also set up the stack pointers for all processor modes.
+
+During the first few instructions of the handler, it is assumed that no exceptions or
+interrupts will occur. The code should be designed to avoid SWIs, undefined instructions,
+and memory accesses that may abort, that is, the handler is carefully implemented to avoid
+further triggering of an exception.
+
+Data Abort exceptions occur when the memory controller or MMU indicates that an
+invalid memory address has been accessed (for example, if there is no physical memory
+for an address) or when the current code attempts to read or write to memory without the
+correct access permissions. An FIQ exception can be raised within a Data Abort handler
+since FIQ exceptions are not disabled. When the FIQ is completely serviced, control is
+returned back to the Data Abort handler.
+
+A Fast Interrupt Request (FIQ) exception occurs when an external peripheral sets the
+FIQ pin to nFIQ. An FIQ exception is the highest priority interrupt. The core disables
+
+Exception priority levels.
+
+Exceptions Priority Ibit Fbit
+Reset 1 1 1
+Data Abort 2 1 _—
+Fast Interrupt Request 3 1 1
+Interrupt Request 4 1 _—
+Prefetch Abort 5 1 _
+Software Interrupt 6 1 _
+Undefined Instruction 6 1 _

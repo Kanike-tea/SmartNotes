@@ -1,0 +1,55 @@
+506
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+Some of the additional functional dependencies that we can infer from F are the
+following:
+
+Ssn — {Dname, Dmgr_ssn}
+Ssn > Ssn
+Dnumber — Dname
+
+The closure F* of F is the set of all functional dependencies that can be inferred
+from F. To determine a systematic way to infer dependencies, we must discover a
+set of inference rules that can be used to infer new dependencies from a given set of
+dependencies. We consider some of these inference rules next. We use the notation
+F|=X > Y to denote that the functional dependency X — Y is inferred from the set
+of functional dependencies F.
+
+In the following discussion, we use an abbreviated notation when discussing func-
+tional dependencies. We concatenate attribute variables and drop the commas
+for convenience. Hence, the FD {X,Y} — Z is abbreviated to XY — Z, and the
+FD {X, Y, Z} > {U, V} is abbreviated to XYZ — UV. We present below three rules
+IR1 through IRS that are well-known inference rules for functional dependencies.
+They were proposed first by Armstrong (1974) and hence are known as
+Armstrong’s axioms.!
+
+IR1 (reflexive rule): If XD Y, then X >Y.
+IR2 (augmentation rule)*: {X > Y} |=XZ > YZ.
+IRS (transitive rule): {X > Y, Y > Z} |=X > Z.
+
+Armstrong has shown that inference rules IR1 through IR3 are sound and complete.
+By sound, we mean that given a set of functional dependencies F specified on a rela-
+tion schema R, any dependency that we can infer from F by using IR1 through IR3
+holds in every relation state r of R that satisfies the dependencies in F. By complete,
+we mean that using IR1 through IR3 repeatedly to infer dependencies until no more
+dependencies can be inferred results in the complete set of all possible dependencies
+that can be inferred from F. In other words, the set of dependencies F*, which we
+called the closure of F, can be determined from F by using only inference rules IR1
+through IR3.
+
+The reflexive rule (IR1) states that a set of attributes always determines itself or any of its
+subsets, which is obvious. Because IR1 generates dependencies that are always true, such
+dependencies are called trivial. Formally, a functional dependency X — Y is trivial if
+X 2 Y; otherwise, it is nontrivial. The augmentation rule (IR2) says that adding the
+same set of attributes to both the left- and right-hand sides of a dependency results in
+another valid dependency. According to IR3, functional dependencies are transitive.
+
+'They are actually inference rules rather than axioms. In the strict mathematical sense, the axioms (given
+facts) are the functional dependencies in F, since we assume that they are correct, whereas IR1 through
+IR3 are the inference rules for inferring new functional dependencies (new facts).
+
+The reflexive rule can also be stated as X > X; that is, any set of attributes functionally determines itself.
+
+3The augmentation rule can also be stated as X—» Y[= XZ Y; that is, augmenting the left-hand-side
+attributes of an FD produces another valid FD.

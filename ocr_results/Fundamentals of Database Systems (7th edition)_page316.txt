@@ -1,0 +1,81 @@
+286 Chapter 8 The Relational Algebra and Relational Calculus
+
+b.
+
+c
+
+List the names of all employees whose supervisor’s supervisor has
+“888665555’ for Ssn.
+
+List the names of employees who make at least $10,000 more than the
+employee who is paid the least in the company.
+
+8.33. State whether the following conclusions are true or false:
+
+a.
+b.
+
+c
+
+NOT (P(x) OR Q(x)) > (NOT (P(x)) AND (NOT (Q(x)))
+NOT (Sx) (P(x)) > W x (NOT (P(x))
+(Ax) (P(x)) > V x ((P@))
+
+Laboratory Exercises
+
+8.34. Specify and execute the following queries in relational algebra (RA) using
+the RA interpreter on the COMPANY database schema in Figure 5.5.
+
+8.35.
+
+a.
+
+eo
+
+cy
+
+List the names of all employees in department 5 who work more than 10
+hours per week on the ProductX project.
+
+. List the names of all employees who have a dependent with the same first
+
+name as themselves.
+
+. List the names of employees who are directly supervised by Franklin Wong.
+. List the names of employees who work on every project.
+. List the names of employees who do not work on any project.
+
+f. List the names and addresses of employees who work on at least one
+
+9.
+
+project located in Houston but whose department has no location in
+Houston.
+
+List the names of department managers who have no dependents.
+
+Consider the following MAILORDER relational schema describing the data
+for a mail order company.
+
+PARTS(Pno, Pname, Qoh, Price, Olevel)
+CUSTOMERS (Cno, Cname, Street, Zip, Phone)
+EMPLOYEES (Eno, Ename, Zip, Hdate)
+ZIP_CODES{Zip, City)
+
+ORDERS (Ono, Cno, Eno, Received, Shipped)
+ODETAILS(Ono, Pno, Qty)
+
+Qoh stands for quantity on hand: the other attribute names are self-
+explanatory. Specify and execute the following queries using the RA
+interpreter on the MAILORDER database schema.
+
+a.
+b.
+
+Retrieve the names of parts that cost less than $20.00.
+Retrieve the names and cities of employees who have taken orders for
+parts costing more than $50.00.
+
+. Retrieve the pairs of customer number values of customers who live in
+
+the same ZIP Code.

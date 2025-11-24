@@ -1,0 +1,68 @@
+8.5.
+
+8.6.
+8.7.
+
+8.8.
+
+What role does the concept of foreign key play when specifying the most
+common types of meaningful join operations?
+
+What is the FUNCTION operation? For what is it used?
+
+How are the OUTER JOIN operations different from the INNER JOIN opera-
+tions? How is the OUTER UNION operation different from UNION?
+
+In what sense does relational calculus differ from relational algebra, and in
+what sense are they similar?
+
+8.9. How does tuple relational calculus differ from domain relational calculus?
+
+8.10. Discuss the meanings of the existential quantifier (4) and the universal
+quantifier (‘V).
+
+8.11. Define the following terms with respect to the tuple calculus: tuple variable,
+range relation, atom, formula, and expression.
+
+8.12. Define the following terms with respect to the domain calculus: domain
+variable, range relation, atom, formula, and expression.
+
+8.13. What is meant by a safe expression in relational calculus?
+
+8.14. When is a query language called relationally complete?
+
+Exercises
+
+8.15. Show the result of each of the sample queries in Section 8.5 as it would apply
+to the database state in Figure 5.6.
+
+8.16. Specify the following queries on the COMPANY relational database schema
+
+shown in Figure 5.5 using the relational operators discussed in this chapter.
+Also show the result of each query as it would apply to the database state in
+Figure 5.6.
+
+a. Retrieve the names of all employees in department 5 who work more
+than 10 hours per week on the ProductX project.
+
+b. List the names of all employees who have a dependent with the same first
+name as themselves.
+
+c. Find the names of all employees who are directly supervised by ‘Franklin
+Wong’.
+
+d. For each project, list the project name and the total hours per week (by all
+employees) spent on that project.
+
+e. Retrieve the names of all employees who work on every project.
+
+f. Retrieve the names of all employees who do not work on any project.
+
+g. For each department, retrieve the department name and the average sal-
+ary of all employees working in that department.
+
+h. Retrieve the average salary of all female employees.
+
+Exercises
+
+281

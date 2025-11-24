@@ -1,0 +1,51 @@
+Table 13.7
+
+13.2 Initializing the MPU, Caches, and Write Buffer 475
+
+Bit field assignments for CP15:c2 and CP15:c3 registers.
+
+Region cache fields Region write buffer fields
+Region Field name Bit fields Field name Bit fields
+0 0 {0} b0 [0]
+1 cl fa] bl 1]
+2 2 [2] b2 22]
+3 3 [3] 63 3]
+4 c [4] b4 (4]
+5 5 [5] b5 [5]
+6 6 (6] b6 (6)
+7 7 7] b7 (7)
+
+cache bit. If the controller finds a valid cache entry, it will use the cached data over data in
+external memory.
+
+Because of this cache behavior, you need to flush and possibly clean the cache in a region
+where the cache policy changes from cached to noncached. Consequently, the MPU control
+system must always flush the cache when changing the cache policy from writethrough to
+noncached. It must always clean and flush the cache when changing the cache policy
+from writeback to noncached. It must also clean the cache when changing the cache policy
+from writeback to writethrough. See Chapter 12 for routines to clean and/or flush the cache.
+
+In the ARM946E-S, if the cache bit is clear, information physically in cache will not be
+returned from the cache, and an external memory access is performed instead. This design
+lightens the requirement to flush the cache when it is disabled. However, the cleaning rules
+for the old region still apply.
+
+The eight region write buffer bits in the register CP15:c3:c0:0 enable or disable the write
+buffer for each region (again see Figure 13.5).
+
+When configuring data regions, the region cache and write buffer bits together deter-
+mine the policy of the region. The write buffer bit has two uses; it enables or disables the
+write buffer for a region and sets the region cache write policy. The region cache bit controls
+the purpose of the write buffer bit. When the cache bit is zero, the buffer bit enables the
+write buffer when its value is one and disables the write buffer when its value is zero. When
+the cache bit is set to one, the cache and write buffer are both enabled and the buffer bit
+determines the cache write policy. The region uses a writethrough policy if the buffer bit
+is zero and a writeback policy if the buffer bit is set. Table 13.8 gives a tabular view of the
+various states of the cache and write buffer bits and their meanings. For more details on
+writeback and writethrough policies, see Section 12.3.1.
+
+We supply two routines to demonstrate enabling and disabling the caches and write
+buffer. The two routines use the inline assembler to read and write to the CP15 registers.
+
+We combine control of the cache and write buffer into a single routine call to simplify
+system configuration. We reference both the data cache and write buffer bits by the write

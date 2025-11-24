@@ -1,0 +1,39 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+¢ The staring address to ISR is called the interrupt vector.
+« Processor
+— loads interrupt-vector into PC &
+— executes appropriate ISR.
+« When processor is ready to receive interrupt-vector code, it activates INTA line.
+
+¢ Then, I/O-device responds by sending its interrupt-vector code & turning off the
+INTR signal.
+
+¢ The interrupt vector also includes a new value for the Processor Status Register
+
+INTERRUPT NESTING
+
+¢ A multiple-priority scheme is implemented by using separate INTR & INTA lines for
+each device
+
+¢ Each INTR line is assigned a different priority-level as shown in Figure.
+
+Processor
+
+Priority
+
+« Each device has a separate interrupt-request and interrupt-acknowledge line.
+¢ Each interrupt-request line is assigned a different priority level.
+
+¢ Interrupt requests received over these lines are sent to a priority arbitration circuit
+in the processor.
+
+¢ If the interrupt request has a higher priority level than the priority of the processor,
+then the request is accepted.
+
+¢ Priority-level of processor is the priority of program that is currently being executed.
+
+¢ Processor accepts interrupts only from devices that have higher-priority than its
+own.
+
+Dr.Ajay V G, Dept. of CSE 12

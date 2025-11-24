@@ -1,0 +1,53 @@
+21.2 Concurrency Control Based on Timestamp Ordering
+
+because of the deadlock problem. A different approach to concurrency control
+involves using transaction timestamps to order transaction execution for an equiv-
+alent serial schedule. In Section 21.2.1, we discuss timestamps; and in Section 21.2.2,
+we discuss how serializability is enforced by ordering conflicting operations in dif-
+ferent transactions based on the transaction timestamps.
+
+21.2.1 Timestamps
+
+Recall that a timestamp is a unique identifier created by the DBMS to identify a
+transaction. Typically, timestamp values are assigned in the order in which the
+transactions are submitted to the system, so a timestamp can be thought of as the
+transaction start time. We will refer to the timestamp of transaction T as TS(T).
+Concurrency control techniques based on timestamp ordering do not use locks;
+hence, deadlocks cannot occur.
+
+Timestamps can be generated in several ways. One possibility is to use a counter that
+is incremented each time its value is assigned to a transaction. The transaction time-
+stamps are numbered 1, 2, 3, ... in this scheme. A computer counter has a finite
+maximum value, so the system must periodically reset the counter to zero when no
+transactions are executing for some short period of time. Another way to implement
+timestamps is to use the current date/time value of the system clock and ensure that
+no two timestamp values are generated during the same tick of the clock.
+
+21.2.2 The Timestamp Ordering Algorithm
+for Concurrency Control
+
+The idea for this scheme is to enforce the equivalent serial order on the transac-
+tions based on their timestamps. A schedule in which the transactions participate
+is then serializable, and the only equivalent serial schedule permitted has the trans-
+actions in order of their timestamp values. This is called timestamp ordering
+(TO). Notice how this differs from 2PL, where a schedule is serializable by being
+equivalent to some serial schedule allowed by the locking protocols. In timestamp
+ordering, however, the schedule is equivalent to the particular serial order corre-
+sponding to the order of the transaction timestamps. The algorithm allows inter-
+leaving of transaction operations, but it must ensure that for each pair of conflicting
+operations in the schedule, the order in which the item is accessed must follow the
+timestamp order. To do this, the algorithm associates with each database item X
+two timestamp (TS) values:
+
+1. read_TS(X). The read timestamp of item X is the largest timestamp
+among all the timestamps of transactions that have successfully read item
+X—that is, read_TS(X) = TS(T), where T is the youngest transaction that
+has read X successfully.
+
+2. write_TS(X). The write timestamp of item X is the largest of all the time-
+stamps of transactions that have successfully written item X—that is,
+write_TS(X) = TS(T), where T is the youngest transaction that has written
+X successfully. Based on the algorithm, T will also be the last transaction
+to write item X, as we shall see.
+
+793

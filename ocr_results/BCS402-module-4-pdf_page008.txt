@@ -1,0 +1,39 @@
+MICROCONTROLLER(BCS402)
+
+5) The processor branches to a specific entry in the vector table.
+
+Example 4.5: what happens when an IRQ exception is raised when the
+processor is in user mode?
+
+IRQ
+
+-| nzevqjIft_irg
+spsr_irgq=cpsr
+
+r14_irg=pc
+pc=0x18
+
+- | Software
+handler
+
+Figure 4.4 Interrupt Request IRQ).
+i. The processor starts in state 1 In this mode both the IRQ and FIQ exception
+bits in the cpsr are enabled.
+ii. When an IRQ occurs the processor moves into state 2.->
+a) This transition automatically sets the IRQ bit to one, disabling any further
+IRQ exceptions,
+b) The FIQ exception remains enabled because FIQ has a higher priority and
+does not get disabled when a low-priority IRQ exception is raised,
+c) The cpsr processor mode changes to IRQ mode,
+d) The user mode cpsr is automatically copied into spsr_irq,
+e) Register rl4_irq is assigned the value of the pc when the interrupt was raised,
+f) The pc is then set to the IRQ entry +0x18 in the vector table.
+iii. In state 3 the software handler takes over and calls the appropriate interrupt
+service routine to service the source of the interrupt. After completion, the
+processor mode reverts back to the original user mode code in state 1.
+
+Example 4.6 what happens when an FIQ exception is raised when the
+processor is in user mode?
+Figure 4.5 shows an example of an FIQ exception.
+
+Figure 4.5 Fast Interrupt Request (FIQ).

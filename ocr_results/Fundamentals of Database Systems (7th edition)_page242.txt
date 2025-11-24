@@ -1,0 +1,51 @@
+212 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+In general, a query written with nested select-from-where blocks and using the = or
+IN comparison operators can always be expressed as a single block query. For exam-
+ple, Q16 may be written as in Q16A:
+
+Q16A: SELECT E.Fname, E.Lname
+FROM EMPLOYEE AS E, DEPENDENT AS D
+WHERE E.Ssn = D.Essn AND E.Sex = D.Sex
+AND E.Fname = D.Dependent_name;
+
+7.1.4 The EXISTS and UNIQUE Functions in SQL
+
+EXISTS and UNIQUE are Boolean functions that return TRUE or FALSE; hence,
+they can be used in a WHERE clause condition. The EXISTS function in SQL is used
+to check whether the result of a nested query is empty (contains no tuples) or not.
+The result of EXISTS is a Boolean value TRUE if the nested query result contains at
+least one tuple, or FALSE if the nested query result contains no tuples. We illustrate
+the use of EXISTS—and NOT EXISTS—with some examples. First, we formulate
+Query 16 in an alternative form that uses EXISTS as in Q16B:
+
+Q16B: SELECT E.Fname, E.Lname
+FROM EMPLOYEE AS E
+WHERE EXISTS ( SELECT *
+FROM DEPENDENT AS D
+WHERE E.Ssn = D.Essn AND E.Sex = D.Sex
+AND E.Fname = D.Dependent_name);
+
+EXISTS and NOT EXISTS are typically used in conjunction with a correlated nested
+query. In Q16B, the nested query references the Ssn, Fname, and Sex attributes of
+the EMPLOYEE relation from the outer query. We can think of Q16B as follows: For
+each EMPLOYEE tuple, evaluate the nested query, which retrieves all DEPENDENT
+tuples with the same Essn, Sex, and Dependent_name as the EMPLOYEE tuple; if at
+least one tuple EXISTS in the result of the nested query, then select that EMPLOYEE
+tuple. EXISTS(Q) returns TRUE if there is at least one tuple in the result of the nested
+query Q, and returns FALSE otherwise. On the other hand, NOT EXISTS(Q) returns
+TRUE if there are no tuples in the result of nested query Q, and returns FALSE other-
+wise. Next, we illustrate the use of NOT EXISTS.
+
+Query 6. Retrieve the names of employees who have no dependents.
+
+Q6: SELECT — Fame, Lname
+FROM EMPLOYEE
+WHERE = NOTEXISTS (SELECT ~*~
+FROM DEPENDENT
+WHERE — Ssn=Essn);
+
+In Q6, the correlated nested query retrieves all DEPENDENT tuples related to a
+particular EMPLOYEE tuple. If none exist, the EMPLOYEE tuple is selected because
+the WHERE-clause condition will evaluate to TRUE in this case. We can explain
+Q6 as follows: For each EMPLOYEE tuple, the correlated nested query selects all

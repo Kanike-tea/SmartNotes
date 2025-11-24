@@ -1,0 +1,50 @@
+104 Chapter 5 Efficient C Programming
+
+5.1 OVERVIEW OF C COMPILERS AND OPTIMIZATION
+
+‘This chapter assumes that you are familiar with the C language and have some knowledge
+of assembly programming. The latter is not essential, but is useful for following the
+compiler output examples. See Chapter 3 or Appendix A for details of ARM assembly
+syntax.
+
+Optimizing code takes time and reduces source code readability. Usually, it’s only
+worth optimizing functions that are frequently executed and important for performance.
+We recommend you use a performance profiling tool, found in most ARM simulators, to
+find these frequently executed functions. Document nonobvious optimizations with source
+code comments to aid maintainability.
+
+C compilers have to translate your C function literally into assembler so that it works for
+all possible inputs. In practice, many of the input combinations are not possible or won’t
+occur. Let’s start by looking at an example of the problems the compiler faces. The memc] r
+function clears N bytes of memory at address data.
+
+void memcIr(char *data, int N)
+{
+for (; N>0; N--)
+{
+*data=0;
+datat+;
+}
+}
+
+No matter how advanced the compiler, it does not know whether N can be 0 on input or
+not. Therefore the compiler needs to test for this case explicitly before the first iteration of
+the loop.
+
+The compiler doesn’t know whether the data array pointer is four-byte aligned or not.
+If it is four-byte aligned, then the compiler can clear four bytes at a time using an int store
+rather than a char store. Nor does it know whether N is a multiple of four or not. If N is
+a multiple of four, then the compiler can repeat the loop body four times or store four bytes
+at a time using an int store.
+
+The compiler must be conservative and assume all possible values for N and all possible
+alignments for data. Section 5.3 discusses these specific points in detail.
+
+To write efficient C code, you must be aware of areas where the C compiler has to be
+conservative, the limits of the processor architecture the C compiler is mapping to, and the
+limits of a specific C compiler.
+
+Most of this chapter covers the first two points above and should be applicable to any
+ARM C compiler. The third point will be very dependent on the compiler vendor and
+compiler revision. You will need to look at the compiler’s documentation or experiment
+with the compiler yourself.

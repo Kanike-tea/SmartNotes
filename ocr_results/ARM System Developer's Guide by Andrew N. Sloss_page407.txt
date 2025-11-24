@@ -1,0 +1,49 @@
+394
+
+Chapter 11 Embedded Operating Systems
+
+includes calling two routines: The first resets the timer, eventsTickService (platform-
+specific call), and the second, kernel Scheduler, calls the scheduler, which in turn calls
+a context switch.
+
+eventsTickVeneer
+BL eventsTickService 3 reset tick hardware
+B kernelScheduler 3 branch to scheduler
+
+There is no requirement to have registers r4 to r12 on the IRQ stack, since the scheduling
+algorithm and the context switch handle all the register details.
+
+11.2.5 SCHEDULER
+
+The low-level scheduler, or dispatcher, used in SLOS is a simple static round-robin algo-
+rithm as illustrated in the following pseudocode. “Static” in this case means that the tasks
+are only created when the operating system is initialized. Tasks in SLOS can neither be
+created nor destroyed when the operating system is active.
+
+task t=0,t';
+
+scheduler ()
+{
+th=ttl;
+if t! = MAX_NUMBER_OF_TASKS then
+t' = 0 // the first task.
+end;
+
+ContextSwitch(t,t')
+}
+
+As stated previously, the current active task t, PCB_CurrentTask, is set to 0 during the ini-
+tialization phase. When the periodic tick interrupt occurs, the new task f is calculated from
+the current task t plus 1. If this task number equals the task limit, MAX_NUMBER_OF_TASKS,
+then task f is reset to the start 0.
+
+Table 11.3 is a list of the labels used by the scheduler and a description of how they are
+used in the algorithm. These labels are used in the following procedure and code for the
+scheduler:
+
+1. Obtain the current task ID by loading the contents of PCB_CurrentTask.
+
+2. Find the corresponding PCB address of the current task by using the PCB_CurrentTask
+as the index into the PCB_Table.
+
+3. Use the address obtained in stage 2 to update the value in the PCB_PtrCurrentTask.

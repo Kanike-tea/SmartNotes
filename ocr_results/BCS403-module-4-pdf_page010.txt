@@ -1,0 +1,48 @@
+Database Management System [BCS403]
+
+4. To retrieve the names of all employees who have two or more dependents
+SELECT Lname, Fname
+FROM EMPLOYEE
+WHERE ( SELECT COUNT (*)
+FROM DEPENDENT
+WHERE Ssn=Essn ) >= 2;
+
+1.1.8 Grouping: The GROUP BY and HAVING Clauses
+Grouping is used to create subgroups of tuples before summarization. For example, we may want
+to find the average salary of employees in each department or the number of employees who work
+on each project. In these cases we need to partition the relation into. non overlapping subsets (or
+groups) of tuples. Each group (partition) will consist of the tuples that have the same value of some
+attribute(s), called the grouping attribute(s).
+SQL has a GROUP BY clause for this purpose. The GROUP BY clause specifies the grouping
+attributes, which should also appear in the SELECT clause, so that the value resulting from applying
+each aggregate function to a group of tuples appears along with the value of the grouping
+attribute(s).
+Example: For each department, retrieve the department number, the number of employees in the
+department, and their average salary.
+
+SELECT Dno, COUNT (*), AVG (Salary)
+
+FROM EMPLOYEE
+
+GROUP BY Dno;
+
+Lame +++] Salary | Super_ssn | Dno Dno [Count (*) | Avg (Salary)
+
+B Smith | 199456789 999445555 5 B | 5 4 99950
+Franklin, 7 yong 333445555 40000 | 888665595 5 rei 4 3 31000
+Ramesh | K» | Nafayan | 666884444 | | 38000| 333445555 | 5 1 1 55000
+Joyce A English 459459453 |---| 25000 | 393445555 5 Result of O24
+Alicia J Zelaya | 999887777 25000 | 987654321 4
+Jenniter s Wallace 987654321 43000 | 888665555 4
+Ahmad v Jabbar 987987967 25000 | 987654321 4
+James | & [Bong | gegecooo5| | 60000| NULL 11h
+
+Grouping EMPLOYEE tuples by the value of Dno
+
+If NULLs exist in the grouping attribute, then a separate group is created for all tuples with a NULL
+value in the grouping attribute. For example, if the EMPLOYEE table had some tuples that had
+NULL for the grouping attribute Dno, there would be a separate group for those tuples in the result
+
+of query
+
+https://vtucode.in page 28

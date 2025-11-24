@@ -1,0 +1,61 @@
+Implementation of Shared and Exclusive Locks
+
+Shared and exclusive locks are implemented using 4 fields :
+
+1. Data_item_name
+
+2. LOCK
+
+3.
+
+4. Locking_transaction(s)
+
+Number of Records and
+
+Again to save space, items that are not in the lock table are considered to be unlocked. The system
+maintains only those records for the items that are currently locked in the lock table.
+
+Value of LOCK(A) : Read Locked or Write Locked
+
+If LOCK (A) = write-locked — The value of locking transaction is a single transaction that
+holds the exclusive(write) Lock on A.
+
+If LOCK(A) = read-locked — The value of locking transaction is a list of one or more
+transactions that hold the Shared(read) on A.
+
+Transaction Rules for Shared and Exclusive Locks
+
+Every transaction must obey the following rules :
+
+1.
+
+A transaction T must issue the operation s(A) or read_lock(A) or x(A) or write_lock(A)
+before any read(A) operation is performed in T.
+
+A transaction T must issue the operation x(A) or write_lock(A) before any write(A)
+operation is performed in T.
+
+. After completion of all read(A) and write(A) operations in T, a transaction T must issue an
+
+unlock(A) operation.
+
+. Ifa transaction already holds a read (shared) lock or a write (exclusive) lock on item A, then
+
+T will not issue an unlock(A) operation.
+
+. Atransaction that already holds a lock on item A, is allowed to convert the lock from one
+
+locked state to another under certain conditions.
+o Upgrading the Lock by Issuing a write_lock(A) Operation or Conversion of
+read_lock() to write_lock() :
+= Case | —- When Conversion Not Possible : A transaction T will not issue a
+write_lock(A) operation if it already holds a read (shared) lock or write
+(exclusive) lock on item A.
+= Case 2— When Conversion Possible : If T is the only transaction holding a
+read lock on A at the time it issues the
+write_lock(A) operation, the lock can be upgraded;
+o Downgrading the Lock by Issuing a read_lock(A) or Conversion of write_lock()
+to read_lock() :
+A transaction T downgrade from the write lock to a read lock by acquiring the
+write_lock(A) or x(A), then the read_lock(A) or s(A) and then releasing the
+write_lock(A) or x(A).

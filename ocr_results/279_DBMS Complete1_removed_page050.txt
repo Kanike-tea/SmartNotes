@@ -1,0 +1,39 @@
+bucket 0
+
+A-217 | Brighton 750
+A-101 | Downtown | 500
+_»| A-110 | Downtown | 600
+A-215 | Mianus 700
+A-102 | Perryridge | 400
+A-201 | Perryridge | 900
+‘A-218 | Perryridge | 700
+A-222 | Redwood | 700
+A-305 | Round Hill [ 350 |
+
+bucket 6
+A-222
+
+Figure 12.23 Hash index on search key account-number of account file.
+
+We use the term hash index to denote hash file structures as well as secondary hash indices. Strictly
+speaking, hash indices are only secondary index structures. A hash index is never needed as a
+primary index structure, since, if a file itself is organized by hashing, there is no need for a separate
+hash index structure on it. However, since hash file organization provides the same direct access to
+records that indexing provides, we pretend that a file organized by hashing also has a primary hash
+index on it.
+Advantages of hashing:
+
+1. Exact key matches are extremely quick
+
+2. Hashing is very good long keys, or those with multiple columns, provided the complete key
+
+value is provided for the query
+3. This organization usually allows for the allocation of disk space so a good deal of disk
+management is possible
+4. No disk space is used by this indexing method
+
+Disadvantages of hashing:
+1. It becomes difficult to predict overflow because the working of the hashing algorithm will
+not be visible to the DBA
+2. No sorting of data occurs either physically or logically so sequential access is poor
+3. This organization usually takes a lot of disk space to ensure that no overflow occurs.

@@ -1,0 +1,52 @@
+12.1 The Memory Hierarchy and Cache Memory 405
+
+The innermost level of the hierarchy is at the processor core. This memory is so tightly
+coupled to the processor that in many ways it is difficult to think of it as separate from
+the processor. This memory is known as a register file. These registers are integral to the
+processor core and provide the fastest possible memory access in the system.
+
+At the primary level, memory components are connected to the processor core through
+dedicated on-chip interfaces. It is at this level we find tightly coupled memory (TCM) and
+level 1 cache. We talk more about caches in a moment.
+
+Also at the primary level is main memory. It includes volatile components like SRAM
+and DRAM, and nonvolatile components like flash memory. The purpose of main memory
+is to hold programs while they are running on a system.
+
+The next level is secondary storage—large, slow, relatively inexpensive mass storage
+devices such as disk drives or removable memory. Also included in this level is data derived
+from peripheral devices, which are characterized by their extremely long access times.
+Secondary memory is used to store unused portions of very large programs that do not fit
+in main memory and programs that are not currently executing.
+
+It is useful to note that a memory hierarchy depends as much on architectural design as
+on the technology surrounding it. For example, TCM and SRAM are of the same technology
+yet differ in architectural placement: TCM is located on the chip, while SRAM is located on
+a board.
+
+‘A cache may be incorporated between any level in the hierarchy where there is a
+significant access time difference between memory components. A cache can improve
+system performance whenever such a difference exists. A cache memory system takes
+information stored in a lower level of the hierarchy and temporarily moves it to a higher
+level.
+
+Figure 12.1 includes a level 1 (L1) cache and write buffer. The L1 cache is an array of
+high-speed, on-chip memory that temporarily holds code and data from a slower level.
+A cache holds this information to decrease the time required to access both instructions
+and data. The write buffer is a very small FIFO buffer that supports writes to main memory
+from the cache.
+
+Not shown in the figure is a level 2 (L2) cache. An L2 cache is located between the
+LI cache and slower memory. The L1 and L2 caches are also known as the primary and
+secondary caches.
+
+Figure 12.2 shows the relationship that a cache has with main memory system and the
+processor core. The upper half of the figure shows a block diagram of a system without a
+cache. Main memory is accessed directly by the processor core using the datatypes supported
+by the processor core. The lower half of the diagram shows a system with a cache. The cache
+memory is much faster than main memory and thus responds quickly to data requests by
+the core. The cache’s relationship with main memory involves the transfer of small blocks
+of data between the slower main memory to the faster cache memory. These blocks of data
+are known as cache lines. The write buffer acts as a temporary buffer that frees available
+space in the cache memory. The cache transfers a cache line to the write buffer at high speed
+and then the write buffer drains it to main memory at slow speed.

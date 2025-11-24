@@ -1,0 +1,54 @@
+26.3 Spatial Database Concepts
+
+A join index can be described by a bipartite graph G = (Vj, V2, E), where V, contains
+the tuple ids of relation R and V3 contains the tuple ids of relation S. Edge set con-
+tains an edge (1, v,) for v, in R and v, in S, if there is a tuple corresponding to (v, , vs)
+in the join index. The bipartite graph models all of the related tuples as connected
+vertices in the graphs. Spatial join indexes are used in operations (see Section 26.3.3)
+that involve computation of relationships among spatial objects.
+
+26.3.5 Spatial Data Mining
+
+Spatial data tends to be highly correlated. For example, people with similar charac-
+teristics, occupations, and backgrounds tend to cluster together in the same neigh-
+borhoods. The three major spatial data mining techniques are spatial classification,
+spatial association, and spatial clustering.
+
+= Spatial classification. The goal of classification is to estimate the value of an
+attribute of a relation based on the value of the relation’s other attributes. An
+example of the spatial classification problem is determining the locations of
+nests in a wetland based on the value of other attributes (for example, vege-
+tation durability and water depth); it is also called the location prediction
+problem. Similarly, where to expect hotspots in crime activity is also a loca-
+tion prediction problem.
+
+= Spatial association. Spatial association rules are defined in terms of spatial
+predicates rather than items. A spatial association rule is of the form
+
+PLAPIA... A Py S>QaQ a... AQn
+
+where at least one of the Ps or Q's is a spatial predicate. For example, the
+rule
+
+is_a(x, country) ~ touches(x, Mediterranean) => is_a (x, wine-exporter)
+
+(that is, a country that is adjacent to the Mediterranean Sea is typically a wine
+exporter) is an example of an association rule, which will have a certain sup-
+port s and confidence c.””
+
+Spatial colocation rules attempt to generalize association rules to point to collec-
+tion data sets that are indexed by space. There are several crucial differences
+between spatial and nonspatial associations, including the following:
+
+1. The notion of a transaction is absent in spatial situations, since data is
+embedded in continuous space. Partitioning space into transactions would
+lead to an overestimate or an underestimate of interest measures, for exam-
+ple, support or confidence.
+
+2. Size of item sets in spatial databases is small, that is, there are many fewer
+items in the item set in a spatial situation than in a nonspatial situation.
+
+27Concepts of support and confidence for association rules are discussed as part of data mining in
+Section 28.2.
+
+993

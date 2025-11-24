@@ -1,0 +1,57 @@
+Selected Bibliography
+
+30.32. Consider the relational database schema in Figure 5.5. Suppose that all the
+
+relations were created by (and hence are owned by) user X, who wants to
+
+grant the following privileges to user accounts A, B, C, D, and E:
+
+a. Account A can retrieve or modify any relation except DEPENDENT and
+can grant any of these privileges to other users.
+
+b. Account B can retrieve all the attributes of EMPLOYEE and DEPARTMENT
+except for Salary, Mgr_ssn, and Mgr_start_date.
+
+c. Account C can retrieve or modify WORKS_ON but can only retrieve the
+Frame, Minit, Lname, and Ssn attributes of EMPLOYEE and the Pname and
+Pnumber attributes of PROJECT.
+
+d. Account D can retrieve any attribute of EMPLOYEE or DEPENDENT and
+can modify DEPENDENT.
+
+e. Account E can retrieve any attribute of EMPLOYEE but only for EMPLOYEE
+tuples that have Dno = 3.
+
+f. Write SQL statements to grant these privileges. Use views where appropriate.
+
+30.33. Suppose that privilege (a) of Exercise 30.32 is to be given with GRANT
+OPTION but only so that account A can grant it to at most five accounts, and
+each of these accounts can propagate the privilege to other accounts but
+without the GRANT OPTION privilege. What would the horizontal and verti-
+cal propagation limits be in this case?
+
+30.34. Consider the relation shown in Figure 30.2(d). How would it appear to a
+user with classification U? Suppose that a classification U user tries to update
+the salary of ‘Smith’ to $50,000; what would be the result of this action?
+
+Selected Bibliography
+
+Authorization based on granting and revoking privileges was proposed for the
+SYSTEM R experimental DBMS and is presented in Griffiths and Wade (1976).
+Several books discuss security in databases and computer systems in general,
+including the books by Leiss (1982a), Fernandez et al. (1981), and Fugini et al.
+(1995). Natan (2005) is a practical book on security and auditing implementation
+issues in all major RDBMSs.
+
+Many papers discuss different techniques for the design and protection of statistical
+databases. They include McLeish (1989), Chin and Ozsoyoglu (1981), Leiss (1982),
+Wong (1984), and Denning (1980). Ghosh (1984) discusses the use of statistical data-
+bases for quality control. There are also many papers discussing cryptography and data
+encryption, including Diffie and Hellman (1979), Rivest et al. (1978), Akl (1983),
+Pfleeger and Pfleeger (2007), Omura et al. (1990), Stallings (2000), and Iyer at al. (2004).
+
+Halfond et al. (2006) helps us understand the concepts of SQL injection attacks and
+the various threats imposed by them. The white paper Oracle (2007a) explains how
+Oracle is less prone to SQL injection attack as compared to SQL Server. Oracle
+
+1161

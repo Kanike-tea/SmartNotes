@@ -1,0 +1,68 @@
+Except in these three cases, any alteration can be possible while creating S2 by modifying S1.
+
+Lecture-37
+Object Oriented Databases
+
+Object oriented databases are also called Object Database Management Systems (ODBMS).
+Object databases store objects rather than data such as integers, strings or real numbers. Objects
+are used in object oriented languages such as Smalltalk, C++, Java, and others. Objects
+basically consist of the following:
+
+¢ Attributes - Attributes are data which defines the characteristics of an object. This data
+may be simple such as integers, strings, and real numbers or it may be a reference to a
+complex object.
+
+¢ Methods - Methods define the behavior of an object and are what was formally called
+procedures or functions.
+
+Therefore objects contain both executable code and data
+Object Persistence
+
+With traditional databases, data manipulated by the application is transient and data in the
+database is persisted (Stored on a permanent storage device). In object databases, the
+application can manipulate both transient and persisted data.
+
+When to Use Object Databases
+
+Object databases should be used when there is complex data and/or complex data relationships.
+This includes a many to many object relationship. Object databases should not be used when
+there would be few join tables and there are large volumes of simple transactional data.
+
+Object databases work well with:
+
+¢ CAS Applications (CASE-computer aided software engineering, CAD-computer aided
+design, CAM-computer aided manufacture)
+
+e Multimedia Applications
+
+¢ Object projects that change over time.
+
+¢ Commerce
+
+Object Database Advantages over RDBMS
+
+¢ Objects don't require assembly and disassembly saving coding time and execution time to
+assemble or disassemble objects.
+
+Reduced paging
+
+Easier navigation
+
+Better concurrency control - A hierarchy of objects may be locked.
+
+Data model is based on the real world.
+
+Works well for distributed architectures.
+
+Less code required when applications are object oriented.
+
+Object Database Disadvantages compared to RDBMS
+
+Lower efficiency when data is simple and relationships are simple.
+Relational tables are simpler.
+
+Late binding may slow access speed.
+
+More user tools exist for RDBMS.
+
+Standards for RDBMS are more stable.

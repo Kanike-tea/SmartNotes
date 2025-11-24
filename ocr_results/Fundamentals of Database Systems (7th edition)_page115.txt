@@ -1,0 +1,38 @@
+3.8 Example of Other Notation: UML Class Diagrams 85
+
+See
+
+2 Address) C Salary)
+
+WORKS_FOR (4.N) <a>
+(1,1) Name Number
+Employee Department 2> a&
+EMPLOYEE lumber_of_employe¢ DEPARTMENT
+0,1) Department (0,N)| Controlling
+Managed (1,1) Department
+CONTROLS
+Controlled
+upervisee
+i. Project | BROJECT
+(1,N)
+(0,N)
+Employee Name
+
+DEPENDENTS_OF
+
+(4,1) | Dependent
+
+DEPENDENT
+
+Birth_date> Relationship
+Figure 3.15
+
+ER diagrams for the company schema, with structural constraints specified using
+(min, max) notation and role names.
+
+3.8 Example of Other Notation:
+UML Class Diagrams
+
+The UML methodology is being used extensively in software design and has many
+types of diagrams for various software design purposes. We only briefly present the
+basics of UML class diagrams here and compare them with ER diagrams. In some

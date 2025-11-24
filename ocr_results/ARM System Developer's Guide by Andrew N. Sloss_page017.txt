@@ -1,0 +1,47 @@
+4 Chapter 1 ARM Embedded Systems
+
+1.1 THE RISC DESIGN PHILOSOPHY
+
+Figure 1.1
+
+The ARM core uses a RISC architecture. RISC is a design philosophy aimed at delivering
+simple but powerful instructions that execute within a single cycle at a high clock speed.
+The RISC philosophy concentrates on reducing the complexity of instructions performed
+by the hardware because it is easier to provide greater flexibility and intelligence in software
+rather than hardware. As a result, a RISC design places greater demands on the compiler.
+In contrast, the traditional complex instruction set computer (CISC) relies more on the
+hardware for instruction functionality, and consequently the CISC instructions are more
+complicated. Figure 1.1 illustrates these major differences.
+
+The RISC philosophy is implemented with four major design rules:
+
+. Instructions—RISC processors have a reduced number of instruction classes. These
+
+classes provide simple operations that can each execute in a single cycle. The compiler
+or programmer synthesizes complicated operations (for example, a divide operation)
+by combining several simple instructions. Each instruction is a fixed length to allow
+the pipeline to fetch future instructions before decoding the current instruction. In
+contrast, in CISC processors the instructions are often of variable size and take many
+cycles to execute.
+
+. Pipeline-—The processing of instructions is broken down into smaller units that can be
+
+executed in parallel by pipelines. Ideally the pipeline advances by one step on each cycle
+for maximum throughput. Instructions can be decoded in one pipeline stage. There is
+no need for an instruction to be executed by a miniprogram called microcode as on
+CISC processors.
+
+. Registers—RISC machines have a large general-purpose register set. Any register can
+
+contain either data or an address. Registers act as the fast local memory store for all data
+
+CISC RISC
+—— Greater a a
+Compiler Complexity Compiler
+Code Code
+Generation Generation
+Greater
+Complexity [_ Processor Processor
+
+CISC vs. RISC. CISC emphasizes hardware complexity. RISC emphasizes compiler
+complexity.

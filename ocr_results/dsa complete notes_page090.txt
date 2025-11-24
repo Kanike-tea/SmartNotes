@@ -1,0 +1,33 @@
+Data Structures and Applications (BCS304) Module III
+
+This representation can be used for any binary tree. In most cases there will be a lot of unutilized
+spaces. For complete binary tree such as
+
+Linked Representation
+Disadvantage of array representation
+e The array representation is good for complete binary trees but, it wastes a lot of space for
+many other binary trees.
+e Insertion and deletion of nodes from the middle of a tree require the movement of potentially
+many nodes to reflect the change in level number of these nodes.
+¢ These problems can be overcome easily through the use of a linked representation.
+
+Each node has three fields, leftChild, data, and rightChild.
+A node can be defined as:
+struct node
+
+{
+int data;
+struct node * leftChild;
+struct node * rightChild;
+
+a
+
+Typedef struct node TreeNode;
+
+Tefichild [Data | rightchild fe
+
+Leftchild Rightchild
+
+dD 3
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 15

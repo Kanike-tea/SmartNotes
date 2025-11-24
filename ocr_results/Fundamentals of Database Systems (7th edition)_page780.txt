@@ -1,0 +1,51 @@
+750 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+(a) Ty, (b) To
+read_item(X); read_item(X);
+: X:=X-N; X=X+M;,
+
+Figure 20.2 write_item(X); write_item(X);
+Two sample read_item(Y);
+transactions. Y=YtN;
+(a) Transaction T; write_item(Y);
+(b) Transaction To.
+
+of seats. In Figures 20.2(a) and (b), the transactions T, and T, are specific executions
+of the programs that refer to the specific flights whose numbers of seats are stored
+in data items X and Y in the database. Next we discuss the types of problems we
+may encounter with these two simple transactions if they run concurrently.
+
+The Lost Update Problem. This problem occurs when two transactions that access
+the same database items have their operations interleaved in a way that makes the value
+of some database items incorrect. Suppose that transactions T) and T are submitted at
+approximately the same time, and suppose that their operations are interleaved as
+shown in Figure 20.3(a); then the final value of item X is incorrect because T reads the
+value of X before T; changes it in the database, and hence the updated value resulting
+from T; is lost. For example, if X = 80 at the start (originally there were 80 reservations
+on the flight), N = 5 (Tj transfers 5 seat reservations from the flight corresponding to X
+to the flight corresponding to Y), and M = 4 (T} reserves 4 seats on X), the final result
+should be X = 79. However, in the interleaving of operations shown in Figure 20.3(a), it
+is X = 84 because the update in T, that removed the five seats from X was lost.
+
+The Temporary Update (or Dirty Read) Problem. This problem occurs when one
+transaction updates a database item and then the transaction fails for some reason (see
+Section 20.1.4). Meanwhile, the updated item is accessed (read) by another transaction
+before it is changed back (or rolled back) to its original value. Figure 20.3(b) shows an
+example where T; updates item X and then fails before completion, so the system must
+roll back X to its original value. Before it can do so, however, transaction T reads the
+temporary value of X, which will not be recorded permanently in the database because
+of the failure of T;. The value of item X that is read by Ty is called dirty data because it
+has been created by a transaction that has not completed and committed yet; hence,
+
+this problem is also known as the dirty read problem.
+
+The Incorrect Summary Problem. If one transaction is calculating an aggregate
+summary function on a number of database items while other transactions are
+updating some of these items, the aggregate function may calculate some values
+before they are updated and others after they are updated. For example, suppose
+that a transaction T; is calculating the total number of reservations on all the flights;
+meanwhile, transaction T; is executing. If the interleaving of operations shown in
+Figure 20.3(c) occurs, the result of T; will be off by an amount N because T; reads
+the value of X after N seats have been subtracted from it but reads the value of Y
+
+before those N seats have been added to it.

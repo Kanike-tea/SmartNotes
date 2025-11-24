@@ -1,0 +1,50 @@
+23.3 Overview of Concurrency Control and Recovery in Distributed Databases
+
+A number of different methods are based on this idea, but they differ in their
+method of choosing the distinguished copies. In the primary site technique, all
+distinguished copies are kept at the same site. A modification of this approach is
+the primary site with a backup site. Another approach is the primary copy
+method, where the distinguished copies of the various data items can be stored in
+different sites. A site that includes a distinguished copy of a data item basically acts
+as the coordinator site for concurrency control on that item. We discuss these
+techniques next.
+
+Primary Site Technique. In this method, a single primary site is designated to be
+the coordinator site for all database items. Hence, all locks are kept at that site, and
+all requests for locking or unlocking are sent there. This method is thus an exten-
+sion of the centralized locking approach. For example, if all transactions follow the
+two-phase locking protocol, serializability is guaranteed. The advantage of this
+approach is that it is a simple extension of the centralized approach and thus is not
+overly complex. However, it has certain inherent disadvantages. One is that all
+locking requests are sent to a single site, possibly overloading that site and causing
+a system bottleneck. A second disadvantage is that failure of the primary site para-
+lyzes the system, since all locking information is kept at that site. This can limit
+system reliability and availability.
+
+Although all locks are accessed at the primary site, the items themselves can be accessed
+at any site at which they reside. For example, once a transaction obtains a Read_lock on
+a data item from the primary site, it can access any copy of that data item. However,
+once a transaction obtains a Write_lock and updates a data item, the DDBMS is respon-
+sible for updating all copies of the data item before releasing the lock.
+
+Primary Site with Backup Site. This approach addresses the second disadvan-
+tage of the primary site method by designating a second site to be a backup site. All
+locking information is maintained at both the primary and the backup sites. In case
+of primary site failure, the backup site takes over as the primary site, and a new
+backup site is chosen. This simplifies the process of recovery from failure of the
+primary site, since the backup site takes over and processing can resume after a new
+backup site is chosen and the lock status information is copied to that site. It slows
+down the process of acquiring locks, however, because all lock requests and grant-
+ing of locks must be recorded at both the primary and the backup sites before a
+response is sent to the requesting transaction. The problem of the primary and
+backup sites becoming overloaded with requests and slowing down the system
+remains undiminished.
+
+Primary Copy Technique. This method attempts to distribute the load of lock
+coordination among various sites by having the distinguished copies of different
+data items stored at different sites. Failure of one site affects any transactions that
+are accessing locks on items whose primary copies reside at that site, but other
+transactions are not affected. This method can also use backup sites to enhance reli-
+ability and availability.
+
+855

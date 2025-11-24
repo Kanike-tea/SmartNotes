@@ -1,0 +1,55 @@
+672
+
+Chapter 18 Strategies for Query Processing
+
+18.4.2 How Buffer Space and Choice of Outer-Loop
+File Affect Performance of Nested-Loop Join
+
+The buffer space available has an important effect on some of the join algorithms.
+First, let us consider the nested-loop approach (J1). Looking again at the operation
+OP6 above, assume that the number of buffers available in main memory for imple-
+menting the join is ng = 7 blocks (buffers). Recall that we assume that each memory
+buffer is the same size as one disk block. For illustration, assume that the DEPARTMENT
+file consists of rp = 50 records stored in bp = 10 disk blocks and that the EMPLOYEE
+file consists of rg = 6,000 records stored in bg = 2,000 disk blocks. It is advantageous
+to read as many blocks as possible at a time into memory from the file whose records
+are used for the outer loop. Note that keeping one block for reading from the inner
+file and one block for writing to the output file, ng — 2 blocks are available to read
+from the outer relation, The algorithm can then read one block at a time for the
+inner-loop file and use its records to probe (that is, search) the outer-loop blocks
+that are currently in main memory for matching records. This reduces the total
+number of block accesses. An extra buffer in main memory is needed to contain
+the resulting records after they are joined, and the contents of this result buffer can
+be appended to the result file—the disk file that will contain the join result—
+whenever it is filled. This result buffer block then is reused to hold additional join
+result records.
+
+In the nested-loop join, it makes a difference which file is chosen for the outer loop
+and which for the inner loop. If EMPLOYEE is used for the outer loop, each block of
+EMPLOYEE is read once, and the entire DEPARTMENT file (each of its blocks) is read
+once for each time we read in (ng - 2) blocks of the EMPLOYEE file. We get the fol-
+lowing formulas for the number of disk blocks that are read from disk to main
+memory:
+
+Total number of blocks accessed (read) for outer-loop file = bz
+
+Number of times (ng — 2) blocks of outer file are loaded into main mem-
+
+ory = [ bel(ng - 2)]
+
+Total number of blocks accessed (read) for inner-loop file = bp * [ bel(ng -2)]
+Hence, we get the following total number of block read accesses:
+
+be + ([ be/(np- 2)1* bp) = 2000 + ([ (2000/5) |» 10) = 6000 block accesses
+
+On the other hand, if we use the DEPARTMENT records in the outer loop, by sym-
+metry we get the following total number of block accesses:
+
+bp + ([bp/(ng — 2) | * be) = 10 + (1 (10/5) | * 2000) = 4010 block accesses
+
+The join algorithm uses a buffer to hold the joined records of the result file. Once
+the buffer is filled, it is written to disk and its contents are appended to the result
+file, and then refilled with join result records.’
+
+'2\f we reserve two buffers for the result file, double buffering can be used to speed the algorithm (see
+Section 16:3).

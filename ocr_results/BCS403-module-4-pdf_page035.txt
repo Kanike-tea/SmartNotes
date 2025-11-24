@@ -1,0 +1,53 @@
+Database Management System [BCS403]
+
+READ,
+WAITE
+
+END
+TRANSACTION
+
+BEGIN
+TRANSACTION
+oa
+
+PARTIALLY bce
+COMMITTED
+
+Figure: State transition diagram illustrating the states for transaction, execution
+
+A transaction goes into active state immediately after it starts execution and can
+
+execute read and write operations.
+
+When the transaction ends it moves to partially committed state.
+
+At this end additional checks are done to see if the transaction can be committed or not.
+If these checks are successful the transaction is said to have reached commit point and
+enters committed state. All the changes are recorded permanently in the db.
+
+A transaction can go to the failed state if one of the checks fails or if the transaction is
+aborted during its active state. The transaction may then have to be rolled back to undo
+the effect of its write operation.
+
+Terminated state corresponds to the transaction leaving the system. All the information
+
+about the transaction is removed from system tables.
+
+5.3.2 Thélsystem Log
+
+Log or Journal keeps track of all transaction operations that affect the values of
+database items
+
+This information may be needed to permit recovery from transaction failures.
+
+The log is kept on disk, so it is not affected by any type of failure except for disk or
+catastrophic failure
+
+one (or more) main memory buffers hold the last part of the log file, so that log entries
+are first added to the main memory buffer
+
+When the log buffer is filled, or when certain other conditions occur, the log buffer is
+
+appended to the end of the log file on disk.
+
+https://vtucode.in 11

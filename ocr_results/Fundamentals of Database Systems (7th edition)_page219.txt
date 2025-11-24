@@ -1,0 +1,55 @@
+6.3 Basic Retrieval Queries in SQL
+
+Query 0. Retrieve the birth date and address of the employee(s) whose name is
+John B. Smith’.
+
+Q0: SELECT —_Baate, Address
+FROM EMPLOYEE
+WHERE — Fname = ‘John’ AND Minit = ‘B’ AND Lname = ‘Smith’;
+
+This query involves only the EMPLOYEE relation listed in the FROM clause. The
+query selects the individual EMPLOYEE tuples that satisfy the condition of the
+WHERE clause, then projects the result on the Bdate and Address attributes listed in
+the SELECT clause.
+
+The SELECT clause of SQL specifies the attributes whose values are to be retrieved,
+which are called the projection attributes in relational algebra (see Chapter 8) and
+the WHERE clause specifies the Boolean condition that must be true for any
+retrieved tuple, which is known as the selection condition in relational algebra.
+Figure 6.3(a) shows the result of query Q0 on the database of Figure 5.6.
+
+We can think of an implicit tuple variable or iterator in the SQL query ranging or
+looping over each individual tuple in the EMPLOYEE table and evaluating the condi-
+tion in the WHERE clause. Only those tuples that satisfy the condition—that is,
+those tuples for which the condition evaluates to TRUE after substituting their cor-
+responding attribute values—are selected.
+
+Query 1. Retrieve the name and address of all employees who work for the
+‘Research’ department.
+
+Qi: SELECT —_ Frame, Lname, Address
+FROM EMPLOYEE, DEPARTMENT
+WHERE Dname = ‘Research’ AND Dnumber = Dno;
+
+In the WHERE clause of 01, the condition Dname = ‘Research’ is a selection condition
+that chooses the particular tuple of interest in the DEPARTMENT table, because Dname
+is an attribute of DEPARTMENT. The condition Dnumber = Dno is called a join condition,
+because it combines two tuples: one from DEPARTMENT and one from EMPLOYEE,
+whenever the value of Dnumber in DEPARTMENT is equal to the value of Dno in
+EMPLOYEE. The result of query O1 is shown in Figure 6.3(b). In general, any number
+of selection and join conditions may be specified in a single SQL query.
+
+A query that involves only selection and join conditions plus projection attributes is
+known as a select-project-join query. The next example is a select-project-join
+query with two join conditions.
+
+Query 2. For every project located in ‘Stafford’, list the project number, the
+controlling department number, and the department manager’s last name,
+address, and birth date.
+
+Q2: SELECT —Phumber, Dnum, Lname, Address, Bdate
+FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE Dnum = Dnumber AND Mgr_ssn = Ssn AND
+Plocation = ‘Stafford’
+
+189

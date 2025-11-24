@@ -1,0 +1,33 @@
+Database Management System [BCS403]
+
+(Hane) Number) _——
+— Locati
+Locations DEPARTMENT Manager —
+
+(Goeaons)-[ DEPARTMENT ] Citas)
+
+Manager_start_dat>
+
+CFname Minit j jours)
+
+mpl)
+
+Dependent_namé
+
+Figure 3.3(a): Preliminary design of entity types for the COMPANY database. Some of the shown
+attributes will be refined into relationships.
+
+3.4 Relationship Types, Relationship Sets, Roles, and Structural Constraints
+
+There are several implicit relationships among the various entity types. Whenever an attribute of one
+entity type refers to another entity type, some relationship exists. For example
+= The attribute Manager of DEPARTMENT refers to an employee who manages the department
+« The attribute Controlling department of PROJECT refers to the department that controls the
+project
+«The attribute Supervisor of EMPLOYEE refers to another employee -the one who supervises this
+employee
+= The attribute Department of EMPLOYEE refers to the department for which the employee works
+
+In the ER model, these references should not be represented as attributes but as relationships
+
+https://vtucode.in Page 41

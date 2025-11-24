@@ -1,0 +1,32 @@
+©) oy
+chapter “4 9)
+
+Enhanced Data Models:
+Introduction to Active,
+Temporal, Spatial, Multimedia,
+and Deductive Databases
+
+A: the use of database systems has grown, users
+have demanded additional functionality from
+these software packages; increased functionality would make it easier to implement
+more advanced and complex user applications. Object-oriented databases and
+object-relational systems do provide features that allow users to extend their sys-
+tems by specifying additional abstract data types for each application. However, it is
+useful to identify certain common features for some of these advanced applications
+and to create models that can represent them. Additionally, specialized storage
+structures and indexing methods can be implemented to improve the performance
+of these common features. Then the features can be implemented as abstract data
+types or class libraries and purchased separately from the basic DBMS software
+package. The term data blade has been used in Informix and cartridge in Oracle to
+refer to such optional submodules that can be included in a DBMS package. Users
+can utilize these features directly if they are suitable for their applications, without
+having to reinvent, reimplement, and reprogram such common features.
+
+This chapter introduces database concepts for some of the common features that
+are needed by advanced applications and are being used widely. We will cover
+active rules that are used in active database applications, temporal concepts that
+are used in temporal database applications, and, briefly, some of the issues involv-
+ing spatial databases and multimedia databases. We will also discuss deductive
+databases. It is important to note that each of these topics is very broad, and we give
+
+961

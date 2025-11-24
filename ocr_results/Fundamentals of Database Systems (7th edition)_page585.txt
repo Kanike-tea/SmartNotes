@@ -1,0 +1,51 @@
+16.2 Secondary Storage Devices
+
+n- 1 blocks. Data is stored on reels of high-capacity magnetic tape, somewhat sim-
+ilar to audiotapes or videotapes. A tape drive is required to read the data from or
+write the data to a tape reel. Usually, each group of bits that forms a byte is stored
+across the tape, and the bytes themselves are stored consecutively on the tape.
+
+A read/write head is used to read or write data on tape. Data records on tape are
+also stored in blocks—although the blocks may be substantially larger than those
+for disks, and interblock gaps are also quite large. With typical tape densities of
+1,600 to 6,250 bytes per inch, a typical interblock gap* of 0.6 inch corresponds to
+960 to 3,750 bytes of wasted storage space. It is customary to group many records
+together in one block for better space utilization.
+
+The main characteristic of a tape is its requirement that we access the data blocks in
+sequential order. To get to a block in the middle of a reel of tape, the tape is mounted
+and then scanned until the required block gets under the read/write head. For this
+reason, tape access can be slow and tapes are not used to store online data, except for
+some specialized applications. However, tapes serve a very important function—
+backing up the database. One reason for backup is to keep copies of disk files in case
+the data is lost due to a disk crash, which can happen if the disk read/write head
+touches the disk surface because of mechanical malfunction. For this reason, disk
+files are copied periodically to tape. For many online critical applications, such as
+airline reservation systems, to avoid any downtime, mirrored systems are used to
+keep three sets of identical disks—two in online operation and one as backup. Here,
+offline disks become a backup device. The three are rotated so that they can be
+switched in case there is a failure on one of the live disk drives. Tapes can also be
+used to store excessively large database files. Database files that are seldom used or
+are outdated but required for historical recordkeeping can be archived on tape.
+Originally, half-inch reel tape drives were used for data storage employing the so-
+called nine-track tapes. Later, smaller 8-mm magnetic tapes (similar to those used in
+camcorders) that can store up to 50 GB, as well as 4-mm helical scan data cartridges
+and writable CDs and DVDs, became popular media for backing up data files from
+PCs and workstations. They are also used for storing images and system libraries.
+
+Backing up enterprise databases so that no transaction information is lost is a major
+undertaking. Tape libraries were in vogue and featured slots for several hundred
+cartridges; these tape libraries used digital and superdigital linear tapes (DLTs and
+SDLTs), both of which have capacities in the hundreds of gigabytes and record data
+on linear tracks. These tape libraries are no longer in further development. The LTO
+(Linear Tape Open) consortium set up by IBM, HP, and Seagate released the latest
+LTO-6 standard in 2012 for tapes. It uses /-inch-wide magnetic tapes like those
+used in earlier tape drives but in a somewhat smaller, single-reel enclosed cartridge.
+Current generation of libraries use LTO-6 drives, at 2.5-TB cartridge with 160 MB/s
+transfer rate. Average seek time is about 80 seconds. The T10000D drive of
+Oracle/StorageTek handles 8.5 TB on a single cartridge with transfer rate upto
+252 MB/s.
+
+§Called interrecord gaps in tape terminology.
+
+555

@@ -1,0 +1,37 @@
+3.4 Relationship Types, Relationship Sets, Roles, and Structural Constraints 75
+
+Role Names and Recursive Relationships. Each entity type that participates
+ina relationship type plays a particular role in the relationship. The role name sig-
+nifies the role that a participating entity from the entity type plays in each relation-
+ship instance, and it helps to explain what the relationship means. For example, in
+the WORKS _FOR relationship type, EMPLOYEE plays the role of employee or worker
+and DEPARTMENT plays the role of department or employer.
+
+Role names are not technically necessary in relationship types where all the partici-
+pating entity types are distinct, since each participating entity type name can be used
+as the role name. However, in some cases the same entity type participates more than
+once in a relationship type in different roles. In such cases the role name becomes
+essential for distinguishing the meaning of the role that each participating entity
+plays. Such relationship types are called recursive relationships or self-referencing
+relationships. Figure 3.11 shows an example. The SUPERVISION relationship type
+relates an employee to a supervisor, where both employee and supervisor entities are
+members of the same EMPLOYEE entity set. Hence, the EMPLOYEE entity type
+participates twice in SUPERVISION: once in the role of supervisor (or boss), and
+once in the role of supervisee (or subordinate). Each relationship instance r; in
+SUPERVISION associates two different employee entities e; and e, one of which
+plays the role of supervisor and the other the role of supervise. In Figure 3.11, the
+lines marked ‘1’ represent the supervisor role, and those marked ‘2’ represent the
+supervisee role; hence, e; supervises e) and e3, e4 supervises eg and e7, and es super-
+vises e; and e4. In this example, each relationship instance must be connected with
+two lines, one marked with ‘1’ (supervisor) and the other with ‘2’ (supervise).
+
+EMPLOYEE SUPERVISION
+
+Figure 3.11
+
+A recursive relationship
+SUPERVISION
+between EMPLOYEE
+in the supervisor role
+(1) and EMPLOYEE in
+the subordinate role (2).

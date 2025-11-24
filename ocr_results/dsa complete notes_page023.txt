@@ -1,0 +1,64 @@
+Data Structures and Applications/BCS304 Module-1
+
+for (i = 1; i< numCols; i++)
+startingPos[i] = startingPos[i-1] + rowTerms[i-1];
+
+for (i = 1; i <= numTerms; i++)
+
+{
+j =startingPos[a[i].col]++;
+bij] .row = afi].col;
+b[j].col = a[i].row;
+b[j].value = a[i].value;
+}
+}
+}
+
+Analysis of Fast Transpose
+
+e The first two for loops compute the values for rowTerms, the third for loop carries out the
+computation of startingPos, and the last for loop places the triples into the transpose matrix.
+These four loops determine the computing time of fastTranspose.
+
+e The bodies of the loops are executed numCols, numTerms, numCols - 1, and numTerms times,
+respectively. The computing time for the algorithm is O(columns + elements).
+
+e However, transpose requires less space than fastTranspose since the latter function must
+allocate space for the rowTerms and startingPos arrays.
+
+Strings: A string is an array of characters that is delimited by the null character (\0).
+
+Examplel: Char s[100] = {“class”} ;
+The string is internally represented as follows
+
+© L A S Ss \o
+S(O) | SU | S(2]_ | Si3}_ | SI41_| SIS]
+
+The same can also be declared as char s[]={“class”} ;
+
+Using this declaration the compiler would have reserved just enough space to hold each character
+word including the null character. In such cases we cannot store a string of length more than 5 in s
+
+ADT string is Objects : a finite set of zero or more characters
+
+Functions : for all s,t € string.i,j,m € non negative integers
+
+String Null(m) ::= Return a string whose length is m characters long, but is initially set to
+NULL. We write NULL as “”
+Integer compare(s, t)::= | If s equals t return 0
+
+Else if s precedes t return -1
+Else return +1
+
+Boolean ISNull(s) ::= If (compare(s, NULL)) return FALSE
+Else return TRUE
+Integer Length(s) ::= If(compare(s, NULL))
+
+Returns the number of characters in s else returns 0
+
+If(compare(t, NULL))
+Return a string s whose elements are those of s followed by those of t
+
+String concat(s,t) ::
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 24

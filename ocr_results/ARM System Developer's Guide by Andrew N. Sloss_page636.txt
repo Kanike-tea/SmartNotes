@@ -1,0 +1,41 @@
+A.4 ARM Assembler Quick Reference 623
+
+A4.3> ARM ASSEMBLER EXPRESSIONS
+The ARM assembler can evaluate a number of numeric, string, and logical expressions
+at assembly time. Table A.15 shows some of the unary and binary operators you can use
+within expressions. Brackets can be used to change the order of evaluation in the usual way.
+Table A.15 ARM assembler unary and binary operators.
+Expression Result Example
+A+B, A-B A plus or minus B 1-2 = Oxffffffff
+A*B, A/B A multiplied by or divided by B 2*3 = 6, 7/3 = 2
+A:MOD:B A modulo B 7:MOD 1
+2CHR:A string with ASCII code A :CHR:32 =" "
+'X! the ASCII value of X ta’ = 0x61
+:STR:A, Aor L converted to a string :STR:32 = "00000020"
+:STR:L :STR: {TRUE} = "T"
+A<<B, A shifted left by B bits 1<<3 = 8
+A:SHL:B
+A>>B, A shifted right by B bits (logical 0x80000000>>4 =
+A:SHR:B shift) 0x08000000
+A:ROR:B, A rotated right/left by B bits 1:ROR:1 = 0x80000000
+A:ROL:B 0x80000000:ROL:1 = 1
+A=B, A>B, comparison of arithmetic or string (1=2) = {FALSE},
+A>=B, A<B, variables (/= and <> both mean (1<2) = {TRUE},
+A<=B, A/=B, not equal) ("a"="c") = {FALSE},
+Ac>B (“atetc") = {TRUE}
+A:AND:B, Bitwise AND, OR, exclusive OR of 1
+A:0R:B, A and B; bitwise NOT of A.
+A:EOR:B, :NOT:0 = OXxFFFFFFFF
+:NOT:A
+:LEN:S length of the string $ :LEN: "ABC" = 3
+S:LEFT:B, leftmost or rightmost B characters "ABC": LEFT:2 = "AB",
+S:RIGHT:B of S "ABC":RIGHT:2 = "BC"
+S:CC:T the concatenation of S, T "AB":CC:"C" = "ABC"
+L:LAND:M, logical AND, OR, exclusive OR of | {TRUE}: LAND: {FALSE} =
+L:LOR:M, LandM {FALSE}
+L:LEOR:M
+: DEF :X returns TRUE if a variable called X is
+defined
+:BASE:A see the MAP directive
+
+rINDEX:A

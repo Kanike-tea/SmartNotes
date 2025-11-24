@@ -1,0 +1,42 @@
+e Availability (AP): Allow orders to be placed even if the inventory data isn't fully
+synchronized. Later, inconsistencies can be resolved (e.g., backordering items).
+
+The right choice depends on the business priority—data integrity or user experience.
+
+6. Criticisms and Evolution
+While CAP is a helpful model, it has limitations:
+
+e¢ Over-simplified: It assumes a binary presence of partition, but real systems often
+operate under varying degrees of failure.
+
+«Ignores latency: CAP doesn't consider how fast systems respond—an important
+factor in real-time applications.
+
+« Doesn't reflect modern distributed systems: Today, many systems aim for "eventual
+consistency", tunable consistency, or strong consistency on specific operations.
+
+Researchers have proposed more nuanced models like PACELC (if there is a Partition, choose
+between Availability and Consistency; Else, choose between Latency and Consistency) to
+capture real-world trade-offs better.
+
+7. Summary
+
+The CAP Theorem is a foundational concept for understanding distributed database systems.
+It teaches that during network partitions, you must choose between consistency and
+availability. In practice, partition tolerance is a requirement, so systems are designed to
+favor one of the other two based on the application needs.
+
+Combination Focuses On Example Systems
+
+cP Consistency + Partition MongoDB, HBase
+
+AP. Availability + Partition | Cassandra, DynamoDB
+
+CA Consistency + Availability Relational DBs (non-distributed)
+
+CAP helps developers design systems that align with business goals, ensuring the right
+balance of performance, availability, and data integrity.
+
+Document-Based NoSQL Systems and MongoDB - Detailed Notes
+
+1. What Are Document-Based NoSQL Systems?

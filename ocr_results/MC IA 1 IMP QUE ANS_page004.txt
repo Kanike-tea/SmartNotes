@@ -1,0 +1,39 @@
+7.
+
+Current Program Status Register (CPSR) with Diagram
+
+Figure 3 (not provided, but described) shows the basic layout of a generic Program Status Register
+(PSR)49 . The ARM core uses the Current Program Status Register (cpsr) to monitor and control
+internal operations49 . It is a 32-bit dedicated register located in the register file49 .
+
+The cpsr is conceptually divided into four 8-bit fields: flags, status, extension, and control49 . In
+current designs, the status and extension fields are typically reserved for future use49 .
+
+Flags Field: Contains the condition flags (N, Z, C, V) that are updated by comparisons and ALU
+operations (when the 'S' suffix is used on the instruction)50 .... Some cores might have extra flags like
+the J bit for Jazelle-enabled processors50 .
+
+Control Field: Contains the processor mode, state, and interrupt mask bits49 .
+
+Processor Mode: Determines which registers are active and the access rights to the cpsr itself. There
+are seven processor modes: six privileged (Abort, Fast Interrupt Request (FIQ), Interrupt Request
+(IRQ), Supervisor (SVC), System, Undefined) and one non-privileged (User)50 .... Privileged modes
+allow full read-write access to the cpsr, while non-privileged (User) mode only allows read access to
+the control field and read-write access to condition flags50 .... The processor enters different modes
+based on events like exceptions, interrupts, or after reset (Supervisor mode)13 .... System mode is a
+special privileged version of User mode with full cpsr access54 .
+
+State: Indicates the current instruction set being executed: ARM (32-bit), Thumb (16-bit), or Jazelle
+(8-bit)14 .... The T bit in the cpsr reflects the Thumb state (T=1 for Thumb), and the J bit reflects the
+Jazelle state. When both are 0, the processor is in ARM state56 . Specialized branch instructions are
+used to change states56 .
+
+Interrupt Mask: Contains bits to mask (disable) specific interrupt requests. The | bit (bit 7) masks
+IRQ interrupts when set to 1, and the F bit (bit 6) masks FIQ interrupts when set to 151.
+
+8.
+Memory & Cache Memory Band of Tightly Coupled Harvard Technology with Diagram
+
+The memory in computer systems is organized in a hierarchy based on speed and cost57 . Faster
+memory (like cache) is located closer to the ARM processor core and has smaller capacity, while
+slower secondary memory is further away and has larger capacity57 ....

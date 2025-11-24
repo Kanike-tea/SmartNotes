@@ -1,0 +1,38 @@
+Vertex degree and Handshaking property 29
+
+By examining the graph, we find that the degrees of its vertices are as given below:
+
+deg(a) = 3, deg(b)=2, deg(c) = 4,
+deg(d) = 2, deg(e)=0, deg(f) = 2,
+deg(g) = 2, deg(h) = 1.
+
+‘We note that e is an isolated vertex and h is a pendant vertex.
+Further, we observe that the sum of the degrees of vertices is equal to 16. Also, the graph
+has 8 edges. Thus, the sum of the degrees of vertices is equal to twice the number of edges.
+‘This verifies the handshaking property for the given graph. Lt
+: Can there be a graph consisting of the vertices A, B, C, D with deg(A) = 2,
+leg(B) = 3, deg(C) = 2, deg(D) = 2?
+> In every graph, the sum of the degrees of the vertices has to be an even number. Here, this
+_sum is 9 which is not even. Therefore, there does not exist a graph of the given kind. .
+Can there be a graph with 12 vertices such that two of the vertices have degree
+3 each and the remaining 10 vertices have degree 4 each?
+: > Here, the sum of the degrees of vertices is (3 x 2) + (4 x 10) = 46. Therefore, if m = 23, we
+“have 2m = 46 and the handshaking property holds. Hence there can be a graph of the desired
+_ type (whose size is 23). .
+For a graph G = (V,E), what is the largest possible value for |V| if |E| = 19 and
+_ deg(v) > 4 for allv € V?
+> Since all vertices are of degree greater than or equal to 4, the sum of the degrees of vertices
+is greater than or equal to 4n, where n = |V| is the number of vertices. This sum is equal to twice
+_|E|, by handshaking property. Therefore, 2|E] > 4n, that is, 2 x 19 > 4n, orn < (38/4) < 10.
+Thus, the largest possible value of |V| is 9. .
+Show that the hypercube Q3 is a bipartite graph which is not a complete bipartite
+&raph.
+> The hypercube Q3 is shown in Figure 1.40, with the vertices labeled as A, B, C, D, P, Q, R,
+S so that, for this graph, the vertex set is V = {A, B,C, D, P,Q, R, S}.
+Let
+
+V, ={A,C,Q,S} and V2 ={B,D,P,R}
+
+Then, we note that V, U V2 = V, Vi Vp = © and that every edge of the graph has one end
+Vertex in the set V; and the other end vertex in the set V>; further, no edge of the graph has both
+Of its end vertices in V, or V2. Hence, this graph is a bipartite graph.

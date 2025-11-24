@@ -1,0 +1,27 @@
+BCS304 CEC
+
+Adjacency matrices for G,, Gy, and Gy
+
+Adjacency Lists:
+For any given list, i, the nodes in the list contain the vertices that are adjacent from vertex i.
+Figure 6.8 shows the adjacency lists for G;, G3, and G4.
+
+Sdefine MAX-VERTICES 50_/*maximum number of Yertices* /
+typedef struct node *fhode-pointer;
+typedef struct nod@ {
+
+int vertex?
+
+struct node ¢Vink;
+
+}:
+node-pointer graph (MAXSVERTICES);
+int n = 0; /* vertices ¢urrenbly gn use */
+
+G declarations for the adjacency list representation
+
+sequential representation for the graph G4 of Figure 6.5. We can determine the degree of any
+vertex in an undirected graph by simply counting the number of nodes in its adjacency list.
+This also gives us the number of edges incident on the vertex.
+
+19

@@ -1,0 +1,28 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Implementation of the delete operation
+
+element pop(int i)
+{ /* remove top element from the ith stack */ if
+(top[i] == boundary[i])
+return stackEmpty(i);
+return memory([top[i]--];
+
+}
+
+The top[i] == boundary[i+1] condition in push implies only that a particular stack ran out of
+memory, not that the entire memory is full. But still there may be a lot of unused space
+between other stacks in array memory as shown in Figure.
+
+Therefore, create an error recovery function called stackFull , which determines if there is any
+free space in memory. If there is space available, it should shift the stacks so that space is
+
+allocated to the full stack.
+
+a ae
+
+Sf0] 7[O) bf) ef) bti) A tet} tH] = bUi+t) btn)
+OL Fl) Phfi+2]
+b boundary , t+top
+
+vtucode.in 13

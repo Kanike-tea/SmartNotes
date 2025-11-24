@@ -1,0 +1,42 @@
+1.6. Walks and their classification 69
+
+The following results are obvious:
+(1) If acycle contains only one edge, it has to be a loop.
+(2) Two parallel edges (when they occur) form a cycle.
+(3) Ina simple graph, a cycle must have at least three edges. (A cycle formed by three edges
+is called a triangle).
+
+Note: While representing walks, trails, circuits, paths and cycles as sequences, only the ver-
+
+tices in the order of their occurrence may be indicated — omitting the edges in-between them
+as being understood (when there is no ambiguity).
+
+Case of Digraphs
+
+In the case of digraphs, the walks, trails, circuits, paths and cycles become directed walks,
+directed trails, directed circuits, directed paths and directed cycles. These are defined by con-
+
+sidering sequences of vertices and edges which are consistent with the directions of edges
+present.
+
+enum For the graph shown in Figure 1.103, indicate the nature of the following walks.
+(i) vie v2e2V3e2v2 Gi) v4e7v1e1v2e2V3e3V4e4V5 (ili) vje1¥2@2V3e3V4e4V5
+
+(iv) vje1v2e2V3e3V4e7V1 ~— (V) VoesV5e4v4e3V3€2V221 V1 €7V4e5V6
+
+v6 UL ey v2
+&6
+e
+5 T eg
+U5 e€4 U4 €3 v3
+Figure 1.103
+
+> (i) Open walk which is not a trail. (The edge e2 is repeated).
+
+(ii) Trail which is not a path. (The vertex vg is repeated).
+
+(iti) Trail which is a path.
+
+(iv) Closed walk which is a cycle.
+
+(¥) Closed walk which is a circuit but not a cycle. (The vertex v4 is repeated)

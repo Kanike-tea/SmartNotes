@@ -1,0 +1,34 @@
+94 Chapter 4 Introduction to the Thumb Instruction Set
+
+AND | logical bitwise AND of two 32-bit values Rd =Rd& Rm
+ASR | arithmetic shift right Rd = Rm> immediate,
+C flag = Rm|immediate — 1]
+Rd = Rd > Rs, C flag = Rd[Rs - 1]
+BIC | logical bit clear (AND NOT) of two 32-bit | Rd = Rd AND NOT(Rm)
+values
+CMN | compare negative two 32-bit values Rn+Rm sets flags
+CMP | compare two 32-bit integers Rn— immediate sets flags
+Rn—Rm sets flags
+EOR | logical exclusive OR of two 32-bit values Rd=Rd EOR Rm
+LSL | logical shift left Rd = Rm < immediate,
+C flag = Rm[32 — immediate]
+Rd = Rd & Rs, C flag = Rd[32 — Rs]
+LSR | logical shift right Rd = Rm> immediate,
+C flag = Rdlimmediate — 1]
+Rd = Rd> Rs, C flag = Rd[Rs — 1]
+MOV | move a 32-bit value into a register Rd = immediate
+Rd=Rn
+Rd=Rm
+MUL | multiply two 32-bit values Rd =(Rm* Rd)[31:0]
+MVN | move the logical NOT of a 32-bit value Rd =NOT(Rm)
+into a register
+NEG | negate a 32-bit value Rd=0— Rm
+ORR | logical bitwise OR of two 32-bit values Rd=Rd OR Rm
+ROR | rotate right a 32-bit value Rd = Rd RIGHT_ROTATE Rs,
+C flag = Rd[ Rs—1]
+SBC | subtract with carry a 32-bit value Rd = Rd — Rm— NOT(C flag)
+SUB | subtract two 32-bit values Rd = Rn — immediate
+Rd = Rd — immediate
+Rd=Rn—Rm
+sp = sp — (immediate < 2)
+TST | test bits of a 32-bit value Rn AND Rm sets flags

@@ -1,0 +1,54 @@
+Microcontrollers — BCS402
+
+The base register rO points to memory address 0x80010 in the PRE condition. Memory
+addresses 0x80010, 0x80014, and 0x80018 contain the values 1, 2, and 3 respectively. After
+the load multiple instruction executes registers r1, r2, and r3 contain these values as shown in
+Figure 4. The base register rO now points to memory address 0x8001Ic after the last loaded
+
+word.
+
+Memory
+
+Address pointer address Data
+
+0x80020 | 0x00000005
+0x8001c | 0x00000004
+0x80018 | 0x00000003 | r3 =0x00000003
+0x00000002 | r2 = 0x00000002
+0x00000001 | r/ = 0x00000001
+0x00000000
+
+70 = Ox8001¢
+
+Fig 4: Post-condition for LDMIA instruction
+
+Now replace the LDMIA instruction with a load multiple and increment before LDMIB
+instruction and use the same PRE conditions. The first word pointed to by register r0 is
+
+ignored and register rl is loaded from the next memory location as shown in Figure 5.
+
+Memory
+
+Address pointer address Data
+0x80020 | 0x00000005
+10 = 0x8001c —>| Ox8001c | 0x00000004 | r3 = 0x00000004
+0x80018 | 0x00000003 | r2 = 0x00000003
+0x80014 | 0x00000002 | r/ = 0x00000002
+0x80010 | 0x00000001
+
+0x8000c | 0x00000000
+
+Fig 5: Post-condition for LDMIB instruction
+
+After execution, register r0 now points to the last loaded memory location. This is in contrast
+
+with the LDMIA example, which pointed to the next memory location.
+
+The decrement versions DA and DB of the load-store multiple instructions decrement the
+start address and then store to ascending memory locations. This is equivalent to descending
+memory but accessing the register list in reverse order. With the increment and decrement
+load multiples, you can access arrays forwards or backwards. They also allow for stack push
+
+and pull operations.
+
+Dept. of ECE, GSSSIETW Page 19

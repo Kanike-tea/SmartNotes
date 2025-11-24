@@ -1,0 +1,57 @@
+Database Management System [BCS403]
+
+"4 GUI,
+chen Web Interface
+
+4
+
+Application Server ae
+)
+
+or Programs,
+Web Server Web ==
+Y
+a
+
+Databaso
+Management
+System
+
+Database
+Server
+
+Figure 2.5.4(a): Logical three-tier client/server architecture
+= Client
+- Contain GUI interfaces and some additional application-specific business rules
+= Application server or the Web server
+- accepts requests from the client, processes the request and sends database queries
+and commands to the database server, and then passes processed data from the
+database server to the clients, where it may be processed further and filtered to be
+presented to users in GUI format.
+- It can also improve database security by checking a client’s _ credentials before
+
+forwarding a request to the database server.
+
+Client [ Presentation
+Layer
+ry
+
+Application Server u
+or Business
+Web Server a
+
+a
+Database
+Database Ganicas
+
+Server Layer
+ea
+
+Figure 2.5.4(b): Logical three-tier client/server architecture
+
+Figure 2.5.4(b) shows another architecture used by database and other application package
+vendors.
+
+«Presentation layer
+
+https://vtucode.in Page 31

@@ -1,0 +1,51 @@
+1024 Chapter 27 Introduction to Information Retrieval and Web Search
+
+view about a historical issue, a scientist verifying a claim by another scientist, or
+a person trying to shop for clothing). Designing systems suitable for different
+types of users is an important topic of IR that is typically studied in a field
+known as Human-Computer Information Retrieval.
+
+Types of Data. Search systems can be tailored to specific types of data. For exam-
+ple, the problem of retrieving information about a specific topic may be handled
+more efficiently by customized search systems that are built to collect and retrieve
+only information related to that specific topic. The information repository could
+be hierarchically organized based on a concept or topic hierarchy. These topical
+domain-specific or vertical IR systems are not as large as or as diverse as the generic
+World Wide Web, which contains information on all kinds of topics. Given that
+these domain-specific collections exist and may have been acquired through a
+specific process, they can be exploited much more efficiently by a specialized sys-
+tem. Types of data can have different dimensions, such as velocity, variety, vol-
+ume, and veracity. We discussed these in Section 25.1.
+
+Types of Information Need. In the context of Web search, users’ information
+needs may be defined as navigational, informational, or transactional.° Naviga-
+tional search refers to finding a particular piece of information (such as the
+Georgia Tech University Web site) that a user needs quickly. The purpose of
+informational search is to find current information about a topic (such as
+research activities in the college of computing at Georgia Tech—this is the clas-
+sic IR system task). The goal of transactional search is to reach a site where
+further interaction happens resulting in some transactional event (such as join-
+ing a social network, shopping for products, making online reservations,
+accessing databases, and so on).
+
+Levels of Scale. In the words of Nobel Laureate Herbert Simon,
+
+“What information consumes is rather obvious: it consumes the attention of its
+recipients. Hence a wealth of information creates a poverty of attention, and a
+need to allocate that attention efficiently among the overabundance of informa-
+tion sources that might consume it.”*
+
+This overabundance of information sources in effect creates a high noise-to-signal
+ratio in IR systems. Especially on the Web, where billions of pages are indexed, IR
+interfaces are built with efficient scalable algorithms for distributed searching, index-
+ing, caching, merging, and fault tolerance. IR search engines can be limited in level
+to more specific collections of documents. Enterprise search systems offer IR solu-
+tions for searching different entities in an enterprise’s intranet, which consists of the
+network of computers within that enterprise. The searchable entities include e-mails,
+corporate documents, manuals, charts, and presentations, as well as reports related
+to people, meetings, and projects. Enterprise search systems still typically deal with
+hundreds of millions of entities in large global enterprises. On a smaller scale, there
+are personal information systems such as those on desktops and laptops, called
+
+3See Broder (2002) for details.
+4From Herbert A. Simon (1971), “Designing Organizations for an Information-Rich World?

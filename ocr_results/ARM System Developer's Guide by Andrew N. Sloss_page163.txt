@@ -1,0 +1,50 @@
+150 Chapter 5 Efficient C Programming
+
+include inline assembly in your C source code. Using inline functions that contain assembly
+you can get the compiler to support ARM instructions and optimizations that aren’t usually
+available. For the examples of this section we will use the inline assembler in armcc.
+
+Don’t confuse the inline assembler with the main assembler armasm or gas. The inline
+assembler is part of the C compiler. The C compiler still performs register allocation,
+function entry, and exit. The compiler also attempts to optimize the inline assembly you
+write, or deoptimize it for debug mode. Although the compiler output will be functionally
+equivalent to your inline assembly, it may not be identical.
+
+The main benefit of inline functions and inline assembly is to make accessible in C
+operations that are not usually available as part of the C language. It is better to use inline
+functions rather than #define macros because the latter doesn’t check the types of the
+function arguments and return value.
+
+Let’s consider as an example the saturating multiply double accumulate primitive used
+by many speech processing algorithms. This operation calculates a + 2xy for 16-bit signed
+operands x and y and 32-bit accumulator a. Additionally, all operations saturate to the
+nearest possible value if they exceed a 32-bit range. We say x and y are QI5 fixed-point
+integers because they represent the values x2~!5 and y2~15, respectively. Similarly, a is a
+Q31 fixed-point integer because it represents the value a2~>!.
+
+We can define this new operation using an inline function qmac:
+
+__inline int gmac(int a, int x, int y)
+
+int i;
+
+i = x*y; /* this multiplication cannot saturate */
+if (i>=0)
+{
+/* x*y is positive */
+i = 2*i;
+if (i<0)
+{
+/* the doubling saturated */
+i= Ox7FFFFFFF;
+}
+if (a+i<a)
+{
+/* the addition saturated */
+return Ox7FFFFFFF;
+}
+return a+ i;
+
+}
+
+/* x*y is negative so the doubling can't saturate */

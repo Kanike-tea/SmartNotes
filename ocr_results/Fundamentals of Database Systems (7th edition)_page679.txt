@@ -1,0 +1,58 @@
+17.19.
+
+17.20.
+17.21.
+
+option 3 of Section 17.1.3, with an extra level of indirection that stores
+record pointers. Assume there are 1,000 distinct values of Department_code
+and that the EMPLOYEE records are evenly distributed among these
+values. Calculate (i) the index blocking factor bfr; (which is also the index
+fan-out fo); (ii) the number of blocks needed by the level of indirection
+that stores record pointers; (iii) the number of first-level index entries
+and the number of first-level index blocks; (iv) the number of levels
+needed if we make it into a multilevel index; (v) the total number of
+blocks required by the multilevel index and the blocks used in the extra
+level of indirection; and (vi) the approximate number of block accesses
+needed to search for and retrieve all records in the file that have a specific
+Department_code value, using the index.
+
+f. Suppose that the file is ordered by the nonkey field Department_code and we
+want to construct a clustering index on Department_code that uses block
+anchors (every new value of Department_code starts at the beginning of a
+new block). Assume there are 1,000 distinct values of Department_code and
+that the EMPLOYEE records are evenly distributed among these values. Cal-
+culate (i) the index blocking factor bfr; (which is also the index fan-out fo);
+(ii) the number of first-level index entries and the number of first-level
+index blocks; (iii) the number of levels needed if we make it into a multi-
+level index; (iv) the total number of blocks required by the multilevel index;
+and (v) the number of block accesses needed to search for and retrieve all
+records in the file that have a specific Department_code value, using the clus-
+tering index (assume that multiple blocks in a cluster are contiguous).
+
+g. Suppose that the file is not ordered by the key field Ssn and we want to
+construct a B*-tree access structure (index) on Ssn. Calculate (i) the orders
+p and Pjear of the B*-tree; (ii) the number of leaf-level blocks needed if
+blocks are approximately 69% full (rounded up for convenience); (iii) the
+number of levels needed if internal nodes are also 69% full (rounded up
+for convenience); (iv) the total number of blocks required by the B*-tree;
+and (v) the number of block accesses needed to search for and retrieve a
+record from the file—given its Ssn value—using the B*-tree.
+
+h. Repeat part g, but for a B-tree rather than for a B*-tree. Compare your
+results for the B-tree and for the B*-tree.
+
+A PARTS file with Part# as the key field includes records with the following
+Part# values: 23, 65, 37, 60, 46, 92, 48, 71, 56, 59, 18, 21, 10, 74, 78, 15, 16, 20,
+24, 28, 39, 43, 47, 50, 69, 75, 8, 49, 33, 38. Suppose that the search field values
+are inserted in the given order in a B*-tree of order p = 4 and Phear = 3; show
+how the tree will expand and what the final tree will look like.
+
+Repeat Exercise 17.19, but use a B-tree of order p = 4 instead of a B*-tree.
+
+Suppose that the following search field values are deleted, in the given order,
+from the B*-tree of Exercise 17.19; show how the tree will shrink and show
+the final tree. The deleted values are 65, 75, 43, 18, 20, 92, 59, 37.
+
+Exercises
+
+649

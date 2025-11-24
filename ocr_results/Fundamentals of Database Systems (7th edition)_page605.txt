@@ -1,0 +1,52 @@
+16.8 Hashing Techniques
+
+A linked list of overflow records for each hash address is thus maintained, as
+shown in Figure 16.8(b).
+
+= Multiple hashing. The program applies a second hash function if the first
+results in a collision. If another collision results, the program uses open
+addressing or applies a third hash function and then uses open addressing if
+necessary. Note that the series of hash functions are used in the same order
+for retrieval.
+
+Each collision resolution method requires its own algorithms for insertion, retrieval,
+and deletion of records. The algorithms for chaining are the simplest. Deletion
+algorithms for open addressing are rather tricky. Data structures textbooks discuss
+internal hashing algorithms in more detail.
+
+The goal of a good hashing function is twofold: first, to distribute the records uni-
+formly over the address space so as to minimize collisions, thus making it possible
+to locate a record with a given key in a single access. The second, somewhat con-
+flicting, goal is to achieve the above yet occupy the buckets fully, thus not leaving
+many unused locations. Simulation and analysis studies have shown that it is usu-
+ally best to keep a hash file between 70 and 90% full so that the number of collisions
+remains low and we do not waste too much space. Hence, if we expect to have r
+records to store in the table, we should choose M locations for the address space
+such that (r/M) is between 0.7 and 0.9. It may also be useful to choose a prime num-
+ber for M, since it has been demonstrated that this distributes the hash addresses
+better over the address space when the mod hashing function is used modulo a
+prime number. Other hash functions may require M to be a power of 2.
+
+16.8.2 External Hashing for Disk Files
+
+Hashing for disk files is called external hashing. To suit the characteristics of disk
+storage, the target address space is made of buckets, each of which holds multiple
+records. A bucket is either one disk block or a cluster of contiguous disk blocks.
+The hashing function maps a key into a relative bucket number rather than
+assigning an absolute block address to the bucket. A table maintained in the file
+header converts the bucket number into the corresponding disk block address, as
+illustrated in Figure 16.9.
+
+The collision problem is less severe with buckets, because as many records as will fit
+in a bucket can hash to the same bucket without causing problems. However, we
+must make provisions for the case where a bucket is filled to capacity and a new
+record being inserted hashes to that bucket. We can use a variation of chaining in
+which a pointer is maintained in each bucket to a linked list of overflow records for
+the bucket, as shown in Figure 16.10. The pointers in the linked list should be
+record pointers, which include both a block address and a relative record position
+within the block.
+
+Hashing provides the fastest possible access for retrieving an arbitrary record given
+the value of its hash field. Although most good hash functions do not maintain
+
+575

@@ -1,0 +1,54 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 10 (a)
+
+10 a) Write a Python program to draw Time Series using Plotly Libraries.
+
+Aim: Demonstration of how to draw time series using plotly libraries.
+
+PROGRAM EXPLANATION
+
+To draw time series plots using the Plotly library in Python, you can follow the example below.
+
+Make sure you have Plotly installed:
+
+pip install plotly
+pip install numpy
+
+This Python program uses the Plotly library to create a time series plot comparing the high and
+
+low stock prices of Tesla. Here's a step-by-step explanation of the program:
+
+1.
+
+Import necessary libraries: The program imports the required modules:
+plotly.graph_objects for creating the plot, plotly.offline for offline plotting, and pandas
+
+for data manipulation.
+
+. Read time series data: The code reads time series data related to Tesla stock prices from a
+
+CSV file and stores it in a DataFrame named tesla.
+
+. Create traces for high and low stock prices: Two traces (trace_one and trace_two) are
+
+created using the Scatter class from plotly.graph_objects. Each trace represents a line plot
+with x-axis as dates and y-axis as either the high or low stock prices. The line parameter
+is used to set the color of the lines, and opacity controls the transparency.
+
+Organize data and layout: The data for the plot is organized into a list (data), which
+contains the two traces created earlier. The layout dictionary contains layout settings for
+
+the plot, including the title.
+
+. Create a dictionary representing the figure: The fig dictionary is created, containing both
+
+the data and layout information. This structure is required by Plotly to represent a
+complete figure.
+
+Plot the figure and save as an HTML file: The pyo.plot function generates an HTML file
+named 'Tesla Stock Comparison.html' and opens it in a web browser. The resulting plot
+
+shows the time series comparison of Tesla's high and low stock prices.
+
+Dept. of CSE 71 GSSSIETW, Mysuru

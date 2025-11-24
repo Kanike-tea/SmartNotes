@@ -1,0 +1,58 @@
+434
+
+Chapter 13. XML: Extensible Markup Language
+
+set of elements (tag names) that a program processing the document knows to
+expect. This gives the document creator the freedom to specify new elements but
+limits the possibilities for automatically interpreting the meaning or semantics of
+the elements within the document.
+
+A stronger criterion is for an XML document to be valid. In this case, the document
+must be well formed, and it must follow a particular schema. That is, the element
+names used in the start and end tag pairs must follow the structure specified in a
+separate XML DTD (Document Type Definition) file or XML schema file. We
+first discuss XML DTD here, and then we give an overview of XML schema in Sec-
+tion 13.3.2. Figure 13.4 shows a simple XML DTD file, which specifies the elements
+(tag names) and their nested structures. Any valid documents conforming to this
+DTD should follow the specified structure. A special syntax exists for specifying
+DTD files, as illustrated in Figure 13.4(a). First, a name is given to the root tag of
+the document, which is called Projects in the first line in Figure 13.4. Then the ele-
+ments and their nested structure are specified.
+
+When specifying elements, the following notation is used:
+
+= A* following the element name means that the element can be repeated zero
+or more times in the document. This kind of element is known as an optional
+multivalued (repeating) element.
+
+= A + following the element name means that the element can be repeated one
+or more times in the document. This kind of element is a required multival-
+ued (repeating) element.
+
+= A ? following the element name means that the element can be repeated zero
+or one times. This kind is an optional single-valued (nonrepeating) element.
+
+= An element appearing without any of the preceding three symbols must
+appear exactly once in the document. This kind is a required single-valued
+(nonrepeating) element.
+
+= The type of the element is specified via parentheses following the element. If
+the parentheses include names of other elements, these latter elements are
+the children of the element in the tree structure. If the parentheses include
+the keyword #PCDATA or one of the other data types available in XML DTD,
+the element is a leaf node. PCDATA stands for parsed character data, which is
+roughly similar to a string data type.
+
+= The list of attributes that can appear within an element can also be specified
+via the keyword !ATTLIST. In Figure 13.3, the Project element has an attribute
+Projld. If the type of an attribute is ID, then it can be referenced from another
+attribute whose type is IDREF within another element. Notice that attributes
+can also be used to hold the values of simple data elements of type #PCDATA.
+
+= Parentheses can be nested when specifying elements.
+
+= Abar symbol (¢; | e2 ) specifies that either e; or e2 can appear in the document.
+We can see that the tree structure in Figure 13.1 and the XML document in Fig-
+
+ure 13.3 conform to the XML DTD in Figure 13.4. To require that an XML
+document be checked for conformance to a DTD, we must specify this in the

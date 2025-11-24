@@ -1,0 +1,65 @@
+MECHANISMS USED FOR INTERFACING I/O-DEVICES
+
+1) Program Controlled I/O
+
+e Processor repeatedly checks status-flag to achieve required synchronization b/w processor &
+
+W/O device. (We say that the processor polls the device).
+e Main drawback:
+© The processor wastes time in checking status of device before actual data-transfer takes place.
+2) Interrupt I/O
+> 1/O-device initiates the action instead of the processor.
+
+Interconnection network
+
+General
+purpose
+registers
+
+Control
+registers
+
+Interface Interface
+
+Processor Keyboard Display
+
+Figure 3.2 The connection for processor, keyboard, and display.
+» I/O-device sends an INTR signal over bus whenever it is ready for a data-transfer operation.
+> Like this, required synchronization is done between processor & I/O device.
+
+3) Direct Memory Access (DMA)
+> Device-interface transfer data directly to/from the memory w/o continuous involvement
+by the processor.
+> DMA is a technique used for high speed I/O-device.
+
+INTERRUPTS
+
+> The processor can be performing its own task without the need to continuously check the I/O-device.
+> The routine executed in response to an interrupt-request is called ISR.
+> The processor must inform the device that its request has been recognized by sending INTA
+
+signal. (INTR > Interrupt Request, INTA > Interrupt Acknowledge, ISR > Interrupt Service
+Routine)
+
+> For example, consider COMPUTE and PRINT routines (Figure 3.6).
+Program | Program 2
+
+COMPUTE routine DISPLAY routine
+
+=
+>)|— |
+
+Interrupt
+occurs ei
+here
+
+itt —<< <—
+
+ae
+
+M
+
+Figure 3.6 Transfer of control through the use of interrupts.
+© The processor first completes the execution of instruction i.
+
+Page 21

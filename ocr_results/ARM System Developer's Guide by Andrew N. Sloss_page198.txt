@@ -1,0 +1,96 @@
+EXAMPLE
+
+6.20
+
+6.6 Looping Constructs 185
+
+This example shows the unrolled memset routine. We've separated the three sections corre-
+sponding to the preceding paragraphs with rows of dashes. The routine isn’t finished until
+we've decided the best values for T; and T>.
+
+aaaaaaaZzauw
+
+RN
+RN
+RN
+1 RN
+2 RN
+3 RN
+4 RN
+5 RN
+6 RN
+7 RN 12
+
+OPI AHRWNHO
+
+current string pointer
+
+the character to fill with
+the number of bytes to fill
+copies of c
+
+3 void my_memset(char *s, unsigned int c, unsigned int N)
+
+my_memset
+
+aligned
+
+; First section aligns the array
+
+cMP
+BCC
+ANDS
+BEQ
+RSB
+suB
+cMP
+STRB
+STRGEB
+STRGTB
+
+ORR
+ORR
+
+N, #11 ; We know that T_l>=3
+memset_1ByteBlk ; if (N<T_1) goto memset_1ByteBIk
+cl, s, #3 ; find the byte alignment of s
+aligned 3 branch if already aligned
+
+cl, c_l, #4 3 number of bytes until alignment
+N,N, cl 3 number of bytes after alignment
+cl, #2
+
+c, [s], #1
+
+c, [s], #1 3 if (c_l>=2) then output byte
+
+c, [s], #1 3 if (c_l>=3) then output byte
+
+;the s array is now aligned
+cy Cy Cy LSL#8 ; duplicate the character
+c, Cy C, LSL#16 ; to fill all four bytes of c
+
+; Second section writes blocks of 128 bytes
+
+cMP
+BCC
+STMFD
+MOV
+MOV
+MOV
+MOV
+MOV
+MOV
+
+N, #12 ; We know that T_2 >= 128
+memset_4ByteBlk ; if (N<T_2) goto memset_4ByteBIk
+sp!, {c_2-c_6} 3 stack scratch registers
+
+cl,
+c2,
+3,
+c4,
+c5,
+6,
+
+eanaa9

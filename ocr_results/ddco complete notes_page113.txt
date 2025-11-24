@@ -1,0 +1,47 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+¢ Register of DMA Controller:
+It consists of 3 type of register:
+
+Starting address register:
+The format of starting address register is as shown in the fig. It is used to store
+the starting addressof the memory block.
+
+Saring ass [sd
+
+Word-Count register:
+The format of word count register is as shown in fig. It is used to store the no of
+words to be transferredfrom main memory to external devices and vice versa.
+
+eT
+
+Status and Controller register:
+The format of status and controller register is as shown in fig.
+
+31 30 1 0
+
+IRQ a | L Done
+IE R/W
+a)DONE bit:
+
+e The DMA controller sets this bit to 1 when it completes the direct data
+transfer between mainmemory and external devices.
+e This information is informed to CPU by means of DONE bit.
+
+b)R/W (Read or Write):
+
+e This bit is used to differentiate between memory read or memory write
+operation.
+
+e The R/W = 1 for read operation and
+
+= 0 for write operation.
+
+e When this bit is set to 1, DMA controller transfers the one block of data
+rom external deviceto main memory.
+
+e When this bit is set to 0, DMA controller transfers the one block of data
+
+rom main memoryto external device.
+
+Dr.Ajay V G, Dept. of CSE 15

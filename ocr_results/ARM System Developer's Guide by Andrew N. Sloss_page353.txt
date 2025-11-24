@@ -1,0 +1,57 @@
+340 Chapter 9 Exception and Interrupt Handling
+
+The entry point for this example handler uses the same code as for the simple
+nonnested interrupt handler. The link register 14 is first modified so that it points to
+the correct return address, and then the context plus the link register r14 are saved onto
+the IRQ stack.
+
+An interrupt service routine then services the interrupt. When servicing is complete or
+partially complete, control is passed back to the handler. The handler then calls a function
+called read_RescheduleFlag, which determines whether further processing is required.
+It returns a nonzero value in register r0 if no further processing is required; otherwise it
+returns a zero. Note we have not included the source for read_RescheduleFlag because
+it is implementation specific.
+
+The return flag in register r0 is then tested. If the register is not equal to zero, the handler
+restores context and returns control back to the suspended task.
+
+Register r0is set to zero, indicating that further processing is required. The first operation
+is to save the spsr, so a copy of the spsr_irg is moved into register r2. The spsr can then be
+stored in the stack frame by the handler later on in the code.
+
+The IRQ stack address pointed to by register r13_irq is copied into register r0 for later
+use. The next step is to flatten (empty) the IRQ stack. This is done by adding 6 * 4 bytes to
+the top of the stack because the stack grows downwards and an ADD instruction can be used
+to set the stack.
+
+The handler does not need to worry about the data on the IRQ stack being corrupted
+by another nested interrupt because interrupts are still disabled and the handler will not
+reenable the interrupts until the data on the IRQ stack has been recovered.
+
+‘The handler then switches to SVC mode; interrupts are still disabled. The cpsr is copied
+into register rl and modified to set the processor mode to SVC. Register r] is then written
+back into the cpsr, and the current mode changes to SVC mode. A copy of the new cpsr is
+left in register rl for later use.
+
+The next stage is to create a stack frame by extending the stack by the stack frame size.
+Registers r4 to rl can be saved onto the stack frame, which will free up enough registers to
+allow us to recover the remaining registers from the IRQ stack still pointed to by register r0.
+
+At this stage the stack frame will contain the information shown in Table 9.7. The only
+registers that are not in the frame are the registers that are stored upon entry to the IRQ
+handler.
+
+Table 9.8 shows the registers in SVC mode that correspond to the existing IRQ registers.
+The handler can now retrieve all the data from the IRQ stack, and it is safe to reenable
+interrupts.
+
+IRQ exceptions are reenabled, and the handler has saved all the important registers. The
+handler can now complete the stack frame. Table 9.9 shows a completed stack frame that
+can be used either for a context switch or to handle a nested interrupt.
+
+At this stage the remainder of the interrupt servicing may be handled. A context switch
+may be performed by saving the current value of register r13 in the current task’s control
+block and loading a new value for register r13 from the new task’s control block.
+
+It is now possible to return to the interrupted task/handler, or to another task ifa context
+switch occurred.

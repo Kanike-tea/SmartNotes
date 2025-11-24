@@ -1,0 +1,73 @@
+288 Chapter 8 Digital Signal Processing
+
+IF {ENDIAN}="big"
+SMLATT $a, $b, $c, $d
+ELSE
+SMLABB $a, $b, $c, $d
+ENDIF
+MEND
+
+To keep the example simple, we haven’t used macros like this. The following code only
+
+works on a little-endian memory system.
+
+array of input samples x[] (32-bit aligned)
+array of coefficients c{] (32-bit aligned)
+
+a RN 0 array for output samples al]
+
+x RN1 i;
+
+c RN2 ;
+
+N RN 3 number of outputs (a multiple of 6)
+M RN 4 — ; number of coefficients (a multiple of 6)
+c10  RNO — ; coefficient pairs
+
+c32. RNB
+
+x10 RN5 sample pairs
+
+x32 RNG
+
+x54 RNT
+
+a0 RN8 — ; output accumulators
+
+al RN9
+
+a2 RN 10
+
+a3 RN 1
+
+a4 RN 12
+
+a5  RN14
+
+3 void fir_léby16_arme
+3 (int *a,
+3; short *x,
+
+; struct { short *c; unsigned int M; } *c,
+
+3; unsigned int N)
+fir_l6by16_arme
+
+STMFD  sp!, {r4-r1l, Ir}
+
+LDMIA cc, {c, M}
+next_sample_arm9e
+
+STMFD sp!, {a, N, M}
+
+LOMIA x!, {x 10, x 32, x 54}
+
+Mov a0, #0
+Mov al, #0
+
+Mov. a2, #0
+Mov. a3, #0
+Mov a4, #0
+
+3 preload six samples
+3 zero accumulators

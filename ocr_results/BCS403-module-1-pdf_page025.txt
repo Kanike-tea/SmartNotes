@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+Query optimizer -concerned with the rearrangement and possible reordering of
+operations, elimination of redundancies, and use of correct algorithms and indexes during
+execution. It consults the system catalog for statistical and other physical information
+about the stored data and generates executable code that performs the necessary operations
+for the query and makes calls on the runtime processor.
+Precompiler - extracts DML commands from an application program and sends to the
+DML compiler for compilation into object code for database access.
+Host language compiler - rest of the program is sent to the host language compiler. The
+object codes for the DML commands and the rest of the program are linked, forming a
+canned transaction whose executable code includes calls to the runtime database processor.
+Runtime database processor executes:
+(1) the privileged commands
+(2) the executable query plans, and
+(3) the canned transactions with runtime parameters.
+It works with the system catalog and may update it withstatistics. It also works with the stored
+data manager, which in turn uses basic operating system services for carrying out low-level
+input/output (read/write) operations between the disk and main memory. The runtime database
+processor handles other aspects of data transfer, such as management of buffers in the main
+memory.
+stored data manager uses basic operating system services for carrying out low-level
+input/output (read/write) operations between the disk and main memory.
+concurrency control and backup and recovery systems integrated into the working of the
+
+runtime database processor for purposes of transaction management.
+
+2.4.2 Database System Utilities
+Database utilities help the DBA to manage the database system. Common utilities
+
+have the following types of functions:
+
+= Loading: used to load existing data files—such as text files or sequential files—into the
+database.
+
+= Backup: creates a backup copy of the database, usually by dumping the entire database onto
+tape or other mass storage medium. The backup copy can be used to restore the database in case
+of catastrophic disk failure. Incremental backups are also often used, where only changes since
+the previous backup are recorded. Incremental backup is more complex, but saves storage
+
+space.
+
+https://vtucode.in Page 26

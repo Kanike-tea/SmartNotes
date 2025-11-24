@@ -1,0 +1,57 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+POLYNOMIAL REPRESENTATION: FIRST METHOD
+
+#define MAX DEGREE 100
+typedef struct
+{
+
+int degree;
+float coef [MAX_DEGREE] ;
+}polynomial;
+
+polynomial a;
+
+/* ad =a +b, where a, b, and d are polynomials */
+
+d = Zero( )
+while (! IsZero(a) && ! IsZero(b))
+do
+
+{
+switch COMPARE (Lead_Exp(a), Lead_Exp (b) )
+
+d = Attach(d, Coef (b, Lead _Exp(b)), Lead_Exp(b));
+b = Remove (b, Lead_Exp(b));
+break;
+
+case 0: sum = Coef (ay )lead_Exp (a)) + Coef ( b,Lead_Exp(b));
+if (sum)
+{
+Attach (dad, sum, Lead _Exp(a));
+a = Remove(a , Lead _Exp(a));
+b =9Remove(b ,. Lead_Exp (b) )
+
+t
+break;
+
+case 1: d = Attach(d, Coef (a, Lead_Exp(a)), Lead_Exp(a));
+a = Remove(a, Lead_Exp(a));
+}
+}
+
+insert any»remaining terms of a or b into d
+
+Initial version of padd function
+
++ Ifa is of type ‘polynomial’ then A(x)= )ai x' can be represented as:
+a.degree=n
+a.coeff[i]=an-i
++ In this representation, we store coefficients in order of decreasing exponents, such that
+a.coef[i] is the coefficient of x"' provided a term with exponent n-i exis
+
+a.coeff[iJ=0
+
+s; otherwise,
+
+vtucode.in 25

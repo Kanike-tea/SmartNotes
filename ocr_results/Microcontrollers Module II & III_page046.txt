@@ -1,0 +1,46 @@
+Microcontrollers — BCS402
+
+Efficient Register Allocation
+
+e Try to limit the number of local variables in the internal loop of functions to 12. The
+compiler should be able to allocate these to ARM registers.
+e¢ You can guide the compiler as to which variables are important by ensuring these
+
+variables are used within the innermost loop.
+5. Function Call
+
+The ARM Procedure Call Standard (APCS) defines how to pass function arguments and
+return values in ARM registers. The first four integer arguments are passed in the first four
+ARM registers: r0, rl, r2, and r3. Subsequent integer arguments are placed on the full
+descending stack, ascending in memory as in figure 5.1. Function return integer values are
+
+passed in r0.
+
+sp+16 | Argument 8
+
+sp+12 | Argument 7
+
+sp+8 | Argument 6
+
+sp+4 Argument 5
+
+sp Argument 4
+r3 ‘Argument 3
+r2 ‘Argument 2
+rl Argument 1
+0 Argument 0 | Return value
+
+Figure 5.1: ATPCS argument passing
+
+Two-word arguments such as long long or double are passed in a pair of consecutive
+
+argument registers and returned in r0, rl.
+
+The first point to note about the procedure call standard is the four-register rule. Functions
+with four or fewer arguments are far more efficient to call than functions with five or more
+arguments. For functions with four or fewer arguments, the compiler can pass all the
+arguments in registers. For functions with more arguments, both the caller and callee must
+
+access the stack for some arguments.
+
+Dept. of ECE, GSSSIETW Page 47

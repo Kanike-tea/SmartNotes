@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+bit loads. This obviously has the effect of reducing system performance, but the benefit is that
+16-bit memory is less expensive.
+
+In contrast, if the core executes 16-bit Thumb instructions, it will achieve better performance
+with a 16-bit memory. The higher performance is a result of the core making only a single
+fetch to memory to load an instruction. Hence, using Thumb instructions with 16-bit-wide
+memory devices provides both improved performance and reduced cost.
+
+Table 1 summarizes theoretical cycle times on an ARM processor using different memory
+
+width devices.
+
+Instruction size  8-bit memory 16-bit memory —_ 32-bit memory
+
+ARM 32-bit 4 cycles 2 cycles
+Thumb 16-bit 2 cycles I cycle
+
+Types
+There are different types of memory.
+Read-only memory (ROM):
+e It is the least flexible of all memory types because it contains an image that is
+permanently set at production time and cannot be reprogrammed.
+e¢ ROMs are used in high volume devices that require no updates or corrections.
+
+¢ Many devices also use a ROM to hold boot code.
+
+Flash ROM:
+e It can be written to as well as read, but it is slow to write. So it shouldn’t be used for
+holding dynamic data.
+e Its main use is for holding the device firmware or storing long term data that needs to
+be preserved after power is off.
+e The erasing and writing of flash ROM are completely software controlled with no
+
+additional hardware circuitry required, which reduces the manufacturing co:
+
+e Flash ROM has become the most popular of the read-only memory types and is
+currently being used as an alternative for mass or secondary storage.
+Dynamic random access memory (DRAM):
+e It is the most commonly used RAM for devices.
+e It has the lowest cost per megabyte compared with other types of RAM.
+e DRAM is dynamic it needs to have its storage cells refreshed and given a new
+
+electronic charge every few milliseconds.
+
+Dept. of ECE, GSSSIETW Page 9

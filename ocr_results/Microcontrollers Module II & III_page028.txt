@@ -1,0 +1,47 @@
+Microcontrollers — BCS402
+
+A coprocessor can either provide additional computation capability or be used to control the
+
+memory subsystem including caches and memory management.
+
+The coprocessor instructions include data processing, register transfer, and memory transfer
+
+instructions.
+
+Note that these instructions are only used by cores with a coprocessor.
+
+Syntax: CDP {<cond>} cp, opcodel, Cd, Cn {, opcode2}
+<MRCIMCR>{<cond>} cp, opcodel, Rd, Cn, Cm {, opcode2}
+
+<LDCISTC>{<cond>} cp, Cd, addressing
+
+CDP coprocessor data processing—perform an operation in a coprocessor
+
+MRC MCR | coprocessor register transfer—move data to/from coprocessor registers
+
+LDC STC | coprocessor memory transfer—load and store blocks of memory to/from a coprocessor
+
+In the syntax of the coprocessor instructions, the cp field represents the coprocessor number
+between pO and p15. The opcode fields describe the operation to take place on the
+
+coprocessor. The Cn, Cm, and Cd fields describe registers within the coprocessor.
+
+The coprocessor operations and registers depend on the specific coprocessor that being used.
+Coprocessor 15 (CPI5) is reserved for system control purposes, such as memory
+
+management, write buffer control, cache control, and identification registers.
+Example:
+MRC p15,0,r10,cO, cO, 0 ; transferring the contents of CP15 register c0 to register rl10
+
+Here CP15 register-O0 contains the processor identification number. This register is copied
+
+into the general-purpose register r10.
+6. Loading Constants
+
+There is no ARM instruction to move a 32-bit constant into a register. Since ARM
+
+instructions are 32 bits in size, they obviously cannot specify a general 32-bit constant.
+
+To aid programming there are two pseudo instructions to move a 32-bit value into a register
+
+Dept. of ECE, GSSSIETW Page 29

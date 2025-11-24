@@ -1,0 +1,46 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+Program 04: Write a python program for the scenario we have a dataset containing
+students! scores in two subjects. Create a scatter plot to visualize the relationship
+
+between the scores.
+
+ALGORITHM
+1. Import Libraries: Import the necessary library: pandas for data manipulation and
+
+matplotlib.pyplot for creating visualizations.
+2. Create Sample Dataset:
+e Define a sample dataset with two columns: 'Math_Score' and 'English_Score'.
+e This step is for demonstration purposes. Replace this sample data with your actual
+dataset.
+3. Create DataFrame: Use the pd.DataFrame() function to create a DataFrame (df) from the
+sample data.
+4. Generate Scatter Plot:
+e Create a figure with a specified size using plt.figure(figsize=(8, 6)).
+e Use plt.scatter() to create a scatter plot.
+= Set 'Math_Score' as the x-axis variable (x=df['Math_Score')).
+* Set 'English_Score' as the y-axis variable (y=df['English_Score']).
+= Set the marker color to green (color='green').
+e Set the x-axis label using plt.xlabel('Math Score').
+e Set the y-axis label using plt.ylabel('English Score’).
+¢ Set the plot title using plt.title(‘Scatter Plot of Exam Scores').
+
+e Add a grid to the plot using plt.grid(True).
+
+5. Display the Plot: Use plt.show() to display the generated scatter plot.
+
+PROGRAM
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample Data
+data = {'Math_Score': [85, 90, 88, 78, 92],
+"English_Score': [80, 88, 85, 92, 89]}
+
+df = pd.DataFrame (data)
+
+# Scatter Plot
+plt.figure(figsize=(8, 6))
+
+Dept. of CSE 81 GSSSIETW, Mysuru

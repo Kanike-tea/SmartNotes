@@ -1,0 +1,70 @@
+Table 11.1
+
+11.2 Example: Simple Little Operating System 387
+
+Process control block.
+
+Offset
+
+—4
+
+-8
+-12
+—16
+—20
+—24
+—28
+—32
+—36
+—40
+—44
+
+Registers
+
+rl4
+rl3
+rl2
+rll
+rl0
+19
+18
+17
+16
+15
+r4
+13
+12
+rl
+10
+pe+4
+spsr
+
+There are four major parts of the PCB that have to be initialized: the program counter,
+the link register, the user mode stack, and the saved processor status register (in other words
+registers r13, r14, r15, and the spsr) for each task.
+
+3 void pcbSetUp(void *entryAddr, void *PCB, UINT offset);
+
+pcbSetUp
+sTR
+sTR
+suB
+sTR
+Mov
+sTR
+Mov
+
+r0,[r1,#-4] 3 PCB[-4]=C_TaskEntry
+r0, [r1,#-64] 3 PCB[-64]=C_TaskEntry
+r0,sp,r2
+
+r0, [r1, #-8] 3 PCB[-8]=sp-<offset>
+10, #0x50 3 cpsr_c
+
+r0, [r1,#-68] 3 PCB[-68]=iFt_User
+pe, Ir
+
+To help illustrate this, we have extracted the routine for initializing PCBs. The rou-
+tine pcbSetUp is called to set up tasks 2 and 3. Register r0 is the task entry address—label
+entryAddr. This is the execution address for a task. Register rl is the PCB data struc-
+ture address—label pcbAddr. This address points into a block of memory that stores the

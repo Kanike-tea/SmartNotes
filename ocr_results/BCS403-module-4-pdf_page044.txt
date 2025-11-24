@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+= The characteristics are :
++ The access mode
+- can be specified as READ ONLY or READ WRITE
+- The default is READ WRITE
+- Amode of READ WRITE allows select, update, insert, delete, and create
+commands to be executed
+- Amode of READ ONLY, as the name implies, is simply for data retrieval.
++ The diagnostic area size
+- DIAGNOSTIC SIZE n, specifies an integer value n, which indicates the
+number of conditions that can be held simultaneously in the
+diagnostic area
+- These conditions supply feedback information (errors or exceptions) to the
+user or program on the n most recently executed SQL statement
+
++ The isolation level
+- specified using the statement ISOLATION LEVEL <isolation>, where the value for
+
+<isolation> can be READ UNCOMMITTED, READ COMMITTED, REPEATABLE
+READ, or SERIALIZABLE
+- The default isolation level is SERIALIZABLE
+- The use of the term SERIALIZABLE here is based on not allowing violations that
+cause dirty read, unrepeatable read, and phantoms
+- lf atransaction executes at a lower isolation level than SERIALIZABLE, then one
+or more of the following three violations may occur:
+
+1. Dirty read. A transaction T1 may read the update of a transaction 72, which
+has not yet committed. If 72 fails and is aborted, then 71 would have read a
+value that does not exist and is incorrect.
+
+2. Nonrepeatable read. A transaction 71 may read a given value from a table. If
+another transaction 72 later updates that value and 71 reads that value again,
+T1 will see a different value.
+
+3. Phantoms. A transaction 71 may read a set of rows from a table, perhaps
+based on some condition specified in the SQL WHERE-clause. Now suppose
+that a transaction 72 inserts a new row that also satisfies the WHERE-clause
+condition used in 71, into the table used by 71. If 71 is repeated, then 71 will
+
+see a phantom, a row that previously did not exist.
+
+https://vtucode.in 20

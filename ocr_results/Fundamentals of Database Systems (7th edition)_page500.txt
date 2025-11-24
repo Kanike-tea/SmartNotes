@@ -1,0 +1,53 @@
+470 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Ssn Pnumber Hours Pname Plocation Ename
+123456789 1 32.5 ProductX Bellaire Smith, John B.
+
+* | 123456789 1 32.5 ProductX Bellaire English, Joyce A.
+123456789 2 75 ProductY Sugarland Smith, John B.
+
+* | 123456789 2 75 ProductY Sugarland English, Joyce A.
+
+* | 123456789 2 75 ProductY Sugarland Wong, Franklin T.
+666884444 3 40.0 | ProductZ Houston Narayan, Ramesh K.
+
+* | 666884444 3 40.0 | ProductZ Houston Wong, Franklin T.
+
+* | 453453453 1 20.0 ProductX Bellaire Smith, John B.
+453453453 1 20.0 ProductX Bellaire English, Joyce A.
+
+* | 453453453 2 20.0 ProductY Sugarland Smith, John B.
+453453453 2 20.0 ProductY Sugarland English, Joyce A.
+
+* | 453453453 2 20.0 ProductY Sugarland Wong, Franklin T.
+
+* | 333445555 2 10.0 ProductY Sugarland Smith, John B.
+
+* | 333445555 2 10.0 ProductY Sugarland English, Joyce A.
+333445555, 2 10.0 ProductY Sugarland Wong, Franklin T.
+
+* | 333445555 3 10.0 ProductZ Houston Narayan, Ramesh K.
+333445555, 3 10.0 ProductZ Houston Wong, Franklin T.
+333445555, 10 10.0 Computerization | Stafford Wong, Franklin T.
+
+* | 333445555 20 10.0 Reorganization Houston Narayan, Ramesh K.
+333445555, 20 10.0 Reorganization Houston Wong, Franklin T.
+
+Figure 14.6
+
+Result of applying NATURAL JOIN to the tuples in EMP_PROJ1 and EMP_LOCS
+of Figure 14.5 just for employee with Ssn = "123456789". Generated spurious
+tuples are marked by asterisks.
+
+Decomposing EMP_PROJ into EMP_LOCS and EMP_PROJ1 is undesirable because
+when we JOIN them back using NATURAL JOIN, we do not get the correct original
+information. This is because in this case Plocation happens to be the attribute that
+relates EMP_LOCS and EMP_PROJ1, and Plocation is neither a primary key nor a
+foreign key in either EMP_LOCS or EMP_PROJ1. We now informally state another
+design guideline.
+
+Guideline 4. Design relation schemas so that they can be joined with equality
+conditions on attributes that are appropriately related (primary key, foreign key)
+pairs in a way that guarantees that no spurious tuples are generated. Avoid relations
+that contain matching attributes that are not (foreign key, primary key) combina-
+tions because joining on such attributes may produce spurious tuples.

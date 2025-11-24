@@ -1,0 +1,42 @@
+Appendix C Overview of the QBE Language 1175
+
+WORKS_ON
+(a) [ Essn | Pno | Hours
+P_ES| 1
+P_ES| 2
+WORKS_ON
+(b) | Essn_| Pno | Hours
+P_EX | 1 ;
+P_EY 2 Figure C.4
+Specifying EMPLOYEES who work
+CONDITIONS on both projects. (a) Incorrect
+specification of an AND condition.
+-EX= EY (b) Correct specification,
+
+work for the ‘Research’ department can be specified as shown in Figure C.5(a). Any
+number of joins can be specified in a single query. We can also specify a result table
+to display the result of the join query, as shown in Figure C.5(a); this is needed if the
+result includes attributes from two or more relations. If no result table is specified,
+the system provides the query result in the columns of the various relations, which
+may make it difficult to interpret. Figure C.5(a) also illustrates the feature of QBE
+for specifying that all attributes of a relation should be retrieved, by placing the P.
+operator under the relation name in the relation template.
+
+To join a table with itself, we specify different variables to represent the different
+references to the table. For example, query Q8: For each employee retrieve the
+employee's first and last name as well as the first and last name of his or her immedi-
+ate supervisor can be specified as shown in Figure C.5(b), where the variables start-
+ing with E refer to an employee and those starting with S refer to a supervisor.
+
+C.2 Grouping, Aggregation, and Database
+Modification in QBE
+
+Next, consider the types of queries that require grouping or aggregate functions. A
+grouping operator G. can be specified in a column to indicate that tuples should be
+grouped by the value of that column. Common functions can be specified, such as
+AVG., SUM., CNT. (count), MAX., and MIN. In QBE the functions AVG., SUM., and
+CNT. are applied to distinct values within a group in the default case. If we want
+these functions to apply to all values, we must use the prefix ALL? This convention
+is different in SQL, where the default is to apply a function to all values.
+
+SALL in QBE is unrelated to the universal quantifier.

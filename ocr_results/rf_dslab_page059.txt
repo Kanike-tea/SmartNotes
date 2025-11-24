@@ -1,0 +1,58 @@
+20) Whatistheprimar yadvantageof alinkedlist?
+
+A linked list is a very ideal data structure because it can be modified easily. This means that modifying
+alinkedlist works regardless of howmanyelementsarein thelist.
+
+21) Whatisthedifferencebetweena PUSHandaPOP?
+
+Pushing and popping applies to the way data is stored and retrieved in a stack. A push denotes data
+beingadded to it, meaning data is being “pushed” into the stack. On the other hand, a popdenotes data
+retrieval ,andin particular refers tothe topmost data beingaccessed.
+
+22) Whatisalinearsearch?
+
+A linear search refers to the way a target key is being searched in a sequential data structure. Using
+thismethod, each element in the list is checked and compared against the target key, and isrepeated until
+foundorif theend ofthe list has been reached.
+
+23) Howdoesvar iabledeclarationaffectmemor yallocation?
+
+The amount of memory to be allocated or reserved would depend on the data type of the variable
+beingdeclared. For example, if a variable is declared to be of integer type, then 32 bits of memory storage
+will bereservedforthat variable.
+
+24) Whatis theadvantageof theheap overa stack?
+
+Basically, the heap is more flexible than the stack. That’s because memory space for the heap can
+bedynamically allocated and de-allocated as needed. However, memory of the heap can at timesbe
+slowerwhencompared to that stack.
+
+25) Whatisapostfixexpression?
+
+A postfix expression is an expression in which each operator follows its operands. The advantage of this
+formisthat thereisno needtogroupsub-expressionsin parentheses orto consider operatorprecedence.
+
+26) Whatisthedifferencebet weentheHEAPandtheST ACK?
+
+(Solution: HEAP is used to store dynamically allocated memory (malloc). STACK stores static
+
+data(int, const).)
+
+27) Whereinmemor yareHEAPandtheST ACK locatedrelativetotheexecutingprogram?
+
+(Solution: The STACKandHEA Parestored"below"theexecutingprogram.The HEAP" grows"
+towardtheprogramexecutablewhile theSTACK grows awayfrom it.)
+
+28) Describethedatastructuresof adouble-linkedlist.
+
+(Solution:A double-linkedliststructurecontainsone pointer tothe previousrecordinthe listandapointer
+tothenextrecord in thelist plus therecord data.)
+
+29) Howdoyouinsertarecordbetweentwonodesin double-linkedlist?
+
+(Solution:Previous R;Data R;Next R;To insertarecord(B)between twoothers(Aand C):Previous.B
+=A;Next.B=C; Next.A =B;Previous.C=B;)
+30) In which data structure, elements can be added or removed at either end, but not in
+
+themiddle?
+59

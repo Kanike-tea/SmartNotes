@@ -1,0 +1,52 @@
+> These 2 modes can be used together to implement an important data structure called a stack.
+
+Mow = NRI
+Mowe = ANUMIRD finan
+Clear =—RO
+LOOP Add (R)4RO
+Decrement RI
+Branch) — LOOP
+Move ROSUM
+
+Figure 2.16 The Auloincrement addressing modo used in he rogram of Figure 2.12,
+
+ASSEMBLY LANGUAGE
+* We generally use symbolic-names to write a program.
++ A complete set of symbolic-names and rules for their use constitute an Assembly Language.
+* The set of rules for using the mnemonics in the specification of complete instructions and programs is
+called the Syntax of the language.
++ Programs written in an assembly language can be automatically translated into a sequence of
+machine instructions by a program called an Assembler .
++ The user program in its original alphanumeric text formal is called a Source Program, and the
+assembled machine language program is called an Object Program.
+
+For example:
+MOVE RO,SUM ;The term MOVE represents OP code for operation performed by instruction.
+ADD #5,R3 ;Adds number 5 to contents of register R3 & puts the result back into registerR3.
+
+ASSEMBLER DIRECTIVES
++ Directives are the assembler commands to the assembler concerning the program being assembled.
+* These commands are not translated into machine opcode in the object-program.
+
+Memory Addressing
+address or data
+label Operation —_ information
+Assembler directives SUM EQU 200
+ORIGIN 204
+N DATAWORD 100
+NUM1 RESERVE 400
+ORIGIN 100
+Statements that START MOVE NR
+generate MOVE #NUM1,R2
+machine CLR RO
+instructions LOOP ADD (R2),RO
+ADD #4,R2
+DEC RL
+BGTZ LOOP
+MOVE RO,SUM
+Assembler directives RETURN
+END , START
+
+Figure 2.18 Assembly language representation for the program in Fiqure 2.17.
+
+Page 17

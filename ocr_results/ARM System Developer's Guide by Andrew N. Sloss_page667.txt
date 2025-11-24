@@ -1,0 +1,60 @@
+654 Appendix D Instruction Cycle Timings
+
+Table D.4. ARM7TDMI (ARMv4T) instruction cycle timings.
+
+Instruction class Cycles Notes
+
+ALU 1 +1 if you use a register-specified shift Rs.
++2 if Rdis pe.
+
+B, BL, BX 3
+
+CDP 1+B
+
+LDC 1+B+N
+
+LDR/B/H/SB/SH 3 +2 if Rdis pe.
+
+LDM 2+N +2 if pcis in the register list.
+
+MCR 24+B
+
+MLA 2+M
+
+XxMLAL 3+M
+
+MRC 3+B
+
+MRS, MSR 1
+
+MUL. 1+M
+
+XxMULL 2+M
+
+STC 1+B+N
+
+STR/B/H 2
+
+STM 1+N
+
+SWI 3
+
+SWP/B 4
+
+D.3 ARM9TDMI INSTRUCTION CYCLE TIMINGS
+
+The ARM9TDMI core is based on a five-stage pipeline with a single execute stage and two
+memory fetch stages. There is usually a one- or two-cycle delay following a load instruction
+before you can use the data. Using data immediately after a load will add interlock cycles.
+The multiplier circuit uses a 32-bit by 8-bit multiplier array with early termination. The
+number of multiply iteration cycles M depends on the value of register Rs according to
+Table D.5. Table D.6 gives the ARM9TDMI instruction cycle timings.
+
+Table D.5 =ARM9TDMI multiplier early termination.
+
+M_ Rsrange (use the first applicable range) Rs bitmap s = sign bit x = wildcard-bit
+
+1-28 <x<28 SSSSSSSS SSSSSSSS SSSSSSSS _XXXXXXXX
+2 26 <x<2!6 SSSSSSSS SSSSSSSS XXXXXXXX XXXXXXXX
+3 -24<x<2%4 SSSSSSSS_XXXXXXXX XXXXXXXX XXXXXXXX
+4 remaining x XXXXXXXKX XXXXXXXX XXXXXXXX XXXXXXXXK

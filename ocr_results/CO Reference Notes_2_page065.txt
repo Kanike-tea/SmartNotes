@@ -1,0 +1,25 @@
+Carry-lookahead logic
+
+ch PS
+(b) 4-bit adder
+Figure 9.4 A 4-bit carry-lookahead adder.
+
+HIGHER-LEVEL GENERATE & PROPAGATE FUNCTIONS
+© 16-bit adder can be built from four 4-bit adder blocks (Figure 9.5).
+. These blocks provide new output functions defined as
+Gk and Pk, where k=0 for the first 4-bit block,
+k=1 for the second 4-bit block and so on.
+¢ In the first block,
+PO=P3P2P1P0
+&
+G0=G3+P3G2+P3P2G
+1+P3P2P1G0
+. The first-level Gi and Pj functions determine whether bit stage i generates or propagates a
+carry, and the second level Gk and Pk functions determine whether block k generates or propagates a
+carry.
+. Carry c16 is formed by one of the carry-lookahead
+circuits as
+¢16=G3+P3G2+P3P2G1+P3P2P1G0+P3P2P1P0c0
+¢ Conclusion: All carries are available 5 gate delays after X, Y and cO are applied as inputs.
+
+Page 66

@@ -1,0 +1,60 @@
+508
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+Proof of IR5 (using IR1 through IR3).
+
+1. X >Y (given).
+
+2. X > Z (given).
+
+3. X — XY (using IR2 on 1 by augmenting with X; notice that XX = X).
+4. XY > YZ (using IR2 on 2 by augmenting with Y).
+
+5. X — YZ (using IR3 on 3 and 4).
+
+Typically, database designers first specify the set of functional dependencies F that
+can easily be determined from the semantics of the attributes of R; then IR1, IR2,
+and IRS are used to infer additional functional dependencies that will also hold on
+R. A systematic way to determine these additional functional dependencies is first
+to determine each set of attributes X that appears as a left-hand side of some func-
+tional dependency in Fand then to determine the set of all attributes that are depen-
+dent on X.
+
+Definition. For each such set of attributes X, we determine the set X* of attri-
+butes that are functionally determined by X based on F; X* is called the closure
+of X under F.
+
+Algorithm 15.1 can be used to calculate X*.
+
+Algorithm 15.1. Determining X*, the Closure of X under F
+
+Input: A set F of FDs ona relation schema R, and a set of attributes X, which is
+a subset of R.
+X*:=X;
+repeat
+
+oldX* := X*;
+
+for each functional dependency Y > Z in F do
+
+if X* D> Ythen X* := Xt UZ;
+until (X* = oldX*);
+
+Algorithm 15.1 starts by setting X* to all the attributes in X. By IR1, we know that all
+these attributes are functionally dependent on X. Using inference rules IR3 and IR4,
+we add attributes to X*, using each functional dependency in F. We keep going
+through all the dependencies in F (the repeat loop) until no more attributes are
+added to X* during a complete cycle (of the for loop) through the dependencies in F.
+The closure concept is useful in understanding the meaning and implications of
+attributes or sets of attributes in a relation. For example, consider the following
+relation schema about classes held at a university in a given academic year.
+
+CLASS ( Classid, Course#, Instr_name, Credit_hrs, Text, Publisher,
+Classroom, Capacity).
+
+Let F, the set of functional dependencies for the above relation include the
+following f.d.s:
+
+FD1: Sectionid — Course#, Instr_name, Credit_hrs, Text, Publisher,
+Classroom, Capacity;

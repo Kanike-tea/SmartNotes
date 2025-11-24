@@ -1,0 +1,53 @@
+5.3 Update Operations, Transactions, and Dealing with Constraint Violations
+
+= Operation:
+Insert <‘Cecilia, ‘F, ‘Kolonsky’, “6776789897 ‘1960-04-05, “6357 Windy Lane,
+Katy, TX, F, 28000, NULL, 4> into EMPLOYEE.
+Result: This insertion satisfies all constraints, so it is acceptable.
+
+If an insertion violates one or more constraints, the default option is to reject the
+insertion. In this case, it would be useful if the DBMS could provide a reason to the
+user as to why the insertion was rejected. Another option is to attempt to correct the
+reason for rejecting the insertion, but this is typically not used for violations caused by
+Insert; rather, it is used more often in correcting violations for Delete and Update.
+In the first operation, the DBMS could ask the user to provide a value for Ssn, and
+could then accept the insertion if a valid Ssn value is provided. In operation 3, the
+DBMS could either ask the user to change the value of Dno to some valid value
+(or set it to NULL), or it could ask the user to insert a DEPARTMENT tuple with
+Dnumber = 7 and could accept the original insertion only after such an operation
+was accepted. Notice that in the latter case the insertion violation can cascade back
+to the EMPLOYEE relation if the user attempts to insert a tuple for department 7 with
+a value for Mgr_ssn that does not exist in the EMPLOYEE relation.
+
+5.3.2 The Delete Operation
+
+The Delete operation can violate only referential integrity. This occurs if the tuple
+being deleted is referenced by foreign keys from other tuples in the database. To
+specify deletion, a condition on the attributes of the relation selects the tuple (or
+tuples) to be deleted. Here are some examples.
+
+= Operation:
+Delete the WORKS_ON tuple with Essn = ‘999887777’ and Pno = 10.
+Result: This deletion is acceptable and deletes exactly one tuple.
+
+= Operation:
+Delete the EMPLOYEE tuple with Ssn = ‘999887777.
+Result: This deletion is not acceptable, because there are tuples in
+WORKS_ON that refer to this tuple. Hence, if the tuple in EMPLOYEE is
+deleted, referential integrity violations will result.
+
+= Operation:
+Delete the EMPLOYEE tuple with Ssn = ‘333445555.
+Result: This deletion will result in even worse referential integrity violations,
+because the tuple involved is referenced by tuples from the EMPLOYEE,
+DEPARTMENT, WORKS_ON, and DEPENDENT relations.
+
+Several options are available if a deletion operation causes a violation. The first
+option, called restrict, is to reject the deletion. The second option, called cascade, is
+to attempt to cascade (or propagate) the deletion by deleting tuples that reference the
+tuple that is being deleted. For example, in operation 2, the DBMS could automati-
+cally delete the offending tuples from WORKS_ON with Essn = ‘999887777. A
+third option, called set null or set default, is to modify the referencing attribute
+values that cause the violation; each such value is either set to NULL or changed to
+
+167

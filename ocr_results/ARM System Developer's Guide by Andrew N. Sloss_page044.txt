@@ -1,0 +1,44 @@
+Figure 2.9
+
+Figure 2.10
+
+2.3 Pipeline 31
+
+([ Fetch }—-)Decode}-fJExecute} +f] Memory} of] Write )
+
+ARM9 five-stage pipeline.
+
+([Feten Jf] issue }--f] Decode} +f] Execute} +f]Memory} +f] Write )
+
+ARM10 six-stage pipeline.
+
+The pipeline design for each ARM family differs. For example, The ARM9 core increases
+the pipeline length to five stages, as shown in Figure 2.9. The ARM9 adds a memory and
+writeback stage, which allows the ARM9 to process on average 1.1 Dhrystone MIPS per
+MHz—an increase in instruction throughput by around 13% compared with an ARM7.
+The maximum core frequency attainable using an ARM9 is also higher.
+
+‘The ARM1O increases the pipeline length still further by adding a sixth stage, as shown
+in Figure 2.10. The ARM10 can process on average 1.3 Dhrystone MIPS per MHz, about
+34% more throughput than an ARM7 processor core, but again at a higher latency cost.
+
+Even though the ARM9 and ARM10 pipelines are different, they still use the same
+pipeline executing characteristics as an ARM7. Code written for the ARM7 will execute on
+an ARM9 or ARM10.
+
+2.3.1 PIPELINE EXECUTING CHARACTERISTICS
+
+The ARM pipeline has not processed an instruction until it passes completely through
+the execute stage. For example, an ARM7 pipeline (with three stages) has executed an
+instruction only when the fourth instruction is fetched.
+
+Figure 2.11 shows an instruction sequence on an ARM7 pipeline. The MSR instruction
+is used to enable IRQ interrupts, which only occurs once the MSR instruction completes
+the execute stage of the pipeline. It clears the J bit in the cpsr to enable the IRQ inter-
+rupts. Once the ADD instruction enters the execute stage of the pipeline, IRQ interrupts are
+enabled.
+
+Figure 2.12 illustrates the use of the pipeline and the program counter pc. In the execute
+stage, the pc always points to the address of the instruction plus 8 bytes. In other words,
+the pc always points to the address of the instruction being executed plus two instructions
+ahead. This is important when the pe is used for calculating a relative offset and is an

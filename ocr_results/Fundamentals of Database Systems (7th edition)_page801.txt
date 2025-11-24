@@ -1,0 +1,51 @@
+20.5 Characterizing Schedules Based on Serializability
+
+resources to all processes. Factors such as system load, time of transaction submis-
+sion, and priorities of processes contribute to the ordering of operations in a sched-
+ule. Hence, it is difficult to determine how the operations of a schedule will be
+interleaved beforehand to ensure serializability.
+
+If transactions are executed at will and then the resulting schedule is tested for seri-
+alizability, we must cancel the effect of the schedule if it turns out not to be serializ-
+able. This is a serious problem that makes this approach impractical. The approach
+taken in most commercial DBMSs is to design protocols (sets of rules) that—if
+followed by every individual transaction or if enforced by a DBMS concurrency
+control subsystem—will ensure serializability of all schedules in which the transac-
+tions participate. Some protocols may allow nonserializable schedules in rare cases
+to reduce the overhead of the concurrency control method (see Section 20.6).
+
+Another problem is that transactions are submitted continuously to the system, so
+it is difficult to determine when a schedule begins and when it ends. Serializability
+theory can be adapted to deal with this problem by considering only the committed
+projection of a schedule S. Recall from Section 20.4.1 that the committed projection
+C(S) of a schedule S includes only the operations in S that belong to committed
+transactions. We can theoretically define a schedule S to be serializable if its com-
+mitted projection C(S) is equivalent to some serial schedule, since only committed
+transactions are guaranteed by the DBMS.
+
+In Chapter 21, we discuss a number of different concurrency control protocols
+that guarantee serializability. The most common technique, called two-phase
+locking, is based on locking data items to prevent concurrent transactions from
+interfering with one another, and enforcing an additional condition that guaran-
+tees serializability. This is used in some commercial DBMSs. We will also discuss
+a protocol based on the concept of snapshot isolation that ensures serializability
+in most but not all cases; this is used in some commercial DBMSs because it has
+less overhead than the two-phase locking protocol. Other protocols have been
+proposed'*; these include timestamp ordering, where each transaction is assigned
+a unique timestamp and the protocol ensures that any conflicting operations are
+executed in the order of the transaction timestamps; multiversion protocols,
+which are based on maintaining multiple versions of data items; and optimistic
+(also called certification or validation) protocols, which check for possible serial-
+izability violations after the transactions terminate but before they are permitted
+to commit.
+
+20.5.4 View Equivalence and View Serializability
+
+In Section 20.5.1, we defined the concepts of conflict equivalence of schedules and
+conflict serializability. Another less restrictive definition of equivalence of sched-
+ules is called view equivalence. This leads to another definition of serializability
+
+'4These other protocols have not been incorporated much into commercial systems; most relational
+DBMSs use some variation of two-phase lacking or snapshot isolation.
+
+771

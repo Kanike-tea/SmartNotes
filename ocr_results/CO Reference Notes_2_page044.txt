@@ -1,0 +1,51 @@
+SYNCHRONOUS DRAM
+© The operations are directly synchronized with clock signal (Figure 8.8).
+© The address and data connections are buffered by means of registers.
+© The output of each sense amplifier is connected to a latch.
+« A Read-operation causes the contents of all cells in the selected row to be loaded in these latches.
+¢ Data held in latches that correspond to selected columns are transferred into data-output register.
+© Thus, data becoming available on the data-output pins.
+
+Row/Column —_J
+address =]
+Column
+Read/Write
+— circuits & latches
+Clock
+RAS Mode register
+CAS and
+RW timing control
+fay
+
+Figure 8.8 — Synchronous DRAM.
+
+wm SUL UU UU
+
+|
+| | | ||
+Dat (oT)
+
+Figure 8.9 A burst read of length 4 in an SDRAM.
+
+« First, the row-address is latched under control of RAS" signal (Figure 8.9).
+
+* The memory typically takes 2 or 3 clock cycles to activate the selected row.
+
+© Then, the column-address is latched under the control of CAS" signal.
+
+« After a delay of one clock cycle, the first set of data bits is placed on the data-lines.
+
+¢ SDRAM automatically increments column-address to access next 3 sets of bits in the selected row.
+LATENCY & BANDWIDTH
+
+* A good indication of performance is given by 2 parameters: 1) Latency 2) Bandwidth.
+
+Latency
+
+¢ It refers to the amount of time it takes to transfer a word of data to or from the memory.
+
+For a transfer of single word, the latency provides the complete indication of memory performance.
+
+For a block transfer, the latency denotes the time it takes to transfer the first word of data.
+
+Page 45

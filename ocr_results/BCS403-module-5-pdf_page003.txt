@@ -1,0 +1,38 @@
+Database Management System [BCS403]
+
+= Aread-locked item is also called share-locked because other transactions are allowed
+to read the item, whereas a write-locked item is called exclusive-locked because a
+single transaction exclusively holds the lock on the item
+= Method to implement read/write lock is to
+- keep track of the number of transactions that hold a shared (read) lock
+on an item in the lock table
+- Each record in the lock table will have four fields:
+<Data_item_name, LOCK, No_of_reads, Locking_transaction(s)>.
+= If LOCK(X)=write-locked, the value of locking_transaction(s) is a single transaction that
+holds the exclusive (write) lock on X
+= If LOCK(X)=read-locked, the value of locking transaction(s) is a list of one or more
+
+transactions that hold the shared (read) lock on X.
+
+read_lock(X):
+B: if LOCK(X) = “unlocked”
+then begin LOCK(X) € “read-locked”;
+no_of_reads(X),.<— 1
+end
+else if LOCK(X) = “read-locked"
+then no_ofjreads(X) €- no_of_reads(X) + 1
+else begin
+wait (until LOCK(X) = “unlocked”
+and the lock manager wakes up the transaction);
+go to
+end;
+write_lock(X):
+B: if LOCK(X) = “unlocked”
+then LOCK(X) <— “write-locked”
+else begin
+wait (until LOCK(X) = “unlocked”
+and the lock manager wakes up the transaction);
+gotoB
+end;
+
+https://vtucode.in 25

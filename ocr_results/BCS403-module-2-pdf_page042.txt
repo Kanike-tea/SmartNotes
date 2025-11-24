@@ -1,0 +1,57 @@
+Step 7: Mapping of N-ary Relationship Types
+
+= For each n-ary relationship type R
+
+* Create a new relation S to represent R
+
+Database Management System [BCS403]
+
+* Include primary keys of participating entity types as foreign keys
+
++ Include any simple attributes as attributes
+
+= The primary key of S is usually a combination of all the foreign keys that reference the
+
+relations representing the participating entity types.
+
+« For example, consider the relationship type SUPPLY.This can be mapped to the relation
+
+SUPPLY whose primary key is the combination of the three foreign keys {Sname,
+
+Part_no, Proj_name}.
+
+SUPPLIER
+
+PART
+
+PROJECT
+
+SUPPLIER
+
+PROJECT
+
+r~{ Semel]
+
+Proj_name} ...
+
+~
+
+PART
+
+Part_no
+
+SUPPLY
+
+Sname
+
+Proj_name
+
+Part_no
+
+Quantity
+
+Figure 3.2: Mapping the n-ary relationship type SUPPLY
+
+https://vtucode.in
+
+Page 43

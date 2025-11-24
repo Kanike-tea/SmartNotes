@@ -1,0 +1,57 @@
+9.3 Interrupt Handling Schemes 351
+
+The PRIORITY_x defines the four interrupt sources, used in the example, to a cor-
+responding set of priority levels, where PRIORITY_0 is the highest-priority interrupt and
+PRIORITY_3 is the lowest-priority interrupt.
+
+‘The BINARY_x defines provide the bit patterns for each of the priority levels. For instance,
+for a PRIORITY_0 interrupt the binary pattern would be 0x00000004 (or 1 « 2). For each
+priority level there is a corresponding mask that masks out all interrupts that are equal or
+lower in priority. For instance, MASK_2 will mask out interrupts from Timer (priority = 3)
+and CommRx (priority = 2).
+
+The defines for the interrupt controller registers are also listed. ic_Base is the base
+address, and the remaining defines (for instance, IRQStatus) are all offsets from that base
+address.
+
+The priority interrupt handler starts with a standard entry, but at first only the IRQ link
+register is stored onto the IRQ stack.
+
+Next the handler obtains the spsr and places the contents into register r14_irg and frees
+up a group of registers for use in processing the prioritization.
+
+The handler needs to obtain the status of the interrupt controller. This is achieved by
+loading in the base address of the interrupt controller into register r14 and loading register
+r10 with ic_Base (register r14) offset by IRQStatus (0x00).
+
+The handler now needs to determine the highest-priority interrupt by testing the status
+information. If a particular interrupt source matches a priority level, then the priority level
+is set in register rl. The method compares the interrupt source with all the set priority
+levels, starting first with the lowest priority and working to the highest priority.
+
+After this code fragment, register r14_irq will contain the base address of the interrupt
+controller, and register r1 J will contain the bit number of the highest-priority interrupt. It is
+now important to disable the lower- and equal-priority interrupts so that the higher-priority
+interrupts can still interrupt the handler.
+
+Notice that this method is more deterministic since the time taken to discover the
+priority is always the same.
+
+To set the interrupt mask in the controller, the handler must determine the current
+IRQ enable register and also obtain the start address of the priority mask table. The
+priority_masks are defined at the end of the handler.
+
+Register r12 will now contain the current IRQ enable register, and register r10 will
+contain the start address of the priority table. To obtain the correct mask, register r11 is
+shifted left by two (using the barrel shifter LSL #2). This will multiply the address by four
+and add that to the start address of the priority table.
+
+Register r10 contains the new mask. The next step is to clear the lower-priority interrupts
+using the mask, by performing a binary AND with the mask and register r12 (IRQEnable
+register) and then clearing the bits by storing the new mask into IRQEnableClear register.
+It is now safe to enable IRQ exceptions by clearing the i bit in the cpsr.
+
+Lastly the handler needs to jump to the correct service routine, by modifying register r11
+(which still contains the highest-priority interrupt) and the pc. Shifting register rl left by
+two (multiplying by four) and adding it to the pe allows the handler to jump to the correct
+routine by loading the address of the service routine directly into the pe.

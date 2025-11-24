@@ -1,0 +1,53 @@
+16.7 Files of Ordered Records (Sorted Files)
+
+do a linear search for random access. To access the records in order based on a non-
+ordering field, it is necessary to create another sorted copy—in a different order—of
+the file.
+
+Inserting and deleting records are expensive operations for an ordered file because
+the records must remain physically ordered. To insert a record, we must find its
+correct position in the file, based on its ordering field value, and then make space in
+the file to insert the record in that position. For a large file this can be very time-
+consuming because, on the average, half the records of the file must be moved to
+make space for the new record. This means that half the file blocks must be read
+and rewritten after records are moved among them. For record deletion, the prob-
+lem is less severe if deletion markers and periodic reorganization are used.
+
+One option for making insertion more efficient is to keep some unused space in each
+block for new records. However, once this space is used up, the original problem
+resurfaces. Another frequently used method is to create a temporary unordered file
+called an overflow or transaction file. With this technique, the actual ordered file is
+called the main or master file. New records are inserted at the end of the overflow
+file rather than in their correct position in the main file. Periodically, the overflow
+file is sorted and merged with the master file during file reorganization. Insertion
+becomes very efficient, but at the cost of increased complexity in the search algo-
+rithm. One option is to keep the highest value of the key in each block in a separate
+field after taking into account the keys that have overflown from that block. Other-
+wise, the overflow file must be searched using a linear search if, after the binary
+search, the record is not found in the main file. For applications that do not require
+the most up-to-date information, overflow records can be ignored during a search.
+
+Modifying a field value of a record depends on two factors: the search condition to
+locate the record and the field to be modified. If the search condition involves the
+ordering key field, we can locate the record using a binary search; otherwise we
+must do a linear search. A nonordering field can be modified by changing the
+record and rewriting it in the same physical location on disk—assuming fixed-
+length records. Modifying the ordering field means that the record can change its
+position in the file. This requires deletion of the old record followed by insertion of
+the modified record.
+
+Reading the file records in order of the ordering field is efficient if we ignore the
+records in overflow, since the blocks can be read consecutively using double buffer-
+ing. To include the records in overflow, we must merge them in their correct posi-
+tions; in this case, first we can reorganize the file, and then read its blocks
+sequentially. To reorganize the file, first we sort the records in the overflow file, and
+then merge them with the master file. The records marked for deletion are removed
+during the reorganization.
+
+Table 16.3 summarizes the average access time in block accesses to find a specific
+record ina file with b blocks.
+
+Ordered files are rarely used in database applications unless an additional access
+path, called a primary index, is used; this results in an indexed-sequential file.
+
+571

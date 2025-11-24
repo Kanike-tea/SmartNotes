@@ -1,0 +1,190 @@
+1218 = Index
+
+Cache memory, 543
+Caching (buffering) disk blocks, database
+recovery, 815-816
+Calendar, 975
+CALL statement, stored procedures, 337
+Candidate key, 159-160, 477
+Canned transactions, 15
+CAP theorem, NOSQL, 888-890
+Cardinality
+JOIN operations, 719-720
+of a relational domain, 152
+CARDINALITY function, 383
+Cardinality ratios, 76-77
+Cartesian product of a relational domain,
+153
+CARTESIAN PRODUCT operation,
+249-251
+CASCADE option, SQL, 233, 234
+Cascaded values
+insert violation and, 167
+SELECT operation sequence of, 243
+SQL constraint options, 186-187
+Cascading rollback phenomenon
+database recovery and, 819-821
+schedules, 762
+timestamp ordering, 794
+CASE (computer-aided software
+engineering), 46-47
+CASE clause, SQL, 222-223
+Casual end users, 15-16
+Catalog management, DDBs, 875
+Catalogs
+component modules and, 42-45
+DBMS, 10-11, 35, 38, 42-45
+file storage in, 10-11
+schema description storage, 35, 38, 180
+SQL concept, 179-180
+Catastrophic failures, database backup
+and recovery from, 832-833
+Categories
+defined, 126
+EER modeling concept, 108, 120-122,
+126
+EER-to-relational mapping, 302-303
+partial, 122
+superclasses and, 120-122
+total, 122
+union types using, 120-122, 302-303
+Cautious waiting algorithm, deadlock
+prevention, 791
+Central processing unit (CPU), primary
+storage of, 542
+Centralized DBMS, 52
+Centralized DBMS architectures, 46-47
+Certification of transactions, 781
+Certify locks, 796-797
+Chaining, hashing collision resolution, 574
+Character-string data types, 182-183
+Characters of data, 547
+CHECK clauses for, 187
+Checkpoints, database recovery,
+818-819, 828-829
+
+Child nodes, tree structures, 617
+Ciphertext, 1149
+Class diagrams, UML, 85-88
+Class library
+OOPL (object-oriented programming
+language) and, 312
+SQL imported from JDBC, 331, 332
+Classes
+EER model relationships, 108-110
+inheritance, 110, 118
+interface inheritance, ODL, 404—405
+interfaces, instantiable behavior and,
+392
+Java, 331
+object data models, 52
+ODL, 400, 404-405
+ODMG models, 392, 404-405
+operations and type definitions, 371
+property specification, 130
+subclasses, 108-110, 126
+superclasses, 109, 110, 126
+Clausal form, deductive databases,
+1003-1005
+Client, defined, 48
+Client computer, 44
+Client machines, 47
+Client module, 31
+Client program, 313
+Client/server architectures
+basic, 47-49
+centralized DBMS, 46-47
+two-tier, 49
+Client tier, HTML and, 344
+CLOSE CURSOR command, SQL, 318
+Closed world assumption, 156
+Closure, functional dependencies,
+505-506, 508
+Cloud computing
+Big data technology for, 947-949
+environment, 31
+Cloud storage, 3
+Clustered file, 572, 583, 602-603
+Clustering, data mining, 1088-1091
+Clustering indexes, 602, 606-608
+Clusters, file blocks, 564
+Code generator, query processing, 655
+Code injection, SQL, 1144
+Collection (multivalued) constructors,
+369
+Collection objects, ODMG models,
+393-394
+Collection operators, OQL, 413-416
+Collections
+built-in interfaces, ODMG, 393-396
+entity sets, 67-68
+object extent and, 373, 376
+persistent, 373, 376
+transient, 376
+Collision resolution, hashing, 574
+Column, SQL, 179
+Column-based data models, 51, 53
+Column-based NOSQL, 888, 900-903
+
+Column-based storage of relations,
+indexing for, 642
+Comments, PHP programming, 345
+Commiit point, transaction processing, 756
+Committed projection, schedules, 760
+Communication autonomy, DBs, 845
+Communication software, DBMS, 46
+Communication variables in embedded
+SQL, 315, 316
+Commutative property, SELECT
+operation, 243
+Comparison operators
+select-from-where query structure
+and, 188-190
+select-project-join query structure
+and, 189, 191
+SQL query retrieval, 188-191, 195-197
+substring pattern matching, 195-197
+Compiled queries, 710
+Compilers
+DBMS interface modules, 42-45
+DDL for schema definitions, 42-43
+query, 43-44
+precompiler, 44
+Complete schedule conditions, 760
+Complete set of relational binary
+operations, 255
+Completeness (totalness) constraint, 115
+Complex attributes, 66-67
+Complex elements, XML, 431, 441
+Composite, 65-66
+Composite (compound) attributes,
+XML, 441
+Composite keys, 631
+Concatenation operator (||) in SQL,
+182-183
+Concept hierarchy, 1053
+Conceptual (schema) level, 37
+Conceptual data models, 33
+Conceptual design
+comparison of ODB and RDB, 405-406
+high-level data model design, 61-62
+mapping EER schema to ODB schema,
+407-408
+Conceptualization, ontology and, 134
+Concurrency
+control, 749-752, 770-771
+serializability of schedules and,
+770-71
+transaction processing, 746-747
+Concurrency control protocols, 781
+Concurrency control software, 13-14
+Concurrency control techniques
+data insertion and, 806
+deletion operation and, 806
+distributed databases (DDBs), 854-857
+granularity of data items, 800-801
+index concurrency control using locks,
+805-806
+interactive transactions and, 807
+latches and, 807
+locking data items, 781

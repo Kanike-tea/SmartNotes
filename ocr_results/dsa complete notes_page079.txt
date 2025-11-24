@@ -1,0 +1,33 @@
+Data Structures and Applications (BCS304) Module III
+
+first : l
+
+The function dinsert() inserts a newNODE into a doubly linked list after a NODE pointed by
+ptr
+
+dinsert(DNODE *ptr, DNODE *newNODE)
+{
+
+DNODE * next
+next=ptr->rlink;
+ptr->rlink=newNODE;
+newNODE->llink=ptr;
+newNODE->rlink=next;
+next->llink=newNODE;
+}
+
+The function ddelete() deletes a NODE from a doubly linked list pointed by head
+
+Void ddeleteeDNODE *NODE,DNODE *head)
+{
+if (NODE==head)
+printf(“deletion of header NODE not permitted”);
+else
+{
+prev=NODE->llink;
+next=NODE->rlink;
+prev->rlink=next;
+next->llink=prev
+free(cur)
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 4

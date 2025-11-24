@@ -1,0 +1,51 @@
+23.7 Distributed Database Architectures
+
+formance computing, where there is a need for multiprocessor architectures to cope
+with the volume of data undergoing transaction processing and warehousing
+applications. We then introduce a generic architecture of a distributed database.
+This is followed by discussions on the architecture of three-tier client/server and
+federated database systems.
+
+23.7.1 Parallel versus Distributed Architectures
+
+There are two main types of multiprocessor system architectures that are com-
+monplace:
+
+= Shared memory (tightly coupled) architecture. Multiple processors share
+secondary (disk) storage and also share primary memory.
+
+= Shared disk (loosely coupled) architecture. Multiple processors share sec-
+ondary (disk) storage but each has their own primary memory.
+
+These architectures enable processors to communicate without the overhead of
+exchanging messages over a network.* Database management systems developed
+using the above types of architectures are termed parallel database management
+systems rather than DDBMSs, since they utilize parallel processor technology.
+Another type of multiprocessor architecture is called shared-nothing architecture.
+In this architecture, every processor has its own primary and secondary (disk)
+memory, no common memory exists, and the processors communicate over a high-
+speed interconnection network (bus or switch). Although the shared-nothing
+architecture resembles a distributed database computing environment, major dif-
+ferences exist in the mode of operation. In shared-nothing multiprocessor systems,
+there is symmetry and homogeneity of nodes; this is not true of the distributed
+database environment, where heterogeneity of hardware and operating system at
+each node is very common. Shared-nothing architecture is also considered as an
+environment for parallel databases. Figure 23.7(a) illustrates a parallel database
+(shared nothing), whereas Figure 23.7(b) illustrates a centralized database with dis-
+tributed access and Figure 23.7(c) shows a pure distributed database. We will not
+expand on parallel architectures and related data management issues here.
+
+23.7.2 General Architecture of Pure Distributed Databases
+
+In this section, we discuss both the logical and component architectural models of a
+DDB. In Figure 23.8, which describes the generic schema architecture of a DDB, the
+enterprise is presented with a consistent, unified view showing the logical structure
+of underlying data across all nodes. This view is represented by the global concep-
+tual schema (GCS), which provides network transparency (see Section 23.1.2). To
+accommodate potential heterogeneity in the DDB, each node is shown as having its
+own local internal schema (LIS) based on physical organization details at that
+
+4if both primary and secondary memories are shared, the architecture is also known as shared- every-
+thing architecture.
+
+869

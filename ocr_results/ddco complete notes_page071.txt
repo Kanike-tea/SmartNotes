@@ -1,0 +1,62 @@
+Digital Design and Computer Organization (BCS302) Module 3
+
+Cache Memory
+As an adjunct to the main memory, a smaller, faster RAM unit, called a cache, is used
+to hold sections of a program that are currently being executed, along with any
+
+associated data.
+
+The cache is tightly coupled with the processor and is usually contained on the same
+integrated-circuit chip.
+
+The purpose of the cache is to facilitate high instruction execution rates.
+At the start of program execution, the cache is empty.
+All program instructions and any required data are stored in the main memory.
+
+As execution proceeds, instructions are fetched into the processor chip, and a copy of
+each is placed in the cache.
+
+When the execution of an instruction requires data located in the main memory,
+thedata are fetched and copies are also placed in the cache.
+
+Secondary Storage
+
+Vv
+
+Primary memory is essential, it tends to be expensive and does not retain information
+when power is turned off.
+
+Thus additional, less expensive, permanent secondary storage is used when large
+amounts of data and many programs have to be stored, particularly for information
+that is accessed infrequently.
+
+> Access times for secondary storage are longer than for primary memory.
+
+A wide selection of secondary storage devices is available, including magnetic disks,
+
+optical disks (DVD and CD), and flash memory devices.
+
+Arithmetic and Logic Unit
+
+o Most computer operations are executed in the arithmetic and logic unit (ALU) of
+the processor.
+
+o Any arithmetic or logic operation, such as addition, subtraction, multiplication,
+division, or comparison of numbers, is initiated by bringing the required
+operandsinto the processor, where the operation is performed by the ALU.
+
+o For example, if two numbers located in the memory are to be added,
+they are brought into the processor, and the addition is carried out by the ALU.
+
+o The sum may then be stored in the memory or retained in the processor for
+immediate use.
+
+o When operands are brought into the processor, they are stored in high-speed
+storage elements called registers.
+
+o Each register can store one word of data.
+
+o Access times to registers are even shorter than access times to the cache unit on
+the processor chip.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 4

@@ -1,0 +1,44 @@
+4.1 Insertion Sort 135
+
+FIGURE 4.4 Example of sorting with insertion sort. A vertical bar separatesithersorted
+(sin bold.
+
+The operation of the algorithm is illustrated in Figure 4.4.
+
+The basic operation of the algorithm is the key comparison A[j]> v. (Why not
+j = 0? Because it is almost certainly faster than the former in an actual computer
+implementation. Moreover, it is not germane to the algorithm: a better imple-
+mentation with a sentinel—see Problem 8 in this section’s exercises—eliminates
+it altogether.)
+
+The number of key comparisons in this algorithm obviously depends on the
+nature of the input. In the worst case, A[j]> v is executed the largest number
+of times, i.e., for every j =i —1,..., 0. Since v = A[i], it happens if and only if
+A[j] > Afi] for j =i—1,..., 0. (Note that we are using the fact that on the ith
+iteration of insertion sort all the elements preceding A[i] are the first i elements in
+the input, albeit in the sorted order.) Thus, for the worst-case input, we get A[0] >
+A[1] (for i= 1), A[1] > A[2] ori =2),..., A[n — 2] > A[n — 1] (for i =n — 1).
+In other words, the worst-case input is an array of strictly decreasing values. The
+number of key comparisons for such an input is
+
+n-1i-l nol
+
+Cworss(n) = 1 = i= aon cO@.
+
+i=l j=0 i=l
+
+Thus, in the worst case, insertion sort makes exactly the same number of compar-
+isons as selection sort (see Section 3.1).
+
+In the best case, the comparison A[j]> v is executed only once on every
+iteration of the outer loop. It happens if and only if A[i — 1] < A[i] for every
+i=1,..., n—1,i.e., if the input array is already sorted in nondecreasing order.
+(Though it “makes sense” that the best case of an algorithm happens when the
+problem is already solved, it is not always the case, as you are going to see in our
+discussion of quicksort in Chapter 5.) Thus, for sorted arrays, the number of key
+comparisons is
+
+nl
+Crest(n) = Yo 1 =n -1€ O(n).
+
+i=l

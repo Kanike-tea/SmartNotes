@@ -1,0 +1,45 @@
+82 Chapter 3 Introduction to the ARM Instruction Set
+
+Table 3.15 Signed multiply and multiply accumulate instructions.
+
+Signed Multiply Signed | Q flag
+
+Instruction | [Accumulate] result | updated | Calculation
+
+SMLAxy (16-bit *16-bit)+ 32-bit 32-bit | yes Rd= (Rm.x*Rs.y) + Rn
+SMLALxy (16-bit *16-bit)+ 64-bit 64-bit | — [RdHi, RdLo] + = Rm.x* Rs.y
+SMLAWy ((32-bit *16-bit) >> 16)+ 32-bit | 32-bit | yes Rd= ((Rm* Rs.y) > 16) + Rn
+SMULxy (16-bit *16-bit) 32-bit | — Rd= Rm.x* Rs.y
+
+SMULWy ((32-bit *16-bit)> 16) 32-bit | — Rd= (Rm* Rs.y) > 16
+
+operands, respectively. These fields are set to a letter T for the top 16-bits, or the letter
+B for the bottom 16 bits. For multiply accumulate operations with a 32-bit result, the Q flag
+indicates if the accumulate overflowed a signed 32-bit value.
+
+Exampce This example shows how you use these operations, The example uses a signed multiply
+3.33 accumulate instruction, SMLATB.
+
+PRE rl = 0x20000001
+r2 = 0x20000001
+r3 = 0x00000004
+
+SMLATB r4, rl, r2, 13
+POST 4 = 0x00002004
+
+The instruction multiplies the top 16 bits of register r] by the bottom 16 bits of register r2.
+It adds the result to register r3 and writes it to destination register r4.
+
+3.8 CONDITIONAL EXECUTION
+
+Most ARM instructions are conditionally executed—you can specify that the instruction
+only executes if the condition code flags pass a given condition or test. By using conditional
+execution instructions you can increase performance and code density.
+
+The condition field is a two-letter mnemonic appended to the instruction mnemonic.
+The default mnemonic is AL, or always execute.
+
+Conditional execution reduces the number of branches, which also reduces the number
+of pipeline flushes and thus improves the performance of the executed code. Conditional
+execution depends upon two components: the condition field and condition flags. The
+condition field is located in the instruction, and the condition flags are located in the cpsr.

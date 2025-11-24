@@ -1,0 +1,54 @@
+7.3 Views (Virtual Tables) in SQL
+
+additional side effects that affect the result of other queries. For example, here are
+two possible updates, (a) and (b), on the base relations corresponding to the view
+update operation in UV1:
+
+(a): | UPDATE WORKS_ON
+SET Pno = ( SELECT Pnumber
+FROM PROJECT
+WHERE Pname = ‘ProductY’ )
+WHERE EssnIN (SELECT  Ssn
+FROM EMPLOYEE
+WHERE Lname = ‘Smith’ AND Fname = John’ )
+AND
+Pno= (SELECT — Pnumber
+FROM PROJECT
+WHERE Pname = ‘ProductX’ );
+
+(b): UPDATE PROJECT SET Pname = ‘ProductY”
+WHERE. Pname = ‘ProductX’;
+
+Update (a) relates ‘John Smith’ to the ‘ProductY’ PROJECT tuple instead of the
+“ProductX’ PROJECT tuple and is the most likely desired update. However, (b) would
+also give the desired update effect on the view, but it accomplishes this by changing
+the name of the ‘ProductX’ tuple in the PROJECT relation to ‘ProductY’. It is quite
+unlikely that the user who specified the view update UV1 wants the update to be
+interpreted as in (b), since it also has the side effect of changing all the view tuples
+with Pname = ‘ProductX’.
+
+Some view updates may not make much sense; for example, modifying the Total_sal
+attribute of the DEPT_INFO view does not make sense because Total_sal is defined to be
+the sum of the individual employee salaries. This incorrect request is shown as UV2:
+
+Uv2: UPDATE —DEPT_INFO
+SET Total_sal = 100000
+WHERE Dname = ‘Research’;
+
+Generally, a view update is feasible when only one possible update on the base rela-
+tions can accomplish the desired update operation on the view. Whenever an
+update on the view can be mapped to more than one update on the underlying base
+relations, it is usually not permitted. Some researchers have suggested that the
+DBMS have a certain procedure for choosing one of the possible updates as the
+most likely one. Some researchers have developed methods for choosing the most
+likely update, whereas other researchers prefer to have the user choose the desired
+update mapping during view definition. But these options are generally not avail-
+able in most commercial DBMSs.
+
+In summary, we can make the following observations:
+
+= A view with a single defining table is updatable if the view attributes contain
+the primary key of the base relation, as well as all attributes with the NOT
+NULL constraint that do not have default values specified.
+
+231

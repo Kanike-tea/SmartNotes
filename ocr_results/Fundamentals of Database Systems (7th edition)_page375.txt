@@ -1,0 +1,61 @@
+8)
+
+9)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+
+(b)
+
+(d)
+
+11.1 A Simple PHP Example 345
+
+//Program Segment P1:
+<?php
+// Printing a welcome message if the user submitted their name
+// through the HTML form
+if ($_POST['user_name']) {
+print("Welcome, ") ;
+print($_POST[ 'user_name']);
+}
+else {
+// Printing the form to enter the user name since no name has
+// been entered yet
+print <<<_HTML_
+<FORM method="post" action="$_SERVER[ 'PHP_SELF' ]">
+Enter your name: <input type="text" name="user_name">
+
+<BR/>
+<INPUT type="submit" value="SUBMIT NAME">
+</FORM>
+_HTML ;
+}
+2>
+(©)
+Enter your name: Enter your name: [John Smith
+SUBMIT NAME SUBMIT NAME
+Figure 11.1
+(a) PHP program segment for entering a greeting.
+Welcome, John Smith (b) Initial form displayed by PHP program segment.
+(c) User enters name John Smith. (d) Form prints
+welcome message for John Smith.
+
+2. Line 0 shows the PHP start tag <?php, which indicates to the PHP inter-
+preter engine that it should process all subsequent text lines until it encoun-
+ters the PHP end tag ?>, shown on line 16. Text outside of these tags is
+printed as is. This allows PHP code segments to be included within a larger
+HTML file. Only the sections in the file between <?php and ?> are processed
+by the PHP preprocessor.
+
+3. Line 1 shows one way of posting comments in a PHP program on a single
+line started by //. Single-line comments can also be started with #, and end
+at the end of the line in which they are entered. Multiple-line comments
+start with /* and end with */.
+
+4. The auto-global predefined PHP variable $_Post (line 2) is an array that
+holds all the values entered through form parameters. Arrays in PHP are

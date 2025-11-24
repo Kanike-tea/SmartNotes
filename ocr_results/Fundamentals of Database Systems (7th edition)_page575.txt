@@ -1,0 +1,59 @@
+16.1 Introduction 545
+
+Table 16.1 Types of Storage with Capacity, Access Time, Max Bandwidth (Transfer Speed), and Commodity Cost
+
+Access
+Type Capacity* Time Max Bandwidth
+Main Memory- RAM 4GB-1TB 30ns 35GB/sec
+Flash Memory- SSD 64 GB-1TB S50ps 750MB/sec
+Flash Memory- USB stick = 4GB-512GB 100us 50MB/sec
+Magnetic Disk 400 GB-8TB 10ms 200MB/sec
+Optical Storage 50GB-100GB 180ms 72MB/sec
+Magnetic Tape 2.5TB-8.5TB 10s-80s | 40-250MB/sec
+Tape jukebox 25TB-2,100,000TB  10s-80s = 250MB/sec-1.2PB/sec
+
+Commodity
+Prices (2014)**
+$100-$20K
+$50-$600
+$2-$200
+$70-$500
+$100
+$2.5K-$30K
+$3K-$1M+
+
+“Capacities are based on commercially available popular units in 2014.
+
+“Costs are based on commodity online marketplaces.
+
+the rise and costs are declining. Soon the term very large database may be reserved
+for databases containing hundreds of terabytes or petabytes.
+
+To summarize, a hierarchy of storage devices and storage systems is available today
+for storage of data. Depending upon the intended use and application requirements,
+data is kept in one or more levels of this hierarchy. Table 16.1 summarizes the cur-
+rent state of these devices and systems and shows the range of capacities, average
+access times, bandwidths (transfer speeds), and costs on the open commodity mar-
+ket. Cost of storage is generally going down at all levels of this hierarchy.
+
+16.1.2 Storage Organization of Databases
+
+Databases typically store large amounts of data that must persist over long periods
+of time, and hence the data is often referred to as persistent data. Parts of this data
+are accessed and processed repeatedly during the storage period. This contrasts
+with the notion of transient data, which persists for only a limited time during
+program execution. Most databases are stored permanently (or persistently) on
+magnetic disk secondary storage, for the following reasons:
+
+= Generally, databases are too large to fit entirely in main memory.*
+
+= The circumstances that cause permanent loss of stored data arise less fre-
+quently for disk secondary storage than for primary storage. Hence, we refer
+to disk—and other secondary storage devices—as nonvolatile storage,
+whereas main memory is often called volatile storage.
+
+= The cost of storage per unit of data is an order of magnitude less for disk
+secondary storage than for primary storage.
+
+“This statement is being challenged by recent developments in main memory database systems.
+Examles of prominent commercial systems include HANA by SAP and TIMESTEN by Oracle.

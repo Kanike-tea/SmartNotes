@@ -1,0 +1,53 @@
+14.1 Informal Design Guidelines for Relation Schemas
+
+applied to any given design and do not require step-by-step analysis and normaliza-
+tion. Sections 14.5 to 14.7 discuss further normal forms up to the fifth normal form.
+In Section 14.6 we introduce the multivalued dependency (MVD), followed by the
+join dependency (JD) in Section 14.7. Section 14.8 summarizes the chapter.
+
+Chapter 15 continues the development of the theory related to the design of good
+relational schemas. We discuss desirable properties of relational decomposition—
+nonadditive join property and functional dependency preservation property. A
+general algorithm that tests whether or not a decomposition has the nonadditive
+(or lossless) join property (Algorithm 15.3 is also presented). We then discuss prop-
+erties of functional dependencies and the concept of a minimal cover of dependen-
+cies. We consider the bottom-up approach to database design consisting of a set of
+algorithms to design relations in a desired normal form. These algorithms assume
+as input a given set of functional dependencies and achieve a relational design in a
+target normal form while adhering to the above desirable properties. In Chapter 15
+we also define additional types of dependencies that further enhance the evaluation
+of the goodness of relation schemas.
+
+If Chapter 15 is not covered in a course, we recommend a quick introduction to the
+desirable properties of decomposition from Section 15.2. and the importance of the
+non-additive join property during decomposition.
+
+14.1 Informal Design Guidelines
+for Relation Schemas
+
+Before discussing the formal theory of relational database design, we discuss four
+informal guidelines that may be used as measures to determine the quality of relation
+schema design:
+
+= Making sure that the semantics of the attributes is clear in the schema
+
+= Reducing the redundant information in tuples
+
+= Reducing the NULL values in tuples
+
+= Disallowing the possibility of generating spurious tuples
+
+These measures are not always independent of one another, as we will see.
+
+14.1.1 Imparting Clear Semantics to Attributes in Relations
+
+Whenever we group attributes to form a relation schema, we assume that attri-
+butes belonging to one relation have certain real-world meaning and a proper
+interpretation associated with them. The semantics of a relation refers to its mean-
+ing resulting from the interpretation of attribute values in a tuple. In Chapter 5 we
+discussed how a relation can be interpreted as a set of facts. If the conceptual
+design described in Chapters 3 and 4 is done carefully and the mapping procedure
+in Chapter 9 is followed systematically, the relational schema design should have a
+clear meaning.
+
+461

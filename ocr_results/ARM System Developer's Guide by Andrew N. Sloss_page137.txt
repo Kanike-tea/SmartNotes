@@ -1,0 +1,62 @@
+124 Chapter 5 Efficient C Programming
+
+EXAMPLE
+
+5.6
+
+This compiles to
+
+queue_bytes_v1
+STR r14,[r13,#-4]!; save Ir on the stack
+LOR = rl2,[r13,#4] 5 rl2 = N
+
+queue_v1_loop
+LoRB rl, [r3] , #1
+STRBrl4,[r2] #1
+CMP r2yrl
+MOVEQ r2,r0
+
+rl4 = *(data++)
+
+*(Q ptr++) = rl4
+
+if (Qptr == end)
+{Q_ptr = Q start;}
+
+suBS rl2,r12,#1 3 --N and set flags
+BNE queue_vl_loop ; if (N!=0) goto loop
+MOV r,r2 3 r0 = Qptr
+LOR pe, [r13] , #4 3 return r0
+
+Compare this with a more structured approach using three function arguments.
+
+The following code creates a Queue structure and passes this to the function to reduce the
+number of function arguments.
+
+typedef struct {
+
+char *Q start; /* Queue buffer start address */
+
+char *Q_end; /* Queue buffer end address */
+
+char *Q ptr; /* Current queue pointer position */
+} Queue;
+
+void queue_bytes_v2(Queue “queue, char *data, unsigned int N)
+
+{
+char *Q_ptr = queue->Q ptr;
+char *Q_end = queue->Q_end;
+
+do
+
+{
+*(Q_ptr++) = *(datat+) 5
+
+if (Q_ptr == Q end)
+{
+Qptr = queue->Q start;
+}
+} while (--N);
+
+queue->Q_ptr = Q ptr;

@@ -1,0 +1,52 @@
+688
+
+Chapter 18 Strategies for Query Processing
+
+18.9 Summary
+
+In this chapter, we gave an overview of the techniques used by DBMSs in processing
+high-level queries. We first discussed how SQL queries are translated into relational
+algebra. We introduced the operations of semi-join and anti-join, to which certain
+nested queries are mapped to avoid doing the regular inner join. We discussed exter-
+nal sorting, which is commonly needed during query processing to order the tuples
+of a relation while dealing with aggregation, duplicate elimination, and so forth. We
+considered various cases of selection and discussed the algorithms employed for
+simple selection based on one attribute and complex selections using conjunctive
+and disjunctive clauses. Many techniques were discussed for the different selection
+types, including linear and binary search, use of B*-tree index, bitmap indexes, clus-
+tering index, and functional index. The idea of selectivity of conditions and the typi-
+cal information placed in a DBMS catalog was discussed. Then we considered the
+join operation in detail and proposed algorithms called nested-loop join, index-
+based nested-loop join, sort-merge join, and hash join.
+
+We gave illustrations of how buffer space, join selection factor, and inner-outer rela-
+tion choice affect the performance of the join algorithms. We also discussed the hybrid
+hash algorithm, which avoids some of the cost of writing during the joining phase. We
+discussed algorithms for projection and set operations as well as algorithms for aggre-
+gation. Then we discussed the algorithms for different types of joins, including outer
+joins, semi-join, anti-join, and non-equi-join. We also discussed how operations can
+be combined during query processing to create pipelined or stream-based execution
+instead of materialized execution. We introduced how operators may be implemented
+using the iterator concept. We ended the discussion of query processing strategies with
+a quick introduction to the three types of parallel database system architectures. Then
+we briefly summarized how parallelism can be achieved at the individual operations
+level and discussed intraquery and interquery parallelism as well.
+
+Review Questions
+
+18.1. Discuss the reasons for converting SQL queries into relational algebra que-
+ries before optimization is done.
+
+18.2. Discuss semi-join and anti-join as operations to which nested queries may
+be mapped; provide an example of each.
+
+18.3. How are large tables that do not fit in memory sorted? Give the overall
+procedure.
+
+18.4. Discuss the different algorithms for implementing each of the following rela-
+tional operators and the circumstances under which each algorithm can be
+used: SELECT, JOIN, PROJECT, UNION, INTERSECT, SET DIFFERENCE,
+CARTESIAN PRODUCT.
+
+18.4. Give examples of a conjunctive selection and a disjunctive selection query
+and discuss how there may be multiple options for their execution.

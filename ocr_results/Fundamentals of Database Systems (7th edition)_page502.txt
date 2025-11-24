@@ -1,0 +1,60 @@
+472
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+relation schema R = {Aj, Ap, ... , An}.” We do not imply that we will actually store
+the database as a single universal table; we use this concept only in developing the
+
+formal theory of data dependencies.*
+
+Definition. A functional dependency, denoted by X > Y, between two sets of
+attributes X and Y that are subsets of R specifies a constraint on the possible
+tuples that can form a relation state r of R. The constraint is that, for any two
+tuples f; and f, in r that have f,[X] = f2[X], they must also have t[Y] = H[Y].
+
+This means that the values of the Y component of a tuple in r depend on, or are deter-
+mined by, the values of the X component; alternatively, the values of the X component
+of a tuple uniquely (or functionally) determine the values of the Y component. We
+also say that there is a functional dependency from X to Y, or that Y is functionally
+dependent on X. The abbreviation for functional dependency is FD or f.d. The set of
+attributes X is called the left-hand side of the FD, and Y is called the right-hand side.
+
+Thus, X functionally determines Y in a relation schema R if, and only if, whenever
+two tuples of r(R) agree on their X-value, they must necessarily agree on their
+
+Y-value. Note the following:
+
+= Ifa constraint on R states that there cannot be more than one tuple with a
+given X-value in any relation instance r(R)—that is, X is a candidate key of
+R—this implies that X > Y for any subset of attributes Y of R (because the
+key constraint implies that no two tuples in any legal state r(R) will have the
+
+same value of X). If X is a candidate key of R, then X > R.
+= IfX— YinR, this does not say whether or not Y— Xin R.
+
+A functional dependency is a property of the semantics or meaning of the
+attributes. The database designers will use their understanding of the semantics of the
+attributes of R—that is, how they relate to one another—to specify the functional
+dependencies that should hold on ail relation states (extensions) r of R. Relation
+extensions r(R) that satisfy the functional dependency constraints are called legal
+relation states (or legal extensions) of R. Hence, the main use of functional depen-
+dencies is to describe further a relation schema R by specifying constraints on its
+attributes that must hold at all times. Certain FDs can be specified without referring
+to a specific relation, but as a property of those attributes given their commonly
+understood meaning. For example, {State, Driver_license_number} > Ssn should
+normally hold for any adult in the United States and hence should hold whenever
+these attributes appear in a relation.? It is also possible that certain functional
+
+7This concept of a universal relation is important when we discuss the algorithms for relational database
+
+design in Chapter 15.
+
+8This assumption implies that every attribute in the database should have a distinct name. In Chapter 5
+we prefixed attribute names by relation names to achieve uniqueness whenever attributes in distinct
+
+relations had the same name.
+
+®Note that there are databases, such as those of credit card agencies or police departments, where this
+functional dependency may not hold because of fraudulent records resulting from the same driver's
+
+license number being used by two or more different individuals.

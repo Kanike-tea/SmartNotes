@@ -1,0 +1,38 @@
+Program : Finding an optimal binary search tree
+
+void obst (double *p, double *q, int n)
+
+i
+
+int i, j. kK, m?
+
+for (i = Of; i < nz i++) {(/* initialize *;/
+¢* O-neode trees */
+wlillil = qfils rfilfli] = clijfil = 0;
+
+¢* one-node trees */
+wlilfi+l}] = qfil + qf{i+l] + pli+l];
+rfilfitl}] = i + 1;
+efi} (iti) = wi} [itll];
+?
+winlin}) = q{n); rfinj[n] = c{nlin] =O;
+
+/* find optimal trees with m > 1 nodes */
+for (m = 2; m <= n; m++)
+for (i = 0; i <= n—- ms; i++)
+{
+j =i +m;
+wliltj] = wlilfj-1] + Pts), + atal;
+kK = KnuthMin(i, 4);
+
+#* KnuthMin returns @ value k in the range
+
+Ce [il (3-1loegi+dy [31] minimizing
+efil (k-1)+efki1 (5] *7
+
+CCl U5) = wfalts) + efit fk-ay + crk1 (5):
+7S Ea (10.3) */
+
+eflil(jl] = k;
+
+Page 21

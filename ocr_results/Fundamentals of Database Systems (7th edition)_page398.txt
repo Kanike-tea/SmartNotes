@@ -1,0 +1,51 @@
+368
+
+Chapter 12 Object and Object-Relational Databases
+
+Some early OO data models required that everything—from a simple value to a
+complex object—was represented as an object; hence, every basic value, such as an
+integer, string, or Boolean value, has an OID. This allows two identical basic values
+to have different OIDs, which can be useful in some cases. For example, the integer
+value 50 can sometimes be used to mean a weight in kilograms and at other times to
+mean the age of a person. Then, two basic objects with distinct OIDs could be cre-
+ated, but both objects would have the integer 50 as their value. Although useful as a
+theoretical model, this is not very practical, since it leads to the generation of too
+many OIDs. Hence, most ODBs allow for the representation of both objects and
+literals (or values). Every object must have an immutable OID, whereas a literal
+value has no OID and its value just stands for itself. Thus, a literal value is typically
+stored within an object and cannot be referenced from other objects. In many sys-
+tems, complex structured literal values can also be created without having a corre-
+sponding OID if needed.
+
+12.1.3 Complex Type Structures for Objects and Literals
+
+Another feature of ODBs is that objects and literals may have a type structure of
+arbitrary complexity in order to contain all of the necessary information that
+describes the object or literal. In contrast, in traditional database systems, informa-
+tion about a complex object is often scattered over many relations or records, lead-
+ing to loss of direct correspondence between a real-world object and its database
+representation. In ODBs, a complex type may be constructed from other types by
+nesting of type constructors. The three most basic constructors are atom, struct (or
+tuple), and collection.
+
+1. One type constructor has been called the atom constructor, although this
+term is not used in the latest object standard. This includes the basic built-in
+data types of the object model, which are similar to the basic types in many
+programming languages: integers, strings, floating-point numbers, enumer-
+ated types, Booleans, and so on. These basic data types are called single-
+valued or atomic types, since each value of the type is considered an atomic
+(indivisible) single value.
+
+2. A second type constructor is referred to as the struct (or tuple) constructor.
+This can create standard structured types, such as the tuples (record types)
+in the basic relational model. A structured type is made up of several com-
+ponents and is also sometimes referred to as a compound or composite type.
+More accurately, the struct constructor is not considered to be a type, but
+rather a type generator, because many different structured types can be cre-
+ated. For example, two different structured types that can be created are:
+struct Name<FirstName: string, MiddleInitial: char, LastName: string>, and
+struct CollegeDegree<Major: string, Degree: string, Year: date>. To create
+complex nested type structures in the object model, the collection type con-
+structors are needed, which we discuss next. Notice that the type construc-
+tors atom and struct are the only ones available in the original (basic)
+relational model.

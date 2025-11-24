@@ -1,0 +1,49 @@
+388 Chapter 11 Embedded Operating Systems
+
+PCB for a task. Register r2 is the stack offset and is used to position the stack in the mem-
+ory map. Note that task 1 does not require initialization since it is the first task to be
+executed.
+
+The final part of setting up the PCBs is to set up the current task identifier, which is used
+by the scheduling algorithm to determine which task is to be executed.
+
+LDR ——r0,=PCB_CurrentTask
+
+Mov. rl, #0
+
+stR ri, [r0]
+
+LOR 1r,=C_Entry
+
+MOV pc,Ir_ 5 enter the CEntry world
+
+At the end of the code fragment the first C routine—C_Entry—is called by setting the
+pcto the start address of the routine.
+The results of executing the PCB setup code are the following:
+
+= Initialize the PCB for all three tasks.
+= Set the current PCB to be executed as task 1 (identifier 0).
+
+Initialization is now handed over to the C_Entry() routine, which can be found in
+build/src/core/cinit.c file. TheC_Entry routine calls another routine, cinit_init().
+This routine, shown here, initializes the device drivers, services, and finally the periodic
+interrupt tick. The C code has been designed so it does not require the standard C library
+to be initialized because it does not call any standard C library functions such as printf (),
+fopen(), and so on.
+
+void cinit_init (void)
+{
+event10DeviceInit();
+eventServicesInit();
+eventTickInit (2);
+
+The functions event 10DeviceInit, eventServicesInit, and eventTickInit are all
+called to initialize the various specific parts of the operating system. You will notice that
+eventTickInit has a single parameter with the value 2. This is used to set the number of
+milliseconds between periodic tick events.
+
+After initialization is complete, the periodic timer can be started, as shown here. This
+means that task 1 needs to be called before the first timer interrupt. To allow for the periodic
+event to interrupt the processor, the IRQ has to be enabled and the processor has to be
+placed into user mode. Once this is accomplished, the address of the entry point for task 1,
+C_EntryTaskl, is then called.

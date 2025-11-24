@@ -1,0 +1,55 @@
+Data Structures and Applications(BCS304) Module 2
+
+tempa=a->link;
+tempb=b->link;lastc=c;
+while (tempa!=a && tempb!=b)
+
+{
+switch (COMPARE(tempa—expon, tempb—expon))
+{
+case -1: lastc=attach(tempb—-coef, tempb—expon, lastc);
+tempb = tempb—link;
+break;
+case 0: sum =tempa—coef + tempb—coef;
+if (sum)
+{
+lastc=attach(sum, tempa—expon, lastc);
+tempa = tempa—link; tempb = tempb—link;
+}
+break;
+case 1: laste=attach(a—coef,a—expon,lastc);
+tempa = tempa—link;
+}
+}
+
+/* copy rest of list a and then list b */
+While(tempa!=a)
+
+{
+lastc=attach (a—coef,a—expon, laste);
+tempa=tempa->link;
+
+}
+
+While(tempb!=b)
+
+{
+lastc=attach (b—coef,b—expon, laste);
+tempb=tempb->link;
+
+}
+
+laste->link=c
+
+return(c);
+
+}
+
+Attach a NODE to the end ofa list
+
+POLY* attach(float c, int e, POL * rear)
+
+{
+temp = (POLY*)malloc(sizeof(POLY));
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 30

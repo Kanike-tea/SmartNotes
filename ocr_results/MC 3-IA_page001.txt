@@ -1,0 +1,55 @@
+2. Interrupts
+
+There are two types of interrupts available on the ARM processor. The first type of interrupt
+causes an exception raised by an external peripheral—namely, IRQ and FIQ. The second type is
+a specific instruction that causes an exception—the SWI instruction. Both types suspend the
+
+normal flow of a program,
+
+In this section we will focus mainly on IRQ and FIQ interrupts. We will cover these topics:
+© Assigning interrupts
+© Interrupt latency
+
+¢ IRQ and FIQ exceptions
+
+¢ Basic interrupt stack design and implementation
+2.1 Assigning Interrupts
+
+A system designer can decide which hardware peripheral can produce which interrupt request.
+This decision can be implemented in hardware or software (or both) and depends upon the
+embedded s
+
+stem being used.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 9
+
+Microcontrollers - BCS402
+
+An interrupt controller connects multiple external interrupts to one of the two ARM interrupt
+Sophis
+
+cause either an IRQ or FIQ exception.
+
+reque:
+
+cated controllers can be programmed to allow an external interrupt source to
+
+When it comes to assigning interrupts, system designers have adopted a standard design practice:
+
+¢ Software Interrupts are normally reserved to call privileged operating system routines.
+For example, an SWI instruction can be used to change a program running in user mode
+toa privileged mode.
+
+« Interrupt Requests are normally assigned for general-purpose interrupts. For example, a
+periodic timer interrupt to force a context switch tends to be an IRQ exception. The IRQ
+exception has a lower priority and higher interrupt latency (to be discussed in the next
+section) than the FIQ exception.
+
+¢ Fast Interrupt Requests are normally reserved for a single interrupt source that requires a
+
+fast response time—for example, direct memory access specifically used to move blocks
+
+of memory. Thus, in an embedded operating system design, the FIQ exception is used for
+a specific application, leaving the IRQ exception for more general operating system
+
+activities.

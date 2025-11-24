@@ -1,0 +1,50 @@
+the set B are the same: | and 0. The duality principle has many applications. If the dual of an algebraic
+expression is desired, we simply interchange OR and AND operators and replace 1’s by 0’s and 0’s by
+
+l’s
+Basic Theorems
+
+Table lists six theorems of Boolean algebra and four of its postulates. The theorems and postulates listed
+are the most basic relationships in Boolean algebra. The theorems, like the postulates, are listed in pairs;
+each relation is the dual of the one paired with it. The postulates are basic axioms of the algebraic
+
+structure and need no proof. The theorems must be proven from the postulates.
+
+Postulates and Theorems of Boolean Algebra
+
+Postulate 2 (a) x+0=x (b) xel=x
+
+Postulate 5 (a) xt+x'=1 (b) xx’ =0
+
+Theorem 1 (a) xt+x=x (b) xex =x
+
+Theorem 2 (a) xt+1=1 (b) x-0=0
+
+Theorem 3, involution (x')' =
+
+Postulate 3,commutative (a) xty=y (b) xy = yx
+
+Theorem 4, associative (a) x+(Vtz)=(QX+y) +z (b) x(yz) = (xy)z
+
+Postulate 4, distributive (a) xX(y +z) =xy + xz (b) x + yz = (x + y)(x +z)
+Theorem 5, DeMorgan (a) (x + y)’ (b) (xy) =x'+y’
+
+Theorem 6, absorption (a) x +xy (b) x(x +y)=x
+
+Theorem 1(a) : Theorem 1(b):
+xt+x=x. xex =x.
+Statement Justification Statement Justification
+x+x=(x+x)-1 postulate 2(b) x*x=xxr+0 postulate 2(a)
+= (x + x)(x + x’) S(a) = xx + xx’ 5(b)
+=xt+ xx’ 4(b) = x(x + x’) 4(a)
+=x+0 5(b) =x-l S(a)
+=x 2(a) =x 2(b)
+Theorem 2(a) : Theorem 2(b):
+x+1=1. .
+x +0 = 0 by duality.
+Statement Justification
+x+t1l=1-(+1) postulate 2(b)
+=(x + x')(x + 1) 5(a)
+=xt¢x'el 4(b)
+=x+x' 2(b)
+=1 S(a)

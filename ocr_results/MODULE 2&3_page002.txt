@@ -1,0 +1,56 @@
+Microcontrollers — BCS402
+
+Mnemonics ARM ISA Description
+SMULxy “5 signed multiply instructions (16 x 16
+
+SMULKY signed multiply instruction ((32 x 16)
+
+sTc stc2 v2 store to memory single or multiple 32-bit values from coprocessor
+s™ vl store multiple 32-bit registers to memory
+
+STR vl v4 vSE store register to a virtual address in memory
+
+SUB vi subtract two 32-bit values
+
+SWI vl software interrupt
+
+SMP vla swap a word/byte in memory with a register, without interruption
+TEQ vi test for equality of two 32-bit values
+
+TST vi test for bits in a 32-bit value
+
+UMLAL v3M unsigned multiply accumulate long ((32 x 32) + 64 = 64-bit)
+UMULL v3M unsigned multiply long (32 x 32 = 64-bit)
+
+2. Data Processing Instructions
+
+The data processing instructions manipulate data within registers. They are move
+instructions, arithmetic instructions, logical instructions, comparison instructions, and
+multiply instructions. Most data processing instructions can process one of their operands
+
+using the barrel shifter.
+
+If you use the S suffix on a data processing instruction, then it updates the flags in the cpsr.
+Move and logical operations update the carry flag C, negative flag N, and zero flag Z. The
+carry flag is set from the result of the barrel shift as the last bit shifted out. The N flag is set to
+
+bit 31 of the result. The Z flag is set if the result is zero.
+2.1 MOVE Instructions
+
+Move is the simplest ARM instruction. It copies N into a destination register Rd, where N is a
+register (Rm) or immediate value (#). This instruction is useful for setting initial values and
+
+transferring data between registers.
+
+Syntax: <instruction>{<cond>}{S} Rd, N
+
+MOV Move a 32-bit value into a register Rd=N
+
+it value into a register
+
+Example:
+MOV 17,15 ; copies the content of r5 to r7 register
+
+PRE: 15 =5,17=8 POST : 15 =5,1r7=5
+
+Dept. of ECE, GSSSIETW Page 3

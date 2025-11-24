@@ -1,0 +1,53 @@
+230 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+user) into a query on the underlying base tables. For example, the query QV1 would
+be automatically modified to the following query by the DBMS:
+
+SELECT Frame, Lname
+
+FROM EMPLOYEE, PROJECT, WORKS_ON
+
+WHERE Ssn = Essn AND Pno = Pnumber
+AND Pname = ‘ProductX’;
+
+The disadvantage of this approach is that it is inefficient for views defined via com-
+plex queries that are time-consuming to execute, especially if multiple view queries
+are going to be applied to the same view within a short period of time. The second
+strategy, called view materialization, involves physically creating a temporary or
+permanent view table when the view is first queried or created and keeping that
+table on the assumption that other queries on the view will follow. In this case, an
+efficient strategy for automatically updating the view table when the base tables are
+updated must be developed in order to keep the view up-to-date. Techniques using
+the concept of incremental update have been developed for this purpose, where
+the DBMS can determine what new tuples must be inserted, deleted, or modified in
+a materialized view table when a database update is applied to one of the defining
+base tables. The view is generally kept as a materialized (physically stored) table as
+long as it is being queried. If the view is not queried for a certain period of time, the
+system may then automatically remove the physical table and recompute it from
+scratch when future queries reference the view.
+
+Different strategies as to when a materialized view is updated are possible. The
+immediate update strategy updates a view as soon as the base tables are changed;
+the lazy update strategy updates the view when needed by a view query; and the
+periodic update strategy updates the view periodically (in the latter strategy, a view
+query may get a result that is not up-to-date).
+
+A user can always issue a retrieval query against any view. However, issuing an
+INSERT, DELETE, or UPDATE command on a view table is in many cases not pos-
+sible. In general, an update on a view defined on a single table without any aggregate
+functions can be mapped to an update on the underlying base table under certain
+conditions. For a view involving joins, an update operation may be mapped to
+update operations on the underlying base relations in multiple ways. Hence, it is
+often not possible for the DBMS to determine which of the updates is intended. To
+illustrate potential problems with updating a view defined on multiple tables, con-
+sider the WORKS_ON1 view, and suppose that we issue the command to update the
+PNAME attribute of ‘John Smith’ from ‘ProductX’ to ‘ProductY’. This view update is
+shown in UV1:
+
+UV1: UPDATE WORKS_ON1
+SET Pname = ‘ProductY’
+WHERE Lname = ‘Smith’ AND Fname = ‘John’
+AND Pname = ‘ProductX’;
+
+This query can be mapped into several updates on the base relations to give the
+desired update effect on the view. In addition, some of these updates will create

@@ -1,0 +1,62 @@
+Digital Design and Computer Organization(BCS302)
+
+Write a Verilog code for below figure
+
+D
+
+A-+}>o—
+
+UUUY
+
+J P 1 1
+
+By 0 0 0 0 1 1 1
+>, 0 0 1 1 0 1 1
+
+: - 0 1 0 1 1 0 1
+0 1 1 1 1 1 1
+
+(a) Logic diagram
+
+HDL Example 4.1 (Two-to-Four-Line Decoder)
+
+|| Gate-level description of two-to-four-line decoder
+|| Refer to Fig. 4.19 with symbol E replaced by enable, for clarity.
+
+module decoder_2x4_gates (D, A, B, enable);
+output [0: 3) D;
+input A,B;
+input enable;
+wire A_not,B_not, enable_not;
+not
+G1 (A_not, A),
+G2 (B not, B),
+G3 (enable_not, enable);
+nand
+G4 (D[0], A_not, B_not, enable_not),
+G5 (D[1], A_not, B, enable_not),
+G6 (D[2], A, B_not, enable_not),
+G7 (D[3}, A, B, enable_not);
+endmodule
+
+Sequential Logic
+
+» Sequential logic refers to a type of digital logic circuit that uses
+memory elements to store information.
+
+> It consists of a combinational circuit to which storage elements are
+connected to form a feedback path. The storage elements are devices
+capable of storing binary information.
+
+> asequential circuit is specified by a time sequence of inputs, outputs,
+and internal states.
+
+Inputs ———>| Ouiputs
+Combinational
+circuit
+— |___+| Memory
+elements
+FIGURE 5.1
+Block diagram of sequential circuit
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 28

@@ -1,0 +1,55 @@
+74 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.24
+
+EXAMPLE
+
+3.25
+
+When the processor executes an SWI instruction, it sets the program counter pc to the
+offset 0x8 in the vector table. The instruction also forces the processor mode to SVC, which
+allows an operating system routine to be called in a privileged mode.
+
+Each SWI instruction has an associated SWI number, which is used to represent
+a particular function call or feature.
+
+Here we have a simple example of an SWI call with SWI number 0x123456, used by ARM.
+toolkits as a debugging SWI. Typically the SWI instruction is executed in user mode.
+
+PRE —cpsr = nzcVqift_USER
+pc = 0x00008000
+Ir = OxO03ff FFF; Ir = r14
+r0 = 0x12
+
+0x00008000 SWI 0x123456
+
+POST cpsr = nzcVqIft_SVC
+spsr = nzcVqift_USER
+pc = 0x00000008
+Tr = 0x00008004
+r0 = 0x12
+
+Since SWI instructions are used to call operating system routines, you need some form
+of parameter passing. This is achieved using registers. In this example, register r0 is used to
+pass the parameter 0x12. The return values are also passed back via registers.
+
+Code called the SWI handler is required to process the SWI call. The handler obtains
+the SWI number using the address of the executed instruction, which is calculated from the
+link register Ir.
+
+‘The SWI number is determined by
+
+SWI_Number = <SWI instruction> AND NOT(0xff000000)
+Here the SWI instruction is the actual 32-bit SWI instruction executed by the processor.
+
+This example shows the start of an SWI handler implementation. The code fragment deter-
+mines what SWI number is being called and places that number into register r10. You can
+see from this example that the load instruction first copies the complete SWI instruction
+into register r10. The BIC instruction masks off the top bits of the instruction, leaving the
+SWI number. We assume the SWI has been called from ARM state.
+
+SWI_handler
+
+; Store registers r0-r12 and the link register

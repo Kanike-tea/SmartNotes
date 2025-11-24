@@ -1,0 +1,34 @@
+216 4. Optimization ang Mates
+
+Step 3. Stop the process of Step 2.when.(n.— 1) edges are selected. These (n — 1) edge,
+constitute a minimal spapning tree of G.
+Remarks | }
+
+(1) If two or more edges have the same weight, there will be more than one listing of: edges in
+non-decreasing order of weights. Different listings may yield different minimal spanning
+trees. As such, Kruskal’s algorithm does not determine a unique minimal spanning tree.
+
+(2) The process in Step 2 is called a Greedy process.
+
+eertee Using the Kruskal’s algorithm, find a minimal spanning tree of the weighted
+graph shown below: ~
+
+i ee j ; Figure 4.3
+
+> We observe that the given graph has 6 vertices; hence a spanning tree thereof will have 5
+edges (branches). Let us put the edges of the graph ina non- decreasing order of their weights
+and successively select:5 edges in sucha way that no oyele i is creatéd. This scheme is sum™
+rized in the following Table:
+
+AB
+
+6
+Select? Yes
+
+Observe that CQ is not selected because CR and QR have 2 alicads been selected aol
+selection of CQ would have created'a cycle. Further, AP is not selected because it would "
+created a cycle along with BP and AB which have already been selected. We have stOP!
+process when exactly 5 edges are selected, AB.
+
+~ Thus,-a minimal spanning tree of the given graph contains the five edges CR, ORB PA
+CP. This tree is shown in Figure 4.4. The weight of this tree is 24 units.

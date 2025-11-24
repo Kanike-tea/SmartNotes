@@ -1,0 +1,54 @@
+1178 Appendix C Overview of the QBE Language
+
+(a) EMPLOYEE
+
+Fname
+
+Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn | Dno
+
+1. | Richard
+
+K_| Marini | 653298653 | 30-Dec-52| 98 Oak Forest, Katy, TX| M | 37000 |987654321| 4
+
+(b) EMPLOYEE
+
+Fname
+
+Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn | Dno
+
+653298653
+
+(©) EMPLOYEE
+
+Fname
+
+Minit | Lname Ssn Bdate Address Sex | Salary | Super_ssn | Dno
+
+John
+
+Smith U._S*1.1 U4
+
+Figure C.8
+
+Modifying the database in QBE. (a) Insertion. (b) Deletion. (c) Update in QBE,
+
+request to increase the salary of ‘John Smith’ by 10 percent and also to reassign him
+to department number 4.
+
+QBE also has data definition capabilities. The tables of a database can be specified
+interactively, and a table definition can also be updated by adding, renaming, or
+removing a column. We can also specify various characteristics for each column,
+such as whether it is a key of the relation, what its data type is, and whether an index
+should be created on that field. QBE also has facilities for view definition, authoriza-
+tion, storing query definitions for later use, and so on.
+
+QBE does not use the linear style of SQL; rather, it is a two-dimensional language
+because users specify a query moving around the full area of the screen. Tests on
+users have shown that QBE is easier to learn than SQL, especially for nonspecialists.
+In this sense, QBE was the first user-friendly visual relational database language.
+
+More recently, numerous other user-friendly interfaces have been developed for
+commercial database systems. The use of menus, graphics, and forms is now becom-
+ing quite common. Filling forms partially to issue a search request is akin to using
+QBE. Visual query languages, which are still not so common, are likely to be offered
+with commercial relational databases in the future.

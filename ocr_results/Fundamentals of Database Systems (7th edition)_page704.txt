@@ -1,0 +1,52 @@
+674
+
+Chapter 18 Strategies for Query Processing
+
+The sort-merge join J3 is quite efficient if both files are already sorted by their join
+attribute. Only a single pass is made through each file. Hence, the number of blocks
+accessed is equal to the sum of the numbers of blocks in both files. For this method,
+both OP6 and OP7 would need bg + bp = 2,000 + 10 = 2,010 block accesses. How-
+ever, both files are required to be ordered by the join attributes; if one or both are
+not, a sorted copy of each file must be created specifically for performing the join
+operation. If we roughly estimate the cost of sorting an external file by (b logyb)
+block accesses, and if both files need to be sorted, the total cost of a sort-merge join
+can be estimated by (bg + bp + bg logsbg + bp logybp).!*
+
+18.4.4 General Case for Partition-Hash Join
+
+The hash-join method Jé is also efficient. In this case, only a single pass is made
+through each file, whether or not the files are ordered. If the hash table for the
+smaller of the two files can be kept entirely in main memory after hashing (parti-
+tioning) on its join attribute, the implementation is straightforward. If, however,
+the partitions of both files must be stored on disk, the method becomes more com-
+plex, and a number of variations to improve the efficiency have been proposed. We
+discuss two techniques: the general case of partition-hash join and a variation called
+hybrid hash-join algorithm, which has been shown to be efficient.
+
+In the general case of partition-hash join, each file is first partitioned into M parti-
+tions using the same partitioning hash function on the join attributes. Then, each
+pair of corresponding partitions is joined. For example, suppose we are joining
+relations R and S on the join attributes R.A and S.B:
+
+R43 S
+
+In the partitioning phase, R is partitioned into the M partitions Rj, Ry, ... , Ry, and S$
+into the M partitions S}, S,, ..., Sy. The property of each pair of corresponding parti-
+tions R;, S; with respect to the join operation is that records in R; only need to be joined
+with records in S;, and vice versa. This property is ensured by using the same hash
+function to partition both files on their join attributes—attribute A for R and attribute
+B for S. The minimum number of in-memory buffers needed for the partitioning
+phase is M + 1. Each of the files R and S is partitioned separately. During partitioning
+ofa file, M in-memory buffers are allocated to store the records that hash to each par-
+tition, and one additional buffer is needed to hold one block at a time of the input file
+being partitioned. Whenever the in-memory buffer for a partition gets filled, its con-
+tents are appended to a disk subfile that stores the partition. The partitioning phase
+has two iterations. After the first iteration, the first file R is partitioned into the subfiles
+Rj, Ry, ... , Ryp where all the records that hashed to the same buffer are in the same
+partition. After the second iteration, the second file S is similarly partitioned.
+
+In the second phase, called the joining or probing phase, M iterations are needed.
+During iteration i, two corresponding partitions R; and S; are joined. The minimum
+
+'4We can use the more accurate formulas from Section 19.5 if we know the number of available buffers
+for sorting.

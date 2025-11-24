@@ -1,0 +1,42 @@
+Digital Design and Computer Organization(BCS302)
+
+D—+—_ cD
+y
+
+(C+D)'
+
+[ >—
+a iD)
+[| >»—
+
+A
+
+FIGURE 4.4
+Logic diagram for BCD-to-excess-3 code converter
+
+Binary Adder- Subtractor
+
++ Acombinational circuit that performs the addition of two bits is called a half adder .
+
+The addition of three bits (two significant bits and a previous carry) is a full adder.
+
+A binary adder-subtractor is a combinational circuit that performs the arithmetic
+operations of addition and subtraction with binary numbers.
+
+The half adder design is carried out first, from which we develop the full adder.
+
+Connecting n full adders in cascade produces a binary adder for two n -bit numbers.
+
+Half Adder
+
+Half Adder circuit needs two binary inputs and two binary outputs.
+
+output variables produce the sum and carry. We assign symbols x and y to the two
+inputs and S (for sum) and C (for carry) to the outputs.
+
+The C output is 1 only when both inputs are 1. The S output represents the least
+significant bit of the sum.
+
+The truth table for the half adder is listed in Table 4.3 .
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 4

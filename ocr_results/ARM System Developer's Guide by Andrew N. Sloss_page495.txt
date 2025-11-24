@@ -1,0 +1,54 @@
+482 Chapter 13 Memory Protection Units
+
+There are eight values in the Region structure. The first two values describe character-
+istics of the Region itself: they are the MPU region number assigned to the Region, and
+the type of access permission used, either STANDARD or EXTENDED. The remaining four
+members of the structure are attributes of the specified region: the region starting address,
+baseaddress; region size, SIZE; access permissions, IAP and DAP; and cache and buffer
+configuration, CB.
+
+The six Region structures in the RCB are
+
+I* REGION NUMBER, APTYPE */
+I* START ADDRESS, SIZE, IAP, DAP, CB */
+
+Region peripheralRegion = {PERIPH, STANDARD,
+0x10000000, SIZE_IM, RONA, RWNA, ccb};
+
+Region kernelRegion = {KERNEL, STANDARD,
+
+0x00000000, SIZE_4G, RONA, RWNA, CNT};
+Region sharedRegion = (SHARED, STANDARD,
+
+0x00010000, SIZE_64K, RORO, RWRW, CNT};
+Region tasklRegion =  {TASK, STANDARD,
+
+0x00020000, SIZE_32K, RORO, RWRW, CNT};
+Region task2Region =  {TASK, STANDARD,
+
+0x00028000, SIZE_32K, RORO, RWRW, CNT};
+Region task3Region =  {TASK, STANDARD,
+
+0x00030000, SIZE_32K, RORO, RWRW, CWT};
+
+We created a set of macros to make entries in the RCB more humanly readable; they
+are shown in Figure 13.8. Most notably, we enter access permission to data and instruction
+memory using a simple combination of four letters. The first two letters represent system
+access permission, and the second two letters represent user access. The two letters for
+system and user access can be read/write (RW), read-only (RO), or no access (NA).
+
+We also mapped the cache and buffer information to an instruction cache and a data
+cache policy attribute. The first letter is C or c and enables or disables the instruction cache
+for the region. The last two letters determine the data cache policy and write buffer control.
+The values can be WT for writethrough or WB for writeback. The letters c and b are also
+supported and are manual configurations of the cache and buffer bits. Cb is an alias of WT,
+and CB is an alias of WB. cB means not cached and buffered, and finally cb means not cached
+and not buffered.
+
+13.3.4 INITIALIZING AND CONFIGURING A REGION
+
+Next we provide the routine configRegion, which takes a single Region structure entry in
+the RCB to populate the CP15 registers with data describing the region.
+
+The routine follows the initialization steps listed in Section 13.3.3. The input to the
+routine is a pointer to the RCB of a region. Within the routine, members of the Region are

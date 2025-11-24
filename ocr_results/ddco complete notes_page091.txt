@@ -1,0 +1,32 @@
+COMPUTER ORGANIZATION (21¢s34 Module 3
+
+Determine address of
+“Next” number and add
+"Next" number to RO
+
+The ,,N“ value is copied to Rand R1 is decremented by 1 each.time in loop. In the loop find the
+value of next elemet and add it with)Ro.
+
+In conditional branch instruction, the loop continues by coming out of sequence only if
+the condition is true. Here the PC value is set to ,,LLOP* if the condition is true.
+
+Branch > 0 LOOP // if >0 go to LOOP
+
+The PC value is set to LOOP, if the previous statement value is >0 ie. after decrementing R1 value
+is greater than 0.
+
+If R1 value is not greater than 0, the PC value is incremented in a mormal sequential way and the
+next instruction is executed.
+
+CONDITION CODE BITS
+
+. The processor consists of series of flip-flops to store the status information after ALU
+operation.
+
+. It keeps track of the results of various operations, for subsequent usage.
+
+. The series of flip-flip-flops used to store the status and control information of the processor
+is called as “Condition Code Register”. It defines 4 flags. The format of condition code register
+is as follows.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 24

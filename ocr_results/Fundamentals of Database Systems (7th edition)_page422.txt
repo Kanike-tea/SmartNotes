@@ -1,0 +1,54 @@
+392
+
+Chapter 12 Object and Object-Relational Databases
+
+3. Collection literals specify a literal value that is a collection of objects or
+values but the collection itself does not have an Object_id. The collections
+in the object model can be defined by the type generators set<T>, bag<T>,
+list<T>, and array<T>, where T is the type of objects or values in the collec-
+tion. Another collection type is dictionary<K, V>, which is a collection of
+associations <K, V>, where each K is a key (a unique search value) associ-
+ated with a value V; this can be used to create an index on a collection of
+values V.
+
+Figure 12.5 gives a simplified view of the basic types and type generators of the
+object model. The notation of ODMG uses three concepts: interface, literal, and
+class. Following the ODMG terminology, we use the word behavior to refer to
+operations and state to refer to properties (attributes and relationships). An
+interface specifies only behavior of an object type and is typically noninstantiable
+(that is, no objects are created corresponding to an interface). Although an inter-
+face may have state properties (attributes and relationships) as part of its specifi-
+cations, these cannot be inherited from the interface. Hence, an interface serves
+to define operations that can be inherited by other interfaces, as well as by classes
+that define the user-defined objects for a particular application. A class specifies
+both state (attributes) and behavior (operations) of an object type and is
+instantiable. Hence, database and application objects are typically created based
+on the user-specified class declarations that form a database schema. Finally, a
+literal declaration specifies state but no behavior. Thus, a literal instance holds a
+simple or complex structured value but has neither an object identifier nor
+encapsulated operations.
+
+Figure 12.5 is a simplified version of the object model. For the full specifications,
+see Cattell et al. (2000). We will describe some of the constructs shown in Fig-
+ure 12.5 as we describe the object model. In the object model, all objects inherit the
+basic interface operations of Object, shown in Figure 12.5(a); these include opera-
+tions such as copy (creates a new copy of the object), delete (deletes the object), and
+same_as (compares the object’s identity to another object).”° In general, operations
+are applied to objects using the dot notation. For example, given an object O, to
+compare it with another object P, we write
+
+O.same_as(P)
+
+The result returned by this operation is Boolean and would be true if the identity of
+Pis the same as that of O, and false otherwise. Similarly, to create a copy P of object
+O, we write
+
+P= O.copy()
+An alternative to the dot notation is the arrow notation: O->same_as(P) or
+
+O->copy().
+
+“These are similar to the corresponding type constructors described in Section 12.1.3.
+
+25,dditional operations are defined on objects for locking purposes, which are not shown in Figure 125.
+We discuss locking concepts for databases in Chapter 22.

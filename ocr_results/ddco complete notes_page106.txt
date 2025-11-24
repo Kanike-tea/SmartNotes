@@ -1,0 +1,35 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+Illustrate a program that reads on fronithe keyboard, stores it in memory buffer, and
+echoes it back to the displag§i@@iQ/O i es. (10 Marks)
+Move #LINE,RO Initialize memory pointer.
+WAITK = TestBit #0,STATUS Test SIN.
+Branch=0 WAITK Wait for character to be entered.
+Move DATAIN,RI1 Read character.
+WAITD  TestBit #1,STATUS Test SOUT.
+Branch=0 WAITD Wait for display to become ready.
+Move R1,DATAOUT Send character to display.
+Move R1,(RO)+ Store charater and advance pointer.
+Compare #S0D,R1 Check if Carriage Return.
+Branch40 WAITK If not, get another character.
+Move #SOA,DATAOUT Otherwise, send Line Feed.
+Call PROCESS Call a subroutine to process the
+
+the input line.
+Figure 4.4 A program that reads one line from the keyboard, stores it in memory buffer,
+and echoes it back to the display.
+Interrupt
+
+« The occurrence of interrupt causes the processor to transfer the execution
+control from user program to ISR.
+
+Maggram] ISR
+1 So —_—a
+2
+Interrupt
+occurs ej ————maaay: ——$_
+here
+i+l cee!
+= ————
+
+Dr.Ajay V G, Dept. of CSE 8

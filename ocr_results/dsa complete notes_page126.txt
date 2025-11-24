@@ -1,0 +1,46 @@
+Data Structures and Applications (BCS304)
+
+Module V
+
+Example: Hash function that transforms keys into 6 bit non negative integers. H(k,t) denote the
+integers formed by the ‘t’ least significant bits of h(k).
+The example taken is a two letter key. H transforms Letter A,B,C into bit sequnce 100,101 and
+
+110 respectively Digits 0 through 7 are transformed into their 3 bit representation
+
+k | hk)
+AO | 100 000
+Al | 100001
+BO | 101,000
+B1 | 101 001
+Cl | 110001
+C2 | 110010
+c3 | 110011
+C5 | 110101
+
+Example: Figure below shows a dynamic hash table that contain the keys AO, BO,A1,B1,C2 and C3.
+
+Here the directory depth is 2 and uses buckets that have 2 slots. For each key k,
+
+00
+OL
+10
+ll
+
+we examine the bucket pointed to by d[h(k,t)] where t is the
+
+AO | BO
+
+Al|B1
+
+C2
+
+irectory depth. Suppose we insert C5
+
+into the hash table since h(c5,2)=01 we follow the pointer d[01] and this bucket is full. To resolve
+the overflow, we determine the least u such that h(k,u) is not the same for all keys. Incase u is
+greater than the directory depth we increase the directory depth to this least value u. Figure below
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru
+
+Page 7

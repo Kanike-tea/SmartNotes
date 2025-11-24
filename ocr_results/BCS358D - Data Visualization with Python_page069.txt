@@ -1,0 +1,58 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+10.
+
+based on gender ("sex"). The data source is the "tips" dataset, and the ax parameter
+specifies the axis object to use.
+
+Add Labels and a Title: ax.set_xlabel(), ax.set_ylabel(), and ax.set_title() are used to add
+labels to the x-axis, y-axis, and a title to the plot.
+
+Customize the Legend: ax.legend(title="Gender") adds a legend to the plot with the title
+"Gender."
+
+Optional: Save the Plot to a File: plt.savefig("customized_seaborn_plot.png") saves the
+plot to a file named "customized_seaborn_plot.png" in the current directory. This step is
+optional.
+
+Show the Plot: plt.show() is called to display the customized violin plot in a graphical
+
+window.
+
+When you run this program, it will generate a violin plot with various customizations. The plot
+
+will have a "whitegrid" style, a specific color palette, increased font size, a customized context,
+
+labels,
+
+a title, and a legend. This program demonstrates how to use Seaborn's aesthetic functions
+
+to create a customized and visually appealing violin plot.
+
+PROGRAM
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load a sample dataset
+
+tips
+
+= sns.load_dataset ("tips")
+
+# Set the style of the plot
+sns.set (style="whitegrid")
+
+# Create a customized bar plot
+plt.figure(figsize=(8, 6))
+sns.barplot (x="day", y="total_bill", data=tips, palette="Blues_d")
+
+# Customize labels and titles
+
+plt.xlabel ("Day of the week", fontsize=12)
+plt.ylabel ("Total Bill ($)", fontsize=12)
+plt.title("Total Bill Amounts by Day", fontsize=14)
+
+# Show the plot
+plt.show()
+
+Dept. of CSE 54 GSSSIETW, Mysuru

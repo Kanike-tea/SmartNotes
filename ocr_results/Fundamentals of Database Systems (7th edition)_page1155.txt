@@ -1,0 +1,54 @@
+30.1 Introduction to Database Security Issues
+
+© Account number, credit card number, or debit card number, if circum-
+stances exist wherein such a number could be used without additional
+identifying information, access codes, or passwords;
+
+© Account passwords or personal identification numbers or other access codes
+
+Because laws defining what constitutes personal information vary from state to state,
+systems must protect individuals’ privacy and enforce privacy measures adequately.
+Discretionary access control (see Section 30.2) alone may not suffice. Section 30.7
+briefly discusses encryption techniques, including popular techniques such as public
+key encryption (which is heavily used to support Web-based transactions against
+databases) and digital signatures (which are used in personal communications).
+
+A comprehensive discussion of security in computer systems and databases is outside
+the scope of this text. We give only a brief overview of database security techniques
+here. Network- and communication-based security is also a vast topic that we do not
+cover. For a comprehensive discussion, the interested reader can refer to several of the
+references discussed in the Selected Bibliography at the end of this chapter.
+
+30.1.3 Database Security and the DBA
+
+As we discussed in Chapter 1, the database administrator (DBA) is the central
+authority for managing a database system. The DBA’s responsibilities include
+granting privileges to users who need to use the system and classifying users and
+data in accordance with the policy of the organization. The DBA has a DBA account
+in the DBMS, sometimes called a system or superuser account, which provides
+powerful capabilities that are not made available to regular database accounts and
+users.” DBA-privileged commands include commands for granting and revoking
+privileges to individual accounts, users, or user groups and for performing the fol-
+lowing types of actions:
+
+1. Account creation. This action creates a new account and password for a
+user or a group of users to enable access to the DBMS.
+
+2. Privilege granting. This action permits the DBA to grant certain privileges
+to certain accounts.
+
+3. Privilege revocation. This action permits the DBA to revoke (cancel) cer-
+tain privileges that were previously given to certain accounts.
+
+4. Security level assignment. This action consists of assigning user accounts to
+the appropriate security clearance level.
+
+The DBA is responsible for the overall security of the database system. Action 1 in
+the preceding list is used to control access to the DBMS as a whole, whereas actions
+2 and 3 are used to control discretionary database authorization, and action 4 is
+used to control mandatory authorization.
+
+°This account is similar to the root or superuser accounts that are given to computer system administra-
+tors and that allow access to restricted operating system commands.
+
+1125

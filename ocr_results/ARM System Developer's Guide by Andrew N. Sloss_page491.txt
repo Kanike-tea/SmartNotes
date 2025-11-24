@@ -1,0 +1,53 @@
+478 Chapter 13 Memory Protection Units
+
+Table 13.9
+
+EXAMPLE
+
+13.5
+
+Protection unit enable bits in CP15 control register 1.
+
+Bit Function enabled Value
+
+0 MPU 0 = disabled, 1 = enabled
+2 data cache 0 = disabled, 1 = enabled
+12 instruction cache 0 = disabled, 1 = enabled
+
+bit in the control register, and a 0 leaves the bit value unchanged, regardless of the bit state
+in the first parameter.
+
+For example, to enable the MPU and I-cache, and disable the D-cache, set bit [12] to 1,
+bit [2] to 0, and bit [0] to 1. The value of the first parameter should be 0x00001001; the
+remaining unchanged bits should be zero. To select only bit [12], bit [2], and bit [0] as the
+values to change, set the mask value to 0x00001005.
+
+This routine reads the control register and places the value in a holding register. Then it
+clears all the changing bits using the mask input and assigns them the desired state using
+the value input. The routine completes by writing the new control values to the CP15:cl:c0
+register.
+
+void controlSet (unsigned value, unsigned mask)
+{
+
+unsigned int clf;
+
+asm{ MRC p15, 0, clf, cl, c0, 0 } — /* read control register */
+
+clf = clf & mask; /* mask off bit that change */
+clf = clf | value; /* set bits that change */
+__asm{ MCR p15, 0, clf, cl, c0, 0 } /* write control register */
+
+}
+
+13.3 DEMONSTRATION OF AN MPU SYSTEM
+
+We have provided a set of routines to use as building blocks to initialize and control a
+protected system. This section uses the routines described to initialize and control a simple
+protected system using a fixed memory map.
+
+Here is a demonstration that uses the examples presented in the previous sections of this
+chapter to create a functional protection system. It provides an infrastructure that enables
+the running of three tasks in a simple protected multi-tasking system. We believe it provides
+a suitable demonstration of the concepts underlying the ARM MPU hardware. It is written
+in C and uses standard access permission.

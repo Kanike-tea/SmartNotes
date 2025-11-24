@@ -1,0 +1,56 @@
+ar
+
+¥
+
+184 “Treg
+
+VI v2
+V3 v3
+
+i vz V4
+
+V6 V5
+
+(ii)
+
+Figure 3.38. «
+
+3.4 Prefix codes and Weighted trees
+
+Recall that a sequence is a set whose elements are listed (arranged) in order as the first element,
+——— + 3 hex
+
+second element, third element, and so-on::The number-of elements contained in a sequence is
+called its length.
+
+A sequence consisting of only 0 and 1 is.called a binary sequence or a binary string.
+Thus,
+
+01,001, 101, 11001, 1000100
+
+are all binary sequences with,léngths 2, 3, 3, 5, 7, tespectively.. inna Legal
+Binary sequences ‘are used as codes for messages sent through transmitting channels.
+
+Suppose a message consisting of the letters a, e,n, r, tis to be transmitted. Suppose we use
+
+the following coding scheme for these letters: ms
+
+a:1, €:0, n:10, r:01, t= 101.
+
+ee RLY |
+Under this coding scheme, suppose the message eat is to be transmitted. Then, the code!
+form of the message is given by the binary sequence 01101. Now, the question is: ca? a
+binary sequence be decoded correctly (without ambiguity)? The answer is: No!. Becavs¢
+sequence 01101 can be decoded not only as ear but also as rt, or rar, or eaar (for example
+Accordingly, the coding shemdgintscoted above is of no use int fradamissions.
+
+Alternatively, suppose Wezse the rate coding schemes’
+a:10, e: ONS
+
+Pe |
+n:1101, r: 111, #: 1100.
+
+).
+
+Then, the message eat is to be transmitted as the binary sequence 0101100, We can check #
+this sequence, when decoded, yields only éaf-anid'ab'other message.

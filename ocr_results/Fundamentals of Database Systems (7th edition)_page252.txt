@@ -1,0 +1,54 @@
+222 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+Q28: SELECT Dno, COUNT (*)
+
+FROM EMPLOYEE
+WHERE Salary>40000 AND Dno IN
+( SELECT Dno
+FROM EMPLOYEE
+GROUP BY Dno
+HAVING COUNT (*) > 5)
+
+GROUP BY Dno;
+
+7.1.9 Other SQL Constructs: WITH and CASE
+
+In this section, we illustrate two additional SQL constructs. The WITH clause
+allows a user to define a table that will only be used in a particular query; it is some-
+what similar to creating a view (see Section 7.3) that will be used only in one query
+and then dropped. This construct was introduced as a convenience in SQL:99 and
+may not be available in all SQL based DBMSs. Queries using WITH can generally
+be written using other SQL constructs. For example, we can rewrite Q28 as Q28’:
+
+Q28’: WITH BIGDEPTS (Dno) AS
+( SELECT Dno
+FROM EMPLOYEE
+GROUP BY Dno
+HAVING COUNT (*) > 5)
+SELECT Dno, COUNT (*)
+FROM EMPLOYEE
+WHERE Salary>40000 AND Dno IN BIGDEPTS
+
+GROUP BY no;
+
+In Q28’, we defined in the WITH clause a temporary table BIG_DEPTS whose
+result holds the Dno’s of departments with more than five employees, then used
+this table in the subsequent query. Once this query is executed, the temporary table
+BIGDEPTS is discarded.
+
+SQL also has a CASE construct, which can be used when a value can be different
+based on certain conditions. This can be used in any part of an SQL query where a
+value is expected, including when querying, inserting or updating tuples. We illus-
+trate this with an example. Suppose we want to give employees different raise
+amounts depending on which department they work for; for example, employees in
+department 5 get a $2,000 raise, those in department 4 get $1,500 and those in
+department 1 get $3,000 (see Figure 5.6 for the employee tuples). Then we could
+re-write the update operation U6 from Section 6.4.3 as U6’:
+
+U6’: UPDATE EMPLOYEE
+SET Salary =
+CASE WHEN Dno=5 THEN Salary + 2000
+WHEN Dno THEN Salary + 1500
+WHEN Dno=1 THEN Salary + 3000
+
+ELSE Salary + 0;

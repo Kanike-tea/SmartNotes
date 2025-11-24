@@ -1,0 +1,50 @@
+27.8 Trends in Information Retrieval
+
+some hidden parameters. These hidden/unobserved parameters are the Dirichlet
+distribution** priors for words and topics, topic distributions, and per-topic word dis-
+tributions. Bayesian inference methods such as Gibbs sampling™ are used to fit
+the hidden parameters based on the observed data (the words in the documents).
+
+27.8.5 Question Answering Systems
+
+Question answering (QA) has become a hot topic of study due to the surge in vir-
+tual assistant technology (e.g., Apple’s Siri and Microsoft’s Cortana). These virtual
+assistant technologies are advancements in interactive voice response (IVR) sys-
+tems, which primarily rely on speech recognition techniques such as keyword spot-
+ting. Question answering deals with complex understanding of natural language
+queries. Recently, IBM created history by developing the QA system called Watson,
+that participated in the Jeopardy! Challenge*® and defeated human players in the
+popular TV quiz show. Question answering has emerged as a practical engineering
+discipline that comprises techniques such as parsing; named entity recognition
+(NER); focus extraction; answer type extraction; relation extraction; ontological
+inference; and search, indexing, and classification algorithms. Question answering
+techniques also involve knowledge engineering from large unstructured corpora
+such as Web document collections and structured databases that incorporate
+knowledge from various domains. These document collections are generally large
+enough to require application of big data tools and technologies, some of which we
+discussed in Chapter 25. In the following sections, we consider the main concepts
+involved in question answering.
+
+Types of Questions: In question answering systems, it is important to know the
+category or type of question, because answering strategies rely heavily on the type
+of questions. Some of these categories are not always mutually exclusive and hence
+require hybrid answering strategies. Generally, questions can be categorized into
+the following types:
+
+Factoid Questions: This type of question pinpoints the right phrase in a docu-
+ment or a database that correctly addresses the question. Examples of this type
+include questions such as, “Who is the president of the United States?”, “In
+which city was Elvis Presley born?”, ‘Where is Hartsfield Jackson International
+Airport located?’, and “At what time will today’s sunset occur?”.
+
+List Questions: This type of question seeks a list of factoid responses that sat-
+isfy a given criterion. Examples include “Name three plays that were written by
+Shakespeare”, “Name the male actors who played the role of James Bond in the
+James Bond 007 movie series”, and “List three red-colored vegetables”.
+
+34S, Kotz, N. Balakrishnan, and N. L. Johnson (2000).
+35German and German (1984).
+
+$®See Ferrucci et al. (2010).
+
+1061

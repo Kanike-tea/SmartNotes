@@ -1,0 +1,20 @@
+100 Chapter 4 Introduction to the Thumb Instruction Set
+
+4.9 SUMMARY
+
+In this chapter we covered the Thumb instruction set. All Thumb instructions are 16 bits
+in length. Thumb provides approximately 30% better code density over ARM code. Most
+code written for Thumb is in a high-level language such as C and C++.
+
+ATPCS defines how ARM and Thumb code call each other, called ARM-Thumb
+interworking. Interworking uses the branch exchange (BX) instruction and branch exchange
+with link (BLX) instruction to change state and jump to a specific routine.
+
+In Thumb, only the branch instructions are conditionally executed. The barrel shift
+operations (ASR, LSL, LSR, and ROR) are separate instructions.
+
+The multiple-register load-store instructions only support the increment after (IA)
+addressing mode. The Thumb instruction set includes POP and PUSH instructions as stack
+operations. These instructions only support a full descending stack.
+
+There are no Thumb instructions to access the coprocessors, cpsr, and spsr.

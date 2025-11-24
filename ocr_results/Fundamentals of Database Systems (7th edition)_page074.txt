@@ -1,0 +1,52 @@
+44
+
+Chapter 2 Database System Concepts and Architecture
+
+them into an internal form. This internal query is subjected to query optimization
+(discussed in Chapters 18 and 19). Among other things, the query optimizer is
+concerned with the rearrangement and possible reordering of operations, elimina-
+tion of redundancies, and use of efficient search algorithms during execution. It
+consults the system catalog for statistical and other physical information about the
+stored data and generates executable code that performs the necessary operations
+for the query and makes calls on the runtime processor.
+
+Application programmers write programs in host languages such as Java, C, or C++
+that are submitted to a precompiler. The precompiler extracts DML commands
+from an application program written in a host programming language. These com-
+mands are sent to the DML compiler for compilation into object code for database
+access. The rest of the program is sent to the host language compiler. The object
+codes for the DML commands and the rest of the program are linked, forming a
+canned transaction whose executable code includes calls to the runtime database
+processor. It is also becoming increasingly common to use scripting languages such
+as PHP and Python to write database programs. Canned transactions are executed
+repeatedly by parametric users via PCs or mobile apps; these users simply supply
+the parameters to the transactions. Each execution is considered to be a separate
+transaction. An example is a bank payment transaction where the account number,
+payee, and amount may be supplied as parameters.
+
+In the lower part of Figure 2.3, the runtime database processor executes (1) the
+privileged commands, (2) the executable query plans, and (3) the canned transac-
+tions with runtime parameters. It works with the system catalog and may update it
+with statistics. It also works with the stored data manager, which in turn uses basic
+operating system services for carrying out low-level input/output (read/write)
+operations between the disk and main memory. The runtime database processor
+handles other aspects of data transfer, such as management of buffers in the main
+memory. Some DBMSs have their own buffer management module whereas others
+depend on the OS for buffer management. We have shown concurrency control
+and backup and recovery systems separately as a module in this figure. They are
+integrated into the working of the runtime database processor for purposes of
+transaction management.
+
+It is common to have the client program that accesses the DBMS running on a
+separate computer or device from the computer on which the database resides. The
+former is called the client computer running DBMS client software and the latter is
+called the database server. In many cases, the client accesses a middle computer,
+called the application server, which in turn accesses the database server. We elabo-
+rate on this topic in Section 2.5.
+
+Figure 2.3 is not meant to describe a specific DBMS; rather, it illustrates typical
+DBMS modules. The DBMS interacts with the operating system when disk accesses—
+to the database or to the catalog—are needed. If the computer system is shared by
+many users, the OS will schedule DBMS disk access requests and DBMS processing
+along with other processes. On the other hand, if the computer system is mainly
+dedicated to running the database server, the DBMS will control main memory

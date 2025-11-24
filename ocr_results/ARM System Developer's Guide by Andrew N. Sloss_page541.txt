@@ -1,0 +1,52 @@
+528 Chapter 14 Memory Management Units
+
+All of the Region data structures together form a second block of data that we use to
+define the size, location, access permission, cache and write buffer operation, and page table
+location for the regions used in the system. We refer to this block of regions as the region
+
+control block (RCB) for the remainder of this demonstration.
+
+There are the seven Region structures that define the regions described in previous
+sections and shown in Figure 14.19. Here are the initialization values for each of the four
+
+system software and three task Regions in the RCB:
+
+#define NANA 0x00
+#define RWNA Ox01
+#define RWRO 0x02
+#define RWRW 0x03
+/* NA = no access, RO = read only, RW = read/write */
+
+#if defined (__TARGET_CPU_ARM920T)
+#define cb 0x0
+#define cB Ox1
+#define WT 0x2
+#define WB 0x3
+#endif
+/* 720 */
+#if defined (__TARGET_CPU_ARM720T)
+#define cb 0x0
+#define cB Ox1
+#define Cb 0x2
+#define WT 0x3
+#endif
+/* cb = not cached/not buffered */
+/* cB = not Cached/Buffered */
+/* Cb = Cached/not Buffered */
+/* WT = write through cache */
+/* WB = write back cache */
+
+/* REGION TABLES */
+/* VADDRESS, PAGESIZE, NUMPAGES, AP, CB, PADDRESS, &PT */
+Region kernelRegion
+
+= {0x00000000, 4, 16, RWNA, WT, 0x00000000, &systemPT};
+Region sharedRegion
+
+= {0x00010000, 4, 8, RWRW, WT, 0x00010000, &systemPT};
+Region pageTableRegion
+
+= {0x00018000, 4, 8, RWNA, WT, 0x00018000, &systemPT};
+Region peripheralRegion
+
+= {0x10000000, 1024, 256, RWNA, cb, 0x10000000, &masterPT};

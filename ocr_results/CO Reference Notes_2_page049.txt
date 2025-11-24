@@ -1,0 +1,43 @@
+© The main-memory can be built with DRAM (Figure 8.14)
+© Thus, SRAM's are used in smaller units where speed is of essence.
+© The Cache-memory is of 2 types:
+1) Primary/Processor Cache (Levell or L1 cache)
+> It is always located on the processor-chip.
+2) Secondary Cache (Level2 or L2 cache)
+> It is placed between the primary-cache and the rest of the memory.
+¢ The memory is implemented using the dynamic components (SIMM, RIMM, DIMM).
+© The access time for main-memory is about 10 times longer than the access time for L1 cache.
+
+Increasing
+size
+
+Increasing
+cost per bit
+
+Figure 8.14 — Memory hierarchy.
+
+CACHE MEMORIES
+The effectiveness of cache mechanism is based on the property of ,,Locality ofReference’.
+Locality of Reference
+
+* Many instructions in the localized areas of program are executed repeatedly during some time period
+© Remainder of the program is accessed relatively infrequently (Figure 8.15).
+© There are 2 types:
+1) Temporal
+
+> The recently executed instructions are likely to be executed again very soon.
+2) Spatial
+
+> Instructions in close proximity to recently executed instruction are also likely to be executed soon.
+If active segment of program is placed in cache-memory, then total execution time can be reduced.
+* Block refers to the set of contiguous address locations of some size.
+© The cache-line is used to refer to the cache-block.
+
+Main
+Processor | Cache
+
+memory
+
+Figure 8.15 Use of a cache memory,
+
+Page 50

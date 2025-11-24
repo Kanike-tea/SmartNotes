@@ -1,0 +1,84 @@
+Site 1:
+EMPLOYEE
+
+23.5 Query Processing and Optimization in Distributed Databases 861
+
+Fname | Minit | Lname
+
+Ssn
+
+Bdate | Address
+
+Sex
+
+Salary
+
+‘Super_ssn
+
+Dno
+
+10,000 records
+
+each record is 100 bytes long
+
+Ssn field is 9 bytes long
+Dno field is 4 bytes long
+
+Site 2:
+DEPARTMENT
+
+Fname field is 15 bytes long
+Lname field is 15 bytes long
+
+Dname | Dnumber
+
+Mgr_ssn
+
+Mgr_start_date
+
+100 records
+
+each record is 36 bytes long
+Dnumber field is 4 bytes long
+Mgr_ssn field is 9 bytes long
+
+Dname field is 10 bytes long
+
+Figure 23.4
+Example to illustrate
+volume of data
+transferred.
+
+2. Transfer the EMPLOYEE relation to site 2, execute the join at site 2, and send
+the result to site 3. The size of the query result is 40 * 10,000 = 400,000 bytes,
+so 400,000 + 1,000,000 = 1,400,000 bytes must be transferred.
+
+3. Transfer the DEPARTMENT relation to site 1, execute the join at site 1, and
+send the result to site 3. In this case, 400,000 + 3,500 = 403,500 bytes must be
+transferred.
+
+If minimizing the amount of data transfer is our optimization criterion, we should
+choose strategy 3. Now consider another query Q’: For each department, retrieve the
+department name and the name of the department manager. This can be stated as
+follows in the relational algebra:
+
+Q: Tername,Lname,Dname(DEPARTMENT Pjg-_ssn-Ssn EMPLOYEE)
+
+Again, suppose that the query is submitted at site 3. The same three strategies for
+executing query Q apply to Q’, except that the result of Q’ includes only 100 records,
+assuming that each department has a manager:
+
+1. Transfer both the EMPLOYEE and the DEPARTMENT relations to the result
+site, and perform the join at site 3. In this case, a total of 1,000,000 + 3,500 =
+1,003,500 bytes must be transferred.
+
+2. Transfer the EMPLOYEE relation to site 2, execute the join at site 2, and send
+the result to site 3. The size of the query result is 40 * 100 = 4,000 bytes, so
+4,000 + 1,000,000 = 1,004,000 bytes must be transferred.
+
+3. Transfer the DEPARTMENT relation to site 1, execute the join at site 1, and
+send the result to site 3. In this case, 4,000 + 3,500 = 7,500 bytes must be
+transferred.
+
+Again, we would choose strategy 3—this time by an overwhelming margin over
+strategies 1 and 2. The preceding three strategies are the most obvious ones for the

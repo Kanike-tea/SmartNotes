@@ -1,0 +1,30 @@
+CHAPTER
+
+EMBEDDED
+OPERATING
+SYSTEMS
+
+This chapter discusses the implementation of embedded operating systems (OS). Because
+embedded operating systems are designed for a specific purpose, historically embedded
+operating systems were simple, time constrained, and operated in limited memory. This
+distinction has changed over time as the sophistication of embedded hardware has increased.
+Features, traditionally found on desktop computers, such as virtual memory, have migrated
+into the embedded system world.
+
+Since this is a large subject, we have limited our scope to just the fundamental compo-
+nents that make up an embedded operating system. We also build on the firmware example
+shown in Chapter 10.
+
+This chapter is divided into two sections: The first section takes you through the funda-
+mental components that make up an embedded operating system and notes issues specific to
+ARM processors. The second section takes you through an example operating system called
+the Simple Little Operating System (SLOS). SLOS is designed to show an implementation
+of the fundamental components.
+
+11.1 FUNDAMENTAL COMPONENTS
+
+There is a common set of low-level components, each carrying out a prescribed action, that
+form an operating system. It is how these components interact and function that determines
+the characteristics of a specific operating system.
+
+381

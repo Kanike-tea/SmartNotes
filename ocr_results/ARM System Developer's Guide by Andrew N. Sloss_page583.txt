@@ -1,0 +1,47 @@
+570 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.1 Instruction types.
+
+Type Meaning
+
+ARMvX 32-bit ARM instruction first appearing in ARM architecture version X
+THUMBvX 16-bit Thumb instruction first appearing in Thumb architecture version X
+MACRO Assembler pseudoinstruction
+
+condition <cond> is passed. Each entry also describes the action of the instruction if it is
+executed.
+
+The {S} denotes that you may apply an optional $ suffix to the instruction. Finally,
+the right-hand column specifies that the instruction is available from the listed ARM
+architecture version onwards. Table A.1 shows the entries possible for this column.
+
+Note that there is no direct correlation between the Thumb architecture number and
+the ARM architecture number. The THUMBv1 architecture is used in ARMvA4T processors;
+the THUMBv2 architecture, in ARMv5T processors; and the THUMBv3 architecture, in
+ARMv6 processors.
+
+Each instruction definition is followed by a notes section describing restrictions on the
+use of the instruction. When we make a statement such as “Rd must not be pc,” we mean
+that the description of the function only applies when this condition holds. If you break
+the condition, then the instruction may be unpredictable or have predictable effects that we
+haven’t had space to describe here. Well-written programs should not need to break these
+conditions.
+
+A.2 SYNTAX
+
+We use the following syntax and abbreviations throughout this appendix.
+
+A.2.1 OPTIONAL EXPRESSIONS
+
+= {<expr>} is an optional expression. For example, LDR{B} is shorthand for LDR or LDRB.
+= {<exp1>|<exp2>l...l<expN>}, including at least one “|” divider, is a list of expressions.
+One of the listed expressions must appear. For example LDR{B|H} is shorthand for
+LDRB or LDRH. It does not include LDR. We would represent these three possibilities by
+
+LDR{ |B] H}.
+
+A.2.2. REGISTER NAMES
+
+= Rd, Rn, Rm, Rs, RHi, RdLo represent ARM registers in the range r0 to r15.
+
+= Ld, Ln, Lm, Ls represent low-numbered ARM registers in the range r0 to 17.

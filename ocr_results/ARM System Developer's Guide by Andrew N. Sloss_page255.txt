@@ -1,0 +1,43 @@
+242 Chapter 7 Optimized Primitives
+
+All the example routines of this section produce an answer accurate to 32 bits, which
+is excessive for many applications. You can accelerate performance by curtailing the series
+expansions with some loss in accuracy.
+
+7.5.1 THE BASE-TWo LOGARITHM
+
+Figure 7.4
+
+Suppose we have a 32-bit integer n, and we want to find the base-two logarithm s = log,(n)
+such that n = 2°. Since sisin the range0 < s < 32, we will actually find a Q26 representation
+qof the logarithm so that q = s27°. We can easily calculate the integer part of s using CLZ
+or the alternatives of Section 7.2. This reduces us to a number in the range | < n <2. First
+we perform a table lookup on an approximation a to n to find log,(a) and a~!. Since
+
+log,(n) = log,(a) + log, (2) (7.47)
+
+we've reduced the problem to finding log(na~). As na~? is close to one, we can use the
+series expansion of log,(1 + x) to improve the result accuracy:
+
+logy(1 +) = BES _ eye (7.48)
+PRT TH my A ;
+where In is the natural logarithm to base e. To summarize, we calculate the logarithm in
+
+three stages as illustrated in Figure 7.4:
+
+= We use CLZ to find bits [31:26] of the result.
+m= = We use a table lookup of the first five fractional bits to find an estimate.
+
+m= We use series expansion to calculate the estimate error more accurately.
+
+You can use the following code to implement this on an ARM9E processor using 31 cycles
+excluding the return. The answer is accurate to an error of 2~7>.
+
+n RN O — ; QO input, Q26 log2 estimate
+d RN 1; normalize input Q32
+r RN 2
+
+31.26 25 0
+result = | CLZ | Lookup | Series
+
+The three stages of the logarithm calculation.

@@ -1,0 +1,52 @@
+312
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+other necessary information are included as parameters in the function calls.
+This approach provides what is known as an application programming
+interface (API) for accessing a database from application programs. For
+object-oriented programming languages (OOPLs), a class library is used.
+For example, Java has the JDBC class library, which can generate various
+types of objects such as: connection objects to a particular database, query
+objects, and query result objects. Each type of object has a set of operations
+associated with the class corresponding to the object.
+
+3. Designing a brand-new language. A database programming language is
+designed from scratch to be compatible with the database model and query
+language. Additional programming structures such as loops and conditional
+statements are added to the database language to convert it into a full-fledged
+programming language. An example of this approach is Oracle’s PL/SQL. The
+SQL standard has the SQL/PSM language for specifying stored procedures.
+
+In practice, the first two approaches are more common, since many applications
+are already written in general-purpose programming languages but require some
+database access. The third approach is more appropriate for applications that have
+intensive database interaction. One of the main problems with the first two
+approaches is impedance mismatch, which does not occur in the third approach.
+
+10.1.2 Impedance Mismatch
+
+Impedance mismatch is the term used to refer to the problems that occur because
+of differences between the database model and the programming language model.
+For example, the practical relational model has three main constructs: columns
+(attributes) and their data types, rows (also referred to as tuples or records), and
+tables (sets or multisets of records). The first problem that may occur is that the
+data types of the programming language differ from the attribute data types that are
+available in the data model. Hence, it is necessary to have a binding for each host
+programming language that specifies for each attribute type the compatible pro-
+gramming language types. A different binding is needed for each programming lan-
+guage because different languages have different data types. For example, the data
+types available in C/C++ and Java are different, and both differ from the SQL data
+types, which are the standard data types for relational databases.
+
+Another problem occurs because the results of most queries are sets or multisets of
+tuples (rows), and each tuple is formed of a sequence of attribute values. In the pro-
+gram, it is often necessary to access the individual data values within individual
+tuples for printing or processing. Hence, a binding is needed to map the query result
+data structure, which is a table, to an appropriate data structure in the program-
+ming language. A mechanism is needed to loop over the tuples in a query result in
+order to access a single tuple at a time and to extract individual values from the
+tuple. The extracted attribute values are typically copied to appropriate program
+variables for further processing by the program. A cursor or iterator variable is
+typically used to loop over the tuples in a query result. Individual values within each
+tuple are then extracted into distinct program variables of the appropriate type.

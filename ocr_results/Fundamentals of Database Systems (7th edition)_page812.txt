@@ -1,0 +1,50 @@
+782
+
+Chapter 21 Concurrency Control Techniques
+
+Another factor that affects concurrency control is the granularity of the data
+items—that is, what portion of the database a data item represents. An item can be
+as small as a single attribute (field) value or as large as a disk block, or even a whole
+file or the entire database. We discuss granularity of items and a multiple granular-
+ity concurrency control protocol, which is an extension of two-phase locking, in
+Section 21.5. In Section 21.6, we describe concurrency control issues that arise
+when indexes are used to process transactions, and in Section 21.7 we discuss some
+additional concurrency control concepts. Section 21.8 summarizes the chapter.
+
+It is sufficient to read Sections 21.1, 21.5, 21.6, and 21.7, and possibly 21.3.2, if your
+main interest is an introduction to the concurrency control techniques that are
+based on locking.
+
+21.1 Two-Phase Locking Techniques
+for Concurrency Control
+
+Some of the main techniques used to control concurrent execution of transactions
+are based on the concept of locking data items. A lock is a variable associated with
+a data item that describes the status of the item with respect to possible operations
+that can be applied to it. Generally, there is one lock for each data item in the data-
+base. Locks are used as a means of synchronizing the access by concurrent transac-
+tions to the database items. In Section 21.1.1, we discuss the nature and types of
+locks. Then, in Section 21.1.2, we present protocols that use locking to guarantee
+serializability of transaction schedules. Finally, in Section 21.1.3, we describe two
+problems associated with the use of locks—deadlock and starvation—and show
+how these problems are handled in concurrency control protocols.
+
+21.1.1 Types of Locks and System Lock Tables
+
+Several types of locks are used in concurrency control. To introduce locking con-
+cepts gradually, first we discuss binary locks, which are simple but are also too
+restrictive for database concurrency control purposes and so are not used much.
+Then we discuss shared/exclusive locks—also known as read/write locks—which
+provide more general locking capabilities and are used in database locking schemes.
+In Section 21.3.2, we describe an additional type of lock called a certify lock, and we
+show how it can be used to improve performance of locking protocols.
+
+Binary Locks. A binary lock can have two states or values: locked and unlocked
+(or 1 and 0, for simplicity). A distinct lock is associated with each database item X.
+If the value of the lock on X is 1, item X cannot be accessed by a database operation
+that requests the item. If the value of the lock on X is 0, the item can be accessed
+when requested, and the lock value is changed to 1. We refer to the current value
+(or state) of the lock associated with item X as lock(X).
+
+Two operations, lock_item and unlock_item, are used with binary locking. A trans-
+action requests access to an item X by first issuing a lock_item(X) operation. If

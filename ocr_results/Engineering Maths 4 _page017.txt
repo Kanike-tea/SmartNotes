@@ -1,0 +1,50 @@
+a
+
+10 ENGINEERING MATHEMATICS - IV
+eo EES MAIREMAIIS CTY
+
+EXERCISES
+Use Taylor's series method to solve the following initial value problems,
+dy .
+z at y(0) = 1. Compute y (0.1 ) considering terms upto fourth degree,
+2; dy
+
+—s xy -1, y(0) = 1. Compute y (0.03) using the expansion of y upto
+second degree terms.
+
+3,
+
+aT xy y(1) = 1. Computey(1.1) & y (1.2) by taking step size 0.1
+
+dy
+
+4. dx * + ¥+ *=1,y = 0. Find the third order approximation of the:solution
+and use it to compute y(1.1),y(1.2) and y(13).
+dy ;
+
+5. ried x y-1,y(0) = lin the range 0 < x < 0.2 taking step size 0.1
+
+ANSWERS
+1. 0.8373 2. 0.97 3. 1.107, 1.228
+1
+4. y =(x-1) + (x-1)? + 5 (4-1) 0.1105, 0.244, 0.4035
+
+5. 0.9003, 0.8023
+
+Modified Euler's Method
+
+d
+Consider the initial value problem = =f(%Y) Fy (2%) = Yp-
+We need to find y atx, = xq + h.
+
+We first obtain y(x,) = y, by applying Euler's formula and this value is regarded
+as the initial approximation for y, usually denoted by yf) also called as the
+predicted value of y, . ;
+
+Euler's formula is given by
+i = Yq t hf (xy Yo)
+Since the accuracy is poor in this formula this value y, is successively improved
+
+(corrected) to the desired degree of accuracy by the followingModified Euler's formula,
+
+where the successive approximations are denoted by yf), yf?) ¥), we. ete

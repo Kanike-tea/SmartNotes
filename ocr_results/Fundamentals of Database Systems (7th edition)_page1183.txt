@@ -1,0 +1,54 @@
+30.8 Privacy Issues and Preservation
+
+that it is signing, together with a timestamp. To be unique to each signer and coun-
+terfeitproof, each digital signature must also depend on some secret number that is
+unique to the signer. Thus, in general, a counterfeitproof digital signature must
+depend on the message and a unique secret number of the signer. The verifier of the
+signature, however, should not need to know any secret number. Public key tech-
+niques are the best means of creating digital signatures with these properties.
+
+30.7.5 Digital Certificates
+
+A digital certificate is used to combine the value of a public key with the identity of
+the person or service that holds the corresponding private key into a digitally signed
+statement. Certificates are issued and signed by a certification authority (CA). The
+entity receiving this certificate from a CA is the subject of that certificate. Instead of
+requiring each participant in an application to authenticate every user, third-party
+authentication relies on the use of digital certificates.
+
+The digital certificate itself contains various types of information. For example,
+both the certification authority and the certificate owner information are included.
+The following list describes all the information included in the certificate:
+
+1. The certificate owner information, which is represented by a unique identi-
+fier known as the distinguished name (DN) of the owner. This includes the
+owner’s name, as well as the owner’s organization and other information
+about the owner.
+
+2. The certificate also includes the public key of the owner.
+3. The date of issue of the certificate is also included.
+
+4. The validity period is specified by ‘Valid From’ and ‘Valid To’ dates, which
+are included in each certificate.
+
+5. Issuer identifier information is included in the certificate.
+
+6. Finally, the digital signature of the issuing CA for the certificate is included.
+All the information listed is encoded through a message-digest function,
+which creates the digital signature. The digital signature basically certifies
+that the association between the certificate owner and public key is valid.
+
+30.8 Privacy Issues and Preservation
+
+Preserving data privacy is a growing challenge for database security and privacy
+experts. In some perspectives, to preserve data privacy we should even limit per-
+forming large-scale data mining and analysis. The most commonly used techniques
+to address this concern are to avoid building mammoth central warehouses as a
+single repository of vital information. This is one of the stumbling blocks for creat-
+ing nationwide registries of patients for many important diseases. Another possible
+measure is to intentionally modify or perturb data.
+
+If all data were available at a single warehouse, violating only a single repository’s
+security could expose all data. Avoiding central warehouses and using distributed
+
+1153

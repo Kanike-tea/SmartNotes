@@ -1,0 +1,38 @@
+1.2.1. Vertex degree and Handshaking property
+
+33
+
+Figure 1.41
+
+.
+Pee =— (2) If kis odd, show that the number of vertices in a k-regular graph is even.
+
+(b) Show that it is not possible to have a set of seven persons such thateach person in the
+set knows exactly three other persons in the set.
+
+(a) In a k-regular graph, the degree of each vertex is k. Therefore, if such a graph has
+n vertices, then the sum of the degrees is nk, and this has to be an even number (by
+handshaking property). If k is odd, this is possible only if n is even.
+
+(b) Let G be a graph with seven vertices, each vertex representing a person in the given set
+and each edge representing an acquaintance. If each person in the set knows exactly three
+other persons in the set, then there will be exactly three edges incident on each vertex,
+and the graph G will be 3-regular. This is not possible, because G has an odd number
+of vertices. Hence, the graph G of the desired type does not exist. This means that it is
+not possible to have a set of seven persons such that each person in the set knows exactly
+three other persons in the set. 2
+
+(a) Show that in a complete graph of n vertices (namely K,) the degree of
+
+every vertex is (n — 1) and that the total number of edges is 5n(n - 1).
+
+(b) If K, has m edges, show that n(n + 1) = 2(n +m).
+
+>(a) Recall that a complete graph is a simple graph in which every vertex is joined with every
+other vertex through exactly one edge. Therefore, if there are n vertices, each vertex is
+joined to (n — 1) vertices through exactly one edge. Thus, there occur n— 1 edges at every
+vertex. This means that the degree of every vertex is n — 1.
+
+Consequently, the sum of the degrees of vertices is n(n — 1), By handshaking property,
+this sum must be equal to 2m, where m is the number of edges. Thus, n(n — 1) = 2m, or
+= 3n(n 1). Thus, K, has $n(n — 1) edges.

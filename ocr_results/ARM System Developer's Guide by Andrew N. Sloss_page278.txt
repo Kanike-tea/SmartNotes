@@ -1,0 +1,42 @@
+8.1 Representing a Digital Signal 265
+
+8.1.3. ADDITION AND SUBTRACTION OF FIXED-POINT SIGNALS
+The general case is to convert the signal equation
+ylt] = x[t] + c[t] (8.11)
+into fixed-point format; that is, approximately:
+Y(t] = 24yle] = 2%(xte] + cft]) = 2°" X[e] + 2°" Cl] (8.12)
+or in integer C:
+Y[t] = (X[t] <<(d-n)) + (C[t] << (d-m));
+
+Here we use the convention that you should interpret a negative left shift value as a rounded
+right shift. In other words, we first convert x[t] and c[t] to Qd representations, then add to
+give Y[t].
+
+We know the values of d, n, and m, at compile time, and so there is no prob-
+lem in determining the shift direction, or whether there is a shift at all! In practice we
+usually arrange that n = m = d. Therefore normal integer addition gives a fixed-point
+addition:
+
+Y(t] = X[t] + C[t];
+
+Provided d= mor d= n, we can perform the operation in a single cycle using the ARM
+barrel shifter:
+
+Y[t] = x[t] + (C[t] <<(d-m)); /* d==n case */
+Y[t] = C[t] + (X[t] <<(d-n)); /* d==m case */
+
+We must be careful though. The preceding equations are only meaningful if the shifted
+values and the result do not overflow. For example, if Y[t] = X[t] + C[t], then the
+dynamic range of Y[¢] is the sum of the dynamic ranges of X[t] and C[#]. This is liable to
+overflow the integer container.
+
+‘There are four common ways you can prevent overflow:
+
+1. Ensure that the X[t] and C[t] representations have one bit of spare headroom each; in
+other words, each use up only half the range of their integer container. Then there can
+be no overflow on the addition.
+
+2. Use a larger container type for Y than for X and C. For example, if X[t] and C[t] are
+stored as 16-bit integers, use a 32-bit integer for Y[t]. This will ensure that there can be
+no overflow. In fact, Y[t] then has 15 bits of headroom, so you can add many 16-bit
+values to Y[t] without the possibility of overflow.

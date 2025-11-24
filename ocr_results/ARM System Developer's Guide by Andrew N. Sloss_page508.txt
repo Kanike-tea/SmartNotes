@@ -1,0 +1,42 @@
+14.2 How Virtual Memory Works 495
+
+Virtual MMU Physical
+memory memory
+Translation
+lookaside
+buffer
+4 [-——Fj | Page
+4 tables
+4]
+>|
+>| PTE
+Relocation
+wens oa
+L__,|
+Page Page
+frame
+
+Figure 14.2 The components of a virtual memory system.
+
+The set of relocation registers that temporarily store the translations in an ARM MMU
+are really a fully associative cache of 64 relocation registers. This cache is known as a
+Translation Lookaside Buffer (TLB). The TLB caches translations of recently accessed pages.
+
+In addition to having relocation registers, the MMU uses tables in main memory to store
+the data describing the virtual memory maps used in the system. These tables of translation
+data are known as page tables. An entry in a page table represents all the information needed
+to translate a page in virtual memory to a page frame in physical memory.
+
+A page table entry (PTE) ina page table contains the following information about a virtual
+page: the physical base address used to translate the virtual page to the physical page frame,
+the access permission assigned to the page, and the cache and write buffer configuration for
+the page. If you refer to Table 14.1, you can see that most of the region configuration data
+in an MPU is now held in a page table entry. This means access permission and cache and
+write buffer behavior are controlled at a granularity of the page size, which provides finer
+control over the use of memory. Regions in an MMU are created in software by grouping
+blocks of virtual pages in memory.
+
+14.2.1. DEFINING REGIONS USING PAGES
+
+In Chapter 13 we explained the use of regions to organize and control areas of memory
+used for specific functions such as task code and data, or memory input/output. In that

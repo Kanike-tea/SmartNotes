@@ -1,0 +1,57 @@
+454
+
+Chapter 13. XML: Extensible Markup Language
+
+We discuss the following functions:
+
+1. XMLELEMENT: This is used to specify a tag (element) name that will
+appear in the XML result. It can specify a tag name for a complex element or
+for an individual column.
+
+2. XMLFOREST: If several tags (elements) are needed in the XML result, this
+function can create multiple element names in a simpler manner than
+XMLELEMENT. The column names can be listed directly, separated by
+commas, with or without renaming. Ifa column name is not renamed, it will
+be used as the element (tag) name.
+
+3. XMLAGG: This can group together (or aggregate) several elements so they
+can be placed under a parent element as a collection of subelements.
+
+4. XMLROOT: This allows the selected elements to be formatted as an XML
+document with a single root element.
+
+5. XMLATTRIBUTES: This allows the creation of attributes for the elements
+of the XML result.
+
+We now illustrate these functions with a few SQL/XML examples that refer to the
+EMPLOYEE table from Figures 5.5 and 5.6. The first example X1 shows how to cre-
+ate an XML element that contains the EMPLOYEE lastname for the employee
+whose ssn is “123456789”:
+
+X1: SELECT XMLELEMENT (NAME “lastname”, E.LName)
+FROM EMPLOYEE E
+WHERE E.Ssn = “123456789” ;
+
+The SQL keyword NAME specifies the XML element (tag) name. The result on the
+data shown in Figure 5.6 would be:
+
+<lastname>Smith</lastname>
+
+If we want to retrieve multiple columns for a single row, we can use multiple list-
+ings of XMLELEMENT within the parent element, but a simpler way would be
+to use XMLFOREST, which allows the specification of multiple columns without
+repeating the keyword XMLELEMENT multiple times. This is shown as X2:
+
+X2: SELECT XMLELEMENT (NAME “employee”,
+XMLFOREST (
+E.Lname AS “In”,
+E.Fname AS “fn”,
+E.Salary AS “sal” ) )
+FROM EMPLOYEE AS E
+WHERE — E.Ssn = “123456789” ;
+
+The result of X2 on the data shown in Figure 5.6 would be:
+<employee><In>Smith</In><fn>John</fn><sal>30000</sal></employee>
+
+Suppose we want to create XML data that has the last name, first name, and
+salary of the employees who work in department 4, and format it as an XML

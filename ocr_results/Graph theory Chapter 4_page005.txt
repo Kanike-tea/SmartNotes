@@ -1,0 +1,28 @@
+- Rive
+
+41. Minimal Spanning Tree :
+
+Figure 4.8
+
+Oey Using Kruskal’s method, determine a minimal spanning tree for the graph shown
+below. :
+
+a 2 b 2 é
+3 3
+f
+3 3
+8 3 h 3 i
+Figure 4.9
+
+> The given graph has 9 vertices and therefore a spanning tree thereof will have 8 edges. Let
+4S put the edges of the graph in a non-decreasing order of their weights and go on selecting 8
+tdges one by one in such'a way that no cycle is created. The scheme is summarized below.
+
+| ek | ab | bce | de | ef | ad be | bf
+eine 1] 2 2|2|3 3 | 3 a fas
+Setar [ye [es [ves] ven [ves [es [No] wo | wo No [ves ves |_|
+
+Thus, the edges eh, ab, bc, de, ef, ad, dg and hi constitute a minimal spanning tree for the
+"graph. The weight of this tree is 18 units. The tree is shown in Figure'4.10.
+
+FI

@@ -1,0 +1,81 @@
+324
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+In both cases, the list should be in the same order as the attributes that are listed in
+the SELECT clause of the query. However, looping over a query result is different for
+the two types of iterators. First, we show an example of using a named iterator in
+Figure 10.8, program segment J2A. Line 9 in Figure 10.8 shows how a named itera-
+tor type Emp is declared. Notice that the names of the attributes in a named iterator
+type must match the names of the attributes in the SQL query result. Line 10 shows
+how an iterator object e of type Emp is created in the program and then associated
+with a query (lines 11 and 12).
+
+When the iterator object is associated with a query (lines 11 and 12 in Figure 10.8),
+the program fetches the query result from the database and sets the iterator to a
+position before the first row in the result of the query. This becomes the current row
+for the iterator. Subsequently, next operations are issued on the iterator object;
+each next moves the iterator to the next row in the result of the query, making it the
+current row. If the row exists, the operation retrieves the attribute values for that
+row into the corresponding program variables. If no more rows exist, the next
+operation returns NULL, and can thus be used to control the looping. Notice that the
+named iterator does not need an INTO clause, because the program variables corre-
+sponding to the retrieved attributes are already specified when the iterator type is
+declared (line 9 in Figure 10.8).
+
+In Figure 10.8, the command (e.next()) in line 13 performs two functions: It
+gets the next tuple in the query result and controls the WHILE loop. Once the
+
+Figure 10.8
+
+Program segment J2A, a Java program segment that uses a named iterator to print employee information in a
+
+particular department.
+
+0)
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+
+10)
+11)
+12)
+13)
+14)
+
+15)
+16)
+
+//Program Segment J2A:
+dname = readEntry("Enter the Department Name: ") ;
+
+try {
+#sql { SELECT Dnumber INTO :dnumber
+FROM DEPARTMENT WHERE Dname = :dname} ;
+} catch (SQLException se) {
+System.out.print1n("Department does not exist: " + dname) ;
+Return ;
+}
+System.out.printline("Employee information for Department: " + dname) ;
+
+#sql iterator Emp(String ssn, String fname, String minit, String lname,
+double salary) ;
+
+Emp e = null ;
+
+#sql e = { SELECT ssn, fname, minit, lname, salary
+FROM EMPLOYEE WHERE Dno = :dnumber} ;
+
+while (e.next()) {
+System.out.printline(e.ssn + " "+ e.fname +" "+ e.minit +" "+
+
+e.lname +" " + e.salary) ;
+
+dG
+e.close() ;

@@ -1,0 +1,31 @@
+3.4 Exhaustive Search 117
+
+Tour Length
+a—>b—->c->d—->a 1 =24+84+147=18
+a—>b—>d—>c—>a | =2+34+145=11 — optimal
+a—>c—>b—->d—>a 28484347523
+a—>c—>d—>b—->a P=5414342=11 — optimal
+a—>d—b—>ce— a | =7434845=23
+a—>d—>c—>b—>a 1=741484+2=18
+
+FIGURE 3.7 Solution toa small instance of the traveling salesman problem by exhaustive
+search.
+
+valuable loot that fits into his knapsack, think about a transport plane that has to
+deliver the most valuable set of items to a remote location without exceeding the
+plane’s capacity. Figure 3.8a presents a small instance of the knapsack problem.
+The exhaustive-search approach to this problem leads to generating all the
+subsets of the set of n items given, computing the total weight of each subset in
+order to identify feasible subsets (i.e., the ones with the total weight not exceeding
+the knapsack capacity), and finding a subset of the largest value among them. As
+an example, the solution to the instance of Figure 3.8a is given in Figure 3.8b. Since
+the number of subsets of an n-element set is 2”, the exhaustive search leads to a
+Q(2") algorithm, no matter how efficiently individual subsets are generated.
+Thus, for both the traveling salesman and knapsack problems considered
+above, exhaustive search leads to algorithms that are extremely inefficient on
+every input. In fact, these two problems are the best-known examples of so-
+called NP-hard problems. No polynomial-time algorithm is known for any NP-
+hard problem. Moreover, most computer scientists believe that such algorithms
+do not exist, although this very important conjecture has never been proven.
+More-sophisticated approaches—backtracking and branch-and-bound (see Sec-
+tions 12.1 and 12.2)—enable us to solve some but not all instances of these and

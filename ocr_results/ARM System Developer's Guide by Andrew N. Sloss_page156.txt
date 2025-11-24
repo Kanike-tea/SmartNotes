@@ -1,0 +1,53 @@
+5.10 Division 143
+
+In these situations it is more efficient to cache the value of 1/z in some way and use a mul-
+tiplication by 1/z instead of a division. We will show how to do this in the next subsection.
+We also want to stick to integer arithmetic and avoid floating point (see Section 5.11).
+
+The next description is rather mathematical and covers the theory behind this con-
+version of repeated divisions into multiplications. If you are not interested in the theory,
+then don’t worry. You can jump directly to Example 5.13, which follows.
+
+5.10.2. CONVERTING DIVIDES INTO MULTIPLIES
+
+We'll use the following notation to distinguish exact mathematical divides from integer
+divides:
+
+= n/d = the integer part of n divided by d, rounding towards zero (as in C)
+
+= n%d = the remainder of n divided by d which is n — d(n/d)
+
+n
+=) —=nd~' = the true mathematical divide of n by d
+
+d
+
+The obvious way to estimate d~!, while sticking to integer arithmetic, is to calculate
+23?/d. Then we can estimate n/d
+
+(n(2?7/d)) 12 (5.1)
+
+We need to perform the multiplication by n to 64-bit accuracy. There are a couple of
+problems with this approach:
+
+= To calculate 237/d, the compiler needs to use 64-bit long long type arithmetic
+because 2°” does not fit into an unsigned int type. We must specify the division as
+(lull < 32)/d. This 64-bit division is much slower than the 32-bit division we wanted
+to perform originally!
+
+= If dhappens to be 1, then 2°2/d will not fit into an unsigned int type.
+
+It turns out that a slightly cruder estimate works well and fixes both these problems.
+Instead of 2*/d, we look at (2 — 1)/d. Let
+
+OxFFFFFFFFUl / d; /* s = (2932-1)/d */
+
+We can calculate s using a single unsigned int type division. We know that
+2° —1=sd+tforsome0 <t<d (5.2)
+
+Therefore
+
+232
+
+1+t
+sane where <= 7¥ <1 (5.3)

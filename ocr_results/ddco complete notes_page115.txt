@@ -1,0 +1,36 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+e This information is informed to CPU by setting respective bits in the
+status and controllerregister of DMA controller.
+These are 2 types of request with respect to
+system bus 1). CPU request.
+2). DMA request.
+Highest priority will be given to DMA request.
+
+e Actually the CPU generates memory cycles to perform read and write
+operations. The DMA controller steals memory cycles from the CPU to
+perform read and write operations. This approach is called as “Cycle
+stealing”.
+
+e An exclusive option will be given for DMA controller to transfer block of data from
+external devices to main memory and from main memory to external devices.
+This technique is called as “Burst mode of operation.”
+
+BUS ARBITRATION
+e Any device which initiates data transfer operation on bus at any instant of
+time is called as Bus- Master.
+e When the bus mastership is transferred from one device to another device,
+the next device isready to obtain the bus mastership.
+e The bus-mastership is transferred from one device to another device based
+
+on the principle ofpriority system. There are two types of bus-arbitration
+technique:
+
+«Centralized bus arbitration:
+
+In this technique CPU acts as a bus-master or any control unit connected to bus
+can be acts as a busmaster.
+
+The schematic diagram of centralized bus arbitration is as shown in the fig.:
+
+Dr.Ajay V G, Dept. of CSE 17

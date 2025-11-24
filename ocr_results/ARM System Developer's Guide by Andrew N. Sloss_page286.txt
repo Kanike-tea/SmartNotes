@@ -1,0 +1,53 @@
+8.2 Introduction to DSP on the ARM =. 273
+
+x RN O ; input array x[]
+
+c RN 1; input array c[]
+
+N RN 2 ; number of samples (a multiple of 4)
+acc RN 3 3 accumulator
+
+x0 RN 4 — ; elements from array x[]
+
+x1 RNS
+
+c0 RN9 — ; elements from array c[]
+
+cl RN 10
+
+3 int dot_16by16_arm9m(short *x, short *c, unsigned N)
+dot_16by16_arm9m
+STMFD sp!, {r4-r5, r9-r10, Ir}
+MOV acc, #0
+LORSH x_0, [x], #2
+LORSH c_0, [c], #2
+loop_9m ; accumulate 4 products
+SUBS N,N, #4
+LORSH x1, [x], #2
+LORSH cl, [c], #2
+MLA acc, x_0, c_0, acc
+LORSH x_0, [x], #2
+LORSH c_0, [c], #2
+MLA acc, x_l, c_l, acc
+LORSH x1, [x], #2
+LORSH cl, [c], #2
+MLA acc, x_0, c_0, acc
+LDRGTSH x0, [x], #2
+LDRGTSH c_0, [c], #2
+MLA acc, x_l, c_l, acc
+BGT — loop_9m
+MOV r0, acc
+LOMFD sp!, {r4-r5, r9-r10, pc}
+
+We have assumed that the number of samples Nis a multiple of four. Therefore we can
+unroll the loop four times to increase performance. The code is scheduled so that there
+are four instructions between a load and the use of the loaded value. This uses the preload
+tricks of Section 6.3.1.1:
+
+= The loads are double buffered. We use xo, co while we are loading x1, ¢, and vice versa.
+
+= We load the initial values x9, cy, before the inner loop starts. This initiates the double
+buffer process.
+
+= We are always loading one pair of values ahead of the ones we are using. Therefore we
+must avoid the last pair of loads or we will read off the end of the arrays. We do this

@@ -1,0 +1,65 @@
+Digital Design and Computer Organization (BCS302) Module 3
+
+» Microphones can be used to capture audio input which is then sampled and converted
+into digital codes for storage and processing.
+
+Similarly, cameras can be used to capture video input.
+
+> Digital communication facilities, such as the Internet, can also provide input
+to acomputer from other computers and database servers.
+
+The function of the memory unit is to store programs and data.
+
+There are two classes of storage, called primary and secondary.
+
+Primary Memory:
+
+Primary memory, also called main memory, is a fast memory that operates at electronic
+speeds.
+
+Programs must be stored in this memory while they are being executed.
+
+The memory consists of a dase number of semiconductor storage cells, each capable of
+storing one bit of information. These cells are rarely read or written individually.
+
+Instead, they are handled in groups of fixed size called words.
+
+The memory is organized so that one word can be stored or retrieved in one basic
+operation.
+
+The number of bits in each word is referred to as the word length of the computer,
+typically 16, 32, or 64 bits.
+
+Vv
+
+To provide easy access to any word in the memory, a distinct address is associated with
+each word location.
+
+Vv
+
+Addresses are consecutive numbers, starting from 0, that identify successive locations.
+
+Vv
+
+A particular word is accessed by specifying its address and issuing a control command to
+the memory that starts the storage or retrieval process.
+
+Vv
+
+Instructions and data can be written into or read from the memory under the control of the
+processor.
+
+Vv
+
+It is essential to be able to access any word location in the memory as quickly as possible.
+
+Vv
+
+A memory in which any location can be accessed in a short and fixed amount of time after
+specifying its address is called a random-access memory (RAM). The time required to
+access one word is called the memory access time. This time is independent of the
+location of the word being accessed.
+
+> It typically ranges from a few nanoseconds (ns) to about 100 ns for current RAM units.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 3

@@ -1,0 +1,52 @@
+1102
+
+Chapter 29 Overview of Data Warehousing and OLAP
+
+29.1 Introduction, Definitions, and Terminology
+
+In Chapter 1, we defined a database as a collection of related data and a database
+system as a database and database software together. A data warehouse is also a col-
+lection of information as well as a supporting system. However, a clear distinction
+exists. Traditional databases are transactional (relational, object-oriented, network,
+or hierarchical). Data warehouses have the distinguishing characteristic that they
+are mainly intended for decision-support applications. They are optimized for data
+retrieval, not routine transaction processing.
+
+Because data warehouses have been developed in numerous organizations to meet
+particular needs, there is no single, canonical definition of the term data warehouse.
+Professional magazine articles and books in the popular press have elaborated on
+the meaning in a variety of ways. Vendors have capitalized on the popularity of the
+term to help market a variety of related products, and consultants have provided a
+large variety of services, all under the data warehousing banner. However, data
+warehouses are distinct from traditional databases in their structure, functioning,
+performance, and purpose.
+
+W. H. Inmon! characterized a data warehouse as a subject-oriented, integrated,
+nonvolatile, time-variant collection of data in support of management's decisions.
+Data warehouses provide access to data for complex analysis, knowledge discovery,
+and decision making through ad hoc and canned queries. Canned queries refer to
+a-priori defined queries with parameters that may recur with high frequency. They
+support high-performance demands on an organization’s data and information.
+Several types of applications—OLAP, DSS, and data mining applications—are sup-
+ported. We define each of these next.
+
+OLAP (online analytical processing) is a term used to describe the analysis of
+complex data from the data warehouse. In the hands of skilled knowledge workers,
+OLAP tools enable quick and straightforward querying of the analytical data stored
+in data warehouses and data marts (analytical databases similar to data warehouses
+but with a defined narrow scope).
+
+DSS (decision-support systems), also known as EIS (or MIS)—executive
+information systems (or management information systems), not to be confused
+with enterprise integration systems—support an organization’s leading decision
+makers with higher-level (analytical) data for complex and important decisions.
+Data mining (which we discussed in Chapter 28) is used for knowledge discovery,
+the ad hoc process of searching data for unanticipated new knowledge (not unlike
+looking for pearls of wisdom in an ocean of data).
+
+Traditional databases support online transaction processing (OLTP), which
+includes insertions, updates, and deletions while also supporting information query
+requirements. Traditional relational databases are optimized to process queries that
+
+'Inmon (1992) is credited with initially using the term warehouse. Inmon et al. (2008) is titled “DW 2.0:
+The architecture for the next generation of Data Warehousing”

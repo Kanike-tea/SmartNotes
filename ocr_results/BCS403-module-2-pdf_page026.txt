@@ -1,0 +1,49 @@
+Database Management System [BCS403]
+
+In general, if R has nr tuples and S has ns tuples, the result of a JOIN operation R 4. <join condition S
+will have between zero and np * ns tuples. The expected size of the join result divided by the
+
+*ns_ leads to a ratio called join selectivity, which is a property of each join
+
+maximum size nr
+condition. If there is no join condition, all combinations of tuples qualify and the JOIN degenerates
+
+into a CARTESIAN PRODUCT, also called CROSS PRODUCT or CROSS JOIN.
+
+A single JOIN operation is used to combine data from two relations so that related information can
+be presented in a single table. These operations are also known as inner joins. Informally, an inner
+join is a type of match and combine operation defined formally as a combination of CARTESIAN
+PRODUCT and SELECTION.The NATURAL JOIN or EQUIJOIN operation. can also be specified.
+among multiple tables, leading to an n-way join. For example, consider the following three-way join:
+
+((PROJECT 4 psm-DrumberEPARTMENT) >< sen&MPLOYEE)
+
+Mgr_ssr:
+
+This combines each project tuple with its controlling department tuple into a single tuple, and then
+combines that tuple with an employee tuple that is the department. manager. The net result is a
+consolidated relation in which each tuple contains this project-department-manager combined
+information.
+In SQL, JOIN can be realized in several different ways
+
+- The first method is to specify the <join conditions> in the WHERE clause, along with any
+
+other selection conditions.
+- The second way is to use a nested relation
+
+- Another way is to use the concept of joined tables
+2.4.3, A Complete Set of Relational Algebra Operations
+
+The set of relational algebra operations {o, 1, U, p,—, x} is a complete set; that is, any of the other
+original relational algebra operations can be expressed as a sequence of operations from this set.
+For example, the INTERSECTION operation can be expressed by using UNION and MINUS as
+
+follows:
+RNS=(RUS)—((R-S) U(S-R))
+
+As another example, a JOIN operation can be specified as a CARTESIAN PRODUCT followed by a
+SELECT operation,
+
+Rts <condition: 5 = 6 condition (R x S)
+
+https://vtucode.in Page 27

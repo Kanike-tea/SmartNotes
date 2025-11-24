@@ -1,0 +1,54 @@
+Data Structures and Applications(BCS304) Module 2
+
+Instead of using the malloc function the following getnode() function can be used to get a new
+
+node
+NODE * getNode(void)
+{
+/* provide a node for use */NODE
+* new;
+if (avail)
+{
+new = avail;
+avail = avail—link;
+return new;
+3
+else
+{
+new=( NODE *)malloc(sizeof(NODE));
+return new;
+}
+}
+
+Instead of the free function the following retnode function can be used
+
+void retNode(NODE *temp)
+{/* return a node to the available list */
+temp—link = avail;
+avail = avail;
+
+}
+
+Garbage collection
+
+e Suppose some memory space becomes reusable because a node is deleted from a list or an
+entire list is deleted from a program, we can make this space to be available for future use.
+One way is to immediately reinsert the space into the free storage list.
+
+e This is done when a list is implemented by linear arrays. But this method may be too time
+consuming for the operating system of the computer. So an alternate method is devised.
+
+e The operating system of a computer may periodically collect all the deleted space on to the
+free storage list this technique si called garbage collection
+
+Garbage collection takes place into two steps
+e Runs through all the list an marks those cells which are currently in use
+e Then the computer runs through the memory collecting all unmarked space on to the free
+storage list
+
+Garbage collection takes place when
+¢ The space is minimal or
+© No space is left or
+¢ when the CPU is idle and has time to do collection.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 14

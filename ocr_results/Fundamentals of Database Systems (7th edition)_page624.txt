@@ -1,0 +1,88 @@
+594
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+16.7.
+
+16.8.
+16.9.
+
+16.10.
+16.11.
+16.12.
+16.13.
+
+16.14.
+16.15.
+
+16.16.
+
+16.17.
+
+16.18.
+
+16.19.
+16.20.
+16.21.
+
+16.22.
+16.23.
+16.24.
+16.25.
+
+16.26.
+
+16.27.
+16.28.
+
+Why is accessing a disk block expensive? Discuss the time components
+involved in accessing a disk block.
+
+How does double buffering improve block access time?
+
+What are the reasons for having variable-length records? What types of sep-
+arator characters are needed for each?
+
+Discuss the techniques for allocating file blocks on disk.
+What is the difference between a file organization and an access method?
+What is the difference between static and dynamic files?
+
+What are the typical record-at-a-time operations for accessing a file? Which
+of these depend on the current file record?
+
+Discuss the techniques for record deletion.
+
+Discuss the advantages and disadvantages of using (a) an unordered file,
+(b) an ordered file, and (c) a static hash file with buckets and chaining.
+Which operations can be performed efficiently on each of these organiza-
+tions, and which operations are expensive?
+
+Discuss the techniques for allowing a hash file to expand and shrink dynam-
+ically. What are the advantages and disadvantages of each?
+
+What is the difference between the directories of extendible and dynamic
+hashing?
+
+What are mixed files used for? What are other types of primary file organi-
+zations?
+
+Describe the mismatch between processor and disk technologies.
+What are the main goals of the RAID technology? How does it achieve them?
+
+How does disk mirroring help improve reliability? Give a quantitative
+example.
+
+What characterizes the levels in RAID organization?
+What are the highlights of the popular RAID levels 0, 1, and 5?
+What are storage area networks? What flexibility and advantages do they offer?
+
+Describe the main features of network-attached storage as an enterprise
+storage solution.
+
+. How have new iSCSI systems improved the applicability of storage area
+
+networks?
+What are SATA, SAS, and FC protocols?
+
+What are solid-state drives (SSDs) and what advantage do they offer over
+HDDs?

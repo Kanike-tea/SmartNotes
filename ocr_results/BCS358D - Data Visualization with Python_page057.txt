@@ -1,0 +1,48 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+e ‘plt.show()’: This function is called to display the pie chart on the screen. After
+calling this function, the pie chart will appear in a graphical window.
+When you run this program, it will generate a pie chart with the specified data and visual
+properties, such as colors and explosion of the first slice. The title 'Pie Chart Example’ will be
+displayed at the top of the chart, and the percentage values for each category will be shown
+within their respective slices. This program is a basic example of how to create and display a pie
+chart using Matplotlib in Python.
+
+PROGRAM
+import matplotlib.pyplot as plt
+
+# Sample data for the pie chart
+
+labels = ['Category A', 'Category B', 'Category C', 'Category D']
+sizes = [25, 40, 30, 35]
+
+colors = ['gold', 'lightcoral', 'lightgreen', 'lightskyblue']
+explode = (0.1, 0, 0, 0) # Explode the first slice (Category A)
+
+# Create a pie chart
+plt.pie(sizes, explode=explode, labels=labels, colors=colors,
+autopct='%1.1f£%%', startangle=140)
+
+# Add a title
+plt.title('Pie Chart Example')
+
+# Show the plot
+plt.show()
+
+OUTPUT
+
+0) Figure 1 - a *
+
+Pie Chart Example
+
+Category D
+26.9%
+
+Category A
+‘gory LELEES 23.1% Category
+
+Category 8
+
+a|<|>| +/Q\=| B)
+
+Dept. of CSE 42 GSSSIETW, Mysuru

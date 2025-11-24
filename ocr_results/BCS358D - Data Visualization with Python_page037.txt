@@ -1,0 +1,53 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 02 (a)
+
+2 a) Defined as a function F as Fn = Fn-1 + Fn-2. Write a Python program which accepts a
+value for N (where N >0) as input and pass this value to the function. Display suitable error
+
+message if the condition for input value is not followed.
+Aim: Demonstrating creation of functions, passing parameters and return values
+
+PROGRAM EXPLANATION
+The below program calculates the nth term of the Fibonacci sequence using a recursive function
+
+called fibonacci. Let's go through the program and its function step by step:
+
+1. The fibonacci function takes an integer n as input, representing the position of the term to
+calculate in the Fibonacci sequence.
+
+2. The function begins with three base cases:
+
+a. Ifn is less than or equal to 0, it prints an error message indicating that n must be
+greater than 0, and then returns None.
+
+b. Ifnis equal to 1, it returns 0, as the first term of the Fibonacci sequence is defined
+as 0.
+
+c. If n is equal to 2, it returns 1, as the second term of the Fibonacci sequence is
+defined as 1.
+
+3. If none of the base cases are satisfied, the function proceeds to calculate the nth term of
+the Fibonacci sequence by recursively calling itself with n-1 and n-2 as arguments. The
+recursive call fibonacci(n-1) represents the (n-1)th term, and fibonacci(n-2) represents the
+(n-2)th term.
+
+4. The function continues to recursively call itself until it reaches one of the base cases, at
+
+which point the recursive calls will start to return values.
+
+5. Once the recursive calls have returned values, the function adds the results of
+
+fibonacci(n-1) and fibonacci(n-2) and returns the sum, which represents the nth term of
+
+the Fibonacci sequence.
+
+6. The program prompts the user to enter a value for n, representing the position of the term
+
+to calculate.
+
+7. The program calls the fibonacci function with the user-provided value and stores the
+
+result in the variable result.
+
+Dept. of CSE 22 GSSSIETW, Mysuru

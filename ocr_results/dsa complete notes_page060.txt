@@ -1,0 +1,49 @@
+Data Structures and Applications(BCS304) Module 2
+
+temp->link=NULL;
+
+first=temp;
+else
+
+{
+
+cur=first
+while(cur->link!=NULL)cur=cur-
+>link;
+
+cur->link=temp
+
+}
+
+Inserting an element after a node with location loc
+Void insert(int item, NODE* loc)
+{
+NODE * temp,*next;
+temp=( NODE *)malloc(sizeof(NODE);
+if(temp==NULL)
+{
+printf("No space available\n");
+}
+else
+{
+temp->info=item;
+next=loc->link; loc-
+>link=temp; Temp-
+>link=next;
+
+}
+
+Deletion from a linked list
+Function to delete a NODE in the front of a linked list
+void delete-front()
+
+{
+NODE * cur;
+If (first==NULL)
+Printf(“List empty”);
+else
+{
+Cur=first first=first-
+>linkfree(cur);
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 16

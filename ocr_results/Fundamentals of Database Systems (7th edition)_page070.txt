@@ -1,0 +1,51 @@
+40
+
+Chapter 2 Database System Concepts and Architecture
+
+that they can be extracted by a precompiler and processed by the DBMS. A low-
+level or procedural DML must be embedded in a general-purpose programming
+language. This type of DML typically retrieves individual records or objects from
+the database and processes each separately. Therefore, it needs to use programming
+language constructs, such as looping, to retrieve and process each record from a set
+of records. Low-level DMLs are also called record-at-a-time DMLs because of this
+property. High-level DMLs, such as SQL, can specify and retrieve many records in
+a single DML statement; therefore, they are called set-at-a-time or set-oriented
+DMLs. A query in a high-level DML often specifies which data to retrieve rather
+than how to retrieve it; therefore, such languages are also called declarative.
+
+Whenever DML commands, whether high level or low level, are embedded in a
+general-purpose programming language, that language is called the host language
+and the DML is called the data sublanguage.'” On the other hand, a high-level
+DML used in a standalone interactive manner is called a query language. In gen-
+eral, both retrieval and update commands of a high-level DML may be used inter-
+actively and are hence considered part of the query language.’
+
+Casual end users typically use a high-level query language to specify their requests,
+whereas programmers use the DML in its embedded form. For naive and paramet-
+ric users, there usually are user-friendly interfaces for interacting with the data-
+base; these can also be used by casual users or others who do not want to learn the
+details of a high-level query language. We discuss these types of interfaces next.
+
+2.3.2 DBMS Interfaces
+User-triendly interfaces provided by a DBMS may include the following:
+
+Menu-based Interfaces for Web Clients or Browsing. These interfaces pres-
+ent the user with lists of options (called menus) that lead the user through the for-
+mulation of a request. Menus do away with the need to memorize the specific
+commands and syntax of a query language; rather, the query is composed step-by-
+step by picking options from a menu that is displayed by the system. Pull-down
+menus are a very popular technique in Web-based user interfaces. They are also
+often used in browsing interfaces, which allow a user to look through the contents
+of a database in an exploratory and unstructured manner.
+
+Apps for Mobile Devices. These interfaces present mobile users with access to
+their data. For example, banking, reservations, and insurance companies, among
+many others, provide apps that allow users to access their data through a mobile
+phone or mobile device. The apps have built-in programmed interfaces that typically
+
+'ln abject databases, the host and data sublanguages typically form one integrated language—for
+example, C++ with some extensions to support database functionality. Some relational systems also
+provide integrated languages—for example, Oracle's PL/SQL.
+
+'T According to the English meaning of the word query, it should really be used to describe retrievals
+only, not updates.

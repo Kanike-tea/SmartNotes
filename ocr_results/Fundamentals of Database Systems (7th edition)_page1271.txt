@@ -1,0 +1,187 @@
+atomic value of, 155
+attribute ambiguity and, 191-192
+CHECK clause for, 187
+CROSS PRODUCT operation for
+combinations, 192-193
+dangling tuple problems, 523-524
+delete operation for, 166, 167-168
+embedded SQL retrieval of, 311,
+314-317
+grouping and, 219
+mapping relations with, 154
+matching, 264-265
+multisets of, 193-195
+nested query values, 209-211
+n-tuple for relations, 152
+NULL value of, 155-156, 163, 467-468
+ordering of, 154-155
+OUTER UNION operation and,
+264-265
+parentheses for comparisons, 210
+partially compatible relations, 264
+partitioning relations into, 219
+precompiler or preprocessor for
+retrieval of, 311, 314
+query retrieval and, 191-195, 209-211
+RDB design problems, 523-524
+redundant information in, 465-467
+referential integrity of, 163
+relation schema for RDB design,
+465-471
+relation state values, 152-156
+row-based constraints, 187
+separate groups for NULL grouping
+attributes, 219
+set of, 154-155
+spurious tuple generation, 468-471
+SQL tables and, 187, 191-195
+type (union) compatibility, 247
+update (modify) operation for, 166,
+168-169
+versioning, 977-982
+‘Two-phase locking (2PL)
+basic 2PL, 788
+concurrency control, 782-792, 796-797
+conservative 2RL, 788
+deadlock, 789-792
+expanding (first) phase, 786
+locks for, 782-786
+multiversion concurrency control and,
+796-797
+protocol, 786-788
+rigorous 2PL, 789
+shrinking (second) phase, 786
+starvation, 792
+strict 2PL, 788-789
+subsystem for, 789
+Two-tier client/server architecture, 49
+Two-way join, 668
+‘Type (class) hierarchies
+constraints on extents corresponding
+to, 376-377
+
+functions in, 374-375
+inheritance, 385
+ODBs, 366, 374-377
+subtype/supertype relationships,
+375-376
+visible/hidden attributes, 371, 375
+‘Type (union) compatibility, 247
+‘Type constructors
+array, 369
+atom, 368, 369
+bag, 369
+collection (multivalued), 369
+dictionary, 369
+list, 369
+object definition language (ODL)
+and, 369
+object operation, 371
+ODB objects and literals, 368-370
+references to object type relationships,
+369-370
+set, 369
+SQL, 379
+struct (tuple), 368, 369
+type structures and, 368-370
+‘Type generators
+ODB objects and literals, 368-369
+ODMG models, 394-395
+‘Type inheritance, 385
+‘Type structures, 368-370. See also Type
+constructors
+UDTs (User-defined types)
+arrays, 383
+built-in functions for, 384
+CARDINALITY function, 383
+CREATE TYPE command, 380-383
+dot notation for, 383
+encapsulation of operations, 384-385
+inheritance specification (NOT
+FINAL), 385
+SQL, 380-385
+table creation based on, 383-384
+UML (Unified Modeling Language)
+aggregation, 87-88
+associations, 87-88
+base class, 127
+bidirectional associations, 87
+class diagrams, 85-88, 127-128
+EER models and, 127-128
+ER models and, 60, 85-88
+leaf class, 127
+links, 87
+qualified association, 88
+reflexive association, 87
+unidirectional association, 87
+Unary operations
+assignment operations (€) for, 245
+Boolean expressions (clauses),
+241-242
+cascade (sequence) with, 243
+defined, 243
+degree of relations, 243, 244
+
+Index 1241
+
+duplicate elimination and, 244-245
+PROJECT operation, 243-245
+relational algebra and, 240, 241-246
+renaming attributes, 245-246
+SELECT operation, 241-243
+selectivity of condition, 243
+sequence of operations for, 245-246
+Unauthorized access restriction, 19
+UNDO/REDO algorithm, 815, 818
+Unidirectional association, UML class
+diagrams, 87
+Unified Modeling Language, see UML
+(Unified Modeling Language)
+UNION operations
+matching tuples, 264-265
+OUTER UNION operation, 264-265
+partially compatible relations, 264
+relational algebra, 264-265
+SQL sets, 194-195
+Union types
+categories of, 120-122, 302-303
+EER diagram notation for, 120
+EER modeling concept, 108, 120-122
+EER-to-relational mapping, 302-303
+set union operation (U), 120
+surrogate key for, 302
+UNIQUE function, SQL query retrieval,
+212-214
+Unique keys, 160
+Uniqueness constraints
+ER model entity types, 68-68
+key attributes as, 68-69
+key constraints with, 158-160
+relation schema and, 158-160
+Universal quantifiers, 271, 274-276
+Universal relation assumption, 513
+Universal schema relations, 471-474,
+504, 513
+Universe of Discourse (UD), 5
+Unnest relation, INF, 479-480
+Unordered file records (heaps), 567-568
+Unrepeatable read problem, transaction
+processing, 752
+Unstructured data, XML, 428-430
+Unstructured information, 1022
+Unstructured/semistructured data
+handling, Big data technology and,
+945
+Update (modify) operations
+relational data models, 166, 168-169
+files, 564-565
+relational data models, 166, 168-169
+selection conditions for, 564-565
+tuple modification using, 166, 168-169
+Update anomalies, RDB design and,
+465-467
+UPDATE command, SQL, 200-201
+Update decomposition, DDBMS,
+863-865
+Update strategies for SQL views, 230-232
+Upgrading locks, 786

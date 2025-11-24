@@ -1,0 +1,52 @@
+Data Structures and Applications (BCS304) Module V
+
+increased.
+' For good performance the table size is increased when loading density exceeds a prescribed
+threshold such as 0.75 rather when the table is full.
+' When the hash table is resized
+= Hash function changes
+= Home bucket of each key may change
+
+Example:
+
+Suppose the table T has 11 memory locations T[1]...... T[11] and suppose the file f contains 8
+records with the following hash addresses
+
+Records | A B Cc D E xX Y Z
+H(K) 4 8 2 ll 4 11 5 1
+
+Suppose these 8 records are entered into the hash table in the above order the hash table will look as
+shown below.
+
+Table T | X Cc Z A E Y - B - -
+Address | 1 2 6 7 8 9 10 11
+
+The average number S of probes for a successful search is S= (1+1+1+1+2+2+2+3)/8=13/8=1.6
+The average number U of probes for a unsuccessful search is
+
+U= (746454443424 1424 14+1+8)/11=40/11=3.6
+
+Example-2
+
+Assume a 13 bucket table with 1 slot per bucket
+
+Identifier Additive Transform x Hash
+for 102+111+114 327 2
+do 100+111 211 3
+while 1194+1044+1054+108+101 537 4
+if 105+102 207 12
+else 1014+108+115+101 425 9
+function 102+117+110+99+4116+105+111+110 870 12
+0 1 2 3 4 5 6 7 8 9 10 ll 12
+function for do while else if
+
+Searching a key using linear Probing
+
+* Compute h(k)
+«Examine the hash table in the order ht[h(k) +i]%b, 0<=i <=b-1, untill one of the follwing
+happens
+= The bucket ht[h(k) +i]%b contains the key k and the desired pair is found
+= ht[h(k) +i]%b is empty; k is not in the table.
+= Return to ht[h(k)], the table is full and k is not in the table
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 4

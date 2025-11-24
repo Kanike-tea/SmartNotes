@@ -1,0 +1,47 @@
+626 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.18 Memory initialization directives.
+
+Directive Alias Data size (bytes) _Initialization value
+
+DCB = 1 byte or string
+
+DCW 2 16-bit integer (aligned to 2 bytes)
+
+DCD & 4 32-bit integer (aligned to 4 bytes)
+
+DcQ 8 64-bit integer (aligned to 4 bytes)
+
+DCI 2or4 integer defining an ARM or Thumb instruction
+
+DCB, DCD{U}, DCI, DCQ{U}, DCW{U}
+
+These directives allocate one or more bytes of initialized memory according to Table A.18.
+Follow each directive with a comma-separated list of initialization values. If you specify the
+optional U suffix, then the assembler does not insert any alignment padding.
+
+Examples
+
+hello DCB “hello”, 0
+powers DCD 1, 2, 4, 8, 10, 0x20, 0x40, 0x80
+DCI OxEA000000
+
+ELSE (alias |)
+See IF.
+
+END
+
+This directive must appear at the end of a source file. Assembler source after an END directive
+is ignored.
+
+ENDFUNC (alias ENDP), ENDIF (alias ])
+See FUNCTION and IF, respectively.
+
+ENTRY
+
+This directive specifies the program entry point for the linker. The entry point is usually
+contained in the ARM C library.
+
+EQU (alias *)
+
+<name> EQU <numeric-expression>

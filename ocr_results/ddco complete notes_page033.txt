@@ -1,0 +1,31 @@
+Digital Design and Computer Organization(BCS302)
+
+Table 4.3 The simplified Boolean functions for the two
+Half Adder outputs can be obtained directly from the truth
+x y Cc 5 table. The simplified sum-of-products expressions
+oj are
+0 0 0 0
+— >! '
+0 10 1 S = x'y + xy
+1 0 0 1
+MO — ares
+1 1 1 0
+
+The logic diagram of the half adder implemented in sum of products is shown in Fig.
+4.5(a) . It can be also implemented with an exclusive-OR and an AND gate as shown in
+
+Fig. 4.5(b)
+
+FIGURE 4.5
+Implementation of half adder
+
+Full Adder
+
++ A full adder is a combinational circuit that forms the arithmetic sum of three bits. It
+consists of three inputs and two outputs.
+
+* Two of the input variables, denoted by x and y , represent the two significant bits to
+be added. The third input, z , represents the carry from the previous lower significant
+position. The two outputs are designated by the symbols S for sum and C for carry.
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 5

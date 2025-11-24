@@ -1,0 +1,96 @@
+K
+KEEP, 629
+
+L
+
+LI translation table base address, 503-504
+Latency, 30
+LCLA, 629
+LCLL, 629
+LCLS, 629
+LDC instruction, 583-584
+LDM instruction, 65, 164, 584-586
+LDMIA instruction, 66, 67f, 97
+LDR instruction, 60, 63, 64t, 78, 96, 106t, 164,
+319, 586-589
+LDRB instruction, 60, 96, 106t
+LDRD instruction, 106t
+LDRH instruction, 60, 96, 106t, 109
+LDRSB instruction, 60, 96, 106t
+LDRSH instruction, 60, 96, 106t
+Least recently used, 422
+Left shifts, saturation of, 253-254
+Level 1 page table entry, 501-503
+Level 2 page table entry, 504-505,
+Link register
+description of, 22, 121t
+offsets, 322-324
+Little-endian mode, 137, 138t
+Load instructions scheduling
+overview of, 167-168
+by preloading, 168-169
+by unrolling, 169-171
+Loading constants, 78-79
+Load-store architecture, 5, 19-20
+Load-store instructions
+multiple-register transfer. see
+Multiple-register transfer
+single-register load-store
+description of, 61-63
+Thumb instruction set, 96-97
+single-register transfer, 60-61
+swap instruction, 72-73
+Local variable data types, 107-110
+Locality of reference, 407, 457
+Lock bits, for cache lockdown, 450-453
+Logarithm
+
+Index 681
+
+base-two, 242-244
+calculation of, 242f
+Logarithmic indexing, 190-191
+Logarithmic representation of digital signal, 263
+Logical cache, 406, 407f, 458
+Logical instructions, 55-56
+Long long multiplication, 208-209
+Loop(s)
+counted
+decremented, 183-184
+types of, 190-191
+unrolled, 184-187
+with fixed number of iterations, 113-116
+nested
+example of, 176
+multiple, 187-190
+unrolling, 117-120, 184-187
+with variable number of iterations, 116-117
+writing for, 120
+Loop counter, 114-115
+Loop overhead, 118-119
+LS1, 165
+LS2, 165
+LSL instruction, 94, 589
+LSR instruction, 94, 589-590
+LTORG, 629
+
+M
+
+Machine independent layer, 370
+MACRO, 629
+-macro, 634
+MACRO directive, 202
+MAP (alias “), 630
+MCR instruction, 590
+MCRR instruction, 590
+Memory
+cache. see Cache
+content addressable, 414
+description of, 9
+dynamic random access. see DRAM
+fetching instructions for, 10t
+hierarchy of, 9-10, 404f
+main
+cache and, relationship between, 410-412
+description of, 405
+management of, 35-36

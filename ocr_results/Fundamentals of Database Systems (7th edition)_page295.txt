@@ -1,0 +1,53 @@
+8.5 Examples of Queries in Relational Algebra
+
+OUTER UNION can be applied to two relations whose schemas are STUDENT(Name,
+Ssn, Department, Advisor) and INSTRUCTOR(Name, Ssn, Department, Rank). Tuples
+from the two relations are matched based on having the same combination of
+values of the shared attributes—Name, Ssn, Department. The resulting relation,
+STUDENT_OR_INSTRUCTOR, will have the following attributes:
+
+STUDENT_OR_INSTRUCTOR(Name, Ssn, Department, Advisor, Rank)
+
+All the tuples from both relations are included in the result, but tuples with the
+same (Name, Ssn, Department) combination will appear only once in the result.
+Tuples appearing only in STUDENT will have a NULL for the Rank attribute, whereas
+tuples appearing only in INSTRUCTOR will have a NULL for the Advisor attribute. A
+tuple that exists in both relations, which represent a student who is also an instruc-
+tor, will have values for all its attributes.’!
+
+Notice that the same person may still appear twice in the result. For example, we
+could have a graduate student in the Mathematics department who is an instructor
+in the Computer Science department. Although the two tuples representing that
+person in STUDENT and INSTRUCTOR will have the same (Name, Ssn) values, they
+will not agree on the Department value, and so will not be matched. This is because
+Department has two different meanings in STUDENT (the department where the per-
+son studies) and INSTRUCTOR (the department where the person is employed as an
+instructor). If we wanted to apply the OUTER UNION based on the same (Name, Ssn)
+combination only, we should rename the Department attribute in each table to reflect
+that they have different meanings and designate them as not being part of the
+union-compatible attributes. For example, we could rename the attributes as
+MajorDept in STUDENT and WorkDept in INSTRUCTOR.
+
+8.5 Examples of Queries in Relational Algebra
+
+The following are additional examples to illustrate the use of the relational alge-
+bra operations. All examples refer to the database in Figure 5.6. In general, the
+same query can be stated in numerous ways using the various operations. We will
+state each query in one way and leave it to the reader to come up with equivalent
+formulations.
+
+Query 1. Retrieve the name and address of all employees who work for the
+‘Research department.
+
+RESEARCH_DEPT < Gpname=‘Research’(DEPARTMENT)
+RESEARCH_EMPS < (RESEARCH_DEPT © pnumber-DnoEMPLOYEE)
+RESULT < TiFname, Lname, Address(RESEARCH_EMPS)
+
+Asa single in-line expression, this query becomes:
+
+TEname, Lname, Address (Gdname=Research (DEPARTMENT © ppumber-Dno(EMPLOYEE))
+
+"Note that OUTER UNION is equivalent to a FULL OUTER JOIN if the join attributes are ail the com-
+mon attributes of the two relations.
+
+265

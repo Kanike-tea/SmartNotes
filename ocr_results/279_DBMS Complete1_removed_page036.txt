@@ -1,0 +1,63 @@
+LECTURE-11: CONSTRAINTS
+
+RELATIONAL CONSTRAINTS:
+
+There are three types of constraints on relational database that include
+o DOMAIN CONSTRAINTS
+o KEY CONSTRAINTS
+o INTEGRITY CONSTRAINTS
+
+DOMAIN CONSTRAINTS:
+It specifies that each attribute in a relation an atomic value from the corresponding domains. The
+data types associated with commercial RDBMS domains include:
+
+o Standard numeric data types for integer
+
+o Real numbers
+
+o Characters
+
+o Fixed length strings and variable length strings
+
+Thus, domain constraints specifies the condition that we to put on each instance of the relation.
+
+So the values that appear in each column must be drawn from the domain associated with that
+column.
+
+Rollno Name City Age
+
+101 Sujit Bam 23
+
+102 kunal bbsr 22
+
+Key Constraints:
+
+This constraints states that the key attribute value in each tuple msut be unique .i.e, no two tuples
+contain the same value for the key attribute.(null values can allowed)
+
+Emp(empcode,name,address) . here empcode can be unique
+
+Integrity CONSTRAINTS:
+
+There are two types of integrity constraints:
+o Entity Integrity Constraints
+o Referential Integrity constraints
+
+Entity Integrity Constraints:
+
+It states that no primary key value can be null and unique. This is because the primary key is used to
+identify individual tuple in the relation. So we will not be able to identify the records uniquely
+containing null values for the primary key attributes. This constraint is specified on one individual
+relation.
+
+Referential Integrity Constraints:
+
+It states that the tuple in one relation that refers to another relation must refer to an existing tuple in
+that relation. This constraints is specified on two relations. If a column is declared as foreign key
+that must be primary key of another table.
+
+Department (deptcode, dname)
+Here the deptcode is the primary key.
+
+Emp (empcode, name, city, deptcode).
+Here the deptcode is foreign key.

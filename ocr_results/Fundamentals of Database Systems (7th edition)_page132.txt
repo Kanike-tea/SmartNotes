@@ -1,0 +1,46 @@
+102 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+PERFORMS _IN
+MOVIE
+ACTOR
+LEAD_ROLE
+1 2 N
+1
+ALSO_A-
+DIRECTOR
+ACTOR.
+PRODUCER
+1
+1 DIRECTOR
+M N
+PRODUCER PRODUCES
+
+Figure 3.25
+An ER diagram for a MOVIES database schema.
+
+e. Every director has been an actor in some movie.
+
+No producer has ever been an actor.
+. A producer cannot be an actor in some other movie.
+
+ze
+
+. There are movies with more than a dozen actors.
+
+. Some producers have been a director as well.
+. Most movies have one director and one producer.
+
+re
+
+Some movies have one director but several producers.
+
+. There are some actors who have done a lead role, directed a movie, and
+produced a movie.
+
+m. No movie has a director who also acted in that movie.
+
+3.29. Given the ER schema for the MOVIES database in Figure 3.25, draw an
+instance diagram using three movies that have been released recently.
+Draw instances of each entity type: MOVIES, ACTORS, PRODUCERS,
+DIRECTORS involved; make up instances of the relationships as they exist in
+reality for those movies.

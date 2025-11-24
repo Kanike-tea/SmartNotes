@@ -1,0 +1,55 @@
+14.6 Multivalued Dependency and Fourth Normal Form
+
+Whenever X —» Y holds, we say that X multidetermines Y. Because of the symme-
+try in the definition, whenever X —» Y holds in R, so does X +» Z. Hence, X >> Y
+implies X +» Z and therefore it is sometimes written as X > Y|Z.
+
+An MVD X >» Yin Ris called a trivial MVD if (a) Y is a subset of X, or (b) XUY=R.
+For example, the relation EMP_PROJECTS in Figure 14.15(b) has the trivial
+MVD Ename —» Pname and the relation EMP_DEPENDENTS has the trivial MVD
+Ename —» Dname. An MVD that satisfies neither (a) nor (b) is called a nontrivial
+MVD. A trivial MVD will hold in any relation state r of R; it is called trivial because
+it does not specify any significant or meaningful constraint on R.
+
+If we have a nontrivial MVD in a relation, we may have to repeat values redun-
+dantly in the tuples. In the EMP relation of Figure 14.15(a), the values ‘X’ and ‘Y’ of
+Pname are repeated with each value of Dname (or, by symmetry, the values ‘John’
+and ‘Anna’ of Dname are repeated with each value of Pname). This redundancy is
+clearly undesirable. However, the EMP schema is in BCNF because no functional
+dependencies hold in EMP. Therefore, we need to define a fourth normal form that
+is stronger than BCNF and disallows relation schemas such as EMP. Notice that
+relations containing nontrivial MVDs tend to be all-key relations—that is, their
+key is all their attributes taken together. Furthermore, it is rare that such all-key
+relations with a combinatorial occurrence of repeated values would be designed in
+practice. However, recognition of MVDs as a potential problematic dependency is
+essential in relational design.
+
+We now present the definition of fourth normal form (4NF), which is violated
+when a relation has undesirable multivalued dependencies and hence can be used
+to identify and decompose such relations.
+
+Definition. A relation schema R is in 4NF with respect to a set of dependencies
+F (that includes functional dependencies and multivalued dependencies) if, for
+every nontrivial multivalued dependency X >» Y in F*,” X is a superkey for R.
+
+We can state the following points:
+
+= Anall-key relation is always in BCNF since it has no FDs.
+
+= Anall-key relation such as the EMP relation in Figure 14.15(a), which has no
+FDs but has the MVD Ename —>» Pname | Dname, is not in 4NF.
+
+= A relation that is not in 4NF due to a nontrivial MVD must be decomposed
+to convert it into a set of relations in 4NF.
+
+= The decomposition removes the redundancy caused by the MVD.
+
+The process of normalizing a relation involving the nontrivial MVDs that is not in 4NF
+consists of decomposing it so that each MVD is represented by a separate relation
+where it becomes a trivial MVD. Consider the EMP relation in Figure 14.15(a). EMP is
+not in 4NF because in the nontrivial MVDs Ename —> Pname and Ename —> Dname,
+
+21F* refers to the cover of functional dependencies F, or all dependencies that are implied by F. This is
+defined in Section 15.1.
+
+493

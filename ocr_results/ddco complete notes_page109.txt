@@ -1,0 +1,49 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+e There are 3 mechanisms to solve problem of infinite loop:
+
+1) Processor should ignore the interrupts until execution of first instruction of
+the ISR.
+
+2) Processor should automatically disable interrupts before starting the
+execution of the ISR.
+
+3) Processor has a special INTR line for which the interrupt-handling circuit.
+Interrupt-circuit responds only to leading edge of signal. Such line
+is called edge-triggered.
+« Sequence of events involved in handling an interrupt-request:
+1) The device raises an interrupt-request.
+2) The processor interrupts the program currently being executed.
+
+3) Interrupts are disabled by changing the control bits in the processor status
+register (PS).
+
+4) The device is informed that its request has been recognized. And in
+response, the device deactivates the interrupt-request signal.
+
+5) The action requested by the interrupt is performed by the interrupt-service
+routine.
+
+6) Interrupts are enabled and execution of the interrupted program is
+resumed.
+
+HANDLING MULTIPLE DEVICES
+While handling multiple devices, the issues concerned are:
+e How can the processor recognize the device requesting an interrupt?
+e How can the processor obtain the starting address of the appropriate ISR?
+e Should a device be allowed to interrupt the processor while
+another interrupt is being serviced?
+e¢ How should 2 or more simultaneous interrupt-requests be handled?
+
+VECTORED INTERRUPT
+¢ A device requesting an interrupt identifies itself by sending a special-code to
+processor over bus.
+
+¢ Then, the processor starts executing the ISR.
+¢ The special-code indicates starting-address of ISR.
+¢ The special-code length ranges from 4 to 8 bits.
+
+¢ The location pointed to by the interrupting-device is used to store the staring
+address toISR.
+
+Dr.Ajay V G, Dept. of CSE 11

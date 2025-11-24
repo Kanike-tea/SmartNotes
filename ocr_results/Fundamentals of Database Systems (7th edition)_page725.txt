@@ -1,0 +1,52 @@
+19.1 Query Trees and Heuristics for Query Optimization
+
+the projection on the SELECT clause attributes. Such a canonical query tree repre-
+sents a relational algebra expression that is very inefficient if executed directly,
+because of the CARTESIAN PRODUCT (x) operations. For example, if the PROJECT,
+DEPARTMENT, and EMPLOYEE relations had record sizes of 100, 50, and 150 bytes
+and contained 100, 20, and 5,000 tuples, respectively, the result of the CARTESIAN
+PRODUCT would contain 10 million tuples of record size 300 bytes each. However,
+this canonical query tree in Figure 19.1(b) is in a simple standard form that can be
+easily created from the SQL query. It will never be executed. The heuristic query
+optimizer will transform this initial query tree into an equivalent final query tree
+that is efficient to execute.
+
+The optimizer must include rules for equivalence among extended relational algebra
+expressions that can be applied to transform the initial tree into the final, optimized
+query tree. First we discuss informally how a query tree is transformed by using
+heuristics, and then we discuss general transformation rules and show how they can
+be used in an algebraic heuristic optimizer.
+
+Example of Transforming a Query. Consider the following query Q on the
+database in Figure 5.5: Find the last names of employees born after 1957 who work on
+a project named ‘Aquarius’. This query can be specified in SQL as follows:
+
+Q: SELECT E.Lname
+FROM —_ EMPLOYEE E, WORKS_ON W, PROJECT P
+WHERE —PPname="Aquarius’ AND P.Pnumber=W.Pno AND E.Essn=W.Ssn
+AND E.Bdate > ‘1957-12-31’;
+
+The initial query tree for Q is shown in Figure 19.2(a). Executing this tree directly
+first creates a very large file containing the CARTESIAN PRODUCT of the entire
+EMPLOYEE, WORKS_ON, and PROJECT files. That is why the initial query tree is
+never executed, but is transformed into another equivalent tree that is efficient to
+execute. This particular query needs only one record from the PROJECT relation—
+for the ‘Aquarius’ project—and only the EMPLOYEE records for those whose date of
+birth is after ‘1957-12-31’. Figure 19.2(b) shows an improved query tree that first
+applies the SELECT operations to reduce the number of tuples that appear in the
+CARTESIAN PRODUCT.
+
+A further improvement is achieved by switching the positions of the EMPLOYEE
+and PROJECT relations in the tree, as shown in Figure 19.2(c). This uses the
+information that Pnumber is a key attribute of the PROJECT relation, and hence
+the SELECT operation on the PROJECT relation will retrieve a single record
+only. We can further improve the query tree by replacing any CARTESIAN
+PRODUCT operation that is followed by a join condition as a selection with a
+JOIN operation, as shown in Figure 19.2(d). Another improvement is to keep
+only the attributes needed by subsequent operations in the intermediate rela-
+tions, by including PROJECT (m) operations as early as possible in the query
+tree, as shown in Figure 19.2(e). This reduces the attributes (columns) of the
+intermediate relations, whereas the SELECT operations reduce the number of
+tuples (records).
+
+695

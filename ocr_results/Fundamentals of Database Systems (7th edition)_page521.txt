@@ -1,0 +1,48 @@
+14.6 Multivalued Dependency and Fourth Normal Form
+
+Note that if we designate (Student, Instructor) as a primary key of the relation TEACH,
+the FD instructor > Course causes a partial (non-fully-functional) dependency of
+Course on a part of this key. This FD may be removed as a part of second normaliza-
+tion (or by a direct application of the above procedure to achieve BCNF) yielding
+exactly the same two relations in the result. This is an example of a case where we
+may reach the same ultimate BCNF design via alternate paths of normalization.
+
+14.6 Multivalued Dependency
+and Fourth Normal Form
+
+Consider the relation EMP shown in Figure 14.15(a). A tuple in this EMP relation
+represents the fact that an employee whose name is Ename works on the project
+whose name is Pname and has a dependent whose name is Dname. An employee
+may work on several projects and may have several dependents, and the employee’s
+projects and dependents are independent of one another.!” To keep the relation
+state consistent and to avoid any spurious relationship between the two indepen-
+dent attributes, we must have a separate tuple to represent every combination of an
+employee’s dependent and an employee’s project. In the relation state shown in
+Figure 14.15(a), the employee with Ename Smith works on two projects ‘X’ and ‘Y’
+and has two dependents ‘John’ and ‘Anna’, and therefore there are four tuples to
+represent these facts together. The relation EMP is an all-key relation (with key
+made up of all attributes) and therefore has no f.d.’s and as such qualifies to be a
+BCNF relation. We can see that there is an obvious redundancy in the relation
+EMP —the dependent information is repeated for every project and the project
+information is repeated for every dependent.
+
+As illustrated by the EMP relation, some relations have constraints that cannot be
+specified as functional dependencies and hence are not in violation of BCNF. To
+address this situation, the concept of multivalued dependency (MVD) was proposed
+and, based on this dependency, the fourth normal form was defined. A more formal
+discussion of MVDs and their properties is deferred to Chapter 15. Multivalued depen-
+dencies are a consequence of first normal form (1NF) (see Section 14.3.4), which disal-
+lows an attribute in a tuple to have a set of values. If more than one multivalued attribute
+is present, the second option of normalizing the relation (see Section 14.3.4) intro-
+duces a multivalued dependency. Informally, whenever two independent 1:N relation-
+ships A:B and A:C are mixed in the same relation, R(A, B, C),an MVD may arise. 18
+
+14.6.1 Formal Definition of Multivalued Dependency
+Definition. A multivalued dependency X — Y specified on relation schema R,
+where X and Y are both subsets of R, specifies the following constraint on any
+"in an ER diagram, each would be represented as a multivalued attribute or as a weak entity type
+(see Chapter 7).
+
+'8This MVD is denoted as A > BIC.
+
+491

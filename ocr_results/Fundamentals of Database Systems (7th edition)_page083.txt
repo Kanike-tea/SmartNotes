@@ -1,0 +1,51 @@
+2.6 Classification of Database Management Systems
+
+each class are specified in terms of predefined procedures called methods. Rela-
+tional DBMSs have been extending their models to incorporate object database
+concepts and other capabilities; these systems are referred to as object-relational or
+extended relational systems. We discuss object databases and object-relational
+systems in Chapter 12.
+
+Big data systems are based on various data models, with the following four data
+models most common. The key-value data model associates a unique key with
+each value (which can be a record or object) and provides very fast access to a
+value given its key. The document data model is based on JSON (Java Script
+Object Notation) and stores the data as documents, which somewhat resemble
+complex objects. The graph data model stores objects as graph nodes and rela-
+tionships among objects as directed graph edges. Finally, the column-based data
+models store the columns of rows clustered on disk pages for fast access and
+allow multiple versions of the data. We will discuss some of these in more detail
+in Chapter 24.
+
+The XML model has emerged as a standard for exchanging data over the Web and
+has been used as a basis for implementing several prototype native XML systems.
+XML uses hierarchical tree structures. It combines database concepts with concepts
+from document representation models. Data is represented as elements; with the
+use of tags, data can be nested to create complex tree structures. This model con-
+ceptually resembles the object model but uses different terminology. XML capabili-
+ties have been added to many commercial DBMS products. We present an overview
+of XML in Chapter 13.
+
+Two older, historically important data models, now known as legacy data models,
+are the network and hierarchical models. The network model represents data as
+record types and also represents a limited type of 1:N relationship, called a set type.
+ALN, or one-to-many, relationship relates one instance of a record to many record
+instances using some pointer linking mechanism in these models. The network
+model, also known as the CODASYL DBTG model," has an associated record-at-
+a-time language that must be embedded in a host programming language. The net-
+work DML was proposed in the 1971 Database Task Group (DBTG) Report as an
+extension of the COBOL language.
+
+The hierarchical model represents data as hierarchical tree structures. Each hierar-
+chy represents a number of related records. There is no standard language for the
+hierarchical model. A popular hierarchical DML is DL/1 of the IMS system. It dom-
+inated the DBMS market for over 20 years between 1965 and 1985. Its DML, called
+DL/1, was a de facto industry standard for a long time.'>
+
+'4CODASYL DBTG stands for Conference on Data Systems Languages Database Task Group, which is
+the committee that specified the network model and its language.
+
+'The full chapters on the network and hierarchical models from the second edition of this book are
+available from this book's Companion Web site at http://wwwaaw.com/elmasri
+
+53

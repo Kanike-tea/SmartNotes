@@ -1,0 +1,36 @@
+LS
+Lo
+
+eT
+
+t
+fe
+
+i
+hi
+
+The functions of these registers are as follows
+
+il, MAR
+. It establishes communication between Memory and Processor
+. It stores the address of the Memory, Location as shown im the figure.
+Ae Memory
+5000h_}+$————> 500% [23h
+5001 | 43h
+5002 | 78h
+5003 | 65h
+2. MDR
+. It alsovestablishes communication between Memory and the Processor.
+. It stores the contents of the memory location (data or operand), written into or read from
+memory as shown in the figure.
+MDR Memory
+23h 1 23h 5000
+43h 5001
+78h 5002
+65h 5003
+3. CONTROL UNIT
+. It controls the data transfer operations between memory and the processor.
+. It controls the data transfer operations between I/O and processor.
+. It generates control signals for Memory and I/O devices.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 9

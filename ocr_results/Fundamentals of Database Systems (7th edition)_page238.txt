@@ -1,0 +1,50 @@
+208 — Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+7.1.1 Comparisons Involving NULL and Three-Valued Logic
+
+SQL has various rules for dealing with NULL values. Recall from Section 5.1.2 that
+NULL is used to represent a missing value, but that it usually has one of three differ-
+ent interpretations—value unknown (value exists but is not known, or it is not
+known whether or not the value exists), value not available (value exists but is pur-
+posely withheld), or value not applicable (the attribute does not apply to this tuple
+or is undefined for this tuple). Consider the following examples to illustrate each of
+the meanings of NULL.
+
+1. Unknown value. A person’s date of birth is not known, so it is represented
+by NULL in the database. An example of the other case of unknown would be
+NULL for a person’s home phone because it is not known whether or not the
+person has a home phone.
+
+2. Unavailable or withheld value. A person has a home phone but does not
+want it to be listed, so it is withheld and represented as NULL in the database.
+
+3. Not applicable attribute. An attribute LastCollegeDegree would be NULL for a
+person who has no college degrees because it does not apply to that person.
+
+It is often not possible to determine which of the meanings is intended; for exam-
+ple, a NULL for the home phone of a person can have any of the three meanings.
+Hence, SQL does not distinguish among the different meanings of NULL.
+
+In general, each individual NULL value is considered to be different from every other
+NULL value in the various database records. When a record with NULL in one of its
+attributes is involved in a comparison operation, the result is considered to be
+UNKNOWN (it may be TRUE or it may be FALSE). Hence, SQL uses a three-valued
+logic with values TRUE, FALSE, and UNKNOWN instead of the standard two-valued
+(Boolean) logic with values TRUE or FALSE. It is therefore necessary to define the
+results (or truth values) of three-valued logical expressions when the logical con-
+nectives AND, OR, and NOT are used. Table 7.1 shows the resulting values.
+
+Table 7.1 Logical Connectives in Three-Valued Logic
+
+(a) AND TRUE FALSE UNKNOWN
+TRUE TRUE FALSE UNKNOWN
+FALSE FALSE FALSE FALSE
+UNKNOWN UNKNOWN FALSE UNKNOWN
+(b) OR TRUE FALSE UNKNOWN
+TRUE TRUE TRUE TRUE
+FALSE TRUE FALSE UNKNOWN
+UNKNOWN TRUE UNKNOWN UNKNOWN
+(©) NOT
+TRUE FALSE
+FALSE TRUE
+UNKNOWN UNKNOWN

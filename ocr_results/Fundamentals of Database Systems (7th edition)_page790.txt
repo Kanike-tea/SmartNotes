@@ -1,0 +1,54 @@
+760
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+operations; the operations w2(X) and w,(Y) do not conflict because they operate on
+distinct data items X and Y; and the operations r;(X) and w,(X) do not conflict
+because they belong to the same transaction.
+
+Intuitively, two operations are conflicting if changing their order can result in a dif-
+ferent outcome. For example, if we change the order of the two operations r,(X);
+w2(X) to w2(X); r;(X), then the value of X that is read by transaction T, changes,
+because in the second ordering the value of X is read by r;(X) after it is changed by
+w2(X), whereas in the first ordering the value is read before it is changed. This is
+called a read-write conflict. The other type is called a write-write conflict and is
+illustrated by the case where we change the order of two operations such as w,(X);
+w(X) to w(X); w)(X). For a write-write conflict, the last value of X will differ
+because in one case it is written by T, and in the other case by T;. Notice that two
+read operations are not conflicting because changing their order makes no differ-
+ence in outcome.
+
+The rest of this section covers some theoretical definitions concerning schedules. A
+schedule S of n transactions T), T>, ... , T,, is said to be a complete schedule if the
+following conditions hold:
+
+1. The operations in S are exactly those operations in T), T), ... , T,,, including
+a commit or abort operation as the last operation for each transaction in
+the schedule.
+
+2. For any pair of operations from the same transaction T;, their relative order
+of appearance in S is the same as their order of appearance in T;.
+
+3. For any two conflicting operations, one of the two must occur before the
+other in the schedule.'°
+
+The preceding condition (3) allows for two nonconflicting operations to occur in
+the schedule without defining which occurs first, thus leading to the definition of
+a schedule as a partial order of the operations in the n transactions.'! However, a
+total order must be specified in the schedule for any pair of conflicting operations
+(condition 3) and for any pair of operations from the same transaction (condi-
+tion 2). Condition 1 simply states that all operations in the transactions must
+appear in the complete schedule. Since every transaction has either committed
+or aborted, a complete schedule will not contain any active transactions at the end
+of the schedule.
+
+In general, it is difficult to encounter complete schedules in a transaction process-
+ing system because new transactions are continually being submitted to the system.
+Hence, it is useful to define the concept of the committed projection C(S) of a
+schedule S, which includes only the operations in S that belong to committed trans-
+actions—that is, transactions T; whose commit operation ¢; is in S.
+
+'°Theoretically, it is not necessary to determine an order between pairs of noncontlicting operations.
+
+"In practice, most schedules have a total order of operations. If parallel processing is employed, it is
+theoretically possible to have schedules with partially ordered nonconflicting operations.

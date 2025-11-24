@@ -1,0 +1,53 @@
+316
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+time. The programmer or user can use the <connection name> to change from the
+currently active connection to a different one by using the following command:
+
+SET CONNECTION <connection name> ;
+
+Once a connection is no longer needed, it can be terminated by the following
+command:
+
+DISCONNECT <connection name> ;
+
+In the examples in this chapter, we assume that the appropriate connection has
+already been established to the COMPANY database, and that it is the currently
+active connection.
+
+Communication variables SQLCODE and SQLSTATE. The two special
+communication variables that are used by the DBMS to communicate exception
+or error conditions to the program are SQLCODE and SQLSTATE. The SQLCODE
+variable shown in Figure 10.1 is an integer variable. After each database command
+is executed, the DBMS returns a value in SQLCODE. A value of 0 indicates that the
+statement was executed successfully by the DBMS. If SQLCODE > 0 (or, more spe-
+cifically, if SALCODE = 100), this indicates that no more data (records) are available
+in a query result. If SQLCODE < 0, this indicates some error has occurred. In some
+systems—for example, in the Oracle RDBMS—SQLCODE is a field in a record
+structure called SQLCA (SQL communication area), so it is referenced as
+SQLCA.SQLCODE. In this case, the definition of SQLCA must be included in the C
+program by including the following line:
+
+EXEC SQL include SQLCA ;
+
+In later versions of the SQL standard, a communication variable called SQLSTATE
+was added, which is a string of five characters. A value of ‘00000’ in SQLSTATE indi-
+cates no error or exception; other values indicate various errors or exceptions. For
+example, ‘02000’ indicates ‘no more data’ when using SQLSTATE. Currently, both
+SQLSTATE and SQLCODE are available in the SQL standard. Many of the error and
+exception codes returned in SQLSTATE are supposed to be standardized for all SQL
+vendors and platforms,’ whereas the codes returned in SQLCODE are not stan-
+dardized but are defined by the DBMS vendor. Hence, it is generally better to use
+SQLSTATE because this makes error handling in the application programs indepen-
+dent of a particular DBMS. As an exercise, the reader should rewrite the examples
+given later in this chapter using SQLSTATE instead of SQLCODE.
+
+Example of Embedded SQL Programming. Our first example to illustrate
+embedded SQL programming is a repeating program segment (loop) that takes as
+input a Social Security number of an employee and prints some information from
+the corresponding EMPLOYEE record in the database. The C program code is shown
+as program segment E1 in Figure 10.2. The program reads (inputs) an Ssn value
+
+Tin particular, SQLSTATE codes starting with the characters 0 through 4 or A through H are supposed to
+be standardized, whereas other values can be implementation-defined.

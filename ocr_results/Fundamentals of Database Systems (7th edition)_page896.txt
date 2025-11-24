@@ -1,0 +1,48 @@
+866 Chapter 23 Distributed Database Concepts
+
+Figure 23.6
+Classification
+of distributed
+databases.
+
+Distribution
+
+2 Autonomy
+
+Legend:
+
+A: Traditional centralized database
+systems
+
+B: Pure distributed database systems
+
+Qo
+
+: Federated database systems
+
+D: Multidatabase or peer-to-peer
+database systems
+
+Heterogeneity
+
+complete autonomy but a total lack of distribution and heterogeneity (point A in
+the figure). We see that the degree of local autonomy provides further ground for
+classification into federated and multidatabase systems. At one extreme of the
+autonomy spectrum, we have a DDBMS that looks like a centralized DBMS to the
+user, with zero autonomy (point B). A single conceptual schema exists, and all
+access to the system is obtained through a site that is part of the DDBMS—which
+means that no local autonomy exists. Along the autonomy axis we encounter two
+types of DDBMSs called federated database system (point C) and multidatabase
+system (point D). In such systems, each server is an independent and autonomous
+centralized DBMS that has its own local users, local transactions, and DBA, and
+hence has a very high degree of local autonomy. The term federated database
+system (FDBS) is used when there is some global view or schema of the federation
+of databases that is shared by the applications (point C). On the other hand, a
+multidatabase system has full local autonomy in that it does not have a global
+schema but interactively constructs one as needed by the application (point D).
+Both systems are hybrids between distributed and centralized systems, and the
+distinction we made between them is not strictly followed. We will refer to them as
+FDBSs in a generic sense. Point D in the diagram may also stand for a system with
+full local autonomy and full heterogeneity—this could be a peer-to-peer database
+system. In a heterogeneous FDBS, one server may be a relational DBMS, another a
+network DBMS (such as Computer Associates’ IDMS or HP’S IMAGE/3000), and

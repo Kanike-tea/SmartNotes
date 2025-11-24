@@ -1,0 +1,49 @@
+6.3 Instruction Scheduling 163
+
+ADDGE sum, sum, r3
+
+BGE loop
+
+MoV. 0, sum
+
+MOV pc, Ir 3 return r0
+END
+
+The code keeps count of the number of remaining values to sum, N. The first three
+values are in registers rl, r2, r3. The remaining values are on the stack. You can build this
+example using the commands
+
+armcc -c main4.c
+armasm sumof.s
+armlink -o main4.axf main4.o sumof.o
+
+6.2 PROFILING AND CYCLE COUNTING
+
+The first stage of any optimization process is to identify the critical routines and measure
+their current performance. A profiler is a tool that measures the proportion of time or
+processing cycles spent in each subroutine. You use a profiler to identify the most critical
+routines. A cycle counter measures the number of cycles taken by a specific routine. You can
+measure your success by using a cycle counter to benchmark a given subroutine before and
+after an optimization.
+
+The ARM simulator used by the ADSI.1 debugger is called the ARMulator and pro-
+vides profiling and cycle counting features. The ARMulator profiler works by sampling the
+program counter peat regular intervals. The profiler identifies the function the pc points to
+and updates a hit counter for each function it encounters. Another approach is to use the
+trace output of a simulator as a source for analysis.
+
+Be sure that you know how the profiler you are using works and the limits of its accuracy.
+A pc-sampled profiler can produce meaningless results if it records too few samples. You can
+even implement your own pc-sampled profiler in a hardware system using timer interrupts
+to collect the pe data points. Note that the timing interrupts will slow down the system you
+are trying to measure!
+
+ARM implementations do not normally contain cycle-counting hardware, so to easily
+measure cycle counts you should use an ARM debugger with ARM simulator. You can
+configure the ARMulator to simulate a range of different ARM cores and obtain cycle
+count benchmarks for a number of platforms.
+
+6.3 INSTRUCTION SCHEDULING
+
+The time taken to execute instructions depends on the implementation pipeline. For this
+chapter, we assume ARM9TDMI pipeline timings. You can find these in Section D.3 of

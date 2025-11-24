@@ -1,0 +1,70 @@
+558 Chapter 15 The Future of the Architecture
+
+Table 15.9 Dual 16-bit multiply operations.
+
+Instruction
+
+Description
+
+SMLAD{X}{<cond>} Rd, Rm, Rs, Rn
+SMLALD{X}{<cond>} RdLo, RdHi, Rm, Rs
+SMLSD{X}{<cond>} Rd, Rm, Rs, Rn
+
+SMLSLD{X}{<cond>} RdLo, RdHi, Rm, Rs
+
+Dual signed multiply accumulate with
+32-bit accumulation
+
+Dual signed multiply accumulate with
+64-bit accumulation
+
+Dual signed multiply subtract with
+32-bit accumulation
+
+Dual signed multiply subtract with
+64-bit accumulation
+
+We demonstrate the use of SMLAD as a signed dual multiply in a dot-product inner
+
+loop:
+MoV RO, #0 3
+Loop
+LOMIA R2!,{R4,R5,R6,R7} 3
+LOMIA R1!,{R8,R9,R10,R11} 5
+SUBS R3,R3, #8 3
+SMLAD — RO,R4,R8,RO 3
+SMLAD — RO,R5,R9,RO
+SMLAD — RO,R6,R10,RO
+SMLAD — RO,R7,R11,RO
+BGT Loop 3
+
+zero accumulator
+
+load 8 16-bit data items
+load 8 16-bit coefficients
+subtract 8 from the 1
+2 multiply accumulates
+
+oop counter
+
+loop if more coefficients
+
+This loop delivers eight 16 x 16 multiply accumulates in 10 cycles without using any data-
+
+blocking techniques. Ifa set of the operands for the dot-product is stored in registers, then
+performance approaches the true dual multiplies per cycle.
+
+15.1.7. Most SIGNIFICANT WORD MULTIPLIES
+
+ARMVSTE added arithmetic operations that are used extensively in a very broad range
+
+of DSP algorithms including control and communications and that were designed to use
+
+the Q15 data format. However, in audio processing applications it is common for 16-bit
+
+processing to be insufficient to describe the quality of the signals. Typically 32-bit values
+
+are used in these cases, and ARMv6 adds some new multiply instructions that operate on
+Q31 formatted values. (Recall that Q-format arithmetic is described in detail in Chapter 8.)
+
+These new instructions are listed in Table 15.10.

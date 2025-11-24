@@ -1,0 +1,61 @@
+The Read Operation proceeds as follows:
+
+¢ At t0, master places address/command information on bus.
+
+¢ At tl, master sets MR-signal to 1 to inform all devices that the address/command-info is ready.
+> MR-signal =1 > causes all devices on the bus to decode theaddress.
+> The delay t1 — tO is intended to allow for any skew that may occurs on the bus.
+> Skew occurs when 2 signals transmitted from 1 source arrive at destination at different time
+> Therefore, the delay t1 — t0 should be larger than the maximum possible bus skew.
+
+© At t2, slave
+— performs required input-operation &
+— sets SR signal to | to inform all devices that it is ready (Figure 7.6).
+
+¢ At t3, SR signal arrives at master indicating that the input-data are available on bus.
+
+¢ At t4, master removes address/command information from bus.
+
+¢ Att5, when the device-interface receives the 1-to-0 transition of MR signal, it removes data and
+
+SR signal from the bus. This completes the input transfer.
+
+———» Time
+
+Address
+and command
+
+Master-ready
+
+Slave-ready
+
+Data
+
+Bus cycle
+
+Figure 7.6 — Handshake control of data transfer during an input operation.
+
+¢ A change of state is one signal is followed by a change is the other signal. Hence this scheme
+is called as Full Handshake.
+« Advantage: It provides the higher degree of flexibility and reliability.
+
+INTERFACE-CIRCUITS
+
+« An I/O Interface consists of the circuitry required to connect an I/O device to a computer-bus.
+
+© On one side of the interface, we have bus signals.
+On the other side, we have a data path with its associated controls to transfer data between the
+interface and the I/O device known as port.
+
+© Two types are:
+1. Parallel Port transfers data in the form of a number of bits (8 or 16) simultaneously to
+or from the device.
+2. Serial Port transmits and receives data one bit at a time.
+
+© Communication with the bus is the same for both formats.
+
+¢ The conversion from the parallel to the serial format, and vice versa, takes place inside the
+
+interface- circuit.
+
+Page 33

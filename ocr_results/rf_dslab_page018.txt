@@ -1,0 +1,37 @@
+break;
+
+case '-':push(a-b);
+break;
+
+case '*':push(a*b);
+break;
+
+case '/':push(a/b);
+break;
+
+case '%':push(a%b);
+break;
+
+case '$':push(pow(a,b));
+break;
+
+case '':push(pow(a,b));
+break;
+
+default:printf("Invalid operator\n");
+
+i
+}
+ans=pop();
+printf("Result of given expression= %d\n" ans);
+
+}
+
+Output:
+
+Enter the postfix expression
+53462/*35*+
+
+Result of given expression= 39
+
+18

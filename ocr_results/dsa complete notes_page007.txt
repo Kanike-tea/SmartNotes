@@ -1,0 +1,55 @@
+Data Structures and Applications/BCS304 Module-1
+
+Contiguous memory allocation (calloc)
+e This function is used to allocate contiguous block of memory. It is primarily used to allocate
+memory for arrays.
+e The function calloc() allocates a user specified amount of memory and initializes the allocated
+memory to 0.
+A pointer to the start of the allocated memory is returned.
+In case there is insufficient memory it returns NULL
+
+syntax: void * calloc (size_t count , size_t size);
+
+Example: To allocate a one dimensional array of integers whose capacity is n the following code can
+be written.
+
+int *ptr
+
+ptr=(int*)calloc(n,sizeof(int))
+
+Reallocationlof memory(@eall6e): The function realloc resizes the memory previously allocated by
+either malloc or calloc.
+
+syntax: Void * realloc (void * ptr , size_t new_size);
+
+The statement realloc(p,s) -- Changes the size of the memory pointed by p to s. The existing contents
+of the block remain unchanged.
+
+When s> oldsize(Block size increases) the additional (s — oldsize )have unspecified value
+When s<oddsize (Block size reduces) the rightmost (oldsize-s) bytes of the old block are freed.
+When realloc is able to do the resizing it returns a pointer to the start of the new block
+
+When is not able to do the resizing the old block is unchanged and the function returns the
+value NULL.
+
+VVVV
+
+Dangling Reference: Once a pointer is freed using the free function then there is no way to retrieve
+this storage and any reference to this location is called dangling reference.
+
+Example2:
+int i,*p,*f;
+i=2;
+p=&i;
+f=p;
+free(p);
+*f=*f+2 /* Invalid dangling reference*/
+
+The location that holds the value 2 is freed but still there exist a reference to this location through f
+and pointer f will try to access a location that is freed so the pointer f is a dangling reference
+Pointers can be dangerous: When pointers are used the following points needs to be taken care
+1. When a pointer is not pointing at any object it is a good practise to set it to NULL so that there
+is no attempt made to access a memory location that is out of range of our program or that does
+not contain a pointer reference to the legitimate object.
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 8

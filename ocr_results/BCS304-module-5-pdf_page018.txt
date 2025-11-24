@@ -1,0 +1,52 @@
+The C (i, J) can be computed as:
+
+C(i, J) = min {C (i, k-1) + G(k, J) + P(K) + w (i, K-1) + w (K,J)}
+
+Icke)
+= min {C (i, K-1) + C(K, J} + w (i, J) - (1)
+
+icked
+Where W (i, J) = P(J) + Q(J) + w (i, J-1) - (2)
+
+Initially C (i, i) = 0 and w (i, i) = Q(i) forO<ic<n.
+
+C (i, J) is the cost of the optimal binary search tree 'Ti;' during computation we record
+the root R (i, J) of each tree 'Ti'. Then an optimal binary search tree may be
+constructed from these R (i, J). R (i, J) is the value of 'K' that minimizes equation (1).
+
+We solve the problem by knowing W (i, i+1), C (i, i+1) and R (i, i+1), 0 <i < 4;
+Knowing W (i, i+ 2), C (i, i+2) and R (i, i+2), 0 Si < 3 and repeating until W (0, n),
+C (0, n) and R(0, n) are obtained.
+
+Example Let n = 4 and (a), a2,a3,04) = (do, if, int, while). Let
+p(1: 4) = (3,3,1,1) and g(0; 4) = (2,3,1,1,1). The p’s and q’s have been
+multiplied by 16 for convenience. Initially, we have w(i,i) = q(i),c(i,7) = 0
+and r(i,i)=0,0 <i< 4 the observation w(i,j) =
+
+p(j) + aj) + w(i, j — 1), we get
+
+w(Q,1) = p(t) + (1) +w(0,0) =8
+
+e(0,1) = w(0,1) + min{c(0,0) + c(1,1)} = 8
+r(0,1)} = 1
+
+w(1,2) = p(2)+¢(2)+w(1,l) = 7
+
+e(1,2) = w(1,2) + min {e(1,1) +c¢(2,2)} = 7
+(0,2) = 2
+
+w(2,3) = p(3)+q(3)+w(2,2) = 38
+
+c(2,3) = w(2,3) +min {e(2,2) +¢(3,3)} = 3
+r(2,3) = 3
+
+w(3,4) = p(4)+9(4)+w(3,3) = 3
+
+e(3,4) = w(3,4)+min {c(3,3)+¢(4,4)} = 3
+r(3,4) = 4
+
+Knowing w(i,i +1) and e(i,i + 1), 0 <i < 4, we can again use Equation
+5.12 to compute w(i,i+2), e(i,i+2), and r(i,i+2), 0 <i <3. This process
+can be repeated until w(0,4), c(0,4), and r(0,4) are obtained.
+
+Page 19

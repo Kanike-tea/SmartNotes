@@ -1,0 +1,55 @@
+68 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.18
+
+EXAMPLE
+
+3.19
+
+This example shows an $TM increment before instruction followed by an LDM decrement after
+instruction.
+
+PRE r0 = 0x00009000
+rl = 0x00000009
+r2 = 0x00000008
+
+r3 = 0x00000007
+
+STMIB —r0!, {rl-r3}
+
+MOV orl, #1
+MOV r2, #2
+MOV 3, #3
+
+PRE(2) 0 = 0x0000900c
+rl = 0x00000001
+r2 = 0x00000002
+r3 = 0x00000003
+
+LOMDA r0!, {r1-r3}
+
+POST r0 = 0x00009000
+rl = 0x00000009
+r2 = 0x00000008
+
+r3 = 0x00000007
+
+The STMIB instruction stores the values 7, 8, 9 to memory. We then corrupt register r/ to r3.
+‘The LDMDA reloads the original values and restores the base pointer r0.
+
+We illustrate the use of the load-store multiple instructions with a block memory copy
+example. This example is a simple routine that copies blocks of 32 bytes from a source
+address location to a destination address location.
+
+The example has two load-store multiple instructions, which use the same increment
+after addressing mode.
+
+3 79 points to start of source data
+3 rl0 points to start of destination data
+3 rll points to end of the source
+
+loop
+; load 32 bytes from source and update r9 pointer
+LOMIA r9!, {r0-r7}

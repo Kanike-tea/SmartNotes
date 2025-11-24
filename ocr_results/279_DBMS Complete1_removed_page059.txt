@@ -1,0 +1,52 @@
+OTitle—pBMs*(BOOK)=
+
+Ace- | Title Author
+No
+100 _| “DBMS” | “Silbershatz”
+200 | “DBMS” | “Ramanuj”
+
+600 | “DBMS” | “Silbershatz”
+
+TeAce-no (OTitle-"DBMs” (BOOK))= | Acc-
+No
+100
+200
+600
+
+Union, Intersection, Set-Difference
+
+> Allof these operations take two input relations, which must be union-compatible:
+
+o Same number of fields.
+o Corresponding’ fields have the same type.
+> What is the schema of result?
+Consider:
+Borrower Depositor
+
+Cust- Loan-no Cust-name Acc-no
+name Suleman A-100
+Ram L-13 Radheshyam _| A-300
+Shyam L-30 Ram A-401
+Suleman | L-42
+
+List of customers who are either borrower or depositor at bank= 7cust-name (Borrower) U
+Tcust-name (Depositor)=
+
+Cust-name
+Ram
+Shyam Customers who are both borrowers and depositors = cust-name
+Suleman (Borrower) M tcust-name (Depositor)=
+
+Radeshyam
+Cust-
+name
+
+Ram
+Suleman
+
+Customers who are borrowers but not depositors = zcust-name (Borrower) [] 7cust-name
+(Depositor)=
+
+Cust-name
+
+Shyam

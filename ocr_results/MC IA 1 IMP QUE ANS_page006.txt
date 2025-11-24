@@ -1,0 +1,36 @@
+Branch Instructions: Change the flow of execution. These include Branch (B), Branch with Link (BL)
+for subroutine calls, Branch Exchange (BX), and Branch Exchange with Link (BLX) for switching
+between ARM and Thumb states85 ....
+
+Software Interrupt (SWI) Instruction: Generates a software interrupt exception to call operating
+system routines88 .
+
+Program Status Register (PSR) Instructions: Directly control the cpsr and spsr using MRS (move PSR
+to register) and MSR (move register to PSR) instructions89 ....
+
+Coprocessor Instructions (CDP, MRC, MCR, LDC, STC): Used to extend the instruction set for cores
+with coprocessors, often for tasks like memory management or floating-point operations91 ....
+
+Loading Constants: Pseudo-instructions like LDR Rd, =constant and ADR Rd, label are used to load
+32-bit constants and addresses into registers93 ....
+
+10.
+Barrel Shifter with Neat Diagram
+
+Figure 1 (not provided, but described) illustrates the barrel shifter as a hardware component that
+can preprocess one of the source registers (Rm) before it enters the ALU (Arithmetic Logic Unit)35 .
+
+The barrel shifter allows the 32-bit binary pattern in Rm to be shifted left or right by a specific
+number of positions95 . This preprocessing occurs within the cycle time of the instruction,
+enhancing the flexibility and power of data processing operations96 .
+
+The barrel shifter supports five different shift operations97 ...:
+
+Logical Shift Left (LSL): Shifts bits to the left by a specified number of places; vacated bits are filled
+with zeros. The last bit shifted out goes into the Carry flag (C)97 ....
+
+Logical Shift Right (LSR): Shifts bits to the right by a specified number of places; vacated bits are filled
+with zeros. The last bit shifted out goes into the C flag97 .
+
+Arithmetic Shift Right (ASR): Shifts bits to the right, preserving the sign bit (most significant bit) in
+the vacated positions. The last bit shifted out goes into the C flag97 .

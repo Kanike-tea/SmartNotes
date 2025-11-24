@@ -1,0 +1,54 @@
+936
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+Table partitions that need to be read. Obviously, this has a huge impact on
+performance and cluster utilization: Instead of scanning all partitions retained
+for the last N years, only the partitions from the last few weeks/months are
+scanned. Work in progress includes collecting column- and table-level statis-
+tics and generating plans based on a cost model that uses these statistics (simi-
+lar to what we considered for RDBMSs in Chapter 19).
+
+= Hive now supports Tez as a runtime environment that has significant advan-
+tages over MR, including that there is no need to write to disk between jobs;
+and there is no restriction on one-input, two-stage processes. There is also
+active work to support Hive on Spark, a new technology that we briefly
+mention in Section 25.6.
+
+25.4.4 Advantages of the Hadoop/MapReduce Technology
+
+Hadoop version 1 was optimized for batch processing on very large datasets. Vari-
+ous factors contribute to its success:
+
+1. The disk seek rate is a limiting factor when we deal with petabyte-level work-
+loads. Seek is limited by the disk mechanical structure, whereas the transfer
+speed is an electronic feature and increasing steadily. (See Section 16.2 for a
+discussion of disk drives.) The MapReduce model of scanning datasets in
+parallel alleviates this situation. For instance, scanning a 100-TB dataset
+sequentially using 1 machine at a rate of 50 Mbps will take about 24 days to
+complete. On the other hand, scanning the same data using 1,000 machines
+in parallel will just take 35 minutes. Hadoop recommends very large block
+sizes, 64 MB or higher. So when scanning datasets, the percentage of time
+spent on disk seeks is negligible. Unlimited disk seek rates combined with
+processing large datasets in chunks and in parallel is what drives the scal-
+ability and speed of the MapReduce model.
+
+2. The MapReduce model allows handling of semistructured data and key-
+value datasets more easily compared to traditional RDBMSs, which require
+a predefined schema. Files such as very large logfiles present a particular
+problem in RDBMSs because they need to be parsed in multiple ways before
+they can be analyzed.
+
+3. The MapReduce model has linear scalability in that resources can be added
+to improve job latency and throughput in a linear fashion. The failure model
+is simple, and individual failed jobs can be rerun without a major impact on
+the whole job.
+
+25.5 Hadoop v2 alias YARN
+
+In previous sections, we discussed Hadoop development in detail. Our discussion
+included the core concepts of the MapReduce paradigm for programming and the
+HDFS underlying storage infrastructure. We also discussed high-level interfaces
+like Pig and Hive that are making it possible to do SQL-like, high level data process-
+ing on top of the Hadoop framework. Now we turn our attention to subsequent
+developments, which are broadly called Hadoop v2 or MRv2 or YARN (Yet Another

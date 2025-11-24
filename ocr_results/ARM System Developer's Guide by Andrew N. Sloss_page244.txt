@@ -1,0 +1,44 @@
+7.3 Division 231
+
+7.3.3.1 Theory: The Initial Estimate for Newton-Raphson Division
+
+If you are not interested in Newton-Raphson theory, then skip the next two sections and
+jump to Section 7.3.3.3.
+
+We use a lookup table on the most significant bits of d to determine the initial estimate
+xo to d~!. For a good trade-off between table size and estimate accuracy, we index by the
+leading eight fractional bits of d, returning a nine-bit estimate xp. Since the leading bits of
+dand xp are both one, we only need a lookup table consisting of 128 eight-bit entries.
+
+Let abe the integer formed by the seven bits following the leading one of d. Then dis in
+the range (128 + a)2~8 < d < (129 + a)2~*. Choosing c = (128.5 + a)27*, the midpoint,
+we define the lookup table by
+
+table[a] = round(256.0/c) - 256;
+
+This is a floating-point formula, where round rounds to the nearest integer. We can reduce
+this to an integer formula that is easier to calculate if you don’t have floating-point support:
+
+table[a] = (511*(128-a)) /(257+2*a);
+Clearly, all the table entries are in the range 0 to 255. To start the Newton-Raphson
+
+iteration we set x) = 1 + table{a]2~8 and ky = 9. Now we cheat slightly by looking ahead
+to Section 7.3.3.3. We will be interested in the value of the following error term:
+
+E=de+d2-'© (7.19)
+First let’s look at d|eo|. If e9 < 0, then
+djeo| = xod — 1 < xo(129 + a)2-8§ — 1 (7.20)
+dleo| < ((256 + table[a])(129 + a) — 27'8) 2-16 (7.21)
+If ¢9 = 0, then
+dleo| =1— xd < 1 — (128 +a)2-* (7.22)
+dleo| < (2'° — (256 + table{a])(128 + a)) 2~-'° (7.23)
+
+Running through the possible values of a, we find that d|e| < 299 x 2-16. This is the best
+possible bound. Take d = (133 — e)2!°, and the smaller e > 0, the closer to the bound
+you will get! The same trick works for finding a sharp bound on E:
+
+£2 < ((256 + tablefa])(129 + a) — 2!) + (129 +.a)2® ify <0 (7.24)
+£2 < (2!° — (256 + tablefal)(128 + a))” + (129-+.a)2® ify > 0 (7.25)
+
+Running over the possible values of a gives us the sharp bound E < 2715. Finally we need
+to check that x9 < 2 — 277. This follows as the largest table entry is 254.

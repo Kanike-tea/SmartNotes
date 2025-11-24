@@ -1,0 +1,58 @@
+18.3 Algorithms for SELECT Operation
+
+The minimum number of main memory buffers needed is ng = 3, which gives a diy
+of 2 and an np of| (b/3) |. The minimum dy of 2 gives the worst-case performance
+of the algorithm, which is:
+
+(2 * b) + (2+ (6 (logs np))).
+
+The following sections discuss the various algorithms for the operations of the rela-
+tional algebra (see Chapter 8).
+
+18.3 Algorithms for SELECT Operation
+
+18.3.1 Implemention Options for the SELECT Operation
+
+There are many algorithms for executing a SELECT operation, which is basically a
+search operation to locate the records in a disk file that satisfy a certain condition.
+Some of the search algorithms depend on the file having specific access paths, and
+they may apply only to certain types of selection conditions. We discuss some of the
+algorithms for implementing SELECT in this section. We will use the following oper-
+ations, specified on the relational database in Figure 5.5, to illustrate our discussion:
+
+OP1: Gen = "123456789" (EMPLOYEE)
+
+OP2: Gpnumber » s (DEPARTMENT)
+
+OP3: Opno= 5 (EMPLOYEE)
+
+OP4: Opno= 5 AND Salary > 30000 AND Sex = ‘f (EMPLOYEE)
+OPS: Oxssn = ‘123456789 AND Pao =10(WORKS_ON)
+
+OP6: An SQL Query:
+SELECT *
+FROM EMPLOYEE
+WHERE Dno IN (3,27, 49)
+
+OP7: An SQL Query (from Section 17.5.3)
+
+SELECT First_name, Lname
+
+FROM Employee
+
+WHERE ((Salary*Commission_pct) + Salary ) > 15000;
+
+Search Methods for Simple Selection. A number of search algorithms are pos-
+sible for selecting records from a file. These are also known as file scans, because
+they scan the records of a file to search for and retrieve records that satisfy a selection
+condition.’ If the search algorithm involves the use of an index, the index search is
+called an index scan. The following search methods ($1 through S6) are examples of
+some of the search algorithms that can be used to implement a select operation:
+
+= $1—Linear search (brute force algorithm). Retrieve every record in the file,
+and test whether its attribute values satisfy the selection condition. Since the
+
+7A selection operation is sometimes called a filter, since it filters out the records in the file that do not
+satisfy the selection condition.
+
+663

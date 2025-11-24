@@ -1,0 +1,57 @@
+26.5 Introduction to Deductive Databases
+
+(a) Facts (b) james
+SUPERVISE (franklin, john).
+SUPERVISE(franklin, ramesh).
+SUPERVISE (franklin, joyce).
+SUPERVISE(jennifer, alicia). franklin
+SUPERVISE(jennifer, ahmad).
+SUPERVISE(james, franklin).
+
+SUPERVISE(james, jennifer). - . ,
+a john” ramesh “joyce alicia
+
+Rules
+SUPERIOR(X, Y) :- SUPERVISE(X, Y).
+SUPERIOR(X, Y) :- SUPERVISE(X, Z), SUPERIOR(Z, Y).
+SUBORDINATE(X, Y) :- SUPERIOR(Y, X).
+
+jennifer
+
+Queries Figure 26.11
+SU PERIOR(ames, y)? (a) Prolog notation.
+SUPERIOR(james, joyce)? (b) The supervisory tree.
+
+1001
+
+ahmad
+
+Thus, SUPERVISE(X, Y) states the fact that X supervises Y. Notice the omission of
+the attribute names in the Prolog notation. Attribute names are only represented by
+virtue of the position of each argument in a predicate: the first argument represents
+the supervisor, and the second argument represents a direct subordinate.
+
+The other two predicate names are defined by rules. The main contributions of
+deductive databases are the ability to specify recursive rules and to provide a frame-
+work for inferring new information based on the specified rules. A rule is of the
+form head :- body, where :- is read as if and only if. A rule usually has a single
+predicate to the left of the :- symbol—called the head or left-hand side (LHS) or
+conclusion of the rule—and one or more predicates to the right of the :- symbol—
+called the body or right-hand side (RHS) or premise(s) of the rule. A predicate
+with constants as arguments is said to be ground; we also refer to it as an instantiated
+predicate. The arguments of the predicates that appear in a rule typically include
+a number of variable symbols, although predicates can also contain constants as
+arguments. A rule specifies that, if a particular assignment or binding of constant
+values to the variables in the body (RHS predicates) makes all the RHS predicates
+true, it also makes the head (LHS predicate) true by using the same assignment of
+constant values to variables. Hence, a rule provides us with a way of generating
+new facts that are instantiations of the head of the rule. These new facts are
+based on facts that already exist, corresponding to the instantiations (or
+bindings) of predicates in the body of the rule. Notice that by listing multiple
+predicates in the body of a rule we implicitly apply the logical AND operator to
+these predicates. Hence, the commas between the RHS predicates may be read
+as meaning and.
+
+Consider the definition of the predicate SUPERIOR in Figure 26.11, whose first argu-
+ment is an employee name and whose second argument is an employee who is either
+a direct or an indirect subordinate of the first employee. By indirect subordinate, we

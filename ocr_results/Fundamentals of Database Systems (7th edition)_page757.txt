@@ -1,0 +1,44 @@
+19.6 Example to Illustrate Cost-Based Query Optimization
+
+3. DEPARTMENT * EMPLOYEE > PROJECT
+4. EMPLOYEE 4 DEPARTMENT > PROJECT
+
+Assume that the selection operation has already been applied to the PROJECT rela-
+tion. If we assume a materialized approach, then a new temporary relation is cre-
+ated after each join operation. To examine the cost of join order (1), the first join is
+between PROJECT and DEPARTMENT. Both the join method and the access methods
+for the input relations must be determined. Since DEPARTMENT has no index
+according to Figure 19.6, the only available access method is a table scan (that is, a
+linear search). The PROJECT relation will have the selection operation performed
+before the join, so two options exist—table scan (linear search) or use of the
+PROJ_PLOC index—so the optimizer must compare the estimated costs of these
+two options. The statistical information on the PROJ_PLOC index (see Figure 19.6)
+shows the number of index levels x = 2 (root plus leaf levels). The index is nonunique
+
+727
+
+Figure 19.6
+Sample statistical information for relations in Q2. (a) Column information.
+(b) Table information. (c) Index information.
+
+(a) Table_name Column_name | Num_distinct | Low_value High_value
+PROJECT Plocation 200 1 200
+PROJECT Phumber 2000 1 2000
+PROJECT Dnum 50 1 50
+DEPARTMENT | Dnumber 50 1 50
+DEPARTMENT | Mgr_ssn 50 1 50
+EMPLOYEE | Ssn 710000 1 10000
+EMPLOYEE | Dno 50 1 50
+EMPLOYEE | Salary 500 1 500
+
+(b) Table_name Num_rows Blocks
+PROJECT 2000 100
+DEPARTMENT 50 5
+EMPLOYEE 10000 2000
+
+(©) Index_name Uniqueness Blevel* Leaf_blocks | Distinct_keys
+PROJ_PLOC | NONUNIQUE 1 4 200
+EMP_SSN UNIQUE 1 50 10000
+EMP_SAL NONUNIQUE 1 50 500
+
+*Blevel is the number of levels without the leaf level.

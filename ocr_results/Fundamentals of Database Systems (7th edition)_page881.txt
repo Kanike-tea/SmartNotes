@@ -1,0 +1,51 @@
+23.2. Data Fragmentation, Replication, and Allocation Techniques for Distributed Database Design
+
+by company headquarters and accesses all employee and project information regu-
+larly, in addition to keeping track of DEPENDENT information for insurance purposes.
+
+According to these requirements, the whole database in Figure 5.6 can be stored at
+site 1. To determine the fragments to be replicated at sites 2 and 3, first we can
+horizontally fragment DEPARTMENT by its key Dnumber. Then we apply derived
+fragmentation to the EMPLOYEE, PROJECT, and DEPT_LOCATIONS relations based
+on their foreign keys for department number—called Dno, Dnum, and Dnumber,
+respectively, in Figure 5.5. We can vertically fragment the resulting EMPLOYEE
+fragments to include only the attributes {Name, Ssn, Salary, Super_ssn, Dno}.
+Figure 23.2 shows the mixed fragments EMPD_5 and EMPD_4, which include the
+EMPLOYEE tuples satisfying the conditions Dno = 5 and Dno = 4, respectively. The
+horizontal fragments of PROJECT, DEPARTMENT, and DEPT_LOCATIONS are
+similarly fragmented by department number. All these fragments—stored at sites
+2 and 3—are replicated because they are also stored at headquarters—site 1.
+
+We must now fragment the WORKS_ON relation and decide which fragments of
+WORKS_ON to store at sites 2 and 3. We are confronted with the problem that no
+attribute of WORKS_ON directly indicates the department to which each tuple
+belongs. In fact, each tuple in WORKS_ON relates an employee e to a project P. We
+could fragment WORKS_ON based on the department D in which e works or based
+on the department D’ that controls P. Fragmentation becomes easy if we have a
+constraint stating that D = D’ for all WORKS_ON tuples—that is, if employees can
+work only on projects controlled by the department they work for. However, there
+is no such constraint in our database in Figure 5.6. For example, the WORKS_ON
+tuple <333445555, 10, 10.0> relates an employee who works for department 5 with
+a project controlled by department 4. In this case, we could fragment WORKS_ON
+based on the department in which the employee works (which is expressed by the
+condition C) and then fragment further based on the department that controls the
+projects that employee is working on, as shown in Figure 23.3.
+
+In Figure 23.3, the union of fragments G), G2, and G; gives all WORKS_ON tuples
+for employees who work for department 5. Similarly, the union of fragments G4, Gs,
+and Gg gives all WORKS_ON tuples for employees who work for department 4. On
+the other hand, the union of fragments G,, G4, and G; gives all WORKS_ON tuples
+for projects controlled by department 5. The condition for each of the fragments G,
+through Go is shown in Figure 23.3. The relations that represent M:N relationships,
+such as WORKS_ON, often have several possible logical fragmentations. In our distri-
+bution in Figure 23.2, we choose to include all fragments that can be joined to either an
+EMPLOYEE tuple or a PROJECT tuple at sites 2 and 3. Hence, we place the union of
+fragments G}, Go, G3, Gs, and G; at site 2 and the union of fragments G4, Gs, Ge, G2,
+and Gg at site 3. Notice that fragments G) and Gy are replicated at both sites. This allo-
+cation strategy permits the join between the local EMPLOYEE or PROJECT fragments at
+site 2 or site 3 and the local WORKS_ON fragment to be performed completely locally.
+This clearly demonstrates how complex the problem of database fragmentation and
+allocation is for large databases. The Selected Bibliography at the end of this chapter
+discusses some of the work done in this area.
+
+851

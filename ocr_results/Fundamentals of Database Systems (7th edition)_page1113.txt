@@ -1,0 +1,52 @@
+28.2 Association Rules
+
+One approach to handling a quantitative attribute is to partition its values into non-
+overlapping intervals that are assigned labels. This can be done in a static manner
+based on domain-specific knowledge. For example, a concept hierarchy may group
+values for Salary into three distinct classes: low income (0 < Salary < 29,999), middle
+income (30,000 < Salary < 74,999), and high income (Salary > 75,000). From here,
+the typical apriori-type algorithm or one of its variants can be used for the rule min-
+ing since the quantitative attributes now look like categorical attributes. Another
+approach to partitioning is to group attribute values based on data distribution (for
+example, equi-depth partitioning) and to assign integer values to each partition.
+The partitioning at this stage may be relatively fine, that is, a larger number of inter-
+vals. Then during the mining process, these partitions may combine with other
+adjacent partitions if their support is less than some predefined maximum value.
+An apriori-type algorithm can be used here as well for the data mining.
+
+Negative Associations. The problem of discovering a negative association is
+harder than that of discovering a positive association. A negative association is of
+the following type: 60% of customers who buy potato chips do not buy bottled water.
+(Here, the 60% refers to the confidence for the negative association rule.) In a data-
+base with 10,000 items, there are 210,000 possible combinations of items, a majority
+of which do not appear even once in the database. If the absence of a certain item
+combination is taken to mean a negative association, then we potentially have mil-
+lions and millions of negative association rules with RHSs that are of no interest at
+all. The problem, then, is to find only interesting negative rules. In general, we are
+interested in cases in which two specific sets of items appear very rarely in the same
+transaction. This poses two problems.
+
+1. For a total item inventory of 10,000 items, the probability of any two being
+bought together is (1/10,000) * (1/10,000) = 10°®. If we find the actual sup-
+port for these two occurring together to be zero, that does not represent a
+significant departure from expectation and hence is not an interesting (neg-
+ative) association.
+
+2. The other problem is more serious. We are looking for item combinations
+with very low support, and there are millions and millions with low or even
+zero support. For example, a data set of 10 million transactions has most of
+the 2.5 billion pairwise combinations of 10,000 items missing. This would
+generate billions of useless rules.
+
+Therefore, to make negative association rules interesting, we must use prior knowl-
+edge about the itemsets. One approach is to use hierarchies. Suppose we use the
+hierarchies of soft drinks and chips shown in Figure 28.4.
+
+1083
+
+Soft drinks Chips Figure 28.4
+
+Simple hierarchy of
+soft drinks and chips.
+
+Joke Wakeup Topsy Days Nightos__Party'Os

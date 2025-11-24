@@ -1,0 +1,52 @@
+58 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.11
+
+EXAMPLE
+
+3.12
+
+The number of cycles taken to execute a multiply instruction depends on the processor
+implementation. For some implementations the cycle timing also depends on the value
+in Rs. For more details on cycle timings, see Appendix D.
+
+This example shows a simple multiply instruction that multiplies registers rl and r2 together
+and places the result into register r0. In this example, register r/ is equal to the value 2, and
+r2 is equal to 2. The result, 4, is then placed into register r0.
+
+PRE r0 = 0x00000000
+rl = 0x00000002
+r2 = 0x00000002
+
+MUL 10, rl, r2 3 0 = rl*r2
+
+POST rO = 0x00000004
+rl = 0x00000002
+r2 = 0x00000002
+
+The long multiply instructions (SMLAL, SMULL, UMLAL, and UMULL) produce a 64-bit
+result. The result is too large to fit a single 32-bit register so the result is placed in two
+registers labeled RdLo and RdHi. RdLo holds the lower 32 bits of the 64-bit result, and
+RdHi holds the higher 32 bits of the 64-bit result. Example 3.12 shows an example of a long
+unsigned multiply instruction.
+
+The instruction multiplies registers r2 and r3 and places the result into register r0 and rl.
+Register r0 contains the lower 32 bits, and register rl contains the higher 32 bits of the
+64-bit result.
+
+PRE r0 = 0x00000000
+rl = 0x00000000
+r2 = 0xf0000002
+r3 = 0x00000002
+
+UMULL 0, rl, r2, 73 [rl,r0] = r2*r3
+
+POST rO = Oxe0000004 ; = RdLo
+rl = 0x00000001 ; = RdHi
+
+3.2 BRANCH INSTRUCTIONS
+
+A branch instruction changes the flow of execution or is used to call a routine. This type
+of instruction allows programs to have subroutines, if-then-else structures, and loops.

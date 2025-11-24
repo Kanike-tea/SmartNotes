@@ -1,0 +1,36 @@
+BCS304 CEC
+
+4.4 Representation of Disjoint Sets
+4.4.1 Introduction
+
+The use of trees in the representation of sets. assume that the elements of the sets are the
+numbers 0, 1, 2,. . .n-1. In practice, these numbers might be indices into a symbol table that
+
+stores the actual names of the elements.
+
+For example, if we have 10 elements numbered 0 through 9, we may partition them into three
+disjoint sets, 51 = {0, 6, 7, 8), S2 = {1, 4, 9}, and S3 = {2, 3, 5}.
+
+Figure shows one possible representation for these sets.
+
+© 9 e
+éo00 06 x
+
+Possible forest representation of sets
+The minimal operations that we wish to perform on these sets are:
+Disjoint set union and Find(i).
+
+4.4.2 Union and Find operations:
+
+to obtain the union of S;.and S> Since we have linked the nodes from children to parent, we
+
+simply make one of the trees a subtree of the other.
+
+re 4 o 26
+\ wat
+iG d @®O OF Be
+60 CLORO
+
+$. us, - &% U &,
+
+Powsbdle repeesemation of $, WS;

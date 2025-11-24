@@ -1,0 +1,56 @@
++ Let SPECi = Rating for program ,,i' in the suite.
+
+Overall SPEC rating for the computer is given by
+1
+
+SPEC rating = (itsrec)
+
+where n = no. of programs in the suite.
+
+Problem 1:
+List the steps needed to execute the machine instruction:
+Load R2, LOC
+in terms of transfers between the components of processor and some simple control commands.
+Assume that the address of the memory-location containing this instruction is initially in register PC.
+Solution:
+1. Transfer the contents of register PC to register MAR.
+2. Issue a Read command to memory.
+And, then wait until it has transferred the requested word into register MDR.
+3. Transfer the instruction from MDR into IR and decode it.
+4. Transfer the address LOCA from IR to MAR.
+5. Issue a Read command and wait until MDR is loaded.
+6. Transfer contents of MDR to the ALU.
+7. Transfer contents of RO to the ALU.
+8. Perform addition of the two operands in the ALU and transfer result into RO.
+9. Transfer contents of PC to ALU.
+10. Add | to operand in ALU and transfer incremented address to PC.
+
+Problem 2:
+A program contains 1000 instructions. Out of that 25% instructions requires 4 clock cycles40%
+instructions requires 5 clock cycles and remaining require 3 clock cycles for execution. Find the total
+time required to execute the program running in a 1 GHz machine.
+Solution:
+N= 1000
+25% of N= 250 instructions require 4 clock cycles.
+40% of N =400 instructions require 5 clock
+cycles. 35% of N=350 instructions require 3
+clock cycles.
+
+T = (N*S)/R= (250*4+400*5+350*3)/1X109 =(1000+2000+1050)/1*109= 4.05 us.
+
+Problem 3:
+For the following processor, obtain the performance.
+Clock rate = 800 MHz
+No. of instructions executed = 1000
+Average no of steps needed / machine instruction = 20
+Solution:
+
+x§
+> (1000*20)/800 * 10°=25 micro sec or 25*10° sec
+
+MEMORY-LOCATIONS & ADDRESSES
+* Memory consists of many millions of storage cells (flip-flops).
+* Each cell can store a bit of information i.e. 0 or 1 (Figure 2.1).
++ Each group of n bits is referred to as a word of information, and n is called the word length.
+
+Page 6

@@ -1,0 +1,53 @@
+17.1 Types of Single-Level Ordered Indexes
+
+A binary search on this secondary index needs Mog, b) | = [ dog,1,099) | = 11 block
+accesses. To search for a record using the index, we need an additional block access
+to the data file for a total of 11 + 1 = 12 block accesses—a vast improvement over the
+3,750 block accesses needed on the average for a linear search, but slightly worse
+than the 6 block accesses required for the primary index. This difference arose
+because the primary index was nondense and hence shorter, with only 28 blocks in
+length as opposed to the 1,099 blocks dense index here.
+
+We can also create a secondary index on a nonkey, nonordering field of a file. In this
+case, numerous records in the data file can have the same value for the indexing
+field. There are several options for implementing such an index:
+
+= Option 1 is to include duplicate index entries with the same K(i) value—one
+for each record. This would be a dense index.
+
+= Option 2 is to have variable-length records for the index entries, with a
+repeating field for the pointer. We keep a list of pointers <P(i, 1), ... , P(i, k)>
+in the index entry for K(i)—one pointer to each block that contains a record
+whose indexing field value equals K(i). In either option 1 or option 2, the
+binary search algorithm on the index must be modified appropriately to
+account for a variable number of index entries per index key value.
+
+= Option 3, which is more commonly used, is to keep the index entries them-
+selves at a fixed length and have a single entry for each index field value, but
+to create an extra level of indirection to handle the multiple pointers. In this
+nondense scheme, the pointer P(i) in index entry <K(i), P(i)> points to a
+disk block, which contains a set of record pointers; each record pointer in
+that disk block points to one of the data file records with value K(i) for the
+indexing field. If some value K(i) occurs in too many records, so that their
+record pointers cannot fit in a single disk block, a cluster or linked list of
+blocks is used. This technique is illustrated in Figure 17.5. Retrieval via the
+index requires one or more additional block accesses because of the extra
+level, but the algorithms for searching the index and (more importantly) for
+inserting of new records in the data file are straightforward. The binary
+search algorithm is directly applicable to the index file since it is ordered.
+For range retrievals such as retrieving records where V, < K < V, block
+pointers may be used in the pool of pointers for each value instead of the
+record pointers. Then a union operation can be used on the pools of block
+pointers corresponding to the entries from Vj to V in the index to eliminate
+duplicates and the resulting blocks can be accessed. In addition, retrievals on
+complex selection conditions may be handled by referring to the record
+pointers from multiple non-key secondary indexes, without having to
+retrieve many unnecessary records from the data file (see Exercise 17.24).
+
+Notice that a secondary index provides a logical ordering on the records by the
+indexing field. If we access the records in order of the entries in the secondary
+index, we get them in order of the indexing field. The primary and clustering
+indexes assume that the field used for physical ordering of records in the file is the
+same as the indexing field.
+
+611

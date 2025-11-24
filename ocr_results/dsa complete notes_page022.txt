@@ -1,0 +1,64 @@
+Data Structures and Applications/BCS304 Module-1
+
+if(n>0) /* non zero matrix */
+
+{
+
+currentb = 1;
+
+for (i =0; i <alO].col; i++) —//* transpose by the columns in a */
+
+for (j = 1; j <=n; j++)
+if (a[j].col==i) /* find elements from the current column */
+
+{
+b[currentb].row = a[j].col; /* element is in current column, add it to b */
+b[currentb].col = a[j].row;
+b[{currentb].value = a[j].value;
+currentb++;
+}
+}
+}
+
+Analysis of transpose: Hence, the asymptotic time complexity of the transpose algorithm is
+O(columns: elements).
+
+Algorithm to Transpose of a two dimensional arrya of size rows x columns
+
+Input: two dimensional array A of size rows*columns
+
+Output: two dimensional array B of size columns*rows that stores the transpose of A
+for (i = 0; i < rows; i++)
+
+for G =0; j < columns; j++)
+
+bUIG) = ali);
+
+time required is O(columns: rows)
+
+Fast Transpose : We can transpose a matrix represented as a sequence of triples
+inO(columns + elements) time. This algorithm, fastTranspose is listed below .
+
+It first determines the number of elements in each column of the original matrix. This gives us the
+number of elements in each row of the transpose matrix. From this information, we can determine the
+starting position of each row in the transpose matrix. We now can move the elements in the original
+matrix one by one into their correct position in the transpose matrix. We assume that the number of
+columns in the original matrix never exceeds MAX_COL.
+
+Program Fast Transpose
+
+void fastTranspose(term a[], term b[]) /* the transpose of a is placed in b */
+{
+int rowTerms[MAX_COL], startingPos[|MAX_COL];
+int ij, numCols = a[0].col, numTerms = a[0].value;
+b[0].row = numCols;
+b[0].col = a[0].row;
+b[0].value = numTerms;
+if (NumTerms > 0) { /* nonzero matrix */
+for (i = 0; i < numCols; i++)
+rowTerms[i] = 0;
+for (i = 1; i<=numTerms; i++)
+rowTerms[a[i].col]++;
+startingPos[0] = 1;
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 23

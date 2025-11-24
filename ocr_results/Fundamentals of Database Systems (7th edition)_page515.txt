@@ -1,0 +1,34 @@
+14.4 General Definitions of Second and Third Normal Forms
+
+Figure 14.12
+
+Normalization into 2NF and 3NF. (a) The LOTS relation with its functional dependencies
+FD1 through FD4. (b) Decomposing into the 2NF relations LOTS1 and LOTS2.
+
+(c) Decomposing LOTS1 into the 3NF relations LOTS1A and LOTS1B. (d) Progressive
+normalization of LOTS into a 3NF design.
+
+Candidate Key
+
+(a) dt
+LOTS
+Property _id# | County name | Lot# | Area | Price | Tax rate
+51 r rr | r
+coo A yt r
+FD3 4
+FD4 4
+(b)
+LOTS! LoTs2
+Properly id# | County name | Lot# | Area | Price County name | Tax_rate
+FDI r rr | ea '
+ro2 4 4 4
+FD4 4
+(©
+LOTS1A LOTS1B
+Property id# | County name | Lot# | Area Area_| Price
+FD1 4 4 4 FD4 4
+Fo2 4 | | 4
+d
+@ LOTS 1NF
+Lots1 LoTs2 2NF
+LOoTSiA ——- LOTS1B_—-LOTS2 3NF

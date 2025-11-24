@@ -1,0 +1,62 @@
+unconnected. The four-valued logic truth tables for the and, or, xor, and not primitives are shown in
+Table.
+
+The truth table for the other four gates is the same, except that the outputs are complemented. Note that
+for the and gate, the output is 1 only when both inputs are | and the output is 0 if any input is 0.
+Otherwise, if one input is x or z, the output is x. The output of the or gate is 0 if both inputs are 0, is 1 if
+any input is 1, and is x otherwise.
+
+Truth Table for Predefined Primitive Gates
+and 0 1 x z or Oo lx z
+0 0 0 0 0 0 Oo lx x
+1 Oo lx x 1 11 1 1
+x oO x x x x x lx x
+Zz O x x x Zz x lx x
+
+not | input — output
+0 1
+1 0
+
+x x
+
+wR ORR
+wR KR KH
+wR KR KON
+
+Z x
+
+We now present two examples of gate-level modeling. Both examples use identifiers having multiple bit
+widths, called vectors. The syntax specifying a vector includes within square brackets two numbers
+separated with a colon. The following Verilog statements specify two vectors:
+
+output [0: 3] D;
+
+wire [7: 0] SUM;
+The first statement declares an output vector D with four bits, 0 through 3. The second declares a wire
+vector SUM with eight bits numbered 7 through 0. (Note: The first (left-most) number (array index)
+listed is always the most significant bit of the vector). The individual bits are specified within square
+brackets, so D[2] specifies bit 2 of D . It is also possible to address parts (contiguous bits) of vectors.
+For example, SUM[2: 0] specifies the three least significant bits of vector SUM.
+
+HDL Example below shows the gate-level description of a two-to-four-line decoder.
+
+module decoder_2x4_gates (D, A, B, enable);
+output [0: 3] D;
+input A,B;
+input enable;
+wire A_not,B_not, enable_not;
+
+not
+G1 (A_not, A),
+G2 (B_not, B),
+G3 (enable_not, enable);
+nand
+G4 (D[0], A_not, B_not, enable_not),
+G5 (D[1], A_not, B, enable_not),
+G6 (D[2], A, B_not, enable_not),
+G7 (D[3], A, B, enable_not);
+
+endmodule
+This decoder has two data inputs A and B and an enable input E. The four outputs are specified with the
+vector D. The wire declaration is for internal connections. Three not gates produce the complement of
+the inputs, and four nand gates provide the outputs for D. Remember that the output is always listed

@@ -1,0 +1,54 @@
+Microcontrollers — BCS402
+
+2. Basic C Data Types
+
+Compilers armcc and gcc use the data type mappings in Table 4 for an ARM target.
+
+Table 4: C compiler data type mappings
+
+C Data Type Implementation
+
+char unsigned 8-bit byte
+short signed 16-bit halfword
+int signed 32-bit word
+
+long signed 32-bit word
+
+long long signed 64-bit double word
+
+2.1 Local Variable Types
+
+ARMv4-based processors can efficiently load and store 8-, 16-, and 32-bit data. However,
+
+most ARM data processing operations are 32-bit only.
+
+For this reason, you should use a 32-bit data type, int or long , for local variables wherever
+
+possible.
+
+Avoid using char and short as local variable types, even if you are manipulating an 8- or 16-
+
+bit value. The one exception is when you want wrap-around to occur. If you require modulo
+
+arithmetic of the form 255 + 1 = 0, then use the char type.
+
+The following code checksums a data packet containing 64 words. It shows why you should
+
+avoid using char for local variables.
+
+Consider the compiler output for this function by making i as char.
+
+int checksum_vi(int *data) | checksum_v1
+
+{ MOV r2,ro 3 r2 = data
+char 1; Mov r0,#0 3 sum = 0
+int sum=0; Mov r1,#0 ;i=0
+checksum_v1_loop
+for (1=0; 1<64; i++) LOR r3,[r2,r1,LSL #2]  ; r3 = data[i]
+{ ADD rl,ri, #1 3 rl = i+l
+sum += data[i]; AND r1,rl, #0xff 31 = (char)ril
+} CMP rl,#0x40 3 compare i, 64
+return sum; ADD r0,r3,r0 3 sum += 13
+} Bcc checksum_v1_loop 3 if (1<64) loop
+Mov pe,rl4 3 return sum
+Dept. of ECE, GSSSIETW Page 34

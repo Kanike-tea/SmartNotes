@@ -1,0 +1,50 @@
+150
+
+Chapter 5 The Relational Data Model and Relational Database Constraints
+
+Other features of the relational model are presented in subsequent parts of the
+book. Chapter 9 relates the relational model data structures to the constructs of the
+ER and EER models (presented in Chapters 3 and 4), and presents algorithms for
+designing a relational database schema by mapping a conceptual schema in the ER
+or EER model into a relational representation. These mappings are incorporated
+into many database design and CASE! tools. Chapters 10 and 11 in Part 4 discuss
+the programming techniques used to access database systems and the notion of
+connecting to relational databases via ODBC and JDBC standard protocols. We
+also introduce the topic of Web database programming in Chapter 11. Chapters 14
+and 15 in Part 6 present another aspect of the relational model, namely the formal
+constraints of functional and multivalued dependencies; these dependencies are
+used to develop a relational database design theory based on the concept known as
+normalization.
+
+In this chapter, we concentrate on describing the basic principles of the relational
+model of data. We begin by defining the modeling concepts and notation of the
+relational model in Section 5.1. Section 5.2 is devoted to a discussion of relational
+constraints that are considered an important part of the relational model and are
+automatically enforced in most relational DBMSs. Section 5.3 defines the update
+operations of the relational model, discusses how violations of integrity constraints
+are handled, and introduces the concept of a transaction. Section 5.4 summarizes
+the chapter.
+
+This chapter and Chapter 8 focus on the formal foundations of the relational model,
+whereas Chapters 6 and 7 focus on the SQL practical relational model, which is the
+basis of most commercial and open source relational DBMSs. Many concepts are
+common between the formal and practical models, but a few differences exist that
+we shall point out.
+
+5.1 Relational Model Concepts
+
+The relational model represents the database as a collection of relations. Informally,
+each relation resembles a table of values or, to some extent, a flat file of records. It is
+called a flat file because each record has a simple linear or flat structure. For exam-
+ple, the database of files that was shown in Figure 1.2 is similar to the basic rela-
+tional model representation. However, there are important differences between
+relations and files, as we shall soon see.
+
+When a relation is thought of as a table of values, each row in the table represents a
+collection of related data values. A row represents a fact that typically corresponds
+to a real-world entity or relationship. The table name and column names are used
+to help to interpret the meaning of the values in each row. For example, the
+first table of Figure 1.2 is called STUDENT because each row represents facts
+about a particular student entity. The column names—Name, Student_number,
+
+'CASE stands for computer-aided software engineering.

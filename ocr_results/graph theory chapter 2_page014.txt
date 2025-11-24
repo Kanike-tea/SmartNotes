@@ -1,0 +1,41 @@
+ae
+
+The infinite region Rs is bound by S edges plus a pendant edge. Therefore, d(Rs) = 7:
+(Recall that while determining the degree of a region, a pendant edge is counted twice).
+Accordingly,
+(Ri) + d(R2) + d(R3) + d(R,) = 18
+= twice the no. of edges. =
+
+A connected planar graph G has 9 vertices with degrees 2, 2, 3, 3, 3, 4, 5, 6, 6.
+Find the number of regions of G.
+p The given graph has n = 9 vertices. Let m be the number of edges and r be the number of
+regions.
+By the hand shaking property, we have
+2m = sum of degrees of vertices
+=24+2434+34+34+44+54+64+6= 34.
+
+Therefore, m = 17.
+By using the Euler’s formula, we find that
+r=m-—n+2=17-9+2=10
+
+Thus, the given graph has 10 regions. s
+
+eMaey Let G be a 4-regular connected planar graph having 16 edges. Find the number
+of regions of G.
+
+> Letn be the number of vertices in G. Then each of these vertices has degree 4 and the sum
+of the degrees is 4n. Since G has 16 edges, this sum must be equal to 2 x 16 = 32 (by the
+handshaking property). Thus, 4n = 32 so that n = 8. If r is the number of regions of G, then
+by using Euler’s formula, we find that r = m-n+2= 16-8+2=10. 2
+
+Can a connected simple graph G with n = 1000 vertices and m = 3000 edges be
+
+planar?
+> Ifthe given graph G is planar, we should have m < 3n — 6 (by Corollary 1); that is 3000 <
+(3 x 1000) ~ 6 which is not possible. Therefore, G cannot be a planar graph. 2
+
+Find the maximum number of edges possible in a connected simple planar graph
+with eight vertices,
+z By Corollary 1, we should have m < 3n — 6. When n = 8, we have 3n - 6 = 18. Hence, we
+3] s .
+Ould have m < 18, Thus, the maximum number of edges possible is 18. ®

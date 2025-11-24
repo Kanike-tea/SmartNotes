@@ -1,0 +1,37 @@
+92 1. Directed Graphs and Graphs
+
+Figure 1.129
+
+Since a Hamilton path in a graph G meets every vertex of G, the length of a Hamilton path
+(if any) in a connected graph of n vertices is n — 1. (Recall that a path with n vertices has n ~ |
+edges).
+Remarks: If a vertex v in a connected graph G has degree k > 0, then a Hamiltonian path in G
+must contain atleast one edge incident on v and atmost two edges incident on v. A Hamiltonian
+cycle in G will contain exactly two edges incident on v. In particular, both edges incident on
+a vertex of degree two will be contained in every Hamiltonian cycle. There cannot be three or
+more edges incident with one vertex in a Hamiltonian cycle.
+
+The following theorem, known as Ore’s theorem, whose proof is beyond the scope of this
+text, provides a sufficient condition for a simple graph to be a Hamiltonian graph.
+Theorem 1 . If in a simple connected graph with n vertices (where n > 3) the sum of the
+degrees of every pair of non-adjacent vertices is greater than or equal to n, then the graph is
+Hamiltonian.
+
+The following theorem known as, Dirac’s theorem is an immediate consequence of the
+above theorem.
+
+Theorem 2. /f in a simple connected graph with n vertices (where n 2 3) the degree of ever)
+vertex is greater than or equal to n/2, then the graph is Hamiltonian.
+
+Proof: If ina simple connected graph with n vertices, the degree of each vertex is greater that
+or equal to n/2, then the sum of the degrees of every pair of adjacent or non-adjacent vertices
+is greater than or equal to n. Therefore, the graph is Hamiltonian (by Theorem 1). ay
+Prove that the complete graph K,, where n > 3, is a Hamilton graph.
+
+> In K;, the degree of every vertex is n - 1. If n > 3, we have n — 2 > 0, or 2n - 2 > me
+(n-1)>n/2.
+
+Thus, in Kn, where n > 3, the degree of every vertex is greater than n/2. Hence Kyi
+Hamilton graph, by Theorem 2. 4
+
+*See Section 1.6, Example 7.

@@ -1,0 +1,53 @@
+7.3 Division 227
+
+; table[0] = 255
+; table[i] = (1<<14)/(64+i) for i=1,2,3,...,63
+t32 DCB Oxff, Oxfc, Oxf8, Oxf4, Oxf0, Oxed, Oxea, Oxe6
+DCB Oxe3, Oxe0, Oxdd, Oxda, Oxd7, Oxd4, Oxd2, Oxcf
+DCB Oxcc, Oxca, Oxc7, Oxc5, Oxc3, Oxc0, Oxbe, Oxbc
+DCB Oxba, Oxb8, Oxb6, Oxb4, Oxb2, Oxb0, Oxae, Oxac
+DCB Oxaa, Oxa8, Oxa7, Oxa5, 0xa3, Oxa2, Oxa0, Ox9F
+DCB Ox9d, Ox9c, Ox9a, 0x99, 0x97, 0x96, 0x94, 0x93
+DCB 0x92, 0x90, Ox8F, Ox8e, Ox8d, Ox8c, Ox8a, 0x89
+DCB 0x88, 0x87, 0x86, 0x85, 0x84, 0x83, 0x82, 0x81
+
+Proor The proof that the code works is rather involved. To make the proof and explanation
+
+simpler, we comment each line with a line number for the instruction. Note that some
+of the instructions are conditional, and the comments only apply when the instruction is
+executed.
+
+Execution follows several different paths through the code depending on the size of the
+denominator d. We treat these cases separately. We'll use Ik as shorthand notation for the
+instruction numbered k in the preceding code.
+
+Case 1d = 0: 27 cycles on ARMOE, including return
+
+We check for this case explicitly. We avoid the table lookup at 104 by making the load
+conditional on q # 0. This ensures we don’t read off the start of the table. Since [01 sets
+s = 32, there is no branch at J09. 106 sets m = 0, and so I] sets the Z flag and clears the
+carry flag. We branch at [15 to special case code.
+
+Case 2 d = 1:27 cycles on ARMOE, including return
+
+‘This case is similar to the d = 0 case. The table lookup at [05 does occur, but we ignore the
+result. 106 sets m = —1, and so I] sets the Zand carry flags. The special code at 137 returns
+the trivial result of q = n,r = 0.
+
+Case 3 2 < d < 27>: 36 cycles on ARMOE, including return
+
+This is the hardest case. First we use a table lookup on the leading bits of d to generate an
+estimate for 2°7/d. 101 finds a shift s such that 23! < d2° < 2°?. 102 sets a = 2°. 103 and
+104 perform a table lookup on the top seven bits of a, which we will call ig. ig is an index
+between 64 and 127. Truncating d to seven bits introduces an error fo:
+
+ip = 25-5 — fo, where 0 < fy <1 (7.5)
+
+We set a to the lookup value ay = table[ig — 64] = 2!*i)
+the table truncation error. Then,
+
+24 24 Soi 24 fo in + fo
+= —-24= 1l- = 1+—>-- 7.6
+OD OG ( sr) oral + 8 oe ) (7)
+
+— go, where 0 < go < Lis

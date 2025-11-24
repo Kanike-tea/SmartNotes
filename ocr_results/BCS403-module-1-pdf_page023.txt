@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+1. Méni-Based interfaces for Web Clients or Browsing: These interfaces present
+the user with lists of options (called menus) that lead the user through the formulation
+ofa request. There is no need for the user to memorize the specific commands and
+syntax of a query language. Pull-down menus are a very popular technique in Web-
+based user interfaces.
+
+2. Pormis"Based interfaces: A forms-based interface displays a form to each user. Users can
+fill out all of the form entries to insert new data, or they can fill out only certain entries, in
+which case the DBMS will retrieve matching data for the remaining
+entries. Forms are usually designed and programmed for naive users as interfaces to canned
+transactions.
+
+3. Graphical) User interfaces: A GUI typically displays a schema to the user in
+diagrammatic form. The user then can specify a query by manipulating the diagram. In
+many cases, GUIs utilize both menus and forms. Most GUIs use a pointing device,
+such as a mouse, to select certain parts of the displayed schema diagram.
+
+4. Natiralangiage Interfaces: These interfaces accept requests written in
+English or some other language.and attempt to understand them. A natural language
+interface usually has its own schema, which is similar to the database conceptual schema,
+as well as a dictionary of important words. The natural language interface refers to the
+words in its schema, as well as to the set of standard words in its dictionary, to interpret the
+request. If the interpretation is successful, the interface generates a high-level query
+corresponding to the natural language request and submits it to the DBMS for processing;
+otherwise, a dialogue is started with the user
+to clarify the request.
+
+5. Speéchnputand/Output: Applications with limited vocabularies such as inquiries for
+telephone directory, flight arrival/departure, and credit card account information are
+allowing speech for input and output to enable customers to access this information. The
+speech input is detected using a library of predefined words and used to set up the
+parameters that are supplied to the queries. For output, a similar conversion from text or
+numbers into speech takes place.
+
+6. titerfaces for Parametric Users: Parametric users, such as bank tellers, often
+have a small set of operations that they must perform repeatedly. For example, a
+teller is able to use single function keys to invoke routine and repetitive transactions
+such as account deposits or withdrawals, or balance inquiries. Usually a small set of
+
+abbreviated commands is included, with the goal of minimizing the number of
+
+https://vtucode.in Page 24

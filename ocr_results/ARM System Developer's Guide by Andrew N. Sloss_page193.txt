@@ -1,0 +1,46 @@
+180 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+MUL =x, a, x 3 [ a¥(x2-y2), a*(x0-y0) ]
+ADD x, X, y, LSL#8 3. w2, wo J
+AND z, mask, x, LSR#8 =; [ 0, 22, 0, 20]
+AND x, mask, xx, LSR#8 ;[ 0, 3, 0, xl]
+AND y, mask, yy, LSR#8 ;[ 0, y3, o, yl dj
+SUB x, x, y 3 L (x3-y3), (xl-yl) J
+MUL =x, a, x 3 [ a¥(x3-y3), a*(xl-yl) ]
+ADD x, X, y, LSL#8 3. w3, wl J
+AND x, mask, x, LSR#8 5; [ 0, 23, 0, zl]
+ORR —-z, z, x, LSL#8 ;[ 23, 22, zl, 20]
+stTR oz, [pz], #4 ; store four z pixels
+SuBS count, count, #4
+BGT  merge_loop
+LOMFD sp!, {r4-r8, pc}
+The code works since
+
+0 < Wy < 255a + 255(256 — a) = 256 x 255 = OxFFOO (6.3)
+
+Therefore it is easy to separate the value [w2, wo] into w2 and wy by taking the most signif-
+icant and least significant 16-bit portions, respectively. We have succeeded in processing
+four 8-bit pixels using 32-bit load, stores, and data operations to perform operations in
+parallel.
+
+Summary _ Register Allocation
+
+= ARM has 14 available registers for general-purpose use: r0 to r12 and rl4. The
+stack pointer r]3 and program counter r15 cannot be used for general-purpose data.
+Operating system interrupts often assume that the user mode r13 points to a valid stack,
+so don’t be tempted to reuse r13.
+
+= If you need more than 14 local variables, swap the variables out to the stack, working
+outwards from the innermost loop.
+
+= Use register names rather than physical register numbers when writing assembly
+routines. This makes it easier to reallocate registers and to maintain the code.
+
+= To ease register pressure you can sometimes store multiple values in the same register.
+For example, you can store a loop counter and a shift in one register. You can also store
+multiple pixels in one register.
+
+6.5 CONDITIONAL EXECUTION
+
+The processor core can conditionally execute most ARM instructions. This conditional
+execution is based on one of 15 condition codes. If you don’t specify a condition, the

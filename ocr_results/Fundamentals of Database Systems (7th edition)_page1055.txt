@@ -1,0 +1,58 @@
+27.1 Information Retrieval (IR) Concepts
+
+desktop search engines (for example, Google Desktop, OS X Spotlight), for retriev-
+ing files, folders, and different kinds of entities stored on the computer. There are
+other systems that use peer-to-peer technology, such as the BitTorrent protocol,
+which allows sharing of music in the form of audio files, as well as specialized search
+engines for audio, such as Lycos and Yahoo! audio search.
+
+27.1.2 Databases and IR Systems: A Comparison
+
+Within the computer science discipline, databases and IR systems are closely related
+fields. Databases deal with structured information retrieval through well-defined
+formal languages for representation and manipulation based on the theoretically
+founded data models. Efficient algorithms have been developed for operators that
+allow rapid execution of complex queries. IR, on the other hand, deals with unstruc-
+tured search with possibly vague query or search semantics and without a well-
+defined logical schematic representation. Some of the key differences between
+databases and IR systems are listed in Table 27.1.
+
+Whereas databases have fixed schemas defined in some data model such as the rela-
+tional model, an IR system has no fixed data model; it views data or documents
+according to some scheme, such as the vector space model, to aid in query process-
+ing (see Section 27.2). Databases using the relational model employ SQL for queries
+and transactions. The queries are mapped into relational algebra operations and
+search algorithms (see Chapter 19) and return a new relation (table) as the query
+result, providing an exact answer to the query for the current state of the database.
+In IR systems, there is no fixed language for defining the structure (schema) of the
+document or for operating on the document—queries tend to be a set of query
+terms (keywords) or a free-form natural language phrase. An IR query result isa list
+of document id’s, or some pieces of text or multimedia objects (images, videos, and
+so on), or a list of links to Web pages.
+
+The result of a database query is an exact answer; if no matching records (tuples)
+are found in the relation, the result is empty (null). On the other hand, the answer
+
+Table 27.1 A Comparison of Databases and IR Systems
+
+1025
+
+Databases IR Systems
+
+= Structured data = Unstructured data
+
+= Schema driven = No fixed schema; various data models
+
+= Relational (or object, hierarchical, and (e.g., vector space model)
+network) model is predominant = Free-form query models
+
+= Structured query model = Rich data operations
+
+= Rich metadata operations = Search request returns list or pointers to
+
+= Query returns data documents
+
+= Results are based on exact matching (always = Results are based on approximate matching
+correct) and measures of effectiveness (may be
+
+imprecise and ranked)

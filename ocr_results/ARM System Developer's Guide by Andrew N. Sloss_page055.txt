@@ -1,0 +1,51 @@
+42 Chapter 2. ARM Processor Fundamentals
+
+2.7.2) ARM9 FAMILY
+
+The ARM9 family was announced in 1997. Because of its five-stage pipeline, the ARM9
+processor can run at higher clock frequencies than the ARM7 family. The extra stages
+improve the overall performance of the processor. The memory system has been redesigned
+to follow the Harvard architecture, which separates the data D and instruction J buses.
+
+The first processor in the ARM9 family was the ARM920T, which includes a separate
+D + I cache and an MMU. This processor can be used by operating systems requiring
+virtual memory support. ARM922T is a variation on the ARM920T but with half the D + I
+cache size.
+
+The ARM940T includes a smaller D + I cache and an MPU. The ARM940T is designed
+for applications that do not require a platform operating system. Both ARM920T and
+ARM940T execute the architecture v4T instructions.
+
+The next processors in the ARM9 family were based on the ARM9E-S core. This core is
+a synthesizable version of the ARM9 core with the E extensions. There are two variations:
+the ARM946E-S and the ARM966E-S. Both execute architecture vSTE instructions. They
+also support the optional embedded trace macrocell (ETM), which allows a developer to
+trace instruction and data execution in real time on the processor. This is important when
+debugging applications with time-critical segments.
+
+The ARM946E-S includes TCM, cache, and an MPU. The sizes of the TCM and caches
+are configurable. This processor is designed for use in embedded control applications that
+require deterministic real-time response. In contrast, the ARM966E does not have the MPU
+and cache extensions but does have configurable TCMs.
+
+The latest core in the ARM9 product line is the ARM926EJ-S synthesizable processor
+core, announced in 2000. It is designed for use in small portable Java-enabled devices such
+as 3G phones and personal digital assistants (PDAs). The ARM926EJ-S is the first ARM
+processor core to include the Jazelle technology, which accelerates Java bytecode execution.
+It features an MMU, configurable TCMs, and D + I caches with zero or nonzero wait state
+memories.
+
+2.7.3. ARM1O FAMILY
+
+The ARM1O, announced in 1999, was designed for performance. It extends the ARM9
+pipeline to six stages. It also supports an optional vector floating-point (VFP) unit, which
+adds a seventh stage to the ARM10 pipeline. The VFP significantly increases floating-point
+performance and is compliant with the IEEE 754.1985 floating-point standard.
+
+The ARM1020E is the first processor to use an ARMIOE core. Like the ARMOE, it
+includes the enhanced E instructions. It has separate 32K D + I caches, optional vector
+floating-point unit, and an MMU. The ARM1020E also has a dual 64-bit bus interface for
+increased performance.
+
+ARM1026E)J-S is very similar to the ARM926EJ-S but with both MPU and MMU. This
+processor has the performance of the ARM10 with the flexibility of an ARM926EJ-S.

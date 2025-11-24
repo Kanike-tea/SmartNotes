@@ -1,0 +1,47 @@
+Microcontrollers-BCS402
+
+the more available space for specialized peripherals. This in turn reduces the cost of the
+
+design and manufacturing since fewer discrete chips are required for the end product.
+
+ARM has incorporated hardware debug technology within the processor so that software
+engineers can view what is happening while the processor is executing code. With greater
+visibility, software engineers can resolve an issue faster, which have a direct effect on the
+
+time to market and reduces overall development costs.
+
+The ARM core is not a pure RISC architecture because of the constraints of its primary
+
+application—the embedded system.
+Instruction Set for Embedded Systems
+
+The ARM instruction set differs from the pure RISC definition in several ways that make the
+
+ARM instruction set suitable for embedded applications:
+
+Variable cycle execution for certain instructions— Not every ARM instruction executes in a
+single cycle. For example, load-store-multiple instructions vary in the number of execution
+
+cycles depending upon the number of registers being transferred.
+
+Inline barrel shifter leading to more complex instructions— The inline barrel shifter is a
+hardware component that preprocesses one of the input registers before it is used by an
+
+instruction. This improves core performance and code density.
+
+Thumb 16-bit instruction set-—ARM enhanced the processor core by adding a second 16-bit
+instruction set called Thumb that permits the ARM core to execute either 16- or 32-bit
+instructions. The 16-bit instructions improve code density by about 30% over 32-bit fixed-
+
+length instructions.
+
+Conditional execution— An instruction is only executed when a specific condition has been
+satisfied. This feature improves performance and code density by reducing branch
+
+instructions.
+
+Enhanced instructions— The enhanced digital signal processor (DSP) instructions were
+
+added to the standard ARM instruction set to support fast 16 16-Bit multiplier operations.
+
+Dept. of ECE, GSSSIETW Page 4

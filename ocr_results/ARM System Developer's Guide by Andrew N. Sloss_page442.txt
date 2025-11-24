@@ -1,0 +1,40 @@
+12.5 Flushing and Cleaning Cache Memory 429
+
+The macros in these examples were written to support as many ARM cores as possible
+without major modification. This effort produced a common header file used in this exam-
+ple and several other examples presented in this chapter. The header file is named cache.h
+and is shown in Figure 12.10.
+
+F {CPU} = "ARM920T"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 K assumed)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU 6 5 set associativity = 1<<NWAY (64 way)
+I7SET EQU 5 ; CP15 c7 set incrementer as 1<<ISET
+I7WAY QU 26 ; CP15 c7 way incrementer as 1<<SSET
+IQWAY EQU 26 ; CP15 c9 way incrementer as 1<<SSET
+ENDIF
+F {CPU} = "ARM922T"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 K assumed)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU 6 5 set associativity = 1<<NWAY (64 way)
+I7SET EQU 5 ; CP15 c7 set incrementer as 1<<ISET
+I7WAY QU 26 ; CP15 c7 way incrementer as 1<<SSET
+IQWAY EQU 26 ; CP15 c9 way incrementer as 1<<SSET
+ENDIF
+F {CPU} = "ARM926EJ-S"
+CSIZE EQU 14 ; cache size as 1<<CSIZE (16 K assumed)
+CLINE EQU 5 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU 2 set associativity = 1<<NWAY (4 way)
+I7SET EQU 4 ; CP15 c7 set incrementer as 1<<ISET
+I7WAY EQU 30. ; CP15 c7 way incrementer as 1<<IWAY
+ENDIF
+F {CPU} = "ARM940T"
+CSIZE EQU 12 5 cache size as 1<<CSIZE (4K)
+CLINE EQU 4 ; cache line size in bytes as 1<<CLINE
+NWAY  EQU 6 5 set associativity = 1<<NWAY (64 way)
+I7SET EQU 4 ; CP15 c7 set incrementer = 1<<ISET
+I7WAY EQU 26 ; CP15 c7 way incrementer = 1<<IWAY
+I9WAY EQUO  ; CP15 c9 way incrementer = 1<<IWAY
+ENDIF
+
+Figure 12.10 The header file cache.h.

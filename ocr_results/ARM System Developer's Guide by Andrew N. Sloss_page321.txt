@@ -1,0 +1,115 @@
+308 Chapter 8 Digital Signal Processing
+
+x0_r
+x0_i
+xLr
+x1i
+x2r
+x2_i
+x3
+x31
+yr
+y3_i
+
+tl
+
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+RN
+
+3
+
+3 ; the number of samples in each block
+4; data register (real part)
+
+5 ; data register (complex part)
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+x31
+
+x3
+
+12; scratch register
+
+14
+
+oid fft_16_arm9m(short *y, short *x, unsigned int N)
+
+Fft_16_arm9m
+
+‘STMI
+MOV
+
+FD sp!, {r4-rll, Ir}
+t0, #0 ; bit reversed counter
+
+first_stage_arm9m
+
+3 first stage load and bit reverse
+
+ADD tl, _-x, tO, LSL#2
+
+C_LOR x0, tl, N
+
+CLOR x2, tl, N
+
+ctor x1, tl, N
+
+CLOR x3, tl, N
+
+C_FFT4 0
+
+CSTR x0, y, #4
+
+CSTR xl, y, #4
+
+CSTR x2, y, #4
+
+CSTR y3, y, #4
+
+EOR tO, tO, N, LSR#3. ; increment third bit
+
+TsT tO, Ny LSR#3 3 from the top
+
+BNE first_stage_arm9m
+
+EOR tO, tO, N, LSR#4 ; increment fourth bit
+
+TsT tO, Ny LSRFA 3 from the top
+
+BNE first_stage_arm9m
+
+MOV tl, Ny LSR#S ; increment fifth
+bit_reversed_count_arm9m 3 bits downward
+
+EOR tO, tO, tl
+
+TsT tO, tl
+
+BNE first_stage_arm9m
+
+MOVS tl, tl, LSR#I
+
+BNE
+
+bit_reversed_count_arm9m

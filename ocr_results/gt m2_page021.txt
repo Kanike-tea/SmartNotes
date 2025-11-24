@@ -1,0 +1,37 @@
+x;Rx; and x;,Rxx
+always imply
+X)RXx.
+
+The binary relation “is greater than,” for example, is a transitive relation. If x; >
+x; and x; > X,, Clearly x; > x;. “Is descendent of” is another example of a transitive
+relation.
+
+The digraph of a transitive (but irreflexive and asymmetric) binary relation is
+shown in Fig. 9-4. Note the triangular subgraphs. A digraph representing a
+transitive relation (on its vertex set) is called a transitive directed graph.
+
+Equivalence Relation: A binary relation is called an equivalence relation if it
+is reflexive, symmetric, and transitive. Some examples of equivalence relations
+are “is parallel to,” “is equal to,” “is congruent to,” “is equal to modulo m,” and
+“is isomorphic to.”
+
+The graph representing an equivalence relation may be called an equivalence
+graph. What does an equivalence graph look like? Let us look at an example,
+consisting of the equivalence relation “is congruent to modulo 3” defined on the
+set of 11 integers, 10 through 20. The graph is shown in Fig. 9-6. (Recall that
+each undirected edge in Fig. 9-6 represents two parallel but oppositely directed
+edges.)
+
+In Fig. 9-6 we see that the vertex set of the graph is divided into three disjoint
+classes, each in a separate component. Each component is an undirected
+subgraph (due to symmetry) with a self-loop at each vertex (due to reflexivity).
+Furthermore, in each component every vertex is related to (ie., joined by an
+edge to) every other vertex.
+
+10 13 Wl 14
+
+= 1 (mod 3) = 2 (mod 3) =0 (mod 3)
+
+Fig. 9-6 Equivalence graph.
+
+In general, an equivalence relation on a set partitions the elements of the set

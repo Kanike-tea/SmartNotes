@@ -1,0 +1,39 @@
+Database Management System [BCS403]
+
+2.5 Additional Relational Operations
+
+2.5.1 Generalized Projection
+
+The generalized projection operation extends the projection operation by allowing functions of
+attributes to be included in the projection list. The generalized form can be expressed as:
+TFA, F2, ..., Fn (R)
+where F1, F2, ..., Fn are functions over the attributes in relation R and may involve arithmetic
+operations and constant values.
+The generalized projection helpful when developing reports where computed values have to be
+produced in the columns of a query result. For example,consider the relation EMPLOYEE (Ssn,
+Salary,Deduction, Years_service). A report may be required to show
+Net Salary = Salary — Deduction,
+Bonus = 2000 * Years_service, and
+Tax = 0.25 * Salary.
+generalized projection combined with renaming :
+REPORT < p(5sn, Net salary, Bonus, Tax)(7Ssn, Salary— Deduction, 2000 *
+
+Years_service, 0.25 * Salary(/EMPLOYEE)).
+
+2.5.2 Aggregate Functions and Grouping
+
+Aggregate functions are used in simple statistical queries that summarize information from the
+database tuples.Common functions applied to collections of numeric values include
+SUM,AVERAGE, MAXIMUM, and MINIMUM.The COUNT function is used for counting tuples
+or values. For example, retrieving the average or total salary of all employees or the total number of
+
+employee tuples.
+
+Grouping the tuples in a relation by the value of some of their attributes and then applying an
+aggregate function independently to each group. For example , group EMPLOYEE tuples by Dno, so
+that each group includes the tuples for employees working in the same department. We can then list
+each Dno value along with, say, the average salary of employees within the department, or the
+
+number of employees who work in the department.
+
+https://vtucode.in Page 32

@@ -1,0 +1,51 @@
+Table 15.6
+
+15.1 Advanced DSP and SIMD Support in ARMv6 555
+
+Instructions to support 16-bit complex multiplication.
+
+Instruction Description
+
+SMUAD{X}{<cond>} Rd, Rm, Rs Dual 16-bit signed multiply and add
+SMUSD{X}{<cond>} Rd, Rm, Rs Dual 16-bit signed multiply and subtract
+
+We multiply Ra and Rb to produce a new complex number Re. The code assumes that the
+16-bit values represent Q15 fractions. Here is the code for ARMvé6:
+
+SMUSD Rt, Ra, Rb
+SMUADX Rc, Ra, Rb
+
+real*real—imag*imag at Q30
+real*imagtimag*real at Q30
+QADD Rt, Rt, Rt convert to Q31 & saturate
+QADD Rc, Re, Rc convert to Q31 & saturate
+PKHTB Rc, Rc, Rt, ASR #16 ; pack results
+
+Compare this with an ARMvSTE implementation:
+
+SMULBB Rc, Ra, Rb; real*real
+SMULTT Rt, Ra, Rb; imag*imag
+QSUB Rt, Rc, Rt; real*real-imag*imag at Q30
+SMULTB Rc, Ra, Rb; imag*real
+
+SMLABT Rc, Ra, Rb + real*imag at Q30
+QADD Rt, Rt, Rt convert to Q31 & saturate
+QADD Rc, Rc, Rc Convert to Q31 & saturate
+MOV Rc, Re, LSR #16
+
+MOV Rt, Rt, LSR #16
+
+ORR Rt, Rt, Rc, LSL#16 ; pack results
+
+There are 10 cycles for ARMVSE versus 5 cycles for ARMV6. Clearly with any algorithm
+doing very intense complex maths, a two times improvement in performance can be gained
+for the complex multiply.
+
+15.1.4 SATURATION INSTRUCTIONS
+
+Saturating arithmetic was first addressed with the E extensions that were added to the
+ARMv5TE architecture, which was introduced with the ARM966E and ARM946E products.
+ARMvV6 takes this further with individual and more flexible saturation instructions that can
+operate on 32-bit words and 16-bit halfwords. In addition to these instructions, shown in
+Table 15.7, there are the new saturating arithmetic SIMD operations that have already been
+described in Section 15.1.1.

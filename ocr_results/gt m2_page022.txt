@@ -1,0 +1,35 @@
+into classes (called equivalence classes) such that two elements are in the same
+class if and only if they are related. Symmetry ensures that there is no ambiguity
+regarding membership in the equivalence class; otherwise, x; may have been
+
+related to x; but not vice versa. Transitivity ensures that in each component every
+vertex is joined to every other vertex, because if a is related to b and b is related
+
+toc,aisa
+more than
+
+so related to c. Transitivity also guarantees that no element can be in
+one class. Reflexivity allows an element to be in a class by itself, if it
+
+is not related to any other element in the set.
+
+Relation Matrices: A binary relation R on a set can also be represented by a
+
+matrix, ca
+number of
+
+led a relation matrix. It is a (0, 1), n by n matrix, where n is the
+elements in the set. The i, j th entry in the matrix is 1 if x;Rx; is true,
+
+and is 0, otherwise. For example, the relation matrix of the relation “is greater
+than” on the set of integers (3, 4, 7, 5, 8] is
+
+oun b&w
+~~ — i oO Ww
+i
+-ooooNn
+i)
+—
+
+We shall see in Section 9-8 that this is precisely the adjacency matrix of the
+digraph representing the binary relation.

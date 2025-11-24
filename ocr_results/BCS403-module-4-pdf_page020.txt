@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+1.3.2 Specification of Views in SQL
+
+In SQL, the command to specify a view is CREATE VIEW. The view is given a (virtual) table name
+(or view name), a list of attribute names, and a query to specify the contents of the view. If none of
+the view attributes results from applying functions or arithmetic operations, we do not have to
+specify new attribute names for the view, since they would be the same as the names of the
+attributes of the defining tables in the default case.
+
+Example 1:
+
+CREATE VIEW WORKS_ON1
+AS SELECT Fname, Lname, Pname, Hours
+FROM EMPLOYEE, PROJECT, WORKS_ON
+WHERE Ssn=Essn AND Pno=Pnumber;
+Example 2:
+CREATE VIEW DEPT_INFO(Dept_name, No_of_emps, Total_sal)
+AS SELECT Dname, COUNT (*), SUM (Salary)
+FROM DEPARTMENT, EMPLOYEE
+WHERE Dnumber=Dno
+GROUP BY Dname;
+
+In example 1, we did not specify any new attribute names for the view WORKS_ON1. In this
+case,WORKS_ON1 inherits the names of the view attributes from the defining tables EMPLOYEE,
+PROJECT, and WORKS_ON.
+
+Example 2 explicitly specifies new attribute names for the view DEPT_INFO, using a one-to-one
+correspondence between the attributes specified in the CREATE VIEW clause and those specified
+in the SELECT clause of the query that defines the view.
+
+WORKS.ON1
+Fname Lname Pname Hours
+
+DEPT_INFO
+Dept_name | No_of_emps Total_sal
+
+We can now specify SQL queries on a view—or virtual table—in the same way we specify queries
+involving base tables.
+
+For example, to retrieve the last name and first name of all employees who work on the ‘ProductX’
+project, we can utilize the WORKS_ON1 view and specify the query as :
+
+https://vtucode.in page 38

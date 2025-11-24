@@ -1,0 +1,63 @@
+292 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+the attributes Super_ssn and Dno of EMPLOYEE, Mgr_ssn and Mgr_start_date of
+DEPARTMENT, and Dnum of PROJECT. In our example, we choose Ssn, Dnumber, and
+Pnumber as primary keys for the relations EMPLOYEE, DEPARTMENT, and PROJECT,
+respectively. Knowledge that Dname of DEPARTMENT and Pname of PROJECT are
+unique keys is kept for possible use later in the design.
+
+The relations that are created from the mapping of entity types are sometimes called
+entity relations because each tuple represents an entity instance. The result after
+this mapping step is shown in Figure 9.3(a).
+
+Step 2: Mapping of Weak Entity Types. For each weak entity type W in the
+ER schema with owner entity type E, create a relation R and include all simple
+attributes (or simple components of composite attributes) of W as attributes of
+R. In addition, include as foreign key attributes of R, the primary key attribute(s)
+of the relation(s) that correspond to the owner entity type(s); this takes care of
+mapping the identifying relationship type of W. The primary key of R is the
+combination of the primary key(s) of the owner(s) and the partial key of the
+weak entity type W, if any. If there is a weak entity type E, whose owner is also
+a weak entity type E), then E, should be mapped before E, to determine its
+primary key first.
+
+In our example, we create the relation DEPENDENT in this step to correspond to
+the weak entity type DEPENDENT (see Figure 9.3(b)). We include the primary key
+Ssn of the EMPLOYEE relation—which corresponds to the owner entity type—
+as a foreign key attribute of DEPENDENT; we rename it Essn, although this is not
+
+Figure 9.3
+
+llustration of some Fname | Minit | Lname | Ssn | Bdate | Address | Sex | Salary
+mapping steps.
+
+(a) Entity relations DEPARTMENT
+
+after step 1.
+
+(b) Additional weak entity Dname | Dnumber
+
+relation after step 2.
+
+(©) Relationship relations PROJECT
+
+after step 5. Pname | Pnumber | Plocation
+
+(d) Relation representing
+multivalued attribute
+
+after step 6.
+
+(a) EMPLOYEE
+
+(b) DEPENDENT
+
+Essn | Dependent_name | Sex | Bdate | Relationship
+
+(c) WORKS_ON
+
+Essn Pno Hours.
+
+(d) DEPT_LOCATIONS
+
+Dnumber | Dlocation

@@ -1,0 +1,34 @@
+Digital Design and Computer Organization(BCS302)
+
+nd
+
+(a) F= yz + w'x" (b) F= yz + w'z
+
+FIGURE 3.15
+Example with don’t-care conditions
+
+with minterm m3 to give the three-literal term w'x'z. However, by including one or two
+adjacent X’s we can combine four adjacent squares to give a two-literal term. In Fig.
+3.15(a), don’t-care minterms O and 2 are included with the 1’s, resulting in the simpli-
+fied function
+
+F=yzt+w'x'
+
+In Fig. 3.15(b), don’t-care minterm 5 is included with the 1’s, and the simplified
+function is now
+
+F=yzt+w'z
+
+Either one of the preceding two expressions satisfies the conditions stated for this
+example.
+
+Solve S=F(A,B,C,D)=Zm(7)+d(10,11,12,13,14,15) using K map to get minimum
+SOP expression
+
+S=sBCD
+
+Solve S =F(A,B,C,D)=Zm(2,3,5,7,10,12)+d(11,15) using K map to get minimum SOP
+expression
+
+Page
+18

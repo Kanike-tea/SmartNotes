@@ -1,0 +1,55 @@
+160 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+Figure 5.4
+
+The CAR relation, with
+two candidate keys:
+License_number and
+Engine_serial_number.
+
+CAR
+
+License_number | Engine_serial_number Make Model | Year
+Texas ABC-739 69352 Ford Mustang | 02
+Florida TVP-347 B43696 Oldsmobile | Cutlass | 05
+New York MPO-22 X83554 Oldsmobile | Delta ot
+California 432-TFY 43742 Mercedes | 190-D | 99
+California RSK-629 Y82935 Toyota Camry | 04
+Texas RSK-629 028365 Jaguar XJS 04
+
+the choice of one to become the primary key is somewhat arbitrary; however, it is
+usually better to choose a primary key with a single attribute or a small number
+of attributes. The other candidate keys are designated as unique keys and are
+not underlined.
+
+Another constraint on attributes specifies whether NULL values are or are not per-
+mitted. For example, if every STUDENT tuple must have a valid, non-NULL value for
+the Name attribute, then Name of STUDENT is constrained to be NOT NULL.
+
+5.2.3 Relational Databases and Relational
+Database Schemas
+
+The definitions and constraints we have discussed so far apply to single relations
+and their attributes. A relational database usually contains many relations, with
+tuples in relations that are related in various ways. In this section, we define a rela-
+tional database and a relational database schema.
+
+A relational database schema S is a set of relation schemas $ = {R;, Rp, ... , R,,} and
+a set of integrity constraints IC. A relational database state!° DB of S is a set of
+relation states DB = {rj, 7, ... , ",} such that each r; is a state of R; and such that the
+r, relation states satisfy the integrity constraints specified in IC. Figure 5.5 shows a
+relational database schema that we call COMPANY = {EMPLOYEE, DEPARTMENT,
+DEPT_LOCATIONS, PROJECT, WORKS_ON, DEPENDENT}. In each relation schema,
+the underlined attribute represents the primary key. Figure 5.6 shows a relational
+database state corresponding to the COMPANY schema. We will use this schema
+and database state in this chapter and in Chapters 4 through 6 for developing
+sample queries in different relational languages. (The data shown here is
+expanded and available for loading as a populated database from the Compan-
+ion Website for the text, and can be used for the hands-on project exercises at
+the end of the chapters.)
+
+When we refer to a relational database, we implicitly include both its schema and its
+current state. A database state that does not obey all the integrity constraints is
+
+10, relational database state is sometimes called a relational database snapshot or instance. However,
+as we mentioned earlier, we will not use the term instance since it also applies to single tuples.

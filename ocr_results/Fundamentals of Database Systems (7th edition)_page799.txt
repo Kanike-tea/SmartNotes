@@ -1,0 +1,50 @@
+20.5 Characterizing Schedules Based on Serializability 769
+
+Figure 20.8
+Another example of serializability testing. (a) The read and write operations of three
+transactions T;, Ta, and T3. (b) Schedule E. (c) Schedule F.
+
+(a) Transaction T, Transaction T, Transaction T;
+read_item(X); read_item(Z); read_item(Y);
+write_item(X); read_item(Y); read_item(Z);
+read_item(Y); write_item(Y); write_item(Y);
+write_item(Y); read_item(X); write_item(Z);
+
+write_item(X);
+
+(b) Transaction T, Transaction T, Transaction T,
+
+read_item(Z);
+read_item(Y);
+
+write_item(Y);
+read_item(Y);
+
+d_item(Z);
+Time read_item(X); read ttem(Z)
+write_item(X);
+write_item(Y);
+write_item(Z);
+read_item(X);
+read_item(Y);
+write_item(Y); write_item(X);
+Schedule E
+© Transaction T, Transaction T,, Transaction T,
+
+read_item(Y);
+
+read_item(X); read_item(Z);
+
+write_item(X);
+write_item(Y);
+Time write_item(Z);
+read_item(Z);
+read_item(Y);
+
+write_item(Y); read_item(Y);
+
+write_item(Y);
+read_item(X);
+write_item(X);
+
+Schedule F

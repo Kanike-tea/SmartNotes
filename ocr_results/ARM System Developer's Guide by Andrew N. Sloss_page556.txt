@@ -1,0 +1,50 @@
+14.10 Demonstration: A Small Virtual Memory System
+
+mmuInitPT (&systemPT) ; /* init system L2 PT with FAULT PTE */
+mmuInitPT (&task3PT) ; /* init task 3 L2 PT with FAULT PTE */
+mmuInitPT (&task2PT) ; /* init task 2 L2 PT with FAULT PTE */
+mmuInitPT (&task1PT) ; /* init task 1 L2 PT with FAULT PTE */
+
+/* Part 2 filling page tables with translation & attribute data */
+mmuMapRegion (&kernel Region) ; /* Map kernelRegion SystemPT */
+mmuMapRegion (&sharedRegion) ; /* Map sharedRegion SystemPT */
+mmuMapRegion(&pageTableRegion); /* Map pagetableRegion SystemPT */
+mmuMapRegion(&peripheralRegion) ;/* Map peripheralRegion MasterPT */
+
+mmuMapRegion(&t3Region) ; /* Map task3 PT with Region data */
+mmuMapRegion(&t2Region) ; /* Map task3 PT with Region data */
+mmuMapRegion(&t1Region) ; /* Map task3 PT with Region data */
+
+/* Part 3 activating page tables */
+
+mmuAttachPT(&masterPT);  /* load L1 TTB to cpl5:c2:cO register */
+mmuAttachPT (&systemPT) ; /* load L2 system PTE into L1 PT */
+mmuAttachPT (&task1PT) ; /* load L2 task 1 PTE into L1 PT */
+
+/* Part 4 Set Domain Access */
+domainAccessSet(DOM3CLT , CHANGEALLDOM); /* set Domain Access */
+
+/* Part 5 Enable MMU, caches and write buffer */
+#if defined (__TARGET_CPU_ARM720T)
+enable = ENABLEMMU | ENABLECACHE | ENABLEWB ;
+change = CHANGEMMU | CHANGECACHE | CHANGEWB ;
+#endif
+#if defined (__TARGET_CPU_ARM920T)
+enable = ENABLEMMU | ENABLEICACHE | ENABLEDCACHE ;
+change = CHANGEMMU | CHANGEICACHE | CHANGEDCACHE ;
+#endif
+controlSet (enable, change) ; /* enable cache and MMU */
+
+543
+
+The second part then maps the seven Regions in the system into their page tables by
+calling mmuMapRegi on seven times: four times to map the kernel, shared, page table, and
+peripheral regions, and three times to map the three task regions. mmuMapRegion converts
+the data from the control blocks into page table entries that are then written to a page
+
+table.
+
+The third part in initalizing the MMU is to activate the page tables necessary to start
+the system. This is done by calling mmuAttachPT three times. First, it activates the master
+LI page table by loading its base address into the TTB entry in CP15:c2:c0. The routine
+then activates the L2 system page table. The peripheral region is comprised of 1 MB pages

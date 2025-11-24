@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+(b): UPDATEPROJECT SET Pname = ‘ProductY’
+WHERE Pname = ‘ProductX’;
+
+Update (a) relates ‘John Smith’ to the ‘ProductY’ PROJECT tuple instead of the ‘Productx’
+PROJECT tuple and is the most likely desired update. However, (b) would also give the desired
+update effect on the view, but it accomplishes this by changing the name of the ‘ProductX’ tuple in
+the PROJECT relation to ‘ProductY’.
+
+It is quite unlikely that the user who specified the view update UV1 wants the update to be
+interpreted as in (b), since it also has the side effect of changing all the view tuples with Pname =
+‘ProductX’.
+
+Some view updates may not make much sense; for example, modifying the Total_sal attribute of the
+DEPT_INFO view does not make sense because Total_sal is defined to be the sum of the individual
+employee salaries. This request is shown as UV2:
+UV2: UPDATEDEPT_INFO
+SET Total_sal=100000
+WHERE Dname='Research’;
+A large number of updates on the underlying base relations can satisfy this view update.
+
+Generally, a view update is feasible when only one possible update on the base relations can
+accomplish the desired update effect on the view. Whenever an update on the view can be mapped
+to more than one update on the underlying base relations, we must have a certain procedure for
+choosing one of the possible updates as the most likely one.
+
+In summary, we can make the following observations:
+
+= Aview with a single defining table is updatable if the view attributes contain the primary key of the
+base relation, as well as all attributes with the NOT NULL constraint that do not have default
+values specified.
+
+m Views defined on multiple tables using joins are generally not updatable.
+
+u Views defined using grouping and aggregate functions are not updatable.
+
+In SQL, the clause WITH CHECK OPTION must be added at the end of the view definition if a view
+
+is to be updated. This allows the system to check for view updatability and to plan an execution
+
+strategy for view updates. It is also possible to define a view table in the FROM clause of an SQL
+
+query. This is known as an in-line view. In this case, the view is defined within the query itself.
+
+https://vtucode.in page 41

@@ -1,0 +1,50 @@
+98 Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+ipart_cod8) Ciy) Grate) ame) DEPARTURE_
+
+1 AIRPORT “Ny
+
+AIRPORT Scheduled_dep_time <Scheduled_arr_time> FLIGHT LEG
+
+M 1 “arrivaL NN Oo
+CAN. AIRPORT Instances
+LAND 1
+A Humber) 4
+
+‘“) AIRPLANE_
+
+1
+
+Girline FLIGHT
+N
+Weekdays 1
+
+ORE DEPARTS
+Dep_time
+
+No_of_avail_seats
+
+AIRPLANE LEG_INSTANCE
+
+1
+Customer_name,
+
+Zz
+
+Notes:
+
+AEG (segment) is a nonstop portion of a flight.
+ALEG_INSTANCE is a particular occurrence
+
+of a LEG ona particular date.
+
+Figure 3.21
+An ER diagram for an AIRLINE database schema.
+
+of Vote attribute is {“Yes’, ‘No’, ‘Abstain’, ‘Absent’}). Draw an ER schema
+diagram for this application. State clearly any assumptions you make.
+
+3.22. A database is being constructed to keep track of the teams and games of a
+sports league. A team has a number of players, not all of whom participate in
+each game. It is desired to keep track of the players participating in each
+game for each team, the positions they played in that game, and the result of

@@ -1,0 +1,52 @@
+27.7 Web Search and Analysis
+
+High precision is achieved almost always at the expense of recall and vice versa. It is
+a matter of the application’s context whether to tune the system for high precision
+or high recall. F-score is typically used as a single measure that combines precision
+and recall to compare different result sets:
+
+2pr
+
+ptr
+One of the properties of harmonic mean is that the harmonic mean of two numbers
+tends to be closer to the smaller of the two. Thus F is automatically biased toward
+
+the smaller of the precision and recall values. Therefore, for a high F-score, both
+precision and recall must be high.
+
+In
+
+wl
+
+27.7 Web Search and Analysis”°
+
+The emergence of the Web has brought millions of users to search for information,
+which is stored in a very large number of active sites. To make this information
+accessible, search engines such as Google, bing and Yahoo! must crawl and index
+these sites and document collections in their index databases. Moreover, search
+engines must regularly update their indexes given the dynamic nature of the Web
+as new Web sites are created and current ones are updated or deleted. Since there
+are many millions of pages available on the Web on different topics, search engines
+must apply many sophisticated techniques such as link analysis to identify the
+importance of pages.
+
+There are other types of search engines besides the ones that regularly crawl the
+Web and create automatic indexes: these are human-powered, vertical search
+engines or metasearch engines. These search engines are developed with the help of
+computer-assisted systems to aid the curators with the process of assigning indexes.
+They consist of manually created specialized Web directories that are hierarchically
+organized indexes to guide user navigation to different resources on the Web. Vertical
+search engines are customized topic-specific search engines that crawl and index a
+specific collection of documents on the Web and provide search results from that
+specific collection. Metasearch engines are built on top of search engines: they
+query different search engines simultaneously and aggregate and provide search
+results from these sources.
+
+Another source of searchable Web documents is digital libraries. Digital libraries
+can be broadly defined as collections of electronic resources and services for the
+delivery of materials in a variety of formats. These collections may include a univer-
+sity’s library catalog, catalogs from a group of participating universities, as in the
+
+The contribution of Pranesh P. Ranganathan and Hari P. Kumar to this section is appreciated.
+
+1047

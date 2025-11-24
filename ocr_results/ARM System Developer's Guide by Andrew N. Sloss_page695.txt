@@ -1,0 +1,93 @@
+Memory (continued)
+nonprotected, 35
+random access. see RAM
+read-only. see ROM
+remapping of, 14, 14f
+secondary, 405
+size of, 10
+static random access. see SRAM
+synchronous dynamic random access. see
+DRAM
+tightly coupled, 35, 36f, 405
+types of, 10-11
+virtual. see Virtual memory system
+width of, 10
+Memory controllers, 11
+Memory management units
+access permission, 510-512
+ARM, 501
+attributes of, 492-493, 493t
+caches, 512-513
+coprocessor 15 and, 513-515
+definition of, 491
+description of, 35-36, 406-408, 462
+domains, 510-512
+fast context switch extension
+definition of, 515
+domains used by, 518-519
+features of, 515-516
+hints for, 519-520
+page tables used by, 518-519
+schematic diagram of, 517f
+virtual addresses modified by, 516
+functions of, 491
+multitasking and, 497-499
+page tables
+activation of, 497
+architecture of, 501-502
+context switch activation of, 497
+definition of, 495
+LI translation table base address, 503-504
+types of, 502t
+regions, 492
+simple little operating system, 545
+tasks in, 493
+translation lookaside buffer
+CP15:c7 commands, 509t, 509-510
+
+definition of, 506
+functions of, 506
+hit, 506
+lockdown registers, 510t
+miss, 506
+operations, 509-510
+single-step page table walk, 507-508
+two-step page table walk, 508-509
+write buffer, 512-513
+Memory protection units
+access permission for, 470-474
+description of, 35, 461-462
+initializing of
+access permission, 470-474
+cache attributes, 474-477
+demonstration of, 481-482, 485-486
+enabling of regions, 477-478
+region size and location, 466-470
+write buffer attributes, 474-477
+protected regions
+access permission for, 470-474
+assigning of, 479-481
+background regions, 464-465
+configuring of, 482-485
+enabling of, 477-478
+governing rules for, 463-464
+initializing of, 482-485
+location of, 466-470
+overlapping regions, 464
+size of, 466-470
+sample demonstration of
+context switch, 486
+description of, 478
+initializing, 481-482
+memory map for assigning regions,
+479-481
+mpuSLOS, 487
+system requirements, 479
+MEND, 629
+MEXIT, 629
+Miss rate, 417
+Mixed-endianness support, 560
+MLA multiply instruction, 57-58, 590-591
+MMU. see Memory management unit
+mmuSLoS, 492
+Modified virtual address, 516

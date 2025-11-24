@@ -1,0 +1,52 @@
+384
+
+Chapter 12 Object and Object-Relational Databases
+
+types for attributes, but not as a basis for table creation. In Figure 12.4(b), the attri-
+bute PERSON_ID will hold the system-generated object identifier whenever a new
+PERSON record (object) is created and inserted in the table.
+
+12.2.4 Encapsulation of Operations
+
+In SQL, a user-defined type can have its own behavioral specification by specifying
+methods (or operations) in addition to the attributes. The general form of a UDT
+specification with methods is as follows:
+
+CREATE TYPE <TYPE-NAME> (
+<LIST OF COMPONENT ATTRIBUTES AND THEIR TYPES>
+<DECLARATION OF FUNCTIONS (METHODS)>
+di
+For example, in Figure 12.4(b), we declared a method Age() that calculates the age of
+an individual object of type PERSON_TYPE.
+
+The code for implementing the method still has to be written. We can refer to the
+method implementation by specifying the file that contains the code for the method,
+or we can write the actual code within the type declaration itself (see Figure 12.4(b)).
+
+SQL provides certain built-in functions for user-defined types. For a UDT called
+TYPE_T, the constructor function TYPE_T( ) returns a new object of that type. In
+the new UDT object, every attribute is initialized to its default value. An observer
+function A is implicitly created for each attribute A to read its value. Hence, A(X)
+or X.A returns the value of attribute A of TYPE_T if X is a variable that refers to an
+object/row of type TYPE_T. A mutator function for updating an attribute sets the
+value of the attribute to a new value. SQL allows these functions to be blocked from
+public use; an EXECUTE privilege is needed to have access to these functions.
+
+In general, a UDT can have a number of user-defined functions associated with it.
+The syntax is
+INSTANCE METHOD <NAME> (<ARGUMENT_LIST>) RETURNS
+<RETURN_TYPE>;
+
+Two types of functions can be defined: internal SQL and external. Internal functions
+are written in the extended PSM language of SQL (see Chapter 10). External func-
+tions are written in a host language, with only their signature (interface) appearing
+in the UDT definition. An external function definition can be declared as follows:
+
+DECLARE EXTERNAL <FUNCTION_NAME> <SIGNATURE>
+LANGUAGE <LANGUAGE_NAME>;
+
+Attributes and functions in UDTs are divided into three categories:
+
+= PUBLIC (visible at the UDT interface)
+= PRIVATE (not visible at the UDT interface)
+= PROTECTED (visible only to subtypes)

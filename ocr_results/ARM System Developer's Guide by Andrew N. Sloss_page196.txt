@@ -1,0 +1,40 @@
+6.6 Looping Constructs 183
+
+Table 6.1 Inverted logical relations
+
+Inverted expression Equivalent
+1(a && b) (1a) || (1b)
+Wa || b) (1a) 8& (1b)
+
+= You can implement if statements with the logical AND or OR of several similar
+conditions using compare instructions that are themselves conditional.
+
+6.6 LOOPING CONSTRUCTS
+
+Most routines critical to performance will contain a loop. We saw in Section 5.3 that on the
+ARM loops are fastest when they count down towards zero. This section describes how to
+implement these loops efficiently in assembly. We also look at examples of how to unroll
+loops for maximum performance.
+
+6.6.1 DECREMENTED COUNTED Loops
+
+For a decrementing loop of N iterations, the loop counter i counts down from N to 1
+inclusive. The loop terminates with i= 0. An efficient implementation is
+
+MOV i, N
+loop
+; loop body goes here and i=N,N-1,...,1
+SUBS i, i, #1
+BGT loop
+
+The loop overhead consists of a subtraction setting the condition codes followed by
+a conditional branch. On ARM7 and ARM9 this overhead costs four cycles per loop. If i
+is an array index, then you may want to count down from N— | to 0 inclusive instead so
+that you can access array element zero. You can implement this in the same way by using
+a different conditional branch:
+
+SUBS i, N, #1
+loop
+; loop body goes here and i=N-1,N-2,...,0
+SUBS i, i, #1
+BGE loop

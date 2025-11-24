@@ -1,0 +1,50 @@
+Used in query representation used in parsing.
+
+Query Optimization:
+A single query can be executed through different algorithms or re-written in different forms and
+structures. Hence, the question of query optimization comes into the picture — Which of these forms
+or pathways is the most optimal? The query optimizer attempts to determine the most efficient way
+to execute a given query by considering the possible query plans.
+There are broadly two ways a query can be optimized:
+1.Analyze and transform equivalent relational expressions: Try to minimize the tuple and
+column counts of the intermediate and final query processes (discussed here).
+2.Using different algorithms for each operation: These underlying algorithms determine how
+tuples are accessed from the data structures they are stored in, indexing, hashing, data retrieval
+and hence influence the number of disk and block accesses (discussed in query processing).
+Analyze and transform equivalent relational expressions
+Here, we shall talk about generating minimal equivalent expressions. To analyze equivalent
+expression, listed are a set of equivalence rules. These generate equivalent expressions for a query
+written in relational algebra. To optimize a query, we must convert the query into its equivalent
+form as long as an equivalence rule is satisfied.
+1.Conjunctive selection operations can be written as a sequence of individual selections.
+This is called a sigma-cascade.
+
+Explanation: Applying condition _ intersection is expensive. Instead, filter out tuples
+
+satisfying condition (inner selection) and then apply condition —_ (outer selection) to the
+then resulting fewer tuples. This leaves us with less tuples to process the second time. This
+can be extended for two or more intersecting selections. Since we are breaking a single
+condition into a series of selections or cascades, it is called a “cascade”.
+2.Selection is commutative.
+Explanation: — condition is commutative in nature. This means, it does not matter whether
+we apply first or first. In practice, it is better and more optimal to apply that selection
+first which yields a fewer number of tuples. This saves time on our outer selection.
+3.All following projections can be omitted, only the first projection is required. This is
+called a pi-cascade.
+Explanation: A cascade or a series of projections is meaningless. This is because in the end,
+we are only selecting those columns which are specified in the last, or the outermost
+projection. Hence, it is better to collapse all the projections into just one i.e. the outermost
+projection.
+4.Selections on Cartesian Products can be re-written as Theta Joins.
+* Equivalence 1
+Explanation: The cross product operation is known to be very expensive. This is
+because it matches each tuple of El (total m tuples) with each tuple of E2 (total n
+tuples). This yields m*n entries. If we apply a selection operation after that, we would
+have to scan through m*n entries to find the suitable tuples which satisfy the condition
+. Instead of doing all of this, it is more optimal to use the Theta Join, a join specifically
+designed to select only those entries in the cross product which satisfy the Theta
+condition, without evaluating the entire cross product first.
+* Equivalence 2
+Explanation: Theta Join radically decreases the number of resulting tuples, so if we
+
+apply an intersection of both the join conditions i.e. and into the Theta Join itself,

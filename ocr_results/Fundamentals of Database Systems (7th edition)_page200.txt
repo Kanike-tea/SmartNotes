@@ -1,0 +1,48 @@
+170 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+discussed the schema constraints pertaining to the relational model, starting with
+domain constraints, then key constraints (including the concepts of superkey,
+key, and primary key), and the NOT NULL constraint on attributes. We defined
+relational databases and relational database schemas. Additional relational con-
+straints include the entity integrity constraint, which prohibits primary key attri-
+butes from being NULL. We described the interrelation referential integrity
+constraint, which is used to maintain consistency of references among tuples
+from various relations.
+
+The modification operations on the relational model are Insert, Delete, and Update.
+Each operation may violate certain types of constraints (refer to Section 5.3). When-
+ever an operation is applied, the resulting database state must be a valid state.
+Finally, we introduced the concept of a transaction, which is important in relational
+DBMSs because it allows the grouping of several database operations into a single
+atomic action on the database.
+
+Review Questions
+
+5.1. Define the following terms as they apply to the relational model of data:
+domain, attribute, n-tuple, relation schema, relation state, degree of a rela-
+tion, relational database schema, and relational database state.
+
+5.2. Why are tuples in a relation not ordered?
+5.3. Why are duplicate tuples not allowed in a relation?
+5.4. What is the difference between a key and a superkey?
+
+5.5. Why do we designate one of the candidate keys of a relation to be the pri-
+mary key?
+
+5.6. Discuss the characteristics of relations that make them different from ordi-
+nary tables and files.
+
+5.7. Discuss the various reasons that lead to the occurrence of NULL values in
+relations.
+
+5.8. Discuss the entity integrity and referential integrity constraints. Why is each
+considered important?
+
+5.9. Define foreign key. What is this concept used for?
+
+5.10. What is a transaction? How does it differ from an Update operation?
+
+Exercises
+
+5.11. Suppose that each of the following Update operations is applied directly to
+the database state shown in Figure 5.6. Discuss all integrity constraints

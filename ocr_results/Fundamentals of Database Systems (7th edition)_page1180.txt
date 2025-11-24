@@ -1,0 +1,51 @@
+1150
+
+Chapter 30 Database Security
+
+With this background, we adhere to following standard definitions:”
+
+= Ciphertext: Encrypted (enciphered) data
+
+= Plaintext (or cleartext): Intelligible data that has meaning and can be read or
+acted upon without the application of decryption
+
+= Encryption: The process of transforming plaintext into ciphertext
+= Decryption: The process of transforming ciphertext back into plaintext
+
+Encryption consists of applying an encryption algorithm to data using some pre-
+specified encryption key. The resulting data must be decrypted using a decryption
+key to recover the original data.
+
+30.7.1 The Data Encryption and Advanced
+Encryption Standards
+
+The Data Encryption Standard (DES) is a system developed by the U.S. govern-
+ment for use by the general public. It has been widely accepted as a cryptographic
+standard both in the United States and abroad. DES can provide end-to-end
+encryption on the channel between sender A and receiver B. The DES algorithm
+is a careful and complex combination of two of the fundamental building blocks
+of encryption: substitution and permutation (transposition). The algorithm
+derives its strength from repeated application of these two techniques for a total
+of 16 cycles. Plaintext (the original form of the message) is encrypted as blocks of
+64 bits. Although the key is 64 bits long, in effect the key can be any 56-bit num-
+ber. After questioning the adequacy of DES, the NIST introduced the Advanced
+Encryption Standard (AES). This algorithm has a block size of 128 bits, com-
+pared with DES’s 56-block size, and can use keys of 128, 192, or 256 bits, com-
+pared with DES’s 56-bit key. AES introduces more possible keys, compared with
+DES, and thus takes a much longer time to crack. In present systems, AES is the
+default with large key lengths. It is also the standard for full drive encryption
+products, with both Apple FileVault and Microsoft BitLocker using 256-bit or
+128-bit keys. TripleDES is a fallback option if a legacy system cannot use a mod-
+ern encryption standard.
+
+30.7.2 Symmetric Key Algorithms
+
+A symmetric key is one key that is used for both encryption and decryption. By
+using a symmetric key, fast encryption and decryption is possible for routine
+use with sensitive data in the database. A message encrypted with a secret key can
+be decrypted only with the same secret key. Algorithms used for symmetric
+key encryption are called secret key algorithms. Since secret-key algorithms
+are mostly used for encrypting the content of a message, they are also called
+content-encryption algorithms.
+
+7U.S, Department of Commerce.

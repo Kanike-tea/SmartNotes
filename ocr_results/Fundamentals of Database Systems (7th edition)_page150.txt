@@ -1,0 +1,50 @@
+120
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+notion of representing data and knowledge by using superclass/subclass hierar-
+chies and lattices is quite common in knowledge-based systems and expert sys-
+tems, which combine database technology with artificial intelligence techniques.
+For example, frame-based knowledge representation schemes closely resemble
+class hierarchies. Specialization is also common in software engineering design
+methodologies that are based on the object-oriented paradigm.
+
+4.4 Modeling of UNION Types
+Using Categories
+
+It is sometimes necessary to represent a collection of entities from different entity
+types. In this case, a subclass will represent a collection of entities that is a subset of
+the UNION of entities from distinct entity types; we call such a subclass a union type
+ora category.”
+
+For example, suppose that we have three entity types: PERSON, BANK, and
+COMPANY. In a database for motor vehicle registration, an owner of a vehicle can
+be a person, a bank (holding a lien on a vehicle), or a company. We need to create
+a class (collection of entities) that includes entities of all three types to play the
+role of vehicle owner. A category (union type) OWNER that is a subclass of the
+UNION of the three entity sets of COMPANY, BANK, and PERSON can be created
+for this purpose. We display categories in an EER diagram as shown in Figure 4.8.
+The superclasses COMPANY, BANK, and PERSON are connected to the circle with
+the U symbol, which stands for the set union operation. An arc with the subset
+symbol connects the circle to the (subclass) OWNER category. In Figure 4.8 we
+have two categories: OWNER, which is a subclass (subset) of the union of PERSON,
+BANK, and COMPANY; and REGISTERED_VEHICLE, which is a subclass (subset) of
+the union of CAR and TRUCK.
+
+A category has two or more superclasses that may represent collections of enti-
+ties from distinct entity types, whereas other superclass/subclass relationships
+always have a single superclass. To better understand the difference,
+we can compare a category, such as OWNER in Figure 4.8, with the
+ENGINEERING_MANAGER shared subclass in Figure 4.6. The latter is a subclass of
+each of the three superclasses ENGINEER, MANAGER, and SALARIED_EMPLOYEE,
+so an entity that is a member of ENGINEERING_MANAGER must exist in all
+three collections. This represents the constraint that an engineering manager must
+be an ENGINEER, a MANAGER, and a SALARIED_EMPLOYEE; that is, the
+ENGINEERING MANAGER entity set is a subset of the intersection of the three
+entity sets. On the other hand, a category is a subset of the union of its super-
+classes. Hence, an entity that is a member of OWNER must exist in only one of the
+superclasses. This represents the constraint that an OWNER may be a COMPANY,
+a BANK, or a PERSON in Figure 4.8.
+
+®Our use of the term category is based on the ECR (entity-category-relationship) model (Elmasri et al,
+1985).

@@ -1,0 +1,49 @@
+112 Chapter 5 Efficient C Programming
+
+of a short in both the caller and the callee. It also casts the return value to a short type.
+Here is the compiled code for add_v1:
+
+add_vl_gcc
+MoV r0, r0, LSL #16
+MOV rl, rl, LSL #16
+
+Mov rl, rl, ASR #17 3 rl = (int)b>>1
+ADD rl, rl, r0, ASR #16 ; rl += (int)a
+Mov rl, rl, LSL #16
+
+MOV r0, rl, ASR #16 3 r0 = (short)ri
+MOV pe, Ir 3 return r0
+
+Whatever the merits of different narrow and wide calling protocols, you can see that
+char or short type function arguments and return values introduce extra casts. These
+increase code size and decrease performance. It is more efficient to use the int type for
+function arguments and return values, even if you are only passing an 8-bit value.
+
+5.2.3. SIGNED VERSUS UNSIGNED TYPES
+
+The previous sections demonstrate the advantages of using int rather than a char or short
+type for local variables and function arguments. This section compares the efficiencies of
+signed int and unsigned int.
+
+Ifyour code uses addition, subtraction, and multiplication, then there is no performance
+difference between signed and unsigned operations. However, there is a difference when it
+comes to division. Consider the following short example that averages two integers:
+
+int average _vl(int a, int b)
+{
+
+return (a+b) /2;
+}
+
+This compiles to
+
+average _v1l
+ADD r0,r0,rl ;r0=a+b
+ADD r0,r0,r0,LSR #31 3 if (r0<0) rO+
+Mov 10,r0,ASR #1 3 70 = r0>>1
+Mov pe,rl4 3 return r0
+
+Notice that the compiler adds one to the sum before shifting by right if the sum is
+negative. In other words it replaces x/2 by the statement:
+
+(x<0) 2? ((x+1)>>1): (x>>1)

@@ -1,0 +1,39 @@
+Microcontrollers - BCS402
+
+e Payload copied into SRAM, address 0x00000000.
+¢ Control of the pe is relinquished to the payload; pe = 0x00000000.
+
+e The system is completely booted. The following output is shown on the serial port:
+
+Sandstone Firmware (0.01)
+
+- platform ......... e7t
+- status ........... alive
+- Memory ......eeeee remapped
+
++ booting payload ...
+
+Simple Little OS (0.09)
+
+- initialized ...... ok
+- running on ....... e7vt
+e7t:
+
+To summarize, Sandstone initializes the hardware and then loads and boots an image following
+
+this procedure:
+
+e Takes the Reset exception.
+
+e Starts initializing the hardware; sets the system register’s base address and initializes
+segment display hardware.
+
+e¢ Remaps memory; ROM address = high addr and SRAM addr = 0x00000000.
+
+e Initializes the communication hardware output on the serial port.
+
+¢ Bootloader—loads an image into SRAM and relinquishes control of the pe to the image
+
+(pe = 0x00000000).
+
+Dept. of ECE, GSSSIETW, Mysuru Page 28

@@ -1,0 +1,30 @@
+Decrease-and-Conquer
+
+he decrease-and-conquer technique is based on exploiting the relationship
+
+between a solution to a given instance of a problem and a solution to its
+smaller instance. Once such a relationship is established, it can be exploited either
+top down or bottom up. The former leads naturally to a recursive implementa-
+tion, although, as one can see from several examples in this chapter, an ultimate
+implementation may well be nonrecursive. The bottom-up variation is usually
+implemented iteratively, starting with a solution to the smallest instance of the
+problem; it is called sometimes the incremental approach.
+
+There are three major variations of decrease-and-conquer:
+
+m™ decrease by a constant
+decrease by a constant factor
+variable size decrease
+
+In the decrease-by-a-constant variation, the size of an instance is reduced
+by the same constant on each iteration of the algorithm. Typically, this constant
+is equal to one (Figure 4.1), although other constant size reductions do happen
+occasionally.
+
+Consider, as an example, the exponentiation problem of computing a” where
+a #0 and n is a nonnegative integer. The relationship between a solution to an
+instance of size n and an instance of size n — 1 is obtained by the obvious formula
+a" =a"! .a. So the function f (7) = a” can be computed either “top down” by
+using its recursive definition
+
+131

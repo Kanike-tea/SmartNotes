@@ -1,0 +1,52 @@
+8.4 IIR Filters 295
+
+combines a FIR filter with feedback from previous filter outputs. Mathematically, for some
+coefficients bj and qj:
+
+M L
+ye = Yo bim i — Yai (8.29)
+i=0 j=l
+
+If you feed in the impulse signal x = (1,0,0,0,...), then y; may oscillate forever. This
+is why it has an infinite impulse response. However, for a stable filter, y; will decay to zero.
+We will concentrate on efficient implementation of this filter.
+
+You can calculate the output signal y; directly, using Equation (8.29). In this case
+the code is similar to the FIR of Section 8.3. However, this calculation method may be
+numerically unstable. It is often more accurate, and more efficient, to factorize the filter
+into a series of biquads—an IIR filter with M = L = 2:
+
+Ve = box; + byx¢-1 + boxt-2 — aryr—1 — anyr—-2 (8.30)
+
+We can implement any IIR filter by repeatedly filtering the data by a number of
+biquads. To see this, we use the z-transform. This transform associates with each signal x,
+a polynomial x(z) defined as
+
+x(z) = one (8.31)
+7
+If we transform the IIR equation into z-coordinates, we obtain
+(lh ayz 7! +++ + az) y(z) = (bo + biz! +++» + buz™) x(z) (8.32)
+Equivalently,
+
+bo + biz) +--+ + bm
+
+y(z) = H(z)x(z), where H(z) = That ba
+
+(8.33)
+
+Next, consider H(z) as the ratio of two polynomials in z~!. We can factorize the
+polynomials into quadratic factors. Then we can express H(z) as a product of quadratic
+ratios H(z), each H;(z) representing a biquad.
+
+So, now we only have to implement biquads efficiently. On the face of it, to calculate
+yr for a biquad, we need the current sample x; and four history elements x;—1, X12 Yr»
+Yt-2- However, there is a trick to reduce the number of history or state values we require
+from four to two. We define an intermediate signal s, by
+
+St = Xt — ASt—-1 — A2S¢-2 (8.34)
+Then
+Ve = bose + bisr—1 + basr—2 (8.35)
+
+In other words, we perform the feedback part of the filter before the FIR part of the filter.
+Equivalently we apply the denominator of H(z) before the numerator. Now each biquad
+filter requires a state of only two values, s;—) and s;—2.

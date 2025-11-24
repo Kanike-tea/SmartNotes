@@ -1,0 +1,32 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+c)IE (Interrupt enable) bit:
+e The DMA controller enables the interrupt enable bit after the completion of
+
+DMA operationd)Interrupt request (IRQ):
+
+e The DMA controller requests the CPU to transfer new block of data
+from source todestination by activating this bit.
+
+The computer with DMA controller is as shown in the fig.:
+
+e The DMA controller connects two external devices namely disk 1 and disk 2
+to system bus asshown in the above fig.
+
+e The DMA controller also interconnects high speed network devices to system
+bus as shownin the above fig.
+
+e Let us consider direct data transfer operation by means of DMA controller
+without the involvement of CPU in between main memory and disk 1 as
+indicated by dotted lines (in the fig.).
+
+e To establish direct data transfer operation between main memory and disk
+1. DMA controller request the processor to obtain 3 parameters namely:
+1)Starting address of the memory block.
+2)No of words to be transferred.
+3)Type of operation (Read or Write).
+
+e After receiving these 3 parameters from processor, DMA controller directly
+transfers block ofdata main memory and external devices (disk 1).
+
+Dr.Ajay V G, Dept. of CSE 16

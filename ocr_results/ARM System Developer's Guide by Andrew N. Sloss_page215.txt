@@ -1,0 +1,59 @@
+202 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.31
+
+LoRB 2, [p, #3]
+
+ORR x, tO, x, LSL#8
+ORR x, tl, x, LSL#8
+ORR —r, 2, x, LSL#8
+MOV pc, Ir
+
+3 void store 32_little(char *p, int x)
+store_32_little
+
+stra. x, [pl
+
+MOV tO, x, LSR#8
+
+TRB tO, [p, #1]
+
+MOV tO, x, LSR#16
+
+TRB. tO, [p, #2]
+
+MOV tO, x, LSR#24
+
+TRB. t0, [p, #3]
+
+MOV pc, Ir
+
+3 void store 32_big(char *p, int x)
+store_32_big
+MOV tO, x, LSR#24
+TRB 0, [p]
+MOV tO, x, LSR#16
+TRB. t0, [p, #1]
+MOV tO, x, LSR#8
+TRB. tO, [p, #2]
+TRB. x, [p, #3]
+MOV pc, Ir
+
+If you require better performance than seven cycles per access, then you can write
+several variants of the routine, with each variant handling a different address alignment.
+This reduces the cost of the unaligned access to three cycles: the word load and the two
+arithmetic instructions required to join values together.
+
+This example shows how to generate a checksum of N words starting at a possibly unaligned
+address data. The code is written for a little-endian memory system. Notice how we can
+use the assembler MACRO directive to generate the four routines checksum_0, checksum_1,
+checksum_2, and checksum_3. Routine checksum_a handles the case where data is an
+address of the form 4q + a.
+
+Using a macro saves programming effort. We need only write a single macro and
+instantiate it four times to implement our four checksum routines.
+
+sum RNO 5 current checksum
+N RN 1; number of words left to sum

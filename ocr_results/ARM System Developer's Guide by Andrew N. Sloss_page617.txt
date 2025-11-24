@@ -1,0 +1,37 @@
+604 Appendix A ARM and Thumb Assembler Instructions
+
+Action
+
+1. Rd [31:24] = GE3 ? Rn[31:24] : Rm[31:24];
+Rd [23:16] = GE2 ? Rn[23:16] : Rm[23:16];
+Rd[ 15:08] = GE1 ? Rn[15:08] : Rm[15:08];
+Rd [07:00] = GEO ? Rn[07:00] : Rm[07:00]
+
+Notes
+
+Rd, Rn, Rm must not be pe.
+See SADD for instructions that set the GE flags in the cpsr.
+
+Set the endianness for data accesses
+
+SETEND
+1. SETEND BE ARMv6/THUMBv3
+2. SETEND LE ARMv6/THUMBv3
+Action
+1. In the cpsr E=1 so data accesses will be big-endian
+2. In the cpsr E=0 so data accesses will be little-endian
+Note
+ARMvé6 uses a byte-invariant endianness model. This means that byte loads and stores
+are not affected by the configured endianess. For little-endian data access the byte at the
+lowest address appears in the least significant byte of the loaded word. For big-endian
+data accesses the byte at the lowest address appears in the most significant byte of the
+loaded word.
+
+SHADD Parallel halving add and subtract operations
+
+1. {S|U}HADD16<cond> Rd, Rn, Rm ARMV6
+2. {S|U}HADDSUBX<cond> Rd, Rn, Rm ARMV6
+3. {S|U}HSUBADDX<cond> Rd, Rn, Rm ARMV6
+4. {S|U}HSUB16<cond> Rd, Rn, Rm ARMV6
+5. {S|U}HADD8<cond> Rd, Rn, Rm ARMV6
+6. {S|U}HSUB8<cond> Rd, Rn, Rm ARMV6

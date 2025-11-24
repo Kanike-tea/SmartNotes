@@ -1,0 +1,59 @@
+2. Develop a Program in C for the following operations on Strings.
+la. Read a main String (STR), a Pattern String (PAT) and a Replace String (REP)
+b. Perform Pattern Matching Operation: Find and Replace all occurrences of PAT in STR with REP if PAT exists in
+STR. Report suitable messages in case PAT does not exist in STR.
+Support the program with functions for each of the above operations. Don't use Built-in functions.
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+char str[50], pat[50], rep[50];
+int start = 0, patfound = 0;
+int lasts, lastp, lastr;
+
+void replacepattern()
+
+{
+int i,j;
+lastr = strlen(rep)-2;
+
+if(lastp != lastr)
+
+{
+printf("\nInvalid length of replace string");
+exit(0);
+}
+else
+{
+i= start;
+for(j=0; j<=lastr; j++)
+str[i] = rep[j];
+i++:
+}
+}
+return;
+
+void findpattern()
+
+int i, j, inmatch;
+
+'S = (strlen(str))-2;
+strlen(pat))-2;
+int endmatch;
+
+for(endmatch = lastp; endmatch<=lasts; endmatch++, start++)
+if(str[endmatch] == pat[lastp])
+
+inmatch = start;
+
+j=0;
+while(j<lastp)
+{
+if(str[inmatch] == patlj])
+{
+inmatch++;
+jt
+}
+else
+{

@@ -1,0 +1,53 @@
+202
+
+Chapter 6 Basic SQL
+
+language because they were not at the conceptual schema level. Many sys-
+tems still have the CREATE INDEX commands; but they require a special
+privilege. We describe this in Chapter 17.
+
+= SQL has transaction control commands. These are used to specify units of
+database processing for concurrency control and recovery purposes. We
+discuss these commands in Chapter 20 after we discuss the concept of trans-
+actions in more detail.
+
+= SQL has language constructs for specifying the granting and revoking of
+privileges to users. Privileges typically correspond to the right to use certain
+SQL commands to access certain relations. Each relation is assigned an
+owner, and either the owner or the DBA staff can grant to selected users the
+privilege to use an SQL statement—such as SELECT, INSERT, DELETE, or
+UPDATE—to access the relation. In addition, the DBA staff can grant the
+privileges to create schemas, tables, or views to certain users. These SQL
+commands—called GRANT and REVOKE—are discussed in Chapter 20,
+where we discuss database security and authorization.
+
+= SQL has language constructs for creating triggers. These are generally
+referred to as active database techniques, since they specify actions that are
+automatically triggered by events such as database updates. We discuss these
+features in Section 26.1, where we discuss active database concepts.
+
+= SQL has incorporated many features from object-oriented models to have
+more powerful capabilities, leading to enhanced relational systems known
+as object-relational. Capabilities such as creating complex-structured attri-
+butes, specifying abstract data types (called UDTs or user-defined types) for
+attributes and tables, creating object identifiers for referencing tuples, and
+specifying operations on types are discussed in Chapter 12.
+
+= SQL and relational databases can interact with new technologies such as
+XML (see Chapter 13) and OLAP/data warehouses (Chapter 29).
+
+6.6 Summary
+
+In this chapter, we introduced the SQL database language. This language and its
+variations have been implemented as interfaces to many commercial relational
+DBMSs, including Oracle’s Oracle; ibm’s DB2; Microsoft's SQL Server; and many
+other systems including Sybase and INGRES. Some open source systems also provide
+SQL, such as MySQL and PostgreSQL. The original version of SQL was imple-
+mented in the experimental DBMS called SYSTEM R, which was developed at IBM
+Research. SQL is designed to be a comprehensive language that includes statements
+for data definition, queries, updates, constraint specification, and view definition.
+We discussed the following features of SQL in this chapter: the data definition com-
+mands for creating tables, SQL basic data types, commands for constraint specifica-
+tion, simple retrieval queries, and database update commands. In the next chapter,
+we will present the following features of SQL: complex retrieval queries; views; trig-
+gers and assertions; and schema modification commands.

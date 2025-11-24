@@ -1,0 +1,54 @@
+436 Chapter 12. Caches
+
+Table 12.7
+
+EXAMPLE
+
+12.5
+
+Intel XScale CP15:c7 commands to allocate a D-cache line.
+
+Command MCR instruction Core supported
+
+Allocate line in data cache MCR p15, 0, Rd, c7, c2, 5 XScale
+
+The Intel StrongARM and Intel XScale processors require an additional technique
+to clean their caches. They need a dedicated area of unused cached main memory to
+clean the cache. By software design the memory block is dedicated to cleaning the cache
+only.
+
+The Intel StrongARM and Intel XScale processors can be cleaned by reading this fixed
+block of memory because they use a round-robin replacement policy. Ifa routine is executed
+that forces the core to sequentially read an area of cached main data memory equal to the
+size of the cache, then the series of reads will evict all current cache lines and replace them
+with data blocks from the dedicated scratch read area. When the read sequence completes,
+the cache will contain no important data because the dedicated read block has no useful
+information in it. At this point, the cache can be flushed without fear of losing valued
+cached data.
+
+We use this technique to clean the Intel StrongARM D-cache and the Intel XScale mini
+D-cache. The cleanDCache, cleanFlushDCache, and cleanFlushCache procedures for
+the Intel XScale and Intel StrongARM processors are shown in the following example. There
+is one additional procedure, called cleanMiniDCache, provided to clean the mini D-cache
+in the Intel XScale processor.
+
+This example uses two macros, CPWAIT and CACHECLEANXSCALE. The CPWAIT macro is a
+three-instruction sequence used on Intel XScale processors to guarantee that CP15 oper-
+ations execute without side effects. The macro executes these instructions so that enough
+processor cycles have completed to ensure that the CP15 command has completed and that
+the pipeline is clear of instructions. The CPWAIT macro is
+
+MACRO
+CPWAIT
+
+MRC p15, 0, v2, c2, cO, 0; read any CP15
+MoV. rl2, rl2
+
+SUB pc, pc, #4 5 branch to next instruction
+MEND
+
+The macro CACHECLEANXSCALE creates the procedures cleanDCache, cleanFlushD-
+Cache, and cleanFlushCache. The first part of the macro sets physical parameters for the
+routine. The first parameter, adr, is the starting virtual memory address of the dedicated
+area of memory used to clean the cache. The second parameter, n1 is the total number of
+cache lines in the cache.

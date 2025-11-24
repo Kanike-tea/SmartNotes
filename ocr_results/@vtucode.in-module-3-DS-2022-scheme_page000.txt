@@ -1,0 +1,47 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+MODULE 3
+LINKED LISTS: Additional List Operations, Sparse Matrices, Doubly Linked List.
+
+TREES: Introduction, Binary Trees, Binary Tree Traversals, Threaded Binary Trees.
+
+Additional List Operations
+1. Inverting a singly linked list:
+
+listpointer invert (listpointer lead)
+{/* invert the list pointed to by lead*/
+listpointer middle, trail;
+middle= null;
+while (lead)
+{
+trail=middle
+middle=lead;
+lead=lead->link;
+middle->link=trail;
+}
+
+return middle;
+
+Prg: Inverting a singly linked list
+
+2.Concatenating singly linked lists:
+
+listpointer concatenate(listpointer ptrl, listpointerptr2)
+
+{ /*produce anew list that contains the list ptrl followed
+by the List ptr2.the list pointed to by optrl is changed
+permanently*/
+
+/*check for empty list*/
+if(!ptr1) return ptr2;
+if(!ptr2) return ptrl;
+
+/*neither list is empty, find end of first list*/
+for (temp=ptr1;temp->link; temp=temp->link) ;
+
+/*link end of first to start of second*/
+temp->link=ptr2;
+
+Prg: Concatenating singly linked lists
+
+vtucode.in 1

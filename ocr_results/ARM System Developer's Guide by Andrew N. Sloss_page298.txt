@@ -1,0 +1,69 @@
+EXAMPLE
+
+8.10
+
+8.3 FIR filters 285
+
+MLA a2, x1, ¢.2, a2
+MLA a3, x0, c.0, a3
+
+MLA a3, x1, cl, a3
+
+MLA a3, x2, ¢.2, a3
+
+suBS MM, M, #3 3 processed 3 coefficents
+BGT next_tap_arm7m
+
+LOMFDsp!, {N, M}
+
+STMIA al, {a_0, al, a2, a3}
+
+SUB, c, M, LSL#2 restore coefficient pointer
+SUB x, x, M, LSL#2 ; restore data pointer
+
+ADD x, x, #(4-3)*4 ; advance data pointer
+
+suBS oN, N, #4 ; filtered four samples
+
+BGT —_next_sample_arm7m
+
+LOMFD sp!, {r4-rll, pc}
+
+Each iteration of the inner loop processes the next three coefficients and updates four
+filter outputs. Assuming the coefficients are 16-bit, each multiply accumulate requires
+4 cycles. Therefore it processes 12 filter taps in 62 cycles, giving a block FIR rating of
+5.17 cycles/tap.
+
+Note that it is cheaper to reset the coefficient and input pointers c and x using
+a subtraction, rather than save their values on the stack.
+
+This example gives an optimized block filter for the ARM9TDMI. First, the ARM9TDMI
+has a single-cycle 16-bit load, so there is no advantage in using load multiples. We can
+save memory by storing the data and coefficients in 16-bit halfwords. Second, we can use
+a4 x 4 block filter implementation rather than a 4 x 3 implementation. This reduces the
+loop overhead and is useful if the number of coefficients is a multiple of four rather than a
+multiple of three.
+
+The input and output arrays have the same format as Example 8.9, except that the input
+arrays are now 16-bit. The number of outputs and coefficients, Nand M, must be multiples
+of four.
+
+a RN O — ; array for output samples a[]
+
+x RN 1; array of input samples x[]
+
+c RN 2 ; array of coefficients c[]
+
+N RN 3; number of outputs (a multiple of 4)
+M RN 4 — ; number of coefficients (a multiple of 4)
+c0  RN3 5 coefficient registers
+
+cl RN12
+
+x0 RN5 — ; data registers
+
+x1 RNG
+
+x2 RNT
+
+x3 RNG

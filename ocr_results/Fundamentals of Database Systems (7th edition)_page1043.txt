@@ -1,0 +1,52 @@
+26.6 Summary
+
+First in Section 26.1 we introduced the topic of active databases, which provide addi-
+tional functionality for specifying active rules. We introduced the event-condition-
+action (ECA) model for active databases. The rules can be automatically triggered by
+events that occur—such as a database update—and they can initiate certain actions
+that have been specified in the rule declaration if certain conditions are true. Many
+commercial packages have some of the functionality provided by active databases in
+the form of triggers. We gave examples of row-level triggers in the Oracle commercial
+system in Section 26.1.1. We discussed the different options for specifying triggers in
+Section 26.1.2, such as row-level versus statement-level, before versus after, and
+immediate versus deferred. Then in Section 26.1.3 we gave examples of statement-
+level rules in the STARBURST experimental system. We briefly discussed some
+design issues and some possible applications for active databases in Section 26.1.4.
+The syntax for triggers in the SQL-99 standard was also discussed in Section 26.1.5.
+
+Next in Section 26.2 we introduced some of the concepts of temporal databases,
+which permit the database system to store a history of changes and allow users to
+query both current and past states of the database. In Section 26.2.1, we discussed
+how time is represented and distinguished between the valid time and transaction
+time dimensions. In Section 26.2.2 we discussed how valid time, transaction time,
+and bitemporal relations can be implemented using tuple versioning in the rela-
+tional model, and we provided examples to illustrate how updates, inserts, and
+deletes are implemented. We also showed how complex objects can be used to
+implement temporal databases using attribute versioning in Section 26.2.3. We
+looked at some of the querying operations for temporal relational databases and
+gave a brief introduction to the TSQL2 language in Section 26.2.4.
+
+Then we turned to spatial databases in Section 26.3. Spatial databases provide
+concepts for databases that keep track of objects that have spatial characteristics.
+We gave an introduction to spatial databases in Section 26.3.1. We discussed the
+types of spatial data and spatial data models in Section 26.3.2, then the types of
+operators for processing spatial data and the types of spatial queries in Sec-
+tion 26.3.3. In Section 26.3.4, we gave an overview of spatial indexing techniques,
+including the popular R-trees. Then we introduced some spatial data mining
+techniques in Section 26.3.5, and discussed some applications that require spatial
+databases in Section 26.3.6.
+
+In Section 26.4 we discussed some basic types of multimedia databases and their
+important characteristics. Multimedia databases provide features that allow users
+to store and query different types of multimedia information, which includes
+images (such as pictures and drawings), video clips (such as movies, newsreels, and
+home videos), audio clips (such as songs, phone messages, and speeches), and doc-
+uments (such as books and articles). We provided a brief overview of the various
+types of media sources and how multimedia sources may be indexed. Images are an
+extremely common type of data among databases today and are likely to occupy a
+large proportion of stored data in databases. We therefore provided a more detailed
+treatment of images: their automatic analysis (Section 26.4.1), recognition of objects
+within images (Section 26.4.2), and their semantic tagging (Section 26.1.3)—all of
+which contribute to developing better systems to retrieve images by content, which
+
+1013

@@ -1,0 +1,49 @@
+1108 Chapter 29 Overview of Data Warehousing and OLAP
+
+Figure 29.6
+The drill-down
+operation.
+
+Region 1 Region 2
+
+Sub_regi  Sub_reg2  Subreg3  Subreg4 Sub_reg1
+A
+P1233 =B
+Styles C
+D
+P124 A
+Styles 2
+Cc
+A
+P125 B
+Styles C
+D
+
+regional sales by subregion and also breaking up products by styles. Typically, in
+a warehouse, the drill-down capability is limited to the lowest level of aggregated
+data stored in the warehouse. For example, compared to the data shown in Fig-
+ure 29.6, lower- level data will correspond to something like “the total sales for
+style P123 substyle A color Black in zipcode 30022 of sub-region 1.” That level of
+aggregation may have been kept in the ODS. Some DBMSs like Oracle offer the
+“nested table” concept, which enables access to lower levels of data and thus
+makes the drill-down penetrate deeper.
+
+The multidimensional model (also called the dimensional model)-involves two
+types of tables: dimension tables and fact tables. A dimension table consists of
+tuples of attributes of the dimension. A fact table can be thought of as having
+tuples, one per a recorded fact. This fact contains some measured or observed
+variable(s) and identifies it (them) with pointers to dimension tables. The fact
+table contains the data, and the dimensions identify each tuple in that data.
+Another way to look at a fact table is as an agglomerated view of the transaction
+data whereas each dimension table represents so-called “master data” that those
+transactions belonged to. In multidimensional database systems, the multidimen-
+sional model has been implemented as specialized software system known as a
+multidimensional database, which we do not discuss. Our treatment of the multi-
+dimensional model is based on storing the warehouse as a relational database in
+an RDBMS.
+
+Figure 29.7 shows an example of a fact table that can be viewed from the perspective
+of multi-dimension tables. Two common multidimensional schemas are the star
+schema and the snowflake schema. The star schema consists of a fact table with a
+single table for each dimension (Figure 29.7). The snowflake schema is a variation
+on the star schema in which the dimensional tables from a star schema are organized

@@ -1,0 +1,74 @@
+582 Appendix A ARM and Thumb Assembler Instructions
+
+implemented as the add x + ~y + 1. The carry flag is one if x + ~y +1 overflows. This
+happens when x > y (equivalently when x — y doesn’t overflow).
+
+= If Rnor Rmis po then the value used is the address of the instruction plus eight bytes
+for ARM instructions, or plus four bytes for Thumb instructions.
+
+Example
+
+CMP.
+BHS
+
+r0, rl, LSR#2 ; compare rO with (r1/4)
+label ; if (r0 >= (r1/4)) goto label;
+
+CPS
+
+Change processor state; modifies selected bits in the epsr
+
+1. CPS.
+
+2. CPSID
+3. CPSIE
+4. CPSID
+5. CPSIE
+Action
+
+1. cpsr[4
+2. cpsr =
+3. cpsr =
+4. cpsr =
+5. cpsr =
+
+#<mode>
+<flags>
+<flags>
+<flags>
+
+<flags>
+
+cpsr
+cpsr &
+cpsr
+
+cpsr &
+
+ARMV6
+
+{, #<mode>} ARMV6
+
+{, #<mode>} ARMV6
+THUMBV3
+THUMBV3
+
+:0] = <mode>
+
+mask; { cpsr[4:0]=<mode> }
+~mask; { cpsr[4:0]=<mode> }
+mask
+
+~mask
+
+Bits are set in mask according to letters in the <flags> value as in Table A.4. The ID
+(interrupt disable) variants mask interrupts by setting cpsr bits. The IE (interrupt enable)
+variants unmask interrupts by clearing cpsr bits.
+
+Table A.4 CPS flags characters.
+
+Character cpsr bit affected Bit set in mask
+
+a imprecise data Abort mask bit 0x100 = 1<<8
+i IRQ mask bit 0x080 = 1<<7
+f FIQ mask bit 0x040 = 1<<6

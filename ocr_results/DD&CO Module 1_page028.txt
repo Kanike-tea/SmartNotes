@@ -1,0 +1,47 @@
+outputs change as shown in Table below. The output of the inverter at E changes from | to 0 after a 10ns
+delay. The output of the AND gate at wl changes from 0 to 1 after a 30ns delay. The output of the OR
+gate at D changes from | to 0 at t= 30ns and then changes back to | at t= 50ns.
+
+Output of Gates after Delay
+
+Input Output
+Time Units | =—————- ————--
+(ns) ABC EwlD
+
+00
+
+Initial - ) 1 0
+Change -
+10
+20
+30
+40
+50
+
+0 0
+
+Boolean Expressions
+
+Boolean equations describing combinational logic are specified in Verilog with a continuous assignment
+statement consisting of the keyword assign followed by a Boolean expression. To distinguish arithmetic
+operators from logical operators, Verilog uses the symbols (&), (/), and (&) for AND, OR, and NOT
+(complement), respectively. Thus, to describe the simple circuit of Fig with a Boolean expression, we
+
+use the statement
+
+assign D = (A && B)||(!C);
+assign E = (!C);
+HDL Example 3.4 describes a circuit that is specified with the following two Boolean expressions:
+
+E=A+BC+B'D
+
+F=B'C+BCD'
+The equations specify how the logic values E and F are determined by the values of A, B, C, and D.
+// Verilog model: Circuit with Boolean expressions
+module Circuit_Boolean_CA (E, F, A, B, C, D);
+output E, F;
+input A, B, C, D;
+assign E = A || (B && C) || ((!B) && D);
+assign F = ((!B) && C) || (B && (!C) && (!D));
+
+endmodule

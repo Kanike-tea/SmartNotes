@@ -1,0 +1,52 @@
+616
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+(without having to access a data block), since there is an index entry for every
+record in the file.
+
+A common file organization used in business data processing is an ordered file with a
+multilevel primary index on its ordering key field. Such an organization is called an
+indexed sequential file and was used in a large number of early IBM systems. IBM’s
+ISAM organization incorporates a two-level index that is closely related to the organi-
+zation of the disk in terms of cylinders and tracks (see Section 16.2.1). The first level is
+a cylinder index, which has the key value of an anchor record for each cylinder of a
+disk pack occupied by the file and a pointer to the track index for the cylinder. The
+track index has the key value of an anchor record for each track in the cylinder and a
+pointer to the track. The track can then be searched sequentially for the desired record
+or block. Insertion is handled by some form of overflow file that is merged periodi-
+cally with the data file. The index is re-created during file reorganization.
+
+Algorithm 17.1 outlines the search procedure for a record in a data file that uses a
+nondense multilevel primary index with f levels. We refer to entry i at level j of the
+index as <Kj(i), Pi(i)>, and we search for a record whose primary key value is K. We
+assume that any overflow records are ignored. If the record is in the file, there must
+be some entry at level 1 with K,(i) < K < K,(i+ 1) and the record will be in the block
+of the data file whose address is P;(i). Exercise 17.23 discusses modifying the search
+algorithm for other types of indexes.
+
+Algorithm 17.1. Searching a Nondense Multilevel Primary Index with t Levels
+
+(*We assume the index entry to be a block anchor that is the first key per block*)
+p «address of top-level block of index;
+for j<— t step -— 1 to 1 do
+begin
+read the index block (at jth index level) whose address is p;
+search block p for entry i such that Kj (i)<K< Ki +1)
+(iE K()
+is the last entry in the block, it is sufficient to satisfy Ki) < K*);
+p <— P,(i) (* picks appropriate pointer at jth index level *)
+end;
+read the data file block whose address is p;
+search block p for record with key = K;
+
+As we have seen, a multilevel index reduces the number of blocks accessed when
+searching for a record, given its indexing field value. We are still faced with the
+problems of dealing with index insertions and deletions, because all index levels are
+physically ordered files. To retain the benefits of using multilevel indexing while
+reducing index insertion and deletion problems, designers adopted a multilevel
+index called a dynamic multilevel index that leaves some space in each of its blocks
+for inserting new entries and uses appropriate insertion/deletion algorithms for
+creating and deleting new index blocks when the data file grows and shrinks. It is
+often implemented by using data structures called B-trees and B*-trees, which we
+describe in the next section.

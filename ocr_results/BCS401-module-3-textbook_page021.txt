@@ -1,0 +1,54 @@
+260
+
+Space and Time Trade-Offs
+
+of such a shift by looking at the character c of the text that is aligned against the
+last character of the pattern. This is the case even if character c itself matches its
+counterpart in the pattern.
+
+In general, the following four possibilities can occur.
+
+Case 1 If there are no c’s in the pattern—e.g., c is letter S in our example—
+we can safely shift the pattern by its entire length (if we shift less, some character
+of the pattern would be aligned against the text’s character c that is known not to
+be in the pattern):
+
+50 s nat
+K
+BARBER
+BARBER
+
+Case 2 If there are occurrences of character c in the pattern but itis not the last
+one there—e.g., c is letter B in our example—the shift should align the rightmost
+occurrence of c in the pattern with the ¢ in the text:
+
+SQ ses B eee Spo
+I
+BARBER
+BARBER
+
+Case 3 If c happens to be the last character in the pattern but there are no c’s
+among its other m — 1 characters—e.g., c is letter R in our example—the situation
+is similar to that of Case 1 and the pattern should be shifted by the entire pattern’s
+length m:
+
+Ain dee . MER vee Spo
+
+LEADER
+
+Case 4 Finally, if c happens to be the last character in the pattern and there
+are other c’s among its first m — 1 characters—e.g., c is letter R in our example—
+the situation is similar to that of Case 2 and the rightmost occurrence of c among
+the first m — 1 characters in the pattern should be aligned with the text’s c:
+
+59 R cee Spot
+ll
+REORD R
+REORDER
+
+A
+K
+E
+
+These examples clearly demonstrate that right-to-left character comparisons
+can lead to farther shifts of the pattern than the shifts by only one position

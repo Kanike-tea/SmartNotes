@@ -1,0 +1,50 @@
+294 Chapter 8 Digital Signal Processing
+
+Table 8.6 32-bit by 32-bit filter timing.
+
+Processor Inner loop cycles Filter rating cycles/tap
+ARM7TDMI 54
+ARM9TDMI 50
+StrongARM 31
+ARM9E 26
+ARMI10E 22
+XScale 22
+
+STMIA al, {a_01, a0h, all, ath, a21, a 2h}
+SUB. sc, c, M, LSL#2
+
+SUB. x, x, M, LSL#2
+
+ADD x, x, #(3-2)*4
+
+suBs oN, N, #3
+
+BGT —_next_samp1e32
+
+LOMFD sp!, {r4-rl1, pc}
+
+Each iteration of the inner loop processes the next two coefficients and updates three
+
+filter outputs. Assuming the coefficients use the full 32-bit range, the multiply does not
+terminate early. The routine is optimal for most ARM implementations. Table 8.6 gives the
+cycle timings for a range of processors.
+
+Summary Writing FIR Filters on the ARM
+
+If the number of FIR coefficients is small enough, then hold the coefficients and history
+samples in registers. Often coefficients are repeated. This will save on the number of
+registers you need.
+
+If the FIR filter length is long, then use a block filter algorithm of size R x (R — 1) or
+R x R. Choose the largest R possible given the 14 available general purpose registers on
+the ARM.
+
+Ensure that the input arrays are aligned to the access size. This will be 64-bit when using
+LORD. Ensure that the array length is a multiple of the block size.
+
+Schedule to avoid all load-use and multiply-use interlocks.
+
+8.4 1R FILTERS
+
+An infinite impulse response (IIR) filter is a digital filter that depends linearly on a finite
+number of input samples and a finite number of previous filter outputs. In other words, it

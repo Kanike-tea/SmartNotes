@@ -1,0 +1,40 @@
+Microcontrollers - BCS402
+
+¢ Operating system requirements — Each operating system has its own requirements for
+stack design.
+e Target hardware — The target hardware provides a physical limit to the size and
+
+positioning of the stack in memory.
+Two design decisions need to be made for the stacks:
+
+e The location determines where in the memory map the stack begins. Most ARM-based
+systems are designed with a stack that descends downwards, with the top of the stack at a
+high memory address.
+
+e Stack size depends upon the type of handler, nested or non nested. A nested interrupt
+handler requires more memory space since the stack will grow with the number of nested
+
+interrupts.
+
+A good stack design tries to avoid stack overflow — where the stack extends beyond the
+allocated memory—because it causes instability in embedded systems. There are software
+techniques that identify overflow and that allow corrective measures to take place to repair the
+stack before irreparable memory corruption occurs. The two main methods are (1) to use
+
+memory protection and (2) to call a stack check function at the start of each routine.
+
+The IRQ mode stack has to be set up before interrupts are enabled—normally in the initialization
+
+code for the system. It is important that the maximum size of the stack is known in a simple
+
+embedded system, since the stack size is reserved in the initial stages of boot-up by the firmware.
+a B Interrupt stack
+Heap
+Code
+0x00002000
+Interrupt stack
+0x00000000 Vector table 0x00000000 Vector table
+
+Fig 6: Typical memory layouts
+
+Dept. of ECE, GSSSIETW, Mysuru Page 15

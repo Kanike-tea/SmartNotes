@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Self-Referential Structures
+
++ A self-referential structure is one in which one or more of its components is a pointer to
+itself.
+
++ These require dynamic storage management routines (malloc & free) to explicitly obtain
+
+and release memory.
+
+typedef struct list
+
+{
+
+char data;
+
+list *link; //list is a pointer to a list structure
+
+dG
+
+¢ Consider three structures and values assigned to their respective fields:
+
+List iteml,item2,item3;
+iteml.data='a';
+
+item2.data='b';
+
+item3.data='c';
+item1.link=item2.link=item3.1link=NULL;
+
+e We can attach these structures together as follows
+
+item1.link=é&item2;
+item2.link=é&item3;
+
+vtucode.in 23

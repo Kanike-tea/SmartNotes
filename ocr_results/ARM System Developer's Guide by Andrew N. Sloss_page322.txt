@@ -1,0 +1,84 @@
+8.5 The Discrete Fourier Transform 309
+
+; finished the first stage
+
+SUB x, y, N, LSL#2 ;_x = working buffer
+
+MOV R, #16
+
+MOVS S, N, LSR#4
+
+LOMEQFD sp!, {r4-r11, pc}
+
+ADR sc, fft_table_arm9m
+next_stage_arm9m
+
+3 S = the number of blocks
+
+; R = the number of samples in each block
+
+STMFD sp!, {x, S}
+
+ADD tO, R, R, LSL#1
+
+‘ADD x, x, tO
+
+SUB S, S, #1<<16
+next_block_arm9m
+
+‘ADD S, S, R, LSL#(16-2)
+next_butterfly_arm9m
+
+; S=((number butterflies left-1) <<16)
+
+; + (number of blocks left)
+
+C_LDR x0, x, -R
+
+C_LDR x3, c, #4
+
+C_MUL9m x3, x0, x3
+
+C_LDR x0, x, -R
+
+C_LDR x2, c, #4
+
+C_MUL9m x2, x0, x2
+
+C_LDR x0, x, -R
+
+CLDR x1, c, #4
+
+C_MUL9m x1, x0, x1
+
+C_LDR x0, x, #0
+
+C_FFT4 14 3 coefficients are Q14
+
+CSTR x0, x, R
+
+CSTR xl, x, R
+
+CSTR x2, x, R
+
+C_STR y3, x, #4
+
+SUBS S, S, #1<<16
+
+BGE —next_butterfly_arm9m
+
+ADD tO, R, R, LSL#1
+
+‘ADD x, x, tO
+
+SUB Ss, S, #1
+
+MOVS tl, S, LSL#16
+
+SUBNE c, c, tO
+
+BNE —next_block_arm9m
+
+LOMFD sp!, {x, S}
+
+MOV R, R, LSL#2 3 quadruple block size

@@ -1,0 +1,64 @@
+228 Chapter 7 Optimized Primitives
+
+Noting that ig + fo = 2°-2d from Equation 7.5 and collecting the error terms into eo:
+
+39—s ; C
+a (-«), where @ = g 2th fh
+
+77.
+24 ip a7
+
+a =
+Since 64 < ip < ip + fo < 128 by the choice of s it follows that —f2~° < e < go2~7.
+As d <2”, we know s > 7. 105 and 107 calculate the following value in register q:
+
+232
+
+q = 27a = = &) (7.8)
+This is a good initial approximation for 232d~!, and we now iterate Newton-Raphson
+twice to increase the accuracy of the approximation. [08 and [10 update the values of
+registers a and q to a; and q) according to Equation (7.9). 108 calculates a; using m = —d.
+Since d > 2, it follows that qo < 2°! for when d = 2, then fo = 0, ip = 64, go = 1,
+9 = 2-8. Therefore we can use the signed multiply accumulate instruction SMLAWT at 110
+
+to calculate qu.
+
+ay = 2? = dgy = 2?e) and qi = qo + (((a1 > 16)qo) > 16) (7.9)
+
+The right shifts introduce truncation errors 0 < fj <1 and0 < g < 1, respectively:
+
+- 2?
+1 = q+ (m2 fi)go2 9 = Ue — A= @)2)—g (7-10)
+
+232
+
+n= -a), where e) = 2 + fi(1 — @)27'6 + gid2-? (7.11)
+
+The new estimate q) is more accurate with error e; © ¢. 112, 113, and 1/4 implement
+the second Newton-Raphson iteration, updating registers a and q to the values a) and qo:
+
+ay = 2 —dqy =2%e and qo = qi + ((arqi) > 32) (7.12)
+
+Again the shift introduces a truncation error 0 < g <1:
+
+232
+
+n=nt+nqe”?-g= lle), where
+
+=e +gd2- <e +.d2-? (7.13)
+
+Our estimate of 2°?d7! is now sufficiently accurate. [16 estimates n/d by setting q to the
+value q3 in Equation (7.14). The shift introduces a rounding error 0 < g; <1.
+
+n
+3 = (nq) > 32 = n@2- — g = qe where
+
+n
+
+d
+
+n
+
+qa +2 (7.14)
+
+ate <

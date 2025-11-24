@@ -1,0 +1,49 @@
+Microcontrollers — BCS402
+
+3. C Looping Structures
+
+¢ Loops with a Fixed Number of Iterations
+¢ Loops Using a Variable Number of Iterations
+
+¢ Loop unrolling
+3.1 Loops with a Fixed Number of Iterations
+
+Consider the checksum example: This shows how the compiler treats a loop with
+
+incrementing count i++.
+
+int checksum_vS(int *data) This compiles to
+
+{
+unsigned int i; checksum_v5
+int sum=0; MOV r2,r0 3 72 = data
+MOV r0,#0 ; sum = 0
+for (1=0; 1<64; i++) MOV rl,#0 3;1=0
+{ checksum_v5_loop
+sum += *(datat+); LDR r3,[r2], #4 3.73 = *(datat+)
+} ADD rl,rl, #1 ; iH
+return sum; cMP rl, #0x40 ; compare i, 64
+} ADD r0,r3,r0 3 Sum += 13
+Bcc checksum_v5 loop ; if (i<64) goto loop
+MoV pe, rl4 3; return sum
+
+It takes three instructions to implement the for loop structure:
+
+e An ADD to increment i
+e¢ Acompare to check if i is less than 64
+
+¢ Aconditional branch to continue the loop if i <64
+This is not efficient. On the ARM, a loop should only use two instructions:
+
+e A subtract to decrement the loop counter, which also sets the condition code flags on
+the result
+
+¢ Aconditional branch instruction
+
+The key point is that the loop counter should count down to zero rather than counting up to
+some arbitrary limit. Then the comparison with zero is free since the result is stored in the
+condition flags. Since we are no longer using i as an array index, there is no problem in
+
+counting down rather than up.
+
+Dept. of ECE, GSSSIETW Page 40

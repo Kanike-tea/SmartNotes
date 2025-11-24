@@ -1,0 +1,27 @@
+BCS304
+
+The bridges of Koenigsberg
+
+Euler defined the degree of a vertex as the number of edges incident on it. He then showed
+that there is a walk starting at any vertex, going through each edge exactly once, and
+terminating at the starting vertex iff the degree of each vertex is even. We now call a walk
+that does this an Eulerian walk. Since this first application, graphs have been used in a wide
+variety of applications, including analysis of electrical circuits, finding shortest routes,
+project planning, and the identification of chemical compounds. Indeed graphs may be the
+most widely used of all mathematical structures.
+
+5.1.2 Definitions
+
+A graph, G, consists of two sets: a finite, nonempty set of vertices, and a finite, possibly empty
+set of edges. V(G) and E(G) represent the sets of vertices and edges of G, respectively.
+Alternately, we may write G = (V, E) to represent a graph.
+
+An undirected graph is one in which the pair of vertices representing any edge is unordered.
+For example, the pairs (vo, vi) and (vo, vi) represent the same edge.
+
+A directed graph is one in which we represent each edge as a directed pair of vertices. For
+example, the pair <vp, v\> represents an edge in which vp is the tail and v; is the head.
+
+Therefore, <vo, vi> and <v }, vo> represent two different edges in a directed graph.
+
+16

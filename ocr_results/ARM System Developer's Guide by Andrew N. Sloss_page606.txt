@@ -1,0 +1,49 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 593
+
+Table A.9 Format of the <fields> specifier.
+
+<fields> letter Meaning Bits set in <mask>
+
+c Control byte 0x000000F F
+
+x eXtension byte 0x0000F f00
+
+s Status byte 0x00f 0000
+
+f Flags byte Oxf f000000
+2. MSR<cond> cpsr_<fields>, Rm ARMv3
+3. MSR<cond> spsr_<fields>, #<rotated_immed> ARMv3
+4, MSR<cond> spsr_<fields>, Rm ARMv3
+Action
+
+1. cpsr = (cpsr & ~<mask>) | (<rotated_immed> & <mask>)
+2. cpsr = (cpsr & ~<mask>) | (Rm & <mask>)
+3. spsr = (spsr & ~<mask>) | (<rotated_immed> & <mask>)
+
+4. spsr = (spsr & ~<mask>) | (Rm & <mask>)
+
+These instructions alter selected bytes of the cpsr or spsr according to the value of <mask>.
+The <fields> specifier is a sequence of one or more letters, determining which bytes of
+<mask> are set. See Table A.9.
+
+Some old ARM toolkits allowed cpsr or cpsr_all in place of cpsr_fsxc. They also used
+cpsr_flg and cpsr_ctl in place of cpsr_fand cpsr_c, respectively. These formats, and the spsr
+equivalents, are obsolete, so you should not use them. The following example changes to
+system mode and enables IRQ, which is useful in a reentrant interrupt handler:
+
+MRS 0, cpsr
+
+BIC r0, r0, #0x9f
+ORR = r0, 0, #0x1f
+MSR cpsr_c, r0
+
+read cpsr state
+clear IRQ disable and mode bits
+set system mode
+update control byte of the cpsr
+
+MUL Multiply
+
+1. MUL<cond>{S} Rd, Rm, Rs ARMV2
+
+2. MUL Ld, Lm THUMBv 1

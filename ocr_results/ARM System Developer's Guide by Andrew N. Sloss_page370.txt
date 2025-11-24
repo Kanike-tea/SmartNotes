@@ -1,0 +1,45 @@
+9.3 Interrupt Handling Schemes 357
+
+Once the context is saved, the base address of the ISR table has to be loaded into register
+r12. This register is used to jump to the correct ISR once the priority has been established
+for the interrupt source.
+
+1 Bit EQU 0x80
+PRIORITY_O EQU 2 3 Comms Rx
+PRIORITY_1 EQU 1 3 Comms Tx
+PRIORITY 2 EQU 0 3 Timer 1
+PRIORITY. 3 EQU 3 3 Timer 2
+BINARY_O EQU 1<<PRIORITY_O 3 1<<2 0x00000004
+BINARY 1 EQU 1<<PRIORITY 1 3 1<<1 0x00000002
+BINARY 2 EQU 1<<PRIORITY 2 3 1<<0 0x00000001
+BINARY 3 EQU 1<<PRIORITY 3 3 1<<3 0x00000008
+MASK_3 EQU BINARY 3
+MASK_2 EQU MASK _3+BINARY 2
+MASK_1 EQU MASK 2+BINARY 1
+MASK_O EQU MASK_1+BINARY 0
+ic_Base EQU 0x80000000
+IRQStatus EQU 0x0
+IRQRawStatus  EQU Ox4
+IRQEnable EQU 0x8
+IRQEnableSet —EQU 0x8
+IRQEnableClear EQU Oxc
+bit_timer1 EQU 0
+bit_comntx EQU 1
+bit_commrx EQU 2
+bit_timer2 EQU 3
+IRQHandler —-;_ instruction comment
+
+suB_ orld, rl4, #4 3 rl4_irg-=4
+
+STMFD r13!, {r14} save r14_irq
+
+MRS rd, spsr copy spsr_irg
+STMFD  r13!,{r10,r11,r12,r14} 3 save context
+
+LOR rl, =ic_Base int crt] addr
+
+LOR rl, [rl4, #IRQStatus] 3 load IRQ status
+ADR rl2, isr_table obtain ISR table
+TsT lO, #BINARY_0 if CommRx
+
+LORNE pc, [r12, #PRIORITY 0<<2] ; then CommRx ISR

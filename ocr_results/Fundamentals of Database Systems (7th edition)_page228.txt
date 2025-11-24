@@ -1,0 +1,51 @@
+198
+
+Chapter 6 Basic SQL
+
+join conditions if needed. ORDER BY specifies an order for displaying the results
+of a query. Two additional clauses GROUP BY and HAVING will be described in
+Section 7.1.8.
+
+In Chapter 7, we will present more complex features of SQL retrieval queries. These
+include the following: nested queries that allow one query to be included as part of
+another query; aggregate functions that are used to provide summaries of the infor-
+mation in the tables; two additional clauses (GROUP BY and HAVING) that can be
+used to provide additional power to aggregate functions; and various types of joins
+that can combine records from various tables in different ways.
+
+6.4 INSERT, DELETE, and UPDATE
+Statements in SQL
+
+In SQL, three commands can be used to modify the database: INSERT, DELETE, and
+UPDATE. We discuss each of these in turn.
+
+6.4.1 The INSERT Command
+
+In its simplest form, INSERT is used to add a single tuple (row) to a relation (table).
+We must specify the relation name and a list of values for the tuple. The values
+should be listed in the same order in which the corresponding attributes were speci-
+fied in the CREATE TABLE command. For example, to add a new tuple to the
+EMPLOYEE relation shown in Figure 5.5 and specified in the CREATE TABLE
+EMPLOYEE ... command in Figure 6.1, we can use U1:
+
+U1: INSERTINTO = EMPLOYEE
+VALUES ( Richard’, ‘K’, ‘Marini’, 653298653’, ‘1962-12-30’, ‘98
+Oak Forest, Katy, TX’, ‘M’, 37000, ‘653298653’, 4 );
+
+A second form of the INSERT statement allows the user to specify explicit attribute
+names that correspond to the values provided in the INSERT command. This is use-
+ful if a relation has many attributes but only a few of those attributes are assigned
+values in the new tuple. However, the values must include all attributes with NOT
+NULL specification and no default value. Attributes with NULL allowed or DEFAULT
+values are the ones that can be left out. For example, to enter a tuple for a new
+EMPLOYEE for whom we know only the Fname, Lname, Dno, and Ssn attributes, we
+can use U1A:
+
+U1A: INSERT INTO EMPLOYEE (Fname, Lname, Dno, Ssn)
+VALUES (‘Richard’, ‘Marini’, 4, “653298653’);
+
+Attributes not specified in U1A are set to their DEFAULT or to NULL, and the values
+are listed in the same order as the attributes are listed in the INSERT command itself.
+It is also possible to insert into a relation multiple tuples separated by commas in a
+single INSERT command. The attribute values forming each tuple are enclosed in
+parentheses.

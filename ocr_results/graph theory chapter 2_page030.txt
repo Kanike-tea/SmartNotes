@@ -1,0 +1,40 @@
+2.5, Graph Colouring 131
+
+j Example 1] Find the chromatic number of each of the following graphs.
+
+Ws v4 v2
+
+V6 v3 v1 Vs
+
+IS
+KD
+O7
+
+V4
+
+Vs
+
+(c)
+Figure 2.38
+
+> (i) For the graph (a), let us assign a colour @ to the vertex v;. Then, for a proper colouring,
+we have to assign a different colour to its neighbours v2, v4, ve. Since v2, v4, v6 are
+mutually nonadjacent vertices, they can have the same colour, say 6 (which is different
+from @). Since v3, vs are not adjacent to v;, these can have the same colour as vj, namely
+@.
+
+Thus, the graph can be property coloured with at least two colours, with the vertices
+v1, v3, vs having one colour a, and v2, v4, v6 having a different colour 8. Hence, the
+chromatic number of the graph is 2.
+
+(ii) For the graph (b), let us assign the colour a to the vertex vj. Then, for a proper colouring,
+its neighbours v2, v3 and v4 cannot have the colour @, but vs can have the colour a.
+Furthermore, v2, v3, v4 must have different colours, say 8, y, 6. Thus, at least four
+colours are required for a proper colouring of the graph. Hence the chromatic number of
+the graph is 4.
+
+(iii) For the graph (c), we can assign the same colour, say @, to the non-adjacent vertices
+¥1, ¥3, v5. Then the vertices v2, v4;-¥6 can be assigned the same colour other than a.
+Suppose we assign a colour, f to v2, 4, Y6- Consequently v7 and vg can be assigned the
+same colour which is different from, both @ and f. Thus, a minimum of three colours are
+needed for a proper colouring of the graph. Hence its chromatic number is 3. .

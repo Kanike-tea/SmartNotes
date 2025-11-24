@@ -1,0 +1,44 @@
+14 Chapter 1 ARM Embedded Systems
+
+Figure 1.5
+
+Before After
+Oxf ffffftt
+1/0 Regs _|——+] 1/0 Regs
+FAST SRAM
+>| Boot ROM
+DRAM DRAM
+large _| large
+contiguous contiguous
+block block
+Boot ROM |! LI FasT sRAM
+0x00000000
+Memory remapping.
+
+Figure 1.5 shows memory before and after reorganization. It is common for ARM-based
+embedded systems to provide for memory remapping because it allows the system to start
+the initialization code from ROM at power-up. The initialization code then redefines or
+remaps the memory map to place RAM at address 0x00000000—an important step because
+then the exception vector table can be in RAM and thus can be reprogrammed. We will
+discuss the vector table in more detail in Section 2.4.
+
+1.4.2. OPERATING SYSTEM
+
+The initialization process prepares the hardware for an operating system to take
+control. An operating system organizes the system resources: the peripherals, memory,
+and processing time. With an operating system controlling these resources, they can be
+efficiently used by different applications running within the operating system environment.
+
+ARM processors support over 50 operating systems. We can divide operating systems
+into two main categories: real-time operating systems (RTOSs) and platform operating
+systems.
+
+RTOSs provide guaranteed response times to events. Different operating systems have
+different amounts of control over the system response time. A hard real-time application
+requires a guaranteed response to work at all. In contrast, a soft real-time application
+requiresa good response time, but the performance degrades more gracefully if the response
+time overruns. Systems running an RTOS generally do not have secondary storage.
+
+Platform operating systems require a memory management unit to manage large, non-
+real-time applications and tend to have secondary storage. The Linux operating system is
+a typical example of a platform operating system.

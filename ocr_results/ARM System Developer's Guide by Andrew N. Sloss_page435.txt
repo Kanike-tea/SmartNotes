@@ -1,0 +1,53 @@
+422 Chapter 12. Caches
+
+Round Robin test size = 64
+
+Round Robin enabled = 0.51 seconds
+Random enabled = 0.51 seconds
+Round Robin test size = 65
+
+Round Robin enabled = 2.56 seconds
+Random enabled = 0.58 seconds
+
+This is an extreme example, but it does shows a difference between using a round-robin
+policy and a random replacement policy.
+
+Another common replacement policy is least recently used (LRU). This policy keeps
+track of cache line use and selects the cache line that has been unused for the longest time
+as the next victim.
+
+ARM’s cached cores do not support a least recently used replacement policy, although
+ARM’s semiconductor partners have taken noncached ARM cores and added their own
+cache to the chips they produce. So there are ARM-based products that use an LRU
+replacement policy.
+
+12.3.3. ALLOCATION POLICY ON A CACHE MISS
+
+There are two strategies ARM caches may use to allocate a cache line after a the occurrence
+ofacache miss. The first strategy is known as read-allocate, and the second strategy is known
+as read-write-allocate.
+
+A read allocate on cache miss policy allocates a cache line only during a read from main
+memory. If the victim cache line contains valid data, then it is written to main memory
+before the cache line is filled with new data.
+
+Under this strategy, a write of new data to memory does not update the contents of the
+cache memory unless a cache line was allocated on a previous read from main memory.
+If the cache line contains valid data, then a write updates the cache and may update main
+memory if the cache write policy is writethrough. If the data is not in cache, the controller
+writes to main memory only.
+
+A read-write allocate on cache miss policy allocates a cache line for either a read or write
+to memory. Any load or store operation made to main memory, which is not in cache
+memory, allocates a cache line. On memory reads the controller uses a read-allocate policy.
+
+On a write, the controller also allocates a cache line. If the victim cache line contains
+valid data, then it is first written back to main memory before the cache controller fills the
+victim cache line with new data from main memory. If the cache line is not valid, it simply
+does a cache line fill. After the cache line is filled from main memory, the controller writes
+the data to the corresponding data location within the cache line. The cached core also
+updates main memory if it is a writethrough cache.
+
+The ARM7, ARM9, and ARM 10 cores use a read-allocate on miss policy; the Intel XScale
+supports both read-allocate and write-allocate on miss. Table 12.1 provides a listing of the
+policies supported by each core.

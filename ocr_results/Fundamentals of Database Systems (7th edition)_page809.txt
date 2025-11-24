@@ -1,0 +1,34 @@
+Selected Bibliography
+
+20.24. Consider schedules $3, S4, and S; below. Determine whether each schedule is
+strict, cascadeless, recoverable, or nonrecoverable. (Determine the strictest
+recoverability condition that each schedule satisfies.)
+
+Ss: ry (X)5 ro (Z)s ry (Z)s 73 (Xs 173 (Y)s wy (X)5 15 ws (Y)5 €35 1 (Y)s
+Ww (Z)3 Wa (Y)s c25
+
+Sq: ry (X)5 12 (Z)5 ry (Z)5 3 (X)5 13 (Y)s wy (X)s wz (Y)5 12 (Y)s wy (Z)s
+Wa (Y)s C43 C25 C35
+
+Ss: ry (X)5 ry (Z)3 173 (X)5 7 (Z)3. 9 (Ys 13 (Y)s wy (X)s 15 Wo (Z)s 3 (Ys
+w2 (Y)s €35 C95
+
+Selected Bibliography
+
+The concept of serializability and related ideas to maintain consistency in a data-
+base were introduced in Gray et al. (1975). The concept of the database transaction
+was first discussed in Gray (1981). Gray won the coveted ACM Turing Award in
+1998 for his work on database transactions and implementation of transactions in
+relational DBMSs. Bernstein, Hadzilacos, and Goodman (1988) focus on concur-
+rency control and recovery techniques in both centralized and distributed database
+systems; it is an excellent reference. Papadimitriou (1986) offers a more theoretical
+perspective. A large reference book of more than a thousand pages by Gray and
+Reuter (1993) offers a more practical perspective of transaction processing concepts
+and techniques. Elmagarmid (1992) offers collections of research papers on trans-
+action processing for advanced applications. Transaction support in SQL is
+described in Date and Darwen (1997). View serializability is defined in Yannakakis
+(1984). Recoverability of schedules and reliability in databases is discussed in
+Hadzilacos (1983, 1988). Buffer replacement policies are discussed in Chou and
+DeWitt (1985). Snapshot isolation is discussed in Ports and Grittner (2012).
+
+779

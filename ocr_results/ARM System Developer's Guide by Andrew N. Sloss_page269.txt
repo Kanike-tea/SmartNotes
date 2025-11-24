@@ -1,0 +1,24 @@
+256 Chapter 7 Optimized Primitives
+
+7.9 SUMMARY
+
+ARM instructions only implement simple primitives such as addition, subtraction, and
+multiplication. To perform more complex operations such as division, square root, and
+trigonometric functions, you need to use software routines. There are many useful tricks
+and algorithms to improve the performance of these complex operations. This chapter
+covered the algorithms and code examples for a number of standard operations.
+
+Standard tricks include
+
+= using binary search or trial subtraction to calculate small quotients
+
+= using Newton-Raphson iteration for fast calculation of reciprocals and extraction of
+roots
+
+= using a combination of table lookup followed by series expansion to calculate
+transcendental functions such as exp, log, sin, and cos
+
+= using logical operations with barrel shift to perform bit permutations, rather than
+testing bits individually
+
+= using multiply accumulate instructions to generate pseudorandom numbers

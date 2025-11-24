@@ -1,0 +1,53 @@
+Database Management System [BCS403]
+
+FROM EMPLOYEE AS E
+
+WHERE EXISTS ( SELECT *
+
+FROM DEPENDENT AS D
+
+WHERE E.Ssn=D.Essn AND E.Sex=D.Sex
+
+AND E.Fname=D.Dependent_name);
+Example: List the names of managers who have at least one dependent
+
+SELECT Fname, Lname
+
+FROM EMPLOYEE
+
+WHERE EXISTS ( SELECT *
+
+FROM DEPENDENT
+
+WHERE Ssn=Essn )
+
+AND
+
+EXISTS ( SELECT *
+
+FROM DEPARTMENT
+
+WHERE Ssn=Mgr_ssn );
+
+In general, EXISTS(Q) returns TRUE if there is at least one tuple in the result of the nested query Q,
+and it returns FALSE otherwise.
+
+NOT EXISTS Functions
+NOT EXISTS(Q) returns TRUE if there are no tuples in the result of nested query Q, and it returns
+FALSE otherwise.
+Example: Retrieve the names of employees who have no dependents.
+SELECT Fname, Lname
+FROM EMPLOYEE
+WHERE NOT EXISTS ( SELECT *
+FROM DEPENDENT
+WHERE Ssn=Essn );
+
+For each EMPLOYEE tuple, the correlated nested query selects all DEPENDENT tuples whose
+Essn value matches the EMPLOYEE Ssn; if the result is empty, no dependents are related to the
+employee, so we select that EMPLOYEE tuple and retrieve its Fname and Lname.
+
+Example: Retrieve the name of each employee who works on all the projects controlled
+by department number 5
+SELECT Fname, Lname
+
+https://vtucode.in page 22

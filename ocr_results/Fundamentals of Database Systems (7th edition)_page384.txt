@@ -1,0 +1,88 @@
+354
+
+10)
+11)
+12)
+
+13)
+14)
+15)
+
+Chapter 11 Web Database Programming Using PHP
+
+require 'DB.php';
+$d = DB::connect('
+
+oci8://acct1:pass12@www.host .com/db1' );
+
+if (DB::isError($d)) { die("cannot connect - " . $d->getMessage());}
+
+(Emp_id INT,
+Name VARCHAR (15)
+Job VARCHAR(10),
+Dno INT);" );
+if (DB
+
+$q = $d->query("CREATE TABLE EMPLOYEE
+
+sError($q)) { die("table creation not successful - "
+
+$q->getMessage()); }
+
+$d->setErrorHandling(PEAR_ERROR_DIE) ;
+
+$eid = $d->nextID(
+
+"EMPLOYEE ' );
+
+$q = $d->query("INSERT INTO EMPLOYEE VALUES
+(Seid, $_POST['emp_name'], $_POST['emp_job'], $_POST['emp_dno'])" );
+
+$eid = $d->nextID(
+
+"EMPLOYEE ' );
+
+$q = $d->query('INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?)',
+array($eid, $_POST['emp_name'], $ POST['emp_job'], $_POST['emp_dno']) );
+
+Figure 11.6
+Connecting to a database, creating a table, and inserting a record
+
+where
+
+the string argument specifies the database information. The format for
+
+"string! is:
+
+<DBMS software>://<user account>:<password>@<database server>
+
+In Figure 11.6, line 1 connects to the database that is stored using Oracle (specified
+
+via the
+
+string oci8). The <DBMS software> portion of the 'string' specifies the
+
+particular DBMS software package being connected to. Some of the DBMS software
+
+packag
+
+es that are accessible through PEAR DB are:
+MySQL. Specified as mysql for earlier versions and mysqli for later ver-
+sions starting with version 4.1.2.
+
+Oracle. Specified as oc8i for versions 7, 8, and 9. This is used in line 1 of
+Figure 11.6.
+
+SQLite. Specified as sqlite.
+
+Microsoft SQL Server. Specified as mssql.
+
+Mini SQL. Specified as msq1.
+
+Informix. Specified as ifx.
+
+Sybase. Specified as sybase.
+
+Any ODBC-compliant system. Specified as odbc.
+
+The above is not a comprehensive list.

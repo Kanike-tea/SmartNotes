@@ -1,0 +1,50 @@
+88
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+Weak entities can be modeled using the UML construct called qualified association
+(or qualified aggregation); this can represent both the identifying relationship
+and the partial key, which is placed in a box attached to the owner class. This is
+illustrated by the DEPENDENT class and its qualified aggregation to EMPLOYEE in
+Figure 3.16. In UML terminology, the partial key attribute Dependent_name is called
+the discriminator, because its value distinguishes the objects associated with
+(related to) the same EMPLOYEE entity. Qualified associations are not restricted to
+modeling weak entities, and they can be used to model other situations in UML.
+
+This section is not meant to be a complete description of UML class diagrams, but
+rather to illustrate one popular type of alternative diagrammatic notation that can
+be used for representing ER modeling concepts.
+
+3.9 Relationship Types of Degree
+Higher than Two
+
+In Section 3.4.2 we defined the degree of a relationship type as the number of par-
+ticipating entity types and called a relationship type of degree two binary and a
+relationship type of degree three ternary. In this section, we elaborate on the differ-
+ences between binary and higher-degree relationships, when to choose higher-
+degree versus binary relationships, and how to specify constraints on higher-degree
+relationships.
+
+3.9.1 Choosing between Binary and Ternary
+(or Higher-Degree) Relationships
+
+The ER diagram notation for a ternary relationship type is shown in Figure 3.17(a),
+which displays the schema for the SUPPLY relationship type that was displayed at the
+instance level in Figure 3.10. Recall that the relationship set of SUPPLY is a set of rela-
+tionship instances (s, j, p), where the meaning is that s is a SUPPLIER who is currently
+supplying a PART p to a PROJECT j. In general, a relationship type R of degree n will
+have n edges in an ER diagram, one connecting R to each participating entity type.
+
+Figure 3.17(b) shows an ER diagram for three binary relationship types CAN_SUPPLY,
+USES, and SUPPLIES. In general, a ternary relationship type represents different
+information than do three binary relationship types. Consider the three binary
+relationship types CAN_SUPPLY, USES, and SUPPLIES. Suppose that
+CAN_SUPPLY, between SUPPLIER and PART, includes an instance (s, p) whenever
+supplier s can supply part p (to any project); USES, between PROJECT and PART,
+includes an instance (j, p) whenever project j uses part p; and SUPPLIES, between
+SUPPLIER and PROJECT, includes an instance (s, j) whenever supplier s supplies
+some part to project j. The existence of three relationship instances (s, p),
+(j, p), and (s, j) in CAN_SUPPLY, USES, and SUPPLIES, respectively, does not neces-
+sarily imply that an instance (s, j, p) exists in the ternary relationship SUPPLY,
+because the meaning is different. It is often tricky to decide whether a particular
+relationship should be represented as a relationship type of degree n or should be

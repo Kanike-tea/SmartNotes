@@ -1,0 +1,51 @@
+42
+
+Chapter 2 Database System Concepts and Architecture
+
+Interfaces for Parametric Users. Parametric users, such as bank tellers, often
+have a small set of operations that they must perform repeatedly. For example, a
+teller is able to use single function keys to invoke routine and repetitive transactions
+such as account deposits or withdrawals, or balance inquiries. Systems analysts and
+programmers design and implement a special interface for each known class of
+naive users. Usually a small set of abbreviated commands is included, with the goal
+of minimizing the number of keystrokes required for each request.
+
+Interfaces for the DBA. Most database systems contain privileged commands
+that can be used only by the DBA staff. These include commands for creating
+accounts, setting system parameters, granting account authorization, changing a
+schema, and reorganizing the storage structures of a database.
+
+2.4 The Database System Environment
+
+A DBMS is a complex software system. In this section we discuss the types of soft-
+ware components that constitute a DBMS and the types of computer system soft-
+ware with which the DBMS interacts.
+
+2.4.1 DBMS Component Modules
+
+Figure 2.3 illustrates, in a simplified form, the typical DBMS components. The
+figure is divided into two parts. The top part of the figure refers to the various
+users of the database environment and their interfaces. The lower part shows the
+internal modules of the DBMS responsible for storage of data and processing of
+transactions.
+
+The database and the DBMS catalog are usually stored on disk. Access to the
+disk is controlled primarily by the operating system (OS), which schedules disk
+read/write. Many DBMSs have their own buffer management module to sched-
+ule disk read/write, because management of buffer storage has a considerable
+effect on performance. Reducing disk read/write improves performance consid-
+erably. A higher-level stored data manager module of the DBMS controls access
+to DBMS information that is stored on disk, whether it is part of the database or
+the catalog.
+
+Let us consider the top part of Figure 2.3 first. It shows interfaces for the DBA staff,
+casual users who work with interactive interfaces to formulate queries, application
+programmers who create programs using some host programming languages, and
+parametric users who do data entry work by supplying parameters to predefined
+transactions. The DBA staff works on defining the database and tuning it by mak-
+ing changes to its definition using the DDL and other privileged commands.
+
+The DDL compiler processes schema definitions, specified in the DDL, and stores
+descriptions of the schemas (meta-data) in the DBMS catalog. The catalog includes
+information such as the names and sizes of files, names and data types of data items,
+storage details of each file, mapping information among schemas, and constraints.

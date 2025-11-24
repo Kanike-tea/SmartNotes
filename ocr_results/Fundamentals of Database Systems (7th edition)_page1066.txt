@@ -1,0 +1,51 @@
+1036
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+of the search term. ‘~’ is equivalent to AND NOT and means to exclude the term;
+the ‘~’ should be placed directly in front of the search term not wanted. Complex
+Boolean queries can be built out of these operators and their combinations, and
+they are evaluated according to the classical rules of Boolean algebra. No ranking is
+possible, because a document either satisfies such a query (is “relevant”) or does not
+satisfy it (is “nonrelevant”). A document is retrieved for a Boolean query if the
+query is logically true as an exact match in the document. Users generally do not
+use combinations of these complex Boolean operators, and IR systems support a
+restricted version of these set operators. Boolean retrieval models can directly sup-
+port different Boolean operator implementations for these kinds of queries.
+
+27.3.3 Phrase Queries
+
+When documents are represented using an inverted keyword index for searching,
+the relative order of the terms in the document is lost. In order to perform exact
+phrase retrieval, these phrases should be encoded in the inverted index or imple-
+mented differently (with relative positions of word occurrences in documents). A
+phrase query consists of a sequence of words that makes up a phrase. The phrase is
+generally enclosed within double quotes. Each retrieved document must contain at
+least one instance of the exact phrase. Phrase searching is a more restricted and spe-
+cific version of proximity searching that we mention below. For example, a phrase
+searching query could be ‘conceptual database design’. If phrases are indexed by the
+retrieval model, any retrieval model can be used for these query types. A phrase the-
+saurus may also be used in semantic models for fast dictionary searching of phrases.
+
+27.3.4 Proximity Queries
+
+Proximity search refers to a search that accounts for how close within a record mul-
+tiple terms should be to each other. The most commonly used proximity search
+option is a phrase search that requires terms to be in the exact order. Other proxim-
+ity operators can specify how close terms should be to each other. Some will also
+specify the order of the search terms. Each search engine can define proximity
+operators differently, and the search engines use various operator names such as
+NEAR, ADJ(adjacent), or AFTER. In some cases, a sequence of single words is
+given, together with a maximum allowed distance between them. Vector space
+models that also maintain information about positions and offsets of tokens (words)
+have robust implementations for this query type. However, providing support for
+complex proximity operators becomes computationally expensive because it
+requires the time-consuming preprocessing of documents and is thus suitable for
+smaller document collections rather than for the Web.
+
+27.3.5 Wildcard Queries
+
+Wildcard searching is generally meant to support regular expressions and pattern
+matching-based searching in text. In IR systems, certain kinds of wildcard search sup-
+port may be implemented—usually words with any trailing characters (for example,
+‘data® would retrieve data, database, datapoint, dataset, and so on). Providing full support

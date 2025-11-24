@@ -1,0 +1,54 @@
+356 Chapter 9 Exception and Interrupt Handling
+
+SUMMARY
+
+The base address for the interrupt controller is copied into register r14_irq and is used
+to obtain the IRQEnable register in the controller and place it into register r12.
+
+Register r10 contains the new mask. The next step is to clear the lower-priority
+interrupts using this mask by performing a binary AND with the mask and r12 (IRQEnable
+register) and storing the result into the IRQEnableClear register. It is now safe to enable
+IRQ exceptions by clearing the ibit in the cpsr.
+
+Lastly the handler needs to jump to the correct service routine, by modifying r11 (which
+still contains the highest-priority interrupt) and the pe. Shifting register r11 left by two
+(multiplying r1J by four) and adding it to the pe allows the handler to jump to the correct
+routine by loading the address of the service routine directly into the pc. The jump table
+must follow the instruction that loads the pc. There is an NOP between the jump table and
+the LDR instruction that modifies the pc because the pc is pointing two instructions ahead
+(or eight bytes).
+
+Note that the priority mask table is in interrupt bit order, and the priority table is in
+priority order.
+
+Prioritized Standard Interrupt Handler
+
+= Handles higher-priority interrupts in a shorter time than lower-priority interrupts.
+= Low interrupt latency.
+
+= Advantage: higher-priority interrupts treated with greater urgency with no duplication
+of code to set external interrupt masks.
+
+= Disadvantage: there is a time penalty since this handler requires two jumps, resulting
+in the pipeline being flushed each time a jump occurs.
+
+9.3.6 PRIORITIZED DIRECT INTERRUPT HANDLER
+
+EXAMPLE
+
+9.13
+
+One difference between the prioritized direct interrupt handler and the prioritized standard
+interrupt handler is that some of the processing is moved out of the handler into the
+individual ISRs. The moved code masks out the lower-priority interrupts. Each ISR will
+have to mask out the lower-priority interrupts for the particular priority level, which can
+be a fixed number since the priority level has already been previously determined.
+
+The second difference is that the prioritized direct interrupt handler jumps directly to the
+appropriate ISR. Each ISR is responsible for disabling the lower-priority interrupts before
+modifying the cpsr to reenable interrupts. This type of handler is relatively simple since the
+masking is done by the individual ISR, but there is a small amount of code duplication since
+each interrupt service routine is effectively carrying out the same task.
+
+The bit_x defines associate an interrupt source with a bit position within the interrupt
+controller, which will be used to help mask the lower-priority interrupts within an ISR.

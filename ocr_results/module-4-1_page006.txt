@@ -1,0 +1,47 @@
+Data Structures and Applications (15CS33)
+PROPERTIES OF BINARY TREES
+
+Lemma 1: [Maximum number of nodes]:
+(1) The maximum number of nodes on level i of a binary tree is 2*!,i>1.
+(2) The maximum number of nodes in a binary tree of depth k is 2*-1,k>1.
+
+Proof:
+
+(1) The proof is by induction on i.
+
+Induction Base: The root is the only node on level i = 1. Hence, the maximum number of nodes
+on level i=1 is 2'!=2°= 1.
+
+Induction Hypothesis: Let i be an arbitrary positive integer greater than 1. Assume that the
+maximum number of nodes on level i -1lis 2‘?
+
+Induction Step: The maximum number of nodes on level i -1 is 2‘? by the induction hypothesis.
+Since each node in a binary tree has a maximum degree of 2, the maximum number of nodes
+on level i is two times the maximum number of nodes on level i-1, or 2‘!
+
+(2) The maximum number of nodes in a binary tree of depth k is
+k k
+> (maximum number of nodes on level i) = y 22k!
+i=0 i=0
+
+Lemma 2: [Relation between number of leaf nodes and degree-2 nodes]:
+For any nonempty binary tree, T, if no is the number of leaf nodes and n2 the number of nodes
+of degree 2, then no = n2 + 1.
+
+Proof: Let n; be the number of nodes of degree one and n the total number of nodes.
+Since all nodes in T are at most of degree two, we have
+
+n=no +ni+m (1)
+Count the number of branches in a binary tree. If B is the number of branches, then
+n=B +1.
+All branches stem from a node of degree one or two. Thus,
+B =n i+ 2m.
+
+Hence, we obtain
+n=B+l= ni+2m+1 (2)
+
+Subtracting Eq. (2) from Eq. (1) and rearranging terms, we get
+
+No =n? +1
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

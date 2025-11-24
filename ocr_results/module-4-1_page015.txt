@@ -1,0 +1,55 @@
+Data Structures and Applications (15CS33)
+
+The inorder traversal of this tree is
+
+X1 A 7X2 V 7X1 A X3 V 4X3,
+
+The algorithm to determine satisfiablity is to let (x1, x2, x3) takes on all the possible
+combination of true and false values to check the formula for each combination.
+
+For n value of an expression, there are 2" possible combinations of true and false
+
+For example n=3, the eight combinations are (t,t.t), (t.t,f), (tft), (Lf), (fo. (ff), fo,
+(fff).
+
+The algorithm will take O(g 2"), where g is the time to substitute values for x1, x2,... Xn and
+evaluate the expression.
+
+Node structure:
+For the purpose of evaluation algorithm, assume each node has four fields:
+left—child ht—child |
+
+Figure : Node structure for the satisfiability problem
+
+data | value | rig
+
+Define this node structure in C as:
+
+typedef enum {not,and,or,true,false} logical;
+typedef struct node *tree—pointer;
+typedef struct node {
+
+tree-pointer left—child;
+
+logical data;
+
+short int value;
+
+tree—pointer right—child;
+
+}G
+
+Satisfiability function: The first version of Satisfiability algorithm
+
+for (all 2" possible combinations) {
+generate the next combination;
+replace the variables by their values;
+evaluate root by traversing it in postorder;
+if (rootvalue) {
+printf (<combination>);
+return;
+
+}
+printf("No satisfiable combination\n");
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

@@ -1,0 +1,55 @@
+19.5 Cost Functions for the JOIN Operation
+
+19.5.5 Dynamic Programming Approach to Join Ordering
+
+We saw in Section 19.5.3 that there are many possible ways to order n relations in
+an n-way join. Even for n= 5, which is not uncommon in practical applications, the
+possible permutations are 120 with left-deep trees and 1,680 with bushy trees. Since
+bushy trees expand the solution space tremendously, left-deep trees are generally
+preferred (over both bushy and right-deep trees). They have multiple advantages:
+First, they work well with the common algorithms for join, including nested-loop,
+index-based nested-loop, and other one-pass algorithms. Second, they can generate
+fully pipelined plans (i.e., plans where all joins can be evaluated using pipelining).
+Note that inner tables must always be materialized because in the join implementa-
+tion algorithms, the entire inner table is needed to perform the matching on the
+join attribute. This is not possible with right-deep trees.
+
+The common approach to evaluate possible permutations of joining relations is a greedy
+heuristic approach called dynamic programming. Dynamic programming is an opti-
+mization technique’? where subproblems are solved only once, and it is applicable when
+a problem may be broken down into subproblems that themselves have subproblems. A
+typical dynamic programming algorithm has the following characteristics’*:
+
+1. The structure of an optimal solution is developed.
+2. The value of the optimal solution is recursively defined.
+
+3. The optimal solution is computed and its value developed in a bottom-up
+fashion.
+
+Note that the solution developed by this procedure is an optimal solution and not the
+absolute optimal solution. To consider how dynamic programming may be applied to
+the join order selection, consider the problem of ordering a 5-way join of relations r1,
+12, 13, r4, r5. This problem has 120 (=5!) possible left-deep tree solutions. Ideally, the
+cost of each of them can be estimated and compared and the best one selected. Dynamic
+programming takes an approach that breaks down this problem to make it more man-
+ageable. We know that for three relations, there are only six possible left-deep tree
+solutions. Note that if all possible bushy tree join solutions were to be evaluated, there
+would be 12 of them. We can therefore consider the join to be broken down as:
+
+rl 412 b473 47415 = (rl M1273) rd rd,
+The 6 (= 3!) possible options of (rl *r2>r3) may then be combined with the 6 pos-
+
+sible options of taking the result of the first join, say, temp1, and then considering
+the next join:
+
+(temp1 ™r4><r5)
+
+If we were to consider the 6 options for evaluating temp] and, for each of them,
+consider the 6 options of evaluating the second join (temp! > r4<r5), the possible
+
+'3For a detailed discussion of dynamic programming as a technique of optimization, the reader may con-
+sult an algorithm textbook such as Corman et al. (2003).
+
+'4Based on Chapter 16 in Corman et al. (2008).
+
+725

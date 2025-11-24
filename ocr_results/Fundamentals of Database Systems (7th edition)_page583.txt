@@ -1,0 +1,52 @@
+16.2 Secondary Storage Devices
+
+3. Reading data ahead of request: To minimize seek times, whenever a block
+is read into the buffer, blocks from the rest of the track can also be read even
+though they may not have been requested yet. This works well for applica-
+tions that are likely to need consecutive blocks; for random block reads this
+strategy is counterproductive.
+
+4. Proper scheduling of I/O requests: If it is necessary to read several blocks
+from disk, total access time can be minimized by scheduling them so that the
+arm moves only in one direction and picks up the blocks along its move-
+ment. One popular algorithm is called the elevator algorithm; this algorithm
+mimics the behavior of an elevator that schedules requests on multiple floors
+in a proper sequence. In this way, the arm can service requests along its out-
+ward and inward movements without much disruption.
+
+5. Use of log disks to temporarily hold writes: A single disk may be assigned
+to just one function called logging of writes. All blocks to be written can go
+to that disk sequentially, thus eliminating any seek time. This works much
+faster than doing the writes to a file at random locations, which requires a
+seek for each write. The log disk can order these writes in (cylinder, track)
+ordering to minimize arm movement when writing. Actually, the log disk
+can only be an area (extent) of a disk. Having the data file and the log file on
+the same disk is a cheaper solution but compromises performance. Although
+the idea of a log disk can improve write performance, it is not feasible for
+most real-life application data.
+
+6. Use of SSDs or flash memory for recovery purposes: In applications
+where updates occur with high frequency, updates can be lost from main
+memory if the system crashes. A preventive measure would be to increase
+the speed of updates/writes to disk. One possible approach involves writing
+the updates to a nonvolatile SSD buffer, which may be a flash memory or
+battery-operated DRAM, both of which operate at must faster speeds
+(see Table 16.1). The disk controller then updates the data file during its idle
+time and also when the buffer becomes full. During recovery from a crash,
+unwritten SSD buffers must be written to the data file on HDD. For further
+discussion of recovery and logs, consult Chapter 22.
+
+16.2.3 SolidState Device (SSD) Storage
+
+This type of storage is sometimes known as flash storage because it is based on the
+flash memory technology, which we discussed in Section 16.1.1.
+
+The recent trend is to use flash memories as an intermediate layer between main
+memory and secondary rotating storage in the form of magnetic disks (HDDs).
+Since they resemble disks in terms of the ability to store data in secondary storage
+without the need for continuous power supply, they are called solid-state disks or
+solid-state drives (SSDs). We will discuss SSDs in general terms first and then
+comment on their use at the enterprise level, where they are sometimes referred to
+as enterprise flash drives (EFDs), a term first introduced by EMC Corporation.
+
+553

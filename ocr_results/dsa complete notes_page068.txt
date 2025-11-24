@@ -1,0 +1,24 @@
+Data Structures and Applications(BCS304) Module 2
+
+Function pop returns the top element and changes top to point to the address contained in its
+link field.
+
+int pop(int i)
+
+/* remove top element from the ith stack */int
+itemdel;
+
+Stack * temp;
+
+if (top[i]J==NULL) return
+
+stackEmpty();
+
+oad
+
+temp = top[i]; itemdel =
+temp—data;top[i] =
+top[i]—link; free(temp);
+return item;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 24

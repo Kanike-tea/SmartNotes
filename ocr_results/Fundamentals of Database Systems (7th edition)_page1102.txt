@@ -1,0 +1,52 @@
+1072
+
+Chapter 28 Data Mining Concepts
+
+identified by certain sequences of nucleotide symbols in the DNA sequence.
+The area known as authentication is a form of identification. It ascertains
+whether a user is indeed a specific user or one from an authorized class, and
+it involves comparing parameters or images or signals against a database.
+
+= Classification. Data mining can partition the data so that different classes or
+categories can be identified based on combinations of parameters. For exam-
+ple, customers in a supermarket can be categorized into discount-seeking
+shoppers, shoppers in a rush, loyal regular shoppers, shoppers attached to
+name brands, and infrequent shoppers. This classification may be used in
+different analyses of customer buying transactions as a post-mining activity.
+Sometimes classification based on common domain knowledge is used as an
+input to decompose the mining problem and make it simpler. For instance,
+health foods, party foods, and school lunch foods are distinct categories in
+the supermarket business. It makes sense to analyze relationships within
+and across categories as separate problems. Such categorization may be used
+to encode the data appropriately before subjecting it to further data mining.
+
+= Optimization. One eventual goal of data mining may be to optimize the use
+of limited resources such as time, space, money, or materials and to maxi-
+mize output variables such as sales or profits under a given set of constraints.
+As such, this goal of data mining resembles the objective function used in
+operations research problems that deals with optimization under constraints.
+
+The term data mining is popularly used in a broad sense. In some situations, it
+includes statistical analysis and constrained optimization as well as machine learn-
+ing. There is no sharp line separating data mining from these disciplines. It is
+beyond our scope, therefore, to discuss in detail the entire range of applications that
+make up this vast body of work. For a detailed understanding of the topic, readers
+are referred to specialized books devoted to data mining.
+
+28.1.4 Types of Knowledge Discovered during Data Mining
+
+The term knowledge is broadly interpreted as involving some degree of intelligence.
+There is a progression from raw data to information to knowledge as we go through
+additional processing. Knowledge is often classified as inductive versus deductive.
+Deductive knowledge deduces new information based on applying prespecified logi-
+cal rules of deduction on the given data. Data mining addresses inductive knowledge,
+which discovers new rules and patterns from the supplied data. Knowledge can be
+represented in many forms: In an unstructured sense, it can be represented by rules or
+propositional logic. In a structured form, it may be represented in decision trees,
+semantic networks, neural networks, or hierarchies of classes or frames. It is common
+to describe the knowledge discovered during data mining as follows:
+
+= Association rules. These rules correlate the presence of a set of items with
+another range of values for another set of variables. Examples: (1) When a
+female retail shopper buys a handbag, she is likely to buy shoes. (2) An X-ray
+image containing characteristics a and b is likely to also exhibit characteristic c.

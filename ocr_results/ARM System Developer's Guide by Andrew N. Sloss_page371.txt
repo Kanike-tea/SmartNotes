@@ -1,0 +1,58 @@
+358 Chapter 9 Exception and Interrupt Handling
+
+TST rl, #BINARY_1 3 if CommTx
+LDRNE pc, [r12, #PRIORITY 1<<2] ; then CommTx ISR
+TST —rl0, #BINARY 2 3 if Timerl
+LDRNE pc, [r12, #PRIORITY 2<<2] ; then Timerl ISR
+TST —rl0, #BINARY 3 3 if Timer2
+LDRNE pc, [r12, #PRIORITY 3<<2] ; then Timer2 ISR
+B service_none
+
+isr_table
+DCD —service_timer1 3 timerl ISR
+DCD service_commtx 3 commtx ISR
+DCD service_commrx 3 commrx ISR
+DCD —service_timer2 3 timer2 ISR
+
+priority_masks
+
+DCD = MASK_2 3 priority mask 2
+DcD = MASK_1 3 priority mask 1
+DCD MASK_O 3 priority mask 0
+DCD MASK_3 3 priority mask 3
+
+service_timerl
+MOV rll, #bit_timer1
+LOR rl, =ic Base
+LOR —rl2, _[r14,#1RQEnable]
+ADR rl0, priority_masks
+LOR lO, [r10,r11,LSL#2] load priority mask
+AND = rl2, rl2, r10 AND enable reg
+STR 12, [r14, #IRQEnableClear] ; disable ints
+
+copy bit_timerl
+int ctrl addr
+
+IRQ enable register
+obtain priority addr
+
+MRS rl4, cpsr 3 copy cpsr
+BIC rl, 14, #1_Bit 3 clear I-bit
+MSR cpsr_c, ria 3 enable IRQ
+
+<rest of the ISR>
+
+The priority interrupt is established by checking the highest-priority interrupt first and
+then working down to the lowest. Once a priority interrupt is identified, the pcis then loaded
+with the address of the appropriate ISR. The indirect address is stored at the address of the
+isr_table plus the priority level shifted two bits to the left (multiplied by four). Alternatively
+you could use a conditional branch BNE.
+
+The ISR jump table isr_table is ordered with the highest-priority interrupt at the
+beginning of the table.
+
+The service_timerl entry shows an example of an ISR used in a priority direct interrupt
+handler. Each ISR is unique and depends upon the particular interrupt source.
+
+A copy of the base address for the interrupt controller is placed into register rl4_irq.
+This address plus an offset is used to copy the IRQEnable register into register r12.

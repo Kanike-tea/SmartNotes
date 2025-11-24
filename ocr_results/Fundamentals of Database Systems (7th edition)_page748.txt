@@ -1,0 +1,54 @@
+718
+
+Chapter 19 Query Optimization
+
+has the NOT NULL constraint, then js = (1/|R|), and the result file of the join
+will contain |S| records.
+
+2. If Bis a key of S, then |(R™, S)| < |R|, so js < (1/|S}).
+Hence a simple formula to use for join selectivity is:
+js=1/ max (NDV (A, R), NDV (B,S) )
+
+Having an estimate of the join selectivity for commonly occurring join conditions
+enables the query optimizer to estimate the size of the resulting file after the join
+operation, which we call join cardinality (jc).
+
+Jc=|(Re S)| = js* |R|* |S
+
+We can now give some sample approximate cost functions for estimating the cost of
+some of the join algorithms given in Section 18.4. The join operations are of the form:
+
+Rot yg
+
+where A and B are domain-compatible attributes of R and S, respectively. Assume
+that R has bp blocks and that S has bg blocks:
+
+= Jl—Nested-loop join. Suppose that we use R for the outer loop; then we get
+the following cost function to estimate the number of block accesses for this
+method, assuming three memory buffers. We assume that the blocking factor
+for the resulting file is bfrgs and that the join selectivity is known:
+
+Cy = bet (bp * bs) + (is * [RI * |S])/bfres)
+
+‘The last part of the formula is the cost of writing the resulting file to disk. This
+cost formula can be modified to take into account different numbers of
+memory buffers, as presented in Section 19.4. If ng main memory buffer
+blocks are available to perform the join, the cost formula becomes:
+
+Cy = byt ([bp/(ng - 2)1* bs) + ((js* [RI * |S))/bfres)
+
+= J2—Index-based nested-loop join (using an access structure to retrieve
+the matching record(s)). If an index exists for the join attribute B of S with
+index levels xp, we can retrieve each record s in R and then use the index to
+retrieve all the matching records t from S that satisfy t{B] = s[A]. The cost
+depends on the type of index. For a secondary index where sz is the selection
+cardinality for the join attribute B of S,° we get:
+
+Cha = bp + (\R| * (xp +1 + 5p) + (Cis * [RI * |S|)/bfrrs)
+For a clustering index where sg is the selection cardinality of B, we get
+
+Chap = bet (IR| * (xp + (sp/bfrg))) + (is * [RI * |S|)/bfrrs)
+
+°Selection cardinality was defined as the average number of records that satisfy an equality condition on
+an attribute, which is the average number of records that have the same value for the attribute and
+hence will be joined to a single record in the other file.

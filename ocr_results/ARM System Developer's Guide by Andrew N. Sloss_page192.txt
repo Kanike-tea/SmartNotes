@@ -1,0 +1,60 @@
+6.4 Register Allocation 179
+
+word load. We use a bracketed notation to denote several values packed into the
+same word:
+
+Bit 24 16 8 O
+
+[x3, x2, x1, x0] =xj224 +5216 4 x28 4x9 = | a3 |X | 21 | 0
+
+We then unpack the 8-bit data and promote it to 16-bit data using an AND with a mask
+register. We use the notation
+
+Bit 31 16 15 0
+
+[x2, x0] = x52! 4x9 = xy Xo
+
+Note that even for signed values [a, b] + [c, d] = [a + b, c + d] if we interpret [a, b] using
+the mathematical equation a2!¢ + b. Therefore we can perform SIMD operations on these
+values using normal arithmetic instructions.
+
+The following code shows how you can process four pixels at a time using only two
+multiplies. The code assumes a 176 x 144 sized quarter CIF image.
+
+IMAGE_WIDTH EQU 176 3 QCIF width
+IMAGE_HEIGHT EQU 144 3 QCIF height
+
+pz RN 0 — ; pointer to destination image (word aligned)
+px RN 1; pointer to first source image (word aligned)
+py RN 2; pointer to second source image (word aligned)
+a RN 3; 8-bit scaling factor (0-256)
+
+xx RN 4 — ; holds four x pixels [x3, x2, x1, x0]
+
+yy RN 5; holds four y pixels [y3, y2, yl, yO]
+
+x RN 6  ; holds two expanded x pixels [x2, x0]
+
+y RN 7; holds two expanded y pixels [y2, y0]
+
+z RN 8 ; holds four z pixels [z3, z2, zl, z0]
+
+count RN 12 ; number of pixels remaining
+
+mask RN 14 5 constant mask with value OxO0ffOOff
+
+3 void merge_images(char *pz, char *px, char *py, int a)
+merge_images
+
+STMFD sp!, {r4-r8, Ir}
+
+MOV count, #IMAGE_WIDTH*IMAGE_HEIGHT
+
+LDR mask, =OxOOFFOOFF ; [ 0, OxFF, 0, OxFF ]
+
+merge_loop
+LOR xx, [px], #4 30 x3, x2, xl, x0]
+LOR yy» [py], #4 30 y3, y2, yl, yo]
+AND x, mask, xx 3f 0, x2, 0, x0]
+AND y, mask, yy 30 0, y2, 0, yo]
+SUB x, xy 3 [  (x2-y2), (x0-y0) ]

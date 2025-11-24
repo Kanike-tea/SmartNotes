@@ -1,0 +1,44 @@
+5.7 Structure Arrangement 131
+
+To improve the memory usage, you should reorder the elements
+
+struct {
+char a;
+char c;
+short d3
+int bs
+
+}
+
+This reduces the structure size from 12 bytes to 8 bytes, with the following new layout:
+
+Address +3 +2 +1 +0
+
++0 | d[15,8] d[7,0] c a
++4 | b[31,24] | b[23,16] | b[15,8] | b[7,0]
+
+Therefore, it is a good idea to group structure elements of the same size, so that the
+structure layout doesn’t contain unnecessary padding. The armcc compiler does include
+a keyword __packed that removes all padding. For example, the structure
+
+__packed struct {
+char a;
+int bs
+char c;
+short d3
+}
+
+will be laid out in memory as
+
+Address +3 +2 +1 +0
++0 | b[23,16] | b[15,8] | b[7,0] a
++4] d[15,8] | d[7,0] c b(31,24]
+
+However, packed structures are slow and inefficient to access. The compiler emulates
+unaligned load and store operations by using several aligned accesses with data operations
+to merge the results. Only use the __packed keyword where space is far more important
+than speed and you can’t reduce padding by rearragement. Also use it for porting code that
+assumes a certain structure layout in memory.
+
+The exact layout of a structure in memory may depend on the compiler vendor and
+compiler version you use. In API (Application Programmer Interface) definitions it is often

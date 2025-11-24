@@ -1,0 +1,64 @@
+656 Chapter 18 S
+
+Figure 18.1
+Typical steps when
+processing a high-level
+
+query.
+
+trategies for Query Processing
+
+Query in a high-level language
+
+y
+
+‘Scanning, parsing, and validating
+
+Immediate form of query
+
+y
+
+Query optimizer
+
+y
+Execution plan
+
+y
+
+Query code generator
+
+Code can be:
+
+Executed directly (interpreted mode)
+
+y
+Code to execute the query Stored and executed later whenever
+
+1 needed (compiled mode)
+
+Runtime database processor
+
+Result of query
+
+The term optimization is actually a misnomer because in some cases the chosen
+execution plan is not the optimal (or absolute best) strategy—it is just a reasonably
+efficient or the best available strategy for executing the query. Finding the optimal
+strategy is usually too time-consuming—except for the simplest of queries. In addi-
+tion, trying to find the optimal query execution strategy requires accurate and
+detailed information about the size of the tables and distributions of things such as
+column values, which may not be always available in the DBMS catalog. Further-
+more, additional information such as the size of the expected result must be derived
+based on the predicates in the query. Hence, planning of a good execution strategy
+may be a more accurate description than query optimization.
+
+For lower-level navigational database languages in legacy systems—such as the net-
+work DML or the hierarchical DL/1 the programmer must choose the query execu-
+tion strategy while writing a database program. If a DBMS provides only a
+navigational language, there is a limited opportunity for extensive query optimiza-
+tion by the DBMS; instead, the programmer is given the capability to choose the
+query execution strategy. On the other hand, a high-level query language—such as
+SQL for relational DBMSs (RDBMSs) or OQL (see Chapter 12) for object DBMSs
+(ODBMSs)—is more declarative in nature because it specifies what the intended
+results of the query are rather than identifying the details of how the result should
+be obtained. Query optimization is thus necessary for queries that are specified in a
+high-level query language.

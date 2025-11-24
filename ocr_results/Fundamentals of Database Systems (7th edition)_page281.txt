@@ -1,0 +1,51 @@
+8.3 Binary Relational Operations: JOIN and DIVISION
+
+combined with every female employee). We want to combine a female employee
+tuple only with her particular dependents—namely, the DEPENDENT tuples whose
+Essn value match the Ssn value of the EMPLOYEE tuple. The ACTUAL_DEPENDENTS
+relation accomplishes this. The EMP_DEPENDENTS relation is a good example of
+the case where relational algebra can be correctly applied to yield results that make
+no sense at all. It is the responsibility of the user to make sure to apply only mean-
+ingful operations to relations.
+
+The CARTESIAN PRODUCT creates tuples with the combined attributes of two rela-
+tions. We can SELECT related tuples only from the two relations by specifying an
+appropriate selection condition after the Cartesian product, as we did in the pre-
+ceding example. Because this sequence of CARTESIAN PRODUCT followed by
+SELECT is quite commonly used to combine related tuples from two relations, a
+special operation, called JOIN, was created to specify this sequence as a single opera-
+tion. We discuss the JOIN operation next.
+
+In SQL, CARTESIAN PRODUCT can be realized by using the CROSS JOIN option in
+joined tables (see Section 7.1.6). Alternatively, if there are two tables in the FROM
+clause and there is no corresponding join condition in the WHERE clause of the
+SQL query, the result will also be the CARTESIAN PRODUCT of the two tables (see
+Q10 in Section 6.3.3).
+
+8.3 Binary Relational Operations:
+JOIN and DIVISION
+
+8.3.1 The JOIN Operation
+
+The JOIN operation, denoted by ™, is used to combine related tuples from two rela-
+tions into single “longer” tuples. This operation is very important for any relational
+database with more than a single relation because it allows us to process relation-
+ships among relations. To illustrate JOIN, suppose that we want to retrieve the name
+of the manager of each department. To get the manager’s name, we need to com-
+bine each department tuple with the employee tuple whose Ssn value matches the
+Mgr_ssn value in the department tuple. We do this by using the JOIN operation and
+then projecting the result over the necessary attributes, as follows:
+
+DEPT_MGR < DEPARTMENT ™ jy gsn—Ssn EMPLOYEE
+RESULT < Tpname, Lname, Fname( DEPT_MGR)
+
+The first operation is illustrated in Figure 8.6. Note that Mgr_ssn is a foreign key of
+the DEPARTMENT relation that references Ssn, the primary key of the EMPLOYEE
+relation. This referential integrity constraint plays a role in having matching tuples
+in the referenced relation EMPLOYEE.
+
+The JOIN operation can be specified as a CARTESIAN PRODUCT operation fol-
+lowed by a SELECT operation. However, JOIN is very important because it is
+used frequently when specifying database queries. Consider the earlier example
+
+251

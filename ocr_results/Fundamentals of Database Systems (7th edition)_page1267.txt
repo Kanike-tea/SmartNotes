@@ -1,0 +1,190 @@
+Search relevance, IR, 1044-1047
+Search techniques
+conjunctive selection, 665-666
+disjunctive selection, 666-667
+keyword-based, 41
+query processing, 663-667
+SELECT operation algorithms,
+663-667
+simple selection, 663-665
+Web database applications, 4
+Search trees, dynamic multilevel indexes,
+618-619
+Second normal form (2NF)
+definition of, 481
+full functional dependency and,
+481-482
+general definition of, 484-486
+normalizing relations, 482, 484-486
+primary key and, 483-484
+Secondary access path, indexing, 601
+Secondary indexes, 603, 609-612
+Secondary storage
+capacity of, 534
+devices for, 547-556
+random access devices, 554
+sequential access devices, 554-555
+solid-state drive (SSD), 542
+Security, see Data security; Database
+security
+Security and authorization subsystems, 19
+Seek time, disk devices, 552
+SELECT clause statement
+ALL option with, 194-195
+AS option with, 196
+DISTINCT option with, 188, 194
+mandatory use of, 197
+multiset tables and, 194-195
+SQL query retrieval and, 187-188,
+194-197
+SELECT operation
+Boolean expressions (clauses),
+241-242
+cascade (sequence) with, 243
+conjunctive selection, 665-666
+cost functions for, 714
+degree of relations, 243
+disjunctive selection, 666-667
+estimating selectivity of conditions,
+667-668
+implementation options for, 663
+query processing algorithms, 663-668
+relational algebra using, 241-243
+search methods for, 663-667
+selectivity of a condition, 243, 667-668
+simple selection, 663-665
+SELECT operator (a), 241
+Select...from...where structure, OQL,
+409
+Select-from-where block, SQL, 188-191
+Select-project-join query, 189-190, 273
+Selection conditions
+domain variables, 278
+
+file operations, 564-565
+parallel algorithms, 685
+WHERE clause queries, 189
+Selective inheritance, 377
+Selectivity
+join operations, 254, 719-720
+ofa condition, 243, 667-668
+Self-describing data, 10, 427
+Self-describing data models, 34
+Self-describing documents, 425. See also
+JSON; XML (EXtended Markup
+Language)
+Semantic approach, IR, 1028
+Semantic data models
+abstraction concepts, 129-133
+EER modeling, 107-108
+ontology for, 132-134
+Semantic equivalence, query trees,
+694-695
+Semantic heterogeneity, 857-858
+Semantic model, IR, 1034-1035
+Semantic query optimization, 737-738
+Semantic tagging, images, 998-999
+Semantics
+attribute clarity, 461-465
+data constraints, 21
+functional dependency of, 472-473
+relation schema, 461-465
+RDB design, 461-465, 472-473
+schedule operations, 773
+Semi-join (SJ) operator, 658-660, 681,
+719-720, 862-863
+Semistructured data, XML, 426-428
+Separator characters, records, 561
+Sequence of interaction, database
+programming and, 313-314
+Sequence of operations, relational
+algebra, 245-246
+Sequential access storage devices,
+554-555
+Sequential pattern discovery, data
+mining, 1091
+Serial ATA (SATA), 551
+Serial schedules, 763-764
+Serializability
+basis of schedules, 763-766
+concurrency control and, 770-771
+testing for, 767-770
+Serializable schedules, 763, 765-766
+Server, defined, 48
+Servers
+application, 44
+database, 44
+DBMS module, 31
+SET clause, SQL, 201
+SET CONNECTION command, SQL,
+316
+Set constructor, 369
+SET DIFFERENCE operation, 247-249
+Set operations
+anti-join (AJ) operator for set
+difference, 677-678
+
+Index 1237
+
+parallel algorithms, 686
+query processing, algorithms for,
+676-678
+SQL, 194-195
+Set theory
+CARTESIAN PRODUCT operation,
+249-251
+INTERSECTION operation, 247-249
+MINUS operation, 247-249
+OUTER UNION operation, 264-265
+relational algebra operations from,
+246-251, 264-265
+SET DIFFERENCE operation,
+247-249
+type compatibility, 247
+UNION operation, 246-249
+Set type, legacy data modeling with, 53
+Set-at-a-time, file operations, 566
+Set-at-time DML, 40
+Sets
+explicit set of values, 214
+multiset comparisons, SQL query
+retrieval, 209-211
+parentheses for, 214
+SQL table relations, 188, 193-195
+Shadow directory, 826
+Shadow paging, database recovery,
+826-827
+Shadowing, 816
+Sharding
+DDBs, 847-848
+NOSQL, 886, 894-895
+Shared-disk architecture, 683
+Shared/exclusive (read/write) locks,
+784-786
+Shared-memory architecture, 683
+Shared-nothing architecture, 684
+Shared subclasses, 118, 301
+Shared variables in embedded SQL, 314
+Signature of operations, 366, 397. See also
+Interfaces
+Simple (atomic) attributes, 65-66
+Simple elements, XML, 431
+Simple Object Access Protocol (SOAP),
+447
+Simple selection, search methods for,
+663-665
+Single character replacement symbol (_),
+195-196
+Single inheritance, 118-119
+Single-level ordered indexes
+clustering indexes, 602, 606-608
+concept of, 602-603
+physical database design and, 602-613
+primary indexes, 602, 603-606
+secondary indexes, 603, 609-612
+Single-relation options, EER-to-
+relational mapping, 299-300
+Single-sided disks, 547
+Single time point, 976
+Single-user DBMS systems, 51
+Single-valued attribute, ER modeling, 66

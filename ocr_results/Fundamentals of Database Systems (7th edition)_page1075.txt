@@ -1,0 +1,49 @@
+27.6 Evaluation Measures of Search Relevance 1045
+
+Relevant?
+Yes No
+Yes Hits False
+Alarms
+TP FP
+Retrieved?
+Misses Correct
+Rejections
+No FN TN Figure 27.5
+® © Retrieved versus relevant
+search results.
+
+= EN: false negative
+= TN: true negative
+
+The terms true positive, false positive, false negative, and true negative are generally
+used in any type of classification tasks to compare the given classification of an
+item with the desired correct classification. Using the term hits for the documents
+that truly or “correctly” match the user request, we can define recall and precision
+as follows:
+
+Recall = |Hits|/|Relevant|
+Precision = |Hits|/|Retrieved|
+
+Recall and precision can also be defined in a ranked retrieval setting. Let us assume
+that there is one document at each rank position. The recall at rank position i for
+document d;! (denoted by r(i)) (d;4 is the retrieved document at position i for
+query q) is the fraction of relevant documents from d,! to d;/ in the result set for
+the query. Let the set of relevant documents from dj! to d;‘ in that set be S$; with
+cardinality | 5; |. Let (|D,| be the size of relevant documents for the query. In this
+case,|S; | < |D,|). Then:
+
+Ranked retrieval_recall: r(i) = |S; |/|D4|
+
+The precision at rank position i or document dj! (denoted by p(i)) is the fraction of
+documents from d,! to dj‘ in the result set that are relevant:
+
+Ranked_retrieval_precision: p(i) = |§; |/i
+
+Table 27.2 illustrates the p(i), r(i), and average precision (discussed in the next sec-
+tion) metrics. It can be seen that recall can be increased by presenting more results
+to the user, but this approach runs the risk of decreasing the precision. In the exam-
+ple, the number of relevant documents for some query = 10. The rank position and
+the relevance of an individual document are shown. The precision and recall value
+can be computed at each position within the ranked list as shown in the last two
+columns. As we see in Table 27.2, the ranked_retrieval_recall rises monotonically
+whereas the precision is prone to fluctuation.

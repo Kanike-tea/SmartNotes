@@ -1,0 +1,49 @@
+// Gate-level description of four-bit ripple carry adder
+
+// module half_adder (S, C, x, y); /! Verilog 1995 syntax
+//output S, C;
+//input— x, y;
+module half_adder (output S, C, input x, y); /i Verilog 2001, 2005 syntax
+// Instantiate primitive gates
+xor (S, x, y);
+and (C, x, y);
+endmodule
+/! Description of full adder (Fig. 4.8) // Verilog 1995 syntax
+// module full_adder & C, x, y, Z);
+// output S,C:
+//input x,y, z:
+module full_adder (output S, C, input x, y, z); /! Verilog 2001, 2005 syntax
+wire S1, C1, C2;
+
+// Instantiate half adders
+half_adder HA1 (S1, C1, x, y);
+half_adder HA2 (S, C2, S1, z);
+or G1 (C, C2, C1);
+
+endmodule
+
+// Description of four-bit adder (Fig. 4.9) // Verilog 1995 syntax
+// module ripple_carry_4_bit_adder (Sum, C4, A, B, CO);
+// output [3:0] Sum;
+
+// output C4;
+//input [3:0] A,B;
+// input co;
+
+// Alternative Verilog 2001, 2005 syntax:
+
+module ripple_carry_4_bit_adder ( output [3: 0] Sum, output C4,
+input [3: 0] A, B, input CO);
+
+wire C1, C2, C3; // Intermediate carries
+// Instantiate chain of full adders
+full_adder FAO (Sum{0], C1, A[0], B[0}, CO),
+
+FA1 (Sum[1], C2, A[1], B[1], C1),
+FA2 (Sum[2], C3, A[2], B[2], C2),
+FA3 (Sum{[3}, C4, A[3], B[3], C3);
+endmodule
+HDL Example above illustrates Verilog 2001, 2005 syntax, which eliminates extra typing of identifiers
+
+declaring the mode (e.g., output ), type ( reg ), and declaration of a vector range (e.g., [3: 0]) of a port.
+The first version of the standard (1995) uses separate statements for these declarations.

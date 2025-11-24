@@ -1,0 +1,49 @@
+EXAMPLE
+
+13.1
+
+13.2 Initializing the MPU, Caches, and Write Buffer 469
+
+The first instruction loads core register r2 with the size and starting address of data
+region 5, and the second instruction loads core register r3 with the size and starting
+address of instruction region 5. The ARM940T is the only processor core that has separate
+instruction and data regions.
+
+The following example code shows how to set the starting address, size of a region, and the
+enable bit. The routine regionSet has the following C prototype:
+
+void regionSet (unsigned region, unsigned address,
+unsigned sizeN, unsigned enable);
+
+The routine has four unsigned integer inputs: the region to configure, the starting address
+of the region, the encoded $1zeN of the region, and whether the region is enabled or disabled.
+It isa good idea to disable a region while changing its attributes and then reenabling it when
+the changes are complete.
+
+To make the routine work for all four available versions of an MPU processor, we unified
+the ARM940T region space by configuring the instruction and data regions with the size
+and starting address information. To do this, we wrote a macro called SET_REGION with
+two parts, one for the ARM940T and one for the other cores. This allows the same routine
+to support the four MPU cores.
+
+#if defined( _ TARGET_CPU_ARM940T)
+#define SET_REGION(REGION) \
+/* set Data region base & size */ \
+__asm{MCR p15, 0, cf, c6, c ## REGION, 0 } \
+/* set Instruction region base & size */ \
+__asm{MCR p15, 0, c6f, c6, c ## REGION, 1 }
+#endif
+
+#if defined(_ TARGET_CPU_ARM946E_S) | \
+defined(_ TARGET _CPU_ARM1026EJ_S)
+#define SET_REGION(REGION NUMBER) \
+/* set region base & size */ \
+__asm{MCR p15, 0, c6f, c6, c ## REGION_NUMBER, 0 }
+#endif
+
+void regionSet (unsigned region, unsigned address,
+unsigned sizeN, unsigned enable)
+
+unsigned int c6f;
+c6f = enable | (sizeN<<1) | address;
+switch (region)

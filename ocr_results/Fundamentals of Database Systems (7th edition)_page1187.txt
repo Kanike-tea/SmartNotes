@@ -1,0 +1,47 @@
+30.10 Oracle Label-Based Security 1157
+
+Oracle User
+y
+Request for Data in SQL
+| Oracle Data Server
+___Cheok DAG Table Level Label Security
+(Discretionary) Access neal , "
+Privileges Policies
+Control
+| L-| Table
+Check Virtual Private Data Rows
+Database (VDP) Policy /' in Table Row Level
+Access Control
+Enforce Label-
+Based Security User-Defined Figure 30.4
+VPD-Based | VPD Policies Oracle label security
+Conteal architecture.
+Process and Execute ‘ontro Data from: Oracle
+Data Request (2007)
+
+30.10.3 How Data Labels and User Labels Work Together
+
+A user’s label indicates the information the user is permitted to access. It also deter-
+mines the type of access (read or write) that the user has on that information. A
+row’s label shows the sensitivity of the information that the row contains as well as
+the ownership of the information. When a table in the database has a label-based
+access associated with it, a row can be accessed only if the user’s label meets certain
+criteria defined in the policy definitions. Access is granted or denied based on the
+result of comparing the data label and the session label of the user.
+
+Compartments allow a finer classification of sensitivity of the labeled data. All data
+related to the same project can be labeled with the same compartment. Compart-
+ments are optional; a label can contain zero or more compartments.
+
+Groups are used to identify organizations as owners of the data with corresponding
+group labels. Groups are hierarchical; for example, a group can be associated with a
+parent group.
+
+If a user has a maximum level of SENSITIVE, then the user potentially has access to
+all data having levels SENSITIVE, CONFIDENTIAL, and UNCLASSIFIED. This user has
+no access to HIGHLY_SENSITIVE data. Figure 30.5 shows how data labels and user
+labels work together to provide access control in Oracle label security.
+
+As shown in Figure 30.5, User 1 can access the rows 2, 3, and 4 because his maxi-
+mum level is HS (Highly_Sensitive). He has access to the FIN (Finance) compart-
+ment, and his access to group WR (Western Region) hierarchically includes group

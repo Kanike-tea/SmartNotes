@@ -1,0 +1,63 @@
+Data Structures and Applications(BCS304) Module 2
+
+if (last==NULL)
+
+{
+/* list is empty, change last to point to new entry */last =
+new;
+last—link = last;
+}
+else
+{
+
+/* list is not empty, add new entry at front */
+new-—link = last—link;
+
+last—link = new;
+
+}
+
+t
+
+Function to insert an element in the end
+
+void insertend(NODE *last, NODE * New)
+{/* insert an item at the front of the circular list whose last NODE is last */
+
+if (last==NULL)
+
+{
+/* list is empty, change last to point to new entry */last =
+new;
+last—link = last;
+}
+else
+{
+
+/* list is not empty, add new entry at front */
+New-—link = last—link;
+
+last—link = New;
+
+last=New;
+
+}
+
+t
+
+Function to find the length of a circular linked list
+
+int length(NODE* last)
+{/* find the length of the circular list last */NODE*
+
+temp;
+int count = 0;
+If(last==NULL)
+
+return(0);
+temp = last->link /* temp is now pointing at the first NODE*/count++;
+while(temp!=last)
+
+{
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 26

@@ -1,0 +1,47 @@
+Data Structures and Applications (15CS33)
+
+BINARY TREE TRAVERSALS
+Visiting each node in a tree exactly once is called tree traversal
+
+The different methods of traversing a binary tree are:
+Preorder
+
+Inorder
+
+Postorder
+
+Iterative inorder Traversal
+
+Level-Order traversal
+
+UR wn ee
+
+1. Inorder: Inorder traversal calls for moving down the tree toward the left until you cannot go
+further. Then visit the node, move one node to the right and continue. If no move can be done,
+then go back one more node.
+
+Let ptr is the pointer which contains the location of the node N currently being scanned.
+L(N) denotes the leftchild of node N and R(N) is the right child of node N
+
+ptr
+N
+/ \
+LO) R®)
+YN YN
+
+Recursion function:
+The inorder traversal of a binary tree can be recursively defined as
+
+e Traverse the left subtree in inorder.
+e Visit the root.
+e Traverse the right subtree in inorder.
+
+void inorder(treepointerptr)
+{
+if (ptr)
+{
+inorder (ptr—leftchild);
+printf (“%d’,ptr—data) ;
+inorder (ptr—rightchild);
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

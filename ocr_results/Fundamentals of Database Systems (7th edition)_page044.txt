@@ -1,0 +1,53 @@
+14
+
+(a)
+
+Course_name | Course_number | Prerequisites
+CS3320
+Database CS3380
+MATH2410
+(b) Data Structures CS3320 CS1310
+Figure 1.5
+
+Chapter 1 Databases and Database Users
+TRANSCRIPT
+‘Student_transcript
+Student_name
+Course_number | Grade | Semester ] Year | Section_id
+CS1310 c Fall 08 119
+Smith
+MATH2410 B Fall 08 112
+MATH2410 A Fall 07 85
+CS1310 A Fall 07 92
+Brown
+CS3320 B Spring 08 102
+CS3380 A Fall 08 135
+
+COURSE PREREQUISITES
+
+Two views derived from the database in Figure 1.2. (a) The TRANSCRIPT view.
+(b) The COURSE_PREREQUISITES view.
+
+do so in a controlled manner so that the result of the updates is correct. For exam-
+ple, when several reservation agents try to assign a seat on an airline flight, the
+DBMS should ensure that each seat can be accessed by only one agent at a time for
+assignment to a passenger. These types of applications are generally called online
+transaction processing (OLTP) applications. A fundamental role of multiuser
+DBMS software is to ensure that concurrent transactions operate correctly and
+efficiently.
+
+The concept of a transaction has become central to many database applications. A
+transaction is an executing program or process that includes one or more database
+accesses, such as reading or updating of database records. Each transaction is sup-
+posed to execute a logically correct database access if executed in its entirety with-
+out interference from other transactions. The DBMS must enforce several
+transaction properties. The isolation property ensures that each transaction
+appears to execute in isolation from other transactions, even though hundreds of
+transactions may be executing concurrently. The atomicity property ensures that
+either all the database operations in a transaction are executed or none are. We dis-
+cuss transactions in detail in Part 9.
+
+The preceding characteristics are important in distinguishing a DBMS from tradi-
+tional file-processing software. In Section 1.6 we discuss additional features that
+characterize a DBMS. First, however, we categorize the different types of people
+who work in a database system environment.

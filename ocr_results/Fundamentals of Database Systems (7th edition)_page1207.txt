@@ -1,0 +1,44 @@
+Appendix C Overview of the QBE Language
+
+(a) EMPLOYEE
+
+1177
+
+Fname | Minit [Lname | Ssn Bdate | Address | Sex | Salary _[Super_ssn | Dno
+P.CNT.
+(b) EMPLOYEE
+Fname | Minit |Lname | _Ssn Bdate | Address | Sex | Salary _|Super_ssn | Dno
+P.CNT.ALL
+(c) EMPLOYEE
+Fname | Minit [Lname | Ssn Bdate | Address | Sex | Salary _[Super_ssn | Dno
+P.CNTALL P.AVG.ALL PG.
+(d) PROJECT
+Pname | Pnumber | Plocation | Dnum
+P. _PX
+WORKS_ON
+Essn Pno_| Hours
+P.CNT.EX | G._PX Figure C.6
+
+CONDITIONS
+
+CNT._EX > 2
+
+Functions and grouping in QBE.
+(a) The query Q23. (b) The query Q23A.
+(©) The query Q24. (d) The query Q26.
+
+EMPLOYEE
+Fname | Minit | Lname | Ssn | Bdate | Address | Sex | Salary | Super_ssn | Dno
+P. P. _SX
+DEPENDENT
+Essn | Dependent_name | Sex | Bdate | Relationship Figure C.7
+— [sx Illustrating negation by the query Q6.
+
+There are three QBE operators for modifying the database: |. for insert, D. for delete,
+and U. for update. The insert and delete operators are specified in the template col-
+umn under the relation name, whereas the update operator is specified under the
+columns to be updated. Figure C.8(a) shows how to insert a new EMPLOYEE tuple.
+For deletion, we first enter the D. operator and then specify the tuples to be deleted
+by a condition (Figure C.8(b)). To update a tuple, we specify the U. operator under
+the attribute name, followed by the new value of the attribute. We should also select
+the tuple or tuples to be updated in the usual way. Figure C.8(c) shows an update

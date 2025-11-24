@@ -1,0 +1,39 @@
+38 ENGINEERING MATHEMATICS - IV
+. ——— ~ SS sl
+30. Apply Adams - Bashforth method to solve the equation ( y+ 1) dy—2 dx = 0 at
+x=1 given y(0) =1 by generating the initial’ values from Picard’s second
+approximation at a step size of 0.25. Apply the corrector formula twice.
+d x
+> B data, “4 — ‘=
+y ax 9 ¥+1
+Referring to Problem-5 for the values y(0.25),y(05) and y(0.75) we prepare the
+following table.
+
+Yq = 1.0206
+
+x3 = 0.75
+
+4 Y=?
+We have the predictor formula
+
+¥3 = 1.0679
+
+h , , , a
+yf?) = ite (55 y3’-59 yo’ +37 y,'-9 yg)
+yf?) = 1.067945 [ 55.( 0.2628 ) - 59 ( 0.1225 ) +37 ( 0.0312) -9 (0) ]=1.1552
+Po 2
+
+— ay = 0.4284
+yetl  (1.1552)*+1
+Next we have the corrector formula,
+
+h ji ’ 1g. sar
+YO = Yate (yy +19 y,'-5yp'+y,') :
+. ;
+yf = 1.0679 + <= [9 ( 0.4284 ) + 19 ( 0.2628) —5 (0.1224) +0.0312]y(© = 1.154
+a
+Now, ¥g = oe Se, or a OAeDS
+(1.154)? +1
+
+Applying the corrector formula again we obtain, yf ©) = 1.1541
+Thus the required y(1) = 1.1541

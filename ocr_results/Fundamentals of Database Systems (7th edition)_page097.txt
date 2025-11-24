@@ -1,0 +1,51 @@
+3.3 Entity Types, Entity Sets, Attributes, and Keys 67
+
+{Address_phone( {Phone(Area_code,Phone_number)},Address(Street_address Figure 3.5
+(Number,Street,Apartment_number) City,State,Zip) )} A complex attribute:
+
+Address_phone
+
+components of a composite attribute between parentheses ( ) and separating
+the components with commas, and by displaying multivalued attributes between
+braces { }. Such attributes are called complex attributes. For example, if a person
+can have more than one residence and each residence can have a single address and
+multiple phones, an attribute Address_phone for a person can be specified as shown
+in Figure 3.5.* Both Phone and Address are themselves composite attributes.
+
+3.3.2 Entity Types, Entity Sets, Keys, and Value Sets
+
+Entity Types and Entity Sets. A database usually contains groups of entities that
+are similar. For example, a company employing hundreds of employees may want to
+store similar information concerning each of the employees. These employee entities
+share the same attributes, but each entity has its own value(s) for each attribute. An
+entity type defines a collection (or set) of entities that have the same attributes. Each
+entity type in the database is described by its name and attributes. Figure 3.6 shows
+two entity types: EMPLOYEE and COMPANY, and a list of some of the attributes
+for each. A few individual entities of each type are also illustrated, along with the
+values of their attributes. The collection of all entities of a particular entity type in the
+
+Entity Type Name: EMPLOYEE COMPANY
+Name, Age, Salary Name, Headquarters, President
+>)
+ee Ce
+
+(John Smith, 55, 80k) (Sunco Oil, Houston, John Smith)
+
+26 Coe
+Entity Set: .
+(Extension) (Fred Brown, 40, 30K) (Fast Computer, Dallas, Bob King)
+
+ee .
+
+(udy Clark, 25, 20K) :
+
+4For those familiar with XML, we should note that complex attributes are similar to complex elements in
+XML (see Chapter 13).
+
+Figure 3.6
+
+Two entity types,
+EMPLOYEE and
+COMPANY, and some
+member entities of
+each.

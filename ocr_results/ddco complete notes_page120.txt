@@ -1,0 +1,55 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
++ This number of blocks is small compared to the total number of blocks available
+in main-memory.
+
++ Correspondence b/w main-memory-block & cache-memory-block is specified by
+mapping-function.
+
+- If the cache memory is full, one of the block should be removed to create space
+forthe new block, this is decided by cache control hardware.
+
+* The collection of rule for selecting the block to be removed is called the
+Replacement Algorithm.
+
++ The cache control-circuit determines whether the requested-word currently exists in
+the cache.
+
++ If data is available, for read-operation, the data is read from cache.
++ The write-operation (writing to memory) is done in 2 ways:
+1) Write-through protocol &
+2) Write-back protocol.
+Write-Through Protocol
+
+Here the cache-location and the main-memory-locations are updated
+simultaneously.
+
+Write-Back Protocol
+
+> This technique is to
+
+— update only the cache-location &
+
+— mark the cache-location with a flag bit called Dirty/Modified Bit.
+
+>» The word in memory will be updated later, when the marked-block is
+
+removed from cache.
+
+During Read-operation
+
++ If the requested-word currently does not exists in the cache, then read-miss will
+occur.
+
+* To overcome the read miss, Load-through/Early restart protocol is used.
+
+Load-Through Protocol
+
+> The block of words that contains the requested-word is copied from the
+
+memory into cache.
+
+» After entire block is loaded into cache, the requested-word is forwarded
+to processor.
+
+Dr.Ajay V G, Dept. of CSE, 22,

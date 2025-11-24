@@ -1,0 +1,53 @@
+printf("%d ", root->data);
+
+void main()
+
+{
+int ch, key, val, i, n;
+NODE root = NULL, newnode;
+while(1)
+{
+printf("\n~~~~BST MENU~~~~");
+printf("\n1 Create a BST");
+printf("\n2.Search");
+printf("\n3.BST Traversals: ");
+printf("\n4.Exit");
+printf("\nEnter your choice: ");
+scanf("%d", &ch);
+switch(ch)
+{
+case |: printf("\nEnter the number of elements: ");
+scanf("%d" , &n);
+for(i=1;i<=n;i++)
+{
+newnode = create();
+if (root == NULL)
+root = newnode;
+else
+insert(root, newnode);
+}
+break;
+case 2: if (root == NULL)
+printf("\nTree Is Not Created");
+else
+{
+printf("\nThe Preorder display : ");
+preorder(root);
+printf("\nThe Inorder display : ");
+inorder(root);
+printf("\nThe Postorder display : ");
+postorder(root);
+}
+break;
+case 3: search(root);
+break;
+case 4: exit(0);
+}
+}
+i
+Output:
+~~~~BST MENU~~~~
+1.Create a BST
+2.Search
+
+50

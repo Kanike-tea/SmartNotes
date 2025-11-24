@@ -1,0 +1,50 @@
+534 Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+the database designer. The relational decomposition algorithms (such as Algo-
+rithms 15.5 and 15.6) create BCNF (or 4NF) relations by successive nonadditive
+decomposition of unnormalized relations into two component relations at a time.
+We saw that it is possible to synthesize 3NF relation schemas that meet both of the
+above properties; however, in the case of BCNF, it is possible to aim only for the
+nonadditiveness of joins—dependency preservation cannot be necessarily guaran-
+teed. If the designer has to aim for one of these two, the nonadditive join condition
+is an absolute must. In Section 15.4 we showed how certain difficulties arise in a
+collection of relations due to null values that may exist in relations in spite of the
+relations being individually in 3NF or BCNF. Sometimes when decomposition is
+improperly carried too far, certain “dangling tuples” may result that do not par-
+ticipate in results of joins and hence may become invisible. We also showed how
+algorithms such as 15.4 for 3NF synthesis could lead to alternative designs based
+on the choice of minimum cover. We revisited multivalued dependencies (MVDs)
+in Section 15.5. MVDs arise from an improper combination of two or more inde-
+pendent multivalued attributes in the same relation, and MVDs result in a combi-
+national expansion of the tuples used to define fourth normal form (4NF). We
+discussed inference rules applicable to MVDs and discussed the importance of
+ANF. Finally, in Section 15.6 we discussed inclusion dependencies, which are used
+to specify referential integrity and class/subclass constraints, and pointed out the
+need for arithmetic functions or more complex procedures to enforce certain
+functional dependency constraints. We concluded with a brief discussion of the
+domain-key normal form (DKNF).
+
+Review Questions
+
+15.1. What is the role of Armstrong’s inference rules (inference rules IR1 through
+IR3) in the development of the theory of relational design?
+
+15.2. What is meant by the completeness and soundness of Armstrong's infer-
+ence rules?
+
+15.3. What is meant by the closure of a set of functional dependencies? Illustrate
+with an example.
+
+15.4. When are two sets of functional dependencies equivalent? How can we
+determine their equivalence?
+
+15.5. What is a minimal set of functional dependencies? Does every set of depen-
+dencies have a minimal equivalent set? Is it always unique?
+
+15.6. What is meant by the attribute preservation condition on a decomposition?
+
+15.7. Why are normal forms alone insufficient as a condition for a good schema
+design?
+
+15.8. What is the dependency preservation property for a decomposition? Why is
+it important?

@@ -1,0 +1,43 @@
+Microcontrollers — BCS402
+
+Unaligned data pointers: Some processors support the loading of short and int typed values
+from unaligned addresses. A C program may manipulate pointers directly so that they become
+unaligned, for example, by casting a char * to an int *. ARM architectures up to ARMvSTE
+do not support unaligned pointers. To detect them, run the program on an ARM with an
+alignment checking trap. For example, you can configure the ARM720T to data abort on an
+unaligned access.
+
+Endian assumptions: C code may make assumptions about the endianness of a memory
+system, for example, by casting a char * to an int *. If you configure the ARM for the same
+endianness the code is expecting, then there is no issue. Otherwise, you must remove endian-
+dependent code sequences and replace them by endian-independent ones.
+
+Function prototyping: The armcc compiler passes arguments narrow, that is, reduced to the
+range of the argument type. If functions are not prototyped correctly, then the function may
+return the wrong answer. Other compilers that pass arguments wide may give the correct
+answer even if the function prototype is incorrect. Always use ANSI prototypes.
+
+Use of bit-fields: The layout of bits within a bit-field is implementation and endian
+dependent. If C code assumes that bits are laid out in a certain order, then the code is not
+portable.
+
+Use of enumerations: Although enum is portable, different compilers allocate different
+numbers of bytes to an enum. The gcc compiler will always allocate four bytes to an enum
+type. The armce compiler will only allocate one byte if the enum takes only eight-bit values.
+Therefore you can’t cross-link code and libraries between different compilers if you use
+enums in an API structure.
+
+Inline assembly: Using inline assembly in C code reduces portability between architectures.
+You should separate any inline assembly into small inlined functions that can easily be
+replaced. It is also useful to supply reference, plain C implementations of these functions that
+can be used on other architectures, where this is possible.
+The volatile keyword: Use the volatile keyword on the type definitions of ARM memory-
+mapped peripheral locations. This keyword prevents the compiler from optimizing away the
+
+memory access. It also ensures that the compiler generates a data access of the correct type.
+
+For example, if you define a memory location as a volatile short type, then the compiler will
+
+access it using 16-bit load and store instructions LDRSH and STRH.
+
+Dept. of ECE, GSSSIETW Page 50

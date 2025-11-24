@@ -1,0 +1,55 @@
+Professor Code/Department Percent Time
+
+Pl Physics 50
+Pl Mathematics 50
+P2 Chemistry 25
+P2 Physics 75
+P3 Mathematics 100
+
+Department Head of Dept.
+Physics Ghosh
+Mathematics Krishnan
+Chemistry Rao
+
+See the dependency diagrams for these new relations.
+
+Department
+Percent Time
+
+Professor Code
+
+Head of
+
+Department
+Department
+
+Fourth Normal Form (4NF)
+
+When attributes in a relation have multi-valued dependency, further Normalization to 4NF and SNF
+are required. Let us first find out what multi-valued dependency is.
+
+A multi-valued dependency is a typical kind of dependency in which each and every attribute
+within a relation depends upon the other, yet none of them is a unique primary key.
+
+We will illustrate this with an example. Consider a vendor supplying many items to many projects
+in an organization. The following are the assumptions:
+
+1. A vendor is capable of supplying many items.
+2. Aproject uses many items.
+
+3. A vendor supplies to many projects.
+
+4. An item may be supplied by many vendors.
+
+A multi valued dependency exists here because all the attributes depend upon the other and yet none
+of them is a primary key having unique value.
+
+‘Vendor CodeItem Code Project No.
+
+Vi Il Pl
+Vi 12 Pl
+Vi Il P3
+Vi 12 P3
+v2 12 Pl
+
+v2 13 Pl

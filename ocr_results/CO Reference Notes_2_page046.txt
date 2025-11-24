@@ -1,0 +1,52 @@
+© The Multiplexing of address bit is usually done by Memory Controller Circuit (Figure 5.11).
+© The Controller accepts a complete address & R/W“ signal from theprocessor.
+« A Request signal indicates a memory access operation is needed.
+¢ Then, the Controller
+— forwards the row & column portions of the address to the memory.
+— generates RAS’ & CAS" signals &
+— sends R/W" & CS" signals to the memory.
+
+RAMBUS MEMORY
+© The usage of wide bus is expensive.
+¢ Rambus developed the implementation of narrow bus.
+¢ Rambus technology is a fast signaling method used to transfer information between chips.
+¢ The signals consist of much smaller voltage swings around a reference voltage Vref.
+¢ The reference voltage is about 2V.
+The two logical values are represented by 0.3V swings above and below Vref.
+This type of signaling is generally is known as Differential Signalling.
+¢ Rambus provides a complete specification for design of communication called as Rambus Channel.
+¢ Rambus memory has a clock frequency of 400 MHz.
+¢ The data are transmitted on both the edges of clock so that effective data-transfer rate is SO0OMHZ.
+. Circuitry needed to interface to Rambus channel is included on chip. Such chips are called
+RDRAM. (RDRAM = Rambus DRAMs).
+¢ Rambus channel has:
+
+1) 9 Data-lines (ist-gth line ->Transfer the data, oth line->Parity checking).
+2) Control-Line &
+3) Power line.
+¢ A two channel rambus has 18 data-lines which has no separate Address-Lines.
+. Communication between processor and RDRAM modules is carried out by means of
+packets transmitted on the data-lines.
+¢ There are 3 types of packets:
+1) Request
+2) Acknowledge &
+3) Data.
+
+READ ONLY MEMORY (ROM)
+
+* Both SRAM and DRAM chips are volatile, i.e. They lose the stored information if power is turned off.
+«Many application requires non-volatile memory which retains the stored information if power is
+turned off.
+
+¢ For ex:
+
+OS software has to be loaded from disk to memory i.e. it requires non-volatile memory.
+* Non-volatile memory is used in embedded system.
+Since the normal operation involves only reading of stored data, a memory of this type is called ROM.
+> At Logic value ‘0’ > Transistor(T) is connected to the ground point(P).
+Transistor switch is closed & voltage on bit-line nearly drops to zero (Figure 8.11).
+> At Logic value ‘1’ > Transistor switch is
+open. The bit-line remains at high
+voltage.
+
+Page 47

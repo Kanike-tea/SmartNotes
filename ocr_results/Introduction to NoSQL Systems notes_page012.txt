@@ -1,0 +1,42 @@
+« Complex Setup and Maintenance: Requires tuning for replication, consistency
+levels, partitioning, etc.
+
+e Limited Ad-Hoc Querying: Lacks the full flexibility of SQL; data must be modeled
+based on expected query patterns.
+
+« Eventual Consistency: Some systems (like Cassandra) use eventual consistency,
+which may not suit all use cases.
+
+e Harder Learning Curve: Data modeling is non-traditional and requires
+understanding of partitioning, clustering, and denormalization strategies.
+
+8. Summary
+
+Wide-column or column-family NoSQL databases provide a powerful alternative to
+relational systems for applications that require scalable, high-throughput access to large,
+sparse datasets. With their schema flexibility, horizontal scalability, and performance
+optimizations, they are an excellent choice for analytics, time-series data, and big data
+platforms. Technologies like Cassandra, HBase, and Bigtable continue to drive mission-
+critical workloads across various industries by delivering performance and reliability at
+massive scale.
+
+NoSQL Graph Databases
+
+Graph databases are a type of NoSQL database designed to represent and manage data
+with complex relationships. They store data in the form of nodes (entities) and edges
+(relationships), with properties attached to both. This model is highly intuitive for
+applications where connections between data are as important as the data itself. Unlike
+relational databases that require complex joins to represent relationships, graph databases
+allow for fast and direct traversal between connected entities, making them ideal for
+scenarios like social networks, recommendation engines, fraud detection, and network
+analysis.
+
+In graph databases, queries typically focus on patterns of relationships rather than tabular
+joins. For example, finding "friends of friends" in a social network or suggesting products
+based on shared purchases becomes much simpler and faster in a graph model. The schema
+is flexible and can evolve easily, which is useful for growing datasets with changing
+structures.
+
+NoSQL Graph Databases — In-Depth Notes
+
+1. What are Graph Databases?

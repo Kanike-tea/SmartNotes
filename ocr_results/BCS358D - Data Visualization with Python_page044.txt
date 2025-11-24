@@ -1,0 +1,53 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+PROGRAM
+
+sentence = input("Enter a sentence: ")
+word count = len(sentence.split())
+digit_count = 0
+
+upper_count = 0
+
+lower_count = 0
+
+for char in sentence:
+if char.isdigit():
+digit_count += 1
+elif char.isupper():
+upper_count += 1
+elif char.islower():
+lower_count += 1
+
+print ("Number of words:", word_count
+
+print ("Number of digits:", digit_count
+
+print ("Number of uppercase letters:", upper_count
+print ("Number of lowercase letters:", lower_count
+OUTPUT
+
+//Output 01
+
+Enter a sentence: Python Programming 21CSL46
+Number of words: 3
+
+Number of digits: 4
+
+Number of uppercase letters: 5
+
+Number of lowercase letters: 15
+
+//Output 02
+
+Enter a sentence: Python Programming Laboratory
+Number of words: 3
+
+Number of digits: 0
+
+Number of uppercase letters: 3
+
+Number of lowercase letters: 24
+
+eof fa ok ook coe
+
+Dept. of CSE 29 GSSSIETW, Mysuru

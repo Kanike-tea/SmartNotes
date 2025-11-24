@@ -1,0 +1,70 @@
+Microcontrollers-BCS402
+
+a form
+
+of memory called tightly coupled memory (TCM). TCM is fast SRAM located close to
+
+the core and guarantees the clock cycles required to fetch instructions or data—critical for
+
+real-time algorit
+
+address map and
+
+ms requiring deterministic behavior. TCMs appear as memory in the
+
+can be accessed as fast memory.
+
+{ ARM core )
+
+Logic = control J
+D I
+
+Data inaction
+
+Instruction cache cache
+{__TCM D T
+(AMBA bus interface unit Cire
+. D+1 .
+
+On-chip AMBA bus
+
+Fig 12: A simplified Harvard architecture with caches and TCMs.
+
+By combining both technologies, ARM processors can have both improved performance and
+
+predictable real-time response. Figure 12 shows an example core with a combination of
+
+caches
+
+and TCMs.
+
+Memory Management
+
+ARM cores have three different types of memory management hardware:
+
+i)
+ii)
+iii)
+
+No extensions providing no protection
+
+Memory protection unit (MPU) providing limited protection
+
+Memory management unit (MMU) providing full protection:
+Non protected memory is fixed and provides very little flexibility. It is normally used
+for small, simple embedded systems that require no protection from rogue
+applications.
+MPUs employ a simple system that uses a limited number of memory regions. These
+regions are controlled with a set of special coprocessor registers, and each region is
+defined with specific access permissions. This type of memory management is used
+for systems that require memory protection but don’t have a complex memory map.
+MMUs are the most comprehensive memory management hardware available on the
+ARM. The MMU uses a set of translation tables to provide fine-grained control over
+memory. These tables are stored in main memory and provide a virtual-to-physical
+address map as well as access permissions. MMUs are designed for more
+
+sophisticated platform operating systems that support multitasking.
+
+Dept. of ECE, GSSSIETW
+
+Page 29

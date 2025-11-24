@@ -1,0 +1,46 @@
+12 Chapter 1 ARM Embedded Systems
+
+1.3.4.2 Interrupt Controllers
+
+When a peripheral or device requires attention, it raises an interrupt to the processor.
+An interrupt controller provides a programmable governing policy that allows software to
+determine which peripheral or device can interrupt the processor at any specific time by
+setting the appropriate bits in the interrupt controller registers.
+
+There are two types of interrupt controller available for the ARM processor: the standard
+interrupt controller and the vector interrupt controller (VIC).
+
+The standard interrupt controller sends an interrupt signal to the processor core when
+an external device requests servicing, It can be programmed to ignore or mask an individual
+device or set of devices. The interrupt handler determines which device requires servicing
+by reading a device bitmap register in the interrupt controller.
+
+The VIC is more powerful than the standard interrupt controller because it prioritizes
+interrupts and simplifies the determination of which device caused the interrupt. After
+associating a priority and a handler address with each interrupt, the VIC only asserts an
+interrupt signal to the core if the priority of a new interrupt is higher than the currently
+executing interrupt handler. Depending on its type, the VIC will either call the standard
+interrupt exception handler, which can load the address of the handler for the device from
+the VIC, or cause the core to jump to the handler for the device directly.
+
+1.4 EMBEDDED SYSTEM SOFTWARE
+
+Figure 1.4
+
+An embedded system needs software to drive it. Figure 1.4 shows four typical software
+components required to control an embedded device. Each software component in the
+stack uses a higher level of abstraction to separate the code from the hardware device.
+
+The initialization code is the first code executed on the board and is specific toa particular
+target or group of targets. It sets up the minimum parts of the board before handing control
+over to the operating system.
+
+Application
+
+Operating system
+
+Initialization Device drivers
+
+Hardware device
+
+Software abstraction layers executing on hardware.

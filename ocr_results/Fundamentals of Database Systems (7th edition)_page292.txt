@@ -1,0 +1,53 @@
+262
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+8.4.3 Recursive Closure Operations
+
+Another type of operation that, in general, cannot be specified in the basic original
+relational algebra is recursive closure. This operation is applied to a recursive
+relationship between tuples of the same type, such as the relationship between an
+employee and a supervisor. This relationship is described by the foreign key
+Super_ssn of the EMPLOYEE relation in Figures 5.5 and 5.6, and it relates each
+employee tuple (in the role of supervise) to another employee tuple (in the role of
+supervisor). An example of a recursive operation is to retrieve all supervises of an
+employee e at all levels—that is, all employees e’ directly supervised by e, all employ-
+ees e’3 directly supervised by each employee e’, all employees e”’ directly super-
+vised by each employee e”, and so on.
+
+It is relatively straightforward in the relational algebra to specify all employees
+supervised by e at a specific level by joining the table with itself one or more
+times. However, it is difficult to specify all supervisees at all levels. For example,
+to specify the Ssns of all employees e’ directly supervised—at level one—by the
+employee e whose name is ‘James Borg’ (see Figure 5.6), we can apply the follow-
+ing operation:
+
+BORG_SSN < Tgsn(OFname='James’ AND Lname='Borg’(EMPLOYEE))
+SUPERVISION(Ssn1, Ssn2) < Tigsn,Super_ssn(EMPLOYEE)
+RESULT1 (Ssn) < Tigon1(SUPERVISION ™ sen9-senBORG_SSN)
+
+To retrieve all employees supervised by Borg at level 2—that is, all employees e”
+supervised by some employee e’ who is directly supervised by Borg—we can apply
+another JOIN to the result of the first query, as follows:
+
+RESULT2(Ssn) < Tigon1(SUPERVISION ™ gon9-sonRESULT1)
+
+To get both sets of employees supervised at levels 1 and 2 by ‘James Borg’, we can
+apply the UNION operation to the two results, as follows:
+
+RESULT <— RESULT2 U RESULT1
+
+The results of these queries are illustrated in Figure 8.11. Although it is possible to
+retrieve employees at each level and then take their UNION, we cannot, in general,
+specify a query such as “retrieve the supervisees of ‘James Borg’ at all levels” without
+utilizing a looping mechanism unless we know the maximum number of levels.’
+An operation called the transitive closure of relations has been proposed to com-
+pute the recursive relationship as far as the recursion proceeds.
+
+8.4.4 OUTER JOIN Operations
+
+Next, we discuss some additional extensions to the JOIN operation that are nec-
+essary to specify certain types of queries. The JOIN operations described earlier
+match tuples that satisfy the join condition. For example, for a NATURAL JOIN
+
+'The SQLS standard includes syntax for recursive closure.

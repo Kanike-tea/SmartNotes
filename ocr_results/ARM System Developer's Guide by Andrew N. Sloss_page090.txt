@@ -1,0 +1,43 @@
+3.5 Program Status Register Instructions 77
+
+CDP —_| coprocessor data processing—perform an operation in a coprocessor
+
+MRC MCR | coprocessor register transfer—move data to/from coprocessor registers
+
+LDC STC | coprocessor memory transfer—load and store blocks of memory to/from a coprocessor
+
+In the syntax of the coprocessor instructions, the cp field represents the coprocessor
+number between p0 and p15. The opcode fields describe the operation to take place on
+the coprocessor. The Cn, Cm, and Cd fields describe registers within the coprocessor.
+The coprocessor operations and registers depend on the specific coprocessor you are
+using. Coprocessor 15 (CP15) is reserved for system control purposes, such as memory
+management, write buffer control, cache control, and identification registers.
+
+Exampce This example shows a CP15 register being copied into a general-purpose register.
+3.27
+; transferring the contents of CP15 register cO to register r10
+MRC p15, 0, r10, cO, cO, 0
+
+Here CP15 register-0 contains the processor identification number. This register is copied
+into the general-purpose register r10.
+
+3.5.2 COPROCESSOR 15 INSTRUCTION SYNTAX
+
+CP15 configures the processor core and hasa set of dedicated registers to store configuration
+information, as shown in Example 3.27. A value written into a register sets a configuration
+attribute—for example, switching on the cache.
+
+CP15 is called the system control coprocessor. Both MRC and MCR instructions are used to
+read and write to CP15, where register Rd is the core destination register, Cn is the primary
+register, Cm is the secondary register, and opcode? is a secondary register modifier. You
+may occasionally hear secondary registers called “extended registers.”
+
+As an example, here is the instruction to move the contents of CP15 control register cl
+into register r] of the processor core:
+
+MRC p15, 0, rl, cl, cO, 0
+
+We use a shorthand notation for CP15 reference that makes referring to configuration
+registers easier to follow. The reference notation uses the following format:
+
+CPI5:cX2c¥:Z

@@ -1,0 +1,57 @@
+380
+
+Chapter 12 Object and Object-Relational Databases
+
+types that were developed in programming languages. In addition, the
+concept of user-defined routines (UDRs) allows the definition of general
+methods (operations).
+
+= Inheritance mechanisms are provided using the keyword UNDER.
+
+We now discuss each of these concepts in more detail. In our discussion, we will
+refer to the example in Figure 12.4.
+
+12.2.1 User-Defined Types Using CREATE TYPE
+and Complex Objects
+
+To allow the creation of complex-structured objects and to separate the declaration
+of a class/type from the creation of a table (which is the collection of objects/rows
+and hence corresponds to the extent discussed in Section 12.1), SQL now provides
+user-defined types (UDTs). In addition, four collection types have been included
+to allow for collections (multivalued types and attributes) in order to specify com-
+plex-structured objects rather than just simple (flat) records. The user will create
+the UDTs for a particular application as part of the database schema. A UDT may
+be specified in its simplest form using the following syntax:
+
+CREATE TYPE TYPE_NAME AS (<component declarations>);
+
+Figure 12.4 illustrates some of the object concepts in SQL. We will explain the
+examples in this figure gradually as we explain the concepts. First, a UDT can be
+used as either the type for an attribute or as the type for a table. By using a UDT as
+the type for an attribute within another UDT, a complex structure for objects
+(tuples) in a table can be created, much like that achieved by nesting type construc-
+tors/generators as discussed in Section 12.1. This is similar to using the struct
+type constructor of Section 12.1.3. For example, in Figure 12.4(a), the UDT
+STREET_ADDR_TYPE is used as the type for the STREET_ADDR attribute in the UDT
+USA_ADDR_TYPE. Similarly, the UDT USA_ADDR_TYPE is in turn used as the type
+for the ADDR attribute in the UDT PERSON_TYPE in Figure 12.4(b). Ifa UDT does
+not have any operations, as in the examples in Figure 12.4(a), it is possible to use
+the concept of ROW TYPE to directly create a structured attribute by using the
+keyword ROW. For example, we could use the following instead of declaring
+STREET_ADDR_TYPE as a separate type as in Figure 12.4(a):
+
+CREATE TYPE USA_ADDR_TYPE AS (
+
+STREET_ADDR ROW ( NUMBER VARCHAR (5),
+STREET.NAME — VARCHAR (25),
+APT_NO VARCHAR (5),
+SUITE_NO VARCHAR (5) ),
+
+city VARCHAR (25),
+
+zip VARCHAR (10)
+
+)
+
+To allow for collection types in order to create complex-structured objects, four
+constructors are now included in SQL: ARRAY, MULTISET, LIST, and SET. These are

@@ -1,0 +1,47 @@
+Data Structures and Applications(BCS304) Module 2
+
+int expon;
+
+struct polyNode * link;
+
+B
+Typedef struct polyNode POLY;
+
+A polyNODE can be drawn as
+
+koef lexpon link
+
+Consider the polynomials a = 3x!* + 2x® + 1x+2 and b = 8x!?- 3x!° + 10x5 +3 It can be represented as
+follows
+
+a »[3] 14 > [2/8 >[1]1 >
+b >| 8 | 12 >|} 3} 10 >| 10) 5 >| 3/0
+Adding Polynomials
+
+To add two polynomials, we examine their terms starting at the NODEs pointed to by a and b.
+1. Ifa—expon = b—expon, we add the two coefficients a—coef + b—coef and create a new
+term for the result c. a = a—link; b = blink;
+2. Ifa—expon < b—expon, then we create a duplicate term of b, attach this term to the
+result,called c, and b = b—link;
+3. Ifa—expon > b—expon, then we create a duplicate term of a, attach this term to the result,
+
+called c, and a = a—link;
+
+Adding two polynomials represented as singly Linked List
+
+POLY *Pointer padd(POLY * a, POLY * b) /* return a polynomial which is the sum of a andb */
+{
+POLY * c,*tempa, *tempb,*laste;int sum;
+c= (POLY*)malloc(sizeof(ROLY))c-
+>link=NULL
+tempa=a
+tempb=blastc=c;
+while (tempa!=NULL && tempb!=NULL)
+{
+switch (COMPARE(tempa—expon, tempb—expon))
+{
+case -1: lastc=attach(tempb—-coef, tempb—expon, lastc);
+tempb = tempb—link;
+break;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 28

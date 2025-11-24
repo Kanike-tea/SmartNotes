@@ -1,0 +1,51 @@
+122
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+all of them (for example, some cars or trucks may not be registered). In general,
+a specialization or generalization such as that in Figure 4.3(b), if it were partial,
+would not preclude VEHICLE from containing other types of entities, such as
+motorcycles. However, a category such as REGISTERED_VEHICLE in Figure 4.8
+implies that only cars and trucks, but not other types of entities, can be members
+of REGISTERED_VEHICLE.
+
+A category can be total or partial. A total category holds the union of all entities in
+its superclasses, whereas a partial category can hold a subset of the union. A total
+category is represented diagrammatically by a double line connecting the category
+and the circle, whereas a partial category is indicated by a single line.
+
+The superclasses of a category may have different key attributes, as demonstrated
+by the OWNER category in Figure 4.8, or they may have the same key attribute, as
+demonstrated by the REGISTERED_VEHICLE category. Notice that if a category is
+total (not partial), it may be represented alternatively as a total specialization (or a
+total generalization). In this case, the choice of which representation to use is sub-
+jective. If the two classes represent the same type of entities and share numerous
+attributes, including the same key attributes, specialization/generalization is pre-
+ferred; otherwise, categorization (union type) is more appropriate.
+
+It is important to note that some modeling methodologies do not have union
+types. In these models, a union type must be represented in a roundabout way
+(see Section 9.2).
+
+4.5 A Sample UNIVERSITY EER Schema,
+Design Choices, and Formal Definitions
+
+In this section, we first give an example of a database schema in the EER model to
+illustrate the use of the various concepts discussed here and in Chapter 3. Then, we
+discuss design choices for conceptual schemas, and finally we summarize the EER
+model concepts and define them formally in the same manner in which we formally
+defined the concepts of the basic ER model in Chapter 3.
+
+4.5.1 A Different UNIVERSITY Database Example
+
+Consider a UNIVERSITY database that has different requirements from the UNIVERSITY
+database presented in Section 3.10. This database keeps track of students and their
+majors, transcripts, and registration as well as of the university’s course offerings.
+The database also keeps track of the sponsored research projects of faculty and
+graduate students. This schema is shown in Figure 4.9. A discussion of the require-
+ments that led to this schema follows.
+
+For each person, the database maintains information on the person’s Name [Name],
+Social Security number [Ssn], address [Address], sex [Sex], and birth date [Bdate].
+Two subclasses of the PERSON entity type are identified: FACULTY and STUDENT.
+Specific attributes of FACULTY are rank [Rank] (assistant, associate, adjunct, research,

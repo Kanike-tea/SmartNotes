@@ -1,0 +1,28 @@
+Data Structures and Applications (15CS33)
+
+Inserting a Node into a Threaded Binary Tree
+
+In this case, the insertion of r as the right child of a node s is studied.
+The cases for insertion are:
+e If s has an empty right subtree, then the insertion is simple and diagrammed in Figure
+e Ifthe right subtree of s is not empty, then this right subtree is made the right subtree of
+r after insertion. When this is done, r becomes the inorder predecessor of a node that has
+a leftThread == true field, and consequently there is a thread which has to be updated
+to point to r. The node containing this thread was previously the inorder successor of s.
+
+before (b) after
+
+void insertRight(threadedPointer Sf threadedPointer r)
+{  /* insert ras the right child of s */
+threadedpointer temp;
+r—rightChild = parent—rightChild;
+r—rightThread = parent—rightThread;
+r—leftChild = parent;
+r—leftThread = TRUE;
+s—rightChild = child;
+s—rightThread = FALSE;
+if (!r—rightThread) {
+temp = insucc(r);
+temp—leftChild = r;
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

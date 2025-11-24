@@ -1,0 +1,57 @@
+7.1 More Complex SQL Retrieval Queries
+
+applications, and we will introduce their use in SQL through examples. A number
+of built-in aggregate functions exist: COUNT, SUM, MAX, MIN, and AVG.” The
+COUNT function returns the number of tuples or values as specified in a query.
+The functions SUM, MAX, MIN, and AVG can be applied to a set or multiset of
+numeric values and return, respectively, the sum, maximum value, minimum
+value, and average (mean) of those values. These functions can be used in the
+SELECT clause or in a HAVING clause (which we introduce later). The functions
+MAX and MIN can also be used with attributes that have nonnumeric domains if
+the domain values have a total ordering among one another.’ We illustrate the use
+of these functions with several queries.
+
+Query 19. Find the sum of the salaries of all employees, the maximum salary,
+the minimum salary, and the average salary.
+
+Q19: | SELECT SUM (Salary), MAX (Salary), MIN (Salary), AVG (Salary)
+FROM EMPLOYEE;
+
+This query returns a single-row summary of all the rows in the EMPLOYEE table.
+We could use AS to rename the column names in the resulting single-row table; for
+example, as in Q19A.
+
+Q19A: SELECT — SUM (Salary) AS Total_Sal, MAX (Salary) AS Highest_Sal,
+MIN (Salary) AS Lowest_Sal, AVG (Salary) AS Average_Sal
+FROM EMPLOYEE;
+
+If we want to get the preceding aggregate function values for employees of a specific
+department—say, the ‘Research’ department—we can write Query 20, where the
+EMPLOYEE tuples are restricted by the WHERE clause to those employees who work
+for the ‘Research’ department.
+
+Query 20. Find the sum of the salaries of all employees of the ‘Research’ depart-
+ment, as well as the maximum salary, the minimum salary, and the average
+salary in this department.
+
+20: | SELECT — SUM (Salary), MAX (Salary), MIN (Salary), AVG (Salary)
+FROM (EMPLOYEE JOIN DEPARTMENT ON Dno = Dnumber)
+WHERE Dname = ‘Research’;
+
+Queries 21 and 22. Retrieve the total number of employees in the company
+(Q21) and the number of employees in the ‘Research’ department (Q22).
+
+Q21: SELECT COUNT (*)
+FROM EMPLOYEE;
+
+Q22: SELECT COUNT (*)
+FROM EMPLOYEE, DEPARTMENT
+WHERE DNO = DNUMBER AND DNAME = ‘Research’;
+
+2Additional aggregate functions for more advanced statistical calculation were added in SQL-99.
+
+STotal order means that for any two values in the domain, it can be determined that one appears before
+the other in the defined order; for example, DATE, TIME, and TIMESTAMP domains have total orderings
+on their values, as do alphabetic strings.
+
+217

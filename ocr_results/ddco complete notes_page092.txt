@@ -1,0 +1,60 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+1 N (NEGATIVE) Flag:
+It is designed to differentiate between positive and negative result.
+It is set 1 if the result is negative, and set to 0 if result is positive.
+2 Z (ZERO) Flag:
+It is set to 1 when the result of an ALU operation is found to zero, otherwise it is cleared.
+3 V (OVER FLOW) Flag:
+
+In case of 2° Complement number system n-bit number is capable of representing a
+range of numbers and is given by -2™! to +2"! . The Over-Flow flag is set to | if the result
+is found to be out of this range.
+
+4 C (CARRY) Flag :
+
+This flag is set to 1 if there is a carry from addition or borrow from subtraction,
+
+otherwise it is cleared.
+
+8. Addressing Modes
+
+The various formats of representing operand in an instruction or location of an operand is called
+
+as “Addressing Mode”. The different types of Addressing Modes are
+
+a) Register Addressing
+
+b) Direct Addressing
+
+c) Immediate Addressing
+
+d)_ Indirect Addressing
+
+e) Index Addressing
+
+f) Relative Addressing
+
+g) Auto Increment Addressing
+
+h)»Auito Decrement Addressing
+
+a. REGISTER ADDRESSING:
+
+In this mode operands are stored in the registers of CPU. The name of the register is directl
+
+specified in the instruction.
+Ex: MOVE Ri,R2 Where R1 and R2 are the Source and Destination registers respectively. This
+instruction transfers 32 bits of data from R1 register
+
+into R2 register. This instruction does not refer
+
+memory for operands. The operands are directly
+
+available in the registers.
+
+Register Set
+
+Register Direct Addressing Mode
+
+Dr. Ajay V G, Dept. of CSE, SVIT 25

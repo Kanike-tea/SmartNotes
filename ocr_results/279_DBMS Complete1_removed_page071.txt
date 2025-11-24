@@ -1,0 +1,51 @@
+LECTURE-23
+
+Nested Sub queries
+Asubquery is a select-from-where expression that is nested within another query.
+Set Membership
+The in and not in connectives are used for this type of subquery.
+“Find all customers who have both a loan and an account at the bank”, this query can be written
+using nested subquery form as follows
+select distinct customer-name
+from Borrower
+where customer-name in(select customer-name
+from Depositor )
+e Select the names of customers who have a loan at the bank, and whose names are neither
+“Smith” nor “Jones”
+select distinct customer-name
+from Borrower
+where customer-name not in(“Smith”, “Jones”)
+oO Set Comparison
+Find the names of all branches that have assets greater than those of at least one branch located in
+Mathura
+select branch-name
+from Branch
+where asstets > some (select assets
+from Branch
+where branch-city = “Mathura” )
+1. Apart from > some others comparison could be < some ,<=some ,>=some ,=some ,<
+> some.
+2. Find the names of all branches that have assets greater than that of each branch located in
+Mathura
+select branch-name
+from Branch
+where asstets > all (select assets
+from Branch
+where branch-city = “Mathura” )
+= Apart from > all others comparison could be < all ,<=all ,>=all ,=all , <>all.
+
+Views
+In SQL create view command is used to define a view as follows:
+create view v as <query expression>
+where <query expression> is any legal query expression and v is the view name.
+> The view consisting of branch names and the names of customers who have either an
+account or a loan at the branch. This can be defined as follows:
+
+create view All-customer as
+
+(select branch-name, customer-name
+
+from Depositor, Account
+
+where Depositor.account-number=account.account-number)
+union

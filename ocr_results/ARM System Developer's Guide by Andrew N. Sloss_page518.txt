@@ -1,0 +1,38 @@
+Figure 14.8
+
+14.4 Page Tables 505
+
+31 1615, 1211109 876543210
+Large page | Base physical address sBZ  |ap3ap2|apilApo|c|B]o| 1
+31 1211109 876543210
+Small page Base physical address |AP3|AP2|AP1APO|C|B} | 0|
+31 109876543210
+Tiny page Base physical address sz | AP |c|pfi{1
+31 210
+Page fault ojo
+
+SBZ = should be zero
+
+L2 page table entries.
+
+A small PTE holds the base address of a 4 KB block of physical memory. The entry
+also includes four sets of permission bit fields and the cache and write buffer attributes
+for the page. Each set of permission bit fields represents one-fourth of the page in virtual
+memory. These entries may be thought of as 1 KB subpages providing finer control of access
+permission within the 4 KB page.
+
+A tiny PTE provides the base address of a 1 KB block of physical memory. The entry
+also includes a single access permission bit field and the cache and write buffer attributes
+for the page. The tiny page has not been incorporated in the ARMVv6 architecture. If you are
+planning to create a system that is easily portable to future architectures, we recommend
+avoiding the use of tiny 1 KB pages in your system.
+
+A fault PTE generates a memory page access fault. The fault condition results in either
+a prefetch or data abort, depending on the type of memory access.
+
+14.4.4 SELECTING A PAGE SIZE FOR YOUR EMBEDDED SYSTEM
+
+Here are some tips and suggestions for setting the page size in your system:
+
+= The smaller the page size, the more page frames there will be in a given block of physical
+memory.

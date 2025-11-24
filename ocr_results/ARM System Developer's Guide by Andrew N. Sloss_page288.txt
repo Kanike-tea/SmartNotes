@@ -1,0 +1,60 @@
+MOV acc, #0
+LOR = x_0, [x], #4
+LOR c_0, [c], #4
+loop_sa ; accumulate 4 products
+suBS oN, N, #4
+wR = x_1, [x], #4
+wR  c_l, [c], #4
+MLA acc, x0, c_0,
+LOR x0, [x], #4
+LOR c_0, [c], #4
+MLA acc, x1, cl,
+wR = x_1, [x], #4
+wR  c_l, [c], #4
+MLA acc, x0, c.0,
+LORGT x_0, [x], #4
+LORGT c_0, [c], #4
+MLA acc, x1, cl,
+BGT —loop_sa
+MOV v0, acc
+LOMFD
+
+sp!, {r4-r5, r9-r10, pc}
+
+acc
+
+acc
+
+acc
+
+acc
+
+8.2 Introduction to DSP on the ARM
+
+275
+
+We have assumed that the number of samples N is a multiple of four and so have
+unrolled by four times. For worst-case 16-bit coefficients, each multiply requires two cycles.
+We have scheduled to remove all load and multiply use interlocks. The inner loop uses
+19 cycles to process 4 taps, giving a rating of 19/4 = 4.75 cycles per tap.
+
+8.2.4 DSP ON THE ARM9E
+
+SUMMARY
+
+The ARMOE core has a very fast pipelined multiplier array that performs a 32-bit by 16-bit
+multiply in a single issue cycle. The result is not available on the next cycle unless you
+use the result as the accumulator in a multiply accumulate operation. The load and store
+operations are the same speed as on the ARM9TDMI. See Section D.5 in Appendix D for
+details of the ARMOE instruction cycle times.
+
+To access the fast multiplier, you will need to use the multiply instructions defined in the
+ARMV5TE architecture extensions. For 16-bit by 16-bit products use SMULxy and SMLAxy.
+See Appendix A for a full list of ARM multiply instructions.
+
+Writing DSP Code for the ARM9E
+
+= The ARMVSTE architecture multiply operations are capable of unpacking 16-bit halves
+from 32-bit words and multiplying them. For best load bandwidth you should use word
+load instructions to load packed 16-bit data items. As for the ARM9TDMI you should
+schedule code to avoid load use interlocks.

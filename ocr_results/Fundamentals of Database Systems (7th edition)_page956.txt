@@ -1,0 +1,52 @@
+926
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+= The write workload: Given a write throughtput of 40 MB/sec, an average cli-
+ent writes 96 MB in 2.4 sec. That creates over 41K “create block” requests
+from 100,000 nodes at the NameNode. This was considered far above the
+NameNode capacity.
+
+The above analysis assumed that there was only one task per node. In reality, there
+could be multiple tasks per node as in the real system at Yahoo, which ran 4 MapReduce
+(MR)tasks per node. The net result was a bottleneck at the NameNode. Issues such
+as these have been handled in Hadoop v2, which we discuss in the next section.
+
+25.3.5 The Hadoop Ecosystem
+
+Hadoop is best known for the MapReduce programming model, its runtime infrastruc-
+ture, and the Hadoop Distributed File System (HDFS). However, the Hadoop ecosys-
+tem hasa set of related projects that provide additional functionality on top of these core
+projects. Many of them are top-level open source Apache projects and have a very large
+contributing user community of their own. We list a few important ones here:
+
+Pig and Hive: These provide a higher level interface for working with the
+Hadoop framework.
+
+Pig provides a dataflow language. A script written in PigScript translates
+into a directed acyclic graph (DAG) of MapReduce jobs.
+© Hive provides an SQL interface on top of MapReduce. Hive’s SQL support
+includes most of the SQL-92 features and many of the advanced analytics
+features from later SQL standards. Hive also defines the SerDe (Serializa-
+tion/ Deserialization) abstraction, which defines a way of modeling the
+record structure on datasets in HDFS beyond just key-value pairs. We will
+discuss both of these in detail in Section 25.4.4.
+Oozie: This is a service for scheduling and running workflows of Jobs; indi-
+vidual steps can be MR jobs, Hive queries, Pig scripts, and so on.
+
+Sqoop: This is a library and a runtime environment for efficiently moving data
+between relational databases and HDFS.
+
+HBase: This is a column-oriented key-value store that uses HDFS as its under-
+lying store. (See Chapter 24 for a more detailed discussion of HBase.) It sup-
+ports both batch processing using MR and key-based lookups. With proper
+design of the key-value scheme, a variety of applications are implemented using
+HBase. They include time series analysis, data warehousing, generation of
+cubes and multi-dimensional lookups, and data streaming.
+
+25.4 MapReduce: Additional Details
+
+We introduced the MapReduce paradigm in Section 25.2.2. We now elaborate further
+on it in terms of the MapReduce runtime. We discuss how the relational operation of
+join can be handled using MapReduce. We examine the high-level interfaces of Pig
+and Hive. Finally, we discuss the advantages of the combined MapReduce/Hadoop.

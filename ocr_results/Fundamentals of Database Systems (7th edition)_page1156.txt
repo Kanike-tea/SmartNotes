@@ -1,0 +1,52 @@
+1126
+
+Chapter 30 Database Security
+
+30.1.4 Access Control, User Accounts, and Database Audits
+
+Whenever a person or a group of persons needs to access a database system, the
+individual or group must first apply for a user account. The DBA will then create a
+new account number and password for the user if there is a legitimate need to
+access the database. The user must log in to the DBMS by entering the account
+number and password whenever database access is needed. The DBMS checks that
+the account number and password are valid; if they are, the user is permitted to use
+the DBMS and to access the database. Application programs can also be considered
+users and are required to log in to the database (see Chapter 10).
+
+It is straightforward to keep track of database users and their accounts and pass-
+words by creating an encrypted table or file with two fields: AccountNumber and
+Password. This table can easily be maintained by the DBMS. Whenever a new
+account is created, a new record is inserted into the table. When an account is can-
+celed, the corresponding record must be deleted from the table.
+
+The database system must also keep track of all operations on the database that are
+applied by a certain user throughout each login session, which consists of the
+sequence of database interactions that a user performs from the time of logging in
+to the time of logging off. When a user logs in, the DBMS can record the user’s
+account number and associate it with the computer or device from which the user
+logged in. All operations applied from that computer or device are attributed to the
+user’s account until the user logs off. It is particularly important to keep track of
+update operations that are applied to the database so that, if the database is tam-
+pered with, the DBA can determine which user did the tampering.
+
+To keep a record of all updates applied to the database and of particular users who
+applied each update, we can modify the system log. Recall from Chapters 20 and 22
+that the system log includes an entry for each operation applied to the database that
+may be required for recovery from a transaction failure or system crash. We can
+expand the log entries so that they also include the account number of the user and
+the online computer or device ID that applied each operation recorded in the log. If
+any tampering with the database is suspected, a database audit is performed, which
+consists of reviewing the log to examine all accesses and operations applied to the
+database during a certain time period. When an illegal or unauthorized operation is
+found, the DBA can determine the account number used to perform the operation.
+Database audits are particularly important for sensitive databases that are updated
+by many transactions and users, such as a banking database that can be updated by
+thousands of bank tellers. A database log that is used mainly for security purposes
+serves as an audit trail.
+
+30.1.5 Sensitive Data and Types of Disclosures
+
+Sensitivity of data is a measure of the importance assigned to the data by its
+owner for the purpose of denoting its need for protection. Some databases con-
+tain only sensitive data whereas other databases may contain no sensitive data at
+all. Handling databases that fall at these two extremes is relatively easy because

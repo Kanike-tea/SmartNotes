@@ -1,0 +1,64 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 01 (b)
+
+1 b) Develop a Python program to check whether a given number is palindrome or not and
+
+also count the number of occurrences of each digit in the input number.
+
+Aim: Introduce the Python fundamentals, data types, operators, flow control and exception
+
+handling in Python
+
+PROGRAM EXPLANATION
+The below program takes a number as input and performs various operations on it. Let's go
+
+through the program step by step:
+
+1.
+
+10.
+
+The program prompts the user to enter a number using the input() function, and the
+entered number is stored in the variable num.
+The program creates a variable temp and assigns it the value of num. This is done to
+
+preserve the original value of the number for later comparisons.
+
+. The program converts temp to a string n using the str() function. This allows us to
+
+perform string operations on the number.
+
+. The program initializes a variable rev to 0, which will be used to store the reversed
+
+version of the number.
+
+. Using a while loop, the program extracts the rightmost digit of the number using the
+
+modulo operator (%). It then multiplies rev by 10 and adds the extracted digit to it. This
+
+effectively builds the reversed number digit by digit.
+
+. Inside the loop, the program divides num by 10 (integer division) to remove the rightmost
+
+digit, and the loop continues until num becomes 0.
+
+. Once the loop finishes, the program prints the original number (temp) and the reversed
+
+number (rev).
+
+. The program checks if the original number (temp) is equal to the reversed number (rev).
+
+If they are equal, it prints a message indicating that the number is a palindrome.
+Otherwise, it prints a message indicating that the number is not a palindrome.
+
+The program uses the len() function to find the number of digits in the original number
+by converting it to a string (str(n)) and then taking the length of the string. It prints this
+
+value.
+
+The program initializes an empty dictionary s to store the occurrences of each digit in the
+
+number.
+
+Dept. of CSE 18 GSSSIETW, Mysuru

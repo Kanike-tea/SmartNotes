@@ -1,0 +1,16 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+ANALYSIS
+
++ Let m and n be the number of non-zero terms in A and B respectively.
+
++ If m>0 and n>0, the while loop is entered. At each iteration, we increment the value of startA or
+startB or both.
+
++ Since the iteration terminates when either startA or startB exceeds finishA or finishB respectively,
+the number of iterations is bounded by m+n-1. This worst case occurs when A(x)=>, x”! and
+B(x)=d4+1
+
++ The asymptotic computing time of this algorithm is O(n+m)
+
+vtucode.in 28

@@ -1,0 +1,44 @@
+12.5 Flushing and Cleaning Cache Memory 435
+
+cleanFlushCache procedures for the ARM926EJ-S and ARM1026EJ-S processors are
+shown in Example 12.4.
+
+EXAMPLE The test clean command finds the first dirty cache line and cleans it by transferring its
+12.4 contents to main memory. If another dirty cache exists in cache memory, then the Z flag
+will be zero.
+
+IF {CPU} = "ARM926EJ-S" :LOR: {CPU} = "ARM1026EJ-S"
+EXPORT cleanDCache
+EXPORT cleanFlushDCache
+EXPORT cleanFlushCache
+
+cleanDCache
+MRC pl5, 0, pc, c7, cl0, 3. ; test/clean D-cline
+BNE cleanDCache
+MOV pc, Ir
+cleanFlushDCache
+MRC p15, 0, pc, c7, cl4, 3 ; test/cleanflush D-cline
+BNE cleanFlushDCache
+MOV pc, Ir
+cleanFlushCache
+MRC p15, 0, pc, c7, cl4, 3 ; test/cleanflush D-cline
+BNE cleanFlushCache
+MCR p15, 0, 0, c7, c5, 0; flush I-cache
+MOV pc, Ir
+ENDIF
+
+To clean the cache, a software loop is created that uses the test clean command. By testing
+the Z flag and branching back to repeat the test, the processor loops through the test until
+the D-cache is clean. Note that the test clean command uses the program counter (r15) as
+the Rd register input to the MCR instruction.
+
+12.5.6 CLEANING THE D-CACHE IN INTEL XSCALE SA-110 AND
+INTEL STRONGARM CORES
+
+The Intel XScale and Intel StrongARM processors use a third method to clean their
+D-caches. The Intel XScale processors have a command to allocate a line in the D-cache
+without doing a line fill. When the processor executes the command, it sets the valid bit and
+fills the directory entry with the cache-tag provided in the Rd register. No data is transferred
+from main memory when the command executes. Thus, the data in the cache is not initial-
+ized until it is written to by the processor. The allocate command, shown in Table 12.7, has
+the beneficial feature of evicting a cache line if it is dirty.

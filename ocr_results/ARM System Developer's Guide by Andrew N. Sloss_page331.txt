@@ -1,0 +1,55 @@
+318 Chapter 9 Exception and Interrupt Handling
+
+9. 1 EXCEPTION HANDLING
+
+An exception is any condition that needs to halt the normal sequential execution of instruc-
+tions. Examples are when the ARM core is reset, when an instruction fetch or memory access
+fails, when an undefined instruction is encountered, when a software interrupt instruction
+is executed, or when an external interrupt has been raised. Exception handling is the method
+of processing these exceptions.
+
+Most exceptions have an associated software exception handler—a software routine that
+executes when an exception occurs. For instance, a Data Abort exception will have a Data
+Abort handler. The handler first determines the cause of the exception and then services
+the exception. Servicing takes place either within the handler or by branching to a specific
+service routine. The Reset exception isa special case since it is used to initialize an embedded
+system.
+
+This section covers the following exception handling topics:
+
+= ARM processor mode and exceptions
+= Vector table
+= Exception priorities
+
+= Link register offsets
+
+9.1.1 ARM PROCESSOR EXCEPTIONS AND MODES
+
+Table 9.1
+
+Table 9.1 lists the ARM processor exceptions. Each exception causes the core to enter a
+
+specific mode. In addition, any of the ARM processor modes can be entered manually by
+
+changing the cpsr. User and system mode are the only two modes that are not entered by a
+
+corresponding exception, in other words, to enter these modes you must modify the cpsr.
+When an exception causes a mode change, the core automatically
+
+= saves the cpsr to the spsr of the exception mode
+
+™ saves the pe to the /r of the exception mode
+
+ARM processor exceptions and associated modes.
+
+Exception Mode Main purpose
+
+Fast Interrupt Request FIQ fast interrupt request handling
+
+Interrupt Request IRQ interrupt request handling
+
+SWI and Reset SVC protected mode for operating systems
+
+Prefetch Abort and Data Abort — abort virtual memory and/or memory protection handling
+
+Undefined Instruction undefined — software emulation of hardware coprocessors

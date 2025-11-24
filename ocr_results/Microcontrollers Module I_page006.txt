@@ -1,0 +1,46 @@
+Microcontrollers-BCS402
+
+Using AMBA, peripheral designers can reuse the same design on multiple projects. Because
+there are a large number of peripherals developed with an AMBA interface, hardware
+
+designers have a wide choice of tested and proven peripherals for use in a device.
+
+A peripheral can simply be bolted onto the on-chip bus without having to redesign an
+interface for each different processor architecture. This plug-and-play interface for hardware
+
+developers improves availability and time to market.
+
+AHB provides higher data throughput than ASB because it is based on a centralized
+multiplexed bus scheme rather than the ASB bidirectional bus design. This change allows the
+AHB bus to run at higher clock speeds and to be the first ARM bus to support widths of 64
+and 128 bits.
+
+ARM has introduced two variations on the AHB bus: Multi-layer AHB and AHB-Lite. In
+contrast to the original AHB, which allows a single bus master to be active on the bus at any
+time, the Multi-layer AHB bus allows multiple active bus masters. AHB-Lite is a subset of
+the AHB bus and it is limited to a single bus master. This bus was developed for designs that
+
+do not require the full features of the standard AHB bus.
+
+AHB and Multi-layer AHB support the same protocol for master and slave but have different
+interconnects. The new interconnects in Multi-layer AHB are good for systems with multiple
+
+processors. They permit operations to occur in parallel and allow for higher throughput rates.
+
+The example device shown in Figure 4.1 has three buses: an AHB bus for the high-
+performance peripherals, an APB bus for the slower peripherals, and a third bus for external
+peripherals, proprietary to this device. This external bus requires a specialized bridge to
+
+connect with the AHB bus.
+
+4.3 Memory
+
+An embedded system has to have some form of memory to store and execute code. There is a
+need to compare price, performance, and power consumption when deciding upon specific
+memory characteristics, such as hierarchy, width, and type. If memory has to run twice as fast
+
+to maintain a desired bandwidth, then the memory power requirement may be higher.
+
+Hierarchy
+
+Dept. of ECE, GSSSIETW Page 7

@@ -1,0 +1,45 @@
+13.2 Initializing the MPU, Caches, and Write Buffer 477
+
+c3f = c3f & (0x1 <<region); /* clear old D-cache bit */
+c3f = c3f | ((tempCB & 0x1) <<region); /* set new D-cache bit */
+__asm{MCR p15, 0, c3f, c2, c0, 0} — /* store D-cache info */
+
+tempCB = CB>>0x2; /* shift to I-cache bit */
+__asm{MRC p15, 0, c3f, c2, cO, 1} —/* load I-cache register */
+c3f = c3f & (0x1 <<region); /* clear old I-cache bit */
+
+c3f = c3f | ((tempCB & 0x1) <<region); /* set new I-cache bit */
+__asm{MCR p15, 0, c3f, c2, cO, 1} — /* store I-cache info */
+
+13.2.4 ENABLING REGIONS AND THE MPU
+
+There are two steps left in the initialization process. The first is to enable active regions, and
+the second is to turn on the protection unit hardware by enabling the MPU, caches, and
+write buffer.
+
+To enable a region, the control system can reuse the routine regionSet presented in
+Section 13.2.1. The multiple use of regionSet is shown in Example 13.6 at the end of the
+chapter.
+
+To enable the MPU, caches, and write buffer requires modifying bit values in
+CP15:cl:c0:0, the system control register. The location of the MPU, cache, and write
+buffer bits in CP15:cl:cO are the same in the ARM940T, ARM946E-S, and ARM1026EJ-S
+processors, which makes enabling a configured MPU the same for the three cores. The
+enable bit locations are shown in Figure 13.6 and Table 13.9. The CP15:cl:c0 register has
+configuration bits not shown in Figure 13.6; the purpose and location of these bits are
+processor specific and are not a part of the protection system.
+
+We use the routine changeControl, shown in Example 13.5, to enable the MPU
+and caches. However, the routine changeControl can change any set of values in the
+CP15:cl:c0:0 register. It has the following C function prototype:
+
+void controlSet(unsigned value, unsigned mask) ;
+
+The first parameter passed is an unsigned integer containing the bit values to change. The
+second parameter is used to select the bits you want changed: A bit value of 1 changes the
+
+I ic} |u|
+
+31 2N109 876543210
+
+Figure 13.6 Memory protection unit control bits in the CP15:cl:c0 control register.

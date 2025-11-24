@@ -1,0 +1,56 @@
+5.2 Relational Model Constraints and Relational Database Schemas
+
+The uppercase letters Q, R, S denote relation names.
+The lowercase letters q, r, s denote relation states.
+The letters ¢, u, v denote tuples.
+
+In general, the name of a relation schema such as STUDENT also indicates
+the current set of tuples in that relation—the current relation state—whereas
+STUDENT(Name, Ssn, ...) refers only to the relation schema.
+
+= Anattribute A can be qualified with the relation name R to which it belongs
+by using the dot notation R.A—for example, STUDENT.Name or
+STUDENT.Age. This is because the same name may be used for two attri-
+butes in different relations. However, all attribute names in a particular
+relation must be distinct.
+
+= An n-tuple ¢ ina relation r(R) is denoted by t = <v,, v2, ... , v,>, where vj is
+the value corresponding to attribute A;. The following notation refers to
+component values of tuples:
+
+© Both ¢{A;] and ¢.A; (and sometimes ¢[i]) refer to the value v; in f for attri-
+
+bute Aj.
+5 Both t{A,, A,, ...,A,] and t.(A,, A, -..,Az), where A,, A, ..., Az isa list
+of attributes from R, refer to the subtuple of values <v,,, v,,, ... , v> from
+
+corresponding to the attributes specified in the list.
+
+As an example, consider the tuple f = <’Barbara Benson’, ‘533-69-1238’,
+‘(817)839-8461’, ‘7384 Fontana Lane’, NULL, 19, 3.25> from the STUDENT relation in Fig-
+ure 5.1; we have t{Name] = <‘Barbara Benson’>, and t[Ssn, Gpa, Age] = <“533-69-1238’,
+3.25, 19>.
+
+5.2 Relational Model Constraints
+and Relational Database Schemas
+
+So far, we have discussed the characteristics of single relations. In a relational data-
+base, there will typically be many relations, and the tuples in those relations are
+usually related in various ways. The state of the whole database will correspond to
+the states of all its relations at a particular point in time. There are generally many
+restrictions or constraints on the actual values in a database state. These constraints
+are derived from the rules in the miniworld that the database represents, as we dis-
+cussed in Section 1.6.8.
+
+In this section, we discuss the various restrictions on data that can be specified on a
+relational database in the form of constraints. Constraints on databases can gener-
+ally be divided into three main categories:
+
+1. Constraints that are inherent in the data model. We call these inherent
+model-based constraints or implicit constraints.
+2. Constraints that can be directly expressed in the schemas of the data model, typi-
+
+cally by specifying them in the DDL (data definition language, see Section 2.3.1).
+We call these schema-based constraints or explicit constraints.
+
+157

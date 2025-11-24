@@ -1,0 +1,50 @@
+23.2. Data Fragmentation, Replication, and Allocation Techniques for Distributed Database Design
+
+23.2 Data Fragmentation, Replication,
+and Allocation Techniques for Distributed
+Database Design
+
+In this section, we discuss techniques that are used to break up the database into
+logical units, called fragments, which may be assigned for storage at the various
+nodes. We also discuss the use of data replication, which permits certain data to be
+stored in more than one site to increase availability and reliability; and the process
+of allocating fragments—or replicas of fragments—for storage at the various nodes.
+These techniques are used during the process of distributed database design. The
+information concerning data fragmentation, allocation, and replication is stored in
+a global directory that is accessed by the DDBS applications as needed.
+
+23.2.1 Data Fragmentation and Sharding
+
+In a DDB, decisions must be made regarding which site should be used to store
+which portions of the database. For now, we will assume that there is no replication;
+that is, each relation—or portion of a relation—is stored at one site only. We dis-
+cuss replication and its effects later in this section. We also use the terminology of
+relational databases, but similar concepts apply to other data models. We assume
+that we are starting with a relational database schema and must decide on how to
+distribute the relations over the various sites. To illustrate our discussion, we use
+the relational database schema shown in Figure 5.5.
+
+Before we decide on how to distribute the data, we must determine the logical units of
+the database that are to be distributed. The simplest logical units are the relations
+themselves; that is, each whole relation is to be stored at a particular site. In our exam-
+ple, we must decide on a site to store each of the relations EMPLOYEE, DEPARTMENT,
+PROJECT, WORKS_ON, and DEPENDENT in Figure 5.5. In many cases, however, a
+relation can be divided into smaller logical units for distribution. For example,
+consider the company database shown in Figure 5.6, and assume there are three
+computer sites—one for each department in the company.’
+
+We may want to store the database information relating to each department at the
+computer site for that department. A technique called horizontal fragmentation or
+sharding can be used to partition each relation by department.
+
+Horizontal Fragmentation (Sharding). A horizontal fragment or shard of a
+relation is a subset of the tuples in that relation. The tuples that belong to the horizontal
+fragment can be specified by a condition on one or more attributes of the relation, or
+by some other mechanism. Often, only a single attribute is involved in the condition.
+For example, we may define three horizontal fragments on the EMPLOYEE relation in
+Figure 5.6 with the following conditions: (Dno = 5), (Dno = 4), and (Dno = 1)—each
+
+‘Of course, in an actual situation, there will be many more tuples in the relation than those shown in
+Figure 5.6.
+
+847

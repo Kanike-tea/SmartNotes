@@ -1,0 +1,51 @@
+26.5 Introduction to Deductive Databases 1009
+
+REL_ONE(A, B, C).
+REL_TWO(D, E, F).
+REL_THREE(G, H, /, J).
+
+SELECT_ONE_A_EQ_C\(X, Y, Z) :- REL_ONE(G, Y, 2).
+SELECT_ONE_B_LESS_5(X, Y, Z) :- REL_ONE(X, Y, Z), Y<5.
+SELECT_ONE_A_EQ_C_AND_B_LESS_8(X, Y, Z) :- REL_ONE(C, Y, ), Y<5.
+
+SELECT_ONE_A_EQ_C_OR_B_LESS_6(X, Y, Z) :- REL_ONE(G, ¥, 2).
+SELECT_ONE_A_EQ_C_OR_B_LESS_8(X, Y, Z) :- REL_ONE(X, Y, 2), Y<5.
+
+PROJECT_THREE_ON_G_H(W, X) :— REL_THREE(W, X, Y, Z).
+
+UNION_ONE_TWOKX, Y, Z) :- REL_ONE(X, Y, Z).
+UNION_ONE_TWOKX, Y, Z) :- REL_TWO(X, Y, 2).
+
+INTERSECT_ONE_TWO(X, Y, Z) :- REL_ONE(X, Y, Z), REL_TWO(X, Y, 2).
+DIFFERENCE_TWO_ONE(X, Y, Z) :- TWO(X, ¥, Z) NOT(REL_ONE(X, Y, 2).
+
+CART PROD _ONE_THREE(, U, V, W, X, Y, Z) =
+REL_ONE(T, U, V), REL_THREE(W, X, Y, Z).
+
+Figure 26.16
+NATURAL_JOIN_ONE_THREE_C_EQ_G(U, V, W,X, Y,2) - Predicates for illustrating
+REL_ONE(U, V, W), REL_THREE(W, x, Y, Z). relational operations.
+
+Here, we can get an infinite result if Y ranges over all possible integers. But suppose
+that we change the rule as follows:
+
+BIG_SALARY(Y) :— EMPLOYEE(X), Salary(X, Y), Y>60000
+
+In the second rule, the result is not infinite, since the values that Y can be bound to
+are now restricted to values that are the salary of some employee in the database—
+presumably, a finite set of values. We can also rewrite the rule as follows:
+
+BIG_SALARY(Y) :— Y>60000, EMPLOYEE(X), Salary(X, Y)
+
+In this case, the rule is still theoretically safe. However, in Prolog or any other sys-
+tem that uses a top-down, depth-first inference mechanism, the rule creates an
+infinite loop, since we first search for a value for Y and then check whether it is a
+salary of an employee. The result is generation of an infinite number of Y values,
+even though these, after a certain point, cannot lead to a set of true RHS predi-
+cates. One definition of Datalog considers both rules to be safe, since it does not
+depend on a particular inference mechanism. Nonetheless, it is generally advisable
+to write such a rule in the safest form, with the predicates that restrict possible
+bindings of variables placed first. As another example of an unsafe rule, consider
+the following rule:
+
+HAS_SOMETHING(X, Y) :- EMPLOYEE(X)

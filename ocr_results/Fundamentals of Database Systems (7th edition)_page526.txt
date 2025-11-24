@@ -1,0 +1,64 @@
+496
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+general definitions of second normal form (2NF) and third normal form (3NF) that
+take all candidate keys of a relation into account. We presented examples to illus-
+trate how, by using the general definition of 3NF, a given relation may be analyzed
+and decomposed to eventually yield a set of relations in 3NF.
+
+We presented Boyce-Codd normal form (BCNF) and discussed how it is a stronger
+form of 3NF. We also illustrated how the decomposition of a non-BCNF relation
+must be done by considering the nonadditive decomposition requirement. We pre-
+sented a test for the nonadditive join property of binary decompositions and also
+gave a general algorithm to convert any relation not in BCNF into a set of BCNF
+relations. We motivated the need for an additional constraint beyond the functional
+dependencies based on mixing of independent multivalued attributes into a single
+relation. We introduced multivalued dependency (MVD) to address such condi-
+tions and defined the fourth normal form based on MVDs. Finally, we introduced
+the fifth normal form, which is based on join dependency and which identifies a
+peculiar constraint that causes a relation to be decomposed into several compo-
+nents so that they always yield the original relation after a join. In practice, most
+commercial designs have followed the normal forms up to BCNF. The need to
+decompose into 5NF rarely arises in practice, and join dependencies are difficult to
+detect for most practical situations, making 5NF more of theoretical value.
+
+Chapter 15 presents synthesis as well as decomposition algorithms for relational
+database design based on functional dependencies. Related to decomposition, we
+discuss the concepts of nonadditive (or lossless) join and dependency preservation,
+which are enforced by some of these algorithms. Other topics in Chapter 15 include
+a more detailed treatment of functional and multivalued dependencies, and other
+types of dependencies.
+
+Review Questions
+
+14.1.
+
+14.2.
+
+14.3.
+
+14.4.
+
+14.5.
+
+14.6.
+
+Discuss attribute semantics as an informal measure of goodness for a rela-
+tion schema.
+
+Discuss insertion, deletion, and modification anomalies. Why are they con-
+sidered bad? Illustrate with examples.
+
+Why should NULLs in a relation be avoided as much as possible? Discuss the
+problem of spurious tuples and how we may prevent it.
+
+State the informal guidelines for relation schema design that we discussed.
+Illustrate how violation of these guidelines may be harmful.
+
+What is a functional dependency? What are the possible sources of the
+information that defines the functional dependencies that hold among the
+attributes of a relation schema?
+
+Why can we not infer a functional dependency automatically from a partic-
+ular relation state?

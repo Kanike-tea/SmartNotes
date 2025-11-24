@@ -1,0 +1,29 @@
+BCS304
+
+Aapermy tee ter UC, ae OO,
+
+Adjacency Multilists:
+
+In the adjacency list representation of an undirected graph, we represent each edge, (vi, Vj), by
+two entries. One entry is on the list for vj, and the other is on the list for Vj.
+
+For each edge there is exactly one node, but this node is on the adjacency list for each of the
+two vertices it is incident to the new node structure.
+
+marked | vertex! | vertex2 | path | | path2
+
+Node structure for adjacency multilists
+
+typedef struct edge *edge-pointer;
+typedef struct edge {
+short int marked;
+int vertexl;
+int vertex2;
+edge—pointer pathl;
+edge-—pointer path2;
+M3
+edge-—pointer graph[MAX—VERTICES] ;
+
+C declaration for multilists
+
+20

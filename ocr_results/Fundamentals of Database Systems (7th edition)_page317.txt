@@ -1,0 +1,68 @@
+8.36.
+
+8.37.
+
+Laboratory Exercises
+
+d. Retrieve the names of customers who have ordered parts from employees
+living in Wichita.
+
+e. Retrieve the names of customers who have ordered parts costing less than
+$20.00.
+
+f. Retrieve the names of customers who have not placed an order.
+
+g. Retrieve the names of customers who have placed exactly two orders.
+
+Consider the following GRADEBOOK relational schema describing the data
+for a grade book of a particular instructor. (Note: The attributes A, B, C,
+and D of COURSES store grade cutoffs.)
+
+CATALOG(Cno, Ctitle)
+
+STUDENTS(Sid, Fname, Lname, Minit)
+COURSES(Term, Sec_no, Cno, A, B, C, D)
+ENROLLS (Sid, Term, Sec_no)
+
+Specify and execute the following queries using the RA interpreter on the
+GRADEBOOK database schema.
+
+a. Retrieve the names of students enrolled in the Automata class during the
+fall 2009 term.
+
+b. Retrieve the Sid values of students who have enrolled in CSc226 and
+CSc227.
+
+c. Retrieve the Sid values of students who have enrolled in CSc226 or
+CSc227.
+
+d. Retrieve the names of students who have not enrolled in any class.
+
+e. Retrieve the names of students who have enrolled in all courses in the
+CATALOG table.
+
+Consider a database that consists of the following relations.
+
+SUPPLIER(Sno, Sname)
+PART(Pno, Pname)
+PROJECT(Jno, Jname)
+SUPPLY (Sno, Pno, Jno)
+
+The database records information about suppliers, parts, and projects and
+includes a ternary relationship between suppliers, parts, and projects. This
+relationship is a many-many-many relationship. Specify and execute the fol-
+lowing queries using the RA interpreter.
+
+a. Retrieve the part numbers that are supplied to exactly two projects.
+
+b. Retrieve the names of suppliers who supply more than two parts to
+project ‘Jl’.
+
+c. Retrieve the part numbers that are supplied by every supplier.
+
+d. Retrieve the project names that are supplied by supplier ‘SI’ only.
+
+e. Retrieve the names of suppliers who supply at least two different parts
+each to at least two different projects.
+
+287

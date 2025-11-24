@@ -1,0 +1,48 @@
+458 Chapter 12. Caches
+
+Table 12.14 ARM cached core features.
+Cache Cache Write
+Cache Cache size line size lockdown buffer size
+
+Core type (kilobytes) (words) Associativity Location support — (words)
+ARM720T unified 8 4 4-way logical no 8
+ARM740T unified 4 or 8 4 4-way yes 1/4 8
+ARM920T split 16/16D +1 8 64-way logical yes 1/64 16
+ARM922T split 8/8D +I 8 64-way logical yes 1/64 16
+ARM940T split 4/4D+1 4 64-way yes 1/64 8
+ARM926EJ-S split. 4-128/4-128D +1 8 4-way logical yes 1/416
+ARM946E-S split 4-128/4-128D +1 4 4-way yes 1/4 4
+ARM1022E split 16/16D +1 8 64-way logical yes 1/64 16
+ARMI026EJ-S split. 4-128/4-128D +1 8 4-way logical yes 1/4 8
+
+Intel StrongARM split 16/16D +1 4 32-way logical no 32
+
+Intel XScale split 32/32D +1 8 32-way logical yes 1/32 32
+
+2D 8 2-way logical no
+
+indicating where a cache line was loaded from main memory. There are two common status
+bits within the cache: the valid bit and the dirty bit. The valid bit is set when the associated
+cache line contains active memory. The dirty bit is active when the cache is using a writeback
+policy and new data has been written to cache memory.
+
+The placement of a cache before or after the MMU is either physical or logical. A logical
+cache is placed between the processor core and the MMU, and references code and data in
+a virtual address space. A physical cache is placed between the MMU and main memory,
+and references code and data memory using physical addresses.
+
+A direct-mapped cache isa very simple cache architecture where there is a single location
+in cache for a given main memory location. A direct-mapped cache is subject to thrashing.
+To reduce thrashing, a cache is divided into smaller equal units called ways. The use of
+ways provides multiple storage locations in cache for a single main memory address. These
+caches are known as set associative caches.
+
+The core bus architecture helps determine the design of a cached system. A Von
+Neumann architecture uses a unified cache to store code and data. A Harvard architecture
+uses a split cache: it has one cache for instructions and a separate cache for data.
+
+The cache replacement policy determines which cache line is selected for replacement
+ona cache miss. The configured policy defines the algorithm a cache controller uses to select
+acache line from the available set in cache memory. The cache line selected for replacement
+isa victim. The two replacement policies available in ARM cached cores are pseudorandom
+and round-robin.

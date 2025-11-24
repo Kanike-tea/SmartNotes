@@ -1,0 +1,40 @@
+Each row can contain different sets of columns, and columns can be added dynamically.
+This structure allows efficient reads/writes on specific columns without reading the entire
+row, making it perfect for sparse data.
+
+Example:
+Row Key Personal:Name Personal:Email Orders:Order1 Orders:Order2
+user001 Alice alice@example.com TV Laptop
+
+Here, Personal and Orders are column families, and the system allows selective access to
+only what’s needed.
+
+3. Popular Column-Based NoSQL Databases
+Some of the most prominent wide-column stores include:
+
+« Apache Cassandra: A distributed NoSQL system known for high availability and
+horizontal scalability. It is used by companies like Netflix, Instagram, and Uber.
+
+« Apache HBase: Built on top of Hadoop and HDFS, it provides random, real-time
+read/write access to big data.
+
+e  ScyllaDB: A high-performance alternative to Cassandra, written in C++ for better
+speed and lower latency.
+
+« Google Bigtable: The original inspiration for Cassandra and HBase, used internally
+at Google for applications like Search and Maps.
+
+4. Features and Advantages
+e Horizontal Scalability: Easily scale out by adding nodes to the cluster.
+e High Availability: Designed for fault-tolerance and replication across data centers.
+
+¢ Efficient Reads/Writes: Optimized for large data volumes and quick access to
+specific columns.
+
+e Flexible Schema: Schema-less nature allows columns to be added or changed
+without downtime.
+
+e Time-Series Friendly: Well-suited for applications that store data over time, such as
+logs or metrics.
+
+5. Common Use Cases

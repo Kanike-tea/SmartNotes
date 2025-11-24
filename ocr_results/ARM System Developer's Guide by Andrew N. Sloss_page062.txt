@@ -1,0 +1,51 @@
+Chapter 3 Introduction to the ARM Instruction Set 49
+
+Table 3.1 ARM instruction set. (Continued)
+
+Mnemonics ARM ISA Description
+
+SMULxy vSE signed multiply instructions (16 x 16 = 32-bit)
+
+SMULWy vSE signed multiply instruction ((32 x 16) >> 16 = 32-bit)
+
+STC STC2 v2 v5 store to memory single or multiple 32-bit values from coprocessor
+STM vl store multiple 32-bit registers to memory
+
+STR vl v4 v5SE store register to a virtual address in memory
+
+SUB vl subtract two 32-bit values
+
+SWI vl software interrupt
+
+SWP v2a swap a word/byte in memory with a register, without interruption
+TEQ vl test for equality of two 32-bit values
+
+TST vl test for bits in a 32-bit value
+
+UMLAL v3M unsigned multiply accumulate long ((32 x 32) + 64 = 64-bit)
+UMULL v3M unsigned multiply long (32 x 32 = 64-bit)
+
+executed. We will represent hexadecimal numbers with the prefix 0x and binary numbers
+with the prefix Ob. The examples follow this format:
+
+PRE —_<pre-conditions>
+<instruction/s>
+POST <post-conditions>
+
+In the pre- and post-conditions, memory is denoted as
+mem<data_size>[address]
+
+This refers to data_size bits of memory starting at the given byte address. For example,
+mem32(1024] is the 32-bit value starting at address 1 KB.
+
+ARM instructions process data held in registers and only access memory with load and
+store instructions. ARM instructions commonly take two or three operands. For instance
+the ADD instruction below adds the two values stored in registers rJ and r2 (the source
+registers). It writes the result to register r3 (the destination register).
+
+Instruction Destination Source Source
+Syntax register (Rd) register 1 (Rn) | register 2 (Rm)
+ADD r3, rl, r2 3 rl 2
+
+In the following sections we examine the function and syntax of the ARM
+instructions by instruction class—data processing instructions, branch instructions,

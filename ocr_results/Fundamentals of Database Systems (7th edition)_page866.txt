@@ -1,0 +1,79 @@
+836
+
+Chapter 22 Database Recovery Techniques
+
+22.24.
+
+22.25.
+
+22.26.
+
+22.27.
+
+Suppose that we use the deferred update protocol for the example in Fig-
+ure 22.6. Show how the log would be different in the case of deferred update
+by removing the unnecessary log entries; then describe the recovery process,
+using your modified log. Assume that only REDO operations are applied,
+and specify which operations in the log are redone and which are ignored.
+
+How does checkpointing in ARIES differ from checkpointing as described
+in Section 22.1.4?
+
+How are log sequence numbers used by ARIES to reduce the amount of
+REDO work needed for recovery? Illustrate with an example using the infor-
+mation shown in Figure 22.5. You can make your own assumptions as to
+when a page is written to disk.
+
+What implications would a no-steal/force buffer management policy have
+on checkpointing and recovery?
+
+Choose the correct answer for each of the following multiple-choice questions:
+
+22.28.
+
+22.29.
+
+22.30.
+
+22.31.
+
+Incremental logging with deferred updates implies that the recovery system
+must
+
+a. store the old value of the updated item in the log
+
+b. store the new value of the updated item in the log
+
+c. store both the old and new value of the updated item in the log
+
+d. store only the Begin Transaction and Commit Transaction records in the log
+
+The write-ahead logging (WAL) protocol simply means that
+a. writing of a data item should be done ahead of any logging operation
+
+b. the log record for an operation should be written before the actual data is
+written
+
+c. alllog records should be written before a new transaction begins execution
+d. the log never needs to be written to disk
+
+In case of transaction failure under a deferred update incremental logging
+scheme, which of the following will be needed?
+
+a. an undo operation
+
+b. a redo operation
+
+c. an undo and redo operation
+
+d. none of the above
+
+For incremental logging with immediate updates, a log record for a transac-
+tion would contain
+
+a. a transaction name, a data item name, and the old and new value of the item
+b. a transaction name, a data item name, and the old value of the item
+
+c. a transaction name, a data item name, and the new value of the item
+
+d. a transaction name and a data item name

@@ -1,0 +1,56 @@
+494
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+and Ename is not a superkey of EMP. We decompose EMP into EMP_PROJECTS and
+EMP_DEPENDENTS, shown in Figure 14.15(b). Both EMP_PROJECTS and
+EMP_DEPENDENTS are in 4NF, because the MVDs Ename —> Pname in
+EMP_PROJECTS and Ename —> Dname in EMP_DEPENDENTS are trivial MVDs. No
+other nontrivial MVDs hold in either EMP_PROJECTS or EMP_DEPENDENTS. No
+
+FDs hold in these relation schemas either.
+
+14.7 Join Dependencies and Fifth Normal Form
+
+In our discussion so far, we have pointed out the problematic functional dependen-
+cies and shown how they were eliminated by a process of repeated binary decompo-
+sition during the process of normalization to achieve INF, 2NF, 3NF, and BCNF.
+These binary decompositions must obey the NJB property for which we introduced
+a test in Section 14.5 while discussing the decomposition to achieve BCNF. Achiev-
+ing 4NF typically involves eliminating MVDs by repeated binary decompositions as
+well. However, in some cases there may be no nonadditive join decomposition of R
+into two relation schemas, but there may be a nonadditive join decomposition into
+more than two relation schemas. Moreover, there may be no functional dependency
+in R that violates any normal form up to BCNF, and there may be no nontrivial
+MVD present in R either that violates 4NF. We then resort to another dependency
+called the join dependency and, if it is present, carry out a multiway decomposition
+into fifth normal form (5NF). It is important to note that such a dependency is a
+peculiar semantic constraint that is difficult to detect in practice; therefore, normal-
+
+ization into 5NF is rarely done in practice.
+
+Definition. A join dependency (JD), denoted by JD(Rj, Ro, ... Rn), specified
+on relation schema R, specifies a constraint on the states r of R. The constraint
+states that every legal state r of R should have a nonadditive join decomposition
+
+into Rj, Ry, ... , Ry. Hence, for every such r we have
+
+* (Tr,(r), Tr, (7), «Tr, () =
+
+Notice that an MVD is a special case of a JD where n = 2. That is, a JD denoted
+as JD(R, Rz) implies an MVD (Rj M Rz) —> (Ry — R2)(or, by symmetry,
+(Ry, 0 R32) >» (Rz — Rj). A join dependency JD(Rj, Ro, ... , R,,), specified on relation
+schema R, is a trivial JD if one of the relation schemas R; in JD(R), Ro, ... ; Rn) is equal
+to R. Such a dependency is called trivial because it has the nonadditive join property
+for any relation state r of R and thus does not specify any constraint on R. We can
+now define the fifth normal form, which is also called project-join normal form.
+
+Definition. A relation schema R is in fifth normal form (5NF) (or project-join
+normal form (PJNEF)) with respect to a set F of functional, multivalued, and
+
+join dependencies if, for every nontrivial join dependency JD(Rj, Ro, ...
+F* (that is, implied by F),”* every R; is a superkey of R.
+
+?2,Again, F* refers to the cover of functional dependencies F, or all dependencies that are implied by F.
+
+This is defined in Section 15.1.

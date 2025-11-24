@@ -1,0 +1,48 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ 317
+
+//Program Segment El: Figure 10.2
+0) loop = 1; Program segment E1,
+1) while (loop) { a C program segment
+2) prompt("Enter a Social Security Number: ", ssn) ; with embedded SQL.
+3) EXEC SQL
+4) SELECT Fname, Minit, Lname, Address, Salary
+5) INTO :fname, :minit, :lname, :address, :salary
+6) FROM EMPLOYEE WHERE Ssn = :ssn ;
+7) if (SQLCODE = = 0) printf£(fname, minit, lname, address, salary)
+8) else print£("Social Security Number does not exist: ", ssn) ;
+9) prompt("More Social Security Numbers (enter 1 for Yes, 0 for No): ", loop) ;
+10) }
+
+and then retrieves the EMPLOYEE tuple with that Ssn from the database via the
+embedded SQL command. The INTO clause (line 5) specifies the program vari-
+ables into which attribute values from the database record are retrieved. C program
+variables in the INTO clause are prefixed with a colon (:), as we discussed earlier.
+The INTO clause can be used in this manner only when the query result is a single
+record; if multiple records are retrieved, an error will be generated. We will see how
+multiple records are handled in Section 10.2.2.
+
+Line 7 in E1 illustrates the communication between the database and the program
+through the special variable SQLCODE. If the value returned by the DBMS in
+SQLCODE is 0, the previous statement was executed without errors or exception
+conditions. Line 7 checks this and assumes that if an error occurred, it was because
+no EMPLOYEE tuple existed with the given Ssn; therefore it outputs a message to
+that effect (line 8).
+
+When a single record is retrieved as in example El, the programmer can assign its
+attribute values directly to C program variables in the INTO clause, as in line 5. In
+general, an SQL query can retrieve many tuples. In that case, the C program will
+typically loop through the retrieved tuples and process them one at a time. The con-
+cept of a cursor is used to allow tuple-at-a-time processing of a query result by the
+host language program. We describe cursors next.
+
+10.2.2 Processing Query Results Using Cursors
+
+A cursor is a variable that refers to a single tuple (row) from a query result that
+retrieves a collection of tuples. It is used to loop over the query result, one record at
+a time. The cursor is declared when the SQL query is declared. Later in the pro-
+gram, an OPEN CURSOR command fetches the query result from the database and
+sets the cursor to a position before the first row in the result of the query. This
+becomes the current row for the cursor. Subsequently, FETCH commands are
+issued in the program; each FETCH moves the cursor to the next row in the result of
+the query, making it the current row and copying its attribute values into the C
+(host language) program variables specified in the FETCH command by an INTO

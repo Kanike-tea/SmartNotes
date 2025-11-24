@@ -1,0 +1,55 @@
+break;
+
+i
+}
+if == lastp)
+{
+patfound = 1;
+replacepattern();
+}
+return;
+
+void main()
+
+{
+printf("\nEnter the main string(STR): ");
+fgets(str, 50, stdin);
+printf("\nEnter the pattern to be matched(PAT): ");
+fgets(pat, 50, stdin);
+printf("\nEnter the string to be replaced(REP): ");
+fgets(rep, 50, stdin);
+printf("\nThe string before pattern match is:\n %s", str);
+findpattern();
+if(patfound == 0)
+printf("\nThe pattern is not found in the main string");
+else
+printf("\nThe string after pattern match and replace is: \n %s " str);
+return;
+i
+Output:
+Case 1:
+
+Enter the main string(STR): Hello hii how are you hii
+Enter the pattern to be matched(PAT): hii
+
+Enter the string to be replaced(REP): xyz
+
+The string before pattern match is:
+
+Hello hii how are you hii
+
+The string after pattern match and replace is:
+
+Hello xyz how are you xyz
+
+Case 2:
+
+Enter the main string(STR): Hello hii how are you
+Enter the pattern to be matched(PAT): abe
+
+Enter the string to be replaced(REP): xyz
+
+The string before pattern match is:
+Hello hii how are you
+
+The pattern is not found in the main string

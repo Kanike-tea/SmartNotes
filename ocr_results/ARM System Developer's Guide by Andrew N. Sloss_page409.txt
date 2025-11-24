@@ -1,0 +1,31 @@
+396 Chapter 11 Embedded Operating Systems
+
+LDR —r0,=PCB_PtrNextTask [7] r0=PCB_PtrNextTask
+stR ri, [r0] ; memory[r0]=next task addr
+
+‘The results of executing the scheduler are the following:
+
+m= PCB _PtrCurrentTask points to the address of the current active PCB.
+m PCB_PtrNextTask points to the address of the next active PCB.
+
+= PCB _CurrentTask holds the value of the next task identifier.
+
+11.2.6 CONTEXT SWITCH
+
+Using the updated information produced by the scheduler, the context switch then swaps
+the active task t with the next task t’. To achieve this, a context switch splits the activity into
+two stages, as shown in Figure 11.4. The first stage involves saving the processor registers
+into the current task t PCB pointed by PCB_PtrCurrentTask. The second stage loads the
+registers with data from the next ¢ PCB pointed by PCB_PtrNextTask.
+
+We will now take you through the procedure and code of the two stages of the con-
+text switch, detailing the saving of the current context first, followed by loading a new
+
+context.
+(a) (b)
+Save the current context Load the next context
+PCB_PtrCurrentTask  PCB_PtrNextTask
+
+- f
+
+Figure 11.4 Context switch. (a) Save the Current Context (b) Load the Next Context

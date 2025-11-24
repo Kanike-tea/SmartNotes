@@ -1,0 +1,55 @@
+30.2 Discretionary Access Control Based on Granting and Revoking Privileges
+
+The DBMS must now revoke the SELECT privilege on EMPLOYEE from A@, and it
+must also automatically revoke the SELECT privilege on EMPLOYEE from A4.
+This is because A3 granted that privilege to A4, but A3 does not have the privilege
+any more.
+
+Next, suppose that A1 wants to give back to A3 a limited capability to SELECT from
+the EMPLOYEE relation and wants to allow A to be able to propagate the privilege.
+The limitation is to retrieve only the Name, Bdate, and Address attributes and only
+for the tuples with Dno = 5. A1 then can create the following view:
+
+CREATE VIEW A3EMPLOYEE AS
+SELECT Name, Bdate, Address
+FROM EMPLOYEE
+
+WHERE Dno = 5;
+
+After the view is created, A1 can grant SELECT on the view ASEMPLOYEE to A3
+as follows:
+
+GRANT SELECT ON A3EMPLOYEE TO A3 WITH GRANT OPTION;
+
+Finally, suppose that A1 wants to allow A4 to update only the Salary attribute of
+EMPLOYEE; A1 can then issue the following command:
+
+GRANT UPDATE ON EMPLOYEE (Salary) TO A4;
+
+The UPDATE and INSERT privileges can specify particular attributes that may be
+updated or inserted in a relation. Other privileges (SELECT, DELETE) are not attri-
+bute specific, because this specificity can easily be controlled by creating the appro-
+priate views that include only the desired attributes and granting the corresponding
+privileges on the views. However, because updating views is not always possible (see
+Chapter 8), the UPDATE and INSERT privileges are given the option to specify the
+particular attributes of a base relation that may be updated.
+
+30.2.6 Specifying Limits on Propagation of Privileges
+
+Techniques to limit the propagation of privileges have been developed, although
+they have not yet been implemented in most DBMSs and are not a part of SQL.
+Limiting horizontal propagation to an integer number i means that an account B
+given the GRANT OPTION can grant the privilege to at most i other accounts.
+Vertical propagation is more complicated; it limits the depth of the granting of
+privileges. Granting a privilege with a vertical propagation of zero is equivalent to
+granting the privilege with no GRANT OPTION. If account A grants a privilege to
+account B with the vertical propagation set to an integer number j > 0, this means
+that the account B has the GRANT OPTION on that privilege, but B can grant the
+privilege to other accounts only with a vertical propagation less than j. In effect,
+vertical propagation limits the sequence of GRANT OPTIONS that can be given from
+one account to the next based on a single original grant of the privilege.
+
+We briefly illustrate horizontal and vertical propagation limits—which are not
+available currently in SQL or other relational systems—with an example. Suppose
+
+1133

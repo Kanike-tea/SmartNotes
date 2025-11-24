@@ -1,0 +1,64 @@
+Data Structures and Applications/BCS3
+
+04
+
+Module 1
+
+Problem solved with n=3 disks
+3 DISKS
+
+Ackermann Function
+
+att fo
+pa
+
+The Ackermann function is a function with two arguments each of which can be assigned any non
+
+negative integer 0,1,2...........
+
+This function is defined as follows
+a) Ifm=0 then A(m,n) =n+1
+
+b) Ifm!=0 but n=0 then A(m,n) =
+
+This function finds its application in mathematical logic.
+
+A(m - 1,1)
+
+c) Ifm!=0 and n !=0 then A(m,n) = A(m - 1, A(m,n - 1))
+
+The function is given as follows
+int A(int m,int n)
+
+{
+if (m == 0)
+return(n+1);
+if ((m !=0) && (n==0 ))
+return(A(m-1,1));
+if ((m!= 0) && (n !=0))
+return(A(m-1, A(m,n-1)));
+t
+Example1:
+
+AC,2) | =A@.AC,D)
+=A(,AQ@,AC.0)))
+=AO0AOAQO,1)
+=A(0,A(0,2)
+=A(0,3)
+
+4
+Example 2:
+
+A(L,3) | =A@,AC,2))
+=A(0,A0,AC,1)))
+=A0,AO,AO,AC0))))
+=A(0,A0,A@,AQ,1))))
+=A(0,A(0,A(,2)
+=A(0,A(0,3)
+=A(0A)
+
+5
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru
+
+Page 44

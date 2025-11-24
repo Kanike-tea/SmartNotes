@@ -1,0 +1,80 @@
+SUMMARY
+
+Prioritized Grouped Interrupt Handler
+
+9.3 Interrupt Handling Schemes 363
+
+= Mechanism for handling interrupts that are grouped into different priority levels.
+
+= Low interrupt latency.
+
+= Advantage: useful when the embedded system has to handle a large number of inter-
+rupts, and also reduces the response time since the determining of the priority level is
+
+shorter.
+
+= Disadvantage: determining how the interrupts are grouped together.
+
+9.3.8 VIC PL190 BASED INTERRUPT SERVICE ROUTINE
+
+To take advantage of the vector interrupt controller, the IRQ vector entry has to be modified.
+
+0x00000018 LOR pc, [pc,#-Oxf FO];
+
+IRQ pc=mem32 [Oxf ff#030]
+
+This instruction loads an ISR address from the memory mapped location Oxffff#030 into
+the pe which bypasses any software interrupt handler since the interrupt source can be
+
+obtained directly from the hardware. It also reduces interrupt latency since there is only a
+
+single jump to a specific ISR.
+Here is an example of VIC service routine:
+
+INTON EQU 0x0000 ;
+SYS32md EQU Oxf ;
+1RQ32md EQU 0x12 ;
+1 Bit EQU 0x80
+
+VICBaseAddr —-EQU Oxf FFF F000 ;
+VICVectorAddr  EQU VICBaseAddr+0x30
+
+vector_service_routine
+
+SuBrl4,r14,#4 ;
+STMFD r13!, {rO-r3,r12,r14} 5
+MRS rl2, spsr ;
+STMFD r13!,{r12} ;
+
+<clear the interrupt source>
+MSR cpsr_c, #INTON|SYS32md
+<interrupt service code>
+
+MSR cpsr_c, #I_Bit|IRQ32md ;
+LOMFD r13!, {r12} ;
+MSR spsr_cxsf, r12 ;
+LOR ——rl,=VICVectorAddr ;
+stk 0, [ri] ;
+LOMFD rl3!, {r0-r3,r12,pc}”
+
+enable interrupts
+system mode
+IRQ mode
+
+addr of VIC ctrl
+isr address of int
+
+rl4-=4
+save context
+copy spsr
+save spsr
+
+cpsr_c=ift_sys
+
+cpsr_c=Ift_irq
+restore (spsr_irq)
+restore spsr
+
+load VectorAddress
+servicing complete
+return

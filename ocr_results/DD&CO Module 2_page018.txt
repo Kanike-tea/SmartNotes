@@ -1,0 +1,40 @@
+HDL MODELS OF COMBINATIONAL CIRCUITS
+
+The module is the basic building block for modeling hardware with the Verilog HDL. The logic of a
+module can be described in any one (or a combination) of the following modeling styles:
+
+©@ Gate-level modeling using instantiations of predefined and user-defined primitive gates.
+@ Dataflow modeling using continuous assignment statements with the keyword assign.
+
+@ Behavioral modeling using procedural assignment statements with the keyword always.
+
+Gate-level (structural) modeling describes a circuit by specifying its gates and how they are connected
+with each other. Dataflow modeling is used mostly for describing the Boolean equations of
+combinational logic. Combinational logic can be designed with truth tables, Boolean equations, and
+schematics; Verilog has a construct corresponding to each of these “classical” approaches to design:
+user-defined primitives, continuous assignments, and primitives, as shown in Fig below. There is one
+other modeling style, called switch-level modeling. It is sometimes used in the simulation of MOS
+transistor circuit models, but not in logic synthesis. We will not consider switch-level modeling.
+
+Jous assignment
+
+Truth table Schematic
+
+Relationship of Verilog constructs to truth tables, Boolean equations, and schematics
+
+Gate-Level Modeling
+
+In this type of representation, a circuit is specified by its logic gates and their interconnections. Gate-
+level modeling provides a textual description of a schematic diagram. The Verilog HDL includes 12
+basic gates as predefined primitives. Four of these primitive gates are of the three-state type. The other
+eight are the basic gates listed. They are all declared with the lowercase keywords and, nand, or, nor,
+xor, xnor, not, and buf. Primitives such as and are n-input primitives. They can have any number of
+scalar inputs (e.g., a three-input and primitive). The buf and not primitives are n -output primitives.
+A single input can drive multiple output lines distinguished by their identifiers. The Verilog language
+includes a functional description of each type of gate, too. The logic of each gate is based on a four-
+valued system. When the gates are simulated, the simulator assigns one value to the output of each gate
+at any instant. In addition to the two logic values of 0 and 1, there are two other values: unknown and
+high impedance. An unknown value is denoted by x and a high impedance by z. An unknown value is
+assigned during simulation when the logic value of a signal is ambiguous—for instance, if it cannot be
+determined whether its value is 0 or | (e.g., a flip-flop without a reset condition). A high-impedance
+condition occurs at the output of three-state gates that are not enabled or if a wire is inadvertently left

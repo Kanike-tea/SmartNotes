@@ -1,0 +1,51 @@
+) 56
+
+Proof: Suppose a connected graph G is a tree. Then G has no cycles and there is Exactly one
+path between any two vertices, u, v. If we add an edge between u and v, then an additiona} te
+is created between u and v and the two paths constitute a cycle. Since G had no cycles cates
+this is the only cycle which G now possesses. }
+Conversely, suppose G is connected and adding an edge between any two vertices y and y
+in G creates exactly one cycle in G. This implies that, before adding this edge, exactly one path
+was there between u and v. This implies that G is a tree.
+
+The proof of the theorem is complete. 7
+
+Minimally connected graphs
+connected graph is said to be minimally connected if the removal of any one edge from
+
+it disconnects the graph. \ ‘
+
+For example, the graphs shown in Figure 3.1 are minimally connected. As already noted,
+all of these graphs are trees as well.
+
+Theorem 6 . A connected graph is a tree if and only if it is minimally connected.
+
+Proof: Suppose G is a connected graph which is not a tree. Then G contains a-cycle C. The
+removal of any one edge e from this cycle will not make the graph disconnected. Therefore,
+G is not minimally connected. Thus, if a connected graph is not a tree then itis not minimally
+connected. This is equivalent to saying that if a connected graph is minimally connected then
+it is a tree (contrapositive). :
+
+Conversely, suppose G isa connected graph which is not minimally connected. Then there
+exists an edge e in G such that G — e'is connected. Therefore, e must be in some cycle in G.
+This implies that G is not a tree. Thus, if a connected graph is not minimally connected then it
+is not a tree. This is equivalent to saying that if a connected graph is a tree, then it is minimally
+connected (contrapositive).
+
+This completes the proof of the theorem.
+
+| Example 1] (a) Show that the complete graph K,, is not a tree when n > 2.
+(b) Show that the complete bipartite graph K,.s is not a tree when r > 2.
+
+> (a) i Vir Vang. are any three vertices of K,,wheren > 2 then the:closed walk yor"!
+- ‘sacycle in Ky. Since K, has.a cycle, it cannot be a tree. \
+
+w (b) Let vy and v2 be any two vertices in the a extioes
+inte other Bipastifc ap eh first bipartite and v,, v, be any two ics
+
+; ra With $2 > 1, Then, the closed walk v1¥,¥2¥"!
+cycle in K,,s. Since K » the closed walk viV,V2"20" yg
+
+r,s has a cycle, it cannot be a tree
+
+en.

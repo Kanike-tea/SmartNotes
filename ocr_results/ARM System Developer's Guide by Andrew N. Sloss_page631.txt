@@ -1,0 +1,31 @@
+618 Appendix A ARM and Thumb Assembler Instructions
+
+6. Rd = Rn + extend(<shifted Rm>[15:00])
+7. Ld = extend(Lm[07:00])
+
+8. Ld = extend(Lm[15:00])
+Notes
+
+If you specify the S prefix, then extend(x ) sign extends x.
+If you specify the U prefix, then extend(x ) zero extends x.
+Rd and Rm must not be pe.
+
+<rot> is an immediate in the range 0 to 3.
+
+TEQ Test for equality of two 32-bit values
+1. TEQ<cond> Rn, #<rotated_immed> ARMv1
+2. TEQ<cond> Rn, Rm {, <shift>} ARMV1
+Action
+1. Set the cpsr on the result of (Rn * <rotated_immed>)
+2. Set the cpsr on the result of (Rn “ <shifted_Rm>)
+Notes
+The cpsr is updated: N = <Negative>, Z = <Zero>, C = <shifter_C> (see Table A.3).
+If Rn or Rm is pc, then the value used is the address of the instruction plus eight
+bytes.
+Use this instruction instead of CMP when you want to check for equality and preserve
+the carry flag.
+Example
+TEQ r0, #1 3 test to see if r0==1
+TST Test bits of a 32-bit value
+
+1. TST<cond> Rn, #<rotated_immed> ARMv1

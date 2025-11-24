@@ -1,0 +1,59 @@
+790 Chapter 21
+
+(a)
+
+Time
+
+Figure 21.5
+
+Concurrency Control Techniques
+
+T, Ty (b) x
+
+read_lock(Y);
+
+read_lock(X);
+
+read_item(X); Ay
+
+write_lock(Y);
+
+write_lock(X);
+
+Illustrating the deadlock problem. (a) A partial schedule of T;’ and To’ that is
+in a state of deadlock, (b) A wait-for graph for the partial schedule in (a).
+
+Deadlock Prevention Protocols. One way to prevent deadlock is to use a deadlock
+prevention protocol.° One deadlock prevention protocol, which is used in conserva-
+tive two-phase locking, requires that every transaction lock all the items it needs in
+advance (which is generally not a practical assumption) —if any of the items cannot be
+obtained, none of the items are locked. Rather, the transaction waits and then tries
+again to lock all the items it needs. Obviously, this solution further limits concurrency.
+A second protocol, which also limits concurrency, involves ordering all the items in the
+database and making sure that a transaction that needs several items will lock them
+according to that order. This requires that the programmer (or the system) is aware of
+the chosen order of the items, which is also not practical in the database context.
+
+A number of other deadlock prevention schemes have been proposed that make a
+decision about what to do with a transaction involved in a possible deadlock situation:
+Should it be blocked and made to wait or should it be aborted, or should the transac-
+tion preempt and abort another transaction? Some of these techniques use the concept
+of transaction timestamp TS(7"), which is a unique identifier assigned to each trans-
+action. The timestamps are typically based on the order in which transactions are
+started; hence, if transaction T; starts before transaction T,, then TS(T,) < TS(T)).
+Notice that the older transaction (which starts first) has the smaller timestamp value.
+Two schemes that prevent deadlock are called wait-die and wound-wait. Suppose that
+transaction T; tries to lock an item X but is not able to because X is locked by some
+other transaction T; with a conflicting lock. The rules followed by these schemes are:
+
+= Wait-die. If TS(T;) < TS(Tj), then (T; older than T;) T; is allowed to wait;
+otherwise (T; younger than Tj) abort T; (T; dies) and restart it later with the
+same timestamp.
+
+= Wound-wait. If TS(T;) < TS(Tj), then (Tj older than Tj) abort Tj (T; wounds
+T;) and restart it later with the same timestamp; otherwise (T; younger than
+Tj) T; is allowed to wait.
+
+®These protocols are not generally used in practice, either because of unrealistic assumptions or
+because of their possible overhead. Deadlock detection and timeouts (covered in the following sections)
+are more practical.

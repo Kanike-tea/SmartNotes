@@ -1,0 +1,52 @@
+60 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.14
+
+The branch with link, or BL, instruction is similar to the B instruction but overwrites the
+link register Ir with a return address. It performs a subroutine call. This example shows
+a simple fragment of code that branches to a subroutine using the BL instruction. To return
+from a subroutine, you copy the link register to the pc.
+
+BL subroutine 3 branch to subroutine
+
+cmp orl, #5 3 compare rl with 5
+
+MOVEQ ri, #0 3 if (rl==5) then rl = 0
+subroutine
+
+<subroutine code>
+
+MOV pc, Ir 3 return by moving pc = Ir
+
+The branch exchange (BX) and branch exchange with link (BLX) are the third type of
+branch instruction. The BX instruction uses an absolute address stored in register Rm. It
+is primarily used to branch to and from Thumb code, as shown in Chapter 4. The T bit
+in the cpsr is updated by the least significant bit of the branch register. Similarly the BLX
+instruction updates the T bit of the cpsr with the least significant bit and additionally sets
+the link register with the return address.
+
+3.3 LOAD-STORE INSTRUCTIONS
+
+Load-store instructions transfer data between memory and processor registers. There are
+three types of load-store instructions: single-register transfer, multiple-register transfer,
+and swap.
+
+3.3.1 SINGLE-REGISTER TRANSFER
+
+These instructions are used for moving a single data item in and out of a register. The
+datatypes supported are signed and unsigned words (32-bit), halfwords (16-bit), and bytes.
+Here are the various load-store single-register transfer instructions.
+
+Syntax: <LDR|STR>{<cond>}{B} Rd,addressing!
+LDR{<cond>}SB|H|SH Rd, addressing?
+STR{<cond>}H Rd, addressing?
+
+LOR load word into a register Rd <- mem32[address]
+
+STR | save byte or word from a register |_Rd -> mem32[address]
+
+LORB | load byte into a register Rd <- mem8[address]
+
+STRB | save byte from a register Rd -> mem8 [address]

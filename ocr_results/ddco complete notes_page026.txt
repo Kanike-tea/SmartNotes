@@ -1,0 +1,46 @@
+27
+
+Digital Design and Computer Organization(BCS302)
+
+HDL is used to represent and document digital systems in a form that can be
+read by both humans and computers and is suitable as an exchange language
+between designers.
+
+Companies that design integrated circuits use proprietary and public HDLs. In
+the public domain, there are two standard HDLs that are supported by the IEEE:
+VHDL and Verilog.
+
+Verilog is an easier language than VHDL to describe, learn, and use, we have
+chosen it for this book.
+
+A Verilog model is composed of text using keywords, of which there are about
+100.
+
+Keywords are predefined lowercase identifiers that define the language
+constructs. Examples of keywords are module, endmodule, input, output,
+wire, and, or, and not.
+
+Any text between two forward slashes ( // ) and the end of the line is interpreted
+as a comment and will have no effect on a simulation using the model
+
+Multiline comments begin with / * and terminate with * /.
+
+Verilog is case sensitive, which means that uppercase and lowercase letters are
+distinguishable (e.g., not is not the same as NOT).
+
+A module is the fundamental descriptive unit in the Verilog language. It is
+declared by the keyword module and must always be terminated by the keyword
+endmodule.
+
+There 3 types of modelling:
+
+Dataflow modeling describes a system in terms of how data flows through the
+system.
+
+Behavioral modeling describes a system’s behavior or function in an algorithmic
+fashion.
+
+Structural modeling describes a system in terms of its structure and
+interconnections between components.
+
+Page

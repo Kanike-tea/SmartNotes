@@ -1,0 +1,44 @@
+2,5. Graph Colouring 133
+
+p The cycle being considered is shown in Figure 2.40, Obviously, this cycle cannot be properly
+coloured with a single colour. Assign two’ colours alternatively to the vertices, starting with v,.
+Then, the odd vertices v, v3,.vs etc., will have one colour a. and the even vertices vz, 4; ve etc.,
+will have a different colour £.
+
+Suppose n is even. Then the vertex v, is an even vertex and therefore will have the colour
+B, and the cycle gets properly coloured (because the adjacent vertices v, and v; have different
+colours). Therefore, the cycle is 2-chromatic, t
+
+Suppose n is odd. Then the vertex v, is an odd vertex and therefore will have the colour a;
+and the cycle is not properly coloured (because, then, the adjacent vertices v, and v; will have
+the same colour a). To make the cycle properly coloured, it is enough if v, is assigned a third
+colour y. Thus, in this case, the cycle is 3-chromatic. .
+
+Find the chromatic number of the graph shown below.
+
+Vy v2
+
+peal
+fos
+
+V4 V3
+Figure 2.41
+
+> We check that the given graph cannot be properly coloured with one or two colours. But it
+can be properly coloured with three colours. For example, we can assign colour @ to vertices
+v, and v3, colour 8 to vertices v2 and v4, and colour y to the vertex vs. Hence the chromatic
+
+number of the given graph is three. ' i .
+
+| Example 5] Prove that a graph G is 2-chromatic if and only if it is a non-null bipartite graph.
+> Suppose a graph G is 2-chromatic, Then it is non-null, and some vertices of .G have one
+colour, say @, and the rest of the vertices have another colour, say B. Let V.be the set,of
+vertices having colour a and V2 be the set of vertices having colour 8. Then V; U V2 = V; the
+Vertex set of G, and V; 1.V2,= ®. Also, no,two vertices of V; can be adjacent and no two
+vertices of V can be adjacent. As such, every edge in G has one end in V, and the other end in
+Vo. Hence G is a bipartite graph.
+
+: Conversely, suppose G is a non-null bipartite graph. Then the vertex set of G has two
+bipartites Vi and V2 such’ that every edge in G has one end in’ V; and another end in V2.
+Consequently, G cannot be properly coloured with one colour; because then vertices in Vi
+and V2 will have the same colour and every edge has both of its ends of the same colour,

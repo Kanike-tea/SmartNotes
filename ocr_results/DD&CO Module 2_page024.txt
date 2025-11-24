@@ -1,0 +1,54 @@
+always statement.) In this case, these variables are the input variables A, B, and select. The statements
+execute if A, B, or select changes value. Note that the keyword or, instead of the bitwise logical OR
+operator “|”, is used between variables. The conditional statement if-else provides a decision based upon
+the value of the select input.
+
+Behavioral description of two-to-one-line multiplexer
+
+module mux_2x1_beh (m_out, A, B, select);
+
+output m_out;
+input A, B, select;
+reg m_out;
+always @(A or B or select)
+if (select == 1) m_out = A;
+else m_out 5 B;
+endmodule
+
+Behavioral description of four-to-one-line multiplexer
+
+module mux_4x1_beh
+
+( output reg m_out,
+input in_0, in_1, in_2, in_3,
+input [1: 0] select
+
+always @ (in_0, in_1, in_2, in_3, select) // Verilog 2001, 2005 syntax
+case (select)
+2'b00:
+2'b01:
+2'b10:
+2’b11:
+endcase
+endmodule
+
+Synchronous Sequential Logic
+
+Hand-held devices, cell phones, navigation receivers, personal computers, digital cameras, personal
+media players, and virtually all electronic consumer products have the ability to send, receive, store,
+retrieve, and process information represented in a binary format. The technology enabling and
+supporting these devices is critically dependent on electronic components that can store information,
+i.e., have memory. m. The digital circuits considered thus far have been combinational—their output
+depends only and immediately on their inputs—they have no memory, i.e., dependence on past values
+of their inputs. Sequential circuits, however, act as storage elements and have memory. They can store,
+retain, and then retrieve information when needed later.
+
+Sequential Circuits
+
+A block diagram of a sequential circuit is shown in Fig below. It consists of a combinational circuit to
+which storage elements are connected to form a feedback path. The storage elements are devices capable
+of storing binary information. The binary information stored in these elements at any given time defines
+the state of the sequential circuit at that time. The sequential circuit receives binary information from
+external inputs that, together with the present state of the storage elements, determine the binary value
+of the outputs. These external inputs also determine the condition for changing the state in the storage
+elements. The block diagram demonstrates that the outputs in a sequential circuit are a function not only

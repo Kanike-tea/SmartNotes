@@ -1,0 +1,62 @@
+230
+
+Chapter 7 Optimized Primitives
+
+232
+
+232 E
+qo = — —e, where e = 255 + g — 2h
+
+7 Ti (7.16)
+
+Since (232d-!)(fyig!) < 25+!2-6 = 25-5, it follows that 0 < e9 <3. 128 sets q to the
+approximated quotient g). For some truncation error 0 < gi <1:
+
+n
+
+ngo n
+qu = (nq) > x= hag = ~ 53 81 (7.17)
+
+d
+
+‘Therefore qi is an underestimate to n/d with error less than four. The final steps [28 to
+135 use a two-step binary search to fix the exact answer. We have finished!
+
+7.3.3. UNSIGNED FRACTIONAL NEWTON-RAPHSON DIVISION
+
+This section looks at Newton-Raphson techniques you can use to divide fractional
+values. Fractional values are represented using fixed-point arithmetic and are useful for
+DSP applications.
+
+Fora fractional division, we first scale the denominator to the range 0.5 < d < 1.0. Then
+we use a table lookup to provide an estimate xo to d~!.. Finally we perform Newton-Raphson
+iterations with N = 0. From Section 7.3.2, the iteration is
+
+Xig1 = 2xj — dx? (7.18)
+
+As i increases, x; becomes more accurate. For fastest implementation, we use low-precision
+multiplications when iis small, increasing the precision with each iteration.
+
+The result is a short and fast routine. Section 7.3.3.3 gives a routine for 15-bit fractional
+division, and Section 7.3.3.4 a routine for 31-bit fractional division. Again, the hard part
+is to prove that we get the correct result for all possible inputs. For a 31-bit division we
+cannot test every combination of numerator and denominator. We must have a proof that
+the code works. Sections 7.3.3.1 and 7.3.3.2 cover the mathematical theory we require for
+the proofs in Sections 7.3.3.3 and 7.3.3.4. If you are not interested in this theory, then skip
+to Section 7.3.3.3.
+
+Throughout the analysis, we stick to the following notation:
+
+= disa fractional value scaled so that 0.5 < d< 1.
+
+= iis the stage number of the iteration.
+
+mk; is the number of bits of precision used for x;. We ensure that kj; > kj > 3.
+= x; isa k;-bit estimate to d~! in the range 0 < x; < 2 —22-*,
+
+= x; isa multiple of 2!~*,
+
+= g= a7 x; is the error in the approximation x;. We ensure |e;| < 0.5.
+
+With each iteration, we increase kj and reduce the error ¢j. First let’s see how to calculate
+a good initial estimate xo.

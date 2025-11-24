@@ -1,0 +1,44 @@
+Data Structures and Applications (BCS304) Module V
+
+shows the table after inserting C5
+
+000 AO
+
+001 CATTBT)
+010 Lc2 1)
+oll C3 Ty
+
+100
+
+101 [ok
+110
+
+111
+
+9
+
+Figure Below shows a directory less hash table ht with r=2 and q=0. The number of active bucket is
+4. The index of the active bucket identifies its chain.. Each active bucket has 2 slots.
+
+oo |B4
+AO
+
+0 [Al
+BS
+C2
+
+10
+
+| [c3|
+
+ul
+
+r=2, q=0
+
+When we insert CS into the table, chain 01 is examined and we verify that C5 is not present. Since the
+active bucket for the searched chain is full we get an overflow. An overflow is handled by activating
+bucker 2'+q, reallocating the entries in the chain q then the value of q is incremented by | incase q
+becomes 2". We increment r by | and reset q to 0. The reallocation is done usingh(k.1+1). Finally the
+new pair is inserted into the chain.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 8

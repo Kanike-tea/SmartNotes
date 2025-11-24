@@ -1,0 +1,76 @@
+Data Structures and Applications(BCS304) Module 2
+
+Disadvantage of linear queue: The following example illustrates the disadvantage of linear queue
+
+f
+-1
+-1
+-1
+-1
+-l
+0
+1
+
+fe)
+Ss
+
+Qn [Q2I [QBI [Ql [Comment
+Queue is empty
+
+Insert 2
+
+Insert 3
+
+Insert 4
+
+Insert 5
+
+Insert 6
+
+Delete- item deleted=2
+
+6 Delete- item deleted=3
+Insert 3(disadvantage)
+Queue full. Element cannot
+be inserted since rear= size-1
+
+a
+
+9] La] La] Lo] Wo
+
+a
+
+#] A] a] 2] RO] -] oO
+HHH AIR
+tn] Ma] ny} on
+
+Even if the queue is empty since the value of rear= size-1 elements cannot be inserted into the queue.
+This is the disadvantage of linear queue.
+
+Circular Queue: In a circular queue the queue is arranged in a circular fashion. It is a
+moreefficient representation of queue.
+Example:
+Empty Queue
+2) -Ts (2) -—T-
+[2] 13] (3) (3)
+. sae s
+(a) tu) \ > }
+fet (al \ \/ fl \ (4)
+3 x3 P
+(o] [5] (0} (5] (0) (5]
+Front=0 rear=-1 Front=0 rear=0 Front=0 rear=1
+Insert 7 Insert 9 delete
+TN 13)
+(
+tm \? © } (a
+(0) (5) (0) (5] (0) [5]
+Front=0 rear=2 Front=0 rear=3 Front=1 rear=3|
+
+Fig: Implementation of circular queue for an array of integers
+
+Modification in code to implement circular queue
+e Initial value of front and rear=0
+e To advance the pointer from size-1 to 0 the code rear++ is modified to rear=(rear +1)%size
+and the code front++ is modified to front=(front+1)%size
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 4

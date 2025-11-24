@@ -1,0 +1,53 @@
+1130
+
+Chapter 30 Database Security
+
+The second level of privileges applies to the relation level, which includes base rela-
+tions and virtual (view) relations. These privileges are defined for SQL2. In the fol-
+lowing discussion, the term relation may refer either to a base relation or to a view,
+unless we explicitly specify one or the other. Privileges at the relation level specify
+for each user the individual relations on which each type of command can be
+applied. Some privileges also refer to individual columns (attributes) of relations.
+SQL2 commands provide privileges at the relation and attribute level only. Although
+this distinction is general, it makes it difficult to create accounts with limited privi-
+leges. The granting and revoking of privileges generally follow an authorization
+model for discretionary privileges known as the access matrix model, where the
+rows of a matrix M represent subjects (users, accounts, programs) and the columns
+represent objects (relations, records, columns, views, operations). Each position
+M(i, j) in the matrix represents the types of privileges (read, write, update) that sub-
+ject i holds on object j.
+
+To control the granting and revoking of relation privileges, each relation R in a
+database is assigned an owner account, which is typically the account that was used
+when the relation was created in the first place. The owner of a relation is given all
+privileges on that relation. In SQL2, the DBA can assign an owner to a whole
+schema by creating the schema and associating the appropriate authorization iden-
+tifier with that schema, using the CREATE SCHEMA command (see Section 7.1.1).
+The owner account holder can pass privileges on any of the owned relations to
+other users by granting privileges to their accounts. In SQL, the following types of
+privileges can be granted on each individual relation R:
+
+= SELECT (retrieval or read) privilege on R. Gives the account retrieval privi-
+lege. In SQL, this gives the account the privilege to use the SELECT state-
+ment to retrieve tuples from R.
+
+= Modification privileges on R. This gives the account the capability to mod-
+ify the tuples of R. In SQL, this includes three privileges: UPDATE, DELETE,
+and INSERT. These correspond to the three SQL commands (see Sec-
+tion 7.4) for modifying a table R. Additionally, both the INSERT and UPDATE
+privileges can specify that only certain attributes of R can be modified by the
+account.
+
+= References privilege on R. This gives the account the capability to reference
+(or refer to) a relation R when specifying integrity constraints. This privilege
+can also be restricted to specific attributes of R.
+
+Notice that to create a view, the account must have the SELECT privilege on all rela-
+tions involved in the view definition in order to specify the query that corresponds
+to the view.
+
+30.2.2 Specifying Privileges through the Use of Views
+
+The mechanism of views is an important discretionary authorization mechanism in
+its own right. For example, if the owner A of a relation R wants another account B
+to be able to retrieve only some fields of R, then A can create a view V of R that

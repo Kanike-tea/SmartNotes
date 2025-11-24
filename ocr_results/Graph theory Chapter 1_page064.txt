@@ -1,0 +1,40 @@
+1.6. Walks and their classification 67
+
+nnn
+
+v2 &
+vy U2 e vs
+ey
+Uy e3 Vy
+es
+&4
+bad Us €6
+
+(a): Not a trail (b): Trail
+
+Figure 1.99
+U2 U3
+v2
+€2 v3
+e€
+Veh e1 €3 y 7
+e5
+U1 4 Us v1 e4 Us &6 U4
+
+(a): Not a circuit (b): circuit
+
+Figure 1.100
+Path and Cycle
+
+A trail in which no vertex appears more than once is called a path.
+
+A circuit in which the terminal vertex does not appear as an internal vertex and no internal
+Vertex is repreated is called a cyele.
+
+For example, in Figure 1.98, the trail vje1v2e3vsesv3e7v4 (shown separately in Figure
+1.101(@)) is a path whereas the trail v1e4vse3v2e2V3esV5e6v4 (shown separately in Figure 1.101(b))
+is not a path (because in this trail, vs appears twice).
+
+Also, in the same Figure (i.c., in Figure 1.98), the circuit v2e2v3esvse3v2 (shown separately
+in Figure 1.102(a)) is a cycle whereas the circuit ve v1 eqvsesv3e7V4e6V5e3¥2 (Shown separately
+in Figure 1.102(b)) is not a cycle (because, in this circuit, vs appears twice).

@@ -1,0 +1,35 @@
+Two-Level Implementation
+
+The implementation of Boolean functions with NAND gates requires that the functions be in sum-of-
+products form. To see the relationship between a sum-of-products expression and its equivalent NAND
+implementation, consider the logic diagrams drawn in Fig below. All three diagrams are equivalent and
+implement the function
+F=AB+CD
+
+The function is implemented in Fig.(a) with AND and OR gates. In Fig(b), the AND gates are replaced
+by NAND gates and the OR gate is replaced by a NAND gate with an OR-invert graphic symbol.
+Remember that a bubble denotes complementation and two bubbles along the same line represent double
+complementation, so both can be removed. Removing the bubbles on the gates of (b) produces the circuit
+of (a). Therefore, the two diagrams implement the same function and are equivalent. In Fig.(c), the output
+
+NAND gate is redrawn with the AND-invert graphic symbol.
+—
+B—
+c—4
+>t
+
+De aD
+
+F = ((AB)'(CD)')' = AB + CD
+
+Three ways to implement F = AB + CD
+
+e Implement the following Boolean function with NAND gates: F (x, y, z) = (1, 2, 3, 4, 5, 7)
+
+The first step is to simplify the function into sum-of-products form. This is done by means of the map
+of Fig.(a), from which the simplified function is obtained: F = xy' + x'y + z The two-level NAND
+implementation is shown in Fig.(b) in mixed notation. Note that input z must have a one-input NAND
+gate (an inverter) to compensate for the bubble in the second-level gate. An alternative way of drawing
+the logic diagram is given in Fig.(c). Here, all the NAND gates are drawn with the same graphic symbol.
+
+The inverter with input z has been removed, but the input variable is complemented and denoted by z'.

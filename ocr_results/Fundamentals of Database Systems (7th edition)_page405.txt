@@ -1,0 +1,56 @@
+12.1 Overview of Object Database Concepts
+
+A type in its simplest form has a type name and a list of visible (public) functions.
+When specifying a type in this section, we use the following format, which does not
+specify arguments of functions, to simplify the discussion:
+
+TYPE_NAME: function, function, ... , function
+
+For example, a type that describes characteristics of a PERSON may be defined as
+follows:
+
+PERSON: Name, Address, Birth_date, Age, Ssn
+
+In the PERSON type, the Name, Address, Ssn, and Birth_date functions can be imple-
+mented as stored attributes, whereas the Age function can be implemented as an
+operation that calculates the Age from the value of the Birth_date attribute and the
+current date.
+
+The concept of subtype is useful when the designer or user must create a new type that
+is similar but not identical to an already defined type. The subtype then inherits all the
+functions of the predefined type, which is referred to as the supertype. For example,
+suppose that we want to define two new types EMPLOYEE and STUDENT as follows:
+
+EMPLOYEE: Name, Address, Birth_date, Age, Ssn, Salary, Hire_date, Seniority
+STUDENT: Name, Address, Birth_date, Age, Ssn, Major, Gpa
+
+Since both STUDENT and EMPLOYEE include all the functions defined for PERSON
+plus some additional functions of their own, we can declare them to be subtypes of
+PERSON. Each will inherit the previously defined functions of PERSON—namely,
+Name, Address, Birth_date, Age, and Ssn. For STUDENT, it is only necessary to define
+the new (local) functions Major and Gpa, which are not inherited. Presumably, Major
+can be defined as a stored attribute, whereas Gpa may be implemented as an opera-
+tion that calculates the student’s grade point average by accessing the Grade values
+that are internally stored (hidden) within each STUDENT object as hidden attributes.
+For EMPLOYEE, the Salary and Hire_date functions may be stored attributes, whereas
+Seniority may be an operation that calculates Seniority from the value of Hire_date.
+
+Therefore, we can declare EMPLOYEE and STUDENT as follows:
+
+EMPLOYEE subtype-of PERSON: Salary, Hire_date, Seniority
+STUDENT subtype-of PERSON: Major, Gpa
+
+In general, a subtype includes all of the functions that are defined for its supertype
+plus some additional functions that are specific only to the subtype. Hence, it is pos-
+sible to generate a type hierarchy to show the supertype/subtype relationships
+among all the types declared in the system.
+
+As another example, consider a type that describes objects in plane geometry, which
+may be defined as follows:
+
+GEOMETRY_OBJECT: Shape, Area, Reference_point
+
+For the GEOMETRY_OBJECT type, Shape is implemented as an attribute (its domain
+can be an enumerated type with values ‘triangle’, ‘rectangle’, ‘circle’, and so on), and
+
+375

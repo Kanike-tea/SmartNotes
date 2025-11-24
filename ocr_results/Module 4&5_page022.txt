@@ -1,0 +1,51 @@
+Microcontrollers - BCS402
+
+[Sand]
+
+makefile readme.txt [build] [payload]
+
+slos.bin
+
+fT
+[sre] [obj] [image] [log]
+
+sand.s
+
+Figure Standstone directory layout.
+
+The object file produced by the assembler is placed under the build/obj directory. The object file
+is then linked, and the final Sandstone image is placed under the sand/build/image directory. This
+
+image includes both the Sandstone code and the payload.
+
+The payload image, the image that is loaded and booted by Sandstone, is found under the
+
+sand/payload directory.
+
+For information about the Sandstone build procedure, take a look at the readme.txt file under the
+sand directory. This file contains a description of how to build the example binary image for the
+ARM Evaluator-7T.
+
+Sandstone Code Structure
+
+Sandstone consists of a single assembly file. The file structure is broken down into a number of
+steps, where each step corresponds to a stage in the execution flow of Sandstone as shown in
+
+following table.
+
+Table Sandstone execution flow.
+
+Step Description
+
+Take the Reset exception
+
+Start initializing the hardware
+
+Remap memory
+
+Initialize communication hardware
+Bootloader—copy payload and relinquish control
+
+Uk we
+
+Dept. of ECE, GSSSIETW, Mysuru Page 23

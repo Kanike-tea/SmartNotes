@@ -1,0 +1,50 @@
+13.4 Summary 487
+
+13.3.7. MPUSLOS
+
+Many of the concepts and the code examples have been incorporated into a functional
+control system we call mpuSLOS.
+
+mpuSLOS is the memory protection unit variant of SLOS that was described in
+Chapter 11. It can be found on the publisher’s Web site and implements the same functions
+as the base SLOS with a number of important differences.
+
+= ~=mpuSLOS takes full advantage of the MPU.
+
+= Applications are compiled and built separately from the kernel and then combined as a
+single binary file. Each application is linked to execute out of a different memory area.
+
+= Each of the three applications are loaded into separate fixed regions 32 KB in size by a
+routine called the Static Application Loader. This address is the execution address of
+the application. The stack pointer is set at the top of the 32 KB since each region is 32
+KB in size.
+
+= Applications can only access hardware via a device driver call. [fan application attempts
+to access hardware directly, a data abort is raised. This differs from the base SLOS
+variant since a data abort will not be raised when a device is accessed directly from an
+application.
+
+= Jumping to an application involves setting up the spsrand then changing the pe to point
+to the entry point to task 1 using a MOVS instruction.
+
+= Each time the scheduler is called, the active region 2 is changed to reflect the new
+executing application.
+
+13.4 SUMMARY
+
+There are two methods to handle memory protection. The first method is known as unpro-
+tected and uses voluntarily enforced software control routines to manage rules for task
+interaction. The second method is known as protected and uses hardware and software
+to enforce rules for task interaction. In a protected system the hardware protects areas of
+memory by generating an abort when access permission is violated and software responds
+to handle the abort routines and manage control to memory-based resources.
+
+An ARM MPU uses regions as the primary construct for system protection. A region is
+a set of attributes associated with an area of memory. Regions can overlap, allowing the use
+of a background region to shield a dormant task’s memory areas from unwanted access by
+the current running task.
+
+Several steps are required to initialize the MPU, included are routines to set various
+region attributes. The first step sets the size and location of the instruction and data regions
+using CP15:c6. The second step sets the access permission for each region using CP15:c5.
+The third step sets the cache and write buffer attributes for each region using CP15:c2 for

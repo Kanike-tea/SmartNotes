@@ -1,0 +1,52 @@
+20.5 Characterizing Schedules Based on Serializability
+
+the nonserial schedules C and D. Schedule C (which is the same as Figure 20.3(a))
+gives the results X = 92 and Y = 93, in which the X value is erroneous, whereas
+schedule D gives the correct results.
+
+Schedule C gives an erroneous result because of the lost update problem discussed
+in Section 20.1.3; transaction T reads the value of X before it is changed by transac-
+tion Tj, so only the effect of T, on X is reflected in the database. The effect of T; on
+X is lost, overwritten by T, leading to the incorrect result for item X. However,
+some nonserial schedules give the correct expected result, such as schedule D. We
+would like to determine which of the nonserial schedules always give a correct
+result and which may give erroneous results. The concept used to characterize
+schedules in this manner is that of serializability of a schedule.
+
+The definition of serializable schedule is as follows: A schedule S of n transactions
+is serializable if it is equivalent to some serial schedule of the same n transactions.
+We will define the concept of equivalence of schedules shortly. Notice that there
+are n! possible serial schedules of n transactions and many more possible non-
+serial schedules. We can form two disjoint groups of the nonserial schedules—
+those that are equivalent to one (or more) of the serial schedules and hence are
+serializable, and those that are not equivalent to any serial schedule and hence are
+not serializable.
+
+Saying that a nonserial schedule S is serializable is equivalent to saying that it is cor-
+rect, because it is equivalent to a serial schedule, which is considered correct. The
+remaining question is: When are two schedules considered equivalent?
+
+There are several ways to define schedule equivalence. The simplest but least sat-
+isfactory definition involves comparing the effects of the schedules on the data-
+base. Two schedules are called result equivalent if they produce the same final
+state of the database. However, two different schedules may accidentally produce
+the same final state. For example, in Figure 20.6, schedules S, and S will produce
+the same final database state if they execute on a database with an initial value of
+X = 100; however, for other initial values of X, the schedules are not result equiva-
+lent. Additionally, these schedules execute different transactions, so they defi-
+nitely should not be considered equivalent. Hence, result equivalence alone
+cannot be used to define equivalence of schedules. The safest and most general
+approach to defining schedule equivalence is to focus only on the read_item and
+write_item operations of the transactions, and not make any assumptions about
+the other internal operations included in the transactions. For two schedules to
+be equivalent, the operations applied to each data item affected by the schedules
+should be applied to that item in both schedules in the same order. Two defini-
+tions of equivalence of schedules are generally used: conflict equivalence and view
+equivalence. We discuss conflict equivalence next, which is the more commonly
+used definition.
+
+Conflict Equivalence of Two Schedules. Two schedules are said to be conflict
+equivalent if the relative order of any two conflicting operations is the same in both
+schedules. Recall from Section 20.4.1 that two operations in a schedule are said to
+
+765

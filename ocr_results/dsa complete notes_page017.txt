@@ -1,0 +1,63 @@
+Data Structures and Applications/BCS304 Module-1
+
+# define MAX_TERMS 100 /*size of terms array*/
+typedef struct {
+
+float coef;
+
+int expon;
+
+} polynomial;
+
+polynomial terms[MAX_TERMS];
+
+int avail = 0;
+
+Consider the two polynomials
+
+A(x) = 2x!000 4 1 and
+
+B(x) = x4 + 10x? + 3x74 1.
+Figure below shows how these polynomials are stored in the array terms. The index of the first term
+of A and B is given by startA and startB, respectively, finishA and finishB give the index of the last
+term of A and B respectively. The index of the next free location in the array is given by avail.
+
+For our example, startA = 0, finishA = 1, startB = 2, finishB = 5, and avail =6.
+
+Start A Finish A _ startB FinishB avail
+v v
+Coef 2 1 1 10 3 1
+Exp 1000 0 4 3 2 0
+0 1 2 3 4 5 6 7 8
+
+Figure 1.3 Rpresentation "Or polynomial in array
+
+e There is no limit on the number of polynomials that we can place in terms.
+e The total number of nonzero terms must not be greater than MAX_TERMS.
+
+since A (x) = 2x 1000 + 1 uses only six units of storage: one for startA, one for finishA, two for the
+coefficients, and two for the exponents. However, when all the terms are nonzero, the current
+representation requires about twice as much space as the first one. This representation is useful only
+when the number of non zero terms are more.
+
+Polynomial addition
+eC function that adds two polynomials, A and B to obtain the resultant polynomial D = A + B.
+The polynomial is added term by term.
+e The attach function places the terms of D into the array, terms starting at position avail.,.
+If there is not enough space in terms to accommodate D, an error message is printed to the
+standard error device and we exit the program with an error condition.
+
+void padd(int startA ,int finishA ,int startB, int finishB, int *startD int *finishD)
+{
+/* add A(x) and B(x) to obtain D(x) */
+float coefficient;
+*startD = avail;
+while (startA <= finishA && startB <= finishB)
+{
+
+switch(COMPARE(terms[startA ].expon, terms[startB].expon))
+{
+
+case -1: attach(terms[startB ].coef,terms[startB].expon);
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 18

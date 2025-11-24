@@ -1,0 +1,52 @@
+Data Structures and Applications(BCS304) Module 2
+
+{
+cur=first
+while(cur!=NULL)
+{
+Printf(“%d \t”, cur->info);
+cur=cur->link;
+}
+}
+
+Function to find the length of the the list
+int Length(Node * first)
+{
+NODE *cur;
+int count=0
+
+if (first==NULL)
+
+{
+printf(“list is empty);
+return(0)
+}
+cur=first
+while(cur!=NULL)
+{
+count++ cur=cur-
+>link;
+t
+return(count)
+i
+
+SEARCHING A LINKED LIST
+Search an item from an unsorted list
+Void search(int item,struct NODE* first)
+
+{
+Struct NODE *cur;If
+(first==NULL)
+printf(“list empty”);
+else
+{
+cur=first;
+while(cur!=NULL)
+{
+If(item==cur->info)
+
+{
+
+printf(“search successful”)
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 19

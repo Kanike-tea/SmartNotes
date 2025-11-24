@@ -1,0 +1,39 @@
+BCS304
+
+We can easily replace the recursive search function with a comparable iterative one. The
+
+function searches! accomplishes this by replacing the recursion with a while loop.
+
+tree.pointer search2itree-pointer tree, int key)
+{
+/* return a pointer to the node that contains key. If
+there is no such node, return NULL. °/
+while itree) {
+if (key == tree->data) return tree;
+if (key < tree->data)
+tree + tree->left—child:
+elee
+tree + tree->right—child;
+)
+return NULL;
+)
+
+Iterative search of a binary search tree
+4.1.2 Inserting into A Binary Search Tree:
+
+To insert a new element, key, we must first verify that the key is different from those of existing
+elements. To do this we search the tree. If the search is unsuccessful, then we insert the element
+at the point the search terminated. For instance, to insert an element with key 80 into the tree,
+we first search the tree for 80. This search terminates unsuccessfully, and the last node
+examined has value 40. We insert the new element as the right child of this node. The resulting
+search tree is shown in Figure 5.31(a). Figure 5.31(b) shows the result of inserting the key 35
+into the search tree of Figure 5.31(a). This strategy is implemented by insert-node (Program
+5.17). This uses the function modified -search which is a slightly modified version of function
+search 2 (Program 5.16). This function searches the binary search tree *node for the key num.
+If the tree is empty or if num is present, it returns NULL. Otherwise, it returns a pointer to the
+last node of the tree that was encountered during the search. The new element is to be inserted
+as a child of this node.
+
+(a) Insert 80 (b) Insert 35
+
+Figure 5.31: Inserting into a binary search tree

@@ -1,0 +1,67 @@
+‘Customer-nameé
+
+branch-name
+
+assets
+
+branch
+
+account-number.
+
+customer
+
+(a) E-R diagram
+
+account
+
+customer-name |customer-street |eustomer-city] branch-name |branch-city| assets
+customer branch
+account-number] balance
+ce ft
+CustRInk AcctRInk | econ BenchRink
+Rlink
+(b) Data structure diagram
+The DBTG CODASYL Model:
+
+o All links are treated as many-to-one relationships.
+
+o To model many-to-many relationships, a record type is defined to represent the relationship
+
+and two links are used.
+
+\Gustomer-name
+
+Customer-streei
+
+customer-city >
+
+customer
+
+depositor
+
+ficcount-number,
+
+balance >)
+
+(a) E-R diagram
+
+account
+
+customer-name |customer-street |customer-city account-number | balance
+customer account
+CustRInk ‘AcctRInk
+Rlink
+(b) Data structure diagram
+DBTG Sets:
+o The structure consisting of two record types that are linked together is referred to in the
+DBTG model as a DBTG set
+o Ineach DBTG set, one record type is designated as the owner, and the other is designated as
+the member, of the set.
+o Each DBTG set can have any number of set occurrences (actual instances of linked records).
+o Since many-to-many links are disallowed, each set occurrence has precisely one owner, and
+has zero or more member records.
+o No member record of a set can participate in more than one occurrence of the set at any
+point.
+o A member record can participate simultaneously in several set occurrences of different
+
+DBTG sets.

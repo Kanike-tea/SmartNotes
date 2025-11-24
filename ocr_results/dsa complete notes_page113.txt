@@ -1,0 +1,46 @@
+Data Structures and Applications (BCS304) Module IV
+
+Example:
+
+s$}—AYD V(G)={a,b,d}
+
+| E(G)={(a,d), (a,b), (d,b)}
+
+Self Edges/Self Loops: Edges of the form(v,v) are called self edges or self loops . It is an edge
+which starts and ends at the same vertex.
+
+Example:
+i
+= L )
+f (> (aa
+a} pd ee 7
+'@ eX
+ey WY
+
+Mutigraph: A graph with multiple occurrences of the same edge is called a multigraph
+
+Example:
+A : Ce.
+
+D
+e> @3
+
+Complete Graph: An undirected graph with n vertices and exactly n(n-1)/2 edges is said to be a
+complete graph. Ina graph all pairs of vertices are connected by an edge.
+Example : A complete graph with n=3 vertices
+
+a
+
+Adjacent Vertex
+
+c [)
+If (u,v) is an edge in E(G), then we say that the vertices u and v are adjacent and the edge(u,v) is
+incident on vertices u and v.
+
+Path: A path from vertex u to v in graph g is a sequence of vertices u,il,i2, ik,v such that
+(u,il),(i1,12)......... (ik,v) are edges in E(G). if G’ is directed then the path consists of
+<u,il>,<ili2>......... <ik,v> edges in E(G’).
+
+The length of the path is the number of edges in it.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 8

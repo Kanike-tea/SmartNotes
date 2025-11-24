@@ -1,0 +1,52 @@
+24.4 NOSQL Key-Value Stores
+
+DynamoDB Distributed Characteristics. Because DynamoDB is proprietary, in
+the next subsection we will discuss the mechanisms used for replication, sharding,
+and other distributed system concepts in an open source key-value system called
+Voldemort. Voldemort is based on many of the techniques proposed for DynamoDB.
+
+24.4.2 Voldemort Key-Value Distributed Data Store
+
+Voldemort is an open source system available through Apache 2.0 open source licens-
+ing rules. It is based on Amazon’s DynamoDB. The focus is on high performance and
+horizontal scalability, as well as on providing replication for high availability and
+sharding for improving latency (response time) of read and write requests. All three
+of those features—replication, sharding, and horizontal scalability—are realized
+through a technique to distribute the key-value pairs among the nodes of a distrib-
+uted cluster; this distribution is known as consistent hashing. Voldemort has been
+used by LinkedIn for data storage. Some of the features of Voldemort are as follows:
+
+= Simple basic operations. A collection of (key, value) pairs is kept in a
+Voldemort store. In our discussion, we will assume the store is called s. The
+basic interface for data storage and retrieval is very simple and includes
+three operations: get, put, and delete. The operation s.put(k, v) inserts an
+item as a key-value pair with key k and value v. The operation s.delete(k)
+deletes the item whose key is k from the store, and the operation v = s.get(k)
+retrieves the value v associated with key k. The application can use these
+basic operations to build its own requirements. At the basic storage level,
+both keys and values are arrays of bytes (strings).
+
+= High-level formatted data values. The values v in the (k, v) items can be
+specified in JSON (JavaScript Object Notation), and the system will convert
+between JSON and the internal storage format. Other data object formats can
+also be specified if the application provides the conversion (also known as
+serialization) between the user format and the storage format as a Serializer
+class, The Serializer class must be provided by the user and will include oper-
+ations to convert the user format into a string of bytes for storage as a value,
+and to convert back a string (array of bytes) retrieved via s.get(k) into the user
+format. Voldemort has some built-in serializers for formats other than JSON.
+
+= Consistent hashing for distributing (key, value) pairs. A variation of the
+data distribution algorithm known as consistent hashing is used in Volde-
+mort for data distribution among the nodes in the distributed cluster of
+nodes. A hash function h(k) is applied to the key k of each (k, v) pair, and
+h(k) determines where the item will be stored. The method assumes that
+h(k) is an integer value, usually in the range 0 to Hmax = 2""', where n is
+chosen based on the desired range for the hash values. This method is best
+visualized by considering the range of all possible integer hash values 0 to
+H™max to be evenly distributed on a circle (or ring). The nodes in the distrib-
+uted system are then also located on the same ring; usually each node will
+have several locations on the ring (see Figure 24.2). The positioning of the
+points on the ring that represent the nodes is done in a psuedorandom manner.
+
+897

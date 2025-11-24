@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+5.5 Characterizing Schedules Based on Recoverability
+= schedule (or history): the order of execution of operations from all the various
+transactions
+= Schedules (Histories) of Transactions: A schedule S of n transactions T;, Ta,....... Th
+is a sequential ordering of the operations of the n transactions.
+— The transactions are interleaved
+= Two operations in a schedule are said to conflict if they satisfy all three of the following
+conditions:
+(1) they belong to different transactions;
+(2) they access the same item X; and
+(3) at least one of the operations is a write_item(X)
+= Conflicting operations:
++ 1(X) conflicts with w2(X) } Read write conflict
++ t2(X) conflicts with w:(X)
++ —wi(X) conflicts with wa(X) Write conflict
++ 1(X) do not conflicts with r2(X)
+
+Schedules classified on recoverability:
+
+= Recoverable schedule:
+— One where no transaction needs to be rolled back.
+- Aschedule S is recoverable ifno transaction T in S commits until all transactions
+T that have written an item that T reads have committed.
+— Example:
++ Sci i(X); wa(X); 2X); 1(Y); w2(X); C2; a4;
++ Sa: A(X); wa(X); 12(X); (Y); walX); wil); C1; C25
+
+= Cascadeless schedule:
+— One where every transaction reads only the items that are written by committed
+transactions.
+= Schedules requiring cascaded rollback:
+
+— A schedule in which uncommitted transactions that read an item from a failed
+transaction must be rolled back.
+= Strict Schedules:
+— A schedule in which a transaction can neither read or write an item X until the
+
+last transaction that wrote X has committed.
+
+https://vtucode.in 14

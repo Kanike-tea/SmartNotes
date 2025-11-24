@@ -1,0 +1,54 @@
+25.4 MapReduce: Additional Details
+
+25.4.1 MapReduce Runtime
+
+The purpose of this section is to give a broad overview of the MapReduce runtime
+environment. For a detailed description, the reader is encouraged to consult White
+(2012). MapReduce is a master-slave system that usually runs on the same cluster as
+HDEFS. Typically, medium to large Hadoop clusters consist of a two- or three-level
+architecture built with rack-mounted servers.
+
+JobTracker. The master process is called the JobTracker. It is responsible for man-
+aging the life cycle of Jobs and scheduling Tasks on the cluster. It is responsible for:
+
+= Job submission, initializing a Job, providing Job status and state to both cli-
+ents and TaskTrackers (the slaves), and Job completion.
+
+= Scheduling Map and Reduce tasks on the cluster. It does this using a plug-
+gable Scheduler.
+
+TaskTracker. The slave process is called a TaskTracker. There is one running on
+all Worker nodes of the cluster. The Map-Reduce tasks run on Worker nodes.
+TaskTracker daemons running on these nodes register with the JobTracker on
+startup. They run tasks that the JobTracker assigns to them. Tasks are run in a sepa-
+rate process on the node; the life cycle of the process is managed by the TaskTracker.
+The TaskTracker creates the task process, monitors its execution, sends periodic
+status heartbeats to the JobTracker, and under failure conditions can kill the pro-
+cess at the request of the JobTracker. The TaskTracker provides services to the
+Tasks, the most important of which is the Shuffle, which we describe in a sub-
+section below.
+
+A. Overall flow of a MapReduce Job
+
+A MapReduce job goes through the processes of Job Submission, Job Initializa-
+tion, Task Assignment, Task Execution, and finally Job Completion. The Job
+Tracker and Task Tracker we described above are both involved in these. We
+briefly review them below.
+
+Job submission A client submits a Job to the JobTracker. The Job package con-
+tains the executables (as a jar), any other components (files, jars archives)
+needed to execute the Job, and the InputSplits for the Job.
+
+Job initialization The JobTracker accepts the Job and places it on a Job Queue.
+Based on the input splits, it creates map tasks for each split. A number of reduce
+tasks are created based on the Job configuration.
+
+Task assignment The JobTracker’s scheduler assigns Task to the TaskTracker
+from one of the running Jobs. In Hadoop v1, TaskTrackers have a fixed number of
+slots for map tasks and for reduce tasks. The Scheduler takes the location informa-
+tion of the input files into account when scheduling tasks on cluster nodes.
+
+Task execution Once a task has been scheduled on a slot, the TaskTracker
+manages the execution of the task: making all Task artifacts available to the
+
+927

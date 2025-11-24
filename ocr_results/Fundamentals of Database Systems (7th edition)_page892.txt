@@ -1,0 +1,54 @@
+862
+
+Chapter 23 Distributed Database Concepts
+
+case where the result site (site 3) is different from all the sites that contain files
+involved in the query (sites 1 and 2). However, suppose that the result site is site 2;
+then we have two simple strategies:
+
+1. Transfer the EMPLOYEE relation to site 2, execute the query, and present the
+result to the user at site 2. Here, the same number of bytes—1,000,000—
+must be transferred for both Q and Q’.
+
+2. Transfer the DEPARTMENT relation to site 1, execute the query at site 1, and
+send the result back to site 2. In this case 400,000 + 3,500 = 403,500 bytes
+must be transferred for Q and 4,000 + 3,500 = 7,500 bytes for Q’.
+
+A more complex strategy, which sometimes works better than these simple strate-
+gies, uses an operation called semijoin. We introduce this operation and discuss
+distributed execution using semijoins next.
+
+23.5.3 Distributed Query Processing Using Semijoin
+
+The idea behind distributed query processing using the semijoin operation is to
+reduce the number of tuples in a relation before transferring it to another site.
+Intuitively, the idea is to send the joining column of one relation R to the site where
+the other relation S is located; this column is then joined with S. Following that,
+the join attributes, along with the attributes required in the result, are projected
+out and shipped back to the original site and joined with R. Hence, only the join-
+ing column of R is transferred in one direction, and a subset of S with no extrane-
+ous tuples or attributes is transferred in the other direction. If only a small fraction
+of the tuples in S participate in the join, this can be an efficient solution to mini-
+mizing data transfer.
+
+To illustrate this, consider the following strategy for executing Q or Q’:
+
+1. Project the join attributes of DEPARTMENT at site 2, and transfer them to site 1.
+For Q, we transfer F = Tpnumber(DEPARTMENT), whose size is 4 * 100 = 400
+bytes, whereas for Q’, we transfer F’ = Ty1gr_ssn(DEPARTMENT), whose size is
+9 * 100 = 900 bytes.
+
+2. Join the transferred file with the EMPLOYEE relation at site 1, and transfer
+the required attributes from the resulting file to site 2. For Q, we transfer
+R = Tpno, Frame, Lname(F pnumber=Dno EMPLOYEE), whose size is 34 * 10,000 =
+340,000 bytes, whereas for Q’, we transfer R’ = Mygr_son, Frame, Lname
+(F’ ®igr_ssn=Ssn EMPLOYEE), whose size is 39 * 100 = 3,900 bytes.
+
+3. Execute the query by joining the transferred file R or R’ with DEPARTMENT,
+and present the result to the user at site 2.
+
+Using this strategy, we transfer 340,400 bytes for Q and 4,800 bytes for Q’. We lim-
+ited the EMPLOYEE attributes and tuples transmitted to site 2 in step 2 to only those
+that will actually be joined with a DEPARTMENT tuple in step 3. For query Q, this
+turned out to include all EMPLOYEE tuples, so little improvement was achieved.
+However, for Q’ only 100 out of the 10,000 EMPLOYEE tuples were needed.

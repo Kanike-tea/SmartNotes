@@ -1,0 +1,58 @@
+EXAMPLE
+
+5.5
+
+5.3 C Looping Structures 119
+
+We have reduced the loop overhead from 4N cycles to (4N)/4 = Ncycles. On the ARM7TDMI,
+this accelerates the loop from 8 cycles per accumulate to 20/4 = 5 cycles per accumulate,
+nearly doubling the speed! For the ARM9TDMI, which has a faster load instruction, the
+benefit is even higher.
+
+There are two questions you need to ask when unrolling a loop:
+
+= How many times should I unroll the loop?
+
+=) What if the number of loop iterations is not a multiple of the unroll amount? For
+example, what if N is not a multiple of four in checksum_v9?
+
+To start with the first question, only unroll loops that are important for the overall
+performance of the application. Otherwise unrolling will increase the code size with little
+performance benefit. Unrolling may even reduce performance by evicting more important
+code from the cache.
+
+Suppose the loop is important, for example, 30% of the entire application. Suppose you
+unroll the loop until it is 0.5 KB in code size (128 instructions). Then the loop overhead
+is at most 4 cycles compared to a loop body of around 128 cycles. The loop overhead cost
+is 3/128, roughly 3%. Recalling that the loop is 30% of the entire application, overall the
+loop overhead is only 1%. Unrolling the code further gains little extra performance, but has
+a significant impact on the cache contents. It is usually not worth unrolling further when
+the gain is less than 1%.
+
+For the second question, try to arrange it so that array sizes are multiples of your unroll
+amount. If this isn’t possible, then you must add extra code to take care of the leftover cases.
+This increases the code size a little but keeps the performance high.
+
+This example handles the checksum of any size of data packet using a loop that has been
+unrolled four times.
+
+int checksum _v10(int *data, unsigned int N)
+{
+
+unsigned int i;
+
+int sum=0;
+
+for (i=N/45 i!=0; i--)
+
+{
+sum += *(data++);
+sum += *(data++);
+sum += *(data++);
+sum += *(data++);
+
+}
+
+for (i=N&3; i!=0; i--)
+
+{

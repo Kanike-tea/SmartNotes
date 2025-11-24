@@ -1,0 +1,42 @@
+BCS304
+
+(*) (*)
+(s)
+(*)
+(*) (*)
+O®) ©
+C &
+(1)
+
+Constructing a binary tree from its inorder and preorder sequences
+4.5.3 Matrix multiplication
+
+Suppose that we wish to compute the product of n matrices: M; * Mo * + ** * Mp. Since matrix
+
+multiplication is associative, we can perform these multiplications in any order. We would like
+to know how many different ways we can perform these multiplications.
+
+For example, if n = 3, there are two possibilities:
+
+(M, *M,)*M,
+M, * (M,* My)
+
+(MM, * M,)* My) M,
+(M, *(M,*M;))*M,
+M, * (M, * My)* M4)
+(M, * (Mf, * (My * M4)
+((M, * My) * (My © M4)
+
+The number of distinct ways to obtain Mii and Mi +1 are bi and bp.i, respectively. Therefore,
+letting
+
+b1= 1, we have
+a-t
+
+b, = ¥ bb, 40>)
+jel
+
+Then we see that bn is the sum of all the possible binary trees formed in the following way: a
+root and two subtrees with b, and by.i-1 nodes, for 0 < i <n. This explanation says that
+
+13

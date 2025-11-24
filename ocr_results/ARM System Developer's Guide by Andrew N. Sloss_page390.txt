@@ -1,0 +1,47 @@
+10.2 Example: Sandstone 377
+
+The results of executing step 3 are the following:
+
+= Memory has been remapped as shown in Table 10.5.
+
+= pc now points to the next step. This address is located in the newly remapped flash
+ROM.
+
+10.2.2.4 Step 4: Initialize Communication Hardware
+
+Communication initialization involves configuring a serial port and outputting a standard
+banner. The banner is used to show that the firmware is fully functional and memory has
+been successfully remapped. Again, because the code for initializing the serial port on the
+ARM Evaluator-7T is hardware specific, it is not shown.
+
+The serial port is set to 9600 baud, no parity, one stop bit, and no flow control. If a
+serial cable is attached to the board, then the host terminal has to be configured with these
+settings.
+
+The results of executing step 4 are the following:
+
+= Serial port initialized—9600 baud, no parity, one stop bit, and no flow control.
+
+= Sandstone banner sent out through the serial port:
+
+Sandstone Firmware (0.01)
+
+- platform . e7t
+
+- status alive
+
+= memory .. «remapped
+
++ booting payload ...
+
+10.2.2.5 Step 5: Bootloader—Copy Payload and Relinquish Control
+
+The final stage involves copying a payload and relinquishing control of the pc over to the
+copied payload. This is achieved using the code shown here. The first part of the code sets
+up the registers r12, r13, and r14 used in the block copy. The bootloader code assumes that
+the payload is a plain binary image that requires no deciphering or uncompressing.
+
+sandstone_load_and_boot
+MoV 13, #0 ; destination addr
+LOR —rl2,payload_start_address ; start addr
+LOR —rl4,payload_end_address end addr

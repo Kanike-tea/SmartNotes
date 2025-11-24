@@ -1,0 +1,57 @@
+15.5 Further Discussion of Multivalued Dependencies and 4NF 527
+
+Table 15.1 Summary of the Algorithms Discussed in This Chapter
+
+Algorithm = Input Output Properties/Purpose Remarks
+
+15.1 An attribute or aset A set of attributes in Determine all the The closure of a key
+of attributes X,anda__ the closure of X with attributes that can be __ is the entire relation
+set of FDs F respect to F functionally deter-
+
+mined from X
+
+15.2 A set of functional The minimal cover To determine the Multiple minimal
+
+dependencies F of functional depen- minimal cover of a covers may exist—
+dencies set of dependencies F depends on the order
+
+of selecting func-
+tional dependencies
+
+15.2a Relation schema R Key KofR To findakey K (that The entire relation R
+with a set of func- is a subset of R) is always a default
+tional dependencies F superkey
+
+15.3 AdecompositionD Boolean result: yes Testing for nonaddi- See a simpler test
+of Randa set F of or no for nonaddi- tive join decomposi- _NJB in Section 14.5
+functional depen- tive join property tion for binary decompo-
+dencies sitions
+
+15.4 A relation R anda A set of relationsin — Nonadditive join May not achieve
+set of functional 3NF and dependency- BCNE, but achieves
+dependencies F preserving decom- all desirable proper-
+
+position ties and 3NF
+
+15.5 A relation R anda A set of relations in — Nonadditive join No guarantee of
+set of functional BCNF decomposition dependency preser-
+dependencies F vation
+
+15.6 A relation Randa A set of relations in — Nonadditive join No guarantee of
+set of functional and 4NF decomposition dependency preser-
+multivalued depen- vation
+dencies
+
+15.5 Further Discussion of Multivalued
+Dependencies and 4NF
+
+We introduced and defined the concept of multivalued dependencies and used it to
+define the fourth normal form in Section 14.6. In this section, we discuss MVDs to
+make our treatment complete by stating the rules of inference with MVDs.
+
+15.5.1 Inference Rules for Functional
+and Multivalued Dependencies
+As with functional dependencies (FDs), inference rules for MVDs have been
+
+developed. It is better, though, to develop a unified framework that includes both
+FDs and MVDs so that both types of constraints can be considered together. The

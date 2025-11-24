@@ -1,0 +1,33 @@
+9.3 Interrupt Handling Schemes 353
+
+Return to task
+
+3. | Obtain external
+
+y
+
+interrupt status
+
+Is a priority 1 4 —_,
+
+interrupt?
+
+apriority 2S .
+Sinterrupt?
+
+5. | Disable lower-
+priority interrupts
+
+6. | Enable external
+interrupts
+
+7.1 Enable internal
+interrupts
+
+Service \ Interrupt
+
+Restore context
+
+interrupt
+
+Figure 9.13 Part of a prioritized standard interrupt handler.

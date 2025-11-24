@@ -1,0 +1,54 @@
+650
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+17.22. Repeat Exercise 17.21, but for the B-tree of Exercise 17.20.
+
+17.23. Algorithm 17.1 outlines the procedure for searching a nondense multilevel
+primary index to retrieve a file record. Adapt the algorithm for each of the
+following cases:
+
+a. A multilevel secondary index on a nonkey nonordering field of a file.
+Assume that option 3 of Section 17.1.3 is used, where an extra level of
+indirection stores pointers to the individual records with the corres-
+ponding index field value.
+
+b. A multilevel secondary index on a nonordering key field of a file.
+
+c. A multilevel clustering index on a nonkey ordering field of a file.
+
+17.24. Suppose that several secondary indexes exist on nonkey fields of a file,
+implemented using option 3 of Section 17.1.3; for example, we could have
+secondary indexes on the fields Department_code, Job_code, and Salary of the
+EMPLOYEE file of Exercise 17.18. Describe an efficient way to search for and
+retrieve records satisfying a complex selection condition on these fields,
+such as (Department_code = 5 AND Job_code = 12 AND Salary = 50,000), using
+the record pointers in the indirection level.
+
+17.25. Adapt Algorithms 17.2 and 17.3, which outline search and insertion proce-
+dures for a B*-tree, to a B-tree.
+
+17.26. It is possible to modify the B*-tree insertion algorithm to delay the case
+where a new level is produced by checking for a possible redistribution of
+values among the leaf nodes. Figure 17.17 illustrates how this could be done
+for our example in Figure 17.12; rather than splitting the leftmost leaf
+node when 12 is inserted, we do a left redistribution by moving 7 to the leaf
+node to its left (if there is space in this node). Figure 17.17 shows how the
+tree would look when redistribution is considered. It is also possible to consider
+right redistribution. Try to modify the B*-tree insertion algorithm to take
+redistribution into account.
+
+17.27. Outline an algorithm for deletion from a B*-tree.
+
+17.28. Repeat Exercise 17.27 for a B-tree.
+
+Selected Bibliography
+
+Indexing: Bayer and McCreight (1972) introduced B-trees and associated algo-
+rithms. Comer (1979) provides an excellent survey of B-trees and their history, and
+variations of B-trees. Knuth (1998) provides detailed analysis of many search tech-
+niques, including B-trees and some of their variations. Nievergelt (1974) discusses
+the use of binary search trees for file organization. Textbooks on file structures,
+including Claybrook (1992), Smith and Barnes (1987), and Salzberg (1988); the
+algorithms and data structures textbook by Wirth (1985); as well as the database
+textbook by Ramakrihnan and Gehrke (2003) discuss indexing in detail and may be

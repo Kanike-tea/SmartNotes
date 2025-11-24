@@ -1,0 +1,48 @@
+14.10 Demonstration: A Small Virtual Memory System 525
+
+of sequential page frames. Above this area are the page frames dedicated to the three user
+tasks. The tasks in physical memory are 32 KB fixed partitions, also sequential page frames.
+Sparsely scattered over 256 MB of physical memory are the memory-mapped peripheral
+I/O devices.
+
+14.10.4 STEP 4: DEFINE AND LOCATE THE PAGE TABLES
+
+We previously dedicated a region to hold the page tables in the system. The next step is
+to locate the actual page table within the region to physical memory. Figure 14.20 shows
+a close-up detail of where the page table region maps to physical memory. It is a blow-up
+of the page tables shown in Figure 14.19. We spread the memory out a little to show the
+relationship between the LI master page table and the four L2 page tables. We also show
+where the translation data is located in the page tables.
+
+The one master L1 page table locates the L2 tables and translates the 1 MB sections of
+the peripheral region. The system L2 page table contains translation address data for three
+system regions: the kernel region, shared memory region, and page table region. There are
+three task L2 page tables that map to the physical addresses of the three concurrent tasks.
+
+Only three of the five page tables are active simultaneously during run time: the L1
+master table, the L2 system table, and one of the three L2 task page tables.
+
+The scheduler controls which task is active and which tasks are dormant by remapping
+the task region during a context switch. Specifically, the master L1 page table entry at
+address 0x18010 is changed during the context switch to point to the L2 page table base
+address of the next active task.
+
+14.10.5 STEP 5: DEFINE PAGE TABLE AND REGION DATA
+STRUCTURES
+
+For the example, we define two data structures used to configure and control the system.
+These two data structures represent the actual code used to define and initialize the page
+tables and regions discussed in previous sections. We define two data types, a Pagetable
+type that contains the page table data, and a Region type that defines and controls each
+region in the system.
+
+The type definition for the Pagetable structure, with a description of the members in
+the Pagetable structure, is:
+
+typedef struct {
+unsigned int vAddress;
+unsigned int ptAddress;
+unsigned int masterPtAddress;
+unsigned int type;
+unsigned int dom;
+} Pagetable;

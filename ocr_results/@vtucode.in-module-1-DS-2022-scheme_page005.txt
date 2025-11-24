@@ -1,0 +1,52 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
++ If we frequently allocate the memory space, then it is better to define a macro as shown
+
+below:
+
+#define MALLOC (p,s)
+if(! ((p)==malloc(s)))
+} printf ("insufficient memory");
+
+exit (0);
+
+¢ Now memory can be initialized using following:
+
+MALLOC (pi, sizeof (int));
+MALLOC (pf, sizeof (float) )
+
+DANGLING REFERENCE
+
++ Whenever all pointers to a dynamically allocated area of storage are lost, the storage is lost
+to the program. This is called a dangling reference.
+
+POINTERS CAN BE DANGEROUS
+
+1) Set all pointers to NULL when they are not actually pointing to an object. This makes
+sure that you will not attempt to access an area of memory that is either
+— out of range of your program or
+— that does not contain a pointer reference to a legitimate object
+2) Use explicit type casts when converting between pointer types.
+pi=malloc(sizeof(int)); //assign to pi a pointer to int
+pf=(float*)pi; //casts an ‘int’ pointer to a ‘float’ pointer
+3) Pointers have same size as data type 'int'. Since int is the default type specifier, some
+programmers omit return type when defining a function. The return type defaults to
+‘int’ which can later be interpreted as a pointer. Therefore, programmer has to define
+
+explicit return types for functions.
+
+void swap(int *p,int *q) //both parameters are pointers to ints
+
+{
+int temp=*p; //declares temp as an int and assigns to it the contents
+of what p points to
+
+*p=*q; //stores what q points to into the location where p
+points
+*q=temp;
+
+//places the contents temp in location pointed to by q
+
+Prg: Swap Function
+
+vtucode.in 6

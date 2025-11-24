@@ -1,0 +1,29 @@
+(a) Logic for a single stage
+
+Tat Yat
+ent
+Cn FA see
+Spt
+
+Most significant bit Least significant bit
+(MSB) position (LSB) position
+
+(b) An n-bit ripple-carry adder
+
+*kn-1 Ykn-l Xon-1 Yon *n Yn ¥n-1 Yn-1 40 Yo
+
+Sint S(k-1n SQn-1 Sn Sat 5p
+
+(c) Cascade of k n-bit adders
+Figure 9.2 Logic for addition of binary numbers.
+
+ADDITION/SUBTRACTION LOGIC UNIT
+¢ The n-bit adder can be used to add 2's complement numbers X and Y (Figure 9.3).
+© Overflow can only occur when the signs of the 2 operands are the same.
+. In order to perform the subtraction operation X-Y on 2's complement numbers X and Y; we
+form the 2's complement of Y and add it to X.
+¢ Addition or subtraction operation is done based on value applied to the Add/Sub input control-line.
+. Control-line=0 for addition, applying the Y vector unchanged to one of the adder
+inputs. Control-line=1 for subtraction, the Y vector is 2's complemented.
+
+Page 64

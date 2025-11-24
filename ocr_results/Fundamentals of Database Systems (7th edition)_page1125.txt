@@ -1,0 +1,50 @@
+28.7 Commercial Data Mining Tools
+
+Windows environment. One tool, Data Surveyor, mentions ODMG compliance;
+see Chapter 12, where we discussed the ODMG object-oriented standard.
+
+In general, these programs perform sequential processing in a single machine.
+Many of these products work in the client/server mode. Some products incorporate
+parallel processing in parallel computer architectures and work as a part of online
+analytical processing (OLAP) tools.
+
+28.7.1 User Interface
+
+Most of the tools run in a graphical user interface (GUI) environment. Some prod-
+ucts include sophisticated visualization techniques to view data and rules (for
+example, SGI’s MineSet), and are even able to manipulate data this way interac-
+tively. Text interfaces are rare and are more common in tools available for UNIX,
+such as IBM’s Intelligent Miner.
+
+28.7.2 Application Programming Interface
+
+Usually, the application programming interface (API) is an optional tool. Most
+products do not permit using their internal functions. However, some of them
+allow the application programmer to reuse their code. The most common inter-
+faces are C libraries and dynamic link libraries (DLLs). Some tools include propri-
+etary database command languages.
+
+Table 28.1 lists 11 representative data mining tools. To date, there are hundreds of
+commercial data mining products available worldwide. Non-U.S. products include
+Data Surveyor from the Netherlands and PolyAnalyst from Russia.
+
+28.7.3 Future Directions
+
+Data mining tools are continually evolving, building on ideas from the latest scien-
+tific research. Many of these tools incorporate the latest algorithms taken from arti-
+ficial intelligence (Al), statistics, and optimization. Currently, fast processing is
+done using modern database techniques—such as distributed processing—in cli-
+ent/server architectures, in parallel databases, and in data warehousing. For the
+future, the trend is toward developing Internet capabilities more fully. Additionally,
+hybrid approaches will become commonplace, and processing will be done using
+all resources available. Processing will take advantage of both parallel and distrib-
+uted computing environments. This shift is especially important because modern
+databases contain very large amounts of information.
+
+The primary direction for data mining is to analyze terabytes and petabytes of data
+in the so-called big data systems that we presented in Chapter 25. These systems are
+being equipped with their own tools and libraries for data mining, such as Mahout,
+which runs on top of Hadoop, which we described in detail. The data mining area
+will also be closely tied to data that will be housed in the cloud in data warehouses
+
+1095

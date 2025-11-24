@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+FROM EMPLOYEE
+
+WHERE NOT EXISTS ( ( SELECT Pnumber
+FROM PROJECT
+
+WHERE Dnum=5)
+
+EXCEPT ( SELECT Pno
+
+FROM WORKS_ON
+
+WHERE Ssn=Essn) );
+
+UNIQUE Functions
+UNIQUE(Q) returns TRUE if there are no duplicate tuples in the result of query Q; otherwise, it
+returns FALSE. This can be used to test whether the result of a nested query is a set or a multiset.
+
+1.1.5 Explicit Sets and Renaming of Attributes in SQL
+IN SQL it is possible to use an explicit set of values in the WHERE clause, rather than a nested
+query. Such a set is enclosed in parentheses.
+Example: Retrieve the Social Security numbers of all employees who work on project numbers 1, 2,
+or 3.
+
+SELECT DISTINCT Essn
+
+FROM WORKS_ON
+
+WHERE Pno IN (1, 2, 3);
+In SQL, it is possible to rename any attribute that appears in the result of a query by adding the
+qualifier AS followed by the desired new name
+Example: Retrieve the last name of each employee and his or her supervisor
+
+SELECT E.Lname AS Employee_name,
+
+S.Lname AS Supervisor_name
+
+FROM EMPLOYEE AS E,
+
+EMPLOYEE AS S
+
+WHERE E.Super_ssn=S.Ssn;
+
+https://vtucode.in page 23

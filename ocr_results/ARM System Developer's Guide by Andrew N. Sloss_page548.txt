@@ -1,0 +1,54 @@
+14.10 Demonstration: A Small Virtual Memory System 535
+
+PTE = region->pAddress & Oxffff0000; /* set physical address */
+PTE |= tempAP<<10;  /* set Access Permissions subpage 3 */
+
+PTE |= tempAP<<8; /* subpage 2 */
+PTE |= tempAP<<6; /* subpage 1 */
+PTE |= tempAP <<4; /* subpage 0 */
+PTE |= (region->CB & 0x3) <<2; /* set cache & WB attributes */
+PTE |= 0x1; /* set as LARGE PAGE */
+
+/* fill in table entries for region */
+for (i = region->numPages-1; i >= 0; i--)
+{
+for (j = 15 3 j >= 03 j--)
+*pTeptr-- = PTE + (i<<16); 0 /* i
+
+64 KB large page */
+}
+break;
+
+}
+case SMALLPAGE:
+
+{
+PTEptr += (region->vAddress & Ox000ff000) >>12; /* first */
+PTEptr += (region->numPages - 1); /* last PTEptr */
+
+PTE = region->pAddress & Oxfffff000; /* set physical address */
+
+PTE |= tempAP<<10; /* set Access Permissions subpage 3 */
+PTE |= tempAP<<8; /* subpage 2 */
+PTE |= tempAP<<6; /* subpage 1 */
+PTE |= tempAP<<4; /* subpage 0 */
+PTE |= (region->CB & 0x3) <<2; /* set cache & WB attrib */
+
+PTE |= 0x2; /* set as SMALL PAGE */
+
+/* fill in table entries for region */
+for (i = region->numPages - 1; i >= 0; i--)
+{
+*PTEptr-- = PTE + (i<<12); /* i = 4 KB small page */
+}
+break;
+}
+default:
+{
+printf("mmuMapCoarseTableRegion: Incorrect page size\n");
+return -1;
+}
+}
+return 0;
+
+}

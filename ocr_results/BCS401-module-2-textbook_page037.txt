@@ -1,0 +1,25 @@
+5.4 Multiplication of Large Integers and Strassen‘s Matrix Multiplication 191
+
+simply multiplied. These observations yield the following recurrence relation:
+A(n) =7A(n/2) + 18(n/2)? forn >1, AC) =0.
+
+Though one can obtain a closed-form solution to this recurrence (see Problem 8
+in this section’s exercises), here we simply establish the solution’s order of growth.
+According to the Master Theorem, A(n) € @(n!°827), In other words, the number
+of additions has the same order of growth as the number of multiplications. This
+puts Strassen’s algorithm in © (n'°%2), which is a better efficiency class than @(n>)
+of the brute-force method.
+
+Since the time of Strassen’s discovery, several other algorithms for multiplying
+two n xn matrices of real numbers in O(n*) time with progressively smaller
+constants a have been invented. The fastest algorithm so far is that of Coopersmith
+and Winograd [Co087] with its efficiency in O(n?>7). The decreasing values of
+the exponents have been obtained at the expense of the increasing complexity
+of these algorithms. Because of large multiplicative constants, none of them is of
+practical value. However, they are interesting from a theoretical point of view. On
+one hand, they get closer and closer to the best theoretical lower bound known
+for matrix multiplication, which is n* multiplications, though the gap between this
+bound and the best available algorithm remains unresolved. On the other hand,
+matrix multiplication is known to be computationally equivalent to some other
+important problems, such as solving systems of linear equations (discussed in the
+next chapter).

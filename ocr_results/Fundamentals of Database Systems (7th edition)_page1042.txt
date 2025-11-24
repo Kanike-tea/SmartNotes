@@ -1,0 +1,44 @@
+1012 Chapter 26 Enhanced Data Models
+
+Figure 26.17
+Predicate dependency
+
+SUPERVISOR —*® UNDER_40K_SUPERVISOR SUBORDINATE
+
+graph for Figures 26.15
+
+and 26.16.
+
+4 ry 4
+PRESIDENT
+MAIN_PRODUCT_EMP. OVER_40K_EMP SUPERIOR
+A A
+WORKS_ON EMPLOYEE SALARY SUPERVISE
+DEPARTMENT PROJECT FEMALE MALE.
+
+management system. Whenever the inference mechanism needs to compute the fact
+set corresponding to a nonrecursive rule-defined predicate p, it first locates all the
+rules that have p as their head. The idea is to compute the fact set for each such rule
+and then to apply the UNION operation to the results, since UNION corresponds to a
+logical OR operation. The dependency graph indicates all predicates q on which each
+p depends, and since we assume that the predicate is nonrecursive, we can always
+determine a partial order among such predicates q. Before computing the fact set for
+P, first we compute the fact sets for all predicates q on which p depends, based on their
+partial order. For example, ifa query involves the predicate UNDER_40K_SUPERVISOR,
+we must first compute both SUPERVISOR and OVER_40K_EMP. Since the latter two
+depend only on the fact-defined predicates EMPLOYEE, SALARY, and SUPERVISE,
+they can be computed directly from the stored database relations.
+
+This concludes our introduction to deductive databases. Additional material may be
+found at the book’s Web site, where the complete Chapter 25 from the third edition is
+available. Information on the Web site includes a discussion on algorithms for recur-
+sive query processing. We have included an extensive bibliography of work in deduc-
+tive databases, recursive query processing, magic sets, combination of relational
+databases with deductive rules, and GLUE-NAIL! System, at the end of this chapter.
+
+26.6 Summary
+
+In this chapter, we introduced database concepts for some of the common features
+that are needed by advanced applications: active databases, temporal databases,
+spatial databases, multimedia databases, and deductive databases. It is important to
+note that each of these is a broad topic and warrants a complete textbook.

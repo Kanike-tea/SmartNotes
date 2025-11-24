@@ -1,0 +1,50 @@
+of all persons who are customers at a given bank.
+
+Attributes:
+An entity is represented by a set of attributes. Attributes are descriptive properties possessed by
+each member of an entity set.
+
+Customer is an entity and its attributes are customerid, custmername, custaddress etc.
+An attribute as used in the E-R model, can be characterized by the following attribute types.
+
+a) Simple and Composite Attribute:
+
+Simple attributes are the attributes which can’t be divided into sub parts, e.g. customerid, empno
+Composite attributes are the attributes which can be divided into subparts, e.g. name consisting of
+first name, middle name, last name and address consisting of city, pincode, state.
+
+b) Single-Valued and Multi-Valued Attribute:
+
+The attribute having unique value is single —valued attribute, e.g. empno, customerid, regdno etc.
+The attribute having more than one value is multi-valued attribute, eg: phone-no, dependent name,
+vehicle.
+
+c) Derived Attribute:
+
+The values for this type of attribute can be derived from the values of existing attributes, e.g. age
+which can be derived from currentdate — birthdate and experience_in_year can be calculated as
+currentdate-joindate.
+
+d) NULL Valued Attribute:
+The attribute value which is not known to user is called NULL valued attribute.
+
+Relationship Set.
+A relationship is an association among several entities. A relationship set is a set of relationships of
+
+the same type. Formally, it is a mathematical relation on n>=2 entity sets. If Ei, Ex...En are entity
+sets, then a relation ship set R is a subset of
+
+{(€1,€2,...en) |ev€ E:, e2 € Eo.., en © En}
+where (€1,€2,...€n) is a relation ship.
+
+customer loan
+
+Consider the two entity sets customer and loan. We define the relationship set borrow to denote the
+association between customers and the bank loans that the customers have.
+
+Mapping Cardinalities:
+
+Mapping cardinalities or cardinality ratios, express the number of entities to which another entity
+can be associated via a relationship set. Mapping cardinalities are most useful in describing binary
+relationship sets, although they can contribute to the description of relationship sets that involve
+more than two entity sets. For a binary relationship set R between entity sets A and B, the mapping

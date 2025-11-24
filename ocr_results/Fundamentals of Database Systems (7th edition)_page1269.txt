@@ -1,0 +1,187 @@
+Stopword removal, IR text processing,
+1037-1038
+Storage
+architectures for, 588-592
+automated storage tiering (AST), 591
+big data, 3
+buffering blocks, 541, 556-560
+capacity, 543
+cloud, 3
+column-based, indexing for, 642
+database catalog for, 10-11
+database organization of, 545-546
+database reorganization, 45
+devices for, 543-545, 547-556
+Fibre Channel over Ethernet (FCoE),
+590-591
+Fibre Channel over IP (FCIP), 590
+file records, 560-564, 567-572,
+582-583
+files, 10-11, 560-572, 582-583
+hashing techniques, 572-582
+Internet SCSI (iSCSI), 590
+memory hierarchies, 543-545
+meta-data, 6, 10
+network-attached storage (NAS),
+589-590
+object-based, 591-592
+objects, 987-988
+persistent, 19-20, 545
+primary, $42, 543
+program objects, 19-20
+RAID technology, 542, 584-588
+secondary, 542, 543, 547-556
+spatial databases for, 987-988
+storage area networks (SANs), 588-589
+tertiary, $42, 543
+XML documents, 442-443
+Storage area networks (SANs), 588-589
+Storage definition language (SDL), 39
+Storage devices
+databases, organization and, 545-546
+disks, 547-553
+flash memory, 543-544
+magnetic tape, 544-545, 555-556
+memory, 543-545, 547-556
+optical drives, 544
+secondary, 547-556
+solid-state device (SSD), 553-555
+Stored attribute, 66
+Stored data manager, 42, 44
+Stored procedures
+CALL statement, 337
+database programming and, 335-338
+parameter type and mode, 336-337
+persistent storage modules, 336
+rule enforcement using, 22
+SQL/PSM (SQL/persistent stored
+modules), 337-338
+Stream-based processing, 682. See also
+Pipelining
+Strict schedule, 762
+
+Strings. See also Text strings
+character data types, 182-183
+double quotations (“”) for, 196, 347
+indexing, 640
+prefix compression, 640
+single quotations (‘’) for, 182, 196, 347
+SQL use of, 182-183, 195-197
+substring pattern matching, 195-197
+Strong entity types, 79
+Struct (tuple) constructor, 368, 369
+Structural constraints, 78
+Structured data, XML, 426
+Structured data extraction, WEB, 1052
+Structured objects and literals, 388, 396
+Structured Query Language, see SQL
+(Structured Query Language)
+Subclasses
+class relationships, 108-110
+defined, 126
+defining predicate of, 113-114
+EER diagram notation for, 109
+EER modeling concept, 108-110, 126
+EER-to-relational mapping, 301
+entity type as, 110
+inheritance, 110, 117-119, 301
+IS-A relationship, 109, 126
+leaf class (UML node), 127
+local attributes of, 110-111
+overlapping entities, 115
+predicate-defined, 113-114
+shared, 118, 301
+specialization of set of, 110-112
+specific relationship types, 110-111
+union type, 108, 120-122
+user-defined, 114
+Subqueries
+nested, 702-704
+query optimization and, 702-706
+unnesting (decorrelation), 704
+view merging transformation, 704-706
+Substring pattern matching, SQL,
+195-197
+Subtrees, 617
+Subtypes, 375-376
+SUM function
+grouping, 260
+SQL, 217
+Superclasses
+base class (UML root), 127
+categories of, 120-122
+class relationships, 109
+EER modeling concept, 109, 110, 126
+entity type as, 110
+inheritance, 110, 117-118
+subclass relationships, 110, 117-118
+Superkey, 158-159, 476-477
+Supertypes, 375-376
+Surrogate key, 302
+Symmetric key algorithms, 1150-1151
+Synthesis, RDB design by, 503, 504
+System analysts, 16
+
+Index 1239
+
+System designers and implementers, 17
+System log
+database recovery, 814, 817, 818-819
+modifications for database security,
+1125
+transaction processing, 755-756
+Table inheritance, SQL, 385
+Table of values, 150-151
+Table-based constraints, SQL, 184-187
+Tables
+ALTER TABLE command, 180
+base relations, 180, 182
+CREATE TABLE command, 180-182
+data definition statements, 180-182
+database recovery, 828-831
+inner join, 215-216
+joined relations, 215-216
+multiset operations, 193-195
+multiway join, 216
+NATURAL JOIN operation, 215
+OUTER JOIN operations, 216
+query retrieval and, 193-195
+query retrieval and, 193-195, 215-216
+sets of relations in, 188, 193-195
+transaction, 828-831
+trigger activation from, 22
+UDT creation of for SQL, 383-384
+views (virtual tables), 228-232
+virtual relations, 82
+Tags
+attributes, 430
+document body specification, 429
+document header specifications, 428
+end/start tag (</...>), 428
+HTML tag (<...>), 428
+mark up of documents using, 428-429
+notation and use, HTML, 428-430
+semantic tagging of images, 998-999
+XML unstructured data and, 428-430
+Tape jukeboxes, 544
+‘Taxonomy, ontology as, 134
+‘Temporal databases
+applications of, 974
+calendar, 975
+enhanced data models, 962, 974-987
+implementation considerations, 982
+incorporating time, 977-984
+object-oriented databases for, 982-984
+relational databases for, 977-982
+time representation, 975-977
+versioning, 977-984
+‘Temporal querying constructs, 984-986
+‘Temporary update problem, transaction
+processing, 750
+Ternary relationships
+binary relationships compared to,
+88-89
+degree of, 73-74
+ER diagrams, 88-92
+notation for diagrams, 88-89
+Tertiary storage, 542, 543

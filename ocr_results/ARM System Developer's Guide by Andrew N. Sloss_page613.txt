@@ -1,0 +1,32 @@
+600 Appendix A ARM and Thumb Assembler Instructions
+
+= These instructions are useful to convert big-endian data to little-endian and vice
+
+versa.
+Examples
+REV r0, r0 -; switch endianness of a word
+REV16 = r0, r0 3 Switch endianness of two packed halfwords
+REVSH 0, r0  ; switch endianness of a signed halfword
+RFE Return from exception
+1. RFE<amode> Rn! ARMv6,
+This performs the operation that LDM<amode> Rn{!}, {pc, cpsr} would perform if LDM
+allowed a register list of {pc, cpsr}. See the entry for LDM.
+ROR Rotate right for Thumb (see MOV for the ARM equivalent)
+1. ROR Ld, Ls THUMBv1
+Action Effect on the cpsr
+1. Ld = Ld ROR Ls[7:0] Updated
+Notes
+= The cpsr is updated: N = <Negative>, Z = <Zero>, C = <shifter_C> (see Table A.3).
+RSB Reverse subtract of two 32-bit integers
+
+1. RSB<cond>{S} Rd, Rn, #<rotated_immed> ARMV1
+2. RSB<cond>{S} Rd, Rn, Rm {, <shift>} ARMV1
+Action Effect on the cpsr
+
+1. Rd = <rotated_immed> - Rn Updated if S suffix present
+
+2. Rd = <shifted_Rm> - Rn Updated if S suffix present
+Notes
+
+= If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <NoUnsignedOverflow>, and V = <SignedOverflow>. The carry flag is set this way

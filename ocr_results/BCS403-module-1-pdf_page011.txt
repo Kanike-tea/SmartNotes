@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+Space. However, it is sometimes necessary to use controlled redundancy to improve the
+performance of queries. For example, we may store Student_name and Course_number
+redundantly in a GRADE_REPORT file because whenever we retrieve a GRADE_REPORT
+record, we want to retrieve the student name and course number along with the grade, student
+number, and section identifier.
+A DBMS should provide the capability to automatically enforce the rule that no inconsistencies
+are introduced when data is updated.
+
+2. Restricting Unauthorized Access
+When multiple users share a large database, it is likely that most users will not be authorized to
+access all information in the database. For example, financial data is often considered
+confidential and only authorized persons are allowed to access such data. In addition, some
+users may only be permitted to retrieve data, whereas others are allowed to retrieve and update.
+Hence, the type of access operation—tretrieval or update—must also be controlled. A DBMS
+should provide a security and authorization subsystem, which the DBA uses to create
+accounts, to specify account restrictions and enforce these restrictions automatically.
+
+3. Providing Persistent Storage for Program Objects
+The values of program variables or objects are discarded once a program terminates, unless
+the programmer explicitly stores them in permanent files, which often involves converting
+these complex structures into a format suitable for file storage. Object-oriented database
+systems make it easier for complex runtime objects to be saved in secondary storage so as to
+survive beyond program termination and to be retrievable at a later time.
+Object-oriented database systems are compatible with programming languages suchas = C++
+
+and Java, and the DBMS software automatically performs any necessary conversions.
+
+4. Providing Storage Structures and Search Techniques for Efficient Query Processing
+
+DBMS maintains indexes that are utilized to improve the execution time of queries and
+updates. DBMS has a buffering or caching module that maintains parts of the database in main
+memory buffers. The query processing and optimization module is responsible for choosing an
+efficient query execution plan for each query submitted to the system.
+
+5. Providing Backup and Recovery
+The backup and recovery subsystem of the DBMS is responsible for recovery. For example, if
+
+the computer system fails in the middle of a complex update transaction, the recovery
+
+https://vtucode.in Page 12

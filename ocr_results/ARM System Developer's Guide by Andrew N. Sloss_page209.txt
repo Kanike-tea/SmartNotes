@@ -1,0 +1,113 @@
+196 Chapter 6 Writing and
+
+tmp
+tmp2
+mask
+
+bitstream_read
+MoV
+
+read_fill_loop
+LDRB
+ORR
+SUBS
+BGT
+Mov
+Mov
+Mov
+
+bitstream_read
+LDRB
+AND
+LOR
+SUBS
+BMI
+Mov
+Mov
+
+empty_buffer_o
+TEQ
+BEQ
+
+Optimizing ARM Assembly Code
+
+RN 8 5 scratch
+RN 9 5 scratch
+RN 12 ; N-bit extraction mask (1<<N)-1
+
+EQU 8 ; use a lookup table on 8 bits (N must be <= 9)
+
+| start
+
+bitsleft, #32
+
+tmp, [bitstream], #1
+
+bitbuffer, tmp, bitbuffer, LSL#8
+bitsleft, bitsleft, #8
+read_fill_loop
+
+bitsleft, #(32-N)
+
+mask, #(1<<N)-1
+
+pc, Ir
+
+|_code
+
+codebits, [look_codebits, bitbuffer, LSR# (32-N)]
+code, mask, bitbuffer, LSR#(32-N)
+code, [look_code, code, LSL#2]
+bitsleft, bitsleft, codebits
+empty_buffer_or_long_code
+bitbuffer, bitbuffer, LSL codebits
+pc, Ir
+r_long_code
+codebits, #0xFF
+Tong_code
+
+3 empty buffer - fill up with 3 bytes
+
+3 as N
+LDRB
+LDRB
+MOV
+LDRB
+ORR
+RSB
+ORR
+ORR
+RSB
+MOV
+
+long_code
+3 hand
+3 here
+Mov
+Mov
+
+<= 9, we can fill 3 bytes without overflow
+tmp, [bitstream], #1
+
+tmp2, [bitstream], #1
+
+bitbuffer, bitbuffer, LSL codebits
+codebits, [bitstream], #1
+
+tmp, tmp2, tmp, LSL#8
+
+bitsleft, bitsleft, #(8-N)
+
+tmp, codebits, tmp, LSL#8
+
+bitbuffer, bitbuffer, tmp, LSL bitsleft
+bitsleft, bitsleft, #(32-N)
+
+pc, Ir
+
+le the long code case depending on the application
+we just return a code of -1
+
+code, #-1
+
+pc, Ir

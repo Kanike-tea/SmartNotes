@@ -1,0 +1,46 @@
+7.3 Division 233
+
+7.3.3.3, QU5 Fixed-Point Division by Newton-Raphson
+
+We calculate a Q15 representation of the ratio nd~!, where n and d are 16-bit positive
+integers in the range 0 < n < d <2". In other words, we calculate
+
+q = (n<<15)/d;
+
+You can use the routine udiv_32by16_arm7m in Section 7.3.1.2 to do this by trial
+subtraction. However, the following routine calculates exactly the same result but uses
+fewer cycles on an ARMV5E core. If you only need an estimate of the result, then you can
+remove instructions [15 to I18, which correct the error of the initial estimate.
+
+The routine veers perilously close to being inaccurate in many places, so it is followed by
+a proof that it is correct. The proof uses the theory of Section 7.3.3.2. The proof is a useful
+reference if the code requires adaptation or optimizing for another ARM core. The routine
+takes 24 cycles on an ARMOE including the return instruction. If d < n < 2!5, then we
+return the saturated value 0x7 fff.
+
+q RN 0 — ; input denominator d, quotient estimate q
+r RN 1; input numerator n, remainder r
+s RN 2; normalisation shift, scratch
+d RN 3; Q15 normalised denominator 2“14<d<2"15
+; unsigned udiv_q15_arm9e(unsigned d, unsigned q)
+udiv_ql5_arm9e ; instruction number ; comment
+clz os, q 3 01: choose a shift s to
+SUB ss, s, #17 3 02; normalize d to the
+Movs d, q, LSL s 3 03: range 0.5<=d<1 at Q15
+ADD q, pc, dy LSRA7 3 04; look up q, a 08
+LORNEB q, [q, #t15-b15-128] ; 05 : approximation to 1//d
+bls MOV ory r, LSLs 3 06 : normalize numerator
+ADD q, q, #256 3 07 : part of table lookup
+3 q is now a Q8, 9-bit estimate to 1//d
+SMULBB s, q, q 3 08 : s = q*q at Q16
+CMP or, d 3 09; check for overflow
+MUL os, dy s 310: s = q*q*d at Q31
+MOV q, q, LSL#9 3 11: change q to Q17
+SBC gq, q, Ss, LSR#15 3 12 : q = 2*q-q*q*d at Q16
+3 q is now a Q16, 17-bit estimate to 1//d
+SMULWB q, q, 7 3 13: q approx n//d at Q15
+BCS over flow_15 3 14; trap overflow case
+SMULBB s, q, d 315: s = gtd at 930
+RSB or, d, ry, LSL#15 316: r= n-d at 930
+
+CMP ory s 317: if (ress)

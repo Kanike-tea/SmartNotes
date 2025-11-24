@@ -1,0 +1,52 @@
+10.6 Summary
+
+in the source code. The main disadvantages are the loss of flexibility in
+changing the query at runtime, and the fact that all changes to queries must
+go through the whole recompilation process. In addition, because the que-
+ries are known beforehand, the choice of program variables to hold the
+query results is a simple task, and so the programming of the application is
+generally easier. However, for complex applications where queries have to
+be generated at runtime, the function call approach will be more suitable.
+
+5. Library of Classes and Function Calls Approach. This approach provides
+more flexibility in that queries can be generated at runtime if needed. How-
+ever, this leads to more complex programming, as program variables that
+match the columns in the query result may not be known in advance.
+Because queries are passed as statement strings within the function calls, no
+checking can be done at compile time. All syntax checking and query valida-
+tion has to be done at runtime by preparing the query, and the programmer
+must check and account for possible additional runtime errors within the
+program code.
+
+6. Database Programming Language Approach. This approach does not suf-
+fer from the impedance mismatch problem, as the programming language
+data types are the same as the database data types. However, programmers
+must learn a new programming language rather than use a language they are
+already familiar with. In addition, some database programming languages
+are vendor-specific, whereas general-purpose programming languages can
+easily work with systems from multiple vendors.
+
+10.6 Summary
+
+In this chapter we presented additional features of the SQL database language. In
+particular, we presented an overview of the most important techniques for database
+programming in Section 10.1. Then we discussed the various approaches to data-
+base application programming in Sections 10.2 to 10.4.
+
+In Section 10.2, we discussed the general technique known as embedded SQL,
+where the queries are part of the program source code. A precompiler is typically
+used to extract SQL commands from the program for processing by the DBMS, and
+replacing them with function calls to the DBMS compiled code. We presented an
+overview of embedded SQL, using the C programming language as host language in
+our examples. We also discussed the SQL] technique for embedding SQL in Java
+programs. The concepts of cursor (for embedded SQL) and iterator (for SQLJ) were
+presented and illustrated by examples to show how they are used for looping over
+the tuples in a query result, and extracting the attribute value into program vari-
+ables for further processing.
+
+In Section 10.3, we discussed how function call libraries can be used to access SQL
+databases. This technique is more dynamic than embedding SQL, but requires
+more complex programming because the attribute types and number in a query
+result may be determined at runtime. An overview of the SQL/CLI standard was
+
+339

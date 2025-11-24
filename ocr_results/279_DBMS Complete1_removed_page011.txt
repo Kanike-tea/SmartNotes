@@ -1,0 +1,72 @@
+database may be able to access parts of the database for which they lack authority. For
+example, a high school student could get access to national defense secret codes, or
+employees could find out what their supervisors earn.
+
+Data could be lost permanently, rather than at least being available in a consistent state that
+existed prior to a failure.
+
+Consistency constraints may be violated when intgrity constraints failed in a transaction. For
+example, incorrect bank balances might be reflected due to simultaneous withdrawals and
+deposits, and so on.
+
+Que. What are five main functions of a database administrator?
+
+Ans: Fi
+
+‘ive main functions of a database administrator are:
+
+e To create the scheme definition
+
+¢ To define the storage structure and access methods
+
+e To modify the scheme and/or physical organization when necessary
+¢ To grant authorization for data access
+
+¢ To specify integrity constraints
+
+Que: List six major steps that you would take in setting up a database for a particular enterprise.
+
+Ans: Si
+
+EXERCISE:
+
+Cer anesone
+
+10.
+11.
+
+ix major steps in setting up a database for a particular enterprise are:
+
+Define the high level requirements of the enterprise (this step generates a document known
+as the system requirements specification.)
+
+Define a model containing all appropriate types of data and data relationships.
+
+Define the integrity constraints on the data.
+
+Define the physical level.
+
+For each known problem to be solved on a regular basis (e.g., tasks to be carried out by
+clerks or Web users) define a user interface to carry out the task, and write the necessary
+application programs to implement the user interface.
+
+Create/initialize the database.
+
+What is database management system?
+
+What are the disadvantage of file processing system?
+
+State advantage and disadvantage of database management system.
+What are different types of database users?
+
+What is data dictionary and what are its contents?
+
+What are the functions of DBA?
+
+What are the different database languages? Explain with example.
+Explain the three layer architecture of DBMS.
+
+Differentiate between physical data independence and logical data independence.
+Explain the functions of database manager.
+
+Explain meta data.

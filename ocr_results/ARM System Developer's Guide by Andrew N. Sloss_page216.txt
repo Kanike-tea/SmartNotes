@@ -1,0 +1,59 @@
+6.9 Handling Unaligned Data 203
+
+data RN 2 — ; word aligned input data pointer
+w RN 3; data word
+
+3 int checksum_32_little(char *data, unsigned int N)
+checksum_32_little
+
+BIC data, r0, #3 ; aligned data pointer
+
+AND ow, 0, #3 byte alignment offset
+
+MOV sum, #0 initial checksum
+
+LOR pc, [pc, w, LSL#2] ; switch on alignment
+
+NOP 3 padding
+DCD —checksum_0
+DCD checksum_1
+DCD checksum_2
+DCD checksum_3
+MACRO
+CHECKSUM $alignment
+checksum_$alignment
+LOR sw, [data], #4 3 preload first value
+
+10 3 loop
+IF $alignment<>0
+ADD sum, sum, w, LSR#8*$alignment
+LOR w, [data], #4
+
+SuBS N,N, #1
+ADD sum, sum, w, LSL#32-8*$alignment
+ELSE
+
+ADD sum, sum, w
+LOR w, [data], #4
+
+SuBS N,N, #1
+ENDIF
+
+BGT  *BT10
+MOV pc, Ir
+MEND
+
+3 generate four checksum routines
+
+; one for each possible byte alignment
+CHECKSUM 0
+
+CHECKSUM 1
+
+CHECKSUM 2
+
+CHECKSUM 3
+
+You can now unroll and optimize the routines as in Section 6.6.2 to achieve the fastest
+speed. Due to the additional code size, only use the preceding technique for time-critical
+routines.

@@ -1,0 +1,50 @@
+612 Appendix A ARM and Thumb Assembler Instructions
+
+list backwards to sequentially descending memory addresses starting from address Rn
+(decrement after) or Rn — 4 (decrement before).
+
+The second half of the addressing mode mnemonics stands for the stack type you can
+implement with that address mode: Full Descending, Empty Descending, Full Ascending,
+and Empty Ascending. With a full stack, Rn points to the last stacked value. With an empty
+stack, Rn points to the first unused stack location. ARM stacks are usually full descending.
+You should use full descending or empty ascending stacks by preference, since STC also
+supports these addressing modes.
+
+Notes
+
+= For Thumb (format 2), Rn and the register list registers must be in the range r0 to r7.
+
+= The number of registers N in the list must be nonzero.
+
+= ~=Rnmust not be pe.
+
+= IfRnappears in the register list and ! (writeback) is specified, the behavior is as follows:
+If Rnis the lowest register number in the list, then the original value is stored; otherwise,
+the stored value is unpredictable.
+
+= If pcappears in the register list, then the value stored is implementation defined.
+
+"= If is specified, then the operation is modified. The processor must not be in user or
+system mode. The registers appearing in the register list refer to the user mode versions
+of the registers and writeback must not be specified.
+
+= The time order of the memory accesses may depend on the implementation. Be careful
+when using a store multiple to access I/O locations where the access order matters. If
+the order matters, then check that the memory locations are marked as I/O in the page
+tables. Do not cross page boundaries, and do not use pc in the register list.
+
+Examples
+STMIA r4!, {r0, rl} 5 *r4=r0, *(rd+4)=r1, rd+=8
+STMDB r4!, {r0, nm 3 *(rd-4)=r1, *(r4-8)=r0, r4-=8
+STMEQFD sp!, {r0, Ir} ; if (result zero) then stack r0, Ir
+STMED sp, {sp}* store sp_usr on stack sp current
+
+STR
+
+Store a single value to a virtual address in memory
+
+1. STR<cond>{ |B} Rd, [Rn {, #{-}<immed12>}]{!}  ARMv1
+2. STR<cond>{ |B} Rd, [Rn, {-}Rm {,<imm_shift>}]{!} ARMV1
+3. STR<cond>{|B}{T} Rd, [Rn], #{-}<immed12> ARM 1
+4, STR<cond>{|B}{T} Rd, [Rn], {-}Rm {,<immshift>}  ARMV1
+5. STR<cond>{H} Rd, [Rn, {, #{-}<immed8>}]{!}  ARMv4

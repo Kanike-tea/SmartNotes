@@ -1,0 +1,42 @@
+332 Chapter 9 Exception and Interrupt Handling
+
+Each mode stack must be set up. Here is an example of how to set up three different
+stacks when the processor core comes out of reset. Note that, since this is a basic example,
+we do not implement a stack for the abort, FIQ, and undefined instruction modes. If these
+stacks are required, then very similar code is used.
+
+=~ Supervisor mode stack—The processor core starts in supervisor mode so the SVC stack
+setup involves loading register r13_sve with the address pointed to by SVC_NewStack.
+For this example the value is SVC_Stack.
+
+LOR r13, SVC_NewStack 3 r13_sve
+
+SVC_NewStack
+DCD SVC_Stack
+
+= IRQ mode stack—To set up the IRQ stack, the processor mode has to change to IRQ
+mode. This is achieved by storing a cpsr bit pattern into register r2. Register r2 is then
+copied into the cpsr, placing the processor into IRQ mode. This action immediately
+makes register r13_irq viewable, and it can then be assigned the IRQ_Stack value.
+
+MOV 2, #NoInt | 1RQ32md
+MSR cpsr_c, 2
+LOR —rl3,_IRQ_NewStack 3 r13_irq
+
+1RQ_NewStack
+DCD —IRQ_Stack
+
+=~ User mode stack—It is common for the user mode stack to be the last to be set up because
+when the processor is in user mode there is no direct method to modify the cpsr. An
+alternative is to force the processor into system mode to set up the user mode stack since
+both modes share the same registers.
+
+MOV v2, #Sys32md
+MSR cpsr_c, 2
+LOR —r3,_USR_NewStack 3 r13_usr
+
+USR_NewStack
+DCD —«USR_Stack
+
+Using separate stacks for each mode rather than processing using a single stack has one
+main advantage: errant tasks can be debugged and isolated from the rest of the system.

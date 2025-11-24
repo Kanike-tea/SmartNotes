@@ -1,0 +1,16 @@
+Microcontrollers — BCS402
+
+Table 12 shows two pseudo code conversions. The first conversion produces a simple MOV
+
+instruction; the second conversion produces a pe -relative load. We recommended that you
+
+use this pseudo instruction to load a constant.
+
+Table 12: LDR pseudo instruction conversion
+
+Pseudoinstruction Actual instruction
+
+LDR r0, =0xff MOV rO, #0xff
+LDR r0, =0x55555555 LDR rd, [pc, #offset_12]
+
+Dept. of ECE, GSSSIETW Page 31

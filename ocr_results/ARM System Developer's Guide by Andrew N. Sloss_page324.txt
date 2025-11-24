@@ -1,0 +1,66 @@
+8.5 The Discrete Fourier Transform 311
+
+Example 8.17 to reduce a complex multiply to three real multiplies. With the single-cycle
+16-bit x 16-bit multiplier it is faster to implement the complex multiply in the normal way.
+This also means that we can use a Q15 coefficient table of (c, s) values, and so the transform
+is slightly more accurate than in Example 8.17. We have omitted the register allocation
+because it is the same as for Example 8.17.
+
+; Complex conjugate multiply a=(xr+i*xi)*(cr-i*ci)
+3 x = xr + i*xi (two 16-bits packed in 32-bit)
+
+3 w=cr + i*ci (two 16-bits packed in 32-bit)
+MACRO
+
+C_MUL9e $a, $x, $w
+
+SMULBT t0, $x, $w 3 xr*ci
+SMULBB $a._r, $x, $w 3 xr*cr
+SMULTB $a._i, $x, $w 3 xi*er
+SMLATT $a._r, $x, $w, $a._r 5 xr*créxi*ci
+suB_a._i, $a._i, t0 3 xi*crexr*ci
+MEND
+
+3 void fft_16 arm9e(short *y, short *x, unsigned int N)
+fft_16_arme
+
+SIMFD  sp!, {r4-rl1, Ir}
+
+MOV tO, #0 ; bit-reversed counter
+
+MVN R, #0x80000000 3 R=Ox7FFFFFFF
+first_stage_arm9e
+
+3 first stage load and bit reverse
+
+ADDS tl, x, tO, LSL#2 ; tl=&[t0] and clear carry
+
+C_LDR x0, tl, N
+
+CLDR x2, tl, N
+
+CLDR x1, tl, N
+
+CLDR x3, tl, N
+
+C_FFT4 0
+
+CSTR x0, y, #4
+
+CSTR xl, y, #4
+
+CSTR x2, y, #4
+
+CSTR y3, y, #4
+
+3 bit reversed increment modulo (N/4)
+
+RSC tO, t0, N, LSR #2 ; tO = (N/4)-tO-1
+
+cz stl, to ; find leading 1
+EORS tO, tO, R, ASR tl ; toggle bits below leading 1
+BNE first_stage_arm9e ; loop if count nonzero
+
+; finished the first stage
+SUB. x, y, N, LSL #2. 5 x = working buffer
+MOV oR, #16

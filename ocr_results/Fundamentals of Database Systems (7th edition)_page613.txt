@@ -1,0 +1,50 @@
+16.9 Other Primary File Organizations
+
+STUDENT record can have a connecting field Major_dept whose value gives the name
+of the DEPARTMENT in which the student is majoring. This Major_dept field refers to
+a DEPARTMENT entity, which should be represented by a record of its own in the
+DEPARTMENT file. If we want to retrieve field values from two related records, we
+must retrieve one of the records first. Then we can use its connecting field value to
+retrieve the related record in the other file. Hence, relationships are implemented by
+logical field references among the records in distinct files.
+
+File organizations in object DBMSs, as well as legacy systems such as hierarchical
+and network DBMSs, often implement relationships among records as physical
+relationships realized by physical contiguity (or clustering) of related records or by
+physical pointers. These file organizations typically assign an area of the disk to
+hold records of more than one type so that records of different types can be
+physically clustered on disk. If a particular relationship is expected to be used
+frequently, implementing the relationship physically can increase the system’s
+efficiency at retrieving related records. For example, if the query to retrieve a
+DEPARTMENT record and all records for STUDENTs majoring in that department is
+frequent, it would be desirable to place each DEPARTMENT record and its cluster of
+STUDENT records contiguously on disk in a mixed file. The concept of physical
+clustering of object types is used in object DBMSs to store related objects together
+in a mixed file. In data warehouses (see Chapter 29), the input data comes from a
+variety of sources and undergoes an integration initially to collect the required data
+into an operational data store (ODS). An ODS typically contains files where
+records of multiple types are kept together. It is passed on to a data warehouse after
+ETL (extract, transform and load) processing operations are performed on it.
+
+To distinguish the records in a mixed file, each record has—in addition to its field
+values—a record type field, which specifies the type of record. This is typically the
+first field in each record and is used by the system software to determine the type of
+record it is about to process. Using the catalog information, the DBMS can deter-
+mine the fields of that record type and their sizes, in order to interpret the data
+values in the record.
+
+16.9.2 B-Trees and Other Data Structures
+as Primary Organization
+
+Other data structures can be used for primary file organizations. For example, if
+both the record size and the number of records in a file are small, some DBMSs
+offer the option of a B-tree data structure as the primary file organization. We
+will describe B-trees in Section 17.3.1, when we discuss the use of the B-tree data
+structure for indexing. In general, any data structure that can be adapted to the
+characteristics of disk devices can be used as a primary file organization for
+record placement on disk. Recently, column-based storage of data has been pro-
+posed as a primary method for storage of relations in relational databases. We
+will briefly introduce it in Chapter 17 as a possible alternative storage scheme for
+relational databases.
+
+583

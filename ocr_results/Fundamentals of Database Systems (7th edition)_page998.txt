@@ -1,0 +1,62 @@
+968 — Chapter 26
+
+<trigger>
+
+<triggering events>
+<trigger event>
+<trigger action>
+
+Figure 26.3
+
+Enhanced Data Models
+
+== CREATE TRIGGER <trigger name>
+(AFTER | BEFORE ) <triggering events> ON <table name>
+
+[FOR EACH ROW]
+
+[WHEN <condition> ]
+
+<trigger actions> ;
+
+<trigger event> {OR <trigger event> }
+
+INSERT | DELETE | UPDATE [ OF <column name> { , <column name>} ]
+<PL/SQL block>
+
+A syntax summary for specifying triggers in the Oracle system (main options only).
+
+deactivation, and grouping of rules. In addition to creating rules, an active
+database system should allow users to activate, deactivate, and drop rules by
+referring to their rule names. A deactivated rule will not be triggered by the
+triggering event. This feature allows users to selectively deactivate rules for cer-
+tain periods of time when they are not needed. The activate command will
+make the rule active again. The drop command deletes the rule from the sys-
+tem. Another option is to group rules into named rule sets, so the whole set of
+rules can be activated, deactivated, or dropped. It is also useful to have a com-
+mand that can trigger a rule or rule set via an explicit PROCESS RULES com-
+mand issued by the user.
+
+The second issue concerns whether the triggered action should be executed before,
+after, instead of, or concurrently with the triggering event. A before trigger exe-
+cutes the trigger before executing the event that caused the trigger. It can be used
+in applications such as checking for constraint violations. An after trigger exe-
+cutes the trigger after executing the event, and it can be used in applications such
+as maintaining derived data and monitoring for specific events and conditions. An
+instead of trigger executes the trigger instead of executing the event, and it can be
+used in applications such as executing corresponding updates on base relations in
+response to an event that is an update of a view.
+
+A related issue is whether the action being executed should be considered as a
+separate transaction or whether it should be part of the same transaction that
+triggered the rule. We will try to categorize the various options. It is important
+to note that not all options may be available for a particular active database sys-
+tem. In fact, most commercial systems are limited to one or two of the options
+that we will now discuss.
+
+Let us assume that the triggering event occurs as part of a transaction execution.
+We should first consider the various options for how the triggering event is related
+to the evaluation of the rule’s condition. The rule condition evaluation is also
+known as rule consideration, since the action is to be executed only after consid-
+ering whether the condition evaluates to true or false. There are three main possi-
+bilities for rule consideration:

@@ -1,0 +1,48 @@
+Figure 5.18 Collision Example
+A method used to solve the problem of collision, also called collision resolution technique, is
+
+applied. The two most popular methods of resolving collisions are:
+
+1. Collision Resolution by Linear Probing (open addressing)
+
+Suppose new record R with key K is to be added to the memory table T, but that memory with H(k) = h is
+already filled, one way of avoiding collision is to design R to 1“ available location following T[h]. We
+assume that T with m location is circular so T[1] comes after T[m]. according to procedure, we search for
+record R in table T by linearly searching location T[h], T[h+1]... until we meet an empty location or
+finding R.
+
+Example: Consider a hash table of size 10. Using linear probing, insert the keys 72, 27, 36, 24, 63, 81, 92,
+and 101 into the table.
+
+Solution: Let |H(k) = k mod mj, m = 10
+
+Initially hash table will be
+0 1:2 3 4 5 67 8
+
+-l[-1[-1[-1[-1[-1[-1[-1[-i[-1
+
+H(72) = 72 mod 10 =2
+O12 3 4 5 6
+
+-1 | -1 | 72 | -1 | -1 | -1 | -1 |-1 | -1)-1
+
+H(27) = 27 mod 10 =7
+012 345 67
+
+-1 | -1 | 72 [-1 | -1 | -1 | -1 | 27 | -1] -1
+
+H(36) = 36 mod 10 =6
+O12 3 45 67
+
+-1 | -1,|72 | -1 | -1 | -1 | 36 | 27] -1 | -1
+
+-1 | -1 | 72 | -1 | 24 | -1 | 36 | 27| -1 | -1
+
+-1 | -1 | 72 | 63 | 24 | -1 | 36 | 27 | -1 | -1
+
+H(81) = 81 mod 10 =1
+Oo 12 3 4 5 6 7
+
+-1 | 81 | 72 | 63 | 24 | -1 | 36 | 27 | -1 | -1
+
+Page 4

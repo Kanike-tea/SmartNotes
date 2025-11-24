@@ -1,0 +1,52 @@
+Data Structures and Applications/BCS304 Module-1
+
+Memory allocation functions: In high level languages the data structures are fully defined
+at compile time. Modern languages like C can allocate memory at execution this feature is
+known as dynamic memory allocation.
+
+Memory usage: Four memory management functions are used with dynamic memory. malloc, calloc
+and realloc are used for memory allocation. The function free is used to return memory when it is not
+used.
+
+Heap: It is the unused memory allocated to the program When requests are made by memory
+allocating functions, memory is allocated from the heap at run time.
+
+When a malloc function is invoked requesting for memory, it allocates a block of memory that
+contains the number of bytes specified in its parameter and returns a pointer to the start of the
+allocated memory.
+
+When the requested memory is not available the pointer NULL is returned.
+
+e
+
+Example: void *malloc(sizeof(int));
+¢ The pointer returned by the malloc function can be type cast to the pointer of the required
+type by making use of type cast expressions
+
+: When memory locations allocated are no longer needed, they should be
+freed by using the predefined function free.
+
+z
+
+*
++o.
+
+>
+co}
+a
+i
+
+ao}
+Fb
+
+Pi= (int*) malloc (sizeof((int));
+
+Pf= (float *) malloc(sizeof(float));
+
+*pi= 1344;
+
+*pf= 3.14
+Printf(“integer value= %d_ float value= %f”,*pi, *pf);
+Free(pi);
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 7

@@ -1,0 +1,51 @@
+1128 Chapter 30 Database Security
+
+The term precision, when used in the security area, refers to allowing as much as
+possible of the data to be available, subject to protecting exactly the subset of data
+that is sensitive. The definitions of security versus precision are as follows:
+
+= Security: Means of ensuring that data is kept safe from corruption and that
+access to it is suitably controlled. To provide security means to disclose only
+nonsensitive data and to reject any query that references a sensitive field.
+
+= Precision: To protect all sensitive data while disclosing or making avail-
+able as much nonsensitive data as possible. Note that this definition of pre-
+cision is not related to the precision of information retrieval defined in
+Section 27.6.1.
+
+The ideal combination is to maintain perfect security with maximum precision. If
+we want to maintain security, precision must be sacrificed to some degree. Hence
+there is typically a tradeoff between security and precision.
+
+30.1.6 Relationship between Information Security
+and Information Privacy
+
+The rapid advancement of the use of information technology (IT) in industry, govern-
+ment, and academia raises challenging questions and problems regarding the protec-
+tion and use of personal information. Questions of who has what rights to information
+about individuals for which purposes become more important as we move toward a
+world in which it is technically possible to know just about anything about anyone.
+
+Deciding how to design privacy considerations in technology for the future includes
+philosophical, legal, and practical dimensions. There is a considerable overlap
+between issues related to access to resources (security) and issues related to appro-
+priate use of information (privacy). We now define the difference between security
+and privacy.
+
+Security in information technology refers to many aspects of protecting a system
+from unauthorized use, including authentication of users, information encryption,
+access control, firewall policies, and intrusion detection. For our purposes here, we
+will limit our treatment of security to the concepts associated with how well a sys-
+tem can protect access to information it contains. The concept of privacy goes
+beyond security. Privacy examines how well the use of personal information that
+the system acquires about a user conforms to the explicit or implicit assumptions
+regarding that use. From an end user perspective, privacy can be considered from
+two different perspectives: preventing storage of personal information versus ensur-
+ing appropriate use of personal information.
+
+For the purposes of this chapter, a simple but useful definition of privacy is the abil-
+ity of individuals to control the terms under which their personal information is
+acquired and used. In summary, security involves technology to ensure that infor-
+mation is appropriately protected. Security is a required building block for privacy.
+Privacy involves mechanisms to support compliance with some basic principles and
+other explicitly stated policies. One basic principle is that people should be informed

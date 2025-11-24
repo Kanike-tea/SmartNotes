@@ -1,0 +1,88 @@
+824
+
+(a)
+
+(b)
+
+Chapter 22 Database Recovery Techniques
+
+write_item, To, B, 12]
+
+istart_transaction, Tg]
+
+iwrite_item, Ts, A, 30]
+
+iwrite_item,T», D, 25]
+
+Ty and Ts are ignored because they did not reach their commit points.
+
+T, is redone because its commit point is after the last system checkpoint.
+
++ system crash
+
+An example of recovery
+using deferred update
+with concurrent
+transactions. (a) The
+READ and WRITE
+operations of four
+transactions
+
+(b) System log at the
+point of crash.
+
+qt Ta Ts Ts
+
+read_item(A) read_item(B) read_item(A) read_item(B)
+
+read_item(D) write_item(B) write_item(A) write_item(B)
+
+write_item(D) read_item(D) read_item(C) read_item(A)
+write_item(D) write_item(C) write_item(A)
+
+[start_transaction,7,]
+
+[write_item, T;, D, 20]
+
+[commit, T,]
+
+[checkpoint]
+
+[start_transaction, T,]
+
+[write_item, T,, B, 15]
+
+[write_item, T,, A, 20]
+
+[commit, T,]
+
+[start_transaction, Ty] Figure 22.3
+
+[
+
+[
+
+[
+
+[
+
+applied immediately to disk; it is just possible that some updates are applied to disk
+
+before the transaction commits.
+
+Provisions must be made for undoing the effect of update operations that have been
+applied to the database by a failed transaction. This is accomplished by rolling back
+the transaction and undoing the effect of the transaction’s write_item operations.
+Therefore, the UNDO-type log entries, which include the old value (BFIM) of the
+item, must be stored in the log. Because UNDO can be needed during recovery, these
+methods follow a steal strategy for deciding when updated main memory buffers
+can be written back to disk (see Section 22.1.3).
+
+Theoretically, we can distinguish two main categories of immediate update algorithms.
+
+1. If the recovery technique ensures that all updates of a transaction are
+recorded in the database on disk before the transaction commits, there is
+never a need to REDO any operations of committed transactions. This is
+called the UNDO/NO-REDO recovery algorithm. In this method, all updates
+by a transaction must be recorded on disk before the transaction commits, so
+that REDO is never needed. Hence, this method must utilize the steal/force

@@ -1,0 +1,52 @@
+28.2 Association Rules
+
+= Classification hierarchies. The goal is to work from an existing set of events
+or transactions to create a hierarchy of classes. Examples: (1) A population
+may be divided into five ranges of credit worthiness based on a history of
+previous credit transactions. (2) A model may be developed for the factors
+that determine the desirability of a store location on a 1-10 scale. (3) Mutual
+funds may be classified based on performance data using characteristics
+such as growth, income, and stability.
+
+= Sequential patterns. A sequence of actions or events is sought. Example: If
+a patient underwent cardiac bypass surgery for blocked arteries and an
+aneurysm and later developed high blood urea within a year of surgery, he
+or she is likely to suffer from kidney failure within the next 18 months.
+Detecting sequential patterns is equivalent to detecting associations among
+events with certain temporal relationships.
+
+= Patterns within time series. Similarities can be detected within positions of
+a time series of data, which is a sequence of data taken at regular intervals,
+such as daily sales or daily closing stock prices. Examples: (1) Stocks of a
+utility company, ABC Power, and a financial company, XYZ Securities,
+showed the same pattern during 2014 in terms of closing stock prices. (2) Two
+products show the same selling pattern in summer but a different one in
+winter. (3) A pattern in solar magnetic wind may be used to predict changes
+in Earth’s atmospheric conditions.
+
+= Clustering. A given population of events or items can be partitioned (seg-
+mented) into sets of “similar” elements. Examples: (1) An entire population
+of treatment data on a disease may be divided into groups based on the sim-
+ilarity of side effects produced. (2) The adult population in the United States
+may be categorized into five groups from most likely to buy to least likely to
+buy a new product. (3) The Web accesses made by a collection of users
+against a set of documents (say, in a digital library) may be analyzed in terms
+of the keywords of documents to reveal clusters or categories of users.
+
+For most applications, the desired knowledge is a combination of the above types.
+We expand on each of the above knowledge types in the following sections.
+
+28.2 Association Rules
+
+28.2.1 Market-Basket Model, Support, and Confidence
+
+One of the major technologies in data mining involves the discovery of association
+rules. The database is regarded as a collection of transactions, each involving a set of
+items. A common example is that of market-basket data. Here the market basket
+corresponds to the sets of items a consumer buys in a supermarket during one visit.
+Consider four such transactions in a random sample shown in Figure 28.1.
+
+An association rule is of the form X => Y, where X = {x), X, ... ,Xn},and Y= {y, y2,
+++ > Ym} are sets of items, with x; and y; being distinct items for all i and all j. This
+
+1073

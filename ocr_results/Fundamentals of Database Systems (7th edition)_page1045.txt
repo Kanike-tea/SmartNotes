@@ -1,0 +1,50 @@
+Exercises
+
+26.14. Name the main types of spatial operators and different classes of spatial queries.
+26.15. What are the properties of R-trees that act as an index for spatial data?
+26.16. Describe how a spatial join index between spatial objects can be constructed.
+26.17. What are the different types of spatial data mining?
+
+26.18. State the general form of a spatial association rule. Give an example of a spa-
+tial association rule.
+
+26.19. What are the different types of multimedia sources?
+
+26.20. How are multimedia sources indexed for content-based retrieval?
+26.21. What important features of images are used to compare them?
+26.22. What are the different approaches to recognizing objects in images?
+26.23. How is semantic tagging of images used?
+
+26.24. What are the difficulties in analyzing audio sources?
+
+26.25. What are deductive databases?
+
+26.26. Write sample rules in Prolog to define that courses with course number
+above CS5000 are graduate courses and that DBgrads are those graduate
+students who enroll in CS6400 and C$8803.
+
+26.27. Define the clausal form of formulas and Horn clauses.
+
+26.28. What is theorem proving, and what is proof-theoretic interpretation of
+rules?
+
+26.29. What is model-theoretic interpretation and how does it differ from proof-
+theoretic interpretation?
+
+26.30. What are fact-defined predicates and rule-defined predicates?
+
+26.31. What is a safe rule?
+
+26.32. Give examples of rules that can define relational operations SELECT,
+PROJECT, JOIN, and SET operations.
+
+26.33. Discuss the inference mechanism based on relational operations that can be
+applied to evaluate nonrecursive Datalog queries.
+
+Exercises
+
+26.34. Consider the COMPANY database described in Figure 5.6. Using the syntax
+of Oracle triggers, write active rules to do the following:
+a. Whenever an employee’s project assignments are changed, check if the
+total hours per week spent on the employee’s projects are less than 30 or
+greater than 40; if so, notify the employee’s direct supervisor.

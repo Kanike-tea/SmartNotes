@@ -1,0 +1,54 @@
+7.4 Schema Change Statements in SQL
+
+checks must be done by the DBMS to ensure that the changes do not affect the rest
+of the database and make it inconsistent.
+
+7.4.1. The DROP Command
+
+The DROP command can be used to drop named schema elements, such as tables,
+domains, types, or constraints. One can also drop a whole schema if it is no longer
+needed by using the DROP SCHEMA command. There are two drop behavior
+options: CASCADE and RESTRICT. For example, to remove the COMPANY database
+schema and all its tables, domains, and other elements, the CASCADE option is used
+as follows:
+
+DROP SCHEMA COMPANY CASCADE;
+
+If the RESTRICT option is chosen in place of CASCADE, the schema is dropped only
+if it has no elements in it; otherwise, the DROP command will not be executed. To
+use the RESTRICT option, the user must first individually drop each element in the
+schema, then drop the schema itself.
+
+Ifa base relation within a schema is no longer needed, the relation and its definition
+can be deleted by using the DROP TABLE command. For example, if we no longer
+wish to keep track of dependents of employees in the COMPANY database of Fig-
+ure 6.1, we can get rid of the DEPENDENT relation by issuing the following command:
+
+DROP TABLE DEPENDENT CASCADE;
+
+If the RESTRICT option is chosen instead of CASCADE, a table is dropped only if it is
+not referenced in any constraints (for example, by foreign key definitions in another
+relation) or views (see Section 7.3) or by any other elements. With the CASCADE
+option, all such constraints, views, and other elements that reference the table being
+dropped are also dropped automatically from the schema, along with the table itself.
+
+Notice that the DROP TABLE command not only deletes all the records in the table
+if successful, but also removes the table definition from the catalog. If it is desired to
+delete only the records but to leave the table definition for future use, then the
+DELETE command (see Section 6.4.2) should be used instead of DROP TABLE.
+
+The DROP command can also be used to drop other types of named schema ele-
+ments, such as constraints or domains.
+
+7.4.2 The ALTER Command
+
+The definition of a base table or of other named schema elements can be changed
+by using the ALTER command. For base tables, the possible alter table actions
+include adding or dropping a column (attribute), changing a column definition,
+and adding or dropping table constraints. For example, to add an attribute for
+keeping track of jobs of employees to the EMPLOYEE base relation in the COMPANY
+schema (see Figure 6.1), we can use the command
+
+ALTER TABLE COMPANY.EMPLOYEE ADD COLUMN Job VARCHAR(1 2);
+
+233

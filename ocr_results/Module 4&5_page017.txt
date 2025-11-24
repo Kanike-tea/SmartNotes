@@ -1,0 +1,40 @@
+Microcontrollers - BCS402
+
+e Supervisor mode stack — The processor core starts in supervisor mode so the SVC stack
+
+setup involves loading register rl3_sve with the address pointed to by SVC_NewStack.
+
+For this example the value is SVC_Stack.
+
+LDR r13, SVC_NewStack 3 rl3_svc
+
+SVC_NewStack
+DCD SVC_Stack
+
+e¢ IRQ mode stack — To set up the IRQ stack, the processor mode has to change to IRQ
+mode. This is achieved by storing a cpsr bit pattern into register r2. Register r2 is then
+copied into the cpsr, placing the processor into IRQ mode. This action immediately
+
+makes register r13_irq viewable, and it can then be assigned the IRQ_Stack value.
+
+MoV r2, #NoInt |IRQ32md
+MSR cpsr_c, r2
+LDR r13, IRQ_NewStack 3 rl3_irg
+
+IRQ_NewStack
+Deb IRQ Stack
+
+e User mode stack — It is common for the user mode stack to be the last to be set up
+because when the processor is in user mode there is no direct method to modify the cpsr.
+An alternative is to force the processor into system mode to set up the user mode stack
+
+since both modes share the same registers
+
+Mov r2, #Sys32md
+MSR cpsr_c, r2
+LDR r13, USR_NewStack 3 rl3_usr
+
+USR_NewStack
+bcd USR_Stack
+
+Dept. of ECE, GSSSIETW, Mysuru Page 18

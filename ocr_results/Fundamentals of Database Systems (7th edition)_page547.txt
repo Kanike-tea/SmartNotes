@@ -1,0 +1,49 @@
+15.2 Properties of Relational Decompositions
+
+the algorithm will be an example of a relation state r of R that satisfies the depen-
+dencies in F but does not satisfy the nonadditive join condition. Thus, this relation
+serves as a counterexample that proves that D does not have the nonadditive join
+property with respect to F. Note that the a and b symbols have no special meaning
+at the end of the algorithm.
+
+Figure 15.1(a) shows how we apply Algorithm 15.3 to the decomposition of the
+EMP_PROJ relation schema from Figure 14.3(b)into the two relation schemas
+EMP_PROJ1 and EMP_LOCS in Figure 14.5(a). The loop in step 4 of the algorithm
+cannot change any b symbols to a symbols; hence, the resulting matrix S does not
+have a row with all a symbols, and so the decomposition does not have the non-
+additive join property.
+
+Figure 15.1(b) shows another decomposition of EMP_PROJ (into EMP, PROJECT,
+and WORKS_ON) that does have the nonadditive join property, and Figure 15.1(c)
+shows how we apply the algorithm to that decomposition. Once a row consists only
+of a symbols, we conclude that the decomposition has the nonadditive join prop-
+erty, and we can stop applying the functional dependencies (step 4 in the algorithm)
+to the matrix S.
+
+15.2.4 Testing Binary Decompositions for the Nonadditive
+Join Property
+
+Algorithm 15.3 allows us to test whether a particular decomposition D into n rela-
+tions obeys the nonadditive join property with respect to a set of functional depen-
+dencies F. There is a special case of a decomposition called a binary
+decomposition—decomposition of a relation R into two relations. A test called the
+NJB property test, which is easier to apply than Algorithm 15.3 but is limited only to
+binary decompositions, was given in Section 14.5.1. It was used to do binary decom-
+position of the TEACH relation, which met 3NF but did not meet BCNF, into two
+relations that satisfied this property.
+
+15.2.5 Successive Nonadditive Join Decompositions
+
+We saw the successive decomposition of relations during the process of second and
+third normalization in Sections 14.3 and 14.4. To verify that these decompositions
+are nonadditive, we need to ensure another property, as set forth in Claim 2.
+
+Claim 2 (Preservation of Nonadditivity in Successive Decompositions). If a
+decomposition D = {Rj, Ro, ... , Rm} of R has the nonadditive (lossless) join
+property with respect to a set of functional dependencies F on R, and ifa decom-
+position Dj = {Qi, Q, ... , Q&} of R; has the nonadditive join property with
+respect to the projection of F on Rj, then the decomposition D3 = {Rj, Ro, ... 5
+Rit, Qy, QG, «-- » As Rivas «+. » Rm} Of R has the nonadditive join property with
+respect to F.
+
+517

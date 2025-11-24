@@ -1,0 +1,41 @@
+The gates are blocks of hardware that produce the equivalent of logic-1 or logic-0 output signals if input
+logic requirements are satisfied. The input signals x and y in the AND and OR gates may exist in one of
+four possible states: 00, 10, 11, or 01. These input signals are shown in Figure together with the
+corresponding output signal for each gate. The timing diagrams illustrate the idealized response of each
+gate to the four input signal combinations. The low-level represents logic 0, the high-level logic 1. The
+AND gate responds with a logic-1 output signal when both input signals are logic 1. The OR gate
+responds with a logic-1 output signal if any input signal is logic 1. The NOT gate is commonly referred
+
+to as an inverter.
+
+AND: x: y o of1{|o0 0
+OR:x + y of/i 1 11]0
+NOT: x’ 1 0 0 1 1
+
+Input-Output Signals for Gates
+
+A F=ABC
+B
+C
+
+(a) Three-input AND gate (b) Four-input OR gate
+
+G=A+B+C+D
+
+Saws
+
+Gates with Multiple Inputs
+
+AND & OR gates may have more than two inputs. An AND gate with three inputs and an OR gate with
+four inputs are shown in Figure. The three-input AND gate responds with logic | output if all three
+inputs are logic 1. The output produces logic 0 if any input is logic 0. The four-input OR gate responds
+
+with logic 1 if any input is logic 1; its output becomes logic 0 only when all inputs are logic 0.
+
+Basic Theorems & Properties of Boolean Algebra
+Duality
+
+This important property of Boolean algebra is called the duality principle and states that every algebraic
+expression deducible from the postulates of Boolean algebra remains valid if the operators and identity
+
+elements are interchanged. In a two-valued Boolean algebra, the identity elements and the elements of

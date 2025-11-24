@@ -1,0 +1,53 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees
+
+(a) oP: LE [Pn fe ee [Ka [Pres Ph LTP] [Kelso] Pe
+Tree Tree
+Y Y pointer y y pointer
+
+Tree Data Data Data Data
+pointer pointer pointer pointer pointer
+
+Tree
+
+pointer
+
+X<K, K.4<X<K; Kos
+
+() | Le lel |p] Le lel | *| Tree node pointer
+
+°
+
+Figure 17.10
+
+Brtree structures, (a) A node in a B-tree with q— 1 search values. (b) A B+tree of order p = 3. The values were
+
+inserted in the order 8, 5, 1,7, 3, 12,9, 6.
+
+Data pointer
+
+Null tree pointer
+
+621
+
+<x
+
+If deletion of a value causes a node to be less than half full, it is combined with its
+neighboring nodes, and this can also propagate all the way to the root. Hence,
+deletion can reduce the number of tree levels. It has been shown by analysis and
+simulation that, after numerous random insertions and deletions on a B-tree, the
+nodes are approximately 69% full when the number of values in the tree stabilizes.
+This is also true of B*-trees. If this happens, node splitting and combining will
+occur only rarely, so insertion and deletion become quite efficient. If the number
+of values grows, the tree will expand without a problem—although splitting of
+nodes may occur, so some insertions will take more time. Each B-tree node can
+have at most p tree pointers, p — 1 data pointers, and p — 1 search key field values
+(see Figure 17.10(a)).
+
+In general, a B-tree node may contain additional information needed by the algo-
+rithms that manipulate the tree, such as the number of entries q in the node and a
+pointer to the parent node. Next, we illustrate how to calculate the number of blocks
+and levels for a B-tree.
+
+Example 5. Suppose that the search field is a nonordering key field, and we con-
+struct a B-tree on this field with p = 23. Assume that each node of the B-tree is 69%
+full. Each node, on the average, will have p * 0.69 = 23 * 0.69 or approximately

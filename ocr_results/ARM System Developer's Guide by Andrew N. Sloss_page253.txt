@@ -1,0 +1,52 @@
+240 Chapter 7 Optimized Primitives
+
+7.4.2 SQUARE ROOT BY NEWTON-RAPHSON ITERATION
+
+The Newton-Raphson iteration for a square root actually calculates the value of d~°>. You
+may find this is a more useful result than the square root itself. For example, to normalize
+a vector (x; y) you will multiply by
+
+(7.45)
+
+yvety
+
+Ifyou do require V/d, then simply multiply d~°° by d. The equation f(x) = d—x-? =0
+has positive solution x = d~°°. The Newton-Raphson iteration to solve this equation is
+(see Section 7.3.2)
+
+Xne1 = 0.5xn(3 — dx?) (7.46)
+
+To implement this you can use the same methods we looked at in Section 7.3.2. First
+normalize d to the range 0.25 < d < 1. Then generate an initial estimate xp using a table
+lookup on the leading digits of d. Iterate the above formula until you've achieved the
+precision required for your application. Each iteration will roughly double the number of
+significant answer bits.
+
+The following code calculates a Q31 representation of the value d~°> for an input
+integer d. It uses a table lookup followed by two Newton-Raphson iterations and is accurate
+to a maximum error of 2~7?. On an ARMOE the code takes 34 cycles including the return.
+
+q RN O ; input value, estimated reciprocal root
+b RN 1 3 scratch register
+
+s RN 2 3 Normalization shift
+
+d RN 3 3 normalized input value
+
+a RN 12 3 scratch register/accumulator
+
+rsqr_32; unsigned rsqr_32(unsigned q)
+
+cLz sq ; choose shift s which is
+BIC s,s, #1 3 even such that d=(q<<s)
+MOVS d, q, LSL s 3 is 0.25<ed<1 at Q32
+ADDNE q, pc, d, LSR#25 —; table lookup on top 7 bits
+LORNEB —q,_[q, #tab-base-32] ; of d in range 32 to 127
+base BEQ div_by_zero ; divide by zero trap
+ADD qs q, #0x100 ; table stores only bottom 8 bits
+3 q is now a Q8, 9-bit estimate to 1/sqrt(d)
+SMULBB a, q, g 3 a = q*q at Q16
+Mov b, d, LSR #17 ; b= dat Q1s
+SMULWE a, a, b 3 a= d*q*g at Q15
+Mov b, q, LSL #7 ; b= qat Qis
+RSB a, a, #3<<15 3 a = (3-d*q¥q) at Q15

@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+1.1.1 Domains, Attributes, Tuples, and Relations
+
+Domain
+A domain D is a set of atomic values. By atomic we mean that each value in the domain is
+indivisible as far as the formal relational model is concerned. A common method of specifying
+a domain is to specify a data type from which the data values forming the domain are drawn. It
+is also useful to specify a name for the domain, to help in interpreting its values.
+Some examples of domains follow:
+
+= Usa_phone_numbers: The set of ten-digit phone numbers valid in the United States.
+
+= Social_security_numbers: The set of valid nine-digit Social Security numbers.
+
+= Names: The set of character strings that represent names of persons.
+
+= Employee_ages. Possible ages of employees in a company; each must be an integer
+
+value between 15 and 80.
+
+The preceding are called logical definitions of domains. A data type or format is also specified
+for each domain. For example, the data type for the domain Usa_phone_numbers can be
+declared as a character string of the form (ddd)ddddddd, where each d is a numeric (decimal)
+digit and the first three digits form a valid telephone area code. The data type for
+
+Employee_ages is an integer number between 15 and 80.
+
+Attribute
+
+An attribute Aj is the name of a role played by some domain D in the relation schema R. D is
+
+called the domain of Aj and is denoted by dom(ai).
+
+Tuple
+Mapping from attributes to values drawn from the respective domains of those attributes. Tuples
+are intended to describe some entity (or relationship between entities) in the miniworld
+Example: a tuple fora PERSON entity might be
+
+{ Name --> “smith", Gender --> Male, Age --> 25 }
+
+Relation
+
+A named set of tuples all of the same form i.e., having the same set of attributes.
+
+https://vtucode.in Page 2

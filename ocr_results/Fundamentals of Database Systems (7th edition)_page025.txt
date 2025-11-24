@@ -1,0 +1,47 @@
+Contents
+
+= part 9
+
+Transaction Processing, Concurrency Control,
+and Recovery @
+
+chapter 20 introduction to Transaction Processing
+Concepts and Theory 745
+20.1 Introduction to Transaction Processing 746
+20.2 Transaction and System Concepts 753
+20.3 Desirable Properties of Transactions 757
+20.4 Characterizing Schedules Based on Recoverability 759
+20.5 Characterizing Schedules Based on Serializability 763
+20.6 Transaction Support inSQL =773
+20.7 Summary 776
+Review Questions 777
+Exercises 777
+Selected Bibliography 779
+
+chapter 2 1 Concurrency Control Techniques 781
+21.1 Two-Phase Locking Techniques for Concurrency
+Control 782
+21.2 Concurrency Control Based on Timestamp Ordering 792
+21.3 Multiversion Concurrency Control Techniques 795
+21.4 Validation (Optimistic) Techniques and Snapshot Isolation
+
+Concurrency Control 798
+21.5 Granularity of Data Items and Multiple Granularity
+Locking 800
+
+21.6 Using Locks for Concurrency Control in Indexes 805
+21.7 Other Concurrency Control Issues 806
+
+21.8 Summary 807
+
+Review Questions 808
+
+Exercises 809
+
+Selected Bibliography 810
+
+chapter 22 Database Recovery Techniques 813
+22.1 Recovery Concepts 814
+22.2 NO-UNDO/REDO Recovery Based on Deferred
+Update 821
+22.3 Recovery Techniques Based on Immediate Update 823

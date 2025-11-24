@@ -1,0 +1,45 @@
+7.4 Square Roots 239
+
+unsigned t, q=0, r=d;
+
+do
+{ /* calculate next quotient bit */
+/* move down to next bit */
+= 2*qgt(1<<N); /* new r = old r - (t<<N) */
+if ( (ra>N) = tt) /* if (>= (t<<N)) */
+{
+r == (t<<N); /* update remainder */
+q t= (1<<N); /* update root */
+}
+} white (N);
+return q;
+}
+
+Use the following optimized assembly to implement the preceding algorithm in
+only 50 cycles including the return. The trick is that register q holds the value
+(1 << 30) | (q>> (N+ 1)) before calculating bit N of the answer. If we rotate this value
+left by 2N + 2 places, or equivalently right by 30 — 2N places, then we have the value
+t <N, used earlier for the trial subtraction.
+
+q RN O 3 input value, current square root estimate
+r RN 1 ; the current remainder
+c RN 2 3 scratch register
+
+usqr_32 ; unsigned usqr_32(unsigned q)
+
+SUBS r, q, #1<<30 3 is q>=(1<<15)42?
+ADDCC r, ry #1<<30 ; if not restore
+MoV c, #3<<30 3 ¢ is a constant
+ADC qc, #1<<31 3 set bit 15 of answer
+3 calculate bits 14..0 of the answer
+GBLA N
+N SETA 14
+WHILE N<>-1
+cMP r, q, ROR #(30-2*N) sis r >= t<<N?
+SUBCS rr, r, q, ROR #(30-2*N) 5 if yes then r -= t<<N;
+ADC q. c, q, LSL#1 3 insert next bit of answer
+N SETA (N-1)
+WEND
+BIC q, q, #3<<30 3 extract answer
+
+Mov pc, Ir

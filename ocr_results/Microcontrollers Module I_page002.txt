@@ -1,0 +1,51 @@
+Microcontrollers-BCS402
+
+is a fixed length to allow the pipeline to fetch future instructions before decoding the current
+instruction. But in CISC processors the instructions are often of variable size and take many
+
+cycles to execute.
+
+Pipelines— The processing of instructions is broken down into smaller units that can be
+executed in parallel by pipelines. For maximum throughput pipeline advances one step on
+each cycle. Instructions can be decoded in one pipeline stage. But in CISC processor
+
+instructions are divided as microcoded instructions.
+
+Registers—RISC machines have a large general-purpose register set. Any register can
+contain either data or an address. Registers act as the fast local memory store for all data
+processing operations. In contrast, CISC processors have dedicated registers for specific
+
+purposes.
+
+Load-store architecture— The processor operates on data held in registers. Separate load and
+store instructions transfer data between the register bank and external memory. Memory
+accesses are costly, so separating memory accesses from data processing provides an
+
+advantage because data items held in the register bank can be accessed multiple times without
+
+need of multiple memory accesses. But in CISC design the data processing operations can act
+
+on memory directly.
+
+3. The ARM Design Philosophy
+
+The ARM processor specifically designed to be small to reduce power consumption and
+extend battery operation—essential for applications such as mobile phones and personal
+
+digital assistants (PDAs).
+
+High code density is another major requirement since embedded systems have limited
+memory due to cost and/or physical size restrictions. High code density is useful for
+applications that have limited on-board memory, such as mobile phones and mass storage
+
+devices.
+
+Embedded systems are price sensitive and use slow and low-cost memory devices. The
+
+ability to use low-cost memory devices produces substantial savings.
+
+Another important requirement is to reduce the area of the die taken up by the embedded
+
+processor. For a single-chip solution, the smaller the area used by the embedded processor,
+
+Dept. of ECE, GSSSIETW Page 3

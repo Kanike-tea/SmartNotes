@@ -1,0 +1,53 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+RECURSIVE ALGORITHMS
+
++ A function calls itself either directly or indirectly during execution.
+
++ Recursive-algorithms when compared to iterative-algorithms are normally compact and
+easy to understand.
+
+¢ Various types of recursion:
+
+1) Direct recursion: where a recursive-function invokes itself.
+2) Indirect recursion: A function which contains a call to another function which in
+
+turn calls another function and so on and eventually calls the first function.
+
+void f1() void £2() void £3()
+{ { {
+
+£2()7 £3(); £1);
+} } }
+
+For example:
+1. FACTORIAL
+
+“The product of the positive integers from 1 to n, is called "n factorial" and is denoted by
+nl? n! =1*2 * 3. (n-2)*(n - 1)*n
+It is also convenient to define 0! =1, so that the function is defined for all nonnegative
+integers.
+Definition: (Factorial Function)
+a) If n=0,then n! =1.
+b) If n>0, then n! = n*(n +1)!
+
+Observe that this definition of n! is recursive, since it refers to itself when it uses (n - 1)!
+(a) The value of nhis explicitly given when n=0 (thus 0 is the base value)
+
+(b) The value of n! for arbitrary nis defined in terms of a smaller value of n which is
+closer to the base value 0.
+
+The following are two procedures that each calculate n factorial .
+
+Using for loop: This procedure evaluates N! using an iterative loop process
+Procedure: FACTORIAL (FACT, N)
+
+This procedure calculates N! and returns the value in the variable FACT.
+
+If N =0, then: Set FACT: = 1, and Return.
+
+Set FACT: = 1. [Initializes FACT for loop.]
+
+Repeat for K = 1 to N.
+
+vtucode.in 9

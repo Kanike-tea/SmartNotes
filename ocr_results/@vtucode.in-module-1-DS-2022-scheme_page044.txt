@@ -1,0 +1,78 @@
+DATA STRUCTURES-BCS304
+
+MODULE 1
+
+Token Operator Precedence | Associativity
+
+6) function call 17 left-to-right
+
+{] array element
+
+—_> struct or union member
+
++ Increment, Decrement 16 left-to-right
+
+t+ decrement, increment 15 right-to-left
+
+! logical not
+
+~ one's complement
+
++ unary minus or plus
+
+&* address or indirection
+
+sizeof size (in bytes)
+
+(type) type cast 14 right-to-left
+
+*/% Multiplicative 13 left-to-right
+
++- binary add or subtract 12 left-to-ight
+
+<< >> shift 11 left-to-right
+
+>> relational 10 left-to-right
+equality 9 left-to-nght
+
+& Bitwise and 8 left-to-right
+
+“ bitwise exclusive or 7 left-to-nght
+
+| Bitwise or 6 left-to-nght
+
+&& logical and. 5 left-to-nght
+
+ll logical or 4 left-to-right
+
+?: conditional 3 right-to-left
+
+=+=-= /=*=%= | assignment 2 right -to-left
+
+<<= >>= &="=[=
+
+> 1 left-to-right
+
+e The operators are arranged from highest precedence to lowest. Operators with
+
+highest precedence are evaluated first.
+
+e The associativity column indicates how to evaluate operators with the same
+
+precedence. For example, the multiplicative operators have left-to-right
+
+associativity. This means that the expression a * b / c % d/e is equivalent to (
+
+(((a*b)/c) %d)/e)
+
+e Parentheses are used to override precedence, and expressions are always evaluated
+
+from the innermost parenthesized expression first
+
+INFIX TO POSTFIX CONVERSION
+
+An algorithm to convert infix to a postfix expression as follows:
+
+vtucode.in
+
+45

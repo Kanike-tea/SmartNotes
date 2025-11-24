@@ -1,0 +1,62 @@
+Data Structures and Applications/BCS304 Modul
+
+Self-Referential Structures: A self-referential structure is one in which one or more of its
+data member is a pointer to itself. They require dynamic memory allocation (malloc and free)
+to explicitlyobtain and release memory.
+
+Example:
+typedef struct list {
+int data;
+list *link ;
+ms
+
+e Each instance of the structure list will have two components, data and link. data is a single
+character, while link is a pointer to a list structure.
+e The value of link is either the address in memory of an instance of list or the null pointer.
+
+Consider these statements, which create three structures and assign values to their respective fields:
+list item1, item2, item3;
+
+item1.data = 5
+
+item2.data= 10
+
+item3.data = 15
+
+item] link = item2.link = item3.link = NULL;
+
+We can attach these structures together by replacing the null link field in item 2 with one that points
+to item 3 and by replacing the null link field in item 1 with one that points to item 2.
+item1 link = &item2; item2.link = &item3;
+
+Unions: A union is a user-defined data type that can store related information that may be of
+different data types or same data type, but the fields of a union must share their memory
+space. This means that only one field of the union is "active" at any given time.
+
+Example1: Suppose a program uses either a number that is int or float we can define a union as
+
+Union num
+t :
+int a;
+float b;
+Bb
+
+Union num nl;
+Now we can store values as nl.a=5 or n2.b= 3.14 only one member is active at a point of time.
+
+Pointer variables, Declaration and Definition
+© Pointer variable is a variable that stores the address of another variable.
+e Declaring Pointer variables
+A variable can be declared as a pointer variable by using an indirection operator(*)
+Syntax: type * identifier; _// type signifies the type of the pointer variable
+For example
+char *p;
+int *m;
+//The variable p is declared as a pointer variable of type character. The variable m is declared as a
+pointer variable of type integer.
+
+Initialization of pointer variables: Uninitialized variables have unknown garbage values stored in
+them, similarly uninitialized pointer variables will have uninitialized memory address stored inside
+them which may be interpreted as a memory location, and may lead to runtime error.
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 4

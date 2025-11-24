@@ -1,0 +1,66 @@
+226 Chapter 7 Optimized Primitives
+
+BMI udiv_by_large_d 3 09 : large d trap
+SMLAWT oq, q, a, q 3 10 : q approx q-(q*q*d>>32)
+TEQ m, m, ASR#1 3 11: check for d=0 or d=1
+
+3 2nd Newton iteration follows
+
+MULNE a, q, m 3 12: a= -q*d
+
+MOVNE s, #0 3 13:5=0
+
+SMLALNE s, q, a, q 3 14: q = g-(q*q*d>>32)
+
+BEQ udiv_by 0 orl 3 15 : trap d=0 or d=1
+
+3 q now accurate enough for a remainder r, O<=r<3*d
+
+UMULL os, q, r, q 3 16: q = (r*q) >>32
+
+ADD ry, r,m 3 17: re ned
+MLA rq, mr 318 : r = n-(qgtl)*d
+
+3 since 0 <= n-q*d < 3*d, thus -d <= r < 2*d
+
+MN rym 3 19: t= red
+
+SUBCS or, r, m 3 20: if (t<-d || t>=0) r=rtd
+ADDCC oq, q, #1 3 21: if (-d<=t 8& t<0) g=q+tl
+ADDPL =r, r, m, LSL#1 3 22: if (t>=0) { r=r-2*d
+ADDPL q, q, #2 323: q=qt2 }
+
+BX Ir 3 24: return {q, r}
+
+udiv_by_large_d
+3 at this point we know d >= 24(31-6)=2%25
+
+suB a, a, #4 3 25: set q to be an
+RSB s, 8, #0 3 26 : underestimate of
+Mov q a, LSR s 3 27: (1<<32)/d
+
+UMULL os, q, 7, q 3 28 : q = (n¥q) >>32
+MLA rq, mr 3 29: r= n-gtd
+
+3 q now accurate enough for a remainder r, O<=r<d*d
+cMN m, ry LSR#L 330: if (r/2 >= d)
+ADDCS or, r, m, LSL#1 331: { rer-2*d;
+ADDCS q, q, #2 332: qzqt2; }
+
+cMN mor 333: if (r >= d)
+ADDCS or, rym 334: { rer-ds
+
+ADDCS q, q, #1 335: qeqtl; }
+
+BX Ir 3 36: return {q, r}
+
+udiv_by_0.or_1
+3 carry set if d=, carry clear if d=0
+
+MOvCS q, r 337: if (d==1) { gen;
+moves r, #0 ; 38 r=0; }
+movec q, #-1 339: if (d==0) { qe-1;
+Movcc or, #-1 ; 40 =-1; }
+BX Ir 3 41: return {q,r}
+
+3 table for 32 by 32 bit Newton Raphson divisions

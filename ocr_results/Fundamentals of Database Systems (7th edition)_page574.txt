@@ -1,0 +1,54 @@
+544
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Flash memories are high-density, high-performance memories using EEPROM
+(electrically erasable programmable read-only memory) technology. The advantage
+of flash memory is the fast access speed; the disadvantage is that an entire block
+must be erased and written over simultaneously. Flash memories come in two types
+called NAND and NOR flash based on the type of logic circuits used. The NAND
+flash devices have a higher storage capacity for a given cost and are used as the data
+storage medium in appliances with capacities ranging from 8 GB to 64 GB for the
+popular cards that cost less than a dollar per GB. Flash devices are used in cameras,
+MP3/MP4 players, cell phones, PDAs (personal digital assistants), and so on. USB
+(universal serial bus) flash drives or USB sticks have become the most portable
+medium for carrying data between personal computers; they have a flash memory
+
+storage device integrated with a USB interface.
+
+Optical Drives. The most popular form of optical removable storage is CDs (com-
+pact disks) and DVDs. CDs have a 700-MB capacity whereas DVDs have capacities
+ranging from 4.5 to 15 GB. CD-ROM(compact disk - read only memory) disks
+store data optically and are read by a laser. CD-ROMs contain prerecorded data
+that cannot be overwritten. The version of compact and digital video disks called
+CD-R (compact disk recordable) and DVD-R or DVD+R, which are also known as
+WORM (write-once-read-many) disks, are a form of optical storage used for
+archiving data; they allow data to be written once and read any number of times
+without the possibility of erasing. They hold about half a gigabyte of data per disk
+and last much longer than magnetic disks.* A higher capacity format for DVDs
+called Blu-ray DVD can store 27 GB per layer, or 54 GB in a two-layer disk. Optical
+jukebox memories use an array of CD-ROM platters, which are loaded onto drives
+on demand. Although optical jukeboxes have capacities in the hundreds of giga-
+bytes, their retrieval times are in the hundreds of milliseconds, quite a bit slower
+than magnetic disks. This type of tertiary storage is continuing to decline because
+of the rapid decrease in cost and the increase in capacities of magnetic disks. Most
+personal computer disk drives now read CD-ROM and DVD disks. Typically,
+drives are CD-R (compact disk recordable) that can create CD-ROMs and audio
+
+CDs, as well as record on DVDs.
+
+Magnetic Tapes. Finally, magnetic tapes are used for archiving and backup stor-
+age of data. Tape jukeboxes—which contain a bank of tapes that are catalogued
+and can be automatically loaded onto tape drives—are becoming popular as tertiary
+storage to hold terabytes of data. For example, NASA’s EOS (Earth Observation
+
+Satellite) system stores archived databases in this fashion.
+
+Many large organizations are using terabyte-sized databases. The term very large
+database can no longer be precisely defined because disk storage capacities are on
+
+3Their rotational speeds are lower (around 400 rpm), giving higher latency delays and low transfer
+rates (around 100 to 200 KB/second) for a 1X drive. nX drives (e.g, 16X (n = 16) are supposed to
+give n times higher transfer rate by multiplying the rpm n times. The 1X DVD transfer rate is about
+
+1.385 MB/s.

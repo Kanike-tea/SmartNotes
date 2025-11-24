@@ -1,0 +1,47 @@
+Lastly, consider the graph L, which is a path consisting of n vertices V1, V2... ++ ¥m
+
+Vat
+oy oma
+v2 ‘
+4 ‘.
+vy bain) M4 ‘ Yn
+
+Figure 2.45
+
+colour, but can be properly coloured
+
+This graph cannot be properly coloured with one
+h 2 colours - by assigning one colour to vj, V3, V5» -- and another colour to v2, V4, Y6+~- =
+spose there are A > 2 number of colours available. ‘Then, for a proper colouring of the graph.
+povrtex vi can be assigned any one of the 2 colours and each of the remaining vertices can
+assigned any one of A — 1 colours. (Bear in mind that alternative vertices can have the same
+our). Thus, the graph L» can be properly coloured in A(A = 1)" different ways.
+
+The number of different | ways of properly colouring a graph G with A+ number of colours
+examples, we note
+
+denoted by P(G, a). Thus, from what is seen in the above three illustrate
+
+(i) P(Na, A) = 4
+
+fii) P(Kn,a) =0 if A<n,
+
+P(K,,a)=1 if A=n, and
+
+PUK A) = a= Na= 2)...A- n+l) if A>n,
+
+(iii) Pll, a=aa-1 ‘if a22:
+
+We ee that in cach ofthe ove aes, VG.) a pola Motivated by these
+es, we take that P(G, a) is a polynomial for all graphs G. This polynomial is called the
+omatic Polynomial.
+
+(Thus, the chromatic polynomial P(G, a) of a graph G represents the number of ways of
+operly colouring G with A number of colours. i a
+It follows that if a graph G is made up of n parts G1, Go,..-Gn, then P(G, A) is given by
+
+following Product Rule: vita) io ge
+sath dige :
+PG, a) = PGi,A)- P(Gard).- ma 7
+
+In particular, if G is made up of two p

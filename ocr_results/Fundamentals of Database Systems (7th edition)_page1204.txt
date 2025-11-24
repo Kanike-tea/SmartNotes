@@ -1,0 +1,52 @@
+1174 Appendix C Overview of the QBE Language
+
+Figure C.3 WORKS_ON
+Specifying complex conditions (gy
+in OBE. (a) The query QOA.
+
+Essn_ | Pno | Hours
+
+(b) The query QOB with a P. 7 20
+condition box. (c) The query
+Q0B without a condition box. WORKS_ON
+
+(b) | Essn | Pno | Hours
+P. —PX | _HX
+
+CONDITIONS
+_HX > 20 and (PX = 1 or PX = 2)
+
+WORKS_ON
+
+(c) | Essn | Pno | Hours
+P. 1 > 20
+P. 2 >20
+
+For example, the query QOB: List the social security numbers of employees who work
+more than 20 hours per week on either project 1 or project 2 can be specified as shown
+in Figure C.3(b).
+
+Some complex conditions can be specified without a condition box. The rule is that
+all conditions specified on the same row of a relation template are connected by the
+and logical connective (all must be satisfied by a selected tuple), whereas conditions
+specified on distinct rows are connected by or (at least one must be satisfied). Hence,
+QOB can also be specified, as shown in Figure C.3(c), by entering two distinct rows
+in the template.
+
+Now consider query QOC: List the social security numbers of employees who work on
+both project 1 and project 2; this cannot be specified as in Figure C.4(a), which lists
+those who work on either project 1 or project 2. The example variable _ES will bind
+itself to Essn values in <-, 1, -> tuples as well as to those in <-, 2, -> tuples. Fig-
+ure C.4(b) shows how to specify QOC correctly, where the condition (_EX = _EY) in
+the box makes the _EX and _EY variables bind only to identical Essn values.
+
+In general, once a query is specified, the resulting values are displayed in the template
+under the appropriate columns. If the result contains more rows than can be displayed
+on the screen, most QBE implementations have function keys to allow scrolling up
+and down the rows. Similarly, ifa template or several templates are too wide to appear
+on the screen, it is possible to scroll sideways to examine all the templates.
+
+A join operation is specified in QBE by using the same variable” in the columns to
+be joined. For example, the query Q1: List the name and address of all employees who
+
+2A variable is called an example element in QBE manuals.

@@ -1,0 +1,82 @@
+12.19.
+
+12.20.
+
+12.21.
+
+12.22.
+
+12.23.
+
+12.24,
+
+Why are the concepts of extents and keys important in database applica-
+tions?
+
+Describe the following OQL concepts: database entry points, path expressions,
+iterator variables, named queries (views), aggregate functions, grouping,
+and quantifiers.
+
+What is meant by the type orthogonality of OQL?
+
+Discuss the general principles behind the C++ binding of the ODMG
+standard.
+
+What are the main differences between designing a relational database and
+an object database?
+
+Describe the steps of the algorithm for object database design by EER-to-
+OO mapping.
+
+Exercises
+
+12.25.
+
+12.26.
+
+12.27.
+
+12.28.
+
+12.29.
+
+12.30.
+
+12.31.
+
+12.32.
+
+Convert the example of GEOMETRY_OBJECTs given in Section 12.1.5 from
+the functional notation to the notation given in Figure 12.2 that distin-
+guishes between attributes and operations. Use the keyword INHERIT to
+show that one class inherits from another class.
+
+Compare inheritance in the EER model (see Chapter 4) to inheritance in the
+OO model described in Section 12.1.5.
+
+Consider the UNIVERSITY EER schema in Figure 4.10. Think of what opera-
+tions are needed for the entity types/classes in the schema. Do not consider
+constructor and destructor operations.
+
+Consider the COMPANY ER schema in Figure 3.2. Think of what operations
+are needed for the entity types/classes in the schema. Do not consider con-
+structor and destructor operations.
+
+Design an OO schema for a database application that you are interested in.
+Construct an EER schema for the application, and then create the corre-
+sponding classes in ODL. Specify a number of methods for each class, and
+then specify queries in OQL for your database application.
+
+Consider the AIRPORT database described in Exercise 4.21. Specify a num-
+ber of operations/methods that you think should be applicable to that appli-
+cation. Specify the ODL classes and methods for the database.
+
+Map the COMPANY ER schema in Figure 3.2 into ODL classes. Include
+appropriate methods for each class.
+
+Specify in OQL the queries in the exercises of Chapters 6 and 7 that apply to
+the COMPANY database.
+
+Exercises
+
+421

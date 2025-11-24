@@ -1,0 +1,53 @@
+5.2 Relational Model Constraints and Relational Database Schemas
+
+Integrity constraints are specified on a database schema and are expected to hold on
+every valid database state of that schema. In addition to domain, key, and NOT NULL
+constraints, two other types of constraints are considered part of the relational
+model: entity integrity and referential integrity.
+
+5.2.4 Entity Integrity, Referential Integrity, and Foreign Keys
+
+The entity integrity constraint states that no primary key value can be NULL. This is
+because the primary key value is used to identify individual tuples in a relation. Hav-
+ing NULL values for the primary key implies that we cannot identify some tuples. For
+example, if two or more tuples had NULL for their primary keys, we may not be able
+to distinguish them if we try to reference them from other relations.
+
+Key constraints and entity integrity constraints are specified on individual relations.
+The referential integrity constraint is specified between two relations and is used to
+maintain the consistency among tuples in the two relations. Informally, the referen-
+tial integrity constraint states that a tuple in one relation that refers to another rela-
+tion must refer to an existing tuple in that relation. For example, in Figure 5.6, the
+attribute Dno of EMPLOYEE gives the department number for which each employee
+works; hence, its value in every EMPLOYEE tuple must match the Dnumber value of
+some tuple in the DEPARTMENT relation.
+
+To define referential integrity more formally, first we define the concept of a foreign
+key. The conditions for a foreign key, given below, specify a referential integrity
+constraint between the two relation schemas R, and Rp. A set of attributes FK in
+relation schema R, is a foreign key of R, that references relation R; if it satisfies the
+following rules:
+
+1. The attributes in FK have the same domain(s) as the primary key attributes
+PK of R,; the attributes FK are said to reference or refer to the relation R.
+
+2. A value of FK ina tuple ) of the current state r;(R;) either occurs as a value
+of PK for some tuple f, in the current state r(R2) or is NULL. In the former
+case, we have t,[FK] = f,[PK], and we say that the tuple f; references or
+refers to the tuple fy.
+
+In this definition, R; is called the referencing relation and R, is the referenced
+relation. If these two conditions hold, a referential integrity constraint from Rj to
+Rj is said to hold. In a database of many relations, there are usually many referential
+integrity constraints.
+
+To specify these constraints, first we must have a clear understanding of the mean-
+ing or role that each attribute or set of attributes plays in the various relation sche-
+mas of the database. Referential integrity constraints typically arise from the
+relationships among the entities represented by the relation schemas. For example,
+consider the database shown in Figure 5.6. In the EMPLOYEE relation, the attribute
+Dno refers to the department for which an employee works; hence, we designate Dno
+to bea foreign key of EMPLOYEE referencing the DEPARTMENT relation. This means
+that a value of Dno in any tuple f; of the EMPLOYEE relation must match a value of
+
+163

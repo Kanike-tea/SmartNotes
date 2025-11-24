@@ -1,0 +1,52 @@
+590
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+flexibility, and performance. Such devices typically support RAID levels 0, 1, and 5.
+Traditional storage area networks (SANs) differ from NAS in several ways. Specifi-
+cally, SANs often utilize Fibre Channel rather than Ethernet, and a SAN often
+incorporates multiple network devices or endpoints on a self-contained or private
+LAN, whereas NAS relies on individual devices connected directly to the existing
+public LAN. Whereas Windows, UNIX, and NetWare file servers each demand
+specific protocol support on the client side, NAS systems claim greater operating
+system independence of clients. In summary, NAS provides a file system interface
+with support for networked files using protocols such as common internet file sys-
+tem (CIFS) or network file system (NFS).
+
+16.11.3 iSCSI and Other Network-Based Storage Protocols
+
+A new protocol called iSCSI (Internet SCSI) has been proposed recently. It is a
+block-storage protocol like SAN. It allows clients (called initiators) to send SCSI
+commands to SCSI storage devices on remote channels. The main advantage of
+iSCSI is that it does not require the special cabling needed by Fibre Channel and it
+can run over longer distances using existing network infrastructure. By carrying
+SCSI commands over IP networks, iSCSI facilitates data transfers over intranets
+and manages storage over long distances. It can transfer data over local area net-
+works (LANs), wide area networks (WANs), or the Internet.
+
+iSCSI works as follows. When a DBMS needs to access data, the operating system
+generates the appropriate SCSI commands and data request, which then go through
+encapsulation and, if necessary, encryption procedures. A packet header is added
+before the resulting IP packets are transmitted over an Ethernet connection. When
+a packet is received, it is decrypted (if it was encrypted before transmission) and
+disassembled, separating the SCSI commands and request. The SCSI commands go
+via the SCSI controller to the SCSI storage device. Because iSCSI is bidirectional,
+the protocol can also be used to return data in response to the original request.
+Cisco and IBM have marketed switches and routers based on this technology.
+
+iSCSI storage has mainly impacted small- and medium-sized businesses because
+of its combination of simplicity, low cost, and the functionality of iSCSI devices. It
+allows them not to learn the ins and outs of Fibre Channel (FC) technology and
+instead benefit from their familiarity with the IP protocol and Ethernet hardware.
+iSCSI implementations in the data centers of very large enterprise businesses are
+slow in development due to their prior investment in Fibre Channel-based SANs.
+
+iSCSI is one of two main approaches to storage data transmission over IP networks.
+The other method, Fibre Channel over IP (FCIP), translates Fibre Channel control
+codes and data into IP packets for transmission between geographically distant
+Fibre Channel storage area networks. This protocol, known also as Fibre Channel
+tunneling or storage tunneling, can only be used in conjunction with Fibre Channel
+technology, whereas iSCSI can run over existing Ethernet networks.
+
+The latest idea to enter the enterprise IP storage race is Fibre Channel over
+Ethernet (FCoE), which can be thought of as iSCSI without the IP. It uses many

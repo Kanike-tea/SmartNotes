@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+DYNAMICALLY ALLOCATED ARRAYS ONE-DIMENSIONAL ARRAYS
++ When writing programs, sometimes we cannot reliably determine how large an array must
+be.
++ A good solution to this problem is to
+— defer this decision to run-time &
+— allocate the array when we have a good estimate of required array-size
+
++ Dynamic memory allocation can be performed as follows:
+
+int i,n,*list;
+printf ("enter the number of numbers to generate");
+scanf ("%d", &n);7
+£(n<1)
+{
+printf ("improper value");
+exit (0);
+t
+MALLOC (list, n*sizeof(int));
+
+* The above code would allocate an array of exactly the required size and hence would not
+
+result in any wastage.
+
+TWO DIMENSIONAL ARRAYS
++ These are created by using the concept of array of arrays.
++ A 2-dimensional array is represented as a.1-dimensional array in which each element has a
+pointer to a 1-dimensional array as shown below
+int x[5][7]; //we create a 1-dimensional array x whose length is 5;
+/leach element of x is a 1-dimensional array whose length is 7.
+
++ Address of x{i][j] = x[i]+)*sizeof(int)
+
+array:
+
+(IT TTTtT)
+(LTT)
+CITI TI
+
+FIG: Array-of-arrays representation
+
+vtucode.in 18

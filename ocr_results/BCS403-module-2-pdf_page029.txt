@@ -1,0 +1,61 @@
+i Habe Management System [ECO
+
+Table 6.1 Operations of Relational Algebra
+
+OPERATION PURPOSE NOTATION
+SELECT Selects all tuples that satisfy the selection condition CAE oda)
+from a relation R.
+PROJECT Produces a new relation with only some of the attrib- 1 (R)
+- ‘<attribute list>
+
+utes of R, and removes duplicate tuples.
+
+THETA JOIN Produces all combinations of tuples from R, and R, Ri
+
+R,
+that satisfy the join condition. 7
+
+<join condition>
+
+EQUUOIN Produces all the combinations of tuples from R, and Ry Poin condietons Rar OR
+R, that satisfy a join condition with only equality Ry? (join atrioates ta
+comparisons. (join attributas 2) Bea
+
+NATURAL JOIN Same as EQUIJOIN except that the join attributes of Ry Ry¥ hs condition» Ro
+are not included in the resulting relation; if the join PM aioin ales
+attributes have the same names, they do not have to Rs,
+be specified at all. ORR,» R,
+
+UNION Produces a relation that includes all the tuples in R, R, UR,
+or R, or both R, and R,; R, and R, must be union 7
+compatible.
+
+INTERSECTION Produces a relation that includes.all the tuples in both R, 0 R,
+R, and R,; R, and R, must be union compatible. 7
+
+DIFFERENCE Produces a relation that includes all the tuples in R, R,-R,
+that are not in R,; R, and R, must be union compatible.
+CARTESIAN Produces a relation that has the attributes of R, and R, XR,
+
+PRODUCT R, and includes as tuples all possible combinations of
+tuples from R, and R;.
+
+DIVISION Produces afelation R(X) that includes all tuples |X] R,(Z) + RY)
+in R,(Z) that appear in R, in combination with every
+tuple from R,(Y), where Z=X WU Y.
+
+2.4.5 Notation for Query Trees
+
+Query tree (query evaluation tree or query execution tree) is used in relational systems to represent
+queries internally. A query tree is a tree data structure that corresponds to a relational algebra
+expression. It represents the input relations of the query as leaf nodes of the tree, and represents the
+
+relational algebra operations as internal nodes.
+
+An execution of the query tree consists of executing an internal node operation whenever its
+operands represented by its child nodes are available, and then replacing that internal node by the
+relation that results from executing the operation. The execution terminates when the root node is
+
+executed and produces the result relation for the query.
+
+https://vtucode.in Page 30

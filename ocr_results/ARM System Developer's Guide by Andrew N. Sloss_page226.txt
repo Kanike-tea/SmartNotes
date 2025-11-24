@@ -1,0 +1,99 @@
+CLZ
+MOV
+MOV
+
+7.2. Integer Normalization and Count Leading Zeros 213
+
+shift, x
+x, x, LSL shift
+pc, Ir
+
+3 left shift to normalize
+3 normalize
+
+; _value_in_regs struct { signed x; int shift; }
+3 unorm_arm9e(signed x)
+
+snorm_arm9e
+EOR
+CLZ
+MOV
+MOV
+
+shift, x, x, LSL#1
+shift, shift
+
+x, x, LSL shift
+pc, Ir
+
+3 ETsssl-sxx...]
+> T001x xx... ]
+3 left shift to normalize
+3 normalize
+
+Note that we reduce the signed norm to an unsigned norm using a logical exclusive OR.
+If xis signed, then x*(x« 1) has the leading one in the position of the first sign bit in x.
+
+7.2.2 NORMALIZATION ON ARMv4
+
+If you are using an ARMv4 architecture processor such as ARM7TDMI or ARM9TDMI,
+then there is no CLZ instruction available. Instead we can synthesize the same functionality.
+The simple divide-and-conquer method in unorm_arm/7m gives a good trade-off between
+performance and code size. We successively test to see if we can shift x left by 16, 8, 4, 2,
+and 1 places in turn.
+
+3 _value_in_regs struct { unsigned x; int shift; }
+3 unorm_arm/m(unsigned x)
+
+unorm_arm7m
+MOV
+cMP
+MOVCC
+ADDCC
+TST
+MOVEQ
+ADDEQ
+TST
+MOVEQ
+ADDEQ
+TST
+MOVEQ
+ADDEQ
+TST
+ADDEQ
+MOVEQS
+
+shift, #0
+x, #1<<16
+
+x, x, LSL#16
+shift, shift, #16
+x, #0xFF000000
+x, x, LSL#8
+shift, shift, #8
+x, #0xF0000000
+x, x, LSL#G
+shift, shift, #4
+x, #0xC0000000
+x, x, LSL#2
+shift, shift, #2
+x, #0x80000000
+shift, shift, #1
+x, x, LSL#L
+
+shift=0;
+if (x < (1<<16))
+{x = x<<16;
+shift+=16; }
+if (x < (1<<24))
+{ x = x<<8;
+shift+=8; }
+if (x < (1<<28))
+{x = x<<4;
+shiftt=4; }
+if (x < (1<<30))
+{ x = x<<2;
+shiftt+=2; }
+if (x < (1<<31))
+{ shiftt=1;
+x<<=l1;

@@ -1,0 +1,46 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+8. If result is not None, indicating that the calculation was successful and n is a valid input,
+the program prints a message indicating the position and value of the calculated
+
+Fibonacci term.
+
+The Fibonacci sequence is a series of numbers where each term is the sum of the two preceding
+terms. The program uses recursion to calculate the Fibonacci terms based on the position
+
+provided by the user. Note that for large values of n, the recursive approach may become
+
+inefficient.
+
+PROGRAM
+
+def fibonacci(n):
+if n <= 0:
+
+print ("Error: N must be greater than 0.")
+return None
+elif n == 1:
+return 0
+elif n == 2:
+return 1
+else:
+return fibonacci(n-1) + fibonacci(n-2)
+n = int(input("Enter a value for N: "))
+result = fibonacci (n)
+if result is not None:
+print("The", n, "th term of the Fibonacci sequence is", result
+
+OUTPUT
+
+//Output 01
+Enter a value for N: 10
+The 10 th term of the Fibonacci sequence is 34
+
+//Output 02
+
+Enter a value for N: 20
+The 20 th term of the Fibonacci sequence is 4181
+
+eof fa ok ook coe
+
+Dept. of CSE 23 GSSSIETW, Mysuru

@@ -1,0 +1,85 @@
+1008 Chapter 26 Enhanced Data Models
+
+Figure 26.14 EMPLOYEE (john).
+Fact-defined EMPLOYEE (franklin).
+predicates for part EMPLOYEE(alicia).
+of the database from = EMPLOYEE (jennifer).
+Figure 5.6, EMPLOYEE (ramesh).
+EMPLOYEE (joyce).
+EMPLOYEE (ahmad).
+EMPLOYEE (james).
+
+SALARY (john, 30000).
+SALARY (franklin, 40000).
+SALARY (alicia, 25000).
+SALARY (jennifer, 43000).
+SALARY (ramesh, 38000).
+SALARY (joyce, 25000).
+SALARY(ahmad, 25000).
+SALARY (james, 55000).
+
+DEPARTMENT (john, research).
+DEPARTMENT (franklin, research).
+DEPARTMENT(alicia, administration).
+
+DEPARTMENT (jennifer, administration).
+
+DEPARTMENT (ramesh, research).
+DEPARTMENT (joyce, research).
+DEPARTMENT(ahmad, administration).
+DEPARTMENT (james, headquarters).
+
+SUPERVISE (franklln, john).
+SUPERVISE (franklin, ramesh)
+SUPERVISE (frankin , joyce).
+SUPERVISE(jennifer, alicia).
+SUPERVISE (jennifer, ahmad).
+SUPERVISE(james, franklin).
+SUPERVISE(james, jennifer).
+
+MALE (john).
+MALE (franklin).
+MALE(ramesh).
+MALE(ahmad).
+MALE (james).
+
+FEMALE(alicia).
+FEMALE (jennifer).
+FEMALE (joyce).
+
+PROJECT (productx).
+PROJECT (producty).
+PROJECT (productz).
+PROJECT (computerization).
+PROJECT (reorganization).
+PROJECT(newbenefits).
+
+WORKS_ON(john, productx, 32).
+WORKS_ON(john, producty, 8).
+WORKS_ON(ramesh, productz, 40).
+WORKS_ON(joyce, productx, 20).
+WORKS_ON(joyce, producty, 20).
+WORKS_ON(franklin, producty, 10).
+WORKS_ON(franklin, productz, 10).
+WORKS_ON(franklin, computerization, 10).
+WORKS_ON(franklin, reorganization, 10).
+WORKS_ON(alicia, newbenefits, 30).
+WORKS_ON(alicia, computerization, 10).
+WORKS_ON(ahmad, computerization, 35).
+WORKS_ON(ahmad, newbenefits, 5).
+WORKS_ON(ennifer, newbenefits, 20).
+WORKS_ON(ennifer, reorganization, 15).
+WORKS_ON(james, reorganization, 10).
+
+Figure 26.15 SUPERIOR(X, Y) :- SUPERVISE(X, 1).
+Rule-defined SUPERIOR(X, Y) :- SUPERVISE(X, Z), SUPERIOR(Z, 1).
+predicates.
+
+SUBORDINATE(X, Y) :- SUPERIOR(Y, X).
+
+SUPERVISOR(X) :- EMPLOYEE(X), SUPERVISE(X, Y).
+
+OVER_40K_EMP(X) :- EMPLOYEE(X), SALARY(X, Y), Y>= 40000.
+UNDER_40K_SUPERVISOR(X) :- SUPERVISOR(X), NOT(OVER_40_K_EMP(X)).
+MAIN_PRODUCTX_EMP(X) :~ EMPLOYEE(X), WORKS_ON(X, product, ¥), Y>=20.
+PRESIDENT(X) :~ EMPLOYEE(X), NOT(SUPERVISE(Y, X) ).

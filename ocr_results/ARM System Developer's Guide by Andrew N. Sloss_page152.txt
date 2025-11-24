@@ -1,0 +1,49 @@
+EXAMPLE
+
+5.11
+
+5.9 Unaligned Data and Endianness 139
+
+{
+int a0,al,a2,a3;
+a0 = *(data++);
+al = *(data++);
+a2 = *(datat+);
+a3 = *(datat+);
+
+return (((((a0<<8) | al) <<8) | a2)<<8) | a3;
+
+If speed is critical, then the fastest approach is to write several variants of the critical
+routine. For each possible alignment and ARM endianness configuration, you call a separate
+routine optimized for that situation.
+
+The read_samples routine takes an array of N 16-bit sound samples at address in. The
+sound samples are little-endian (for example from a.wav file) and can be at any byte
+alignment. The routine copies the samples to an aligned array of short type values pointed
+to by out. The samples will be stored according to the configured ARM memory endianness.
+
+The routine handles all cases in an efficient manner, regardless of input alignment and
+of ARM endianness configuration.
+
+void read_samples(short *out, char *in, unsigned int N)
+{
+unsigned short *data; /* aligned input pointer */
+unsigned int sample, next;
+
+switch ((unsigned int)in & 1)
+{
+case 0: /* the input pointer is aligned */
+data = (unsigned short *)in;
+do
+{
+sample = *(data++);
+#ifdef — BIG_ENDIAN
+sample = (sample>>8) | (sample<<8);
+#endif.
+*(out++) = (short) sample;
+} while (--N);
+break;
+
+case 1: /* the input pointer is not aligned */
+data = (unsigned short *)(in-1);
+sample = *(data++);

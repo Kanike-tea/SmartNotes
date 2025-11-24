@@ -1,0 +1,52 @@
+350
+
+Chapter 11 Web Database Programming Using PHP
+
+(line 7) returns the current number of elements in the array, which is assigned to
+the variable $num and used to control ending the loop.
+
+The example in lines 7 through 10 also illustrates how an HTML table can be
+displayed with alternating row colors, by setting the two colors in an array
+$alt_row_color (line 8). Each time through the loop, the remainder function
+$i % 2 switches from one row (index 0) to the next (index 1) (see line 8). The color
+is assigned to the HTML bgcolor attribute of the <TR> (table row) tag.
+
+The count function (line 7) returns the current number of elements in the array.
+The sort function (line 2) sorts the array based on the element values in it (not the
+keys). For associative arrays, each key remains associated with the same element
+value after sorting. This does not occur when sorting numeric arrays. There are
+many other functions that can be applied to PHP arrays, but a full discussion is
+outside the scope of our presentation.
+
+11.2.3 PHP Functions
+
+As with other programming languages, functions can be defined in PHP to bet-
+ter structure a complex program and to share common sections of code that can
+be reused by multiple applications. The newer version of PHP, PHP, also has
+object-oriented features, but we will not discuss these here because we are focus-
+ing on the basics of PHP. Basic PHP functions can have arguments that are
+passed by value. Global variables can be accessed within functions. Standard
+scope rules apply to variables that appear within a function and within the code
+that calls the function.
+
+We now give two simple examples to illustrate basic PHP functions. In Figure 11.4,
+we show how we could rewrite the code segment P1 from Figure 11.1(a) using func-
+tions. The code segment P1’ in Figure 11.4 has two functions: display_welcome()
+(lines 0 to 3) and display_empty_form() (lines 5 to 13). Neither of these func-
+tions has arguments; nor do they have return values. Lines 14 through 19 show how
+we can call these functions to produce the same effect as the segment of code P1 in
+Figure 11.1(a). As we can see in this example, functions can be used just to make the
+PHP code better structured and easier to follow.
+
+A second example is shown in Figure 11.5. Here we are using the $teaching array
+introduced in Figure 11.3. The function course_instructor() in lines 0 to 8 in
+Figure 11.5 has two arguments: $course (a string holding a course name) and
+$teaching_assignments (an associative array holding course assignments, simi-
+lar to the $teaching array shown in Figure 11.3). The function finds the name of
+the instructor who teaches a particular course. Lines 9 to 14 in Figure 11.5 show
+how this function may be used.
+
+The function call in line 11 would return the string: Smith is teaching Database,
+because the array entry with the key ‘Database’ has the value ‘Smith’ for instructor.
+On the other hand, the function call on line 13 would return the string: there is no
+Computer Architecture course because there is no entry in the array with the key

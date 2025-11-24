@@ -1,0 +1,49 @@
+708
+
+Chapter 19 Query Optimization
+
+by accounting for only the changes that occurred since the last time it was
+created/updated. The trick is in figuring out exactly what is the net change to the
+materialized view based on a set of inserted or deleted tuples in the base relation.
+We describe below the general approaches to incremental view maintenance for
+views involving join, selection, projection, and a few types of aggregation. To deal
+with modification, we can consider these approaches as a combination of delete of
+the old tuple followed by an insert of the new tuple. Assume a view V defined over
+relations R and S. The respective instances are v, r, and s.
+
+Join: Ifa view contains inner join of relations r and s, voiq = ras, and there is anew
+set of tuples inserted: r;, in r, then the new value of the view contains (r U rj) 4s. The
+incremental change to the view can be computed as Vpew = rs U rs. Similarly,
+deleting a set of tuples rg from r results in the new view as Vpew = ros $ — rgbas. We
+will have similar expressions symmetrically when s undergoes addition or deletion.
+
+Selection: If a view is defined as V = 6¢ R with condition C for selection, when a
+set of tuples r; are inserted into r, the view can be modified as Vaew = Void U Oc 7. On
+the other hand, upon deletion of tuples rg from r, we get Vpew = Vold— 9c Ta
+
+Projection: Compared to the above strategy, projection requires additional work.
+Consider the view defined as V = ex, salaryR, where R is the EMPLOYEE relation,
+and suppose the following <Sex, Salary> pairs exist for Salary of 50,000 in r in three
+distinct tuples: t; contains <M, 50000>, t,7 contains <M, 50000> and t,; contains
+<F, 50000>. The view v therefore contains <M, 50000> and <F, 50000> as two tuples
+derived from the three tuples of r. If tuple t, were to be deleted from r, it would have
+no effect on the view. However, if ty; were to be deleted from r, the tuple <F, 50000>
+would have to be removed from the view. Similarly, if another new tuple t;7 con-
+taining <M, 50000> were to be inserted in the relation r, it also would have no effect
+on the view. Thus, view maintenance of projection views requires a count to be
+maintained in addition to the actual columns in the view. In the above example, the
+original count values are 2 for <M, 50000> and 1 for <F, 50000>. Each time an
+insert to the base relation results in contributing to the view, the count is incre-
+mented; if a deleted tuple from the base relation has been represented in the view,
+its count is decremented. When the count of a tuple in the view reaches zero, the
+tuple is actually dropped from the view. When a new inserted tuple contributes to
+the view, its count is set to 1. Note that the above discussion assumes that SELECT
+DISTINCT is being used in defining the view to correspond to the project (x) opera-
+tion. If the multiset version of projection is used with no DISTINCT, the counts would
+still be used. There is an option to display the view tuple as many times as its count
+in case the view must be displayed as a multiset.
+
+Intersection: If the view is defined as V= R 4 S, when a new tuple 7; is inserted, it
+is compared against the s relation to see if it is present there. If present, it is inserted
+in v, else not. If tuple ry is deleted, it is matched against the view v and, if present
+there, it is removed from the view.

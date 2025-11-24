@@ -1,0 +1,54 @@
+20.2 Transaction and System Concepts
+
+4. Concurrency control enforcement. The concurrency control method (see
+Chapter 21)may abort a transaction because it violates serializability (see
+Section 20.5), or it may abort one or more transactions to resolve a state of
+deadlock among several transactions (see Section 21.1.3). Transactions
+aborted because of serializability violations or deadlocks are typically
+restarted automatically at a later time.
+
+5. Disk failure. Some disk blocks may lose their data because of a read or write
+malfunction or because of a disk read/write head crash. This may happen
+during a read or a write operation of the transaction.
+
+6. Physical problems and catastrophes. This refers to an endless list of problems
+that includes power or air-conditioning failure, fire, theft, sabotage, overwrit-
+ing disks or tapes by mistake, and mounting of a wrong tape by the operator.
+
+Failures of types 1, 2, 3, and 4 are more common than those of types 5 or 6. When-
+ever a failure of type 1 through 4 occurs, the system must keep sufficient informa-
+tion to quickly recover from the failure. Disk failure or other catastrophic failures of
+type 5 or 6 do not happen frequently; if they do occur, recovery is a major task. We
+discuss recovery from failure in Chapter 22.
+
+The concept of transaction is fundamental to many techniques for concurrency
+control and recovery from failures.
+
+20.2 Transaction and System Concepts
+
+In this section, we discuss additional concepts relevant to transaction processing.
+Section 20.2.1 describes the various states a transaction can be in and discusses
+other operations needed in transaction processing. Section 20.2.2 discusses the
+system log, which keeps information about transactions and data items that will
+be needed for recovery. Section 20.2.3 describes the concept of commit points of
+transactions and why they are important in transaction processing. Finally,
+Section 20.2.4 briefly discusses DBMS buffer replacement policies.
+
+20.2.1 Transaction States and Additional Operations
+
+A transaction is an atomic unit of work that should either be completed in its entirety
+or not done at all. For recovery purposes, the system needs to keep track of when each
+transaction starts, terminates, and commits, or aborts (see Section 20.2.3). Therefore,
+the recovery manager of the DBMS needs to keep track of the following operations:
+
+= BEGIN_TRANSACTION. This marks the beginning of transaction execution.
+
+= READ or WRITE. These specify read or write operations on the database
+items that are executed as part of a transaction.
+
+= END_TRANSACTION. This specifies that READ and WRITE transaction opera-
+tions have ended and marks the end of transaction execution. However, at
+this point it may be necessary to check whether the changes introduced by
+the transaction can be permanently applied to the database (committed) or
+
+753

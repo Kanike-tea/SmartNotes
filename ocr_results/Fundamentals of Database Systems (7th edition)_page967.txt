@@ -1,0 +1,58 @@
+25.5 Hadoop v2 alias YARN
+
+Resource Negotiator). First, we point out the shortcomings of the Hadoop v1 plat-
+form and the rationale behind YARN.
+
+25.5.1 Rationale behind YARN
+
+Despite the success of Hadoop v1, user experience with Hadoop v1 in enterprise
+applications highlighted some shortcomings and suggested that an upgrade of
+Hadoop v1 might be necessary:
+
+= As cluster sizes and the number of users grew, the JobTracker became a bot-
+tleneck. It was always known to be the Single Point of Failure.
+
+= With a static allocation of resources to map and reduce functions, utilization
+of the cluster of nodes was less than desirable
+
+= HDFS was regarded as a single storage system for data in the enterprise.
+Users wanted to run different types of applications that would not easily fit
+into the MR model. Users tended to get around this limitation by running
+Map-only Jobs, but this only compounded scheduling and utilization issues.
+
+= On large clusters, it became problematic to keep up with new open source
+versions of Hadoop, which were released every few months.
+
+The above reasons explain the rationale for developing version 2 of Hadoop. Some
+of the points mentioned in the previous list warrant a more detailed discussion,
+which we provide next.
+
+Multitenancy: Multitenancy refers to accommodating multiple tenants/users con-
+currently so that they can share resources. As the cluster sizes grew and the number
+of users increased, several communities of users shared the Hadoop cluster. At
+Yahoo, the original solution to this problem was Hadoop on Demand, which was
+based on the Torque resource manager and Maui scheduler. Users could set up a
+separate cluster for each Job or set of Jobs. This had several advantages:
+
+= Each cluster could run its own version of Hadoop.
+= JobTracker failures were isolated to a single cluster.
+
+= Each user/organization could make independent decisions on the size and
+configuration of its cluster depending on expected workloads.
+
+But Yahoo abandoned Hadoop on Demand for the following reasons:
+
+= Resource allocation was not based on data locality. So most reads and writes
+from HDFS were remote accesses, which negated one of the key benefits of
+the MR model of mostly local data accesses.
+
+= The allocation of a cluster was static. This meant large parts of a cluster were
+mostly idle:
+
+© Within an MR job, the reduce slots were not usable during the Map phase
+and the map slots were not usable during the Reduce phase. When using
+higher level languages like Pig and Hive, each script or query spawned
+multiple Jobs. Since cluster allocation was static, the maximum nodes
+needed in any Job had to be acquired upfront.
+
+937

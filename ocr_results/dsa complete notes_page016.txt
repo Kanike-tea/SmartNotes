@@ -1,0 +1,54 @@
+'s/BCS304 Module-1
+
+Data Structures and App!
+
+Limitation of binary search :
+1. The list must be sorted
+2. One must have a direct access to the middle element in any subset.
+
+Polynomials: A polynomial is a sum of terms, where each term has a form ax°, where x is the variable,
+a is the coefficient, and e is the exponent.
+
+Example for polynomials :
+A(X) = 3x70 +29 +4
+B(x) = x4 + 10x3 + 3x2 + 1
+
+The largest (or leading) exponent of a polynomial is called its degree. Coefficients that are zero are
+not displayed.
+e Standard mathematical definitions for the sum and product of polynomials are:
+e Assume that we have two polynomials
+A(x) = Yax' B(x) =Dpix'
+
+then
+A(x) + B(x) = Yq; + b)x'
+
+A(x) B(x) = D(a; x" - Yb; x’)
+
+ADT Polynomial is objects: a set of ordered pairs of <ei, ai> where ai is Coefficients and ei is
+Exponents, ei are integers >= 0
+
+for all poly,poly1 poly2 € Polynomial ,coef € Coefficients, expon € Exponents
+
+olynomial Zero() n=__| return the polynomial, p(x) =0
+Boolean IsZero(poly) if (poly) return FALSE else return TRUE
+Coefficient n= | if (expon € poly) return its coefficient else return zero
+Coef(poly,expon)
+Exponent LeadExp(poly) n=__| return the largest exponent in poly
+olynomial 53 if (expon € poly) return error else return the polynomial
+Attach(poly coef,expon) poly with the term <coef, expon> inserted
+‘olynomial == | if (expon € poly) return the polynomial poly with the term
+Remove(poly,expon) whose exponent is expon deleted else return error
+olynomial n= | return the polynomial poly - coef + x°*P°"
+SingleMult(poly ,coef,expon)
+olynomial n= | return the polynomial poly! + poly2
+Add(poly 1 poly2)
+olynomial n= | return the polynomial poly! - poly2
+Mult(poly 1 poly2)
+end Polynomial nS
+Polynomial Representation:
+e A polynomial can be represented as an array of structures as follows.
+
+¢ Only one global array, terms, is used to store all the polynomials.
+e The C declarations needed are:
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 17

@@ -1,0 +1,51 @@
+12.1 Overview of Object Database Concepts
+
+language ODL. Section 12.4 presents an overview of the database design process for
+object databases. Section 12.5 discusses the object query language (OQL), which is
+part of the ODMG 3.0 standard. In Section 12.6, we discuss programming language
+bindings, which specify how to extend object-oriented programming languages to
+include the features of the object database standard. Section 12.7 summarizes the
+chapter. Sections 12.3 through 12.6 may be left out if a less thorough introduction
+to object databases is desired.
+
+12.1 Overview of Object Database Concepts
+
+12.1.1 Introduction to Object-Oriented Concepts and Features
+
+The term object-oriented—abbreviated OO or O-O—has its origins in OO pro-
+gramming languages, or OOPLs. Today OO concepts are applied in the areas of
+databases, software engineering, knowledge bases, artificial intelligence, and
+computer systems in general. OOPLs have their roots in the SIMULA language,
+which was proposed in the late 1960s. The programming language Smalltalk,
+developed at Xerox PARC* in the 1970s, was one of the first languages to explic-
+itly incorporate additional OO concepts, such as message passing and inheri-
+tance. It is known as a pure OO programming language, meaning that it was
+explicitly designed to be object-oriented. This contrasts with hybrid OO pro-
+gramming languages, which incorporate OO concepts into an already existing
+language. An example of the latter is C++, which incorporates OO concepts into
+the popular C programming language.
+
+An object typically has two components: state (value) and behavior (operations). It
+can have a complex data structure as well as specific operations defined by the pro-
+grammer. Objects in an OOPL exist only during program execution; therefore,
+they are called transient objects. An OO database can extend the existence of objects
+so that they are stored permanently in a database, and hence the objects become
+persistent objects that exist beyond program termination and can be retrieved later
+and shared by other programs. In other words, OO databases store persistent
+objects permanently in secondary storage and allow the sharing of these objects
+among multiple programs and applications. This requires the incorporation of
+other well-known features of database management systems, such as indexing
+mechanisms to efficiently locate the objects, concurrency control to allow object
+sharing among concurrent programs, and recovery from failures. An OO database
+system will typically interface with one or more OO programming languages to
+provide persistent and shared object capabilities.
+
+The internal structure of an object in OOPLs includes the specification of instance
+variables, which hold the values that define the internal state of the object. An
+instance variable is similar to the concept of an aftribute in the relational model,
+
+4Palo Alto Research Center, Palo Alto, California.
+
+SObjects have many other characteristics, as we discuss in the rest of this chapter.
+
+365

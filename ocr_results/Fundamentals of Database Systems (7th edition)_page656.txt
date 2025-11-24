@@ -1,0 +1,51 @@
+626 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+else begin
+search node n for an entry i such that n.Ki_1 < K <n.K;;
+nenP;
+end;
+read block n
+end;
+search block n for entry (Ki, Pr) with K= Kj; (* search leaf node *)
+if found
+
+then read data file block with address Pr; and retrieve record
+else the record with search field value K is not in the data file;
+
+Algorithm 17.3. Inserting a Record with Search Key Field Value K in a
+B*-Tree of Order p
+
+n€© block containing root node of B*-tree;
+read block n; set stack S to empty;
+while (nis not a leaf node of the B*-tree) do
+begin
+push address of n on stack S;
+(*stack S holds parent nodes that are needed in case of split*)
+q < number of tree pointers in node n;
+if K Sn.K, (*n.K; refers to the ith search field value in node n*)
+then n < nP; (*n.P; refers to the ith tree pointer in node n*)
+else if K— n.Ko-1
+then n — n.Py
+
+else begin
+search node n for an entry i such that n.Ki_y < K <n.Ki;
+nenP;
+end;
+read block n
+end;
+search block n for entry (Ki,Pr) with K= Kj; (“search leaf node n*)
+if found
+
+then record already in file; cannot insert
+else (‘insert entry in B*-tree to point to record*)
+begin
+create entry (K, Pr) where Pr points to the new record;
+if leaf node n is not full
+then insert entry (K, Pr) in correct position in leaf node n
+else begin (“leaf node n is full with pjear record pointers; is split*)
+copy n to temp (*temp is an oversize leaf node to hold extra entries*);
+insert entry (K, Pr) in temp in correct position;
+(‘temp now holds pica + 1 entries of the form (Ki, Pr)*)
+new <a new empty leaf node for the tree; new.Prext — 1-Phext 5
+iI (Picat + 1)/2 1;
+n € first j entries in temp (up to entry (Kj, Pr)); 7-Prext — new;

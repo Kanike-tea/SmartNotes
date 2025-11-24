@@ -1,0 +1,54 @@
+Consider a 32-bit integer (in hex): 0x12345678 which consists of 4 bytes: 12, 34, 56, and 78.
+> Hence this integer will occupy 4 bytes in memory.
+>» Assume, we store it at memory address starting 1000.
+> On little-endian, memory will look like
+
+Address | Value
+
+1000 78
+1001 56
+1002 34
+1003 12
+
+> On big-endian, memory will look like
+
+Address | Value
+
+1000 12
+1001 34
+1002 56
+1003 78
+
+WORD ALIGNMENT
+* Words are said to be Aligned in memory if they begin at a byte-address that is a multiple of the
+number of bytes in a word.
++ For example,
+> If the word length is 16(2 bytes), aligned words begin at byte-addresses 0,2,4.....
+> If the word length is 64(2 bytes), aligned words begin at byte-addresses 0,8,16.....
++ Words are said to have Unaligned Addresses, if they begin at an arbitrary byte-address.
+
+ACCESSING NUMBERS, CHARACTERS & CHARACTERS STRINGS
+
++ A number usually occupies one word. It can be accessed in the memory by specifying its word
+
+address. Similarly, individual characters can be accessed by their byte-address.
+
++ There are two ways to indicate the length of the string:
+1) A special control character with the meaning "end of string" can be used as the last character
+in the string.
+2) A separate memory word location or register can contain a number indicating the length of
+the string in bytes.
+
+MEMORY OPERATIONS
+Two memory operations are:
+1. Load (Read/Fetch) &
+2. Store (Write).
+* The Load operation transfers a copy of the contents of a specific memory-location to the processor.
+The memory contents remain unchanged.
+* Steps for Load operation:
+1) Processor sends the address of the desired location to the memory.
+2) Processor issues ,,read" signal to memory to fetch the data.
+3) Memory reads the data stored at that address.
+4) Memory sends the read data to the processor.
+
+Page 8

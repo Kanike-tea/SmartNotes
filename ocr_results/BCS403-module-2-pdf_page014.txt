@@ -1,0 +1,43 @@
+ase Management System OO
+
+Chapter 2: Relational Algebra
+
+2.1 Introduction
+
+Relational algebra is the basic set of operations for the relational model. These operations enable a
+user to specify basic retrieval requests as relational algebra expressions. The result of an operation is
+a new relation, which may have been formed from one or more input relations.
+
+The relational algebra is very important for several reasons
+
+e First, it provides a formal foundation for relational model operations.
+
+e Second, and perhaps more important, it is used as a basis for implementing and optimizing
+queries in the query processing and optimization modules that are integral parts of
+relational database management systems (RDBMSs)
+
+e Third, some of its concepts are incorporated into the SQL standard query language for
+RDBMSs
+
+2.2 Unary Relational Operations: SELECT and PROJECT
+2.2.1 The SELECT Operation
+The SELECT operation denoted by o (sigma) is used to select a subset of the tuples from a relation
+based on a selection condition. The selection condition acts as a filter that keeps only those tuples
+that satisfy a qualifying condition. Alternatively, we can consider the SELECT operation to restrict
+the tuples in a relation to only those tuples that satisfy the condition.
+The SELECT operation can also be visualized as a horizontal partition of the relation into two sets
+of tuples—those tuples that satisfy the condition and are selected, and those tuples that do not satisfy
+the condition and are discarded.
+In general, the select operation is denoted by
+© <selection condition>(R)
+where,
+- the symbol is used to denote the select operator
+- the selection condition is a Boolean (conditional) expression specified on the attributes of
+relation R
+- tuples that make the condition true are selected
++ appear in the result of the operation
+- tuples that make the condition false are filtered out
+
++ discarded from the result of the operation
+
+https:/ivtucode.in Page 15

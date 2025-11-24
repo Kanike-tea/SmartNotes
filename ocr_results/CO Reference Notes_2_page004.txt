@@ -1,0 +1,71 @@
+PROCESSOR CLOCK
+© Processor circuits are controlled by a timing signal called a Clock.
+© The clock defines regular time intervals called Clock Cycles.
+© To execute a machine instruction, the processor divides the action to be performed into a sequence of
+basic steps such that each step can be completed in one clock cycle.
+« Let P= Length of one clock
+cycle R = Clock rate.
+
+-1
+Relation between P and R is given by Ree
+« R is measured in cycles per second.
+* Cycles per second is also called Hertz (Hz)
+
+BASIC PERFORMANCE EQUATION
+. Let T= Processor time required to executed a
+program. N = Actual number of instruction
+executions.
+S = Average number of basic steps needed to execute one machine instruction. R =
+Clock rate in cycles per second.
+
+* The program execution time is T= Nxs given by
+
+¢ Equ1 is referred to as the basic performance equation.
+
+* To achieve high performance, the computer designer must reduce the value of T, which means
+
+reducing N and S, and increasing R.
+> The value of N is reduced if source program is compiled into fewer machine instructions.
+> The value of S is reduced if instructions have a smaller number of basic steps to perform.
+> The value of R can be increased by using a higher frequency clock.
+
+* Care has to be taken while modifying values since changes in one parameter may affect the other.
+
+CLOCK RATE
+* There are 2 possibilities for increasing the clock rate R:
+
+1) Improving the IC technology makes logic-circuits faster.
+
+This reduces the time needed to compute a basic step. (IC > integrated circuits).
+This allows the clock period P to be reduced and the clock rate R to be increased.
+
+2) Reducing the amount of processing done in one basic step also reduces the clock period P.
++ In presence of a cache, the percentage of accesses to the main-memory is small.
+
+Hence, much of performance-gain expected from the use of faster technology can be realized.
+
+The value of T will be reduced by same factor as R is increased ,,." S & N are not affected.
+
+PERFORMANCE MEASUREMENT
+
++ Benchmark refers to standard task used to measure how well a processor operates.
+
+* The Performance Measure is the time taken by a computer to execute a given benchmark.
+
++ SPEC selects & publishes the standard programs along with their test results for different application
+domains. (SPEC > System Performance Evaluation Corporation).
+
++ SPEC rating is given by
+
+Running time on the reference computer
+
+mang = Running time on the computer under test
+
+SPEC rating = 50 > The computer under test is 50 times as fast asreference-computer.
+* The test is repeated for all the programs in the SPEC
+
+suite. Then, the geometric mean of the results is
+
+computed.
+
+Page 5

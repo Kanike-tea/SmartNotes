@@ -1,0 +1,35 @@
+1.5. Operations on Graphs 61
+
+If a simple graph G of order n is isomorphic to its complement G, show that n or
+(n— 1) must bea multiple of 4.
+> Since G ~ G, both of G and G have the same number of
+edges in G and G taken together must be qual to the number of edges in K,. Since K, has
+n(n — 1)/2 edges, it follows that each of G and G has n(n — 1)/4 edges. Thus, n(n — 1)/4 must
+be a positive integer. Therefore, n or (n — 1) must be a multiple of 4.
+
+edges. Also, the total number of
+
+.
+Remark: A simple graph G which is isomorphic to its complement G is called a self-comple-
+mentary graph. The result proved in the above Example shows that for a self-complementary
+graph the order n is either 4k or 4k +1, where kis a positive integer, and the degree is n(n—1)/4.
+
+The graph shown in Figure 1.86(a) is an Exam
+
+ple of a self-complementary graph with 4
+vertices. Its complement is shown in Figure 1.86(b)
+
+A B A B
+¢ D if D
+(a) (b)
+
+Figure 1.86
+
+| Example 4 Prove that two simple graphs G, and G2 are isomorphic if and only if their
+complements G, and G> are isomorphic.
+
+> Let G; = (V,,E)) and Gx(V2, Ez). If G; and G2 are isomorphic, then there is a one-to-one
+and onto function f : Vi — V2 which preserves adjacencies of vertices. Consequently, for any
+“4 V € V1 if {u,v} ¢ E; then {f(u), f(v)} ¢ Ep. This means s that f preserves adjacencies for G1
+and G). Therefore, f serves as an isomorphism between G and G2 as well. Thus, if G; and
+G) are isomorphic, then G, and G) are also isomorphic. The converse argument is analogous.»

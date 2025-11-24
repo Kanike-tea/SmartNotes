@@ -1,0 +1,70 @@
+7.6.
+
+7.7.
+
+7.8.
+
+7.9.
+
+Specify the following queries in SQL on the database schema in Figure 1.2.
+a. Retrieve the names and major departments of all straight-A students
+(students who have a grade of A in all their courses).
+
+b. Retrieve the names and major departments of all students who do not
+have a grade of A in any of their courses.
+
+In SQL, specify the following queries on the database in Figure 5.5 using the
+
+concept of nested queries and other concepts described in this chapter.
+
+a. Retrieve the names of all employees who work in the department that has
+the employee with the highest salary among all employees.
+
+b. Retrieve the names of all employees whose supervisor’s supervisor has
+*888665555’ for Ssn.
+
+c. Retrieve the names of employees who make at least $10,000 more than
+the employee who is paid the least in the company.
+
+Specify the following views in SQL on the COMPANY database schema
+
+shown in Figure 5.5.
+
+a. A view that has the department name, manager name, and manager sal-
+ary for every department
+
+b. A view that has the employee name, supervisor name, and employee sal-
+ary for each employee who works in the ‘Research’ department
+
+c. A view that has the project name, controlling department name, number
+of employees, and total hours worked per week on the project for each
+project
+
+d. A view that has the project name, controlling department name, number
+of employees, and total hours worked per week on the project for each
+project with more than one employee working on it
+
+Consider the following view, DEPT_SUMMARY, defined on the COMPANY
+database in Figure 5.6:
+
+CREATE VIEW DEPT_SUMMARY (0D, C, Total_s, Average_s)
+
+AS SELECT Dno, COUNT (*), SUM (Salary), AVG (Salary)
+FROM EMPLOYEE
+GROUP BY Dno;
+
+State which of the following queries and updates would be allowed on the
+view. If a query or update would be allowed, show what the correspond-
+ing query or update on the base relations would look like, and give its
+result when applied to the database in Figure 5.6.
+
+a. SELECT *
+FROM DEPT_SUMMARY;
+
+b. SELECT =, C
+FROM DEPT_SUMMARY
+WHERE —TOTAL_S > 100000;
+
+Exercises
+
+237

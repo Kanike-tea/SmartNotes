@@ -1,0 +1,54 @@
+Exercises 283
+
+BOOK
+Book_id| Title | Publisher_name
+_——
+BOOK_AUTHORS
+
+Book_id} Author_name
+|
+
+PUBLISHER
+Name | Address | Phone
+A
+
+BOOK COPIES
+Book id] Branch id) No_of copies
+1
+
+BOOK_LOANS
+
+Book_id| Branch_id| Card_no | Date_out | Due_date
+L
+
+LIBRARY_BRANCH
+
+Branch_id| Branch_name| Address
+
+Ad
+
+BORROWER Figure 8.14
+Card_no] Name | Address | Phone A relational database
+schema for a LIBRARY
+4 database
+
+a. List the Order# and Ship_date for all orders shipped from Warehouse# W2.
+
+b. List the WAREHOUSE information from which the CUSTOMER
+named Jose Lopez was supplied his orders. Produce a listing: Order#,
+Warehouse#.
+
+c. Produce a listing Cname, No_of_orders, Avg_order_amt, where the middle
+column is the total number of orders by the customer and the last column
+is the average order amount for that customer.
+
+d. List the orders that were not shipped within 30 days of ordering.
+
+e. List the Order# for orders that were shipped from all warehouses that the
+company has in New York.
+
+8.20. Specify the following queries in relational algebra on the database schema
+given in Exercise 5.15:
+
+a. Give the details (all attributes of trip relation) for trips that exceeded
+$2,000 in expenses.

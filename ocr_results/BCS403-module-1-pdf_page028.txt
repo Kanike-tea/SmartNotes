@@ -1,0 +1,39 @@
+Database Management System [BCS403]
+
+- The client machines provide the user with the appropriate interfaces
+
+to utilize these servers and local processing power to run local
+applications
+Client Client Client
+Network
+Print File DBMS
+Server Server Server
+
+Figure 2.5.2(a) : Logical two-tier client/server architecture
+
+Diskless Client Server
+Client with Disk and Client
+
+nt
+Server
+Client Client
+Site 1 Site 2 Site 3 Site n
+
+(G Conuniein +)
+
+Network
+X J
+
+Figure2.5.2(b) : Physical two-tier client/server architecture.
+The concept of client/server architecture assumes an underlying framework that consists of many
+PCs and workstations as well as a smaller number of mainframe machines, connected via LANs
+and other types of computer networks. A client is a user machine that provides user interface
+capabilities and local processing. When a client requires access to additional functionality such as
+database access—that does not exist at that machine, it connects to a server that provides the
+needed functionality. A server is a system containing both hardware and software that can provide
+
+services to the client machines, such as file access, printing, archiving, or database access.
+
+2.5.3. Two-Tier Client/Server Architectures for DBMSs
+
+https://vtucode.in Page 29

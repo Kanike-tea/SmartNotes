@@ -1,0 +1,51 @@
+716
+
+Chapter 19 Query Optimization
+
+Cost-Based Optimization Approach. In a query optimizer, it is common to
+enumerate the various possible strategies for executing a query and to estimate the
+costs for different strategies. An optimization technique, such as dynamic program-
+ming, may be used to find the optimal (least) cost estimate efficiently without hav-
+ing to consider all possible execution strategies. Dynamic programming is an
+optimization technique® in which subproblems are solved only once. This tech-
+nique is applicable when a problem may be broken down into subproblems that
+themselves have subproblems. We will visit the dynamic programming approach
+when we discuss join ordering in Section 19.5.5. We do not discuss optimization
+algorithms here; rather, we use a simple example to illustrate how cost estimates
+may be used.
+
+19.4.1 Example of Optimization of Selection Based
+on Cost Formulas:
+
+Suppose that the EMPLOYEE file in Figure 5.5 has rg = 10,000 records stored in
+by = 2,000 disk blocks with blocking factor bfrp = 5 records/block and the following
+access paths:
+
+1. A clustering index on Salary, with levels xsalay = 3 and average selection cardi-
+nality sgalay = 20. (This corresponds to a selectivity of slgalary = 20/10000 = 0.002.)
+
+2. A secondary index on the key attribute Ssn, with xgon=4 (Sgsn= 1, Slggqn = 0.0001).
+
+3. A secondary index on the nonkey attribute Dno, with xp. = 2 and first-level
+index blocks bypn9 = 4. There are NDV (Dno, EMPLOYEE) = 125 distinct val-
+ues for Dno, so the selectivity of Dno is slpj, = (1/ NDV (Dno, EMPLOYEE)) =
+0.008, and the selection cardinality is sp,o = (rg * slpno) = (r~/NDV (Dno,
+EMPLOYEE)) = 80.
+
+4. A secondary index on Sex, with xge,= 1. There are NDV (Sex, EMPLOYEE) =
+2 values for the Sex attribute, so the average selection cardinality is sge, =
+(rg/NDV (Sex, EMPLOYEE)) = 5000. (Note that in this case, a histogram
+giving the percentage of male and female employees may be useful, unless
+the percentages are approximately equal.)
+
+We illustrate the use of cost functions with the following examples:
+OP1: ogsn="123456789" (EMPLOYEE)
+OP2: opnoss(EMPLOYEE)
+OP3: Opno=s(EMPLOYEE)
+OP4: opno=5 AND SALARY>30000 AND Sex='F’ (EMPLOYEE)
+
+The cost of the brute force (linear search or file scan) option S1 will be estimated as
+Csiq = bg = 2000 (for a selection on a nonkey attribute) or Cs), = (bg/2) = 1,000
+
+®For a detailed discussion of dynamic programming as a technique of optimization, the reader may con-
+sult an algorithm textbook such as Corman et al. (2003).

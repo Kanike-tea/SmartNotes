@@ -1,0 +1,91 @@
+Instruction set (continued)
+data processing instructions
+arithmetic instructions, 53-55
+barrel shifter. see Barrel shifter
+comparison instructions, 56-57
+logical instructions, 55-56
+move instructions, 50
+multiply instructions, 57-58
+description of, 26, 47-50, 48t-49t
+Jazelle, 26-27, 27t
+loading constants, 78-79
+load-store instructions
+multiple-register transfer. see
+Multiple-register transfer
+single-register load-store addressing
+modes, 61-63
+single-register transfer, 60-61
+swap instruction, 72-73
+program status register instructions, 75-76
+16-bit, 6
+software interrupt instruction, 73-75
+Thumb
+ARM-Thumb interworking, 90-92
+branch instructions, 92-93
+code density, 87, 88f
+data processing instructions, 93-95
+decoding, 88f, 639-641
+description of, 26, 27t
+encodings, 638-644
+list of, 89t
+load and store offsets, 132t
+multiple-register load-store instructions,
+97-98
+overview of, 87-89
+register usage, 89-90
+single-register load-store instructions,
+96-97
+software interrupt instruction, 99
+stack instructions, 98-99
+Integer
+double-precision multiplication
+description of, 208
+long long multiplication, 208-209
+signed 64-bit by 64-bit multiply with
+128-bit result, 211-212
+
+unsigned 64-bit by 64-bit multiply with
+128-bit result, 209-210
+normalization of
+on ARM¥4, 213-215
+on ARMv5 and above, 212-213
+description of, 212
+overflow of, 265
+Intel XScale
+D-cache cleaning in, 435-438
+digital signal processing on, 278-280
+instruction cycle timings, 659-660
+Intel XScale SA-110, 453-456
+Interrupt(s)
+assigning of, 324-325
+description of, 33, 317
+software, 324
+Interrupt controller registers, 349t
+Interrupt controllers, 12
+Interrupt handler
+nested, 325, 333, 336-342
+nonnested, 333-336
+prioritized direct, 333, 356-359
+prioritized group, 333, 359-363
+prioritized simple, 333, 346-352
+prioritized standard, 333, 352-356
+reentrant, 333, 342-346
+Interrupt handling schemes, 317
+Interrupt latency, 325-326
+Interrupt masks, 27
+Interrupt request
+assigning of, 324
+description of, 318t, 322
+exceptions, 326-329
+stack design and implementation, 329-333
+Interrupt request mode, 23-24, 26t, 27
+Interrupt request vector, 33
+Interrupt stack, 343
+Inverted logical relations, 183
+.irp, 634
+
+J
+
+Jbit, 22
+Jazelle, 26-27, 27t
+JTAG, 38

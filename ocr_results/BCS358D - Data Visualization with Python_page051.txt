@@ -1,0 +1,58 @@
+Lab Manual
+
+BCS358D-Data Visualization with Python Laboratory
+
+When you run this program, it will generate a scatter plot with data points represented as blue
+
+circular markers, with labeled axes and a legend, and display the plot in a graphical window.
+
+PROGRAM
+import matplotlib.pyplot as plt
+
+# Sample data for the scatter plot
+x = [1, 2, 3, 4, 5]
+y = (10, 12, 5, 20, 7]
+
+# Create a scatter plot
+plt.scatter(x, y,
+
+# Add labels and a title
+plt.xlabel ('X-Axis')
+
+plt.ylabel ('Y-Axis')
+plt.title('Scatter Plot Example')
+
+# Add a legend
+plt.legend()
+
+# Show the plot
+
+label='Data Points',
+
+color='blue', marker='o')
+
+plt.show()
+OUTPUT
+o& Figure 1 - Oo x
+Scatter Plot Example
+204 @ Data Points e
+18 4
+16 +
+14 +
+E
+¥ 124 e
+107 @
+4
+e
+64
+e
+10 15 2.0 2.5 3.0 3.5 4.0 45 5.0
+XAxis
+
+@|</>|/ $/Q/=|
+
+x=2.565 y=16.94
+
+Dept. of CSE 36
+
+GSSSIETW, Mysuru

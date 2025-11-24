@@ -1,0 +1,13 @@
+5.2 Quicksort 181
+
+the size of this stack can be made to be in O(log) by always sorting first the
+smaller of two subarrays obtained by partitioning, it is worse than the O(1) space
+efficiency of heapsort. Although more sophisticated ways of choosing a pivot make
+the quadratic running time of the worst case very unlikely, they do not eliminate
+it completely. And even the performance on randomly ordered arrays is known
+to be sensitive not only to implementation details of the algorithm but also to
+both computer architecture and data type. Still, the January/February 2000 issue of
+Computing in Science & Engineering, a joint publication of the American Institute
+of Physics and the IEEE Computer Society, selected quicksort as one of the 10
+algorithms “with the greatest influence on the development and practice of science
+and engineering in the 20th century.”

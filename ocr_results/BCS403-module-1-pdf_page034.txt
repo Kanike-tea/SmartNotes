@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+of the application. These consist of the userdefined operations (or transactions) that will be
+
+applied to the database, including both retrievals and updates.
+
+Once the requirements have been collected and analyzed, the next step is to create a conceptual
+schema for the database, using a high-level conceptual data model. This step is called conceptual
+design. The conceptual schema is a concise description of the data requirements of the users and
+includes detailed descriptions of the entity types, relationships, and constraints; these are expressed
+
+using the concepts provided by the high-level data model.
+
+The next step in database design is the actual implementation of the database, using a commercial
+DBMS. Most current commercial DBMSs use an implementation data model—such as the
+relational or the object-relational database model—so the conceptual schema is transformed from
+the high-level data model into the implementation data model. This step is called logical design or
+data model mapping; its result is a database schema inthe implementation data model of the
+
+DBMS.
+
+The last step is the physical design phase, during which the internal storage structures, file
+organizations, indexes, access paths, and physical design parameters for the database files are
+specified. In parallel with these activities, application programs are designed and implemented as
+
+database transactions corresponding to the highlevel transaction specifications.
+
+3.2 Entity Types, Entity Sets, Attributes, and Keys
+
+The ER model describes data as entities, relationships, and attributes.
+
+3.2.1 Entities and Attributes
+
+Entity: a thing in the real world with an independent existence. An entity may be an object
+with a physical existence (for example, a particular person, car, house, or employee) or it may
+be an object with a conceptual existence (for instance, a company, a job, or a university
+
+course).
+
+https:/ivtucode.in Page 35

@@ -1,0 +1,55 @@
+1062
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+Definition Questions: This type of question asks about the definition and
+meaning of the concept, and to extract the essential information and properties
+of the concept. Examples include “What is an inert gas ?”, “Who is Alexander
+the Great?”, and “What is the LIBOR rate?”.
+
+Opinion Questions: This type of question seeks different views on a subject
+that the question. For example, “What countries should be allowed to test
+nuclear weapons?” and “What is the sentiment in Saudi Arabia about terrorism
+in the Middle East?”
+
+In recent years, joint initiatives in research and academia have advocated adopting
+common metrics, architectures, tools, and methodologies to create baselines that
+will facilitate and improve the QA technique.
+
+Architectures. Most state-of-the-art QA architectures are generally made up of
+pipelines that comprise the following stages:
+
+Question Analysis: This stage involves analyzing questions and converting
+them to structural representations of analyzed text for processing by down-
+stream components. Answer types are extracted from parsed representations of
+questions using some or all of the following techniques: shallow semantic pars-
+ing, focus detection, answer type classification, named entity recognition, and
+co-reference resolution.
+
+Shallow semantic parsing: The process of assigning surface-level markups to
+sentence structures via supervised machine learning methods. In general,
+frames are automatically instantiated for sentences by trying to match “WHO
+did WHAT to WHOM, WHEN, WHERE, WHY, and HOW” elements.
+
+© Focus detection: In an image, certain things stand out whereas others
+remain in the background. We say that things that stand out are in focus.
+Similarly, in QA, questions have focus words that contain references to
+answers. For example, in the question “Which book of Shakespeare is a
+tragedy about lovers?”, the focus words “book of Shakespeare” can be
+instantiated with the rule “which X’, where X is a noun phrase in a sen-
+tence. QA systems use focus words to trigger directed searches and to aid
+in answer resolution.
+
+© Answer type classification: This phase helps determine the categories of
+answers in QA. In the preceding example, the headword of the focus words,
+“book’, is the answer type for this question. Several machine learning tech-
+niques are applied in QA to determine the answer type of a question.
+
+o Named entity recognition: Named entity recognition seeks to classify ele-
+ments in text into predefined categories, such as person, place, animal,
+country, river, continent.
+
+| Co-reference resolution: The task of co-reference resolution is about
+identifying multiple expressions in text that refer to the same thing. For
+example, in the sentence “John said that he wanted to go to the theater on
+Sunday’, the pronoun “he” refers to “John” and is a co-reference in text.

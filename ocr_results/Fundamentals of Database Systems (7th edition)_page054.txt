@@ -1,0 +1,50 @@
+24
+
+Chapter 1 Databases and Database Users
+
+efficient access for the original queries and transactions that the database was
+designed to handle, it did not provide enough flexibility to access records efficiently
+when new queries and transactions were identified. In particular, new queries that
+required a different storage organization for efficient processing were quite difficult
+to implement efficiently. It was also laborious to reorganize the database when
+changes were made to the application’s requirements.
+
+Another shortcoming of early systems was that they provided only programming
+language interfaces. This made it time-consuming and expensive to implement
+new queries and transactions, since new programs had to be written, tested, and
+debugged. Most of these database systems were implemented on large and
+expensive mainframe computers starting in the mid-1960s and continuing
+through the 1970s and 1980s. The main types of early systems were based on
+three main paradigms: hierarchical systems, network model-based systems, and
+inverted file systems.
+
+1.7.2 Providing Data Abstraction and Application Flexibility
+with Relational Databases
+
+Relational databases were originally proposed to separate the physical storage of
+data from its conceptual representation and to provide a mathematical foundation
+for data representation and querying. The relational data model also introduced
+high-level query languages that provided an alternative to programming language
+interfaces, making it much faster to write new queries. Relational representation of
+data somewhat resembles the example we presented in Figure 1.2. Relational sys-
+tems were initially targeted to the same applications as earlier systems, and pro-
+vided flexibility to develop new queries quickly and to reorganize the database as
+requirements changed. Hence, data abstraction and program-data independence
+were much improved when compared to earlier systems.
+
+Early experimental relational systems developed in the late 1970s and the com-
+mercial relational database management systems (RDBMS) introduced in the
+early 1980s were quite slow, since they did not use physical storage pointers or
+record placement to access related data records. With the development of new
+storage and indexing techniques and better query processing and optimization,
+their performance improved. Eventually, relational databases became the domi-
+nant type of database system for traditional database applications. Relational data-
+bases now exist on almost all types of computers, from small personal computers
+to large servers.
+
+1.7.3 Object-Oriented Applications and the Need
+for More Complex Databases
+The emergence of object-oriented programming languages in the 1980s and the
+
+need to store and share complex, structured objects led to the development of
+object-oriented databases (OODBs). Initially, OODBs were considered a competitor

@@ -1,0 +1,53 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
+e Registers: The fastest access is to data held in registers. Hence registers are part of
+the memory hierarchy. More speed, small size and cost per bit is also more.
+
+e At the next level of hierarchy, small amount of memory can be directly
+implemented on the processor chip.
+
+e¢ This memory is called as processor cache. It holds the copy of recently accessed
+data and instructions.
+
+There are 2 levels of caches viz level-1 and level-2.
+
+Level-1 cache is partof the processor and level-2 cache is placed in
+
+between level-1 cache and main memory.
+
+e The level-2 cache is implemented using SRAM chips
+
+e The next level in the memory hierarchy is called as main memory. It is
+implemented using dynamic memory components (DRAM). The main
+memoryis larger but slower than cache memory. The access time for
+
+main memory is ten times longer than the cache memory
+
+©@ The level next in the memory hierarchy is called as secondary memory.
+
+It holds huge amount of data.
+
+Characteristics _| SRAM DRAM Magnetis Disk
+Speed Very Fast Slower Much slower than
+DRAM
+Size Large Small Small
+Cost Expensive Less Expensive Low price
+Memory Speed Size
+Registers Very high Lower
+Primary cache High Lower
+Secondary cache Low Low
+Main memory Lower than High
+Seconadry cache
+Secondary Very low Very High
+Memory
+
+. The main-memory is built with DRAM
+
++ SRAMs are used in cache memory, where speed is essential.
+
++ The Cache-memory is of 2 types:
+1) Primary/Processor Cache (Levell or L1 cache)
+> It is always located on the processor-chip.
+2) Secondary Cache (Level2 or L2 cache)
+» It is placed between the primary-cache and the rest of the memory.
+Dr.Ajay V G, Dept. of CSE, 20

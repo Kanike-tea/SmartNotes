@@ -1,0 +1,26 @@
+Data Structures and Applications (BCS304) Module III
+
+The time for the remaining two loops is bounded by O(n + m). The first loop can iterate m times and
+the second can iterate n times. So, the asymptotic computing time of this algorithm is O(n +m).
+
+Erasing a circular list
+
+If we wish to compute more polynomials, it would be useful to reclaim the NODEs that are being
+used. This function erases a circular list pointed by ptr and adds the NODE to the availability list.
+void cerase(POLY *ptr)
+
+{
+
+POLY* temp;
+
+if (ptr )
+{
+temp = ptr>link
+ptr->link=avail
+avail = temp;
+*ptr = NULL;
+i
+
+i
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 9

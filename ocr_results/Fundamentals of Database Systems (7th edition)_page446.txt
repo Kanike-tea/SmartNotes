@@ -1,0 +1,53 @@
+416
+
+Chapter 12 Object and Object-Relational Databases
+
+Q16: (select struct( dept_name, number_of_majors: count (partition) )
+from Sin STUDENTS
+group by dept_name: S.Majors_in.Dname;
+
+The result of the grouping specification is of type set<struct(dept_name: string, partition:
+bag<struct(S:STUDENT>)>), which contains a struct for each group (partition) that
+has two components: the grouping attribute value (dept_name) and the bag of the
+STUDENT objects in the group (partition). The select clause returns the grouping
+attribute (name of the department), and a count of the number of elements in each
+partition (that is, the number of students in each department), where partition is the
+keyword used to refer to each partition. The result type of the select clause is
+set<struct(dept_name: string, number_of_majors: integer)>. In general, the syntax for
+the group by clause is
+
+group by Fy: E), Fy: Eo, ... , Fy: Ex
+
+where Fj: Ej, Fy: E>, ... , Fy: Ex isa list of partitioning (grouping) attributes and each
+partitioning attribute specification F;: E; defines an attribute (field) name F; and an
+expression Ej. The result of applying the grouping (specified in the group by clause)
+is a set of structures:
+
+set<struct(Fy: Ty, Fp: Ty, «.. , Fk: Thy partition: bag)>
+
+where T; is the type returned by the expression Ej, partition is a distinguished field
+name (a keyword), and B is a structure whose fields are the iterator variables (S in
+Q16) declared in the from clause having the appropriate type.
+
+Just as in SQL, a having clause can be used to filter the partitioned sets (that is, select
+only some of the groups based on group conditions). In Q17, the previous query is
+modified to illustrate the having clause (and also shows the simplified syntax for the
+select clause). Q17 retrieves for each department having more than 100 majors, the
+average GPA of its majors. The having clause in Q17 selects only those partitions
+(groups) that have more than 100 elements (that is, departments with more than
+100 students).
+
+Q17: select dept_name, avg_gpa: avg ( select P.gpa from P in partition)
+from Sin STUDENTS
+group by dept_name: S.Majors_in.Dname
+having count (partition) > 100;
+
+Note that the select clause of Q17 returns the average GPA of the students in the
+partition. The expression
+
+select PGpa from P in partition
+
+returns a bag of student GPAs for that partition. The from clause declares an iterator
+variable P over the partition collection, which is of type bag<struct(S: STUDENT)>.
+Then the path expression P.gpa is used to access the GPA of each student in the
+partition.

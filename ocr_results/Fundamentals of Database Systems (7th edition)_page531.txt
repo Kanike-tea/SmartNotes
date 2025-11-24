@@ -1,0 +1,61 @@
+that this relation is not in 3NF. Then argue from your knowledge of 2NF,
+why it is not even in 2NF.
+
+14.35. Consider the relation:
+
+BOOK (Book_Name, Author, Edition, Year)
+
+with the data:
+
+Laboratory Exercises
+
+IBook_Name Author Edition |Copyright_Year
+IDB_fundamentals INavathe 4 2004
+IDB_fundamentals [Elmasri 4 2004
+IDB_fundamentals [Elmasri 5 2007
+IDB_fundamentals INavathe 5 2007
+
+a. Based on a common-sense understanding of the above data, what are the
+
+possible candidate keys of this relation?
+
+b. Justify that this relation has the MVD {Book} —» {Author} | {Edition, Year}.
+
+c. What would be the decomposition of this relation based on the above
+MVD? Evaluate each resulting relation for the highest normal form it
+
+possesses.
+
+14.36. Consider the following relation:
+
+TRIP (Trip_id, Start_date, Cities_visited, Cards_used)
+
+This relation refers to business trips made by company salespeople. Suppose
+the TRIP has a single Start_date but involves many Cities and salespeople
+may use multiple credit cards on the trip. Make up a mock-up population of
+
+the table.
+
+a. Discuss what FDs and/or MVDs exist in this relation.
+
+b. Show how you will go about normalizing the relation.
+
+Laboratory Exercises
+
+Note: The following exercises use the DBD (Data Base Designer) system that is
+
+described in the laboratory manual.
+
+The relational schema R and set of functional dependencies F need to be coded as
+
+lists. As an example, R and F for this problem are coded as:
+
+R=[ahcodefgh i,j]
+
+F=[[la, b),[el],
+(la],{d, el],
+([b1,1Al,
+(LAL Lg All,
+(46 ll
+
+501

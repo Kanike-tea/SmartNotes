@@ -1,0 +1,33 @@
+9
+chapter “4 I
+
+NOSQL Databases
+and Big Data Storage Systems
+
+W: now turn our attention to the class of sys-
+tems developed to manage large amounts of
+data in organizations such as Google, Amazon, Facebook, and Twitter and in
+applications such as social media, Web links, user profiles, marketing and sales,
+posts and tweets, road maps and spatial data, and e-mail. The term NOSQL is
+generally interpreted as Not Only SQL—rather than NO to SQL—and is meant
+to convey that many applications need systems other than traditional relational
+SQL systems to augment their data management needs. Most NOSQL systems
+are distributed databases or distributed storage systems, with a focus on semis-
+tructured data storage, high performance, availability, data replication, and scal-
+ability as opposed to an emphasis on immediate data consistency, powerful
+query languages, and structured data storage.
+
+We start in Section 24.1 with an introduction to NOSQL systems, their character-
+istics, and how they differ from SQL systems. We also describe four general cate-
+gories of NOSQL systems—document-based, key-value stores, column-based,
+and graph-based. Section 24.2 discusses how NOSQL systems approach the issue
+of consistency among multiple replicas (copies) by using the paradigm known as
+eventual consistency. We discuss the CAP theorem, which can be used to under-
+stand the emphasis of NOSQL systems on availability. In Sections 24.3 through
+24.6, we present an overview of each category of NOSQL systems—starting with
+document-based systems, followed by key-value stores, then column-based, and
+finally graph-based. Some systems may not fall neatly into a single category, but
+rather use techniques that span two or more categories of NOSQL systems.
+Finally, Section 24.7 is the chapter summary.
+
+883

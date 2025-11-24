@@ -1,0 +1,33 @@
+chapter “7
+
+Object and Object-Relational
+Databases
+
+n this chapter, we discuss the features of object-
+
+oriented data models and show how some of these
+features have been incorporated in relational database systems and the SQL standard.
+Some features of object data models have also been incorporated into the data mod-
+els of newer types of database systems, known as NOSQL systems (see Chapter 24).
+In addition, the XML model (see Chapter 13) has similarities to the object model.
+So an introduction to the object model will give a good perspective on many of the
+recent advances in database technology. Database systems that were based on the
+object data model were known originally as object-oriented databases (OODBs) but
+are now referred to as object databases (ODBs).Traditional data models and sys-
+tems, such as network, hierarchical, and relational have been quite successful in
+developing the database technologies required for many traditional business data-
+base applications. However, they have certain shortcomings when more complex
+database applications must be designed and implemented—for example, databases
+for engineering design and manufacturing (CAD/CAM and CIM!), biological and
+other sciences, telecommunications, geographic information systems, and multi-
+media.” These ODBs were developed for applications that have requirements
+requiring more complex structures for stored objects. A key feature of object data-
+bases is the power they give the designer to specify both the structure of complex
+objects and the operations that can be applied to these objects.
+
+‘Computer-aided design/computer-aided manufacturing and computer-integrated manufacturing,
+
+2Multimedia databases must store various types of multimedia objects, such as video, audio, images,
+graphics, and documents (see Chapter 26).
+
+363

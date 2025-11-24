@@ -1,0 +1,51 @@
+228 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+7.3 Views (Virtual Tables) in SQL
+
+In this section we introduce the concept of a view in SQL. We show how views are
+specified, and then we discuss the problem of updating views and how views can be
+implemented by the DBMS.
+
+7.3.1 Concept of a View in SOL
+
+A view in SQL terminology is a single table that is derived from other tables.° These
+other tables can be base tables or previously defined views. A view does not neces-
+sarily exist in physical form; it is considered to be a virtual table, in contrast to base
+tables, whose tuples are always physically stored in the database. This limits the
+possible update operations that can be applied to views, but it does not provide any
+limitations on querying a view.
+
+We can think of a view as a way of specifying a table that we need to reference
+frequently, even though it may not exist physically. For example, referring to the
+COMPANY database in Figure 5.5, we may frequently issue queries that retrieve the
+employee name and the project names that the employee works on. Rather than
+having to specify the join of the three tables EMPLOYEE, WORKS_ON, and PROJECT
+every time we issue this query, we can define a view that is specified as the result of
+these joins. Then we can issue queries on the view, which are specified as single-
+table retrievals rather than as retrievals involving two joins on three tables. We call
+the EMPLOYEE, WORKS_ON, and PROJECT tables the defining tables of the view.
+
+7.3.2 Specification of Views in SQL
+
+In SQL, the command to specify a view is CREATE VIEW. The view is given a (vir-
+tual) table name (or view name), a list of attribute names, and a query to specify the
+contents of the view. If none of the view attributes results from applying functions
+or arithmetic operations, we do not have to specify new attribute names for the
+view, since they would be the same as the names of the attributes of the defining
+tables in the default case. The views in V1 and V2 create virtual tables whose sche-
+mas are illustrated in Figure 7.2 when applied to the database schema of Figure 5.5.
+
+V1: CREATE VIEW WORKS_ON1
+
+AS SELECT Fname, Lname, Pname, Hours
+FROM EMPLOYEE, PROJECT, WORKS_ON
+WHERE Ssn = Essn AND Pno = Pnumber;
+V2: CREATEVIEW —_DEPT_INFO(Dept_name, No_of_emps, Total_sal)
+AS SELECT Dname, COUNT (*), SUM (Salary)
+FROM DEPARTMENT, EMPLOYEE
+WHERE Dnumber = Dno
+
+GROUP BY _Dname;
+
+®As used in SQL, the term view is more limited than the term user view discussed in Chapters 1 and 2,
+since a user view would possibly include many relations.

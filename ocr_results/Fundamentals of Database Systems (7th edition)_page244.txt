@@ -1,0 +1,53 @@
+214
+
+Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+The second option is shown as Q3B. Notice that we need two-level nesting in Q3B
+and that this formulation is quite a bit more complex than Q3A.
+
+Q3B: SELECT Lname, Fname
+FROM — EMPLOYEE
+WHERE NOTEXISTS (SELECT *
+FROM WORKS_ONB
+WHERE (B.PnoIN (SELECT Pnumber
+FROM — PROJECT
+WHERE Dnum=5)
+AND
+NOTEXISTS (SELECT *
+FROM — WORKS_ONCG
+WHERE C.Essn = Ssn
+AND C.Pno = BPno )));
+
+In Q38, the outer nested query selects any WORKS_ON (B) tuples whose Pno is of a
+project controlled by department 5, if there is not a WORKS_ON (C) tuple with the
+same Pno and the same Ssn as that of the EMPLOYEE tuple under consideration in
+the outer query. If no such tuple exists, we select the EMPLOYEE tuple. The form of
+Q3B matches the following rephrasing of Query 3: Select each employee such that
+there does not exist a project controlled by department 5 that the employee does
+not work on. It corresponds to the way we will write this query in tuple relation
+calculus (see Section 8.6.7).
+
+There is another SQL function, UNIQUE(Q), which returns TRUE if there are no
+duplicate tuples in the result of query Q; otherwise, it returns FALSE. This can be
+used to test whether the result of a nested query is a set (no duplicates) or a multiset
+(duplicates exist).
+
+7.1.5 Explicit Sets and Renaming in SQL
+
+We have seen several queries with a nested query in the WHERE clause. It is also
+possible to use an explicit set of values in the WHERE clause, rather than a nested
+query. Such a set is enclosed in parentheses in SQL.
+
+Query 17. Retrieve the Social Security numbers of all employees who work on
+project numbers 1, 2, or 3.
+
+Q17: SELECT —_ DISTINCT Essn
+FROM WORKS_ON
+WHERE Pno IN (1, 2, 3);
+
+In SQL, it is possible to rename any attribute that appears in the result of a query
+by adding the qualifier AS followed by the desired new name. Hence, the AS con-
+struct can be used to alias both attribute and relation names in general, and it can
+be used in appropriate parts of a query. For example, Q8A shows how query Q8
+from Section 4.3.2 can be slightly changed to retrieve the last name of each
+employee and his or her supervisor while renaming the resulting attribute names

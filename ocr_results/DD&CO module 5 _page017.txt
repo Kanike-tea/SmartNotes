@@ -1,0 +1,45 @@
+Exponents Mantissas
+
+a| [>
+
+Rg R
+For example:
+Segment 1: X=0.9504*108
+Y=0.8200*10?
+R 0.082
+Segment 2:
+Segment 3: $=0.9504+0.082=1.0324
+Segment 4: 0.10324
+
+= The exponent difference determines how many times the mantissaassociated
+with the smaller exponent must be shifted to the right.
+o Add or subtract the mantissas
+o Normalize the result
+= Whenan overflow occurs, the mantissa of the sum or difference isshifted right
+and the exponent incremented by one.
+= Ifan underflow occurs, the number of leading zeros in the mantissa determines
+the number of left shifts in the mantissa and the numberthat must be subtracted
+from the exponent.
+
+4.4 Instruction Pipeline
+
+Introduction:
+Pipeline processing can occur not only in the data stream but in the instruction aswell.
+Consider a computer with an instruction fetch unit (FIFO)and an instructionexecution
+unit(PC) designed to provide a two-segment pipeline.
+Computers with complex instructions require other phases in addition to abovephases to
+process an instruction completely.
+In the most general case, the computer needs to process each instruction with thefollowing
+sequence of steps.
+
+o Fetch the instruction from memory.
+Decode the instruction.
+Calculate the effective address.
+Fetch the operands from memory.
+Execute the instruction.
+
+o Store the result in the proper place.
+There are certain difficulties that will prevent the instruction pipeline from operatingat its
+maximum rate.
+
+ooo°o

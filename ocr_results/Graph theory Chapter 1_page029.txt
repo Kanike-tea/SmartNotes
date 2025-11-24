@@ -1,0 +1,46 @@
+32 1. Directed Graphs and Gra i
+
+Show that there is no graph with 28 edges and 12 vertices in the Sollowing
+cases:
+
+(i) The degree of a vertex is either 3 or 4. |
+(ii) The degree of a vertex is either 3 or 6. |
+
+> Suppose there is a graph with 28 edges and 12 vertices, of which k vertices are of degree 3 _
+(each). Then:
+
+(i) If all of the remaining (12 — k) vertices have degree 4, then we should have (by the :
+handshaking property) 3k + 4(12 - k) = 2 x 28 = 56, or k = —8 which is not possible
+(because k has to be nonnegative).
+
+(ii) If all of the remaining (12—k) vertices have degree 6, then we should have 3k+6(12-k) = ©
+56, or k = 16/3. This is not possible (because k has to be a nonnegative integer).
+
+Hence, in both of the two given cases, the graph of the desired type cannot exist. 1
+
+ROTM EN == (a) Ifa graph with n vertices and m edges is k-regular, show that m = kn/2.
+
+(b) Does there exist a cubic graph with 11 vertices?
+
+(c) Does there exist a 4-regular graph with (i) 15 edges? (ii) 10 edges?
+
+i
+
+»(a) If a graph G is k-regular, then the degree of every vertex is k. Therefore, if G hasn _
+vertices, then the sum of the degrees of vertices is nk. By handshaking property, this sum E
+must be equal to 2m if G has m edges. Thus, nk = 2m, or m=nk/2.
+
+(b) If there is a cubic (3-regular) graph with n = 11 vertices, the number of edges it should |
+have is m = 4(3n) = 4(11 x 3). This is not possible, because (33/2) is not a whole -
+number. Thus, the graph of the desired type does not exist.
+
+(c) (i) If there is a 4-regular graph with m = 15 edges, the number of vertices n it should q
+
+have is given by 4n = 2m = 30. This is not possible, because 30/4 is not a whole numbe!
+Thus, the graph of the desired type does not exist.
+
+(ii) If there is a 4-regular graph with m = 10 edges, the number of vertices n it should 1 1
+have is given by 4n = 2m = 20. This is possible (with n = 5). Thus, such a graph does - 4
+
+exist. We note that this graph is the complete graph Ks. See Figure 1.19(d) which is ‘
+reproduced below,

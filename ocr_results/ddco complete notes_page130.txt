@@ -1,0 +1,50 @@
+Digital Design and Computer Organization (BCS302)
+
+«The control-signals that govern a particular transfer are asserted at the
+
+start of theclock cycle.
+Input & Output Gating for one Register Bit
+Implementation for one bit of register Ri(as shown in fig 7.3)
+= All operations and data transfers are controlled by the processor clock.
+
+eA 2-input multiplexer is used to select the data applied to the input
+of an edge-triggered D flip-flop.
+
+¢ Riin=1,Multiplexer selects data on the bus. This data will be loaded into
+flip-flop at rising-edgeof clock.
+
+¢ Riin=0,Multiplexer feeds back the value currently stored in the flipflop
+¢ Q output of flip-flop is connected to bus via a tri-state gate.
+« When Riout=0, gates output in the high-impedance state.
+« When Riout=1,gate drives the bus to 0 or 1,depending on the value
+
+of Q.
+
+PERFORMING AN ARITHMETIC OR LOGIC OPERATION(refer fig:7.2)
+e The ALU is a combinational circuit that has no internal storage.
+«The ALU performs arithmetic and logic operations on the 2 operands
+applied to its A and Binputs.
+«ALU gets the two operands, one is from MUX and another from bus. The
+result is temporarily stored in register Z.
+¢ Therefore, a sequence of operations [R3]=[R1]+[R2].
+1) Rlout, Yin
+2) R2out, Select Y, Add, Zin
+3) Zout, R3in
+Instruction execution proceeds as follows:
+Step 1 --> Contents from register R1 are loaded into register Y.
+Step2 --> Contents from Y and from register R2 are applied to the A and
+B inputs of ALU; Addition is performed & Result is stored in the Z register.
+Step 3 --> The contents of Z register is stored in the R3 register.
+¢ The signals are activated for the duration of the clock cycle
+corresponding to thatstep. All other signals are inactive.
+FETCHING A WORD FROM MEMORY
+« To fetch instruction/data from memory, the processor has to specify
+the address of the memory location where this information is
+stored and request a Read operation.
+¢ processor transfers required address to MAR.At the same time, processor
+issues Read signal on control-lines of memory-bus.
+¢ When requested-data are received from memory, they are stored in MDR.
+From MDR, they are transferred to other registers in the processor.
+The Connections for register MDR has shown in fig 7.4
+
+Dr Ajay V G, Dept. of CSE,SVIT

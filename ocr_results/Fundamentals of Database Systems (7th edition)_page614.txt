@@ -1,0 +1,55 @@
+584
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+16.10 Parallelizing Disk Access Using
+RAID Technology
+
+With the exponential growth in the performance and capacity of semiconductor
+devices and memories, faster microprocessors with larger and larger primary mem-
+ories are continually becoming available. To match this growth, it is natural to
+expect that secondary storage technology must also take steps to keep up with pro-
+
+cessor technology in performance and reliability.
+
+A major advance in secondary storage technology is represented by the develop-
+ment of RAID, which originally stood for redundant arrays of inexpensive disks.
+More recently, the J in RAID is said to stand for independent. The RAID idea
+received a very positive industry endorsement and has been developed into an elab-
+orate set of alternative RAID architectures (RAID levels 0 through 6). We highlight
+
+the main features of the technology in this section.
+
+The main goal of RAID is to even out the widely different rates of performance
+improvement of disks against those in memory and microprocessors.” Although
+RAM capacities have quadrupled every two to three years, disk access times are
+improving at less than 10% per year, and disk transfer rates are improving at roughly
+20% per year. Disk capacities are indeed improving at more than 50% per year, but
+the speed and access time improvements are of a much smaller magnitude.
+
+A second qualitative disparity exists between the ability of special microprocessors
+that cater to new applications involving video, audio, image, and spatial data pro-
+cessing (see Chapters 26 for details of these applications), with corresponding lack
+
+of fast access to large, shared data sets.
+
+The natural solution is a large array of small independent disks acting as a single
+higher performance logical disk. A concept called data striping is used, which utilizes
+parallelism to improve disk performance. Data striping distributes data transpar-
+ently over multiple disks to make them appear as a single large, fast disk. Figure
+16.13 shows a file distributed or striped over four disks. In bit-level striping, a byte is
+split and individual bits are stored on independent disks. Figure 16.13(a) illustrates
+bit-striping across four disks where the bits (0, 4) are assigned to disk 0, bits (1, 5) to
+disk 1, and so on. With this striping, every disk participates in every read or write
+operation; the number of accesses per second would remain the same as on a single
+disk, but the amount of data read in a given time would increase fourfold. Thus,
+striping improves overall I/O performance by providing high overall transfer rates.
+Block-level striping stripes blocks across disks. It treats the array of disks as if it is
+one disk. Blocks are logically numbered from 0 in sequence. Disks in an m-disk array
+are numbered 0 to m - 1. With striping, block j goes to disk (j mod m). Figure
+16.13(b) illustrates block striping with four disks (m = 4). Data striping also accom-
+plishes load balancing among disks. Moreover, by storing redundant information on
+
+'7This was predicted by Gordon Bell to be about 40% every year between 1974 and 1984 and is now
+
+supposed to exceed 50% per year.

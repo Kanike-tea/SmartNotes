@@ -1,0 +1,49 @@
+872 Chapter 23 Distributed Database Concepts
+
+External External . External
+
+schema schema schema
+
+ated _.. [Federated
+ema schema
+ee
+t |
+
+Export Export . Export
+
+schema schema schema
+Figure 23.9 Component vee Component
+The five-level schema architecture schema schema
+ina federated database system
+(FDBS).
+
+Local Local
+
+Source: Adapted from Sheth and schema ve schema
+Larson, ‘Federated Database Systems
+for Managing Distributed,
+Heterogeneous, and Autonomous Sanco anEnEnt
+Databases.” ACM Computing Surveys ae naa
+(Vol. 22: No. 3, September 1990).
+
+conceptual schema (full database definition) of a component database, and the
+component schema is derived by translating the local schema into a canonical data
+model or common data model (CDM) for the FDBS. Schema translation from the
+local schema to the component schema is accompanied by generating mappings to
+transform commands on a component schema into commands on the correspond-
+ing local schema. The export schema represents the subset of a component schema
+that is available to the FDBS. The federated schema is the global schema or view,
+which is the result of integrating all the shareable export schemas. The external
+schemas define the schema for a user group or an application, as in the three-level
+schema architecture.
+
+All the problems related to query processing, transaction processing, and directory
+and metadata management and recovery apply to FDBSs with additional consider-
+ations. It is not within our scope to discuss them in detail here.
+
+23.7.4 An Overview of Three-Tier Client/Server Architecture
+
+As we pointed out in the chapter introduction, full-scale DDBMSs have not been
+developed to support all the types of functionalities that we have discussed so far.
+Instead, distributed database applications are being developed in the context of the
+client/server architectures. We introduced the two-tier client/server architecture in

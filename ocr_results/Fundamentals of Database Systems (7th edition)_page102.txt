@@ -1,0 +1,50 @@
+72
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+alternative in Figure 3.8; we shall see in the next section that this will be refined into
+a many-to-many relationship, once we introduce the concepts of relationships.
+
+3.4 Relationship Types, Relationship Sets,
+Roles, and Structural Constraints
+
+In Figure 3.8 there are several implicit relationships among the various entity types.
+In fact, whenever an attribute of one entity type refers to another entity type, some
+relationship exists. For example, the attribute Manager of DEPARTMENT refers to
+an employee who manages the department; the attribute Controlling_department
+of PROJECT refers to the department that controls the project; the attribute
+Supervisor of EMPLOYEE refers to another employee (the one who supervises this
+employee); the attribute Department of EMPLOYEE refers to the department for
+which the employee works; and so on. In the ER model, these references should not
+be represented as attributes but as relationships. The initial COMPANY database
+schema from Figure 3.8 will be refined in Section 3.6 to represent relationships
+explicitly. In the initial design of entity types, relationships are typically captured in
+the form of attributes. As the design is refined, these attributes get converted into
+relationships between entity types.
+
+This section is organized as follows: Section 3.4.1 introduces the concepts of rela-
+tionship types, relationship sets, and relationship instances. We define the concepts
+of relationship degree, role names, and recursive relationships in Section 3.4.2, and
+then we discuss structural constraints on relationships—such as cardinality ratios
+and existence dependencies—in Section 3.4.3. Section 3.4.4 shows how relationship
+types can also have attributes.
+
+3.4.1 Relationship Types, Sets, and Instances
+
+A relationship type R among n entity types E,, Ey, ..., E,, defines a set of associa-
+tions—or a relationship set—among entities from these entity types. Similar to the
+case of entity types and entity sets, a relationship type and its corresponding rela-
+tionship set are customarily referred to by the same name, R. Mathematically, the
+relationship set R is a set of relationship instances r;, where each r; associates n
+individual entities (¢, ¢,..., ¢,), and each entity ¢; in r; is a member of entity set Ej,
+1 <j <n. Hence, a relationship set is a mathematical relation on E), E>,..., E,;
+alternatively, it can be defined as a subset of the Cartesian product of the entity sets
+E, x E,X...XxE,. Each of the entity types E, Ey, ..., E,, is said to participate in the
+relationship type R; similarly, each of the individual entities e), 7, .. . , é,, is said to
+participate in the relationship instance r; = (e), €2,...  €,)-
+
+Informally, each relationship instance r; in R is an association of entities, where the
+association includes exactly one entity from each participating entity type. Each
+such relationship instance r; represents the fact that the entities participating in r;
+are related in some way in the corresponding miniworld situation. For example,
+consider a relationship type WORKS_FOR between the two entity types

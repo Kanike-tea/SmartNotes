@@ -1,0 +1,50 @@
+368 Chapter 10 Firmware
+
+Table 10.1
+
+system operations. The choice of which firmware to use for a particular ARM-based
+system depends upon the specific application, which can range from loading and exe-
+cuting a sophisticated operating system to simply relinquishing control to a small
+microkernel. Consequently, requirements can vary greatly from one firmware imple-
+mentation to another. For example, a small system may require just minimal firmware
+support to boot a small operating system. One of the main purposes of firmware is to
+provide a stable mechanism to load and boot an operating system.
+
+= The bootloader is a small application that installs the operating system or application
+onto a hardware target. The bootloader only exists up to the point that the operating
+system or application is executing, and it is commonly incorporated into the
+firmware.
+
+To help understand the features of different firmware implementations, we have a
+common execution flow (see Table 10.1). Each stage is now discussed in more detail.
+
+The first stage is to set up the target platform—in other words, prepare the environ-
+ment to boot an operating system since an operating system expects a particular type
+of environment before it can operate. This step involves making sure that the platform
+is correctly initialized (for example, making sure that the control registers of a particular
+microcontroller are placed at a known address or changing the memory map to an expected
+layout).
+
+It is common for the same executable to operate on different cores and platforms. In this
+case, the firmware has to identify and discover the exact core and platform it is operating
+on. The core is normally recognized by reading register 0 in coprocessor 15, which holds
+both the processor type and the manufacturer name. There are multiple ways to identify
+the platform, from checking for the existence of a set of particular peripherals to simply
+reading a preprogrammed chip.
+
+Firmware execution flow.
+
+Stage Features
+
+Set up target platform Program the hardware system registers
+Platform identification
+Diagnostics
+Debug interface
+Command line interpreter
+
+Abstract the hardware — Hardware Abstraction Layer
+Device driver
+
+Load a bootable image Basic filing system
+
+Relinquish control Alter the pc to point into the new image

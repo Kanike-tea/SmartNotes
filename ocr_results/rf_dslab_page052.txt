@@ -1,0 +1,50 @@
+11.Develop a Program in C for the following operations on Graph(G) of Cities
+. Create a Graph of N cities using Adjacency Matrix.
+ib. Print all the nodes reachable from a given starting node in a digraph using DFS/BFS method
+
+#include
+
+<stdio.h>#include<stdl
+
+ib.h>
+
+inta[20][20].q[20] ,visited[20] reach[10],n.ij.f=0,r=-1 count=0;
+
+void bfs(int v)
+{
+for(i=1;i<=n;i++)
+if(a[v][i] && !visited[i])
+q[+41]=i;
+if(f<=r)
+{
+visited[q[f]]=1;
+bfs(q[f++]);
+3
+3
+void dfs(int v)
+{
+int i;reach[v]=1;
+for(islsi<=n;i++)
+{
+if(a[v][i] &&!reach[i])
+{
+printf("\n %d->%d" vi);
+count++;
+dfs(i);
+i
+i
+3
+voidmain()
+{
+intv,choice;
+printf("\nEnterthenumberofvertices:");scanf("%d"
+»&n);
+for(i=1;i<=n;i++)
+{
+qlil=0;
+visited[i]=0;
+3
+for(i=1;i<=n-
+1;i++)reach[i]=0;
+
+52

@@ -1,0 +1,87 @@
+834
+
+Chapter 22 Database Recovery Techniques
+
+Review Questions
+
+22.1.
+
+22.2.
+
+22.3.
+
+22.4.
+22.5.
+
+22.6.
+22.7.
+22.8.
+
+22.10,
+
+22.11.
+
+22.12.
+
+22.13.
+
+22.14.
+
+22.15.
+
+22.16.
+22.17.
+
+Discuss the different types of transaction failures. What is meant by cata-
+strophic failure?
+
+Discuss the actions taken by the read_item and write_item operations on a
+database.
+
+What is the system log used for? What are the typical kinds of entries in a
+system log? What are checkpoints, and why are they important? What are
+transaction commit points, and why are they important?
+
+How are buffering and caching techniques used by the recovery subsystem?
+
+What are the before image (BFIM) and after image (AFIM) of a data item?
+What is the difference between in-place updating and shadowing, with
+respect to their handling of BFIM and AFIM?
+
+What are UNDO-type and REDO-type log entries?
+Describe the write-ahead logging protocol.
+
+Identify three typical lists of transactions that are maintained by the recov-
+ery subsystem.
+
+- What is meant by transaction rollback? What is meant by cascading rollback?
+
+Why do practical recovery methods use protocols that do not permit cascad-
+ing rollback? Which recovery techniques do not require any rollback?
+
+. Discuss the UNDO and REDO operations and the recovery techniques that
+
+use each.
+
+Discuss the deferred update technique of recovery. What are the advantages and
+disadvantages of this technique? Why is it called the NO-UNDO/REDO method?
+
+How can recovery handle transaction operations that do not affect the data-
+base, such as the printing of reports by a transaction?
+
+Discuss the immediate update recovery technique in both single-user and
+multiuser environments. What are the advantages and disadvantages of
+immediate update?
+
+What is the difference between the UNDO/REDO and the UNDO/NO-REDO
+algorithms for recovery with immediate update? Develop the outline for an
+UNDO/NO-REDO algorithm.
+
+Describe the shadow paging recovery technique. Under what circumstances
+does it not require a log?
+
+Describe the three phases of the ARIES recovery method.
+
+What are log sequence numbers (LSNs) in ARIES? How are they used? What
+information do the Dirty Page Table and Transaction Table contain?
+Describe how fuzzy checkpointing is used in ARIES.

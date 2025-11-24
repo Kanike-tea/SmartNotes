@@ -1,0 +1,39 @@
+Table B.1 ARM instruction decode table. (Continued.)
+
+Instruction classes (indexed by op) 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 1312111098765 43210
+SMMLA | | | SMMLS cond O11 1/0]1 01 Rd Rn!=1111 Rs op |R|A|_ Rm
+SMMUL cond [0 1 1 1/0; 01 Rd Tiiiif & ([00R|i| Rm
+USADA8 cond [0 1 1 1fijo 00 Rd Ral= iit Rs__[000|i| Rm
+USAD8 cond [0 1 1 1fijo 00 Rd Tiiiif & ([000|i| Rm
+Undefined and expected to stay so cond [0 1 1 ififi it x Tiiji] x
+STMDA | LDMDA | STMIA | LOMIA cond 10 0 Ofop * Wop Rn register_list
+
+STMDB | LDMDB | STMIB | LOMIB cond 1 0 0 lop \ Wop Rn register_list
+
+B to instruction_address+8+4*offset cond 1010 signed 24-bit branch offset
+
+BL to instruction_address+8+4*offset cond Tort signed 24-bit branch offset
+
+MCRR | MRRC cond [1 10 0/0 1 0 op] Rn Rd copro opl | cm
+STCIL} | LOCIL} unindexed cond [1 10 0|1 L 0 op| Rn Ca copro option
+STCIL} | LOCIL} post cond [1 10 0[U L 1 op| Rn ca copro immeds
+STC{L} | LOCIL} pre cond [1 1 0 1|/U L Wop| Rn Cd copro immed8
+cop cond [1 110 opt Ca ca copro_| op2 [0] Gm
+MCR | MRC cond [1 1 10 op! lop] cn Rd copro | op2 [1] Gm
+SWI cond Tiii immed24
+
+cps | | CPSIE | CPSID Tiiij/o 00 1{0 0 0 0] pM 0[0 0 0 0]0 00 ai fO| mode
+SETEND LE | SETEND BE Tiiijo 00 i1{0 0 0 0/0 0 0 1[0 0 0 Of0 0 opof000 0000
+PLD pre Tiiijoioijui ot Ra ridid immed12
+
+PLD pre Tiiijoiiijui oi Ra 11 1 1[ shiftsize [shift]0| Rm
+RFEDA | RFEIA | RFEDB | RFEIB Tiii/i 0 0 oplp 0 Wi Ra 00 0 O|1 01 O00 dfo000
+SRSDA | SRSIA | SRSDB | SRSIB 111 1/1 0 0 oplop 1 WOli 1 0 1[0 0 0 0/0 1 0 1[0 00] mode
+BLX instruction+8+4*offset+2*a Tiiif{t 01a signed 24-bit branch offset
+
+MCRR2 | MRRC2 T11 1/1 10 0[0 1 0 op] Rn Rd copro | opt on
+STC2{L} | LOC2{L} unindexed 1111/1 10 0/1 L 0 o| Rn Cd copro option
+STC2{L} | LOCZIL} post 1111/1 10 0/U L 1 | Rn Ca copro immed
+STC2{L} | LOCZIL} pre Ti 11/1 10 1/0 L Wop| Rn Cad copro immed8
+cop2 Tiiijiitio opt Ca cad copro_[ op2 [0] Cm
+MCR2 | MRC2 Tiddi/i ii 0| opt jop| G cad copro | op2 [1] Gm

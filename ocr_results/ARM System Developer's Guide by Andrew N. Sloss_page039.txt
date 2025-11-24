@@ -1,0 +1,49 @@
+26 Chapter 2. ARM Processor Fundamentals
+
+Table 2.1
+
+Processor mode.
+
+Mode Abbreviation Privileged Mode[4:0]
+Abort abt yes 10111
+Fast interrupt request fiq yes 10001
+Interrupt request irq yes 10010
+Supervisor svc yes 10011
+System sys yes seuss!
+Undefined und yes 11011
+User usr no 10000
+
+Another important feature to note is that the cpsr is not copied into the spsr when a
+mode change is forced due to a program writing directly to the cpsr. The saving of the cpsr
+only occurs when an exception or interrupt is raised.
+
+Figure 2.3 shows that the current active processor mode occupies the five least significant
+bits of the cpsr. When power is applied to the core, it starts in supervisor mode, which is
+privileged. Starting in a privileged mode is useful since initialization code can use full access
+to the cpsr to set up the stacks for each of the other modes.
+
+Table 2.1 lists the various modes and the associated binary patterns. The last column of
+the table gives the bit patterns that represent each of the processor modes in the cpsr.
+
+2.2.3. STATE AND INSTRUCTION SETS
+
+The state of the core determines which instruction set is being executed. There are three
+instruction sets: ARM, Thumb, and Jazelle. The ARM instruction set is only active when
+the processor is in ARM state. Similarly the Thumb instruction set is only active when
+the processor is in Thumb state. Once in Thumb state the processor is executing purely
+Thumb 16-bit instructions. You cannot intermingle sequential ARM, Thumb, and Jazelle
+instructions.
+
+The Jazelle J and Thumb T bits in the cpsr reflect the state of the processor. When both
+Jand T bits are 0, the processor is in ARM state and executes ARM instructions. This is the
+case when power is applied to the processor. When the T bit is 1, then the processor is in
+Thumb state. To change states the core executes a specialized branch instruction. Table 2.2
+compares the ARM and Thumb instruction set features.
+
+The ARM designers introduced a third instruction set called Jazelle. Jazelle executes
+8-bit instructions and is a hybrid mix of software and hardware designed to speed up the
+execution of Java bytecodes.
+
+To execute Java bytecodes, you require the Jazelle technology plus a specially modified
+version of the Java virtual machine. It is important to note that the hardware portion of
+Jazelle only supports a subset of the Java bytecodes; the rest are emulated in software.

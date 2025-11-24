@@ -1,0 +1,92 @@
+420
+
+Chapter 12 Object and Object-Relational Databases
+
+Review Questions
+
+12.1.
+12.2.
+12.3.
+
+12.4.
+
+12.5.
+
+12.6.
+
+12.7.
+
+12.8.
+
+12.9.
+12.10.
+
+12.11.
+
+12.12.
+
+12.13.
+
+12.14.
+
+12.15.
+
+12.16.
+
+12.17.
+
+12.18.
+
+What are the origins of the object-oriented approach?
+What primary characteristics should an OID possess?
+
+Discuss the various type constructors. How are they used to create complex
+object structures?
+
+Discuss the concept of encapsulation, and tell how it is used to create abstract
+
+data types.
+
+Explain what the following terms mean in object-oriented database termi-
+nology: method, signature, message, collection, extent.
+
+What is the relationship between a type and its subtype in a type hierarchy?
+What is the constraint that is enforced on extents corresponding to types in
+the type hierarchy?
+
+What is the difference between persistent and transient objects? How is
+persistence handled in typical OO database systems?
+
+How do regular inheritance, multiple inheritance, and selective inheritance
+differ?
+
+Discuss the concept of polymorphism/operator overloading.
+
+Discuss how each of the following features is realized in SQL 2008: object identi-
+fier, type inheritance, encapsulation of operations, and complex object structures.
+
+In the traditional relational model, creating a table defined both the table
+type (schema or attributes) and the table itself (extension or set of current
+tuples). How can these two concepts be separated in SQL 2008?
+
+Describe the rules of inheritance in SQL 2008.
+
+. What are the differences and similarities between objects and literals in the
+
+ODMG object model?
+
+List the basic operations of the following built-in interfaces of the
+ODMG object model: Object, Collection, Iterator, Set, List, Bag, Array, and
+Dictionary.
+
+Describe the built-in structured literals of the ODMG object model and the
+operations of each.
+
+What are the differences and similarities of attribute and relationship prop-
+erties of a user-defined (atomic) class?
+
+What are the differences and similarities of class inhertance via extends and
+interface inheritance via “:” in the ODMG object model?
+
+Discuss how persistence is specified in the ODMG object model in the C++
+binding.

@@ -1,0 +1,57 @@
+140 Chapter 5 Efficient C Programming
+
+#ifdef __BIG_ENDIAN
+sample = sample & OxFF; /* get first byte of sample */
+
+#else
+
+sample = sample>>8; /* get first byte of sample */
+#endif
+
+do
+
+{
+
+next = *(data++);
+
+/* complete one sample and start the next */
+#ifdef _ BIG_ENDIAN
+
+*out++ = (short) ((next & OxFFOO) | sample);
+
+sample = next & OxFF;
+
+#else
+*out++ = (short) ((next<<8) | sample);
+sample = next >>8;
+
+#endif
+} while (--N);
+break;
+
+}
+}
+
+The routine works by having different code for each endianness and alignment.
+Endianness is dealt with at compile time using the__BIG_ENDIAN compiler flag. Alignment
+must be dealt with at run time using the switch statement.
+
+You can make the routine even more efficient by using 32-bit reads and writes rather
+than 16-bit reads and writes, which leads to four elements in the switch statement, one for
+each possible address alignment modulo four.
+
+Summary Endianness and Alignment
+
+= Avoid using unaligned data if you can.
+
+= Use the type char * for data that can be at any byte alignment. Access the data by
+reading bytes and combining with logical operations. Then the code won’t depend on
+alignment or ARM endianness configuration.
+
+= For fast access to unaligned structures, write different variants according to pointer
+alignment and processor endianness.
+
+5.10 DIVISION
+
+‘The ARM does not have a divide instruction in hardware. Instead the compiler implements
+divisions by calling software routines in the C library. There are many different types of

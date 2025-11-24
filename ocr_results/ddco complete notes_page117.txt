@@ -1,0 +1,53 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
+e The external device requests the processor to obtain bus mastership by
+enabling start arbitrationsignal.
+
+e In this technique 4 bit code is assigned to each device to request the CPU in
+order to obtain busmastership.
+
+e¢ Two or more devices request the bus by placing 4 bit code over the system bus.
+
+e The signals on the bus interpret the 4 bit code and produces winner as a result
+from the CPU.
+
+e When the input to the one driver = 1, and input to the another driver = 0, on
+the same bus line,this state is called as “Low level voltage state of bus”.
+
+e¢ Consider 2 devices namely A & B trying to access bus mastership at
+the same time. Let assigned code for devices A & B are 5 (0101) & 6
+(0110) respectively.
+
+e The device A sends the pattern (0101) and device B sends its pattern (0110) to
+master. The signals on the system bus interpret the 4 bit code for devices A & B
+produces device B as a winner.
+
+e The device B can obtain the bus mastership to initiate direct data transfer
+between external devices and main memory.
+
+The Memory System
+Speed, Size and Cost
+
+The block diagram of memory hierarchy is as shown in the figure below.
+
+Processor
+Registers
+Increasing Increasing ig ee]
+size oe speed cost per bil
+riman
+cache. a 4
+Secondar
+cache 19 Cache—SRAM
+Main Memory—
+DRAM
+Main L1=Cache on
+memory processor
+L2=Cache off
+processor
+Magnetic disk
+secondary
+memory
+
+Figure 5.13. Memory hierarchy.
+
+Dr.Ajay V G, Dept. of CSE, 19

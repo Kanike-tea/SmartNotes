@@ -1,0 +1,74 @@
+360 Chapter 9 Exception and Interrupt Handling
+
+Table 9.11
+
+Group interrupt sources.
+
+Group Interrupts
+
+0 timer], timer2
+
+1 commtx, commrx
+
+PRIORITY 1 EQU 1 3 Comms Tx
+PRIORITY 2 EQU 0 3 Timer 1
+PRIORITY_3 EQU 3 3 Timer 2
+
+BINARY_0 EQU 1<<PRIORITY_0 3 1<<2 0x00000004
+BINARY_1 EQU 1<<PRIORITY_1 3 1<<1 0x00000002
+BINARY 2 EQU 1<<PRIORITY_2 3 1<<0 0x00000001
+BINARY 3 EQU 1<<PRIORITY_3 3 1<<3 0x00000008
+GROUP_O EQU BINARY_2|BINARY_3
+
+GROUP_1 EQU BINARY_O|BINARY_1
+
+GMASK_1 EQU GROUP_1
+
+GMASK_O EQU GMASK_1+GROUP_O
+
+MASK_TIMER1 EQU GMASK_O
+
+MASK_COMMTX EQU GMASK_1
+
+MASK_COMMRX EQU GMASK_1
+
+MASK_TIMER2 EQU GMASK_O
+
+ic_Base EQU 0x80000000
+
+IRQStatus EQU 0x0
+
+IRQRawStatus QU Ox4
+
+IRQEnable EQU 0x8
+
+IRQEnableSet — EQU Ox8
+
+IRQEnableClear EQU Oxc
+
+interrupt_handler
+
+SUB. orld, rl4,#4
+STMFD  r13!, {r14}
+
+MRS rl4, spsr
+
+STMFD r13!, {rl0,r11,r12,r14}
+LOR rl, =ic Base
+
+LOR = rlO, [r14, #IRQStatus]
+ANDS rll, r10, #GROUP_O
+
+ANDEQS rll, r10, #GROUP_1
+
+rl4_irg-=4
+save rl4_irg
+copy spsr_irq
+
+3 Save context
+
+int ctrl addr
+
+3 load IRQ status
+belong to GROUP_O
+belong to GROUP_1

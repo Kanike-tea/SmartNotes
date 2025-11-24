@@ -1,0 +1,58 @@
+176 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+nested_loops
+STMFD — sp!, {r4-rl1, Ir}
+3 set up loop 1
+
+loop1
+STMFD — sp!, {loop1 registers}
+3 set up loop 2
+
+loop2
+STMFD — sp!, {loop2 registers}
+3 set up loop 3
+
+loop3
+
+3 body of loop 3
+
+B{cond} 1o0p3
+
+LOMFD sp! {loop2 registers}
+; body of loop 2
+
+B{cond} 1oop2
+
+LOMFD sp! {loop1 registers}
+3 body of loop 1
+
+B{cond} 1oop1
+
+LOMFD sp!, {r4-r11, pc}
+
+You may find that there are insufficient registers for the innermost loop even using the
+construction in Example 6.12. Then you need to swap inner loop variables out to the stack.
+Since assembly code is very hard to maintain and debug if you use numbers as stack address
+offsets, the assembler provides an automated procedure for allocating variables to the
+stack.
+
+Exampce This example shows how you can use the ARM assembler directives MAP (alias ”) and FIELD
+6.13 (alias #) to define and allocate space for variables and arrays on the processor stack. The
+directives perform a similar function to the struct operator in C.
+
+MAP 0-45 map symbols to offsets starting at offset 0
+FIELD 4 ; a is 4 byte integer (at offset 0)
+FIELD 2 ; b is 2 byte integer (at offset 4)
+FIELD 2 3c is 2 byte integer (at offset 6)
+
+FIELD 64 ; d is an array of 64 characters (at offset 8)
+ength FIELD 0 3 length records the current offset reached
+
+sance
+
+example
+STMFD sp!, {r4-rll, Ir}; save callee registers
+SUB sp, sp, #length 5 create stack frame
+
+sTR —r0, [sp, #a] 3a = 105
+LORSH rl, [sp, #b] rl =;

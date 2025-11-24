@@ -1,0 +1,60 @@
+706 Chapter 19 Query Optimization
+
+compare their cost to determine the viability of doing the merging. We illustrate
+with an example.
+
+Consider the following relations:
+
+SALES (Custid, Productid, Date, Qty_sold)
+CUST (Custid, Custname, Country, Cemail)
+PRODUCT (Productid, Pname, Qty_onhand)
+
+The query: List customers from France who have bought more than 50 units
+of a product “Ring_234” may be set up as follows:
+
+A view is created to count total quantity of any item bought for the
+<Custid, Productid> pairs:
+
+CREATE VIEW CP_BOUGHT_VIEW AS
+
+SELECT SUM (S.Qty_sold) as Bought, S.Custid, $.Productid
+FROM SALES S
+
+GROUP BY S.Custid, S.Productid;
+
+Then the query using this view becomes:
+
+QG: SELECT C.Custid, C.Custname, C.Cemail
+
+FROM CUST C, PRODUCT P, CP_BOUGHT_VIEW V1
+
+WHERE P.Productid = V1.Productid AND C.Custid = V1.Custid AND V1.
+Bought >50
+
+AND Pname = “Ring_234” AND C.Country = “France”;
+
+The view V1 may be evaluated first and its results temporarily materialized, then
+the query QG may be evaluated using the materialized view as one of the tables in
+the join. By using the merging transformation, this query becomes:
+
+QT: SELECT C.Custid, C.Custname, C.Cemail
+FROM CUST C, PRODUCT P, SALES S
+WHERE P.Productid = S.Productid AND C.Custid = $.Custid AND
+Pname = “Ring_234” AND C.Country = “France”
+GROUP BY, P.Productid, P.rowid, C.rowid, C.Custid, C-Custname, C.Cemail
+HAVING SUM (S.Qty_sold) > 50;
+
+After merging, the resulting query QT is much more efficient and cheaper to exe-
+cute. The reasoning is as follows. Before merging, the view V1 does grouping on the
+entire SALES table and materializes the result, and it is expensive to do so. In the
+transformed query, the grouping is applied to the join of the three tables; in this
+operation, a single product tuple is involved from the PRODUCT table, thus filter-
+ing the data from SALES considerably. The join in QT after transformation may
+be slightly more expensive in that the whole SALES relation is involved rather than
+the aggregated view table CP_BOUGHT_VIEW in QG. Note, however, that the
+GROUP-BY operation in V1 produces a table whose cardinality is not considerably
+smaller than the cardinality of SALES, because the grouping is on <Custid, Productid>,
+which may not have high repetition in SALES. Also note the use of P.rowid and
+C.rowid, which refer to the unique row identifiers that are added to maintain equiv-
+alence with the original query. We reiterate that the decision to merge GROUP-BY
+views must be made by the optimizer based on estimated costs.

@@ -1,0 +1,51 @@
+12.6 Overview of the C++ Language Binding in the ODMG Standard
+
+12.6 Overview of the C++ Language Binding
+in the ODMG Standard
+
+The C++ language binding specifies how ODL constructs are mapped to C++ con-
+structs. This is done via a C++ class library that provides classes and operations
+that implement the ODL constructs. An object manipulation language (OML) is
+needed to specify how database objects are retrieved and manipulated within a
+C++ program, and this is based on the C++ programming language syntax and
+semantics. In addition to the ODL/OML bindings, a set of constructs called physi-
+cal pragmas are defined to allow the programmer some control over physical stor-
+age issues, such as clustering of objects, utilizing indexes, and memory
+management.
+
+The class library added to C++ for the ODMG standard uses the prefix d_ for
+class declarations that deal with database concepts.** The goal is that the pro-
+grammer should think that only one language is being used, not two separate
+languages. For the programmer to refer to database objects in a program, a class
+D_Ref<T> is defined for each database class T in the schema. Hence, program
+variables of type D_Ref<T> can refer to both persistent and transient objects of
+class T.
+
+In order to utilize the various built-in types in the ODMG object model such as
+collection types, various template classes are specified in the library. For example,
+an abstract class D_Object<T> specifies the operations to be inherited by all objects.
+Similarly, an abstract class D_Collection<T> specifies the operations of collections.
+These classes are not instantiable, but only specify the operations that can be
+inherited by all objects and by collection objects, respectively. A template class is
+specified for each type of collection; these include D_Set<T>, D_List<T>,
+D_Bag<T>, D_Varray<T>, and D_Dictionary<T>, and they correspond to the collection
+types in the object model (see Section 12.3.1). Hence, the programmer can create
+classes of types such as D_Set<D_Ref<STUDENT>> whose instances would be sets
+of references to STUDENT objects, or D_Set<string> whose instances would be sets
+of strings. Additionally, a class d_lterator corresponds to the Iterator class of the
+object model.
+
+The C++ ODL allows a user to specify the classes of a database schema using
+the constructs of C++ as well as the constructs provided by the object database
+library. For specifying the data types of attributes,” basic types such as d_Short
+(short integer), d_Ushort (unsigned short integer), d_Long (long integer), and
+d_Float (floating-point number) are provided. In addition to the basic data types,
+several structured literal types are provided to correspond to the structured literal
+types of the ODMG object model. These include d_String, d_Interval, d_Date, d_Time,
+and d_Timestamp (see Figure 12.5(b)).
+
+42Presumably, d_ stands for database classes.
+
+48That is, member variables in object-oriented programming terminology.
+
+417

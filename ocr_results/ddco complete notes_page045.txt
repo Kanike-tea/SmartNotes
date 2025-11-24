@@ -1,0 +1,41 @@
+Digital Design and Computer Organization(BCS302)
+
+oo = —————+
+01 —________»
+po X
+022 ———_———>
+3 8:3 a
+y
+Encoder
+04 >] z
+ps5) ——____>
+to ~—————
+7 ———_————>
+Table 4.7
+Truth Table of an Octal-to-Binary Encoder
+Inputs Outputs
+Dy Dd, dD, Dy Dy Ds DG Dy toy 2
+| 00 0 0 0 0 0
+0 00 0 0 0 01
+0 00 0 0 0 1 0
+0 100 0 0 1 1
+0 01 0 0 0 0 0
+0 Do 1 00 p 1 BEAT DtDstD,
+0 00010 1 0 y=D)+D;+D,+D;
+0 00 0 0 1 1 1 x= D,+D;+D;+D;
+¢ The encoder defined in Table 4.7 has the limitation that only one input can be active at any given
+time. If two inputs are active simultaneously, the output produces an undefined combination. For
+
+example, if D3 and D6 are 1 simultaneously, the output of the encoder will be 111 because all three
+outputs are equal to 1.
+
+¢ To resolve this ambiguity, encoder circuits must establish an input priority to ensure that only one
+input is encoded.
+
+¢ The output 111 does not represent either binary 3 or binary 6. To resolve this ambiguity, encoder
+circuits must establish an input priority to ensure that only one input is encoded. If we establish a higher
+priority for inputs with higher subscript numbers, and if both D3 and D6 are | at the same time, the output
+
+will be 110 because D6 has higher priority than D3. Another ambiguity in the octal-to-binary encoder is
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 17

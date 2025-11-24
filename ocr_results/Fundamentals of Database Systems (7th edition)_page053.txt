@@ -1,0 +1,49 @@
+1.7 A Brief History of Database Applications
+
+using DBMS facilities. Development time using a DBMS is estimated to be one-
+sixth to one-fourth of that for a file system.
+
+Flexibility. It may be necessary to change the structure of a database as require-
+ments change. For example, a new user group may emerge that needs information
+not currently in the database. In response, it may be necessary to add a file to the
+database or to extend the data elements in an existing file. Modern DBMSs allow
+certain types of evolutionary changes to the structure of the database without affect-
+ing the stored data and the existing application programs.
+
+Availability of Up-to-Date Information. A DBMS makes the database available
+to all users. As soon as one user’s update is applied to the database, all other users
+can immediately see this update. This availability of up-to-date information is
+essential for many transaction-processing applications, such as reservation systems
+or banking databases, and it is made possible by the concurrency control and recov-
+ery subsystems of a DBMS.
+
+Economies of Scale. The DBMS approach permits consolidation of data and
+applications, thus reducing the amount of wasteful overlap between activities of
+data-processing personnel in different projects or departments as well as redundan-
+cies among applications. This enables the whole organization to invest in more
+powerful processors, storage devices, or networking gear, rather than having each
+department purchase its own (lower performance) equipment. This reduces overall
+costs of operation and management.
+
+1.7 A Brief History of Database Applications
+
+We now give a brief historical overview of the applications that use DBMSs and
+how these applications provided the impetus for new types of database systems.
+
+1.7.1 Early Database Applications Using Hierarchical
+and Network Systems
+
+Many early database applications maintained records in large organizations such as
+corporations, universities, hospitals, and banks. In many of these applications,
+there were large numbers of records of similar structure. For example, in a univer-
+sity application, similar information would be kept for each student, each course,
+each grade record, and so on. There were also many types of records and many
+interrelationships among them.
+
+One of the main problems with early database systems was the intermixing of con-
+ceptual relationships with the physical storage and placement of records on disk.
+Hence, these systems did not provide sufficient data abstraction and program-data
+independence capabilities. For example, the grade records of a particular student
+could be physically stored next to the student record. Although this provided very
+
+23

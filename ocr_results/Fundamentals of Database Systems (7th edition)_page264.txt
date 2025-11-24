@@ -1,0 +1,52 @@
+234 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+We must still enter a value for the new attribute Job for each individual EMPLOYEE
+tuple. This can be done either by specifying a default clause or by using the UPDATE
+command individually on each tuple (see Section 6.4.3). If no default clause is speci-
+fied, the new attribute will have NULLs in all the tuples of the relation immediately after
+the command is executed; hence, the NOT NULL constraint is not allowed in this case.
+
+To drop a column, we must choose either CASCADE or RESTRICT for drop behav-
+ior. If CASCADE is chosen, all constraints and views that reference the column are
+dropped automatically from the schema, along with the column. If RESTRICT is
+chosen, the command is successful only if no views or constraints (or other schema
+elements) reference the column. For example, the following command removes the
+attribute Address from the EMPLOYEE base table:
+
+ALTER TABLE COMPANY.EMPLOYEE DROP COLUMN Address CASCADE;
+
+It is also possible to alter a column definition by dropping an existing default clause
+or by defining a new default clause. The following examples illustrate this clause:
+
+ALTER TABLE COMPANY.DEPARTMENT ALTER COLUMN Mgr_ssn
+DROP DEFAULT;
+
+ALTER TABLE COMPANY.DEPARTMENT ALTER COLUMN Mgr_ssn
+SET DEFAULT ‘333445555’;
+
+One can also change the constraints specified on a table by adding or dropping a
+named constraint. To be dropped, a constraint must have been given a name when
+it was specified. For example, to drop the constraint named EMPSUPERFK in Fig-
+ure 6.2 from the EMPLOYEE relation, we write:
+
+ALTER TABLE COMPANY.EMPLOYEE
+DROP CONSTRAINT EMPSUPERFK CASCADE;
+
+Once this is done, we can redefine a replacement constraint by adding a new con-
+straint to the relation, if needed. This is specified by using the ADD CONSTRAINT
+keyword in the ALTER TABLE statement followed by the new constraint, which can
+be named or unnamed and can be of any of the table constraint types discussed.
+
+The preceding subsections gave an overview of the schema evolution commands of
+SQL. It is also possible to create new tables and views within a database schema
+using the appropriate commands. There are many other details and options; we
+refer the interested reader to the SQL documents listed in the Selected Bibliography
+at the end of this chapter.
+
+7.5 Summary
+
+In this chapter we presented additional features of the SQL database language. We
+started in Section 7.1 by presenting more complex features of SQL retrieval queries,
+including nested queries, joined tables, outer joins, aggregate functions, and group-
+ing. In Section 7.2, we described the CREATE ASSERTION statement, which allows
+the specification of more general constraints on the database, and introduced the

@@ -1,0 +1,28 @@
+Database Management System [BCS403]
+
+aro
+— ee
+
+Fig: Constructing the precedence graphs for schedules A and D from fig 21.5 to test for conflict
+serializability.
+
+(a) Precedence graph for serial schedule A.
+
+(b) Precedence graph for serial schedule B.
+
+(c) Precedence graph for schedule C (not serializable).
+
+(d) Precedence graph for schedule D (serializable, equivalent to schedule A).
+
+= Another example of serializability testing. (a) The READ and WRITE operations of three
+transactions 71, Tz, and Ts.
+
+te) transaction, T; transaction Tp transaction T3
+read_item (X); read_item (Z); read_item (Y);
+write item (Xx); read _ item (Y) read item (Z);
+read_item (Y); write_item (Y); write_item (Y);
+write_item (Y); read_item (X); write_item (Z);
+
+write_item (X);
+
+https://vtucode.in 17

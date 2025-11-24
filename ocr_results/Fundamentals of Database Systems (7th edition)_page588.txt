@@ -1,0 +1,64 @@
+558
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+There are two kinds of buffer managers; the first kind controls the main memory
+directly, as in most RDBMSs. The second kind allocates buffers in virtual memory,
+which allows the control to transfer to the operating system (OS). The OS in turn con-
+trols which buffers are actually in main memory and which ones are on disk under the
+control of OS. This second kind of buffer manager is common in main memory data-
+base systems and some object-oriented DBMSs. The overall goal of the buffer manager
+is twofold: (1) to maximize the probability that the requested page is found in main
+memory, and (2) in case of reading a new disk block from disk, to find a page to replace
+that will cause the least harm in the sense that it will not be required shortly again.
+
+To enable its operation, the buffer manager keeps two types of information on hand
+
+about each page in the buffer pool:
+
+1. A pin-count: the number of times that page has been requested, or the num-
+ber of current users of that page. If this count falls to zero, the page is consid-
+ered unpinned. Initially the pin-count for every page is set to zero.
+Incrementing the pin-count is called pinning. In general, a pinned block
+
+should not be allowed to be written to disk.
+
+2. A dirty bit, which is initially set to zero for all pages but is set to 1 whenever
+
+that page is updated by any application program.
+
+In terms of storage management, the buffer manager has the following responsibil-
+ity: It must make sure that the number of buffers fits in main memory. If the
+requested amount of data exceeds available buffer space, the buffer manager must
+select what buffers must be emptied, as governed by the buffer replacement policy
+in force. If the buffer manager allocates space in virtual memory and all buffers in
+use exceed the actual main memory, then the common operating system problem
+of “thrashing” happens and pages get moved back and forth into the swap space on
+
+disk without performing useful work.
+
+When a certain page is requested, the buffer manager takes following actions: it
+checks if the requested page is already in a buffer in the buffer pool; if so, it incre-
+ments its pin-count and releases the page. If the page is not in the buffer pool, the
+
+buffer manager does the following:
+
+a. It chooses a page for replacement, using the replacement policy, and incre-
+
+ments its pin-count.
+
+b. Ifthe dirty bit of the replacement page is on, the buffer manager writes that
+page to disk by replacing its old copy on disk. If the dirty bit is not on, this page
+is not modified and the buffer manager is not required to write it back to disk.
+
+c. It reads the requested page into the space just freed up.
+
+d. The main memory address of the new page is passed to the requesting
+
+application.
+
+If there is no unpinned page available in the buffer pool and the requested page is
+not available in the buffer pool, the buffer manager may have to wait until a page
+gets released. A transaction requesting this page may go into a wait state or may
+
+even be aborted.

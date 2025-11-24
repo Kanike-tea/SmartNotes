@@ -1,0 +1,45 @@
+594 Appendix A ARM and Thumb Assembler Instructions
+
+Action Effect on the cpsr
+1. Rd = Rm*Rs Updated if S suffix supplied
+2. Ld = Lm*Ld Updated
+
+Notes
+
+Rd or Ld is set to the lower 32 bits of the result.
+Rd, Rm, Rs must not be pe.
+Rd and Rm must be different registers. Similarly Ld and Lm must be different.
+
+Implementations may terminate early on the value of the Rs or Ld operand. For this
+reason use small or constant values for Rs or Ld where possible.
+
+If the cpsr is updated, then N = <Negative>, Z = <Zero>, C is unpredictable, and V
+is preserved. Avoid using the instruction MULS because implementations often impose
+penalty cycles for this operation. Instead use MUL followed by a compare, and schedule
+the compare, to avoid multiply result use interlocks.
+
+MVN
+
+Move the logical not of a 32-bit value into a register
+
+1. MVN<cond>{S} Rd, #<rotated_immed> ARMV1
+2. MVN<cond>{S} Rd, Rm {, <shift>} ARMV1
+3. MVN Ld, Lm THUMBV1
+Action Effect on the cpsr
+
+1. Rd = ~<rotated_immed> Updated if S suffix specified
+
+2. Rd = ~<shifted_Rm> Updated if S suffix specified
+
+3. Ld = ~Lm Updated (see Notes below)
+
+Notes
+
+If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <shifter_C> (see Table A.3), and Vis preserved.
+
+If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case, the cpsr is set
+to the value of the spsr.
+
+If Rmis pc, then the value used is the address of the instruction plus eight bytes.

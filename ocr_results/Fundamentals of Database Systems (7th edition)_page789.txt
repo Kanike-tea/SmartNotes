@@ -1,0 +1,52 @@
+20.4 Characterizing Schedules Based on Recoverability
+
+20.4 Characterizing Schedules Based
+on Recoverability
+
+When transactions are executing concurrently in an interleaved fashion, then the
+order of execution of operations from all the various transactions is known as a
+schedule (or history). In this section, first we define the concept of schedules, and
+then we characterize the types of schedules that facilitate recovery when failures
+occur. In Section 20.5, we characterize schedules in terms of the interference of
+participating transactions; this discussion leads to the concepts of serializability and
+serializable schedules.
+
+20.4.1 Schedules (Histories) of Transactions
+
+A schedule (or history) S of n transactions T), T, ... , T, is an ordering of the
+operations of the transactions. Operations from different transactions can be
+interleaved in the schedule S$. However, for each transaction T; that participates
+in the schedule S, the operations of T; in S must appear in the same order in
+which they occur in T;. The order of operations in S is considered to be a total
+ordering, meaning that for any two operations in the schedule, one must occur
+before the other. It is possible theoretically to deal with schedules whose opera-
+tions form partial orders, but we will assume for now total ordering of the opera-
+tions in a schedule.
+
+For the purpose of recovery and concurrency control, we are mainly interested in
+the read_item and write_item operations of the transactions, as well as the commit and
+abort operations. A shorthand notation for describing a schedule uses the symbols
+b, r, w, e, c, and a for the operations begin_transaction, read_item, write_item,
+end_transaction, commit, and abort, respectively, and appends as a subscript the
+transaction id (transaction number) to each operation in the schedule. In this
+notation, the database item X that is read or written follows the r and w operations
+in parentheses. In some schedules, we will only show the read and write operations,
+whereas in other schedules we will show additional operations, such as commit or
+abort. The schedule in Figure 20.3(a), which we shall call S,, can be written as follows
+in this notation:
+
+Sai 11(X)s r2(X)s wi(X)s (Ys wo(X)s wi (¥)s
+
+Similarly, the schedule for Figure 20.3(b), which we call S,, can be written as fol-
+lows, if we assume that transaction T, aborted after its read_item(Y) operation:
+
+Sue ry(X)3 wi(X)5 12(X)s w2(X)5 (V5 ans
+
+Conflicting Operations in a Schedule. Two operations in a schedule are said to
+conflict if they satisfy all three of the following conditions: (1) they belong to differ-
+ent transactions; (2) they access the same item X; and (3) at least one of the opera-
+tions is a write_item(X). For example, in schedule S,, the operations r;(X) and w2(X)
+conflict, as do the operations r(X) and w;(X), and the operations w;(X) and w2(X).
+However, the operations r;(X) and r,(X) do not conflict, since they are both read
+
+759

@@ -1,0 +1,53 @@
+27.7 Web Search and Analysis
+
+relationships linking them—are used to address the issues of semantic heterogene-
+ity in data sources. Different classes of approaches are used for information integra-
+tion using ontologies.
+
+= Single ontology approaches use one global ontology that provides a shared
+vocabulary for the specification of the semantics. They work if all informa-
+tion sources to be integrated provide nearly the same view on a domain of
+knowledge. For example, UMLS (described in Section 27.4.3) can serve as a
+common ontology for biomedical applications.
+
+= Ina multiple ontology approach, each information source is described by
+its own ontology. In principle, the “source ontology” can be a combination
+of several other ontologies, but it cannot be assumed that the different
+“source ontologies” share the same vocabulary. Dealing with multiple, par-
+tially overlapping, and potentially conflicting ontologies is a difficult prob-
+lem faced by many applications, including those in bioinformatics and other
+complex topics of study.
+
+Building Concept Hierarchies. One common way of organizing search results is
+via a linear ranked list of documents. But for some users and applications, a better
+way to display results would be to create groupings of related documents in the
+search result. One way of organizing documents in a search result, and for organiz-
+ing information in general, is by creating a concept hierarchy. The documents in a
+search result are organized into groups in a hierarchical fashion. Other related tech-
+niques to organize docments are through classification and clustering (see Chap-
+ter 28). Clustering creates groups of documents, where the documents in each
+group share many common concepts.
+
+Segmenting Web Pages and Detecting Noise. There are many superfluous
+parts ina Web document, such as advertisements and navigation panels. The infor-
+mation and text in these superfluous parts should be eliminated as noise before
+classifying the documents based on their content. Hence, before applying classifica-
+tion or clustering algorithms to a set of documents, the areas or blocks of the docu-
+ments that contain noise should be removed.
+
+27.7.5 Approaches to Web Content Analysis
+
+The two main approaches to Web content analysis are (1) agent based (IR view)
+and (2) database based (DB view).
+
+The agent-based approach involves the development of sophisticated artificial
+intelligence systems that can act autonomously or semi-autonomously on
+behalf of a particular user, to discover and process Web-based information.
+Generally, the agent-based Web analysis systems can be placed into the follow-
+ing three categories:
+
+= Intelligent Web agents are software agents that search for relevant infor-
+mation using characteristics of a particular application domain (and possi-
+bly a user profile) to organize and interpret the discovered information. For
+
+1053

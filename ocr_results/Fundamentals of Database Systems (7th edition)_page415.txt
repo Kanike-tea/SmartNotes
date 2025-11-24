@@ -1,0 +1,57 @@
+12.2 Object Database Extensions to SQL
+
+It is also possible to define virtual attributes as part of UDTs, which are computed
+and updated using functions.
+
+12.2.5 Specifying Inheritance and Overloading of Functions
+
+In SQL, inheritance can be applied to types or to tables; we will discuss the meaning
+of each in this section. Recall that we already discussed many of the principles of
+inheritance in Section 12.1.5. SQL has rules for dealing with type inheritance
+(specified via the UNDER keyword). In general, both attributes and instance meth-
+ods (operations) are inherited. The phrase NOT FINAL must be included in a UDT if
+subtypes are allowed to be created under that UDT (see Figures 12.4(a) and (b),
+where PERSON_TYPE, STUDENT_TYPE, and EMPLOYEE_TYPE are declared to be
+NOT FINAL). Associated with type inheritance are the rules for overloading of func-
+tion implementations and for resolution of function names. These inheritance rules
+can be summarized as follows:
+
+= Allattributes are inherited.
+
+= The order of supertypes in the UNDER clause determines the inheritance
+hierarchy.
+
+= An instance of a subtype can be used in every context in which a supertype
+instance is used.
+
+= A subtype can redefine any function that is defined in its supertype, with the
+restriction that the signature be the same.
+
+= When a function is called, the best match is selected based on the types of all
+arguments.
+
+= For dynamic linking, the types of the parameters are considered at runtime.
+
+Consider the following examples to illustrate type inheritance, which are illustrated
+in Figure 12.4(c). Suppose that we want to create two subtypes of PERSON_TYPE:
+EMPLOYEE_TYPE and STUDENT_TYPE. In addition, we also create a subtype
+MANAGER_TYPE that inherits all the attributes (and methods) of EMPLOYEE_TYPE
+but has an additional attribute DEPT.MANAGED. These subtypes are shown in
+Figure 12.4(c).
+
+In general, we specify the local (specific) attributes and any additional specific
+methods for the subtype, which inherits the attributes and operations (methods) of
+
+its supertype.
+
+Another facility in SQL is table inheritance via the supertable/subtable facility.
+This is also specified using the keyword UNDER (see Figure 12.4(d)). Here, a new
+record that is inserted into a subtable, say the MANAGER table, is also inserted into
+its supertables EMPLOYEE and PERSON. Notice that when a record is inserted in
+MANAGER, we must provide values for all its inherited attributes. INSERT, DELETE,
+and UPDATE operations are appropriately propagated. Basically, table inheritance
+corresponds to the extent inheritance discussed in Section 12.1.5. The rule is that a
+tuple in a sub-table must also exist in its super-table to enforce the set/subset con-
+straint on the objects.
+
+385

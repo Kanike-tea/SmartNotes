@@ -1,0 +1,52 @@
+442
+
+Chapter 13. XML: Extensible Markup Language
+
+13.4 Storing and Extracting XML Documents
+from Databases
+
+Several approaches to organizing the contents of XML documents to facilitate their
+subsequent querying and retrieval have been proposed. The following are the most
+common approaches:
+
+1. Using a file system or a DBMS to store the documents as text. An XML
+document can be stored as a text file within a traditional file system. Alter-
+natively, a relational DBMS can be used to store whole XML documents as
+text fields within the DBMS recordss. This approach can be used if the
+DBMS has a special module for document processing, and it would work for
+storing schemaless and document-centric XML documents.
+
+2. Using a DBMS to store the document contents as data elements. This
+approach would work for storing a collection of documents that follow a
+specific XML DTD or XML schema. Because all the documents have the
+same structure, one can design a relational database to store the leaf-level
+data elements within the XML documents. This approach would require
+mapping algorithms to design a database schema that is compatible with the
+XML document structure as specified in the XML schema or DTD and to
+re-create the XML documents from the stored data. These algorithms can be
+implemented either as an internal DBMS module or as separate middleware
+that is not part of the DBMS. If all elements in an XML document have IDs,
+a simple representation would be to have a table with attributes XDOC(Cld,
+Pld, Etag, Val) where CID and Pld are the parent and child element IDs,
+Etag is the name of the element of the Cid, and Val is the value if it is a leaf
+node, assuming all values are the same type.
+
+3. Designing a specialized system for storing native XML data. A new type
+of database system based on the hierarchical (tree) model could be designed
+and implemented. Such systems are referred to as native XML DBMSs. The
+system would include specialized indexing and querying techniques and
+would work for all types of XML documents. It could also include data com-
+pression techniques to reduce the size of the documents for storage. Tamino
+by Software AG and the Dynamic Application Platform of eXcelon are two
+popular products that offer native XML DBMS capability. Oracle also offers
+a native XML storage option.
+
+4. Creating or publishing customized XML documents from preexisting
+relational databases. Because there are enormous amounts of data already
+stored in relational databases, parts of this data may need to be formatted as
+documents for exchanging or displaying over the Web. This approach would
+use a separate middleware software layer to handle the conversions needed
+between the relational data and the extracted XML documents. Section 13.6
+discusses this approach, in which data-centric XML documents are extracted
+from existing databases, in more detail. In particular, we show how tree
+structured documents can be created from flat relational databases that have

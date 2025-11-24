@@ -1,0 +1,32 @@
+Digital Design and Computer Organization(BCS302)
+
+* Multiplexer circuits can be combined with common selection inputs to provide
+multiple-bit selection logic. As an illustration, a quadruple 2-to-1-line multiplexer
+is shown in Fig. 4.26 . The circuit has four multiplexers, each capable of selecting
+one of two input lines. Output YO can be selected to come from either input AO or
+input BO. Similarly, output Y1 may have the value of Al or B1, and so on. Input
+selection line S selects one of the lines in each of the four multiplexers. The enable
+input E must be active (i.e., asserted) for normal operation.
+
+* As shown in the function table, the unit is enabled when E = 0. Then, if S = 0, the
+four A inputs have a path to the four outputs. If, by contrast, S = 1, the four B inputs
+are applied to the outputs. The outputs have all 0’s when E = 1, regardless of the
+value of S .
+
+“ t ——_, p>».
+|| ——>_-
+I | >
+
+S| Ourpur ¥
+
+—p>-_l ps.
+
+(clest)
+
+E
+(enaie)
+FIGURE 4.26
+
+Design 4:1 MUX using only 2:1 MUX
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 22

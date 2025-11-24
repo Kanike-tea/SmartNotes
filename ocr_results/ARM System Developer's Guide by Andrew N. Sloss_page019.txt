@@ -1,0 +1,48 @@
+6 Chapter 1 ARM Embedded Systems
+
+1.2.1
+
+INSTRUCTION SET FOR EMBEDDED SYSTEMS
+
+The ARM instruction set differs from the pure RISC definition in several ways that make
+the ARM instruction set suitable for embedded applications:
+
+Variable cycle execution for certain instructions—Not every ARM instruction executes
+in a single cycle. For example, load-store-multiple instructions vary in the number
+of execution cycles depending upon the number of registers being transferred. The
+transfer can occur on sequential memory addresses, which increases performance since
+sequential memory accesses are often faster than random accesses. Code density is also
+improved since multiple register transfers are common operations at the start and end
+of functions.
+
+Inline barrel shifter leading to more complex instructions—The inline barrel shifter is
+a hardware component that preprocesses one of the input registers before it is used
+by an instruction. This expands the capability of many instructions to improve core
+performance and code density. We explain this feature in more detail in Chapters 2, 3,
+and 4.
+
+Thumb 16-bit instruction set-—ARM enhanced the processor core by adding a second
+16-bit instruction set called Thumb that permits the ARM core to execute either
+16- or 32-bit instructions. The 16-bit instructions improve code density by about
+30% over 32-bit fixed-length instructions.
+
+Conditional execution—An instruction is only executed when a specific condition has
+been satisfied. This feature improves performance and code density by reducing branch
+instructions.
+
+Enhanced instructions—The enhanced digital signal processor (DSP) instructions were
+added to the standard ARM instruction set to support fast 16x 16-bit multiplier oper-
+ations and saturation. These instructions allow a faster-performing ARM processor in
+some cases to replace the traditional combinations of a processor plus a DSP.
+
+These additional features have made the ARM processor one of the most commonly
+
+used 32-bit embedded processor cores. Many of the top semiconductor companies around
+the world produce products based around the ARM processor.
+
+1.3 EMBEDDED SYSTEM HARDWARE
+
+Embedded systems can control many different devices, from small sensors found on
+a production line, to the real-time control systems used on a NASA space probe. All
+these devices use a combination of software and hardware components. Each component
+is chosen for efficiency and, if applicable, is designed for future extension and expansion.

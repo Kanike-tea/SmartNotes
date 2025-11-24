@@ -1,0 +1,22 @@
+Cy NG, 6,86,
+
+Fig. 2-14 Union, intersection, and ring sum of two graphs.
+
+In other words, every edge of G occurs either in g or in gy, but not in both. Some
+of the vertices, however, may occur in both g and g». In decomposition, isolated
+vertices are disregarded. A graph containing m edges {e), e5, . . ., @,} can be
+decomposed in 2™-! - 1 different ways into pairs of subgraphs g,, gy (why?).
+
+Although union, intersection, and ring sum have been defined for a pair of
+graphs, these definitions can be extended in an obvious way to include any finite
+number of graphs. Similarly, a graph G can be decomposed into more than two
+subgraphs—subgraphs that are (pairwise) edge disjoint and collectively include
+every edge in G.
+
+Deletion: If v; is a vertex in graph G, then G — v, denotes a subgraph of G
+obtained by deleting (i-e., removing) v; from G. Deletion of a vertex always
+implies the deletion of all edges incident on that vertex. (See Fig. 2-15.) If e; is
+an edge in G, then G — ¢; is a subgraph of G obtained by deleting e; from G.
+
+j
+Deletion of an edge does not imply deletion of its end vertices. Therefore G — e;

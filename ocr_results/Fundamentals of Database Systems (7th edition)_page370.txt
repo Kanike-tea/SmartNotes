@@ -1,0 +1,49 @@
+340
+
+Chapter 10 Introduction to SQL Programming Techniques
+
+presented, with examples using C as the host language. We discussed some of the
+functions in the SQL/CLI library, how queries are passed as strings, how query
+parameters are assigned at runtime, and how results are returned to program vari-
+ables. We then gave an overview of the JDBC class library, which is used with Java,
+and discussed some of its classes and operations. In particular, the ResultSet class
+is used to create objects that hold the query results, which can then be iterated over
+by the next () operation. The get and set functions for retrieving attribute values
+and setting parameter values were also discussed.
+
+In Section 10.4, we gave a brief overview of stored procedures, and discussed
+SQL/PSM as an example of a database programming language. Finally, we briefly
+compared the three approaches in Section 10.5. It is important to note that we chose
+to give a comparative overview of the three main approaches to database program-
+ming, since studying a particular approach in depth is a topic that is worthy of its
+own textbook.
+
+Review Questions
+10.1. What is ODBC? How is it related to SQL/CLI?
+10.2. What is JDBC? Is it an example of embedded SQL or of using function calls?
+
+10.3. List the three main approaches to database programming. What are the
+advantages and disadvantages of each approach?
+
+10.4. What is the impedance mismatch problem? Which of the three program-
+ming approaches minimizes this problem?
+
+10.5. Describe the concept of a cursor and how it is used in embedded SQL.
+
+10.6. What is SQL] used for? Describe the two types of iterators available in SQLJ.
+
+Exercises
+
+10.7. Consider the database shown in Figure 1.2, whose schema is shown in Fig-
+ure 2.1. Write a program segment to read a student’s name and print his or
+her grade point average, assuming that A = 4, B = 3, C = 2, and D = 1 points.
+Use embedded SQL with C as the host language.
+
+10.8. Repeat Exercise 10.7, but use SQL] with Java as the host language.
+
+10.9. Consider the library relational database schema in Figure 6.6. Write a pro-
+gram segment that retrieves the list of books that became overdue yesterday
+and that prints the book title and borrower name for each. Use embedded
+SQL with C as the host language.
+
+10.10. Repeat Exercise 10.9, but use SQL with Java as the host language.

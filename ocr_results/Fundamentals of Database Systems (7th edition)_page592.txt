@@ -1,0 +1,39 @@
+562 Chapter 16
+
+Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+(a)
+Name Ssn Salary Job_code —_—_ Department Hire_date
+i ¥ yoy ¥
+1 31 40 44 48 68
+(b)
+Name Ssn Salary Job_code — Department
+Smith, John [J 123456789 | XXXX [__XXXxX Computer Jj J] Separator Characters
+1 21 25 29
+(©)
+Name = Smith, John [J Ssn= 123456789 [Jf DEPARTMENT = Computer Separator Characters
+= Separates field name
+from field value
+J] Separates fields
+){ Terminates record
+Figure 16.5
+
+Three record storage formats, (a) A fixed-length record with six fields and size of 71 bytes. (b) A record with
+two variable-length fields and three fixed-length fields. (c) A variable-field record with three types of separator
+
+characters.
+
+A file of records with optional fields can be formatted in different ways. If the total
+number of fields for the record type is large, but the number of fields that actually
+appear in a typical record is small, we can include in each record a sequence of
+<field-name, field-value> pairs rather than just the field values. Three types of sepa-
+rator characters are used in Figure 16.5(c), although we could use the same separa-
+tor character for the first two purposes—separating the field name from the field
+value and separating one field from the next field. A more practical option is to
+assign a short field type code—say, an integer number—to each field and include in
+each record a sequence of <field-type, field-value> pairs rather than <field-name,
+field-value> pairs.
+
+A repeating field needs one separator character to separate the repeating values of
+the field and another separator character to indicate termination of the field. Finally,
+for a file that includes records of different types, each record is preceded by a record

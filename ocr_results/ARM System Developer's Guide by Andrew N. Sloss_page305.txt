@@ -1,0 +1,73 @@
+292 Chapter 8 Digital Signal Processing
+
+Table 8.5 ARMvSTE 32 x 16 filter timings.
+
+EXAMPLE
+
+8.13
+
+Processor Inner loop cycles Filter rating cycles/tap
+ARM9E 30 30/20 = 1.
+ARMI10E 44 44/20 = 2.
+XScale 34 34/20 = 1.7
+
+SMLAWB a4, x0, c_10, a4
+
+SMLAWT a_3, x0, c_10, a3
+
+SMLAWT a4, x1, c_10, a4
+
+SMLAWB a2, x0, c_32, a2
+
+SMLAWB a 3, x 1, c 32, a3
+
+SMLAWB a4, x 2, c 32, a4
+
+SMLAWT a_1, x0, c_32, al
+
+SMLAWT a_2, x1, c32, a2
+
+SMLAWT a_3, x_2, c_32, a3
+
+SMLAWT a4, x 3, c 32, a4
+
+BGT next_tap32_arme
+
+LOMFD  sp!, {a, N, M}
+
+STMIA al, {a.0, al, a2, a3, a4}
+
+SUB c, c, M, LSL#1
+
+SUB x, x, M, LSL#2
+
+ADD x, x, #(5-4)*4
+
+SUBS N,N, #5
+
+BGT next_samp1e32_arm9e
+
+LOMFD sp!, {r4-r11, pc}
+
+Each iteration of the inner loop updates five filter outputs, accumulating four products
+
+to each. Table 8.5 gives cycle counts for architecture ARMv5TE processors.
+
+High-quality audio applications often require intermediate sample precision at greater
+than 16-bit. On the ARM we can use the long multiply instruction SMLAL to implement an
+efficient filter with 32-bit input data and coefficients. The output values are 64-bit. This
+
+makes the ARM very competitive for CD audio quality applications.
+
+The output and input arrays have the same format as in Example 8.9. We implement
+a3 x 2 block filter so N must be a multiple of three and M a multiple of two. The filter
+
+works well on any ARMv4 implementation.
+
+a RN O
+x RN 1
+c RN 2
+
+3 array for output samples af]
+3 array of input samples x(]
+3 array of coefficients cf]

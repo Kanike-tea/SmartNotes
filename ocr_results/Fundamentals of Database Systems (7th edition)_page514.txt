@@ -1,0 +1,60 @@
+484 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Table 14.1. Summary of Normal Forms Based on Primary Keys and Corresponding Normalization
+
+Normal Form
+
+First (INF)
+
+Second (2NF)
+
+Third (3NF)
+
+Test Remedy (Normalization)
+
+Relation should have no multivalued Form new relations for each multivalued
+attributes or nested relations. attribute or nested relation.
+
+For relations where primary key Decompose and set up a new relation
+contains multiple attributes, no nonkey _for each partial key with its dependent
+attribute should be functionally attribute(s). Make sure to keep a relation
+
+dependent on a part of the primary key. _ with the original primary key and any
+attributes that are fully functionally
+dependent on it.
+
+Relation should not have a nonkey Decompose and set up a relation that
+attribute functionally determined by includes the nonkey attribute(s) that
+another nonkey attribute (or bya set of functionally determine(s) other nonkey
+nonkey attributes). That is, there should _attribute(s).
+
+be no transitive dependency of a nonkey
+
+attribute on the primary key.
+
+the primary key. The normalization procedure described so far is useful for analysis
+in practical situations for a given database where primary keys have already been
+defined. These definitions, however, do not take other candidate keys of a relation, if
+any, into account. In this section we give the more general definitions of 2NF and
+3NF that take all candidate keys of a relation into account. Notice that this does not
+affect the definition of 1NF since it is independent of keys and functional depen-
+dencies. As a general definition of prime attribute, an attribute that is part of any
+candidate key will be considered as prime. Partial and full functional dependencies
+and transitive dependencies will now be considered with respect to all candidate keys
+ofa relation.
+
+14.4.1 General Definition of Second Normal Form
+
+Definition. A relation schema R is in second normal form (2NF) if every
+nonprime attribute A in R is not partially dependent on any key of R.'
+
+The test for 2NF involves testing for functional dependencies whose left-hand side
+attributes are part of the primary key. If the primary key contains a single attribute,
+the test need not be applied at all. Consider the relation schema LOTS shown in
+Figure 14.12(a), which describes parcels of land for sale in various counties of a
+state. Suppose that there are two candidate keys: Property_id# and {County_name,
+Lot#}; that is, lot numbers are unique only within each county, but Property_id#
+numbers are unique across counties for the entire state.
+
+'2This definition can be restated as follows: A relation schema R is in 2NF if every nonprime attribute A
+in Ris fully functionally dependent on every key of R.

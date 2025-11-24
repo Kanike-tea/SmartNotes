@@ -1,0 +1,58 @@
+© The full adder is input with three partial bit products in the first row.
+
+© Multiplication requires the addition of several summands.
+
+* CSA speeds up the addition process.
+
+© Consider the array for 4x4 multiplication shown in fig 9.16.
+
+« First row consisting of just the AND gates that implement the bit products m3q0, m2q0, m1q0 and m0q0.
+
+¢ The delay through the carry-save array is somewhat less than delay through the ripple-carry array. This is
+because the S and C vector outputs from each row are produced in parallel in one full-adder delay.
+
+© Consider the addition of many summands in fig 9.18.
+
+© Group the summands in threes and perform carry-save addition on each of these groups in parallel to
+generate a set of S and C vectors in one full-adder delay
+
+© Group all of the S and C vectors into threes, and perform carry-save addition on them, generating a
+further set of S and C vectors in one more full-adder delay
+
+© Continue with this process until there are only two vectors remaining
+
+© They can be added in a RCA or CLA to produce the desired product.
+
+© When the number of summands is large, the time saved is proportionally much greater.
+
+* Delay: AND gate + 2 gate/CSA level + CLA gate delay, Eg., 6 bit number require 15 gate delay,
+array 6x6 require 6(n-1)-1 = 29 gate Delay.
+
+In general, CSA takes 1.7 log2k-1.7 levels of CSA to reduce k summands
+
+Problem 1:
+Represent the decimal values 5, -2, 14, -10, 26, -19, 51 and -43 as signed 7-bit numbers in the
+following binary formats:
+(a) sign-and-magnitude
+(b) 1’s-complement
+(c) 2’s-complement
+Solution:
+The three binary representations are given as:
+
+Decimal | Sign-and-magnitude | 1’s-complement | recs
+
+values representation | representation | representation
+5 0000101 0000101 0000101
+
+-2 1000010 1111101 1111110
+
+14 0001110 0001110 0001110
+—10 1001010 1110101 1110110
+26 0011010 0011010 0011010
+
+19 1010011 1101100 1101101
+
+51 0110011 0110011 0110011
+—43 1101011 1010100 1010101
+
+Page 72

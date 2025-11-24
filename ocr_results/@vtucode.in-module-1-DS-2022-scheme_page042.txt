@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+ANALYSIS
+* In worst case, the realloc function needs to
+— allocate 2*capacity*sizeof(*stack) bytes of memory and
+— copy capacity*sizeof(*stack) bytes of memory from the old array into the new one.
++ The total time spent over all array doublings = O(2k ) where capacity=2k
++ Since the total number of pushes is more than 2k-1 , the total time spend in array doubling
+is O(n) where n=total number of pushes.
+STACK APPLICATIONS: POLISH NOTATION
+Expressions: It is sequence of operators and operands that reduces to a single value after
+
+evaluation is called an expression.
+
+X=a/b-c+d*e-a*ce
+In above expression contains operators (+, —, /, *) operands (a, b, ¢, d, e).
+
+Expression can be represented in in different format _such_as
+
+e Prefix Expression or Polish notation
+e Infix Expression
+e Postfix Expression or Reverse Polish notation
+e Infix Expression: In this expression, the binary operator is placed in-between the
+operand. The expression can be parenthesized or un- parenthesized.
+Example: A+ B
+Here, A & B are operands and + is operand
+e Prefix _or Polish Expression: In this expression, the operator appears before its
+operand.
+Example: + A B
+Here, A & B are operands and + is operand
+e Postfix or Reverse Polish Expression: In this expression, the operator appears
+after its operand.
+Example: AB +
+
+Here, A & B are operands and + is operand
+
+vtucode.in 43

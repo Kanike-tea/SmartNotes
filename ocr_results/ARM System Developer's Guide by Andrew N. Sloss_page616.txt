@@ -1,0 +1,48 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 603
+
+The X operations are useful for packed complex numbers. The following examples
+assume bits [15:00] hold the real part and [31:16] the imaginary part.
+
+Examples
+SADD16 0, rl, r2 ; Signed 16-bit SIMD add
+
+SADDSUBX r0, rl, r2 ; r0=rl+i*r2 in packed complex arithmetic
+SSUBADDX r0, rl, r2 ; r0=rl-i*r2 in packed complex arithmetic
+
+SBC
+
+Subtract with carry
+
+1. SBC<cond>{S} Rd, Rn, #<rotated_immed> ARMV1
+2. SBC<cond>{S} Rd, Rn, Rm {, <shift>} ARMV1
+
+3. SBC Ld, Lm THUMBv1
+Action Effect on the cpsr
+
+1. Rd = Rn - <rotated_immed> - (~C) Updated if S suffix specified
+2. Rd = Rn - <shifted_Rm> - (~C) Updated if S suffix specified
+
+3. Ld = Ld - Lm - (~C) Updated (see Notes below)
+Notes
+
+If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <NoUnsignedOverflow>, V = <SignedOverflow>. The carry flag is set this way
+because the subtract x — y— ~Cis implemented as the add x + ~y + C. The carry flag
+is one if x + ~y + Coverflows. This happens when x — y — ~C doesn’t overflow.
+
+If Rd is pe, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr. In this case the cpsr is set
+to the value of the spsr.
+
+If Rn or Rmis pc, then the value used is the address of the instruction plus eight bytes.
+
+The following example implements a 64-bit subtract:
+
+suBs 0, r0, r2 3 subtract low words, C=NOT (borrow)
+spc orl, rl, 13 ; subtract high words and borrow
+
+SEL
+
+Select between two source operands based on the GE flags
+
+1. SEL<cond> Rd, Rn, Rm ARMv6

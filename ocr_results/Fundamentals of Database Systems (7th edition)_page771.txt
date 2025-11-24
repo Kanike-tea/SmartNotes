@@ -1,0 +1,42 @@
+Selected Bibliography
+
+(1984), Shapiro (1986), Kitsuregawa et al. (1989), and Blakeley and Martin (1990),
+among others. Blakely et al. (1986) discuss maintenance of materialized views.
+Chaudhari et al. (1995) discuss optimization of queries with materialized views.
+Approaches to finding a good join order are presented in Ioannidis and Kang
+(1990) and in Swami and Gupta (1989). A discussion of the implications of left-
+deep and bushy join trees is presented in Ioannidis and Kang (1991). Kim (1982)
+discusses transformations of nested SQL queries into canonical representations.
+Optimization of aggregate functions is discussed in Klug (1982) and Muralikrishna
+(1992). Query optimization with Group By is presented in Chaudhari and Shim
+(1994). Yan and Larson (1995) discuss eager and lazy aggregation. Salzberg et al.
+(1990) describe a fast external sorting algorithm. Estimating the size of temporary
+relations is crucial for query optimization. Sampling-based estimation schemes are
+presented in Haas et al. (1995), Haas and Swami (1995), and Lipton et al. (1990).
+Having the database system store and use more detailed statistics in the form of
+histograms is the topic of Muralikrishna and DeWitt (1988) and Poosala et al.
+(1996). Galindo-Legaria and Joshi (2001) discuss nested subquery and aggregation
+optimization.
+
+O'Neil and Graefe (1995) discuss multi-table joins using bitmap indexes. Kim et al.
+(1985) discuss advanced topics in query optimization. Semantic query optimization
+is discussed in King (1981) and Malley and Zdonick (1986). Work on semantic
+query optimization is reported in Chakravarthy et al. (1990), Shenoy and Ozsoyo-
+glu (1989), and Siegel et al. (1992). Volcano, a query optimizer based on query
+equivalence rules, was developed by Graefe and Mckenna (1993). Volcano and the
+follow-on Cascades approach by Graefe (1995) are the basis for Microsoft's SQL
+Server query optimization. Carey and Kossman (1998) and Bruno et al. (2002) pres-
+ent approaches to query optimization for top-k results. Galindo Legaria et al. (2004)
+discuss processing and optimizing database updates.
+
+Ahmed et al. (2006) discuss cost-based query transformation in Oracle and give a
+good overview of the global query optimization architecture in Oracle 10g. Ziaud-
+din et al. (2008) discuss the idea of making the optimizer change the execution plan
+for a query. They discuss Oracle’s SQL plan management (SPM) feature, which
+lends stability to performance. Bellamkonda et al. (2009) provide additional tech-
+niques for query optimization. Ahmed et al. (2014) consider the advantages of
+bushy trees over alternatives for execution. Witkowski et al. (2003) discuss support
+for N-dimensional array-based computation for analytics that has been integrated
+into the Oracle RDBMS engine.
+
+741

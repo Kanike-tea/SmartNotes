@@ -1,0 +1,51 @@
+1050
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+Web page with anchor text such as “My favorite Web site.” Anchor texts can be
+thought of as being implicit endorsements. They provide important latent human
+annotation. A person linking to other Web pages from her Web page is assumed to
+have some relation to those Web pages. Web search engines aim to distill results
+per their relevance and authority. There are many redundant hyperlinks, like the
+links to the homepage on every Web page of the Web site. Such hyperlinks must be
+eliminated from the search results by the search engines.
+
+A hub is a Web page or a Web site that links to a collection of prominent sites
+(authorities) on a common topic. A good authority is a page that is pointed to by
+many good hubs, whereas a good hub is a page that points to many good authori-
+ties. These ideas are used by the HITS ranking algorithm. We briefly discuss a cou-
+ple of ranking algorithms in the next section.
+
+27.7.3 Analyzing the Link Structure of Web Pages
+
+The goal of Web structure analysis is to generate a structural representation about
+the Web site and Web pages. Web structure analysis focuses on the inner structure
+of documents and deals with the link structure using hyperlinks at the interdocu-
+ment level. The structure and content of Web pages are often combined for infor-
+mation retrieval by Web search engines. Given a collection of interconnected Web
+documents, interesting and informative facts describing their connectivity in the
+Web subset can be discovered. Web structure analysis is also used to help with nav-
+igation and make it possible to compare/integrate different Web page schemes.
+This aspect of Web structure analysis facilitates Web document classification and
+clustering on the basis of structure.
+
+The PageRank Ranking Algorithm. As discussed earlier, ranking algorithms
+are used to order search results based on relevance and authority. Google uses the
+well-known PageRank algorithm,”* which is based on the “importance” of each
+page. Every Web page has a number of forward links (out-edges) and backlinks (in-
+edges). It is very difficult to determine all the backlinks of a Web page, whereas it is
+relatively straightforward to determine its forward links. According to the PageRank
+algorithm, highly linked pages are more important (have greater authority) than
+pages with fewer links. However, not all backlinks are important. A backlink to a
+page from a credible source is more important than a link from some arbitrary
+page. Thus a page has a high rank if the sum of the ranks of its backlinks is high.
+PageRank was an attempt to see how good an approximation of the “importance”
+of a page can be obtained from the link structure.
+
+The computation of page ranking follows an iterative approach. PageRank of a Web
+page is calculated as a sum of the PageRanks of all its backlinks. PageRank treats the
+Web like a Markov model. An imaginary Web surfer visits an infinite string of pages by
+clicking randomly. The PageRank of a page is an estimate of how often the surfer winds
+
+?8The PageRank algorithm was proposed by Lawrence Page (1998) and Sergey Brin, founders of
+Google. For more information, see http://en.wikipedia.org/wiki/ PageRank

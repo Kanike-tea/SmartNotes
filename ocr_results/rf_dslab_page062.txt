@@ -1,0 +1,66 @@
+/* allocate node
+*/structNode*new_node=
+(structNode*) malloc (sizeof (structNode) ) ;
+
+/* put in the
+data*/new_node-
+>data=new_data;
+
+/* link the old list off the new node
+*/new_node->next=(*head_ref);
+
+/* move the head to point to the new node
+*/(*head_ref) =new_node;
+
+/* Function to print nodes in a given linked list
+*/voidprintList (structNode*node)
+{
+
+while (node !=NULL)
+
+{
+
+printf("sd ", node-
+>data) ;node=node->next;
+
+/* Driver program to test above function
+*/intmain ()
+{
+
+structNode*start=NULL;
+
+/*Theconstructedlinkedlistis:
+1->2->3->4->5->6->7*/
+push (&start,7);
+push (&start, 6);
+push (&start,5);
+push (&start, 4);
+push (&start, 3);
+push (&start,2);
+push (&start,1);
+
+print£("\n Linked list before calling swapNodes ()
+") ;printList (start);
+
+swapNodes (astart, 4,3);
+
+printf("\n Linked list after calling swapNodes()
+") ;printList (start);
+
+return0;
+
+}
+
+Output:
+LinkedlistbeforecallingswapNodes() 1234567
+
+LinkedlistaftercallingswapNodes()1243567
+
+2) /* Program to implement a stack that supports findMiddle()
+anddeleteMiddle inO(1) time */
+
+#include <stdio.h>
+
+#include<stdlib.h
+
+62

@@ -1,0 +1,17 @@
+113 Summary 401
+
+Memory model—The SLOS kernel is placed in lower memory, and each application has
+its own storage area and stack. The microcontroller system registers are placed away
+from the ROM and SRAM.
+
+Interrupts and exceptions—SLOS makes use of only three events. These events are Reset,
+SWI, and IRQ. All the other unused interrupts and exceptions have a dummy handler
+installed.
+
+Scheduler—SLOS implements a simple round-robin scheduler.
+
+Context switch—First the current context is saved into a PCB, and then the next task
+context is loaded from a PCB.
+
+Device driver framework—This protects the operating system from applications
+accessing hardware directly.

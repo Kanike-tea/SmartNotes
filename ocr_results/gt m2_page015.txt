@@ -1,0 +1,33 @@
+v; and v, with an arrow directed from v; to v;. For example, Fig. 9-1 shows a
+
+digraph with five vertices and ten edges. A digraph is also referred to as an
+oriented graph.t+
+
+e 10
+
+v,
+U% o 5
+
+Fig. 9-1 Directed graph with 5 vertices and 10 edges.
+
+In a digraph an edge is not only incident on a vertex, but is also incident out of
+a vertex and incident into a vertex. The vertex v;, which edge e, is incident out
+
+of, is called the initial vertex of e,. The vertex Vj» which e, is incident into, is
+called the terminal vertex of e,. In Fig. 9-1, vs is the initial vertex and v4 is the
+terminal vertex of edge e;. An edge for which the initial and terminal vertices are
+the same forms a self-loop, such as e;. (Some authors reserve the term arc for an
+
+oriented or directed edge. We use the term edge to mean either an undirected or
+a directed edge. Whenever there is a possibility of confusion, we shall explicitly
+state directed or undirected edge.)
+
+The number of edges incident out of a vertex v; is called the out-degree (or
+
+out-valence or outward demidegree) of v; and is written d*(v;). The number of
+edges incident into v; is called the in-degree (or invalence or inward demidegree)
+
+of v, and is written as d“(v;). In Fig. 9-1, for example,
+d*(v)=3, d-(vy)=1
+d*(vy)=1,  d (v9) =2,
+d*(v;)=4, d~(v5)=0.

@@ -1,0 +1,50 @@
+270 Chapter 8 Digital Signal Processing
+
+= Design the DSP algorithm to minimize loads and stores. Once you load a data item,
+then perform as many operations that use the datum as possible. You can often do
+this by calculating several output results at once. Another way of increasing reuse is
+to concatenate several operations. For example, you could perform a dot product and
+signal scale at the same time, while only loading the data once.
+
+= Write ARM assembly to avoid processor interlocks. The results of load and multiply
+instructions are often not available to the next instruction without adding stall cycles.
+Sometimes the results will not be available for several cycles. Refer to Appendix D for
+details of instruction cycle timings.
+
+= There are 14 registers available for general use on the ARM, r0 to r12 and r14, Design
+the DSP algorithm so that the inner loop will require 14 registers or fewer.
+
+In the following sections we look at each of the standard ARM cores in turn. We implement
+a dot-product example for each core. A dot-product is one of the simplest DSP operations
+
+and highlights the difference among different ARM implementations. A dot-product
+combines N samples from two signals x; and ¢; to produce a correlation value a:
+
+N-1
+» ix} (8.20)
+i=0
+
+The C interface to the dot-product function is
+
+int dot_product (sample *x, coefficient *c, unsigned int N);
+
+where
+
+= sample is the type to hold a 16-bit audio sample, usually a short
+= coefficient is the type to hold a 16-bit coefficient, usually a short
+= x{i] and c{i] are two arrays of length N (the data and coefficients)
+= the function returns the accumulated 32-bit integer dot product a
+
+8.2.1 DSP ON THE ARM7TDMI
+
+SUMMARY
+
+The ARM7TDMI has a 32-bit by 8-bit per cycle multiply array with early termination. It
+takes four cycles for a 16-bit by 16-bit to 32-bit multiply accumulate. Load instructions
+take three cycles and store instructions two cycles for zero-wait-state memory or cache. See
+Section D.2 in Appendix D for details of cycle timings for ARM7TDMI instructions.
+
+Guidelines for Writing DSP Code for the ARM7TDMI
+
+= Load instructions are slow, taking three cycles to load a single value. To access mem-
+ory efficiently use load and store multiple instructions LDM and STM. Load and store

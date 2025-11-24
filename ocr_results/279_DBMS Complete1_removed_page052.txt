@@ -1,0 +1,57 @@
+attribute names and the privilege of the users can be taken from the system catalog (data
+
+dictionary).
+
+Step 2: Translation
+
+If we have written a valid query, then it is converted from high level language SQL to low level
+
+instruction in Relational Algebra.
+
+For example, our SQL query can be converted into a Relational Algebra equivalent as follows;
+TeEname(ODOP>10 A Employee.Eno=Proj_Assigned.Eno( Employee X Prof_Assigned))
+
+Step 3: Optimizer
+
+Optimizer uses the statistical data stored as part of data dictionary. The statistical data are
+
+information about the size of the table, the length of records, the indexes created on the table, etc.
+
+Optimizer also checks for the conditions and conditional attributes which are parts of the query.
+
+Step 4: Execution Plan
+
+A query can be expressed in many ways. The query processor module, at this stage, using the
+
+information collected in step 3 to find different relational algebra expressions that are equivalent
+
+and return the result of the one which we have written already.
+
+For our example, the query written in Relational algebra can also be written as the one given below;
+
+TEname(Employee 04::. (Gpop>i0 (Prof_Assigned)))
+So far, we have got two execution plans. Only condition is that both plans should give the same
+result.
+Step 5: Evaluation
+Though we got many execution plans constructed through statistical data, though they return same
+result (obvious), they differ in terms of Time consumption to execute the query, or the Space
+required executing the query. Hence, it is mandatory choose one plan which obviously consumes
+less cost.
+At this stage, we choose one execution plan of the several we have developed. This Execution plan
+accesses data from the database to give the final result.
+In our example, the second plan may be good. In the first plan, we join two relations (costly
+operation) then apply the condition (conditions are considered as filters) on the joined relation. This
+consumes more time as well as space.
+In the second plan, we filter one of the tables (Proj_Assigned) and the result is joined with the
+Employee table. This join may need to compare less number of records. Hence, the second plan is
+the best (with the information known, not always).
+
+Query Tree
+
+TlenameSalary
+
+°@pNo=DeptNo
+
+OpName="Marketing” EMPLOYEE
+
+DEPARTMENT

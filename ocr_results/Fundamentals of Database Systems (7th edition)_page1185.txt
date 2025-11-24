@@ -1,0 +1,54 @@
+30.10 Oracle Label-Based Security
+
+concerns, watermarking techniques for relational data have been proposed. The
+main purpose of digital watermarking is to protect content from unauthorized
+duplication and distribution by enabling provable ownership of the content. Digital
+watermarking has traditionally relied upon the availability of a large noise domain
+within which the object can be altered while retaining its essential properties. How-
+ever, research is needed to assess the robustness of such techniques and to investi-
+gate different approaches aimed at preventing intellectual property rights violations.
+
+30.9.3 Database Survivability
+
+Database systems need to operate and continue their functions, even with reduced
+capabilities, despite disruptive events such as information warfare attacks. A DBMS,
+in addition to making every effort to prevent an attack and detecting one in the
+event of occurrence, should be able to do the following:
+
+= Confinement. Take immediate action to eliminate the attacker’s access to
+the system and to isolate or contain the problem to prevent further spread.
+
+= Damage assessment. Determine the extent of the problem, including failed
+functions and corrupted data.
+
+= Reconfiguration. Reconfigure to allow operation to continue in a degraded
+mode while recovery proceeds.
+
+= Repair. Recover corrupted or lost data and repair or reinstall failed system
+functions to reestablish a normal level of operation.
+
+= Fault treatment. To the extent possible, identify the weaknesses exploited in
+the attack and take steps to prevent a recurrence.
+
+The goal of the information warfare attacker is to damage the organization’s opera-
+tion and fulfillment of its mission through disruption of its information systems.
+The specific target of an attack may be the system itself or its data. Although attacks
+that bring the system down outright are severe and dramatic, they must also be well
+timed to achieve the attacker’s goal, since attacks will receive immediate and con-
+centrated attention in order to bring the system back to operational condition,
+diagnose how the attack took place, and install preventive measures.
+
+To date, issues related to database survivability have not been sufficiently investi-
+gated. Much more research needs to be devoted to techniques and methodologies
+that ensure database system survivability.
+
+30.10 Oracle Label-Based Security
+
+Restricting access to entire tables or isolating sensitive data into separate databases
+is a costly operation to administer. Oracle label security overcomes the need for
+such measures by enabling row-level access control. It is available starting with
+Oracle Database 11g Release 1 (11.1) Enterprise Edition. Each database table or
+view has a security policy associated with it. This policy executes every time the
+table or view is queried or altered. Developers can readily add label-based access
+
+1155

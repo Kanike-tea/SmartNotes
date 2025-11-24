@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+>» RIGHT OUTER JOIN
+Every tuple in right table must appear in result
+
+If no matching tuple
+Padded with NULL values for the attributes of left table
+
+» FULL OUTER JOIN
+a full outer join combines the effect of applying both left and right outer
+joins.
+
+Where records in the FULL OUTER JOINed tablesido not match, the
+result set will have NULL values for every column of the table\thatdacks
+a matching row.
+
+For those records that do match, a single row will be produced in the
+result set (containing fields populated from.both tables),
+
+Not all SQL implementations have implemented the new
+syntax of joined tables.
+
+In some systems, a different syntax was used to specify outer
+joins by using the comparison operators +=, =+, and +=+ for
+left, right, and full outer join, respectively
+
+For-example, this syntax is available in Oracle. To specify the
+left outer join. in Q8B using this syntax, we could write the
+query Q8C as follows:
+
+v
+
+v
+
+v
+
+asc: SELECT E.Lname, S.Lname
+FROM EMPLOYEE E, EMPLOYEE S
+WHERE E.Super_ ssn += S.Ssn;
+
+https://vtucode.in page 26

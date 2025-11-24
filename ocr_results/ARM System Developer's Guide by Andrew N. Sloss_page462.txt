@@ -1,0 +1,44 @@
+12.6 Cache Lockdown 449
+
+ENDIF
+10
+IF "$op" = "Icache"
+MCR p15, 0, c9f, c9, cO, 1; set victim
+ENDIF
+IF "$op" = "Dcache"
+MCR p15, 0, c9f, c9, cO, 0; set victim
+ENDIF
+MOV count, #(1<<NSET)-1
+5
+IF "$op" = "Icache"
+MCR pl5, 0, adr, c7, cl3, 1 3 load code cacheline
+‘ADD adr, adr, #1<<CLINE 5 cline addr =+ 1
+ENDIF
+IF "$op" = "Dcache"
+LOR tmpl, [adr], #1<<CLINE ; load data cacheline
+ENDIF
+SUBS count, count, #1
+BNE %BT5
+ADD cOf, cof, #1<<I9WAY 3 victim pointer =+ 1
+SUBS nw, nw, #1 3 way counter =- 1
+BNE *%BT10 3 repeat for # of ways
+2
+F {CPU} = "ARM940T" :LOR: {CPU} = "ARM946E-S"
+BIC rO, c9f, #1<<31 ; clear lock bit & r0=victim
+ENDIF
+IF "$op" = "Icache"
+MCR p15, 0, r0, c9, cO, 1 3 set victim counter
+ENDIF
+IF "$op" = "Dcache"
+MCR p15, 0, r0, c9, cO, 0 ; set victim counter
+ENDIF
+1
+MoV pe, Ir
+MEND
+TockDCache
+CACHELOCKBYWAY Dcache
+lockICache
+CACHELOCKBYWAY Icache
+ENDIF
+
+Finally, the macro is used twice to create the lockDCache and lockICache functions.

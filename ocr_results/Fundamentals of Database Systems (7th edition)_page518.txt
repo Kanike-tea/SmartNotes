@@ -1,0 +1,59 @@
+488 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+Figure 14.13
+
+Boyce-Codd normal form. (a) BCNF
+normalization of LOTS1A with the
+functional dependency FD2 being
+lost in the decomposition. (b) A
+schematic relation with FDs; it is in
+3NF, but not in BCNF due to the
+fd.C > B.
+
+(a) LOTS1A
+
+Property_idi# | County_name [Lot [Area
+
+FDI | ! tt
+
+Fo2 4 | | 4
+Fos 4
+
+BCNF Normalization
+
+LOTS1AX LOTS1AY
+
+Property_id# | Area | Lot# Area | County_name
+
+(b) R
+
+A|Blc
+FD1 4
+FD2 4
+
+are restricted to 1.1, 1.2, ... , 1.9, and 2.0 acres. In such a situation we would have the
+additional functional dependency FDS: Area > County_name. If we add this to the other
+dependencies, the relation schema LOTS1A still is in 3NF because this f.d. conforms to
+clause (b) in the general definition of 3NF, County_name being a prime attribute.
+
+The area of a lot that determines the county, as specified by FD5, can be represented
+by 16 tuples in a separate relation R(Area, County_name), since there are only 16 pos-
+sible Area values (see Figure 14.13). This representation reduces the redundancy of
+repeating the same information in the thousands of LOTS1A tuples. BCNF is a
+stronger normal form that would disallow LOTS1A and suggest the need for decom-
+posing it.
+
+Definition. A relation schema R is in BCNF if whenever a nontrivial functional
+
+dependency X > A holds in R, then X is a superkey of R.
+
+The formal definition of BCNF differs from the definition of 3NF in that clause (b)
+of 3NF, which allows f.d.’s having the RHS as a prime attribute, is absent from
+BCNF. That makes BCNF a stronger normal form compared to 3NF. In our exam-
+ple, FD5 violates BCNF in LOTS1A because Area is not a superkey of LOTS1A. We
+can decompose LOTS1A into two BCNF relations LOTS1AX and LOTS1AY, shown
+in Figure 14.13(a). This decomposition loses the functional dependency FD2
+because its attributes no longer coexist in the same relation after decomposition.
+
+In practice, most relation schemas that are in 3NF are also in BCNF. Only if there
+exists some f.d. X > A that holds in a relation schema R with X not being a superkey

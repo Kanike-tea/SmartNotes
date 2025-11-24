@@ -1,0 +1,49 @@
+726
+
+Chapter 19 Query Optimization
+
+solution space has 6 * 6 = 36 alternatives. This is where dynamic programming can
+be used to do a sort of greedy optimization. It takes the “optimal” plan for evaluating
+temp] and does not revisit that plan. So the solution space now reduces to only 6
+options to be considered for the second join. Thus the total number of options con-
+sidered becomes 6 + 6 instead of 120 (=5!) in the nonheuristic exhaustive approach.
+
+The order in which the result of the join is generated is also important for finding
+the best overall order of joins since for using sort-merge join with the next relation,
+it plays an important role. The ordering beneficial for the next join is considered an
+interesting join order. This approach was first proposed in System R at IBM.
+Research.!° Besides the join attributes of the later join, System R also included
+grouping attributes of a later GROUP BY or a sort order at the root of the tree
+among interesting sort orders. For example, in the case we discussed above, the
+interesting join orders for the temp! relation will include those that match the join
+attribute(s) required to join with either r4 or with r5. The dynamic programming
+algorithm can be extended to consider best join orders for each interesting sort
+order. The number of subsets of n relations is 2” (for n = 5 it is 32; n = 10 gives
+1,024, which is still manageable), and the number of interesting join orders is small.
+The complexity of the extended dynamic programming algorithm to determine the
+optimal left-deep join tree permutation has been shown to be O(3”).
+
+19.6 Example to Illustrate Cost-Based
+Query Optimization
+We will consider query Q2 and its query tree shown in Figure 19.1(a) to illustrate
+cost-based query optimization:
+Q2: SELECT Pnumber, Dnum, Lname, Address, Bdate
+FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE Dnum=Dnumber AND Mgr_ssn=Ssn AND
+Plocation="Stafford’;
+
+Suppose we have the information about the relations shown in Figure 19.6. The
+LOW_VALUE and HIGH_VALUE statistics have been normalized for clarity. The tree
+in Figure 19.1(a) is assumed to represent the result of the algebraic heuristic optimi-
+
+zation process and the start of cost-based optimization (in this example, we assume
+that the heuristic optimizer does not push the projection operations down the tree).
+
+The first cost-based optimization to consider is join ordering. As previously men-
+tioned, we assume the optimizer considers only left-deep trees, so the potential join
+orders—without CARTESIAN PRODUCT—are:
+
+1. PROJECT > DEPARTMENT >< EMPLOYEE
+2. DEPARTMENT > PROJECT > EMPLOYEE.
+
+'5See the classic reference in this area by Selinger et al. (1979).

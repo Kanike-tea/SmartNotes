@@ -1,0 +1,48 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+1. Fully parenthesize the expression.
+2. Move all binary operators so that they replace their corresponding right
+parentheses.
+
+3. Delete all parentheses.
+
+Example: Infix expression: a/b -c
++d*e -a*c Fully parenthesized :
+(((a/b)-c) + (d*e))-a*c))
+
+sab/e—-de*+ac*
+
+Example [Parenthesized expression]: Parentheses make the translation process
+more difficult because the equivalent postfix expression will be parenthesis-free.
+The expression a*(b +c)*d which results abe +*d* in postfix.Figure shows the
+
+translation process.
+
+Token| Stack Top Output
+[04 1] [2]
+
+a -1 a
+
+* * 0 a
+
+( * ( 1 a
+
+b * ( 1 ab
+
++ * ( + 2 ab
+
+c * ( + 2 abc
+
+) * 0 abct
+
+* * 0 abc +*
+
+d * 0 abc +*d
+
+eos * 0 abc +*d*
+
+The analysis of the examples suggests a precedence-based scheme for stacking and
+
+unstacking operators.
+
+vtucode.in 46

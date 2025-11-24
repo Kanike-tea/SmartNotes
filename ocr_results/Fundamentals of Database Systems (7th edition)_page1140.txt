@@ -1,0 +1,50 @@
+1110 Chapter 29 Overview of Data Warehousing and OLAP
+
+Figure 29.9
+A fact constellation.
+
+Fact table | Dimension table Fact table II
+Business results Product Business forecast
+Product e}—| Prod_no |~t—}# Product
+Quarter Prod_name Future_qtr
+Region Prod_descr Region
+Revenue Prod_style Projected_revenue
+Prod_line
+
+the jth position in the vector if the jth row contains the value being indexed. For
+example, imagine an inventory of 100,000 cars with a bitmap index on car size. If
+there are four car sizes—economy, compact, mid-size, and full-size—there will be
+four bit vectors, each containing 100,000 bits (12.5kbytes) for a total index size of 50K.
+Bitmap indexing can provide considerable input/output and storage space advan-
+tages in low-cardinality domains. With bit vectors, a bitmap index can provide
+dramatic improvements in comparison, aggregation, and join performance. We
+showed an example of a query on a star schema in Section 19.8, and we also showed
+the star schema’s transformation for efficient execution that uses bitmap indexes.
+
+Ina star schema, dimensional data can be indexed to tuples in the fact table by join
+indexing. Join indexes are traditional indexes used to maintain relationships
+between primary key and foreign key values. They relate the values of a dimension
+of a star schema to rows in the fact table. Consider a sales fact table that has city and
+fiscal quarter as dimensions. If there is a join index on city, for each city the join
+index maintains the tuple IDs of tuples containing that city. Join indexes may
+involve multiple dimensions.
+
+Data warehouse storage can facilitate access to summary data by taking further
+advantage of the nonvolatility of data warehouses and a degree of predictability of
+the analyses that will be performed using them. Two approaches have been used:
+(1) smaller tables that include summary data such as quarterly sales or revenue by
+product line, and (2) encoding of level (for example, weekly, quarterly, annual) into
+existing tables. The overhead of creating and maintaining such aggregations would
+likely be excessive in a dynamically changing, transaction-oriented database.
+
+The purpose of master data management (MDM), a popular concept within enter-
+prises, is to define the standards, processes, policies, and governance related to the
+critical data entities of the organization. The dimension tables—which in a data
+warehouse physicalize concepts, such as customers, regions and product catego-
+ries—represent essentially the master data. Since dimensions are shared across
+multiple facts or reporting data marts, data warehouse designers typically must
+spend a considerable amount of time cleansing and harmonizing these dimensions
+(ie., reconciling definitional and notional differences across multiple source sys-
+tems that the dimension data comes from). As such, table structures containing
+these dimensions become good candidates for special copies of master data that can
+be used in other environments.

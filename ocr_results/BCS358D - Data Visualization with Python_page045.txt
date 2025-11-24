@@ -1,0 +1,54 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 03 (b)
+
+3 b) Write a Python program to find the string similarity between two given strings
+
+Sample Output: Sample Output:
+
+Original string: Original string:
+
+Python Exercises Python Exercises
+
+Python Exercises Python Exercise
+
+Similarity between two said strings: Similarity between two said
+10 0.967741935483871
+
+Aim: Demonstration of manipulation of strings using string methods.
+PROGRAM EXPLANATION
+The below program demonstrates the usage of the difflib module to calculate the string similarity
+
+between two given strings. Let's go through the program step by step:
+
+1. The program begins by importing the difflib module, which provides various functions
+
+and classes for comparing sequences.
+
+2. The string_similarity function is defined, which takes two strings (str1 and str2) as input.
+Inside the function, a SequenceMatcher object is created by passing the two input strings
+as arguments, with their lowercase versions (str1 .lower() and str2.lower()). This is done
+
+to make the comparison case-insensitive.
+
+3. The ratio() method is called on the SequenceMatcher object, which returns the similarity
+
+ratio between the two strings as a float value.
+
+4. The program then proceeds to test the function. Two pairs of strings are provided for
+
+comparison:
+
+a. The first pair consists of the same string: 'Python Exercises'. The original strings
+are printed, followed by the calculated similarity ratio between them. Since both
+strings are identical, the similarity ratio is expected to be 1.0.
+b. The second pair consists of slightly different strings: 'Python Exercises’ and
+‘Python Exercise’. Again, the original strings are printed, followed by the
+calculated similarity ratio. In this case, the similarity ratio is expected to be
+slightly less than 1.0, reflecting the difference between the two strings.
+The difflib.SequenceMatcher class in difflib module provides a flexible and customizable way to
+compare sequences, including strings. By adjusting the parameters or using different methods of
+
+the SequenceMatcher class, you can perform more specific types of string matching and
+
+Dept. of CSE 30 GSSSIETW, Mysuru

@@ -1,0 +1,50 @@
+22.1 Recovery Concepts
+
+transaction from the log, because their effect may not yet have been recorded in the
+database on disk. Hence, deferred update is also known as the NO-UNDO/REDO
+algorithm. We discuss this technique in Section 22.2.
+
+In the immediate update techniques, the database may be updated by some opera-
+tions of a transaction before the transaction reaches its commit point. However,
+these operations must also be recorded in the log on disk by force-writing before
+they are applied to the database on disk, making recovery still possible. If a trans-
+action fails after recording some changes in the database on disk but before reach-
+ing its commit point, the effect of its operations on the database must be undone;
+that is, the transaction must be rolled back. In the general case of immediate
+update, both undo and redo may be required during recovery. This technique,
+known as the UNDO/REDO algorithm, requires both operations during recovery
+and is used most often in practice. A variation of the algorithm where all updates
+are required to be recorded in the database on disk before a transaction commits
+requires undo only, so it is known as the UNDO/NO-REDO algorithm. We discuss
+these two techniques in Section 22.3.
+
+The UNDO and REDO operations are required to be idempotent—that is, executing
+an operation multiple times is equivalent to executing it just once. In fact, the whole
+recovery process should be idempotent because if the system were to fail during the
+recovery process, the next recovery attempt might UNDO and REDO certain
+write_item operations that had already been executed during the first recovery pro-
+cess. The result of recovery from a system crash during recovery should be the same
+as the result of recovering when there is no crash during recovery!
+
+22.1.2 Caching (Buffering) of Disk Blocks
+
+The recovery process is often closely intertwined with operating system func-
+tions—in particular, the buffering of database disk pages in the DBMS main
+memory cache. Typically, multiple disk pages that include the data items to be
+updated are cached into main memory buffers and then updated in memory
+before being written back to disk. The caching of disk pages is traditionally an
+operating system function, but because of its importance to the efficiency of
+recovery procedures, it is handled by the DBMS by calling low-level operating
+systems routines (see Section 20.2.4).
+
+In general, it is convenient to consider recovery in terms of the database disk pages
+(blocks). Typically a collection of in-memory buffers, called the DBMS cache, is
+kept under the control of the DBMS for the purpose of holding these buffers. A
+directory for the cache is used to keep track of which database items are in the buf-
+fers.! This can be a table of <Disk_page_address, Buffer_location, ... > entries. When
+the DBMS requests action on some item, first it checks the cache directory to deter-
+mine whether the disk page containing the item is in the DBMS cache. If it is not,
+
+'This is somewhat similar to the concept of page tables used by the operating system.
+
+815

@@ -1,0 +1,29 @@
+Data Structures and Applications (15CS33)
+
+e In Figure (A), the leftmost child of A is B, and the leftmost child of D is H.
+e The closest right sibling of B is C, and the closest right sibling of H is I.
+e Choose the nodes based on how the tree is drawn. The left child field of each node points
+to its leftmost child (if any), and the right sibling field points to its closest right sibling
+(if any).
+Figure (D) shows the tree of Figure (A) redrawn using the left child-right sibling representation.
+
+(A)
+
+B (C) D
+
+OH) OOO
+© M)
+
+Figure (D): Left child-right sibling representation of tree of figure (A)
+
+Representation as a Degree-Two Tree
+
+To obtain the degree-two tree representation of a tree, simply rotate the right-sibling pointers
+in a left child-right sibling tree clockwise by 45 degrees. This gives us the degree-two tree
+displayed in Figure (E).
+
+Figure (E): degree-two representation
+
+In the degree-two representation, a node has two children as the left and right children.
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

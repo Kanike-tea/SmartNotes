@@ -1,0 +1,54 @@
+T EQU 40
+
+a RN O 3 points to an R rows
+b RN 1 points to an R rows
+c RN 2 3 points to an S rows
+sum RN 3
+
+bval RN 4
+
+cval RN 12
+
+count RN 14
+
+3 void matrix _mul(int *a, int *b,
+
+matrix_mul
+
+6.6 Looping Constructs 189
+
+x T columns matrix
+x S columns matrix
+x T columns matrix
+
+STMFD sp!, {r4, Ir}
+MOV count, #(R-1) 3 i=0
+loop_i
+ADD count, count, #(T-1)<<8 ; j=0
+loop_j
+ADD count, count, #(S-1)<<16 ; k=0
+MOV sum, #0
+loop_k
+LOR —bval, [b], #4 3 bval = B[i,k], b=8B[i,k+1]
+LOR —cval, [c], #4*T 3 eval = C[k,j], c=8C[k+1,]
+SUBS count, count, #1<<16 3 ket
+MLA sum, bval, cval, sum 3 sum += bval*cval
+BPL —1oop_k 3 branch if k<=$-1
+sTR sum, [a], #4 3 ALi,j] = sum, a-8ALi,j+1]
+SUB c, c, #4*S*T 3c = &C[0,J]
+ADD cc, c, #4 3c = &C[0,j+1]
+ADDS count, count, #(1<<16)-(1<<8) ; zero (S-1-k), j++
+SUBPL b, b, #4*S 3 b = &B[i,0]
+BPL —loop_j 3 branch if j<=T-1
+SUB oc, c, #4*T 3c = &C[0,0]
+ADDS count, count, #(1>>8)-1 5 zero (T-1-j), itt
+BPL —loop_i 3 branch if i<-R-1
+LOMFD sp!, {r4, pc}
+
+The preceding structure saves two registers over a naive implementation. First, we
+decrement the count at bits 16 to 23 until the result is negative. This implements the k loop,
+
+counting down from S — 1 to 0 inclusive. Once the result is negative, the code adds 2'¢
+to clear bits 16 to 31. Then we subtract 2° to decrement the count stored at bits 8 to 15,
+implementing the j loop. We can encode the constant 2! — 2° = OxFF00 efficiently using
+a single ARM instruction. Bits 8 to 15 now count down from T — 1 to 0. When the result

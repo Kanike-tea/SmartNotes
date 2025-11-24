@@ -1,0 +1,47 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+b. DIRECT ADDRESSING
+
+It is also called as Absolute Addressing Mode. In this addressing mode operands are stored in the
+
+memory locations. The name of the memory location is directly specified in the instruction.
+
+Ex: MOVE LOCA, Ri: Where LOCA is the memory location and R1 is the Register.
+
+This instruction transfers 32 bits of data from memory location X into the General Purpose
+
+Register R1.
+
+ft Operand
+
+Memory
+
+Opcode A
+
+Direct Addressing Mode
+
+@ IMMEDIATE ADDRESSING
+
+In this Addressing Mode operands are directly specified inthe instruction. The source field is used
+
+to represent the operands. The operands are represented by #(hash) sign.
+
+Ex: MOVE #23, RO
+
+Immediate Addressing Mode
+
+d. INDIRECT ADDRESSING
+
+In this Addressing Mode effective address of an operand is stored in the memory location or
+
+General Purpose Register.
+
+The memory locations or GPRs are used as the memory pointers.
+Memory pointer: It stores the address of the memory location.
+There are two types Indirect Addressing
+
+i Indirect through GPRs
+
+ii) Indirect through memory location
+
+Dr. Ajay V G, Dept. of CSE, SVIT 26

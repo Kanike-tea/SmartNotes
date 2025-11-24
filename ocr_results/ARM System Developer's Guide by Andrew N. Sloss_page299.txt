@@ -1,0 +1,100 @@
+286 Chapter 8 Digital Signal Processing
+
+a0 RN8 — ; output accumulators
+al RN9
+a2 RN 10
+a3 RN 1
+3 void fir_léby16_arm9m
+3 (int *a,
+
+3; short *x,
+; struct { short *c; unsigned int M; } *c,
+3; unsigned int N)
+
+fir_l6by16_arm9m
+
+STMFD  sp!, {r4-r1l, Ir}
+
+LDMIA c, {c, M}
+next_sample_arm9m
+
+STMFD sp!, {N, M}
+
+LORSH x0, [x], #2
+
+LORSH x1, [x], #2
+
+LORSH x2, [x], #2
+
+LORSH x3, [x], #2
+
+Mov a0, #0
+
+Mov al, #0
+
+Mov a2, #0
+
+MOV a_3, #0
+
+next_tap_arm9m
+
+3 perform next block of 4x4=16 taps
+
+LDRSH
+LDRSH
+SUBS
+MLA
+LDRSH
+MLA
+MLA
+MLA
+LDRSH
+MLA
+LDRSH
+MLA
+MLA
+MLA
+LDRSH
+MLA
+LDRSH
+MLA
+MLA
+
+c_0,
+cl,
+M, My
+
+0
+0
+1
+12
+3
+0
+0
+cl,
+1
+12
+3
+1
+0
+2
+1
+
+a2,
+
+#2
+
+al
+a2
+a3
+
+al
+a2
+a3
+
+x3,
+x0,
+
+al
+
+c0, a2

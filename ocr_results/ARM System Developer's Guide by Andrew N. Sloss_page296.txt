@@ -1,0 +1,49 @@
+Figure 8.3
+
+EXAMPLE
+
+8.9
+
+Figure 8.4
+
+8.3 FIR filters 283
+
+x
+
+Xie Xe as Xe Xmas Xeaee *ee7
+
+A, Cui Cur Cus Cus Cus Cue Cua
+
+Aus Cur m2 Cus Cus Cus Cue
+Ay2 Cur m2 Sus Cus Cus
+Aus Cur Cu2 us Cus
+
+A 4 x 3 block filter implementation.
+
+next coefficient. The loop repeats after adding S products to each accumulator. Therefore
+we must allocate X[t] and X[t — S] to the same register. We must also keep the history of
+length at least R — 1 samples in registers. Therefore S > R — 1. For this reason, block filters
+are usually of size R x (R— 1) or Rx R.
+
+The following examples give optimized block FIR implementations. We select the best
+values for Rand S for different ARM implementations. Note that for these implementations,
+we store the coefficients in reverse order in memory. Figure 8.3 shows that we start from
+coefficient C[M — 1] and work backwards.
+
+As with the ARM7TDMI dot product, we store 16-bit and 32-bit data items in 32- bit words.
+‘Then we can use load multiples for maximum load efficiency. This example implements a
+4 x 3 block filter for 16-bit input data. The array pointers a, x, and c point to output and
+input arrays of the formats given in Figure 8.4.
+
+Note that the xarray holds a history of M — 1 samples and that we reverse the coefficient
+array. We hold the coefficient array pointer cand length M in a structure, which limits the
+function to four register arguments. We also assume that N is a multiple of four and M
+a multiple of three.
+
+Array First. Second ‘Third Last Array
+name element element element .. element length
+a At Ari Arya | | Arp—i N
+x | Xrem4i | Xr—-m42 | Xr-m43 | | Xe¢n-1 | N+M—1
+c Cu-1 Cm—2 Cu—3 os (ey M
+
+Formats of arrays a, x, and c.

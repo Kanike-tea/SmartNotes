@@ -1,0 +1,38 @@
+5a) Spanning trees are subtrees of a graph that contains all the vertices of
+the graph. And tree branches are the edges in the spanning tree. Hence
+the number of tree branches in a spanning would be n-1. Th chords are all
+the edges that are not in the spanning tree, hence the number of chords
+are e-(n-1).
+
+viv2v3v4v5v6 and vivév5v4v3v2 are two spanning trees in the given
+graph, e6 is chord in the first tree but a branch in the second.
+
+b)
+Edge-connectivity
+Let G be a connected graph and S be a cut-set in G that contains fewest number of edge:
+The number of edges in S is called the edge-connectivity (or the line connectivity) of G. In
+other words, the edge-connectivity of G is the minimum number of edges of G whose remov:
+
+results in a disconnected or trivial graph. Obviously, the edge-connectivity of G is at least one,
+It is trivial to note that in a tree every edge (branch) is a cut-set. Therefore, the edge-
+
+connectivity of a tree is one.
+For the graph shown in Figure 4.36 no single edge is a cut-set. But the graph has a cut-set
+{e2, e3) that contains two edges. Therefore, the edge-connectivity of this graph is two.
+
+Vertex-connectivity
+
+Let G 4 connected graph. Tife minimum number of vertices whose removal results in @
+disconnected or trivial graph is called the vertex-connectivity (or point-connectivity) of G.
+
+It is to be noted that removal of a vertex implies the removal of all edges incident on that
+vertex.
+
+Obviously, the vertex-connectivity of a connected graph is at least one.
+
+In a tree with two vertices (see Figure 3.1(a)) the removal of one vertex results in a trivial
+graph. Therefore, the vertex-connectivity of this tree is one.
+
+For the graph shown in Figure 4.36, the vertex-connectivity is two. Because, the removal of
+any single vertex of the graph does not result in a disconnected or trivial graph; but the removal
+of two vertices v;, v4 results in the disconnected graph shown below.

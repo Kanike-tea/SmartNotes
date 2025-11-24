@@ -1,0 +1,43 @@
+Microcontrollers — BCS402
+
+Table 11: Addressing methods for stack operations
+
+Addressing mode Description Pop =LDM Push = STM
+
+FA full ascending LDMFA LDMDA STMFA STMIB
+
+FD full descending LDMFD LDMIA STMFD STMDB
+
+EA empty ascending LDMEA LDMDB STMEA STMIA
+
+ED empty descending LDMED LDMIB STMED STMDA|
+Example 1:
+
+The STMFD instruction pushes registers onto the stack, updating the sp. Figure 7 shows a
+push onto a full descending stack. You can see that when the stack grows the stack pointer
+
+points to the last full entry in the stack.
+
+PRE Address Data POST Address Data
+0x80018 | 0x00000001 0x80018 | 0x00000001
+
+sp —>| 0x80014 | 0x00000002 0x80014 | 0x00000002
+0x80010 | Empty 0x80010 | 0x00000003
+0x8000c | Empty sp —>| 0x8000c | 0x00000002
+
+Fig 7: STMED instruction—full stack push operation
+PRE rl = 0x00000002, r4 = 0x00000003, sp = 0x00080014
+STMED sp!, {r 1.14}
+POST rl = 0x00000002, r4 = 0x00000003, sp = 0x0008000c
+Example 2:
+
+In contrast, Figure 8 shows a push operation on an empty stack using the STMED instruction.
+The STMED instruction pushes the registers onto the stack but updates register sp to point to
+
+the next empty location.
+PRE rl = 0x00000002, r4 = 0x00000003, sp = 0x00080010,
+STMED sp!, {r1,r4}
+
+POST rl = 0x00000002, r4 = 0x00000003, sp = 0x00080008
+
+Dept. of ECE, GSSSIETW Page 23

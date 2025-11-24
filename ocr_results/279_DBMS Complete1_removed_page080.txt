@@ -1,0 +1,46 @@
+Definition: an FD is a relationship between an attribute "Y" and a determinant (1 or more other
+attributes) "X" such that for a given value of a determinant the value of the attribute is uniquely
+defined.
+
+X is a determinant
+
+X determines Y
+
+Y is functionally dependent on X
+xX—-Y
+
+X >Y is trivial if Y SX
+
+Definition: An FD X — Yis satisfied in an instance r of R if for every pair of tuples, t and s: if t
+and s agree on all attributes in X then they must agree on all attributes in Y
+
+Akey constraint is a special kind of functional dependency: all attributes of relation occur on the
+right-hand side of the FD:
+
+« SSN — SSN, Name, Address
+Example Functional Dependencies
+
+Let R be
+NewStudent(stuld, lastName, major, credits, status, socSecNo)
+
+FDs in R include
+
+e {stuld}— {lastName}, but not the reverse
+
+{stuld} —{lastName, major, credits, status, socSecNo, stuld}
+
+e {socSecNo} —{stuld, lastName, major, credits, status, socSecNo}
+{credits}— {status}, but not {status}— {credits}
+
+ZipCode—AddressCity
+e 16652 is Huntingdon’s ZIP
+ArtistName—Birth Year
+¢ Picasso was born in 1881
+Autobrand— Manufacturer, Engine type
+¢ Pontiac is built by General Motors with gasoline engine
+Author, Title>PublDate
+e Shakespeare’s Hamlet was published in 1600
+Trivial Functional Dependency
+The FD XY is trivial if set {Y} is a subset of set {X}
+
+Examples: If A and B are attributes of R,

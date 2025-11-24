@@ -1,0 +1,61 @@
+Database Management System [BCS403]
+
++ For example, data for the transaction may not be found
+
+4. Concurrency control enforcement:
+
++The concurrency control may decide to abort a transaction because itviolates
+
+serializability or several transactions are in a state of deadlock
+
+5. Disk failure:
+
+« Some disk blocks may lose their data because of a read or write malfunction or
+
+because of a disk read/write head crash.
+
+6. Physical problems and catastrophes:
+
+refers to an endless list of problems that includes power or air-conditioning failure, fire,
+
+theft, overwriting disks or tapes by mistake
+
+= Failures of types 1, 2, 3, and 4 are more common than those of types.5 or 6.
+
+= Whenever a failure of type 1 through 4 occurs, the system must keep sufficient information to
+
+quickly recover from the failure.
+
+= Disk failure or other catastrophic failures of type 5 or 6 do not happen frequently; if they do
+
+occur, recovery is a major task.
+
+5.3 Transaction and System Concepts
+
+5.3.1 Transaction States and/Additional.Operations
+
+A transaction is an atomic unit of work that should either be completed in its entirety or
+not done atiall. For recovery purposes, the system keeps track of start of a transaction,
+termination, commit or aborts:
+
+BEGIN_TRANSACTION: marks the beginning of transaction execution
+
+READ or WRITE: specify read or write operations on the database items that are
+
+executed as part of a transaction
+
+END_TRANSACTION: specifies that READ and WRITE transaction operations have
+ended and marks the end of transaction execution
+
+COMMIT_TRANSACTION: signals a successful end of the transaction so that any
+
+changes (updates) executed by the transaction can be safely committed to the
+
+database and will not be undone
+
+ROLLBACK: signals that the transaction has ended unsuccessfully, so that any
+changes or effects that the transaction may have applied to the database must be
+
+undone
+
+https://vtucode.in 10

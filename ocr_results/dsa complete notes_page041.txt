@@ -1,0 +1,52 @@
+Data Structures and Applications/BCS304 Module 1
+
+=1+0+1+fibo(2)
+=2+ fibo(1)+ fibo(0)
+=2+14fibo(0)
+=2+140=3
+
+GCD of two numbers: The function accepts two numbers as input and returns the gcd of the two
+numbers
+gced(int m, int n)
+
+if (n==0)
+return m;
+retrun(gcd(n,m%n))
+}
+Example:
+ged(2,0)=2
+
+gced(0,2)= ged(2,0)=2
+gced(4,2)= ged(2,0)=2
+gcd(7,3)= ged(3,1)= ged(1,0)=1
+
+Binary search in C
+int binsearch(int *a , int key, int low, int high)
+{
+
+Tf (low>high)
+
+return(-1);
+
+mid=(low+high)/2;
+
+if (key==a[mid])
+
+return(mid)
+
+else
+
+if (key>a[mid])
+return(binsearch(a,key mid+1 high));
+else
+
+return(binsearch(a,key low ,mid-1));
+
+We have to move n disks Geom peg A to peg C using peg B as auxiliary disk.
+
+The disks are placed in such a way that the larger disks are always below a smaller disk.
+Only the top disk on any peg can be moved to any other peg.
+
+Larger disk should never rest on a smaller disk.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 42

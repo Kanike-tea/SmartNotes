@@ -1,0 +1,48 @@
+Database Management System [BCS403]
+
+If the value of the lock on X is 0, the item can be accessed when
+
+requested, and the lock value is changed to 1
+
+= Werefer to the current value (or state) of the lock associated with item X
+as lock(X).
+
+= Two operations, lock_item and unlock_item, are used with binary
+locking.
+
+= A transaction requests access to an item X by first issuing a lock_item(X)
+operation
+
+= If LOCK(X) = 1, the transaction is forced to wait.
+
+= If LOCK(X) = 0, it is set to 1 (the transaction locks the item) and the
+transaction is allowed to access item X
+
+= When the transaction is through using the item, it issues an
+unlock_item(X) operation, which sets LOCK(X) back to 0 (unlocks the
+item) so that X may be accessed by other transactions
+
+= Hence, a binary lock enforces mutual exclusion on the data item.
+
+lock_item(X):
+B: if LOCK(X) = 0 (* item is unlocked *)
+then LOCK(X) <1 (* lock the item *)
+else
+begin
+wait (until LOCK(X) = 0
+and the lock manager wakes up the transaction);
+go toB
+
+end;
+
+unlock_item(X):
+
+LOCK(X) <— 0; (* unlock the item *)
+
+if any transactions are waiting
+
+then wakeup one of the waiting transactions;
+
+Fig: 2.1.1 Lock and unlock operations for binary licks.
+
+https://vtucode.in 23

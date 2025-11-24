@@ -1,0 +1,49 @@
+10 Chapter 1 ARM Embedded Systems
+
+Table 1.1
+
+general performance of the system, it does not help real-time system response. Note that
+many small embedded systems do not require the performance benefits of a cache.
+
+The main memory is large—around 256 KB to 256 MB (or even greater), depending on
+the application—and is generally stored in separate chips. Load and store instructions access
+the main memory unless the values have been stored in the cache for fast access. Secondary
+storage is the largest and slowest form of memory. Hard disk drives and CD-ROM drives
+are examples of secondary storage. These days secondary storage may vary from 600 MB
+to 60 GB.
+
+1.3.3.2 Width
+
+The memory width is the number of bits the memory returns on each access—typically
+8, 16, 32, or 64 bits. The memory width has a direct effect on the overall performance and
+cost ratio.
+
+Ifyou have an uncached system using 32-bit ARM instructions and 16-bit-wide memory
+chips, then the processor will have to make two memory fetches per instruction. Each fetch
+requires two 16-bit loads. This obviously has the effect of reducing system performance,
+but the benefit is that 16-bit memory is less expensive.
+
+In contrast, if the core executes 16-bit Thumb instructions, it will achieve better
+performance with a 16-bit memory. The higher performance is a result of the core making
+only a single fetch to memory to load an instruction. Hence, using Thumb instructions
+with 16-bit-wide memory devices provides both improved performance and reduced cost.
+
+Table 1.1 summarizes theoretical cycle times on an ARM processor using different
+memory width devices.
+
+1.3.3.3 Types
+
+There are many different types of memory. In this section we describe some of the more
+popular memory devices found in ARM-based embedded systems.
+
+Read-only memory (ROM) is the least flexible of all memory types because it contains an
+image that is permanently set at production time and cannot be reprogrammed. ROMs are
+used in high-volume devices that require no updates or corrections. Many devices also use
+a ROM to hold boot code.
+
+Fetching instructions from memory.
+
+Instruction size 8-bit memory 16-bit memory _ 32-bit memory
+
+ARM 32-bit 4 cycles 2 cycles 1 cycle
+Thumb 16-bit 2 cycles 1 cycle cycle

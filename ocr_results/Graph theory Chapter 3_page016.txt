@@ -1,0 +1,46 @@
+4. Preorder and Postorder Traversals
+169
+
+42:
+2,1 Preorder and Postorder Traversals.
+Below we illustrate two methods of listing the vertices of a rooted tree, known as Preorder
+
+Traversal and Postorder Traversal. The general discussion is omitted.
+Consider the rooted tree shown in Figure 3.16.
+
+Figure,; 3. 16,
+
+rtices of this tree T using the following procedure.
+
+the tree namely 1. Next, we select the vertex 2. Since there is no
+5 js the root of a subtree. In this subtree,
+6, 17 in this order. Then we return to the vertex 1 and
+e vertices 4, 7, 8, 11, 12,
+
+Let us prepare a list of vei
+First, we select the root of
+ubtree rooted at 2, we go to the vertex 5. The vertex
+we select the vertices 9, 14, 15, 10, 1
+select the vertices 3 and 6 and return to vertex 1, “Finally, ‘we select th
+3, zn this way, we obtain the following list of vertices of the tree T.
+
+12.5, 9, 115 101617 9,647 8 1 118
+
+/
+
+This lis is referred to as the Preorder traversal of T. ne
+fT using,the procedure given below.
+
+Alternatively, suppose we prepare a list,of vertices 0
+We start with the vertex 9 and select'the vertices 14, 15 and 9 in this order. Then, we go to
+- ‘he Vertex 5 and select the vertices 16, 17, 10 and 5 in this ofder. Then, we select the vertex 2.
+
+| Since 2 ig hot a root of a subtree of 7, we go to the subtree of T that lies to the right. Here, we
+he *lect the vertices 6 and 3, We pass on to.the next subfree (to the right) and select 7, 11, 12, 13,
+
+Oe Finally, we select the root of the tree, namely 1, In this way, we obtain the following list
+of Vettices Of the tree T.
+
+14, 15,9, 16, 17, 10; 5,216, 3, J 11, 12, 13,8, 4,1.
+
+This list is called the Postorder traversal of T.:

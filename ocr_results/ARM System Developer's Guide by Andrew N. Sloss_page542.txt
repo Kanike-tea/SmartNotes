@@ -1,0 +1,57 @@
+14.10.6
+
+EXAMPLE
+
+14.5
+
+14.10 Demonstration: A Small Virtual Memory System 529
+
+/* Task Process Regions */
+Region t1Region
+
+= {0x00400000, 4, 8, RWRW, WT, 0x00020000, &task1PT};
+Region t2Region
+
+= {0x00400000, 4, 8, RWRW, WT, 0x00028000, &taskZ2PT};
+Region t3Region
+
+= {0x00400000, 4, 8, RWRW, WT, 0x00030000, &task3PT}
+
+STEP 6: INITIALIZE THE MMU, CACHES, AND WRITE
+BUFFER
+
+Before the MMU and the caches and write buffer are activated, they must be initialized.
+The PTCB and RCB hold the configuration data for the three components. There are five
+parts to initialize the MMU:
+
+. Initialize the page tables in main memory by filling them with FAULT entries.
+. Fill in the page tables with translations that map regions to physical memory.
+
+. Activate the page tables.
+
+Beye
+
+. Assign domain access rights.
+
+. Enable the memory management unit and cache hardware.
+
+The first four parts configure the system and the last part enables it. In the following sections
+we provide routines to perform the five parts to the initialization process; the routines are
+listed by function and example number in Figure 14.21.
+
+14.10.6.1 Initializing the Page Tables in Memory
+
+The first part in initializing the MMU is to set the page tables to a known state. The easiest
+way to do this is to fill the page tables with FAULT page table entries. Using a FAULT entry
+makes sure that no valid translations exist outside those defined by the PTCB. By setting all
+the page table entries in all the active page tables to a FAULT, the system will generate an
+abort exception for an entry not later filled in using the PTCB.
+
+The routine mmuInitPT initializes a page table by taking the memory area allocated for
+a page table and setting it with FAULT values. It is called using the following function
+
+prototype:
+
+void mnuInitPT(Pagetable *pt) ;
+
+The routine takes a single argument, which is a pointer to a Pagetable in the PTCB.

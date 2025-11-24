@@ -1,0 +1,78 @@
+48 Chapter 3 Introduction to the ARM Instruction Set
+
+Table 3.1 ARM instruction set.
+
+Mnemonics ARMISA Description
+
+ADC vl add two 32-bit values and carry
+
+ADD vl add two 32-bit values
+
+AND vl logical bitwise AND of two 32-bit values
+
+B vl branch relative +/— 32 MB
+
+BIC vl logical bit clear (AND NOT) of two 32-bit values
+
+BKPT v5 breakpoint instructions
+
+BL vl relative branch with link
+
+BLX v5 branch with link and exchange
+
+BX v4T branch with exchange
+
+CDP cDP2 v2v5 coprocessor data processing operation
+
+CLZ v5 count leading zeros
+
+CMN vl compare negative two 32-bit values
+
+CMP vl compare two 32-bit values
+
+EOR vl logical exclusive OR of two 32-bit values
+
+Loc Locz v2v5 load to coprocessor single or multiple 32-bit values
+
+LOM vl load multiple 32-bit words from memory to ARM registers
+LDR vl v4v5E load a single value from a virtual address in memory
+
+MCR MCR2 MCRR v2v5vSE move to coprocessor from an ARM register or registers
+
+MLA v2 multiply and accumulate 32-bit values
+
+MOV vl move a 32-bit value into a register
+
+MRC MRC2 MRRC v2v5SvSE move to ARM register or registers from a coprocessor
+
+MRS v3 move to ARM register from a status register (cpsr or spsr)
+MSR v3 move to a status register (cpsr or spsr) from an ARM register
+MUL v2 multiply two 32-bit values
+
+MVN vl move the logical NOT of 32-bit value into a register
+
+ORR vl logical bitwise OR of two 32-bit values
+
+PLD v5E preload hint instruction
+
+QADD v5E signed saturated 32-bit add
+
+QDADD v5E signed saturated double and 32-bit add
+
+QDSUB v5E signed saturated double and 32-bit subtract
+
+QSUB v5E signed saturated 32-bit subtract
+
+RSB vl reverse subtract of two 32-bit values
+
+RSC vl reverse subtract with carry of two 32-bit integers
+
+SBC vl subtract with carry of two 32-bit values
+
+SMLAxy vSE __ signed multiply accumulate instructions (16 x 16) + 32 = 32-bit)
+SMLAL v3M signed multiply accumulate long ((32 x 32) + 64 = 64-bit)
+SMLALxy v5E _ signed multiply accumulate long ((16 x 16) + 64 = 64-bit)
+SMLAWy v5E signed multiply accumulate instruction (((32 x 16) >> 16) + 32 = 32-bit)
+SMULL v3M signed multiply long (32 x 32 = 64-bit)
+
+continued

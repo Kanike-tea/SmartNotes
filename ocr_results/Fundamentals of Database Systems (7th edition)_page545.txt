@@ -1,0 +1,50 @@
+15.2 Properties of Relational Decompositions
+
+matter what decomposition is chosen for the relation TEACH(Student, Course,
+Instructor) from the three provided in the text, one or both of the dependencies orig-
+inally present are bound to be lost. We now state a claim related to this property
+without providing any proof.
+
+Claim 1. It is always possible to find a dependency-preserving decomposition
+D with respect to F such that each relation R; in D is in 3NF.
+
+15.2.3 Nonadditive (Lossless) Join Property
+of a Decomposition
+
+Another property that a decomposition D should possess is the nonadditive join
+property, which ensures that no spurious tuples are generated when a NATURAL
+JOIN operation is applied to the relations resulting from the decomposition. We
+already illustrated this problem in Section 14.1.4 with the example in Fig-
+ures 14.5 and 14.6. Because this is a property of a decomposition of relation
+schemas, the condition of no spurious tuples should hold on every legal relation
+state—that is, every relation state that satisfies the functional dependencies in F.
+Hence, the lossless join property is always defined with respect to a specific set F
+of dependencies.
+
+Definition. Formally, a decomposition D = {Rj, Rj, ... , Ry,} of R has the
+lossless (nonadditive) join property with respect to the set of dependencies
+F on R if, for every relation state r of R that satisfies F, the following holds,
+where * is the NATURAL JOIN of all the relations in D: (mR, (r), seep TE, (7) =r.
+
+The word loss in lossless refers to loss of information, not to loss of tuples. If a
+decomposition does not have the lossless join property, we may get additional spu-
+rious tuples after the PROJECT (7) and NATURAL JOIN (+) operations are applied;
+these additional tuples represent erroneous or invalid information. We prefer the
+term nonadditive join because it describes the situation more accurately. Although
+the term lossless join has been popular in the literature, we used the term nonaddi-
+tive join in describing the NJB property in Section 14.5.1. We will henceforth use the
+term nonadditive join, which is self-explanatory and unambiguous. The nonaddi-
+tive join property ensures that no spurious tuples result after the application of
+PROJECT and JOIN operations. We may, however, sometimes use the term lossy
+design to refer to a design that represents a loss of information. The decomposition
+of EMP_PROJ(Ssn, Pnumber, Hours, Ename, Pname, Plocation) in Figure 14.3 into
+EMP_LOCS(Ename, Plocation) and EMP_PROJ1(Ssn, Pnumber, Hours, Pname, Plocation)
+in Figure 14.5 obviously does not have the nonadditive join property, as illustrated
+by the partial result of NATURAL JOIN in Figure 14.6. We provided a simpler test
+in case of binary decompositions to check if the decomposition is nonadditive—it
+was called the NJB property in Section 14.5.1. We provide a general procedure for
+testing whether any decomposition D of a relation into n relations is nonadditive
+with respect to a set of given functional dependencies F in the relation; it is pre-
+sented as Algorithm 15.3.
+
+515

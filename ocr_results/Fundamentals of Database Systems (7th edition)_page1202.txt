@@ -1,0 +1,52 @@
+1172 Appendix C Overview of the QBE Language
+
+EMPLOYEE
+
+Fname | Minit
+
+Lname | Ssn | Bdate | Address | Sex | Salary | Super_ssn| Dno
+
+DEPARTMENT
+
+Dname | Dnumber | Mgr_ssn | Mgr_start_date
+
+DEPT_LOCATIONS
+
+Dnumber | Dlocation
+
+PROJECT
+
+Pname | Pnumber ] Plocation | Dnum
+
+WORKS_ON
+
+Essn | Pno | Hours
+
+DEPENDENT Figure C.1
+
+Essn | Dependent_name | Sex | Bdate | Relationship The relational schema of Figure 3.5
+as it may be displayed by QBE.
+
+values in those columns for our result. The constants specify values that must be
+exactly matched in those columns.
+
+For example, consider the query QO: Retrieve the birth date and address of John B.
+Smith. In Figures C.2(a) through C.2(d) we show how this query can be specified in
+a progressively more terse form in QBE. In Figure C.2(a) an example of an employee
+is presented as the type of row that we are interested in. By leaving John B. Smith as
+constants in the Fname, Minit, and Lname columns, we are specifying an exact match
+in those columns. The rest of the columns are preceded by an underscore indicating
+that they are domain variables (example elements). The P. prefix is placed in the
+Bdate and Address columns to indicate that we would like to output value(s) in those
+columns.
+
+Q0 can be abbreviated as shown in Figure C.2(b). There is no need to specify exam-
+ple values for columns in which we are not interested. Moreover, because example
+values are completely arbitrary, we can just specify variable names for them, as
+shown in Figure C.2(c). Finally, we can also leave out the example values entirely, as
+shown in Figure C.2(d), and just specify a P. under the columns to be retrieved.
+
+To see how retrieval queries in QBE are similar to the domain relational calculus,
+compare Figure C.2(d) with Qo (simplified) in domain calculus as follows:
+
+Qo : { uv | EMPLOYEE(qrstuvwxyz) and q=‘John’ and r="B’ and s=‘Smith’}

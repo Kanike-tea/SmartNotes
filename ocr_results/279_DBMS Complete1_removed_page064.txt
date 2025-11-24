@@ -1,0 +1,74 @@
+Domain Relational Calculus
+
+1.
+
+Domain relational calculus is another non procedural language for expressing database
+queries.
+A query is specified as:
+
+{<X1,X2,...,Xn> | P(X1,X2,...,Xn)} where X1,X2,...,.Xn represents domain variables. P represent a
+
+predicate formula as in tuple calculus
+
+Since the domain variables are referred in place of tuples the formula doesn’t refer the fields
+
+of tuples rather they refer the domain variables.
+For example the queries in domain calculus are mentioned as follows:
+
+o Find the branch-name, loan-number and amount for loans over Rs 1200.
+
+{<b, l, a>] <b, ], a> € Loan Aa > 1200}
+
+o Find the loan number for each loan of an amount greater that Rs1200.
+
+{<1>] 3 ba( <b, |, a> € Loan Aa >1200}
+
+o Find the names of all the customers who have a loan from the Sadar branch and find
+
+the loan amount
+{<ca>|3l(<c,1> €Borrower
+
+3 b( <b, ],a>€ Loan A b="Sadar"))}
+
+o Find names of all customers who have a loan , an account, or both at the Sadar
+
+Branc
+{<c>| 3 1(< c,]>€ Borrower (3 b, a(<b, |, a> € Loan A b="Sadar"))
+V 3 a(<c,a> € Depositor A 3 b, n(<b, a,n> € Account A b ="Sadar"))}
+
+o Find only those customers who have both an account and a loan.
+{<c>| 3 l(<c, > € Borrower ) Al a(<c, a> € Depositor )}
+
+o Find all customers who have an account but do not have loan.
+{t| 3 a(<c, a> € Depositor ) A713 1(<c, l> € Borrower )}
+
+Find all customers who have an account at all branches located in Agra
+“tc c>| Vx,y, 2(<x, y, z> € Branch) Ay= “Agra">
+
+Outer Join.
+
+Outer join operation is an extension of join operation to deal with missing information
+Suppose that we have following relational schemas:
+
+Employee( employee-name, street, city)
+
+Fulltime-works(employee-name, branch-name, salary)
+
+A snapshot of these relations is as follows:
+
+Employee: employee- street city
+name
+Ram MG Road Agra
+Shyam New Mandi | Mathura
+Road
+Suleman Bhagat Singh | Aligarh
+Road
+
+Fulltime-works
+
+employee- branch- salary
+name name
+
+Ram Sadar 30000
+Shyam Sanjay Place | 20000
+Rehman Dayalbagh 40000

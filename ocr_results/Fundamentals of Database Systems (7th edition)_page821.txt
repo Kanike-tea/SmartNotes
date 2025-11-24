@@ -1,0 +1,52 @@
+21.1. Two-Phase Locking Techniques for Concurrency Control
+
+In wait-die, an older transaction is allowed to wait for a younger transaction, whereas
+a younger transaction requesting an item held by an older transaction is aborted and
+restarted. The wound-wait approach does the opposite: A younger transaction is
+allowed to wait for an older one, whereas an older transaction requesting an item held
+by a younger transaction preempts the younger transaction by aborting it. Both
+schemes end up aborting the younger of the two transactions (the transaction that
+started later) that may be involved in a deadlock, assuming that this will waste less
+processing. It can be shown that these two techniques are deadlock-free, since in wait-
+die, transactions only wait for younger transactions so no cycle is created. Similarly, in
+wound-wait, transactions only wait for older transactions so no cycle is created. How-
+ever, both techniques may cause some transactions to be aborted and restarted need-
+lessly, even though those transactions may never actually cause a deadlock.
+
+Another group of protocols that prevent deadlock do not require timestamps.
+These include the no waiting (NW) and cautious waiting (CW) algorithms. In the
+no waiting algorithm, if a transaction is unable to obtain a lock, it is immediately
+aborted and then restarted after a certain time delay without checking whether a
+deadlock will actually occur or not. In this case, no transaction ever waits, so no
+deadlock will occur. However, this scheme can cause transactions to abort and
+restart needlessly. The cautious waiting algorithm was proposed to try to reduce
+the number of needless aborts/restarts. Suppose that transaction T; tries to lock an
+item X but is not able to do so because X is locked by some other transaction T; with
+a conflicting lock. The cautious waiting rule is as follows:
+
+= Cautious waiting. If Tj is not blocked (not waiting for some other locked
+item), then T; is blocked and allowed to wait; otherwise abort T;.
+
+It can be shown that cautious waiting is deadlock-free, because no transaction will
+ever wait for another blocked transaction. By considering the time b(T) at which
+each blocked transaction T was blocked, if the two transactions T; and T; above both
+become blocked and T; is waiting for Ty then B(T;) < b(T;), since T; can only wait for
+T; at a time when T; is not blocked itself. Hence, the blocking times form a total
+ordering on all blocked transactions, so no cycle that causes deadlock can occur.
+
+Deadlock Detection. An alternative approach to dealing with deadlock is
+deadlock detection, where the system checks if a state of deadlock actually exists.
+This solution is attractive if we know there will be little interference among the
+transactions—that is, if different transactions will rarely access the same items at
+the same time. This can happen if the transactions are short and each transaction
+locks only a few items, or if the transaction load is light. On the other hand, if trans-
+actions are long and each transaction uses many items, or if the transaction load is
+heavy, it may be advantageous to use a deadlock prevention scheme.
+
+A simple way to detect a state of deadlock is for the system to construct and main-
+tain a wait-for graph. One node is created in the wait-for graph for each transac-
+tion that is currently executing. Whenever a transaction T; is waiting to lock an
+item X that is currently locked by a transaction Tj, a directed edge (T; — Tj) is cre-
+ated in the wait-for graph. When Tj releases the lock(s) on the items that T; was
+
+791

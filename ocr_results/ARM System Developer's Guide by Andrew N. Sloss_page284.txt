@@ -1,0 +1,65 @@
+EXAMPLE
+
+8.2
+
+8.2 Introduction to DSP onthe ARM 271
+
+multiples only require a single cycle for each additional word transferred after the first
+word. This often means it is more efficient to store 16-bit data values in 32-bit words.
+
+= The multiply instructions use early termination based on the second operand in the
+product Rs. For predictable performance use the second operand to specify constant
+coefficients or multiples.
+
+= = Multiply is one cycle faster than multiply accumulate. It is sometimes useful to split an
+MLA instruction into separate MUL and ADD instructions. You can then use a barrel shift
+with the ADD to perform a scaled accumulate.
+
+= You can often multiply by fixed coefficients faster using arithmetic instructions with
+shifts. For example, 240x = (x < 8) — (x < 4). For any fixed coefficient of the form
++2 + 25 + 2°, ADD and SUB with shift give a faster multiply accumulate than MLA.
+
+This example shows a 16-bit dot-product optimized for the ARM7TDMI. Each MLA takes
+a worst case of four cycles. We store the 16-bit input samples in 32-bit words so that we
+can use the LDM instruction to load them efficiently.
+
+x RN O — ; input array xf]
+
+c RN 1; input array cf]
+
+N RN 2; number of samples (a multiple of 5)
+acc = RN3 ~~ accumulator
+
+x0 RN4 — ; elements from array x{]
+x1 RNS
+
+x2 RNG
+
+x3 RNT
+
+x4 RNB
+
+c0 RN9_— ; elements from array c[]
+cl RN 10
+
+c2. N11
+
+c3 RN12
+
+c4 RNG
+
+; int dot_16by16_arm/m(int *x, int *c, unsigned N)
+dot_16by16_arm7m
+
+STMFD  sp!, {r4-ri1, Ir}
+
+MOV acc, #0
+loop_7m ; accumulate 5 products
+
+LOMIA. x!, {x_0, x1, x2, x3, x4}
+
+LOMIA c!, {c_0, cl, 2, c 3, c4}
+MLA acc, x_0, c_0, ace
+MLA acc, x_1, c_l, ace
+MLA acc, x 2, c 2, ace
+MLA acc, x3, c_3, ace

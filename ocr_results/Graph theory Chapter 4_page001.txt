@@ -1,0 +1,35 @@
+41.Minimal Spanning Tree + 215
+Bo eer NES ES RN ee Tok ET aa EN SS SE ancl,
+
+7 Figure 4.1¢
+
+This graph has three spanning trees as shown below:
+
+; . Bo aye ‘ Ban 3
+. 5 | 1] 5 4
+aon ' (b). /
+
+Figure 4.2"
+
+We observe that the weights of these three spanning trees are 16, 13-and 15 respectively.
+Of these trees, the second one has the minimum weight. This is a minimal spanning tree for
+the graph in Figure 4.1.
+Algorithms for Minimal Spanning. Tree. 891) 9950) 66 20) onan
+so There are several methods of constructing minimal spanning -trees..,,Below. we-give the
+Working Rules (algorithms) of two of such methods. The first of these is-due to Kruskal, and
+the second is due to Prim.
+
+(l) Kruskal’s Algorithm
+
+The Working Rule for the Kruskal’s method (usually called Kruskal ’s algorithm) may be
+Slated as follows. vig tenable :
+
+;
+1
+
+u ‘Of non-decreasing weights. «yooh: o/s
+
+Step 1. Given a connected, weighted graph G:with'n vertices, list the edges.of:G in the order
+
+2. Staring with a smallest weighted edge, proceed sequentially by selecting one edge at
+4 time such that no cycle is formed.“ : LEASE Ah AOR, NTS

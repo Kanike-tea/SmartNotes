@@ -1,0 +1,62 @@
+3.17.
+
+3.18.
+
+3.19.
+
+3.20.
+
+b. During a particular semester and year, an instructor can teach only one
+section at a particular DaysTime value.
+
+c. During a particular semester and year, the section numbers for sections
+offered for the same course must all be different.
+
+Can you think of any other similar constraints?
+
+Composite and multivalued attributes can be nested to any number of lev-
+els. Suppose we want to design an attribute for a STUDENT entity type to
+keep track of previous college education. Such an attribute will have one
+entry for each college previously attended, and each such entry will be com-
+posed of college name, start and end dates, degree entries (degrees awarded
+at that college, if any), and transcript entries (courses completed at that col-
+lege, if any). Each degree entry contains the degree name and the month and
+year the degree was awarded, and each transcript entry contains a course
+name, semester, year, and grade. Design an attribute to hold this informa-
+tion. Use the conventions in Figure 3.5.
+
+Show an alternative design for the attribute described in Exercise 3.17 that
+uses only entity types (including weak entity types, if needed) and relation-
+ship types.
+
+Consider the ER diagram in Figure 3.21, which shows a simplified schema
+for an airline reservations system. Extract from the ER diagram the require-
+ments and constraints that produced this schema. Try to be as precise as
+possible in your requirements and constraints specification.
+
+In Chapters 1 and 2, we discussed the database environment and database
+users. We can consider many entity types to describe such an environment,
+such as DBMS, stored database, DBA, and catalog/data dictionary. Try to
+specify all the entity types that can fully describe a database system and its
+environment; then specify the relationship types among them, and draw an
+ER diagram to describe such a general database environment.
+
+- Design an ER schema for keeping track of information about votes taken in
+
+the U.S. House of Representatives during the current two-year congress-
+ional session. The database needs to keep track of each U.S. STATE’s Name
+(e.g., ‘Texas’, ‘New York’, ‘California’) and include the Region of the state
+(whose domain is {‘Northeast’, ‘Midwest’, ‘Southeast’, ‘Southwest’, ‘West’}).
+Each CONGRESS_PERSON in the House of Representatives is described by
+his or her Name, plus the District represented, the Start_date when the con-
+gressperson was first elected, and the political Party to which he or she
+belongs (whose domain is {‘Republican’, ‘Democrat’, ‘Independent’,
+“Other’}). The database keeps track of each BILL (i.e., proposed law),
+including the Bill_name, the Date_of_vote on the bill, whether the bill
+Passed_or_failed (whose domain is {‘Yes’, ‘No’}), and the Sponsor (the
+congressperson(s) who sponsored—that is, proposed—the bill). The data-
+base also keeps track of how each congressperson voted on each bill (domain
+
+Exercises
+
+97

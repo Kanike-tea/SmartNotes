@@ -1,0 +1,60 @@
+¢ Support for RDBMS is more certain and change is less likely to be required.
+
+How Data is Stored
+
+Two basic methods are used to store objects by different database vendors.
+
+e Each object has a unique ID and is defined as a subclass of a base class, using inheritance to
+determine attributes.
+e Virtual memory mapping is used for object storage and management.
+
+Data
+
+Warehouse
+
+A data warehouse is a subject-oriented, integrated, time-variant and non-volatile
+collection of data in support of management's decision making process.
+Subject-Oriented: A data warehouse can be used to analyze a particular subject area.
+For example, "sales" can be a particular subject.
+
+Integrated: A data warehouse integrates data from multiple data sources. For example,
+source A and source B may have different ways of identifying a product, but in a data
+warehouse, there will be only a single way of identifying a product.
+
+Time-Variant: Historical data is kept in a data warehouse. For example, one can
+retrieve data from 3 months, 6 months, 12 months, or even older data from a data
+warehouse. This contrasts with a transactions system, where often only the most recent
+data is kept. For example, a transaction system may hold the most recent address of a
+customer, where a data warehouse can hold all addresses associated with a customer.
+Non-volatile: Once data is in the data warehouse, it will not change. So, historical data
+in a data warehouse should never be altered.
+
+Data Warehousing Architecture & Components
+
+Followin:
+
+Datastore
+
+Datastore
+
+g diagram depicts different components of Data Warehouse architecture.
+
+Extract Transform Load
+—— aj
+Data Staging Area aan Data A
+; 1. Data Cleaning 5 ata Access
+2. Data Ordering — Tools
+E BI Tools
+fay
+Data Mart
+wee Staging Area_ Presentation Area_ Data Access Tools_
+
+Data Sou
+
+Operational Source System
+
+It’s the traditional OLTP systems which stores transaction data of the organizations business. Its
+generally used one record at any time not necessarily stores history of the organizations
+information’s. Operational source systems generally not used for reporting like data warehouse.
+
+Data Staging Area

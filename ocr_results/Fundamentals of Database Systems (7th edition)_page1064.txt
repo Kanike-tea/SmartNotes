@@ -1,0 +1,51 @@
+1034 Chapter 27 Introduction to Information Retrieval and Web Search
+
+With some reasonable assumptions and estimates about the probabilistic model
+along with extensions for incorporating query term weights and document term
+weights in the model, a probabilistic ranking algorithm called BM25 (Best Match
+25) is quite popular. This weighting scheme has evolved from several versions of
+the Okapi'* system.
+
+The Okapi weight for document dj and query q is computed by the formula below.
+Additional notations are as follows:
+= ¢,isaterm.
+= fj is the raw frequency count of term f; in document dj.
+™ fiq is the raw frequency count of term ¢; in query q.
+Nis the total number of documents in the collection.
+df; is the number of documents that contain the term fj.
+di; is the document length (in bytes) of dj.
+
+avdl is the average document length of the collection.
+
+The Okapi relevance score of a document dj for a query q is given by the equa-
+tion below, where k, (between 1.0-2.0), b (usually 0.75), and ky (between 1-1,000)
+are parameters:
+
+- k+Df, k+l
+olapi(a,.q = 5. ind ah +05 (kD fj ms 2+) fig
+
+df +05 dl, ky+
+venga k| -b+b— [+f 7 fa
+avd} ~!
+
+27.2.4 Semantic Model
+
+However sophisticated the above statistical models become, they can miss many
+relevant documents because those models do not capture the complete meaning or
+information need conveyed by a user’s query. In semantic models, the process of
+matching documents to a given query is based on concept level and semantic
+matching instead of index term (keyword) matching. This allows retrieval of rele-
+vant documents that share meaningful associations with other documents in the
+query result, even when these associations are not inherently observed or statisti-
+cally captured.
+
+Semantic approaches include different levels of analysis, such as morphological,
+syntactic, and semantic analysis, to retrieve documents more effectively. In
+morphological analysis, roots and affixes are analyzed to determine the parts of
+speech (nouns, verbs, adjectives, and so on) of the words. Following morphological
+analysis, syntactic analysis follows to parse and analyze complete phrases in docu-
+ments. Finally, the semantic methods have to resolve word ambiguities and/or
+generate relevant synonyms based on the semantic relationships among levels of
+structural entities in documents (words, paragraphs, pages, or entire documents).
+
+'4City University of London Okapi System by Robertson, Walker, and Hancock-Beaulieu (1995).

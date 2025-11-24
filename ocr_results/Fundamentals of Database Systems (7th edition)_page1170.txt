@@ -1,0 +1,51 @@
+1140
+
+Chapter 30 Database Security
+
+reflects the sensitivity of the row as per the policy. Similar to MAC (mandatory
+access control), where each user has a security clearance, each user has an identity
+in label-based security. This user’s identity is compared to the label assigned to each
+row to determine whether the user has access to view the contents of that row.
+However, the user can write the label value himself, within certain restrictions and
+guidelines for that specific row. This label can be set to a value that is between the
+user’s current session label and the user’s minimum level. The DBA has the privi-
+lege to set an initial default row label.
+
+The label security requirements are applied on top of the DAC requirements for
+each user. Hence, the user must satisfy the DAC requirements and then the label
+security requirements to access a row. The DAC requirements make sure that the
+user is legally authorized to carry on that operation on the schema. In most applica-
+tions, only some of the tables need label-based security. For the majority of the
+application tables, the protection provided by DAC is sufficient.
+
+Security policies are generally created by managers and human resources person-
+nel. The policies are high-level, technology neutral, and relate to risks. Policies are a
+result of management instructions to specify organizational procedures, guiding
+principles, and courses of action that are considered to be expedient, prudent, or
+advantageous. Policies are typically accompanied by a definition of penalties and
+countermeasures if the policy is transgressed. These policies are then interpreted
+and converted to a set of label-oriented policies by the label security administrator,
+who defines the security labels for data and authorizations for users; these labels
+and authorizations govern access to specified protected objects.
+
+Suppose a user has SELECT privileges on a table. When the user executes a SELECT
+statement on that table, label security will automatically evaluate each row returned
+by the query to determine whether the user has rights to view the data. For example,
+if the user has a sensitivity of 20, then the user can view all rows having a security
+level of 20 or lower. The level determines the sensitivity of the information con-
+tained in a row; the more sensitive the row, the higher its security label value. Such
+label security can be configured to perform security checks on UPDATE, DELETE,
+and INSERT statements as well.
+
+30.3.4 XML Access Control
+
+With the worldwide use of XML in commercial and scientific applications, efforts
+are under way to develop security standards. Among these efforts are digital signa-
+tures and encryption standards for XML. The XML Signature Syntax and Process-
+ing specification describes an XML syntax for representing the associations between
+cryptographic signatures and XML documents or other electronic resources. The
+specification also includes procedures for computing and verifying XML signa-
+tures. An XML digital signature differs from other protocols for message signing,
+such as OpenPGP (Pretty Good Privacy—a confidentiality and authentication ser-
+vice that can be used for electronic mail and file storage application), in its support
+for signing only specific portions of the XML tree (see Chapter 13) rather than the

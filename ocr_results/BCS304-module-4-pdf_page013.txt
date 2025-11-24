@@ -1,0 +1,39 @@
+BCS304
+
+at
+b, a 2, b, Da int ,n2i and bo =i
+“0
+
+Therefore, the number of binary trees with n nodes, the number of permutations of 1 to n
+
+obtainable with a stack, and the number of ways to multiply n + 1 matrices are all equal.
+4.5.4 Number of Distinct binary trees
+
+To obtain the number of distinct binary trees with n nodes, we must solve the recurrence
+a-t
+b, bad > b, Dy ant ni and by =1
+“0
+
+To begin we let:
+Bix) =F dx!
+i20
+
+which is the generating function for the number of binary trees. Next observe that by the
+
+recurrence relation we get the identity:
+xB? (x) = B(x) - 1
+
+Using the formula to solve quadratics and the recurrence that B (0) = b= 1 we get:
+
+Boje
+
+We can use the binomial theorem to expand (1 - 4x) "* to obtain:
+ip 12
+Bix) = 5 f Z| “y caer
+
+*Eln+1) (-1)" 28+! 9
+
+we see that by which is the coefficient of x" in B(x), is:
+12 *
+
+14

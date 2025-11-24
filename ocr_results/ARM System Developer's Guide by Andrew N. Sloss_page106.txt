@@ -1,0 +1,47 @@
+4.4 Data Processing Instructions 93.
+
+Thumb instructions. The first instruction in the pair holds the high part of the branch
+offset, and the second the low part. These instructions must be used as a pair.
+The code here shows the various instructions used to return from a BL subroutine call:
+
+Mov pc, Ir
+BX Ir
+POP {pc}
+
+To return, we set the pe to the value in Ir. The stack instruction called POP will be discussed
+in more detail in Section 4.7.
+
+4.4 DATA PROCESSING INSTRUCTIONS
+
+The data processing instructions manipulate data within registers. They include move
+instructions, arithmetic instructions, shifts, logical instructions, comparison instructions,
+and multiply instructions. The Thumb data processing instructions are a subset of the ARM
+data processing instructions.
+
+syntax:
+<ADC|ADD|AND|BIC| EOR|MOV|MUL|MVN|NEG|ORR|SBC|SUB> Rd, Rm
+<ADD|ASR|LSL|LSR|ROR|SUB> Rd, Rn #immediate
+<ADD|MOV|SUB> Rd, #imnediate
+<ADD| SUB> Rd, Rn, Rm
+ADD Rd, pc, #immediate
+ADD Rd, sp, #immediate
+<ADD|SUB> sp, #immediate
+<ASR|LSL|LSR|ROR> Rd,Rs
+<CMN|CMP|TST> Rn, Rm
+CMP Rn, #immediate
+MOV Rd,Rn
+
+ADC | add two 32-bit values and carry | Rd = Rd + Rm +C flag
+
+ADD | add two 32-bit values Rd = Rn + immediate
+
+Rd = Rd + immediate
+
+Rd=Rd+Rm
+
+Rd=Rd+Rm
+
+Rd = (pe & Oxfffffffc) + (immediate < 2)
+Rd = sp + (immediate <2)
+
+sp = sp + (immediate <2)

@@ -1,0 +1,52 @@
+348
+
+Chapter 11 Web Database Programming Using PHP
+
+DOCNAME can be any string as long as it used both to start and end the here
+document. This is illustrated in lines 8 through 11 in Figure 11.2. Variables
+are also interpolated by replacing them with their string values if they appear
+inside here documents. This feature is used in a similar way to double-
+quoted strings, but it is more convenient for multiple-line text.
+
+4. Single and double quotes. Single and double quotes used by PHP to enclose
+strings should be straight quotes ("") on both sides of the string. The text
+editor that creates these quotes should not produce curly opening and clos-
+ing quotes (“”) around the string.
+
+There is also a string concatenate operator specified by the period (.) symbol, as
+illustrated in line 6 of Figure 11.2. There are many string functions. We only illus-
+trate a couple of them here. The function strtolower changes the alphabetic char-
+acters in the string to all lowercase, whereas the function uewords capitalizes all the
+words in a string. These are illustrated in lines 4 and 5 in Figure 11.2.
+
+The general rule is to use single-quoted strings for literal strings that contain no
+PHP program variables and the other two types (double-quoted strings and here
+documents) when the values from variables need to be interpolated into the string.
+For large blocks of multiline text, the program should use the here documents style
+for strings.
+
+PHP also has numeric data types for integers and floating points and generally fol-
+lows the rules of the C programming language for processing these types. Numbers
+can be formatted for printing into strings by specifying the number of digits that
+follow the decimal point. A variation of the print function called printé (print
+formatted) allows formatting of numbers within a string, as illustrated in line 3 of
+Figure 11.2.
+
+There are the standard programming language constructs of for-loops, while-loops,
+and conditional if-statements. They are generally similar to their C language coun-
+terparts. We will not discuss them here. Similarly, any value evaluates to true if used
+as a Boolean expression except for numeric zero (0) and blank string, which evalu-
+ate to false. There are also literal true and false values that can be assigned. The
+comparison operators also generally follow C language rules. They are == (equal),
+!= (not equal), > (greater than), >= (greater than or equal), < (less than),
+and <= (less than or equal).
+
+11.2.2 PHP Arrays
+
+Arrays are very important in PHP, since they allow lists of elements. They are used
+frequently in forms that employ pull-down menus. A single-dimensional array is
+used to hold the list of choices in the pull-down menu. For database query results,
+two-dimensional arrays are used, with the first dimension representing rows of a
+table and the second dimension representing columns (attributes) within a row.
+There are two main types of arrays: numeric and associative. We discuss each of
+these in the context of single-dimensional arrays next.

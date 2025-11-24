@@ -1,0 +1,48 @@
+1038 Chapter 27 Introduction to Information Retrieval and Web Search
+
+indexes, thereby reducing the size of an index structure by about 40% or more. How-
+ever, doing so could impact the recall if the stopword is an integral part of a query
+(for example, a search for the phrase ‘To be or not to be’, where removal of stop-
+words makes the query inappropriate, as all the words in the phrase are stopwords).
+Many search engines do not employ query stopword removal for this reason.
+
+27.4.2 Stemming
+
+A stem of a word is defined as the word obtained after trimming the suffix and pre-
+fix of an original word. For example, ‘comput’ is the stem word for computer, com-
+puting, computable, and computation. These suffixes and prefixes are very common
+in the English language for supporting the notion of verbs, tenses, and plural forms.
+Stemming reduces the different forms of the word formed by inflection (due to
+plurals or tenses) and derivation to a common stem.
+
+A stemming algorithm can be applied to reduce any word to its stem. In English,
+the most famous stemming algorithm is Martin Porter’s stemming algorithm. The
+Porter stemmer”’ is a simplified version of Lovin’s technique that uses a reduced set
+of about 60 rules (from 260 suffix patterns in Lovin’s technique) and organizes
+them into sets; conflicts within one subset of rules are resolved before going on to
+the next. Using stemming for preprocessing data results in a decrease in the size of
+the indexing structure and an increase in recall, possibly at the cost of precision.
+
+27.4.3 Utilizing a Thesaurus
+
+A thesaurus comprises a precompiled list of important concepts and the main
+word that describes each concept for a particular domain of knowledge. For each
+concept in this list, a set of synonyms and related words is also compiled.”! Thus, a
+synonym can be converted to its matching concept during preprocessing. This pre-
+processing step assists in providing a standard vocabulary for indexing and search-
+ing. Usage of a thesaurus, also known as a collection of synonyms, has a substantial
+impact on the recall of information systems. This process can be complicated
+because many words have different meanings in different contexts.
+
+UMLS” is a large biomedical thesaurus of millions of concepts (called the meta-
+thesaurus) and a semantic network of meta concepts and relationships that organize
+the metathesaurus (see Figure 27.3). The concepts are assigned labels from the
+semantic network. This thesaurus of concepts contains synonyms of medical
+terms, hierarchies of broader and narrower terms, and other relationships among
+words and concepts that make it a very extensive resource for information retrieval
+of documents in the medical domain. Figure 27.3 illustrates part of the UMLS
+Semantic Network.
+
+20See Porter (1980).
+2'See Baeza-Yates and Ribeiro-Neto (1999).
+?2Unified Medical Language System from the National Library of Medicine.

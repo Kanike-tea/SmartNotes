@@ -1,0 +1,31 @@
+Rule 9 : Logical data independence.
+
+"Application programs and terminal activities remain logically unimpaired when information-
+preserving changes of any kind that theoretically permit un-impairment are made to the base
+tables."
+
+User programs and the user should not be aware of any changes to the structure of the tables (such
+as the addition of extra columns).
+
+Rule 10 : Integrity independence.
+
+"Integrity constraints specific to a particular relational data base must be definable in the relational
+data sub-language and storable in the catalog, not in the application programs."
+
+If a column only accepts certain values, then it is the RDBMS which enforces these constraints and
+not the user program, this means that an invalid value can never be entered into this column, whilst
+if the constraints were enforced via programs there is always a chance that a buggy program might
+allow incorrect values into the system.
+
+Rule 11 : Distribution independence.
+
+"A relational DBMS has distribution independence."
+
+The RDBMS may spread across more than one system and across several networks, however to the
+end-user the tables should appear no different to those that are local.
+
+Rule 12 : Non-subversion Rule.
+
+"If a relational system has a low-level (single-record-at-a-time) language, that low level cannot be
+used to subvert or bypass the integrity Rules and constraints expressed in the higher level relational
+language (multiple-records-at-a-time)."

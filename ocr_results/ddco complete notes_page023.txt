@@ -1,0 +1,63 @@
+Digital Design and Computer Organization(BCS302)
+
+F = (AB' + A'B)(C + D’)
+
+by hk
+
+oF
+
+by ke
+
+lo
+
+(a) AND-OR gates
+
+by
+
+ra
+
+| >—
+
+by hy
+
+,
+
+(b) NAND gates
+
+FIGURE 3.21
+nplementing F = (AB + A’B) (C + D’)
+
+The AND-OR implementation of this function is shown in Fig. 3.21(a) with three
+levels of gating. The conversion to NAND with mixed notation is presented in Fig.
+3.21(b) of the diagram.
+
+The two additional bubbles associated with inputs C and D' cause these two
+literals to be complemented to C' and D.
+
+The bubble in the output NAND gate complements the output value, so we need
+to insert an inverter gate at the output in order to complement the signal again
+and get the original value back.
+
+NOR Implementation
+
+24
+
+>
+
+The NOR operation is the dual of the NAND operation. Therefore, all
+procedures and rules for NOR logic are the duals of the corresponding procedures
+and rules developed for NAND logic.
+
+The NOR gate is another universal gate that can be used to implement any
+Boolean function. The implementation of the complement, OR, and AND
+operations with NOR gates is shown in Fig. 3.22.
+
+The complement operation is obtained from a one- input NOR gate that behaves
+exactly like an inverter.The OR operation requires two NOR gates, and the AND
+operation is obtained with a NOR gate that has inverters in each input.
+
+The two graphic symbols for the mixed notation are shown in Fig. 3.23. The OR-
+invert symbol defines the NOR operation as an OR followed by a complement. The
+invert-AND symbol complements each input and then performs an AND
+
+Page

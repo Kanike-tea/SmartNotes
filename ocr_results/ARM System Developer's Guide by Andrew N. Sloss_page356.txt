@@ -1,0 +1,45 @@
+9.3 Interrupt Handling Schemes 343
+
+Interrupt
+
+Enter interrupt handler
+Disable interrupt
+
+2. | Save partial context
+
+I
+
+3.[ Change mode
+
+J
+
+4. [Reserve stack space
+
+and save complete
+context
+
+Service
+Return to task interrupt
+——_—<—_
+
+Servicing complete
+8. | Restore context
+
+10. | Resave context
+
+Return to task
+
+Interrupt
+
+servicing
+
+12. | Restore context |+
+
+Figure 9.10 Reentrant interrupt handler.
+
+register that allows you to mask out one or more interrupts, but the remaining interrupts
+are still enabled.
+
+The interrupt stack is unused since interrupts are serviced in SVC mode (for example,
+on the task’s stack). Instead the IRQ stack register r13 is used to point to a 12-byte structure
+that will be used to store some registers temporarily on interrupt entry.

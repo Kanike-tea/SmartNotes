@@ -1,0 +1,46 @@
+The first line of text is a comment (optional) providing useful information to the reader. The second line
+begins with the keyword module and starts the declaration (description) of the module; the last line
+completes the declaration with the keyword endmodule. The keyword module is followed by a name
+and a list of ports. The name (Simple Circuit in this example) is an identifier. Identifiers are names given
+to modules, variables (e.g., a signal), and other elements of the language so that they can be referenced
+in the design. In general, we choose meaningful names for modules. Identifiers are composed of alpha-
+numeric characters and the underscore (_), and are case sensitive. Identifiers must start with an
+alphabetic character or an underscore, but they cannot start with a number.
+
+The port list of a module is the interface between the module and its environment. In this example, the
+ports are the inputs and outputs of the circuit. the keywords input and output specify which of the ports
+are inputs and which are outputs. Internal connections are declared as wires. The circuit in this example
+has one internal connection, at terminal w1, and is declared with the keyword wire. The structure of
+the circuit is specified by a list of (predefined) primitive gates, each identified by a descriptive keyword
+(and, not, or). The module description ends with the keyword endmodule. Each statement must be
+
+terminated with a semicolon, but there is no semicolon after endmodule.
+
+Gate Delays
+
+All physical circuits exhibit a propagation delay between the transition of an input and a resulting
+transition of an output. When an HDL model of a circuit is simulated, it is sometimes necessary to
+specify the amount of delay from the input to the output of its gates. In Verilog, the propagation delay
+of a gate is specified in terms of time units and by the symbol #. s. The association of a time unit with
+physical time is made with the timescale compiler directive. . An example of a timescale directive is
+
+timescale Ins/100ps
+
+// Verilog model of simple circuit with propagation delay
+
+module Simple_Circuit_prop_delay (A, B, C, D, E);
+
+output D, E;
+input A, B, C;
+wire wl;
+
+and — #(30) G1 (wl, A, B);
+not #(10) G2 (E, C);
+or —_ #(20) G3 (D, wl, E);
+
+endmodule
+
+The HDL Example repeats the description of the simple circuit of previous Example, but with
+propagation delays specified for each gate. The and, or and not gates have a time delay of 30, 20, and
+
+10 ns, respectively. If the circuit is simulated and the inputs change from A, B, C = 0 to A, B, C = 1, the

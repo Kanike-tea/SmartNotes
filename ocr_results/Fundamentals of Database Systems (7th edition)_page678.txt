@@ -1,0 +1,74 @@
+648
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+17.8.
+
+17.9.
+
+17.10.
+17.11.
+
+17.12.
+
+17.13.
+
+17.14.
+
+17.15.
+
+17.16.
+
+17.17.
+
+Explain what alternative choices exist for accessing a file based on multiple
+search keys.
+
+What is partitioned hashing? How does it work? What are its limitations?
+What is a grid file? What are its advantages and disadvantages?
+
+Show an example of constructing a grid array on two attributes on some file.
+What is a fully inverted file? What is an indexed sequential file?
+
+How can hashing be used to construct an index?
+
+What is bitmap indexing? Create a relation with two columns and sixteen
+tuples and show an example of a bitmap index on one or both.
+
+What is the concept of function-based indexing? What additional purpose
+does it serve?
+
+. What is the difference between a logical index and a physical index?
+
+What is column-based storage of a relational database?
+
+Exercises
+
+17.18.
+
+Consider a disk with block size B = 512 bytes. A block pointer is P = 6 bytes
+long, and a record pointer is Pg = 7 bytes long. A file has r = 30,000
+EMPLOYEE records of fixed length. Each record has the following fields:
+Name (30 bytes),Ssn (9 bytes), Department_code (9 bytes), Address (40 bytes),
+Phone (10 bytes), Birth_date (8 bytes), Sex (1 byte), Job_code (4 bytes), and
+Salary (4 bytes, real number). An additional byte is used as a deletion marker.
+a. Calculate the record size R in bytes.
+
+b. Calculate the blocking factor bfr and the number of file blocks b, assuming
+an unspanned organization.
+
+c. Suppose that the file is ordered by the key field Ssn and we want to con-
+struct a primary index on Ssn. Calculate (i) the index blocking factor bfr;
+(which is also the index fan-out fo); (ii) the number of first-level index
+entries and the number of first-level index blocks; (iii) the number of lev-
+els needed if we make it into a multilevel index; (iv) the total number of
+blocks required by the multilevel index; and (v) the number of block
+accesses needed to search for and retrieve a record from the file—given
+its Ssn value—using the primary index.
+
+d. Suppose that the file is not ordered by the key field Ssn and we want to
+construct a secondary index on Ssn. Repeat the previous exercise (part c)
+for the secondary index and compare with the primary index.
+
+e. Suppose that the file is not ordered by the nonkey field Department_code
+and we want to construct a secondary index on Department_code, using

@@ -1,0 +1,64 @@
+274 Chapter 8 Digital Signal Processing
+
+by having a loop counter that counts down to zero on the last loop. Then we can make
+
+the final loads conditional on N > 0.
+
+The inner loop requires 28 cycles per loop, giving 28/4 = 7 cycles per tap. See Section 8.3
+
+for more efficient block filter implementations.
+
+8.2.3 DSP ON THE STRONGARM
+
+The StrongARM core SA-1 has a 32-bit by 12-bit per cycle signed multiply array with early
+termination. If you attempt to use a multiply result in the following instruction, or start
+a new multiply, then the core will stall for one cycle. Load instructions take one cycle,
+except for signed byte and halfword loads, which take two cycles. There is a one-cycle
+delay before you can use the loaded value. See Section D.4 in Appendix D for details of the
+
+StrongARM instruction cycle timings.
+
+Summary Writing DSP Code for the StrongARM
+
+= Avoid signed byte and halfword loads. Schedule the code to avoid using the loaded
+value for one cycle. There is no advantage to using load multiples.
+
+= The multiply instructions use early termination based on the second operand in the
+product Rs. For predictable performance use the second operand to specify constant
+
+coefficients or multiples.
+
+= Multiply is the same speed as multiply accumulate. Try to use the MLA instruction rather
+
+than a separate multiply and add.
+
+EXAMPLE This example shows a 16-bit dot-product. Since a signed 16-bit load requires two cycles, it
+8.4 is more efficient to use 32-bit data containers for the StrongARM. To schedule StrongARM
+
+code, one trick is to interleave loads and multiplies.
+
+x RNO ;
+RN1 i;
+N RN2 ;
+acc = RN3
+x0 RNG ;
+x1 RNS
+cO RNG ;
+cl RN10
+3 int dot_
+
+dot_16by16_SA1
+
+input array x[]
+input array c[]
+number of samples (a multiple of 4)
+
+3 accumulator
+
+elements from array x[]
+
+elements from array c[]
+
+1éby16_SAl(int *x, int *c, unsigned N)
+
+STMFD  sp!, {r4-r5, r9-r10, Ir}

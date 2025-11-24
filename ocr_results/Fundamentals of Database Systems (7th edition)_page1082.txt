@@ -1,0 +1,52 @@
+1052
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+We will first discuss some preliminary Web content analysis tasks and then look at
+the traditional analysis tasks of Web page classification and clustering.
+
+Structured Data Extraction. Structured data on the Web is often very important
+because it represents essential information, such as a structured table showing the
+airline flight schedule between two cities. There are several approaches to struc-
+tured data extraction. One includes writing a wrapper, or a program that looks for
+different structural characteristics of the information on the page and extracts the
+right content. Another approach is to manually write an extraction program for
+each Web site based on observed format patterns of the site, which is very labor
+intensive and time consuming. This latter approach does not scale to a large num-
+ber of sites. A third approach is wrapper induction or wrapper learning, where the
+user first manually labels a set of training set pages and the learning system gener-
+ates rules—based on the learning pages—that are applied to extract target items
+from other Web pages. A fourth approach is the automatic approach, which aims to
+find patterns/grammars from the Web pages and then uses wrapper generation to
+produce a wrapper to extract data automatically.
+
+Web Information Integration. The Web is immense and has billions of docu-
+ments, authored by many different persons and organizations. Because of this, Web
+pages that contain similar information may have different syntax and different
+words that describe the same concepts. This creates the need for integrating infor-
+mation from diverse Web pages. Two popular approaches for Web information
+integration are:
+
+1. Web query interface integration, to enable querying multiple Web data-
+bases that are not visible in external interfaces and are hidden in the “deep
+Web.” The deep Web® consists of those pages that do not exist until they
+are created dynamically as the result of a specific database search, which
+produces some of the information in the page (see Chapter 11). Since tradi-
+tional search engine crawlers cannot probe and collect information from
+such pages, the deep Web has heretofore been hidden from crawlers.
+
+2. Schema matching, such as integrating directories and catalogs to come up
+with a global schema for applications. An example of such an application
+would be to match and combine into one record data from various sources
+by cross-linking health records from multiple systems. The result would be
+an individual global health record.
+
+These approaches remain an area of active research, and a detailed discussion of
+them is beyond the scope of this text. Consult the Selected Bibliography at the end
+of this chapter for further details.
+
+Ontology-Based Information Integration. This task involves using ontologies to
+effectively combine information from multiple heterogeneous sources. Ontologies—
+formal models of representation with explicitly defined concepts and named
+
+3°The deep Web as defined by Bergman (2001).

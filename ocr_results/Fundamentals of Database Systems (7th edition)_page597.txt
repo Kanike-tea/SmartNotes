@@ -1,0 +1,51 @@
+16.6 Files of Unordered Records (Heap Files)
+
+Most data warehouses (see Chapter 29) predominantly contain read-only files. A
+successful file organization should perform as efficiently as possible the operations
+we expect to apply frequently to the file. For example, consider the EMPLOYEE file,
+as shown in Figure 16.5(a), which stores the records for current employees in a
+company. We expect to insert records (when employees are hired), delete records
+(when employees leave the company), and modify records (for example, when an
+employee’s salary or job is changed). Deleting or modifying a record requires a
+selection condition to identify a particular record or set of records. Retrieving one
+or more records also requires a selection condition.
+
+If users expect mainly to apply a search condition based on Ssn, the designer must
+choose a file organization that facilitates locating a record given its Ssn value. This
+may involve physically ordering the records by Ssn value or defining an index on
+Ssn (see Chapter 17). Suppose that a second application uses the file to generate
+employees’ paychecks and requires that paychecks are grouped by department. For
+this application, it is best to order employee records by department and then by
+name within each department. The clustering of records into blocks and the orga-
+nization of blocks on cylinders would now be different than before. However, this
+arrangement conflicts with ordering the records by Ssn values. If both applications
+are important, the designer should choose an organization that allows both opera-
+tions to be done efficiently. Unfortunately, in many cases a single organization does
+not allow all needed operations on a file to be implemented efficiently. Since a file
+can be stored only once using one particular organization, the DBAs are often faced
+with making a difficult design choice about the file organization. They make it
+based on the expected importance and mix of retrieval and update operations.
+
+In the following sections and in Chapter 17, we discuss methods for organizing
+records of a file on disk. Several general techniques, such as ordering, hashing, and
+indexing, are used to create access methods. Additionally, various general tech-
+niques for handling insertions and deletions work with many file organizations.
+
+16.6 Files of Unordered Records (Heap Files)
+
+In this simplest and most basic type of organization, records are placed in the file in
+the order in which they are inserted, so new records are inserted at the end of the
+file. Such an organization is called a heap or pile file.'' This organization is often
+used with additional access paths, such as the secondary indexes discussed in Chap-
+ter 17. It is also used to collect and store data records for future use.
+
+Inserting a new record is very efficient. The last disk block of the file is copied into a
+buffer, the new record is added, and the block is then rewritten back to disk. The
+address of the last file block is kept in the file header. However, searching for a
+record using any search condition involves a linear search through the file block by
+block—an expensive procedure. If only one record satisfies the search condition,
+then, on the average, a program will read into memory and search half the file
+
+"Sometimes this organization is called a sequential file.
+
+567

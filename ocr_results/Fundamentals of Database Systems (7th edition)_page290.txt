@@ -1,0 +1,53 @@
+260
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+As an example, consider the relation
+EMPLOYEE (Ssn, Salary, Deduction, Years_service)
+A report may be required to show
+
+Net Salary = Salary - Deduction,
+Bonus = 2000 * Years_service, and
+Tax = 0.25 * Salary
+
+Then a generalized projection combined with renaming may be used as follows:
+
+REPORT < (ssn, Net_salary, Bonus, Tax) (Tgsn, Salary ~ Deduction, 2000 + Years_senvice,
+0.25 + Salary(EMPLOYEE))
+
+8.4.2 Aggregate Functions and Grouping
+
+Another type of request that cannot be expressed in the basic relational algebra is
+to specify mathematical aggregate functions on collections of values from the
+database. Examples of such functions include retrieving the average or total salary
+of all employees or the total number of employee tuples. These functions are used
+in simple statistical queries that summarize information from the database
+tuples. Common functions applied to collections of numeric values include SUM,
+AVERAGE, MAXIMUM, and MINIMUM. The COUNT function is used for counting
+tuples or values.
+
+Another common type of request involves grouping the tuples in a relation by the
+value of some of their attributes and then applying an aggregate function indepen-
+dently to each group. An example would be to group EMPLOYEE tuples by Dno, so
+that each group includes the tuples for employees working in the same department.
+We can then list each Dno value along with, say, the average salary of employees
+within the department, or the number of employees who work in the department.
+
+We can define an AGGREGATE FUNCTION operation, using the symbol I (pro-
+nounced script F)’, to specify these types of requests as follows:
+
+<grouping attributes> 3. <function list> (R)
+
+where <grouping attributes> is a list of attributes of the relation specified in R, and
+<function list> is a list of (<function> <attribute>) pairs. In each such pair, <function>
+is one of the allowed functions—such as SUM, AVERAGE, MAXIMUM, MINIMUM,
+COUNT—and <attribute> is an attribute of the relation specified by R. The resulting
+relation has the grouping attributes plus one attribute for each element in the function
+list. For example, to retrieve each department number, the number of employees in
+the department, and their average salary, while renaming the resulting attributes as
+indicated below, we write:
+
+PIR(Dno, No_of employees, Average sal) (Dno 3 COUNT Ssn, AVERAGE Salary (EMPLOYEE))
+
+There is no single agreed-upon notation for specifying aggregate functions. In some cases a “script A’
+is used

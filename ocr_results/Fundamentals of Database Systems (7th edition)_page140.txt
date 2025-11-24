@@ -1,0 +1,51 @@
+110
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+as a member of any number of subclasses. For example, a salaried employee who is
+also an engineer belongs to the two subclasses ENGINEER and SALARIED_EMPLOYEE
+of the EMPLOYEE entity type. However, it is not necessary that every entity in a
+superclass is a member of some subclass.
+
+An important concept associated with subclasses (subtypes) is that of type
+inheritance. Recall that the type of an entity is defined by the attributes it possesses
+and the relationship types in which it participates. Because an entity in the subclass
+represents the same real-world entity from the superclass, it should possess values
+for its specific attributes as well as values of its attributes as a member of the super-
+class. We say that an entity that is a member of a subclass inherits all the attributes of
+the entity as a member of the superclass. The entity also inherits all the relationships
+in which the superclass participates. Notice that a subclass, with its own specific (or
+local) attributes and relationships together with all the attributes and relationships it
+inherits from the superclass, can be considered an entity type in its own right.*
+
+4.2 Specialization and Generalization
+
+4.2.1 Specialization
+
+Specialization is the process of defining a set of subclasses of an entity type; this
+entity type is called the superclass of the specialization. The set of subclasses that
+forms a specialization is defined on the basis of some distinguishing characteristic
+of the entities in the superclass. For example, the set of subclasses (SECRETARY,
+ENGINEER, TECHNICIAN} is a specialization of the superclass EMPLOYEE that dis-
+tinguishes among employee entities based on the job type of each employee.
+We may have several specializations of the same entity type based on different
+distinguishing characteristics. For example, another specialization of the
+EMPLOYEE entity type may yield the set of subclasses {SALARIED_EMPLOYEE,
+HOURLY_EMPLOYEE}; this specialization distinguishes among employees based on
+the method of pay.
+
+Figure 4.1 shows how we represent a specialization diagrammatically in an EER
+diagram. The subclasses that define a specialization are attached by lines to a circle
+that represents the specialization, which is connected in turn to the superclass. The
+subset symbol on each line connecting a subclass to the circle indicates the direction
+of the superclass/subclass relationship.” Attributes that apply only to entities of a
+particular subclass—such as TypingSpeed of SECRETARY—are attached to the rect-
+angle representing that subclass. These are called specific (or local) attributes of
+the subclass. Similarly, a subclass can participate in specific relationship types,
+such as the HOURLY_EMPLOYEE subclass participating in the BELONGS_TO
+
+4In some object-oriented programming languages, a common restriction is that an entity (or object) has
+only one type. This is generally too restrictive for conceptual database modeling.
+
+®There are many alternative notations for specialization; we present the UML notation in Section 4.6 and
+other proposed notations in Appendix A.

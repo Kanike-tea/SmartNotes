@@ -1,0 +1,28 @@
+more edges than h. This process can be repeated until we obtain a closed walk
+that traverses all the edges of G. Thus G is an Euler graph. =
+
+Konigsberg Bridge Problem: Now looking at the graph of the Kénigsberg
+bridges (Fig. 1-5), we find that not all its vertices are of even degree. Hence, it is
+not an Euler graph. Thus it is not possible to walk over each of the seven bridges
+exactly once and return to the starting point.
+
+One often encounters Euler lines in various puzzles. The problem common to
+these puzzles is to find how a given picture can be drawn in one continuous line
+without retracing and without lifting the pencil from the paper. Two such
+pictures are shown in Fig. 2-12. The drawing in Fig. 2-12(a) is called
+Mohammed’s scimitars and is believed to have come from the Arabs. The one in
+Fig. 2-12(b) is, of course, the star of David. (Equal time!)
+
+In defining an Euler line some authors drop the requirement that the walk be
+closed. For example, the walka1c2d3a4b5d6e7 bin Fig. 2-13, which
+includes all the edges of the graph and does not retrace any edge, is not closed.
+The initial vertex is a and the final vertex is b. We shall call such an open walk
+that includes (or traces or covers) all edges of a graph without retracing any edge
+a unicursal line or an open Euler line. A (connected) graph that has a unicursal
+line will be called a unicursal graph.
+
+ax XX
+
+(a) (b)
+
+Fig. 2-12 Two Euler graphs.

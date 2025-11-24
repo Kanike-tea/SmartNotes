@@ -1,0 +1,53 @@
+Figure 12.14
+
+12.6 Cache Lockdown 447
+
+ARM940T
+31 43 0
+
+Physical address SBZ
+
+ARM920T, ARM922T, ARM926EJ-S, ARM1026EJ-S
+
+31 54 0
+Modified virtual address SBZ
+
+ARM946E-S
+
+31 5 0
+Physical address SBZ
+
+ARM1022E
+
+31 5432 0
+Modified virtual address WB | SBZ
+
+Intel StrongARM, Intel XScale
+31
+
+Modified virtual address SBZ
+
+CP15:c7:c13 register format to lock a cache line in I-cache.
+
+The first line in the macro aligns the address (adr) to a cache line. The next three lines
+use the code size in bytes to determine the number of ways it takes to hold the code. Then
+the I-cache or D-cache current victim pointer is read from CP15:c9:c0.
+
+The next few lines do some error checking to test for overfilling the cache and if the size
+of the code to load is zero.
+
+To lock code or data in the cache of an ARM940T or ARM946E-S, there is a lock bit
+that must be set before locking a memory block in a cache line. The next instruction sets
+this bit and writes the data back to CP15:c9:c0.
+
+At this point the code enters a nested loop, the outer loop selects the way, and the inner
+loop increments the cache lines within the way.
+
+At the center of the two loops a prefetch instruction or load data command is used
+to lock a cache line in cache memory. To lock instructions, the macro writes to a special
+CP15:c7:c13 register that preloads the code segment from main memory. To lock data, a
+read of the data using an LDR instruction is all that is required.
+
+The macro exits by clearing the lock bit in the CP15:c9:c0 register if it is an ARM940T
+or ARM946E-S. On all cores it sets the victim pointer to the next available way after the
+locked code or data.

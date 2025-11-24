@@ -1,0 +1,45 @@
+ga Pret codes and Weighedtress cc
+
+We observe that in the first of the coding schemes considered above, the code | is assigned
+toa, the code 10 is assigned to n and the code 101 is assigned to ¢ and that the code assigned
+to rcontains the codes assigned to @ and n as prefixes, This is why there arises ambiguity in
+decoding. In the second of the coding schemes, the code of any letter is not a prefix of the code
+of any other eter. This is why there cannot be ambiguity in wecoding. Coding schemes of this
+type are of interest in coding theory and a brief account of thé same is given in the following
+
+paragraphs.
+
+Prefix Codes
+
+Let P be a set of binary sequences that Tepresent a set of symbols. Then P is called a prefix
+_ code’ if no sequence in P is the prefix of any other sequence in P.
+For example, the sets
+
+P; = {10,0,1101,111,1100}, and P = (000,001, 01, 10, 11)
+are prefix codes, whereas the sets
+Ay = {01,0,101, 10,1} and Ap = {1,00, 01, 000, 0001)
+
+_4e not prefix codes. Jt p
+
+Prefix codes can be represented by binary trees as illustrated below.
+Consider the prefix code f ‘y
+a P = (000, 001,01, 10, 11}
+
+indicated above. In this code? the longest sequence has length 3. Keeping this in mind, let us —
+tuct a full binary tree of height 3, and assign the symbol 0 to every edge that is directed
+ds the child in the left from its parent vertex and 1 to every edge that is directed towards
+Child in the right, as shown in Figure 3.39°.
+fle five sequences present in P2.can now be identified .with five vertices of the above
+~ We note that the vertex marked.A can be reached from the root r through he wee edges
+10,0, 0. Accordingly, the vertex A can be assigned the sequence 000. Similarly, the
+_“Xtmarked B can be assigned the sequence 001, the vertex marked C can be assigned the
+ence 01, the vertex marked D can be assigned the sequence 10, and the vertex marked E
+Pe assigned the sequence 11. ‘Thus, all the five sequences present in P2 can be assigned to
+Vertices, marked A, B, C, D, E, of the tree being considered.
+1
+
+¥ A va
+go are also called Huffman codes, in honor of their inventor D. A. Huffman.
+
+fh ing 0 and 1 to edges of a tree according to the scheme indicated and illustrated here is conventional in
+“nds called labeling. ‘The tree got after labeling is called the labeled tree.

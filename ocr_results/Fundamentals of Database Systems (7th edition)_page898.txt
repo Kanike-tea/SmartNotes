@@ -1,0 +1,53 @@
+868
+
+Chapter 23 Distributed Database Concepts
+
+would also present a problem. Hence, relations in these two databases that
+have identical names—CUSTOMER or ACCOUNT—may have some common
+and some entirely distinct information.
+
+= Representation and naming. The representation and naming of data ele-
+ments and the structure of the data model may be prespecified for each local
+database.
+
+= The understanding, meaning, and subjective interpretation of data. This
+is a chief contributor to semantic heterogeneity.
+
+= Transaction and policy constraints. These deal with serializability criteria,
+compensating transactions, and other transaction policies.
+
+= Derivation of summaries. Aggregation, summarization, and other data-
+processing features and operations supported by the system.
+
+The above problems related to semantic heterogeneity are being faced by all major
+multinational and governmental organizations in all application areas. In today’s
+commercial environment, most enterprises are resorting to heterogeneous FDBSs,
+having heavily invested in the development of individual database systems using
+diverse data models on different platforms over the last 20 to 30 years. Enterprises
+are using various forms of software—typically called the middleware; or Web-
+based packages called application servers (for example, WebLogic or WebSphere);
+and even generic systems, called enterprise resource planning (ERP) systems (for
+example, SAP, J. D. Edwards ERP)—to manage the transport of queries and trans-
+actions from the global application to individual databases (with possible additional
+processing for business rules) and the data from the heterogeneous database servers
+to the global application. Detailed discussion of these types of software systems is
+outside the scope of this text.
+
+Just as providing the ultimate transparency is the goal of any distributed database
+architecture, local component databases strive to preserve autonomy.
+Communication autonomy of a component DBS refers to its ability to decide
+whether to communicate with another component DBS. Execution autonomy
+refers to the ability of a component DBS to execute local operations without inter-
+ference from external operations by other component DBSs and its ability to decide
+the order in which to execute them. The association autonomy of a component
+DBS implies that it has the ability to decide whether and how much to share its
+functionality (operations it supports) and resources (data it manages) with other
+component DBSs. The major challenge of designing FDBSs is to let component
+DBSs interoperate while still providing the above types of autonomies to them.
+
+23.7 Distributed Database Architectures
+
+In this section, we first briefly point out the distinction between parallel and distrib-
+uted database architectures. Although both are prevalent in industry today, there are
+various manifestations of the distributed architectures that are continuously evolv-
+ing among large enterprises. The parallel architecture is more common in high-per-

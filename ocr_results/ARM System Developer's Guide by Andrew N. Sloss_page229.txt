@@ -1,0 +1,151 @@
+216 Chapter 7 Optimized Primitives
+
+Using this trick, we can convert a count trailing zeros to a count leading zeros. The
+following code implements count trailing zeros on an ARMOE. We handle the zero-input
+case without extra overhead by using conditional instructions.
+
+3 unsigned ctz_arm9e(unsigned x)
+
+ctz_arm9e
+RSBS
+AND
+CLZCC
+RSC
+MOV
+
+shift, x, #0
+shift, shift, x 5
+shift, shift
+
+rO, shift, #32
+
+pe, Ir
+
+shift=-x
+isolate trailing 1 of x
+number of zeros above last 1
+
+number of zeros below last 1
+
+For processors without the CLZ instruction, a hashing method similar to that of
+Section 7.2.2 gives good performance:
+
+3 unsigned ctz_arm7m(unsigned x)
+
+ctz_arm7m
+RSB
+AND
+ADD
+ADD
+RSB
+ADR
+LORB
+MOV
+
+shift,
+shift,
+shift,
+shift,
+shift,
+
+ctz_arm7m_hash_table
+
+DCB
+DCB
+DCB
+DCB
+DCB
+DCB
+DCB
+DCB
+
+7.3 DIVISION
+
+0x20,
+0x03,
+Ox0a,
+Oxf,
+Oxf,
+0x09,
+Oxle,
+Oxid,
+
+x, #0
+shift, x
+shift, shift, LSL#4
+shift, shift, LSL#6
+shift, shift, LSL#16
+table, ctz_arm/m_hash_table
+r0, [table, shift, LSR#26]
+pe, Ir
+
+0x00,
+Oxf,
+0x04,
+Oxf,
+Ox0b,
+Oxf,
+Oxf,
+Oxf,
+
+0x01,
+0x07,
+Oxf,
+Oxf,
+0x05,
+Oxf,
+Oxf,
+ox16,
+
+Ox0c,
+Oxff,
+Oxff,
+Oxff,
+Oxff,
+0x18,
+Oxff,
+ox12,
+
+0x02,
+Oxff,
+0x08,
+Oxff,
+Oxff,
+Oxff,
+Oxff,
+Oxic,
+
+3 isolate lowest bit
+
+1
+
+0x06,
+Oxff,
+Oxff,
+ox15,
+Oxff,
+Oxff,
+0x17,
+oxi1,
+
+*
+
+*
+
+(2%4+1)
+(2°6+1)
+(216-1)
+
+Oxff, Ox0d
+Oxff, Ox0e
+Oxff, 0x19
+Ox1b, Ox0F
+Oxff, Oxff
+Ox14, Oxla
+Oxff, 0x13
+ox10
+
+ARM cores don’t have hardware support for division. To divide two numbers you must
+
+call a software routine that calculates the result using standard arithmetic operations. If
+you can’t avoid a division (see Section 5.10 for how to avoid divisions and fast division by

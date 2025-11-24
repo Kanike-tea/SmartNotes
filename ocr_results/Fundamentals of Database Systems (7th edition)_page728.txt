@@ -1,0 +1,55 @@
+698 — Chapter 19 Query Optimization
+
+definition here. We will state some transformation rules that are useful in query
+optimization, without proving them:
+
+1. Cascade of o. A conjunctive selection condition can be broken up into a
+cascade (that is, a sequence) of individual 6 operations:
+Ge, AND cy AND... AND ¢,,(R) = Ge, (Ge, (---(6,,,(R))---))
+
+2. Commutativity of o. The 6 operation is commutative:
+Ge, (G.,(R)) = Ge, (6-,(R))
+
+3. Cascade of m. In a cascade (sequence) of 1 operations, all but the last one
+can be ignored:
+
+Mist Mist, (---Mrist,,(R))---)) = Mist, (R)
+
+4. Commuting o with 1. If the selection condition c involves only those attri-
+butes Aj, ... , Ay in the projection list, the two operations can be commuted:
+
+TAs Ay oA (Oe (R)) = Oe (MAy, Ay, ... A, (R))
+
+5. Commutativity of p< (and x). The join operation is commutative, as is the x
+
+operation:
+Ro, S=Sm,R
+RxS=SxXR
+
+Notice that although the order of attributes may not be the same in the rela-
+tions resulting from the two joins (or two Cartesian products), the meaning
+is the same because the order of attributes is not important in the alternative
+definition of relation.
+
+6. Commuting o with > (or x). Ifall the attributes in the selection condition c
+involve only the attributes of one of the relations being joined—say, R—the
+two operations can be commuted as follows:
+
+G, (RoaS) = (6, (R)) pa S
+Alternatively, if the selection condition c can be written as (c, AND cz), where
+
+condition c; involves only the attributes of R and condition c, involves only
+the attributes of S, the operations commute as follows:
+
+G, (Rea S) = (6,, (R)) » (G-, (S))
+The same rules apply if the > is replaced by a x operation.
+
+7. Commuting x with » (or x). Suppose that the projection list is L={Aj, ...,
+Aj By, ... , By}, where Aj, ... , A,, are attributes of R and B,, ... , B,, are
+attributes of S. If the join condition c involves only attributes in L, the two
+operations can be commuted as follows:
+
+Ty (Ro S) = (Tay, ..., A, (R)) Pte (ay, ...B,, (S))
+
+If the join condition c contains additional attributes not in L, these must be added
+to the projection list, and a final z operation is needed. For example, if attributes

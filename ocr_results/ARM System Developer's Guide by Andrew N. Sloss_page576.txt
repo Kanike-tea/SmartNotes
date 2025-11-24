@@ -1,0 +1,46 @@
+15.4 Future Technologies beyond ARMv6 563
+
+15.3 ARMV6 IMPLEMENTATIONS
+
+ARM completed development of ARM1136] in December 2002, and at this writing con-
+sumer products are being designed with this core. The ARM1136J pipeline is the most
+sophisticated ARM implementation to date. As shown in Figure 15.4, it has an eight-stage
+pipeline with separate parallel pipelines for load/store and multiply/accumulate.
+
+‘The parallel load/store unit (LSU) with hit-under-miss capability allows load and store
+operations to be issued and execution to continue while the load or store is completing with
+the slower memory system. By decoupling the execution pipeline from the completion of
+loads or stores, the core can gain considerable extra performance since the memory system
+is typically many times slower than the core speed. Hit-under-miss extends this decoupling
+out to the L1-L2 memory interface so that an L1 cache miss can occur and an L2 transaction
+can be completing while other L1 hits are still going on.
+
+Another big change in microarchitecture is the move from virtually tagged caches to
+physically tagged caches. Traditionally, ARM has used virtually tagged caches where the
+MMUis between the caches and the outside L2 memory system. With ARM6, this changes
+so that the MMU is now between the core and the L1 caches, so that all cache memory
+accesses are using physical (already translated) addresses. One of the big benefits of this
+approach is considerably reduced cache flushing on context switches when the ARM is
+running large operating systems. This reduced flushing will also reduce power consumption
+in the end system since cache flushing directly implies more external memory accesses. In
+some cases it is expected that this architectural change will deliver up to a 20% performance
+improvement.
+
+15.4 FUTURE TECHNOLOGIES BEYOND ARMv6
+
+In 2003, ARM made further technology announcements including TrustZone and
+Thumb-2. While these technologies are very new, at this writing, they are being included
+in new microprocessor cores. The next sections briefly introduce these new technologies.
+
+15.4.1 TRUSTZONE
+
+TrustZone is an architectural extension targeting the security of transactions that may be
+carried out using consumer products such as cell phones and, in the future, perhaps online
+transactions to download music or video for example. It was first introduced in October
+2003 when ARM announced the ARM1176JZ-S.
+
+The fundamental idea is that operating systems (even on embedded devices) are now
+so complex that it is very hard to verify security and correctness in the software. The ARM
+solution to this problem is to add new operating “states” to the architecture where only a
+small verifiable software kernel will run, and this will provide services to the larger operating
+system. The microprocessor core then takes a role in controlling system peripherals that

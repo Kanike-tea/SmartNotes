@@ -1,0 +1,34 @@
+Pes
+41. Minimal Spanning Tree 221
+
+Since the graph has 8 vertices, there should be 7 edges in its minimal ‘spanning tree. Let
+us put the edges of the graph in a non-decreasing order of their weights and select seven edges
+one by one in such a way that no cycle is created. The scheme is summarized in the following
+Table.
+
+FG [AD | BC | CD| EF | FH | AB | GH
+140 | 145 | 145 | 150 | 150 | 150 [155 | 160
+Yes | No | Yes | Yes No | Yes |
+Thus, a minimal spanning tree of the given graph consists of the branches CE, DF, AG,
+
+FG, BC, CD, FH. This tree represents the required railway net work. The network is shown
+in Figure 4.12.
+
+A B
+
+The cost involved is
+95 + 100 + 120 + 140 + 145 + 150 + 150 = 900 (in crores of Rupees) rT]
+
+(2) Prim’s Algorithm
+The Working Rule for the Prim’s method (usually called Prim’s algorithm) may be stated
+4 follows:
+
+Step 1. Given a connected, weighted graph G with n vertices, assign n names (say: V1, V2,..- Vas
+or A,B,C and so on) to these vertices, and prepare an xn Table in which the weights of
+all edges are shown. The entries in the Table will be symmetric with respect to the di-
+agonal and no entries appear on the diagonal. Indicate the weights of the non-existing
+edges as 00,
+
+§ ,
+tep 2, Start from the vertex vy (or A, as the case may be) and connect ‘it to‘its nearest neigh-
+bour (.e,; to the vertex-which has the smallest entry)-in the vj-row, say: vg. : Now,

@@ -1,0 +1,118 @@
+2. Rd
+3. Ld
+4. Ld
+5. Ld
+6. Hd
+7. Ld
+8. Hd
+9. Ld
+10. Ld
+ll. sp
+Notes
+
+Rn
+Ln
+Ld
+Ln
+Hd
+Ld
+Hd
+pc
+sp
+sp
+
++
+
++
+
+A.3 Alphabetical List of ARM and Thumb Instructions 575
+
+<shifted_Rm>
+<immed3>
+<immed8>
+
+Ln
+
+Ln
+
+Hm
+
+Hm
+4*<immed8>
+4*<immed8>
+
+4*<immed7>
+
+Updated if S suffix specified
+Updated (see Notes below)
+Updated (see Notes below)
+Updated (see Notes below)
+Preserved
+
+Preserved
+
+Preserved
+
+Preserved
+
+Preserved
+
+Preserved
+
+= = If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C= <UnsignedOverflow>, V = <SignedOverflow>.
+
+= If Rd or Hd is pc, then the instruction effects a jump to the calculated address. If the
+operation updates the cpsr, then the processor mode must have an spsr; in this case, the
+cpsr is set to the value of the spsr.
+
+= If Rnor Rmis pe, then the value used is the address of the instruction plus eight bytes.
+
+= If Hdor Hmis pc, then the value used is the address of the instruction plus four bytes.
+
+Examples
+
+ADD
+ADDS
+ADD
+ADD
+ADD
+ADDS
+
+r0, rl, #4
+r0, r2, r2
+
+rd, r0
+
+r0, LSL #1
+
+pc, pc, r0, LSL #2
+r0, rl, r2, ROR r3
+pc, Ir, #4
+
+r0
+r0
+skip
+
+jump
+
+rl +4
+r2 + r2 and flags updated
+3*r0
+
+r0#1 instructions
+
+rl + ((r2>> 13) | (r2<< (32-r3))
+to Irt4, restoring the cpsr
+
+ADR
+
+Address relative
+
+1. ADR{L}<cond> Rd, <address>
+
+MACRO.
+
+This is not an ARM instruction, but an assembler macro that attempts to set Rd to the value
+<address> using a pc-relative calculation. The ADR instruction macro always uses a single
+ARM (or Thumb) instruction. The long-version ADRL always uses two ARM instructions

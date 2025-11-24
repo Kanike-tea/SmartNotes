@@ -1,0 +1,53 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+The structure of memory for 16 bit CPU, 32 bit CPU and 64 bit CPU are as shown in the figures
+1,2 and 3 respectively
+
+For 16 bit CPU For 32 bit CPU For 64 bit CPU
+5000 [34H 5000 [34H 5000 [34H
+5002 65H 5004 65H 5008 65H
+5004 | 86H 5008 | 86H 5016 | 86H
+5006 93H 5012 93H 5024 93H
+5008 | 45H 5016 | 45H 5032 [45H
+
+It is process of assignment of addresses of two successive words andthis address is the number of
+bytes in the word is called as Word alignment.
+
+ACCESSING CHARACTERS AND NUMBERS
+
+The character occupies 1 byte of memory and hence byte address for memory.
+The numbers occupies 2 bytes of memory and hence word. address for numbers.
+
+6. MEMORY OPERATION
+Both progfam instrilétionsiand operands are in memory. To execute each instruction has
+to be fead from memory andlaftemexeciltion the results must be written to memory. There
+aretWo types of memory operations namely |. Memory read and 2. Memory write
+Memory read operation [ Load/ Read / Fetch |
+Memory write operation [ Store/ write ]
+
+1. MEMORY READ OPERATION:
+
+It iSthe process of transféffing of 1 word of data from memory into Accumulator (GPR).
+It is also called as Memory fetch operation.
+
+The Memory read operation can be implemented by means of LOAD instruction.
+
+The LOAD instruction transfers 1 word of data (1 word = 32 bits) from Memory into the
+Accumulator as shown in the fig.
+
+NR
+
+Memory
+Accumulator
+
+; 5004
+32 bits 5008
+
+5012
+
+5016
+5020
+
+32 bits
+
+Dr. Ajay V G, Dept. of CSE, SVIT 17

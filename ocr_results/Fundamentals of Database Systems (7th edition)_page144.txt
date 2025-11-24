@@ -1,0 +1,50 @@
+114 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+Figure 4.4
+
+EER diagram notation
+for an attribute-defined
+specialization on
+Job_type.
+
+)
+
+Name QD ‘Address ) CJob_type
+
+EMPLOYEE
+
+Job_type
+d
+‘Secretary’ ‘Engineer’
+
+SECRETARY TECHNICIAN ENGINEER
+
+is ‘Secretary’ belong to the subclass. We display a predicate-defined subclass by
+writing the predicate condition next to the line that connects the subclass to the
+specialization circle.
+
+If all subclasses in a specialization have their membership condition on the same
+attribute of the superclass, the specialization itself is called an attribute-defined
+specialization, and the attribute is called the defining attribute of the special-
+ization.® In this case, all the entities with the same value for the attribute belong to
+the same subclass. We display an attribute-defined specialization by placing the
+defining attribute name next to the arc from the circle to the superclass, as shown
+in Figure 4.4.
+
+When we do not have a condition for determining membership in a subclass, the
+subclass is called user-defined. Membership in such a subclass is determined by the
+database users when they apply the operation to add an entity to the subclass; hence,
+membership is specified individually for each entity by the user, not by any condi-
+tion that may be evaluated automatically.
+
+Two other constraints may apply to a specialization. The first is the disjointness
+constraint, which specifies that the subclasses of the specialization must be disjoint
+sets. This means that an entity can be a member of at most one of the subclasses of
+the specialization. A specialization that is attribute-defined implies the disjointness
+constraint (if the attribute used to define the membership predicate is single-
+valued). Figure 4.4 illustrates this case, where the d in the circle stands for disjoint. The
+d notation also applies to user-defined subclasses of a specialization that must be
+disjoint, as illustrated by the specialization {HOURLY_EMPLOYEE, SALARIED_EMPLOYEE}
+in Figure 4.1. If the subclasses are not constrained to be disjoint, their sets of entities
+
+®Such an attribute is called a discriminator or discriminating attribute in UML terminology.

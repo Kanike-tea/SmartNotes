@@ -1,0 +1,66 @@
+Table 5.3
+
+5.4 Register Allocation 121
+
+C compiler register usage.
+
+Alternate
+
+Register register
+
+number names ATPCS register usage
+
+r0 al Argument registers. These hold the first four function
+
+rl a2 arguments on a function call and the return value on a
+
+2 a3 function return. A function may corrupt these registers and
+
+3 a4 use them as general scratch registers within the function.
+
+rd vl General variable registers. The function must preserve the callee
+
+15 v2 values of these registers.
+
+76 v3
+
+17 v4
+
+8 v5
+
+r9 v6 sb General variable register. The function must preserve the callee
+value of this register except when compiling for read-write
+position independence (RWPI). Then r9 holds the static base
+address. This is the address of the read-write data.
+
+rl0 v7sl General variable register. The function must preserve the callee
+value of this register except when compiling with stack limit
+checking. Then r10 holds the stack limit address.
+
+rll v8 fp General variable register. The function must preserve the callee
+value of this register except when compiling using a frame
+pointer. Only old versions of armcc use a frame pointer.
+
+rl2 ip A general scratch register that the function can corrupt. It is
+useful as a scratch register for function veneers or other
+intraprocedure call requirements.
+
+r13 sp The stack pointer, pointing to the full descending stack.
+
+rl4 Ir The link register. On a function call this holds the return
+address.
+
+rl5 pe The program counter.
+
+Provided the compiler is not using software stack checking or a frame pointer, then
+the C compiler can use registers r0 to r12 and r14 to hold variables. It must save the calle
+values of r4 to rl and rl4 on the stack if using these registers.
+
+In theory, the C compiler can assign 14 variables to registers without spillage. In practice,
+
+some compilers use a fixed register such as r12 for intermediate scratch working and do not
+
+assign variables to this register. Also, complex expressions require intermediate working
+
+registers to evaluate. Therefore, to ensure good assignment to registers, you should try to
+limit the internal loop of functions to using at most 12 local variables.

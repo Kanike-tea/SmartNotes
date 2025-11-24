@@ -1,0 +1,39 @@
+of edge-disjoint circuits. Since the degree of every vertex in a circuit is two, the
+degree of every vertex in G is even. Hence G is an Euler graph.
+
+Conversely, let G be an Euler graph. Consider a vertex v,. There are at least
+two edges incident at v,. Let one of these edges be between v, and v5. Since
+vertex V> is also of even degree, it must have at least another edge, say between
+Vy and v3. Proceeding in this fashion, we eventually arrive at a vertex that has
+previously been traversed, thus forming a circuit I’. Let us remove [' from G. All
+vertices in the remaining graph (not necessarily connected) must also be of even
+degree. From the remaining graph remove another circuit in exactly the same
+way as we removed [ from G. Continue this process until no edges are left.
+Hence the theorem. =
+
+Arbitrarily Traceable Graphs: Consider the graph in Fig. 2-17, which is an
+Euler graph. Suppose that we start from vertex a and trace the path a bc.
+
+a b
+
+d e
+
+Fig. 2-17 Arbitrarily traceable graph from c.
+
+Now at c we have the choice of going to a, d, or e. If we took the first choice, we
+would only trace the circuit a b c a, which is not an Euler line. Thus, starting
+from a, we cannot trace the entire Euler line simply by moving along any edge
+that has not already been traversed. This raises the following interesting
+question:
+
+What property must a vertex v in an Euler graph have such that an Euler line
+is always obtained when one follows any walk from vertex v according to the
+single rule that whenever one arrives at a vertex one shall select any edge (which
+has not been previously traversed)?
+
+Such a graph is called an arbitrarily traceable graph from vertex v. For
+instance, the Euler graph in Fig. 2-17 is an arbitrarily traceable graph from
+vertex c, but not from any other vertex. The Euler graph in Fig. 2-18 is not
+arbitrarily traceable from any .vertex; the graph in Fig. 2-19 is arbitrarily
+traceable from all its vertices. The following interesting theorem, due to Ore [2-
+5], answers the question just raised.

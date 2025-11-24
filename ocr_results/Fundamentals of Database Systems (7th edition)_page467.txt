@@ -1,0 +1,59 @@
+13.3 XML Documents, DTD, and XML Schema 437
+
+Figure 13.5
+‘An XML schema file called company.
+
+<?xml version="1.0” encoding="UTF-8" 2>
+<xsd:schema xmins:xsd="http://www.w3.0rg/2001/XMLSchema">
+
+<xsd:annotation>
+
+<xsd:documentation xml:lang="en">Company Schema (Element Approach) - Prepared by Babak
+
+Hojabri</xsd:documentation>
+</xsd:annotation>
+
+<xsd:element name=“company”>
+
+<xsd:complexType>
+<xsd:sequence>
+
+<xsd:element name="department” type="Department” minOccurs="0" maxOccurs="unbounded” />
+<xsd:element name="employee” type="Employee” minOccurs="0" maxOccurs="unbounded">
+
+<xsd:unique name="dependentNameUnique”>
+<xsd:selector xpath="employeeDependent” />
+<xsd/field xpath="dependentName” />
+</xsd:unique>
+</xsd:element>
+
+<xsd:element name="project” type="Project” minOccurs="0" maxOccurs="unbounded” />
+
+</xsd:sequence>
+</xsd:complexType>
+<xsd:unique name="departmentNameUnique">
+<xsd:selector xpath="department” />
+<xsd/:field xpath="departmentName" />
+</xsd:unique>
+<xsd:unique name="projectNameUnique">
+<xsd:selector xpath="project” />
+<xsd/field xpath="projectName” />
+</xsd:unique>
+<xsd:key name="projectNumberKey">
+<xsd:selector xpath="project” />
+<xsd/:field xpath="projectNumber" />
+</xsd:key>
+<xsd:key name="departmentNumberKey">
+<xsd:selector xpath="department” />
+<xsd/:field xpath="departmentNumber” />
+</xsd:key>
+<xsd:key name="employeeSSNKey">
+<xsd:selector xpath=“employee” />
+<xsd/:field xpath="employeeSSN" />
+</xsd:key>
+<xsd:keyref name="departmentManagerSSNKeyRef" refer="employeeSSNKey">
+<xsd:selector xpath="department” />
+<xsd/field xpath="departmentManagerSSN° />
+</xsd:keyref>
+
+(continues)

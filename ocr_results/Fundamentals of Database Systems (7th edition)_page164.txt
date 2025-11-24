@@ -1,0 +1,53 @@
+134
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+database information does. One ongoing project that is attempting to allow
+information exchange among computers on the Web is called the Semantic
+Web, which attempts to create knowledge representation models that are quite
+general in order to allow meaningful information exchange and search among
+machines. The concept of ontology is considered to be the most promising basis
+for achieving the goals of the Semantic Web and is closely related to knowledge
+representation. In this section, we give a brief introduction to what ontology is
+and how it can be used as a basis to automate information understanding, search,
+and exchange.
+
+The study of ontologies attempts to describe the concepts and relationships that are
+possible in reality through some common vocabulary; therefore, it can be consid-
+ered as a way to describe the knowledge of a certain community about reality.
+Ontology originated in the fields of philosophy and metaphysics. One commonly
+used definition of ontology is a specification of a conceptualization.'*
+
+In this definition, a conceptualization is the set of concepts and relationships that
+are used to represent the part of reality or knowledge that is of interest to a com-
+munity of users. Specification refers to the language and vocabulary terms that are
+used to specify the conceptualization. The ontology includes both specification and
+conceptualization. For example, the same conceptualization may be specified in two
+different languages, giving two separate ontologies. Based on this general defini-
+tion, there is no consensus on what an ontology is exactly. Some possible ways to
+describe ontologies are as follows:
+
+= A thesaurus (or even a dictionary or a glossary of terms) describes the rela-
+tionships between words (vocabulary) that represent various concepts.
+
+= A taxonomy describes how concepts of a particular area of knowledge
+are related using structures similar to those used in a specialization or
+generalization.
+
+= A detailed database schema is considered by some to be an ontology that
+describes the concepts (entities and attributes) and relationships of a mini-
+world from reality.
+
+= A logical theory uses concepts from mathematical logic to try to define con-
+cepts and their interrelationships.
+
+Usually the concepts used to describe ontologies are similar to the concepts we dis-
+cuss in conceptual modeling, such as entities, attributes, relationships, specializa-
+tions, and so on. The main difference between an ontology and, say, a database
+schema, is that the schema is usually limited to describing a small subset of a mini-
+world from reality in order to store and manage data. An ontology is usually con-
+sidered to be more general in that it attempts to describe a part of reality or a
+domain of interest (for example, medical terms, electronic-commerce applications,
+sports, and so on) as completely as possible.
+
+'8This definition is given in Gruber (1995).

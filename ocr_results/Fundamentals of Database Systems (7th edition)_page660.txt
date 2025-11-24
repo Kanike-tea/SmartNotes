@@ -1,0 +1,38 @@
+630 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Deletion sequence: 5, 12, 9
+
+*| 7 |e
+! '
+te} 1 Je] 6 |e 1? {+
+| ' ! ! |
+io ee] [5]o] [6Jo] fete] [7]Jo ee] [8]o] [9]o] |e] fizfo
+4
+Delete 5 «| 7 |e
+' '
+te] 1 Jel 6 Jet 2 |e
+' | ' ;
+iJo ee] [6]o +e] [7]J° ele] [8]o] [9]o] Jefe] fi2]o
+4
+Delete 12: underflow
+“| 7 |e (redistribute)
+y
+te] 1 Jel 6 Jet 1? jt
+Y y |
+1]o =| [6]o ete] [7] 0 =| [slo +=] [oo
+A
+Delete 9: underflow
+“| & |e | (merge with left, redistribute)
+y
+te) 1 |¢ 7 ds
+' 1 {
+1Jo + »| |6]o |__| [7] ++] [8]
+Figure 17.13
+
+An example of deletion from a B*-tree.
+
+to approximately the fill factors specified. Some investigators have suggested relax-
+ing the requirement that a node be half full, and instead allow a node to become
+completely empty before merging, to simplify the deletion algorithm. Simulation
+studies show that this does not waste too much additional space under randomly
+distributed insertions and deletions.

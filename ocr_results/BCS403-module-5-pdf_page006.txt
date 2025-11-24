@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+If we enforce two-phase locking, the transactions can be rewritten as T1’ and 72’ as shown
+in Figure 22.4.
+
+Now, the schedule shown in Figure 22.3(c) is not permitted for 71_ and T2_ (with their
+modified order of locking and unlocking operations) under the rules of locking because T1_
+will issue its write_lock(X) before it unlocks item Y; consequently, when 72_ issues its
+
+read_lock(X), it is forced to wait until 71_ releases the lock by issuing an unlock (X) in the
+
+schedule.
+
+T,’
+read_lock{Y); read_lock(X);
+read_item(Y); tead_item(X);
+write_lock(X); write_lock(Y);
+unlock(Y) unlock(X)
+
+Figure 22.4 tead_item(X); read_item(Y);
+Transactions T, "and ty, which are the XH=NX+Y; Y=X+/Y;
+same as T, and Tp in Figure 22:3, but write_item(X); write_item(Y);
+follow the two-phase locking protecol, unlock(X); unlock(Y);
+Note that they can producéa deadiock)
+
+If every transaction in a schedule follows the two-phase locking protocol, schedule
+
+guaranteed to be serializable
+Two-phase locking may limit the amount of concurrency that can occur in a schedule
+
+Some serializable schedules will be prohibited by two-phase locking protocol
+
+5.10 Variations of Two-Phase Locking
+
+= Basic 2PL
+— Technique described previously
+= Conservative (static) 2PL
+— Requires a transaction to lock all the items it accesses before the transaction
+begins execution by predeclaring read-set and write-set
+
+— Its Deadlock-free protocol
+
+https://vtucode.
+ps://vtucode.in 28

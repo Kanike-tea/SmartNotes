@@ -1,0 +1,57 @@
+Data Structures and Applications/BCS304 Module-1
+
+For example
+int list[5]; // declares an array that can store 5 integers
+
+In C all array index start at 0 and so list[0],list[1],list{2],list[3],list{4] are the names of the five array
+elements each of which contains an integer value.
+
+Structures : Structure is basically a user-defined data type that can store related information
+thatmay be of same or different data types together.
+
+The major difference between a structure and an array is that an array can store only information of
+same data type. A structure is therefore a collection of variables under a single name. The variables
+within a structure are of different data types and each has a name that is used to select it from the
+structure.
+
+For example,
+
+Struct student {
+
+char sname[10];
+
+int age;
+
+float average_marks;
+} st;
+
+It creates a variable whose name is st and that has three fields:
+
+e aname that is a character array
+e an integer value representing the age of the student
+e afloat value representing the average marks of the individual student.
+
+To assign values to these fields dot operator (. ) is used as the structure member operator. We use
+this operator to select a particular member of the structure.
+
+strepy(st.sname," james");
+st.age = 10;
+st.average_marks = 35;
+
+We can create our own structure data types by using the typedef statement. Consider an example
+that creates a structure for the employee details.
+
+typedef struct Employee {
+char name[10];
+int age;
+float salary;
+
+hi
+or
+typedef struct {
+char name[10];
+int age;
+float salary;
+} Employee;
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 2

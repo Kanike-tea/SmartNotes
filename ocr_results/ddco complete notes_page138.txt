@@ -1,0 +1,46 @@
+Digital Design and Computer Organization (BCS302)
+
+2) control hazards or instruction hazards: The pipeline may also be stalled
+because of a delay in the availability of an instruction.
+
+For example, this may be a result of a miss in the cache .
+
+3) A third type of hazard known as a structural hazard: This is the
+situation when two instructions require the use of a given hardware
+resource at the same time.
+
+The effect of a cache miss on pipelined operation is illustrated in Figure.
+Instruction I1 is fetched from the cache in cycle 1, and its execution proceeds
+normally. However, the fetch operation for instruction I2, which is started in
+cycle 2, results in a cache miss. The instruction fetch unit must now suspend
+any further fetch requests and wait for I2 to arrive. We assume that
+instruction I2 is received and loaded into buffer B1 at the end of cycle 5. The
+pipeline resumes its normal operation at that point.
+
+—+ Time
+Clockeycle 1 2 3 4 5 6 7 8 9
+Instruction
+if F, D, Ww
+ib F. D; E Ww
+I F. D; E Ww
+(a) Instruction execution steps in successive clock cycles
+—> Time
+Clock cycle 1 2 3 4 5 6 7 8 9
+Stage
+F:Fetch — F, F F F FF,
+D: Decode D idle dle d Dy Ds
+E: Execute E J E, E;
+
+W: Write WwW, le idle W W3
+
+(b) Function performed by each processor stage in successive clock cycles
+Figure 8.4 Pipeline stall caused by a cache miss in F2 Eg: for Instruction Hazard
+
+An alternative representation of the operation of a pipeline in the case of a
+cache miss is shown in Figure b. This figure gives the function performed by
+each pipeline stage in each clock cycle. Note that the Decode unit is idle in
+cycles 3 through 5, the Execute unit is idle in cycles 4 through 6, and the
+Write unit is idle in cycles 5 through 7. Such idle periods are called stalls.
+They are also often referred to as bubbles in the pipeline.
+
+Dr Ajay V G, Dept. of CSE,SVIT

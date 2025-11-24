@@ -1,0 +1,51 @@
+Data Structures and Applications(BCS304) Module 2
+
+cur=first;
+
+while (cur!=NULL)
+
+{
+
+If (cur->info==item)
+{
+prev->link=cur->link;
+free(cur); return(first);
+
+}
+else
+{
+prev=cur;
+cur=cur->link;
+}
+}
+Printf(“node with item not found”)
+return(first);
+}
+
+Delete the NODE present at location loc, the NODE that precedes is present at location locp. If
+there is only one NODE then locp=NULL
+
+Void delete(NODE *loc, NODE*locp)
+{ NODE * next;
+If(locp==NULL)
+{
+Free(Loc)
+}
+Else
+{
+Next=loc->link; Locp-
+>link=next;Free(Loc)
+}
+}
+
+3.4.3 Traversal of Linked List
+Function to display the contents of the list
+Void display(Node * first)
+{
+NODE *cur;
+
+if (first==NULL)
+printf(“list is empty);
+else
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 18

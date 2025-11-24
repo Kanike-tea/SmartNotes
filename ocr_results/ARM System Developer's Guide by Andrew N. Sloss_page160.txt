@@ -1,0 +1,50 @@
+5.10 Division 147
+
+q = (unsigned int)(((unsigned long long)n*s + s)>>32)5
+return q>>k;
+
+}
+
+If you know that 0 < n < 231, as for a positive signed integer, then you don’t need to
+bother with the different cases. You can increase k by one without having to worry about s
+overflowing. Take N = 31, choose ksuch that 2'-! < d < 24, andsets = (sNt#42'—1)/d.
+Then n/d = (ns) > (N +k).
+
+5.10.4 SIGNED DIVISION BY A CONSTANT
+
+EXAMPLE
+
+5.15
+
+We can use ideas and algorithms similar to those in Section 5.10.3 to handle signed
+constants as well. If d < 0, then we can divide by |d| and correct the sign later, so for now
+we assume that d > 0. The first mathematical result of Section 5.10.3 extends to signed n.
+Ifd >Oand 2N+ < ds < 2N+k + 2k, then
+
+n/d = (ns) > (N +k) forall0 <n <2N (5.12)
+nid = ((ns) > (N +k)) +1 forall — 2% <n <0 (5.13)
+
+For 32-bit signed n, we take N = 31 and choose k < 31 such that 2! < d < 2*. This
+ensures that we can find a 32-bit unsigned s = (2N+* + 2*)/d satisfying the preceding
+relations. We need to take special care multiplying the 32-bit signed n with the 32-bit
+unsigned s. We achieve this using a signed ]ong 1 ong type multiply with a correction if the
+top bit of sis set.
+
+The following routine, sdiv_by_const, shows how to divide by a signed constant d. In
+practice you will precalculate k and s at compile time. Only the operations involving n for
+your particular value of d need be executed at run time.
+
+int sdiv_by_const(int n, int d)
+{
+
+int s,k,q;
+
+unsigned int D;
+
+/* set D to be the absolute value of d, we assume d!=0 */
+if (d>0)
+{
+D=(unsigned int)d; — /* 1 <= D <= Ox7FFFFFFF */
+}
+
+else

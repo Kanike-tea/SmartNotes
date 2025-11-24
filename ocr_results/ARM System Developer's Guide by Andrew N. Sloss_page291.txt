@@ -1,0 +1,65 @@
+278 Chapter 8 Digital Signal Processing
+
+x_10
+x_32
+x_54
+x_76
+x_98
+c_10
+c_32
+c_54
+c_76
+c_98
+
+RN 4 — ; packed elements from array x(]
+RN 5
+RN 6
+RN 7
+RN 8
+RN ; packed elements from array c[]
+RN 10
+RN 11
+RN 12
+RN 14
+
+; int dot_16by16_arm10(short *x, short *c, int n)
+
+dot_16by16_arml0
+
+Joop_10
+
+STMFD  sp!, {r4-r11, Ir}
+LOMIA x!, {x_10, x_32}
+MoV acc, #0
+
+LOMIA c!, {c_10, c_32}
+
+3 accumulate 10 products
+suBs oN, N, #10
+
+LOMIA x!, {x_54, x_76, x_98}
+SMLABB acc, x_10, c_10, acc
+SMLATT acc, x_10, c_10, acc
+LOMIA c!, {c_54, c_76, c_98}
+SMLABB acc, x_32, c_32, acc
+SMLATT acc, x_32, c_32, acc
+LOMGTIA x!, {x_10, x_32}
+SMLABB acc, x_54, c_54, acc
+SMLATT acc, x_54, c_54, acc
+SMLABB acc, x_76, c_76, acc
+LOMGTIA c!, {c_10, c_32}
+SMLATT acc, x_76, c_76, acc
+SMLABB acc, x_98, c_98, acc
+SMLATT acc, x_98, c_98, acc
+BGT 1oop_10
+
+MoV. v0, acc
+
+LOMFD sp!, {r4-rl1, pc}
+
+The inner loop requires 25 cycles to process 10 samples, or 2.5 cycles per tap.
+
+8.2.6 DSP ON THE INTEL XSCALE
+
+The Intel XScale implements version ARMVSTE of the ARM architecture like ARM9E and
+ARMIOE. The timings of load and multiply instructions are similar to the ARM9E, and

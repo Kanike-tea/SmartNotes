@@ -1,0 +1,57 @@
+352 Chapter 9 Exception and Interrupt Handling
+
+SUMMARY
+
+The jump table has to follow the instruction that loads the pc. There is an NOP in between
+the jump table and the instruction that manipulates the pcbecause the pewill be pointing two
+instructions ahead (or eight bytes). The priority mask table is in interrupt source bit order.
+
+Each ISR follows the same entry style. The example given is for the timer] interrupt
+service routine.
+
+The ISR is then inserted after the header above. Once the ISR is complete, the interrupt
+sources must be reset and control passed back to the interrupted task.
+
+The handler must disable the IRQs before the interrupts can be switched back on. The
+external interrupts can now be restored to their original value, which is possible because
+the service routine did not modify register r12 and so it still contains the original value.
+
+To return back to the interrupted task, context is restored and the original spsr is copied
+back into the spsr_irq.
+
+Prioritized Simple Interrupt Handler
+
+= Handles prioritized interrupts.
+= Low interrupt latency.
+
+= Advantage: deterministic interrupt latency since the priority level is identified first and
+then the service is called after the lower-priority interrupts are masked.
+
+= Disadvantage: the time taken to get to a low-priority service routine is the same as for
+a high-priority routine.
+
+9.3.5 PRIORITIZED STANDARD INTERRUPT HANDLER
+
+EXAMPLE
+
+9.12
+
+Following on from the prioritized simple interrupt handler, the next handler adds an addi-
+tional level of complexity. The prioritized simple interrupt handler tested all the interrupts
+to establish the highest priority—an inefficient method of establishing the priority level but
+it does have the advantage of being deterministic since each interrupt priority will take the
+same length of time to be identified.
+
+An alternative approach is to jump early when the highest-priority interrupt has been
+identified (see Figure 9.13), by setting the pc and jumping immediately once the priority
+level has been established. This means that the identification section of the code for the
+prioritized standard interrupt handler is more involved than for the prioritized simple
+interrupt handler. The identification section will determine the priority level and jump
+immediately to a routine that will handle the masking of the lower-priority interrupts and
+then jump again via a jump table to the appropriate ISR.
+
+A prioritized standard interrupt handler starts the same as a prioritized simple interrupt
+handler but intercepts the interrupts with a higher-priority earlier. Register r14 is assigned
+to point to the base of the interrupt controller and load register r10 with the interrupt
+controller status register. To allow the handler to be relocatable, the current address pointed
+to by the pc is recorded into register r11.

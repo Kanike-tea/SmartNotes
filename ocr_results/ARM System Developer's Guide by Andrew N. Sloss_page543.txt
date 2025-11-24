@@ -1,0 +1,47 @@
+530 Chapter 14 Memory Management Units
+
+1. Initialize the page tables in memory by filling them with FAULT entries.
+
+mmuInitPT(Pagetable *); Example 14.5
+
+Nn
+
+. Fill in the page tables with translations that map regions to physical memory.
+
+mmuMapRegion(Region *); Example 14.6
+mmuMapSectionTableRegion(Region *region); Example 14.7
+mmuMapCoarseTableRegion(Region *region); Example 14.8
+mmuMapFineTableRegion(Region *region); Example 14.9
+
+3. Activate the page tables.
+
+int mmuAttachPT(Pagetable *pt); Example 14.10
+
+4, Assign domain access rights.
+
+domainAccessSet (unsigned int value, unsigned int mask); Example 14.11
+
+5. Enable the memory management unit and cache hardware.
+
+controlSet (unsigned int, unsigned int); Example 14.3
+
+Figure 14.21 List of MMU initialization routines.
+
+void mmuInitPT(Pagetable *pt)
+
+{
+int index; /* number of lines in PT/entries written per loop*/
+unsigned int PTE, *PTEptr;  /* points to page table entry in PT */
+PTEptr = (unsigned int *)pt->ptAddress; /* set pointer base PT */
+PTE = FAULT;
+
+switch (pt->type)
+{
+case COARSE: {index = 256/32; break;}
+case MASTER: {index = 4096/32; break;}
+#if defined(__TARGET_CPU_ARM920T)
+case FINE: {index = 1024/32; breaks} /* no FINE PT in 720T */
+#endif
+default:
+{
+printf("mmulnitPT: UNKNOWN pagetable type\n");

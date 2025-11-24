@@ -1,0 +1,49 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+MODULE 2
+QUEUES: Queues, Circular Queues, Using Dynamic Arrays, Multiple Stacks and queues.
+LINKED LISTS : Singly Linked, Lists and Chains, Representing Chains in C, Linked Stacks
+
+and Queues, Polynomials.
+
+QUEUES ABSTRACT DATA TYPE
+
+DEFINITION
+
+“A queue is an ordered list in which insertions (additions, pushes) and deletions (removals and
+pops) take place at different ends.”
+
+The end at which new elements are added is called the rear, and that from which old elements
+
+are deleted is called the front.
+
+Given a queue Q = (ao, ai,.. -. Ant) , ao, is the front element ag) is the rear element, ai+1 is
+
+behind aj 0< =i <n-1.
+If the elements are inserted A, B, C, D and E in this order, then A is the first element deleted
+from the queue. Since the first element inserted into a queue is the first element removed,
+
+queues are also known as First-In-First-Out (FIFO) lists.
+
+QUEUE REPRESENTATION USING ARRAY
+
+Queues may be represented by one-way lists or linear arrays.
+
+Queues will be maintained by a linear array QUEUE and two pointer variables: FRONT-
+containing the location of the front element of the queue
+
+REAR-containing the location of the rear element of the queue.
+
+The condition FRONT = NULL will indicate that the queue is empty.
+
+Figure indicates the way elements will be deleted from the queue and the way new elements
+will be added to the queue.
+
+Whenever an element is deleted from the queue, the value of FRONT is increased by 1; this
+can be implemented by the assignment FRONT := FRONT + 1
+
+When an element is added to the queue, the value of REAR is increased by 1; this can be
+
+implemented by the assignment REAR := REAR + 1
+
+vtucode.in 1

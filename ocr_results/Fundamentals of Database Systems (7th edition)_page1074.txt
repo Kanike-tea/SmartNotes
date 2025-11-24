@@ -1,0 +1,48 @@
+1044 Chapter 27 Introduction to Information Retrieval and Web Search
+
+deployment systems for indexing large unstructured document collections. The
+enterprise search application built on top of Lucene is called Solr. Solr is a Web
+server application that provides support for faceted search (see Section 27.8.1 on
+faceted search), custom format document processing support (such as PDF, HTML,
+etc.), and Web services for several API functions for indexing and search in Lucene.
+
+27.6 Evaluation Measures
+of Search Relevance
+
+Without proper evaluation techniques, one cannot compare and measure the rele-
+vance of different retrieval models and IR systems in order to make improvements.
+Evaluation techniques of IR systems measure the topical relevance and user rele-
+vance. Topical relevance measures the extent to which the topic of a result matches
+the topic of the query. Mapping one’s information need with “perfect” queries is a
+cognitive task, and many users are not able to effectively form queries that would
+retrieve results more suited to their information need. Also, since a major chunk of
+user queries are informational in nature, there is no fixed set of right answers to
+show to the user. User relevance is a term used to describe the “goodness” of a
+retrieved result with regard to the user’s information need. User relevance includes
+other implicit factors, such as user perception, context, timeliness, the user’s envi-
+ronment, and current task needs. Evaluating user relevance may also involve sub-
+jective analysis and study of user retrieval tasks to capture some of the properties of
+implicit factors involved in accounting for users’ bias for judging performance.
+
+In Web information retrieval, no binary classification decision is made on whether
+a document is relevant or nonrelevant to a query (whereas the Boolean (or binary)
+retrieval model uses this scheme, as we discussed in Section 27.2.1). Instead, a rank-
+ing of the documents is produced for the user. Therefore, some evaluation mea-
+sures focus on comparing different rankings produced by IR systems. We discuss
+some of these measures next.
+
+27.6.1 Recall and Precision
+
+Recall and precision metrics are based on the binary relevance assumption (whether
+each document is relevant or nonrelevant to the query). Recall is defined as the num-
+ber of relevant documents retrieved by a search divided by the total number of actu-
+ally relevant documents existing in the database. Precision is defined as the number
+of relevant documents retrieved by a search divided by the total number of docu-
+ments retrieved by that search. Figure 27.5 is a pictorial representation of the terms
+retrieved versus relevant and shows how search results relate to four different sets of
+documents.
+
+The notation for Figure 27.5 is as follows:
+
+= TP: true positive
+= FP: false positive

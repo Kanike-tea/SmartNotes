@@ -1,0 +1,75 @@
+11.2 Overview of Basic Features of PHP
+
+351
+
+Figure 11.4
+Rewriting program segment P1 as P1’ using functions.
+
+//Program Segment Pl’:
+0) function display _welcome() {
+
+1) print("Welcome, ")
+
+2) print($_POST['user_name']);
+3) }
+
+4)
+
+5) function display_empty_form(); {
+
+6) print <<<_HTML_
+
+7) <FORM method="post" action="$_SERVER[ 'PHP_SELF']">
+8) Enter your name: <INPUT type="text" name="user_name">
+9) <BR/>
+
+10) <INPUT type="submit" value="Submit name">
+
+11) </FORM>
+
+12) HTML;
+
+13) }
+
+14) if ($_POST['user_name']) {
+
+15) display_welcome();
+
+16) }
+
+17) else {
+
+18)  display_empty_form();
+
+19) }
+
+Figure 11.5
+Illustrating a function with arguments and return value.
+
+0) function course_instructor ($course, $teaching_assignments) {
+1) if (array_key_exists($course, $teaching_assignments)) {
+
+2) instructor = $teaching_assignments[$course];
+
+3) RETURN "$instructor is teaching $course
+
+4) }
+5) else {
+
+6) RETURN "there is no $course course";
+7) }
+
+8) }
+
+9) $teaching = array('Database' => 'Smith', 'OS' => ‘Carrick’,
+‘Graphics' => 'Kam');
+
+10) $teaching['Graphics'] = 'Benson'; $teaching['Data Mining'] = 'Li';
+
+11) $x = course_instructor('Database', $teaching);
+
+12) print($x);
+
+13) $x = course_instructor('Computer Architecture', $teaching);
+
+14) print($x);

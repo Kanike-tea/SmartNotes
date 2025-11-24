@@ -1,0 +1,52 @@
+386
+
+Chapter 12 Object and Object-Relational Databases
+
+12.2.6 Specifying Relationships via Reference
+
+A component attribute of one tuple may be a reference (specified using the key-
+word REF) to a tuple of another (or possibly the same) table. An example is shown
+in Figure 12.4(e).
+
+The keyword SCOPE specifies the name of the table whose tuples can be referenced
+by the reference attribute. Notice that this is similar to a foreign key, except that the
+system-generated OID value is used rather than the primary key value.
+
+SQL uses a dot notation to build path expressions that refer to the component
+attributes of tuples and row types. However, for an attribute whose type is REF, the
+dereferencing symbol —> is used. For example, the query below retrieves employees
+working in the company named ‘ABCXYZ’ by querying the EMPLOYMENT table:
+
+SELECT —_ E.Employee->NAME
+FROM EMPLOYMENT AS E
+WHERE E.Company->COMP_NAME = ‘ABCXYZ’;
+
+In SQL, -> is used for dereferencing and has the same meaning assigned to it in the
+C programming language. Thus, if r is a reference to a tuple (object) and a is a com-
+ponent attribute in that tuple, then r -> a is the value of attribute a in that tuple.
+
+If several relations of the same type exist, SQL provides the SCOPE keyword by
+which a reference attribute may be made to point to a tuple within a specific table of
+that type.
+
+12.3 The ODMG Object Model and the Object
+Definition Language ODL
+
+As we discussed in the introduction to Chapter 6, one of the reasons for the success
+of commercial relational DBMSs is the SQL standard. The lack of a standard for
+ODBs for several years may have caused some potential users to shy away from con-
+verting to this new technology. Subsequently, a consortium of ODB vendors and
+users, called ODMG (Object Data Management Group), proposed a standard that is
+known as the ODMG-93 or ODMG 1.0 standard. This was revised into ODMG 2.0,
+and later to ODMG 3.0. The standard is made up of several parts, including the
+object model, the object definition language (ODL), the object query language
+(OQL), and the bindings to object-oriented programming languages.
+
+In this section, we describe the ODMG object model and the ODL. In Section 12.4,
+we discuss how to design an ODB from an EER conceptual schema. We will give an
+overview of OQL in Section 12.5, and the C++ language binding in Section 12.6.
+Examples of how to use ODL, OQL, and the C++ language binding will use the
+UNIVERSITY database example introduced in Chapter 4. In our description, we will
+follow the ODMG 3.0 object model as described in Cattell et al. (2000).17 It is
+
+'7The earlier versions of the object model were published in 1993 and 1997.

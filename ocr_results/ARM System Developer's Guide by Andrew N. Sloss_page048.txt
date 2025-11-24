@@ -1,0 +1,44 @@
+2.5 Core Extensions 35
+
+Logic and control
+
+D I
+
+Data ){Instruction] PD}
+TCM TCM
+
+( Main memot
+
+On-chip AMBA bus
+
+Figure 2.14 A simplified Harvard architecture with TCMs.
+
+By contrast, the second form, attached to the Harvard-style cores, has separate caches
+for data and instruction.
+
+‘A cache provides an overall increase in performance but at the expense of predictable
+execution. But for real-time systems it is paramount that code execution is deterministic—
+the time taken for loading and storing instructions or data must be predictable. This is
+achieved using a form of memory called tightly coupled memory (TCM). TCM is fast SRAM
+located close to the core and guarantees the clock cycles required to fetch instructions or
+data—critical for real-time algorithms requiring deterministic behavior. TCMs appear as
+memory in the address map and can be accessed as fast memory. An example of a processor
+with TCMs is shown in Figure 2.14.
+
+By combining both technologies, ARM processors can have both improved performance
+and predictable real-time response. Figure 2.15 shows an example core with a combination
+of caches and TCMs.
+
+2.5.2 MEMORY MANAGEMENT
+
+Embedded systems often use multiple memory devices. It is usually necessary to have a
+method to help organize these devices and protect the system from applications trying to
+make inappropriate accesses to hardware. This is achieved with the assistance of memory
+management hardware.
+
+ARM cores have three different types of memory management hardware—no extensions
+providing no protection, a memory protection unit (MPU) providing limited protection,
+and a memory management unit (MMU) providing full protection:
+
+= Nonprotected memory is fixed and provides very little flexibility. It is normally used for
+small, simple embedded systems that require no protection from rogue applications.

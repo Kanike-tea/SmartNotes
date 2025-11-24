@@ -1,0 +1,56 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Unions
+> This is similar to a structure, but the fields of a union must share their memory space.
+
+This means that only one field of the union is "active" at any given time.
+
+typedef struct sex—type {
+enum tag-field {female, male
+} sex;
+
+union {
+
+int children;
+int beard ;
+
+} ou;
+
+Mi
+
+typedef struct human—being {
+char name[10];
+
+int age;
+
+float salary;
+
+date dob;
+
+sex—type sex—info;
+
+Mi
+
+human—being personl, person2;
+
+> We could assign values to person! and person? as:
+
+personl.sex—info.sex = male;
+personl.sex—info.u.beard = FALSE;
+
+and
+person2.sex=info.sex = female;
+person2.sex-info.u.children - 4;
+
+> we first place a value in the tag field. This allows us to determine which field in the union
+
+is active. We then place a value in the appropriate field of the union.
+
+Internal Implementation Of Structures
+e The size of an object of a struct or union type is the amount of storage necessary to
+represent the largest component, including any padding that may be required.
+¢ Structures must begin and end on the same type of memory boundary, for example, an
+
+even byte boundary or an address that is a multiple of 4, 8, or 16.
+
+vtucode.in 22

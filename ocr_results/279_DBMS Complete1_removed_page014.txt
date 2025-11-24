@@ -1,0 +1,42 @@
+cardinalities must be one of the following:
+
+1. One to One:
+An entity in A is associated with at most one entity in B, and an entity in B is associated with at
+most one entity in A.
+
+Eg: relationship between college and principal
+1 1
+college principal
+
+2. One to Many:
+An entity in A is associated with any number of entities in B. An entity in B is associated with at the
+most one entity in A.
+
+Eg: Relationship between department and faculty
+1 M
+
+Department Faculty
+
+3. Many to One:
+An entity in A is associated with at most one entity in B. An entity in B is associated with any
+number in A.
+
+lemp Department
+
+4. Many to Many:
+Entities in A and B are associated with any number of entities from each other.
+
+M N
+
+customer account
+deposits
+
+More about Entities and Relationship:
+
+Recursive Relationships:
+When the same entity type participates more than once in a relationship type in different roles, the
+relationship types are called recursive relationships.
+
+Participation Constraints:
+The participation constraints specify whether the existence of any entity depends on its being
+related to another entity via the relationship. There are two types of participation constraints

@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+For any nonempty binary tree, T, if nO is the number of leaf nodes and n2 the number of
+nodes of degree 2, then n0 =n2 + 1.
+Proof: Let ni be the number of nodes of degree one and n the total number of nodes.
+Since all nodes in T are at most of degree two, we have
+
+n=n0 +nl+n2 @
+Count the number of branches in a binary tree. If B is the number of branches,
+
+then n =B + 1.
+
+All branches stem from a node of degree one or two. Thus,
+
+B =n 1+ 2n.
+Hence, we obtain
+
+n=Bt+l= n1+2n2+1 (2)
+Subtracting Eq. (2) from Eq. (1) and rearranging terms, we get
+
+no =n2 +1
+
+Consider the figure:
+
+LEVEL
+RY
+“= is ;
+B) 2
+QOGS =
+:
+H ry 4
+i ®
+(by
+
+Here, For Figure (b) n2=4, no= n2+1= 4+1=5 Therefore, the total number of leaf node=5
+
+vtucode.in 17

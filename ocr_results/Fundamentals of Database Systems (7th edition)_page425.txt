@@ -1,0 +1,51 @@
+12.3 The ODMG Object Model and the Object Definition Language ODL
+
+Object
+
+4 SS
+Iterator Collection Date Time Interval
+
+4 Timestamp
+Figure 12.6
+
+set list bag array dictionary
+
+395
+
+Inheritance hierarchy for the built-in
+interfaces of the object model.
+
+The last type of collection objects are of type dictionary<K,V>. This allows the cre-
+ation of a collection of association pairs <K,V>, where all K (key) values are unique.
+Making the key values unique allows for associative retrieval of a particular pair
+given its key value (similar to an index). If O is a collection object of type
+dictionary<K,V>, then O.bind(K,V) binds value V to the key K as an association
+<K,V> in the collection, whereas O.unbind(K) removes the association with key K
+from O, and V = O.lookup(K) returns the value V associated with key K in O. The
+latter two operations can raise the exception KeyNotFound. Finally, O.contains_key(K)
+returns true if key K exists in O, and returns false otherwise.
+
+Figure 12.6 is a diagram that illustrates the inheritance hierarchy of the built-in
+constructs of the object model. Operations are inherited from the supertype to the
+subtype. The collection interfaces described above are not directly instantiable; that
+is, one cannot directly create objects based on these interfaces. Rather, the inter-
+faces can be used to generate user-defined collection types—of type set, bag, list,
+array, or dictionary—for a particular database application. If an attribute or class has
+a collection type, say a set, then it will inherit the operations of the set interface. For
+example, in a UNIVERSITY database application, the user can specify a type for
+set<STUDENT>, whose state would be sets of STUDENT objects. The programmer
+can then use the operations for set<T> to manipulate an object of type
+set<STUDENT>. Creating application classes is typically done by utilizing the object
+definition language ODL (see Section 12.3.6).
+
+It is important to note that all objects in a particular collection must be of the same
+type. Hence, although the keyword any appears in the specifications of collection
+interfaces in Figure 12.5(c), this does not mean that objects of any type can be inter-
+mixed within the same collection. Rather, it means that any type can be used when
+specifying the type of elements for a particular collection (including other collec-
+tion types!).
+
+12.3.4 Atomic (User-Defined) Objects
+
+The previous section described the built-in collection types of the object model.
+Now we discuss how object types for atomic objects can be constructed. These are

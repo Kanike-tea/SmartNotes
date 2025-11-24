@@ -1,0 +1,54 @@
+27.5 Inverted Indexing
+
+term occurs. The simplest form of vocabulary terms consists of words or individual
+tokens of the documents. In some cases, these vocabulary terms also consist of
+phrases, n-grams, entities, links, names, dates, or manually assigned descriptor
+terms from documents and/or Web pages. For each term in the vocabulary, the cor-
+responding document id’s, occurrence locations of the term in each document,
+number of occurrences of the term in each document, and other relevant informa-
+tion may be stored in the document information section.
+
+Weights are assigned to document terms to represent an estimate of the usefulness
+of the given term as a descriptor for distinguishing the given document from other
+documents in the same collection. A term may be a better descriptor of one docu-
+ment than of another by the weighting process (see Section 27.2).
+
+An inverted index of a document collection is a data structure that attaches distinct
+terms with a list of all documents that contains the term. The process of inverted
+index construction involves the extraction and processing steps shown in Fig-
+ure 27.2. Acquired text is first preprocessed and the documents are represented
+with the vocabulary terms. Documents’ statistics are collected in document lookup
+tables. Statistics generally include counts of vocabulary terms in individual docu-
+ments as well as different collections, their positions of occurrence within the docu-
+ments, and the lengths of the documents. The vocabulary terms are weighted at
+indexing time according to different criteria for collections. For example, in some
+cases terms in the titles of the documents may be weighted more heavily than terms
+that occur in other parts of the documents.
+
+One of the most popular weighting schemes is the TF-IDF (term frequency-inverse
+document frequency) metric that we described in Section 27.2. For a given term,
+this weighting scheme distinguishes to some extent the documents in which the
+term occurs more often from those in which the term occurs very little or never.
+These weights are normalized to account for varying document lengths, further
+ensuring that longer documents with proportionately more occurrences of a word
+are not favored for retrieval over shorter documents with proportionately fewer
+occurrences. These processed document-term streams (matrices) are then inverted
+into term-document streams (matrices) for further IR steps.
+
+Figure 27.4 shows an illustration of term-document-position vectors for the four
+illustrative terms—example, inverted, index, and market—which shows the posi-
+tions where each term occurs in the three documents.
+
+The steps involved in inverted index construction can be summarized as follows:
+
+1. Break the documents into vocabulary terms by tokenizing, cleansing, remov-
+ing stopwords, stemming, and/or using an additional thesaurus as vocabulary.
+
+2. Collect document statistics and store the statistics in a document lookup
+table.
+
+3. Invert the document-term stream into a term-document stream along with
+additional information such as term frequencies, term positions, and term
+weights.
+
+1041

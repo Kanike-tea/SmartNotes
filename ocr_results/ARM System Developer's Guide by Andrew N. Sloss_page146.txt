@@ -1,0 +1,46 @@
+5.8 Bit-fields 133
+
+Summary _ Efficient Structure Arrangement
+
+= Lay structures out in order of increasing element size. Start the structure with the
+smallest elements and finish with the largest.
+
+= Avoid very large structures. Instead use a hierarchy of smaller structures.
+
+= For portability, manually add padding (that would appear implicitly) into API
+structures so that the layout of the structure does not depend on the compiler.
+
+= Beware of using enum types in API structures. The size of an enum type is compiler
+dependent.
+
+5.8 BIT-FIELDS
+
+Bit-fields are probably the least standardized part of the ANSI C specification. The compiler
+can choose how bits are allocated within the bit-field container. For this reason alone, avoid
+using bit-fields inside a union or in an API structure definition. Different compilers can
+assign the same bit-field different bit positions in the container.
+
+It is also a good idea to avoid bit-fields for efficiency. Bit-fields are structure ele-
+ments and usually accessed using structure pointers; consequently, they suffer from the
+pointer aliasing problems described in Section 5.6. Every bit-field access is really a memory
+access. Possible pointer aliasing often forces the compiler to reload the bit-field several
+times.
+
+The following example, dostages_v1, illustrates this problem. It also shows that
+compilers do not tend to optimize bit-field testing very well.
+
+void dostageA(void) ;
+void dostageB(void) ;
+void dostageC (void) ;
+
+typedef struct {
+unsigned int stageA : 1;
+unsigned int stageB : 1;
+unsigned int stageC : 1;
+} Stages_v1;
+
+void dostages_v1(Stages_v1 *stages)
+{
+if (stages->stageA)
+{
+dostageA();

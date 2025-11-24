@@ -1,0 +1,53 @@
+10.1 Firmware and Bootloader 369
+
+Diagnostics software provides a useful way for quickly identifying basic hardware
+malfunctions. Because of the nature of this type of software, it tends to be specific to
+a particular piece of hardware.
+
+Debug capabiliy is provided in the form of a module or monitor that provides software
+assistance for debugging code running on a hardware target. This assistance includes the
+following:
+
+= Setting up breakpoints in RAM. A breakpoint allows a program to be interrupted and
+the state of the processor core to be examined.
+
+= Listing and modifying memory (using peek and poke operations).
+= Showing current processor register contents.
+
+= Disassembling memory into ARM and Thumb instruction mnemonics.
+
+These are interactive functions: you can either send the commands through a command
+line interpreter (CLI) or through a dedicated host debugger attached to the target platform.
+Unless the firmware has access to the internal hardware debug circuitry, only RAM images
+can be debugged through a software debug mechanism.
+
+The CLI is commonly available on the more advanced firmware implementations. It
+allows you to change the operating system to be booted by altering the default configurations
+through typing commands at a command prompt. For embedded systems, the CLI is
+commonly controlled through a host terminal application. Communication between the
+host and the target is normally over a serial or network connection.
+
+The second stage is to abstract the hardware. The Hardware Abstraction Layer (HAL) is
+a software layer that hides the underlying hardware by providing a set of defined pro-
+gramming interfaces. When you move to a new target platform, these programming
+interfaces remain constant but the underlying implementation changes. For instance, two
+target platforms might use a different timer peripheral. Each peripheral would require
+new code to initialize and configure the device. The HAL programming interface would
+remain unaltered even though both the hardware and software may differ greatly between
+implementations.
+
+The HAL software that communicates with specific hardware peripherals is called a
+device driver. A device driver provides a standard application programming interface (API)
+to read and write to a specific peripheral.
+
+The third stage is to load a bootable image. The ability of firmware to carry out this
+activity depends upon the type of media used to store the image. Note that not all operating
+system images or application images need to be copied into RAM. The operating system
+image or application image can simply execute directly from ROM.
+
+ARM processors are normally found in small devices that include flash ROM. A common
+feature is a simple flash ROM filing system (FFS), which allows multiple executable images
+to be stored.
+
+Other media devices, such as hard drives, require that the firmware incorporates a
+device driver that is suitable for accessing the hardware. Accessing the hardware requires

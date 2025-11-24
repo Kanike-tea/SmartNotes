@@ -1,0 +1,51 @@
+16.2 Secondary Storage Devices
+
+reserved area in main storage that holds one disk block—is also provided. For a
+read command, the disk block is copied into the buffer; whereas for a write com-
+mand, the contents of the buffer are copied into the disk block. Sometimes several
+contiguous blocks, called a cluster, may be transferred as a unit. In this case, the
+buffer size is adjusted to match the number of bytes in the cluster.
+
+The actual hardware mechanism that reads or writes a block is the disk read/write
+head, which is part of a system called a disk drive. A disk or disk pack is mounted
+in the disk drive, which includes a motor that rotates the disks. A read/write head
+includes an electronic component attached to a mechanical arm. Disk packs with
+multiple surfaces are controlled by several read/write heads—one for each surface,
+as shown in Figure 16.1(b). All arms are connected to an actuator attached to
+another electrical motor, which moves the read/write heads in unison and positions
+them precisely over the cylinder of tracks specified in a block address.
+
+Disk drives for hard disks rotate the disk pack continuously at a constant speed (typ-
+ically ranging between 5,400 and 15,000 rpm). Once the read/write head is posi-
+tioned on the right track and the block specified in the block address moves under
+the read/write head, the electronic component of the read/write head is activated to
+transfer the data. Some disk units have fixed read/write heads, with as many heads as
+there are tracks. These are called fixed-head disks, whereas disk units with an actua-
+tor are called movable-head disks. For fixed-head disks, a track or cylinder is
+selected by electronically switching to the appropriate read/write head rather than by
+actual mechanical movement; consequently, it is much faster. However, the cost of
+the additional read/write heads is high, so fixed-head disks are not commonly used.
+
+Interfacing Disk Drives to Computer Systems. A disk controller, typically
+embedded in the disk drive, controls the disk drive and interfaces it to the computer
+system. One of the standard interfaces used for disk drives on PCs and workstations
+was called SCSI (small computer system interface). Today to connect HDDs, CDs, and
+DVDs to a computer, the interface of choice is SATA. SATA stands for serial ATA,
+wherein ATA represents attachment; so SATA becomes serial AT attachment. It has
+its origin in PC/AT attachment, which referred to the direct attachment to the 16-bit
+bus introduced by IBM. The AT referred to advanced technology but is not used in the
+expansion of SATA due to trademark issues. Another popular interface used today is
+called SAS (serial attached SCSI). SATA was introduced in 2002 and allows the disk
+controller to be in the disk drive; only a simple circuit is required on the motherboard.
+SATA transfer speeds underwent an evolution from 2002 to 2008, going from 1.5 Gbps
+(gigabits per second) to 6 Gbps. SATA is now called NL-SAS for nearline SAS. The
+largest 3.5-inch SATA and SAS drives are 8TB, whereas 2.5-inch SAS drives are smaller
+and go up to 1.2TB. The 3.5-inch drives use 7,200 or 10,000 rpm speed whereas
+2.5-inch drives use up to 15,000 rpm. In terms of IOPs (input/output operations) per
+second as a price to performance index, SAS is considered superior to SATA.
+
+The controller accepts high-level I/O commands and takes appropriate action to
+position the arm and causes the read/write action to take place. To transfer a disk
+block, given its address, the disk controller must first mechanically position the
+
+551

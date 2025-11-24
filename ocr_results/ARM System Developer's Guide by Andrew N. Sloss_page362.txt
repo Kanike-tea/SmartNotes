@@ -1,0 +1,54 @@
+Table 9.10
+
+Interrupt controller registers.
+
+9.3 Interrupt Handling Schemes 349
+
+Register Offset R/W Description
+
+IRQRawStatus +0x04 or represents status of the interrupt sources
+
+IRQEnable +0x08 or masks the interrupt sources that generate IRQ/FIQ to the CPU
+IRQStatus +0x00 or represents interrupt sources after masking
+
+IRQEnableSet +0x08 ow sets bits in the interrupt enable register
+
+IRQEnableClear +0x0c w clears bits in the interrupt enable register
+
+IRQ_Handler ; instruction state : comment
+suB. orld, rl4, #4 3 2: rld_irg -= 4
+STMFD r13!, {r14} 3 2: save rl4_irg
+MRS rd, spsr 3 2 : copy spsr_irq
+STMFD r13!, {rl0,rll,rl2,r14}  ; 2 : save context
+LOR rl, =ic_Base 3 3: int crt] addr
+MOV rll, #PRIORITY 3 ; 3: default priority
+LOR =r, [ri4, #IRQStatus] ; 3: load IRQ status
+TsT lO, #BINARY 3 34: if Timer 2
+MOVNE rll, #PRIORITY 3 34: then P3(1o)
+TsT —rl0, #BINARY 2 34: if Timer 1
+MOVNE rll, #PRIORITY 2 34: then P2
+TsT lO, #BINARY_1 34: if Comm Ix
+MOVNE rll, #PRIORITY_1 34: then Pl
+TsT lO, #BINARY_0 3 4: if Comm Rx
+MOVNE rll, #PRIORITY_0 34: then PO(hi)
+LOR rl, [rl4,#1RQEnable] 3 4: IRQEnable reg
+ADR rl0, priority_masks ; 4: mask address
+LOR =r, [rl0,r11,LSL #2] 3 4: priority value
+AND rl2, rl2,r10 ; 4: AND enable reg
+STR rl2, [r14,#IRQEnableClear] ; 4 : disable ints
+MRS rd, cpsr 3 4: copy cpsr
+BIC rld, ria, #1_Bit 34: clear I-bit
+MSR cpsr_c, 14 ; 4: enable IRQ ints
+LOR pc, [pc, rll, LSL#2] ; 5 : jump to an ISR
+NOP ;
+
+DCD —service_timer1 ; timerl ISR
+DCD —_service_commtx 3 commtx ISR
+DCD service_commrx 3 commrx ISR
+DCD —service_timer2 ; timer2 ISR
+
+priority_masks
+
+DCD MASK_2
+
+priority mask 2

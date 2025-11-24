@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+LINKED LIST
+
+DEFINITION
+A linked list, or one-way list, is a linear collection of data elements, called nodes, where
+the linear order is given by means of pointers. That is,each node is divided into two parts:
+e The first part contains the information of the element, and
+e The second part, called the link field or nextpointer field, contains the address of
+the next node in the list.
+A linked list is a dynamic data structure where each element (called a node) is made up of
+two items - the data and a reference (or pointer) which points to the:next node. A linked list is
+a collection of nodes where each node is connected to the next node through a pointer.
+first
+
+~
+
+Usual way to draw a linked list
+
+NAME
+
+TART
+
+Nextpointer f
+Information par
+
+Fig: Linked list with 6 nodes
+
+In the above figure each node is pictured with two parts.
+> The left part represents the information part of the node, which may contain an entire
+record of data items.
+> The right part represents the link field of the node
+> An arrow drawn from a node to the next node in the list.
+> The pointer of the last node contains a special value, called the NULL.
+A pointer variable called first which contains the address of the first node. A special case is the
+
+list that has no nodes; such a list is called the null list or empty list and is denoted by the null
+
+pointer in the variable first.
+
+vtucode.in 14

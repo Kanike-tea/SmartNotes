@@ -1,0 +1,52 @@
+12.5 The Object Query Language OOL
+
+In Section 12.5.1 we will discuss the syntax of simple OQL queries and the concept
+of using named objects or extents as database entry points. Then, in Section 12.5.2
+we will discuss the structure of query results and the use of path expressions to tra-
+verse relationships among objects. Other OQL features for handling object identity,
+inheritance, polymorphism, and other object-oriented concepts are discussed in
+Section 12.5.3. The examples to illustrate OQL queries are based on the UNIVERSITY
+database schema given in Figure 12.10.
+
+12.5.1 Simple OQL Queries, Database Entry Points,
+and Iterator Variables
+
+The basic OQL syntax is a select ... from ... where ... structure, as it is for SQL. For
+example, the query to retrieve the names of all departments in the college of
+‘Engineering’ can be written as follows:
+
+Q0: select D.Dname
+from Din DEPARTMENTS
+where _D..College = ‘Engineering’;
+
+In general, an entry point to the database is needed for each query, which can be
+any named persistent object. For many queries, the entry point is the name of the
+extent of a class. Recall that the extent name is considered to be the name of a persis-
+tent object whose type is a collection (in most cases, a set) of objects from the class.
+Looking at the extent names in Figure 12.10, the named object DEPARTMENTS is of
+type set<DEPARTMENT>; PERSONS is of type set<PERSON>; FACULTY is of type
+set<FACULTY>; and so on.
+
+The use of an extent name—DEPARTMENTS in QO—as an entry point refers to a
+persistent collection of objects. Whenever a collection is referenced in an OQL
+query, we should define an iterator variable**—D in Qo—that ranges over each
+object in the collection. In many cases, as in QO, the query will select certain objects
+from the collection, based on the conditions specified in the where clause. In QO,
+only persistent objects D in the collection of DEPARTMENTS that satisfy the condi-
+tion D.College = ‘Engineering’ are selected for the query result. For each selected
+object D, the value of D.Dname is retrieved in the query result. Hence, the type of the
+result for QO is bag<string> because the type of each Dname value is string (even
+though the actual result is a set because Dname is a key attribute). In general, the
+result of a query would be of type bag for select ... from ... and of type set for select
+distinct ... from ... , as in SQL (adding the keyword distinct eliminates duplicates).
+
+Using the example in Q0, there are three syntactic options for specifying iterator
+variables:
+
+D in DEPARTMENTS
+DEPARTMENTS D
+DEPARTMENTS AS D.
+
+38 This is similar to the tuple variables that range over tuples in SQL queries.
+
+409

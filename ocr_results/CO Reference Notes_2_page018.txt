@@ -1,0 +1,66 @@
+Problem 1:
+Write a program that can evaluate the expression A*B+C*D In a single-accumulator processor. Assume
+that the processor has Load, Store, Multiply, and Add instructions and that all values fit in the
+accumulator
+Solution:
+A program for the
+
+expression is:
+
+Load A
+
+Multiply B
+
+Store
+
+RESULT
+
+Load C
+
+Multiply D
+
+Add
+
+RESULT
+
+Store RESULT
+
+Problem 2:
+Registers R1 and R2 of a computer contains the decimal values 1200 and 4600. What is the effective-
+address of the memory operand in each of the following instructions?
+
+(a) Load 20(R1), R5 (b) Move #3000,R5  (c) Store R5,30(R1,R2
+
+(d) Add -(R2),R5 (e) Subtract (R1)+.R5
+Solution:
+
+(a) EA = [R1]+Offset=1200+20 = 1220
+
+(b) EA = 3000
+
+(c) EA = [R1]+[R2]+Offset =
+12004+4600+30=5830 (d) EA = [R2]-1 = 4599
+(e) EA = [RI] = 1200
+
+Problem 3:
+Registers R1 and R2 of a computer contains the decimal values 2900 and 3300. What is the effective-
+address of the memory operand in each of the following instructions?
+(a) Load R1,55(R2) (b) Move #2000,R7 (c) Store 95(R1,R2),R5  (d) Add (R1)+.R5
+(e) Subtract-(R2),R5
+Solution:
+a Load R1,55(R2) > This is indexed addressing mode. So EA =55+R2=55+3300=3355.
+b) Move #2000,R7 > This is an immediate addressing mode. So, EA =2000
+Q Store 95(R1,R2),R5 > This is a variation of indexed addressing mode, in which contents of 2
+registers are added with the offset or index to generate EA. So,
+95+R1+R2=95+2900+3300=6255.
+d@ Add (R1)+,R5 > This is Autoincrement mode. Contents of R1 are the EA so, 2900 is the EA.
+©) Subtract -(R2),R5 > This is Auto decrement mode. Here, R2 is subtracted by 4
+bytes (assuming 32-bt processor) to generate the EA, so, EA= 3300-4=3296.
+
+Problem 4:
+Given a binary pattern in some memory-location, is it possible to tell whether this pattern represents a
+machine instruction or a number?
+Solution:
+No; any binary pattern can be interpreted as a number or as an instruction
+
+Page 19

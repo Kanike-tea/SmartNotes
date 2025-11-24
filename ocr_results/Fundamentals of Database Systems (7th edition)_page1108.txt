@@ -1,0 +1,51 @@
+1078 Chapter 28 Data Mining Concepts
+
+containing the item rather than the fraction of transactions containing the item.
+The frequent 1-itemsets are then sorted in nonincreasing order of their support.
+Next, the root of the FP-tree is created with a NULL label. The database is scanned a
+second time and for each transaction T in the database, the frequent 1-itemsets in T
+are placed in order as was done with the frequent 1-itemsets. We can designate this
+sorted list for T as consisting of a first item, the head, and the remaining items, the
+tail. The itemset information (head, tail) is inserted into the FP-tree recursively,
+starting at the root node, as follows:
+
+1. If the current node, N, of the FP-tree has a child with an item name = head,
+then increment the count associated with node N by 1, else create a new
+node, N, with a count of 1, link N to its parent and link N with the item
+header table (used for efficient tree traversal).
+
+2. If the tail is nonempty, then repeat step (1) using as the sorted list only the
+tail, that is, the old head is removed and the new head is the first item from
+the tail and the remaining items become the new tail.
+
+The item header table, created during the process of building the FP-tree, contains
+three fields per entry for each frequent item: item identifier, support count, and
+node link. The item identifier and support count are self-explanatory. The node
+link is a pointer to an occurrence of that item in the FP-tree. Since multiple occur-
+rences of a single item may appear in the FP-tree, these items are linked together as
+a list where the start of the list is pointed to by the node link in the item header
+table. We illustrate the building of the FP-tree using the transaction data in Fig-
+ure 28.1. Let us use a minimum support of 2. One pass over the four transactions
+yields the following frequent 1-itemsets with associated support: {{(milk, 3)},
+{(bread, 2)}, {(cookies, 2)}, {(juice, 2)}}. The database is scanned a second time and
+each transaction will be processed again.
+
+For the first transaction, we create the sorted list, T = {milk, bread, cookies, juice}.
+The items in T are the frequent 1-itemsets from the first transaction. The items are
+ordered based on the nonincreasing ordering of the count of the 1-itemsets found
+in pass 1 (that is, milk first, bread second, and so on). We create a NULL root node
+for the FP-tree and insert milk as a child of the root, bread as a child of milk, cookies
+as a child of bread, and juice as a child of cookies. We adjust the entries for the fre-
+quent items in the item header table.
+
+For the second transaction, we have the sorted list {milk, juice}. Starting at the root,
+we see that a child node with label milk exists, so we move to that node and update
+its count (to account for the second transaction that contains milk). We see that
+there is no child of the current node with label juice, so we create a new node with
+label juice. The item header table is adjusted.
+
+The third transaction only has 1-frequent item, {milk}. Again, starting at the root,
+we see that the node with label milk exists, so we move to that node, increment its
+count, and adjust the item header table. The final transaction contains frequent
+items, {bread, cookies}. At the root node, we see that a child with label bread does
+not exist. Thus, we create a new child of the root, initialize its counter, and then

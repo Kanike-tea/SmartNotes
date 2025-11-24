@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+= Transaction T1
++ transfers N reservations from one flight whose number of reserved _ seats is stored
+in the database item named X to another flight whose number of reserved seats is
+stored in the database item named Y.
+
+= Transaction T2
+
++ reserves M seats on the first flight (X)
+
+1. The Lost Update Problem
+= occurs when two transactions that access the same DB items have their operations
+interleaved in a way that makes the value of some DB item incorrect
+= Suppose that transactions T1 and T2 are submitted at approximately the same time, and
+
+suppose that their operations are interleaved as shown in Figure below
+
+qT; To
+read_item(X);
+X=X-N;
+read_item(X);
+X =X+M;
+
+Time | | write_item(X);
+read_item(Y); a Item X has an incorrect value because
+wmiteditem(), its update by 7, is /ost (overwritten).
+
+Y=Y4+N;
+1 write_item(Y);
+
+= Final value of item X is incorrect because T2 reads the value of X before T1 changes it in
+the database, and hence the updated value resulting from 71 is lost.
+= For example:
+X = 80 at the start (there were 80 reservations on the flight)
+N = 5 (11 transfers 5 seat reservations from the flight corresponding
+to X to the flight corresponding to Y)
+M = 4 (T2 reserves 4 seats on X)
+The final result should be X = 79.
+= The interleaving of operations shown in Figure is X = 84 because the update in T1 that
+
+removed the five seats from X was lost.
+
+https://vtucode.in 7

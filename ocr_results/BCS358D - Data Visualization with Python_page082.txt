@@ -1,0 +1,48 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+PROGRAM
+
+import plotly.graph_objects as go
+import plotly.offline as pyo
+import pandas as pd
+
+pubg = pd.read_csv('D:\dvwithpython_lab\Custom-Data-PUBG.csv"')
+
+#pubg.head (10)
+
+df_pubg = pubg.apply(pd.to_numeric, errors='ignore')
+
+df_new_pubg = df_pubg.head (10)
+df_bar_pubg = df_pubg.head (30)
+
+x = df_bar_pubg['solo Wins']
+= df_bar_pubg['solo_TimeSurvived']
+z = df_bar_pubg['solo_RoundsPlayed']
+
+tracel = go.Scatter3d(
+X=X,
+Y=Yr
+Z=Z,
+mode='markers',
+marker=dict (
+size=12,
+color=z,
+colorscale='Viridis',
+opacity=0.8))
+
+data = [tracel]
+layout = go.Layout (
+margin=dict (
+1=0,
+r=0,
+b=0,
+t=0)
+
+fig = go.Figure(data=data, layout=layout)
+pyo.plot(fig, filename='3d-pubg-plot.html1')
+
+OUTPUT
+
+Dept. of CSE 67
+
+GSSSIETW, Mysuru

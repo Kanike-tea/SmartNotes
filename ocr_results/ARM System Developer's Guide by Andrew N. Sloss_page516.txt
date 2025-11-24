@@ -1,0 +1,44 @@
+Figure 14.6
+
+14.4 Page Tables 503
+
+31 2019 1211109 8 543210
+Base address SBZ AP|0] Domain |1]C}B|1 0
+Section entry
+31 109 8 210
+Coarse page table Base address 10 | Domain |1 |SBZ}0| 1
+31 12 98 543210
+Fine page table Base address SBZ | Domain |1 |SBz}1 |1
+31 210
+Fault 9/9)
+
+SBZ = should be zero
+
+LI page table entries.
+
+A section page table entry points to a 1 MB section of memory. The upper 12 bits of
+the page table entry replace the upper 12 bits of the virtual address to generate the physical
+address. A section entry also contains the domain, cached, buffered, and access permission
+attributes, which we discuss in Section 14.6.
+
+A coarse page entry contains a pointer to the base address of a second-level coarse page
+table. The coarse page table entry also contains domain information for the 1 MB section
+of virtual memory represented by the L1 table entry. For coarse pages, the tables must be
+aligned on an address multiple of 1 KB.
+
+A fine page table entry contains a pointer to the base address of a second-level fine page
+table. The fine page table entry also contains domain information for the 1 MB section of
+virtual memory represented by the LI table entry. Fine page tables must be aligned on an
+address multiple of 4 KB.
+
+A fault page table entry generates a memory page fault. The fault condition results in
+either a prefetch or data abort, depending on the type of memory access attempted.
+
+The location of the L1 master page table in memory is set by writing to the CP15:c2
+register.
+
+14.4.2. THE L1 TRANSLATION TABLE BASE ADDRESS
+
+‘The CP15:c2 register holds the translation table base address (TTB)—an address pointing
+to the location of the master L1 table in virtual memory. Figure 14.7 shows the format of
+CP15:c2 register.

@@ -1,0 +1,190 @@
+defined, 376
+object persistence and, 373
+ODMG models, 373, 376-377, 398
+persistent collection for, 373, 376
+transient collection for, 376
+type hierarchy and, 376-377
+External hashing, 575-577
+External (schema) level (views), 37
+External sorting, files, 568
+External sorting algorithms, 660-663
+Extraneous attribute, 510
+F-score, IR, 1046-1047
+Faceted search, IR, 1058-1059
+Fact constellation, 1109
+Fact tables, 1108
+Factory objects, ODMG models, 398-400
+Facts, relation schema and, 156
+Fan-out, multilevel indexes, 613, 622
+Fault, DDBs, 844-845
+Fault tolerance, Big data technology and,
+942, 946
+Federated database (FDBS) schema
+architecture, 871-872
+Federated database system (FDBS),
+866-868
+Federated DBMS, 52
+FETCH command, SQL, 317, 319-320
+FETCH INTO command, 325
+Fibre Channel over Ethernet (FCoE),
+590-591
+Fibre Channel over IP (FCIP), 590
+Fields
+connecting, 582-583
+data type of, 560
+Fields, records, 560, 561-563, 568-569
+fixed-length records, 561
+key, 568
+mixed records, 582-583
+optional, 562
+ordered records, 568-569
+ordering, 568
+record type, 583
+records, 560, 561-563, 568-569
+repeating, 562~563
+variable-length records, 561
+Fifth normal form (SNF)
+definition of, 494
+functional dependency in, 532
+join dependency (JD) in, 494-495,
+530-531
+inclusion dependency in, 531-532
+File load factor, hashing, 582
+File processing, 10-11
+File servers, client/server architecture, 47
+Files
+allocating blocks on a disk, 564
+B-trees for organization of, 583
+binary search for, 570
+clustered files, 572, 583, 602-603
+data storage using, 541-542
+database catalog for, 10-11
+defined, 7
+
+dynamic files, 566
+fully inverted file, 641
+grid files, 632-633
+hashing techniques, 572-582
+headers, 564
+heaps, 567-568
+indexed-sequential, 571
+indexes, 20
+indexing structures for, 601-652
+inverted files, 641
+linear search for, 564, 567-568
+main (master) files, 571
+mixed records, 582-583
+operations on, 564-567
+ordered (sorted) records, 568-572
+overflow (transaction), 571
+records, 560-564, 567-572, 582-583
+static files, 566
+storage of, 10-11, 560-572, 582-583
+unordered records (heaps), 567-568
+Filtering input, SQL injection and, 1146
+First normal form (INF)
+atomic (indivisible) values of, 477-478
+multivalued attributes, 481
+nested relations, 479-480
+techniques for relations, 478-479
+unnest relation, 479-480
+Fixed-head disks, 551
+Fixed-length records, 561-563
+Flag fields, EER-to-relational mapping
+with, 300
+Flash memory, 543-544
+Flat files, 150
+Flat relational model, 155
+Flow analysis operations, 988
+Flow control, 1147-1149
+FLWOR expression, XQuery, 445
+FOR clause, XQuery, 445-446
+FOR UPDATE OF clause, SQL, 318
+Force/no-force rules, 817-818
+Foreign keys
+relational data modeling, 163-165
+SQL constraints, 186-187
+XML specification, 441
+Formal languages, see Relational algebra;
+Relational calculus
+Format, relational model domains, 151
+Formatting styles, HTML, 428
+Forms-based interfaces, 41
+Forms specification language, 41
+Formulas (conditions)
+atoms in, 270-271, 277-278
+Boolean conditions, 270-271
+domain relational calculus, 277-278
+tuple relational calculus, 270-271
+Fourth normal form (4NF)
+decomposition of relations, 529
+definition of, 493, 528
+functional dependency and, 527-528
+inference rules for, 527-528
+multivalued dependency (MVD) and,
+491-494, 527-528
+
+Index 1225
+
+nonadditive join decomposition into,
+530
+normalizing relations, 493-494
+FP-growth algorithm, 1077-1080
+Fragmentation transparency, DDBs,
+843-844
+Free-form search request, 1023
+Frequent-pattern (FP) tree, 1077-1080
+FROM clause, SQL, 188-189, 197, 232
+Full functional dependency, 2NF, 481-482
+Fully inverted file, 641
+Function-based indexing, 637-638
+Function call injection, SQL, 1144-1145
+Functional data models, 75
+Functional dependency (FD)
+Armstrong's axioms, 506-509
+closure, 505-506, 508
+defined, 472, 505
+equivalence of sets of, 508
+extraneous attribute, 510
+full functional dependency, 2NF, 481-482
+inference rules for, 505-509, 527-528
+left- and right-hand attributes of, 472
+legal relation states (extensions), 472
+minimal sets of, 510-512
+normal forms, 481-483
+notation for diagrams, 474
+RDB design and, 471-474, 505-512
+semantics of attributes and, 472-473
+transitive dependency, 3NE, 483
+universal schema relation for, 471-474
+Functional requirements, 61
+Functions
+aggregate, 216-219, 260-261
+built-in, 384
+hashing (randomizing), 572, 580
+inheritance specifications and, 385
+overloading, 385
+PHP programming, 350-352
+query retrieval and, 216-219
+relational algebra for, 260-261
+SQL, 216-219, 384-385
+type (class) hierarchies and, 374-375
+UDT, 384-385
+XML data creation using, 453-455
+Fuzzy checkpointing, 819, 828
+Garbage collection, 827
+Generalization
+conceptual schema refinement, 119-120
+constraints on, 113-116
+defined, 113
+design choices for, 124-128
+EER diagram notation for, 112
+EER modeling concept, 108, 112-120,
+124-128
+entity type, 126
+hierarchies, 119
+lattices, 116-119
+semantic modeling process, 131
+superclass from subclasses, 112-113
+total, 115
+UML notation for, 127-128

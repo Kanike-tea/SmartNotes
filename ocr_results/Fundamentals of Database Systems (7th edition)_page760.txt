@@ -1,0 +1,50 @@
+730
+
+Chapter 19 Query Optimization
+
+Set Operations: If the arguments for an intersection, union, or set difference are
+made of selections on the same relation, they can be rewritten as conjunction, dis-
+junction, or negation, respectively. For example, o,; (R) © 6,2 (R) can be rewritten
+aS Oc] AND c2 (R); and 6,; (R) U 6,2 (R) can be rewritten as o-) oR <2 (R). The size
+estimation can be made based on the selectivity of conditions cl and c2. Otherwise,
+the estimated upper bound on the size of r Os is the minimum of the sizes of r and s;
+the estimated upper bound on the size of r U s is the sum of their sizes.
+
+Aggregation: The size of G3 ageregate-function(A) R is NDV (G, R) since there is one
+group for each unique value of G.
+
+Outer Join : the size of R LEFT OUTER JOIN S would be |R * S| plus |R anti-join S|.
+Similarly, the size of R FULL OUTER JOIN S would be |r| plus |r anti-join s| plus
+|s anti-join r|. We discussed anti-join selectivity estimation in Section 19.5.1.
+
+19.7.3 Plan Caching
+
+In Chapter 2, we referred to parametric users who run the same queries or transac-
+tions repeatedly, but each time with a different set of parameters. For example, a
+bank teller uses an account number and some function code to check the balance in
+that account. To run such queries or transactions repeatedly, the query optimizer
+computes the best plan when the query is submitted for the first time and caches the
+plan for future use. This storing of the plan and reusing it is referred to as plan
+caching. When the query is resubmitted with different constants as parameters, the
+same plan is reused with the new parameters. It is conceivable that the plan may
+need to be modified under certain situations; for example, if the query involves
+report generation over a range of dates or range of accounts, then, depending on
+the amount of data involved, different strategies may apply. Under a variation
+called parametric query optimization, a query is optimized without a certain set of
+values for its parameters and the optimizer outputs a number of plans for different
+possible value sets, all of which are cached. As a query is submitted, the parameters
+are compared to the ones used for the various plans and the cheapest among the
+applicable plans is used.
+
+19.7.4 Top-k Results Optimization
+
+When the output of a query is expected to be large, sometimes the user is satisfied
+with only the top-k results based on some sort order. Some RDBMSs have a limit K
+clause to limit the result to that size. Similarly, hints may be specified to inform the
+optimizer to limit the generation of the result. Trying to generate the entire result
+and then presenting only the top-k results by sorting is a naive and inefficient strat-
+egy. Among the suggested strategies, one uses generation of results in a sorted order
+so that it can be stopped after K tuples. Other strategies, such as introducing addi-
+tional selection conditions based on the estimated highest value, have been pro-
+posed. Details are beyond our scope here. The reader may consult the bibliographic
+notes for details.

@@ -1,0 +1,40 @@
+Data Structures and Applications (BCS304) Module IV
+
+else
+{
+// node with only one child
+if (node->Ichild == NULL)
+{
+temp = node->rchild;
+free(node);
+return temp;
+
+}
+
+else if (node->rchild == NULL)
+
+{
+temp = node->Ichild;
+free(node);
+return temp;
+
+}
+
+// node with two children
+
+else
+
+{
+temp = node->rchild;
+while(temp->Ichild!=NULL) —_//Get the inorder successor
+
+temp=temp->Ichild;
+
+node->data.item = temp->data.item;
+node->data.key=temp->data.key;
+node->rlink = delete_element(node->rchild, temp->data.key);
+return node;
+
+wwe
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 6

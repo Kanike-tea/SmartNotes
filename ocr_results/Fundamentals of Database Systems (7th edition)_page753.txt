@@ -1,0 +1,43 @@
+19.5 Cost Functions for the JOIN Operation
+
+/\. /.
+/\. /\.
+L\ L
+
+/\ “™.
+
+AN / /,
+
+R2 R3
+R2 o
+
+Figure 19.5 / \
+
+(a) Two left-deep join query trees. R3 R4
+
+(b) A right-deep join query tree.
+
+(c) A bushy query tree. (b) (c)
+
+723
+
+cases like complex versions of snowflake schemas (see Section 29.3), approaches to
+considering bushy tree alternatives have been proposed.’
+
+With left-deep trees, the right child is considered to be the inner relation when exe-
+cuting a nested-loop join, or the probing relation when executing an index-based
+nested-loop join. One advantage of left-deep (or right-deep) trees is that they are
+amenable to pipelining, as discussed in Section 18.7. For instance, consider the first
+left-deep tree in Figure 19.5(a) and assume that the join algorithm is the index-based
+nested-loop method; in this case, a disk page of tuples of the outer relation is used to
+probe the inner relation for matching tuples. As resulting tuples (records) are pro-
+duced from the join of R1 and R2, they can be used to probe R3 to locate their match-
+ing records for joining. Likewise, as resulting tuples are produced from this join,
+they could be used to probe R4. Another advantage of left-deep (or right-deep) trees
+is that having a base relation as one of the inputs of each join allows the optimizer to
+utilize any access paths on that relation that may be useful in executing the join.
+
+If materialization is used instead of pipelining (see Sections 18.7 and 19.2), the join
+results could be materialized and stored as temporary relations. The key idea from
+
+'2As a representative case for bushy trees, refer to Ahmed et al, (2014).

@@ -1,0 +1,47 @@
+144 Chapter 5 Efficient C Programming
+
+EXAMPLE
+
+5.13
+
+Next, calculate an estimate q to n/d:
+q = (unsigned int)( ((unsigned long long)n * s) >> 32);
+
+Mathematically, the shift right by 32 introduces an error e7:
+q = ns2-** — e for some 0 < e) <1 (5.4)
+
+Substituting the value of s:
+
+q= 5 — ner? —e (5.5)
+So, qis an underestimate to n/d. Now
+0 < ner? +e <e te <2 (5.6)
+Therefore
+nid—2<q<nld (5.7)
+
+So q= nldor q= (n/d) — 1. We can find out which quite easily, by calculating the remainder
+
+r=n— qd, which must be in the range 0 < r < 2d. The following code corrects the result:
+
+r=n-q*d;  /* the remainder in the range 0 <= r<2*d */
+if (r >= d) /* if correction is required */
+
+/* correct the remainder to the range 0 <= r< d */
+atts /* correct the quotient */
+
+/* now q=n/dandr=n%d*/
+
+The following routine, scale, shows how to convert divisions to multiplications in practice.
+It divides an array of N elements by denominator d. We first calculate the value of s as above.
+Then we replace each divide by d with a multiplication by s. The 64-bit multiply is cheap
+because the ARM has an instruction UMULL, which multiplies two 32-bit values, giving
+a 64-bit result.
+
+void scale(
+
+unsigned int *dest, /* destination for the scale data */
+unsigned int *src, /* source unscaled data */
+
+unsigned int d, /* denominator to divide by */
+unsigned int N) /* data length */
+
+unsigned int s = OxFFFFFFFFu / d;

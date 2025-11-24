@@ -1,0 +1,54 @@
+554 Chapter 15 The Future of the Architecture
+
+Table 15.5
+
+Packing instructions.
+
+Instruction
+
+Description
+
+PKHTB{<cond>} Rd, Rn, Rm {, ASR #<shift_imm>} Pack the top 16 bits of Rn with the bottom
+
+16 bits of the shifted Rm into the
+destination Rd
+
+PKHBT{<cond>} Rd, Rn, Rm {, LSL #<shift_imm>} Pack the top 16 bits of the shifted Rm with
+
+the bottom 16 bits of Rn into the
+destination Rd
+
+USUB8 Rt, Rpl, Rp2 compare metrics - setting the SIMD flags
+SEL Rd, Rp2, Rpl —; choose best (smallest) metric
+
+This kernel performs the ACS operation on four paths in parallel and takes a total
+of 4 cycles on the ARM1136J-S. The same sequence coded for the ARMvSTE instruction
+set must perform each of the operations serially, taking at least 16 cycles. Thus the add-
+compare-select function is four times faster on ARM1136J-S for eight-bit metrics.
+
+15.1.2 PACKING INSTRUCTIONS
+
+The ARMv6 architecture includes a new set of packing instructions, shown in Table 15.5,
+that are used to construct new 32-bit packed data from pairs of 16-bit values in different
+source registers. The second operand can be optionally shifted. Packing instructions are
+particularly useful for pairing 16-bit values so that you can make use of the 16-bit SIMD
+processing instructions described earlier.
+
+15.1.3. COMPLEX ARITHMETIC SUPPORT
+
+EXAMPLE
+
+15.1
+
+Complex arithmetic is commonly used in communication signal processing, and in partic-
+ular in the implementations of transform algorithms such as the Fast Fourier Transform as
+described in Chapter 8. Much of the implementation detail examined in that chapter con-
+cerns the efficient implementation of the complex multiplication using ARMv4 or ARMv5E
+instruction sets.
+
+ARMvé6 adds new multiply instructions to accelerate complex multiplication, shown in
+Table 15.6. Both of these operations optionally swap the order of the two 16-bit halves of
+source operand Rs if you specify the X suffix.
+
+In this example Ra and Rb hold complex numbers with 16-bit coefficients packed with
+their real parts in the lower half of a register and their imaginary part in the upper half.

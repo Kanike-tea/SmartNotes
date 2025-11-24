@@ -1,0 +1,70 @@
+Database Management System [BCS403]
+
+models. Representational data models represent data by using record structures and hence
+
+are sometimes called record-based data models.
+
+3. Low-level or physical data models: provide concepts that describe the details of how data
+
+is stored on the computer storage media, typically magnetic disks. Physical data models
+
+describe how data is stored as files in the computer by representing
+
+as record formats, record orderings, and access paths.
+
+Database schema
+
+information such
+
+The description of a database is called the database schema, which is specified during
+database design and is not expected to change frequently.
+
+Schema diagram
+
+A displayed schema is called a schema diagram. A schema diagram displays only some
+
+aspects of a schema, such as the names of record types and data items, and some types of
+
+constraints.
+
+STUDENT
+
+Name _ | Student_number | Class | Major
+
+COURSE
+
+Course_name | Course_number |.Credit_hours
+
+Department
+
+PREREQUISITE
+
+Course_number |
+
+Prerequisite_number
+
+SECTION
+
+Section_identifier
+
+‘Course_number | Semester
+
+Year
+
+Instructor
+
+GRADE_REPORT
+
+Student_number
+
+Section_identifier | Grade
+
+Figure 2.1: Schema diagram for the database
+
+Schema construct
+
+Each object in the schema is called schema construct. For example student or course.
+
+https://vtucode.in
+
+Page 19

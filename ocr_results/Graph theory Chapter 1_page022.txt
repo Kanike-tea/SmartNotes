@@ -1,0 +1,43 @@
+1.2.1. Vertex degree and Handshaking property 25
+
+10. (1), G). (4), © = can exist
+(2), (5) : cannot exist
+
+—_———- rr
+
+1.2.1. Vertex degree and Handshaking property
+Let G = (V,E) be a graph and v be a vertex of G. Then, the number of edges of G that are
+incident on v (that is, the number of edges that join v to other vertices of G) with the loops
+counted twice is called the degree of the vertex v and is denoted by deg(v), or d(v).*
+
+The degrees of all vertices of a graph arranged in non-decreasing order is called the degree
+sequence of the graph. Also, the minimum of the degrees of vertices of a graph is called the
+
+degree of the graph.
+For example, the degrees of vertices of the graph shown in Figure 1.33 are as given below.
+
+dvi) =3, d(v2)=4, d(v3)=4, d(v4) = 3.
+
+Therefore, the degree sequence of this graph is 3, 3, 4, 4, and the degree of the graph is 3.
+Note that the loop at v3 is counted twice for determining the degree of v3.
+
+vy v4
+v2 v3
+Figure 1.33
+Isolated Vertex, Pendant Vertex
+
+A vertex in a graph which is not an end vertex of any edge of the graph is called an isolated
+vertex. Obviously, a vertex is an isolated vertex if and only if its degree is zero.
+
+A vertex of degree 1 is called a pendant vertex. An edge incident on a pendant vertex is
+called a pendant edge.
+
+In the graph shown in Figure 1.34, the vertices v4 and v¢ are isolated vertices, v5 and v7 are
+Pendant vertices and the edges e4 and es are pendant edges.
+
+“Since, in a graph, all edges are undirected, no distinction is made. between the in-degree and the out-degree. If
+t V and for any v € V, we
+
+Gi z
+haven underlying graph of a directed graph D, then G and D have the same vertex se’
+dy) = id(v) + od(v).

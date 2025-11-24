@@ -1,0 +1,53 @@
+EXAMPLE
+
+12.3
+
+12.5 Flushing and Cleaning Cache Memory 433
+
+Each core listed selects an individual cache line by its way and set index address. When
+using these instructions the value in core register Rd is the same for all four commands
+within a single processor core; however, the format of the bit fields within the register
+varies from processor to processor. The CP15:c7:Cm register format for cores that support
+cleaning and flushing a cache line by way is shown in Figure 12.11. To execute the command,
+create a value in a core register (Rd) in the desired CP15:c7 register format. The general
+form of the register includes two bit fields: one selects the way and the other selects the set
+in the way. Once the register is created, execute the desired MCR instruction to move the
+core register (Rd) to the CP15:c7 register.
+
+The cleanDCache, cleanFlushDCache, and cleanFlushCache procedures for the
+ARM920T, ARM922T, ARM940T, ARM946E-S, and ARM1022E processors are shown
+in the following example.
+
+We use a macro called CACHECLEANBYWAY to create the three procedures that clean, flush,
+or clean and flush the cache using way and set index addressing.
+
+The macro uses constants in the header file cache.h to build a processor register in
+CP15:C7 register format (c7f) for the selected core. The first step is to set the c7f register
+to zero, which is used as the Rd input value in the MCR instruction to execute the selected
+operation. The macro then increments the c7f register according to the format in Figure
+12.11, once for each written cache line. It increments the set index in the inner loop and
+the way index in the outer loop. Using these nested loops, it steps through and cleans all
+the cache lines in all the ways.
+
+AREA cleancachebyway , CODE, READONLY ; Start of Area block
+
+IF {CPU} = "ARM920T" :LOR: \
+{CPU} = "ARM922T" :LOR: \
+{CPU} ‘ARM940T" :LOR: \
+{CPU} ‘ARM946E-S" :LOR: \
+
+{CPU} = "ARM1022E"
+EXPORT cleanDCache
+EXPORT cleanFlushDCache
+EXPORT cleanFlushCache
+INCLUDE cache.h
+
+c7f RN 0 3 cpl5:c7_ register format
+
+MACRO.
+CACHECLEANBYWAY $op
+
+MOV c7f, #0 3 create c7 format
+
+IF "Sop" = "Dclean®
+MCR p15, 0, c7f, c7, cl0, 2; clean D-cline

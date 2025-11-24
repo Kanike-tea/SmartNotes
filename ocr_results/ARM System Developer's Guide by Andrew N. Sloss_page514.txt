@@ -1,0 +1,49 @@
+144 Page Tables 501
+
+We recommend activating page tables while executing system code at a fixed address
+region where the virtual-to-physical memory mapping never changes. This approach
+ensures a safe switch between user tasks.
+
+Many embedded systems do not use complex virtual memory but simply create a “fixed”
+virtual memory map to consolidate the use of physical memory. These systems usually
+collect blocks of physical memory spread over a large address space into a contiguous block
+of virtual memory. They commonly create a “fixed” map during the initialization process,
+and the map remains the same during system operation.
+
+14.3 Detaits oF THE ARM MMU
+
+The ARM MMU performs several tasks: It translates virtual addresses into physical
+addresses, it controls memory access permission, and it determines the individual behav-
+ior of the cache and write buffer for each page in memory. When the MMU is disabled,
+all virtual addresses map one-to-one to the same physical address. If the MMU is unable
+to translate an address, it generates an abort exception. The MMU will only abort on
+translation, permission, and domain faults.
+
+The main software configuration and control components in the MMU are
+
+= Page tables
+
+= The Translation Lookaside Buffer (TLB)
+= Domains and access permission
+
+=~ Caches and write buffer
+
+= The CP15:cl control register
+
+= The Fast Context Switch Extension
+
+We provide the details of operation and how to configure these components in the following
+sections.
+
+14.4 PAGE TABLES
+
+The ARM MMU hardware has a multilevel page table architecture. There are two levels of
+page table: level 1 (L1) and level 2 (L2).
+
+There is a single level 1 page table known as the L1 master page table that can contain
+two types of page table entry. It can hold pointers to the starting address of level 2 page
+tables, and page table entries for translating 1 MB pages. The L1 master table is also known
+as a section page table.
+
+‘The master L1 page table divides the 4 GB address space into 1 MB sections; hence the
+LI page table contains 4096 page table entries. The master table is a hybrid table that acts

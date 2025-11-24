@@ -1,0 +1,27 @@
+Database Management System [BCS403]
+
+3.7 Relationship Types of Degree Higher than Two
+
+3.7.1 Choosing between Binary and Ternary (or Higher-Degree) Relationships
+
+A relationship type R of degree n will have n edges in an ER diagram, one connecting R to each
+
+participating entity type
+
+PROJECT,
+
+Fig 3.7.1(a): The SUPPLY relationship
+Figure 3.7.1(a0 shows the ER diagram notation for a ternary relationship. SUPPLY is a set of
+relationship instances (s, j, p), where s is a SUPPLIER who is currently supplying a PART p to a
+
+PROJECT j.
+
+PROJECT
+
+Fig 3.7.1 (b) ER diagram for three binary relationship types CAN_SUPPLY, USES, and
+SUPPLIES
+
+Figure 3.7.1(b) shows an ER diagram for three binary relationship types CAN_SUPPLY, USES,
+and SUPPLIES. CAN_SUPPLY between SUPPLIER and PART, includes an instance (s, p)
+
+https://vtucode.in Page 53

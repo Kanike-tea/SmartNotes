@@ -1,0 +1,49 @@
+Table 6.2
+
+6.6 Looping Constructs 187
+
+Cycles taken for each range of N values.
+
+Nrange Cycles taken
+O<NK<Ty 640Ny + 20Nm + 5N) + 6
+
+Ty <N<th 160Nj, + 5Nm + 5N) +17 + 5Z)
+Th<N 36Ni, + 5Nin + 5Nj + 32 + 5Z) + 52m
+
+block takes 5(32N, + Nm) + 5(N; + Z;) + 2 cycles, where Z; is 1 if N; = 0, and 0
+otherwise. The total cycles for this case is 5(32Nj, + Nm +N) + Z)) + 17.
+
+= Case N > Ty: As in the previous case, the first algorithm block averages 9 cycles.
+The second algorithm block takes 36N;, + 21 cycles. The final algorithm block takes
+5(Nin + Zm + Ni + Z)) + 2 cycles, where Z,, is 1 if Ny, is 0, and 0 otherwise. The total
+cycles for this case is 36Ny, + 5(Nin + Zm + Nj + Zj) + 32.
+
+Table 6.2 summarizes these results. Comparing the three table rows it is clear that the
+second row wins over the first row as soon as Ny», > 1, unless Nj», = 1 and N; = 0. We set
+T, = 5 to choose the best cycle counts from rows one and two. The third row wins over
+the second row as soon as Nj, > 1. Therefore take T) = 128.
+
+This detailed example shows you how to unroll any important loop using threshold
+values and provide good performance over a range of possible input values.
+
+6.6.3 MULTIPLE NESTED Loops
+
+EXAMPLE
+
+6.21
+
+How many loop counters does it take to maintain multiple nested loops? Actually, one will
+suffice—or more accurately, one provided the sum of the bits needed for each loop count
+does not exceed 32. We can combine the loop counts within a single register, placing the
+innermost loop count at the highest bit positions. This section gives an example showing
+how to do this. We will ensure the loops count down from max — | to 0 inclusive so that
+the loop terminates by producing a negative result.
+
+This example shows how to merge three loop counts into a single loop count. Suppose we
+wish to multiply matrix B by matrix C to produce matrix A, where A, B, C have the
+following constant dimensions. We assume that R, S, T are relatively large but less
+than 256.
+
+Matrix A: Rrows x T columns
+Matrix B: Rrows x S columns
+Matrix C: Srows x T columns

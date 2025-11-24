@@ -1,0 +1,33 @@
+It is not difficult to prove (Problem 9-1) that in any digraph G the sum of all
+in-degrees is equal to the sum of all out-degrees, each sum being equal to the
+number of edges in G; that is,
+
+Yao) = Lae).
+
+An isolated vertex is a vertex in which the in-degree and the out-degree are
+both equal to zero. A vertex v in a digraph is called pendant if it is of degree one,
+that is, if
+
+d*(v)+d-(v)=1.
+
+Two directed edges are said to be parallel if they are mapped onto the same
+ordered pair of vertices. That is, in addition to being parallel in the sense of
+undirected edges, parallel directed edges must also agree in the direction of their
+arrows. In Fig. 9-1, edges eg, eg, and 49 are parallel, whereas edges e, and e3 are
+not.
+
+Since many properties of directed graphs are the same as those of undirected
+ones, it is often convenient to disregard the orientations of edges in a digraph.
+Such an undirected graph obtained from a directed graph G will be called the
+undirected graph corresponding to G.
+
+On the other hand, given an undirected graph H, we can assign each edge of H
+some arbitrary direction. The resulting digraph, designated by # is called an
+orientation of H (or a digraph associated with H). Note that while a given
+digraph has a unique (within isomorphism) undirected graph corresponding to it,
+a given undirected graph may have ”different“ orientations possible. This is why
+we say the undirected graph corresponding to a digraph, but an orientation of a
+graph.
+
+This brings us to the question: When are two digraphs considered to be the
+same or isomorphic?

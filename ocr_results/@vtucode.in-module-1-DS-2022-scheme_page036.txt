@@ -1,0 +1,48 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+Knuth, Morris, Pratt Pattern Matching algorithm,
+
+Definition: If p = pop; °°: Pa: is a pattern, then its failure function, f, is defined as:
+
+f@= largest i<j such that pop; *** pj = Pj-iPj-i+2 *** Pj if such ani > O exists o
+
+otherwise
+For the example pattern, pat = abcabcacab, we have:
+
+j 0 1 2 3 4 5 6 7 8 9
+pata b c abocoa a
+f -1 -1 -l O 1 2 3 -t 0 1
+
+int pmatch(char *string, char *pat)
+{/* Knuth, Morris, Pratt string matching algorithm */
+int i= 0, j = 0;
+int lens = strien(string);
+int lenp = strlen(pat);
+while ( i < lens && j < lenp ) {
+if (string[i] == pat[j]) [
+ite; j++; }
+else if (j -- 0) itt;
+else j = failurefj-1]+1;
+}
+return ( {j == lenp) ? (i-lenp) : -1)j
+}
+
+Program 2.14: Knuth, Morris, Pratt pattern matching algorithm
+
+void fail(char *pat)
+{/* compute the pattern’s failure function */
+int n = strlen(pat);
+failure[0] = -1;
+for (j=1; j < ny j++) {
+i = failure[j-1];
+while ((pat(j] != pat(i+l]) && (i >= 0))
+i = failureli);
+if (pat(j] == pat[t+1])
+failure[j] = i+];
+else failure[j] = -1;
+
+i
+
+Program 2.15: Computing the failure function
+
+vtucode.in 37

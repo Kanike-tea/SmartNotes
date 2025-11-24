@@ -1,0 +1,48 @@
+12.5 Flushing and Cleaning Cache Memory 423
+
+12.4 COPROCESSOR 15 AND CACHES
+
+‘There are several coprocessor 15 registers used to specifically configure and control ARM
+cached cores. Table 12.2 lists the coprocessor 15 registers that control cache configuration.
+Primary CP15 registers c7 and c9 control the setup and operation of cache. Secondary
+CP15:c7 registers are write only and clean and flush cache. The CP15:c9 register defines
+the victim pointer base address, which determines the number of lines of code or data
+that are locked in cache. We discuss these commands in more detail in the sections
+that follow. To review the general use of coprocessor 15 instructions and syntax, see
+Section 3.5.2.
+
+There are other CP15 registers that affect cache operation; the definition of these registers
+is core dependent. These other registers are explained in Chapter 13 in Sections 13.2.3 and
+13.2.4 on initializing the MPU, and in Chapter 14 in Section 14.3.6 on initializing the MMU.
+
+In the next several sections we use the CP15 registers listed in Table 12.2 to provide
+example routines to clean and flush caches, and to lock code or data in cache. The control
+system usually calls these routines as part of its memory management activities.
+
+12.5 FLUSHING AND CLEANING CACHE MEMORY
+
+Table 12.2
+
+ARM uses the terms flush and clean to describe two basic operations performed on a
+cache.
+
+To “flush a cache” is to clear it of any stored data. Flushing simply clears the valid bit in
+the affected cache line. All or just portions of a cache may need flushing to support changes
+in memory configuration. The term invalidate is sometimes used in place of the term flush.
+However, if some portion of the D-cache is configured to use a writeback policy, the data
+cache may also need cleaning.
+
+To “clean a cache” is to force a write of dirty cache lines from the cache out to main
+memory and clear the dirty bits in the cache line. Cleaning a cache reestablishes coherence
+between cached memory and main memory, and only applies to D-caches using a writeback
+
+policy.
+
+Coprocessor 15 registers that configure and control cache operation.
+
+Function Primary register Secondary registers Opcode 2
+Clean and flush cache 7 5, 06, 7, €10, c13,cl4 0,1,2
+Drain write buffer 7 c10 4
+
+Cache lockdown 9 0 0,1
+Round-robin replacement 15 0 0

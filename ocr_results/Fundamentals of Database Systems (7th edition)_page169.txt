@@ -1,0 +1,56 @@
+4.21.
+
+captured about BORROWED objects includes the Collection from which it
+was borrowed, Date_borrowed, and Date_returned.
+
+= Information describing the country or culture of Origin (Italian, Egyptian,
+American, Indian, and so forth) and Epoch (Renaissance, Modern,
+Ancient, and so forth) is captured for each ART_OBJECT.
+
+= The museum keeps track of ARTIST information, if known: Name,
+DateBorn (if known), Date_died (if not living), Country_of_origin, Epoch,
+Main_style, and Description. The Name is assumed to be unique.
+
+= Different EXHIBITIONS occur, each having a Name, Start_date, and End_date.
+EXHIBITIONS are related to all the art objects that were on display during
+the exhibition.
+
+= Information is kept on other COLLECTIONS with which the museum
+interacts; this information includes Name (unique), Type (museum, per-
+sonal, etc.), Description, Address, Phone, and current Contact_person.
+
+Draw an EER schema diagram for this application. Discuss any assumptions
+you make, and then justify your EER design choices.
+
+Figure 4.12 shows an example of an EER diagram for a small-private-airport
+database; the database is used to keep track of airplanes, their owners, air-
+port employees, and pilots. From the requirements for this database, the fol-
+lowing information was collected: Each AIRPLANE has a registration number
+[Reg#], is of a particular plane type [OF_TYPE], and is stored in a particular
+hangar [STORED_IN]. Each PLANE_TYPE has a model number [Model], a
+capacity [Capacity], and a weight [Weight]. Each HANGAR has a number
+[Number], a capacity [Capacity], and a location [Location]. The database also
+keeps track of the OWNERs of each plane [OWNS] and the EMPLOYEEs who
+have maintained the plane [MAINTAIN]. Each relationship instance in OWNS
+relates an AIRPLANE to an OWNER and includes the purchase date [Pdate].
+Each relationship instance in MAINTAIN relates an EMPLOYEE to a service
+record [SERVICE]. Each plane undergoes service many times; hence, it is
+related by [PLANE_SERVICE] to a number of SERVICE records. A SERVICE
+record includes as attributes the date of maintenance [Date], the number of
+hours spent on the work [Hours], and the type of work done [Work_code]. We
+use a weak entity type [SERVICE] to represent airplane service, because the
+airplane registration number is used to identify a service record. An OWNER
+is either a person or a corporation. Hence, we use a union type (category)
+[OWNER] that is a subset of the union of corporation [CORPORATION] and
+person [PERSON] entity types. Both pilots [PILOT] and employees
+[EMPLOYEE] are subclasses of PERSON. Each PILOT has specific attributes
+license number [Lic_num] and restrictions [Restr]; each EMPLOYEE has spe-
+cific attributes salary [Salary] and shift worked [Shift]. All PERSON entities in
+the database have data kept on their Social Security number [Ssn], name
+[Name], address [Address], and telephone number [Phone]. For CORPORATION
+entities, the data kept includes name [Name], address [Address], and
+telephone number [Phone]. The database also keeps track of the types of
+
+Exercises
+
+139

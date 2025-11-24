@@ -1,0 +1,53 @@
+282 Chapter 8 Digital Signal Processing
+
+8.3.1 BLocK FIR FILTERS
+
+Table 8.3
+
+Example 8.8 shows that we can usually implement filters using integer sums of products,
+without the need to check for saturation or overflow:
+
+Alt] = C[O]*xX{t] + C[1]*xX[t-1] + ... + C[M-1]*X[t-M+1];
+
+Generally X{t] and C[i] are k-bit integers and A[t] is a 2k-bit integer, where k = 8, 16,
+or 32. Table 8.3 shows the precision for some typical applications.
+
+We will look at detailed examples of long 16-bit and 32-bit filters. By a long filter, we
+mean that M is so large that you can’t hold the filter coefficients in registers. You should
+optimize short filters such as Example 8.8 on a case-by-case basis. For these you can hold
+many coefficients in registers.
+
+For a long filter, each result A[t] depends on M data values and M coefficients that we
+must read from memory. These loads are time consuming, and it is inefficient to calculate
+just a single result A[t]. While we are loading the data and coefficients, we can calculate
+A[t + 1] and possibly A[t + 2] at the same time.
+
+An R-way block filter implementation calculates the R values A[t], A[t + 1],---5
+Alt + R — 1] using a single pass of the data X[t] and coefficients C[i]. This reduces
+the number of memory accesses by a factor of R over calculating each result separately. So
+R should be as large as possible. On the other hand, the larger R is, the more registers we
+require to hold accumulated values and data or coefficients. In practice we choose R to be
+the largest value such that we do not run out of registers in the inner loop. On ARM R can
+range from 2 to 6, as we will show in the following code examples.
+
+An R x S block filter is an R-way block filter where we read S data and coefficient values
+at a time for each iteration of the inner loop. On each loop we accumulate R x S products
+onto the R accumulators.
+
+Figure 8.3 shows a typical 4 x 3 block filter implementation. Each accumulator on
+the left is the sum of products of the coefficients on the right multiplied by the signal
+value heading each column. The diagram starts with the oldest sample X;—.141 since the
+filter routine will load samples in increasing order of memory address. Each inner loop of
+a4 x 3 filter accumulates the 12 products in a4 x 3 parallelogram. We've shaded the first
+parallelogram and the first sample of the third parallelogram.
+
+As you can see from Figure 8.3, an R x S block filter implementation requires R accu-
+mulator registers and a history of R — 1 input samples. You also need a register to hold the
+
+Filter precision for different applications.
+
+Application X{#] precision (bits) [4] precision (bits) _A[t] precision (bits)
+Video 8 8 16
+Telecoms audio 16 16 32
+
+High-quality audio 32 32 64

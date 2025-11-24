@@ -1,0 +1,45 @@
+50 Chapter 3 Introduction to the ARM Instruction Set
+
+load-store instructions, software interrupt instruction, and program status register
+instructions.
+
+3.1 DATA PROCESSING INSTRUCTIONS
+
+The data processing instructions manipulate data within registers. They are move instruc-
+tions, arithmetic instructions, logical instructions, comparison instructions, and multiply
+instructions. Most data processing instructions can process one of their operands using the
+barrel shifter.
+
+If you use the S suffix on a data processing instruction, then it updates the flags in the
+cpsr. Move and logical operations update the carry flag C, negative flag N, and zero flag Z.
+The carry flag is set from the result of the barrel shift as the last bit shifted out. The N flag
+is set to bit 31 of the result. The Z flag is set if the result is zero.
+
+3.1.1 MOVE INSTRUCTIONS
+
+EXAMPLE
+
+3.1
+
+Move is the simplest ARM instruction. It copies N into a destination register Rd, where
+Nis a register or immediate value. This instruction is useful for setting initial values and
+transferring data between registers.
+
+Syntax: <instruction>{<cond>}{S} Rd, N
+
+| MOV Move a 32-bit value into a register Rd=N
+
+| MVN move the NOT of the 32-bit value into a register Rd =~N
+
+Table 3.3, to be presented in Section 3.1.2, gives a full description of the values allowed
+for the second operand N for all data processing instructions. Usually it is a register Rm or
+a constant preceded by #.
+
+This example shows a simple move instruction. The MOV instruction takes the contents of
+register r5 and copies them into register r7, in this case, taking the value 5, and overwriting
+the value 8 in register r7.
+
+PRE v5 = 5
+7 =8
+MOV or7, r5; let r7 = r5
+POST r5 =

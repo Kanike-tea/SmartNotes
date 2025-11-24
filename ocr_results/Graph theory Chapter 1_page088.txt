@@ -1,0 +1,32 @@
+1.10. Hamilton cycles and Hamilton paths 91
+
+1.10 Hamilton cycles and Hamilton paths
+
+Let G be a connected graph. If there is a cycle in G that contains all the vertices of G, then that
+cycle is called a Hamilton cycle in G.
+
+A Hamilton cycle (when it exists) in a graph of n vertices consists of exactly n edges.
+Because, a cycle with n vertices has n edges.**
+
+By definition, a Hamilton cycle (when it exists) in a graph G must include all vertices in G.
+This does not mean that it should include all edges of G.
+
+A graph that contains a Hamiton cycle is called a Hamilton graph (or Hamiltonian graph).
+
+For example, in the graph shown in Figure 1.127, the cycle shown in thick lines is a Ha-
+multon cycle. (Observe that this cycle does not include the edge BD). The graph is therefore a
+
+familton graph.
+
+D Cc
+Figure 1.127
+
+A path (if any) in a connected graph which includes every vertex (but not necessarily every
+€) of the graph is called a Hamilton path (or Hamiltonian path) in the graph.
+For example, in the graph shown in Figure 1.128, the path shown in thick lines is a Hamilton
+
+D Cc
+Figure 1.128
+
+In the graph shown in Figure 1.129, the path ABCFEDGHI is a Hamilton path. In Example
+low we show that this graph does not contain a Hamilton cycle.

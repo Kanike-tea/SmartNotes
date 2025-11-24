@@ -1,0 +1,38 @@
+1082 Chapter 28 Data Mining Concepts
+
+Beverages
+Carbonated Noncarbonated
+Colas Clear Mixed Bottled Bottled Wine
+drinks drinks juices water coolers
+Orange Apple Others Plain Clear
+Desserts
+Ice cream Baked Frozen yogurt
+Figure 28.3 ZN ZN ON
+Taxonomy of items Rich Reduce Healthy
+
+in a supermarket.
+
+cream
+
+cream-brand ice cream => wine cooler may produce enough confidence and sup-
+port to be valid association rules of interest.
+
+Therefore, if the application area has a natural classification of the itemsets into
+hierarchies, discovering associations within the hierarchies is of no particular inter-
+est. The ones of specific interest are associations across hierarchies. They may occur
+among item groupings at different levels.
+
+Multidimensional Associations. Discovering association rules involves search-
+ing for patterns in a file. In Figure 28.1, we have an example of a file of customer
+transactions with three dimensions: Transaction_id, Time, and Items_bought.
+However, our data mining tasks and algorithms introduced up to this point only
+involve one dimension: Items_bought. The following rule is an example of includ-
+ing the label of the single dimension: Items_bought(milk) => Items_bought(juice).
+It may be of interest to find association rules that involve multiple dimensions, for
+example, Time(6:30 ... 8:00) => Items_bought(milk). Rules like these are called
+multidimensional association rules. The dimensions represent attributes of records
+of a file or, in terms of relations, columns of rows of a relation, and can be categori-
+cal or quantitative. Categorical attributes have a finite set of values that display no
+ordering relationship. Quantitative attributes are numeric and their values display
+an ordering relationship, for example, <. Items_bought is an example of a categori-
+cal attribute and Transaction_id and Time are quantitative.

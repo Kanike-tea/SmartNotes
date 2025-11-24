@@ -1,0 +1,45 @@
+30 Chapter 2. ARM Processor Fundamentals
+
+Figure 2.7
+
+Figure 2.8
+
+ARM7 Three-stage pipeline.
+
+Figure 2.7 shows a three-stage pipeline:
+
+= Fetch loads an instruction from memory.
+= Decode identifies the instruction to be executed.
+
+= Execute processes the instruction and writes the result back to a register.
+
+Figure 2.8 illustrates the pipeline using a simple example. It shows a sequence of three
+instructions being fetched, decoded, and executed by the processor. Each instruction takes
+a single cycle to complete after the pipeline is filled.
+
+The three instructions are placed into the pipeline sequentially. In the first cycle the
+core fetches the ADD instruction from memory. In the second cycle the core fetches the
+SUB instruction and decodes the ADD instruction. In the third cycle, both the SUB and
+ADD instructions are moved along the pipeline. The ADD instruction is executed, the SUB
+instruction is decoded, and the CMP instruction is fetched. This procedure is called filling
+the pipeline. The pipeline allows the core to execute an instruction every cycle.
+
+As the pipeline length increases, the amount of work done at each stage is reduced,
+which allows the processor to attain a higher operating frequency. This in turn increases
+the performance. The system latency also increases because it takes more cycles to fill the
+pipeline before the core can execute an instruction. The increased pipeline length also means
+there can be data dependency between certain stages. You can write code to reduce this
+dependency by using instruction scheduling (for more information on instruction scheduling
+take a look at Chapter 6).
+
+Fetch Decode Execute
+
+Time | Cycle 1
+
+i
+ill
+
+a)
+se} oo
+
+Pipelined instruction sequence.

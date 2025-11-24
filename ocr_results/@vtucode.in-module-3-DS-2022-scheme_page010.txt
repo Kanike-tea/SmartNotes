@@ -1,0 +1,48 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Here Depth of tree is 3
+
+- In any tree, ‘Depth of Node’ is
+total number of Edges from root
+to that node.
+
+In any tree, ‘Depth of Tree’ is
+total number of edges from root
+to leaf in the longest path.
+
+12. Path
+
+In a tree data structure, the sequence of Nodes and Edges from one node to, another node is
+called as PATH between the two Nodes. Length of a Path is total number of nodes in that path.
+In below example the path A - B - E- J has length 4.
+
+(A) - Inany tree, ‘Path’ isa sequence
+of nédes afd edges between two
+
+OQO@®d ®
+OO &
+
+Here, ‘Path’ between A& Jis
+A-B-E-J
+
+Here, ‘Path’ between C & K is
+C-G-K
+
+13. Sub Tree
+In a tree data structure, each child from a node forms a subtree recursively. Every child node
+
+will form a subtree on its parent node.
+
+Subtree
+Subtree
+
+The ancestors of a node are all the nodes along the path from the root to that node.
+
+Ex: ancestor of j is B & A
+
+A forest is a set of n 0 disjoint trees. The notion of a forest is very close to that of a tree because
+if we remove the root of a tree we get a forest. For example, in figure 1 if we remove A we get
+
+a forest with three trees.
+
+vtucode.in ll

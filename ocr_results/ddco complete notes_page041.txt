@@ -1,0 +1,26 @@
+Digital Design and Computer Organization(BCS302)
+
+3:8 Decoder
+« A3 to 8 decoder has three inputs (x,y,z) and eight outputs (DO to D7).
+e Based on the 3 inputs one of the eight outputs is selected.
+e The truth table for 3 to 8 decoder is shown in the below table.
+
+« From the truth table, it is seen that only one of eight outputs (DO to D7) is selected
+based on three select inputs.
+
+« From the truth table, the logic expressions for outputs can be written as follows:
+
+Table 4.6
+Truth Table of a Three-to-Eight-Line Decoder
+——_ Inputs. Outputs
+Decoder x oy 2 Do Di D, Ds Ds, Ds De Dy
+0 0 oO 1 0 0 0 © 0 60 0
+z 0 0 1 o 1 0 0 0 0 0 0
+0 1 0 0 0 1 0 0 0 0 0
+y 0 1 1 0 0 0 1 0 0 0 0
+1 0 0 0 0 0 0 1 0 0 0
+x 1 0 1 0 0 0 0 oO t 0 0
+1 1 0 0 o 0 oOo oO oOo +t 0
+1 1 1 0 0 0 60 0 60 o 1
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 13

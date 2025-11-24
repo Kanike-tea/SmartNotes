@@ -1,0 +1,50 @@
+Microcontrollers - BCS402
+
+Table 4: Useful link-register-based addresses
+
+Exception Address — Use
+
+Reset — Jris not defined on a Reset
+
+Data Abort Ir-8 points to the instruction that caused the Data Abort exception
+FIQ lr-—4 return address from the FIQ handler
+
+IRQ Ir—4 return address from the IRQ handler
+
+Prefetch Abort Ir-4 points to the instruction that caused the Prefetch Abort exception
+SWI Ir points to the next instruction after the SWI instruction
+Undefined Instruction — Ir points to the next instruction after the undefined instruction
+
+The next three examples show different methods of returning from an IRQ or FIQ exception
+
+handler.
+
+Example 1: This example shows that a typical method of returning from an IRQ and FIQ
+
+handler is to use a SUBS instruction:
+
+handler
+<handler code>
+
+SUBS pc, rl4, #4 ; pe=rl4-4
+
+Because there is an § at the end of the SUB instruction and the pc is the destination register, the
+
+cpsr is automatically restored from the spsr register.
+
+Example 2: This example shows another method that subtracts the offset from the link register
+
+114 at the beginning of the handler.
+
+handler
+SUB rl4, rl4, #4 3 714-=4
+
+<handler code>
+
+MOVS = pe, rl4 3; return
+
+After servicing is complete, return to normal execution occurs by moving the link register r14
+
+into the pe and restoring cpsr from the spsr.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 8

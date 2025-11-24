@@ -1,0 +1,72 @@
+910 Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+24.6.
+
+24.7.
+
+24.8.
+24.9.
+
+24.10.
+
+24.11.
+
+24.12.
+24.13.
+24.14.
+
+24.15.
+24.16.
+
+What are the similarities and differences between using consistency in CAP
+versus using consistency in ACID?
+
+What are the data modeling concepts used in MongoDB? What are the main
+CRUD operations of MongoDB?
+
+Discuss how replication and sharding are done in MongoDB.
+Discuss the data modeling concepts in DynamoDB.
+
+Describe the consistent hashing schema for data distribution, replication,
+and sharding. How are consistency and versioning handled in Voldemort?
+
+What are the data modeling concepts used in column-based NOSQL sys-
+tems and Hbase?
+
+What are the main CRUD operations in Hbase?
+Discuss the storage and distributed system methods used in Hbase.
+
+What are the data modeling concepts used in the graph-oriented NOSQL
+system Neo4j?
+
+What is the query language for Neo4j?
+
+Discuss the interfaces and distributed systems characteristics of Neo4j.
+
+Selected Bibliography
+
+The original paper that described the Google BigTable distributed storage system
+is Chang et al. (2006), and the original paper that described the Amazon Dynamo
+key-value store system is DeCandia et al. (2007). There are numerous papers that
+compare various NOSQL systems with SQI (relational systems); for example,
+Parker et al. (2013). Other papers compare NOSQL systems to other NOSQL sys-
+tems; for example Cattell (2010), Hecht and Jablonski (2011), and Abramova and
+Bernardino (2013).
+
+The documentation, user manuals, and tutorials for many NOSQL systems can be
+found on the Web. Here are a few examples:
+
+MongoDB tutorials: docs. mongodb.org/manual/tutorial/
+
+MongoDB manual: docs.mongodb.org/manual/
+
+Voldemort documentation: docs.project-voldemort.com/voldemort/
+
+Cassandra Web site: cassandra.apache.org
+
+Hbase Web site: hbase.apache.org
+
+Neo4j documentation: neo4j.com/docs/
+
+In addition, numerous Web sites categorize NOSQL systems into additional sub-
+categories based on purpose; nosql-database.org is one example of such a site.

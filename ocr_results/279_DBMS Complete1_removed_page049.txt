@@ -1,0 +1,33 @@
+LECTURE-16: Hash File Organization
+Hash File Organization
+
+In a hash file organization, we obtain the address of the disk block containing a desired record
+directly by computing a function on the search-key value of the record. In our description of
+hashing, we shall use the term bucket to denote a unit of storage that can store one or more records.
+A bucket is typically a disk block, but could be chosen to be smaller or larger than a disk block.
+Formally, let K denote the set of all search-key values, and let B denote the set of all bucket
+addresses. A hash function h is a function from K to B. Let h denote a hash function.
+
+To insert a record with search key Ki, we compute h(Ki), which gives the address of the bucket for
+that record. Assume for now that there is space in the bucket to store the record. Then, the record is
+stored in that bucket.
+
+To perform a lookup on a search-key value Ki, we simply compute h(Ki), then search the bucket
+with that address. Suppose that two search keys, K5 and K7, have the same hash value; that is,
+h(K5) = h(K7). If we perform a lookup on KS, the bucket h(K5) contains records with search-key
+values K5 and records with search key values K7. Thus, we have to check the search-key value of
+every record in the bucket to verify that the record is one that we want. Deletion is equally
+straightforward. If the search-key value of the record to be deleted is Ki, we compute h(Ki), then
+search the corresponding bucket for that record, and delete the record from the bucket.
+
+Hash Indices
+
+Hashing can be used not only for file organization, but also for index-structure creation. A hash
+index organizes the search keys, with their associated pointers, into a hash file structure. We
+construct a hash index as follows. We apply a hash function on a search key to identify a bucket,
+and store the key and its associated pointers in the bucket (or in overflow buckets). Figure shows a
+secondary hash index on the account file, for the search key account-number. The hash function in
+the figure computes the sum of the digits of the account number modulo 7. The hash index has
+seven buckets, each of size 2 bucket sizes). One of the buckets has three keys mapped to it, so it has
+an overflow bucket. In this example, account-number is a primary key for account, so each search
+key has only one associated pointer. In general, multiple pointers can be associated with each key.

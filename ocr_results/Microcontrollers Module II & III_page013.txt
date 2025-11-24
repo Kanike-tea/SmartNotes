@@ -1,0 +1,46 @@
+Microcontrollers — BCS402
+
+LOR load word into a register Rd <- mem32[address}
+
+STR save byte or word from a register | Rd -> mem32/address}
+
+LDRB | load byte into a register Rd <- mem8 {address}
+STRB | save byte from a register Rd -> mem8 {address}
+LDRH | load halfword into a register Rd <- mem16[address}
+STRH | save halfword into a register Rd -> mem16[address}
+LDRSB | load signed byte into a register Rd <- SignExtend
+
+(mem8 address} )
+
+LDRSH | load signed halfword into a register | Rd <- SignExtend
+
+(mem16[address})
+
+Example:;
+; load register rO with the contents of the memory address pointed to by register
+rl.
+
+LDR 10, [rl] ; = LDR r0, [r1, #0]
+; store the contents of register r0 to the memory address pointed to by register
+rl.
+
+STR 10, [rl]; =STR 0, [r1, #0]
+
+LDR and STR instructions can load and store data on a boundary alignment that is the same
+as the data type size being loaded or stored. For example, LDR can only load 32-bit words on
+a memory address that is a multiple of four bytes—O, 4, 8, and so on. This example shows a
+load from a memory address contained in register rl, followed by a store back to the same
+address in memory.
+
+The first instruction loads a word from the address stored in register rl and places it into
+register r0. The second instruction goes the other way by storing the contents of register r0 to
+the address contained in register rl. The offset from register rl is zero. Register rl is called
+
+the base address register.
+
+3.2 Single-Register Load-Store Addressing Modes
+The ARM instruction set provides different modes for addressing memory. These modes
+
+incorporate one of the indexing methods:
+
+Dept. of ECE, GSSSIETW Page 14

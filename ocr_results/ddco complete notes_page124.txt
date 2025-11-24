@@ -1,0 +1,48 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
+3.Set Associative Mapping:
+
+e Itis the combination of direct and associative mapping techniques.
+
+e The blocks of cache are divided into several groups. Such a groups are called as
+sets.
+
+e Each set consists of number of cache blocks. A memory block is loaded into one
+of the cache sets.
+
+e The main memory address consists of three fields, as shown in the figure.
+e The lower 4 bits of memory address are used to select a word from a 16
+words.
+
+e Acache consists of 64 sets as shown in the figure. Hence 6 bit set field is used
+to select a cache set from 64 sets.
+
+e As there are 64 sets, the memory is divided into groups containing 64 blocks,
+where each group is given a tag number.
+
+e The most significant 6 bits of memory address is compared with the tag
+fields of each set to determine whether memory block is available or not.
+
+e The following figure clearly describes the working principle of Set
+Associative Mapping technique.
+
+cache that has “k” blocks per set is called as “k-way set associative cache".
+Each block contains a control-bit called a valid-bit.
+
+The Valid-bit indicates that whether the block contains valid-data (updated data).
+
+The dirty bit indicates that whether the block has been modified during its cache
+residency.
+
+Valid-bit=O - When power is initially applied to system.
+
+Valid-bit=1 - When the block is loaded from main-memory at first time.
+- If the main-memory-block is updated by a source & if the block in the source
+is already exists in the cache, then the valid-bit will be cleared to “O™.
+- If Processor & DMA uses the same copies of data then it is called as Cache
+
+Coherence Problem.
+
+- Advantages:
+
+Dr.Ajay V G, Dept. of CSE, 26

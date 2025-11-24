@@ -1,0 +1,49 @@
+766 Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+Figure 20.6 Si S.
+
+Two schedules that are result read_item(X); read_item(X);
+equivalent for the initial value X=X+4+ 10; X=X«11;
+of X= 100 but are not result write_item(X); write_item (X);
+equivalent in general.
+
+conflict if they belong to different transactions, access the same database item, and
+either both are write_item operations or one is a write_item and the other a read_item.
+If two conflicting operations are applied in different orders in two schedules, the
+effect can be different on the database or on the transactions in the schedule, and
+hence the schedules are not conflict equivalent. For example, as we discussed in
+Section 20.4.1, if a read and write operation occur in the order r,(X), w2(X) in
+schedule S,, and in the reverse order w>(X), r(X) in schedule S, the value read by
+r,(X) can be different in the two schedules. Similarly, if two write operations occur
+in the order w,(X), w2(X) in S), and in the reverse order w,(X), w,(X) in S;, the next
+r(X) operation in the two schedules will read potentially different values; or if these
+are the last operations writing item X in the schedules, the final value of item X in
+the database will be different.
+
+Serializable Schedules. Using the notion of conflict equivalence, we define a
+schedule S to be serializable’ if it is (conflict) equivalent to some serial schedule S’.
+In such a case, we can reorder the nonconflicting operations in S until we form the
+equivalent serial schedule S’. According to this definition, schedule D in Fig-
+ure 20.5(c) is equivalent to the serial schedule A in Figure 20.5(a). In both schedules,
+the read_item(X) of T, reads the value of X written by T,, whereas the other read_item
+operations read the database values from the initial database state. Additionally, T,
+is the last transaction to write Y, and T; is the last transaction to write X in both
+schedules. Because A is a serial schedule and schedule D is equivalent to A, D is a
+serializable schedule. Notice that the operations r,(Y) and w,(Y) of schedule D do
+not conflict with the operations r,(X) and w(X), since they access different data
+items. Therefore, we can move r,(Y), w,(Y) before r(X), w2(X), leading to the
+equivalent serial schedule Tj, T3.
+
+Schedule C in Figure 20.5(c) is not equivalent to either of the two possible serial
+schedules A and B, and hence is not serializable. Trying to reorder the operations of
+schedule C to find an equivalent serial schedule fails because r(X) and w)(X) con-
+flict, which means that we cannot move r2(X) down to get the equivalent serial
+schedule Tj, T>. Similarly, because w;(X) and w(X) conflict, we cannot move w;(X)
+down to get the equivalent serial schedule T>, T).
+
+Another, more complex definition of equivalence—called view equivalence, which
+leads to the concept of view serializability—is discussed in Section 20.5.4.
+
+'2We will use serializable to mean conflict serializable. Another definition of serializable used in
+practice (see Section 20.6) is to have repeatable reads, no dirty reads, and no phantom records
+(see Section 22.7.1 for a discussion on phantoms).

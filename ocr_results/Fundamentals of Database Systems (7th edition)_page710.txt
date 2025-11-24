@@ -1,0 +1,56 @@
+680
+
+Chapter 18 Strategies for Query Processing
+
+discussed how these operations can be specified in SQL. The following is an exam-
+ple of a left outer join operation in SQL:
+
+SELECT E.Lname, E.Fname, D.Dname
+FROM = (EMPLOYEE E LEFT OUTER JOIN DEPARTMENT D ON E.Dno = D.Dnumber);
+
+The result of this query is a table of employee names and their associated depart-
+ments. The table contains the same results as a regular (inner) join, with the excep-
+tion that if an EMPLOYEE tuple (a tuple in the left relation) does not have an
+associated department, the employee’s name will still appear in the resulting table,
+but the department name would be NULL for such tuples in the query result. Outer
+join can be looked upon as a combination of inner join and anti-join.
+
+Outer join can be computed by modifying one of the join algorithms, such as
+nested-loop join or single-loop join. For example, to compute a left outer join, we
+use the left relation as the outer loop or index-based nested loop because every tuple
+in the left relation must appear in the result. If there are matching tuples in the
+other relation, the joined tuples are produced and saved in the result. However, if
+no matching tuple is found, the tuple is still included in the result but is padded
+with NULL value(s). The sort-merge and hash-join algorithms can also be extended
+to compute outer joins.
+
+Theoretically, outer join can also be computed by executing a combination of rela-
+tional algebra operators. For example, the left outer join operation shown above is
+equivalent to the following sequence of relational operations:
+
+1. Compute the (inner) JOIN of the EMPLOYEE and DEPARTMENT tables.
+
+TEMP1 < TIiname, Frame, Dname (EMPLOYEE ™ Dno=Dnumber DEPARTMENT)
+2. Find the EMPLOYEE tuples that do not appear in the (inner) JOIN result.
+
+TEMP2 < Tiname, Frame (EMPLOYEE) — Ttuname, Fname (TEMP 1)
+
+This minus operation can be achieved by performing an anti-join on
+Lname, Fname between EMPLOYEE and TEMP1, as we discussed above in
+Section 18.5.2.
+
+3. Pad each tuple in TEMP2 with a NULL Dname field.
+TEMP2 <— TEMP2 x NULL
+
+4. Apply the UNION operation to TEMP1, TEMP2 to produce the LEFT OUTER
+JOIN result.
+
+RESULT <— TEMP1 U TEMP2
+
+The cost of the outer join as computed above would be the sum of the costs of the
+associated steps (inner join, projections, set difference, and union). However, note
+that step 3 can be done as the temporary relation is being constructed in step 2; that
+is, we can simply pad each resulting tuple with a NULL. In addition, in step 4, we
+know that the two operands of the union are disjoint (no common tuples), so there
+is no need for duplicate elimination. So the preferred method is to use a combina-
+tion of inner join and anti-join rather than the above steps since the algebraic

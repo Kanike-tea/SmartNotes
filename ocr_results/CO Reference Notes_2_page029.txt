@@ -1,0 +1,48 @@
+— place their 4-bit ID numbers on four open-collector lines ARB 0 through ARB 3 .
+¢ A winner is selected as a result of interaction among signals transmitted over these lines.
+¢ Net-outcome is that the code on 4 lines represents request that has the highest ID number.
+Advantage:
+This approach offers higher reliability since operation of bus is not dependent on any single device.
+
+ARBO
+
+Interface circuit
+for device A
+
+Figure 4.22 A distributed arbitration scheme.
+For example:
+
+» Assume 2 devices A & B have their ID 5 (0101), 6 (0110) and their code is 0111.
+» Each device compares the pattern on the arbitration line to its own ID starting from MSB.
+> If the device detects a difference at any bit position, it disables the drivers at that bit position.
+> Driver is disabled by placing 0” at the input of the driver.
+> Ine.g. “A” detects a difference in line ARB1, hence it disables the drivers on lines ARB1 & ARBO.
+> This causes pattern on arbitration-line to change to 0110. This means that “B” has
+won contention.
+BUS
+* Bus — is used to inter-connect main-memory, processor &I/O-devices
+— includes lines needed to support interrupts & arbitration.
+
+¢ Primary function: To provide a communication-path for transfer of data.
+¢ Bus protocol is set of rules that govern the behavior of various devices connected to the buses.
+¢ Bus-protocol specifies parameters such as:
+— asserting control-signals
+— timing of placing information on bus
+— rate of data-transfer.
+A typical bus consists of 3 sets of lines:
+1) Address,
+2) Data &
+3) Control lines.
+¢ Control-signals
+— specify whether a read or a write-operation is to be performed.
+— carry timing information i.e. they specify time at which I/O-devices place data on the bus.
+© R/W line specifies
+— read-operation when R/W=1.
+— write-operation when R/W=0.
+¢ During data-transfer operation,
+> One device plays the role of a bus-master.
+> Master-device initiates the data-transfer by issuing read/write command on the bus.
+> The device addressed by the master is called as Slave.
+© Two types of Buses: 1) Synchronous and 2) Asynchronous.
+
+Page 30

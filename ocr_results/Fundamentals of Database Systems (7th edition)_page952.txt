@@ -1,0 +1,54 @@
+922
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+metadata and application data separately. Whereas the metadata is stored on a
+dedicated server, called the NameNode, the application data is stored on other
+servers, called DataNodes. All servers are fully connected and communicate with
+each other using TCP-based protocols. To make data durable, the file content is
+replicated on multiple DataNodes, as in the Google File System. This not only
+increases reliability, but it also multiplies the bandwidth for data transfer and
+enables colocation of computation with data. It was designed with the following
+assumptions and goals:
+
+Hardware failure: Using commodity hardware, failure of hardware is the
+norm rather than an exception. Therefore, with thousands of nodes, automatic
+detection and recovery from failures becomes a must.
+
+Batch processing: HDFS has been primarily designed for batch rather than
+interactive use. High throughput is emphasized over low latency of data access.
+Full scans of files are typical.
+
+Large datasets: HDFS was designed to support huge files in the hundreds of
+gigabytes to terabytes range.
+
+Simple coherency model: HDFS applications need a one writer and many
+reader access models for files. File content cannot be updated, but only
+appended. This model alleviates coherency issues among copies of data.
+
+25.3.2 Architecture of HDFS
+
+HDFS has a master-slave architecture. The master server, called the NameNode,
+manages the file system storage area or namespace; Clients access the namespace
+through the Namenode. The slaves called DataNodes run on a cluster of commod-
+ity machines, usually one per machine. They manage the storage attached to the
+node that they run on. The namespace itself comprises Files and Directories. The
+Namenodes maintain inodes (index nodes) about File and Directories with attri-
+butes like ownership, permissions, creation and access times, and disk space quotas.
+Using inodes, the mapping of File blocks to DataNodes is determined. DataNodes
+are responsible for serving read and write requests from clients. DataNodes per-
+form block creation, deletion, and replication operations as instructed by the
+NameNode. A cluster can have thousands of DataNodes and tens of thousands of
+HDEFS clients simultaneously connected.
+
+To read a file, a client first connects to the NameNode and obtains the locations of
+the data blocks in the file it wants to access; it then connects directly with the
+DataNodes that house the blocks and reads the data.
+
+The architecture of HDFS has the following highlights:
+
+1. HDFS allows a decoupling of metadata from data operations. Metadata
+operations are fast whereas data transfers are much slower. If the location
+of metadata and transfer of data are not decoupled, speed suffers in a dis-
+tributed environment because data transfer dominates and slows the
+response.

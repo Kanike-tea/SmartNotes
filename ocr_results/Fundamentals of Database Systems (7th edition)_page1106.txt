@@ -1,0 +1,54 @@
+1076
+
+Chapter 28 Data Mining Concepts
+
+3. The subset of items containing i; from C; where support(ij) >= mins
+becomes the frequent 1-itemset, L);
+
+4. k=1;
+termination = false;
+repeat
+1. Ley = (empty set);
+2. Create the candidate frequent (k+1)-itemset, Cy,1, by combining mem-
+
+bers of L; that have k-1 items in common (this forms candidate frequent
+(k+1)-itemsets by selectively extending frequent k-itemsets by one item);
+
+3. In addition, only consider as elements of C;,,, those k+1 items such that
+every subset of size k appears in Ly
+
+4. Scan the database once and compute the support for each member of Cy, ;; if
+the support for a member of C;.,; >= mins then add that member to L,,;
+
+5. If Lj,1 is empty then termination = true
+
+elsek=k+ 1;
+until termination;
+End;
+
+In the next iteration of the repeat-loop, we construct candidate frequent 3-itemsets
+by adding additional items to sets in L,. However, for no extension of itemsets in L
+will all 2-item subsets be contained in L,. For example, consider {milk, juice, bread};
+the 2-itemset {milk, bread} is not in Lz, hence {milk, juice, bread} cannot be a fre-
+quent 3-itemset by the downward closure property. At this point the algorithm ter-
+minates with L, equal to {{milk}, {bread}, {juice}, {cookies}} and L, equal to {{milk,
+juice}, {bread, cookies}}.
+
+Several other algorithms have been proposed to mine association rules. They vary
+mainly in terms of how the candidate itemsets are generated and how the supports
+for the candidate itemsets are counted. Some algorithms use data structures such as
+bitmaps and hashtrees to keep information about itemsets. Several algorithms have
+been proposed that use multiple scans of the database because the potential number
+of itemsets, 2”, can be too large to set up counters during a single scan. We will
+examine three improved algorithms (compared to the Apriori algorithm) for asso-
+ciation rule mining: the sampling algorithm, the frequent-pattern tree algorithm,
+and the partition algorithm.
+
+28.2.3 Sampling Algorithm
+
+The main idea for the sampling algorithm is to select a small sample, one that fits
+in main memory, of the database of transactions and to determine the frequent
+itemsets from that sample. If those frequent itemsets form a superset of the frequent
+itemsets for the entire database, then we can determine the real frequent itemsets by
+scanning the remainder of the database in order to compute the exact support val-
+ues for the superset itemsets. A superset of the frequent itemsets can usually be

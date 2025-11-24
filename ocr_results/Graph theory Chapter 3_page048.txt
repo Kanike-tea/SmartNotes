@@ -1,0 +1,47 @@
+201
+
+prefix codes and Weighted trees
+
+The tree in Figure 3.51 is an Huffmann tree (opti
+“ee, We obtain the following optimal prefix code pai the given srubols given data. From this
+
+B: 110101, C:0110, D: 1100, E: 10
+a
+
+A: 111,
+G: 11011, : ‘
+H:010,. 7: 00, J: 110100.
+
+F: 0111,
+My Construct an optimal prefix code for the letters of the word ENGINEERING
+
+| Hence deduce the code for this word.
+The given word consists of the letters EB} N, G;Ij'R, with frequencies 3, 3, 2, 2, 1 respectively.
+
+t, we arrange these letters in the non-decreasing order of their frequencies (which may be
+
+agarded as weights). Their representation as isolated verties is shown below.
+
+e eo, ‘e e e
+Ra Gk | hey N
+@ @\@ @/\®
+f \ / \
+Figure 3.52):
+We now construct an optimal tree having these letters as leaves by using the Huffman’s pro-
+‘cedure. The graphs obtained in successive steps of the procedure are shown below in Figures
+3.52(ii)-(v) in the order of their occurrence.’ The, labeled version of the final tree is shown in
+
+I /
+@) GY (3)
+
+#
+
+(Figure 3.52 (ii
+er Omens A)
+N
+hot WB
+
+(Ra 1G 9
+a @ @® ®&
+
+Figure 3.52 (ii)

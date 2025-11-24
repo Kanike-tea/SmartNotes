@@ -1,0 +1,43 @@
+12.1 The Memory Hierarchy and Cache Memory 407
+
+f
+Virtual H Physical
+memory H memory
+I
+Offset Address bus
+t >
+Translation 1
+base 1 >| MMU -|
+Cache T
+I
+i Data bus
+- -|
+Processor | Main
+Logical cache memory
+Virtual ' Physical
+memory ' memory
+i
+Offset Address bus
+1 >|
+f
+Translation !
+base
++| MMU 1 |
++ Cache
+r
+Dat bus |
+j
+Processor ! Main
+Physical cache memory
+
+Figure 12.3 Logical and physical caches.
+
+improvement to overall system performance. The principle of locality of reference explains
+the performance improvement provided by the addition of a cache memory to a system.
+This principle states that computer software programs frequently run small loops of code
+that repeatedly operate on local sections of data memory.
+
+The repeated use of the same code or data in memory, or those very near, is the reason
+a cache improves performance. By loading the referenced code or data into faster memory
+when first accessed, each subsequent access will be much faster. It is the repeated access to
+the faster memory that improves performance.

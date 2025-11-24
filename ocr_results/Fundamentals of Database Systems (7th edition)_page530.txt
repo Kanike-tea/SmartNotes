@@ -1,0 +1,63 @@
+500
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+14.32.
+
+14.33.
+
+14.34,
+
+Author_affil refers to the affiliation of author. Suppose the following depen-
+dencies exist:
+
+Book title > Publisher, Book_type
+Book_type — List_price
+Author_name — Author_affil
+a. What normal form is the relation in? Explain your answer.
+
+b. Apply normalization until you cannot decompose the relations further.
+State the reasons behind each decomposition.
+
+This exercise asks you to convert business statements into dependencies.
+Consider the relation DISK_DRIVE (Serial_number, Manufacturer, Model, Batch,
+Capacity, Retailer). Each tuple in the relation DISK_DRIVE contains information
+about a disk drive with a unique Serial_number, made by a manufacturer, with a
+particular model number, released in a certain batch, which has a certain stor-
+age capacity and is sold by a certain retailer. For example, the tuple Disk_drive
+((1978619’, ‘WesternDigital’, ‘A2235X’, ‘765234’, 500, ‘CompUSA’) specifies
+that WesternDigital made a disk drive with serial number 1978619 and model
+number A2235X, released in batch 765234; it is 5|00GB and sold by CompUSA.
+
+Write each of the following dependencies as an FD:
+
+a. The manufacturer and serial number uniquely identifies the drive.
+
+b. A model number is registered by a manufacturer and therefore can’t be
+used by another manufacturer.
+
+c. All disk drives in a particular batch are the same model.
+
+d. All disk drives of a certain model of a particular manufacturer have
+exactly the same capacity.
+
+Consider the following relation:
+R (Doctor#, Patient#, Date, Diagnosis, Treat_code, Charge)
+
+In the above relation, a tuple describes a visit of a patient to a doctor along
+with a treatment code and daily charge. Assume that diagnosis is determined
+(uniquely) for each patient by a doctor. Assume that each treatment code
+has a fixed charge (regardless of patient). Is this relation in 2NF? Justify your
+answer and decompose if necessary. Then argue whether further normaliza-
+tion to 3NF is necessary, and if so, perform it.
+
+Consider the following relation:
+
+CAR_SALE (Car_id, Option_type, Option _listprice, Sale_date,
+Option_discountedprice)
+
+This relation refers to options installed in cars (e.g., cruise control) that were
+sold at a dealership, and the list and discounted prices of the options.
+
+If CarlD > Sale_date and Option_type > Option_listprice and CarlD, Option_type
+> Option_discountedprice, argue using the generalized definition of the 3NF

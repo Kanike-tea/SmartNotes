@@ -1,0 +1,55 @@
+20.2 Transaction and System Concepts
+
+20.2.2 The System Log
+
+To be able to recover from failures that affect transactions, the system maintains
+a log’ to keep track of all transaction operations that affect the values of database
+items, as well as other transaction information that may be needed to permit
+recovery from failures. The log is a sequential, append-only file that is kept on
+disk, so it is not affected by any type of failure except for disk or catastrophic
+failure. Typically, one (or more) main memory buffers, called the log buffers,
+hold the last part of the log file, so that log entries are first added to the log main
+memory buffer. When the log buffer is filled, or when certain other conditions
+occur, the log buffer is appended to the end of the log file on disk. In addition, the
+log file from disk is periodically backed up to archival storage (tape) to guard
+against catastrophic failures. The following are the types of entries—called log
+records—that are written to the log file and the corresponding action for each
+log record. In these entries, T refers to a unique transaction-id that is generated
+automatically by the system for each transaction and that is used to identify each
+transaction:
+
+1. [start_transaction, T]. Indicates that transaction T has started execution.
+
+2. [write_item, T, X, old_value, new_value]. Indicates that transaction T has
+changed the value of database item X from old_value to new_value.
+
+3. [read_item, T, X]. Indicates that transaction T has read the value of database
+item X.
+
+4. [commit, T]. Indicates that transaction T has completed successfully, and affirms
+that its effect can be committed (recorded permanently) to the database.
+
+5. [abort, T]. Indicates that transaction T has been aborted.
+
+Protocols for recovery that avoid cascading rollbacks (see Section 20.4.2)—which
+include nearly all practical protocols—do not require that READ operations are
+written to the system log. However, if the log is also used for other purposes—such
+as auditing (keeping track of all database operations)—then such entries can be
+included. Additionally, some recovery protocols require simpler WRITE entries
+that only include one of new_value or old_value instead of including both (see Sec-
+tion 20.4.2).
+
+Notice that we are assuming that all permanent changes to the database occur
+within transactions, so the notion of recovery from a transaction failure amounts
+to either undoing or redoing transaction operations individually from the log. If
+the system crashes, we can recover to a consistent database state by examining the
+log and using one of the techniques described in Chapter 22. Because the log con-
+tains a record of every WRITE operation that changes the value of some database
+item, it is possible to undo the effect of these WRITE operations of a transaction T
+by tracing backward through the log and resetting all items changed by a WRITE
+operation of T to their old_values. Redo of an operation may also be necessary if a
+transaction has its updates recorded in the log but a failure occurs before the sys-
+
+®The log has sometimes been called the DBMS journal.
+
+755

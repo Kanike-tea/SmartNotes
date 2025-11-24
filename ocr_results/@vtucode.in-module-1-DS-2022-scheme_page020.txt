@@ -1,0 +1,58 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+> Variables can be declared as follows:
+humanBeing personl,person2;
+
+> Structures cannot be directly checked for equality or inequality. So, we can write a function to
+
+do this.
+
+int humans—equal (human—being personl,
+
+human—being person2)
+
+{ /* being otherwise return FALSE
+
+if (strcemp(personl.name, person2.name)) return FALSE;
+if (personl.age != person2.age) return FALSE;
+
+if (personl.salary 1= person2.salary) return FALSE;
+return TRUE;
+
+return TRUE if personl and person2 are the same human
+*/
+
+}
+
+if (humans—equal (personl,person2) )
+printf("The two human beings are the same\n"); else
+printf{"The two human beings are not the same\n");
+
+PRG: Function to.check equality of structures
+
+> We can embed a structure within a structure.
+
+typedef struct {
+int month;
+
+int day;
+
+int year; ‘} date;
+
+typedef struct human-being {
+char name[10];
+
+int age;
+
+float salary;
+
+date dob;
+
+Mi
+
+>» Aperson born on February 11, 1944, would have the values for the date struct set as:
+
+personl.dob.month = 2;
+personl.dob.day = 11; personl.dob.year = 1944;
+
+vtucode.in 21

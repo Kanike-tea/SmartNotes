@@ -1,0 +1,63 @@
+10.Develop a menu driven Program in C for the following operations on Binary Search Tree (BST) of
+Integers .
+
+la. Create a BST of N Integers: 6,9, 5,2, 8, 15,24, 14,7,8,5,2
+
+lb. Traverse the BST in Inorder, Preorder and Post Order
+
+lc. Search the BST for a given element (KEY) and report the appropriate message
+
+id. Exit
+
+#include<stdio.h>
+#include<stdlib.h>
+struct BST
+{
+int data;
+struct BST *Ichild;
+struct BST *rchild;
+iH
+typedef struct BST * NODE;
+
+NODE create()
+{
+NODE temp;
+temp = (NODE) malloc(sizeof(struct BST));
+printf("\nEnter The value: ");
+scanf("%d" , &temp->data);
+
+temp->Ichild = NULL;
+temp->rchild = NULL;
+return temp;
+
+}
+
+void insert(NODE root, NODE newnode);
+void inorder(NODE root);
+
+void preorder(NODE root);
+
+void postorder(NODE root);
+
+void search(NODE root);
+
+void insert(NODE root, NODE newnode)
+/*Note: if newnode->data == root->data it will be skipped. No duplicate nodes are allowed */
+
+if (newnode->data < root->data)
+{
+if (root->Ichild == NULL)
+root->Ichild = newnode;
+else
+insert(root->Ichild, newnode);
+
+if (newnode->data > root->data)
+
+{
+if (root->rchild == NULL)
+root->rchild = newnode;
+else
+insert(root->rchild, newnode);
+}
+
+48

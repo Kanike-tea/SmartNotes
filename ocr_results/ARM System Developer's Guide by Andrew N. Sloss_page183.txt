@@ -1,0 +1,53 @@
+170 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+cal RN 12; character 1
+ca2 RN 14; character 2
+3 void str_tolower_unrolled(char *out, char *in)
+str_tolower_unrol led
+STMFD — sp!, {Ir}
+Joop_next3
+ORB. ca0, [in], #1 5 ca = *int#;
+Lord. cal, [in], #1; cal = *int#;
+ORB ca2, [in], #1 5 ca2 = *intt;
+suB_ st, caO, #'A" 3 convert ca0 to lower case
+cMP ot, #'Z*='AY
+ADDLS a0, ca, #'a'-
+suB_ st, cal, #'A'
+CMP ot, #tZ'='AY
+ADDLS cal, cal, #'a'
+SUB t, ca2, #'A"
+cMP ot, #'Z*='AY
+ADDLS ca2, ca2, #'a'~'A'
+TRB. ca0, [out], #1 5 *out++ = cad;
+TEQ —ca0, #0 if (ca0!=0)
+STRNEB cal, [out], #1  ; *out++ = cal;
+TEQNE cal, #0 if (ca0!=0 & cal!=0)
+STRNEB ca2, [out], #1  ; *out++ = ca2;
+TEQNE ca2, #0 if (ca0!=0 && cal!=0 & ca2!=0)
+BNE 1oop_next3 goto loop_next3;
+LOMFD sp!, {pc} 3 return;
+
+function entry
+
+convert cal to lower case
+
+convert ca2 to lower case
+
+This loop is the most efficient implementation we’ve looked at so far. The implemen-
+tation requires seven cycles per character on ARM9TDMI. This gives a 1.57 times speed
+increase over the original str_tolower. Again it is the conditional nature of the ARM
+instructions that makes this possible. We use conditional instructions to avoid storing
+characters that are past the end of the string.
+
+However, the improvement in Example 6.10 does have some costs. The routine is
+more than double the code size of the original implementation. We have assumed that
+you can read up to two characters beyond the end of the input string, which may not
+be true if the string is right at the end of available RAM, where reading off the end
+will cause a data abort. Also, performance can be slower for very short strings because
+(1) stacking /r causes additional function call overhead and (2) the routine may process
+up to two characters pointlessly, before discovering that they lie beyond the end of the
+string.
+
+You should use this form of scheduling by unrolling for time-critical parts of an appli-
+cation where you know the data size is large. If you also know the size of the data at compile
+time, you can remove the problem of reading beyond the end of the array.

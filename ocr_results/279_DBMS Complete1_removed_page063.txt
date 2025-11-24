@@ -1,0 +1,56 @@
+LECTURE-21
+Tuple Relational Calculus
+
+Relational algebra is an example of procedural language while tuple relational calculus is a
+nonprocedural query language.
+
+A query is specified as:
+
+{t | P(t)}, ie it is the set of all tuples t such that predicate P is true for t.
+
+The formula P(t) is formed using atoms which uses the relations, tuples of relations and fields of
+tuples and following symbols
+
+€( belongs to).<>, =, (comparison operators)
+
+These atoms can then be used to form formulas with following symbols
+
+¥ (universal qualifier generally called “for all")
+
+3 ( existential qualifier generally called “there exists")
+
+A (and),v (or), 7( not)
+
+For example : here are some queries and a way to express them using tuple calculus:
+
+o Find the branch-name, loan-number and amount for loans over Rs 1200.
+{t| t€LoanAt[amount] > 1200}
+
+o Find the loan number for each loan of an amount greater that Rs1200.
+{t| 3 s € Loan(t[loan-number] = s[loan-number] A s[amount] >1200}
+
+o Find the names of all the customers who have a loan from the Sadar branch.
+{t | 4 s € Borrower ( ¢[customer-name]= s[customer-name] A
+3 u € Loan ( u[loan-number] =s[loan-number
+Aul[branch-name] = "Sadar"))}
+
+o Find all customers who have a loan , an account, or both at the bank
+{t| 3s € Borrower ( t[customer-name] = s[customer-name])
+
+V 3 u€ Depositor (t[customer-name] = u[customer-name])}
+
+o Find only those customers who have both an account and a loan.
+{t| 3 s € Borrower ( t[customer-name] = s[customer-name])
+Adu € Depositor (t[customer-name] = u[customer-name])}
+
+o Find all customers who have an account but do not have loan.
+{t| 3u € Depositor (t[customer-name] = u[customer-name]) A
+
+73s € Borrower ( t[customer-name] = s[customer-name])}
+
+o. Find all customers who have an account at all branches located in Agra
+{t | Yw € Branch( w[branch-city] = "Agra" >
+ds € Depositor (¢[customer-name]= s[customer-name]
+Ad w€ Account ( u[account-number] = s[account-number]
+
+Au[branch-name] = w[branch-name])))}

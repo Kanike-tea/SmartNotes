@@ -1,0 +1,60 @@
+MICROCONTROLLER(BCS402)
+
+ox20000
+
+ox 10000
+
+0x8000 + code size
+
+oxs000
+oxs000 — 128
+
+oxa000 — 640
+
+Free space
+
+ox20
+
+oxoo
+There is an advantage using separate stacks for each mode rather than
+using a single stack . Errant tasks can be debugged and isolated from the
+rest of the system.
+
+Each mode stack must be set up. Here is an example to set_up three
+different stacks when the processor core comes out of reset.
+
+Initialization code starts by setting up the stack registers for each
+processor mode. The stack register r13 is one of the registers that is
+always banked when a mode change occurs.
+
+A set of defines are declared that map the memory region names with an
+absolute address.
+
+Example, the User stack is given the label USR_Stack and is set to
+address 0x20000. The Supervisor stack is set to an address that is 128
+bytes below the IRQ stack.
+
+USR_Stack  EQU 0x20000
+
+IRQ_Stack EQU 0x8000
+
+SVC_Stack EQU IRQ_Stack-128
+
+A set of defines that map each processor mode with a particular mode bit
+pattern. These labels can then be used to set the cpsr to a new mode.
+
+Usr32md EQU 0x10 ; User mode
+
+FIQ32md EQU 0x11 3 FIQ mode
+
+1RQ32md EQU 0x12 3 IRQ mode
+
+SVC32md EQU 0x13 ; Supervisor mode
+
+Abt32md EQU 0x17 3 Abort mode
+
+Und32md EQU Ox1b ; Undefined instruction mode
+
+Sys32md EQU Ox1f 3 System mode
+
+13

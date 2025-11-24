@@ -1,0 +1,60 @@
+1042 Chapter 27 Introduction to Information Retrieval and Web Search
+
+Figure 27.4
+Example of an
+inverted index.
+
+Document 1
+
+This example
+shows an
+
+example of an
+inverted index.
+
+Document 2
+
+Inverted index
+isadata
+structure for
+associating
+terms to
+documents.
+
+Document 3
+
+Stock market
+index is used
+for capturing
+the sentiments
+of the financial
+market.
+
+ID Term Document: position
+1. example 1:2, 15
+
+2. inverted 1:8, 2:1
+
+3. index 1:9, 2:2, 3:3
+
+4. market 3:2, 3:13
+
+Searching for relevant documents from the inverted index, given a set of query
+
+terms, is generally a three-step process.
+
+1. Vocabulary search. If the query comprises multiple terms, they are sepa-
+rated and treated as independent terms. Each term is searched in the vocab-
+ulary. Various data structures, like variations of B*-tree or hashing, may be
+used to optimize the search process. Query terms may also be ordered in
+lexicographic order to improve space efficiency.
+
+2. Document information retrieval. The document information for each
+term is retrieved.
+
+3. Manipulation of retrieved information. The document information vector
+for each term obtained in step 2 is now processed further to incorporate
+various forms of query logic. Various kinds of queries like prefix, range,
+context, and proximity queries are processed in this step to construct the
+
+final result based on the document collections returned in step 2.

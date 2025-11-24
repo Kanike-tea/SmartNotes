@@ -1,0 +1,49 @@
+630 Appendix A ARM and Thumb Assembler Instructions
+
+MAP (alias “), FIELD (alias #)
+
+These directives define objects similar to C structures. MAP sets the base address or offset of
+a structure, and FIELD defines structure elements. The syntax is
+
+MAP <base> {, <base_register>}
+<name> FIELD <field_size_in_bytes>
+
+The MAP directive sets the value of the special assembler variable {VAR} to the base
+address of the structure. This is either the value <base> or the register relative value
+<base_register>+<base>. Each FIELD directive sets <name> to the value VAR and incre-
+ments VAR by the specified number of bytes. For register relative values, the expressions
+: INDEX: <name> and : BASE:<name> return the element offset from base register, and base
+register number, respectively.
+
+In practice the base register form is not that useful. Instead you can use the plain
+form and mention the base register explicitly in the instruction. This allows you to point
+to a structure of the same type with different base registers. The following example sets up
+a structure on the stack of two int variables:
+
+MAP oO ; structure elements offset from 0
+count FIELD 4 ; define an int called count
+type FIELD 4 ; define an int called type
+size FIELD 0 ; record the struct size
+SUB sp, sp, #size — ; make room on the stack
+Mov. rd, #0
+STR v0, [sp, #count] ; clear the count element
+
+stR v0, [sp, #type] ; clear the type element
+
+NOFP
+
+This directive bans the use of floating-point instructions in the assembly file. We don’t
+cover floating-point instructions and directives in this appendix.
+
+OPT
+
+The OPT directive controls the formatting of the armasm -list option. This is seldom used
+now that source-level debugging is available. See the armasm documentation.
+
+PROC
+See FUNCTION.
+
+RLIST, RN
+
+<name> RN <numeric expression>
+<name> RLIST <list of ARM register enclosed in {}>

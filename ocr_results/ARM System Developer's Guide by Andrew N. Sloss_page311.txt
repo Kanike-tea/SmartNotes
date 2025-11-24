@@ -1,0 +1,88 @@
+298 Chapter 8 Digital Signal Processing
+
+EXAMPLE
+
+8.15
+
+ADD
+STMIA
+SUBS
+BGT
+LOMFD
+STMDB
+SUB
+MOV
+SUBS
+BGT
+LOMFD
+
+x_1, s_1, accl, ASR #14
+y!, (x0, x1)
+N,N, #2
+next_sample_arm7m
+sp!, {b, N, M}
+
+b, {s_1, s 2}
+
+ys yy N, LSL#2
+x,y
+
+M, My #1
+next_biquad_arm7m
+sp!, {r4-rll, pc}
+
+Each inner loop requires a worst case of 44 cycles to apply one biquad to two samples.
+‘This gives the ARM7TDMI an IIR rating of 22 cycles/biquad-sample for a general biquad.
+
+On the ARM9TDMI we can use halfword load instructions rather than load multiples.
+Therefore we can store samples in 16-bit short integers. This example implements a load
+scheduled IIR suitable for the ARM9TDMI. The interface is the same as in Example 8.14,
+except that we use 16-bit data items.
+
+y RN O
+x RN 1
+b RN 2
+N RN 3
+M RN 4
+x0 — RN2
+x1 RNG
+round RN 5
+al RN6
+a2 NT
+bl RN8
+b2 RNY
+sl RN 10
+s2  RN11
+accO RN 12
+accl RN 14
+
+address for output samples y[]
+
+address of input samples x[]
+
+address of biquads
+
+number of samples to filter (a multiple of 2)
+number of biquads to apply
+
+input samples
+
+rounding value (1<<13)
+
+3 biquad coefficient -a[1] at Ql4
+biquad coefficient -a[2] at Q14
+biquad coefficient +b[1] at Q14
+biquad coefficient +b[2] at Q14
+3 s[t-1] then s[t-2] (alternates)
+3 s[t-2] then s[t-1] (alternates)
+3 accumulators
+
+3 typedef struct {
+
+3 short al,a2; /* coefficients -a[1],-a[2] at Ql4 */
+3; short b1,b2; /* coefficients +b[1],+b[2] at Ql4 */
+3 short sl,s2; /* s[t-1], s[t-2] */
+
+3 } biquad;
+
+3 void iir_ql4_arm9m

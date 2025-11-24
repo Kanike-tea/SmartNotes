@@ -1,0 +1,53 @@
+14.10 Demonstration: A Small Virtual Memory System 521
+
+3. Locate the regions listed in steps 1 and 2 into the physical memory map; this is an
+implementation of what is shown on the right side of Figure 14.5.
+
+4, Define and locate the page tables within the page table region.
+
+w
+
+. Define the data structures needed to create and manage the regions and page tables.
+These structures are implementation dependent and are defined specifically for the
+example. However, the general form of the structures is a good starting point for most
+simple systems.
+
+6. Initialize the MMU, caches, and write buffer.
+
+7. Set up a context switch routine to gracefully transition from one task to the next.
+
+We present these steps in detail in the following sections.
+
+14.10.1 STEP 1: DEFINE THE FIXED SYSTEM SOFTWARE
+REGIONS
+
+There are four fixed system software regions used by the operating system: a dedicated 32 KB
+kernel region at 0x00000, a 32 KB shared memory region at 0x8000, a dedicated 32 KB page
+table region at 0x10000, and a 256 MB peripheral region at 0x10000000 (see Figure 14.17).
+We define these regions during the initialization process and never change their page tables
+again.
+
+‘The privileged kernel region stores the system software; it contains the operating system
+kernel code and data. The region uses fixed addressing to avoid the complexity of remapping
+when changing to a system mode context. It also contains the vector table and the stacks
+for handling FIQ, IRQ, SWI, UND, and ABT exceptions.
+
+The shared memory region is located at a fixed address in virtual memory. All tasks use
+this region to access shared system resources. The shared memory region contains shared
+libraries and the transition routines for switching from privileged mode to user mode during
+a context switch.
+
+‘The page table region contains five page tables. Although the page table region is 32 KB
+in size, the system uses only 20 KB: 16 KB for the master table and 1 KB each for the four
+12 tables.
+
+The peripheral region controls the system device I/O space. The primary purpose of
+this region is to establish this area as a noncached, nonbuffered region. You don’t want to
+have input, output, or control registers subject to the stale data issues of caching or the time
+sequence delays involved in using the write buffer.
+
+This region also prevents user mode access to peripheral devices; thus, access to the
+devices must be made through device drivers. This region permits privileged access only;
+no user access is allowed. In the demonstration, this is a single region, but in a more refined
+system, there would be more regions defined to provide finer control over individual
+devices.

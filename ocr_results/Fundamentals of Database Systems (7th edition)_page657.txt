@@ -1,0 +1,48 @@
+17.3 Dynamic Multilevel Indexes Using B-Trees and B*-Trees
+
+new € remaining entries in temp; K — Kj;
+(‘now we must move (K, new) and insert in parent internal node;
+however, if parent is full, split may propagate*)
+finished < false;
+repeat
+if stack S is empty
+then (<-no parent node; new root node is created for the tree*)
+begin
+root < anew empty internal node for the tree;
+root < <n, K, new>; finished < true;
+end
+else begin
+n€ pop stack S;
+if internal node n is not full
+then
+begin (*parent node not full; no split*)
+insert (K, new) in correct position in internal node n;
+finished <— true
+end
+else begin (‘internal node n is full with p tree pointers;
+overflow condition; node is split*)
+copy n to temp (*temp is an oversize internal node*);
+insert (K, new) in temp in correct position;
+(*temp now has p + 1 tree pointers*)
+new < a new empty internal node for the tree;
+j—Lp + 1/25;
+n & entries up to tree pointer P;in temp;
+(*n contains <P), Ki, P2, Ka, -. , Pui, Ki, P)>*)
+new < entries from tree pointer Pj, in temp;
+(*new contains < Pi1, Kets «=» Ko-tn Por Ko, Pov >*)
+KEK,
+(*now we must move (K, new) and insert in
+parentinternal node*)
+end
+end
+until finished
+end;
+end;
+
+Figure 17.12 illustrates insertion of records in a B*-tree of order p = 3 and Pjea¢= 2. First,
+we observe that the root is the only node in the tree, so it is also a leaf node. As soon as
+more than one level is created, the tree is divided into internal nodes and leaf nodes.
+Notice that every key value must exist at the leaf level, because all data pointers are at the
+leaf level. However, only some values exist in internal nodes to guide the search. Notice
+also that every value appearing in an internal node also appears as the rightmost value in
+the leaf level of the subtree pointed at by the tree pointer to the left of the value.

@@ -1,0 +1,52 @@
+784
+
+Chapter 21 Concurrency Control Techniques
+
+3. A transaction T will not issue a lock_item(X) operation if it already holds the
+lock on item X.'
+
+4. A transaction T will not issue an unlock_item(X) operation unless it already
+holds the lock on item X.
+
+These rules can be enforced by the lock manager module of the DBMS. Between the
+lock_item(X) and unlock_item(X) operations in transaction T, T is said to hold the
+lock on item X. At most one transaction can hold the lock on a particular item.
+Thus no two transactions can access the same item concurrently.
+
+Shared/Exclusive (or Read/Write) Locks. The preceding binary locking
+scheme is too restrictive for database items because at most one transaction can
+hold a lock on a given item. We should allow several transactions to access the
+same item X if they all access X for reading purposes only. This is because read
+operations on the same item by different transactions are not conflicting (see Sec-
+tion 21.4.1). However, if a transaction is to write an item X, it must have exclusive
+access to X. For this purpose, a different type of lock, called a multiple-mode
+lock, is used. In this scheme—called shared/exclusive or read/write locks—there
+are three locking operations: read_lock(X), write_lock(X), and unlock(X). A lock
+associated with an item X, LOCK(X), now has three possible states: read-locked,
+write-locked, or unlocked. A read-locked item is also called share-locked because
+other transactions are allowed to read the item, whereas a write-locked item is
+called exclusive-locked because a single transaction exclusively holds the lock on
+the item.
+
+One method for implementing the preceding operations on a read/write lock is
+to keep track of the number of transactions that hold a shared (read) lock on an
+item in the lock table, as well as a list of transaction ids that hold a shared lock.
+Each record in the lock table will have four fields: <Data_item_name, LOCK,
+No_of_reads, Locking_transaction(s)>. The system needs to maintain lock records
+only for locked items in the lock table. The value (state) of LOCK is either read-
+locked or write-locked, suitably coded (if we assume no records are kept in
+the lock table for unlocked items). If LOCK(X) = write-locked, the value of
+locking_transaction(s) is a single transaction that holds the exclusive (write) lock
+on X. If LOCK(X)=read-locked, the value of locking transaction(s) is a list of one
+or more transactions that hold the shared (read) lock on X. The three operations
+read_lock(X), write_lock(X), and unlock(X) are described in Figure 21.2.7 As before,
+each of the three locking operations should be considered indivisible; no inter-
+leaving should be allowed once one of the operations is started until either the
+operation terminates by granting the lock or the transaction is placed in a wait-
+ing queue for the item.
+
+'This rule may be removed if we modify the lock_item (X) operation in Figure 21.1 so that if the item is
+currently locked by the requesting transaction, the lock is granted.
+
+2These algorithms do not allow upgrading or downgrading of locks, as described later in this section. The
+reader can extend the algorithms to allow these additional operations.

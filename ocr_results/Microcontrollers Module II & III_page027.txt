@@ -1,0 +1,38 @@
+Microcontrollers — BCS402
+
+Syntax: MRS{<cond>} Rd,<cpsrlspsr>
+MSR {<cond>} <cpsrlspsr>_<fields>,Rm
+MSR {<cond>} <cpsrlspsr>_<fields>,#immediate
+
+Fields ' Flags [24:31] Status [1 6:23] ‘ eXtension [8:15] 1 Control [0:7]
+
+Bit 31302928 7654 0
+
+Fig 9: psr byte fields
+
+MRS | copy program status register to a general-purpose register | Rd=psr
+
+MSR | move a general-purpose register to a program status register | psrifield] = Rm
+
+MSR | move an immediate value to a program status register | psrifield] = immediate
+
+The c field controls the interrupt masks, Thumb state, and processor mode.
+Example:
+MRS rl, cpsr
+BIC rl,r1, 40x80 ; 0b01000000
+MSR epsr_c,rl
+PRE: cpsr = nzcvqIFt_SVC
+POST: cpsr = nzcvqiFt_SVC
+
+The MSR first copies the cpsr into register rl. The BIC instruction clears bit 7 of rl. Register
+
+rl is then copied back into the cpsr, which enables IRQ interrupts.
+
+This example is in SVC mode. In user mode, can read all cpsr bits, but can only update the
+
+condition flag field f.
+5.1 Coprocessor Instructions
+
+Coprocessor instructions are used to extend the instruction set.
+
+Dept. of ECE, GSSSIETW Page 28

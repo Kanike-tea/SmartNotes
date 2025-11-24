@@ -1,0 +1,32 @@
+84 Chapter 3 Introduction to the ARM Instruction Set
+
+suB6T rl, rl, r2
+SUBLT 2, r2, rl
+BNE gcd
+
+3.9 SUMMARY
+
+In this chapter we covered the ARM instruction set. All ARM instructions are 32 bits in
+length. The arithmetic, logical, comparisons, and move instructions can all use the inline
+barrel shifter, which pre-processes the second register Rm before it enters into the ALU.
+
+The ARM instruction set has three types of load-store instructions: single-register load-
+store, multiple-register load-store, and swap. The multiple load-store instructions provide
+the push-pop operations on the stack. The ARM-Thumb Procedure Call Standard (ATPCS)
+defines the stack as being a full descending stack.
+
+The software interrupt instruction causes a software interrupt that forces the processor
+into SVC mode; this instruction invokes privileged operating system routines. The pro-
+gram status register instructions write and read to the cpsr and spsr. There are also special
+pseudoinstructions that optimize the loading of 32-bit constants.
+
+The ARMySE extensions include count leading zeros, saturation, and improved multiply
+instructions. The count leading zeros instruction counts the number of binary zeros before
+integer
+value. The improved multiply instructions provide better flexibility in multiplying 16-bit
+values.
+
+the first binary one. Saturation handles arithmetic calculations that overflow a 32-|
+
+Most ARM instructions can be conditionally executed, which can dramatically reduce
+the number of instructions required to perform a specific algorithm.

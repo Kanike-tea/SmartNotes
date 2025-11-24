@@ -1,0 +1,49 @@
+LECTURE-18: Evaluation of Expressions
+Evaluation of Expressions
+e So far: we have seen algorithms for individual operations
+e Alternatives for evaluating an entire expression tree
+* Materialization: generate results of an expression whose inputs are relations or are
+already computed, materialize (store) it on disk. Repeat.
+* Pipelining: pass on tuples to parent operations even as an operation is being
+executed
+e We study above alternatives in more detail
+
+Materialization
+
+e¢ Materialized evaluation: evaluate one operation at a time, starting at the lowest-level. Use
+intermediate results materialized into temporary relations to evaluate next-level operations.
+
+e E.g., in figure below, compute and store
+
+then compute the store its join with customer, and finally compute the projections on customer-
+name.
+
+They
+S balance < 2500 customer
+account
+
+e Materialized evaluation is always applicable
+¢ Cost of writing results to disk and reading them back can be quite high
+
+* Our cost formulas for operations ignore cost of writing results to disk, so
+
+- Overall cost = Sum of costs of individual operations +
+cost of writing intermediate results to disk
+¢ Double buffering: use two output buffers for each operation, when one is full write it to disk
+while the other is getting filled
+* Allows overlap of disk writes with computation and reduces execution time
+
+Pipelining
+e Pipelined evaluation : evaluate several operations simultaneously, passing the results of one
+operation on to the next.
+* E.g., in previous expression tree, don’t store result of instead, pass tuples directly to
+the join.. Similarly, don’t store result of join, pass tuples directly to projection.
+¢ Much cheaper than materialization: no need to store a temporary relation to disk.
+e Pipelining may not always be possible — e.g., sort, hash-join.
+e For pipelining to be effective, use evaluation algorithms that generate output tuples even as
+tuples are received for inputs to the operation.
+e Pipelines can be executed in two ways: demand driven and producer driven
+e Indemand driven or lazy evaluation
+* system repeatedly requests next tuple from top level operation
+* Each operation requests next tuple from children operations as required, in order to
+output its next tuple

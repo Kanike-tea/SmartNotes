@@ -1,0 +1,51 @@
+166 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+called relational calculus, which is used to define a query declaratively without giv-
+ing a specific order of operations.
+
+In this section, we concentrate on the database modification or update operations.
+There are three basic operations that can change the states of relations in the data-
+base: Insert, Delete, and Update (or Modify). They insert new data, delete old data,
+or modify existing data records, respectively. Insert is used to insert one or more
+new tuples in a relation, Delete is used to delete tuples, and Update (or Modify) is
+used to change the values of some attributes in existing tuples. Whenever these
+operations are applied, the integrity constraints specified on the relational database
+schema should not be violated. In this section we discuss the types of constraints
+that may be violated by each of these operations and the types of actions that may
+be taken if an operation causes a violation. We use the database shown in Figure 5.6
+for examples and discuss only domain constraints, key constraints, entity integrity
+constraints, and the referential integrity constraints shown in Figure 5.7. For each
+type of operation, we give some examples and discuss any constraints that each
+operation may violate.
+
+5.3.1 The Insert Operation
+
+The Insert operation provides a list of attribute values for a new tuple t that is to be
+inserted into a relation R. Insert can violate any of the four types of constraints.
+Domain constraints can be violated if an attribute value is given that does not
+appear in the corresponding domain or is not of the appropriate data type. Key
+constraints can be violated if a key value in the new tuple ¢ already exists in another
+tuple in the relation r(R). Entity integrity can be violated if any part of the primary
+key of the new tuple ¢ is NULL. Referential integrity can be violated if the value of
+any foreign key in f refers to a tuple that does not exist in the referenced relation.
+Here are some examples to illustrate this discussion.
+
+= Operation:
+Insert <‘Cecilia, ‘F, ‘Kolonsky’, NULL, ‘1960-04-05, “6357 Windy Lane, Katy,
+TX; EF, 28000, NULL, 4> into EMPLOYEE.
+Result: This insertion violates the entity integrity constraint (NULL for the
+primary key Ssn), so it is rejected.
+
+= Operation:
+Insert <‘Alicia,, ‘J, ‘Zelaya, ‘999887777, ‘1960-04-05, ‘6357 Windy Lane, Katy,
+TX; E, 28000, ‘987654321, 4> into EMPLOYEE.
+Result: This insertion violates the key constraint because another tuple with
+the same Ssn value already exists in the EMPLOYEE relation, and so it is
+rejected.
+
+= Operation:
+Insert <‘Cecilia, ‘F, ‘Kolonsky, ‘6776789897, ‘1960-04-05, “6357 Windswept,
+Katy, TX; F, 28000, ‘987654321; 7> into EMPLOYEE.
+Result: This insertion violates the referential integrity constraint specified on
+Dno in EMPLOYEE because no corresponding referenced tuple exists in
+DEPARTMENT with Dnumber = 7.

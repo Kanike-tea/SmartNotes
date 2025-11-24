@@ -1,0 +1,50 @@
+28.2 Association Rules
+
+28.2.5 Partition Algorithm
+
+Another algorithm, called the partition algorithm,’ is summarized below. If we are
+given a database with a small number of potential large itemsets, say, a few thou-
+sand, then the support for all of them can be tested in one scan by using a partition-
+ing technique. Partitioning divides the database into nonoverlapping subsets; these
+are individually considered as separate databases and all large itemsets for that par-
+tition, called local frequent itemsets, are generated in one pass. The apriori algo-
+rithm can then be used efficiently on each partition if it fits entirely in main
+memory. Partitions are chosen in such a way that each partition can be accommo-
+dated in main memory. As such, a partition is read only once in each pass. The only
+caveat with the partition method is that the minimum support used for each parti-
+tion has a slightly different meaning from the original value. The minimum support
+is based on the size of the partition rather than the size of the database for deter-
+mining local frequent (large) itemsets. The actual support threshold value is the
+same as given earlier, but the support is computed only for a partition.
+
+At the end of pass one, we take the union of all frequent itemsets from each parti-
+tion. This forms the global candidate frequent itemsets for the entire database.
+When these lists are merged, they may contain some false positives. That is, some of
+the itemsets that are frequent (large) in one partition may not qualify in several
+other partitions and hence may not exceed the minimum support when the original
+database is considered. Note that there are no false negatives; no large itemsets will
+be missed. The global candidate large itemsets identified in pass one are verified in
+pass two; that is, their actual support is measured for the entire database. At the end
+of phase two, all global large itemsets are identified. The partition algorithm lends
+itself naturally to a parallel or distributed implementation for better efficiency. Fur-
+ther improvements to this algorithm have been suggested.*
+
+28.2.6 Other Types of Association Rules
+
+Association Rules among Hierarchies. There are certain types of associations
+that are particularly interesting for a special reason. These associations occur among
+hierarchies of items. Typically, it is possible to divide items among disjoint hierar-
+chies based on the nature of the domain. For example, foods in a supermarket,
+items in a department store, or articles in a sports shop can be categorized into
+classes and subclasses that give rise to hierarchies. Consider Figure 28.3, which
+shows the taxonomy of items in a supermarket. The figure shows two hierarchies—
+beverages and desserts, respectively. The entire groups may not produce associa-
+tions of the form beverages => desserts, or desserts => beverages. However,
+associations of the type Healthy-brand frozen yogurt => bottled water, or Rich
+
+3See Savasere et al. (1995) for details of the algorithm, the data structures used to implement it, and its
+performance comparisons.
+
+4See Cheung et al. (1996) and Lin and Dunham (1998).
+
+1081

@@ -1,0 +1,57 @@
+566
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+= Delete. Deletes the current record and (eventually) updates the file on disk
+to reflect the deletion.
+
+= Modify. Modifies some field values for the current record and (eventually)
+updates the file on disk to reflect the modification.
+
+= Insert. Inserts a new record in the file by locating the block where the record
+is to be inserted, transferring that block into a main memory buffer (if it is
+not already there), writing the record into the buffer, and (eventually) writ-
+ing the buffer to disk to reflect the insertion.
+
+= Close. Completes the file access by releasing the buffers and performing any
+other needed cleanup operations.
+
+The preceding (except for Open and Close) are called record-at-a-time operations
+because each operation applies to a single record. It is possible to streamline the
+operations Find, FindNext, and Read into a single operation, Scan, whose descrip-
+tion is as follows:
+
+™ Scan. If the file has just been opened or reset, Scan returns the first record;
+otherwise it returns the next record. If a condition is specified with the oper-
+ation, the returned record is the first or next record satisfying the condition.
+
+In database systems, additional set-at-a-time higher-level operations may be
+applied to a file. Examples of these are as follows:
+
+= FindAll. Locates all the records in the file that satisfy a search condition.
+
+= Find (or Locate) n. Searches for the first record that satisfies a search condi-
+tion and then continues to locate the next n — 1 records satisfying the same
+condition. Transfers the blocks containing the n records to the main mem-
+ory buffer (if not already there).
+
+= FindOrdered. Retrieves all the records in the file in some specified order.
+
+= Reorganize. Starts the reorganization process. As we shall see, some file
+organizations require periodic reorganization. An example is to reorder the
+file records by sorting them on a specified field.
+
+At this point, it is worthwhile to note the difference between the terms file organiza-
+tion and access method. A file organization refers to the organization of the data of
+a file into records, blocks, and access structures; this includes the way records and
+blocks are placed on the storage medium and interlinked. An access method, on
+the other hand, provides a group of operations—such as those listed earlier—that
+can be applied to a file. In general, it is possible to apply several access methods to a
+file organized using a certain organization. Some access methods, though, can be
+applied only to files organized in certain ways. For example, we cannot apply an
+indexed access method to a file without an index (see Chapter 17).
+
+Usually, we expect to use some search conditions more than others. Some files may
+be static, meaning that update operations are rarely performed; other, more
+dynamic files may change frequently, so update operations are constantly applied
+to them. Ifa file is not updatable by the end user, it is regarded as a read-only file.

@@ -1,0 +1,53 @@
+12.1 Overview of Object Database Concepts
+
+3. Collection (or multivalued) type constructors include the set(T), list(T),
+bag(T), array(T), and dictionary(K,T) type constructors. These allow part
+of an object or literal value to include a collection of other objects or values
+when needed. These constructors are also considered to be type generators
+because many different types can be created. For example, set(string),
+set(integer), and set(Employee) are three different types that can be created
+from the set type constructor. All the elements in a particular collection
+value must be of the same type. For example, all values in a collection of type
+set(string) must be string values.
+
+The atom constructor is used to represent all basic atomic values, such as integers,
+real numbers, character strings, Booleans, and any other basic data types that the
+system supports directly. The tuple constructor can create structured values and
+objects of the form <aj:i), aytiz) ... , a,:i,>, where each a; is an attribute name® and
+each i is a value or an OID.
+
+The other commonly used constructors are collectively referred to as collection
+types but have individual differences among them. The set constructor will create
+objects or literals that are a set of distinct elements {i), iz, ... , in}, all of the same
+type. The bag constructor (also called a multiset) is similar to a set except that the
+elements in a bag need not be distinct. The list constructor will create an ordered list
+[i1, i2, ..., in] of OIDs or values of the same type. A list is similar to a bag except that
+the elements in a list are ordered, and hence we can refer to the first, second, or jth
+element. The array constructor creates a single-dimensional array of elements of
+the same type. The main difference between array and list is that a list can have an
+arbitrary number of elements whereas an array typically has a maximum size.
+Finally, the dictionary constructor creates a collection of key-value pairs (K, V),
+where the value of a key K can be used to retrieve the corresponding value V.
+
+The main characteristic of a collection type is that its objects or values will be a col-
+lection of objects or values of the same type that may be unordered (such as a set or a
+bag) or ordered (such as a list or an array). The tuple type constructor is often
+called a structured type, since it corresponds to the struct construct in the C and
+C++ programming languages.
+
+An object definition language (ODL)’ that incorporates the preceding type con-
+structors can be used to define the object types for a particular database application.
+In Section 12.3 we will describe the standard ODL of ODMG, but first we introduce
+the concepts gradually in this section using a simpler notation. The type construc-
+tors can be used to define the data structures for an OO database schema. Fig-
+ure 12.1 shows how we may declare EMPLOYEE and DEPARTMENT types.
+
+In Figure 12.1, the attributes that refer to other objects—such as Dept of EMPLOYEE
+or Projects of DEPARTMENT—are basically OIDs that serve as references to other
+objects to represent relationships among the objects. For example, the attribute Dept
+
+®Also called an instance variable name in OO terminology.
+
+This corresponds to the DDL (data definition language) of the database system (see Chapter 2).
+
+369

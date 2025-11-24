@@ -1,0 +1,59 @@
+8.5 Examples of Queries in Relational Algebra
+
+UNION operation on SMITH_WORKER_PROJS and SMITH_MGR_PROJS. As a single
+in-line expression, this query becomes:
+
+Tipno (WORKS_ON > gssn=Ssn (Msn (GLname=smith(EMPLOYEE))) U Teno
+
+((pnumber (OLname='Smith'(Tiname, Dnumber(EMPLOYEE))) >
+Sen=Mgr_ssnD EPARTMENT)) 4 pnum-ber=DaumPROJECT)
+
+Query 5. List the names of all employees with two or more dependents.
+
+Strictly speaking, this query cannot be done in the basic (original) relational
+algebra. We have to use the AGGREGATE FUNCTION operation with the COUNT
+aggregate function. We assume that dependents of the same employee have
+distinct Dependent_name values.
+
+T1(Ssn, No_of_dependents)< gosn 3 COUNT Dependent name( DEPENDENT)
+
+T2  ONo_of dependents>2(T1)
+RESULT € Tlinamo, Faame( 12 * EMPLOYEE)
+
+Query 6. Retrieve the names of employees who have no dependents.
+
+‘This is an example of the type of query that uses the MINUS (SET DIFFERENCE)
+operation.
+
+ALL_EMPS € TIgq,(EMPLOYEE)
+
+EMPS_WITH_DEPS(Ssn) < Tigsg,(DEPENDENT)
+EMPS_WITHOUT_DEPS < (ALL_EMPS - EMPS_WITH_DEPS)
+RESULT < Tiname, Fname(EMPS_WITHOUT_DEPS * EMPLOYEE)
+
+We first retrieve a relation with all employee Ssns in ALL_EMPS. Then we create
+a table with the Ssns of employees who have at least one dependent in
+EMPS_WITH_DEPS. Then we apply the SET DIFFERENCE operation to retrieve
+employees Ssns with no dependents in EMPS_WITHOUT_DEPS, and finally join
+this with EMPLOYEE to retrieve the desired attributes. As a single in-line expres-
+sion, this query becomes:
+
+Te.name, Fname((Tgen(EMPLOYEE) ~ Pgsn(Tessn(DEPENDENT))) * EMPLOYEE)
+
+Query 7. List the names of managers who have at least one dependent.
+
+MGRS(Ssn) < Tingr_ssn(DEPARTMENT)
+EMPS_WITH_DEPS(Ssn) < Tegssn(DEPENDENT)
+MGRS_WITH_DEPS < (MGRS A EMPS_WITH_DEPS)
+RESULT < Tiname, Fname(MGRS_WITH_DEPS * EMPLOYEE)
+
+In this query, we retrieve the Ssns of managers in MGRS, and the Ssns of employ-
+ees with at least one dependent in EMPS_WITH_DEPS, then we apply the SET
+INTERSECTION operation to get the Ssns of managers who have at least one
+dependent.
+
+As we mentioned earlier, the same query can be specified in many different ways in
+relational algebra. In particular, the operations can often be applied in various
+orders. In addition, some operations can be used to replace others; for example, the
+
+267

@@ -1,0 +1,54 @@
+14.10 Demonstration: A Small Virtual Memory System 527
+
+= type identifies the type of the page table, it can be COARSE, FINE, or MASTER.
+= dom sets the domain assigned to the 1 MB memory blocks of an L1 table entry.
+
+We use the Pagetab]e type to define the five page tables used in the system. Together
+the Pagetable structures form a block of page table data that we use to manage, fill, locate,
+identify, and set the domain for all active and nonactive page tables. We refer to this block of
+Pagetables as the page table control block (PTCB) for the remainder of this demonstration.
+
+The five Pagetables described in previous sections and shown in Figure 14.20 with
+their initialization values, are
+
+#define FAULT 0
+#define COARSE 1
+#define MASTER 2
+#define FINE 3
+
+/* Page Tables */
+
+/* VADDRESS, PTADDRESS, PTTYPE, DOM */
+
+Pagetable masterPT = {0x00000000, 0x18000, 0x18000, MASTER, 3};
+Pagetable systemPT = {0x00000000, 0x1c000, 0x18000, COARSE, 3};
+Pagetable task1PT — = {0x00400000, Ox1c400, 0x18000, COARSE, 3};
+Pagetable task2PT = {0x00400000, 0x1c800, 0x18000, COARSE, 3};
+Pagetable task3PT — = {0x00400000, Oxicc00, 0x18000, COARSE, 3};
+
+The type definition for the Region structure, with a description of the members in the
+Region structure, is
+
+typedef struct {
+unsigned int vAddress;
+unsigned int pageSize;
+unsigned int numPages;
+unsigned int AP;
+unsigned int CB;
+unsigned int pAddress;
+Pagetable *PT;
+} Region;
+
+= vAddress is the starting address of the region in virtual memory.
+= pageSize is the size of a virtual page.
+
+= numPages is the number of pages in the region.
+
+= AP is the region access permissions.
+
+= CB is the cache and write buffer attributes for the region.
+
+= pAddress is the starting address of the region in virtual memory.
+.
+
+*PT is a pointer to the Pagetable in which the region resides.

@@ -1,0 +1,46 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+If you want to access Python through the command line but you didn’t add Python to your
+
+environment variables during installation, then you can still do it manually.
+
+Before you start, locate the Python installation directory on your system. The following
+
+directories are examples of the default directory paths:
+
+= C:\Program Files\Python310: if you selected Install for all users during installation, then
+the directory will be system-wide.
+
+= C:\Users\Sammy\AppData\Local\Programs\Python\Python310: if you didn’t select
+Install for all users during installation, then the directory will be in the Windows user
+
+path.
+
+Note that the folder name will be different if you installed a different version, but will still start
+
+with Python.
+
+1. Go to Start and enter advanced system settings in the search bar.
+2. Click View advanced system settings.
+3. In the System Properties dialog, click the Advanced tab and then click Environment
+Variables.
+4. Depending on your installation:
+= If you selected Install for all users during installation, select Path from the list of
+System Variables and click Edit.
+= If you didn’t select Install for all users during installation, select Path from the
+list of User Variables and click Edit.
+5. Click New and enter the Python directory path, then click OK until all the dialogs are
+
+closed.
+Step 4 — Verify the Python Installation
+
+You can verify whether the Python installation is successful either through the command line or
+
+through the Integrated Development Environment (IDLE) application, if you chose to install it.
+Go to Start and enter cmd in the search bar. Click Command Prompt.
+
+Enter the following command in the command prompt:
+
+python --version
+
+Dept. of CSE 9 GSSSIETW, Mysuru

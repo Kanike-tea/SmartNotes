@@ -1,0 +1,22 @@
+Fig. 2-18 Euler graph; not arbitrarily traceable.
+
+Fig. 2-19 Arbitrarily traceable graph from all vertices.
+
+THEOREM 2-7
+
+An Euler graph G is arbitrarily traceable from vertex v in G if and only if
+every circuit in G contains v.
+
+For a proof of the theorem the reader is referred to [2-5].
+
+2-9. HAMILTONIAN PATHS AND CIRCUITS
+
+An Euler line of a connected graph was characterized by the property of being
+a closed walk that traverses every edge of the graph (exactly once). A
+Hamiltonian circuit in a connected graph is defined as a closed walk that
+traverses every vertex of G exactly once, except of course the starting vertex, at
+which the walk also terminates. For example, in the graph of Fig. 2-20(a)
+starting at vertex v, if one traverses along the edges shown in heavy lines—
+passing through each vertex exactly once—one gets a Hamiltonian circuit. A
+Hamiltonian circuit for the graph in Fig. 2-20(b) is also shown by heavy lines.
+More formally:

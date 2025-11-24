@@ -1,0 +1,53 @@
+350 Chapter 9 Exception and Interrupt Handling
+
+DCD MASK_1 3 priority mask 1
+DCD MASK_0 3 priority mask 0
+DCD MASK_3 3 priority mask 3
+
+service_timerl
+
+STMFD r13!, {r0-r9} 3; 6 : save context
+<service routine>
+
+LOMFD r13!, {r0-r10} 3 7 + restore context
+MRS rll, cpsr 3 8 : copy cpsr
+
+ORR rll, rll, #I_Bit 3 8: set I-bit
+
+MSR cpsr_c, rll 3 8: disable IRQ
+LOR rll, =ic_Base 3 8: int ctrl addr
+STR 112, [rll, #IRQEnableSet] ; 8 : enable ints
+LOMFD r13!, {rll, r12, r14} 39: restore context
+MSR —spsr_cxsf, rl4 39: set spsr
+
+LOMFD r13!, {pc}* 39: return
+
+Most interrupt controllers also have a corresponding set of registers for the FIQ excep-
+tions and even allow individual interrupt sources to be attached to a particular interrupt
+signal going to the core. Thus, by programming the controller, a particular interrupt source
+can be made to cause either an IRQ or FIQ exception.
+
+The registers are offset from a base address in memory. Table 9.10 shows all the offsets
+for the various registers from interrupt controller base address ic_Base. Note that offset
+0x08 is used for both IRQEnable and IRQEnab1eSet.
+
+In the interrupt controller each bit is associated with a particular interrupt source
+(see Figure 9.12). For example, bit 2 is associated with a receive interrupt source for serial
+
+communication.
+
+Binary 8 4 2 4
+2]m |] ow fu
+
+31 . : 3 2 1 0
+Bit position
+
+tl—timer |
+
+t2—timer 2
+
+tx—serial transmit
+
+rx—serial receive
+
+Figure9.12 32-bit interrupt control register.

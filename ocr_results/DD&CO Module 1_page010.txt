@@ -1,0 +1,37 @@
+but equivalent, forms. Boolean expressions may be simplified by algebraic means. However, this
+procedure of minimization is awkward because it lacks specific rules to predict each succeeding step in
+the manipulative process. The map method presented here provides a simple, straightforward procedure
+for minimizing Boolean functions. This method may be regarded as a pictorial form of a truth table. The
+
+map method is also known as the Karnaugh map or K-map.
+
+A K-map is a diagram made up of squares, with each square representing one minterm of the function
+that is to be minimized. Since any Boolean function can be expressed as a sum of minterms, it follows
+that a Boolean function is recognized graphically in the map from the area enclosed by those squares
+
+whose minterms are included in the function.
+
+The simplified expressions produced by the map are always in one of the two standard forms: sum of
+products or product of sums. s. It will be assumed that the simplest algebraic expression is an algebraic
+expression with a minimum number of terms and with the smallest possible number of literals in each
+term. This expression produces a circuit diagram with a minimum number of gates and the minimum
+
+number of inputs to each gate.
+Two-Variable K-Map
+
+The two-variable map is shown in Fig(a). There are four minterms for two variables; hence, the map
+consists of four squares, one for each minterm. The map is redrawn in (b) to show the relationship
+between the squares and the two variables x and y. The 0 and | marked in each row and column designate
+the values of variables. Variable x appears primed in row 0 and unprimed in row 1. Similarly, y appears
+primed in column 0 and unprimed in column 1. If we mark the squares whose minterms belong to a
+given function, the two-variable map becomes another useful way to represent any one of the 16 Boolean
+functions of two variables. As an example, the function xy is shown in Fig(c). Since xy is equal to m3,
+a | is placed inside the square that belongs to m3. Similarly, the function x + y is represented in the map
+
+of Fig(d) by three squares marked with 1’s. These squares are found from the minterms of the function:
+
+ml+m2+m3=x'y+xy'+xy=xty
+
+m, m;
+
+(a)

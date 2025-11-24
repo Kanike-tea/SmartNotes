@@ -1,0 +1,63 @@
+Microcontrollers — BCS402
+
+Addressing! mode and index method Addressing! syntax
+
+Preindex with immediate offset [Rn, #+/-offset_12]
+
+Preindex with register offset [Rn, +/-Rm]
+
+Preindex with scaled register offset [Rn, +/-Rm, shift #shift_imm]
+Preindex writeback with immediate offset [Rn, #+/-offset_12]!
+
+Preindex writeback with register offset [Rn, +/-Rm]!
+
+Preindex writeback with scaled register offset [Rn, +/-Rm, shift #shift_imm] !
+Immediate postindexed [Rn], #+/-offset_12
+
+Register postindex [Rn], +/-Rm
+
+Scaled register postindex [Rn], +/-Rm, shift #shift_imm
+
+A signed offset or register is denoted by “+/—”, identifying that it is either a positive or
+negative offset from the base address register Rn. The base address register is a pointer to a
+
+byte in memory, and the offset specifies a number of bytes.
+
+Immediate means the address is calculated using the base address register and a 12-bit offset
+encoded in the instruction. Register means the address is calculated using the base address
+register and a specific register’s contents. Scaled means the address is calculated using the
+
+base address register and a barrel shift operation.
+
+Table 6 provides an example of the different variations of the LDR instruction. Table 7 shows
+the addressing modes available on load and store instructions using 16-bit half word or signed
+
+byte data.
+
+These operations cannot use the barrel shifter. There are no STRSB or STRSH instructions
+since STRH store both a signed and unsigned half word; similarly STRB stores signed and
+unsigned bytes. Table 8 shows the variations for STRH instructions.
+
+Table 6: Examples of LDR instructions using different addressing modes
+
+Instruction r= rl+=
+Preindex LOR rO,[r1,#0x4]! mem32 [rl + 0x4] 0x4
+with
+writeback
+
+LOR rO,[r1,r2]! mem32 [r1+r2] r2
+
+LOR r0,[r1,r2,LSR#0x4] ! mem32[r1+(r2 LSR 0x4)] (r2 LSR 0x4)
+Preindex LOR r0,[r1,#0x4] mem32 [rl + 0x4] not updated
+
+LOR r0,[rl,r2] mem32[r1+r2] not updated
+
+LOR rO,[rl,-r2,LSR #0x4] mem32[r1-(r2 LSR 0x4)] not updated
+Postindex LOR rO,[r1],#0x4 mem32[r1] 0x4
+
+LOR rO,[r1],r2 mem32[r1] r2
+
+LOR rO,[r1],r2,LSR #0x4 mem32[r1] (r2 LSR 0x4)
+Table 7: Single-register load-store addressing, half word, signed half word, signed byte, and
+
+Dept. of ECE, GSSSIETW Page 16

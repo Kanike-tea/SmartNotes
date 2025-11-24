@@ -1,0 +1,42 @@
+172 Chapter 5 The Relational Data Model and Relational Database Constraints
+
+AIRPORT
+Airport_code | Name | City | State
+
+FLIGHT
+Flight_number | Airline | Weekdays
+
+FLIGHT_LEG
+Flight_number Leg number | Departure_airport_code Scheduled_departure_time
+Arrival_airport_code Scheduled_arrival_time
+
+LEG_INSTANCE
+
+Flight_number Leg_number | Date | Number_of_available_seats Airplane_id
+Departure_airport_code | Departure_time | Arrival_airport_code Arrival_time
+
+FARE
+
+Flight_number Fare_code Amount Restrictions
+
+AIRPLANE_TYPE
+Airplane_type_name | Max_seats | Company
+
+CAN_LAND
+Airplane_type_name | Airport_code
+
+AIRPLANE
+
+Airplane_id Total_number_of_seats Airplane_type
+
+SEAT_RESERVATION
+Flight_number | Leg number | Date] Seat_number | Gustomer_name | Customer phone
+
+Figure 5.8
+The AIRLINE relational database schema.
+
+5.14. Consider the following six relations for an order-processing database appli-
+cation in a company:
+CUSTOMER (Cust#, Cname, City)
+ORDER(Order#, Odate, Cust#, Ord_amt)
+ORDER_ITEM(Order#, Item#, Qty)

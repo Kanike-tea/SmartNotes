@@ -1,0 +1,55 @@
+536 Chapter 14 Memory Management Units
+
+EXAMPLE
+
+14.9
+
+The routine begins by setting a local variable tempAP that holds the access permission
+for pages or subpages in the region. Next, it sets the variable PTEptr to point to the base
+address of the page table that will hold the mapped region.
+
+The procedure then switches to handle either the case of a large or small page. The
+algorithms for the two cases are the same; only the format of the PTE and the way values are
+written into the page table are different.
+
+At this point the variable PTEptr contains the starting address of the L2 page table. The
+routine then uses the starting address of the region region->vAddress to calculate an index
+to the first entry of the region in the page table. This index value is added to the PTEptr.
+The next line calculates the size of the region and adds this value to PTEptr. PTEptr now
+points to the last PTE for the region.
+
+Next the routine constructs a page table entry variable PTE for either a large or a small
+entry from the values in the region passed into the routine. The routine uses a series of ORs
+to construct the PTE from the starting physical address, the access permission, and cache
+and write buffer attributes. See Figure 14.8 to review the formats of a large and small PTE.
+
+The PTE now contains a pointer to the physical address of the first page frame for the
+region. The counter variable i is used for two purposes: First, it is an offset into the page
+table. Second it is added to the PTE variable to modify the address translation bit field to
+point to the next lower page frame in physical memory. The routine finishes by writing all
+the PTEs for the region into the page table. Note that there is a nested loop in the LARGEPAGE
+case: the j loop writes the required identical PTE to map a large page in a coarse page table
+(refer to Section 14.4 for details).
+
+This example fills a fine page table with region translation information. Fine page tables
+are not available in the ARM720T and have been discontinued in the v6 architecture. For
+compatibility with these changes we would advise avoiding their use in new projects.
+
+#if defined (__TARGET_CPU_ARM920T)
+int mmuMapFineTableRegion(Region *region)
+{
+
+int i,d5
+
+unsigned int *PTEptr, PTE;
+
+unsigned int tempAP = region->AP & 0x3;
+
+PTEptr = (unsigned int *)region->PT->ptAddress; /* base addr PT */
+
+switch (region->pageSize)
+{
+case LARGEPAGE:
+{
+PTEptr += (region->vAddress & Ox000ffc00)>>10; /* first PTE*/
+PTEptr += (region->numPages*64) - 1; /* last PTE */

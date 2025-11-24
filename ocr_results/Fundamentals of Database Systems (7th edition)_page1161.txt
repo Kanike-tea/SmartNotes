@@ -1,0 +1,51 @@
+30.2 Discretionary Access Control Based on Granting and Revoking Privileges
+
+includes only those attributes and then grant SELECT on V to B. The same applies
+to limiting B to retrieving only certain tuples of R; a view V’ can be created by
+defining the view by means of a query that selects only those tuples from R that A
+wants to allow B to access. We will illustrate this discussion with the example given
+in Section 30.2.5.
+
+30.2.3 Revoking of Privileges
+
+In some cases, it is desirable to grant a privilege to a user temporarily. For example,
+the owner of a relation may want to grant the SELECT privilege to a user for a spe-
+cific task and then revoke that privilege once the task is completed. Hence, a mech-
+anism for revoking privileges is needed. In SQL, a REVOKE command is included
+for the purpose of canceling privileges. We will see how the REVOKE command is
+used in the example in Section 30.2.5.
+
+30.2.4 Propagation of Privileges Using the GRANT OPTION
+
+Whenever the owner A of a relation R grants a privilege on R to another account B,
+the privilege can be given to B with or without the GRANT OPTION. If the GRANT
+OPTION is given, this means that B can also grant that privilege on R to other
+accounts. Suppose that B is given the GRANT OPTION by A and that B then grants
+the privilege on R to a third account C, also with the GRANT OPTION. In this way,
+privileges on R can propagate to other accounts without the knowledge of the
+owner of R. If the owner account A now revokes the privilege granted to B, all the
+privileges that B propagated based on that privilege should automatically be revoked
+by the system.
+
+It is possible for a user to receive a certain privilege from two or more sources. For
+example, A4 may receive a certain UPDATE R privilege from both A2 and A3. In such
+acase, if A2 revokes this privilege from A4, A4 will still continue to have the privilege
+by virtue of having been granted it from A3. If A3 later revokes the privilege from A4,
+A4 totally loses the privilege. Hence, a DBMS that allows propagation of privileges
+must keep track of how all the privileges were granted in the form of some internal
+log so that revoking of privileges can be done correctly and completely.
+
+30.2.5 An Example to Illustrate Granting and Revoking
+of Privileges
+Suppose that the DBA creates four accounts—A1, A2, A3, and A4—and wants only
+
+At to be able to create base relations. To do this, the DBA must issue the following
+GRANT command in SQL:
+
+GRANT CREATETAB TO A1;
+
+The CREATETAB (create table) privilege gives account A1 the capability to create
+new database tables (base relations) and is hence an account privilege. This privi-
+lege was part of earlier versions of SQL but is now left to each individual system
+
+1131

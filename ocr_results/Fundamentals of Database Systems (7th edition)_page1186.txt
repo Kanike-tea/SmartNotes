@@ -1,0 +1,51 @@
+1156
+
+Chapter 30 Database Security
+
+control to their Oracle Database applications. Label-based security provides an
+adaptable way of controlling access to sensitive data. Both users and data have labels
+associated with them. Oracle label security uses these labels to provide security.
+
+30.10.1 Virtual Private Database (VPD) Technology
+
+Virtual private databases (VPDs) are a feature of the Oracle Enterprise Edition
+that add predicates to user statements to limit their access in a transparent manner
+to the user and the application. The VPD concept allows server-enforced, fine-
+grained access control for a secure application.
+
+VPD provides access control based on policies. These VPD policies enforce object-
+level access control or row-level security. VPD provides an application program-
+ming interface (API) that allows security policies to be attached to database tables
+or views. Using PL/SQL, a host programming language used in Oracle applications,
+developers and security administrators can implement security policies with the
+help of stored procedures.” VPD policies allow developers to remove access security
+mechanisms from applications and centralize them within the Oracle Database.
+
+VPD is enabled by associating a security “policy” with a table, view, or synonym.
+An administrator uses the supplied PL/SQL package, DBMS_RLS, to bind a policy
+function with a database object. When an object having a security policy associated
+with it is accessed, the function implementing this policy is consulted. The policy
+function returns a predicate (a WHERE clause) that is then appended to the user’s
+SQL statement, thus transparently and dynamically modifying the user’s data
+access. Oracle label security is a technique of enforcing row-level security in the
+form of a security policy.
+
+30.10.2 Label Security Architecture
+
+Oracle label security is built on the VPD technology delivered in the Oracle Data-
+base 11.1 Enterprise Edition. Figure 30.4 illustrates how data is accessed under Ora-
+cle label security, showing the sequence of DAC and label security checks.
+
+Figure 30.4 shows the sequence of discretionary access control (DAC) and label
+security checks. The left part of the figure shows an application user in an Oracle
+Database 11g Release 1 (11.1) session sending out an SQL request. The Oracle
+DBMS checks the DAC privileges of the user, making sure that he or she has SELECT
+privileges on the table. Then it checks whether the table has a virtual private data-
+base (VPD) policy associated with it to determine if the table is protected using
+Oracle label security. If it is, the VPD SQL modification (WHERE clause) is added to
+the original SQL statement to find the set of accessible rows for the user to view.
+Then Oracle label security checks the labels on each row to determine the subset of
+rows to which the user has access (as explained in the next section). This modified
+query is processed, optimized, and executed.
+
+°Stored procedures are discussed in Section 8.2.2.

@@ -1,0 +1,34 @@
+Abort (abt): Privileged mode entered due to a failed memory access (data abort or prefetch abort)53
+. It has banked registers r13_abt, r14_abt, and spsr_abt101.
+
+Interrupt Request (irq): Privileged mode for handling general-purpose interrupts53 . It has banked
+registers r13_irq, r14_irq, and spsr_irq101 .
+
+Fast Interrupt Request (fiq): High-priority privileged mode for time-critical interrupts. It has the most
+banked registers (r8_fiq to r14_fig, and spsr_fiq)53 ....
+
+Undefined (und): Privileged mode entered when the processor encounters an undefined or
+unsupported instruction53 .... It has banked registers r13_und, r14_und, and spsr_und101.
+
+System (sys): A special privileged version of User mode that allows full read-write access to the
+cpsr54 . It does not have its own banked registers (it uses the user mode registers)101 .
+
+The processor mode can be changed by software writing directly to the mode bits of the cpsr (if ina
+privileged mode) or by hardware in response to an exception or interrupt55 .
+
+13.
+Embedded Software
+
+(This is a repetition of point 6) Embedded system software is crucial for driving the hardware37 . It
+typically consists of several components organized in abstraction layers37 ...:
+
+Initialization (Boot) Code (Firmware): Executed first after reset to configure the hardware (memory,
+peripherals, etc.) and load the operating system or application38 .... It often includes memory
+remapping and diagnostic routines40 ....
+
+Operating System (OS): Manages system resources and provides an environment for applications.
+This can range from simple schedulers to full-fledged RTOSs (for real-time applications) or platform
+OSs (like Linux for more complex systems)38 ..
+
+Device Drivers: Provide a standardized software interface to interact with the hardware
+peripherals44 .

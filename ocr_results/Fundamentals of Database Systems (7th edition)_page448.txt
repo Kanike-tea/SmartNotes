@@ -1,0 +1,49 @@
+418
+
+Chapter 12 Object and Object-Relational Databases
+
+To specify relationships, the keyword rel_ is used within the prefix of type names;
+for example, by writing
+
+d_Rel_Ref<DEPARTMENT, Has_majors> Majors_in;
+in the STUDENT class, and
+d_Rel_Set<STUDENT, Majors_in> Has_majors;
+
+in the DEPARTMENT class, we are declaring that Majors_in and Has_majors are rela-
+tionship properties that are inverses of one another and hence represent a 1:N
+binary relationship between DEPARTMENT and STUDENT.
+
+For the OML, the binding overloads the operation new so that it can be used to
+create either persistent or transient objects. To create persistent objects, one
+must provide the database name and the persistent name of the object. For
+example, by writing
+
+D_Ref<STUDENT> S = new(DB1, John_Smith’) STUDENT;
+
+the programmer creates a named persistent object of type STUDENT in database
+DB1 with persistent name John_Smith. Another operation, delete_object() can be
+used to delete objects. Object modification is done by the operations (methods)
+defined in each class by the programmer.
+
+The C++ binding also allows the creation of extents by using the library class
+d_Extent. For example, by writing
+
+D_Extent<PERSON> ALL_PERSONS(DB1);
+
+the programmer would create a named collection object ALL_PERSONS—whose
+type would be D_Set<PERSON>—in the database DB1 that would hold persistent
+objects of type PERSON. However, key constraints are not supported in the C++
+binding, and any key checks must be programmed in the class methods.** Also,
+the C++ binding does not support persistence via reachability; the object must be
+statically declared to be persistent at the time it is created.
+
+12.7 Summary
+
+In this chapter, we started in Section 12.1 with an overview of the concepts utilized
+in object databases, and we discussed how these concepts were derived from gen-
+eral object-oriented principles. The main concepts we discussed were: object iden-
+tity and identifiers; encapsulation of operations; inheritance; complex structure of
+objects through nesting of type constructors; and how objects are made persistent.
+
+“4We have only provided a brief overview of the C++ binding, For full details, see Cattell et al. (2000),
+Chapter 5.

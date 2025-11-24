@@ -1,0 +1,48 @@
+Table 5.6
+
+5.9 Unaligned Data and Endianness 137
+
+This compiles to
+
+readint
+BIC r3,r0,#3 3 3 = data & OxFFFFFFFC
+AND r0,r0,#3 3 r0 = data & 0x00000003
+Mov 10,r0,LSL #3 3 10 = bit offset of data word
+LOMIA 3, {r3,r12} 3 13, rl2 = 8 bytes read from r3
+Mov 13,73,LSR r0 ; These three instructions
+RSB r0,r0,#0x20 3 shift the 64 bit value r12.r3
+ORR = r0,r3,r12,LSL rO ; right by rO bits
+MOV pc, rd 3 return r0
+
+Notice how large and complex the code is. The compiler emulates the unaligned access
+using two aligned accesses and data processing operations, which is very costly and shows
+why you should avoid _packed. Instead use the type char * to point to data that can
+appear at any alignment. We will look at more efficient ways to read 32-bit words from
+achar * later.
+
+You are likely to meet alignment problems when reading data packets or files used to
+transfer information between computers. Network packets and compressed image files are
+good examples. Two- or four-byte integers may appear at arbitrary offsets in these files.
+Data has been squeezed as much as possible, to the detriment of alignment.
+
+Endianness (or byte order) is also a big issue when reading data packets or compressed
+files. The ARM core can be configured to work in /ittle-endian (least significant byte at
+lowest address) or big-endian (most significant byte at lowest address) modes. Little-endian
+mode is usually the default.
+
+The endianness of an ARM is usually set at power-up and remains fixed thereafter.
+Tables 5.6 and 5.7 illustrate how the ARM’s 8-bit, 16-bit, and 32-bit load and store instruc-
+tions work for different endian configurations. We assume that byte address A is aligned to
+
+Little-endian configuration.
+
+Instruction Width (bits) _b31..b24—-b23..b16 —-b15..b8 —_b7..b0
+
+LDRB 8 0 0 0 B(A)
+LDRSB 8 S(A) S(A) S(A) B(A)
+STRB 8 x x x B(A)
+LDRH 16 0 0 B(A+1) —B(A)
+LDRSH 16 S(A+1) S(A+1)  B(At1) —-B(A)
+STRH 16 x x B(A+1) —B(A)
+
+LDR/STR 32 B(A+3) B(A+2) B(At1) —-B(A)

@@ -1,0 +1,41 @@
+Laboratory Exercises 143
+
+E1 E3.
+
+4.27. Consider the following EER diagram that describes the computer systems at
+a company. Provide your own attributes and key for each entity type. Supply
+max cardinality constraints justifying your choice. Write a complete narra-
+tive description of what this EER diagram represents.
+
+INSTALLED
+SOLD_WITH ; SOFTWARE
+_—
+—_
+COMPUTER )
+L INSTALLED_OS
+OPERATING
+Os SYSTEM
+LAPTOP. DESKTOP.
+OPTIONS
+COMPONENT
+MEM_OPTIONS
+SUPPORTS
+ACCESSORY Ow
+A >
+d Memory] \ [ViDEO_CARD
+Cc =
+S
+SOUND_CARD
+KEYBOARD| MOUSE
+MONITOR
+
+Laboratory Exercises
+
+4.28. Consider a GRADE_BOOK database in which instructors within an academic
+department record points earned by individual students in their classes. The
+data requirements are summarized as follows:
+= Each student is identified by a unique identifier, first and last name, and
+
+an e-mail address.
+= Each instructor teaches certain courses each term. Each course is identified
+by a course number, a section number, and the term in which it is taught. For

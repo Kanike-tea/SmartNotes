@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+1.3. Update Operations, Transactions, and Dealing with Constraint Violations
+The operations of the relational model can be categorized into retrievals and updates
+There are three basic operations that can change the states of relations in the database:
+1. Insert - used to insert one or more new tuples in a relation
+2. Delete- used to delete tuples
+3. Update (or Modify)- used to change the values of some attributes in existing tuples
+Whenever these operations are applied, the integrity constraints specified on the relational database
+
+schema should not be violated.
+
+1.3.1 The Insert Operation
+The Insert operation provides a list of attribute values for a new tuple ¢ that is to be inserted into a
+
+elation R. Insert can violate any of the four types of constraints
+
+1. Domain constraints : if an attribute value is given that does not appear in the corresponding
+domain or is not of the appropriate data type
+
+2. Key constraints : if a key value in the new tuple ¢ already exists in another tuple in the
+relation r(R)
+
+3. Entity integrity: if any part of the primary key of the new tuple t is NULL
+
+4. Referential integrity : ifthe value of any foreign key in ¢ refers to a tuple that does not exist
+
+in the referenced relation
+
+Examples:
+1. Operation:
+Insert <‘Cecilia’, “F’y ‘Kolonsky’, NULL, ‘1960-04-05’, ‘6357 Windy Lane, Katy, TX’,
+F, 28000, NULL, 4>
+Result: This insertion violates the entity integrity constraint (NULL for the primary key
+Ssn), so it is rejected
+2. Operation:
+Insert <‘Alicia’, ‘J’, ‘Zelaya’, ‘999887777’, ‘1960-04-05’, ‘6357 Windy Lane, Katy, TX’,
+F, 28000, ‘987654321’, 4>
+Result: This insertion violates the key constraint because another tuple with the same Ssn
+value already exists in the EMPLOYEE relation, and so it is rejected.
+3.Operation:
+Insert <‘Cecilia’, ‘F’, ‘Kolonsky’, ‘677678989’, ‘1960-04-05’, ‘6357 Windswept, Katy,
+TX’, F, 28000, ‘987654321’, 7>
+
+https://vtucode.in Page 12

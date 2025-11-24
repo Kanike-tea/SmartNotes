@@ -1,0 +1,31 @@
+1.10. Hamilton cycles and Hamilton paths 95
+1 Se TFET
+
+We observe that three edges are incident at every vertex of the graph. Of these three edges
+only two can be included in a Hamilton cycle (if it exists). Thus, at each of the 10 vertices of
+the graph one edge has to be excluded. By actual counting, we find that the number of edges
+to be excluded is six. (For example, the edges AL, BM, CN, DE, PM, QE). Consequently, the
+number of edges that remian in the graph is 15 — 6 = 9. These edges are insufficient to form a
+Hamilton cycle in the graph.
+
+Thus, the Peterson graph does not contain a Hamilton cycle in it.
+
+By examining Figure 1.131, we note that the edges AB, BC, CD, DE, EQ, QM, MP, PL,
+LN form a path and this path includes all the vertices. This path is therefore a Hamilton path.
+Thus, the Peterson graph does have a Hamilton path in it. =
+
+Paetuintaey Show that the graph shown in Figure 1.132 is a Hamilton graph.
+
+Figure 1.132
+
+> By examining the given graph, we notice that in the graph there is a cycle AELSMNPQR-
+CDFBA which contains all the vertices of the graph. This cycle is a Hamiltonian cycle. Since
+the graph has a Hamiltonian cycle in it, the graph is a Hamiltonian graph. 5
+
+EI] exnivir she following:
+
+(a) A graph which has both an Euler circuit and a Hamilton cycle.
+(b) A graph which has an Euler circuit but no. Hamilton cycle.
+(c) A graph which has a Hamilton cycle but no Euler circuit.
+
+@aA graph which has neither a Hamilton cycle nor an Euler circuit.

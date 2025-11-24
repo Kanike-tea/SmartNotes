@@ -1,0 +1,58 @@
+LECTURE-8: Conversion of ER-Diagram to Relational Database
+
+Conversion of Entity Sets:
+
+1.
+
+For each strong entity type E in the ER diagram, we create a relation R containing all the
+single attributes of E. The primary key of the relation R will be one of the key attribute of R.
+
+STUDENT(rollno (primary key) name, address)
+FACULTY (id(primary key) ,name ,address, salary)
+COURSE (course-id,(primary key) course_name,duration)
+DEPARTMENT (dno(primary key),dname)
+
+. For each weak entity type W in the ER diagram, we create another relation R that contains
+
+all simple attributes of W. If E is an owner entity of W then key attribute of E is also include
+In R. This key attribute of R is set as a foreign key attribute of R. Now the combination of
+primary key attribute of owner entity type and partial key of the weak entity type will form
+the key of the weak entity type
+
+GUARDIAN((rollno name) (primary key) ,address,relationship)
+
+Conversion of Relationship Sets:
+
+Binary Relationships:
+
+One-to-One Relationship:
+
+For each 1:1 relationship type R in the ER-diagram involving two entities El and E2 we
+choose one of entities(say El) preferably with total participation and add primary key
+attribute of another E as a foreign key attribute in the table of entity(E1). We will also include
+all the simple attributes of relationship type R in El if any, For example, the department
+relationship has been extended tp include head-id and attribute of the relationship.
+DEPARTMENT(D_NO,D_NAME,HEAD_ID,DATE_FROM)
+
+One-to-Many Relationship:
+
+For each 1:N relationship type R involving two entities El and E2, we identify the entity type
+(say E1) at the N-side of the relationship type R and include primary key of the entity on the
+other side of the relation (say E2) as a foreign key attribute in the table of E1. We include all
+simple attribute (or simple components of a composite attribute of R (if any) in the table E1)
+
+For example:
+
+The works in relationship between the DEPARTMENT and FACULTY. For this relationship
+choose the entity at N side, ie, FACULTY and add primary key attribute of another entity
+DEPARTMENT i.e., DNO as a foreign key attribute in FACULTY.
+
+FACULTY(CONTAINS WORKS_IN RELATIOSHIP)
+(ID, NAME, ADDRESS, BASIC_SAL, DNO)
+
+Many-to-Many Relationship:
+
+For each M:N relationship type R, we create a new table (say S) to represent R, we also
+include the primary key attributes of both the participating entity types as a foreign key
+attribute in S. Any simple attributes of the M:N relationship type (or simple components as a
+composite attribute) is also included as attributes of S.

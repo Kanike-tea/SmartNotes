@@ -1,0 +1,65 @@
+164 Chapter 5
+
+The Relational Data Model and Relational Database Constraints
+
+the primary key of DEPARTMENT—the Dnumber attribute—in some tuple f of the
+DEPARTMENT relation, or the value of Dno can be NULL if the employee does not
+belong to a department or will be assigned to a department later. For example, in
+Figure 5.6 the tuple for employee ‘John Smith’ references the tuple for the ‘Research’
+department, indicating that ‘John Smith’ works for this department.
+
+Notice that a foreign key can refer to its own relation. For example, the attribute
+Super_ssn in EMPLOYEE refers to the supervisor of an employee; this is another
+employee, represented by a tuple in the EMPLOYEE relation. Hence, Super_ssn is a
+foreign key that references the EMPLOYEE relation itself. In Figure 5.6 the tuple for
+employee ‘John Smith’ references the tuple for employee ‘Franklin Wong,’ indicat-
+ing that ‘Franklin Wong’ is the supervisor of ‘John Smith’.
+
+We can diagrammatically display referential integrity constraints by drawing a directed
+arc from each foreign key to the relation it references. For clarity, the arrowhead may
+point to the primary key of the referenced relation. Figure 5.7 shows the schema in
+Figure 5.5 with the referential integrity constraints displayed in this manner.
+
+Allintegrity constraints should be specified on the relational database schema (that is,
+specified as part of its definition) if we want the DBMS to enforce these constraints on
+
+Figure 5.7
+Referential integrity constraints displayed on the COMPANY relational database schema.
+EMPLOYEE
+Fname | Minit | Lname | Ssn | Bdate ] Address | Sex | Salary | Super_ssn | Dno
+
+DEPARTME!
+
+a
+
+Dname
+
+Dnumber | Mgr_ssn | Mgr_start_date
+
+DEPT_LOCATIONS
+
+_
+
+Dnumber
+
+Dlocation
+
+PROJECT
+
+Cd
+
+Pname
+
+Pnumber | Plocation Dnum
+
+WORKS_ON
+
+ees
+
+Essn Pno Hours
+
+a
+
+DEPENDENT
+
+Essn | Dependent_name | Sex | Bdate | Relationship

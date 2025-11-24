@@ -1,0 +1,39 @@
+580 Appendix A ARM and Thumb Assembler Instructions
+
+2. pe = Rm & Oxfffffffe T=Rm & 1
+3. Depends on JE configuration bit J,T affected
+
+Notes
+
+= If Rmis peand the instruction is word aligned, then Rm takes the value of the current
+instruction plus eight in ARM state or plus four in Thumb state.
+
+= Rm &3 must not be 2. This would cause a branch to an unaligned ARM instruction.
+
+= If the JE (Java Enable) configuration bit is clear, then BXJ behaves as a BX. Otherwise,
+the behavior is defined by the architecture of the Java Extension hardware. Typically
+it sets J = 1 in the cpsr and starts executing Java instructions from a general purpose
+register designated as the Java program counter jpc.
+
+Examples
+BX Ir 3 return from ARM or Thumb subroutine
+BX r0 3 branch to ARM or Thumb function pointer r0
+CDP. Coprocessor data processing operation
+1. CDP<cond> <copro>, <opl>, Cd, Cn, Cm, <op2> ARMv2
+2. CDP2 <copro>, <opl>, Cd, Cn, Cm, <op2> ARMV5
+These instructions initiate a coprocessor-dependent operation. <copro> is the number
+of the coprocessor in the range p0 to p15. The core takes an undefined instruction trap
+if the coprocessor is not present. The coprocessor operation specifiers <op1> and <op2>,
+and the coprocessor register numbers Cd, Cn, Cm, are interpreted by the coprocessor and
+ignored by the ARM. CDP2 provides an additional set of coprocessor instructions.
+CLZ Count leading zeros
+1. CLZ<cond> Rd, Rm ARMv5
+Rnis set to the maximum left shift that can be applied to Rm without unsigned overflow.
+Equivalently, this is the number of zeros above the highest one in the binary representation
+of Rm. If Rm = 0, then Riis set to 32. The following example normalizes the value in 0 so
+that bit 31 is set.
+CLZ rl, rO 3 find normalization shift
+MOV r0, r0, LSL rl; normalize so bit 31 is set (if r0!=0)
+CMN Compare negative
+
+1. CMN<cond> Rn, #<rotated_immed> ARMv1

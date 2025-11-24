@@ -1,0 +1,52 @@
+10.3 Database Programming with Function Calls and Class Libraries: SQL/CLI and JDBC
+
+department number and then retrieves the employees who work in that depart-
+ment. A loop then iterates over each employee record, one at a time, and prints the
+employee’s last name and salary.
+
+10.3.2 JDBC: SQL Class Library for Java Programming
+
+We now turn our attention to how SQL can be called from the Java object-oriented
+programming language.’’ The class libraries and associated function calls for this
+access are known as JDBC.'* The Java programming language was designed to be
+platform independent—that is, a program should be able to run on any type of
+computer system that has a Java interpreter installed. Because of this portability,
+many RDBMS vendors provide JDBC drivers so that it is possible to access their
+systems via Java programs.
+
+JDBC drivers. A JDBC driver is basically an implementation of the classes and
+associated objects and function calls specified in JDBC for a particular vendor’s
+RDBMS. Hence, a Java program with JDBC objects and function calls can access
+any RDBMS that has a JDBC driver available.
+
+Because Java is object-oriented, its function libraries are implemented as classes.
+Before being able to process JDBC function calls with Java, it is necessary to import
+the JDBC class libraries, which are called java.sql.*. These can be downloaded
+and installed via the Web.!”
+
+JDBC is designed to allow a single Java program to connect to several different
+databases. These are sometimes called the data sources accessed by the Java pro-
+gram, and could be stored using RDBMSs from different vendors residing on dif-
+ferent machines. Hence, different data source accesses within the same Java
+program may require JDBC drivers from different vendors. To achieve this flexibil-
+ity, a special JDBC class called the driver manager class is employed, which keeps
+track of the installed drivers. A driver should be registered with the driver manager
+before it is used. The operations (methods) of the driver manager class include
+getDriver, registerDriver, and deregisterDriver. These can be used to add
+and remove drivers for different systems dynamically. Other functions set up and
+close connections to data sources.
+
+To load a JDBC driver explicitly, the generic Java function for loading a class can be
+used. For example, to load the JDBC driver for the Oracle RDBMS, the following
+command can be used:
+
+Class. forName( "oracle. jdbc.driver.OracleDriver")
+
+'7This section assumes familiarity with object-oriented concepts (see Chapter 11) and basic Java concepts.
+'8As we mentioned earlier, JDBC is a registered trademark of Sun Microsystems, although it is commonly
+thought to be an acronym for Java Database Connectivity.
+
+'8These are available from several Web sites—for example, at http://industryjava.sun.com/products/
+jdbc/drivers.
+
+331

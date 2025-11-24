@@ -1,0 +1,33 @@
+5.14 Summary 155
+
+5.14 SUMMARY
+
+By writing C routines in a certain style, you can help the C compiler to generate faster
+ARM code. Performance-critical applications often contain a few routines that dominate
+the performance profile; concentrate on rewriting these routines using the guidelines of
+this chapter.
+
+Here are the key performance points we covered:
+
+= Use the signed and unsigned int types for local variables, function arguments, and
+return values. This avoids casts and uses the ARM’s native 32-bit data processing
+instructions efficiently.
+
+= The most efficient form of loop is a do-whi le loop that counts down to zero.
+= Unroll important loops to reduce the loop overhead.
+
+= Do not rely on the compiler to optimize away repeated memory accesses. Pointer
+aliasing often prevents this.
+
+= Try to limit functions to four arguments. Functions are faster to call if their arguments
+are held in registers.
+
+= Lay structures out in increasing order of element size, especially when compiling for
+Thumb.
+
+= Don’t use bit-fields. Use masks and logical operations instead.
+= Avoid divisions. Use multiplications by reciprocals instead.
+= Avoid unaligned data. Use the char * pointer type if the data could be unaligned.
+
+= Use the inline assembler in the C compiler to access instructions or optimizations that
+the C compiler does not support.

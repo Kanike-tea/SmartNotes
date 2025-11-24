@@ -1,0 +1,30 @@
+APPENDIX
+
+ARM AND THUMB
+INSTRUCTION
+ENCODINGS
+
+This appendix gives tables for the instruction set encodings of the 32-bit ARM and 16-bit
+Thumb instruction sets. We also describe the fields of the processor status registers cpsr
+and spsr.
+
+B.1 ARM INSTRUCTION SET ENCODINGS
+
+Table B.1 summarizes the bit encodings for the 32-bit ARM instruction set architec-
+ture ARMv6. This table is useful if you need to decode an ARM instruction by hand.
+We've expanded the table to aid quick manual decode. Any bitmaps not listed are either
+unpredictable or undefined for ARMv6.
+
+To use Table B.1 efficiently, follow this decoding procedure:
+
+= Look at the leading hex digit of the instruction, bits 28 to 31. If this has a value OxF,
+then jump to the end of Table B.1. Otherwise, the top hex digit represents a condition
+cond, Decode cond using Table B.2.
+
+= Index through Table B.1 using the second hex digit, bits 24 to 27 (shaded).
+= Index using bit 4, then bit 7 or bit 23 of the instruction where these bits are shaded.
+
+= Once you have located the correct table entry, look at the bits named op. Concatenate
+these to form a binary number that indexes the | separated instruction list on the left.
+
+637

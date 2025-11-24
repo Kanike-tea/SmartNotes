@@ -1,0 +1,39 @@
+Figure 2.5
+
+2.2 Current Program Status Register 25
+
+User mode
+
+7) Interrupt
+
+TIT request
+mode
+
+713 sp |-—+[ rl3_irg
+
+714 Ir |+—+| r14_irg
+
+cpsr
+
+spsr_irg
+
+Changing mode on an exception.
+
+an exception or interrupt. The following exceptions and interrupts cause a mode change:
+reset, interrupt request, fast interrupt request, software interrupt, data abort, prefetch abort,
+and undefined instruction. Exceptions and interrupts suspend the normal execution of
+sequential instructions and jump to a specific location.
+
+Figure 2.5 illustrates what happens when an interrupt forces a mode change. The figure
+shows the core changing from user mode to interrupt request mode, which happens when an
+interrupt request occurs due to an external device raising an interrupt to the processor core.
+This change causes user registers r13 and r14 to be banked. The user registers are replaced
+with registers r13_irq and r14_irq, respectively. Note r14_irq contains the return address
+and r13_irq contains the stack pointer for interrupt request mode.
+
+Figure 2.5 also shows a new register appearing in interrupt request mode: the saved
+program status register (spsr), which stores the previous mode’s cpsr. You can see in the
+diagram the cpsr being copied into spsr_irg. To return back to user mode, a special return
+instruction is used that instructs the core to restore the original cpsr from the spsr_irq and
+bank in the user registers r13 and 14, Note that the spsr can only be modified and read in a
+privileged mode. There is no spsr available in user mode.

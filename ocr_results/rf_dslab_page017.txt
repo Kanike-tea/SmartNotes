@@ -1,0 +1,70 @@
+5. Develop a Program in C for the following Stack Applications
+la. Evaluation of Suffix expression with single digit operands and operators: +, -, *,/, %,”
+lb. Solving Tower of Hanoi problem with n disks
+
+Theory:
+a) Evaluation of postfix expression with single digit operands and operators.
+For each input symbol,
+¢ — Ifitis a digit then, push it on to the stack.
+
+¢ — If it is an operator then, pop out the top most two contents from the stack and apply the operator on
+them. Later on, push the result on to stack.
+* Ifthe input symbol is ‘\0’, empty the stack.
+
+b) Tower of Hanoi, is a mathematical puzzle which consists of three towers (pegs) and more than one rings. These rings
+are of different sizes and stacked upon in an ascending order, i.e. the smaller one sits over the larger one. There are
+other variations of the puzzle where the number of disks increase, but the tower count remains the same.
+
+A few rules to be followed for Tower of Hanoi are —
+
+¢ Only one disk can be moved among the towers at any given time.
+¢ Only the "top" disk can be removed.
+e No large disk can sit over a small disk.
+
+Program (a):
+
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+
+char s[50],ch;
+
+int i,a,b,top=-1 ,stk[50],ans,num,elm;
+void push(int num)
+
+{
+top=top+1;
+stk[top]=num;
+}
+int pop()
+{
+
+elm=stk[top];
+top=top-1;
+return (elm);
+
+void main()
+
+{
+printf("Enter the postfix expression\n");
+scanf("%s" s);
+for(i=0;s[i]!="\0'si++)
+
+{
+
+ch=s[i];
+
+ifisdigit(ch))
+push(ch-'0');
+
+else
+
+{
+b=pop();
+a=pop();
+switch(ch)
+{
+
+case '+':push(a+b);
+
+17

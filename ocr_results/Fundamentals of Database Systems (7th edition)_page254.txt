@@ -1,0 +1,54 @@
+224 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+specified in the following order, with the clauses between square brackets [
+being optional:
+
+SELECT <attribute and function list>
+FROM <table list>
+
+[WHERE <condition> ]
+
+[GROUP BY <grouping attribute(s)> ]
+[HAVING <group condition> ]
+
+[ ORDER BY <attribute list> ];
+
+The SELECT clause lists the attributes or functions to be retrieved. The FROM clause
+specifies all relations (tables) needed in the query, including joined relations, but
+not those in nested queries. The WHERE clause specifies the conditions for selecting
+the tuples from these relations, including join conditions if needed. GROUP BY
+specifies grouping attributes, whereas HAVING specifies a condition on the groups
+being selected rather than on the individual tuples. The built-in aggregate functions
+COUNT, SUM, MIN, MAX, and AVG are used in conjunction with grouping, but they
+can also be applied to all the selected tuples in a query without a GROUP BY clause.
+Finally, ORDER BY specifies an order for displaying the result of a query.
+
+In order to formulate queries correctly, it is useful to consider the steps that define
+the meaning or semantics of each query. A query is evaluated conceptually* by first
+applying the FROM clause (to identify all tables involved in the query or to materialize
+any joined tables), followed by the WHERE clause to select and join tuples, and then by
+GROUP BY and HAVING. Conceptually, ORDER BY is applied at the end to sort the query
+result. If none of the last three clauses (GROUP BY, HAVING, and ORDER BY) are speci-
+fied, we can think conceptually of a query as being executed as follows: For each combi-
+nation of tuples—one from each of the relations specified in the FROM clause—evaluate
+the WHERE clause; if it evaluates to TRUE, place the values of the attributes specified in
+the SELECT clause from this tuple combination in the result of the query. Of course, this
+is not an efficient way to implement the query in a real system, and each DBMS has
+special query optimization routines to decide on an execution plan that is efficient to
+execute. We discuss query processing and optimization in Chapters 18 and 19.
+
+In general, there are numerous ways to specify the same query in SQL. This flexibility
+in specifying queries has advantages and disadvantages. The main advantage is that
+users can choose the technique with which they are most comfortable when specifying
+a query. For example, many queries may be specified with join conditions in the
+WHERE clause, or by using joined relations in the FROM clause, or with some form of
+nested queries and the IN comparison operator. Some users may be more comfortable
+with one approach, whereas others may be more comfortable with another. From the
+programmer’s and the system’s point of view regarding query optimization, it is gener-
+ally preferable to write a query with as little nesting and implied ordering as possible.
+
+The disadvantage of having numerous ways of specifying the same query is that
+this may confuse the user, who may not know which technique to use to specify
+
+“The actual order of query evaluation is implementation dependent; this is just a way to conceptually
+view a query in order to correctly formulate it

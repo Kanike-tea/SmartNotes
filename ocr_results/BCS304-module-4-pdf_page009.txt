@@ -1,0 +1,37 @@
+BCS304
+
+To implement the set union operation, we simply set the parent field of one of the roots to the
+other root. We can accomplish this easily if, with each set name, we keep a pointer to the root
+
+of the tree representing that set.
+
+©
+“6 be
+
+9,
+©
+Data representation of S|, S55, and Sy
+
+rather than using the set name S; we refer to this set as 0. The transition to set names is easy.
+We assume that a table, name [ ], holds the set names. If i is an element in a tree with root 7,
+
+and j has a pointer to entry k in the set name table, then the set name is just name[k].
+
+int findi{int i}
+
+' fort; parendli) >= 0; i = parent{i)})
+“PD i;
+
+On unioni(int i, int j)
+
+parent[i) = j;
+
+)
+
+Initial attempt at union-find functions
+
+Definition: Weighting rule for union(i, j). If the number of nodes in tree i is less than the number
+
+in tree j then make j the parent of i; otherwise make i the parent of j.
+
+10

@@ -1,0 +1,36 @@
+Data Structures and Applications/BCS304 Module 1
+
+Analysis: Let n be length of the postfix string then the complexity of the function is O(n)
+
+Scan P from Left to righ
+Repeats steps 3 and 4 until we reach the end of P
+If an operand is encountered put it on stack
+If an operator ® is encountered then:
+a) remove two top elements of STACK, where A is the top element and B is the next
+top- element
+b) Evaluate B @ A
+c) Place the result of (4) in STACK.
+
+Ryne
+
+[End of If structure]
+[End of step 2 Loop]
+5. Set VALUE equal to the top element of STACK.
+6. EXit
+
+Recursion: Recursion is the process of defining an object in terms of a simpler case of itself.
+
+Factorial function: The factorial of a number n is got by finding the product of all the numberform
+1 to n. ie 1*2*3...*n.. It is represented as n!
+
+Example 4!=4*3*2* 1=24
+5!=5*4*3*2*1=120
+O!=1
+From a close observation it can be observed that 5!= 5*4! . Therefore n!=n*(n-1)!
+Accordingly the factorial function can be defined as
+Factorial function definition
+
+a) Ifn=0, then n!=1
+b) If n>0, then n!=n*(n-1)!
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 40

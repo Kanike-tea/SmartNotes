@@ -1,0 +1,52 @@
+614
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+K(i). Therefore, by considering the first-level index file as a sorted data file, we can
+create a primary index for the first level; this index to the first level is called the
+second level of the multilevel index. Because the second level is a primary index, we
+can use block anchors so that the second level has one entry for each block of the
+first level. The blocking factor bfr; for the second level—and for all subsequent
+levels—is the same as that for the first-level index because all index entries are the
+same size; each has one field value and one block address. If the first level has 7,
+entries, and the blocking factor—which is also the fan-out—for the index is
+bfr; = fo, then the first level needs | (r)/fo) | blocks, which is therefore the number of
+entries r needed at the second level of the index.
+
+We can repeat this process for the second level. The third level, which is a primary
+index for the second level, has an entry for each second-level block, so the number
+of third-level entries is r; =I (r,/fo) |. Notice that we require a second level only if the
+first level needs more than one block of disk storage, and, similarly, we require a
+third level only if the second level needs more than one block. We can repeat the
+preceding process until all the entries of some index level f fit in a single block. This
+block at the fth level is called the top index level.° Each level reduces the number of
+entries at the previous level by a factor of fo—the index fan-out—so we can use the
+formula 1 < (r,/((fo)')) to calculate ¢. Hence, a multilevel index with rj first-level
+entries will have approximately t levels, where t = Fdogy(r)) 1 When searching the
+index, a single disk block is retrieved at each level. Hence, t disk blocks are accessed
+for an index search, where t is the number of index levels.
+
+The multilevel scheme described here can be used on any type of index—whether it
+is primary, clustering, or secondary—as long as the first-level index has distinct val-
+ues for K(i) and fixed-length entries. Figure 17.6 shows a multilevel index built over
+a primary index. Example 3 illustrates the improvement in number of blocks
+accessed when a multilevel index is used to search for a record.
+
+Example 4. Suppose that the dense secondary index of Example 3 is converted
+into a multilevel index. We calculated the index blocking factor bfr; = 273 index
+entries per block, which is also the fan-out fo for the multilevel index; the number of
+first-level blocks b; = 1,099 blocks was also calculated. The number of second-level
+blocks will be by =[(b,/fo) | = [(1,099/273) | = 5 blocks, and the number of third-
+level blocks will be b; =[ (b,/fo) |=[ (5/273) |= 1 block. Hence, the third level is the
+top level of the index, and t = 3. To access a record by searching the multilevel index,
+we must access one block at each level plus one block from the data file, so we need
+t+1=3+1=4blockaccesses. Compare this to Example 3, where 12 block accesses
+were needed when a single-level index and binary search were used.
+
+Notice that we could also have a multilevel primary index, which would be non-
+dense. Exercise 17.18(c) illustrates this case, where we must access the data block
+from the file before we can determine whether the record being searched for is in
+the file. For a dense index, this can be determined by accessing the first index level
+
+©The numbering scheme for index levels used here is the reverse of the way levels are commonly defined
+for tree data structures. In tree data structures, tis referred to as level 0 (zero), t— 1 is level 1, and so on.

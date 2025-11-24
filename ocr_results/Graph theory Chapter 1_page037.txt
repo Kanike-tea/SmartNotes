@@ -1,0 +1,36 @@
+a 1. Directed Graphs and Graph
+
+Figure 1.46
+
+We observe that both of these two graphs have the same number of vertices but differen
+number of edges. Therefore, although there can exist one-to-one correspondence between the _
+vertices, there cannot be a one-to-one correspondence between the edges. The two graphs re
+therefore not isomorphic. :
+
+From the definition of isomorphism of graphs, it follows that if two graphs are isomorphic, -
+then they must have:
+
+1. The same number of vertices
+2, The same number of edges
+
+3. An equal number of vertices with a given degree
+
+These conditions are necessary but not sufficient. This means that two graphs for whi
+these conditions hold need not be isomorphic. (See Example 8 below)
+In particular, two graphs of the same order and the same size need not be isomorphic i
+see this, consider the two graphs shown in Figure 1. 47. 4
+
+Figure 1.47
+
+We note that both of these graphs are of order 4 and size 3. But the two graphs a
+isomorphic. Observe that there are two pendant vertices in the first graph whereas a
+three pendant vertices in the second graph. As such, under any one-to-one correspond
+between the vertices and the edges of the two graphs, the adjacency of vertices is not reser
+
+It is not hard to realize that every two complete graphs with the same number of vertice’s
+phic. For this reason, we speak of the complete graph of n vertices, and all com
+graphs with n vertices are denoted by. Kn.
+imilarly, any two.complete bipartite graphs with pipasies coniining r "ad s oer i
+
+morphic. For this reason, all complete bipartite graphs with eas gonraini is
+ertices are eenoted by Krse : ee Sate ast

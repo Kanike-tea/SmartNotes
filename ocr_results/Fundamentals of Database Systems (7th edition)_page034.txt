@@ -1,0 +1,51 @@
+4
+
+Chapter 1 Databases and Database Users
+
+store images, audio clips, and video streams digitally. These types of files are becom-
+ing an important component of multimedia databases. Geographic information
+systems (GISs) can store and analyze maps, weather data, and satellite images.
+Data warehouses and online analytical processing (OLAP) systems are used in
+many companies to extract and analyze useful business information from very large
+databases to support decision making. Real-time and active database technology
+is used to control industrial and manufacturing processes. And database search
+techniques are being applied to the World Wide Web to improve the search for
+information that is needed by users browsing the Internet.
+
+To understand the fundamentals of database technology, however, we must start
+from the basics of traditional database applications. In Section 1.1 we start by defin-
+ing a database, and then we explain other basic terms. In Section 1.2, we provide a
+simple UNIVERSITY database example to illustrate our discussion. Section 1.3
+describes some of the main characteristics of database systems, and Sections 1.4
+and 1.5 categorize the types of personnel whose jobs involve using and interacting
+with database systems. Sections 1.6, 1.7, and 1.8 offer a more thorough discussion
+of the various capabilities provided by database systems and discuss some typical
+database applications. Section 1.9 summarizes the chapter.
+
+The reader who desires a quick introduction to database systems can study
+Sections 1.1 through 1.5, then skip or browse through Sections 1.6 through 1.8 and
+go on to Chapter 2.
+
+1.1 Introduction
+
+Databases and database technology have had a major impact on the growing use of
+computers. It is fair to say that databases play a critical role in almost all areas where
+computers are used, including business, electronic commerce, social media, engi-
+neering, medicine, genetics, law, education, and library science. The word database
+is so commonly used that we must begin by defining what a database is. Our initial
+definition is quite general.
+
+A database is a collection of related data.' By data, we mean known facts that can
+be recorded and that have implicit meaning. For example, consider the names,
+telephone numbers, and addresses of the people you know. Nowadays, this data is
+typically stored in mobile phones, which have their own simple database software.
+This data can also be recorded in an indexed address book or stored on a hard
+drive, using a personal computer and software such as Microsoft Access or Excel.
+This collection of related data with an implicit meaning is a database.
+
+The preceding definition of database is quite general; for example, we may consider
+the collection of words that make up this page of text to be related data and hence to
+
+‘We will use the word data as both singular and plural, as is common in database literature; the context
+will determine whether it is singular or plural. In standard English, data is used for plural and datum for
+singular.

@@ -1,0 +1,43 @@
+1.2. Graphs 15
+
+Incidence
+When a vertex v of a graph G is an end vertex of an edge e of the graph G, we say that the
+edge e is incident on (or to) the vertex v. Since every edge has two end vertices, every edge is
+incident on two vertices, one at each end. The two end vertices are coincident if the edge is a
+When an edge e is incident on a vertex v, we also say that v is incident with e. Note that
+whereas an edge is incident only on two vertices (namely its end vertices), a vertex may be
+incident with any number of edges.
+
+Two non-parallel edges are said to be adjacent edges if they are incident on a common
+vertex (that is, if they have a vertex in common). Two vertices are said to be adjacent vertices
+(or neighbours) if there is an edge joining them. |
+
+In the graph shown in Figure 1.18, A and B are adjacent vertices and e; and e2 are adjacent
+edges. But, A and C are not adjacent vertices, and e, and e3 are not adjacent edges.
+
+A D
+
+el e3
+
+—
+B c }
+
+Figure 1.18
+
+Complete graph
+
+A simple graph of order > 2 in which there is an edge between every pair of vertices is
+called a complete graph, (or a full graph).
+
+In other words, a complete graph is a simple graph of order > 2 in which every pair of
+distinct vertices are adjacent.
+
+A complete graph with n (> 2) vertices is denoted by Ky.
+
+Complete graphs with two, three, four and five vertices are shown in Figures 1.19(a) to
+1.19(d) respectively. Of these complete graphs, the complete graph with five vertices, namely
+Ks (shown in Figure 1.19(d)), is of great importance. This graph is called the Kuratowski’s
+
+first graph.* |
+
+“Named after the Polish mathematician Kasimir Kuratowski.

@@ -1,0 +1,48 @@
+5.4 Multiplication of Large Integers and Strassen‘s Matrix Multiplication 189
+
+require five additions and one subtraction. Hence, we have the recurrence
+
+A(n) =3A(n/2)+ en forn>1, AQ) =1.
+
+Applying the Master Theorem, which was stated in the beginning of the chapter,
+we obtain A(n) € @(n!°%23), which means that the total number of additions and
+subtractions have the same asymptotic order of growth as the number of multipli-
+cations.
+
+The asymptotic advantage of this algorithm notwithstanding, how practical is
+it? The answer depends, of course, on the computer system and program quality
+implementing the algorithm, which might explain the rather wide disparity of
+reported results. On some machines, the divide-and-conquer algorithm has been
+reported to outperform the conventional method on numbers only 8 decimal digits
+long and to run more than twice faster with numbers over 300 decimal digits
+long—the area of particular importance for modern cryptography. Whatever this
+outperformance “crossover point” happens to be on a particular machine, it is
+worth switching to the conventional algorithm after the multiplicands become
+smaller than the crossover point. Finally, if you program in an object-oriented
+language such as Java,C++, or Smalltalk, you should also be aware that these
+languages have special classes for dealing with large integers.
+
+Discovered by 23-year-old Russian mathematician Anatoly Karatsuba in
+1960, the divide-and-conquer algorithm proved wrong the then-prevailing opinion
+that the time efficiency of any integer multiplication algorithm must be in Q(n7).
+The discovery encouraged researchers to look for even (asymptotically) faster
+algorithms for this and other algebraic problems. We will see such an algorithm
+in the next section.
+
+Strassen‘s'MatrixiMultiplication
+
+Now that we have seen that the divide-and-conquer approach can reduce the
+number of one-digit multiplications in multiplying two integers, we should not be
+surprised that a similar feat can be accomplished for multiplying matrices. Such
+an algorithm was published by V. Strassen in 1969 [Str69]. The principal insight
+of the algorithm lies in the discovery that we can find the product C of two 2 x 2
+matrices A and B with just seven multiplications as opposed to the eight required
+by the brute-force algorithm (see Example 3 in Section 2.3). This is accomplished
+by using the following formulas:
+
+[x | _ [ae ao] « [im |
+Co en a9 M1 bio Ou
+| mi img — ms + m7 m3+ms
+= my + mg m, +m3—m3+m6
+
+where

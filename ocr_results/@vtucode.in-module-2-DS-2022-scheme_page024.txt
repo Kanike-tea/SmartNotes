@@ -1,0 +1,42 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Analysis of padd:
+To determine the computing time of padd, first determine which operations contribute to the
+cost. For this algorithm, there are three cost measures:
+(1) Coefficient additions
+(2) Exponent comparisons
+
+(3) Creation of new nodes for c
+
+The maximum number of executions of any statement in padd is bounded above by m + n.
+Therefore, the computing time is O(m+n). This means that if we implement and run the
+algorithm on a computer, the time it takes will be Clm + C2n + C3, where Cl, C2, C3 are
+constants. Since any algorithm that adds two polynomials must look at each nonzero term at
+
+least once, padd is optimal to within a constant factor.
+
+3. Erasing a Polynomial
+
+Void erase (polyPointer *ptr)
+{
+polyPointer temp;
+while (*ptr)
+{
+Temp=*ptr;
+*ptr=(*pith) ->link;
+
+Free (temp)
+
+Program:erasing polynomial
+
+4. Circular representation of polynomials
+Circular linked list are one they of liner linked list. In which the link fields of last node of the
+list contains the address of the first node of the list instead of contains a null pointer.
+Advantages:- Circular list are frequency used instead of ordinary linked list because in circular
+list all nodes contain a valid address.
+The important feature of circular list is as follows.
+(1) Ina circular list every node is accessible from a given node.
+
+(2) Certain operations like concatenation and splitting becomes more efficient in circular list.
+
+vtucode.in 25

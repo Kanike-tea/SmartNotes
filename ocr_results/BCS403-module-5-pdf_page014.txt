@@ -1,0 +1,48 @@
+Database Management System [BCS403]
+
+= In this variation, a transaction T that issues a read_item(X) or write_item(X) such
+that TS(7) > write_TS(X) has its read or write operation de/ayed until the transaction
+T that wrote the value of X (hence TS(T) = write_TS(X)) has committed or aborted.
+
+= To implement this algorithm, it is necessary to simulate the locking of an item X that
+has been written by transaction T until T is either committed or aborted. This
+
+algorithm does not cause deadlock, since T waits for T only if TS(T) > TS(T_).
+
+Thomas’s Write Rule
+= A modification of the basic TO algorithm, known as Thomas’s write rule, does not
+
+enforce conflict serializability, but it rejects fewer write operations by modifying the
+
+checks for the write_item(X) operation as follows:
+
+1. If read_TS(X) > TS(7), then abort and roll back 7 and reject the operation.
+
+2. If write_TS(X) > TS(7), then do not execute the write operation but continue
+processing. This is because some transaction with timestamp greater than TS(T}—
+and hence after T in the timestamp ordering—has already written the value of X.
+Thus, we must ignore the write_item(X) operation of T because it is already outdated
+and obsolete. Notice that any conflict arising from this situation would be detected by
+case (1).
+
+If neither the condition in part (1) nor the condition in part (2) occurs, then execute
+the write_item(X) operation of T and set write_TS(X) to TS(7).
+
+5.14 Multiversion Concurrency Control Techniques
+
+= Other protocols for concurrency control keep the old values of a data item when the
+item is updated. These are known as multiversion concurrency control, because
+several versions (values) of an item are maintained
+
+«When a transaction requires access to an item, an appropriate version is chosen to
+maintain the serializability of the currently executing schedule, if possible.
+
+= The idea is that some read operations that would be rejected in other techniques can
+still be accepted by reading an older version of the item to maintain serializability. When
+a transaction writes an item, it writes a new version and the old version(s) of the item
+are retained
+
+= An obvious drawback of multiversion techniques is that more storage is needed to maintain
+multiple versions of the database items
+
+https://vtucode.in 36

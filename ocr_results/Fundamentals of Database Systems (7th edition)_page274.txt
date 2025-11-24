@@ -1,0 +1,57 @@
+244
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+one has the needed columns (attributes) and contains the result of the operation,
+and the other contains the discarded columns. For example, to list each employee’s
+first and last name and salary, we can use the PROJECT operation as follows:
+
+Tame, Foam, Salay(EMPLOYEE)
+
+The resulting relation is shown in Figure 8.1(b). The general form of the PROJECT
+operation is
+
+Tcattribute list>(R)
+
+where 1 (pi) is the symbol used to represent the PROJECT operation, and <attribute
+list> is the desired sublist of attributes from the attributes of relation R. Again,
+notice that R is, in general, a relational algebra expression whose result is a relation,
+which in the simplest case is just the name of a database relation. The result of the
+PROJECT operation has only the attributes specified in <attribute list> in the same
+order as they appear in the list. Hence, its degree is equal to the number of attributes
+in <attribute list>.
+
+If the attribute list includes only nonkey attributes of R, duplicate tuples are
+likely to occur. The PROJECT operation removes any duplicate tuples, so the
+result of the PROJECT operation is a set of distinct tuples, and hence a valid
+relation. This is known as duplicate elimination. For example, consider the
+following PROJECT operation:
+
+T’Sex, Salary(EMPLOYEE)
+
+The result is shown in Figure 8.1(c). Notice that the tuple <‘F’, 25000> appears only
+once in Figure 8.1(c), even though this combination of values appears twice in the
+EMPLOYEE relation. Duplicate elimination involves sorting or some other technique to
+detect duplicates and thus adds more processing. If duplicates are not eliminated, the
+result would be a multiset or bag of tuples rather than a set. This was not permitted in
+the formal relational model but is allowed in SQL (see Section 6.3).
+
+The number of tuples in a relation resulting from a PROJECT operation is always
+less than or equal to the number of tuples in R. If the projection list is a superkey of
+R—that is, it includes some key of R—the resulting relation has the same number of
+tuples as R. Moreover,
+
+Taiigtt> (Tatist2>(R)) = Teiisti>(R)
+
+as long as <list2> contains the attributes in <list1>; otherwise, the left-hand side is
+an incorrect expression. It is also noteworthy that commutativity does not hold
+on PROJECT.
+
+In SQL, the PROJECT attribute list is specified in the SELECT clause of a query. For
+example, the following operation:
+
+T’Sex, Salary(EMPLOYEE)
+would correspond to the following SQL query:
+
+SELECT DISTINCT Sex, Salary
+FROM EMPLOYEE

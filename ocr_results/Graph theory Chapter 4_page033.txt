@@ -1,0 +1,24 @@
+P shortest Path
+
+The shortest path arboresence formed by these arcs is shown below:
+
+Figure 4.54
+
+From the above Figure, we note that the following are the shortest paths Gud their weighs)
+from vertex 1 to all other vertices:
+
+(1) Path from 1 to 2: 1 — 2; weight 4.
+(2) Path from 1 to 3 : 1 + 2 — 3; weight 5.
+(3) Path from 1 to 4: 1 2 — 3’ 4; weight’7.
+
+(4) Path from 1 to5: 1 > 233 > 6 — S; weight 10.
+
+(5) Path from 1 to 6: 1 > 2 > 3 — 6; weight 9.
+
+(6) Path from 1 107: 13 2 3 6 > 5 — 7; weight 16. .
+
+Example 2| Apply Dijkstra’s algorithm to the weighted digraph shown in Figure 4. 55 in or-
+
+dtr 10 find the shortest @istance from the vertex c to each of the other v vertices.
+
+Figure 4.55

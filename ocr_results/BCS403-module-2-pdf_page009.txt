@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+A database state that does not obey all the integrity constraints is called Invalid state and a state that
+
+satisfies all the constraints in the defined set of integrity constraints IC is called a Valid state
+
+Attributes that represent the same real-world concept may or may not have identical names in
+different relations. For example, the Dnumber attribute in both DEPARTMENT and
+DEPT_LOCATIONS stands for the same real-world concept—the number given to a department.
+That same concept is called Dno in EMPLOYEE and Dnum in PROJECT.
+
+Alternatively, attributes that represent different concepts may have the same name in different
+relations. For example, we could have used the attribute name Name for both Pname of PROJECT
+and Dname of DEPARTMENT; in this case, we would have two attributes that share the same name
+
+but represent different realworld concepts—project names and department names.
+
+1.2.4 Integrity, Referential Integrity, and Foreign Keys
+
+Entity integrity constraint
+
+The entity integrity constraint states that no primary key value can be NULL. This is because the
+primary key value is used to identify individual tuples in a relation. Having NULL values for the
+primary key implies that we cannot identify some tuples. For example, if two or more tuples had
+NULL for their primary keys, we may not be able to distinguish them if we try to reference them
+from other relations.
+
+Key constraints and entity integrity constraints are specified on individual relations.
+
+Referential integrity constraint
+
+The referential integrity constraint is specified between two relations and is used to maintain the
+consistency among tuples in the two relations. Informally, the referential integrity constraint states
+that a tuple in one relation that refers to another relation must refer to an existing tuple in that
+relation.
+
+For example COMPANY database, the attribute Dno of EMPLOYEE gives the department number
+for which each employee works; hence, its value in every EMPLOYEE tuple must match the
+
+Dnumber value of some tuple in the DEPARTMENT relation.
+
+https://vtucode.in Page 10

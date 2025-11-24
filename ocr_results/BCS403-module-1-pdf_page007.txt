@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+Program-Data Independence: In traditional file processing, the structure of the data files
+accessed by an application is "hard-coded" in its source code. If, for some reason, we decide
+to change the structure of the data ,everyapplication in which a description of that file's
+
+structure is hard-coded must be changed!
+
+In contrast, DBMS access programs, in most cases, do not require such changes, because the
+structure of the data is described separately from the programs that access it and those
+programs consult the catalog in order to ascertain the structure of the data so that they
+
+interpret that data properly.
+
+In other words, the DBMS provides a conceptual or logical view of the data to application
+programs, so that the underlying implementation may be changed without the programs being
+
+modified. (This is referred to as program-data independence.)
+
+Program-operation independence: In object-oriented and object-relationalsystems , users
+can define operations on data as part of the databasedefinitions.An operation (also called a
+function or method) is specified in two parts.The interface (or signature) of an operation
+includes the operation name and thedata types of its arguments (or parameters). The
+implementation (or method) of theoperation is specified separately and can be changed
+without affecting the interface User application programs can operate on the data by invoking
+these operationsthrough their names and arguments, regardless of how the operations are
+
+implemented.This may be termed program-operation independence.
+
+Data abstraction
+
+The characteristic that allows program-data | independence and __ program-
+operationindependence is called data abstraction. A DBMS provides users with a conceptual
+representationof data that does not include many of the details of how the data isstored or how
+the operations are implemented. Informally, a data model is a type ofdata abstraction that is
+used to provide this conceptual representation. The datamodel uses logical concepts, such as
+objects, their properties, and their interrelationships,that may be easier for most users to
+understand than computer storageconcepts. Hence, the data model hides storage and
+
+implementation details that arenot of interest to most database users.
+
+3. Support of Multiple Views of the Data
+
+https://vtucode.in Page 8

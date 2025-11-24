@@ -1,0 +1,42 @@
+A.5 GNU Assembler Quick Reference 633
+
+-end
+Marks the end of the assembly file. This is usually omitted.
+-endif
+
+Ends a conditional compilation code block. See .if, .ifdef, .ifndef. Similar to ENDIF
+in armasm.
+
+-endm
+
+Ends a macro definition. See .macro. Similar to MEND in armasm.
+
+-endr
+
+Ends a repeat loop. See .rept and .irp. Similar to WEND in armasm.
+
+equ <symbol name>, <value>
+
+This directive sets the value of a symbol. It is similar to EQU in armasm.
+
+-err
+
+Causes assembly to halt with an error.
+
+-exitm
+
+Exit a macro partway through. See .macro. Similar to MEXIT in armasm.
+.global <symbol>
+
+This directive gives the symbol external linkage. It is similar to EXPORT in armasm.
+hword <short1> {,<short2>} ...
+
+Inserts a list of 16-bit values as data into the assembly, as for DCW in armasm.
+.if <logical_expression>
+
+Makes a block of code conditional. End the block using . endif. Similar to IF in armasm.
+See also .else.
+
+-ifdef <symbol>
+
+Include a block of code if <symbo1> is defined. End the block with . endif.

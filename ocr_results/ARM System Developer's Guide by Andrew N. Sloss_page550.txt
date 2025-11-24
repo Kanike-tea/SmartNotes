@@ -1,0 +1,57 @@
+14.10 Demonstration: A Small Virtual Memory System
+
+PTE = region->pAddress & Oxffff0000; /* get physical address */
+
+PTE |= tempAP<<10; /* set Access Permissions subpage 3 */
+PTE |= tempAP<<8; /* subpage 2 */
+PTE |= tempAP <<6; /* subpage 1 */
+PTE |= tempAP <<4; /* subpage 0 */
+PTE |= (region->CB & 0x3) <<2; /* set cache & WB attrib */
+PTE |= 0x1; /* set as LARGE PAGE */
+
+/* fill in table entries for region */
+for (i = region->numPages-1; i >= 0; i--)
+{
+for (j = 63 ; j >= 03 j--)
+*PTEptr-- = PTE + (i<<16); /* i = 64 KB large page */
+
+}
+break;
+}
+case SMALLPAGE:
+{
+PTEptr += (region->vAddress & Ox000ffc00)>>10; /* first PTE*/
+PTEptr += (region->numPages*4) - 1; /* last PTE */
+
+PTE = region->pAddress & Oxfffff000; /* get physical address */
+
+PTE |= tempAP<<10; /* set Access Permissions subpage 3 */
+PTE |= tempAP<<8; /* subpage 2 */
+PTE |= tempAP <<6; /* subpage 1 */
+PTE |= tempAP <<4; /* subpage 0 */
+PTE |= (region->CB & 0x3) <<2; /* set cache & WB attrib */
+PTE |= 0x2; /* set as SMALL PAGE */
+
+/* fill in table entries for region */
+= region->numPages-1; i >= 03 i--)
+
+for (
+{
+for (j = 3.3 j >= 03 j--)
+*PTEptr-- = PTE + (i<<12); /* i = 4 KB small page */
+
+}
+break;
+
+}
+
+case TINYPAGE:
+
+{
+PTEptr += (region->vAddress & Ox000ffc00) >> 10; /* first */
+PTEptr += (region->numPages - 1); /* last PTEptr */
+
+PTE = region->pAddress & Oxfffffc00; /* get physical address */
+PTE |= tempAP<<4; /* set Access Permissions */
+
+537

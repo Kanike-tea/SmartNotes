@@ -1,0 +1,28 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+To perform inorder traversal make repeated calls to insucc () function
+
+void tinorder (threadedpointer tree)
+{
+Threadedpointer temp = tree;
+for(; 7){
+temp = insucc(temp);
+if (temp == tree) break;
+printf (“%3c”, temp—data
+
+}
+
+Program: Inorder traversal of a threaded binary tree
+Inserting a Node into a Threaded Binary Tree
+In this case, the insertion of r as the right child of a node s is studied.
+The cases for insertion are:
+e Ifs has an empty right subtree, then the insertion is simple and diagrammed in Figure
+e Ifthe right subtree of s is not empty, then this right subtree is made the right subtree of
+r after insertion. When this is done, r becomes the inorder, predecessor of a node that has a
+leftThread == true field, and consequently there is a thread which has to be updated to
+
+point to r. The node containing this thread was previously the inorder successor of s.
+
+before (b) after
+
+vtucode.in 27

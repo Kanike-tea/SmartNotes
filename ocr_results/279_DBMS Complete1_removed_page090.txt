@@ -1,0 +1,14 @@
+Let us finally summarize the normalization steps we have discussed so far.
+
+Input Transformation Output
+Relation Relation
+All Eliminate variable length record. Remove multi-attribute lines in table. INF
+Relations
+INF — Remove dependency of non-key attributes on part of a multi-attribute 2NF
+Relation key.
+2NF Remove dependency of non-key attributes on other non-key attributes. 3NF
+3NF Remove dependency of an attribute of a multi attribute key on an BCNF
+attribute of another (overlapping) multi-attribute key.
+BCNF — Remove more than one independent multi-valued dependency from 4NF
+relation by splitting relation.
+4NF [Add one relation relating attributes with multi-valued dependency.

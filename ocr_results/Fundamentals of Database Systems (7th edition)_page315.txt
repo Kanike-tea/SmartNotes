@@ -1,0 +1,67 @@
+8.26.
+
+8.27.
+
+8.28.
+
+8.29.
+
+8.31.
+
+8.32.
+
+. Specify queries c, d, and f of Exercise 8.18 in both tuple and domain rela-
+tional calculus.
+
+Ina tuple relational calculus query with n tuple variables, what would be the
+typical minimum number of join conditions? Why? What is the effect of
+having a smaller number of join conditions?
+
+Rewrite the domain relational calculus queries that followed Qo in Sec-
+tion 8.7 in the style of the abbreviated notation of QOA, where the objective
+is to minimize the number of domain variables by writing constants in place
+of variables wherever possible.
+
+- Consider this query: Retrieve the Ssns of employees who work on at least
+those projects on which the employee with Ssn=123456789 works. This may
+be stated as (FORALL x) (IF P THEN Q), where
+
+= xisa tuple variable that ranges over the PROJECT relation.
+= P=employee with Ssn=123456789 works on project x.
+™ Q=employee e works on project x.
+Express the query in tuple relational calculus, using the rules
+= (V x)(P(x)) =NOT(Ax)(NOT(P(x))).
+= (IF PTHEN Q) = (NOT(P) OR Q).
+. Show how you can specify the following relational algebra operations in
+both tuple and domain relational calculus.
+a. O4=c(R(A, B, C))
+b. Ta, p>(R(A, B, C))
+c. R(A, B, C) * S(C, D, E)
+. R(A, B, C) U S(A, B, C)
+. R(A, B, C) 0 S(A, B, C)
+f. R(A, B,C) = S(A, B,C)
+g. R(A, B, C) x S(D, E, F)
+h. R(A, B) + S(A)
+Suggest extensions to the relational calculus so that it may express the fol-
+lowing types of operations that were discussed in Section 8.4: (a) aggre-
+
+gate functions and grouping; (b) OUTER JOIN operations; (c) recursive
+closure queries.
+
+2
+
+°
+
+A nested query is a query within a query. More specifically, a nested query is
+a parenthesized query whose result can be used as a value in a number of
+places, such as instead of a relation. Specify the following queries on the
+database specified in Figure 5.5 using the concept of nested queries and the
+relational operators discussed in this chapter. Also show the result of each
+query as it would apply to the database state in Figure 5.6.
+
+a. List the names of all employees who work in the department that has the
+employee with the highest salary among all employees.
+
+Exercises
+
+285

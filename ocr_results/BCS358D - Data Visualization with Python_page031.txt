@@ -1,0 +1,65 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 01 (a)
+
+1 a) Write a python program to find the best of two test average marks out of three test’s
+
+marks accepted from the user.
+
+Aim: Introduce the Python fundamentals, data types, operators, flow control, and exception
+
+handling in Python.
+
+PROGRAM EXPLANATION
+The below program is written in Python and calculates the average of the best two test scores out
+
+of three test scores. Here is a step-by-step explanation of the program:
+1. The program starts by prompting the user to enter the three internal marks.
+2. The user is prompted to enter marks], marks2, and marks3, respectively.
+3. The program then prints the entered marks for reference.
+4. The variable small is initialized with the value of m1 (marks1). It is used to keep track of
+
+the smallest mark among the three.
+
+wn
+
+The program checks if small is greater than m2 (marks2). If it is, small is updated to m2.
+
+6. The program then checks if small is greater than m3 (marks3). If it is, small is updated to
+m3.
+
+7. After these three checks, the small variable will contain the smallest mark among the
+three.
+
+8. The average is calculated using the formula: avg = (m1 + m2 + m3 - small) / 2
+
+9. The smallest mark (small) is subtracted from the sum of all three marks to exclude it
+
+from the average calculation. Then the sum is divided by 2 to get the average of the best
+
+two marks.
+
+10. Finally, the program prints the average of the best two tests out of the three.
+
+PROGRAM
+
+print ("Enter the three internals marks (> zero:")
+ml = int(input ("Enter marks1:"))
+
+m2 = int(input ("Enter marks2:"))
+
+m3 int (input ("Enter marks3:") )
+print ("Marks1:", m1)
+
+print ("Marks2:", m2)
+
+print ("Marks3:", m3)
+
+small=m1
+
+if small > m2:
+
+small = m2
+if small > m3:
+
+Dept. of CSE 16 GSSSIETW, Mysuru

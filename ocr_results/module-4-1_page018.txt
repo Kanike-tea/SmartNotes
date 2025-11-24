@@ -1,0 +1,49 @@
+Data Structures and Applications (15CS33)
+
+The variable root points to the header node of the tree, while root —leftChild points to the
+start of the first node of the actual tree. This is true for all threaded trees. Here the problem of
+the loose threads is handled by pointing to the head node called root.
+
+Inorder Traversal of a Threaded Binary Tree
+
+e By using the threads, an inorder traversal can be performed without making use ofa
+stack.
+
+e For any node, ptr, in a threaded binary tree, if ptr—rightThread =TRUE, the inorder
+successor of ptr is ptr srightChild by definition of the threads. Otherwise we obtain
+the inorder successor of ptr by following a path of left-child links from the right-
+child of ptr until we reach a node with leftThread = TRUE.
+
+e The function insucc () finds the inorder successor of any node in a threaded tree
+without using a stack.
+
+threadedpointer insucc(threadedPointer tree)
+{ /* find the inorder successor of tree in a threaded binary tree */
+threadedpointer temp;
+temp = tree—rightChild;
+if (!tree—rightThread)
+while (!temp—leftThread)
+temp = temp—leftChild;
+return temp;
+
+Program: Finding inorder successor of a node
+
+To perform inorder traversal make repeated calls to insucc ( ) function
+
+void tinorder (threadedpointer tree)
+
+{
+
+Threadedpointer temp = tree;
+
+for(s :){
+temp = insucc(temp);
+if (temp ==tree) break;
+printf(‘%3c”, temp—data
+
+}
+}
+
+Program: Inorder traversal ofa threaded binary tree
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

@@ -1,0 +1,14 @@
+4.2
+
+Topological Sorting
+
+In this section, we discuss an important problem for directed graphs, with a
+variety of applications involving prerequisite-restricted tasks. Before we pose this
+problem, though, let us review a few basic facts about directed graphs themselves.
+A directed graph, or digraph for short, is a graph with directions specified for all
+its edges (Figure 4.5a is an example). The adjacency matrix and adjacency lists are
+still two principal means of representing a digraph. There are only two notable
+differences between undirected and directed graphs in representing them: (1) the
+adjacency matrix of a directed graph does not have to be symmetric; (2) an edge
+in a directed graph has just one (not two) corresponding nodes in the digraph’s
+adjacency lists.

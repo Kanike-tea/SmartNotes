@@ -1,0 +1,52 @@
+92 Chapter 4 Introduction to the Thumb Instruction Set
+
+EXAMPLE
+
+4.2
+
+3 cpsr = nzcvgIFT_SVC
+3 r0 = 0x00010001
+3 pc = 0x00010000
+
+You can see that the least significant bit of register r0 is used to set the T bit of the cpsr. The
+cpsr changes from IFt, prior to the execution of the BX, to IFT, after execution. The pe is
+then set to point to the start address of the Thumb routine.
+
+Replacing the BX instruction with BLX simplifies the calling of a Thumb routine since it sets
+the return address in the link register Ir:
+
+CODE32
+LDR 0, =thumbRoutine+1  ; enter Thumb state
+BLX sr. 3 jump to Thumb code
+
+3 continue here
+
+CODE16
+thumbRout ine
+
+ADD orl, #1
+
+BX r14 ; return to ARM code and state
+
+4.3 OTHER BRANCH INSTRUCTIONS
+
+There are two variations of the standard branch instruction, or B. The first is similar to the
+ARM version and is conditionally executed; the branch range is limited to a signed 8-bit
+immediate, or —256 to +254 bytes. The second version removes the conditional part of the
+instruction and expands the effective branch range to a signed 11-bit immediate, or —2048
+to +2046 bytes.
+
+The conditional branch instruction is the only conditionally executed instruction in
+Thumb state.
+
+Syntax: B<cond> label
+label
+BL label
+
+| B | branch pe = label
+
+BL | branch with link | pe = label
+Ir = (instruction address after the BL) + 1
+
+‘The BL instruction is not conditionally executed and has an approximate range of +/—4 MB.
+This range is possible because BL (and BLX) instructions are translated into a pair of 16-bit

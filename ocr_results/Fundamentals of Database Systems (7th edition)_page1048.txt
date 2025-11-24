@@ -1,0 +1,59 @@
+1018 Chapter 26 Enhanced Data Models
+
+26.44. Consider the following rules:
+REACHABLE(X, Y) :— FLIGHT(X, Y)
+REACHABLE(X, Y) :— FLIGHT(X, Z), REACHABLE(Z, Y)
+
+where REACHABLE(X, Y) means that city Y can be reached from city X, and
+FLIGHT(X, Y) means that there is a flight to city Y from city X.
+
+a.
+
+Construct fact predicates that describe the following:
+
+Los Angeles, New York, Chicago, Atlanta, Frankfurt, Paris, Singapore,
+Sydney are cities.
+
+The following flights exist: LA to NY, NY to Atlanta, Atlanta to Frankfurt,
+Frankfurt to Atlanta, Frankfurt to Singapore, and Singapore to Sydney.
+(Note: No flight in reverse direction can be automatically assumed.)
+
+. Is the given data cyclic? If so, in what sense?
+. Construct a model-theoretic interpretation (that is, an interpretation
+
+similar to the one shown in Figure 26.13) of the above facts and rules.
+
+. Consider the query
+
+REACHABLE (Atlanta, Sydney)?
+How will this query be executed? List the series of steps it will go through.
+
+. Consider the following rule-defined predicates:
+
+ROUND-TRIP-REACHABLE(X, Y) :—
+REACHABLE(X, Y), REACHABLE(Y, X)
+DURATION(X, Y, Z)
+
+Draw a predicate dependency graph for the above predicates. (Note:
+DURATION(X, Y, Z) means that you can take a flight from X to Y in Z hours.)
+Consider the following query: What cities are reachable in 12 hours from
+Atlanta? Show how to express it in Datalog. Assume built-in predicates
+like greater-than(X, Y). Can this be converted into a relational algebra
+statement in a straightforward way? Why or why not?
+
+. Consider the predicate population(X, Y), where Y is the population of
+
+city X. Consider the following query: List all possible bindings of the
+predicate pair (X, Y), where Y is a city that can be reached in two flights
+from city X, which has over 1 million people. Show this query in Datalog.
+Draw a corresponding query tree in relational algebraic terms.
+
+Selected Bibliography
+
+The book by Zaniolo et al. (1997) consists of several parts, each describing an advanced
+database concept such as active, temporal, and spatial/text/multimedia databases.
+Widom and Ceri (1996) and Ceri and Fraternali (1997) focus on active database concepts
+and systems. Snodgrass (1995) describes the TSQL2 language and data model. Khosha-
+fian and Baker (1996), Faloutsos (1996), and Subrahmanian (1998) describe multimedia
+database concepts. Tansel et al. (1993) is a collection of chapters on temporal databases.
+The temporal extensions to SQL:2011 are discussed in Kulkarni and Michels (2012).

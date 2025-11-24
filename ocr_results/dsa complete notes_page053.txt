@@ -1,0 +1,64 @@
+Data Structures and Applications(BCS304)
+
+Module 2
+
+Multiple Stacks and Queues
+
+If there is a single stack, the starting point is top=-1 and maximum size is SIZE-1
+If there are two stacks to be represented in a single array then we use stack [0] for the bottom
+element of the firs: ick, and stack MEMORY_SIZE - 1] for the bottom element of the second
+stack. The first stack grows toward stack[MEMORY_SIZE - 1] and the second grows toward
+stack[0]. With this representation, we can efficiently use all the available space.
+Representing more than two stacks within the same array poses problems since we no longer
+have an obvious point for the bottom element of each stack. Assuming that we have n stacks,
+we can divide the available memory into n segments. This initial division may be done in
+proportion to the expected sizes of the various stacks, if this is known. Otherwise, we may
+divide the memory into equal segments.
+Assume that i refers to the stack number of one of the n stacks.To establish this stack, we must
+create indices for both the bottom and top positions of this stack.The convention we use is that
+
+o bottom [i],0 <i<MAX_STACKS, points to the position immediately to the left of the
+
+bottom element of stack i.
+co top[i],0 <i< MAX_STACKS points to the top element.
+o Stack i is empty if bottom[i] = top[i].
+
+The relevant declarations are:
+
+#define MEMORY_SIZE 100 /* size of memory */
+
+#define MAX_STACKS 10 /* max number of stacks */
+
+/* global memory declaration */
+
+element stack[MEMORY_SIZE];
+
+int top[MAX_STACKS];
+
+int bottom[MAX_STACKS];
+
+int n; /* number of stacks entered by the user */
+
+To divide the array into roughly equal segments we use the following code:
+
+top[0] = bottom[0] = -1;
+for (j = 1; j < n; j++)
+top[j] = bottom[j] = (MEMORY_SIZE/n)*j-1;
+bottom[n] = MEMORY_SIZE-1;
+
+Stack i can grow from bottom[i] + 1 to bottom [i + 1 ] before it is full. Boundary for the last stack,
+boundary [n] is set to MEMORY_SIZE- 1
+
+Initial configuration of the stack is shown below m is the size of the memory
+
+0 l*m/a i ee m-1
+0
+
+4 4 4
+Bottom[0] Bottom{!] Bottom{n-1]
+
+Top{0] Top!) Top{n-!] Bottom[a]
+
+Fig: All stacks are empty and roughly divided equally
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 9

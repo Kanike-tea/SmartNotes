@@ -1,0 +1,51 @@
+1152 Chapter 30 Database Security
+
+cryptographic algorithm relies on one key for encryption and a different but related
+key for decryption. The essential steps are as follows:
+
+1. Each user generates a pair of keys to be used for the encryption and decryp-
+tion of messages.
+
+2. Each user places one of the two keys in a public register or other accessible
+file. This is the public key. The companion key is kept private.
+
+3. Ifa sender wishes to send a private message to a receiver, the sender encrypts
+the message using the receiver’s public key.
+
+4, When the receiver receives the message, he or she decrypts it using the
+receiver’s private key. No other recipient can decrypt the message because
+only the receiver knows his or her private key.
+
+The RSA Public Key Encryption Algorithm. One of the first public key schemes
+was introduced in 1978 by Ron Rivest, Adi Shamir, and Len Adleman at MIT* and
+is named after them as the RSA scheme. The RSA scheme has since then reigned
+supreme as the most widely accepted and implemented approach to public key
+encryption. The RSA encryption algorithm incorporates results from number the-
+ory, combined with the difficulty of determining the prime factors of a target. The
+RSA algorithm also operates with modular arithmetic—mod n.
+
+Two keys, d and e, are used for decryption and encryption. An important property
+is that they can be interchanged. n is chosen as a large integer that is a product of
+two large distinct prime numbers, a and b, n = a x b. The encryption key e is a ran-
+domly chosen number between 1 and n that is relatively prime to (a — 1) x (b — 1).
+The plaintext block P is encrypted as P* where P’ = P mod n. Because the exponen-
+tiation is performed mod n, factoring P* to uncover the encrypted plaintext is diffi-
+cult. However, the decrypting key d is carefully chosen so that (P*)d mod n = P. The
+decryption key d can be computed from the condition that d x e = 1 mod ((a - 1) x
+(b- 1)). Thus, the legitimate receiver who knows d simply computes (P*)d mod n =
+P and recovers P without having to factor P*.
+
+30.7.4 Digital Signatures
+
+A digital signature is an example of using encryption techniques to provide authen-
+tication services in electronic commerce applications. Like a handwritten signature,
+a digital signature is a means of associating a mark unique to an individual with a
+body of text. The mark should be unforgettable, meaning that others should be able
+to check that the signature comes from the originator.
+
+A digital signature consists of a string of symbols. If a person’s digital signature
+were always the same for each message, then one could easily counterfeit it by sim-
+ply copying the string of symbols. Thus, signatures must be different for each use.
+This can be achieved by making each digital signature a function of the message
+
+5Rivest et al. (1978).

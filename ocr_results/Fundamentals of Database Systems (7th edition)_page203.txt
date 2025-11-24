@@ -1,0 +1,61 @@
+5.15.
+
+5.16.
+
+5.17.
+
+5.18.
+
+ITEM(ltem#, Unit_price)
+
+SHIPMENT(Order#, Warehouse#, Ship_date)
+
+WAREHOUSE (Warehouse#, City)
+Here, Ord_amt refers to total dollar amount of an order; Odate is the date the
+order was placed; and Ship_date is the date an order (or part of an order) is
+shipped from the warehouse. Assume that an order can be shipped from several
+
+warehouses. Specify the foreign keys for this schema, stating any assumptions
+you make. What other constraints can you think of for this database?
+
+Consider the following relations for a database that keeps track of business
+trips of salespersons in a sales office:
+SALESPERSON(Ssn, Name, Start_year, Dept_no)
+TRIP(Ssn, From_city, To_city, Departure_date, Return_date, Trip_id)
+EXPENSE(Trip_id, Account#, Amount)
+
+A trip can be charged to one or more accounts. Specify the foreign keys for
+this schema, stating any assumptions you make.
+
+Consider the following relations for a database that keeps track of student
+enrollment in courses and the books adopted for each course:
+STUDENT(Ssn, Name, Major, Bdate)
+COURSE (Course#, Cname, Dept)
+ENROLL(Ssn, Course#, Quarter, Grade)
+BOOK_ADOPTION(Course#, Quarter, Book_isbn)
+TEXT(Book isbn, Book_title, Publisher, Author)
+
+Specify the foreign keys for this schema, stating any assumptions you make.
+
+Consider the following relations for a database that keeps track of automo-
+bile sales in a car dealership (OPTION refers to some optional equipment
+installed on an automobile):
+
+CAR(Serial_no, Model, Manufacturer, Price)
+OPTION(Serial_no, Option name, Price)
+SALE(Salesperson id, Serial_no, Date, Sale_price)
+SALESPERSON Salesperson_id, Name, Phone)
+
+First, specify the foreign keys for this schema, stating any assumptions you
+make. Next, populate the relations with a few sample tuples, and then give
+an example of an insertion in the SALE and SALESPERSON relations that
+violates the referential integrity constraints and of another insertion that
+does not.
+
+Database design often involves decisions about the storage of attributes. For
+example, a Social Security number can be stored as one attribute or split into
+three attributes (one for each of the three hyphen-delineated groups of
+
+Exercises
+
+173

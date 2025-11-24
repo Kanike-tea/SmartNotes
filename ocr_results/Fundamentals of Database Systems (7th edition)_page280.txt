@@ -1,0 +1,76 @@
+250 Chapter 8 The Relational Algebra and Relational Calculus
+
+Figure 8.5
+
+The CARTESIAN PRODUCT (CROSS PRODUCT) operation.
+FEMALE _ EMPS
+
+Fname [Minit | Lname Ssn Bdate ‘Address [Sex| Salary] Super_ssn |Dno
+Alicia. | J | Zelaya | 999887777 |1968-07-19 | 3321 Castle, Spring, TX | F_[25000|987654321| 4
+Jennifer| S| Wallace | 987654321 |1941-06-20| 201Berry, Bellaire, TX | F [48000/888665555| 4
+Joyce | A_ | English | 453453453 |1972-07-31 | 5631 Rice, Houston, TX| F |25000/333445555| 5
+EMPNAMES
+
+Fname | Lname Ssn
+
+Alicia | Zelaya | 999887777
+
+Jennifer | Wallace | 987654321
+
+Joyce | English | 453453453
+
+EMP_DEPENDENTS
+
+Fname | Lname Ssn Essn Dependent_name | Sex|  Bdate
+
+Alicia | Zelaya | 999887777 | 333445555 Alice F | 1986-04-05
+
+Alicia [Zelaya | 999887777 | 333445555 Theodore M | 1983-10-25
+
+Alicia | Zelaya | 999887777 | 333445555 Joy F | 1958-05-03
+
+Alicia | Zelaya | 999887777 | 987654321 ‘Abner M | 1942-02-28
+
+Alicia | Zelaya | 999887777 | 123456789 Michael M | 1988-01-04
+Alicia__|Zelaya | 999887777 | 123456789 Alice F | 1988-12-30
+
+Alicia |Zelaya | 999887777 | 123456789 Elizabeth F | 1967-05-05
+
+Jennifer | Wallace | 987654321 | 333445555 Alice F | 1986-04-05
+
+Jennifer | Wallace | 987654321 | 333445555 Theodore M | 1983-10-25
+
+Jennifer | Wallace | 987654321 | 333445555 Joy F | 1958-05-03
+
+Jennifer | Wallace] 987654321 | 987654321 ‘Abner M | 1942-02-28
+
+Jennifer | Wallace | 987654321 | 123456789 Michael M | 1988-01-04
+
+Jennifer | Wallace | 987654321 | 123456789 Alice F | 1988-12-30
+
+Jennifer | Wallace | 987654321 | 123456789 Elizabeth F_[ 1967-05-05
+
+Joyce | English | 453453453 | 333445555 Alice F | 1986-04-05
+
+Joyce | English | 453453453 | 333445555 Theodore M | 1983-10-25
+
+Joyce [English | 453453453 | 333445555 Joy F | 1958-05-03
+
+Joyce [English | 453453453 | 987654321 Abner M | 1942-02-28
+
+Joyce | English | 453453453 | 123456789 Michael M | 1988-01-04
+
+Joyce [English | 453453453 | 123456789 Alice F | 1988-12-30
+
+Joyce English | 453453453 | 123456789 Elizabeth F | 1967-05-05
+ACTUAL_DEPENDENTS
+
+Fname | Lname Ssn Essn Dependent_name | Sex|  Bdate
+
+Jennifer | Wallace 987654321 | 987654321 Abner M | 1942-02-28
+
+RESULT
+
+Fname | Lname |Dependent_name
+
+Jennifer | Wallace Abner

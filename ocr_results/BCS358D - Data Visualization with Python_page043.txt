@@ -1,0 +1,56 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 03 (a)
+
+3 a) Write a Python program that accepts a sentence and find the number of words, digits,
+
+uppercase letters and lowercase letters.
+
+Aim: Demonstration of manipulation of strings using string methods.
+
+PROGRAM EXPLANATION
+The below program prompts the user to enter a sentence and then performs various calculations
+
+on the input sentence. Let's go through the program step by step:
+
+1.
+
+The program starts by prompting the user to enter a sentence using the input() function.
+
+The entered sentence is stored in the variable sentence.
+
+The program calculates the number of words in the sentence by splitting the sentence into
+a list of words using the split() method. The split() method separates the sentence into
+words based on whitespace. The number of words is determined by taking the length of
+
+the resulting list using len(), and it is stored in the variable word_count.
+
+The program initializes three variables: digit_count, upper_count, and lower_count, to
+keep track of the number of digits, uppercase letters, and lowercase letters in the
+
+sentence. These variables are initially set to 0.
+
+The program then iterates over each character in the sentence using a for loop. For each
+character, it checks if it is a digit using the isdigit() method. If it is, the digit_count
+variable is incremented by 1.
+
+Similarly, the program checks if the character is an uppercase letter using the isupper()
+method, and if it is, the upper_count variable is incremented by 1.
+
+Finally, the program checks if the character is a lowercase letter using the islower()
+method, and if it is, the lower_count variable is incremented by 1.
+
+After iterating through all the characters in the sentence, the program prints the results. It
+displays the number of words, number of digits, number of uppercase letters, and number
+
+of lowercase letters in the sentence.
+
+The program provides a simple way to analyze a sentence and count the occurrences of words,
+
+digits, uppercase letters, and lowercase lette
+
+. By using built-in string methods and looping
+
+constructs, you can perform various calculations and analysis on text data.
+
+Dept. of CSE 28 GSSSIETW, Mysuru

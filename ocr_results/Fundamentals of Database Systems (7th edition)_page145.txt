@@ -1,0 +1,55 @@
+4.3 Constraints and Characteristics of Specialization and Generalization Hierarchies 115
+
+Supplier_name
+
+Batch_no
+
+MANUFACTURED_ PART PURCHASED_PART
+
+Figure 4.5
+
+EER diagram notation
+for an overlapping
+(nondisjoint)
+specialization.
+
+may be overlapping; that is, the same (real-world) entity may be a member of more
+than one subclass of the specialization. This case, which is the default, is displayed
+by placing an o in the circle, as shown in Figure 4.5.
+
+The second constraint on specialization is called the completeness (or totalness)
+constraint, which may be total or partial. A total specialization constraint specifies
+that every entity in the superclass must be a member of at least one subclass
+in the specialization. For example, if every EMPLOYEE must be either an
+HOURLY_EMPLOYEE or a SALARIED_EMPLOYEE, then the specialization
+{HOURLY_EMPLOYEE, SALARIED_EMPLOYEE} in Figure 4.1 is a total specialization
+of EMPLOYEE. This is shown in EER diagrams by using a double line to connect
+the superclass to the circle. A single line is used to display a partial specialization,
+which allows an entity not to belong to any of the subclasses. For example, if some
+EMPLOYEE entities do not belong to any of the subclasses (SECRETARY, ENGINEER,
+TECHNICIAN} in Figures 4.1 and 4.4, then that specialization is partial.”
+
+Notice that the disjointness and completeness constraints are independent. Hence,
+we have the following four possible constraints on a specialization:
+
+= Disjoint, total
+
+= Disjoint, partial
+
+= Overlapping, total
+
+= Overlapping, partial
+Of course, the correct constraint is determined from the real-world meaning that
+applies to each specialization. In general, a superclass that was identified through
+
+the generalization process usually is total, because the superclass is derived from the
+subclasses and hence contains only the entities that are in the subclasses.
+
+Certain insertion and deletion rules apply to specialization (and generalization) as a
+consequence of the constraints specified earlier. Some of these rules are as follows:
+
+= Deleting an entity from a superclass implies that it is automatically deleted
+from all the subclasses to which it belongs.
+
+“The notation of using single or double lines is similar to that for partial or total participation of an entity
+type in a relationship type, as described in Chapter 3.

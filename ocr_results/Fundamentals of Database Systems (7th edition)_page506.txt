@@ -1,0 +1,60 @@
+476
+
+Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+relation schema in the database is, say, in BCNF or 3NF. Rather, the process of nor-
+malization through decomposition must also confirm the existence of additional
+properties that the relational schemas, taken together, should possess. These would
+
+include two properties:
+
+= The nonadditive join or lossless join property, which guarantees that the
+spurious tuple generation problem discussed in Section 14.1.4 does not
+occur with respect to the relation schemas created after decomposition
+
+= The dependency preservation property, which ensures that each functional
+dependency is represented in some individual relation resulting after
+
+decomposition
+
+The nonadditive join property is extremely critical and must be achieved at any
+cost, whereas the dependency preservation property, although desirable, is some-
+times sacrificed, as we discuss in Section 15.2.2. We defer the discussion of the for-
+mal concepts and techniques that guarantee the above two properties to Chapter 15.
+
+14.3.2 Practical Use of Normal Forms
+
+Most practical design projects in commercial and governmental environment acquire
+existing designs of databases from previous designs, from designs in legacy models, or
+from existing files. They are certainly interested in assuring that the designs are good
+quality and sustainable over long periods of time. Existing designs are evaluated by
+applying the tests for normal forms, and normalization is carried out in practice so
+that the resulting designs are of high quality and meet the desirable properties stated
+previously. Although several higher normal forms have been defined, such as the 4NF
+and 5NF that we discuss in Sections 14.6 and 14.7, the practical utility of these normal
+forms becomes questionable. The reason is that the constraints on which they are
+based are rare and hard for the database designers and users to understand or to
+detect. Designers and users must either already know them or discover them as a part
+of the business. Thus, database design as practiced in industry today pays particular
+
+attention to normalization only up to 3NF, BCNF, or at most 4NF.
+
+Another point worth noting is that the database designers need not normalize to the
+highest possible normal form. Relations may be left in a lower normalization status,
+such as 2NF, for performance reasons, such as those discussed at the end of Sec-
+tion 14.1.2. Doing so incurs the corresponding penalties of dealing with the anomalies.
+
+Definition. Denormalization is the process of storing the join of higher nor-
+
+mal form relations as a base relation, which is in a lower normal form.
+
+14.3.3 Definitions of Keys and Attributes Participating in Keys
+
+Before proceeding further, let’s look again at the definitions of keys of a relation
+
+schema from Chapter 3.
+
+Definition. A superkey of a relation schema R = {Aj, Ap, ... , An} is a set of attri-
+butes S C R with the property that no two tuples f and f in any legal relation
+state r of R will have t)[S] = t[S]. A key K is a superkey with the additional property
+that removal of any attribute from K will cause K not to be a superkey anymore.

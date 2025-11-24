@@ -1,0 +1,49 @@
+Figure 6.5
+
+Figure 6.6
+
+EXAMPLE
+
+6.24
+
+6.7 Bit Manipulation 193
+
+High LowHigh LowHigh LowHigh LowHigh Low
+Byte 0 Byte | Byte2 Byte 3
+
+Code 0|Code 1)Code 2]Code 3] Code 4
+
+Big-endian bitcodes packed into a bytestream.
+
+31 bitsfree 0
+bitbuffer = Code bits 0
+
+Format of bitbw
+
+Once the register is full we can store 32 bits to memory. For a big-endian memory system
+we can store the word without modification. For a little-endian memory system we need to
+reverse the byte order in the word before storing.
+
+We call the 32-bit register we insert codes into bitbuffer. We need a second register
+bitsfree to record the number of bits that we haven’t used in bitbuffer. In other words,
+bitbuffer contains 32 — bitsfree code bits, and bitsfree zero bits, as in Figure 6.6. To insert a
+code of k bits into bitbuffer, we subtract k from bitsfree and then insert the code with a left
+shift of bitsfree.
+
+Wealso need to be careful about alignment. A bytestream need not be word aligned, and
+so we can’t use word accesses to write it. To allow word accesses we will start by backing up
+to the last word-aligned address. Then we fill the 32-bit register bitbuffer with the backed-up
+data. From then on we can use word (32-bit) read and writes.
+
+This example provides three functions bitstream_write_start, bitstream_write_code,
+and bitstream_write_flush. These are not ATPCS-compliant functions because they
+assume registers such as bitbuffer are preserved between calls. In practice you will inline this
+code for efficiency, and so this is not a problem.
+
+The bitstream_write_start function aligns the bitstream pointer bitstream and
+initializes the 32-bit buffer bitbuf fer. Each call to bitstream_write_code inserts a value
+code of bit-length codebits. Finally, the bitstream_write_flush function writes any
+remaining bytes to the bitstream to terminate the stream.
+
+bitstream RN O ; current byte address in the output bitstream
+code RN 4 5 current code

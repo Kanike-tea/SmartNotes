@@ -1,0 +1,45 @@
+254 Chapter 7 Optimized Primitives
+
+TEQ by a, ASR 3 if (b != (a>>c))
+EORNE a, m, b, ASR#31 3 a = Ox7FFFFFFF’sign(b)
+
+7.7.3. ROUNDED RIGHT SHIFT
+
+A rounded shift right requires two cycles for a constant shift or three cycles for a nonzero
+variable shift. Note that a zero variable shift will only work properly if carry is clear.
+
+3 a=round(b>>c)
+MOVS a, b, ASR 3 a = b>>c, carry=b bit c-1
+Apc a, a, #0 ; if (carry) at+ to round
+
+7.7.4. SATURATED 32-BIT ADDITION AND SUBTRACTION
+
+On ARMVSTE cores, new instructions QADD and QSUB provide saturated addition and
+subtraction. If you have an ARMVAT or earlier core, then use the following code sequences
+instead. The code requires two cycles and a register held constant.
+
+3 a = saturate32(b+c)
+
+MOV m, #0x80000000 3 m = 0x80000000 max -ve
+ADDS a, by c 5 a = btc, V records overflow
+EORVS a, m, a, ASR#31 3 if (V) a=0x80000000’sign(a)
+3 a = saturate32(b-c)
+
+MOV m, #0x80000000 3 m = 0x80000000 max -ve
+SUBS a, b,c 3 b-c, V records overflow
+EORVS a, m, a, ASR#31 3 if (V) a=0x80000000’sign(a)
+
+7.7.5 SATURATED ABSOLUTE
+
+‘The absolute function overflows if the input argument is —0x80000000. The following
+two-cycle code sequence handles this case:
+
+3 a = saturate32(abs(b))
+SUB a, b, b, LSR #31; a = b - (b<0)
+EOR a, a, a, ASR #31 3 a =a“ sign(a)
+
+On a similar theme, an accumulated, unsaturated absolute also takes two cycles:
+3 a = btabs(c)
+
+EORS a, c, Cc, ASR#32. 5 a = CAsign(c) = abs(c)-(c<0)
+ADC a, by a 3 a=b+at (c<0)

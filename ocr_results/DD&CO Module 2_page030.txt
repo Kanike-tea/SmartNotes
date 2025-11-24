@@ -1,0 +1,48 @@
+D
+D latch D latch
+(master) (slave)
+En En
+
+Clk [>o
+
+Master-slave D flip-flop
+
+[he behavior of the master-slave flip-flop just described dictates that (1) the output may change only
+once, (2) a change in the output is triggered by the negative edge of the clock, and (3) the change may
+occur only during the clock’s negative level. The value that is produced at the output of the flip-flop is
+the value that was stored in the master stage immediately before the negative edge occurred. It is also
+possible to design the circuit so that the flip-flop output changes on the positive edge of the clock.
+
+Another construction of an edge-triggered D flip-flop uses three SR latches as shown in below Fig. Two
+latches respond to the external D (data) and Clk (clock) inputs. The third latch provides the outputs for
+the flip-flop. The S and R inputs of the output latch are maintained at the logic-1 level when Clk = 0.
+This causes the output to remain in its present state. Input D may be equal to 0 or 1. If D = 0 when Clk
+becomes 1, R changes to 0. This causes the flip-flop to go to the reset state, making Q = 0. If there is a
+change in the D input while Clk = 1, terminal R remains at 0 because Q is 0. Thus, the flip-flop is locked
+out and is unresponsive to further changes in the input. When the clock returns to 0, R goes to 1, placing
+the output latch in the quiescent condition without changing the output. Similarly, if D = 1 when Clk
+goes from 0 to 1, S changes to 0. This causes the circuit to go to the set state, making Q = 1. Any change
+in D while Clk = 1 does not affect the output.
+
+In sum, when the input clock in the positive-edge-triggered flip-flop makes a positive transition, the
+value of D is transferred to Q. A negative transition of the clock (i.e., from | to 0) does not affect the
+output, nor is the output affected by changes in D when Clk is in the steady logic-1 level or the logic-0
+
+level. Hence, this type of flip-flop responds to the transition from 0 to 1 and nothing else.
+D D
+Ck =p d>Clk Pp
+(a) Positive-edge (a) Negative-edge
+
+The graphic symbol for the edge-triggered D flip-flop is shown in above Fig. It is similar to the symbol
+used for the D latch, except for the arrowhead-like symbol in front of the letter Clk, designating a
+dynamic input. The dynamic indicator (>) denotes the fact that the flip-flop responds to the edge
+transition of the clock. A bubble outside the block adjacent to the dynamic indicator designates a
+negative edge for triggering the circuit. The absence of a bubble designates a positive-edge response.
+
+Other Flip-Flops
+
+The most economical and efficient flip-flop constructed in this manner is the edge-triggered D flip-flop,
+because it requires the smallest number of gates. Other types of flip-flops can be constructed by using
+the D flip-flop and external logic. Two flip-flops less widely used in the design of digital systems are
+the JK and T flip-flops. There are three operations that can be performed with a flip-flop: Set it to 1,
+reset it to 0, or complement its output. With only a single input, the D flip-flop can set or reset the output,

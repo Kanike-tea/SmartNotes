@@ -1,0 +1,50 @@
+27.7 Web Search and Analysis
+
+up at a particular page. PageRank is a measure of the query-independent importance
+of a page/node. For example, let P(X) be the PageRank of any page X and C(X) be
+the number of outgoing links from page X, and let d be the damping factor in the range
+0<d <1. Usually dis set to 0.85. Then PageRank for a page A can be calculated as:
+
+P(A) = (1 = d) + d(P(T,)/C(T,) + P(T,)/C(Ty)+... + P(T,)IC(T,,))
+
+Here T}, To, ..., T,, are the pages that point to Page A (that is, are citations to page A).
+PageRank forms a probability distribution over Web pages, so the sum of all Web
+pages’ PageRanks is one.
+
+The HITS Ranking Algorithm. The HITS” algorithm proposed by Jon Kleinberg
+is another type of ranking algorithm exploiting the link structure of the Web. The
+algorithm presumes that a good hub is a document that points to many hubs, and a
+good authority is a document that is pointed at by many other authorities. The
+algorithm contains two main steps: a sampling component and a weight-propagation
+component. The sampling component constructs a focused collection S of pages
+with the following properties:
+
+1. Sis relatively small.
+2. Sis rich in relevant pages.
+3. S contains most (or a majority) of the strongest authorities.
+The weight component recursively calculates the hub and authority values for each
+document as follows:
+1. Initialize hub and authority values for all pages in S by setting them to 1.
+2. While (hub and authority values do not converge):
+a. For each page in S, calculate authority value = Sum of hub values of all
+pages pointing to the current page.
+b. For each page in S, calculate hub value = Sum of authority values of all
+pages pointed at by the current page.
+
+c. Normalize hub and authority values such that sum of all hub values in $
+equals 1 and the sum of all authority values in $ equals 1.
+
+27.7.4 Web Content Analysis
+
+As mentioned earlier, Web content analysis refers to the process of discovering use-
+ful information from Web content/data/documents. The Web content data consists
+of unstructured data such as free text from electronically stored documents, semi-
+structured data typically found as HTML documents with embedded image data,
+and more structured data such as tabular data and pages in HTML, XML, or other
+markup languages generated as output from databases. More generally, the term
+Web content refers to any real data in the Web page that is intended for the user
+accessing that page. This usually consists of but is not limited to text and graphics.
+
+°See Kleinberg (1999).
+
+1051

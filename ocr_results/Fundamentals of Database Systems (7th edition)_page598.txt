@@ -1,0 +1,57 @@
+568
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+blocks before it finds the record. For a file of b blocks, this requires searching (b/2)
+blocks, on average. If no records or several records satisfy the search condition, the
+
+program must read and search all b blocks in the file.
+
+To delete a record, a program must first find its block, copy the block into a buffer,
+delete the record from the buffer, and finally rewrite the block back to the disk.
+This leaves unused space in the disk block. Deleting a large number of records in
+this way results in wasted storage space. Another technique used for record deletion
+is to have an extra byte or bit, called a deletion marker, stored with each record. A
+record is deleted by setting the deletion marker to a certain value. A different value
+for the marker indicates a valid (not deleted) record. Search programs consider
+only valid records in a block when conducting their search. Both of these deletion
+techniques require periodic reorganization of the file to reclaim the unused space
+of deleted records. During reorganization, the file blocks are accessed consecu-
+tively, and records are packed by removing deleted records. After such a reorgani-
+zation, the blocks are filled to capacity once more. Another possibility is to use the
+space of deleted records when inserting new records, although this requires extra
+
+bookkeeping to keep track of empty locations.
+
+We can use either spanned or unspanned organization for an unordered file, and it
+may be used with either fixed-length or variable-length records. Modifying a vari-
+able-length record may require deleting the old record and inserting a modified
+
+record because the modified record may not fit in its old space on disk.
+
+To read all records in order of the values of some field, we create a sorted copy of
+the file. Sorting is an expensive operation for a large disk file, and special techniques
+
+for external sorting are used (see Chapter 18).
+
+For a file of unordered fixed-length records using unspanned blocks and contiguous
+allocation, it is straightforward to access any record by its position in the file. If the
+file records are numbered 0, 1, 2, ...,r— 1 and the records in each block are num-
+bered 0, 1, ..., bfr — 1, where bf is the blocking factor, then the ith record of the file
+is located in block Li/bfn and is the (i mod bfr)th record in that block. Such a file
+is often called a relative or direct file because records can easily be accessed directly
+by their relative positions. Accessing a record by its position does not help locate a
+record based on a search condition; however, it facilitates the construction of access
+
+paths on the file, such as the indexes discussed in Chapter 17.
+
+16.7 Files of Ordered Records (Sorted Files)
+
+We can physically order the records of a file on disk based on the values of one of
+their fields—called the ordering field. This leads to an ordered or sequential file.!?
+If the ordering field is also a key field of the file—a field guaranteed to have a unique
+value in each record—then the field is called the ordering key for the file. Figure 16.7
+
+'2The term sequential file has also been used to refer to unordered files, although it is more appropriate
+
+for ordered files.

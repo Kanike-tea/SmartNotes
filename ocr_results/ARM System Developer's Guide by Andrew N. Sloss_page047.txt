@@ -1,0 +1,38 @@
+34 Chapter 2. ARM Processor Fundamentals
+
+= Fastinterrupt request vectoris similar to the interrupt request but is reserved for hardware
+requiring faster response times. It can only be raised if FIQs are not masked in the cpsr.
+
+2.5 CORE EXTENSIONS
+
+The hardware extensions covered in this section are standard components placed next to the
+ARM core. They improve performance, manage resources, and provide extra functionality
+and are designed to provide flexibility in handling particular applications. Each ARM family
+has different extensions available.
+
+There are three hardware extensions ARM wraps around the core: cache and tightly
+coupled memory, memory management, and the coprocessor interface.
+
+2.5.1 CACHE AND TIGHTLY COUPLED MEMORY
+
+The cache is a block of fast memory placed between main memory and the core. It allows for
+more efficient fetches from some memory types. With a cache the processor core can run
+for the majority of the time without having to wait for data from slow external memory.
+Most ARM-based embedded systems use a single-level cache internal to the processor.
+Ofcourse, many small embedded systems do not require the performance gains that a
+cache brings.
+
+ARM has two forms of cache. The first is found attached to the Von Neumann-style
+cores. It combines both data and instruction into a single unified cache, as shown in
+Figure 2.13. For simplicity, we have called the glue logic that connects the memory system
+to the AMBA bus logic and control.
+
+ARM core
+Unifi he
+and control
+
+AMBA bus interface unit (cm memory)
+
+On-chip AMBA bus
+
+Figure 2.13 A simplified Von Neumann architecture with cache.

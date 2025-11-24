@@ -1,0 +1,13 @@
+222 Transform-and-Conquer
+
+FIGURE 6.6 Construction of an AVL tree for the list 5, 6, 8, 3, 2, 4, 7 by successive
+insertions. The parenthesized number of a rotation's abbreviation indicates
+the root of the tree being reorganized.
+
+An example of constructing an AVL tree for a given list of numbers is shown
+in Figure 6.6. As you trace the algorithm’s operations, keep in mind that if there
+are several nodes with the +2 balance, the rotation is done for the tree rooted at
+the unbalanced node that is the closest to the newly inserted leaf.
+
+How efficient are AVL trees? As with any search tree, the critical charac-
+teristic is the tree’s height. It turns out that it is bounded both above and below

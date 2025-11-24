@@ -1,0 +1,50 @@
+23.5 Query Processing and Optimization in Distributed Databases
+
+user space at the level of the DBMS application software, the OS has no
+knowledge about them. Hence if the OS deactivates a DBMS process hold-
+ing a lock, other DBMS processes wanting this locked resource get blocked.
+Such a situation can cause serious performance degradation. OS-level
+knowledge of semaphores can help eliminate such situations.
+
+= Specialized hardware support for locking can be exploited to reduce associ-
+ated costs. This can be of great importance, since locking is one of the most
+common DBMS operations.
+
+= Providing a set of common transaction support operations though the kernel
+allows application developers to focus on adding new features to their prod-
+ucts as opposed to reimplementing the common functionality for each appli-
+cation. For example, if different DDBMSs are to coexist on the same machine
+and they chose the two-phase commit protocol, then it is more beneficial to
+have this protocol implemented as part of the kernel so that the DDBMS
+developers can focus more on adding new features to their products.
+
+23.5 Query Processing and Optimization in
+Distributed Databases
+
+Now we give an overview of how a DDBMS processes and optimizes a query. First
+we discuss the steps involved in query processing and then elaborate on the commu-
+nication costs of processing a distributed query. Then we discuss a special operation,
+called a semijoin, which is used to optimize some types of queries in a DDBMS. A
+detailed discussion about optimization algorithms is beyond the scope of this text.
+We attempt to illustrate optimization principles using suitable examples.*
+
+23.5.1 Distributed Query Processing
+A distributed database query is processed in stages as follows:
+
+1. Query Mapping. The input query on distributed data is specified formally
+using a query language. It is then translated into an algebraic query on global
+relations. This translation is done by referring to the global conceptual
+schema and does not take into account the actual distribution and replica-
+tion of data. Hence, this translation is largely identical to the one performed
+in a centralized DBMS. It is first normalized, analyzed for semantic errors,
+simplified, and finally restructured into an algebraic query.
+
+2. Localization. In a distributed database, fragmentation results in relations
+being stored in separate sites, with some fragments possibly being repli-
+cated. This stage maps the distributed query on the global schema to sepa-
+rate queries on individual fragments using data distribution and replication
+information.
+
+3For a detailed discussion of optimization algorithms, see Ozsu and Valduriez (1999).
+
+859

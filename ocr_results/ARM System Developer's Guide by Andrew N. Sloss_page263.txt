@@ -1,0 +1,53 @@
+250 Chapter 7 Optimized Primitives
+
+Table 7.4
+
+Permutation primitives.
+
+Primitive name Permutation action
+
+A (bit index complement)
+B (bit index swap)
+C (bit index complement+swap)
+
+Let’s start with some notation. Suppose we are dealing with a 2'-bit value n and we want
+to permute the bits of n. Then we can refer to each bit position in n using a k-bit index
+by—12! 4... + 12 + by. So, for permuting the bits within 32-bit values, we take k = 5.
+We will look at permutations that move the bit at position by_12~! + --. + b12 + bo to
+position ck_)2*"! + --- + 12 + @, where each ¢; is either a bj or a 1 — bj. We will denote
+this permutation by
+
+[bk-15--+5 bi, bol > [ck-15---5 C1 0] (7.55)
+
+For example, Table 7.3 shows the notation and action for the permutations we’ve talked
+about so far.
+
+What’s the point of this? Well, we can achieve any of these permutations using a series
+of the three basic permutations in Table 7.4. In fact, we only need the first two since C is B
+followed by A twice. However, we can implement C directly for a faster result.
+
+7.6.2.1 Bit Permutation Macros
+
+The following macros implement the three permutation primitives for a 32-bit word n.
+They need only four cycles per permutation if the constant values are already set up in
+registers, For larger or smaller width permutations, the same ideas apply.
+
+maskO EQU 0x55555555
+mask1 EQU 0x33333333
+mask2 EQU OxOFOFOFOF
+mask3 EQU OxOOFFOOFF
+mask4 EQU OxOOO0FFFF
+
+set bit positions with b0=0
+set bit positions with b
+set bit positions with b2=0
+set bit positions with b3=0
+set bit positions with b4=0
+
+MACRO
+PERMUTE_A $k
+ee en
+IF $k=4
+MOV on, n, ROR#I6
+ELSE
+LOR m, =mask$k

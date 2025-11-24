@@ -1,0 +1,40 @@
+56
+
+Chapter 2 Database System Concepts and Architecture
+
+2.13. Choose a database application with which you are familiar. Design a schema
+and show a sample database for that application, using the notation of Fig-
+ures 1.2 and 2.1. What types of additional information and constraints
+would you like to represent in the schema? Think of several users of your
+database, and design a view for each.
+
+2.14. Ifyou were designing a Web-based system to make airline reservations and sell
+airline tickets, which DBMS architecture would you choose from Section 2.5?
+Why? Why would the other architectures not be a good choice?
+
+2.15. Consider Figure 2.1. In addition to constraints relating the values of col-
+umns in one table to columns in another table, there are also constraints that
+impose restrictions on values in a column or a combination of columns
+within a table. One such constraint dictates that a column or a group of col-
+umns must be unique across all rows in the table. For example, in the
+STUDENT table, the Student_number column must be unique (to prevent two
+different students from having the same Student_number). Identify the col-
+umn or the group of columns in the other tables that must be unique across
+all rows in the table.
+
+Selected Bibliography
+
+Many database textbooks, including Date (2004), Silberschatz et al. (2011), Ramak-
+rishnan and Gehrke (2003), Garcia-Molina et al. (2002, 2009), and Abiteboul et al.
+(1995), provide a discussion of the various database concepts presented here.
+Tsichritzis and Lochovsky (1982) is an early textbook on data models. Tsichritzis
+and Klug (1978) and Jardine (1977) present the three-schema architecture, which
+was first suggested in the DBTG CODASYL report (1971) and later in an American
+National Standards Institute (ANSI) report (1975). An in-depth analysis of the rela-
+tional data model and some of its possible extensions is given in Codd (1990). The
+proposed standard for object-oriented databases is described in Cattell et al. (2000).
+Many documents describing XML are available on the Web, such as XML (2005).
+
+Examples of database utilities are the ETI Connect, Analyze and Transform tools
+(http://www.eti.com) and the database administration tool, DBArtisan, from
+Embarcadero Technologies (http://www.embarcadero.com).

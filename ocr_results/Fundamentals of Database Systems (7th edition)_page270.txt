@@ -1,0 +1,52 @@
+240
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+query language for RDBMSs. Although most commercial RDBMSs in use today
+do not provide user interfaces for relational algebra queries, the core operations
+and functions in the internal modules of most relational systems are based on
+relational algebra operations. We will define these operations in detail in Sec-
+tions 8.1 through 8.4 of this chapter.
+
+Whereas the algebra defines a set of operations for the relational model, the
+relational calculus provides a higher-level declarative language for specifying rela-
+tional queries. In a relational calculus expression, there is no order of operations to
+specify how to retrieve the query result—only what information the result should
+contain. This is the main distinguishing feature between relational algebra and rela-
+tional calculus. The relational calculus is important because it has a firm basis in
+mathematical logic and because the standard query language (SQL) for RDBMSs
+has some of its foundations in a variation of relational calculus known as the tuple
+relational calculus."
+
+The relational algebra is often considered to be an integral part of the relational data
+model. Its operations can be divided into two groups. One group includes set oper-
+ations from mathematical set theory; these are applicable because each relation is
+defined to be a set of tuples in the formal relational model (see Section 5.1). Set
+operations include UNION, INTERSECTION, SET DIFFERENCE, and CARTESIAN
+PRODUCT (also known as CROSS PRODUCT). The other group consists of opera-
+tions developed specifically for relational databases—these include SELECT,
+PROJECT, and JOIN, among others. First, we describe the SELECT and PROJECT
+operations in Section 8.1 because they are unary operations that operate on single
+relations. Then we discuss set operations in Section 8.2. In Section 8.3, we discuss
+JOIN and other complex binary operations, which operate on two tables by com-
+bining related tuples (records) based on join conditions. The COMPANY relational
+database shown in Figure 5.6 is used for our examples.
+
+Some common database requests cannot be performed with the original relational
+algebra operations, so additional operations were created to express these requests.
+These include aggregate functions, which are operations that can summarize data
+from the tables, as well as additional types of JOIN and UNION operations, known as
+OUTER JOINs and OUTER UNIONs. These operations, which were added to the origi-
+nal relational algebra because of their importance to many database applications,
+are described in Section 8.4. We give examples of specifying queries that use rela-
+tional operations in Section 8.5. Some of these same queries were used in Chap-
+ters 6 and 7. By using the same query numbers in this chapter, the reader can contrast
+how the same queries are written in the various query languages.
+
+In Sections 8.6 and 8.7 we describe the other main formal language for relational
+databases, the relational calculus. There are two variations of relational calculus.
+The tuple relational calculus is described in Section 8.6 and the domain relational
+calculus is described in Section 8.7. Some of the SQL constructs discussed in
+
+‘SQL is based on tuple relational calculus, but also incorporates some of the operations from the
+relational algebra and its extensions, as illustrated in Chapters 6, 7, and 9.

@@ -1,0 +1,36 @@
+Figure 9.7
+
+9.2 Interrupts 331
+
+0x20000
+
+Unused
+0x10000
+
+Static data
+0x8000 + code size
+
+Code
+0x8000
+0x8000 - 128
+0x8000 - 640
+
+Free space
+0x20
+
+Vector table
+0x00
+
+Example implementation using layout A.
+
+For safety reasons a define is declared to disable both the IRQ and FIQ exceptions in the
+cpsr:
+
+NoInt EQU OxcO ; Disable interrupts
+
+NoInt masks both interrupts by setting the masks to one.
+
+Initialization code starts by setting up the stack registers for each processor mode. The
+stack register r13 is one of the registers that is always banked when a mode change occurs.
+The code first initializes the IRQ stack. For safety reasons, it is always best to make sure that
+interrupts are disabled by using a bitwise OR between NoInt and the new mode.

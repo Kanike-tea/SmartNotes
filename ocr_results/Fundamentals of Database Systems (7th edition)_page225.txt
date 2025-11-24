@@ -1,0 +1,51 @@
+6.3 Basic Retrieval Queries in SQL
+
+195
+
+(a) oR s (o) = @ T
+A A A
+al al at a2
+a2 a2 at 23
+a2 a4 a2 Figure 6.5
+The results of SQL multiset
+38 a a2 operations. (a) Two tables,
+a2 @ oT R(A) and S(A).
+a3 A (b) R(A)UNION ALL S(A).
+4 1 (c) R(A) EXCEPT ALL S(A).
+“ (d) R(A) INTERSECT ALL
+a a2 S(A).
+
+Query 4. Make a list of all project numbers for projects that involve an employee
+whose last name is ‘Smith’, either as a worker or as a manager of the department
+that controls the project.
+
+Q4A: (SELECT DISTINCT Phumber
+FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE — Dnum=Dnumber AND Mgr_ssn = Ssn
+AND — Lname = ‘Smith’ )
+UNION
+(SELECT DISTINCT Pnumber
+FROM PROJECT, WORKS_ON, EMPLOYEE
+WHERE —Pnumber=Pno AND Essn = Ssn
+AND _Lname= ‘Smith’ );
+
+The first SELECT query retrieves the projects that involve a ‘Smith’ as manager of
+the department that controls the project, and the second retrieves the projects that
+involve a ‘Smith’ as a worker on the project. Notice that if several employees have
+the last name ‘Smith’, the project names involving any of them will be retrieved.
+Applying the UNION operation to the two SELECT queries gives the desired result.
+
+SQL also has corresponding multiset operations, which are followed by the key-
+word ALL (UNION ALL, EXCEPT ALL, INTERSECT ALL). Their results are multisets
+(duplicates are not eliminated). The behavior of these operations is illustrated by
+the examples in Figure 6.5. Basically, each tuple—whether it is a duplicate or not—
+is considered as a different tuple when applying these operations.
+
+6.3.5 Substring Pattern Matching and Arithmetic Operators
+
+In this section we discuss several more features of SQL. The first feature allows
+comparison conditions on only parts of a character string, using the LIKE compari-
+son operator. This can be used for string pattern matching. Partial strings are spec-
+ified using two reserved characters: % replaces an arbitrary number of zero or more
+characters, and the underscore (_) replaces a single character. For example, con-
+sider the following query.

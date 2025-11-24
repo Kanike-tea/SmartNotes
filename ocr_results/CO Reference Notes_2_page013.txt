@@ -1,0 +1,57 @@
++ The register (or memory-location) that contains the address of an operand is called a Pointer .
++ We denote the indirection by
+— name of the register or
+— new address given in the instruction.
+E.g: Add (R1),RO ;The operand is in memory. Register R1 gives the effective-address
+(B) of the operand. The data is read from location B and added to
+contents of register RO.
+
+{a) Through a general-purpose register (b) Through a memory location
+Figure 2.11 Indirect addressing.
+
+> To execute the Add instruction in fig 2.11 (a), the processor uses the value which is in register
+R1, as the EA of the operand.
+
+> It requests a read operation from the memory to read the contents of location B. The value
+read is the desired operand, which the processor adds to the contents of register RO.
+
+> Indirect addressing through a memory-location is also possible as shown in fig 2.11(b). In this
+case, the processor first reads the contents of memory-location A, then requests a second read
+operation using the value B as an address to obtain the operand.
+
+Main
+memory
+
+a A
+
+Address Contents
+Move NRI
+Move #NUMI,R2 Initialization
+Clear RO
+LOOP Add (R2),RO
+Add #4,R2
+Decrement RI
+Branch>0 Loop
+Move ROSUM
+
+Figure 2.12 Use of indirect addressing in the program of Figure 2.10.
+
+Program Explanation
+
++ In above program, Register R2 is used as a pointer to the numbers in the list, and the operands
+are accessed indirectly through R2.
+
+* The initialization-section of the program loads the counter-value n from memory-location N into R1
+and uses the immediate addressing-mode to place the address value NUM1, which is the address of the
+first number in the list, into R2. Then it clears RO to 0.
++ The first two instructions in the loop implement the unspecified instruction block starting at LOOP.
+* The first time through the loop, the instruction Add (R2), RO fetches the operand at location NUM1
+and adds it to RO.
+* The second Add instruction adds 4 to the contents of the pointer R2, so that it will contain the
+address value NUM2 when the above instruction is executed in the second pass through the loop.
+
+INDEXING AND ARRAYS
+
++ A different kind of flexibility for accessing operands is useful in dealing with lists and arrays.
+
+Page 14

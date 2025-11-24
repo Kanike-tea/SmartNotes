@@ -1,0 +1,39 @@
+768 — Chapter 20 Introduction to Transaction Processing Concepts and Theory
+x
+°Q OO @
+x
+x
+© ® «® @
+x
+Figure 20.7
+
+Constructing the precedence graphs for schedules A to D from Figure 20.5 to test
+for conflict serializability. (a) Precedence graph for serial schedule A. (b) Precedence
+graph for serial schedule B. (c) Precedence graph for schedule C (not serializable).
+(d) Precedence graph for schedule D (serializable, equivalent to schedule A).
+
+in the precedence graph from T; to T;, T; must appear before T; in the equivalent serial
+schedule S’.!° Notice that the edges (T; > T;) in a precedence graph can optionally be
+labeled by the name(s) of the data item(s) that led to creating the edge. Figure 20.7
+shows such labels on the edges. When checking for a cycle, the labels are not relevant.
+
+In general, several serial schedules can be equivalent to S if the precedence graph for
+Shas no cycle. However, if the precedence graph has a cycle, it is easy to show that
+we cannot create any equivalent serial schedule, so S is not serializable. The prece-
+dence graphs created for schedules A to D, respectively, in Figure 20.5 appear in
+Figures 20.7(a) to (d). The graph for schedule C has a cycle, so it is not serializable.
+The graph for schedule D has no cycle, so it is serializable, and the equivalent serial
+schedule is T; followed by T,. The graphs for schedules A and B have no cycles, as
+expected, because the schedules are serial and hence serializable.
+
+Another example, in which three transactions participate, is shown in Figure 20.8.
+Figure 20.8(a) shows the read_item and write_item operations in each transaction.
+Two schedules E and F for these transactions are shown in Figures 20.8(b) and (c),
+respectively, and the precedence graphs for schedules E and F are shown in Fig-
+ures 20.8(d) and (e). Schedule E is not serializable because the corresponding prece-
+dence graph has cycles. Schedule F is serializable, and the serial schedule equivalent
+to F is shown in Figure 20.8(e). Although only one equivalent serial schedule exists
+for F, in general there may be more than one equivalent serial schedule for a serial-
+izable schedule. Figure 20.8(f) shows a precedence graph representing a schedule
+
+'8This process of ordering the nodes of an acrylic graph is known as topological sorting.

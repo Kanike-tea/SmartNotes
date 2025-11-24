@@ -1,0 +1,45 @@
+7.3 Division 237
+
+error satisfies 0 < go < 27!°, 112 sets x to the Q16 representation of x), the new estimate
+to d~!. Equation (7.33) tells us that the error in this estimate is e = dei — go.
+
+113 to I19implement the second Newton-Raphson iteration. [13 to 115 set ato the Q31
+representation of a, = x7 + by for some error bj. As we use the ADC instruction at 115, the
+calculation rounds up and so 0 < b; < 2-3. The ADC instruction cannot overflow since
+233 — 1 and 2*4 — 1 are not squares. However, a can overflow a Q31 representation. 116
+clears the carry flag and records in the N flag if the overflow takes place so that a) > 2. [17
+and 118 set a to the Q31 representation of y; = day — c, for arounding error 0 < c) < 27>).
+As the carry flag is clear, 119 sets q to a Q31 representation of the new underestimate:
+
+1
+x) = 2m —d(xp tb) + -27 = 47 & where (7.39)
+ey = de? — +277! + dby < dep + d2-? 4277! (7.40)
+
+120 sets q to a Q31 representation of the quotient q2 = nx2 — by for some rounding
+error 0 < by <273!. So:
+
+n= 5 —e3, where es = ner + bp < dey + 22-4 da! 4.273! (7.41)
+
+Ife; = 0, then d?e7 < d*e2 < (2-15 — d2~!®)?, using the bound on E of Section 7.3.3.1.
+e3 <2-89 — da} 4 22-2 4.2731 <3 x 273! (7.42)
+
+If e <0, then de? < d?g? < 27%. Again, e3 < 3 x 277!. In either case, q is an
+underestimate to the quotient of error less than 3 x 2~7!. 121 to 123 calculate the remainder,
+and 124 to 129 perform two conditional subtracts to correct the Q31 result q.
+
+7.3.4 SIGNED DIVISION
+
+So far we have only looked at unsigned division implementations. If you need to divide
+signed values, then reduce them to unsigned divides and add the sign back into the result.
+The quotient is negative if and only if the numerator and denominator have opposite sign.
+‘The sign of the remainder is the sign of the numerator. The following example shows how
+to reduce a signed integer division to an unsigned division and how to calculate the sign of
+the quotient and remainder.
+
+d RN 0 5 input denominator, output quotient
+r RN 1 ; input numerator , output remainder
+sign RN 12
+
+3 __value_in_regs struct { signed q, r; }
+; udiv_32by32_arm7m(signed d, signed n)
+sdiv_32by32_arm7m

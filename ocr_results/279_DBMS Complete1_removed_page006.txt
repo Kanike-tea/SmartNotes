@@ -1,0 +1,51 @@
+A database management system that provides three level of data is said to follow three-level
+architecture .
+
+e External level
+
+© Conceptual level
+
+e Internal level
+
+External Level :
+
+The external level is at the highest level of database abstraction . At this level, there will be many
+views define for different users requirement. A view will describe only a subset of the database. Any
+number of user views may exist for a given global schema(coneptual schema).
+
+For example, each student has different view of the time table. the view of a student of BTech
+(CSE) is different from the view of the student of Btech (ECE). Thus this level of abstraction is
+concerned with different categories of users.
+
+Each external view is described by means of a schema called sub schema.
+
+Conceptual Level :
+
+At this level of database abstraction all the database entities and the relationships among them are
+included. One conceptual view represents the entire database. This conceptual view is defined by
+the conceptual schema.
+
+The conceptual schema hides the details of physical storage structures and concentrate on
+describing entities, data types, relationships, user operations and constraints.
+
+It describes all the records and relationships included in the conceptual view. There is only one
+conceptual schema per database. It includes feature that specify the checks to relation data
+consistency and integrity.
+
+Internal level :
+
+It is the lowest level of abstraction closest to the physical storage method used. It indicates how the
+data will be stored and describes the data structures and access methods to be used by the database.
+The internal view is expressed by internal schema.
+
+The following aspects are considered at this level:
+1. Storage allocation e.g: B-tree, hashing
+2. Access paths eg. specification of primary and secondary keys, indexes etc
+3. Miscellaneous eg. Data compression and encryption techniques, optimization of the internal
+structures.
+
+Database Users :
+
+Naive Users :
+Users who need not be aware of the presence of the database system or any other system supporting
+their usage are considered naive users . A user of an automatic teller machine falls on this category.

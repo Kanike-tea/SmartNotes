@@ -1,0 +1,49 @@
++ The word length can vary from 8 to 64 bits.
+
++ A unit of 8 bits is called a byte.
++ Accessing the memory to store or retrieve a single item of information (word/byte) requires distinct
+
+addresses for each item location. (It is customary to use numbers from 0 through 2K.1 as the addresses of
+successive-locations in the memory).
+- If 2k = no. of addressable locations;
+then 2K addresses constitute the address-space of the computer.
+For example, a 24-bit address generates an address-space of 274 locations (16 MB).
+
+|-——— nits ———_+|
+
+Fi wd E 22bis -|
+Second word
+L Sign bit: b,, = 0 for postive numbers
+by, = | for negative numbers
+ith word (a) A signed integer
+es es
+ASCII ASCII ASCH ASCII
+character character character character
+Letwod (b) Four characters
+
+Figure 2.1 Memory words. Figure 2.2 Examples of encoded information in a 32-bit word.
+
+BYTE-ADDRESSABILITY
+
++ In byte-addressable memory, successive addresses refer to successive byte locations in the memory.
++ Byte locations have addresses 0,1,2.....
++ Ifthe word-length is 32 bits, successive words are located at addresses 0, 4,8. . with each word
+
+having 4 bytes.
+
+BIG-ENDIAN & LITTLE-ENDIAN ASSIGNMENTS
+* There are two ways in which byte-addresses are arranged (Figure 2.3).
+1) Big-Endian: Lower byte-addresses are used for the more significant bytes of the word.
+2) Little-Endian: Lower byte-addresses are used for the less significant bytes of the word
+are taken as the addresses of successive words in the
+
++ In both cases, byte-addresses 0, 4, 8. .....
+
+memory. Wory
+
+address Byte address Byte address
+
+(a) Big-endian assignment (b) Little-endian assignment
+Figure 2.3. Byte and word addressing.
+
+Page 7

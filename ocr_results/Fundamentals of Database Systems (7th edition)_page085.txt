@@ -1,0 +1,75 @@
+Finally, we classified DBMSs according to several criteria: data model, number of
+users, number of sites, types of access paths, and cost. We discussed the availabil-
+ity of DBMSs and additional modules—from no cost in the form of open source
+software to configurations that annually cost millions to maintain. We also
+pointed out the variety of licensing arrangements for DBMS and related prod-
+ucts. The main classification of DBMSs is based on the data model. We briefly
+discussed the main data models used in current commercial DBMSs.
+
+Review Questions
+
+2.1.
+
+2.2.
+
+2.3.
+
+2.4,
+
+2.5.
+
+2.6.
+
+2.7.
+
+2.8.
+2.9.
+
+2.10.
+
+2.11.
+
+Define the following terms: data model, database schema, database state,
+internal schema, conceptual schema, external schema, data independence,
+DDL, DML, SDL, VDL, query language, host language, data sublanguage,
+database utility, catalog, client/server architecture, three-tier architecture,
+and n-tier architecture.
+
+Discuss the main categories of data models. What are the basic differences
+among the relational model, the object model, and the XML model?
+
+What is the difference between a database schema and a database state?
+
+Describe the three-schema architecture. Why do we need mappings among
+schema levels? How do different schema definition languages support this
+architecture?
+
+What is the difference between logical data independence and physical data
+independence? Which one is harder to achieve? Why?
+
+What is the difference between procedural and nonprocedural DMLs?
+
+Discuss the different types of user-friendly interfaces and the types of users
+who typically use each.
+
+With what other computer system software does a DBMS interact?
+
+What is the difference between the two-tier and three-tier client/server
+architectures?
+
+Discuss some types of database utilities and tools and their functions.
+
+What is the additional functionality incorporated in n-tier architecture
+(n > 3)?
+
+Exercises
+
+2.12.
+
+Think of different users for the database shown in Figure 1.2. What types of
+applications would each user need? To which user category would each
+belong, and what type of interface would each need?
+
+Exercises
+
+55

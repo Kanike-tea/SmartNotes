@@ -1,0 +1,53 @@
+Microcontrollers — BCS402
+
+Table 10 shows a list of load-store multiple instruction pairs. If you use a store with base
+update, then the paired load instruction of the same number of registers will reload the data
+and restore the base address pointer. This is useful when there is need to temporarily save a
+
+group of registers and restore them later.
+
+Table 10: Load-store multiple pairs when base update used
+
+Store multiple Load multiple
+
+STMIA LDMDB
+STMIB LDMDA
+STMDA LDMIB
+STMDB LDMIA
+
+Example:
+This example shows an STM increment before instruction followed by an LDM decrement
+after instruction.
+PRE 10 = 0x00009000, rl = 0x00000009, r2 = 0x00000008, r3 = 0x00000007
+STMIB 10}, {r 1-13}
+MOV rl, #1
+MOV 12, #2
+MOV 13, #3
+
+PRE(2) r0 = 0x0000900c, rl = 0x00000001, r2 = 0x00000002, r3 = 0x00000003
+LDMDA 10), {1-13}
+
+POST r0 = 0x00009000, r1 = 0x00000009, r2 = 0x00000008
+
+4
+
+ie STMIB instruction stores the values 7,8, 9 to memory. We then corrupt register rl to r3.
+
+4
+
+1¢ LDMDA reloads the original values and restores the base pointer r0.
+
+m
+
+xample 2:
+
+This illustrate the use of the load-store multiple instructions with a block memory copy
+example. This example is a simple routine that copies blocks of 32 bytes from a source
+
+address location to a destination address location.
+
+The example has two load-store multiple instructions, which use the same increment after
+
+addressing mode.
+
+Dept. of ECE, GSSSIETW Page 20

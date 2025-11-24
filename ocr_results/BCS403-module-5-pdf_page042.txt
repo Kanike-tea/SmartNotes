@@ -1,0 +1,55 @@
+24.6 NOSQL Graph Databases and Neo4j
+
+plus some subclasses of PERSON (namely EMPLOYEE and MANAGER) in
+the EER model (see Chapter 4) but can also be used for other purposes.
+
+= Relationships and relationship types. Figure 24.4(b) shows a few example
+relationships in Neo4j based on the COMPANY database in Figure 5.6.
+The — specifies the direction of the relationship, but the relationship can be
+traversed in either direction. The relationship types (labels) in Figure 24.4(b)
+are WorksFor, Manager, LocatedIn, and WorksOn; only relationships with
+the relationship type WorksOn have properties (Hours) in Figure 24.4(b).
+
+= Paths. A path specifies a traversal of part of the graph. It is typically used as
+part of a query to specify a pattern, where the query will retrieve from the
+graph data that matches the pattern. A path is typically specified by a start
+node, followed by one or more relationships, leading to one or more end
+nodes that satisfy the pattern. It is somewhat similar to the concepts of path
+expressions that we discussed in Chapters 12 and 13 in the context of query
+languages for object databases (OQL) and XML (XPath and XQuery).
+
+= Optional Schema. A schema is optional in Neo4j. Graphs can be created
+and used without a schema, but in Neo4j version 2.0, a few schema-related
+functions were added. The main features related to schema creation involve
+creating indexes and constraints based on the labels and properties. For
+example, it is possible to create the equivalent of a key constraint on a prop-
+erty ofa label, so all nodes in the collection of nodes associated with the label
+must have unique values for that property.
+
+= Indexing and node identifiers. When a node is created, the Neo4j system
+creates an internal unique system-defined identifier for each node. To
+retrieve individual nodes using other properties of the nodes efficiently, the
+user can create indexes for the collection of nodes that have a particular
+label. Typically, one or more of the properties of the nodes in that collection
+can be indexed. For example, Empid can be used to index nodes with the
+EMPLOYEE label, Dno to index the nodes with the DEPARTMENT label,
+and Pno to index the nodes with the PROJECT label.
+
+24.6.2 The Cypher Query Language of Neo4j
+
+Neo4j has a high-level query language, Cypher. There are declarative commands for
+creating nodes and relationships (see Figures 24.4(a) and (b)), as well as for finding
+nodes and relationships based on specifying patterns. Deletion and modification of
+data is also possible in Cypher. We introduced the CREATE command in the previous
+section, so we will now give a brief overview of some of the other features of Cypher.
+
+A Cypher query is made up of clauses. When a query has several clauses, the result
+from one clause can be the input to the next clause in the query. We will give a fla-
+vor of the language by discussing some of the clauses using examples. Our presenta-
+tion is not meant to be a detailed presentation on Cypher, just an introduction to
+some of the languages features. Figure 24.4(c) summarizes some of the main clauses
+that can be part of a Cyber query. The Cyber language can specify complex queries
+and updates on a graph database. We will give a few of examples to illustrate simple
+Cyber queries in Figure 24.4(d).
+
+905

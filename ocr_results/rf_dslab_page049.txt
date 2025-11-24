@@ -1,0 +1,59 @@
+void search(NODE root)
+{
+int key;
+NODE cur;
+if(root == NULL)
+{
+printf("\nBST is empty.");
+return;
+
+printf("\nEnter Element to be searched: ");
+scanf("%d", &key);
+cur = root;
+while (cur != NULL)
+{
+if (cur->data == key)
+{
+
+printf("\nKey element is present in BST");
+
+return;
+i
+if (key < cur->data)
+
+cur = cur->Ichild;
+else
+
+cur = cur->rchild;
+
+printf("\nKey element is not found in the BST");
+i
+
+void inorder(NODE root)
+{
+if(root != NULL)
+{
+inorder(root->Ichild);
+printf("%d ", root->data);
+inorder(root->rchild);
+
+}
+
+void preorder(NODE root)
+{
+if (root != NULL)
+{
+printf("%d ", root->data);
+preorder(root->Ichild);
+preorder(root->rchild);
+
+}
+
+void postorder(NODE root)
+{
+if (root != NULL)
+{
+postorder(root->Ichild);
+postorder(root->rchild);
+
+49

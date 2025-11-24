@@ -1,0 +1,69 @@
+1016 Chapter 26 Enhanced Data Models
+
+Figure 26.18
+
+Database schema for sales
+and salesperson commissions
+in Exercise 26.36.
+
+SALES
+Sid | Vid | Commission
+
+SALES_PERSON
+Salesperson_id | Name | Title | Phone | Sum_commissions
+
+26.35.
+26.36.
+
+26.37.
+
+26.38.
+
+26.39.
+
+b. Whenever an employee is deleted, delete the PROJECT tuples and
+DEPENDENT tuples related to that employee, and if the employee man-
+ages a department or supervises employees, set the Mgr_ssn for that
+department to NULL and set the Super_ssn for those employees to NULL.
+
+Repeat Exercise 26.34 but use the syntax of STARBURST active rules.
+
+Consider the relational schema shown in Figure 26.18. Write active rules for
+keeping the Sum_commissions attribute of SALES_PERSON equal to the sum
+of the Commission attribute in SALES for each sales person. Your rules should
+also check if the Sum_commissions exceeds 100000; if it does, call a procedure
+Notify_manager(S_id). Write both statement-level rules in STARBURST nota-
+tion and row-level rules in Oracle.
+
+Consider the UNIVERSITY EER schema in Figure 4.10. Write some rules (in
+English) that could be implemented via active rules to enforce some com-
+mon integrity constraints that you think are relevant to this application.
+
+Discuss which of the updates that created each of the tuples shown in Fig-
+ure 26.9 were applied retroactively and which were applied proactively.
+
+Show how the following updates, if applied in sequence, would change the
+contents of the bitemporal EMP_BT relation in Figure 26.9. For each update,
+state whether it is a retroactive or proactive update.
+
+a. On 2004-03-10,17:30:00, the salary of Narayan is updated to 40000, effec-
+tive on 2004-03-01.
+
+b. On 2003-07-30,08:31:00, the salary of Smith was corrected to show that it
+should have been entered as 31000 (instead of 30000 as shown), effective
+on 2003-06-01.
+
+c. On 2004-03-18,08:31:00, the database was changed to indicate that
+Narayan was leaving the company (that is, logically deleted) effective on
+2004-03-31.
+
+d. On 2004-04-20,14:07:33, the database was changed to indicate the hiring
+of a new employee called Johnson, with the tuple <‘Johnson’, ‘334455667’,
+1, NULL > effective on 2004-04-20.
+
+e. On 2004-04-28,12:54:02, the database was changed to indicate that Wong
+was leaving the company (that is, logically deleted) effective on 2004-06-01.
+
+f. On 2004-05-05,13:07:33, the database was changed to indicate the rehir-
+ing of Brown, with the same department and supervisor but with salary
+35000 effective on 2004-05-01.

@@ -1,0 +1,53 @@
+430
+
+Chapter 13. XML: Extensible Markup Language
+
+tags, and the individual table data elements in a row are displayed within
+<TD> ... </TD> tags.”
+
+= Some tags may have attributes, which appear within the start tag and
+describe additional properties of the tag.*
+
+In Figure 13.2, the <TABLE> start tag has four attributes describing various charac-
+teristics of the table. The following <TD> and <FONT> start tags have one and two
+attributes, respectively.
+
+HTML has a very large number of predefined tags, and whole books are devoted to
+describing how to use these tags. If designed properly, HTML documents can be
+formatted so that humans are able to easily understand the document contents and
+are able to navigate through the resulting Web documents. However, the source
+HTML text documents are very difficult to interpret automatically by computer pro-
+grams because they do not include schema information about the type of data in the
+documents. As e-commerce and other Internet applications become increasingly
+automated, it is becoming crucial to be able to exchange Web documents among
+various computer sites and to interpret their contents automatically. This need was
+one of the reasons that led to the development of XML. In addition, an extendible
+version of HTML called XHTML was developed that allows users to extend the tags
+of HTML for different applications and allows an XHTML file to be interpreted by
+standard XML processing programs. Our discussion will focus on XML only.
+
+The example in Figure 13.2 illustrates a static HTML page, since all the information
+to be displayed is explicitly spelled out as fixed text in the HTML file. In many cases,
+some of the information to be displayed may be extracted from a database. For
+example, the project names and the employees working on each project may be
+extracted from the database in Figure 5.6 through the appropriate SQL query. We
+may want to use the same HTML formatting tags for displaying each project and the
+employees who work on it, but we may want to change the particular projects (and
+employees) being displayed. For example, we may want to see a Web page displaying
+the information for ProjectX, and then later a page displaying the information for
+ProjectY. Although both pages are displayed using the same HTML formatting tags,
+the actual data items displayed will be different. Such Web pages are called dynamic,
+since the data parts of the page may be different each time it is displayed, even though
+the display appearance is the same. We discussed in Chapter 11 how scripting lan-
+guages, such as PHP, can be used to generate dynamic Web pages.
+
+13.2 XML Hierarchical (Tree) Data Model
+
+We now introduce the data model used in XML. The basic object in XML is the XML
+document. Two main structuring concepts are used to construct an XML document:
+elements and attributes. It is important to note that the term attribute in XML is not
+
+2<TR> stands for table row and <TD> stands for table data.
+
+SThis is how the term attribute is used in document markup languages, which differs from how it is used
+in database models.

@@ -1,0 +1,50 @@
+25.6 General Discussion
+
+the open source version of Hadoop/MR (see, for example, Pavlo et al. (2009)).
+These experts measure the performance of these two approaches on the same
+benchmark using a 100-node cluster. They admit that the parallel database took
+longer to load and tune compared to MR, but the performance of parallel DBMSs
+was “strikingly better.” We list the areas the experts compared in the study and
+attempt to show the progress made in both DBMSs and Hadoop since then.
+
+Performance. In their paper, Pavlo et al. concluded that parallel DBMSs were
+three to six times faster than MR. The paper lists many reasons why the DBMSs
+gave better performance. Among the reasons given are the following: (i) indexing
+with B*-trees, which expedites selection and filtering; (ii) novel storage orientation
+(e.g., column-based storage has certain advantages); (iii) techniques that allow
+operations on compressed data directly; and (iv) parallel query optimization tech-
+niques common in parallel DBMSs.
+
+Since the time of Pavlo et al.’s comparison, which involved Hadoop version 0.19,
+huge strides have been made in the MR runtime, the storage formats, and the plan-
+ning capabilities for job scheduling and for optimizing complex data flows in the
+Hadoop ecosystem. ORC and Parquet file formats are sophisticated Columnar file
+formats that have the same aggressive compression techniques, the ability to push
+predicates to the storage layer, and the ability to answer aggregate queries without
+scanning data. We will briefly talk about the improvements in HDFS and MR;
+Apache Hive has made huge strides in both the runtime and Cost-based optimiza-
+tions of complex SQLs. In their move to transform Hadoop from batch into real-
+time and interactive query mode, Hortonworks (2014) reports orders-of-magnitude
+gains in performance of queries on a TPC-DS (decision support )-style bench-
+mark. Cloudera’s Impala product, as reported in Cloudera (2014), uses Parquet
+(the open source columnar data format) and is claimed to perform comparably to
+traditional RDBMSs.
+
+Upfront Cost advantage. Hadoop has maintained its cost advantage. With few
+exceptions, Hadoop continues to be primarily an open source platform. YARN,
+Hive, and Spark are all developed as Apache projects and are available as freely
+downloadable packages.
+
+Handling Unstructured/Semistructured data. MR reads data by applying the
+schema definition to it; doing so allows it to handle semistructured datasets like
+CSVS, JSON, and XML documents. The loading process is relatively inexpensive
+for the Hadoop/MR systems. However, the support for unstructured data is defi-
+nitely on the rise in RDBMSs. PostgreSQL now supports key-value stores and json;
+most RDBMSs have a support for XML. On the other hand, one of the reasons for
+the performance gains on the Hadoop side has been the use of specialized data for-
+mats like ORC (Optimized Row Columnar) and Parquet (another open source
+columnar format). The latter may not remain a strongly differentiating feature
+among RDBMSs and Hadoop-based systems for too long because RDBMSs may
+also incorporate special data formats.
+
+945

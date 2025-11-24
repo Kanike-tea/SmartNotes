@@ -1,0 +1,48 @@
+Microcontrollers-BCS402
+
+1. Introduction
+
+The ARM processor core is a key component of many successful 32-bit embedded systems. It
+
+is widely used in mobile phones, handheld organizers, and portable consumer devices.
+
+The first ARM1 prototype is developed in 1985. The ARM core is not a single core, but a
+
+whole family of designs sharing similar design principles and a common instruction set.
+
+One of the most successful ARM core is the ARM7TDML. It provides up to 120 Dhrystone
+MIPS1 and is known for its high code density and low power consumption, making it ideal
+
+for mobile embedded devices.
+
+2. The RISC Design Philosophy
+
+The ARM core uses RISC architecture.
+
+It has simple and powerful instructions that execute within a single cycle at a high clock
+speed. The RISC philosophy reduces the complexity of instructions performed by the
+hardware so that it provides greater flexibility and intelligence in software rather than
+hardware. In contrast, the traditional complex instruction set computer (CISC) relies more on
+the hardware for instruction functionality, and consequently the CISC instructions are more
+
+complicated. Figure 2.1 illustrates these major differences.
+
+CISC RISC
+Sr Greater aaa
+Compile Complexity Seu
+Code Code
+Generation Generation
+Greater ~
+Complexity Processor Processor
+
+Fig 2.1: CISC vs. RISC. CISC emphasizes hardware complexity. RISC emphasizes compiler
+
+complexity.
+The RISC philosophy is implemented with four major design rules:
+
+Instructions—RISC processors have a reduced number of instruction classes. These classes
+provide simple operations that can each execute in a single cycle. To perform complex
+
+operations such as divide operation, many simple instructions are combined. Each instruction
+
+Dept. of ECE, GSSSIETW Page 2

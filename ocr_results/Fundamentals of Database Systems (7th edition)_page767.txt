@@ -1,0 +1,53 @@
+19.10 Semantic Query Optimization
+
+that may cause the Oracle query optimizer to generate a new execution plan for the
+same SQL queries or statements. Although most of the changes in the execution
+plans are beneficial or benign, a few execution plans may turn out to be suboptimal,
+which can have a negative impact on system performance.
+
+In Oracle 11g, a novel feature called SQL plan management (SPM) was introduced”
+for managing execution plans for a set of queries or workloads. SPM provides stable
+and optimal performance for a set of SQL statements by preventing new subopti-
+mal plans from being executed while allowing other new plans to be executed if
+they are verifiably better than the previous plans. SPM encapsulates an elaborate
+mechanism for managing the execution plans of a set of SQL statements, for which
+the user has enabled SPM. SPM maintains the previous execution plans in the form
+of stored outlines associated with texts of SQL statements and compares the perfor-
+mances of the old and new execution plans for a given SQL statement before per-
+mitting them to be used by the user. SPM can be configured to work automatically,
+or it can be manually controlled for one or more SQL statements.
+
+19.10 Semantic Query Optimization
+
+A different approach to query optimization, called semantic query optimization,
+has been suggested. This technique, which may be used in combination with the
+techniques discussed previously, uses constraints specified on the database schema—
+such as unique attributes and other more complex constraints—to modify one query
+into another query that is more efficient to execute. We will not discuss this approach
+in detail but we will illustrate it with a simple example. Consider the SQL query:
+
+SELECT — E.Lname, M.Lname
+FROM EMPLOYEE AS E, EMPLOYEE AS M
+WHERE —_E.Super_ssn=M.Ssn AND E.Salary > M.Salary
+
+This query retrieves the names of employees who earn more than their supervisors.
+Suppose that we had a constraint on the database schema that stated that no
+employee can earn more than his or her direct supervisor. If the semantic query
+optimizer checks for the existence of this constraint, it does not need to execute the
+query because it knows that the result of the query will be empty. This may save
+considerable time if the constraint checking can be done efficiently. However,
+searching through many constraints to find those that are applicable to a given
+query and that may semantically optimize it can also be time-consuming.
+
+Consider another example:
+
+SELECT Lname, Salary
+
+FROM EMPLOYEE, DEPARTMENT
+
+WHERE EMPLOYEE.Dno = DEPARTMENT.Dnumber and
+EMPLOYEE.Salary>100000
+
+°8See Ziauddin et al. (2008).
+
+737

@@ -1,0 +1,39 @@
+BCS304
+
+than a pointer to the record represented. The leaf nodes the first record in each run. An
+additional node, node Ohas been added to represent the overall winner of the tournament.
+Following the output of the overall winner, the tree is by playing along the path from node 11
+to node 1The records with which these tournaments are to be played are readily available from
+
+the parent nodes. As a result, sibling nodes along the path from 11 to 1 are not accessed.
+
+Overall
+wenner
+- pre 3
+en a
+s 612 y “ eo
+1 2 3 4 5 6 7 6
+
+5.34: Loser tree corresponding to winner tree of fig.5.32
+
+4.3: Forest
+Definition: A forest is a set of n> 0 disjoint trees. When we remove the root of a
+
+tree we obtain a forest. For example, removing the root of any binary tree produces a forest of
+
+:,emrs
+® © 6 oOo @
+
+Three-tree forest
+
+two trees.
+
+4.3.1: Transforming a forest into a binary tree
+
+Definition: If T;, . . ., Tn is a forest of trees, then the binary tree corresponding to this forest,
+denoted by B(Ti,..., Tn),
+
+(1) is empty, ifn =0
+
+(2) has root equal to root (T;); has left subtree equal to B(T);,Ti2. . . Tim), where Ti,---,r1m
+are the subtrees of root (T;); and has right subtree B(T», . . . ,Tn)

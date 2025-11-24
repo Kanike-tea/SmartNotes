@@ -1,0 +1,46 @@
+Main
+memory
+
+Block |
+
+Block 127
+Block 128
+
+Cache
+
+lag
+
+lag
+
+Block 129
+
+Block 127
+
+Block 256
+
+Block 4095
+
+Main memory address
+
+Fiqure 8.16 —_Direct-mapped cache.
+
+« The memory-address is divided into 3 fields:
+1) Low Order 4 bit field
+> Selects one of 16 words in a block.
+2) 7 bit cache-block field
+> 7-bits determine the cache-position in which new block must be stored.
+3) 5 bit Tag field
+> 5-bits memory-address of block is stored in 5 tag-bits associated with cache-location.
+¢ As execution proceeds,5-bit tag field of memory-address is compared with tag-bits associated
+with cache-location.If they match, then the desired word is in that block of the cache.
+Otherwise, the block containing required word must be first read from the memory.
+And then the word must be loaded into the cache.
+
+© The memory-block can be placed into any cache-block position. (Figure 8.17).
+
+© 12 tag-bits will identify a memory-block when it is resolved in the cache.
+
+© Tag-bits of an address received from processor are compared to the tag-bits of each block of cache.
+© This comparison is done to see if the desired block is present.
+
+Page 52

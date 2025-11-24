@@ -1,0 +1,63 @@
+break;
+
+case 4: first=deleteend();
+break;
+
+case 5: display();
+break;
+
+default : return;
+
+3
+}
+i
+
+void main()
+{
+int ch,i,n;
+while(1)
+{
+printf("\n\n~~~Menu~~~");
+printf("\n1:Create DLL of Employee Nodes");
+printf("\n2:DisplayStatus");
+printf("\n3:InsertAtEnd");
+printf("\n4:DeleteAtEnd");
+printf("\n5:InsertAtFront");
+printf("\n6:DeleteAtFront");
+printf("\n7:Double Ended Queue Demo using DLL");
+printf("\n8:Exit \n");
+printf("\nPlease enter your choice: ");
+scanf("%d" &ch);
+
+switch(ch)
+
+{
+
+case | : printf("\nEnter the no of Employees: ");
+scanf("%d" ,&n);
+for(i=1 si i++),
+
+case 2: display();
+break;
+
+case 3: first = insertend();
+break;
+
+case 4: first = deleteend();
+break;
+
+case 5: first = insertfront();
+break;
+
+case 6: first = deletefront();
+break;
+
+case 7: deqdemo();
+break;
+
+case 8 : exit(0);
+default: printf("\nPlease Enter the valid choice");
+
+}
+
+36

@@ -1,0 +1,32 @@
+9 DIRECTED GRAPHS
+
+The graphs studied in this book so far have been undirected graphs. No
+direction was assigned to the edges in a graph. An edge e, between vertices v;
+and v; could be considered as going from vertex v; to vertex v; or from v; to v;. In
+this chapter we shall consider directed graphs—graphs in which edges have
+directions.
+
+Many physical situations require directed graphs. The street map of a city with
+one-way streets, flow networks with valves in the pipes, and electrical networks,
+for example, are represented by directed graphs. Directed graphs are employed
+in abstract representations of computer programs, where the vertices stand for
+the program instructions and the edges specify the execution sequence. The
+directed graph is an invaluable tool in the study of sequential machines. Directed
+graphs in the form of signal-flow graphs are used for system analysis in control
+theory.
+
+Most of the concepts and terminology of undirected graphs are also applicable
+to directed graphs. For example, the planarity of a graph does not depend on
+whether the graph is directed or undirected, and therefore Chapter 5 is applicable
+to both directed and undirected graphs. The same is true for most other topics
+covered so far. It would be wasteful to devote another eight chapters to the study
+of directed graphs, mostly repeating, with minor changes, what has already been
+said. In this chapter, therefore, we shall mainly bring out those properties of
+directed graphs that are not shared by undirected graphs.
+
+9-1. WHAT IS A DIRECTED GRAPH?
+
+A directed graph (or a digraph for short) G consists of a set of vertices V =
+{Vj, Vo, .. .}, a set of edges E = {e), e),...}, and a mapping that maps every
+edge onto some ordered pair of vertices (vj, v,). As in the case of undirected
+graphs, a vertex is represented by a point and an edge by a line segment between

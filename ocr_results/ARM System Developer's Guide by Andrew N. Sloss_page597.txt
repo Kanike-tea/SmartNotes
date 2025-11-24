@@ -1,0 +1,46 @@
+584 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.5
+
+LDC addressing modes.
+Addressing format Address accessed Value written back to Rn
+[Rn {,# {-}<immed>}] Rn + {{-}<immed>} Rn preserved
+[Rn {,# {-}<immed>}]! Rn + {{-}<immed>} Rn + {{-}<immed>}
+[Rn], # {-}<immed> Rn Rn + {-}<immed>
+[Rn], <option> Rn Rn preserved
+
+4. LDC2{L} <copro>, Cd, [Rn {, #{-}<immed8>*4}] {1} ARMV5
+
+5. LDC2{L} <copro>, Cd, [Rn], #{-}<immed8>*4 ARMV5
+
+6. LDC2{L} <copro>, Cd, [Rn], <option> ARMV5
+
+These instructions initiate a memory read, transferring data to the given coprocessor.
+<copro> is the number of the coprocessor in the range p0 to p15. The core takes an undefined
+instruction trap if the coprocessor is not present. The memory read consists of a sequence
+of words from sequentially increasing addresses. The initial address is specified by the
+addressing mode in Table A.5. The coprocessor controls the number of words transferred,
+up toa maximum limit of 16 words. The fields {L} and Cdare interpreted by the coprocessor
+and ignored by the ARM. Typically Cd specifies the destination coprocessor register for the
+transfer. The <option> field is an eight-bit integer enclosed in {}. Its interpretation is
+coprocessor dependent.
+
+If the address is not a multiple of four, then the access is unaligned. The restrictions on
+unaligned accesses are the same as for LDM.
+
+LOM
+
+Load multiple 32-bit words from memory to ARM registers
+
+1. LDM<cond><amode> Rn{!}, <register_list>{*} ARMV1
+2. LOMIA Rn!, <register_list> THUMBV1
+
+These instructions load multiple words from sequential memory addresses. The
+<register_1ist> specifies a list of registers to load, enclosed in curly brackets {}. Although
+the assembler allows you to specify the registers in the list in any order, the order is not
+stored in the instruction, so it is good practice to write the list in increasing order of register
+number because this is the usual order of the memory transfer.
+
+The following pseudocode shows the normal action of LDM. We use <register_
+list>[i] to denote the register appearing at position i in the list, starting at 0 for the
+first register. This assumes that the list is in order of increasing register number.

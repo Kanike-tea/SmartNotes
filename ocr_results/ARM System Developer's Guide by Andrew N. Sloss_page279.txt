@@ -1,0 +1,41 @@
+266 Chapter 8 Digital Signal Processing
+
+3. Use a smaller Q representation for y[t]. For example, if d = n = m— 1, then the
+
+operation becomes
+
+Y[t] = (X[t] + X[t-1]) >> 15
+
+This operation takes two cycles rather than one since the shift follows the add. However,
+the operation result cannot overflow.
+
+4. Use saturation. If the value of X[t] + C[t] is outside the range of the integer storing
+Y[(z], then clip it to the nearest possible value that is in range. Section 7.7 shows how to
+implement saturating arithmetic efficiently.
+
+8.1.4 MULTIPLICATION OF FIXED-POINT SIGNALS
+The general case is to convert the signal equation
+yt] = x{e]eft] (8.13)
+into fixed point format; that is, approximately:
+Y(t] = 24 yfe] = 24xfe}efe] = 24-7" X(t] Cle] (8.14)
+or in integer C:
+Y[t] = (x[t]*C[t]) >> (n+m-d) ;
+
+You should interpret a negative right shift as a left shift. The product X{#]C[#] isa Q(n-+ m)
+representation of Y[t] and the shift converts representation. There are two common uses:
+
+1. We want to accumulate a whole series of products. In this case we set d= n+ m, using
+a wider integer to store Y[t] than X[t] and C[t]. The multiply and multiply accumulate
+operations are then just
+
+Y[t] = X(t] * Ct]; /* multiply */
+Y[t] += X[t] * C[t];  /* multiply accumulate */
+
+2. The signal Y[t] is the signal X{t] with pointwise multiplication by some scaling
+coefficients. In this case, use d = n so that the operation is
+
+Y[t] = (X{t] * C[t]) >>m;
+For audio DSP applications, a 16-bit x 16-bit multiply is usually used. Common values
+
+for nand mare 14 and 15. As with addition and subtraction it is important to check each
+operation to make sure that it cannot overflow.

@@ -1,0 +1,34 @@
+3C
+chapter 7)
+
+Database Security
+
+Th chapter discusses techniques for securing data-
+ases against a variety of threats. It also presents
+schemes of providing access privileges to authorized users. Some of the security
+threats to databases—such as SQL injection—will be presented. At the end of the
+chapter, we summarize how a mainstream RDBMS—specifically, the Oracle sys-
+tem—provides different types of security. We start in Section 30.1 with an intro-
+duction to security issues and the threats to databases, and we give an overview of
+the control measures that are covered in the rest of this chapter. We also comment
+on the relationship between data security and privacy as it applies to personal infor-
+mation. Section 30.2 discusses the mechanisms used to grant and revoke privileges
+in relational database systems and in SQL, mechanisms that are often referred to as
+discretionary access control. In Section 30.3, we present an overview of the mecha-
+nisms for enforcing multiple levels of security—a particular concern in database
+system security that is known as mandatory access control. Section 30.3 also intro-
+duces the more recently developed strategies of role-based access control, and
+label-based and row-based security. Section 30.3 also provides a brief discussion of
+XML access control. Section 30.4 discusses a major threat to databases—SQL injec-
+tion—and discusses some of the proposed preventive measures against it. Sec-
+tion 30.5 briefly discusses the security problem in statistical databases. Section 30.6
+introduces the topic of flow control and mentions problems associated with covert
+channels. Section 30.7 provides a brief summary of encryption and symmetric key
+and asymmetric (public) key infrastructure schemes. It also discusses digital certifi-
+cates. Section 30.8 introduces privacy-preserving techniques, and Section 30.9 pres-
+ents the current challenges to database security. In Section 30.10, we discuss Oracle
+label-based security. Finally, Section 30.11 summarizes the chapter. Readers who
+are interested only in basic database security mechanisms will find it sufficient to
+cover the material in Sections 30.1 and 30.2.
+
+1121

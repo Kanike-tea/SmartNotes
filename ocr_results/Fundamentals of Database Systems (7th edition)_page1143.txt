@@ -1,0 +1,56 @@
+29.4 Building a Data Warehouse
+
+Data warehouses must also be designed with full consideration of the environment
+in which they will reside. Important design considerations include the following:
+Usage projections
+
+The fit of the data model
+
+Characteristics of available sources
+
+Design of the meta-data component
+
+Modular component design
+
+Design for manageability and change
+
+Considerations of distributed and parallel architecture
+
+We discuss each of these in turn. Warehouse design is initially driven by usage pro-
+jections; that is, by expectations about who will use the warehouse and how they
+will use it. Choice of a data model to support this usage is a key initial decision.
+Usage projections and the characteristics of the warehouse’s data sources are both
+taken into account. Modular design is a practical necessity to allow the warehouse
+to evolve with the organization and its information environment. Additionally, a
+well-built data warehouse must be designed for maintainability, enabling the ware-
+house managers to plan for and manage change effectively while providing optimal
+support to users.
+
+You may recall the term meta-data from Chapter 1; meta-data was defined as the
+description of a database; this description includes the database’s schema defini-
+tion. The meta-data repository is a key data warehouse component. The meta-data
+repository includes both technical and business meta-data. The first, technical
+meta-data, covers details of acquisition, processing, storage structures, data
+descriptions, warehouse operations and maintenance, and access support function-
+ality. The second, business meta-data, includes the relevant business rules and
+organizational details supporting the warehouse.
+
+The architecture of the organization’s distributed computing environment is a
+major determining characteristic for the design of the warehouse. There are two
+basic distributed architectures: the distributed warehouse and the federated ware-
+house. For a distributed warehouse, all the issues of distributed databases are rele-
+vant; for example, replication, partitioning, communications, and consistency
+concerns. A distributed architecture can provide benefits particularly important to
+warehouse performance, such as improved load balancing, scalability of perfor-
+mance, and higher availability. A single replicated meta-data repository would
+reside at each distribution site. The idea of the federated warehouse is like that of
+the federated database: a decentralized confederation of autonomous data ware-
+houses, each with its own meta-data repository. Given the magnitude of the chal-
+lenge inherent to data warehouses, it is likely that such federations will consist of
+smaller scale components, such as data marts.
+
+Businesses are becoming dissatisfied with the traditional data warehousing tech-
+niques and technologies. New analytic requirements are driving new analytic appli-
+ances; examples include Netezza of IBM, Greenplum of EMC, Hana of SAP, and
+
+1113

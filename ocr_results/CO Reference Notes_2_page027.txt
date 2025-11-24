@@ -1,0 +1,53 @@
+¢ DMA interface has three registers (Figure 8.12):
+1) First register is used for storing starting-address.
+2) Second register is used for storing word-count.
+3) Third register contains status- & control-flags.
+
+3130 i 0
+
+IRQ —] L. Done
+IE RW
+
+Figure 8.12 Typical registers in a DMA controller.
+
+¢ The R/W bit determines direction of transfer.
+If R/W=1, controller performs a read-operation (i.e. it transfers data from memory to I/O),
+Otherwise, controller performs a write-operation (i.e. it transfers data from I/O to memory).
+¢ If Done=1, the controller
+— has completed transferring a block of data and
+— is ready to receive another command. (IE > Interrupt Enable).
+¢ If IE=1, controller raises an interrupt after it has completed transferring a block of data.
+¢ If IRQ=1, controller requests an interrupt.
+¢ Requests by DMA devices for using the bus are always given higher priority than processor requests.
+© There are 2 ways in which the DMA operation can be carried out:
+1) Processor originates most memory-access cycles.
++ DMA controller is said to "steal" memory cycles from processor.
++ Hence, this technique is usually called Cycle Stealing.
+2) DMA controller is given exclusive access to main-memory to transfer a block of data
+without any interruption. This is known as Block Mode (or burst mode).
+
+BUS ARBITRATION
+* The device that is allowed to initiate data-transfers on bus at any given time is called bus-master.
+
+¢ There can be only one bus-master at any given time.
+¢ Bus Arbitration is the process by which
+— next device to become the bus-master is selected &
+— bus-mastership is transferred to that device.
+© The two approaches are:
+1) Centralized Arbitration: A single bus-arbiter performs the required arbitration.
+2) Distributed Arbitration: All devices participate in selection of next bus-master.
+¢ A conflict may arise if both the processor and a DMA controller or two DMA controllers try to use
+the bus at the same time to access the main-memory.
+¢ To resolve this, an arbitration procedure is implemented on the bus to coordinate the activities of all
+devices requesting memory transfers.
+¢ The bus arbiter may be the processor or a separate unit connected to the bus.
+
+¢ A single bus-arbiter performs the required arbitration (Figure: 4.20).
+
+¢ Normally, processor is the bus-master.
+
+¢ Processor may grant bus-mastership to one of the DMA controllers.
+
+¢ A DMA controller indicates that it needs to become bus-master by activating BR line.
+
+Page 28

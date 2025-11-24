@@ -1,0 +1,44 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 597
+
+This instruction does not affect the processor registers (other than advancing pc). It merely
+hints that the programmer is likely to read from the given address in future. A cached
+processor may take this as a hint to load the cache line containing the address into the
+cache. The instruction should not generate a data abort or any other memory system error.
+If Rn is pe, then the value used for Rn is the address of the instruction plus eight. Rm
+must not be pe.
+
+Examples
+
+PLD [r0, #7] 3 Preload from r0+7
+PLD [r0, rl, LSL#2] 3 Preload from r0+4*r1
+
+POP Pops multiple registers from the stack in Thumb state (for ARM state use LDM)
+1. POP <regster_list> THUMBv 1
+Action
+
+1. equivalent to the ARM instruction LDMFD sp!, <register_list>
+
+The <register_list> can contain registers in the range r0 to r7 and pc. The following
+example restores the low-numbered ARM registers and returns from a subroutine:
+
+POP {r0-r7,pc}
+
+PUSH Pushes multiple registers to the stack in Thumb state (for ARM state use STM)
+1. PUSH <regster_list> THUMBv 1
+Action
+
+1. equivalent to the ARM instruction STMFD sp!, <register_list>
+
+The <register_]ist> can contain registers in the range r0 to r7 and Ir. The following
+example saves the low-numbered ARM registers and link register.
+
+PUSH {r0-r7,1r}
+
+QADD Saturated signed and unsigned arithmetic
+
+QDADD
+
+QDSUB 1. QADD<cond> Rd, Rm, Rn ARMV5E.
+QSUB
+
+2.  QDADD<cond> Rd, Rm, Rn ARMv5E.

@@ -1,0 +1,61 @@
+Data Structures and App! 's/BCS304 Module-1
+
+¢ Worst case occurs when key element is not found in the array or when the element is in the
+last position. Thus in worst case the running time is proportional to n C(n) «O(n)
+
+e The running time of the average case uses the probabilistic notation of expectation. Number
+of comparison can be any number from | to n and each occurs with probability p= 1/n then
+c(n) 1.1/m 42.1 /nt.....0...0. 1/0
+
+(14243.
+
+=n(n+1)/2.1
+
+BINARY SEARCH: This algorithm is useful when the array is sorted.
+For example when searching for a name in a telephone directory this algorithm is more efficient
+than linear search as the number of element to search is reduced by half in each iteration.
+
+#include<stdio.h>
+
+#include<stdlib.h>
+
+int main()
+{
+int a[10],i,.key,mid,lowhigh,n;
+printf("enter the size of the array : ");
+scanf("%d" ,&n);
+printf("enter the elements of the array in ascending order\n");
+for(i=0;i<n;i++)
+scanf("%d" ,&a[i]);
+printf("enter the key \n");
+scanf("%d" &key);
+
+low=0;
+high=n-1;
+while(low<=high)
+{
+mid=(low+thigh)/2;
+if (key==a[mid])
+
+{
+printf("element %d found at %d" key ,mid+1);
+exit(0);
+}
+else
+{
+if (key<a[mid])
+high = mid-1;
+else
+low=mid+1;
+t
+t
+printf("key not found");
+return(0);
+t
+
+Complexity of binary search algorithm :
+¢ The complexity is based on the number of comparison C(n) required to find the key in the array
+element.
+e Each comparison reduces the sample size in half so C(n) is of the order log 2 n +1
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 16

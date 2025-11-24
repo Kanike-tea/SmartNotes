@@ -1,0 +1,38 @@
+Database Management System [BCS403]
+
+entity to which each dependent is related. Each employee entity is said to own the dependent entities that
+
+are related to it.
+
+A weak entity type always has a total participation constraint (existence dependency) with respect to its
+identifying relationship because a weak entity cannot be identified without an owner entity. A weak entity
+type normally has a partial key, which is the attribute that can uniquely identify weak entities that are
+related to the same owner entity. In our example, if we assume that no two dependents of the same
+
+employee ever have the same first name, the attribute Name of DEPENDENT is the partial key.
+In ER diagrams, both a weak entity type and its identifying relationship are distinguished by surrounding
+
+their boxes and diamonds with double lines. The partial key attribute is underlined with adashed or dotted
+
+line.
+
+3.6 ER Diagrams, Naming Conventions, and Design Issues
+
+3.6.1 Summary of Notation for ER Diagrams
+
+Symbol Meaning
+Entity
+
+Weak Entity
+
+CL
+<9)
+©
+
+Indentifying Relationship
+
+—C E> Attnbute
+
+a -) Key Attribute
+
+https://vtucode.in Page 48

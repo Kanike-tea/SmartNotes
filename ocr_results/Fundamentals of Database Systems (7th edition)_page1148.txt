@@ -1,0 +1,44 @@
+1118 Chapter 29 Overview of Data Warehousing and OLAP
+
+29.3. Describe the characteristics of a data warehouse. Divide them into the func-
+tionality of a warehouse and the advantages users derive from the warehouse.
+
+29.4. What is the multidimensional data model? How is it used in data warehousing?
+
+29.5. Define the following terms: star schema, snowflake schema, fact constella-
+tion, data marts.
+
+29.6. What types of indexes are built for a warehouse? Illustrate the uses for each
+with an example.
+
+29.7. Describe the steps of building a warehouse.
+29.8. What considerations play a major role in the design of a warehouse?
+
+29.9. Describe the functions a user can perform on a data warehouse, and illustrate
+the results of these functions on a sample multidimensional data warehouse.
+
+29.10. How is the relational view concept similar to a data warehouse and how are
+they different?
+
+29.11. List the difficulties in implementing a data warehouse.
+29.12. List the ongoing issues and research problems pertaining to data warehousing.
+29.13. What is master data management? How is it related to data warehousing?
+
+29.14. What are logical data warehouses? Do an online search for the data virtual-
+ization platform from Cisco, and disvcuss how it will help in building a logi-
+cal data warehouse?
+
+Selected Bibliography
+
+Inmon (1992, 2005) is credited for giving the term wide acceptance. Codd and Salley
+(1993) popularized the term online analytical processing (OLAP) and defined a set of
+characteristics for data warehouses to support OLAP. Kimball (1996) is known for
+his contribution to the development of the data warehousing field. Mattison (1996)
+is one of the several books on data warehousing that gives a comprehensive analysis
+of techniques available in data warehouses and the strategies companies should use
+in deploying them. Ponniah (2010) gives a very good practical overview of the data
+warehouse building process from requirements collection to deployment mainte-
+nance. Jukic et al. (2013) is a good source on modeling a data warehouse. Bischoff
+and Alexander (1997) is a compilation of advice from experts. Chaudhuri and Dayal
+(1997) give an excellent tutorial on the topic, while Widom (1995) points to a num-
+ber of ongoing issues and research.

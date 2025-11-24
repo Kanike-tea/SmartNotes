@@ -1,0 +1,48 @@
+B.3 Program Status Registers 645
+
+B.3 PROGRAM STATUS REGISTERS
+
+Table B.6
+
+Table B.6 shows how to decode the 32-bit program status registers for ARMv6.
+
+cpsr and spsr decode table.
+
+31 30 29 28 27 26 25 24 23 22 21 20 1918 17 16 15 14 13 12 11 109876543210
+
+ZC V/Q| Res | J] Res GE[3:0] Res EA|LFT| mode
+
+Field Use
+
+N Negative flag, records bit 31 of the result of flag-setting operations.
+
+Z Zero flag, records if the result of a flag-setting operation is zero.
+
+c Carry flag, records unsigned overflow for addition, not-borrow for subtraction, and is
+also used by the shifting circuit. See Table A.3.
+
+V Overflow flag, records signed overflows for flag-setting operations.
+
+Q Saturation flag. Certain operations set this flag on saturation. See for example QADD in
+Appendix A (ARMySE and above).
+
+J J = 1 indicates Java execution (must have T = 0). Use the BXd instruction to change
+this bit (ARMv5] and above).
+
+Res ‘These bits are reserved for future expansion. Software should preserve the values
+in these bits.
+
+GE[3:0] The SIMD greater-or-equal flags. See SADD in Appendix A (ARMv6).
+
+E Controls the data endianness. See SETEND in Appendix A (ARMv6).
+
+A A = | disables imprecise data aborts (ARMv6).
+
+I I = 1 disables IRQ interrupts.
+
+F F = 1 disables FIQ interrupts.
+
+T T = 1 indicates Thumb state. T = 0 indicates ARM state. Use the BX or BLX instructions
+to change this bit (ARMv4T and above).
+
+mode ‘The current processor mode. See Table B.4.

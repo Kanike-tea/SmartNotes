@@ -1,0 +1,33 @@
+(a) Interrupts should be enabled, except when C is being serviced. The nesting rules can be
+enforced by manipulating the interrupt-enable flags in the interfaces of A and B.
+
+(b) A and B should be connected to INTR , and C to INTR. When an interrupt-request is
+received from either A or B, interrupts from the other device will be automatically disabled until
+the request has been serviced. However, interrupt-requests from C will always be accepted.
+
+Problem 4:
+
+Consider a computer in which several devices are connected to a common interrupt-request line.
+
+Explain how you would arrange for interrupts from device j to be accepted before the execution of the
+
+interrupt service routine for device i is completed. Comment in particular on the times at which
+
+interrupts must be enabled and disabled at various points in the system.
+
+Solution:
+Interrupts are disabled before the interrupt-service routine is entered. Once device i turns off its
+interrupt-request, interrupts may be safely enabled in the processor. If the interface-circuit of
+device i turns off its interrupt-request when it receives the interrupt acknowledge signal,
+interrupts may be enabled at the beginning of the interrupt-service routine of device i.
+Otherwise, interrupts may be enabled only after the instruction that causes device i to turn off its
+interrupt-request has been executed.
+
+Problem 5:
+Consider the daisy chain arrangement. Assume that after a device generates an interrupt-request, it turns
+off that request as soon as it receives the interrupt acknowledge signal. Is it still necessary to disable
+interrupts in the processor before entering the interrupt service routine? Why?
+Solution:
+Yes, because other devices may keep the interrupt-request line asserted.
+
+Page 39

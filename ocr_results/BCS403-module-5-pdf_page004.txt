@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+unlock (X):
+if LOCK(X) = “writeocked”
+then begin LOCK(X) <— “unlocked”;
+wakeup one of the waiting transactions, if any
+end
+else it LOCK(X) = “read-locked"”
+then begin
+no_of_reads(X) <no_of_reads(X) -1;
+if no_of_reads(X) = 0
+then begin LOCK(X) = “unlocked”;
+wakeup one of the waiting transactions, if any
+end
+end;
+
+= When we use the shared/exclusive locking scheme, the system must enforce the following
+rules:
+
+1. A transaction T must issue the operation read_lock(X) or write_lock(X) before any
+tead_item(X) operation is performed in T.
+
+2. A transaction T must issue the operation write_lock(X) before any write_item(X)
+operation is performed in T.
+
+3 A transaction T must issue the operation unlock(X) after all read_item(X) and
+write_item(X) operations are completed in T.3
+
+4. A transaction T willnot issue a read_lock(X) operation if it already holds a read (shared)
+lock or a write (exclusive) lock on item X.
+
+Conversion of Locks
+
+= A transaction that already holds a lock on item X is allowed under certain conditions to
+convert the lock from one locked state to another
+= For example, it is possible for a transaction T to issue a read_lock(X) and then later to
+upgrade the lock by issuing a write_lock(X) operation
+- If Tis the only transaction holding a read lock on X at the time it issues
+the write_lock(X) operation, the lock can be upgraded;otherwise, the
+
+transaction must wait
+
+5.9.2 Guaranteeing Serializability by Two-Phase Locking
+
+https://vtucode.in 26

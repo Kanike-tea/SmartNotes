@@ -1,0 +1,39 @@
+read_ tock ():
+B:if LOCK (X)="unlocked"
+then begin LOCK (X)+ "read-lacked"
+no_ofiresds(Xj}- 1
+end
+else if LOCK(X)="tead-tocked™
+then no_of_reads(X)+ no_of_resds(X)+1
+else begin wait (until LOCK ("unlocked and
+the lock manager wakes up the transaction);
+gotoB
+end;
+
+warite_lock (XX):
+Bf LOCK (X)="unlocked"
+
+then LOCK (X)'= "“writHocked"
+
+ele begin
+wait (unél LOCKEQ"unlocked" and
+
+the lock manager wakes up the transaction);
+
+gotoB
+end:
+
+unlock item (X):
+
+if LOCK (= "writHtocked"
+then begin LOCK (+ "unlocked."
+wakeup one of the waiting transactions, if any
+end
+eke # LOCK(X)="tead-ocked™
+then begin
+mo_of_reads(<}+- no_of_reads(X)—1;
+if no_of_reads(X)=0
+then begin LOCK (q="unlocked';
+wekeup one of the waiting transactions, if any
+end
+end;

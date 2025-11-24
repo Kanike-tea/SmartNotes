@@ -1,0 +1,30 @@
+Database Management System [BCS403]
+
+(ifany), and degree program (B.A., B.S., ..., Ph.D.). Some user applications need to refer to
+the city, state, and ZIP Code of the student’s permanent address and to the student’s last
+name. Both Social Security number and student number have unique values for each
+student.
+
+b. Each department is described by a name, department code, office number, office phone
+number, and college. Both name and code have unique values for each department.
+
+c. Each course has a course name, description, course number, number of semester hours,
+level, and offering department. The value of the course number is unique for each course.
+
+d. Each section has an instructor, semester, year, course, and section number. The section
+number distinguishes sections of the same course that are taught during the same
+semester/year; its values are 1, 2, 3, ..., up to the number of sections taught during each
+
+semester.
+
+e. A grade report has a student, section, letter grade, and numeric grade (0, 1, 2, 3, or 4).
+
+Design an ER schema for this application, and draw an ER diagram for the schema. Specify
+key attributes of each entity type, and structural constraints on each relationship type. Note
+
+any unspecified requirements, and make appropriate assumptions to make the specification
+complete.
+
+28. Write ER diagram for Airline reservation and Ban database
+
+https://vtucode.in Page 61

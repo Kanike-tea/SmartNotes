@@ -1,0 +1,31 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+Note : Offset : It is the difference between the starting effective address of the memory location
+
+and the effective address of the operand fetched from memory.
+i) Offset is given as constant
+
+Ex: ADD 20(R1), R2
+The EA of an operand is given by
+EA = 20 + [Ri]
+
+This instruction adds the contents of memory location whose EA is the sum of contents of Ri
+with 20 and with the contents of R2 and result is placed im.R2 register. The diagrammatic
+
+representation of this mode is as shown in the fig.
+
+a a i
+
+ii) Offset is in Index Register
+Ex: ADD 1000(R1) ,R2 Ru holds the offset address of an operand.
+
+The EA of an operand is given by
+EA = 1000 + [Ri]
+
+This instruction adds the data from the memory location whose address is given by [1000 +
+
+[R1] with the contents of R2 and result is placed in R2 register.
+
+The diagrammatic representation of this mode is as shown in the fig.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 29

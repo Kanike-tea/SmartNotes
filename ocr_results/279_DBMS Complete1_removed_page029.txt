@@ -1,0 +1,50 @@
+= Must consider the type of queries expected and the degree to which the database schema fits
+the given E-R diagram.
+
+= In all versions of this transformation, the underlying database tree (or trees) will have
+replicated records.
+
+CGustomer-stre@> = iecount-numibeP> balance >
+
+Clistonier Hae Gustomer-city
+
+customer depositor account
+
+(a) E-R diagram
+
+ae] | [EERIE ETE]
+customer * account
+aecount-number [balance] [Eustomer-name [eustomeratrect [customarcity
+
+account customer
+tree T; tree Tz
+
+(b) Tree-structure diagrams
+
+= Create two tree-structure diagrams, Tl, with the root customer, and T2, with the root
+account.
+
+= In TI, create depositor, a many-to-one link from account to customer.
+
+= In T2, create account-customer, a many-to-one link from customer to account.
+
+Hayes | Main Harrison) [Johnson] Alma [Palo Alto| | Smith | North | Rye
+\
+\
+Aso | 400 ‘ctor | 500] [A-201 | 900] [A201 | 900] [4-215 | 700
+(a)
+[Acta | 400 | Actor | 500 | [Azar [900 A215 | 700
+
+Johnson| Alma Palo Alto \
+
+Johnson] Alma Palo Alto \
+
+Smith | North | Rye
+
+Smith | North | Rye
+
+Virtual Records:
+« For many-to-many relationships, record replication is necessary to preserve the tree-
+structure organization of the database.
+« Data inconsistency may result when updating takes place
+« Waste of space is unavoidable

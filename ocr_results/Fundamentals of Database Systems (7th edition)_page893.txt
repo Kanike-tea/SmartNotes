@@ -1,0 +1,52 @@
+23.5 Query Processing and Optimization in Distributed Databases
+
+The semijoin operation was devised to formalize this strategy. A semijoin operation
+R43 S, where A and B are domain-compatible attributes of R and S, respectively,
+produces the same result as the relational algebra expression MR(R ™,-p S). In a dis-
+tributed environment where R and S reside at different sites, the semijoin is typically
+implemented by first transferring F = m,(S) to the site where R resides and then join-
+ing F with R, thus leading to the strategy discussed here.
+
+Notice that the semijoin operation is not commutative; that is,
+
+R*S#S*KR
+
+23.5.4 Query and Update Decomposition
+
+Ina DDBMS with no distribution transparency, the user phrases a query directly in
+terms of specific fragments. For example, consider another query Q: Retrieve the
+names and hours per week for each employee who works on some project controlled
+by department 5, which is specified on the distributed database where the relations
+at sites 2 and 3 are shown in Figure 23.2, and those at site 1 are shown in Fig-
+ure 5.6, as in our earlier example. A user who submits such a query must specify
+whether it references the PROJS_5 and WORKS_ON_5 relations at site 2 (Fig-
+ure 23.2) or the PROJECT and WORKS_ON relations at site 1 (Figure 5.6). The user
+must also maintain consistency of replicated data items when updating a DDBMS
+with no replication transparency.
+
+On the other hand, a DDBMS that supports full distribution, fragmentation, and
+replication transparency allows the user to specify a query or update request on
+the schema in Figure 5.5 just as though the DBMS were centralized. For updates,
+the DDBMS is responsible for maintaining consistency among replicated items
+by using one of the distributed concurrency control algorithms discussed in
+Section 23.3. For queries, a query decomposition module must break up or
+decompose a query into subqueries that can be executed at the individual sites.
+Additionally, a strategy for combining the results of the subqueries to form the
+query result must be generated. Whenever the DDBMS determines that an item
+referenced in the query is replicated, it must choose or materialize a particular
+replica during query execution.
+
+To determine which replicas include the data items referenced in a query, the
+DDBMS refers to the fragmentation, replication, and distribution information
+stored in the DDBMS catalog. For vertical fragmentation, the attribute list for
+each fragment is kept in the catalog. For horizontal fragmentation, a condition,
+sometimes called a guard, is kept for each fragment. This is basically a selection
+condition that specifies which tuples exist in the fragment; it is called a guard
+because only tuples that satisfy this condition are permitted to be stored in the
+fragment. For mixed fragments, both the attribute list and the guard condition
+are kept in the catalog.
+
+In our earlier example, the guard conditions for fragments at site 1 (Figure 5.6) are
+TRUE (all tuples), and the attribute lists are * (all attributes). For the fragments
+
+863

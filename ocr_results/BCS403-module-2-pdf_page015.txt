@@ -1,0 +1,45 @@
+Database Management System [BCS403]
+
+The Boolean expression specified in <selection condition> is made up of a number of clauses of the
+
+form:
+<attribute name> <comparison op> <constant value>
+or
+<attribute name> <comparison op> <attribute name>
+where
+
+<attribute name> is the name of an attribute of R,
+<comparison op> is one of the operators {=, <<, >, >, #}, and
+<constant value> is a constant value from the attribute domain
+
+Clauses can be connected by the standard Boolean operators and, or, and not to form a general
+
+selection condition
+
+Examples:
+1. Select the EMPLOYEE tuples whose department number is 4.
+© pyo=4 (EMPLOYEE)
+2. Select the employee tuples whose salary is greater than $30,000:
+© sacary > 30,000 (EMPLOYEE)
+
+3. Select the tuples for all employees who either work in department 4 and make over $25,000
+per year, or work in department 5 and make over $30,000
+
+©(Dn0=4 AND Salary>25000) OR (pno=5 AND Salary>30000(EMPLOYEE)
+The result ofa SELECT operation can be determined as follows:
++ The <selection condition> is applied independently to each individual tuple t in R
+
++ Ifthe condition evaluates to TRUE, then tuple ¢ is selected.All the selected tuples appear in
+the result of the SELECT operation
+
+* The Boolean conditions AND, OR, and NOT have their normal interpretation, as follows:
+
+- (cond! AND cond2) is TRUE if both (cond!) and (cond2) are TRUE; otherwise, it is
+FALSE.
+
+- (cond! OR cond2) is TRUE if either (cond1) or (cond2) or both are TRUE; otherwise, it is
+FALSE.
+
+- (NOT cond) is TRUE if cond is FALSE; otherwise, it is FALSE.
+
+https://vtucode.in Page 16

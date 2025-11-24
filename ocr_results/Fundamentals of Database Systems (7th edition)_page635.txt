@@ -1,0 +1,53 @@
+17.1 Types of Single-Level Ordered Indexes
+
+entry for each disk block of the data file and the keys of its anchor record rather
+than for every search value (or every record).°
+
+The index file for a primary index occupies a much smaller space than does the data
+file, for two reasons. First, there are fewer index entries than there are records in the
+data file. Second, each index entry is typically smaller in size than a data record
+because it has only two fields, both of which tend to be short in size; consequently,
+more index entries than data records can fit in one block. Therefore, a binary search
+on the index file requires fewer block accesses than a binary search on the data file.
+Referring to Table 16.3, note that the binary search for an ordered data file required
+logyb block accesses. But if the primary index file contains only b; blocks, then to
+locate a record with a search key value requires a binary search of that index and
+access to the block containing that record: a total of logyb; + 1 accesses.
+
+A record whose primary key value is K lies in the block whose address is P(i), where
+K(i) < K < K(i+ 1). The ith block in the data file contains all such records because of
+the physical ordering of the file records on the primary key field. To retrieve a
+record, given the value K of its primary key field, we do a binary search on the index
+file to find the appropriate index entry i, and then retrieve the data file block whose
+address is P(i).* Example 1 illustrates the saving in block accesses that is attainable
+when a primary index is used to search for a record.
+
+Example 1. Suppose that we have an ordered file with r = 300,000 records stored on
+a disk with block size B = 4,096 bytes.° File records are of fixed size and are unspanned,
+with record length R = 100 bytes. The blocking factor for the file would be
+bfr = L(B/R) | =[(4,096/100) | = 40 records per block. The number of blocks needed
+for the file is b =I (r/bfr) | =[ (300,000/40) |= 7,500 blocks. A binary search on the data
+file would need approximately | log, b | (log, 7,500) |= 13 block accesses.
+
+Now suppose that the ordering key field of the file is V = 9 bytes long, a block pointer
+is P = 6 bytes long, and we have constructed a primary index for the file. The size of
+each index entry is R; = (9 + 6) = 15 bytes, so the blocking factor for the index is
+bfr; = L(B/R)) | = |(4,096/15) | = 273 entries per block. The total number of index
+entries r; is equal to the number of blocks in the data file, which is 7,500. The number
+of index blocks is hence b; = [(rlbfr) | = [(7,500/273) | = 28 blocks. To perform a
+binary search on the index file would need log, b) l= log, 28) |=5 block accesses.
+To search for a record using the index, we need one additional block access to the data
+file for a total of 5 + 1 = 6 block accesses—an improvement over binary search on the
+data file, which required 13 disk block accesses. Note that the index with 7,500 entries
+of 15 bytes each is rather small (112,500 or 112.5 Kbytes) and would typically be kept
+in main memory thus requiring negligible time to search with binary search. In that
+case we simply make one block access to retrieve the record.
+
+SThe sparse primary index has been called clustered (primary) index in some books and articles.
+
+4Notice that the above formula would not be correct if the data file were ordered on a nonkey field in that
+case the same index value in the block anchor could be repeated in the last records of the previous block.
+
+5Most DBMS vendors, including Oracle, are using 4K or 4,096 bytes as a standard block/page size.
+
+605

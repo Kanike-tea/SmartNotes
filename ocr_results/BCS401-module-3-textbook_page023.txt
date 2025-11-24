@@ -1,0 +1,48 @@
+262
+
+Space and Time Trade-Offs
+
+stop) or a mismatching pair is encountered. In the latter case, retrieve
+the entry ¢(c) from the c’s column of the shift table where c is the text’s
+character currently aligned against the last character of the pattern,
+and shift the pattern by r(c) characters to the right along the text.
+
+Here is pseudocode of Horspool’s algorithm.
+
+EXAMPLE Asan example of a complete application of Horspool’s algorithm,
+consider searching for the pattern BARBER in a text that comprises English letters
+and spaces (denoted by underscores). The shift table, as we mentioned, is filled as
+follows:
+
+characterc | A|B|C|D])E]F]... |R] ... |Z
+
+shiftr(c) | 4]2]/6]6]1]6 6 3 6 616
+
+The actual search in a particular text proceeds as follows:
+
+IM_ W_ME_IN ARBERSHOP
+RB BA
+
+wu
+wmn
+
+an>raD>
+wn!
+POD
+zm
+
+B
+R
+BER BER
+RBE BAR
+
+>a
+
+R BER |
+
+A simple example can demonstrate that the worst-case efficiency of Hor-
+spool’s algorithm is in O(nm) (Problem 4 in this section’s exercises). But for
+random texts, it is in @(m), and, although in the same efficiency class, Horspool’s
+algorithm is obviously faster on average than the brute-force algorithm. In fact,
+as mentioned, it is often at least as efficient as its more sophisticated predecessor
+discovered by R. Boyer and J. Moore.

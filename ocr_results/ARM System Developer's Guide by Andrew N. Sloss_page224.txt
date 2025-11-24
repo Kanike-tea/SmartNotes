@@ -1,0 +1,51 @@
+7.1 Double-Precision Integer Multiplication 211
+
+7.1.3 SIGNED 64-BIT BY 64-BIT MULTIPLY
+WITH 128-BIT RESULT
+
+A signed 64-bit integer breaks down into a signed high 32 bits and an unsigned low 32 bits.
+To multiply the high part of b by the low part of c requires a signed by unsigned multiply
+instruction. Although the ARM does not have such an instruction, we can synthesize one
+using macros.
+
+The following macro USMLAL provides an unsigned-by-signed multiply accumulate
+operation. To multiply unsigned b by signed c, it first calculates the product be consid-
+ering both values as signed. If the top bit of b is set, then this signed multiply multiplied
+by the value b — 232. In this case it corrects the result by adding c232. Similarly, SUMLAL
+performs a signed-by-unsigned multiply accumulate.
+
+MACRO
+USMLAL $al, $ah, $b, $c
+; signed $ah.$al += unsigned $b * signed $c
+
+SMLAL  $al, $ah, $b, $c 3 a = (signed)b * c;
+TstT $b, #1<<31 ; if ((signed)b<0)
+ADDNE $ah, $ah, $c 3 a t= (c<<32);
+MEND
+
+MACRO
+
+SUMLAL $al, $ah, $b, $c
+; signed $ah.$al += signed $b * unsigned $c
+
+SMLAL  $al, $ah, $b, $c 3 a= b * (signed)c;
+st $c, #1<<31 ; if ((signed)c<0)
+ADDNE $ah, $ah, $b 3 a t= (b<<32);
+MEND
+
+Using these macros it is relatively simple to convert the 64-bit multiply of Section 7.1.2 to
+asigned multiply. This signed version is four cycles longer than the corresponding unsigned
+version due to the signed-by-unsigned fix-up instructions.
+
+; _value_in_regs struct { unsigned a0,al,a2; signed a3; }
+3 smul_64to128(long long b, long long c)
+smul_64t0128
+STMFD —sp!, {r4,r5,1r}
+; signed 128-bit a = 64-bit b * 64-bit c
+UMULL a0, al, b0, c0 ; low*low
+
+Mov a2, #0
+USMLAL al, a2, b0, cl ; low*high
+Mov a3, #0
+
+SUMLAL al, a3, bl, c0 ; high*low

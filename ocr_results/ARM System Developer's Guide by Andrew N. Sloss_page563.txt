@@ -1,0 +1,49 @@
+550 Chapter 15 The Future of the Architecture
+
+15.1 ADVANCED DSP AND SIMD SUPPORT IN ARMv6
+
+Early in the ARMV6 project, ARM considered how to improve the DSP and media processing
+capabilities of the architecture beyond the ARMv5E extensions described in Section 3.7. This
+work was carried out very closely with the ARM1136J-S engineering team, which was in the
+early stages of developing the microarchitecture for the product. SIMD (Single Instruction
+Multiple Data) is a popular technique used to garner considerable data parallelism and is
+particularly effective in very math-intensive routines that are commonly used in DSP, video
+and graphics processing algorithms. SIMD is attractive for high code density and low power
+since the number of instructions executed (and hence memory system accesses) is kept low.
+The price for this efficiency is the reduced flexibility of having to compute things arranged
+in certain blocked data patterns; this, however, works very well in many image and signal
+processing algorithms.
+
+Using the standard ARM design philosophy of computational efficiency with very low
+power, ARM came up with a simple and elegant way of slicing up the existing ARM 32-bit
+datapath into four 8-bit and two 16-bit slices. Unlike many existing SIMD architectures
+that add separate datapaths for the SIMD operations, this method allows the SIMD to be
+added to the base ARM architecture with very little extra hardware cost.
+
+The ARMv6 architecture includes this “lightweight” SIMD approach that costs virtually
+nothing in terms of extra complexity (gate count) and therefore power. At the same time the
+new instructions can improve the processing throughput of some algorithms by up to two
+times for 16-bit data or four times for 8-bit data. In common with most operations in the
+ARM instruction set architecture, all of these new instructions are executed conditionally,
+as described in Section 2.2.6.
+
+You can find a full description of all ARMvé6 instructions in the instruction set tables of
+Appendix A.
+
+15.1.1 SIMD ARITHMETIC OPERATIONS
+
+Table 15.1 shows a summary of the 8-bit SIMD operations. Each byte result is formed
+from the arithmetic operation on each of the corresponding byte slices through the source
+operands.
+
+The results of these 8-bit operations may require that up to 9 bits be represented, which
+either causes a wraparound or a saturation to take place, depending on the particular
+instruction used.
+
+In addition to the 8-bit SIMD operations, there are an extensive range of dual 16-bit
+operations, shown in Table 15.2. Each halfword (16-bit) result is formed from the arithmetic
+operation on each of the corresponding 16-bit slices through the source operands.
+
+The results may need 17 bits to be stored, and in this case they can either wrap around
+or are saturated to within the range of a 16-bit signed result with the saturating version of
+the instruction.

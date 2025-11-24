@@ -1,0 +1,37 @@
+Figure 4.38 An example of a computer system using different interface standards.
+
+Problem 1:
+The input status bit in an interface-circuit is cleared as soon as the input data register is read. Why is
+this important?
+Solution:
+After reading the input data, it is necessary to clear the input status flag before the program
+begins a new read-operation. Otherwise, the same input data would be read a second time.
+
+Problem 2:
+
+What is the difference between a subroutine and an interrupt-service routine?
+
+Solution:
+A subroutine is called by a program instruction to perform a function needed by the calling
+program.
+An interrupt-service routine is initiated by an event such as an input operation or a hardware
+error. The function it performs may not be at all related to the program being executed at the
+time of interruption. Hence, it must not affect any of the data or status information relating to
+that program.
+
+Problem 3:
+
+Three devices A, B, & C are connected to the bus of a computer. I/O transfers for all 3 devices use
+interrupt control. Interrupt nesting for devices A & B is not allowed, but interrupt-requests from C may
+be accepted while either A or B is being serviced. Suggest different ways in which this can be
+accomplished in each of the following cases:
+
+(a) The computer has one interrupt-request line.
+
+(b) Two interrupt-request lines INTR1 & INTR2 are available, with INTR1 having higher
+
+priority. Specify when and how interrupts are enabled and disabled in each case.
+
+Solution:
+
+Page 38

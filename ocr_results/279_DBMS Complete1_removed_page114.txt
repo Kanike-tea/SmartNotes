@@ -1,0 +1,40 @@
+Lecture-38
+Parallel Database
+Aparallel database system performs parallel operations, such as loading data, building indexes
+and evaluating queries.
+Parallel databases can be roughly divided into two groups,
+a) Multiprocessor architecture:
+
+Shared memory architecture
+Where multiple processors share the main memory space.
+
+Mem] |Mem} |Mem
+
+8
+Cc
+2]
+UD
+Cc
+2)
+uv
+c
+
+Shared disk architecture
+Where each node has its own main memory, but all nodes share mass storage, usually a
+storage area network. In practice, each node usually also has multiple processors.
+
+I |
+
+Memory
+
+Shared nothing architecture
+Where each node has its own mass storage as well as main memory.
+
+Saeaeaca
+
+Shared-Nothing Architecture
+
+b) The other architecture group is called hybrid architecture, which includes:
+
+¢ Non-Uniform Memory Architecture (NUMA), which involves the non-uniform memory
+access.

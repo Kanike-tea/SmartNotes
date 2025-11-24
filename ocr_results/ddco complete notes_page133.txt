@@ -1,0 +1,61 @@
+Digital Design and Computer Organization (BCS302)
+
+VVVV
+
+Step Action
+
+PCour, MARin, Read, Select4, Add, Zin
+out, PCins Yiny WMFC
+
+MDRout; IRin
+
+R3our, MARin, Read
+
+Rlout, Yin, WMFC
+
+MDRoue; SelectY, Add, Zin
+
+Zout; R1gn, End
+
+yon eRe wwe
+
+Figure 7.6 Control sequence for execution of the instruction Add (R3),R1
+
+Step1--> The instruction-fetch operation is initiated by loading contents of PC
+into MAR & sending a Read request to memory. The Select signal is set to
+Select4, which causes the Mux to select constant 4. Thisvalue is added to
+operand at input B (PC“s content), and the result is stored in Z.
+Step2--> Updated value in Z is moved to PC. This completes the PC increment
+operation and PC will now point to next instruction.
+Step3--> Fetched instruction is moved into MDR and then to IR. The step 1
+through 3constitutes the Fetch Phase.
+At the beginning of step 4, the instruction decoder interprets the contents of
+the IR. This enables the control circuitry to activate the control-signals for steps
+4 through 7.
+
+The step 4 through 7 constitutes the Execution Phase.
+Step4--> Contents of R3 are loaded into MAR & a memory read signal is issued.
+Step5--> Contents of Rl are transferred to Y to prepare for addition.
+Step6--> When Read operation is completed, memory-operand is available in MDR,
+Step7--> Sum is stored in Z, then transferred to R1.The End signal causes a new
+instruction fetch cycle to begin by returning to step1.
+
+Pipelining:
+Basic Concepts:
+The speed of execution of programs is influenced by many factors.
+
+One way to improve performance is to use faster circuit technology to build the
+processor and the main memory. Another possibility is to arrange the hardware so that
+more than one operation can be performed at the same time. In this way, the number
+of operations performed per second is increased even though the elapsed time needed
+to perform any one operation is not changed.
+
+Pipelining is a particularly effective way of organizing concurrent activity in a
+computer system.
+
+The technique of decomposing a sequential process into sub-operations, with each sub-
+operation being executed in a dedicated segment .
+
+pipelining is commonly known as an assembly-line operation.
+
+Dr Ajay V G, Dept. of CSE,SVIT

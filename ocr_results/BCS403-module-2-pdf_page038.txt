@@ -1,0 +1,52 @@
+Database Management System [BCS403]
+
+= Ifmultiple keys were identified for E during the conceptual design, the information
+describing the attributes that form each additional key is kept in order to specify secondary
+(unique) keys of relation R
+
+= In our example-COMPANY database, we create the relations EMPLOYEE, DEPARTMENT,
+and PROJECT
+
+= we choose Ssn, Dnumber, and Pnumber as primary keys for the relations EMPLOYEE,
+DEPARTMENT, and PROJECT, respectively
+
+= The relations that are created from the mapping of entity types are called entity relations
+
+because each tuple represents an entity instance.
+
+EMPLOYEE
+Fname | Minit | Lname | Ssn | Bdate | Address |¢Sex | Salary
+DEPARTMENT
+
+Dname | Dnumber
+
+PROJECT
+
+Pname | Pnumber | Plocation
+
+Step 2: Mapping of Weak Entity Types
+
+= For each weak entity type, create a relation R and include all simple attributes of the entity
+type as attributes of R
+
+= Include primary key attribute of owner as foreign key attributes of R
+
+= In our example, we create the relation DEPENDENT in this step to correspond to the weak
+entity type DEPENDENT
+
+= We include the primary key Ssn of the EMPLOYEE relation—which corresponds to the
+owner entity type—as a foreign key attribute of DEPENDENT; we rename it as Essn
+
+= The primary key of the DEPENDENT relation is the combination {Essn,Dependent_name},
+because Dependent_name is the partial key of DEPENDENT
+
+= It is common to choose the propagate (CASCADE) option for the referential triggered action
+on the foreign key in the relation corresponding to the weak entity type, since a weak entity
+has an existence dependency on its owner entity.
+
+= This can be used for both ON UPDATE and ON DELETE.
+
+DEPENDENT
+Essn Dependent_name | Sex | Bdate | Relationship
+
+https://vtucode.in Page 39

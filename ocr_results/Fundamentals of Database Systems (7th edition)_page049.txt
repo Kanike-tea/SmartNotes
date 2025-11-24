@@ -1,0 +1,50 @@
+1.6 Advantages of Using the DBMS Approach
+
+have the capability to control this redundancy in order to prohibit inconsisten-
+cies among the files. This may be done by automatically checking that the
+Student_name-Student_number values in any GRADE_REPORT record in Fig-
+ure 1.6(a) match one of the Name-Student_number values of a STUDENT record (Fig-
+ure 1.2). Similarly, the Section_identifie--Course_number values in GRADE_REPORT
+can be checked against SECTION records. Such checks can be specified to the DBMS
+during database design and automatically enforced by the DBMS whenever the
+GRADE_REPORT file is updated. Figure 1.6(b) shows a GRADE_REPORT record that
+is inconsistent with the STUDENT file in Figure 1.2; this kind of error may be entered
+if the redundancy is not controlled. Can you tell which part is inconsistent?
+
+1.6.2 Restricting Unauthorized Access
+
+When multiple users share a large database, it is likely that most users will not be
+authorized to access all information in the database. For example, financial data
+such as salaries and bonuses is often considered confidential, and only autho-
+rized persons are allowed to access such data. In addition, some users may only
+be permitted to retrieve data, whereas others are allowed to retrieve and update.
+Hence, the type of access operation—retrieval or update—must also be con-
+trolled. Typically, users or user groups are given account numbers protected by
+passwords, which they can use to gain access to the database. A DBMS should
+provide a security and authorization subsystem, which the DBA uses to create
+accounts and to specify account restrictions. Then, the DBMS should enforce
+these restrictions automatically. Notice that we can apply similar controls to the
+DBMS software. For example, only the DBA’s staff may be allowed to use certain
+privileged software, such as the software for creating new accounts. Similarly,
+parametric users may be allowed to access the database only through the pre-
+defined apps or canned transactions developed for their use. We discuss data-
+base security and authorization in Chapter 30.
+
+1.6.3 Providing Persistent Storage for Program Objects
+
+Databases can be used to provide persistent storage for program objects and data
+structures. This is one of the main reasons for object-oriented database systems
+(see Chapter 12). Programming languages typically have complex data structures,
+such as structs or class definitions in C++ or Java. The values of program variables
+or objects are discarded once a program terminates, unless the programmer explic-
+itly stores them in permanent files, which often involves converting these complex
+structures into a format suitable for file storage. When the need arises to read this
+data once more, the programmer must convert from the file format to the program
+variable or object structure. Object-oriented database systems are compatible with
+programming languages such as C++ and Java, and the DBMS software auto-
+matically performs any necessary conversions. Hence, a complex object in C++
+can be stored permanently in an object-oriented DBMS. Such an object is said to
+be persistent, since it survives the termination of program execution and can
+later be directly retrieved by another program.
+
+19

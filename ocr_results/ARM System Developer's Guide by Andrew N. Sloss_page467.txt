@@ -1,0 +1,47 @@
+454 Chapter 12. Caches
+
+Table 12.13 Fetch and Allocate commands to lock code or data in cache on an
+
+Intel XScale processor.
+
+Command MRC and MCR instructions
+Fetch and lock I-cache line VA MCR p15, 0, Rd, 9, cl, 0
+Unlock instruction cache MCR p15, 0, Rd, c9, cl, 1
+Read data cache lock register MRC pl5, 0, Rd, c9, 2, 0
+
+Write data cache lock registerand — MCR p15, 0, Rd, c9, c2, 0
+set/clear lock mode
+Unlock D-cache MCR p15, 0, Rd, c9, €2, 1
+
+31 10
+SBZ L
+
+Figure 12.16 Format of the CP15:c9:c2 D-cache lock register.
+
+EXAMPLE
+
+12.9
+
+the portion of cache allocated is not initialized and needs a write from the processor core
+to contain valid data. In our example we initialize the memory to zero.
+
+The first part of the routine defines the registers used in the macro CACHELOCKREGION. The
+macro also uses constants in the header file cache.h shown in Figure 12.10.
+
+The macro starts by aligning the address (adr) to a cache line and determining the
+number of cache lines it takes to contain the code.
+
+If the procedure is locking data in the D-cache, then the next few lines drain the write
+buffer and unlock the D-cache. Locking data in the D-cache requires an unlock command
+that must be issued prior to locking a D-cache line. The macro sets this bit by writing a one
+to the CP15:c9:c2:0 register.
+
+At this point the code enters a loop that fills the cache with locked code or data. If the
+procedure is locking code in the I-cache, it executes a lock I-cache line command. If it
+is locking data from external memory, it cleans, flushes, and loads a new cache line into
+the D-cache. If creating data RAM, it allocates a D-cache line and drains the write buffer
+to protect against errors that might result from trying to lock more than 28 sets. It then
+initializes the cache line to zero using STRD instructions.
+
+The macro exits by clearing the lock bit on cache load CP15 register if it is locking
+D-cache data.

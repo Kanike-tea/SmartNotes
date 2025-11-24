@@ -1,0 +1,51 @@
+832
+
+Chapter 22 Database Recovery Techniques
+
+been recorded in the logs of the participating databases, local recovery from
+failure is now possible. Each participating database completes transaction
+commit by writing a [commit] entry for the transaction in the log and perma-
+nently updating the database if needed. Conversely, if one or more of the
+participating databases or the coordinator have a not OK response, the
+transaction has failed, and the coordinator sends a message to roll back or
+UNDO the local effect of the transaction to each participating database. This
+is done by undoing the local transaction operations, using the log.
+
+The net effect of the two-phase commit protocol is that either all participating data-
+bases commit the effect of the transaction or none of them do. In case any of the
+participants—or the coordinator—fails, it is always possible to recover to a state
+where either the transaction is committed or it is rolled back. A failure during or
+before phase 1 usually requires the transaction to be rolled back, whereas a failure
+during phase 2 means that a successful transaction can recover and commit.
+
+22.7 Database Backup and Recovery
+from Catastrophic Failures
+
+So far, all the techniques we have discussed apply to noncatastrophic failures. A key
+assumption has been that the system log is maintained on the disk and is not lost as
+a result of the failure. Similarly, the shadow directory must be stored on disk to
+allow recovery when shadow paging is used. The recovery techniques we have dis-
+cussed use the entries in the system log or the shadow directory to recover from
+failure by bringing the database back to a consistent state.
+
+The recovery manager of a DBMS must also be equipped to handle more catastrophic
+failures such as disk crashes. The main technique used to handle such crashes is a
+database backup, in which the whole database and the log are periodically copied
+onto a cheap storage medium such as magnetic tapes or other large capacity offline
+storage devices. In case of a catastrophic system failure, the latest backup copy can be
+reloaded from the tape to the disk, and the system can be restarted.
+
+Data from critical applications such as banking, insurance, stock market, and other
+databases is periodically backed up in its entirety and moved to physically separate
+safe locations. Subterranean storage vaults have been used to protect such data
+from flood, storm, earthquake, or fire damage. Events like the 9/11 terrorist attack
+in New York (in 2001) and the Katrina hurricane disaster in New Orleans (in 2005)
+have created a greater awareness of disaster recovery of critical databases.
+
+To avoid losing all the effects of transactions that have been executed since the last
+backup, it is customary to back up the system log at more frequent intervals than full
+database backup by periodically copying it to magnetic tape. The system log is usu-
+ally substantially smaller than the database itself and hence can be backed up more
+frequently. Therefore, users do not lose all transactions they have performed since
+the last database backup. All committed transactions recorded in the portion of the
+system log that has been backed up to tape can have their effect on the database

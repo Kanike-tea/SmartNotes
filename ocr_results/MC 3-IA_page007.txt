@@ -1,0 +1,26 @@
+2.6 Measuring Cache Efficiency
+
+There are two terms used to characterize the cache efficiency of a program: the cache hit rate and
+the cache miss rate. The hit rate is the number of cache hits divided by the total number of
+
+memory requests over a given time interval. The value is expressed as a percentage:
+
+. cache hits
+hit rate = {| ———————} x 100
+
+memory requests
+
+The miss rate is similar in form: the total cache misses divided by the total number of memory
+requests expressed as a percentage over a time interval. Note that the miss rate also equals 100
+
+minus the hit rate.
+
+The hit rate and miss rate can measure reads, writes, or both, which means that the terms can be
+used to describe performance information in several ways. For example, there is a hit rate for
+
+reads, a hit rate for writes, and other measures of hit and miss rates.
+
+Two other terms used in cache performance measurement are the hit time—the time it takes to
+access a memory location in the cache and the miss penalty—the time it takes to load a cache
+
+line from main memory into cache.

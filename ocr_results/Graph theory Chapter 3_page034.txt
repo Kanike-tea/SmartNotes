@@ -1,0 +1,44 @@
+4 prefix codes and Weighted trees 187
+
+. iven code in mind, i A
+p Keeping the giv aa an we first split the given sequences into appropriate number
+of parts: Then, the decoded version of the sequence is written down.
+
+@ Splitting: 1001111101, Decode: bad
+
+gi) Splitting: 10 111 100 11000°1101, Decode: eaebchd
+
+gi) Splitting: 1101 111 1100 10, Decode! dace :
+
+sample 2 A code for {a, b,c, d, e} is given by
+
+a:00, 6:01, ¢: 101, d: x10, e:yzl,
+
+where x,y,z € {0, 1}. Determine x, y and z so\that the given code is a prefix code.
+» If we set x = 0, then the code for d reads 010 which contains the code 01 for b as a prefix.
+Therefore, we cannot take x = 0. This implies that x = 1. Then, d: 110.
+
+If we set y = 0, z = O then the code for e reads 001, which contains the code for a as a
+prefix. If we set y = 0, z = 1, then the code for e reads 011, which contains the code for b as a
+
+prefix. If we set y = 1, z = 0, then the code for e becomes identical with that for c. Hence, we
+
+take y= 1,z= 1 so thate: 111.
+With the choices of x, y, Z as obtained-abové'the given code reads
+
+a:00, .6:.01,,..¢3)101,,, d:110,.¢: 111,
+
+This is evidently a prefix code. ,, 6 100 00
+Construct the binary tree that represents the prefix code obtained in Example 2.
+
+> The prefix code considered in Example 2 is”
+
+aia ii
+p = (60,01, 101, 110, 111).
+
+e The longest possible sequence present in this code is of length 3. As such, te required
+t its leaves can be identified by
+
+J
+uy tee is of height 3. We draw this tree in such a way tha
+Sequences in P through the labeling rule. The tree is shown in the Figure 3.42.

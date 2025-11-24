@@ -1,0 +1,52 @@
+24.1 Introduction to NOSQL Systems
+
+will discuss some of the hashing, partitioning, and indexing techniques in
+Sections 24.3 through 24.6 when we discuss specific systems.
+
+NOSQL characteristics related to data models and query languages.
+NOSQL systems emphasize performance and flexibility over modeling power and
+complex querying. We discuss some of these characteristics next.
+
+1. Not Requiring a Schema: The flexibility of not requiring a schema is
+achieved in many NOSQL systems by allowing semi-structured, self-
+describing data (see Section 13.1). The users can specify a partial schema in
+some systems to improve storage efficiency, but it is not required to have a
+schema in most of the NOSQL systems. As there may not be a schema to
+specify constraints, any constraints on the data would have to be pro-
+grammed in the application programs that access the data items. There are
+various languages for describing semistructured data, such as JSON (JavaScript
+Object Notation) and XML (Extensible Markup Language; see Chapter 13).
+JSON is used in several NOSQL systems, but other methods for describing
+semi-structured data can also be used. We will discuss JSON in Section 24.3
+when we present document-based NOSQL systems.
+
+2. Less Powerful Query Languages: Many applications that use NOSQL sys-
+tems may not require a powerful query language such as SQL, because
+search (read) queries in these systems often locate single objects in a single
+file based on their object keys. NOSQL systems typically provide a set of
+functions and operations as a programming API (application programming
+interface), so reading and writing the data objects is accomplished by calling
+the appropriate operations by the programmer. In many cases, the opera-
+tions are called CRUD operations, for Create, Read, Update, and Delete. In
+other cases, they are known as SCRUD because of an added Search (or Find)
+operation. Some NOSQL systems also provide a high-level query language,
+but it may not have the full power of SQL; only a subset of SQL querying
+capabilities would be provided. In particular, many NOSQL systems do not
+provide join operations as part of the query language itself; the joins need to
+be implemented in the application programs.
+
+3. Versioning: Some NOSQL systems provide storage of multiple versions of
+the data items, with the timestamps of when the data version was created.
+We will discuss this aspect in Section 24.5 when we present column-based
+NOSQL systems.
+
+In the next section, we give an overview of the various categories of NOSQL
+systems.
+
+24.1.3 Categories of NOSQL Systems
+
+NOSQL systems have been characterized into four major categories, with some
+additional categories that encompass other types of systems. The most common
+categorization lists the following four major categories:
+
+887

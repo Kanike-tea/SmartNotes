@@ -1,0 +1,66 @@
+Digital Design and Computer Organization(BCS302)
+
+LY) Qit+1)=D
+
+DFF
+Q D NY 1
+0 0
+
+1
+0 1 1 0 |
+1 0 0 1
+1 1 1
+JKFF
+
+Write Verilog code for Flipflops
+
+SR flipflop
+
+KIA
+qactt = TQ’
+
+aKa
+
+JK Flipflop
+
+module sr(clk,s,r,q);
+input clk,s,2j
+output qi
+
+reg qi
+
+always @(posedge clk)
+begin
+
+case ({s,r})
+
+2"b00: q <= gi // No change
+
+2'b01: q <= 1'b0; // reset
+
+2'b10: q <= 1'bl; // set
+
+2"bll: q <= 1'bx; // Invalid inputs
+endcase
+
+end
+
+endmodule
+
+Dr Ajay V G, Dept. of CSE , SVIT
+
+module jk( input j, input k, input clk, output reg q);
+
+always @ (posedge clk)
+
+1 case ({3,})
+
+2'b00 s qq
+2"DOL sg = 0;
+210s qed;
+2'blL sq <q
+endcase
+
+endmodule
+
+Page 38

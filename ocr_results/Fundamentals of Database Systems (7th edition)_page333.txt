@@ -1,0 +1,47 @@
+include the surrogate key attribute Owner_id as foreign key in each relation corre-
+sponding to a superclass of the category, to specify the correspondence in values
+between the surrogate key and the original key of each superclass. Notice that if a
+particular PERSON (or BANK or COMPANY) entity is not a member of OWNER, it
+would have a NULL value for its Owner_id attribute in its corresponding tuple in the
+PERSON (or BANK or COMPANY) relation, and it would not have a tuple in the
+OWNER relation. It is also recommended to add a type attribute (not shown in Fig-
+ure 9.7) to the OWNER relation to indicate the particular entity type to which each
+tuple belongs (PERSON or BANK or COMPANY).
+
+For a category whose superclasses have the same key, such as VEHICLE in Figure 4.8,
+there is no need for a surrogate key. The mapping of the REGISTERED_VEHICLE
+category, which illustrates this case, is also shown in Figure 9.7.
+
+9.3 Summary
+
+In Section 9.1, we showed how a conceptual schema design in the ER model can
+be mapped to a relational database schema. An algorithm for ER-to-relational
+mapping was given and illustrated by examples from the COMPANY database.
+Table 9.1 summarized the correspondences between the ER and relational
+model constructs and constraints. Next, we added additional steps to the algo-
+rithm in Section 9.2 for mapping the constructs from the EER model into the
+relational model. Similar algorithms are incorporated into graphical database
+design tools to create a relational schema from a conceptual schema design
+automatically.
+
+Review Questions
+
+9.1. (a) Discuss the correspondences between the ER model constructs and the
+relational model constructs. Show how each ER model construct can be
+mapped to the relational model and discuss any alternative mappings.
+(b) Discuss the options for mapping EER model constructs to relations, and
+the conditions under which each option could be used.
+
+Exercises
+
+9.2. Map the UNIVERSITY database schema shown in Figure 3.20 into a rela-
+tional database schema.
+
+9.3. Try to map the relational schema in Figure 6.14 into an ER schema. This is
+part of a process known as reverse engineering, where a conceptual schema
+is created for an existing implemented database. State any assumptions
+you make.
+
+Exercises
+
+303

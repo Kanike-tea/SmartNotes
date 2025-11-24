@@ -1,0 +1,51 @@
+738
+
+Chapter 19 Query Optimization
+
+In this example, the attributes retrieved are only from one relation: EMPLOYEE; the
+selection condition is also on that one relation. However, there is a referential integ-
+rity constraint that Employee.Dno is a foreign key that refers to the primary key
+Department.Dnumber. Therefore, this query can be transformed by removing the
+DEPARTMENT relation from the query and thus avoiding the inner join as follows:
+
+SELECT Lname, Salary
+FROM EMPLOYEE
+WHERE EMPLOYEE.Dno IS NOT NULL and EMPLOYEE Salary>100000
+
+This type of transformation is based on the primary-key/foreign-key relationship
+semantics, which are a constraint between the two relations.
+
+With the inclusion of active rules and additional metadata in database systems (see
+Chapter 26), semantic query optimization techniques are being gradually incorpo-
+rated into DBMSs.
+
+19.11 Summary
+
+In the previous chapter, we presented the strategies for query processing used by
+relational DBMSs. We considered algorithms for various standard relational opera-
+tors, including selection, projection, and join. We also discussed other types of
+joins, including outer join, semi-join, and anti-join, and we discussed aggregation
+as well as external sorting. In this chapter, our goal was to focus on query optimiza-
+tion techniques used by relational DBMSs. In Section 19.1 we introduced the nota-
+tion for query trees and graphs and described heuristic approaches to query
+optimization; these approaches use heuristic rules and algebraic techniques to
+improve the efficiency of query execution. We showed how a query tree that repre-
+sents a relational algebra expression can be heuristically optimized by reorganizing
+the tree nodes and transforming the tree into another equivalent query tree that is
+more efficient to execute. We also gave equivalence-preserving transformation
+rules and a systematic procedure for applying them to a query tree. In Section 19.2
+we described alternative query evaluation plans, including pipelining and material-
+ized evaluation. Then we introduced the notion of query transformation of SQL
+queries; this transformation optimizes nested subqueries. We also illustrated with
+examples of merging subqueries occurring in the FROM clause, which act as
+derived relations or views. We also discussed the technique of materializing views.
+
+We discussed in some detail the cost-based approach to query optimization in
+Section 19.3. We discussed information maintained in catalogs that the query
+optimizer consults. We also discussed histograms to maintain distribution of
+important attributes. We showed how cost functions are developed for some
+database access algorithms for selection and join in Sections 19.4 and 19.5, respec-
+tively. We illustrated with an example in Section 19.6 how these cost functions
+are used to estimate the costs of different execution strategies. A number of addi-
+tional issues such as display of query plans, size estimation of results, plan cach-
+ing and top-k results optimization were discussed in Section 19.7. Section 19.8

@@ -1,0 +1,51 @@
+25.3 Hadoop Distributed File System (HDFS)
+
+2. Replication is used to provide reliability and high availability. Each block is
+replicated (default is three copies) to a number of nodes in the cluster. The
+highly contentious files like MapReduce job libraries would have a higher
+number of replicas to reduce network traffic.
+
+3. The network traffic is kept to a minimum. For reads, clients are directed to
+the closest DataNode. As far as possible, a local file system read is attempted
+and involves no network traffic; the next choice is a copy on a node on the
+same rack before going to another rack. For writes, to reduce network band-
+width utilization, the first copy is written to the same node as the client. For
+other copies, travel across racks is minimized.
+
+NameNode. The NameNode maintains an image of the file system comprising
+i-nodes and corresponding block locations. Changes to the file system are main-
+tained in a Write-ahead commit log (see the discussion of Write-ahead logs in
+Chapter 22) called the Journal. Checkpoints are taken for purposes of recovery;
+they represent a persistent record of the image without the dynamic information
+related to the block placement. Block placement information is obtained from
+the DataNodes periodically as described below. During Restart, the image is
+restored to the last checkpoint and the journal entries are applied to that image.
+A new checkpoint and empty journal are created so that the NameNode can start
+accepting new client requests. The startup time of a NameNode is proportional
+to the Journal file’s size. Merging the checkpoint with the Journal periodically
+reduces restart time.
+
+Note that with the above architecture, it is catastrophic to have any corruption of
+the Checkpoint or the Journal. To guard against corruption, both are written to
+multiple directories on different volumes.
+
+Secondary NameNodes. These are additional NameNodes that can be created
+to perform either the checkpointing role or a backup role. A Checkpoint node peri-
+odically combines existing checkpoint and journal files. In backup mode, it acts like
+another storage location for the Journal for the primary NameNode. The backup
+NameNode remains up-to-date with the file system and can take over on failure. In
+Hadoop V1, this takeover must be done manually.
+
+DataNodes: Blocks are stored on a DataNode in the node’s native file system. The
+NameNode directs clients to the DataNodes that contain a copy of the block they
+want to read. Each block has its representation in two files in the native file system:
+a file containing the data and a second file containing the metadata, which includes
+the checksums for the block data and the block’s generation stamp. DataNodes and
+NameNodes do not communicate directly but via a so-called heartbeat mechanism,
+which refers to a periodic reporting of the state by the DataNode to the NameNode;
+the report is called a Block Report. The report contains the block id, the generation
+stamp, and the length for each block. The block locations are not part of the
+namespace image. They must be obtained from the block reports, and they change
+as blocks are moved around. The MapReduce Job Tracker, along with the
+
+923

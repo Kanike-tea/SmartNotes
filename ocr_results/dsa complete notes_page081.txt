@@ -1,0 +1,54 @@
+Data Structures and Applications (BCS304) Module III
+
+To add two polynomials, we examine their terms starting at the NODEs pointed to by a and b.
+
+1.
+
+If a>expon = b—expon, we add the two coefficients a—coef + b—coef and create a new
+term for the result c. a = a—link; b = blink;
+
+If a—expon < b—expon, then we create a duplicate term of b, attach this term to the
+result,called c, and b = blink;
+
+. Ifa—expon > b—expon, then we create a duplicate term of a, attach this term to the result,
+
+called c, and a = a—link;
+
+Adding two polynomials represented as singly Linked List
+
+POLY *Pointer padd(POLY * a, POLY * b) /* return a polynomial which is the sum of a and
+b*/
+{
+POLY * c,*tempa, *tempb,*lastc;
+int sum;
+c=(POLY*)malloc(sizeof(POLY))
+c->link=NULL
+tempa=a
+tempb=b
+lastc=c;
+while (tempa!=NULL && tempb!=NULL)
+{
+switch (COMPARE(tempa—expon, tempb—expon))
+{
+case -1: laste=attach(tempb—-coef, tempb—expon, laste);
+tempb = tempb—link;
+break;
+case 0: sum =tempa—coef + tempb—coef;
+if (sum)
+{
+lastc=attach(sum, tempa—expon, lastc);
+tempa = tempa—link; tempb = tempb—link;
+}
+break;
+case 1: lastc=attach(tempa—coef,tempa—expon, lastc);
+tema = tempa—link;
+
+/* copy rest of list a and then list b */
+While(tempa!=NULL)
+{
+lastc=attach (tempa—-coef,tempa—expon, lastc);
+tempa=tempa->link;
+
+}
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 6

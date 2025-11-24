@@ -1,0 +1,78 @@
+16.39.
+
+16.40.
+
+16.41.
+
+16.42.
+
+16.43.
+
+16.44,
+
+16.45.
+
+16.46.
+
+16.47.
+
+16.48.
+
+3943, 4750, 6975, 4981, and 9208. The file uses eight buckets, numbered 0 to
+7. Each bucket is one disk block and holds two records. Load these records
+into the file in the given order, using the hash function h(K) = K mod 8. Cal-
+culate the average number of block accesses for a random retrieval on Part#.
+
+Load the records of Exercise 16.31 into expandable hash files based on
+extendible hashing. Show the structure of the directory at each step, and the
+global and local depths. Use the hash function h(K) = K mod 128.
+
+Load the records of Exercise 16.31 into an expandable hash file, using linear
+hashing. Start with a single disk block, using the hash function hy = K mod 2°,
+and show how the file grows and how the hash functions change as the
+records are inserted. Assume that blocks are split whenever an overflow
+occurs, and show the value of at each stage.
+
+Compare the file commands listed in Section 16.5 to those available on a file
+access method you are familiar with.
+
+Suppose that we have an unordered file of fixed-length records that uses an
+unspanned record organization. Outline algorithms for insertion, deletion,
+and modification of a file record. State any assumptions you make.
+
+Suppose that we have an ordered file of fixed-length records and an unor-
+dered overflow file to handle insertion. Both files use unspanned records.
+Outline algorithms for insertion, deletion, and modification of a file record
+and for reorganizing the file. State any assumptions you make.
+
+Can you think of techniques other than an unordered overflow file that can
+be used to make insertions in an ordered file more efficient?
+
+Suppose that we have a hash file of fixed-length records, and suppose that
+overflow is handled by chaining. Outline algorithms for insertion, deletion,
+and modification of a file record. State any assumptions you make.
+
+Can you think of techniques other than chaining to handle bucket overflow
+in external hashing?
+
+Write pseudocode for the insertion algorithms for linear hashing and for
+extendible hashing.
+
+Write program code to access individual fields of records under each of the fol-
+lowing circumstances. For each case, state the assumptions you make concern-
+ing pointers, separator characters, and so on. Determine the type of information
+needed in the file header in order for your code to be general in each case.
+
+a. Fixed-length records with unspanned blocking
+b. Fixed-length records with spanned blocking
+
+c. Variable-length records with variable-length fields and spanned blocking
+d. Variable-length records with repeating groups and spanned blocking
+
+e. Variable-length records with optional fields and spanned blocking
+
+f. Variable-length records that allow all three cases in parts c, d, and e
+
+Exercises
+
+597

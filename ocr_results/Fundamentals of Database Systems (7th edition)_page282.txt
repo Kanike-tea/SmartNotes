@@ -1,0 +1,49 @@
+252 Chapter 8 The Relational Algebra and Relational Calculus
+
+Figure 8.6
+Result of the JOIN operation DEPT_MGR < DEPARTMENT ™ iigy_sn—ssn& MPLOYEE.
+DEPT_MGR
+Dname Dnumber Mgr_ssn eee Fname Minit Lname Ssn
+Research 5 333445555 aa Franklin T Wong 333445555
+Administration 4 987654321 ot Jennifer s Wallace | 987654321
+Headquarters 1 888665555 aa James E Borg 888665555
+
+illustrating CARTESIAN PRODUCT, which included the following sequence of
+operations:
+
+EMP_DEPENDENTS < EMPNAMES x DEPENDENT
+ACTUAL_DEPENDENTS < Ggen-€scn(EMP_DEPENDENTS)
+
+These two operations can be replaced with a single JOIN operation as follows:
+ACTUAL_DEPENDENTS < EMPNAMES  g4,,-cognDEPENDENT
+
+The general form of a JOIN operation on two relations® R(Aj, A>, ... , A,) and
+S(By, By, «+.» Byy) is
+
+R™ coin condition>S
+
+The result of the JOIN is a relation Q with n + m attributes Q(A;, A, ..., Ay» By, Ba,
+
+. »B,,) in that order; Q has one tuple for each combination of tuples—one from
+Rand one from S—whenever the combination satisfies the join condition. This is
+the main difference between CARTESIAN PRODUCT and JOIN. In JOIN, only combi-
+nations of tuples satisfying the join condition appear in the result, whereas in the
+CARTESIAN PRODUCT all combinations of tuples are included in the result. The
+join condition is specified on attributes from the two relations R and S and is
+evaluated for each combination of tuples. Each tuple combination for which the
+join condition evaluates to TRUE is included in the resulting relation Q as a single
+combined tuple.
+
+A general join condition is of the form
+<condition> AND <condition> AND ... AND <condition>
+
+where each <condition> is of the form A; 0 Bj, A; is an attribute of R, B; is an attri-
+bute of S, Aj and B; have the same domain, and 9 (theta) is one of the comparison
+operators {=, <, <, >, =, #}. A JOIN operation with such a general join condition is
+called a THETA JOIN. Tuples whose join attributes are NULL or for which the join
+condition is FALSE do not appear in the result. In that sense, the JOIN operation
+does not necessarily preserve all of the information in the participating relations,
+because tuples that do not get combined with matching ones in the other relation
+do not appear in the result.
+
+SAgain, notice that R and S can be any relations that result from general relational algebra expressions.

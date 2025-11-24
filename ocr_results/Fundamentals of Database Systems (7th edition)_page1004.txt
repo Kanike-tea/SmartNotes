@@ -1,0 +1,53 @@
+974 Chapter 26 Enhanced Data Models
+
+Figure 26.6
+
+Trigger T1 illustrating
+the syntax for defining
+triggers in SQL-99.
+
+T1: CREATE TRIGGER Total_sal1
+AFTER UPDATE OF Salary ON EMPLOYEE
+REFERENCING OLD ROW AS O, NEW ROW ASN
+FOR EACH ROW
+WHEN ( N.Dno IS NOT NULL)
+UPDATE DEPARTMENT
+SET Total_sal = Total_sal + N.salary ~ O.salary
+WHERE Dno = N.Dno;
+
+T2: CREATE TRIGGER Total_sal2
+AFTER UPDATE OF Salary ON EMPLOYEE
+REFERENCING OLD TABLE AS O, NEW TABLE AS N
+FOR EACH STATEMENT
+WHEN EXISTS ( SELECT «FROM N WHERE N.Dno IS NOT NULL) OR
+EXISTS ( SELECT « FROM O WHERE O.Dno IS NOT NULL )
+UPDATE DEPARTMENT AS D
+SET D.Total_sal = D.Total_sal
++ (SELECT SUM (N.Salary) FROM N WHERE D.Dno=N.Dno )
+— (SELECT SUM (O.Salary) FROM O WHERE D.Dno=O.Dno )
+WHERE Dno IN ( ( SELECT Dno FROM N ) UNION ( SELECT Dno FROM O ) );
+
+26.2 Temporal Database Concepts
+
+Temporal databases, in the broadest sense, encompass all database applications that
+require some aspect of time when organizing their information. Hence, they pro-
+vide a good example to illustrate the need for developing a set of unifying concepts
+for application developers to use. Temporal database applications have been devel-
+oped since the early days of database usage. However, in creating these applications,
+it is mainly left to the application designers and developers to discover, design, pro-
+gram, and implement the temporal concepts they need. There are many examples
+of applications where some aspect of time is needed to maintain the information in
+a database. These include healthcare, where patient histories need to be maintained;
+insurance, where claims and accident histories are required as well as information
+about the times when insurance policies are in effect; reservation systems in general
+(hotel, airline, car rental, train, and so on), where information on the dates and
+times when reservations are in effect are required; scientific databases, where data
+collected from experiments includes the time when each data is measured; and so
+on. Even the two examples used in this book may be easily expanded into temporal
+applications. In the COMPANY database, we may wish to keep SALARY, JOB, and
+PROJECT histories on each employee. In the UNIVERSITY database, time is already
+included in the SEMESTER and YEAR of each SECTION of a COURSE, the grade his-
+tory of a STUDENT, and the information on research grants. In fact, it is realistic to
+conclude that the majority of database applications have some temporal informa-
+tion. However, users often attempt to simplify or ignore temporal aspects because
+of the complexity that they add to their applications.

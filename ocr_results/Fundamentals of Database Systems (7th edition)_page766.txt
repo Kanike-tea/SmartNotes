@@ -1,0 +1,55 @@
+736
+
+Chapter 19 Query Optimization
+
+American National Standards Institute). The computation clause not only allows
+for ease of application development but also offers the Oracle RDBMS an opportu-
+nity to perform better optimization.
+
+19.9.5 Hints
+
+An interesting addition to the Oracle query optimizer is the capability for an applica-
+tion developer to specify hints (also called query annotations or directives in other
+systems) to the optimizer. Hints are embedded in the text of an SQL statement. Hints
+are commonly used to address the infrequent cases where the optimizer chooses a
+suboptimal plan. The idea is that an application developer occasionally might need
+to override the optimizer decisions based on cost or cardinality mis-estimations. For
+example, consider the EMPLOYEE table shown in Figure 5.6. The Sex column of that
+table has only two distinct values. If there are 10,000 employees, then the optimizer,
+in the absence of a histogram on the Sex column, would estimate that half are male
+and half are female, assuming a uniform data distribution. If a secondary index
+exists, it would more than likely not be used. However, if the application developer
+knows that there are only 100 male employees, a hint could be specified in an SQL
+query whose WHERE-clause condition is Sex=“M’ so that the associated index would
+be used in processing the query. Various types of hints can be specified for different
+operations; these hints include but are not limited to the following:
+
+The access path for a given table
+The join order for a query block
+
+.
+.
+= A particular join method for a join between tables
+.
+
+The enabling or disabling of a transformation
+
+19.9.6 Outlines
+
+In Oracle RDBMSs, outlines are used to preserve execution plans of SQL state-
+ments or queries. Outlines are implemented and expressed as a collection of
+hints, because hints are easily portable and comprehensible. Oracle provides an
+extensive set of hints that are powerful enough to specify any execution plan, no
+matter how complex. When an outline is used during the optimization of an SQL
+statement, these hints are applied at appropriate stages by the optimizer (and
+other components). Every SQL statement processed by the Oracle optimizer
+automatically generates an outline that can be displayed with the execution plan.
+Outlines are used for purposes such as plan stability, what-if analysis, and perfor-
+mance experiments.
+
+19.9.7 SQL Plan Management
+
+Execution plans for SQL statements have a significant impact on the overall perfor-
+mance of a database system. New optimizer statistics, configuration parameter
+changes, software updates, introduction of new query optimization and processing
+techniques, and hardware resource utilizations are among a multitude of factors

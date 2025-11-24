@@ -1,0 +1,47 @@
+Database Management System [BCS403]
+
+subsystem is responsible for making sure that the database is restored to the state it was in
+before the transaction started executing. Disk backup is also necessary in case of a catastrophic
+
+disk failure.
+
+6. Providing Multiple User Interfaces
+Because many types of users with varying levels of technical knowledge use a database, a
+
+DBMS should provide a variety of user interfaces. These include
+
+e Query languages for casual users
+e Programming language interfaces for application programmers
+e Forms and command codes for parametric users
+
+e Menu-driven interfaces and natural language interfaces for standalone users.
+
+7. Representing Complex Relationships among Data
+A database may include numerous varieties of data that are interrelated in many ways.
+For example each section record <is related to one course record and to a number of
+GRADE_REPORT records—one for each student who completed that section. A DBMS must
+have the capability to represent a variety of complex relationships among the data, to define
+new relationships as they arise, and to retrieve and update related data easily and efficiently.
+
+8. Enforcing Integrity Constraints
+
+Most database applications are such that the semantics of the data require that it satisfy certain
+
+restrictions in order to make sense.
+The simplest type of integrity constraint involves specifying a data type for each data item.
+
+For example, in student table we specified that the value of Name must be a string of no more
+
+than 30 alphabetic characters.
+
+More complex type of constraint is referential integrity involves specifying that a record in
+one file must be related to records in other files. For example, in university database, we can
+
+specify that every section record must be related to a course record.
+
+Another type of constraint specifies uniqueness on data item values, such as every course
+record must have a unique value for Course_number. This is known as a key or uniqueness
+
+constraint.
+
+https://vtucode.in Page 13

@@ -1,0 +1,51 @@
+218 — Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+Here the asterisk (*) refers to the rows (tuples), so COUNT (*) returns the number of
+rows in the result of the query. We may also use the COUNT function to count val-
+ues in a column rather than tuples, as in the next example.
+
+Query 23. Count the number of distinct salary values in the database.
+
+Q23: SELECT COUNT (DISTINCT Salary)
+FROM EMPLOYEE;
+
+If we write COUNT(SALARY) instead of COUNT(DISTINCT SALARY) in Q23, then
+duplicate values will not be eliminated. However, any tuples with NULL for SALARY
+will not be counted. In general, NULL values are discarded when aggregate func-
+tions are applied to a particular column (attribute); the only exception is for
+COUNT(*) because tuples instead of values are counted. In the previous examples,
+any Salary values that are NULL are not included in the aggregate function calcula-
+tion. The general rule is as follows: when an aggregate function is applied to a col-
+lection of values, NULLs are removed from the collection before the calculation; if
+the collection becomes empty because all values are NULL, the aggregate function
+will return NULL (except in the case of COUNT, where it will return 0 for an empty
+collection of values).
+
+The preceding examples summarize a whole relation (Q19, Q21, Q23) or a selected
+subset of tuples (Q20, Q22), and hence all produce a table with a single row or a
+single value. They illustrate how functions are applied to retrieve a summary value
+or summary tuple from a table. These functions can also be used in selection condi-
+tions involving nested queries. We can specify a correlated nested query with an
+aggregate function, and then use the nested query in the WHERE clause of an outer
+query. For example, to retrieve the names of all employees who have two or more
+dependents (Query 5), we can write the following:
+
+5: SELECT —_Lname, Fname
+FROM EMPLOYEE
+WHERE (SELECT COUNT (*)
+FROM DEPENDENT
+WHERE Ssn=Essn) >= 2;
+
+The correlated nested query counts the number of dependents that each employee
+has; if this is greater than or equal to two, the employee tuple is selected.
+
+SQL also has aggregate functions SOME and ALL that can be applied to a col-
+lection of Boolean values; SOME returns TRUE if at least one element in the
+collection is TRUE, whereas ALL returns TRUE if all elements in the collection
+are TRUE.
+
+7.1.8 Grouping: The GROUP BY and HAVING Clauses
+
+In many cases we want to apply the aggregate functions to subgroups of tuples in a
+relation, where the subgroups are based on some attribute values. For example, we
+may want to find the average salary of employees in each department or the number

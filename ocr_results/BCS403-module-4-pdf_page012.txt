@@ -1,0 +1,59 @@
+Database Management System [BCS403]
+
+Pname | Pnumber |---| Essn Pno | Hours Phame ‘Count (*)
+ProductY 2 123456789 | 2 75 | | >| Product a
+ProductY 2 453453453| 2 | 200 —» | Computerization] a
+ProductY [2 333445655 2 | 10.0 |_| |-®| Reorganization 3
+Computerization 10 399445555; 10 | 10.0 |] Newbanofits a
+Computerization | 10 -..[990887777| 10 | 10.0 | ||| Resuttoraas
+Computerization | 10 987987987 | 10 | 35.0 imaeeaaniies
+Reorganization 20 333445555 | 20 100 |]
+
+Reorganization 20 987654321 | 20 | 15.0
+
+Reorganization 20 888665555 20 NULL |_]
+
+Newbenefits 30 987987987 | 30 | 5.0
+
+Newbenofits 30 087654321 | 30 | 200
+
+Newbenefits | 30 999887777 | 30 | 300
+Aftor applying the HAVING clause condition 1
+
+Example: For each project, retrieve the project number, the project name, and the number of
+employees from department 5 who work on the project.
+
+SELECT Pnumber, Pname, COUNT (*)
+
+FROM PROJECT, WORKS_ON, EMPLOYEE
+
+WHERE Pnumber=Pno AND. Ssn=Essn AND Dno=5
+
+GROUP BY Pnumber, Pname;
+
+Example: For each department that has more than five employees, retrieve the department number
+and the number of its employees who are making more than $40,000.
+
+SELECT Dnumber, COUNT (*)
+
+FROM DEPARTMENT, EMPLOYEE
+
+WHERE Dnumber=Dno AND Salary>40000 AND
+
+( SELECT Dno
+
+FROM EMPLOYEE
+
+GROUP BY Dno
+
+HAVING COUNT (*) > 5);
+
+1.1.9 Discussion and Summary of SQL Queries
+
+A retrieval query in SQL can consist of up to six clauses, but only the first two—SELECT and
+FROM—are mandatory.The query can span several lines, and is ended by a semicolon. Query
+terms are separated by spaces, and parentheses can be used to group relevant parts of a query in
+the standard way.The clauses are specified in the following order, with the clauses between square
+brackets [ ... ] being optional:
+
+https://vtucode.in page 30

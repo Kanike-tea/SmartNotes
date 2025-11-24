@@ -1,0 +1,49 @@
+Review Questions
+
+insertion is very simple. We discussed the deletion problem and the use of dele-
+tion markers.
+
+Ordered files shorten the time required to read records in order of the ordering
+field. The time required to search for an arbitrary record, given the value of its
+ordering key field, is also reduced if a binary search is used. However, maintaining
+the records in order makes insertion very expensive; thus the technique of using an
+unordered overflow file to reduce the cost of record insertion was discussed. Over-
+flow records are merged with the master file periodically, and deleted records are
+physically dropped during file reorganization.
+
+Hashing provides very fast access to an arbitrary record of a file, given the value of
+its hash key. The most suitable method for external hashing is the bucket technique,
+with one or more contiguous blocks corresponding to each bucket. Collisions caus-
+ing bucket overflow are handled by open addressing, chaining, or multiple hashing.
+Access on any nonhash field is slow, and so is ordered access of the records on any
+field. We discussed three hashing techniques for files that grow and shrink in the
+number of records dynamically: extendible, dynamic, and linear hashing. The first
+two use the higher-order bits of the hash address to organize a directory. Linear
+hashing is geared to keep the load factor of the file within a given range and adds
+new buckets linearly.
+
+We briefly discussed other possibilities for primary file storage and organization,
+such as B-trees, and files of mixed records, which implement relationships among
+records of different types physically as part of the storage structure. We reviewed
+the recent advances in disk technology represented by RAID (redundant arrays of
+inexpensive (or independent) disks), which has become a standard technique in
+large enterprises to provide better reliability and fault tolerance features in storage.
+Finally, we reviewed some modern trends in enterprise storage systems: storage
+area networks (SANs), network-attached storage (NAS), iSCSI and other network
+based protocols, automatic storage tiering, and finally object-based storage,
+which is playing a major role in storage architecture of data centers offering
+cloud-based services.
+
+Review Questions
+16.1. What is the difference between primary and secondary storage?
+16.2. Why are disks, not tapes, used to store online database files?
+
+16.3. Define the following terms: disk, disk pack, track, block, cylinder, sector,
+interblock gap, and read/write head.
+
+16.4. Discuss the process of disk initialization.
+16.5. Discuss the mechanism used to read data from or write data to the disk.
+
+16.6. What are the components of a disk block address?
+
+593

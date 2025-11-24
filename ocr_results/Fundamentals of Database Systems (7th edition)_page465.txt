@@ -1,0 +1,59 @@
+13.3 XML Documents, DTD, and XML Schema 435
+
+(a) <IDOCTYPE Projects [
+<ELEMENT Projects (Project+)>
+<ELEMENT Project (Name, Number, Location, Dept_no?, Workers)>
+<IATTLIST Project
+Projld ID #REQUIRED>
+<IELEMENT Name (#PCDATA)>
+<!ELEMENT Number (#PCDATA)
+<ELEMENT Location (#PCDATA)>
+<ELEMENT Dept_no (#PCDATA)>
+<IELEMENT Workers (Worker*)>
+<IELEMENT Worker (Ssn, Last_name?, First_name?, Hours)>
+<IELEMENT Ssn (#PCDATA)>
+<ELEMENT Last_name (#PCDATA)>
+<ELEMENT First_name (#PCDATA)>
+<ELEMENT Hours (#PCDATA)>
+1>
+
+(b) <IDOCTYPE Company [
+<ELEMENT Company( (Employee|Department|Project)*)>
+<ELEMENT Department (DName, Location+)>
+<IATTLIST Department
+Deptld ID #REQUIRED>
+
+<IELEMENT Employee (EName, Job, Salary)>
+<IATTLIST Project
+Empld ID #REQUIRED
+Deptid IDREF #REQUIRED>
+<IELEMENT Project (PName, Location)
+<IATTLIST Project
+Projld ID #REQUIRED
+Workers IDREFS #IMPLIED>
+<!ELEMENT DName (#PCDATA)>
+<ELEMENT EName (#PCDATA)>
+<!ELEMENT PName (#PCDATA)>
+<IELEMENT Job (#PCDATA)
+<ELEMENT Location (#PCDATA)>
+<IELEMENT Salary (#PCDATA)>
+1>
+
+Figure 13.4
+
+(a) An XML DTD
+file called Projects.
+(b) An XML
+
+DTD file called
+Company.
+
+declaration of the document. For example, we could change the first line in Fig-
+ure 13.3 to the following:
+
+<?xml version = “1.0” standalone = “no"?>
+<!DOCTYPE Projects SYSTEM “proj.dtd">
+
+When the value of the standalone attribute in an XML document is “no”, the docu-
+ment needs to be checked against a separate DTD document or XML schema docu-
+ment (see Section 13.2.2). The DTD file shown in Figure 13.4 should be stored in

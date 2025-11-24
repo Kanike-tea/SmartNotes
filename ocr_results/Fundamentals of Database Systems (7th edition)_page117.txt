@@ -1,0 +1,51 @@
+3.8 Example of Other Notation: UML Class Diagrams
+
+Relationship types are called associations in UML terminology, and relationship
+instances are called links. A binary association (binary relationship type) is repre-
+sented as a line connecting the participating classes (entity types), and may option-
+ally have a name. A relationship attribute, called a link attribute, is placed in a box
+that is connected to the association’s line by a dashed line. The (min, max) notation
+described in Section 3.7.4 is used to specify relationship constraints, which are
+called multiplicities in UML terminology. Multiplicities are specified in the form
+min..max, and an asterisk (*) indicates no maximum limit on participation. How-
+ever, the multiplicities are placed on the opposite ends of the relationship when com-
+pared with the (min, max) notation discussed in Section 3.7.4 (compare Fig-
+ures 3.15 and 3.16). In UML, a single asterisk indicates a multiplicity of 0 ..*, anda
+single 1 indicates a multiplicity of 1..1. A recursive relationship type (see Section 3.4.2)
+is called a reflexive association in UML, and the role names—like the multiplicities—
+are placed at the opposite ends of an association when compared with the placing of
+role names in Figure 3.15.
+
+In UML, there are two types of relationships: association and aggregation.
+Aggregation is meant to represent a relationship between a whole object and its com-
+ponent parts, and it has a distinct diagrammatic notation. In Figure 3.16, we modeled
+the locations of a department and the single location of a project as aggregations.
+However, aggregation and association do not have different structural properties, and
+the choice as to which type of relationship to use—aggregation or association—is
+somewhat subjective. In the ER model, both are represented as relationships.
+
+UML also distinguishes between unidirectional and bidirectional associations
+(or aggregations). In the unidirectional case, the line connecting the classes is dis-
+played with an arrow to indicate that only one direction for accessing related
+objects is needed. If no arrow is displayed, the bidirectional case is assumed, which
+is the default. For example, if we always expect to access the manager of a depart-
+ment starting from a DEPARTMENT object, we would draw the association line rep-
+resenting the MANAGES association with an arrow from DEPARTMENT to
+EMPLOYEE. In addition, relationship instances may be specified to be ordered.
+For example, we could specify that the employee objects related to each depart-
+ment through the WORKS_FOR association (relationship) should be ordered by
+their Start_date attribute value. Association (relationship) names are optional in
+UML, and relationship attributes are displayed in a box attached with a dashed
+line to the line representing the association/aggregation (see Start_date and Hours
+in Figure 3.16).
+
+The operations given in each class are derived from the functional requirements of
+the application, as we discussed in Section 3.1. It is generally sufficient to specify the
+operation names initially for the logical operations that are expected to be applied
+to individual objects of a class, as shown in Figure 3.16. As the design is refined,
+more details are added, such as the exact argument types (parameters) for each
+operation, plus a functional description of each operation. UML has function
+descriptions and sequence diagrams to specify some of the operation details, but
+these are beyond the scope of our discussion.
+
+87

@@ -1,0 +1,52 @@
+640
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Indexing of Strings: There are a couple of issues that are of particular concern
+when indexing strings. Strings can be variable length (e.g., VARCHAR data type in
+SQL; see Chapter 6) and strings may be too long limiting the fan-out. If a B*-tree
+index is to be built with a string as a search key, there may be an uneven number of
+keys per index node and the fan-out may vary. Some nodes may be forced to split
+when they become full regardless of the number of keys in them. The technique of
+prefix compression alleviates the situation. Instead of storing the entire string in
+the intermediate nodes, it stores only the prefix of the search key adequate to distin-
+guish the keys that are being separated and directed to the subtree. For example, if
+Lastname was a search key and we were looking for “Navathe”, the nonleaf node
+may contain “Nac” for Nachamkin and “Nay” for Nayuddin as the two keys on
+either side of the subtree pointer that we need to follow.
+
+17.6.3 Tuning Indexes
+The initial choice of indexes may have to be revised for the following reasons:
+
+= Certain queries may take too long to run for lack of an index.
+= Certain indexes may not get utilized at all.
+
+= Certain indexes may undergo too much updating because the index is on an
+attribute that undergoes frequent changes.
+
+Most DBMSs have a command or trace facility, which can be used by the DBA to
+ask the system to show how a query was executed—what operations were per-
+formed in what order and what secondary access structures (indexes) were used. By
+analyzing these execution plans (we will discuss this term further in Chapter 18), it
+is possible to diagnose the causes of the above problems. Some indexes may be
+dropped and some new indexes may be created based on the tuning analysis.
+
+The goal of tuning is to dynamically evaluate the requirements, which sometimes
+fluctuate seasonally or during different times of the month or week, and to reorga-
+nize the indexes and file organizations to yield the best overall performance. Drop-
+ping and building new indexes is an overhead that can be justified in terms of
+performance improvements. Updating of a table is generally suspended while an
+index is dropped or created; this loss of service must be accounted for.
+
+Besides dropping or creating indexes and changing from a nonclustered to a clus-
+tered index and vice versa, rebuilding the index may improve performance. Most
+RDBMSs use B*-trees for an index. If there are many deletions on the index key,
+index pages may contain wasted space, which can be claimed during a rebuild oper-
+ation. Similarly, too many insertions may cause overflows in a clustered index that
+affect performance. Rebuilding a clustered index amounts to reorganizing the
+entire table ordered on that key.
+
+The available options for indexing and the way they are defined, created, and
+reorganized vary from system to system. As an illustration, consider the sparse
+and dense indexes we discussed in Section 17.1. A sparse index such as a primary
+index will have one index pointer for each page (disk block) in the data file; a

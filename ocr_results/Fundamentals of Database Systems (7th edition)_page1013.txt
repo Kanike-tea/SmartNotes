@@ -1,0 +1,63 @@
+26.2 Temporal Database Concepts 983
+
+be identical to the previous tuple version. An alternative approach can be used
+in database systems that support complex structured objects, such as object
+databases (see Chapter 11) or object-relational systems. This approach is called
+attribute versioning.
+
+In attribute versioning, a single complex object is used to store all the temporal
+changes of the object. Each attribute that changes over time is called a time-
+varying attribute, and it has its values versioned over time by adding temporal
+periods to the attribute. The temporal periods may represent valid time, transac-
+tion time, or bitemporal, depending on the application requirements. Attributes
+that do not change over time are called non-time-varying and are not associated
+with the temporal periods. To illustrate this, consider the example in Fig-
+ure 26.10, which is an attribute-versioned valid time representation of EMPLOYEE
+
+class TEMPORAL_SALARY
+
+{ attribute Date Valid_start_time;
+attribute Date Valid_end_time;
+attribute float Salary;
+
+‘
+
+class TEMPORAL_DEPT
+
+{attribute Date Valid_start_time;
+attribute Date Valid_end_time;
+attribute © DEPARTMENT_VT Dept;
+
+‘
+
+class TEMPORAL_SUPERVISOR
+
+{ attribute Date Valid_start_time;
+attribute Date Valid_end_time;
+attribute EMPLOYEE_VT Supervisor;
+
+‘
+
+class TEMPORAL_LIFESPAN
+{ attribute Date Valid_ start time;
+attribute Date Valid end time;
+
+‘
+
+class EMPLOYEE_VT
+(| extent EMPLOYEES )
+
+{attribute _list<TEMPORAL_LIFESPAN> lifespan;
+attribute string Name;
+attribute string Ssn;
+attribute —_list<TEMPORAL_SALARY> Sal_history;
+attribute —_list<TEMPORAL_DEPT> Dept_history;
+
+attribute list <TEMPORAL_SUPERVISOR> _ Supervisor_history;
+
+Figure 26.10
+Possible ODL schema
+for a temporal valid
+time EMPLOYEE_VT
+object class using
+attribute versioning.

@@ -1,0 +1,48 @@
+Table A.17
+
+A.4 ARM Assembler Quick Reference 625
+
+AREA attributes.
+
+Attribute Meaning
+
+ALIGN=<expression> Align the ELF section to a 2°?"*!0 byte boundary.
+ASSOC=<sectionname> If this section is linked, also link <sect i onname>.
+CODE The section contains instructions and is read only.
+DATA The section contains data and is read write.
+NOINIT The data section does not require initialization.
+READONLY The section is read only.
+
+READWRITE The section is read write.
+
+ASSERT
+
+ASSERT <logical-expression>
+
+Assemble time assert. If the logical expression is false, then assembly terminates with an
+error.
+
+CN
+
+<name> CN <numeric-expression>
+
+Set <name> to be an alias for coprocessor register <numeric-expression>.
+
+CODE16, CODE32
+
+CODE16 tells the assembler to assemble the following instructions as 16-bit Thumb
+instructions. CODE32 indicates 32-bit ARM instructions (the default for armasm).
+
+cp
+
+<name> CP <numeric-expression>
+
+Set <name> to be an alias for coprocessor number <numeric-expression>.
+
+DATA
+<label> DATA
+
+The DATA directive indicates that the label points to data rather than code. In Thumb
+mode this prevents the linker from setting the bottom bit of the label. Bit 0 of a
+function pointer or code label is 0 for ARM code and 1 for Thumb code (see the BX
+instruction).

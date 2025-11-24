@@ -1,0 +1,39 @@
+Cache Memory: A block of fast memory placed between the main memory and the core to improve
+memory access performanceS9 . It allows the processor to access frequently used data and
+instructions faster, reducing the need to wait for slower external memory59 . Most ARM-based
+systems use a single-level cache internal to the processor59 .
+
+In Von Neumann architectures, a unified cache stores both data and instructions59 ....
+
+In Harvard architectures, there are separate caches for data and instructions60 . While cache
+increases general performance, it can lead to less predictable execution time, which is a concern for
+real-time systems58 ....
+
+Tightly Coupled Memory (TCM): For real-time systems requiring deterministic code execution,
+where the timing of instruction and data access must be predictable, TCM is used60 .... TCM is fast
+SRAM located very close to the core, guaranteeing the number of clock cycles for fetches61 . TCM
+appears as fast memory in the address map61 .
+
+Harvard Technology with Cache and TCMs: Figure 12 (not provided, but described) illustrates a
+Harvard architecture that combines both caches and TCMs61 .... This approach allows for both
+improved performance through caching and predictable real-time response through TCM62 . The
+
+processor can use the cache for general-purpose memory access and TCM for critical real-time code
+and data that require guaranteed timing.
+
+9.
+
+Complete Instruction Set
+
+The ARMV5E instruction set architecture (ISA) includes various categories of instructions63 ...:
+
+Data Processing Instructions: Manipulate data within registers. These include Move (MOV)65 ,
+Arithmetic (ADD, SUB, RSB)66 ..., Logical (AND, ORR, BIC)68 ..., Comparison (CMP, TST, TEQ)70 ...,
+and Multiply (MUL, MLA, UMULL, UMLAL, SMULL, SMLAL)72 ... instructions. Many of these can use
+the barrel shifter for preprocessing one of the operands64 ....
+
+Load-Store Instructions: Transfer data between memory and processor registers. These include
+Single-Register Transfer (LDR, STR) for words, half-words, and bytes with various addressing modes
+(pre-indexed, post-indexed)76 ..., Multiple Register Transfer (LDM, STM) for transferring sets of
+registers81 ..., and the Swap (SWP) instruction for atomically swapping register content with
+memory content83 ....

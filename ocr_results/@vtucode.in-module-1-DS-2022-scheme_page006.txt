@@ -1,0 +1,60 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+ALGORITHM SPECIFICATION
+
+An algorithm is a finite set of instructions that, if followed, accomplishes a particular task. In
+addition, all algorithms must satisfy the following criteria:
+
+1. Input: There are zero or more quantities that are externally supplied.
+
+2. Output: At least one quantity is produced.
+
+3. Definiteness: Each instruction is clear and unambiguous
+
+4. Finiteness: If we trace out the instructions of an algorithm, then for all cases, the
+algorithm terminates after a finite number of steps.
+
+5. Effectiveness: Every instruction must be basic enough to be carried out, in principle,
+by a person using only pencil and paper. It is not enough that each operation be
+definite as in (3); it also must be feasible.
+
+Algorithm can be described in following ways:
+
+1) We can use natural language consisting of some mathematical equations.
+2) We can use graphic representations such as flowcharts.
+
+3) We can use combination of C and English language.constructs.
+
+¢ Algorithm 1.1: Selection sort algorithm.
+
+for (i=0;i<n;i++)
+
+{
+Examine list[i] to list[n-1] and suppose that the
+smallest integer is,at list[min]; Interchange list[i]
+and list[min];
+
+}
+
+Algorithm 1.2: finding the smallest integer.
+
+assume that minimum is list[i]
+compare current minimum with list[it+l] to list[n-1] and find
+smaller number and make it the new minimum
+
+¢ Algorithm 1.3: Binary search.
+
+Assume that we have n> | distinct integers that are already sorted and stored in the array list.
+That is, list{0]<= list[1]...list{n]
+
+We must figure out if an integer searchnum is in this list.
+
+If it is we should return an index, i, such that list[i] = searchnum.
+
+Ifsearchnum is not present, we should return -1.
+
+Since the list is sorted we may use the following method to search for the value. Let left and
+
+right, respectively, denote the left and right ends of the list to be searched. Initially, left = 0
+
+vtucode.in 7

@@ -1,0 +1,38 @@
+Decrease-and-Conquer 133
+
+problem | of sizen
+
+subproblem
+of size n/2
+
+¥
+
+solution to
+the subproblem
+
+rN
+
+solution to
+the original problem
+
+FIGURE 4.2 Decrease+(by half)-and-conquer technique.
+
+(a"/?)? if n is even and positive,
+a" =) a")? a ifn is odd, (4.2)
+1 ifn=0.
+
+If we compute a” recursively according to formula (4.2) and measure the algo-
+rithm’s efficiency by the number of multiplications, we should expect the algorithm
+to be in © (log n) because, on each iteration, the size is reduced by about a half at
+the expense of one or two multiplications.
+
+A few other examples of decrease-by-a-constant-factor algorithms are given
+in Section 4.4 and its exercises. Such algorithms are so efficient, however, that
+there are few examples of this kind.
+
+Finally, in the variable-size-decrease variety of decrease-and-conquer, the
+size-reduction pattern varies from one iteration of an algorithm to another. Eu-
+clid’s algorithm for computing the greatest common divisor provides a good ex-
+ample of such a situation. Recall that this algorithm is based on the formula
+
+gced(m, n) = ged(n, m mod n).

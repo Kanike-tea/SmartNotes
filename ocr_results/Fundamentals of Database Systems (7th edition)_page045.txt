@@ -1,0 +1,51 @@
+1.4 Actors on the Scene
+
+1.4 Actors on the Scene
+
+For a small personal database, such as the list of addresses discussed in Section 1.1,
+one person typically defines, constructs, and manipulates the database, and there is
+no sharing. However, in large organizations, many people are involved in the
+design, use, and maintenance of a large database with hundreds or thousands of
+users. In this section we identify the people whose jobs involve the day-to-day use
+of a large database; we call them the actors on the scene. In Section 1.5 we consider
+people who may be called workers behind the scene—those who work to maintain
+the database system environment but who are not actively interested in the data-
+base contents as part of their daily job.
+
+1.4.1 Database Administrators
+
+In any organization where many people use the same resources, there is a need for
+achief administrator to oversee and manage these resources. In a database environ-
+ment, the primary resource is the database itself, and the secondary resource is the
+DBMS and related software. Administering these resources is the responsibility of
+the database administrator (DBA). The DBA is responsible for authorizing access
+to the database, coordinating and monitoring its use, and acquiring software and
+hardware resources as needed. The DBA is accountable for problems such as secu-
+rity breaches and poor system response time. In large organizations, the DBA is
+assisted by a staff that carries out these functions.
+
+1.4.2 Database Designers
+
+Database designers are responsible for identifying the data to be stored in the data-
+base and for choosing appropriate structures to represent and store this data. These
+tasks are mostly undertaken before the database is actually implemented and popu-
+lated with data. It is the responsibility of database designers to communicate with
+all prospective database users in order to understand their requirements and to cre-
+ate a design that meets these requirements. In many cases, the designers are on the
+staff of the DBA and may be assigned other staff responsibilities after the database
+design is completed. Database designers typically interact with each potential group
+of users and develop views of the database that meet the data and processing
+requirements of these groups. Each view is then analyzed and integrated with the
+views of other user groups. The final database design must be capable of supporting
+the requirements of all user groups.
+
+1.4.3 End Users
+
+End users are the people whose jobs require access to the database for querying,
+updating, and generating reports; the database primarily exists for their use. There
+are several categories of end users:
+
+= Casual end users occasionally access the database, but they may need differ-
+ent information each time. They use a sophisticated database query interface
+
+15

@@ -1,0 +1,50 @@
+408 Chapter 12. Caches
+
+The cache makes use of this repeated local reference in both time and space. If the
+reference is in time, it is called temporal locality. If it is by address proximity, then it is called
+spatial locality.
+
+12.2 CACHE ARCHITECTURE
+
+ARM uses two bus architectures in its cached cores, the Von Neumann and the Harvard.
+The Von Neumann and Harvard bus architectures differ in the separation of the instruction
+and data paths between the core and memory. A different cache design is used to support
+the two architectures.
+
+In processor cores using the Von Neumann architecture, there is a single cache used
+for instruction and data. This type of cache is known as a unified cache. A unified cache
+memory contains both instruction and data values.
+
+The Harvard architecture has separate instruction and data buses to improve overall
+system performance, but supporting the two buses requires two caches. In processor cores
+using the Harvard architecture, there are two caches: an instruction cache (I-cache) and
+a data cache (D-cache). This type of cache is known as a split cache. In a split cache,
+instructions are stored in the instruction cache and data values are stored in the data cache.
+
+We introduce the basic architecture of caches by showing a unified cache in Figure 12.4.
+The two main elements of a cache are the cache controller and the cache memory. The
+cache memory is a dedicated memory array accessed in units called cache lines. The cache
+controller uses different portions of the address issued by the processor during a memory
+request to select parts of cache memory. We will present the architecture of the cache
+memory first and then proceed to the details of the cache controller.
+
+12.2.1 BASIC ARCHITECTURE OF A CACHE MEMORY
+
+A simple cache memory is shown on the right side of Figure 12.4. It has three main parts:
+a directory store, a data section, and status information. All three parts of the cache memory
+are present for each cache line.
+
+The cache must know where the information stored in a cache line originates from in
+main memory. It uses a directory store to hold the address identifying where the cache line
+was copied from main memory. The directory entry is known as a cache-tag.
+
+A cache memory must also store the data read from main memory. This information is
+held in the data section (see Figure 12.4).
+
+The size of a cache is defined as the actual code or data the cache can store from main
+memory. Not included in the cache size is the cache memory required to support cache-tags
+or status bits.
+
+There are also status bits in cache memory to maintain state information. Two common
+status bits are the valid bit and dirty bit. A valid bit marks a cache line as active, meaning
+it contains live data originally taken from main memory and is currently available to the

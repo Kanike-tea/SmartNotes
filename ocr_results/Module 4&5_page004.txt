@@ -1,0 +1,84 @@
+Microcontrollers - BCS402
+
+0x00000000 :
+0x00000004 :
+0x00000008 :
+0x0000000c :
+0x00000010:
+0x00000014 :
+
+0x00000018
+
+0x0000001c :
+
+Oxe59f fa38
+Oxea0005 02
+Oxe5 9f fa38
+Oxes9f fa38
+Oxe59f fa38
+Oxes9f fa3e
+Oxe59f fa38
+Oxe59f fa3e
+
+RESET: > ldr pc, [pc, #reset]
+UNDEF: b undInstr
+SWI: dr pce, [pe, #swi]
+PABT : Idr_ pe, [pe, #prefetch]
+DABT : dr pce, [pe, #data]
+
+:  ldr pe, [pe, #notassigned]
+ldr pe, [pe, #irq]
+ldr pe, [pe, #fiq]
+
+IRQ
+FIQ
+
+1.3 Exception Priori
+
+Fig 2: Example vector table
+
+ities
+
+Exceptions can occur simultaneously, so the processor has to adopt a priority mechanism.
+
+Table 3 shows the various exceptions that occur on the ARM processor and their associated
+
+priority level.
+
+For instance, the Reset exception is the highest priority and occurs when power is applied to the
+
+processor. Thus, when a reset occurs, it takes precedence over all other exceptions.
+
+Similarly, when a Data Abort occurs, it takes precedence over all other exceptions apart from a
+
+Reset exception.
+
+The lowest priority level is shared by two exceptions, the Software Interrupt and Undefined
+
+Instruction exceptions.
+
+Certain exceptions also disable interrupts by setting the I or F bits in the cpsr, as shown in Table
+
+3.
+
+Exceptions
+
+Priority Ibit Fbit
+
+Reset
+Data Abort
+
+Fast Interrupt Request
+Interrupt Request
+
+Prefetch Abort
+
+Software Interrupt
+Undefined Instruction 6
+
+au Rw
+[>
+
+Dept. of ECE, GSSSIETW, Mysuru
+
+Page 5

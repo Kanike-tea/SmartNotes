@@ -1,0 +1,56 @@
+484 Chapter 13 Memory Protection Units
+
+Figure 13.8
+
+EXAMPLE
+
+13.6
+
+#define SIZE_16K 13
+#define SIZE_8K 12
+#define SIZE 4K 11
+
+/* (B = ICache[2], DCache[1], Write Buffer[0] */
+
+/* Wache[2], WB[1:0] = writeback, WT[1:0] = writethrough */
+#define CCB 7
+
+#define CWB
+#define CCb
+#define CWT
+#define CcB
+#define Ccb
+#define cCB
+#define cB
+#define cCb
+#define cWT
+#define ccB
+#define ccb
+
+CHENNWWERHADAN
+
+/* Region enable */
+#define R_ENABLE 1
+#define R_DISABLE 0
+
+Defined macros used in the demonstration example. (Continued. )
+
+used as data inputs in the initialization process. The routine has the following C function
+
+prototype:
+
+void configRegion(Region *region) ;
+
+This example initializes the MPU, caches, and write buffer for the protected system. The
+routines presented earlier in this chapter are used in the initialization process. We imple-
+ment the steps first listed in Section 13.2 to initialize the MPU, caches, and write buffer.
+The steps are labeled as comments in the example code. Executing this example initializes
+
+the MPU.
+
+void configRegion(Region *region)
+
+{
+
+/* Step 1 - Define the size and location of the instruction */
+/* and data regions using CP15:c6 */

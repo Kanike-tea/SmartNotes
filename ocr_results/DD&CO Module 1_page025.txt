@@ -1,0 +1,30 @@
+The procedure for converting a multilevel AND—OR diagram to an all-NOR diagram is similar to
+the one presented for NAND gates. For the NOR case, we must convert each OR gate to an OR-invert
+symbol and each AND gate to an invert-AND symbol. Any bubble that is not compensated by another
+bubble along the same line needs an inverter, or the complementation of the input literal. The
+transformation of the AND-OR diagram of function F = (AB' + A'B)(C + D') into a NOR diagram is
+shown in Fig. The Boolean function for this circuit is F = (AB'+ A'B)(C + D')
+
+Implementing F = (AB' + A'B)(C + D') with NOR gates
+
+Hardware Description Language
+
+A hardware description language (HDL) is a computer-based language that describes the hardware of
+digital systems in a textual form. It resembles an ordinary computer programming language, such as C,
+but is specifically oriented to describing hardware structures and the behavior of logic circuits. It can be
+used to represent logic diagrams, truth tables, Boolean expressions, and complex abstractions of the
+
+behavior of a digital system.
+
+As a documentation language, an HDL is used to represent and document digital systems in a form that
+
+can be read by both humans and computers and is suitable as an exchange language between designers.
+
+Design entry creates an HDL-based description of the functionality that is to be implemented in
+
+hardware.
+
+Logic simulation displays the behavior of a digital system through the use of a computer. A simulator
+interprets the HDL description and either produces readable output, such as a time-ordered sequence of
+
+input and output signal values, or displays waveforms of the signals.

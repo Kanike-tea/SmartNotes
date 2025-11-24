@@ -1,0 +1,56 @@
+532
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+As with other types of dependencies, there are inclusion dependency inference rules
+(IDIRs). The following are three examples:
+
+IDIR1 (reflexivity): R.X < R.X.
+
+IDIR2 (attribute correspondence): If R.X < S.Y, where X = {A}, Ap, ... , An} and
+Y = {B}, By, ... , B,} and A; corresponds to B;, then R.A; < S.B; for 1 <i<n.
+
+IDIRS (transitivity): If R.X < $.Y and S.Y < T.Z, then R.X < T.Z.
+
+The preceding inference rules were shown to be sound and complete for inclusion
+dependencies. So far, no normal forms have been developed based on inclusion
+dependencies.
+
+15.6.3 Functional Dependencies Based on Arithmetic
+Functions and Procedures
+
+Sometimes some attributes in a relation may be related via some arithmetic func-
+tion or a more complicated functional relationship. As long as a unique value of Y
+is associated with every X, we can still consider that the FD X — Y exists. For exam-
+ple, in the relation
+
+ORDER_LINE (Order#, Item#, Quantity, Unit_price, Extended_price,
+Discounted_price)
+
+each tuple represents an item from an order with a particular quantity, and the
+price per unit for that item. In this relation, (Quantity, Unit_price ) +> Extended_price
+by the formula
+
+Extended_price = Unit_price * Quantity
+
+Hence, there is a unique value for Extended_price for every pair (Quantity, Unit_price),
+and thus it conforms to the definition of functional dependency.
+
+Moreover, there may be a procedure that takes into account the quantity discounts,
+the type of item, and so on and computes a discounted price for the total quantity
+ordered for that item. Therefore, we can say
+
+(Item#, Quantity, Unit_price ) > Discounted_price, or
+(Item#, Quantity, Extended_price) > Discounted_price
+
+To check the above FDs, a more complex procedure COMPUTE_TOTAL_PRICE may
+have to be called into play. Although the above kinds of FDs are technically present
+in most relations, they are not given particular attention during normalization. They
+may be relevant during the loading of relations and during query processing because
+populating or retrieving the attribute on the right-hand side of the dependency
+requires the execution of a procedure such as the one mentioned above.
+
+15.6.4 Domain-Key Normal Form
+
+There is no hard-and-fast rule about defining normal forms only up to 5NF. His-
+torically, the process of normalization and the process of discovering undesirable

@@ -1,0 +1,36 @@
+Database Management System [BCS403]
+
+the row header on the same item X, then T_ can obtain the lock because the locking
+
+modes are compatible
+
+(a) Read Write
+Read Yes No
+Write No No
+(b) Read Write Certify
+Read Yes Yes No
+Write Yes No No
+Certify No No No
+
+Figure 22.6: Lock compatibility tables. (a) A compatibility table for read/write locking scheme.
+(b) A compatibility table for read/write/certify locking scheme.
+
+= On the other hand, an-entry of No in the table indicates that the locks are not compatible,
+so T must wait until T releases the lock
+
+= The idea behind multiversion 2PL is to allow other transactions T to read an item X
+while a single transaction, T holds a write lock on X
+
+= This is accomplished by allowing two versions for each item X; one version must always
+have been written by some committed transaction
+
+= The second version X is created when a transaction T acquires a write lock on the item
+
+5.15Validation (Optimistic) Concurrency Control Techniques
+= In optimistic concurrency control techniques, also known as validation or
+certification techniques, no checking is done while the transaction is executing
+= In this scheme, updates in the transaction are not applied directly to the database items
+
+until the transaction reaches its end
+
+https://vtucode.in 38

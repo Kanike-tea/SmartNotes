@@ -1,0 +1,23 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+void cerase(polyPointer *ptr)
+{
+if (*ptr)
+{
+temp=(*ptr) ->link;
+(*ptr) ->link=avail;
+avail=temp;
+*ptr=NULL;
+
+Program:Erasing a circular list
+
+header
+(a) Zero polynomial
+
+header
+
+pers)
+
+(b) 3x44 2x® +4
+
+vtucode.in 27

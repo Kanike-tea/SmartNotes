@@ -1,0 +1,48 @@
+© Then, processor loads the PC with the address of the first instruction of the ISR.
+« After the execution of ISR, the processor has to come back to instruction i+1.
+© Therefore, when an interrupt occurs, the current content of PC is put in temporary storage location.
+¢ A return at the end of ISR reloads the PC from that temporary storage location.
+This causes the execution to resume at instruction i+1.
+« When processor is handling interrupts, it must inform device that its request has been recognized.
+* This may be accomplished by INTA signal.
+The task of saving and restoring the information can be done automatically by the processor.
+© The processor saves only the contents of PC & Status register .
+* Saving registers also increases the Interrupt Latency.
+¢ Interrupt Latency is a delay between
+— time an interrupt-request is received and
+— start of the execution of the ISR.
+© Generally, the long interrupt latency in unacceptable.
+
+Difference between Subroutine & ISR
+
+Subroutine ISR
+A subroutine performs a function required ISR may not have anything in common with program being
+by the program from which it is called. executed at time INTR is received
+Subroutine is just a linkage of 2 or more Interrupt is a mechanism for coordinating V/O
+function related to each other. transfers.
+INTERRUPT HARDWARE
+
+* Most computers have several I/O devices that can request an interrupt.
+¢ A single interrupt-request (IR) line may be used to serve n devices (Figure 4.6).
+All devices are connected to IR line via switches to ground.
+© To request an interrupt, a device closes its associated switch.
+¢ Thus, if all IR signals are inactive, the voltage on the IR line will be equal to Vdd.
+¢ When a device requests an interrupt, the voltage on the line drops to 0.
+¢ This causes the INTR received by the processor to go to 1.
+¢ The value of INTR is the logical OR of the requests from individual devices.
+INTR=INTR1+ INTR2+........ +INTRn
+¢ A special gates known as open-collector or open-drain are used to drive the INTR line.
+© The Output of the open collector control is equal to a switch to the ground that is
+— open when gates input is in ”0" state and
+— closed when the gates input is in “1" state.
+Resistor R is called a Pull-up Resistor because
+
+it pulls the line voltage up to the high-voltage state when the switches are open.
+Vad
+
+INTRn
+
+Figure 4.6 An equivalent circuit for an open-drain bus used to implement a common
+interruptrequest line.
+
+Page 22

@@ -1,0 +1,64 @@
+Chapter 13. XML: Extensible Markup Language
+
+<xsd:element name="root">
+
+<xsd:sequence>
+
+<xsd:element name="course” minOccurs="0" maxOccurs="unbounded">
+<xsd:sequence>
+
+<xsd:element name="
+
+‘cname” type="xsd:string” />
+‘cnumber” type="xsd:unsignedint” />
+section” minOccurs="0" maxOccurs="unbounded”>
+
+<xsd:element nami
+<xsd:element nami
+<xsd:sequence>
+<xsd:element name="secnumber” type="xsd-unsignedint” />
+ear” type="xsd:string” />
+uarter” type="xsd:string” />
+<xsd:element name="student” minOccurs="0" maxOccurs="unbounded”>
+<xsd:sequence>
+<xsd:element name="ssn” type="xsd:string” />
+element name="sname" type="xsd:string” >
+:element name="class” type="xsd:string” />
+
+<xsd:element nam
+
+<xsd:element name:
+
+<xsd:element name="grade” type="xsd:string” />
+</xsd:sequence>
+</xsd:element>
+</xsd:sequence>
+</xsd:element>
+</xsd:sequence>
+
+</xsd:element>
+
+</xsd:sequence>
+</xsd:element>
+
+Figure 13.11
+
+XML schema document with course as the root.
+
+specific grade in that section. In this document hierarchy, a student taking more
+than one section will have several replicas, one under each section, and each replica
+will have the specific grade given in that particular section.
+
+In the second hierarchical document view, we can choose STUDENT as root (Fig-
+ure 13.12). In this hierarchical view, each student has a set of sections as its child
+elements, and each section is related to one course as its child, because the rela-
+tionship between SECTION and COURSE is N:1. Thus, we can merge the COURSE
+and SECTION elements in this view, as shown in Figure 13.12. In addition, the
+GRADE database attribute can be migrated to the SECTION element. In this hier-
+archy, the combined COURSE/SECTION information is replicated under each stu-
+dent who completed the section. A possible simplified XML schema for this view
+is shown in Figure 13.13.
+
+The third possible way is to choose SECTION as the root, as shown in Figure 13.14.
+Similar to the second hierarchical view, the COURSE information can be merged
+into the SECTION element. The GRADE database attribute can be migrated to the

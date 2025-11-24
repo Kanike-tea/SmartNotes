@@ -1,0 +1,49 @@
+Exercises 1017
+
+26.40. Show how the updates given in Exercise 26.39, if applied in sequence, would
+change the contents of the valid time EMP_VT relation in Figure 26.8.
+
+26.41. Add the following facts to the sample database in Figure 26.11:
+
+SUPERVISE(ahmad, bob), SUPERVISE(franklin, gwen)
+
+First modify the supervisory tree in Figure 26.11(b) to reflect this change.
+Then construct a diagram showing the top-down evaluation of the query
+SUPERIOR(james, Y) using rules 1 and 2 from Figure 26.12.
+
+26.42. Consider the following set of facts for the relation PARENT(X, Y), where Y is
+the parent of X:
+
+PARENT(a, aa), PARENT(a, ab), PARENT(aa, aaa), PARENT(aa, aab),
+PARENT(aaa, aaaa), PARENT(aaa, aaab)
+Consider the rules
+1: ANCESTOR(X, Y) :- PARENT(X, Y)
+1): ANCESTOR(X, Y) :- PARENT(X, Z), ANCESTOR(Z, Y)
+which define ancestor Y of X as above.
+a. Show how to solve the Datalog query
+ANCESTOR(aa, X)?
+and show your work at each step.
+b. Show the same query by computing only the changes in the ancestor rela-
+tion and using that in rule 2 each time.
+[This question is derived from Bancilhon and Ramakrishnan (1986).
+26.43. Consider a deductive database with the following rules:
+ANCESTOR(X, Y) :— FATHER(X, Y)
+ANCESTOR(X, Y) :- FATHER(X, Z), ANCESTOR(Z, Y)
+Notice that FATHER(X, Y) means that Y is the father of X; ANCESTOR(X, Y)
+means that Y is the ancestor of X.
+Consider the following fact base:
+FATHER(Harry, Issac), FATHER(Issac, John), FATHER(John, Kurt)
+
+a. Construct a model-theoretic interpretation of the above rules using the
+given facts.
+
+b. Consider that a database contains the above relations FATHER(X, Y),
+another relation BROTHER(X, Y), and a third relation BIRTH(X, B), where
+Bis the birth date of person X. State a rule that computes the first cousins
+of the following variety: their fathers must be brothers.
+
+c. Show a complete Datalog program with fact-based and rule-based literals
+that computes the following relation: list of pairs of cousins, where the
+first person is born after 1960 and the second after 1970. You may use
+greater than as a built-in predicate. (Note: Sample facts for brother, birth,
+and person must also be shown.)

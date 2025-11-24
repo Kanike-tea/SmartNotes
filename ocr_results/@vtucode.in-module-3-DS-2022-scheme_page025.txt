@@ -1,0 +1,34 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Inorder Traversal of a Threaded Binary Tree
+
+By using the threads, an inorder traversal can be performed without making use ofa stack.
+eFor any node, ptr, in a threaded binary tree, if ptr—rightThread =TRUE, the inorder
+successor of ptr is ptr —rightChild by definition ofthe threads. Otherwise we obtain the
+inorder successor of ptr by following a path» of left-child links from the right-
+
+child of ptr until we reach a node with leftThread = TRUE.
+
+eThe function insucc () finds the inorder successor of any node in a threaded tree without
+
+using a stack.
+
+threadedpointer insucc(threadedPointer tree)
+{ /* find the inorder successor of tree
+
+in a threaded binary tree */
+
+threadedpointer temp;
+
+temp = tree-rightChild;
+
+if (!tree-rightThread)
+
+while (!temp—leftThread)
+temp = temp-leftChild;
+
+return temp; }
+
+Program: Finding inorder successor of a node
+
+vtucode.in 26

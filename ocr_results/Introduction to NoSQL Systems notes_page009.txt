@@ -1,0 +1,41 @@
+« No Relationships: Cannot model relational or complex connections between data.
+
+« Limited Querying Capability: No support for secondary indexes or complex queries
+(unless added as a separate feature).
+
+« Data Modeling Complexity: Developers must often handle logic in the application
+layer, especially when working with complex data structures.
+
+7. Summary
+
+Key-Value stores are a powerful and efficient type of NoSQL database ideal for high-speed
+data access, caching, session storage, and other use cases where relational structure is not
+required. With minimal design complexity and maximum performance, they form a
+foundational part of many modern, distributed applications. While they may not replace
+relational or document stores in all scenarios, they are indispensable tools for specific,
+performance-critical components of larger systems. Popular options like Redis and
+DynamoDB continue to be widely adopted for their simplicity, scalability, and
+responsiveness.
+
+1. Introduction to Column-Based (Wide Column) NoSQL Databases
+
+Column-based or wide-column NoSQL databases are designed to store data in columns
+rather than rows, offering a more flexible and efficient model for handling large-scale,
+distributed datasets. These systems organize data into tables, rows, and column families,
+where each column family can contain any number of columns and rows. Unlike
+traditional relational databases, rows in the same table can have different columns,
+allowing for a schema-flexible design.
+
+This type of NoSQL system is optimized for read and write performance at scale,
+particularly in applications with high-volume workloads and time-series data. It’s widely
+used for big data analytics, data warehousing, and real-time applications where
+performance and scalability are critical.
+
+2. Structure and Data Model
+«Tables: Like in relational databases, but more flexible.
+« Rows: Identified by a unique row key.
+
+« Column Families: Group of columns stored together; all data within a family is
+stored on disk contiguously.
+
+e« Columns: Each column is stored with a name, value, and timestamp.

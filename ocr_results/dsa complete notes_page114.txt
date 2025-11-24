@@ -1,0 +1,48 @@
+Data Structures and Applications (BCS304) Module IV
+
+Example:
+
+Cc D
+(B,C),(C,D) is a path from B to D the length of the path is 2
+
+A simple path is a path in which all the vertices are distinct.
+
+Cycle: A cycle is a simple path in which all the vertices except the first and last vertices are distinct.
+The first and the last vertices are same.
+
+Example :
+
+(B,C),(C,D)(D,E)(E,A)(A.B) is a cycle
+
+Degree of a vertex : Ina undirected graph degree of a vertex is the number of edges incident on a
+vertex.
+
+Ina directed graph the in-degree if a vertex v is the number of edges for which v is the head i.e. the
+
+number of edges that are coming into a vertex. The out degree is defined as the number of edges for
+which v is the tail i.e. the number of edges that are going out of a vertex
+
+Subgraph: A subgraph of G is a graph G’ such that V(G’) < V(G) and E(G’) c E(G)
+Example :
+
+A E A |
+: <|[|
+e D ° 2
+Graph(G) Subgraph(G’)
+Connected Graph: An undirected graph G is said to be connected if for every pair of distinct
+vertices u and v in V(G) there is a path from u to v in G.
+
+Connected Component is a maximal connected subgraph
+
+Strongly connected graph : A directed graph G is said to be strongly connected if for every pair of
+distinct vertices u an v in V(G), there is a directed path from u to v and from v to u.
+
+Tree: A tree is a connected acyclic connected graph.
+ADT Graph
+
+Objects: a nonempty set of vertices and a set of undirected edges, where each edge is a pair of
+vertices.
+
+Functions: for all graphe Graph, v,v1,v2 € vertices
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 9

@@ -1,0 +1,47 @@
+428 Chapter 12. Caches
+
+12.5.2 CLEANING ARM CACHED CORES
+
+To clean a cache is to issue commands that force the cache controller to write all dirty
+D-cache lines out to main memory. In the process the dirty status bits in the cache line
+are cleared. Cleaning a cache reestablishes coherence between cached memory and main
+memory and can only apply to D-caches using a writeback policy.
+
+The terms writeback and copyback are sometimes used in place of the term clean. So to
+force a writeback or copyback of cache to main memory is the same as cleaning the cache.
+The terms are similar to the adjectives used to describe cache write policy; however, in this
+case they describe an action performed on cache memory. In the non-ARM world the term
+{flush may be used to mean what ARM calls clean.
+
+12.5.3. CLEANING THE D-CACHE
+
+At the time of writing this book there are three methods used to clean the D-cache (see
+Table 12.4); the method used is processor dependent because different cores have different
+command sets to clean the D-cache.
+
+Although the method used to clean the cache may vary, in the examples we provide the
+same procedure call to provide a consistent interface across all cores. To do this we provide
+the same three procedures to clean the entire cache written once for each method:
+
+= cleanDCache cleans the entire D-cache.
+= cleanFlushDCache cleans and flushes the entire D-cache.
+=~ cleanFlushCache cleans and flushes both the I-cache and D-cache.
+
+The cleanDCache, cleanFlushDCache, and cleanFlushCache procedures do not take
+any input parameters and can be called from C using the following prototypes:
+
+void cleanDCache(void) ; /* clean D-cache */
+void cleanFlushDCache(void);  /* clean-and-flush D-cache */
+void cleanFlushCache(void);  /* clean-and-flush 1&D-cache */
+
+Table 12.4 Procedural methods to clean the D-cache.
+
+Method Example Processor
+
+Way and set index addressing Example 12.3. ARM920T, ARM922T, ARM926EJ-S, ARM940T,
+ARM946E-S, ARM1022E, ARM1026EJ-S
+
+Test-clean Example 12.4 ARM926EJ-S, ARM1026EJ-S
+
+Special allocate command readinga Example 12.5 XScale, SA-110
+dedicated block of memory

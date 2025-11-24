@@ -1,0 +1,47 @@
+624 Appendix A ARM and Thumb Assembler Instructions
+
+Table A.16 Predefined expressions.
+
+Variable Value
+
+{ARCHITECURE} The ARM architecture of the CPU (“4T” for ARMv4T)
+{ARMASM_VERSION} The assembler version number
+
+{CONFIG} or The bit width of the instructions being assembled (32 for
+{CODESIZE} ARM state, 16 for Thumb state)
+
+{CPU} The name of the CPU being assembled for
+
+{ENDIAN} The configured endianness, “big” or “little”
+
+{ INTER} {TRUE} if ARM/Thumb interworking is on
+
+{PC} (alias .) The address of the current instruction being assembled
+{ROPI}, {RWPI} {TRUE} if read-only/read-write position independent
+{VAR} (alias @) The MAP counter (see the MAP directive)
+
+In Table A.15, A and B represent arbitrary integers; $ and T, strings; and L and M, logical
+values. You can use labels and other symbols in place of integers in many expressions.
+
+A.4.3.1 Predefined Variables
+Table A.16 shows a number of special variables that can appear in expressions. These are
+
+predefined by the assembler, and you cannot override them.
+
+A4.4. ARM ASSEMBLER DIRECTIVES
+Here is an alphabetical list of the more common armasm directives.
+
+ALIGN
+
+ALIGN {<expression>, {<offset>}}
+
+Aligns the address of the next instruction to the form q*<expression>t<offset>. The
+alignment is relative to the start of the ELF section so this must be aligned appropriately
+(see the AREA directive). <expression> must be a power of two; the default is 4. <of fset>
+is zero if not specified.
+
+AREA
+
+AREA <section> {,<attr_l>} {,<attr_2>} ... {,<attr_k>}
+
+Starts a new code or data section of name <section>. Table A.17 lists the possible attributes.

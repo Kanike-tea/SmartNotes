@@ -1,0 +1,51 @@
+LECTURE-9: Record Based Logical Model
+
+Hierarchical Model:
+e A hierarchical database consists of a collection of records which are connected to one
+another through links.
+e Arecord is a collection of fields, each of which contains only one data value.
+e A link is an association between precisely two records.
+e The hierarchical model differs from the network model in that the records are organized as
+collections of trees rather than as arbitrary graphs.
+
+Tree-Structure Diagrams:
+e The schema for a hierarchical database consists of
+© boxes, which correspond to record types
+© lines, which correspond to links
+¢ Record types are organized in the form of a rooted tree.
+o No cycles in the underlying graph.
+© Relationships formed in the graph must be such that only
+one-to-many or one-to-one relationships exist between a parent and a child.
+
+Database schema is represented as a collection of tree-structure diagrams.
+= single instance of a database tree
+= The root of this tree is a dummy node
+= The children of that node are actual instances of the appropriate record type
+
+When transforming E-R diagrams to corresponding tree-structure diagrams, we must ensure that the
+resulting diagrams are in the form of rooted trees.
+
+Single Relationships:
+= Example of E-R diagram with two entity sets, customer and account, related through a
+binary, one-to-many relationship depositor.
+
+= Corresponding tree-structure diagram has
+
+o the record type customer with three fields: customer-name, customer-street, and
+customer-city.
+
+othe record type account with two fields: account-number and balance
+othe link depositor, with an arrow pointing to customer
+
+= Ifthe relationship depositor is one to one, then the link depositor has two arrows.
+
+customer-namte | customer-street | customer-city customer
+
+|
+
+account-number | balance account
+
+= Only one-to-many and one-to-one relationships can be directly represented in the
+hierarchical mode.
+
+Transforming Many-To-Many Relationships:

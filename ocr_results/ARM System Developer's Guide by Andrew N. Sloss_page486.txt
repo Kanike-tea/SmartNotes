@@ -1,0 +1,49 @@
+EXAMPLE
+
+13.3
+
+13.2 Initializing the MPU, Caches, and Write Buffer 473
+
+c5f = chf & (0x3<<shift); /* clear old AP bits */
+cf = c5f | (ap<<shift); /* set new AP bits */
+__asm{MCR p15, 0, c5f, c5, cO, 1 } /* store standard D AP */
+}
+void regionSetDSAP(unsigned region, unsigned ap)
+{
+unsigned c5f, shift;
+shift = 2*region; /* set bit field width */
+__asm {MRC p15, 0, c5f, c5, cO, 0} —/* load standard I AP */
+chf = chf & (0x3<<shift); /* clear old AP bits */
+cf = c5f | (ap<<shift); /* set new AP bits */
+__asm {MCR p15, 0, c5f, c5, cO, 0} —/* store standard I AP */
+}
+
+The routine sets the specified region permissions by clearing its AP bits using a shifted
+mask value and then setting the AP bit field with the ap input parameter. The AP bit field
+location is calculated as the region size times the number of bits in the permission bit field;
+this is the shi ft variable. The value of the bit field is set by shifting the ap value and using
+an OR to modify the c5f core register.
+
+We provide two extended AP routines, regionSet IEAP and regionSetDEAP, to set the
+extended AP bits for a region. They have the following C function prototypes:
+
+void regionSetIEAP(unsigned region, unsigned ap);
+void regionSetDEAP(unsigned region, unsigned ap);
+
+‘The first parameter is the region number, and the second is the four-bit value representing
+the extended AP for the instruction or data memory controlled by the region.
+
+The two routines are identical to the standard AP routines with the exception that they
+read and write to different CP15:c5 secondary registers and they have a four-bit-wide AP
+bit field.
+
+void regionSetIEAP(unsigned region, unsigned ap)
+
+{
+unsigned c5f, shift;
+shift = 4*region; /* set bit field width */
+__asm{ MRC p15, 0, c5f, 5, cO, 3} /* load extended D AP */
+cf = c5f & (Oxf<shift); /* clear old AP bits */
+c5f = c5f | (ap«shift); /* set new AP bits */
+
+__asm{ MCR p15, 0, c5f, c5, cO, 3} /* store extended D AP */

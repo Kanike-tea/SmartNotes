@@ -1,0 +1,53 @@
+18.3 Algorithms for SELECT Operation
+
+formulas that estimate the costs for each available access method, as we will discuss
+in Sections 19.4 and 19.5. The optimizer chooses the access method with the lowest
+estimated cost.
+
+18.3.4 Estimating the Selectivity of a Condition
+
+To minimize the overall cost of query execution in terms of resources used and
+response time, the query optimizer receives valuable input from the system catalog,
+which contains crucial statistical information about the database.
+
+Information in the Database Catalog. A typical RDBMS catalog contains the
+following types of information:
+
+For each relation (table) r with schema R containing rp tuples:
+
+© The number of rows/records or its cardinality: |r(R) |. We will refer to the
+number of rows simply as rp.
+
+© The “width” of the relation (i.e., the length of each tuple in the relation)
+this length of tuple is referred to as R.
+
+© The number of blocks that relation occupies in storage: referred to as bp.
+© The blocking factor bfr, which is the number of tuples per block.
+For each attribute A in relation R:
+© The number of distinct values of A in R: NDV (A, R).
+© The max and min values of attribute A in R: max (A, R) and min (A, R).
+
+Note that many other forms of the statistics are possible and may be kept as needed.
+If there is a composite index on attributes <A, B>, then the NDV (R, <A, B>) is of
+significance. An effort is made to keep these statistics as accurate as possible; how-
+ever, keeping them accurate up-to-the-minute is considered unnecessary since the
+overhead of doing so in fairly active databases is too high. We will be revisiting
+many of the above parameters again in Section 19.3.2.
+
+When the optimizer is choosing between multiple simple conditions in a conjunc-
+tive select condition, it typically considers the selectivity of each condition. The
+selectivity (sl) is defined as the ratio of the number of records (tuples) that satisfy
+the condition to the total number of records (tuples) in the file (relation), and thus
+it is a number between zero and one. Zero selectivity means none of the records in
+the file satisfies the selection condition, and a selectivity of one means that all the
+records in the file satisfy the condition. In general, the selectivity will not be either
+of these two extremes, but will be a fraction that estimates the percentage of file
+records that will be retrieved.
+
+Although exact selectivities of all conditions may not be available, estimates of
+selectivities are possible from the information kept in the DBMS catalog and are used
+by the optimizer. For example, for an equality condition on a key attribute of relation
+r(R), s = 1/|r(R)|, where |r(R)| is the number of tuples in relation r(R). For an equality
+condition on a nonkey attribute with i distinct values, s can be estimated by
+
+667

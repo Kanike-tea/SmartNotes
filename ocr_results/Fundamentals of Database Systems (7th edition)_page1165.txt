@@ -1,0 +1,53 @@
+30.3 Mandatory Access Control and Role-Based Access Control for Multilevel Security
+
+1. A subject S is not allowed read access to an object O unless class(S) =
+class(O). This is known as the simple security property.
+
+2. A subject S is not allowed to write an object O unless class(S) < class(O).
+This is known as the star property (or *-property).
+
+The first restriction is intuitive and enforces the obvious rule that no subject can read
+an object whose security classification is higher than the subject’s security clearance.
+The second restriction is less intuitive. It prohibits a subject from writing an object at
+a lower security classification than the subject’s security clearance. Violation of this
+rule would allow information to flow from higher to lower classifications, which vio-
+lates a basic tenet of multilevel security. For example, a user (subject) with TS clear-
+ance may make a copy of an object with classification TS and then write it back as a
+new object with classification U, thus making it visible throughout the system.
+
+To incorporate multilevel security notions into the relational database model, it is
+common to consider attribute values and tuples as data objects. Hence, each attri-
+bute A is associated with a classification attribute C in the schema, and each attribute
+value in a tuple is associated with a corresponding security classification. In addition,
+in some models, a tuple classification attribute TC is added to the relation attributes
+to provide a classification for each tuple as a whole. The model we describe here is
+known as the multilevel model, because it allows classifications at multiple security
+levels. A multilevel relation schema R with n attributes would be represented as:
+
+R(Aj, Cy, Ap, Cy «-- Ap Cy TC)
+where each C; represents the classification attribute associated with attribute Aj.
+
+The value of the tuple classification attribute TC in each tuple t—which is the high-
+est of all attribute classification values within t—provides a general classification for
+the tuple itself. Each attribute classification C; provides a finer security classification
+for each attribute value within the tuple. The value of TC in each tuple t is the high-
+est of all attribute classification values C; within t.
+
+The apparent key of a multilevel relation is the set of attributes that would have
+formed the primary key in a regular (single-level) relation. A multilevel relation will
+appear to contain different data to subjects (users) with different clearance levels. In
+some cases, it is possible to store a single tuple in the relation at a higher classifica-
+tion level and produce the corresponding tuples at a lower-level classification
+through a process known as filtering. In other cases, it is necessary to store two or
+more tuples at different classification levels with the same value for the apparent
+key. This leads to the concept of polyinstantiation,° where several tuples can have
+the same apparent key value but have different attribute values for users at different
+clearance levels.
+
+We illustrate these concepts with the simple example of a multilevel relation shown.
+in Figure 30.2(a), where we display the classification attribute values next to each
+
+This is similar to the notion of having multiple versions in the database that represent the same
+real-world object.
+
+1135

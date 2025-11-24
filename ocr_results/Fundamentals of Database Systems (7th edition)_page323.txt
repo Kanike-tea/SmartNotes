@@ -1,0 +1,54 @@
+9.1 Relational Database Design Using ER-to-Relational Mapping
+
+necessary. The primary key of the DEPENDENT relation is the combination {Essn,
+Dependent_name}, because Dependent_name (also renamed from Name in Figure 9.1)
+is the partial key of DEPENDENT.
+
+It is common to choose the propagate (CASCADE) option for the referential trig-
+gered action (see Section 6.2) on the foreign key in the relation corresponding to
+the weak entity type, since a weak entity has an existence dependency on its owner
+entity. This can be used for both ON UPDATE and ON DELETE.
+
+Step 3: Mapping of Binary 1:1 Relationship Types. For each binary 1:1 rela-
+tionship type R in the ER schema, identify the relations $ and T that correspond
+to the entity types participating in R. There are three possible approaches: (1) the
+foreign key approach, (2) the merged relationship approach, and (3) the cross-
+reference or relationship relation approach. The first approach is the most useful
+and should be followed unless special conditions exist, as we discuss below.
+
+1. Foreign key approach: Choose one of the relations—S, say—and include as
+a foreign key in S the primary key of T. It is better to choose an entity type
+with total participation in R in the role of S. Include all the simple attributes
+(or simple components of composite attributes) of the 1:1 relationship type
+Ras attributes of S.
+
+In our example, we map the 1:1 relationship type MANAGES from Figure 9.1
+by choosing the participating entity type DEPARTMENT to serve in the role
+of S because its participation in the MANAGES relationship type is total
+(every department has a manager). We include the primary key of the
+EMPLOYEE relation as foreign key in the DEPARTMENT relation and rename
+it to Mgr_ssn. We also include the simple attribute Start_date of the MANAGES
+relationship type in the DEPARTMENT relation and rename it Mgr_start_date
+(see Figure 9.2 ).
+
+Note that it is possible to include the primary key of S as a foreign key in T
+instead. In our example, this amounts to having a foreign key attribute, say
+Department_managed in the EMPLOYEE relation, but it will have a NULL value
+for employee tuples who do not manage a department. This would be a bad
+choice, because if only 2% of employees manage a department, then 98% of
+the foreign keys would be NULL in this case. Another possibility is to have
+foreign keys in both relations $ and T redundantly, but this creates redun-
+dancy and incurs a penalty for consistency maintenance.
+
+2. Merged relation approach: An alternative mapping of a 1:1 relationship
+type is to merge the two entity types and the relationship into a single rela-
+tion. This is possible when both participations are total, as this would indi-
+cate that the two tables will have the exact same number of tuples at all times.
+
+3. Cross-reference or relationship relation approach: The third option is to
+set up a third relation R for the purpose of cross-referencing the primary
+keys of the two relations S and T representing the entity types. As we will see,
+this approach is required for binary M:N relationships. The relation R is
+called a relationship relation (or sometimes a lookup table), because each
+
+293

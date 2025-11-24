@@ -1,0 +1,56 @@
+414
+
+Chapter 12 Object and Object-Relational Databases
+
+Q7: count ( S in Has_minors(‘Computer Science’));
+
+Q8: avg(select S.Gpa
+from = Sin STUDENTS
+where —S.Majors_in.Dname = ‘Computer Science’ and
+S.Class = ‘Senior’);
+
+Notice that aggregate operations can be applied to any collection of the appropriate
+type and can be used in any part of a query. For example, the query to retrieve all
+department names that have more than 100 majors can be written as in Q9:
+
+Q9: select D.Dname
+from Din DEPARTMENTS
+where count (D.Has_majors) > 100;
+
+The membership and quantification expressions return a Boolean type—that is, true or
+false. Let V be a variable, Ca collection expression, B an expression of type Boolean (that
+is, a Boolean condition), and E an element of the type of elements in collection C. Then:
+
+(Ein C) returns true if element E is a member of collection C.
+(for all Vin C: B) returns true if all the elements of collection C satisfy B.
+(exists Vin C: B) returns true if there is at least one element in C satisfying B.
+
+To illustrate the membership condition, suppose we want to retrieve the names of
+all students who completed the course called ‘Database Systems I’. This can be writ-
+ten as in Q10, where the nested query returns the collection of course names that
+each STUDENT S has completed, and the membership condition returns true if
+‘Database Systems I’ is in the collection for a particular STUDENT S:
+
+Q10: select S.name.Lname, S.name.Fname
+from Sin STUDENTS
+where ‘Database Systems I’ in
+(select C.Section.Of_course.Cname
+from Cin S.Completed_sections);
+
+Q10 also illustrates a simpler way to specify the select clause of queries that return a
+collection of structs; the type returned by Q10 is bag<struct(string, string)>.
+
+One can also write queries that return true/false results. As an example, let us
+assume that there is a named object called JEREMY of type STUDENT. Then, query
+Q11 answers the following question: Is Jeremy a Computer Science minor? Similarly,
+Q12 answers the question Are all Computer Science graduate students advised by
+Computer Science faculty? Both Q11 and Q12 return true or false, which are inter-
+preted as yes or no answers to the above questions:
+
+Q11: JEREMY in Has_minors(‘Computer Science’);
+
+Q12: for all Gin
+(select S
+from Sin GRAD_STUDENTS
+where S.Majors_in.Dname = ‘Computer Science’ )
+: G Advisor in CS_DEPARTMENT.Has_faculty;

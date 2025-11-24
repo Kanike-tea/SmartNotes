@@ -1,0 +1,40 @@
+BCS304
+
+void insert—node(tree-pointer *node, int num)
+/* If num is in the tree pointed at by node do nothing:
+otherwise add a new node with data = num °/
+(
+tree_pointer ptr, temp = modified-search(*node, num);
+it (temp Ii !(*node)) {
+/* num is not in the tree */
+ptr = (tree—pointer) malloc (sizeof (node) );
+if (1S-—FULLiptr)) {
+fprintf(stderr, *The memory is full\n*);
+exitii);
+)
+ptr->data = num;
+ptr->leftchild « ptr->right-child = NULL;
+if (*node) /* insert as child of temp °/
+if (num < temp->data) temp->left—child = ptr;
+else temp->right-—child = ptr;
+else *node = ptr;
+
+Program 5.17: Inserting an element into a binary search tree
+4.1.3: Deletion from A Binary Search Tree:
+
+Deletion of a leaf node is easy. For example, to delete 35 from the tree of Figure 5.31(b), we
+set the left child field of its parent to NULL and free the node. This gives us the tree of Figure
+5.31(a). The deletion of a nonleaf node that has only a single child is also easy. We erase the
+node and then place the single child in the place of the erased node. For example, if we delete
+40 from the tree of Figure 5,31 (a) we obtain the tree in Figure 5.32.
+
+ne
+Figure $.32: Deletion from a binary search tree
+
+When we delete a nonleaf node with two children, we replace the node with either the largest
+element in its left subtree or the smallest element in its right subtree. Then we proceed by
+deleting this replacing element from the subtree from which it was taken. For instance, suppose
+that we wish to delete 60 from the tree of Figure 5.33(a). We may replace 60 with either the
+largest element (55) in its left subtree or the smallest element (70) in its right subtree. Suppose
+
+3

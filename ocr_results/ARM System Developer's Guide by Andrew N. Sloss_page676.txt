@@ -1,0 +1,60 @@
+D.8 ARMI1 Cycle Timings 663
+
+Table D.14 ARM11 (ARMv6) instruction cycle timings. (Continued.)
+
+Instruction class Cycles Notes
+
+LDR pe, [sp, #off] {!} 4 +4 if unconditional and return stack is empty.
+
+LOR pe, [sp], #off +5 if unconditional and return stack mispredicts
++4 if conditional.
+
+LDR pe not using a At+7
+
+constant stack offset
+
+LDM not loading pc 1 You cannot start another memory access for the next
+(N + a — 1)/2 cycles, where ais bit 2 of the address.
+The kth register in the list not available for (k + a + 3)/2 cycles.
+
+LDM sp{!} loading pe 4 +5 if conditional or return stack empty or return stack
+mispredicts. You cannot start another memory access for
+(N + a)/2 cycles. The kth register in the list not available for
+(k +.a+5)/2 cycles.
+
+LDM loading pe not from 8 You cannot start another memory access for (N + a)/2
+
+the stack cycles. The Ath register in the list not available for (k + a + 5)/2
+
+cycles.
+
+MCR/MCRR 1 This counts as a memory access.
+
+MRC/MRRC 1 This counts as a memory access. The result registers are not
+available for two cycles.
+
+MRS. 1
+
+MSR to cpsr 1 +3 if any of the csx fields are updated.
+
+MSR to spsr 5
+
+MUL, MLA 2 Rdis not available for two cycles, except as an accumulator
+input for another multiply accumulate when it is not available
+for one cycle.
+Rmand Rsare required one cycle early. Rn is not required until
+the second cycle for MLA.
+
+MULS, MLAS 5 Rmand Rsare required one cycle early. Rn is not required until
+the second cycle for MLAS.
+
+xMULL, xMLAL 3 RadLo is not available for one cycle. RdHi is not available for
+two cycles. Reduce these latencies by one if these registers are
+used as accumulator inputs for another multiply accumulate.
+Rmand Rsare required one cycle early. RdLo is not required
+until the second cycle for MLAL.
+
+XxMULLS, xMLALS 6 Rmand Rsare required one cycle early. RdLo is not required
+until the second cycle for MLAL.
+
+PKHBT, PKHTB 1 Rmis required one cycle early.

@@ -1,0 +1,52 @@
+23.1 Distributed Database Concepts
+
+Networks may have different topologies that define the direct communication
+paths among sites. The type and topology of the network used may have a signifi-
+cant impact on the performance and hence on the strategies for distributed query
+processing and distributed database design. For high-level architectural issues,
+however, it does not matter what type of network is used; what matters is that each
+site be able to communicate, directly or indirectly, with every other site. For the
+remainder of this chapter, we assume that some type of network exists among
+nodes, regardless of any particular topology. We will not address any network-
+specific issues, although it is important to understand that for an efficient operation
+of a distributed database system (DDBS), network design and performance issues
+are critical and are an integral part of the overall solution. The details of the under-
+lying network are invisible to the end user.
+
+23.1.2 Transparency
+
+The concept of transparency extends the general idea of hiding implementation
+details from end users. A highly transparent system offers a lot of flexibility to the
+end user/application developer since it requires little or no awareness of underly-
+ing details on their part. In the case of a traditional centralized database, transpar-
+ency simply pertains to logical and physical data independence for application
+developers. However, in a DDB scenario, the data and software are distributed
+over multiple nodes connected by a computer network, so additional types of
+transparencies are introduced.
+
+Consider the company database in Figure 5.5 that we have been discussing through-
+out the book. The EMPLOYEE, PROJECT, and WORKS_ON tables may be fragmented
+horizontally (that is, into sets of rows, as we will discuss in Section 23.2) and stored
+with possible replication, as shown in Figure 23.1. The following types of transpar-
+encies are possible:
+
+= Data organization transparency (also known as distribution or network
+transparency). This refers to freedom for the user from the operational
+details of the network and the placement of the data in the distributed sys-
+tem. It may be divided into location transparency and naming transparency.
+Location transparency refers to the fact that the command used to perform
+a task is independent of the location of the data and the location of the node
+where the command was issued. Naming transparency implies that once a
+name is associated with an object, the named objects can be accessed unam-
+biguously without additional specification as to where the data is located.
+
+= Replication transparency. As we show in Figure 23.1, copies of the same
+data objects may be stored at multiple sites for better availability, perfor-
+mance, and reliability. Replication transparency makes the user unaware of
+the existence of these copies.
+
+= Fragmentation transparency. Two types of fragmentation are possible.
+Horizontal fragmentation distributes a relation (table) into subrelations
+that are subsets of the tuples (rows) in the original relation; this is also known
+
+843

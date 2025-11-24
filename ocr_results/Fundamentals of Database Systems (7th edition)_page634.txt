@@ -1,0 +1,74 @@
+604 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Figure 17.1
+
+Primary index on the ordering
+key field of the file shown in
+Figure 16.7.
+
+Index file
+(<K(i), P(i)> entries)
+
+Block anchor
+
+Data file
+(Primary
+key field)
+Name Ssn_[Birth_date | Job | Salary | Sex
+‘Aaron, Ed
+Abbot, Diane
+
+Acosta, Marc
+
+Adams, John
+
+Adams, Robin
+
+Akers, Jan
+
+Alexander, Ed
+
+Alfred, Bob
+
+Allen, Sam
+
+Allen, Troy
+
+Anders, Keith
+
+Anderson, Rob
+
+Anderson, Zach
+
+Angel, Joe
+
+Archer, Sue
+
+Arnold, Mack
+
+Arnold, Steven
+
+Atkins, Timothy
+
+Wong, James
+
+Wood, Donald
+
+primary key Block
+value pointer
+‘Aaron, Ed °
+‘Adams, John °
+Alexander, Ed °
+Allen, Troy °
+‘Anderson, Zach c
+‘Amold, Mack °
+Wong, James °
+Wright, Pam c
+
+Woods, Manny
+
+Wright, Pam
+
+Wyatt, Charles
+
+Zimmer, Byron

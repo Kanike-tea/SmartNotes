@@ -1,0 +1,53 @@
+Digital Design and Computer Organization (BCS302)
+
+Memory-bus Internal processor
+datalines  MDRoue MDRoe
+
+MDRie MDRin
+
+Figure 7.4 Connection and control signals for register MDR.
+
+CONTROL-SIGNALS OF MDR
+«The MDR register has 4 control-signals (Figure 7.4):
+
+1) MDRin & MDRout control the connection to the internal processor data bus
+&
+
+2) MDRinE & MDRoutE control the connection to the external memory Data
+bus.
+Similarly, MAR register has 2 control-signals.
+
+1) MARin: controls the connection to the internal processor address bus &
+
+2) MARout: controls the connection to the memory address bus.
+
+The response time of each memory access varies. To accommodate this
+
+MFC is used(MEC> Memory Function Completed)
+
+MFC=1 indicatethat conte lecation™have been read and are
+
+available on (he"data lines of th mory bus.
+
+«Consider thesinstruction;Move,(Ri);R2=Thesactionmeededstosexecute this
+instruction a¥é
+
+1, MAR < {Ri}
+
+2. Start a Read operation on the memory bus
+
+3. Wait for the MFC response from the memory
+4. Load MDR ‘fromthe memory Dus
+
+5. R2< [MDR]
+
+The sequence of steps is (Figure 7.5):
+1) Rlout, MARin,Read ;desired address is loaded into MAR & Read command is
+issued.
+2) MDRinge,WMFC; load MDR from memory-bus & Wait for MFC response
+from memory.
+3) MDRout, R2in;load R2 from MDR.
+where WMF@=eontrol-signal that causes processor's control circuitry
+to wait for arpival,of MPC signal.
+
+Dr Ajay V G, Dept. ofGSE;SVITy

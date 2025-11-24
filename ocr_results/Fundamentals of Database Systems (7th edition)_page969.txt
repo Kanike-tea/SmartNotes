@@ -1,0 +1,55 @@
+25.5 Hadoop v2 alias YARN
+
+not be used. Jobs other than MR could not run easily on the nodes because the node
+capacity remained unpredictable.
+
+The aforementioned issues illustrate why Hadoop v1 needed upgrading.
+Although attempts were made to fix in Hadoop v1 many of the issues listed
+above, it became clear that a redesign was needed. The goals of the new design
+were set as follows:
+
+To carry forward the scalibility and locality awareness of Hadoop v1.
+
+To have multitenancy and high cluster utilization.
+
+To have no single point of failure and to be highly available.
+
+To support more than just MapReduce jobs. The cluster resources should
+not be modeled as static map and reduce slots.
+
+= To be backward compatible, so existing jobs should run as they are and pos-
+sibly without any recompilation.
+
+The outcome of these was YARN or Hadoop v2, which we discuss in the next section.
+
+25.5.2 YARN Architecture
+
+Overview. Having provided the motivation behind upgrading Hadoop v1, we
+now discuss the detailed architecture of the next generation of Hadoop, which is
+popularly known as MRv2, MapReduce 2.0, Hadoop v2, or YARN.!” The central
+idea of YARN is the separation of cluster Resource Management from Jobs man-
+agement. Additionally, YARN introduces the notion of an ApplicationMaster,
+which is now responsible for managing work (task data flows, task lifecycles,
+task failover, etc.). MapReduce is now available as a service/application provided
+by the MapReduce ApplicationMaster. The implications of these two decisions
+are far-reaching and are central to the notion of a data service operating system.
+Figure 25.3 shows a high-level schematic diagram of Hadoop v1 and Hadoop v2
+side by side.
+
+The ResourceManager and the per worker node NodeManager together form the
+platform on which any Application can be hosted on YARN. The ResourceManager
+manages the cluster, doling out Resources based on a pluggable scheduling policy
+(such as a fairness policy or optimizing cluster utilization policy). It is also respon-
+sible for the lifecycle of nodes in the cluster in that it will track when nodes go
+down, when nodes become unreachable, or when new nodes join. Node failures are
+reported to the ApplicationMasters that had containers on the failed node. New
+nodes become available for use by ApplicationMasters.
+
+ApplicationMasters send ResourceRequests to the ResourceManager which then
+responds with cluster Container leases. A Container is a lease by the Resource-
+Manager to the ApplicationManager to use certain amount of resources on a node
+
+'7See the Apache website: http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/
+YARN.himl for up-to-date documentation on YARN.
+
+939

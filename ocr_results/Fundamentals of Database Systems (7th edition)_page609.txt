@@ -1,0 +1,62 @@
+Local depth of
+
+16.8 Hashing Techniques
+
+Directory each bucket Data file buckets
+000
+001 7
+010 °
+o11 he
+100 be
+101 7 d=3
+110 ha
+114 ha
+Global depth
+d=3
+ed
+d=2
+__
+e| 7 =2
+L_§_ »[y=3
+| d=3
+Figure 16.11
+
+Structure of the
+extendible hashing
+scheme.
+
+Bucket for records
+whose hash values
+start with 000
+
+Bucket for records
+whose hash values
+start with 001
+
+Bucket for records
+whose hash values
+start with 01
+
+Bucket for records
+whose hash values
+start with 10
+
+Bucket for records
+whose hash values
+start with 110
+
+Bucket for records
+whose hash values
+start with 111
+
+579
+
+directory is also split into two locations, both of which have the same pointer value
+
+as did the original location.
+
+The main advantage of extendible hashing that makes it attractive is that the perfor-
+mance of the file does not degrade as the file grows, as opposed to static external
+hashing, where collisions increase and the corresponding chaining effectively
+increases the average number of accesses per key. Additionally, no space is allocated
+in extendible hashing for future growth, but additional buckets can be allocated

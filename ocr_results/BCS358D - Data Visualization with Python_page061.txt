@@ -1,0 +1,39 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+e plt.show()’: This function is called to display the linear plot on the screen. After
+calling this function, the plot will appear in a graphical window with the specified
+
+labels, title, and grid lines.
+
+When you run this program, it will generate a simple linear plot using the provided data points.
+The x and y values are connected by a solid line, and circular markers are placed at each data
+point. The x-axis and y-axis are labeled as 'X-Axis' and 'Y-Axis,' respectively, and a title 'Linear
+Plot Example' is displayed at the top of the chart. The grid lines are also added for improved
+readability. This program demonstrates how to create and customize a basic linear plot using
+
+Matplotlib in Python.
+
+PROGRAM
+import matplotlib.pyplot as plt
+
+# Sample data for the linear plot
+x= (1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+# Create a linear plot
+plt.plot(x, y, marker='o', linestyle='-')
+
+# Add labels and a title
+plt.xlabel ('X-Axis')
+
+plt.ylabel ('Y-Axis')
+plt.title('Linear Plot Example')
+
+# Show the plot
+
+plt.grid() # Add a grid for better readability
+plt.show()
+
+OUTPUT
+
+Dept. of CSE 46 GSSSIETW, Mysuru

@@ -1,0 +1,40 @@
+7.1 Sorting by Counting 257
+
+DI0..21 SI0..5)
+Ail=12 [i [4|[6 12
+Alal=12 [a [3 [6 12
+Als 1[2[6 13
+Alaj=12 [i f2]s T2
+A= [afi[s|] fi
+Aji=13 [of1[s 13
+
+FIGURE 7.2 Example of sorting by distribution counting. The distribution.valuesibeing
+
+decremented are shown in bold. 4
+
+Here is pseudocode of this algorithm.
+
+ALGORITHM _ DistributionCountingSort(A[0..n = 1], 1, u)
+
+//Sorts an array of integers from a limited range by distribution counting
+/Input: An array A[0..n — 1] of integers between / and u (J < u)
+//Output: Array S[0..n — 1] of A’s elements sorted in nondecreasing order
+for | —0 tou —/doD[j)<0 /finitialize frequencies
+for i — 0 ton — 1do D[A[i] — 1] — D[A[i] — 1] + 1 //compute frequencies
+for j — 1tou —1 do D[j] — D[j —1]+ Di] /Ireuse for distribution
+for i —n — 1 downto 0 do
+
+j <Ali]-1
+
+S[PU] =H < Ali]
+
+DUi\<—DPli)-1
+return S
+
+Assuming that the range of array values is fixed, this is obviously a linear
+algorithm because it makes just two consecutive passes through its input array
+A. This is a better time-efficiency class than that of the most efficient sorting
+algorithms—mergesort, quicksort, and heapsort—we have encountered. It is im-
+portant to remember, however, that this efficiency is obtained by exploiting the
+specific nature of inputs for which sorting by distribution counting works, in addi-
+tion to trading space for time.

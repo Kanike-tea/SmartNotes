@@ -1,0 +1,25 @@
+Data Structures and Applications (15CS33)
+
+3. Full Binary Tree
+A full binary tree of depth ‘k’ is a binary tree of depth k having 2‘— 1 nodes,k>1.
+
+Figure: Full binary tree of level 4 with sequential node number
+
+4. Extended Binary Trees or 2-trees
+
+An extended binary tree is a transformation of any binary tree into a complete binary tree.
+This transformation consists of replacing every null subtree of the original tree with
+“special nodes.” The nodes from the original tree are then internal nodes, while the special
+nodes are external nodes.
+
+For instance, consider the following binary tree.
+
+Binary Tree Extended Binary Tree
+
+The following tree is its extended binary tree. The circles represent internal nodes, and square
+represent external nodes.
+
+Every internal node in the extended tree has exactly two children, and every external node is
+a leaf. The result is a complete binary tree.
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

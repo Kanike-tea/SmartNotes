@@ -1,0 +1,25 @@
+BESS _
+BA OBA
+dj =1(K) -0=6
+
+7.2 Input Enhancement in String Matching 267
+
+BAO BABS
+
+n()-2=4 B A O BA B
+dy=n4() -1=5
+d=2
+d =max{5, 2}=5
+B AO B A B
+FIGURE 7.3 Example of string matching with the Boyer-Moore algorithm.
+
+the pattern by max{d; d} = max{6 — 1, 2} =5.Note that on this iteration it is the
+bad-symbol rule that leads to a farther shift of the pattern. The next try finds a
+matching substring in the text after successfully matching all six characters of the
+pattern with their counterparts in the text. t
+
+When searching for the first occurrence of the pattern, the worst-case effi-
+ciency of the Boyer-Moore algorithm is known to be linear. Though this algorithm
+runs very fast, especially on large alphabets (relative to the length of the pattern),
+many people prefer its simplified versions, such as Horspool’s algorithm, when
+dealing with natural-language-like strings.

@@ -1,0 +1,48 @@
+Database Management System [BCS403]
+
+.. in this scheme. A computer counter has a finite maximum value, so the
+system must periodically reset the counter to zero when no transactions are
+executing for some short period of time.
+
+- Another way to implement timestamps is to use the current date/time value of
+the system clock and ensure that no two timestamp values are generated
+during the same tick of the clock.
+
+5.13.2 The Timestamp Ordering Algorithm
+
+= The idea for this scheme is to order the transactions based on their
+timestamps.
+
+= A schedule in which the transactions participate is then serializable, and the
+only equivalent serial schedule permitted has the transactions in order of their
+timestamp values. This is called timestamp ordering (TO).
+
+= The algorithm must ensure that, for each item accessed by conflicting
+
+Operations in the schedule, the order in which the item is accessed does not
+violate the timestamp order.
+
+= To do this, the algorithm associates with each database item X two timestamp
+(TS) values:
+
+1. read_TS(X). The read timestamp of item X is the largest timestamp
+among all the timestamps of transactions that have successfully
+read item X—that is, read_TS(X) = TS(T), where T is the youngest
+transaction that has read X successfully.
+
+2. write_TS(X). The write timestamp of item X is the largest of all the
+
+timestamps of transactions that have successfully written item X—
+that is, write_TS(X) = TS(T), where T is the youngest transaction that
+has written X successfully.
+Basic Timestamp Ordering (TO).
+= Whenever some transaction T tries to issue a read_item(X) or a write_item(X) operation,
+the basic TO algorithm compares the timestamp of T with read_TS(X) and write_TS(X) to
+ensure that the timestamp order of transaction execution is not violated.
+= If this order is violated, then transaction T is aborted and resubmitted to the system as a
+new transaction with a new timestamp.
+= If Tis aborted and rolled back, any transaction 71 that may have used a value written by T
+
+must also be rolled back.
+
+https://vtucode.in 34

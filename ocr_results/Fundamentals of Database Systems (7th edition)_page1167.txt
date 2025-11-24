@@ -1,0 +1,51 @@
+30.3 Mandatory Access Control and Role-Based Access Control for Multilevel Security
+
+To illustrate polyinstantiation further, suppose that a user with security clearance C
+tries to update the value of Job_performance of ‘Smith’ in Figure 30.2 to ‘Excellent’;
+this corresponds to the following SQL update being submitted by that user:
+
+UPDATE EMPLOYEE
+SET Job_performance = ‘Excellent’
+WHERE Name = ‘Smith’;
+
+Since the view provided to users with security clearance C (see Figure 30.2(b)) per-
+mits such an update, the system should not reject it; otherwise, the user could infer
+that some nonnull value exists for the Job_performance attribute of ‘Smith’ rather
+than the null value that appears. This is an example of inferring information
+through what is known as a covert channel, which should not be permitted in
+highly secure systems (see Section 30.6.1). However, the user should not be allowed
+to overwrite the existing value of Job_performance at the higher classification level.
+The solution is to create a polyinstantiation for the ‘Smith’ tuple at the lower clas-
+sification level C, as shown in Figure 30.2(d). This is necessary since the new tuple
+cannot be filtered from the existing tuple at classification S.
+
+The basic update operations of the relational model (INSERT, DELETE, UPDATE)
+must be modified to handle this and similar situations, but this aspect of the prob-
+lem is outside the scope of our presentation. We refer the interested reader to the
+Selected Bibliography at the end of this chapter for further details.
+
+30.3.1 Comparing Discretionary Access Control
+and Mandatory Access Control
+
+Discretionary access control (DAC) policies are characterized by a high degree of
+flexibility, which makes them suitable for a large variety of application domains.
+The main drawback of DAC models is their vulnerability to malicious attacks, such
+as Trojan horses embedded in application programs. The reason for this vulnerabil-
+ity is that discretionary authorization models do not impose any control on how
+information is propagated and used once it has been accessed by users authorized
+to do so. By contrast, mandatory policies ensure a high degree of protection—in a
+way, they prevent any illegal flow of information. Therefore, they are suitable for
+military and high-security types of applications, which require a higher degree of
+protection. However, mandatory policies have the drawback of being too rigid in
+that they require a strict classification of subjects and objects into security levels,
+and therefore they are applicable to few environments and place an additional bur-
+den of labeling every object with its security classification. In many practical situa-
+tions, discretionary policies are preferred because they offer a better tradeoff
+between security and applicability than mandatory policies.
+
+30.3.2 Role-Based Access Control
+
+Role-based access control (RBAC) emerged rapidly in the 1990s as a proven tech-
+nology for managing and enforcing security in large-scale enterprise-wide systems.
+
+1137

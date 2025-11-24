@@ -1,0 +1,45 @@
+290 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+9.1 Relational Database Design Using
+ER-to-Relational Mapping
+
+9.1.1 ER-to-Relational Mapping Algorithm
+
+In this section we describe the steps of an algorithm for ER-to-relational mapping.
+We use the COMPANY database example to illustrate the mapping procedure.
+The COMPANY ER schema is shown again in Figure 9.1, and the corresponding
+COMPANY relational database schema is shown in Figure 9.2 to illustrate the
+
+Figure 9.1
+The ER conceptual schema diagram for the COMPANY database.
+
+Tait Ci > Ca)
+CBdate > CName
+Ssn
+
+Address) Salary
+CS),
+
+WORKS_FOR
+
+EMPLOYEE Start_date) © Number_of_emp!
+
+LiARIetas CONTROLS
+Hours nt
+M N
+WORKS_ON PROJECT
+Supervisor Supervisee \
+1
+SUPERVISION > N Name
+
+ver 4 CLeeaton >
+
+DEPENDENTS_OF
+
+N
+
+DEPENDENT
+
+Name Sex Birth_date
+
+Relationship

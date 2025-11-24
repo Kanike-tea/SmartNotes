@@ -1,0 +1,44 @@
+Database Management System [BCS403]
+
+5.13 Concurrency ControliBas'
+
+Starvation.
+Another problem that may occur when we use locking is starvation, which occurs
+when a transaction cannot proceed for an indefinite period of time while other
+transactions in the system continue normally.
+This may occur if the waiting scheme for locked items is unfair, giving priority to
+some transactions over others
+One solution for starvation is to have a fair waiting scheme, such as using a first-
+come-first-served queue; transactions are enabled to lock an item in the order in
+which they originally requested the lock.
+Another scheme allows some transactions to have priority. over others but
+increases the priority of a transaction the longer it waits, until it eventually gets the
+highest priority and proceeds.
+Starvation can also occur because of victim selection if the algorithm selects the
+same transaction as victim repeatedly, thus causing it to abort and never finish
+execution.
+The algorithm can use higher priorities for transactions that have been aborted
+
+multiple times to avoid this problem.
+
+guarantees serializability using transaction timestamps to order transaction execution
+for an equivalent serial schedule
+
+5.13.1 Timestamps
+
+https://vtucode.in
+
+timestamp is a unique identifier created by the DBMS to identify a transaction.
+Typically, timestamp values are assigned in the order in which the transactions are
+submitted to the system, so a timestamp can be thought of as the transaction start
+time.
+We will refer to the timestamp of transaction T as TS(7).
+Concurrency control techniques based on timestamp ordering do not use
+locks;hence, deadlocks cannot occur.
+Timestamps can be generated in several ways.
+
+— One possibility is to use a counter that is incremented each time its value is
+
+assigned to a transaction. The transaction timestamps are numbered 1, 2, 3,
+
+33

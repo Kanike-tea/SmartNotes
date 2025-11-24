@@ -1,0 +1,52 @@
+14.2 Functional Dependencies
+
+This informal guideline obviously needs to be stated more formally. In Section 15.2
+we discuss a formal condition called the nonadditive (or lossless) join property that
+guarantees that certain joins do not produce spurious tuples.
+
+14.1.5 Summary and Discussion of Design Guidelines
+
+In Sections 14.1.1 through 14.1.4, we informally discussed situations that lead to
+problematic relation schemas and we proposed informal guidelines for a good rela-
+tional design. The problems we pointed out, which can be detected without addi-
+tional tools of analysis, are as follows:
+
+= Anomalies that cause redundant work to be done during insertion into and
+modification of a relation, and that may cause accidental loss of information
+during a deletion from a relation
+
+= Waste of storage space due to NULLs and the difficulty of performing selec-
+tions, aggregation operations, and joins due to NULL values
+
+= Generation of invalid and spurious data during joins on base relations with
+matched attributes that may not represent a proper (foreign key, primary
+key) relationship
+
+In the rest of this chapter we present formal concepts and theory that may be used
+to define the goodness and badness of individual relation schemas more precisely.
+First we discuss functional dependency as a tool for analysis. Then we specify the
+three normal forms and Boyce-Codd normal form (BCNF) for relation schemas as
+the established and accepted standards of quality in relational design. The strategy
+for achieving a good design is to decompose a badly designed relation appropriately
+to achieve higher normal forms. We also briefly introduce additional normal forms
+that deal with additional dependencies. In Chapter 15, we discuss the properties of
+decomposition in detail and provide a variety of algorithms related to functional
+dependencies, goodness of decomposition, and the bottom-up design of relations
+by using the functional dependencies as a starting point.
+
+14.2 Functional Dependencies
+
+So far we have dealt with the informal measures of database design. We now intro-
+duce a formal tool for analysis of relational schemas that enables us to detect and
+describe some of the above-mentioned problems in precise terms. The single most
+important concept in relational schema design theory is that of a functional depen-
+dency. In this section we formally define the concept, and in Section 14.3 we see
+how it can be used to define normal forms for relation schemas.
+
+14.2.1 Definition of Functional Dependency
+
+A functional dependency is a constraint between two sets of attributes from the
+database. Suppose that our relational database schema has n attributes Aj, A,
+.., A,; let us think of the whole database as being described by a single universal
+
+471

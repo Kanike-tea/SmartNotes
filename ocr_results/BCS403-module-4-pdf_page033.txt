@@ -1,0 +1,39 @@
+Database Management System [BCS403]
+
+4. The Unrepeatable Read Problem
+= Transaction T reads the same item twice and gets different values on each read, since
+the item was modified by another transaction T’ between the two reads.
+= for example, if during an airline reservation transaction, a customer inquires about seat
+availability on several flights
+= When the customer decides on a particular flight, the transaction then reads the number
+of seats on that flight a second time before completing the reservation, and it may end
+up reading a different value for the item.
+5.2.4 Why Recovery Is Needed
+= Whenever a transaction is submitted to a DBMS for execution, the system is responsible
+for making sure that either
+1. All the operations in the transaction are completed successfully and their effect is
+recorded permanently in the database or
+2.The transaction does not have any effect on the database or any other
+transactions
+= In the first case, the transaction is said to be committed, whereas in the second case,
+the transaction is aborted
+= If a transaction fails after executing some: of its operations but before executing all of
+
+them, the operations already executed must be undone and have no lasting effect.
+
+Types of failures
+
+1. A computer failure (system crash):
++ »A hardware, software, or network error occurs in the computer system during
+transaction execution
++ Hardware crashes are usually media failures—for example, main memory failure.
+2. Atransaction or system error:
++ Some operation in the transaction may cause it to fail, such as integer overflow or
+division by zero
++ Also occur because of erroneous parameter values
+3. Local errors or exception conditions detected by the transaction:
++ During transaction execution, certain conditions may occur that necessitate cancellation
+
+of the transaction
+
+https://vtucode.in 9

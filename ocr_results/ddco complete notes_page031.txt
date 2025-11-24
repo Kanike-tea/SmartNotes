@@ -1,0 +1,32 @@
+Digital Design and Computer Organization(BCS302)
+
+Table 4.2
+Truth Table for Code Conversion Example
+Input BCD Output Excess-3 Code
+
+A c D w x y z
+fe} fe) fo} fo} oO (0) 1
+fe} fe} oO 1 oO 1 Le} Le}
+oO oO 1 oO Oo 1 oO 1
+oO oO 1 1 oO 1 1 oO
+fe} 1 fo} fo} oO 1 1 1
+fe} 1 oO 1 1 (0) Le} Le}
+oO 1 1 oO 1 0) oO 1
+oO 1 1 1 1 oO 1 oO
+1 fe} fo} fo} 1 oO 1 1
+1 fe} oO 1 1 1 Le} Le}
+
+Note that four binary variables may have 16 bit combinations, but only 10 are listed
+in the truth table. The six bit combinations not listed for the input variables are don’t-
+care combinations.
+
+z=D' y=CD+C'D'
+
+implemented with three or more levels of gates:
+z=D’'
+y=CD+C'D'=CD+(C+Dy)'
+x = B'C + B'D + BC'D’ = B'(C + D) + BC'D'
+= B’(C+D)+ B(C+D)’'
+w=A+ BC+ BD=A+B(C+D)
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 3

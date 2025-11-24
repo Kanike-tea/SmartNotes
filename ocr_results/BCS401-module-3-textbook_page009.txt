@@ -1,0 +1,42 @@
+6.4 Heaps and Heapsort 227
+
+oO) oO) (9)
+(8 %) @ ) (89 1
+
+FIGURE 6.9 Illustration of the definition of heap: only the leftmost tree is a heap.
+
+= finding an item with the highest (i.e., largest) priority
+= deleting an item with the highest priority
+= adding a new item to the multiset
+
+It is primarily an efficient implementation of these operations that makes
+the heap both interesting and useful. Priority queues arise naturally in such ap-
+plications as scheduling job executions by computer operating systems and traf-
+fic management by communication networks. They also arise in several impor-
+tant algorithms, e.g., Prim’s algorithm (Section 9.1), Dijkstra’s algorithm (Sec-
+tion 9.3), Huffman encoding (Section 9.4), and branch-and-bound applications
+(Section 12.2). The heap is also the data structure that serves as a cornerstone of
+a theoretically important sorting algorithm called heapsort. We discuss this algo-
+rithm after we define the heap and investigate its basic properties.
+
+Notion of the Heap
+
+DEFINITION A heap can be defined as a binary tree with keys assigned to its
+nodes, one key per node, provided the following two conditions are met:
+
+1. The shape property—the binary tree is essentially complete (or simply com-
+plete), i.c., all its levels are full except possibly the last level, where only some
+rightmost leaves may be missing.
+
+2. The parental dominance or heap property—the key in each node is greater
+than or equal to the keys in its children. (This condition is considered auto-
+matically satisfied for all leaves.)°
+
+For example, consider the trees of Figure 6.9. The first tree is a heap. The
+second one is not a heap, because the tree’s shape property is violated. And the
+third one is not a heap, because the parental dominance fails for the node with
+key 5.
+
+Note that key values in a heap are ordered top down; i.e., a sequence of values
+on any path from the root to a leaf is decreasing (nonincreasing, if equal keys are
+allowed). However, there is no left-to-right order in key values; i.e., there is no

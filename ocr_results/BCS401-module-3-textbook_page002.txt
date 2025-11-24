@@ -1,0 +1,37 @@
+220
+
+Transform-and-Conquer
+
+(a)
+-2 0
+=
+
+°
+°
+
+—=>
+)
+
+2
+4 0 0
+LR
+_
+0
+()
+ea
+1 RL
+—=>
+0
+(d)
+
+FIGURE 6.3 Four rotation types for AVL trees with three nodes. (a) Single R-rotation.
+(b) Single L-rotation. (c) Double LA-rotation. (d) Double AL-rotation.
+
+°
+°
+
+The second rotation type is called the double left-right rotation (LR-
+rotation). It is, in fact, a combination of two rotations: we perform the L-rotation
+of the left subtree of root r followed by the R-rotation of the new tree rooted at
+r (Figure 6.5). It is performed after a new key is inserted into the right subtree of
+the left child of a tree whose root had the balance of +1 before the insertion.

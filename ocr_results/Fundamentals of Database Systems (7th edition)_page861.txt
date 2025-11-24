@@ -1,0 +1,51 @@
+22.6 Recovery in Multidatabase Systems
+
+For the REDO phase, the smallest LSN in the Dirty Page Table is 1. Hence the REDO
+will start at log record 1 and proceed with the REDO of updates. The LSNs {1, 2, 6, 7}
+corresponding to the updates for pages C, B, A, and C, respectively, are not less
+than the LSNs of those pages (as shown in the Dirty Page Table). So those data
+pages will be read again and the updates reapplied from the log (assuming the actual
+LSNs stored on those data pages are less than the corresponding log entry). At this
+point, the REDO phase is finished and the UNDO phase starts. From the Transaction
+Table (Figure 22.5(c)), UNDO is applied only to the active transaction T3. The UNDO
+phase starts at log entry 6 (the last update for T3) and proceeds backward in the log.
+The backward chain of updates for transaction T; (only log record 6 in this exam-
+ple) is followed and undone.
+
+22.6 Recovery in Multidatabase Systems
+
+So far, we have implicitly assumed that a transaction accesses a single database. In
+some cases, a single transaction, called a multidatabase transaction, may require
+access to multiple databases. These databases may even be stored on different types of
+DBMSs; for example, some DBMSs may be relational, whereas others are object-
+oriented, hierarchical, or network DBMSs. In such a case, each DBMS involved in the
+multidatabase transaction may have its own recovery technique and transaction man-
+ager separate from those of the other DBMSs. This situation is somewhat similar to the
+case of a distributed database management system (see Chapter 23), where parts of the
+database reside at different sites that are connected by a communication network.
+
+To maintain the atomicity of a multidatabase transaction, it is necessary to have a
+two-level recovery mechanism. A global recovery manager, or coordinator, is
+needed to maintain information needed for recovery, in addition to the local recov-
+ery managers and the information they maintain (log, tables). The coordinator usu-
+ally follows a protocol called the two-phase commit protocol, whose two phases
+can be stated as follows:
+
+= Phase 1. When all participating databases signal the coordinator that the
+part of the multidatabase transaction involving each has concluded, the
+coordinator sends a message prepare for commit to each participant to get
+ready for committing the transaction. Each participating database receiving
+that message will force-write all log records and needed information for
+local recovery to disk and then send a ready to commit or OK signal to the
+coordinator. If the force-writing to disk fails or the local transaction cannot
+commit for some reason, the participating database sends a cannot commit
+or not OK signal to the coordinator. If the coordinator does not receive a
+reply from the database within a certain time out interval, it assumes a not
+OK response.
+
+= Phase 2. If all participating databases reply OK, and the coordinator’s vote is
+also OK, the transaction is successful, and the coordinator sends a commit
+signal for the transaction to the participating databases. Because all the local
+effects of the transaction and information needed for local recovery have
+
+831

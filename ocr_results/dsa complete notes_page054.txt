@@ -1,0 +1,49 @@
+Data Structures and Applications(BCS304) Module 2
+
+Function to add an item to the i'" stack
+
+void push(int i, element item)
+
+{
+if (top[i] == bottom[i+1])
+stackFull(i);
+stack[++top[i]] = item;
+
+}
+
+Function to delete an item from the ith stack
+
+element pop(int i)
+
+{
+if (top[i] == bottom[i])
+return stackEmpty(i);
+return stack[top[i]--];
+i
+Mazing Problem
+Representation: Maze is represented as a two dimensional array in which zeros represent the open
+paths and ones the barriers. The location in the maize can be determined by the row number and
+column number Figure below shows a simple maze.
+—'010001100011111
+on 00 0 1o1l11001 1
+0 10000111 0 0 1
+01 11011031100
+010010141 11 1
+00110312t11010010i21
+0 11 00111 11 1
+0011011011 1101
+000110110000 0 .
+0011111000111 1 0| SF
+0 0 0 1ji1i1i10 141 oy—-
+
+From each location there are eight directions of movement N, NE,E,SE,S,SW,W.NW.
+
+NW
+[row-1] [col-1]
+
+[row] [col-1]
+
+[row+1] [col-1]
+sw
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 10

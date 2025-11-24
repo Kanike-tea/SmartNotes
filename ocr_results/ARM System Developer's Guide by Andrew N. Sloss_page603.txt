@@ -1,0 +1,40 @@
+590 Appendix A ARM and Thumb Assembler Instructions
+
+Action Effect on the cpsr
+
+1. Ld = Lm LSR #<immed5> Updated (see Note below)
+2. Ld = Ld LSR Ls[7:0] Updated
+
+Note
+
+= The cpsr is updated: N = <Negative>, Z = <Zero>, C = <shifter_C> (see Table A.3).
+
+MCR Move to coprocessor from an ARM register
+
+MCRR
+1. MCR<cond> <copro>, <opl>, Rd, Cn, Cm {, <op2>} ARMv2
+2. MCR2 <copro>, <opl>, Rd, Cn, Cm {, <op2>} ARMV5
+3. MCRR<cond> <copro>, <opl>, Rd, Rn, Cm ARMv5E.
+4. MCRR2 <copro>, <opl>, Rd, Rn, Cm ARMv6,
+
+These instructions transfer the value of ARM register Rd to the indicated coprocessor.
+Formats 3 and 4 also transfer a second register Rn. <copro> is the number of the coprocessor
+in the range p0 to p15. The core takes an undefined instruction trap if the coprocessor is
+not present. The coprocessor operation specifiers <op1> and <op2>, and the coprocessor
+register numbers Cn, Cm, are interpreted by the coprocessor, and ignored by the ARM.
+Rd and Rn must not be pe. Coprocessor p15 controls memory management options. See
+Chapters 13 and 14 for descriptions of the MPU and MMU memory management units.
+For example, the following code sequence enables alignment fault checking:
+
+MRC p15, 0, r0, cl, c0, 0 read the MMU register, cl
+oRR =r, 0, #2 3 set the A bit
+MCR p15, 0, r0, cl, cO, 0 ; write the MMU register, cl
+
+MLA Multiply with accumulate
+1. MLA<cond>{S} Rd, Rm, Rs, Rn ARMv2
+Action Effect on the cpsr
+1. Rd = Rn + Rm*Rs Updated if S suffix supplied
+Notes
+
+= Rdis set to the lower 32 bits of the result.
+= Rd, Rim, Rs, Rn must not be pe.

@@ -1,0 +1,46 @@
+LECTURE-30
+
+Boyce-Code Normal Form (BCNF)
+
+A relationship is said to be in BCNF if it is already in 3NF and the left hand side of every
+dependency is a candidate key. A relation which is in 3NF is almost always in BCNF. These could
+be same situation when a 3NF relation may not be in BCNF the following conditions are found true.
+
+1. The candidate keys are composite.
+
+2. There are more than one candidate keys in the relation.
+3. There are some common attributes in the relation.
+
+Professor Code Department Head of Dept.Percent Time:
+
+Pl Physics Ghosh 50
+Pl Mathematics Krishnan 50
+P2 Chemistry Rao 25
+P2 Physics Ghosh 715
+P3 Mathematics Krishnan 100
+
+Consider, as an example, the above relation. It is assumed that:
+1. A professor can work in more than one department
+2. The percentage of the time he spends in each department is given.
+3. Each department has only one Head of Department.
+
+The relation diagram for the above relation is given as the following:
+
+Head of
+Department Department
+Professor Code Percent Time
+Department Beadot
+Department
+Department
+Head of Department
+
+Professor Code
+Percent Time
+
+The given relation is in 3NF. Observe, however, that the names of Dept. and Head of Dept. are
+plicated. Further, if Professor P2 resigns, rows 3 and 4 are deleted. We lose the information that
+Rao is the Head of Department of Chemistry.
+
+The normalization of the relation is done by creating a new relation for Dept. and Head of Dept. and
+leleting Head of Dept. form the given relation. The normalized relations are shown in the
+following.

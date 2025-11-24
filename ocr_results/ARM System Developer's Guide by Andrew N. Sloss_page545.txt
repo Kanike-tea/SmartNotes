@@ -1,0 +1,53 @@
+532 Chapter 14 Memory Management Units
+
+EXAMPLE
+
+14.6
+
+to convert the data in the RCB to entries in a page table. The first high-level routine
+mmuMapRegion determines the type of page table and then calls one of three routines to
+create the page table entries: mmuMapSecti onTab1eRegi on, mmuMapCoarseTabl eRegion,
+or mmuMapFineTableRegion.
+
+To ease future porting of code, we advise not using tiny pages and the
+mmuMapFineTableRegion routine because the ARMvé6 architecture doesn’t use the tiny
+page. The fine page table type has also been removed in the ARMvé architecture because
+the need for it disappears without tiny pages.
+
+Here is a description of the four routines:
+
+= ~The mmuMapRegion routine determines the page table type and branches to one of the
+routines listed below; it is presented in Example 14.6.
+
+=~ mmuMapSectionTableRegion fills an L1 master table with section entries; it is presented
+in Example 14.7.
+
+=~ mmuMapCoarseTableRegion fills an L2 coarse page table with region entries; it is
+presented in Example 14.8 .
+
+= ~~ mmuMapFineTab]eRegion fills an L2 fine page table with region entries; it is presented
+in Example 14.9.
+
+Here is a list of the C function prototypes for the four routines:
+
+int mmuMapRegion(Region *region) ;
+
+void mmuMapSect ionTableRegion(Region *region) ;
+int mmuMapCoarseTableRegion(Region *region);
+int mmuMapFineTableRegion(Region *region) ;
+
+The four procedures all have a single input parameter, which is a pointer to a Region
+structure that contains the configuration data needed to generate page table entries.
+
+Here is the high-level routine that selects the page table type:
+
+int mmuMapRegion(Region *region)
+{
+switch (region->PT->type)
+{
+case SECTION: /* map section in L1 PT */
+{
+mmuMapSect ionTabl eRegion(region) ;
+break;
+}
+case COARSE: /* map PTE to point to COARSE L2 PT */

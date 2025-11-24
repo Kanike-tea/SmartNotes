@@ -1,0 +1,45 @@
+5.6 Pointer Aliasing 127
+
+= Define small functions in the same source file and before the functions that call them.
+The compiler can then optimize the function call or inline the small function.
+
+= Critical functions can be inlined using the _inl ine keyword.
+
+5.6 POINTER ALIASING
+
+Two pointers are said to alias when they point to the same address. If you write to one
+pointer, it will affect the value you read from the other pointer. In a function, the compiler
+often doesn’t know which pointers can alias and which pointers can’t. The compiler must
+be very pessimistic and assume that any write to a pointer may affect the value read from
+any other pointer, which can significantly reduce code efficiency.
+
+Let’s start with a very simple example. The following function increments two timer
+values by a step amount:
+
+void timers_v1(int *timerl, int *timer2, int *step)
+{
+
+“timer += *step;
+
+*timer2 += *step;
+
+}
+
+This compiles to
+
+timers_v1
+LOR 13, [r0, #0] 3 3 = *timerl
+LOR rl2, [r2,#0] 3
+ADD 13,73, 712 3
+sTR 13, [r0, #0] 3 *timerl = 13
+LOR r0,[r1,#0] 3 r0 = *timer2
+LOR r2,[r2, #0] 3 r2 = *step
+ADD 10,10, 12 3 r0 += v2
+sTR 10, [r1, #0] 3 *timer2 = t0
+Mov pe, rl4 3 return
+
+Note that the compiler loads from step twice. Usually a compiler optimization called
+common subexpression elimination would kick in so that *step was only evaluated once,
+and the value reused for the second occurrence. However, the compiler can’t use this
+optimization here. The pointers timer1 and step might alias one another. In other words,
+the compiler cannot be sure that the write to timer1 doesn’t affect the read from step.

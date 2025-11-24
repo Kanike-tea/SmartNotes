@@ -1,0 +1,52 @@
+17.6 Some General Issues Concerning Indexing
+
+additional level of indirection between the access structure and the data. They are
+used when physical record addresses are expected to change frequently. The cost of
+this indirection is the extra search based on the primary file organization.
+
+17.6.2 Index Creation
+
+Many RDBMSs have a similar type of command for creating an index, although it is
+not part of the SQL standard. The general form of this command is:
+
+CREATE [ UNIQUE | INDEX <index name>
+ON <table name> ( <column name> [ <order> ] { , <column name> [ <order> ] } )
+[ CLUSTER ] ;
+
+The keywords UNIQUE and CLUSTER are optional. The keyword CLUSTER is used
+when the index to be created should also sort the data file records on the indexing
+attribute. Thus, specifying CLUSTER on a key (unique) attribute would create some
+variation of a primary index, whereas specifying CLUSTER on a nonkey (nonu-
+nique) attribute would create some variation of a clustering index. The value for
+<order> can be either ASC (ascending) or DESC (descending), and it specifies
+whether the data file should be ordered in ascending or descending values of the
+indexing attribute. The default is ASC. For example, the following would create a
+clustering (ascending) index on the nonkey attribute Dno of the EMPLOYEE file:
+
+CREATE INDEX Dnolndex
+ON EMPLOYEE (Dno)
+CLUSTER ;
+
+Index Creation Process: In many systems, an index is not an integral part of the
+data file but can be created and discarded dynamically. That is why it is often called
+an access structure. Whenever we expect to access a file frequently based on some
+search condition involving a particular field, we can request the DBMS to create an
+index on that field as shown above for the DnoIndex. Usually, a secondary index is
+created to avoid physical ordering of the records in the data file on disk.
+
+The main advantage of secondary indexes is that—theoretically, at least—they can
+be created in conjunction with virtually any primary record organization. Hence, a
+secondary index could be used to complement other primary access methods such
+as ordering or hashing, or it could even be used with mixed files. To create a B*-tree
+secondary index on some field of a file, if the file is large and contains millions of
+records, neither the file nor the index would fit in main memory. Insertion of a
+large number of entries into the index is done by a process called bulk loading the
+index. We must go through all records in the file to create the entries at the leaf level
+of the tree. These entries are then sorted and filled according to the specified fill fac-
+tor; simultaneously, the other index levels are created. It is more expensive and
+much harder to create primary indexes and clustering indexes dynamically, because
+the records of the data file must be physically sorted on disk in order of the indexing
+field. However, some systems allow users to create these indexes dynamically on
+their files by sorting the file during index creation.
+
+639

@@ -1,0 +1,56 @@
+920
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+key-value pairs. The Reduce function receives a key and an iterator of values asso-
+ciated with that key. It can output one or more key-value pairs on each invocation.
+Again, the signature of the Reduce function indicates the data types of its inputs
+and outputs. The output type of the Map must match the input type of the Reduce
+function. In the wordcount example, the map function receives each line as a
+value, splits it into words, and emits (via the function context.out) a row for each
+word with frequency 1. Each invocation of the Reduce function receives for a given
+word the list of frequencies computed on the Map side. It adds these and emits
+each word and its frequency as output. The functions interact with a context. The
+context is used to interact with the framework. It is used by clients to send config-
+uration information to tasks; and tasks can use it to get access to HDFS and read
+data directly from HDFS, to output key-value pairs, and to send status (e.g., task
+counters) back to the client.
+
+The MapReduce way of implementing some other functions based on Dean and
+Ghemawat (2004) is as follows:
+
+Distributed Grep
+
+Grep looks for a given pattern in a file. The Map function emits a line if it
+matches a supplied pattern. The Reduce function is an identity function that
+copies the supplied intermediate data to the output. This is an example of a
+Map only task; there is no need to incur the cost of a Shuffle. We will provide
+more information when we explain the MapReduce runtime.
+
+Reverse Web-Link Graph
+
+The purpose here is to output (target URL, source URL) pairs for each link to a
+target page found in a page named source. The Reduce function concatenates
+the list of all source URLs associated with a given target URL and emits the pair
+<target, list(source)>.
+
+Inverted Index
+
+The purpose is to build an inverted index based on all words present in a docu-
+ment repository. The Map function parses each document and emits a sequence
+of (word, document_id) pairs. The Reduce function takes all pairs for a given
+word, sorts them by document_id and emits a (word, list (document_id)) pair.
+‘The set of all these pairs forms an inverted index.
+
+These illustrative applications give a sense of the MapReduce programming model’s
+broad applicability and the ease of expressing the application’s logic using the Map
+and Reduce phases.
+
+A Job in MapReduce comprises the code for the Map and Reduce (usually pack-
+aged as a jar) phases, a set of artifacts needed to run the tasks (such as files, other
+jars, and archives) and, most importantly, a set of properties specified in a configu-
+ration. There are hundreds of properties that can be specified, but the core ones are
+as follows:
+
+= the Map task
+= the Reduce task

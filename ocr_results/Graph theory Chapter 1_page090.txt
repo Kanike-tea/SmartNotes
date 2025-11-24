@@ -1,0 +1,48 @@
+milton cycles and Hamilton paths 3
+
+1.10. Hal
+Show that every simple k-regular graph with 2k—I verticies is a Hamilton graph.
+» Ina k-regular graph, the degree of every vertex is k, and
+
+1 1 1
+k - <== ~ =-
+> k- 5 = 5Qk- I= 5n
+
+— 1 is the number of vertices, Therefore, by Theorem 2, the graph considered is
+.
+
+where n = 2k
+a Hamilton graph if it is simple.
+
+Disprove the converses of Theorems | and 2.
+> Consider a 2-regular graph with n = 5 vertices shown in Figure 1.130.
+
+Figure 1.130
+
+Evidently, this graph is a Hamilton graph. But the degree of every vertex is 2 which is less
+than n/2 and the sum of the degrees of every pair of vertices is 4 which is less than n.
+Thus, the converses of Theorems 1 and 2 are not necessarily true.
+Let G be a simple graph with n vertices and m edges where m is at least 3. If
+m> 5(n- 1)(n- 2) +2, prove that G is a Hamilton graph. Is the converse true?
+t vertices in G. Let x and y be their respective degrees.
+2 vertices. If this subgraph has q edges,
+
+> Let uv and v be any two non-adjacen
+If we delete u, v from G, we get a subgraph with n —
+then q < 3(n — 2)(n - 3).*
+
+Since u and v are nonadjacent, m =
+
+1
+eayemaaz {ho nio-2 +2} -{3(0-240-9}
+
+=n
+
+q+xty. Thus,
+
+Therefore, by Theorem 1, the given graph is a Hamilton graph.
+The converse of the result just proved is not always true. Because, a 2-regular graph with
+
+five vertices (shown in Figure 1.130) is Hamiltonian but the inequality does not hold. .
+
+“Recall that in a simple graph of order 1, the number of edges is < in(n -1).

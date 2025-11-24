@@ -1,0 +1,50 @@
+Digital Design &Computer Organization(BCS302) MODULE -4
+
++ The memory is implemented using the dynamic components (SIMM, DIMM).
+
+The access time for main-memory is about 10 times longer than the
+access time for Ll cache.
+
+Cache Memory
+
+It is the fast access memory located in between processor and main memory
+
+Processor  f*7———} Cache Memory |¢——____»} Main Memory
+
+as shown inthe fig. It is designed to reduce the access time.
+
+The cache memory holds the copy of recently accessed data and instructions.
+e The processor needs less access time to read the data and instructions from
+
+the cache memory as compared to main memory .
+e Hence by incorporating cache memory, in between processor and main
+memory, itis possible to enhance the performance of the system.
+* The effectiveness of cache mechanism is based on the property of
+
+“Locality of Reference”.
+
+Locality of Reference
+
+* Many instructions in the localized areas of program are executed repeatedly during
+sometime of execution
+
++ Remainder of the program is accessed relatively infrequently
+
++ There are 2 types of locality reference:
+1) Temporal
+
+> The recently executed instructions are likely to be executed again and again.
+
+> Eg -instruction in loops, nested loops and few function calls.
+2) Spatial
+> Instructions in close proximity to recently executed instruction are likely to be
+executed soon. (near by instructions)
+- If active segment of program is placed in cache-memory, then total execution time
+can be reduced.
++ Cache Block / cache line refers to the set of contiguous address locations of some
+
+size.
+
++ The Cache-memory stores a reasonable number of blocks at a given time.
+
+Dr.Ajay V G, Dept. of CSE, 21

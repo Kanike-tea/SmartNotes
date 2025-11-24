@@ -1,0 +1,43 @@
+4,3. Spanning Trees 173
+The sublists obtained above are now merged as depicted in Figure 3,20(b).
+
+=| ——--7. 11 5° 15 =3 6-10
+V4 \/ :
+{-1h7) 4 {5,11} -8 (+3, 15) 29 {6,10} 3
+
+NYY NY y
+{-1,4,7)  (-8,5, 11) Ne oy
+
+Dey cet } In,
+eee
+
+{-3, -2, 3, 6, 10, 15}
+{-8, -3, -2, -1,3,4,5,6,7, 10, 11, 15}
+
+Figure 3.20 (b)
+
+Thus, the sorted-out version of the given list is -8, -3, -2, -1, 3, 4, 5, 6,7,10,11,15. =
+
+Exercises
+
+Apply the merge-sort to each of the following lists:
+1, 6,2, 7, 3,4, 9, 5, 1, 8.
+‘2, -1,0,2, -2, 3, 6, -3, 5, 1, 4.
+
+3. -9, 6, 5, -3, 4, 2, -7, 6, -5, 10, -11,0, 1.
+
+3.3 Spanning Trees
+Let G be a connected graph. A subgraph T of G is called a spanning tree of G if (i) T is a tree,
+
+and (ii) T contains all vertices of G.
+In other words, a spanning tree of a connected graph is a spanning subgraph that is also a
+
+Since a spanning tree T of a graph'G is a subgraph of G that contains all vertices of G, 7 is
+4 maximal subgraph of G. For, this reason, a spanning tree is also called a maximal free. The
+"amés skeleton and scaffolding are also used for a spanning tree, The edges of a spanning tree
+*e called its branches. ;
+| Obviously, if G has n vertices, a spanning tree of G must have n vertices and n — 1 edges.”
+
+——ee__
+
+“Recall that a tree with n vertices has n ~ 1 edges.

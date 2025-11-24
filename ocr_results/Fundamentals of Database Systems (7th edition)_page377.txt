@@ -1,0 +1,66 @@
+11.2 Overview of Basic Features of PHP
+
+discussion of PHP; there are many books that focus solely on PHP. Rather, we focus
+on illustrating certain features of PHP that are particularly suited for creating
+dynamic Web pages that contain database access commands. This section covers
+some PHP concepts and features that will be needed when we discuss database
+access in Section 11.3.
+
+11.2.1 PHP Variables, Data Types, and Programming Constructs
+
+PHP variable names start with the $ symbol and can include characters, letters, and
+the underscore character (_). No other special characters are permitted. Variable
+names are case sensitive, and the first character cannot be a number. Variables are
+not typed. The values assigned to the variables determine their type. In fact, the
+same variable can change its type once a new value is assigned to it. Assignment is
+via the = operator.
+
+Since PHP is directed toward text processing, there are several different types of
+string values. There are also many functions available for processing strings. We
+only discuss some basic properties of string values and variables here. Figure 11.2
+illustrates some string values. There are three main ways to express strings and text:
+
+1. Single-quoted strings. Enclose the string between single quotes, as in lines
+0, 1, and 2. Ifa single quote is needed within the string, use the escape char-
+acter (\) (see line 2).
+
+2. Double-quoted strings. Enclose strings between double quotes as in
+line 7. In this case, variable names appearing within the string are replaced
+by the values that are currently stored in these variables. The interpreter
+identifies variable names within double-quoted strings by their initial
+character $ and replaces them with the value in the variable. This is known
+as interpolating variables within strings. Interpolation does not occur in
+single-quoted strings.
+
+3. Here documents. Enclose a part of a document between a <<<DOCNAME
+and end it with a single line containing the document name DOCNAME.
+
+347
+
+0) print ‘Welcome to my Web site.';
+
+1) print 'I said to him, "Welcome Home"';
+
+2) print 'We\'1l now visit the next Web site';
+
+3) printf('The cost is $%.2f and the tax is $%.2f',
+$cost, $tax) ;
+
+4) print strtolower('AbCdE');
+
+5) print ucwords(strtolower('JOHN smith'));
+
+6) print ‘abc' . 'efg'
+
+7) print "send your email reply to: $email_address"
+
+8) print <<<FORM_HTML
+
+9) <FORM method="post" action="$_SERVER[ 'PHP_SELF']">
+
+10) Enter your name: <input type="text" name="user_name">
+
+11) FORM_HTML
+
+Illustrating basic PHP
+string and text values

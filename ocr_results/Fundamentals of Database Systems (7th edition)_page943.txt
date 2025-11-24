@@ -1,0 +1,53 @@
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+= Prescriptive analytics: Refers to analytics that recommends actions.
+
+= Social media analytics: Refers to doing a sentiment analysis to assess public
+opinion on topics or events. It also allows users to discover the behavior pat-
+terns and tastes of individuals, which can help industry target goods and
+services in a customized way.
+
+= Entity analytics: This is a somewhat new area that groups data about enti-
+ties of interest and learns more about them.
+
+= Cognitive computing: Refers to an area of developing computing systems
+that will interact with people to give them better insight and advice.
+
+In another book, Bill Franks of Teradata’ voices a similar theme; he states that tap-
+ping big data for better analytics is essential for a competitive advantage in any
+industry today, and he shows how to develop a “big data advanced analytics ecosys-
+tem” in any organization to uncover new opportunities in business.
+
+As we can see from all these industry-based publications by experts, big data is
+entering a new frontier in which big data will be harnessed to provide analytics-
+oriented applications that will lead to increased productivity, higher quality, and
+growth in all businesses. This chapter discusses the technology that has been created
+over the last decade to harness big data. We focus on those technologies that can be
+attributed to the MapReduce/Hadoop ecosystem, which covers most of the ground
+of open source projects for big data applications. We will not be able to get into the
+applications of the big data technology for analytics. That is a vast area by itself.
+Some of the basic data mining concepts are mentioned in Chapter 28; however,
+today’s analytics offerings go way beyond the basic concepts we have outlined there.
+
+In Section 25.1, we introduce the essential features of big data. In Section 25.2, we
+will give the historical background behind the MapReduce/Hadoop technology
+and comment on the various releases of Hadoop. Section 25.3 discusses the
+underlying file system called Hadoop Distributed File System for Hadoop. We
+discuss its architecture, the I/O operations it supports, and its scalability. Sec-
+tion 25.4 provides further details on MapReduce (MR), including its runtime
+environment and high-level interfaces called Pig and Hive. We also show the
+power of MapReduce in terms of the relational join implemented in various ways.
+Section 25.5 is devoted to the later development called Hadoop v2 or MRv2 or
+YARN, which separates resource management from job management. Its rationale
+is explained first, and then its architecture and other frameworks being developed
+on YARN are explained. In Section 25.6 we discuss some general issues related to
+the MapReduce/Hadoop technology. First we discuss this technology vis-a-vis
+the parallel DBMS technology. Then we discuss it in the context of cloud comput-
+ing, and we mention the data locality issues for improving performance. YARN
+as a data service platform is discussed next, followed by the challenges for big data
+technology in general. We end this chapter in Section 25.7 by mentioning some
+ongoing projects and summarizing the chapter.
+
+4See Franks (2013) : Taming The Big Data Tidal Wave.
+
+913

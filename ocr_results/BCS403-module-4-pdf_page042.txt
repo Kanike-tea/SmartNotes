@@ -1,0 +1,30 @@
+Database Management System [BCS403]
+
+(be) transaction T, transaction T> transaction Tz
+read_item (Z);
+read_item (Y);
+write_item (Y);
+read_item (Y);
+read_item (Z);
+read_item (X);
+Time write_item (X); write_item (Y);
+write_item (Z);
+read_item (X);
+read_item (Y);
+write_item (Y); write_item (X);
+Schedule E
+(c) transaction 7; transaction 75 transaction 73
+read_item (Y);
+read_item (Z);
+read_item (X);
+Time write_item (X); write_item (Y);
+wrile_ilern (Z);
+read_item (Z);
+read_item (Y);
+write_item (Y); read_item (Y);
+write_item (Y);
+read_item (X);
+write_item (X);
+Schedule F
+
+https:/ivtucode.in 18

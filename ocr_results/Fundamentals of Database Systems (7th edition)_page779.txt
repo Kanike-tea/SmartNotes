@@ -1,0 +1,52 @@
+20.1 Introduction to Transaction Processing
+
+a number of data buffers in main memory. Each buffer typically holds the contents
+of one database disk block, which contains some of the database items being pro-
+cessed. When these buffers are all occupied, and additional database disk blocks
+must be copied into memory, some buffer replacement policy is used to choose
+which of the current occupied buffers is to be replaced. Some commonly used buffer
+replacement policies are LRU (least recently used). If the chosen buffer has been
+modified, it must be written back to disk before it is reused.’ There are also buffer
+replacement policies that are specific to DBMS characteristics. We briefly discuss a
+few of these in Section 20.2.4.
+
+A transaction includes read_item and write_item operations to access and update the
+database. Figure 20.2 shows examples of two very simple transactions. The read-set
+of a transaction is the set of all items that the transaction reads, and the write-set is
+the set of all items that the transaction writes. For example, the read-set of T, in
+Figure 20.2 is {X, Y} and its write-set is also {X, Y}.
+
+Concurrency control and recovery mechanisms are mainly concerned with the
+database commands in a transaction. Transactions submitted by the various users
+may execute concurrently and may access and update the same database items. If
+this concurrent execution is uncontrolled, it may lead to problems, such as an
+inconsistent database. In the next section, we informally introduce some of the
+problems that may occur.
+
+20.1.3 Why Concurrency Control Is Needed
+
+Several problems can occur when concurrent transactions execute in an uncontrolled
+manner. We illustrate some of these problems by referring to a much simplified air-
+line reservations database in which a record is stored for each airline flight. Each
+record includes the number of reserved seats on that flight as a named (uniquely iden-
+tifiable) data item, among other information. Figure 20.2(a) shows a transaction T;
+that transfers N reservations from one flight whose number of reserved seats is stored
+in the database item named X to another flight whose number of reserved seats is
+stored in the database item named Y. Figure 20.2(b) shows a simpler transaction T
+that just reserves M seats on the first flight (X) referenced in transaction T).’ To sim-
+plify our example, we do not show additional portions of the transactions, such as
+checking whether a flight has enough seats available before reserving additional seats.
+
+When a database access program is written, it has the flight number, the flight date,
+and the number of seats to be booked as parameters; hence, the same program can
+be used to execute many different transactions, each with a different flight number,
+date, and number of seats to be booked. For concurrency control purposes, a trans-
+action is a particular execution of a program on a specific date, flight, and number
+
+‘We will not discuss general-purpose buffer replacement policies here because they are typically discussed
+in operating systems texts.
+
+2A similar, more commonly used example assumes a bank database, with one transaction doing a transfer
+of funds from account X to account Y and the other transaction doing a deposit to account X.
+
+749

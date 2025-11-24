@@ -1,0 +1,37 @@
+464 Chapter 13 Memory Protection Units
+
+6. Accessing an area of main memory outside of a defined region results in an abort. The
+MPU generates a prefetch abort if the core was fetching an instruction or a data abort
+if the memory request was for data.
+
+13.1.1 OVERLAPPING REGIONS
+
+Overlapping regions occur when some portion of the memory space assigned to one region
+is also in the memory space assigned to another region. Overlapping regions provide a
+greater flexibility when assigning access permission than nonoverlapping regions.
+
+For an example of overlapping regions, suppose a small embedded system has 256 KB of
+available memory starting at address 0x00000000 and must protect a privileged system area
+from user mode reads and writes. The privileged area code, data, and stacks fit in a 32 KB
+region starting, with the vector table, at 0x00000000. The remaining memory is assigned
+to user space.
+
+With overlapping regions, the system uses two regions, a 256 KB user region and a
+32 KB privileged region (see Figure 13.1). The privileged region 1 is given the higher
+number because its attributes must take precedence over the user region 0.
+
+13.1.2 BACKGROUND REGIONS
+
+Another useful feature provided by overlapping regions is a background region—a low-
+priority region used to assign the same attributes to a large memory area. Other regions with
+higher priority are then placed over this background region to change the attributes of a
+smaller subset of the defined background region. So the higher-priority region is changing a
+subset of the background region attributes. A background region can shield several dormant
+
+256 KB | Region 0
+
+(User access)
+
+oxoooo | S2KB] | Region 1 | (Privileged access)
+
+Figure 13.1 Creating regions that overlap.

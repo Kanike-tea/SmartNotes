@@ -1,0 +1,47 @@
+Divide-and-Conquer 171
+
+As mentioned above, in the most typical case of divide-and-conquer a prob-
+lem’s instance of size n is divided into two instances of size n/2. More generally,
+an instance of size n can be divided into b instances of size n/b, with a of them
+needing to be solved. (Here, a and b are constants; a > 1 and b > 1.) Assuming
+that size n is a power of b to simplify our analysis, we get the following recurrence
+for the running time 7 (n):
+
+T(n) =aT(n/b) + f(n), (5.1)
+
+where f(n) is a function that accounts for the time spent on dividing an instance
+of size n into instances of size n/b and combining their solutions. (For the sum
+example above, a = b =2 and f(n) = 1.) Recurrence (5.1) is called the general
+divide-and-conquer recurrence. Obviously, the order of growth of its solution T (n)
+depends on the values of the constants a and b and the order of growth of the
+function f(n). The efficiency analysis of many divide-and-conquer algorithms is
+greatly simplified by the following theorem (see Appendix B).
+
+Master Theorem If f(n) € @(n*) where d > 0 in recurrence (5.1), then
+
+ont) ifa <4,
+T(n)€} OM logn) ifa=b4,
+O(n") ifa> bt.
+
+Analogous results hold for the O and Q notations, too.
+
+For example, the recurrence for the number of additions A(n) made by the
+divide-and-conquer sum-computation algorithm (see above) on inputs of size
+n=2kis
+
+A(n) =2A(n/2) +1.
+Thus, for this example, a = 2, b = 2, and d = 0; hence, since a > bf,
+An) € O(n! 4) = O(n?) = O(n).
+
+Note that we were able to find the solution’s efficiency class without going through
+the drudgery of solving the recurrence. But, of course, this approach can only es-
+tablish a solution’s order of growth to within an unknown multiplicative constant,
+whereas solving a recurrence equation with a specific initial condition yields an
+exact answer (at least for n’s that are powers of b).
+
+It is also worth pointing out that if a =1, recurrence (5.1) covers decrease-
+by-a-constant-factor algorithms discussed in the previous chapter. In fact, some
+people consider such algorithms as binary search degenerate cases of divide-and-
+conquer, where just one of two subproblems of half the size needs to be solved.
+It is better not to do this and consider decrease-by-a-constant-factor and divide-
+and-conquer as different design paradigms.

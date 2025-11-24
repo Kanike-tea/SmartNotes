@@ -1,0 +1,50 @@
+22
+
+Chapter 1 Databases and Database Users
+
+that model implicitly. For example, in the Entity-Relationship model in Chapter 3,
+a relationship must involve at least two entities. Rules that pertain to a specific data
+model are called inherent rules of the data model.
+
+1.6.9 Permitting Inferencing and Actions
+Using Rules and Triggers
+
+Some database systems provide capabilities for defining deduction rules for infer-
+encing new information from the stored database facts. Such systems are called
+deductive database systems. For example, there may be complex rules in the mini-
+world application for determining when a student is on probation. These can be
+specified declaratively as rules, which when compiled and maintained by the DBMS
+can determine all students on probation. In a traditional DBMS, an explicit proce-
+dural program code would have to be written to support such applications. But if
+the miniworld rules change, it is generally more convenient to change the declared
+deduction rules than to recode procedural programs. In today’s relational database
+systems, it is possible to associate triggers with tables. A trigger is a form of a rule
+activated by updates to the table, which results in performing some additional oper-
+ations to some other tables, sending messages, and so on. More involved proce-
+dures to enforce rules are popularly called stored procedures; they become a part of
+the overall database definition and are invoked appropriately when certain condi-
+tions are met. More powerful functionality is provided by active database systems,
+which provide active rules that can automatically initiate actions when certain
+events and conditions occur (see Chapter 26 for introductions to active databases in
+Section 26.1 and deductive databases in Section 26.5).
+
+1.6.10 Additional Implications of Using
+the Database Approach
+
+This section discusses a few additional implications of using the database approach
+that can benefit most organizations.
+
+Potential for Enforcing Standards. The database approach permits the DBA to
+define and enforce standards among database users in a large organization. This facil-
+itates communication and cooperation among various departments, projects, and
+users within the organization. Standards can be defined for names and formats of
+data elements, display formats, report structures, terminology, and so on. The DBA
+can enforce standards in a centralized database environment more easily than in an
+environment where each user group has control of its own data files and software.
+
+Reduced Application Development Time. A prime selling feature of the data-
+base approach is that developing a new application—such as the retrieval of certain
+data from the database for printing a new report—takes very little time. Designing
+and implementing a large multiuser database from scratch may take more time
+than writing a single specialized file application. However, once a database is up
+and running, substantially less time is generally required to create new applications

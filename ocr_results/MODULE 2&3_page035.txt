@@ -1,0 +1,49 @@
+Microcontrollers — BCS402
+
+The loop is now three instructions longer than the loop for example checksum_v2 earlier!
+
+There are two reasons for the extra instructions:
+
+¢ The LDRH instruction does not allow for a shifted address offset as the LDR
+instruction did in checksum_v2. Therefore the first ADD in the loop calculates the
+address of item i in the array. The LDRH loads from an address with no offset.
+
+e The cast reducing total + array[i] to a short requires two MOV instructions. The
+compiler shifts left by 16 and then right by 16 to implement a 16-bit sign extend.
+The shift right is a sign-extending shift so it replicates the sign bit to fill the upper
+16 bits.
+
+Second problem can be avoided by using an int type variable to hold the partial sum. This
+
+reduces the sum to a short type at the function exit.
+
+However, the first problem is a new issue. We can solve it by accessing the array by
+incrementing the pointer data rather than using an index as in data[i]. This is efficient
+regardless of array type size or element size. All ARM load and store instructions have a post
+
+increment addressing mode.
+
+Example: The checksum_v4 code fixes all the problems. It uses int type local variables to
+avoid unnecessary casts. It increments the pointer data instead of using an index offset
+data[i].
+
+short checksum_v4(short *data) checksum_v4
+
+{ MoV 12, #0 3 sum = 0
+unsigned int i; MoV r1,#0 31=0
+int sum=0; checksum_v4_loop
+LDRSH r3, [r0] , #2 3 73 = *(datatt+)
+for (i1=0; i1<64; i++) ADD ril,rl, #1 3 it
+{ CMP rl,#0x40 ; compare i, 64
+sum += *(data++); ADD r2,73,12 3 sum += 13
+} Bcc checksum_v4 loop ; if (sum<64) goto loop
+return (short)sum; Mov r0,r2,LSL #16
+} MOV r0,r0,ASR #16 ; rO = (short)sum
+MoV pe, rl4 ; return ro
+
+The *(data++) operation translates to a single ARM instruction that loads the data and
+increments the data pointer. Of course you could write sum += *data; datat++; or even
+
+*data++ instead if you prefer. The compiler produces the following output. Three instructions
+
+Dept. of ECE, GSSSIETW Page 36

@@ -1,0 +1,50 @@
+Digital Design and Computer Organization(BCS302)
+THEOREM l(a): x + x= x.
+
+Statement Justification
+x+x=(x+x).1 postulate 2(b)
+= (x +x) +x) 5(a)
+=xt xx’ 4(b)
+=x+0 5(b)
+=x 2(a)
+
+THEOREM l(b): x.x=x.
+
+Statement Justification
+
+X.X=xx+0 postulate 2(a)
+= xx + xx' 5(b)
+= x(x + x’) 4(a)
+=x.1 5S(a)
+=x 2(b)
+
+Note that theorem 1(b) is the dual of theorem 1(a) and that each step of the proof in
+part (b) is the dual of its counterpart in part (a)..
+
+THEOREM 2(a): x + 1 = 1.
+Statement Justification
+
+x+1=1.(x+1) postulate 2(b)
+
+= (x + x')(x + 1) 5S(a)
+=xtx'.1 4(b)
+=xtx' 2(b)
+=1 5(a)
+
+THEOREM 2(b): x .0O=0 by duality.
+
+THEOREM 3: (x’)' = x. From postulate 5, we have x + x' = 1 and x. x’ = O, which
+together define the complement of x. The complement of x' is x and is also (x’)'.
+
+Therefore, since the complement is unique, we have (x’)' = x. The theorems involving two
+or three variables may be proven algebraically from the postulates and the theorems
+that have already been proven.
+
+THEOREM 6(a): x + xy =x.
+
+Statement Justification
+
+x+xy=x.1+xy postulate 2(b)
+=x(1+y) 4(a)
+
+Page 4

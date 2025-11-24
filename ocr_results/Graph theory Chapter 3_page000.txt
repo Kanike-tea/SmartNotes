@@ -1,0 +1,28 @@
+= Chapter 3
+
+nn
+
+Trees
+
+In this chapter we consider an important class of graphs, called Trees. Some
+basic properties of trees and their immediate consequences and related con-
+cepts are presented. The topic of Prefix Codes is introduced and illustrated.
+
+3.1 Trees and their Basic properties
+Oh graph is said to be atree if itis connected and has no cycles)
+
+— Itimmediately follows that a tree has to be a simple graph; because loops and parallel edges
+form cycles. ~~ :
+The graphs shown in Figure 3.1 are all trees. We observe that each of these trees possesses
+
+at least two pendant vertices. A pendant vertex of a tree is also called a leaf.
+
+(a) (b) Yo” 9
+
+Figure 3.1
+
+A graph which is a tree is usually denoted by T (instead of G) to emphasize the structure.
+
+The graphs shown in Figure 3-2 are not trées. Observe that the first of these contains a cycle
+Whereas the second is not connected. However, each component of the second (disconnected)
+Staph is a tree. Such a graph is called a forest.

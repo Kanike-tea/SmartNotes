@@ -1,0 +1,52 @@
+21.5 Granularity of Data Items and Multiple Granularity Locking
+
+The particular choice of data item type can affect the performance of concurrency
+control and recovery. In Section 21.5.1, we discuss some of the tradeoffs with regard
+to choosing the granularity level used for locking; and in Section 21.5.2, we discuss
+a multiple granularity locking scheme, where the granularity level (size of the data
+item) may be changed dynamically.
+
+21.5.1 Granularity Level Considerations for Locking
+
+The size of data items is often called the data item granularity. Fine granularity
+refers to small item sizes, whereas coarse granularity refers to large item sizes. Sev-
+eral tradeoffs must be considered in choosing the data item size. We will discuss
+data item size in the context of locking, although similar arguments can be made for
+other concurrency control techniques.
+
+First, notice that the larger the data item size is, the lower the degree of concurrency
+permitted. For example, if the data item size is a disk block, a transaction T that
+needs to lock a single record B must lock the whole disk block X that contains B
+because a lock is associated with the whole data item (block). Now, if another trans-
+action S wants to lock a different record C that happens to reside in the same disk
+block X in a conflicting lock mode, it is forced to wait. If the data item size was a
+single record instead of a disk block, transaction S$ would be able to proceed, because
+it would be locking a different data item (record).
+
+On the other hand, the smaller the data item size is, the more the number of items
+in the database. Because every item is associated with a lock, the system will have a
+larger number of active locks to be handled by the lock manager. More lock and
+unlock operations will be performed, causing a higher overhead. In addition, more
+storage space will be required for the lock table. For timestamps, storage is required
+for the read_TS and write_TS for each data item, and there will be similar overhead
+for handling a large number of items.
+
+Given the above tradeoffs, an obvious question can be asked: What is the best item
+size? The answer is that it depends on the types of transactions involved. If a typical
+transaction accesses a small number of records, it is advantageous to have the data
+item granularity be one record. On the other hand, if a transaction typically accesses
+many records in the same file, it may be better to have block or file granularity so
+that the transaction will consider all those records as one (or a few) data items.
+
+21.5.2 Multiple Granularity Level Locking
+
+Since the best granularity size depends on the given transaction, it seems appropri-
+ate that a database system should support multiple levels of granularity, where the
+granularity level can be adjusted dynamically for various mixes of transactions. Fig-
+ure 21.7 shows a simple granularity hierarchy with a database containing two files,
+each file containing several disk pages, and each page containing several records.
+This can be used to illustrate a multiple granularity level 2PL protocol, with
+shared/exclusive locking modes, where a lock can be requested at any level. How-
+ever, additional types of locks will be needed to support such a protocol efficiently.
+
+801

@@ -1,0 +1,54 @@
+534 Chapter 14 Memory Management Units
+
+EXAMPLE
+
+14.8
+
+{
+*PTEptr-- = PTE + (1<<20); /* i = 1MB section */
+}
+}
+
+The mmuMapSecti onTab1eRegion procedure begins by setting a local pointer variable
+PTEptr to the base address of the master L1 page table. It then uses the virtual starting
+address of the region to create an index into the page table where the region page table
+entries begin. This index is added to the variable PTEptr. The variable PTEptr now points
+to the start of the region entries in the page table. The next line calculates the size of the
+region and adds this value to PTEptr. The variable PTEptr now points to the last PTE for
+the region. The PTEptr variable is set to the end of the region so we can use a count-down
+counter in the loop that fills the page table with entries.
+
+Next the routine constructs a section page table entry using the values in the Region
+structure; the entry is held in the local variable PTE. A series of ORs constructs this PTE
+from the starting physical address, the access permission, the domain, and cache and write
+buffer attributes. The format of the PTE is shown in Figure 14.6.
+
+The PTE now contains a pointer to the first physical address of the region and its
+attributes. The counter variable i is used for two purposes: It is an offset into the page table,
+and it is added to the PTE variable to increment the physical address translation for the
+page frame. Remember, all regions in the demonstration map to sequential page frames in
+physical memory. The procedure concludes by writing all the PTES for the region into the
+page table. It starts from the last translation entry and counts down to the first translation
+entry.
+
+The next two routines, mmuMapCoarseTableRegion and mmuMapFineTableRegion, are
+very similar, which makes the descriptive text of the routines very similar; after reading the
+coarse page table example, you can skip the other example if you are not using tiny pages.
+
+int mmuMapCoarseTableRegion (Region *region)
+{
+
+int i,d5
+
+unsigned int *PTEptr, PTE;
+
+unsigned int tempAP = region->AP & 0x3;
+
+PTEptr = (unsigned int *)region->PT->ptAddress; /* base addr PT */
+
+switch (region->pageSize)
+{
+case LARGEPAGE:
+{
+PTEptr += (region->vAddress & Ox000ff000) >>12; /* Ist PTE */
+PTEptr += (region->numPages*16) - 1; /* region last PTE */

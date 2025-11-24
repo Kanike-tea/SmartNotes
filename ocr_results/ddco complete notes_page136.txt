@@ -1,0 +1,50 @@
+Digital Design and Computer Organization (BCS302)
+
+downstream must be passed along. For example, during clock cycle 4, the
+information in the buffers is as follows:
+
+>
+
+>
+
+Buffer B1 holds instruction 13, which was fetched in cycle 3 and is being
+decoded by the instruction-decoding unit.
+
+Buffer B2 holds both the source operands for instruction I2 and the
+specification of the operation to be performed. This is the information
+produced by the decoding hardware in cycle 3. The buffer also holds the
+information needed for the write step of instruction I2 (stepW2). Even though
+it is not needed by stage E, this information must be passed on to stage W
+in the following clock cycle to enable that stage to perform the required Write
+operation.
+
+Buffer B3 holds the results produced by the execution unit and the
+destination information for instruction 11.
+
+Role of Cache Memory
+
+Each stage in a pipeline is expected to complete its operation in one clock
+cycle. Hence, the clock period should be sufficiently long to complete
+the task being performed in any stage. If different units require different
+amounts of time, the clock period must allow the longest task to be
+completed. A unit that completes its task early is idle for the remainder of
+the clock period. Hence, pipelining is most effective in improving
+performance if the tasks being performed in different stages require about
+the same amount of time. This consideration is particularly important for the
+instruction fetch step, which is assigned one clock period in Figure a. The
+clock cycle has to be equal to or greater than the time needed to complete a
+fetch operation. However, the access time of the main memory may be as
+much as ten times greater than the time needed to perform basic pipeline
+stage operations inside the processor, such as adding two numbers. Thus, if
+each instruction fetch required access to the main memory, pipelining
+would be of little value.
+
+The use of cache memories solves the memory access problem. In
+particular, when a cache is included on the same chip as the processor,
+access time to the cache is usually the same as the time needed to perform
+other basic operations inside the processor. This makes it possible to divide
+instruction fetching and processing into steps that are more or less equal in
+duration. Each of these steps is performed by a different pipeline stage, and
+the clock period is chosen to correspond to the longest one.
+
+Dr Ajay V G, Dept. of CSE,SVIT

@@ -1,0 +1,40 @@
+19.1 Query Trees and Heuristics for Query Optimization 697
+
+Figure 19.2 (continued)
+Steps in converting a query tree during heuristic optimization. (d) Replacing CARTESIAN PRODUCT and SELECT
+with JOIN operations. (e) Moving PROJECT operations down the query tree
+
+(d) ® Lname
+
+ae
+
+;
+
+*Pnumber=Pno ‘Coma Bdate>'1957-12-31"
+
+© Pname="Aquarius’ WORKS_ON> EMPLOYEE >
+
+(e) ™Lname
+I
+*Essn=Ssn
+™ Essn ®Ssn, Lname
+|
+*Pnumber=Pno |
+
+~ °Bdate>'1957-12-31'
+
+in
+
+As the preceding example demonstrates, a query tree can be transformed step by
+step into an equivalent query tree that is more efficient to execute. However, we
+must make sure that the transformation steps always lead to an equivalent query
+tree. To do this, the query optimizer must know which transformation rules pre-
+serve this equivalence. We discuss some of these transformation rules next.
+
+General Transformation Rules for Relational Algebra Operations. There
+are many rules for transforming relational algebra operations into equivalent ones.
+For query optimization purposes, we are interested in the meaning of the opera-
+tions and the resulting relations. Hence, if two relations have the same set of attri-
+butes in a different order but the two relations represent the same information, we
+consider the relations to be equivalent. In Section 5.1.2 we gave an alternative defi-
+nition of relation that makes the order of attributes unimportant; we will use this

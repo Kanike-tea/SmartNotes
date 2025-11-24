@@ -1,0 +1,84 @@
+Main Program
+
+Move #LINE,PNTR
+
+Clear EOL
+
+BitSet #2,CONTROL
+#9,PS
+
+BitSet
+
+. Interrupt-service routine
+READ MoveMultiple RO-R1,-(SP)
+
+Move PNTRRO
+MoveByte DATAIN,RL
+MoveByte —_R1,(RO)+
+Move RO,PNTR
+CompareByte #$0D,R1
+Branch#0 RTRN
+Move #1,EOL
+BitClear #2,CONTROL
+RTRN MoveMultiple (SP)+,R0-R1
+
+Return-from-interrupt
+
+Initialize buffer pointer.
+
+Clear end-of-line indicator.
+Enable keyboard interrupts.
+
+Set interrupt-enable bit in the PS.
+
+Save registers RO and R1 on stack.
+Load address pointer.
+Get input character and
+store it in memory.
+Update pointer.
+Check if Carriage Return.
+
+Indicate end of line.
+Disable keyboard interrupts.
+Restore registers RO and Ri.
+
+Figure 4.9 Using interrupts to read a line of characters from o keyboard via the registers in Figure 4.3.
+
+INTERRUPT NESTING
+
+¢ A multiple-priority scheme is implemented by using separate INTR & INTA lines for each device
+¢ Each INTR line is assigned a different priority-level (Figure 4.7).
+
+¢ Priority-level of processor is the priority of program that is currently being executed.
+
+Processor accepts interrupts only from devices that have higher-priority than its own.
+
+At the time of execution of ISR for some device, priority of processor is raised to that of the device.
+¢ Thus, interrupts from devices at the same level of priority or lower are disabled.
+
+Privileged Instruction
+
+ Processor's priority is encoded in a few bits of PS word. (PS > Processor-Status).
+
+¢ Encoded-bits can be changed by Privileged Instructions that write into PS.
+
+¢ Privileged-instructions can be executed only while processor is running in Super visor Mode.
+Processor is in supervisor-mode only when executing operating-system routines.
+
+Privileged Exception
+¢ User program cannot
+
+— accidently or intentionally change the priority of the processor &
+
+— disrupt the system-operation.
+
+An attempt to execute a privileged-instruction while in user-mode leads to a Privileged Exception
+
+Priority arbitration
+circuit
+
+Figure 4.7. Implementation of interrupt priority using individual interruptrequest and
+
+acknowledge lines.
+
+Page 25

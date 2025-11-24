@@ -1,0 +1,44 @@
+Microcontrollers - BCS402
+
+e The processor changes to a specific interrupt request mode, which reflects the interrupt
+being raised.
+
+e The previous mode’s cpsr is saved into the spsr of the new interrupt request mode.
+
+e The pc is saved in the Ir of the new interrupt request mode.
+
+e Interrupt/s are disabled —either the IRQ or both IRQ and FIQ exceptions are disabled in
+the cpsr. This immediately stops another interrupt request of the same type being raised.
+
+e The processor branches to a specific entry in the vector table.
+
+The procedure varies slightly depending upon the type of interrupt being raised. We will
+illustrate both interrupts with an example. The first example shows what happens when an IRQ
+exception is raised, and the second example shows what happens when an FIQ exception is
+
+raised.
+
+Example 1: Figure 4 shows what happens when an IRQ exception is raised when the processor
+is in user mode. The processor starts in state 1. In this example both the IRQ and FIQ exception
+
+bits in the cpsr are enabled.
+
+IR!
+
+-- | nzcvqjIft_irq
+
+Return to spsr_irq=cpsr
+
+user mode rl4_irg=pe
+code pe=0xle
+
+handler
+
+Fig 4: Interrupt Request (IRQ)
+
+When an IRQ occurs the processor moves into state 2. This transition automatically sets the IRQ
+bit to one, disabling any further IRQ exceptions. The FIQ exception, however, remains enabled
+
+because FIQ has a higher priority and therefore do not get disabled when a low-priority IRQ
+
+Dept. of ECE, GSSSIETW, Mysuru Page 12

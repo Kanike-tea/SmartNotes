@@ -1,0 +1,72 @@
+16.29.
+
+16.30.
+16.31.
+
+16.32.
+16.33.
+
+What is the function of a buffer manager? What does it do to serve a request
+for data?
+
+What are some of the commonly used buffer replacement strategies?
+
+What are optical and tape jukeboxes? What are the different types of optical
+media served by optical drives?
+
+What is automatic storage tiering? Why is it useful?
+
+What is object-based storage? How is it superior to conventional storage
+systems?
+
+Exercises
+
+16.34,
+
+16.35.
+
+Consider a disk with the following characteristics (these are not parameters
+
+of any particular disk unit): block size B = 512 bytes; interblock gap size
+
+G = 128 bytes; number of blocks per track = 20; number of tracks per
+
+surface = 400. A disk pack consists of 15 double-sided disks.
+
+a. What is the total capacity of a track, and what is its useful capacity
+(excluding interblock gaps)?
+
+b. How many cylinders are there?
+
+c. What are the total capacity and the useful capacity of a cylinder?
+
+d. What are the total capacity and the useful capacity of a disk pack?
+
+e. Suppose that the disk drive rotates the disk pack at a speed of 2,400 rpm
+(revolutions per minute); what are the transfer rate (tr) in bytes/msec and
+the block transfer time (bft) in msec? What is the average rotational delay
+(rd) in msec? What is the bulk transfer rate? (See Appendix B.)
+
+f. Suppose that the average seek time is 30 msec. How much time does it
+take (on the average) in msec to locate and transfer a single block, given
+its block address?
+
+g. Calculate the average time it would take to transfer 20 random blocks,
+and compare this with the time it would take to transfer 20 consecutive
+blocks using double buffering to save seek time and rotational delay.
+
+A file has r = 20,000 STUDENT records of fixed length. Each record has the
+following fields: Name (30 bytes), Ssn (9 bytes), Address (40 bytes), PHONE
+(10 bytes), Birth_date (8 bytes), Sex (1 byte), Major_dept_code (4 bytes),
+Minor_dept_code (4 bytes), Class_code (4 bytes, integer), and Degree_program
+(3 bytes). An additional byte is used as a deletion marker. The file is stored
+on the disk whose parameters are given in Exercise 16.27.
+
+a. Calculate the record size R in bytes.
+
+b. Calculate the blocking factor bfr and the number of file blocks b, assum-
+ing an unspanned organization.
+
+Exercises
+
+595

@@ -1,0 +1,51 @@
+13.3 XML Documents, DTD, and XML Schema
+
+documents that do not conform to any schema; these would be considered as
+semistructured data and are schemaless XML documents. When the value of the
+standalone attribute in an XML document is yes, as in the first line in Figure 13.3,
+the document is standalone and schemaless.
+
+XML attributes are generally used in a manner similar to how they are used in
+HTML (see Figure 13.2), namely, to describe properties and characteristics of the
+elements (tags) within which they appear. It is also possible to use XML attributes
+to hold the values of simple data elements; however, this is generally not recom-
+mended. An exception to this rule is in cases that need to reference another ele-
+ment in another part of the XML document. To do this, it is common to use
+attribute values in one element as the references. This resembles the concept of for-
+eign keys in relational databases, and it is a way to get around the strict hierarchical
+model that the XML tree model implies. We discuss XML attributes further in Sec-
+tion 13.3 when we discuss XML schema and DTD.
+
+13.3 XML Documents, DTD, and XML Schema
+
+13.3.1 Well-Formed and Valid XML Documents and XML DTD
+
+In Figure 13.3, we saw what a simple XML document may look like. An XML docu-
+ment is well formed if it follows a few conditions. In particular, it must start with an
+XML declaration to indicate the version of XML being used as well as any other
+relevant attributes, as shown in the first line in Figure 13.3. It must also follow the
+syntactic guidelines of the tree data model. This means that there should be a single
+root element, and every element must include a matching pair of start and end tags
+within the start and end tags of the parent element. This ensures that the nested ele-
+ments specify a well-formed tree structure.
+
+A well-formed XML document is syntactically correct. This allows it to be pro-
+cessed by generic processors that traverse the document and create an internal tree
+representation. A standard model with an associated set of API (application pro-
+gramming interface) functions called DOM (Document Object Model) allows pro-
+grams to manipulate the resulting tree representation corresponding to a
+well-formed XML document. However, the whole document must be parsed
+beforehand when using DOM in order to convert the document to that standard
+DOM internal data structure representation. Another API called SAX (Simple API
+for XML) allows processing of XML documents on the fly by notifying the process-
+ing program through callbacks whenever a start or end tag is encountered. This
+makes it easier to process large documents and allows for processing of so-called
+streaming XML documents, where the processing program can process the tags as
+they are encountered. This is also known as event-based processing. There are also
+other specialized processors that work with various programming and scripting
+languages for parsing XML documents.
+
+A well-formed XML document can be schemaless; that is, it can have any tag
+names for the elements within the document. In this case, there is no predefined
+
+433

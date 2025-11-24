@@ -1,0 +1,54 @@
+EXAMPLE
+
+6.2
+
+6.1 Writing Assembly Code 159
+
+return i*is
+
+}
+
+Let’s see how to replace square by an assembly function that performs the same action.
+Remove the C definition of square, but not the declaration (the second line) to produce
+a new C file mainl.c. Next add an armasm assembler file square.s with the following
+contents:
+
+AREA | .text|, CODE, READONLY
+EXPORT square
+
+; int square(int i)
+
+square
+MUL rl, r0, rO 3 rl = r0 * r0
+MOV 0, rl 3 r0 = rl
+MOV pc, Ir 3 return r0
+END
+
+The AREA directive names the area or code section that the code lives in. If you use
+nonalphanumeric characters in a symbol or area name, then enclose the name in vertical
+bars. Many nonalphanumeric characters have special meanings otherwise. In the previous
+code we define a read-only code area called . text.
+
+The EXPORT directive makes the symbol square available for external linking. At line
+six we define the symbol square as a code label. Note that armasm treats nonindented text
+as a label definition.
+
+When square is called, the parameter passing is defined by the ATPCS (see Section 5.4).
+The input argument is passed in register r0, and the return value is returned in register r0.
+The multiply instruction has a restriction that the destination register must not be the same
+as the first argument register. Therefore we place the multiply result into rl and move this
+to r0.
+
+The END directive marks the end of the assembly file. Comments follow a semicolon.
+
+‘The following script illustrates how to build this example using command line tools.
+
+armcc -c mainl.c
+armasm square.s
+armlink -o mainl.axf mainl.o square.o
+
+Example 6.1 only works if you are compiling your C as ARM code. If you compile your
+Cas Thumb code, then the assembly routine must return using a BX instruction.
+
+When calling ARM code from C compiled as Thumb, the only change required to the
+assembly in Example 6.1 is to change the return instruction to a BX. BX will return to ARM.

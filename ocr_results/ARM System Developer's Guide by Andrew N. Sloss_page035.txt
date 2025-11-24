@@ -1,0 +1,53 @@
+22. Chapter 2. ARM Processor Fundamentals
+
+used when executing applications. The processor can operate in seven different modes,
+which we will introduce shortly. All the registers shown are 32 bits in size.
+
+There are up to 18 active registers: 16 data registers and 2 processor status registers. The
+data registers are visible to the programmer as 10 to r15.
+
+The ARM processor has three registers assigned to a particular task or special function:
+r13, r14, and r15. They are frequently given different labels to differentiate them from the
+other registers.
+
+In Figure 2.2, the shaded registers identify the assigned special-purpose registers:
+
+= Register r13is traditionally used as the stack pointer (sp) and stores the head of the stack
+in the current processor mode.
+
+= Register r14 is called the link register (/r) and is where the core puts the return address
+whenever it calls a subroutine.
+
+= Register r]5is the program counter (pc) and contains the address of the next instruction
+to be fetched by the processor.
+
+Depending upon the context, registers r]3 and r14 can also be used as general-purpose
+registers, which can be particularly useful since these registers are banked during a processor
+mode change. However, it is dangerous to use r]3 as a general register when the processor
+is running any form of operating system because operating systems often assume that r13
+always points to a valid stack frame.
+
+In ARM state the registers r0 to r13 are orthogonal—any instruction that you can apply
+to r0 you can equally well apply to any of the other registers. However, there are instructions
+that treat r14 and r15 ina special way.
+
+In addition to the 16 data registers, there are two program status registers: cpsr and spsr
+(the current and saved program status registers, respectively).
+
+The register file contains all the registers available to a programmer. Which registers are
+visible to the programmer depend upon the current mode of the processor.
+
+2.2 CURRENT PROGRAM STATUS REGISTER
+
+The ARM core uses the cpsr to monitor and control internal operations. The cpsr is a
+dedicated 32-bit register and resides in the register file. Figure 2.3 shows the basic layout
+of a generic program status register. Note that the shaded parts are reserved for future
+expansion.
+
+The cpsris divided into four fields, each 8 bits wide: flags, status, extension, and control.
+In current designs the extension and status fields are reserved for future use. The control
+field contains the processor mode, state, and interrupt mask bits. The flags field contains
+the condition flags.
+
+Some ARM processor cores have extra bits allocated. For example, the J bit, which can
+be found in the flags field, is only available on Jazelle-enabled processors, which execute

@@ -1,0 +1,59 @@
+336 Chapter 9 Exception and Interrupt Handling
+
+save context
+interrupt status addr
+get interrupt status
+if counter timer
+
+then branch to ISR
+TST 0, #0x0001 else if button press
+BNE button_isr then call button ISR
+LOMFD sp!,{r0-r3,r12,r14} 5 restore context
+LDR pc, =debug_monitor ; else debug monitor
+
+STMFD sp! {r0-r3,r12,r14}
+LOR —r0,=IRQStatus
+
+LOR r0, [r0]
+
+TST 0, #0x0080
+
+BNE timer_isr
+
+In the preceding code there are two ISRs: timer_isr and button_isr. They are
+mapped to specific bits in the IRQStatus register, 0x0080 and 0x0001, respectively.
+
+Summary _ Simple Nonnested Interrupt Handler
+
+= Handles and services individual interrupts sequentially.
+
+= High interrupt latency; cannot handle further interrupts occurring while an interrupt
+is being serviced.
+
+= Advantages: relatively easy to implement and debug.
+
+= Disadvantage: cannot be used to handle complex embedded systems with multiple
+priority interrupts.
+
+9.3.2) NESTED INTERRUPT HANDLER
+
+A nested interrupt handler allows for another interrupt to occur within the currently called
+handler. This is achieved by reenabling the interrupts before the handler has fully serviced
+the current interrupt.
+
+For a real-time system this feature increases the complexity of the system but also
+improves its performance. The additional complexity introduces the possibility of subtle
+timing issues that can cause a system failure, and these subtle problems can be extremely
+difficult to resolve. A nested interrupt method is designed carefully so as to avoid these
+types of problems. This is achieved by protecting the context restoration from interruption,
+so that the next interrupt will not fill the stack (cause stack overflow) or corrupt any of the
+registers.
+
+The first goal of any nested interrupt handler is to respond to interrupts quickly so the
+handler neither waits for asynchronous exceptions, nor forces them to wait for the handler.
+The second goal is that execution of regular synchronous code is not delayed while servicing
+the various interrupts.
+
+The increase in complexity means that the designers have to balance efficiency with
+safety, by using a defensive coding style that assumes problems will occur. The handler has
+to check the stack and protect against register corruption where possible.

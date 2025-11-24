@@ -1,0 +1,46 @@
+Microcontrollers — BCS402
+
+PRE Address Data POST Address Data
+0x80018 | 0x00000001 0x80018 | 0x00000001
+0x80014 | 0x00000002 0x80014 | 0x00000002
+
+sp —~| 0x80010 | Empty 0x80010 | 0x00000003
+0x8000c | E 0x8000c | 0x00000002
+0x80008 | Empty sp —>| 0x80008 | Empty
+
+Fig 8: STMED instruction—empty stack push operation
+
+When handling a checked stack there are three attributes that need to be preserved: the stack
+base, the stack pointer, and the stack limit. The stack base is the starting address of the stack
+in memory. The stack pointer initially points to the stack base; as data is pushed onto the
+
+stack, the stack pointer descends memory and continuously points to the top of stack.
+
+If the stack pointer passes the stack limit, then a stack overflow error has occurred. Here is a
+small piece of code that checks for stack overflow errors for a descending stack: check for
+
+stack overflow
+
+SUB sp, sp, #size
+
+CMP sp, rl0
+
+BLLO _stack_overflow ; condition
+
+ATPCS defines register r10 as the stack limit or sl. This is optional since it is only used when
+stack checking is enabled. The BLLO instruction is a branch with link instruction plus the
+condition mnemonic LO. If sp is less than register r10 after the new items are pushed onto the
+stack, then stack overflow error has occurred. If the stack pointer goes back past the stack
+
+base, then a stack underflow error has occurred.
+3.4 Swap Instruction
+
+The swap instruction is a special case of a load-store instruction. It swaps the contents of
+memory with the contents of a register. This instruction is an atomic operation—it reads and
+writes a location in the same bus operation, preventing any other instruction from reading or
+
+writing to that location until it completes.
+
+Syntax: SWP{B}{<cond>} Rd,Rm,[Rn]
+
+Dept. of ECE, GSSSIETW Page 24

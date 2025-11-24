@@ -1,0 +1,57 @@
+Data Structures and Applications (BCS304) Module V
+
+Example: K=3205 K?= 10272025 H(K)= 72
+Folding: Partition the keys k into several parts
+
+= All parts except for the last one have the same length
+= The parts are added together to obtain the hash address
+= Two possibilities
+
+Example k= 12320324111220
+x1=123, x2=203, x3=241, x4=112, x5=20, address= 123+203+241+112+20= 699
+
+Digit Analysis
+
+Useful in the case of a static file where all the keys in the table are known in advance
+
+Each key is interpreted using some radix r.
+
+The same radix is used for all the keys in the table
+
+Digits are examined with this radix
+
+Digits having the most skewed distributions are deleted.
+
+Enough digits are deleted so that the remaining digits are small enough to give and address in
+the range of hash table
+
+Converting keys to integers
+Two methods used for converting keys to integer are
+
+* Converting each character toa unique integer and summing these unique integers.
+
+' Shifting the integer corresponding to every other character by 8 bits and then summing it up
+Over Flow Handling
+
+Synonyms: Hash function h maps several different keys into the same bucket
+Two keys, k1 and k2 are synonyms with respect to h
+if h(k1) = h(k2)
+
+An overflow occurs when home bucket for a new dictionary pair is full when we wish to insert
+this pair
+
+A collision occurs when the home bucket for the new pair is not empty at the time of insertion.
+
+Two popular ways To handle overflows
+= Open Addressing/ Linear Probing
+= Chaining
+
+Open Addressing/Linear Probing
+= When inserting a new pair whose key is k we search the hash table in the order
+ht[h(k) +i]%b, 0<=i <=b-1, where
+= his the hash function and
+= bis the number of buckets
+"The search terminates when we reach the first unfilled bucket and the new pair is inserted into
+this bucket.
+1 __Incase_no_such bucket is found, the table is full and the size of the hash table needs to_be
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 3

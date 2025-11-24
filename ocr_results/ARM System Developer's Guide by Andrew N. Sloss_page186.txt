@@ -1,0 +1,95 @@
+carry = x>> (32-k);
+
+N -= 32;
+
+} while (N);
+
+return carry;
+
+}
+
+6.4 Register Allocation 173
+
+The obvious way to improve efficiency is to unroll the loop to process eight words of
+256 bits at a time so that we can use load and store multiple operations to load and store
+eight words at a time for maximum efficiency. Before thinking about register numbers, we
+write the following assembly code:
+
+shift_bits
+STMFD
+RSB
+MOV
+
+loop
+LOMIA
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+ORR
+MOV
+STMIA
+SUBS
+BNE
+MOV
+LOMFD
+
+sp!, {r4-rll, Ir}
+
+kr, k, #32
+carry, #0
+int, {x 0-x_7}
+
+y_0, carry, x_0, LSL
+carry, x_0, LSR kr
+yl, carry, x_1, LSL
+carry, x_1, LSR kr
+y_2, carry, x2, LSL
+carry, x_2, LSR kr
+y_3, carry, x3, LSL
+carry, x_3, LSR kr
+y_4, carry, x4, LSL
+carry, x_4, LSR kr
+y_5, carry, x5, LSL
+carry, x_5, LSR kr
+y_6, carry, x6, LSL
+carry, x_6, LSR kr
+y_J, carry, x7, LSL
+carry, x_7, LSR kr
+out!, {y_0-y_7}
+N,N, #256
+
+loop
+
+r0, carry
+
+sp!, {r4-rl1, pc}
+
+save registers
+kr = 32-k;
+
+load 8 words
+shift the 8 words
+
+store 8 words
+N -= (8 words * 32 bits)
+
+3 if (N!=0) goto loop;
+
+return carry;
+
+Now to the register allocation. So that the input arguments do not have to move registers,
+we can immediately assign
+
+out RNO
+in RN 1

@@ -1,0 +1,55 @@
+30.1 Introduction to Database Security Issues
+
+Database Security: Not an Isolated Concern. When considering the threats
+facing databases, it is important to remember that the database management sys-
+tem alone cannot be responsible for maintaining the confidentiality, integrity, and
+availability of the data. Rather, the database works as part of a network of services,
+including applications, Web servers, firewalls, SSL terminators, and security moni-
+toring systems. Because security of an overall system is only as strong as its weakest
+link, a database may be compromised even if it would have been perfectly secure on
+its own merits.
+
+To protect databases against the threats discussed above, it is common to imple-
+ment four kinds of control measures: access control, inference control, flow control,
+and encryption. We discuss each of these in this chapter.
+
+In a multiuser database system, the DBMS must provide techniques to enable
+certain users or user groups to access selected portions of a database without
+gaining access to the rest of the database. This is particularly important when a
+large integrated database is to be used by many different users within the same
+organization. For example, sensitive information such as employee salaries or
+performance reviews should be kept confidential from most of the database sys-
+tem’s users. A DBMS typically includes a database security and authorization
+subsystem that is responsible for ensuring the security of portions of a database
+against unauthorized access. It is now customary to refer to two types of database
+security mechanisms:
+
+= Discretionary security mechanisms. These are used to grant privileges to
+users, including the capability to access specific data files, records, or fields
+in a specified mode (such as read, insert, delete, or update).
+
+= Mandatory security mechanisms. These are used to enforce multilevel
+security by classifying the data and users into various security classes (or
+levels) and then implementing the appropriate security policy of the organi-
+zation. For example, a typical security policy is to permit users at a certain
+classification (or clearance) level to see only the data items classified at the
+user’s own (or lower) classification level. An extension of this is role-based
+security, which enforces policies and privileges based on the concept of orga-
+nizational roles. (See Section 30.4.2 for role based access control.)
+
+We discuss discretionary security in Section 30.2 and mandatory and role-based
+security in Section 30.3.
+
+30.1.2 Control Measures
+Four main control measures are used to provide security of data in databases:
+
+= Access control
+
+= Inference control
+= Flow control
+
+.
+
+Data encryption
+
+1123

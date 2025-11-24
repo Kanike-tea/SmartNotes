@@ -1,0 +1,61 @@
+220 Chapter 7 More SQL: Complex Queries, Triggers, Views, and Schema Modification
+
+Figure 7.1
+
+(a)
+
+Results of GROUP BY and HAVING. (a) Q24. (b) Q26.
+Fname | Minit | Lname Ssn_ -| Salary | Super_ssn | Dno Dno | Count (*) | Avg (Salary)
+John B_ | Smith | 123456789 30000 | s33445565| 5 5 4 33250
+Franklin | T | Wong | 333445555 40000 | saseess55| 5 rH 4 3 31000
+Ramesh| K | Narayan | 666884444 38000 | 333445555 | 5 et 1 55000
+Joyce | A | English | 453453453 25000 | saa445555| 5 Result of Q24
+Alicia | J | Zelaya | 999887777 25000 | 987654321 | 4
+Jennifer | S| Wallace | 987654321 43000 | saseesss5| 4 | |
+Ahmad | V_ | Jabbar | 987987987 25000 | 987654321 | 4
+James E | Bong | 888665555 55000 | NULL. 1 I
+
+(b)
+
+Grouping EMPLOYEE tuples by the value of Dno
+
+Pname Phumber Essn Pno | Hours
+ProductX 1 123456789 1 32.5
+ProductX 1 453453453 1 20.0
+ProductY 2 123456789 2 75
+ProductY 2 453453453 2 20.0
+ProductY 2 333445555, 2 10.0
+ProductZ 3 666884444| 3 40.0
+ProductZ 3 333445555, 3 10.0
+Computerization 10 333445555 | 10 10.0
+Computerization 10 999887777 | 10 10.0
+Computerization 10 987987987 | 10 35.0
+Reorganization 20 333445555 | 20 10.0
+Reorganization 20 987654321 | 20 15.0
+Reorganization 20 888665555 | 20 NULL
+Newbenefits 30 987987987 | 30 5.0
+Newbenefits 30 987654321 | 30 20.0
+Newbenefits 30 999887777 | 30 30.0
+
+[— These groups are not selected by
+the HAVING condition of Q26.
+
+After applying the WHI
+
+IERE clause but before applying HAVING.
+
+After applying the HAVING clause condition
+
+Pname Pnumber Essn Pno | Hours Phame Count (*)
+ProductY 2 123456789 | 2 25 ine ProductY 3
+ProductY 2 453453453| 2 | 20.0 Computerization | 3
+ProductY 2 333445555| 2 | 10.0 Reorganization 3
+Computerization 10 333445555 | 10 | 10.0 Newbenefits 3
+Computerization 10 999887777 | 10 10.0 Result of 026
+‘Computerization 10 987987987 | 10 | 35.0 (Poumber not shown)
+Reorganization 20 333445555 | 20 | 10.0
+Reorganization 20 987654321 | 20 | 15.0
+Reorganization 20 888665555 | 20 | NULL
+Newbenefits 30 987987987 | 30 5.0
+Newbenefits 30 987654321 | 30 | 20.0
+Newbenefits 30 999887777 | 30 | 30.0

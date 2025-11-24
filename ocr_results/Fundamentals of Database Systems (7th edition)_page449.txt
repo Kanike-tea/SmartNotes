@@ -1,0 +1,50 @@
+12.7 Summary
+
+Then, in Section 12.2, we showed how many of these concepts were incorporated
+into the relational model and the SQL standard; we showed that this incorporation
+leads to expanded relational database functionality. These systems have been called
+object-relational databases.
+
+We then discussed the ODMG 3.0 standard for object databases. We started by
+describing the various constructs of the object model in Sction 12.3. The various
+built-in types, such as Object, Collection, Iterator, set, list, and so on, were described by
+their interfaces, which specify the built-in operations of each type. These built-in
+types are the foundation upon which the object definition language (ODL) and
+object query language (OQL) are based. We also described the difference between
+objects, which have an Objectld, and literals, which are values with no OID. Users
+can declare classes for their application that inherit operations from the appropriate
+built-in interfaces. Two types of properties can be specified in a user-defined class—
+attributes and relationships—in addition to the operations that can be applied to
+objects of the class. The ODL allows users to specify both interfaces and classes, and
+permits two different types of inheritance—interface inheritance via “:” and class
+inheritance via extends. A class can have an extent and keys. A description of ODL
+followed, and an example database schema for the UNIVERSITY database was used to
+illustrate the ODL constructs.
+
+Following the description of the ODMG object model, we described a general tech-
+nique for designing object database schemas in Section 12.4. We discussed how
+object databases differ from relational databases in three main areas: references to
+represent relationships, inclusion of operations, and inheritance. Finally, we
+showed how to map a conceptual database design in the EER model to the con-
+structs of object databases.
+
+In Section 12.5, we presented an overview of the object query language (OQL). The
+OQL follows the concept of orthogonality in constructing queries, meaning that an
+operation can be applied to the result of another operation as long as the type of the
+result is of the correct input type for the operation. The OQL syntax follows many
+of the constructs of SQL but includes additional concepts such as path expressions,
+inheritance, methods, relationships, and collections. Examples of how to use OQL
+over the UNIVERSITY database were given.
+
+Next we gave an overview of the C++ language binding in Section 12.6, which
+extends C++ class declarations with the ODL type constructors but permits seam-
+less integration of C++ with the ODBMS.
+
+In 1997 Sun endorsed the ODMG API (Application Program Interface). O2 tech-
+nologies was the first corporation to deliver an ODMG-compliant DBMS. Many
+ODBMS vendors, including Object Design (now eXcelon), Gemstone Systems, POET
+Software, and Versant Corporation*’, have endorsed the ODMG standard.
+
+45The Versant Object Technology product now belongs to Actian Corporation.
+
+419

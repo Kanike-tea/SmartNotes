@@ -1,0 +1,41 @@
+Data Structures and Applications(BCS304) Module 2
+
+MODULE-2
+
+(QUEUES: Queues, Circular Queues, Using Dynamic Arrays, Multiple Stacks and queues.
+
+ILINKED LISTS : Singly Linked, Lists and Chains, Representing Chains in C, Linked
+Stacks and Queues, Polynomials
+
+Queues:
+A queue is an ordered list in which insertions and deletions take place at different ends. The end at
+
+which new elements are added is called the rear, and that from which old elements are deleted is called
+the front. Queues are also known as First-In-First-Out (FIFO) lists.
+
+The ADT specification of the queue
+objects: a finite ordered list with zero or more elements.
+
+functions: for all queue€Queue, iteme€element, maxQueueSize€ positive integer
+
+Queue CreateQ(maxQueueSize) ::= create an empty queue whose maximum size is
+maxQueueSize
+BooleanIsFullQ(queue, if (number of elements in queue == maxQueueSize)
+maxQueueSize) ::= returnTRUE
+else returnFALSE
+
+QueueAddQ(queue, item) :: if (IsFullQ(queue)) queueFull
+
+else insert item at rear of queue and return queue
+
+BooleanIsEmptyQ(queue) ::
+
+if (queue == CreateQ(maxQueueSize))
+returnTRUE
+else return FALSE
+
+Element DeleteQ(queue) ::= if (IsEmptyQ(queue)) return
+
+else remove and return the item at front of queue.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 1

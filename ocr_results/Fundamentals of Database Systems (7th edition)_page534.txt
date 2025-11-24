@@ -1,0 +1,51 @@
+504
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+attibutes within a relation completely and succinctly, and the minimal cover allows
+us to do it. Second, we discuss the desirable properties of nonadditive (lossless)
+joins and preservation of functional dependencies. A general algorithm to test for
+nonadditivity of joins among a set of relations is presented. Third, we present an
+approach to relational design by synthesis of functional dependencies. This is a
+bottom-up approach to design that presupposes that the known functional depen-
+dencies among sets of attributes in the Universe of Discourse (UoD) have been
+given as input. We present algorithms to achieve the desirable normal forms,
+namely 3NF and BCNF, and achieve one or both of the desirable properties of non-
+additivity of joins and functional dependency preservation. Although the synthesis
+approach is theoretically appealing as a formal approach, it has not been used in
+practice for large database design projects because of the difficulty of providing all
+possible functional dependencies up front before the design can be attempted.
+Alternately, with the approach presented in Chapter 14, successive decompositions
+and ongoing refinements to design become more manageable and may evolve over
+time. The final goal of this chapter is to discuss further the multivalued dependency
+(MVD) concept we introduced in Chapter 14 and briefly point out other types of
+dependencies that have been identified.
+
+In Section 15.1 we discuss the rules of inference for functional dependencies and
+use them to define the concepts of a cover, equivalence, and minimal cover among
+functional dependencies. In Section 15.2, first we describe the two desirable
+properties of decompositions, namely, the dependency preservation property
+and the nonadditive (or lossless) join property, which are both used by the design
+algorithms to achieve desirable decompositions. It is important to note that it is
+insufficient to test the relation schemas independently of one another for compli-
+ance with higher normal forms like 2NF, 3NF, and BCNF. The resulting relations
+must collectively satisfy these two additional properties to qualify as a good design.
+Section 15.3 is devoted to the development of relational design algorithms that
+start off with one giant relation schema called the universal relation, which is a
+hypothetical relation containing all the attributes. This relation is decomposed (or
+in other words, the given functional dependencies are synthesized) into relations
+that satisfy a certain normal form like 3NF or BCNF and also meet one or both of
+the desirable properties.
+
+In Section 15.5 we discuss the multivalued dependency (MVD) concept further by
+applying the notions of inference, and equivalence to MVDs. Finally, in Sec-
+tion 15.6 we complete the discussion on dependencies among data by introducing
+inclusion dependencies and template dependencies. Inclusion dependencies can
+represent referential integrity constraints and class/subclass constraints across rela-
+tions. We also describe some situations where a procedure or function is needed to
+state and verify a functional dependency among attributes. Then we briefly discuss
+domain-key normal form (DKNF), which is considered the most general normal
+form. Section 15.7 summarizes this chapter.
+
+It is possible to skip some or all of Sections 15.3, 15.4, and 15.5 in an introductory
+database course.

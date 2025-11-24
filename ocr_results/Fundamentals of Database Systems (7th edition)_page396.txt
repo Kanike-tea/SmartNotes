@@ -1,0 +1,52 @@
+366
+
+Chapter 12 Object and Object-Relational Databases
+
+except that instance variables may be encapsulated within the object and thus are
+not necessarily visible to external users. Instance variables may also be of arbitrarily
+complex data types. Object-oriented systems allow definition of the operations or
+functions (behavior) that can be applied to objects of a particular type. In fact, some
+OO models insist that all operations a user can apply to an object must be pre-
+defined. This forces a complete encapsulation of objects. This rigid approach has
+been relaxed in most OO data models for two reasons. First, database users often
+need to know the attribute names so they can specify selection conditions on the
+attributes to retrieve specific objects. Second, complete encapsulation implies that
+any simple retrieval requires a predefined operation, thus making ad hoc queries
+difficult to specify on the fly.
+
+To encourage encapsulation, an operation is defined in two parts. The first part,
+called the signature or interface of the operation, specifies the operation name and
+arguments (or parameters). The second part, called the method or body, specifies
+the implementation of the operation, usually written in some general-purpose pro-
+gramming language. Operations can be invoked by passing a message to an object,
+which includes the operation name and the parameters. The object then executes
+the method for that operation. This encapsulation permits modification of the
+internal structure of an object, as well as the implementation of its operations, with-
+out the need to disturb the external programs that invoke these operations. Hence,
+encapsulation provides a form of data and operation independence (see Chapter 2).
+
+Another key concept in OO systems is that of type and class hierarchies and inheri-
+tance. This permits specification of new types or classes that inherit much of their
+structure and/or operations from previously defined types or classes. This makes it
+easier to develop the data types of a system incrementally and to reuse existing type
+definitions when creating new types of objects.
+
+One problem in early OO database systems involved representing relationships
+among objects. The insistence on complete encapsulation in early OO data models
+led to the argument that relationships should not be explicitly represented, but
+should instead be described by defining appropriate methods that locate related
+objects. However, this approach does not work very well for complex databases
+with many relationships because it is useful to identify these relationships and make
+them visible to users. The ODMG object database standard has recognized this
+need and it explicitly represents binary relationships via a pair of inverse references,
+as we will describe in Section 12.3.
+
+Another OO concept is operator overloading, which refers to an operation’s ability
+to be applied to different types of objects; in such a situation, an operation name
+may refer to several distinct implementations, depending on the type of object it is
+applied to. This feature is also called operator polymorphism. For example, an oper-
+ation to calculate the area of a geometric object may differ in its method (imple-
+mentation), depending on whether the object is of type triangle, circle, or rectangle.
+This may require the use of late binding of the operation name to the appropriate
+method at runtime, when the type of object to which the operation is applied
+becomes known.

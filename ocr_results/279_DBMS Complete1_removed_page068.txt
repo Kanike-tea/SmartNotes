@@ -1,0 +1,48 @@
+select branch-name, loan-number, amount * 10 from Loan.
+Where Clause
+e Find all loan numbers for loans made at “Sadar” branch with loan amounts greater than Rs
+1200.
+select loan-number
+from Loan
+where branch-name= “Sadar” and amount > 1200
+e where clause uses uses logival connectives and, or, and not
+© operands of the logical connectives can be expressions involving the comparison operators
+<,<=,>,>=,=,and <>.
+« between can be used to simplify the comparisons
+select loan-number
+from Loan
+where amount between 90000 and 100000
+From Clause
+e The from clause by itself defines a Cartesian product of the relations in the clause.
+«¢ When an attribute is present in more than one relation they can be referred as relation-
+name.attribute-name to avoid the ambiguity.
+e For all customers who have loan from the bank, find their names and loan numbers
+select distinct customer-name, Borrower.loan-number
+from Borrower, Loan
+where Borrower.loan-number = Loan.loan-number
+The Rename Operation
+e Used for renaming both relations both relations and attributes in SQL
+e Use as clause: old-name as new-name
+e Find the names and loan numbers of the customers who have a loan at the “Sadar” branch.
+select distinct customer-name, borrower.loan-number as loan-id
+from Borrower, Loan
+where Borrower.loan-number = Loan.loan-number and
+branch-name = “Sadar”
+we can now refer the loan-number instead by the name loan-id.
+e For all customers who have a loan from the bank, find their names and loan-numbers.
+select distinct customer-name, T.loan-number
+from Borrower as T, Loan as S
+where T.loan-number = S.loan-number
+e Find the names of all branches that have assets greater than at least one branch located in
+“Mathura”.
+select distinct T.branch-name
+from branch as T, branch as S
+where T.assets > S.assets and S.branch-city = “Mathura”
+String Operation
+« Two special characters are used for pattern matching in strings:
+o Percent ( % ) : The % character matches any substring
+o Underscore( _ ): The _ character matches any character
+e =“%Mandi”: will match with the strings ending with “Mandi” viz. “Raja Ki mandi”, “Peepal
+Mandi”
+e “ __” matches any string of three characters.
+e Find the names of all customers whose street address includes the substring “Main”

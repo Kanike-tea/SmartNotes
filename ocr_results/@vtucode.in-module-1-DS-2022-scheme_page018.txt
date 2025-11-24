@@ -1,0 +1,58 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+#include <stdlib.h> int
+
+**array;
+array = malloc(nrows * sizeof(int *));
+if (array == NULL)
+{
+printf ("out of memory\n"); exit
+
+or return
+
+for(i = 0; i < nrows; i++)
+{
+array[i] = malloc(ncolumns * sizeof(int));
+if(array[i] == NULL)
+{
+printf ("out of memory\n"); exit
+
+or return
+
+Prg: Dynamically create a two-dimensional arra
+
+CALLOC
+
++ These functions — allocate user-specified amount of memory & — initialize the allocated
+memory to 0.
+
+* On successful memory-allocation, it returns a pointer to the start of the new block. On
+failure, it returns the value NULL.
+
+* Memory can be allocated using calloc as shown below:
+
+int *p;
+p=calloc(n, sizeof (int))*,//where n=array size
+
+To create clean and readable programs, a CALLOC macro can be created as shown below:
+
+#define CALLOC (p,n, s)
+if ((p=calloe(n,s) ) ==NULL)
+{
+
+printf ("insufficient memory");
+exit (1);
+
+}
+
+REALLOC
+
+* These functions resize memory previously allocated by either malloc or calloc. For
+example,
+
+realloc(p,s); //this changes the size of memory-block pointed at by p to s < oldSize, the
+rightmost oldSize-s bytes of old block are freed..
+
++ When s>oldSize, the additional s-oldSize have an unspecified value and when s
+
+vtucode.in 19

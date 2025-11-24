@@ -1,0 +1,51 @@
+244 Chapter 7 Optimized Primitives
+
+DCD Ox8c08c08c, 0x037b40e4, Ox89ae408a, 0x03944b1c
+DCD 0x8767ab5f, Ox03acea7c, 0x85340853, 0x03c52286
+DCD 0x83126e98, Ox03dcf68e, 0x81020408, 0x03F469c2
+
+7.5.2 BASE-TWO EXPONENTIATION
+
+This is the inverse of the operation of Section 7.5.1. Given a Q26 representation of
+0 < x < 32, we calculate the base-two exponent 2*. We start by splitting x into an
+integer part, n, and fractional part, d. Then 2° = 24 x 2”. To calculate 24, first find an
+approximation a to dand look up 2“. Now,
+
+24 = 2" x exp((d — a) In2) (7.49)
+
+Calculate x = (d — a) In2 and use the series expansion for exp(x) to improve the estimate:
+
+x? 3
+ep) =ltxt >t Eto (7.50)
+
+You can use the following assembly code to implement the preceding algorithm. The
+answer has a maximum error of 4 in the result. The routine takes 31 cycles on an ARM9E
+excluding the return.
+
+n RN O ; input, integer part
+
+d RN 1; fractional part
+
+r RN 2
+
+q RN 3
+
+t RN 12
+3 unsigned uexp2_32(int n)
+
+uexp2_32
+MoV. dy n, LSL#6 3 d= fractional part at Q32
+MOV q, d, LSR#27 3 estimate a=(q+0.5)/32
+LOR or, =0xb172178 3 round(2*32*10g(2))
+BIC dy d, q, LSL#27_—;. d= d - (q/32) at Q32
+UMULL t, d, r, d 3 d= d*log(2) at Q32
+LOR —t, =0x55555555 3 round(2432/3)
+suzB_d, d, r, LSR#6 3 d= d - log(2)/64 at Q32
+SMULL t, r, d, t 3 r=d/3 at Q32
+MOVS n,n, ASR#26 3 n= integer part of exponent
+SMULL t, r, dy r 3 r= d42/3 at Q32
+BMI negative 3 catch negative exponent
+AD ory ry d 3 r= d+d42/3
+SMULL t, r, dy r 3 r= d24d*3/3
+
+ADR —t,_uexp2_table

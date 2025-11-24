@@ -1,0 +1,50 @@
+Bit line
+
+Word line
+
+Connected to store a0
+
+Not connected to store a |
+
+Figure 8.11 AROMcell.
+
+¢ To read the state of the cell, the word-line is activated.
+¢ A Sense circuit at the end of the bit-line generates the proper output value.
+
+TYPES OF ROM
+© Different types of non-volatile memory are
+1) PROM
+2) EPROM
+3) EEPROM &
+4) Flash Memory (Flash Cards & Flash Drives)
+
+PROM (PROGRAMMABLE ROM)
+* PROM allows the data to be loaded by the user.
+© Programmability is achieved by inserting a ,,fuse" at point P ina ROM cell.
+© Before PROM is programmed, the memory contains all 0“s.
+© User can insert 1"s at required location by burning-out fuse using highcurrent-pulse.
+© This process is irreversible.
+« Advantages:
+1) It provides flexibility.
+2) It is faster.
+3) It is less expensive because they can be programmed directly by the user.
+
+EPROM (ERASABLE REPROGRAMMABLE ROM)
+© EPROM allows
+— stored data to be erased and
+— new data to be loaded.
+¢ In cell, a connection to ground is always made at ,,P" and a special transistor is used.
+¢ The transistor has the ability to function as
+— anormal transistor or
+— a disabled transistor that is always turned ,,off".
+Transistor can be programmed to behave as a permanently open switch, by injecting charge into it.
+Erasure requires dissipating the charges trapped in the transistor of memory-cells. This
+can be done by exposing the chip to ultra-violet light.
+« Advantages:
+1) It provides flexibility during the development-phase of digital-system.
+2) It is capable of retaining the stored information for a long time.
+© Disadvantages:
+1) The chip must be physically removed from the circuit for reprogramming.
+2) The entire contents need to be erased by UV light.
+
+Page 48

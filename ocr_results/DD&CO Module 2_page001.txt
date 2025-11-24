@@ -1,0 +1,42 @@
+give the exact definition of the combinational circuit. It is important that the verbal specifications be
+interpreted correctly in the truth table, as they are often incomplete, and any wrong interpretation may
+result in an incorrect truth table.
+
+[he output binary functions listed in the truth table are simplified by any available method, such as
+algebraic manipulation, the map method, or a computer-based simplification program. Frequently, there
+is a variety of simplified expressions from which to choose. In a particular application, certain criteria
+will serve as a guide in the process of choosing an implementation. A practical design must consider
+such constraints as the number of gates, number of inputs to a gate, propagation time of the signal
+through the gates, number of interconnections, limitations of the driving capability of each gate (i.e., the
+number of gates to which the output of the circuit may be connected), and various other criteria that must
+be taken into consideration when designing integrated circuits.
+
+Example: Consider the BCD to Excess-3 code conversion.
+
+[he bit combinations assigned to the BCD and excess-3 codes are listed in Table below
+Truth Table for Code Conversion Example
+Input BCD Output Excess-3 Code
+A B ¢€ D wx y Zz
+
+Since each code uses four bits to represent a decimal digit, there must be four input variables and four
+output variables. We designate the four input binary variables by the symbols A, B, C, and D, and the
+four output variables by w, x, y , and z. The truth table relating the input and output variables is shown
+in Table above. Note that four binary variables may have 16 bit combinations, but only 10 are listed in
+the truth table. The six bit combinations not listed for the input variables are don’t-care combinations.
+These values have no meaning in BCD and we assume that they will never occur in actual operation of
+the circuit.
+
+The maps in Fig. 4.3 are plotted to obtain simplified Boolean functions for the outputs. Each one of the
+four maps represents one of the four outputs of the circuit as a function of the four input variables. The
+1’s marked inside the squares are obtained from the minterms that make the output equal to 1. The 1’s
+are obtained from the truth table by going over the output columns one at a time. For example, the
+column under output z has five 1’s; therefore, the map for z has five 1’s, each being in a square
+corresponding to the minterm that makes z equal to 1. The six don’t-care minterms 10 through 15 are
+marked with an X. Following are the expressions obtained using K map.
+z=D'
+
+y=CD+C'D'=CD+(C+D)'
+x = B'C + B'D + BC'D' = B'(C + D) + BC'D'
+
+= B'(C+ D) + B(C+D)'
+w=A+BC+BD=A+B(C+D)

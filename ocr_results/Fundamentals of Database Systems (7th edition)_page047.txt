@@ -1,0 +1,52 @@
+1.6 Advantages of Using the DBMS Approach
+
+1.5 Workers behind the Scene
+
+In addition to those who design, use, and administer a database, others are associ-
+ated with the design, development, and operation of the DBMS software and system
+environment. These persons are typically not interested in the database content
+itself. We call them the workers behind the scene, and they include the following
+categories:
+
+= DBMS system designers and implementers design and implement the
+DBMS modules and interfaces as a software package. A DBMS is a very
+complex software system that consists of many components, or modules,
+including modules for implementing the catalog, query language process-
+ing, interface processing, accessing and buffering data, controlling concur-
+rency, and handling data recovery and security. The DBMS must interface
+with other system software, such as the operating system and compilers for
+various programming languages.
+
+= Tool developers design and implement tools—the software packages that
+facilitate database modeling and design, database system design, and
+improved performance. Tools are optional packages that are often pur-
+chased separately. They include packages for database design, performance
+monitoring, natural language or graphical interfaces, prototyping, simula-
+tion, and test data generation. In many cases, independent software vendors
+develop and market these tools.
+
+= Operators and maintenance personnel (system administration personnel)
+are responsible for the actual running and maintenance of the hardware and
+software environment for the database system.
+
+Although these categories of workers behind the scene are instrumental in making
+the database system available to end users, they typically do not use the database
+contents for their own purposes.
+
+1.6 Advantages of Using the DBMS Approach
+
+In this section we discuss some additional advantages of using a DBMS and the
+capabilities that a good DBMS should possess. These capabilities are in addition to
+the four main characteristics discussed in Section 1.3. The DBA must utilize these
+capabilities to accomplish a variety of objectives related to the design, administra-
+tion, and use of a large multiuser database.
+
+1.6.1 Controlling Redundancy
+
+In traditional software development utilizing file processing, every user group
+maintains its own files for handling its data-processing applications. For example,
+consider the UNIVERSITY database example of Section 1.2; here, two groups of
+users might be the course registration personnel and the accounting office. In the
+traditional approach, each group independently keeps files on students. The
+
+17

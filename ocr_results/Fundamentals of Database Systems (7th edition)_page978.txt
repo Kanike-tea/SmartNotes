@@ -1,0 +1,51 @@
+948
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+system and data warehouse. Netflix uses Amazon $3 rather than HDFS as the data
+processing and analysis platform for several reasons. Netflix presently uses Ama-
+zon’s Elastic MapReduce (EMR) distribution of Hadoop. Netflix cites the main
+reason for its choice as the following: $3 is designed for 99.999999999% durability
+and 99.99% availability of objects over a given year, and $3 can sustain concurrent
+loss of data in two facilities. $3 provides bucket versioning, which allows Netflix to
+recover inadvertently deleted data. The elasticity of $3 has allowed Netflix a practi-
+cally unlimited storage capacity; this capacity has enabled Netflix to grow its storage
+from a few hundred terabytes to petabytes without any difficulty or prior planning.
+Using $3 as the data warehouse enables Netflix to run multiple Hadoop clusters that
+are fault-tolerant and can sustain excess load. Netflix executives claim that they have
+no concerns about data redistribution or loss during expansion or shrinking of the
+warehouse. Although Netflix’s production and query clusters are long-running clus-
+ters in the cloud, they can be essentially treated as completely transient. If a cluster
+goes down, Netflix can simply substitute with another identically sized cluster, pos-
+sibly in a different geographic zone, in a few minutes and not sustain any data loss.
+
+25.6.3 Data Locality Issues and Resource Optimization
+for Big Data Applications in a Cloud
+
+The increasing interest in cloud computing combined with the demands of big data
+technology means that data centers must be increasingly cost-effective and con-
+sumer-driven. Also, many cloud infrastructures are not intrinsically designed to
+handle the scale of data required for present-day data analytics. Cloud service pro-
+viders are faced with daunting challenges in terms of resource management and
+capacity planning to provide for big data technology applications.
+
+The network load of many big data applications, including Hadoop/MapReduce, is of
+special concern in a data center because large amounts of data can be generated dur-
+ing job execution. For instance, in a MapReduce job, each reduce task needs to read
+the output of all map tasks, and a sudden explosion of network traffic can signifi-
+cantly deteriorate cloud performance. Also, when data is located in one infrastructure
+(say, in a storage cloud like Amazon $3) and processed in a compute cloud (such as
+Amazon EC2), job performance suffers significant delays due to data loading.
+
+Research projects have proposed” a self-configurable, locality-based data and vir-
+tual machine management framework based on the storage-compute model. This
+framework enables MapReduce jobs to access most of their data either locally or
+from close-by nodes, including all input, output, and intermediate data generated
+during map and reduce phases of the jobs. Such frameworks categorize jobs using a
+data-size sensitive classifier into four classes based on a data size-based footprint.
+Then they provision virtual MapReduce clusters in a locality-aware manner, which
+enables efficient pairing and allocation of MapReduce virtual machines (VMs) to
+reduce the network distance between storage and compute nodes for both map and
+reduce processing.
+
+25See Palanisamy et al. (2011).

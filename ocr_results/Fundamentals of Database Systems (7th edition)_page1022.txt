@@ -1,0 +1,53 @@
+992
+
+Chapter 26 Enhanced Data Models
+
+Grid Files. We introduced grid files for indexing of data on multiple attributes in
+Chapter 18. They can also be used for indexing two-dimensional and higher
+n-dimensional spatial data. The fixed-grid method divides an n-dimensional
+hyperspace into equal size buckets. The data structure that implements the fixed
+grid is an n-dimensional array. The objects whose spatial locations lie within a cell
+(totally or partially) can be stored in a dynamic structure to handle overflows. This
+structure is useful for uniformly distributed data like satellite imagery. However,
+the fixed-grid structure is rigid, and its directory can be sparse and large.
+
+R-Trees. The R-tree is a height-balanced tree, which is an extension of the B*-tree
+for k-dimensions, where k > 1. For two dimensions (2-D), spatial objects are
+approximated in the R-tree by their minimum bounding rectangle (MBR), which
+is the smallest rectangle, with sides parallel to the coordinate system (x and y) axis,
+that contains the object. R-trees are characterized by the following properties,
+which are similar to the properties for B*-trees (see Section 18.3) but are adapted to
+2-D spatial objects. As in Section 18.3, we use M to indicate the maximum number
+of entries that can fit in an R-tree node.
+
+1. The structure of each index entry (or index record) in a leaf node is (I, object-
+identifier), where I is the MBR for the spatial object whose identifier is
+object-identifier.
+
+2. Every node except the root node must be at least half full. Thus, a leaf
+node that is not the root should contain m entries (I, object-identifier) where
+M/2 < m< M. Similarly, a non-leaf node that is not the root should contain
+m entries (I, child-pointer) where M/2 < m < M, and | is the MBR that con-
+tains the union of all the rectangles in the node pointed at by child-pointer.
+
+3. All leaf nodes are at the same level, and the root node should have at least
+two pointers unless it is a leaf node.
+
+4. All MBRs have their sides parallel to the axes of the global coordinate system.
+
+Other spatial storage structures include quadtrees and their variations. Quadtrees
+generally divide each space or subspace into equally sized areas and proceed with
+the subdivisions of each subspace to identify the positions of various objects.
+Recently, many newer spatial access structures have been proposed, and this
+remains an active research area.
+
+Spatial Join Index. A spatial join index precomputes a spatial join operation
+and stores the pointers to the related object in an index structure. Join indexes
+improve the performance of recurring join queries over tables that have low
+update rates. Spatial join conditions are used to answer queries such as “Create a
+list of highway-river combinations that cross.” The spatial join is used to identify
+and retrieve these pairs of objects that satisfy the cross spatial relationship.
+Because computing the results of spatial relationships is generally time consum-
+ing, the result can be computed once and stored in a table that has the pairs of
+object identifiers (or tuple ids) that satisfy the spatial relationship, which is essen-
+tially the join index.

@@ -1,0 +1,38 @@
+524 Chapter 14 Memory Management Units
+
+The task region dynamically changes page tables during system operation. The task
+region translates the same virtual address to a different physical address that depends on
+the running task.
+
+Figure 14.19 shows the placement of the regions in virtual and physical memory graph-
+ically. The kernel, shared and page table regions map directly to physical memory as blocks
+
+User access
+Virtual Physical
+Operating memory memory
+system OxFFFFFFFF
+access
+Fault
+0x20000000
+Fixed Peripherals Peripheral Input/output
+addresses region devices devices
+0x10000000
+Dynamic -
+addresses { Task region 0x00400000
+0x00040000
+Not used
+0x00038000
+Task 3
+oxo0030000 -— Task physical
+0x00028000 }— location
+oxo0020000 | _Task |
+Page table x c Tai
+region 8x0001¢400 [eer Page tables
+-: Master
+Fixed 0x00018000 . .
+addresses ") Shared region Shared code
+0x00010000 and data
+Kernel region System code
+0x0000000
+
+Figure 14.19 Memory map of simple virtual memory example.

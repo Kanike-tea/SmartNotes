@@ -1,0 +1,47 @@
+BCS304
+
+Some simplification yields the more compact form
+7 (a
+n+ (A
+
+which is approximately
+
+b, =
+
+b, = O4"n™)
+
+5. GRAPHS
+5.1 The graph Abstract Data Type
+5.1.1 Introduction
+
+In Koenigsberg, the Pregal river flows around the island of Kneiphof. There are four land areas,
+labelled A through D in Figure 6.1, that have this river on their border. Seven bridges, labelled
+a through g, connect the land areas. The Koenigsberg bridge problem is as follows: Starting at
+some land area, is it possible to return to our starting location after walking across each of the
+
+bridges exactly once?
+A possible walk might be:
+
+e start from Jand area B
+
+e walk across bridge a to island A
+e take bridge e to area D
+
+e take bridge gto C
+
+e take bridge dtoA
+
+e take bridge b to B
+
+e take bridge f to D
+
+This walk does not cross all bridges exactly once, nor does it return to the starting land area
+
+B.
+
+Euler solved the problem by using a graph (actually a multigraph) in which the land areas
+are vertices and the bridges are edges. His solution is not only elegant, it applies to all
+
+graphs.
+
+15

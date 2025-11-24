@@ -1,0 +1,55 @@
+300 Chapter 9 Relational Database Design by ER- and EER-to-Relational Mapping
+
+(a) EMPLOYEE
+Ssn_| Frame | Minit | Lname | Birth_date | Address | Job_type
+SECRETARY TECHNICIAN | exons
+
+Ssn | Eng_type
+
+Ssn | Typing_speed Ssn | Tgrade
+
+(b) CAR
+
+Vehicle_id | License_plate_no | Price | Max_speed | No_of_passengers
+
+TRUCK
+
+Vehicle id | License_plate_no | Price | No_of_axles | Tonnage
+
+(c) EMPLOYEE
+Ssn | Fname | Minit | Lname | Birth_date | Address | Job_type | Typing_speed |Tgrade | Eng_type
+
+(d) PART
+
+Part_no | Description | Mflag | Drawing_no | Manufacture_date | Batch_no | Pflag | Supplier_name | List_price
+
+Figure 9.5
+
+Options for mapping specialization or generalization. (a) Mapping the EER schema in Figure 4.4 using option 8A.
+(b) Mapping the EER schema in Figure 4.3(b) using option 8B. (c) Mapping the EER schema in Figure 4.4 using
+option 8C. (d) Mapping Figure 4.5 using option 8D with Boolean type fields Mflag and Pflag.
+
+inherited attributes from the superclass C stored redundantly in more than one table L;.
+With option 8B, no relation holds all the entities in the superclass C; consequently, we
+must apply an OUTER UNION (or FULL OUTER JOIN) operation (see Section 6.4) to the L;
+relations to retrieve all the entities in C. The result of the outer union will be similar to
+the relations under options 8C and 8D except that the type fields will be missing. When-
+ever we search for an arbitrary entity in C, we must search all the m relations L;.
+
+Options 8C and 8D create a single relation to represent the superclass C and all its
+subclasses. An entity that does not belong to some of the subclasses will have NULL
+values for the specific (local) attributes of these subclasses. These options are not
+recommended if many specific attributes are defined for the subclasses. If few local
+subclass attributes exist, however, these mappings are preferable to options 8A
+and 8B because they do away with the need to specify JOIN operations; therefore,
+they can yield a more efficient implementation for queries.
+
+Option 8C is used to handle disjoint subclasses by including a single type (or image
+or discriminating) attribute ¢ to indicate to which of the m subclasses each tuple
+belongs; hence, the domain of t could be {1, 2, ... , m}. If the specialization is partial, t
+can have NULL values in tuples that do not belong to any subclass. If the specialization
+is attribute-defined, that attribute itself serves the purpose of t and f is not needed; this
+option is illustrated in Figure 9.5(c) for the EER specialization in Figure 4.4.
+
+Option 8D is designed to handle overlapping subclasses by including m Boolean
+type (or flag) fields, one for each subclass. It can also be used for disjoint subclasses.

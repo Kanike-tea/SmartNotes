@@ -1,0 +1,47 @@
+Review Questions 1097
+
+28.8 Summary
+
+In this chapter, we surveyed the important discipline of data mining, which uses
+database technology to discover additional knowledge or patterns in the data. We
+gave an illustrative example of knowledge discovery in databases, which has a wider
+scope than data mining. For data mining, among the various techniques, we focused
+on the details of association rule mining, classification, and clustering. We pre-
+sented algorithms in each of these areas and illustrated with examples of how those
+algorithms work.
+
+A variety of other techniques, including the AI-based neural networks and genetic
+algorithms, were also briefly discussed. Active research is ongoing in data mining,
+and we have outlined some of the expected research directions. In the future data-
+base technology products market, a great deal of data mining activity is expected.
+We summarized 11 out of several hundred data mining tools available; future
+research is expected to extend the number and functionality significantly.
+
+Review Questions
+
+28.1. What are the different phases of the knowledge discovery from databases?
+Describe a complete application scenario in which new knowledge may be
+mined from an existing database of transactions.
+
+28.2. What are the goals or tasks that data mining attempts to facilitate?
+28.3. What are the five types of knowledge produced from data mining?
+
+28.4. What are association rules as a type of knowledge? Define support and confi
+dence, and use these definitions to define an association rule.
+
+28.5. What is the downward closure property? How does it aid in developing an
+efficient algorithm for finding association rules; that is, with regard to find-
+ing large itemsets?
+
+28.6. What was the motivating factor for the development of the FP-tree algo-
+rithm for association rule mining?
+
+28.7. Describe an association rule among hierarchies and provide an example.
+28.8. What isa negative association rule in the context of the hierarchy in Figure 28.3?
+28.9. What are the difficulties of mining association rules from large databases?
+28.10. What are classification rules, and how are decision trees related to them?
+28.11. What is entropy, and how is it used in building decision trees?
+28.12. How does clustering differ from classification?
+
+28.13. Describe neural networks and genetic algorithms as techniques for data
+mining. What are the main difficulties in using these techniques?

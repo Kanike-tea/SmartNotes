@@ -1,0 +1,31 @@
+Database Management System [BCS403]
+
+3.4.1 Relationship Types, Sets, and Instances
+
+A relationship type R among n entity types E), E2, ..., En defines a set of associations—or a relationship
+set—among entities from these entity types. Entity types and Entity sets, a Relationship type and its
+corresponding Relationship set are usually referred to by the same name, R.
+
+Mathematically, the relationship set R is a set of relationship instances ri , where each ri associates n
+individual entities (e1, 2, ..., ¢n), and each entity ei in ri is a member of entity set Ej, 1< j<n. Each of the
+entity types E;, E2, ..., En is said to participate in the relationship type R. similarly, each of the individual
+
+entities e1, €2,...,@n is said to —_ participate in the relationship instance rj = (e1, 2, ..., €n )
+
+Informally, each relationship instance rj in R is an association of entities, where the association includes
+exactly one entity from each participating entity type. For example, consider a relationship type
+WORKS FOR between the two entity types EMPLOYEE and DEPARTMENT, which associates each
+employee with the department for which the employee works in the corresponding entity set. Each
+relationship instance in the relationship set WORKS FOR» associates one EMPLOYEE entity and one
+DEPARTMENT entity.
+
+EMPLOYEE WORKS_FOR DEPARTMENT
+
+Figure 3.4.1: Some instances in the WORKS_FOR relationship set, which represents a relationship type
+WORKS_FOR between EMPLOYEE and DEPARTMENT.
+
+employees ¢1, e3, and es work for department di. employees e2 and ey work for department d2 and
+
+employees es and e7 work for department d3.
+
+https:/Ivtucode.in Page 42

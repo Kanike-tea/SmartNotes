@@ -1,0 +1,65 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ 325
+
+program is done with processing the query result, the command e.close()
+(line 16) closes the iterator.
+
+Next, consider the same example using positional iterators as shown in Figure 10.9
+(program segment J2B). Line 9 in Figure 10.9 shows how a positional iterator type
+Emppos is declared. The main difference between this and the named iterator is that
+there are no attribute names (corresponding to program variable names) in the
+positional iterator—only attribute types. This can provide more flexibility, but it
+makes the processing of the query result slightly more complex. The attribute types
+must still be compatible with the attribute types in the SQL query result and in the
+same order. Line 10 shows how a positional iterator object e of type Emppos is cre-
+ated in the program and then associated with a query (lines 11 and 12).
+
+The positional iterator behaves in a manner that is more similar to embedded SQL
+(see Section 10.2.2). A FETCH <iterator variable> INTO <program variables> com-
+mand is needed to get the next tuple in a query result. The first time fetch is exe-
+cuted, it gets the first tuple (line 13 in Figure 10.9). Line 16 gets the next tuple until
+no more tuples exist in the query result. To control the loop, a positional iterator
+function e.endFetch() is used. This function is automatically set to a value of
+TRUE when the iterator is initially associated with an SQL query (line 11), and is set
+to FALSE each time a fetch command returns a valid tuple from the query result. It
+is set to TRUE again when a fetch command does not find any more tuples. Line 14
+shows how the looping is controlled by negation.
+
+Figure 10.9
+Program segment J2B, a Java program segment that uses a positional iterator to print employee information in a
+particular department.
+
+//Program Segment J2B:
+0) dname = readEntry("Enter the Department Name: ") ;
+
+1) try {
+
+2)  #sql { SELECT Dnumber INTO :dnumber
+
+3) FROM DEPARTMENT WHERE Dname = :dname} ;
+
+4) } catch (SQLException se) {
+
+5) System.out.println("Department does not exist: " + dname) ;
+
+6) Return ;
+
+7)
+
+8) System.out.printline("Employee information for Department: " + dname) ;
+
+9) #sql iterator Emppos(String, String, String, String, double) ;
+10) Emppos e = null ;
+
+11) #sql e = { SELECT ssn, fname, minit, lname, salary
+
+12) FROM EMPLOYEE WHERE Dno = :dnumber} ;
+
+13) #sql { FETCH :e INTO :ssn, :fn, :mi, :1ln, :sal} ;
+
+14) while (!e.endFetch()) {
+
+15) System.out.printline(ssn +" "+ fin +" "4+mi+" "+ In+" "4 sal) ;
+16)  #sql { FETCH :e INTO :ssn, :fn, :mi, :1n, :sal} ;
+17) }G
+
+18) e.close() ;

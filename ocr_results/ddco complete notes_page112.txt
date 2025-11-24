@@ -1,0 +1,44 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+ARRANGEMENT OF PRIORITY GROUPS
+
+INTRI
+
+Priority arbitration
+circuit
+
+¢ In this technique, devices are organizes in a group and each group is connected
+to the processor at adifferent priority level.
+
+¢ With in a group devices are connected in a daisy chain fashion as shown in the
+figure.
+
+Direct Memory Access (DMA)
+
+e It is the process of transferring the block of data at high speed in between
+main memory and external device (I/O devices) without continuous
+intervention of CPU is called as DMA.
+
+e The DMA operation is performed by one control circuit and is part of the 1/O
+interface.
+
+e This control circuit is called DMA controller. Hence DMA transfer operation is
+performed by DMAcontroller.
+
+e To initiate Directed data transfer between main memory and external devices
+DMA controller needsparameters from the CPU.
+
+e These 3 Parameters are:
+
+1)Starting address of the
+
+memory block.2)No of words to
+
+be transferred.
+
+3)Type of operation (Read or Write).
+After receiving these 3 parameters from CPU, DMA controller establishes
+directed data transferoperation between main memory and external devices
+without the involvement of CPU.
+
+Dr.Ajay V G, Dept. of CSE 14

@@ -1,0 +1,55 @@
+1060 Chapter 27 Introduction to Information Retrieval and Web Search
+
+Figure 27.6
+A document D and its
+topic proportions.
+
+Presidents (Topic)
+
+Barack Obama
+Document D George W Bush
+
+Democratic party | Bill Clinton
+member Barack policy
+Obama is the 44th defense
+President of U.S. [=] Republicans military
+He is preceded by | [Presidents | white house
+Republican [Government Ronald Reagan
+President George | [7 pemocrats Jimmy Carter
+W Bush. -— Politics Richard Nixon
+
+Topic Proportions
+
+do not need any training sets or human annotations to perform this thematic
+extrapolation. The concept of this class of algorithms is as follows: Every document
+is inherently organized thematically. For example, documents about Barack Obama
+may mention other presidents, other issues related to the government, or a particular
+political theme. An article about one of the Iron Man movies may contain refer-
+ences to other sci-fi (science fiction) characters from the Marvel series or generally
+have a sci-fi theme. These inherent structures in documents can be extracted by
+probabilistic modeling and estimation methods. As another example, let us assume
+that every document is made up of a collection of different topics in differing pro-
+portions (e.g., a document about politics may also be about presidents and Ameri-
+can history). Also, every topic is made up of a collection of words.
+
+By considering Figure 27.6, we can guess that document D, which mentions U.S.
+Presidents Barack Obama and George W. Bush, can belong to the topics Presidents,
+Politics, Democrats, Republicans, and Government. In general, topics share a fixed
+vocabulary of words. This vocabulary of words is extracted from the collection of
+documents for which we wish to train the topic models. We generally choose the
+number of topics we wish to extract from the collection. Every topic ranks words
+differently according to how often a word is represented under a certain topic in
+different documents. In Figure 27.6, the bars representing topic proportions should
+all sum to 1. Document D primarily belongs to the topic Presidents, as shown in the
+bar graph. Figure 27.6 depicts the topics related to Presidents along with the list of
+words associated with this topic.
+
+Probabilistic topic modeling estimates topic distributions using a learning algo-
+rithm that assumes that documents can be generated as a mixture of topic propor-
+tions. These topic proportion estimates are computed using sampling and
+expectation maximization algorithms. An algorithm called latent Dirichlet alloca-
+tion (LDA)? is used to generate the topic models. The model assumes a generative
+process wherein documents are mixtures of latent topics and topics are distribu-
+tions over words. A generative model randomly generates observable data given
+
+8See Blei, Ng, and Jordan (2008).

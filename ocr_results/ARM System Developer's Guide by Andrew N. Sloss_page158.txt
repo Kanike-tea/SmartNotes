@@ -1,0 +1,43 @@
+5.10 Division 145
+
+do
+unsigned int n, q, v3
+
+*(src+t) ;
+(unsigned int) (((unsigned long long)n * s) >> 32);
+
+r=n-q* ds
+
+if (r >= d)
+{
+
+qtts
+}
+
+*(dest++) = q;
+} while (--N);
+}
+
+Here we have assumed that the numerator and denominator are 32-bit unsigned integers.
+Of course, the algorithm works equally well for 16-bit unsigned integers using a 32-bit
+multiply, or for 64-bit integers using a 128-bit multiply. You should choose the narrowest
+width for your data. If your data is 16-bit, then set s = (2!° — 1)/d and estimate q using
+a standard integer C multiply.
+
+5.10.3. UNSIGNED DIVISION BY A CONSTANT
+
+To divide by a constant c, you could use the algorithm of Example 5.13, precalculating
+s = (2% — 1)/c. However, there is an even more efficient method. The ADS1.2 compiler
+uses this method to synthesize divisions by a constant.
+
+The idea is to use an approximation to d~! that is sufficiently accurate so that
+multiplying by the approximation gives the exact value of n/d. We use the following
+mathematical results:!
+
+1f2N+K < ds < 2N** 4 2%, then n/d = (ns) > (N +k) for0<n<2%. (5.8)
+
+1f2NtK — 2k < ds <2N**, then nid = (ns +s) >(N+h)for0<n<2%. (5.9)
+
+1. For the first result see a paper by Torbjorn Granlund and Peter L. Montgomery, “Division by
+Invariant Integers Using Multiplication,” in proceedings of the SIG-PLAN PLDI’94 Conference,
+June 1994,

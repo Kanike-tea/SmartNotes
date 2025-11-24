@@ -1,0 +1,34 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+e The I/O device is connected to interrupt request line by means of switch,
+which is grounded asshown in the fig.
+
+e When all the switches are open the voltage drop on interrupt request line is
+equal to the Vpp andINTR value at process is 0.
+
+e This state is called as in-active state of the interrupt request line.
+
+e The I/O device interrupts the processor by closing its switch.
+
+e When switch is closed the voltage drop on the interrupt request line is found
+to be zero, as theswitch is grounded, hence INTR=0 and INTR=1.
+
+e The signal on the interrupt request line is logical OR of requests from the
+several I /O devices. Therefore, INTR=INTRI + INTR2 + + INTRn
+
+The arrival of interrupt request from external devices or from within a process,
+causes the suspension ofon-going execution and start the execution of another
+program.
+
+e Interrupt arrives at any time and it alters the sequence of execution. Hence
+the interrupt to beexecuted must be selected carefully.
+
+e All computers can enable and disable interruptions as desired.
+e When an interrupt is under execution, other interrupts should not be
+
+invoked. This is performedin a system in different ways.
+
+e The problem of infinite loop occurs due to successive interruptions of active
+INTR signals.
+
+Dr.Ajay V G, Dept. of CSE 10

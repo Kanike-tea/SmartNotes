@@ -1,0 +1,46 @@
+178 Divide-and-Conquer
+
+ALGORITHM = HoarePartition(A[l..r])
+//Partitions a subarray by Hoare’s algorithm, using the first element
+I as a pivot
+/Input: Subarray of array A[0..n — 1], defined by its left and right
+// indices / and r (J <r)
+//Output: Partition of A[/..r], with the split position returned as
+I this function’s value
+p—All]
+icljecrtl
+repeat
+repeat i —i + 1 until A[i]> p
+repeat j <— j — 1 until A[j] <p
+swap(A[i], ALj])
+until i > j
+swap(A[i], A[j]) //undo last swap when i > j
+swap (All), AL/})
+return j
+
+Note that index i can go out of the subarray’s bounds in this pseudocode.
+Rather than checking for this possibility every time index i is incremented, we can
+append to array A[0..n — 1]a “sentinel” that would prevent index i from advancing
+beyond position n. Note that the more sophisticated method of pivot selection
+mentioned at the end of the section makes such a sentinel unnecessary.
+
+An example of sorting an array by quicksort is given in Figure 5.3.
+
+We start our discussion of quicksort’s efficiency by noting that the number
+of key comparisons made before a partition is achieved is n + 1 if the scanning
+indices cross over and n if they coincide (why?). If all the splits happen in the
+middle of corresponding subarrays, we will have the best case. The number of key
+comparisons in the best case satisfies the recurrence
+
+Cyost(2) = 2Cpegi(n/2) +n forn>1, Cyes)(1) =0.
+
+According to the Master Theorem, C,,,,(n) € O(n logy n); solving it exactly for
+n=2 yields C).5:(n) =n logy n.
+
+In the worst case, all the splits will be skewed to the extreme: one of the
+two subarrays will be empty, and the size of the other will be just 1 less than the
+size of the subarray being partitioned. This unfortunate situation will happen, in
+particular, for increasing arrays, i.e., for inputs for which the problem is already
+solved! Indeed, if A[0..n — 1] is a strictly increasing array and we use A[0] as the
+pivot, the left-to-right scan will stop on A[1] while the right-to-left scan will go all
+the way to reach A[0], indicating the split at position 0:

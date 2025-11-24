@@ -1,0 +1,88 @@
+Dimension table
+
+Product
+
+Fact table
+
+Prod_no
+
+Prod_name Business results
+
+Prod_descr
+
+Prod_style Product
+
+Prod_line Quarter
+Region
+
+Sales_revenue
+
+29.3 Data Modeling for Data Warehouses 1109
+
+Dimension table
+
+Fiscal quarter
+
+Qtr
+
+Year
+Beg_date
+End_date
+
+Dimension table
+
+Figure 29.7
+A star schema with fact
+and dimensional tables.
+
+Region
+Subregion
+
+into a hierarchy by normalizing them (Figure 29.8). A fact constellation is a set
+of fact tables that share some dimension tables. Figure 29.9 shows a fact constella-
+tion with two fact tables, business results and business forecast. These share the
+dimension table called product. Fact constellations limit the possible queries for
+
+the warehouse.
+
+Data warehouse storage also utilizes indexing techniques to support high-
+performance access (see Chapter 17 for a discussion of indexing). A technique called
+bitmap indexing constructs a bit vector for each value in a domain (column) being
+indexed. It works very well for domains of low cardinality. There is a 1 bit placed in
+
+Figure 29.8
+A snowflake schema.
+
+Dimension tables
+
+Pname
+
+Prod_name
+
+Prod_descr Product
+
+Prod_no
+
+Prod_name Product
+Style Quarter
+Prod_line_no Region
+
+Revenue
+
+Prod_line_name
+
+Fact table
+
+Business results
+
+Dimension tables
+
+Fiscal quarter FQ dates
+Qtr Beg_date
+Year [7 End_date
+Bi «|
+
+Sales revenue
+
+Region
+Subregion

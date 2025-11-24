@@ -1,0 +1,40 @@
+(a) AND-OR gates
+
+ia]
+
+»>—L
+
+—)>—
+
+(b) NAND gates
+
+The general procedure for converting a multilevel AND—OR diagram into an all-NAND diagram using
+
+mixed notation is as follows:
+
+1. Convert all AND gates to NAND gates with AND-invert graphic symbols.
+
+2. Convert all OR gates to NAND gates with invert-OR graphic symbols.
+
+3. Check all the bubbles in the diagram. For every bubble that is not compensated by another small
+circle along the same line, insert an inverter (a one-input NAND gate) or complement the input
+
+literal.
+
+Consider the multilevel Boolean function F = (AB'+ A'B)(C + D')
+
+9
+
+—{[)— r
+—_) >
+
+I
+
+(a) AND-OR gates
+
+>_>
+—[)-
+
+b4
+
+(b) NAND gates

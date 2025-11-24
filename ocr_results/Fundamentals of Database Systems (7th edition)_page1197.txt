@@ -1,0 +1,36 @@
+‘B)
+appendix be)
+
+Parameters of Disks
+
+T* most important disk parameter is the time
+required to locate an arbitrary disk block, given its
+block address, and then to transfer the block between the disk and a main memory
+buffer. This is the random access time for accessing a disk block. There are three
+time components to consider as follows:
+
+1. Seek time (s). This is the time needed to mechanically position the
+read/write head on the correct track for movable-head disks. (For fixed-head
+disks, it is the time needed to electronically switch to the appropriate
+read/write head.) For movable-head disks, this time varies, depending on the
+distance between the current track under the read/write head and the track
+specified in the block address. Usually, the disk manufacturer provides an
+average seek time in milliseconds. The typical range of average seek time is 4
+to 10 msec. This is the main culprit for the delay involved in transferring
+blocks between disk and memory.
+
+2. Rotational delay (rd). Once the read/write head is at the correct track, the
+user must wait for the beginning of the required block to rotate into position
+under the read/write head. On average, this takes about the time for half a
+revolution of the disk, but it actually ranges from immediate access (if
+the start of the required block is in position under the read/write head right
+after the seek) to a full disk revolution (if the start of the required block just
+passed the read/write head after the seek). If the speed of disk rotation is p
+revolutions per minute (rpm), then the average rotational delay rd is given by
+
+rd = (1/2) * (1/p) min = (60 * 1000)/(2 * p) msec = 30000/p msec
+A typical value for p is 10,000 rpm, which gives a rotational delay of rd =
+3 msec. For fixed-head disks, where the seek time is negligible, this component
+causes the greatest delay in transferring a disk block.
+
+1167

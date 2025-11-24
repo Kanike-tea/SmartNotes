@@ -1,0 +1,42 @@
+Database Management System [BCS403]
+
+RESULT
+
+ACTUAL_DEPENDENTS
+Fname [Lname | Ssn | Essn Dependent_name | Sex | Bdate |
+Jennifer | Wallace | 987654321 | 987654321 Abner M | 1942-02-28 |...
+
+The CARTESIAN PRODUCT creates tuples with the combined attributes of two relations. We
+
+can SELECT related tuples only from the two relations by specifying an appropriate selection
+
+condition after the Cartesian product.
+In SQL, CARTESIAN PRODUCT can be realized by using the CROSS JOIN option in joined
+
+tables
+
+2.4 Binary Relational Operations: JOIN and DIVISION
+2.4.1 The JOIN Operation
+
+The JOIN operation, denoted by ><}, is used to combine related tuples from two relations into
+
+single “longer” tuples.It allows us to process relationships among relations. The general form of a
+
+JOIN operation on two relations R(A1, 42, ..., An) and S(Bi, Bo, ..., Bm) is
+RA, Goin eonditionS
+
+Example: Retrieve the name of the manager of each department.
+To get the manager’s name, we need to combine each department tuple with the employee tuple
+
+whose Ssn value matches the Mgr_ssn value in the department tuple
+
+DEPT_MGR + DEPARTMENT ™ yor gan-Sen EMPLOYEE
+RESULT © fojname, Lname, Fname(DEPT_MGR)
+
+DEPT_MGR
+Dname Dnumber | Mgr_ssn | --- | Fname | Minit | Lname Ssn
+Research 5 393445555 | --- | Franklin | T | Wong | 993445555
+Administration 4 987654321 | --- | Jennifer | S | Wallace | 987654321
+Headquarters 1 ge86e5555 | «~~ | James E_ | Borg 888665555
+
+https://vtucode.in Page 24

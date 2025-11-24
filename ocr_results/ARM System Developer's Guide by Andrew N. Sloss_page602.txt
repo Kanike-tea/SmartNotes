@@ -1,0 +1,47 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 589
+
+Notes
+
+For double-word loads (formats 9 to 12), Rd must be even and in the range r0 to r12.
+If the addressing mode updates Rn, then Rd and Rn must be distinct.
+
+If Rd is pc, then <size> must be 4. Up to ARMv4, the core branches to the loaded
+address. For ARMv5 and above, the core performs a BX to the loaded address.
+
+If Rnis pc, then the addressing mode must not update Rn . The value used for Rn is the
+address of the instruction plus eight bytes for ARM or four bytes for Thumb.
+
+Rm must not be pe.
+For ARMvé6 use LDREX and STREX to implement semaphores rather than SWP.
+
+Examples
+LOR ~—r0, ‘[r0] 3 r0 = *(int*)r0;
+LDRSH 0, [ri], #4 3 r0 = *(short*)rl; rl += 45
+LORB =r, [rl, #-8]! 3 rl -= 8; r0 = *(char*)r1;
+LORD r2, [rl] 3 2 =* (int*)rl; 13 =* (int*)(r1+4);
+LORSB 0, [r2, #55] 3 r0 = *(signed char*) (r2+55);
+
+LDRCC pc, [pe, r0, LSL #2] ; if (C==0) goto *(pc+4*ro);
+LORB =r, [ri], -r2, LSL #8 ; rO = *(char*)rl; rl -= 256*r2;
+
+LOR v0, =0x12345678 3 r0 = 0x12345678;
+
+LSL Logical shift left for Thumb (see MOV for the ARM equivalent)
+
+1. LSL Ld, Lm, #<immed5> THUMBv1
+
+2. LSL Ld, Ls THUMBv1
+
+Action Effect on the cpsr
+
+1. Ld = Lm LSL #<immed5> Updated (see Note below)
+
+2. Ld = Ld LSL Ls[7:0] Updated
+
+Note
+
+The cpsr is updated: N = <Negative>, Z = <Zero>, C = <shifter_C> (see Table A.3).
+LSR Logical shift right for Thumb (see MOV for the ARM equivalent)
+
+1. LSR Ld, Lm, #<immed5> THUMBv1
+2. LSR Ld, Ls THUMBv1

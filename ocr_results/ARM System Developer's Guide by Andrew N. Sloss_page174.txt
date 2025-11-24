@@ -1,0 +1,51 @@
+6.1 Writing Assembly Code 161
+
+loop
+ADR 0, print_string
+MoV orl, i
+MUL or, i, i
+BL printf
+ADD i, i, #1
+cmp i, #10
+BLT loop
+
+LOMFD sp! {i, pc}
+
+print_string
+DCB "Square of %d is %d\n", 0
+
+END
+
+We have used a new directive, IMPORT, to declare symbols that are defined in other files.
+The imported symbol Lib$$Request$$arml ib makes a request that the linker links with
+the standard ARM C library. The WEAK specifier prevents the linker from giving an error
+if the symbol is not found at link time. If the symbol is not found, it will take the value
+zero. The second imported symbol __main is the start of the C library initialization code.
+You only need to import these symbols if you are defining your own main; a main defined
+in C code will import these automatically for you. Importing printf allows us to call that
+C library function.
+
+The RN directive allows us to use names for registers. In this case we define i as
+an alternate name for register r4. Using register names makes the code more readable.
+It is also easier to change the allocation of variables to registers at a later date.
+
+Recall that ATPCS states that a function must preserve registers r4 to rll and sp. We
+corrupt i(r4), and calling printf will corrupt /r. Therefore we stack these two registers
+at the start of the function using an STMFD instruction. The LDMFD instruction pulls these
+registers from the stack and returns by writing the return address to pe.
+
+‘The DCB directive defines byte data described as a string or a comma-separated list of
+bytes.
+
+To build this example you can use the following command line script:
+
+armasm main3.s
+armlink -o main3.axf main3.o
+
+Note that Example 6.3 also assumes that the code is called from ARM code. If the code
+can be called from Thumb code as in Example 6.2 then we must be capable of returning to
+Thumb code. For architectures before ARMv5 we must use a BX to return. Change the last
+instruction to the two instructions:
+
+LOMFD sp!, {i, Ir}
+BX Ir

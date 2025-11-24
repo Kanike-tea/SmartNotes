@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+It is the responsibility of the database designers to identify integrity constraints during database
+
+design.
+
+9. Permitting Inferencing and Actions Using Rules
+In a deductive database system, one may specify declarative rules that allow the database to
+infer new data. For example, figure out which students are on academic probation. Such
+capabilities would take the place of application programs that would be used to ascertain such
+information otherwise.
+Active database systems go one step further by allowing "active rules" that can be used to
+initiate actions automatically. In today’s relational database systems, it is possible to associate
+
+triggers with tables.
+
+10. Additional Implications of Using the Database Approach
+
+= Potential for Enforcing Standards : database approach permits the DBA to define and
+
+enforce standards among database users ina large organization which facilitates
+
+communication and cooperation among various departments, projects, and users within the
+
+organization.Standards can be defined for names and formats of data elements, display
+
+formats, report structures and so on.
+
+= Reduced Application Development »Time: once a database is up and running,
+substantially less time is generally required to create new applications using DBMS
+facilities. Development time using a DBMS is estimated to be one-sixth to one-fourth of
+that for a traditional file system.
+
+= Flexibility: It may be necessary to change the structure of a database as _ requirements
+change. DBMSs allow changes to the structure of the database without affecting the stored
+
+data and the existing application programs.
+
+= Availability of Up-to-Date Information: DBMS makes the database available to all users.
+Availability of up-to-date information is essential for many transaction-processing
+applications, such as reservation systems or banking databases
+
+= Economies of Scale: DBMS approach permits consolidation of data and applications, to
+overlap between activities of data-processing in different projects or departments. This
+enables the whole organization to invest in more powerful processors, storage devices, or
+communication gear, rather than having each department purchase its equipment thus
+
+reducing overall costs of operation and management.
+
+https://vtucode.in Page 14

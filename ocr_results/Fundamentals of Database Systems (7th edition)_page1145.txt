@@ -1,0 +1,53 @@
+29.6 Data Warehouse versus Views
+
+Improved performance has also been attained with parallel processing. Parallel
+server architectures include symmetric multiprocessor (SMP), cluster, and mas-
+sively parallel processing (MPP), and combinations of these.
+
+Knowledge workers and decision makers use tools ranging from parametric queries
+to ad hoc queries to data mining. Thus, the access component of the data ware-
+house must provide support for structured queries (both parametric and ad hoc).
+Together, these make up a managed query environment. Data mining itself uses
+techniques from statistical analysis and artificial intelligence. Statistical analysis can
+be performed by advanced spreadsheets, by sophisticated statistical analysis soft-
+ware, or by custom-written programs. Techniques such as lagging, moving aver-
+ages, and regression analysis are also commonly employed. Artificial intelligence
+techniques, which may include genetic algorithms and neural networks, are used
+for classification and are employed to discover knowledge from the data warehouse
+that may be unexpected or difficult to specify in queries. (We discussed data mining
+in detail in Chapter 28.)
+
+29.6 Data Warehouse versus Views
+
+Some people consider data warehouses to be an extension of database views. Ear-
+lier we mentioned materialized views as one way of meeting requirements for
+improved access to data (see Section 7.3 for a discussion of views). Materialized
+views have been explored for their performance enhancement. In Section 19.2.4,
+we discussed how materialized views are maintained and used as a part of query
+optimization. Views, however, provide only a subset of the functions and capabili-
+ties of data warehouses. Views and data warehouses are similar in some aspects;
+for example, they both have read-only extracts from databases and they allow
+orientation by subject. However, data warehouses are different from views in the
+following ways:
+
+= Data warehouses exist as persistent storage instead of being materialized
+on demand.
+
+= Data warehouses are not just relational views; they are multidimensional
+views with levels of aggregation.
+
+= Data warehouses can be indexed to optimize performance. Views cannot be
+indexed independent of the underlying databases.
+
+= Data warehouses characteristically provide specific support of functionality;
+views cannot.
+
+= Data warehouses provide large amounts of integrated and often temporal
+data, generally more than is contained in one database, whereas views are an
+extract of a database.
+
+= Data warehouses bring in data from multiple sources via a complex ETL
+process that involves cleaning, pruning, and summarization, whereas views
+are an extract from a database through a predefined query.
+
+1115

@@ -1,0 +1,50 @@
+944
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+distributed, open source, nonrelational database that manages tables with billions of
+rows and millions of columns. HBase is patterned after BigTable from Google” but is
+implemented using Hadoop and HDFS. Hoya is being developed to address the need
+for creating on-demand clusters of HBase, with possibly different versions of HBase
+running on the same cluster. Each of the HBase instances can be individually config-
+ured. The Hoya ApplicationMaster launches the HBase Master locally. The Hoya AM
+also asks the YARN RM for a set of containers to launch HBase RegionServers on the
+cluster. HBase RegionServers are the worker processes of Hbase; each ColumnFamily
+(which is like a set of Columns in a relational table) is distributed across a set of
+RegionServers. This can be used to start one or more HBase instances on the cluster,
+on demand. The clusters are elastic and can grow or shrink based on demand.
+
+The above three examples of the applications developed on YARN should give
+the reader a sense of the possibilities that have been opened up by the decoupling
+of Resource Management from Application Management in the overall
+Hadoop/MapReduce architecture by YARN.
+
+25.6 General Discussion
+
+So far, we have discussed the big data technology development that has occurred
+roughly in the 2004-2014 time frame, and we have emphasized Hadoop v1 and
+YARN (also referred to as Hadoop v2 or MRy2). In this section, we must first state
+the following disclaimer: there are a number of ongoing projects under Apache open
+source banner as well as in companies devoted to developing products in this area
+(e.g., Hortonworks, Cloudera, MapR) as well as many private startup companies.
+Similarly, the Amplab at University of California and other academic institutions are
+contributing heavily to developing technology that we have not been able to cover in
+detail. There is also a series of issues associated with the cloud concept, with running
+MapReduce in the cloud environment, and with data warehousing in the cloud that
+we have not discussed. Given this background, we now cover a few general topics
+that are worth mentioning in the context of the elaborate descriptions we presented
+so far in this chapter. We present issues related to the tussle between the traditional
+approach to high performance applications in parallel RDBMS implementations vis-
+a-vis Hadoop- and YARN-based technologies. Then we present a few points related
+to how big data and cloud technologies will be complementary in nature. We outline
+issues related to the locality of data and the optimization issues inherent in the stor-
+age clouds and the compute clouds. We also discuss YARN as a data services plat-
+form and the ongoing movement to harness big data for analytics. Finally, we present
+some current challenges facing the entire big data movement.
+
+25.6.1 Hadoop/MapReduce vs. Parallel RDBMS
+
+A team of data experts, including Abadi, DeWitt, Madden, and Stonebracker, have
+done a methodological study comparing a couple of parallel database systems with
+
+2°BigTable is described in Chang et al. (2006).

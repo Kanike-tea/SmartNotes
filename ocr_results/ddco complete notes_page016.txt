@@ -1,0 +1,50 @@
+Digital Design and Computer Organization(BCS302)
+= BD + B'D'+ B'C + AB'
+DON’T-CARE CONDITIONS
+
+> The logical sum of the minterms associated with a Boolean function specifies the
+conditions under which the function is equal to 1. The function is equal to O for
+the rest of the minterms. This pair of conditions assumes that all the
+combinations of the values for the variables of the function are valid.
+
+> In some applications the function is not specified for certain combinations of the
+variables.
+
+> Functions that have unspecified outputs for some input combinations are called
+incompletely specified functions.
+
+> In most applications, we simply don’t care what value is assumed by the
+function for the unspecified minterms. For this reason, it is customary to call the
+unspecified minterms of a function don’t-care conditions. These don’t-care
+conditions can be used on a map to provide further simplification of the Boolean
+expression.
+
+> A don’t-care minterm is a combination of variables whose logical value is not
+specified. Such a minterm cannot be marked with a 1 in the map, because it
+would require that the function always be a 1 for such a combination. Likewise,
+putting a O on the square requires the function to be O. To distinguish the don’t-
+care condition from 1’s and 0’s, an X is used.
+
+> Thus, an X inside a square in the map indicates that we don’t care whether the
+value of 0 or 1 is assigned to F for the particular minterm.
+
+> In choosing adjacent squares to simplify the function in a map, the don’t-care
+min- terms may be assumed to be either 0 or 1. When simplifying the function,
+we can choose to include each don’t-care minterm with either the 1’s or the 0’s,
+depending on which combination gives the simplest expression.
+
+Simplify the Boolean function
+F (w, x, y, Z)= (1, 3, 7, 11, 15)which has the don’t-care conditions
+d (w, x, y, z)= (0, 2, 5)
+
+The minterms of F are the variable combinations that make the function equal to 1. The
+minterms of d are the don’t-care minterms that may be assigned either 0 or 1. The map
+simplification is shown in Fig. 3.15. The minterms of F are marked by 1’s, those of d are
+marked by X’s, and the remaining squares are filled with 0O’s. To get the simplified
+expres- sion in sum-of-products form, we must include all five 1’s in the map, but we
+may or may not include any of the X’s, depending on the way the function is simplified.
+The term yz covers the four minterms in the third column.The remaining minterm, m1,
+can be combined
+
+Page
+17

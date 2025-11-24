@@ -1,0 +1,35 @@
+29.3 Data Modeling for Data Warehouses 1107
+
+Region ———
+p> D DB
+a a a
+a & @
+o vn
+
+Figure 29.4
+Pivoted version of the data
+cube from Figure 29.3.
+
+hierarchy, grouping into larger units along a dimension (for example, summing
+weekly data by quarter or by year). Figure 29.5 shows a roll-up display that moves
+from individual products to a coarser grain of product categories. Shown in Fig-
+ure 29.6, a drill-down display provides the opposite capability, furnishing a
+finer-grained view, perhaps disaggregating country sales by region and then
+
+Region. Figure 29.5
+; . ; The roll-up operation.
+Region 1 Region 2 Region 3
+
+Products
+1XX
+
+Products
+2XX
+
+Products
+3XX
+
+Products
+4XX
+
+<—_—— Product categories

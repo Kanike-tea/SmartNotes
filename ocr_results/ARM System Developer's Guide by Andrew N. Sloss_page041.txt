@@ -1,0 +1,51 @@
+28 Chapter 2. ARM Processor Fundamentals
+
+Table 2.4
+
+Figure 2.6
+
+Condition flags.
+
+Flag Flag name Set when
+Q Saturation the result causes an overflow and/or saturation
+
+Vv oVerflow the result causes a signed overflow
+
+Cc Carry the result causes an unsigned carry
+
+Z Zero the result is zero, frequently used to indicate equality
+N Negative bit 31 of the result is a binary 1
+
+With processor cores that include the DSP extensions, the Q bit indicates if an overflow
+or saturation has occurred in an enhanced DSP instruction. The flag is “sticky” in the
+sense that the hardware only sets this flag. To clear the flag you need to write to the cpsr
+directly.
+
+In Jazelle-enabled processors, the J bit reflects the state of the core; if it is set, the core is
+in Jazelle state. The Jbit is not generally usable and is only available on some processor cores.
+To take advantage of Jazelle, extra software has to be licensed from both ARM Limited and
+Sun Microsystems.
+
+Most ARM instructions can be executed conditionally on the value of the condition
+flags. Table 2.4 lists the condition flags and a short description on what causes them to be
+set. These flags are located in the most significant bits in the cpsr. These bits are used for
+conditional execution.
+
+Figure 2.6 shows a typical value for the cpsr with both DSP extensions and Jazelle. In
+this book we use a notation that presents the cpsr data in a more human readable form.
+When a bit is a binary 1 we use a capital letter; when a bit is a binary 0, we use a lowercase
+letter. For the condition flags a capital letter shows that the flag has been set. For interrupts
+a capital letter shows that an interrupt is disabled.
+
+In the cpsr example shown in Figure 2.6, the C flag is the only condition flag set. The rest
+nzvq flags are all clear. The processor is in ARM state because neither the Jazelle jor Thumb t
+bits are set. The IRQ interrupts are enabled, and FIQ interrupts are disabled. Finally, you
+
+31 30 292827 24 7654 0
+
+ofo|s}o|o} jo ol1}o| 10017
+
+aT —
+nzCvq j iF t svc
+
+Example: epsr = nzCvqjiFt_SVC.

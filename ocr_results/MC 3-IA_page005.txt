@@ -1,0 +1,34 @@
+Cache Line Replacement Policy
+
+On a cache miss, the cache controller must select a cache line from the available set in cache
+memory to store the new information from main memory. The cache line selected for
+replacement is known as a victim. If the victim contains valid, dirty data, the controller must
+write the dirty data from the cache memory to main memory before it copies new data into the
+victim cache line. The process of selecting and replacing a victim cache line is known as
+
+eviction.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 43
+
+Microcontrollers - BCS402
+
+The strategy implemented in a cache controller to select the next victim is called its replacement
+policy. The replacement policy selects a cache line from the available associative member set;
+that is, it selects the way to use in the next cache line replacement. To summarize the overall
+process, the set index selects the set of cache lines available in the ways, and the replacement
+policy selects the specific cache line from the set to replace. ARM cached cores support two
+
+replacement policies, either pseudorandom or round-robin.
+
+Round-robin or cyclic replacement simply selects the next cache line in a set to replace. The
+selection algorithm uses a sequential, incrementing victim counter that increments each time the
+cache controller allocates a cache line. When the victim counter reaches a maximum value, it is
+
+reset to a defined base value.
+
+Pseudorandom replacement randomly selects the next cache line in a set to replace. The selection
+algorithm uses a non sequential incrementing victim counter. In a pseudorandom replacement
+algorithm the controller increments the victim counter by randomly selecting an increment value
+and adding this value to the victim counter. When the victim counter reaches a maximum value,
+
+it is reset to a defined base value.

@@ -1,0 +1,55 @@
+446 Chapter 12. Caches
+
+Figure 12.13
+
+EXAMPLE
+
+12.7
+
+Table 12.11
+
+ARM920T, ARM1022E
+
+31 26 25
+Way SBZ
+ARM940T
+31 65 0
+L SBZ Way
+
+ARM946E-S
+31 210
+
+L SBZ Way
+
+CP15:c9 register format used when locking data in cache by reference to its way.
+
+When reading or writing the lockdown base address, the format of the core register Rd
+used in the MCR and MRC instructions varies slightly from processor to processor. For
+each processor that uses these instructions, the format of the processor core Rd register is
+shown in Figure 12.13. To ensure that the command executes properly, be sure that the Rd
+register format matches that shown in the figure.
+
+A special load command is also needed to lock instructions in cache. This special load
+command copies a cache-line-sized block of main memory to a cache line in the I-cache.
+The command and the format for the Rd register used in the instruction are shown in Table
+12.11 and Figure 12.14.
+
+The following example shows lockDCache and lockICache routines for processors
+supporting lockdown using incremented way addressing. The return value for the two
+routines is the next available victim pointer base address.
+
+The first part of the routine defines the registers used in the macro CACHELOCKBYWAY. The
+macro also uses constants in the header file cache.h shown in Figure 12.10.
+
+Command to lock a cache line in the I-cache.
+
+Command
+
+MCR instruction Processor core
+
+Prefetch I-cache MCR pl5, 0, Rd, c7, c13, 1 ARM920T, ARM922T, ARM926EJ-S,
+
+line by address
+
+ARM940T, ARM946E-S, ARM1022E,
+ARM1026EJ-S, StrongARM, XScale

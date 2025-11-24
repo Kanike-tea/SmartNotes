@@ -1,0 +1,51 @@
+Microcontrollers - BCS402
+
+Each routine has the same set index address; that is, the routines are found at addresses in
+physical memory that map to the same location in cache memory. The first time through the
+loop, routine A is placed in the cache as it executes. When the procedure calls routine B, it evicts
+routine A a cache line at a time as it is loaded into cache and executed. On the second time
+
+through the loop, routine A replaces routine B, and then routine B replaces routine A.
+
+Repeated cache miss
+
+‘s result in continuous eviction of the routine that not running. This is cache
+
+thrashing.
+2.4 Set Associativity
+
+This structural design feature is a change that divides the cache memory into smaller equal units,
+called ways. Figure 7 is still a four KB cache; however, the set index now addresses more than
+one cache line—it points to one cache line in each way. Instead of one way of 256 lines, the
+
+cache has four ways of 64 lines. The four cache lines with the same set index are said to be in the
+
+same set, which is the origin of the name “set index.”
+‘Address issued Cache Cache
+by processor core controller memory Miss
+314 Way 3
+Way 2
+Way
++ it, Directory Way 0
+store
+10 a
+olf de yy )
+Cache-tag |v ]d] word3] word? [wordt | wordd
+Set Cache-tag [v [d [word3 | word2 | word! | wordd
+index rd :
+td
+- 64 cache
+4 4 q Cache-tag [v [0] words] word? [word] [word] |] \ tines per
+{ Cache-taz)v [a] word3| word? [word | word0 |} (yay
+Data ci Cache-taz [v || word3| word2 | word! | wordo “
+index ‘Cache-tag [v [| word3| word2 | word! | word
+ot Cachetag |v [0] words | word? [word | wordo
+Cachectag fv fd Pword3| word2 | word! | word0
+() adaress/data
+4 bus
+
+Figure 7 A 4 KB, four-way set associative cache. The cache has 256 total cache lines, which are
+separated into four ways, each containing 64 cache lines. The cache line contains four
+words.
+
+Dept. of ECE, GSSSIETW, Mysuru Page 38

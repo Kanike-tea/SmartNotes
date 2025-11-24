@@ -1,0 +1,42 @@
+500 Chapter 14 Memory Management Units
+
+Figure 14.5
+
+Virtual Physical
+memory memory
+System Fixed address System
+software memory area | software
+Page
+tables
+MMU
+Task 1
+hardware “
+(TLB)
+Task Task 3
+Dynamic address
+memory area
+Le} task 2
+
+A general view of memory organization in a system using an MMU.
+
+and the pipeline effects that result if a processor is executing in a region of virtual memory
+that is suddenly remapped to a different location in physical memory.
+
+When a context switch occurs between two application tasks, the processor in reality
+makes many context switches. It changes from a user mode task to a kernel mode task to
+perform the actual movement of context data in preparation for running the next applica-
+tion task. It then changes from the kernel mode task to the new user mode task of the next
+context.
+
+By sharing the system software in a fixed area of virtual memory that is seen across all
+user tasks, a system call can branch directly to the system area and not worry about needing
+to change page tables to map in a kernel process. Making the kernel code and data map to
+the same virtual address in all tasks eliminates the need to change the memory map and the
+need to have an independent kernel process that consumes a time slice.
+
+Branching to a fixed kernel memory area also eliminates an artifact inherent in the
+pipeline architecture. If the processor core is executing code in a memory area that changes
+addresses, the core will have prefetched several instructions from the old physical memory
+space, which will be executed as the new instructions fill the pipeline from the newly mapped
+memory space. Unless special care is taken, executing the instructions still in the pipeline
+from the old memory map may corrupt program execution.

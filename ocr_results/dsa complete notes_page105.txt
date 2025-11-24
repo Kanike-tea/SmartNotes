@@ -1,0 +1,63 @@
+Data Structures and Applications (BCS304) Module III
+
+Now replace the node 25 with its inorder successor 33
+
+60
+as,
+33 75
+4S™ yf
+15 50 66
+
+44
+Recursive function to delete a node in a BST
+TreeNode *delete_element(TreeNode *node, int key)
+{
+
+TreeNode * temp;
+
+if (node == NULL)
+return node;
+
+if (key < node->data.key)
+node->Ichild = delete_element(node->Ichild, key);
+else if (key > node->data.key)
+node->rchild = delete_element(node->rchild, key);
+else
+{
+// node with only one child
+if (node->Ichild == NULL)
+{
+temp = node->rchild;
+free(node);
+return temp;
+
+}
+
+else if (node->rchild == NULL)
+
+{
+temp = node->lchild;
+free(node);
+return temp;
+
+}
+
+// node with two children
+
+else
+
+{
+temp = node->rchild;
+while(temp->Ichild!=NULL) — //Get the inorder successor
+
+temp=temp->Ichild;
+
+node->data.item = temp->data.item;
+node->data.key=temp->data key;
+node->rlink = delete_element(node->rchild, temp->data.key);
+return node;
+
+t
+tt
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 30

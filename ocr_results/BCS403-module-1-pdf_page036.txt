@@ -1,0 +1,47 @@
+Database Management System [BCS403]
+
+Attributes that are not divisible are called simple or atomic attributes. Example SSN of an
+
+employee.
+
+2. Single-Valued versus Multivalued Attributes
+
+Attributes that have a single value for a particular entity are called single-valued. For example,
+Age is a single-valued attribute of a person.
+
+Attributes that can have a set of values for a particular entity are called Multivalued Attributes.
+For example Colors attribute for a car, or a College_degrees attribute for a person. A multivalued
+attribute may have lower and upper bounds to constrain the number of values allowed for each
+individual entity. For example, the Colors attribute of a car may be restricted to have between one
+
+and three values, if we assume that a car can have three colors at most.
+
+3. Stored versus Derived Attributes
+An attribute, which cannot be derived from other attribute are called stored attribute. For
+example, Birth_Date of an employee
+Attributes derived from other stored attributesare called derived attribute. For example age of an
+
+employee can be determined from the current (today’s) date and Date of Birth
+
+4, Null Value Attribute(Optional Attribute)
+In some cases, a particular entity may not have an applicable value for an attribute. For example,
+the Apartment number attribute of an address applies only to addresses that are in apartment
+buildings and not to other types of residences, such as single-family homes. Similarly, a
+College_degrees attribute applies only to people with college degrees. For such situations, a
+special value called NULL is created. An address of a single-family home would have NULL for
+its Apartment_number attribute, and a person with no college degree would have NULL for
+College_degrees. NULL can also be used if we do not know the value of an attribute for a
+
+particular entity
+
+5. Complex Attributes
+
+If an attribute for an entity, is built using composite and multivalued attributes, then these
+attributes are called complex attributes. For example, a person can have more than one residence
+and each residence can have multiple phones, an addressphone for a person entity can be specified
+
+as:
+
+{ Addressphone (phone {(Area Code, Phone Number)},
+
+https://vtucode.in Page 37

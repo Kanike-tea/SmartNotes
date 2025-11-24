@@ -1,0 +1,49 @@
+Digital Design and Computer Organization(BCS302)
+
+Inverter x —_>e——— x’
+xr—
+AND |__| p——f >o— xy
+
+OR | pew x+y
+
+FIGURE 3.16
+Logic operation
+
+—_— x
+
+(a) AND-invert (b) Invert-OR
+
+FIGURE 3.17
+Two graphic symbols for a three-input NAND gate
+
+se Ht
+
+of an AND graphic symbol followed by a small circle negation indicator referred to as a
+bubble.
+
+> It is possible to represent a NAND gate by an OR graphic symbol that is preceded
+by a bubble in each input. The invert-OR symbol for the NAND gate follows
+DeMorgan’s theorem and the convention that the negation indicator (bubble)
+denotes complementation. The two graphic symbols’ representations are useful in
+the analysis and design of NAND circuits. When both symbols are mixed in the
+same diagram, the circuit is said to be in mixed notation.
+
+Two-Level Implementation
+
+20
+
+> The implementation of Boolean functions with NAND gates requires that the
+functions be in sum-of-products form. To see the relationship between a sum-
+of-products expression and its equivalent NAND implementation, consider the
+logic diagrams drawn in Fig. 3.18. All three diagrams are equivalent and
+implement the function
+
+F=AB+CD
+
+> The function is implemented in Fig. 3.18(a) with AND and OR gates. In Fig.
+3.18(b), the AND gates are replaced by NAND gates and the OR gate is
+replaced by a NAND gate with an OR-invert graphic symbol. Remember that a
+bubble denotes complementation and two bubbles along the same line represent
+double complementation, so both can be removed.
+
+Page

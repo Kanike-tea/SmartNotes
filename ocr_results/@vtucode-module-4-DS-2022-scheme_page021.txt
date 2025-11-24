@@ -1,0 +1,47 @@
+BCS304
+
+to the first vertex on v's adjacency list. To implement this scheme, as we visit each vertex, we
+place the vertex in a queue. When we have exhausted an adjacency list, we remove a vertex
+from the queue and proceed by examining each of the vertices on its adjacency list. Unvisited
+vertices are visited and then placed on the queue; visited vertices are ignored. We have finished
+
+the search when the queue is empty.
+
+The queue definition and the function prototypes used by BFS are:
+
+typedef struct queue *queue_pointer;
+typedef struct queue {
+int vertex;
+
+queue_pointer link;
+
+}3
+void addq(queue_pointer *, queue_pointer *, int);
+int deleteq(queue_pointer *);
+
+void bfs(int v)
+{
+/* breadth first traversal)of a graph, starting with node v
+the global array visited: is initialized to 0, the queue
+operations are similar t6é those Geseribed in
+Chapter 4. */
+node_pointer w;
+queve_pointer<€ront, rear;
+front s\ reat = NULL; /* bnitialize queue */
+princ£(**Sa~, v);
+visited{v] = TRUE;
+addy (&front, &rear, v);
+while (front) {
+Vv = deleteg(&front);
+for, (w = graphiv]; w: w = w->link)
+if (!visited(w->vertex]) (
+printf£(*t5d", w->vertex);
+addg (&front, &rear,w->vertex);
+visited[w->vertex] = TRUE;
+)
+
+neste
+
+Breadth first search of a graph
+
+22

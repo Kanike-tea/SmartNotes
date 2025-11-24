@@ -1,0 +1,43 @@
+\ 171
+
+Answers
+eO————
+
+For Figure 3.17
+Preorder: 1, 2, 5, 11, 12, 13, 14, 3, 6,7, 4, 8,9, 10,15, 16,17,
+postorder: 11, 12, 13, 14, 5,2, 6, 7, 3, 8,9, 15, 16, 17, 10, 4,1,
+For Figure 3.18
+Preorder: r, jy hy 8, €, dy By a, cy f, i,k, ty Dy/5, n, 9, vd, ul
+Postorder: a, b, c, d, e, f, 8, A, i, j, 5, p, mi v, w, t, uy g, ntti.
+js ree meee ie
+
+.2 Sorting
+
+‘Suppose we wish to sort (— rearrange/reorganizé) a given list of n integers in nondecreasing
+der. The most common (and the easiest) way of carrying out this sorting consists of two
+s, In the first part, we recursively split the given list and all subsequent lists in half (or as
+as possible to half) until each sublist contains a single element. In the second part, we
+merge the sublists in nondecreasing order until the original n integers have been sorted. The
+splitting and merging process is done by the use of balanced complete trees. This method of
+01 orting alist is known as Merge Sort.
+
+Me Using the merge-sort method, 'sort the list 7,3, 8)4,5,10,6, 2,9.
+> First, we recursively split the given list and atl subsequent lists 1 in half or as close as possible
+
+4 half until each sublist contains a ‘single ‘element. This spiting pecs iret FR
+re shown in Figure 3.19(a).
+
+{7,3,8,4,5}, {10,6;2;9}..,
+rt ee  (10,8),(2.9}
+
+half
+
+(ray) (4h) 006), {2}.{9}
+\ |
+0
+
+ise BN
+
+7 3
+
+Figure 3.19 (a)

@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+Query 3. Find the names of employees who work on all the projects controlled by department
+
+number 5.
+
+DEPTS_PROIS — Pip,5)(Rppumber(SDnum-s(PROJECT)))
+EMP_PROJ © pisen, Pno)(™Ezen, Pno(WORKS_ON))
+RESULT_EMP_SSNS — EMP_PROJ + DEPTS_PROJS
+RESULT © fi some, Fname(RESULT_EMP_SSNS * EMPLOYEE)
+
+Query 4. Make a list of project numbers for projects that involve an employee whose last name is
+
+‘Smith’, either as a worker or as a manager of the department that controls the project.
+
+SMITHS(Essn) — m5,,, (6, pame~'smit(EMPLOYEE))
+
+SMITH_WORKER_PROJS < rp,.(WORKS_ON * SMITHS)
+
+MGRS © fname, Drumbor(EMPLOYEE 4 son_Migr con EPARTMENT)
+SMITH_MANAGED_DEPTS(Dnum) © tppumber (Oi namo-'smit(MGRS))
+SMITH_MGR_PROJS(Pno) — Mppumbee(SMITH_MANAGED-DEPTS * PROJECT)
+RESULT <— (SMITH_WORKER_PROJS U SMITH.MGR_PROJS)
+
+Query 5. List the names of all employees with two or more dependents.
+
+T1(Ssn, No_of_dependents)— ¢..03 cGiNt Dependent _name( DEPENDENT)
+T2e No of dependents>2( J)
+RESULT — mise, Fyame( 12 # EMPLOYEE)
+
+Query 6. Retrieve the names of employees who have no dependents.
+
+ALL_EMPS — ng, (EMPLOYEE)
+
+EMPS_WITH_DEPS(Ssn) — x,,.,,(DEPENDENT)
+EMPS_WITHOUT_DEPS < (ALL_EMPS — EMPS_WITH_DEPS)
+RESULT jaro, Fnama(EMPS_WITHOUT_DEPS * EMPLOYEE)
+
+Query 7. List the names of mana gers who have at least one dependent.
+
+MGRS(Ssn) & yj. gen(DEPARTMENT)
+EMPS_WITH_DEPS(Ssn) < r¢_,,(DEPENDENT)
+MGRS_WITH_DEPS + (MGRS M EMPS_WITH_DEPS)
+RESULT — m1 .are, Fname(MGRS_WITH_DEPS * EMPLOYEE)
+
+https://vtucode.in Page 37

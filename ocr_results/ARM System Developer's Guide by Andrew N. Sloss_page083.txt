@@ -1,0 +1,35 @@
+70 Chapter 3 Introduction to the ARM Instruction Set
+
+EXAMPLE
+
+3.20
+
+Table 3.11
+
+3.3.3.1 Stack Operations
+
+The ARM architecture uses the load-store multiple instructions to carry out stack
+operations. The pop operation (removing data from a stack) uses a load multiple instruction;
+similarly, the push operation (placing data onto the stack) uses a store multiple instruction.
+
+When using a stack you have to decide whether the stack will grow up or down in
+memory. A stack is either ascending (A) or descending (D). Astendingistacksigrowitowards
+higher memory addresses; in contrast, descending stacks grow towards lower memory
+
+There are a number of load-store multiple addressing mode aliases available to support
+stack operations (see Table 3.11). Next to the pop column is the actual load multiple
+instruction equivalent. For example, a full ascending stack would have the notation FA
+appended to the load multiple instruction—LDMFA. This would be translated into an LDMDA
+instruction.
+
+ARM has specified an ARM-Thumb Procedure Call Standard (ATPCS) that defines how
+routines are called and how registers are allocated. In the ATPCS, stacks are defined as being
+full descending stacks. Thus, the LDMFD and STMFD instructions provide the pop and push
+functions, respectively.
+
+Addressing mode —_ Description Pop =LOM Push = STM
+FA full ascending LOMFA = LDMDA.-=—s STMFA—sSTMIB.
+FD full descending LOMFD = LDMIA. = STMFD.=SsSTMDB.
+EA empty ascending LDMEA  LDMDB.=s STMEA—STMIA
+
+ED empty descending LDMED LDMIB STMED STMDA

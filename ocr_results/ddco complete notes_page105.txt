@@ -1,0 +1,56 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+e¢ DIRQ(Display Interrupt Request) — The output device request the
+processor to obtain its service for output operation, by activating this flag
+tol.
+Control registers
+KEN (keyboard Enable) — Enables the keyboard for input operations.
+
+DEN (Display Enable) — Enables the output device for input operations.
+
+Program Controlled I/O
+
+> In this technique CPU is responsible for executing data from the memory for
+output and storing data in memory for executing of Programmed I/O
+
+> Drawback of the Programmed I/O: was that the CPU has to monitor the units
+all the times when the program is executing. Thus, the CPU stays ina
+program loop until the I/O unit indicates that it is ready for data transfer.
+
+> This is a time-consuming process and the CPU time is wasted a lot in keeping
+an eye to the executing of program.
+
+e Itis the process of controlling the input and output operations by executing 2
+sets of instruction, one set for input operation and the next set for output
+operation.
+
+e The program checks the status of I/O register and reads or displays data.
+Here the I/O operationis controlled by program.
+
+WAITK TestBit #40, STATUS (Checks SIN
+flag) Branch = 0 WAITK
+Move DATAIN, RO (Read character) [
+
+*Code to read a character from DATAIN to RO]
+
+This code checks the SIN flag, and if it is set to O (ie. If no character in DATAIN
+Buffer), then move back to WAITK label. This loop continues until SIN flag is set
+to 1. When SIN is 1, data ismoved from DATAIN to RO register. Thus the program,
+continuously checks for input operation.
+
+Similarly code for Output operation,
+
+WAITD TestBit #0, STATUS (Checks SOUT flag)
+
+Branch = 0 WAITD
+
+Move RO, DATAOUT (Send character for
+
+display)
+
+The code checks the SOUT flag, and if it is set to 1 (ie. If no character in
+DATAOUT Buffer), then move back to WAITK label. This loop continues until
+SOUT flag is set to 0. When SOUT isO, data is moved from RO register to
+DATAOUT (ie. Sent by processor).
+
+Dr Ajay V G, Dept. of CSE 7

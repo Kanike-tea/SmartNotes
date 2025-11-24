@@ -1,0 +1,40 @@
+This shows Alice is a friend of Bob. You can also attach properties:
+yaml
+CopyEdit
+
+(Alice {age: 25})-[:FRIEND_OF {since: 2020}]->(Bob {age: 27})
+
+4. Popular Graph Databases
+« Neo4j — Most widely adopted, with its own query language, Cypher
+« Amazon Neptune — Managed graph database service by AWS
+e¢ ArangoDB — Multi-model database supporting graphs
+e¢ OrientDB — Combines document and graph models
+
+e TigerGraph — Focused on real-time deep link analytics
+
+5. Neo4j and Cypher
+
+Neo4j is the most mature and popular graph database. It uses a native graph storage engine
+and supports ACID-compliant transactions.
+
+Its query language, Cypher, allows expressive graph querying with a clear and human-
+readable syntax.
+
+Example Cypher query:
+
+cypher
+
+CopyEdit
+
+MATCH (a:Person)-[:FRIEND_OF]->(b:Person)
+WHERE a.name = ‘Alice’
+
+RETURN b.name;
+
+This retrieves the names of Alice’s friends. Neo4j supports indexing, full-text search, and
+complex graph algorithms like shortest path, community detection, and centrality.
+
+6. Use Cases of Graph Databases
+Graph databases shine in use cases that require relationship-centric data modeling, such as:
+
+« Social Networks: Model users, friendships, likes, and content sharing

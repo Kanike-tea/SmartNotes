@@ -1,0 +1,53 @@
+1022
+
+Chapter 27 Introduction to Information Retrieval and Web Search
+
+27.1 Information Retrieval (IR) Concepts
+
+Information retrieval is the process of retrieving documents from a collection in
+response to a query (or a search request) by a user. This section provides an over-
+view of IR concepts. In Section 27.1.1, we introduce information retrieval in general
+and then discuss the different kinds and levels of search that IR encompasses. In
+Section 27.1.2, we compare IR and database technologies. Section 27.1.3 gives a
+brief history of IR. We then present the different modes of user interaction with IR
+systems in Section 27.1.4. In Section 27.1.5, we describe the typical IR process with
+a detailed set of tasks and then with a simplified process flow, and we end with a
+brief discussion of digital libraries and the Web.
+
+27.1.1 Introduction to Information Retrieval
+
+We first review the distinction between structured and unstructured data (see Sec-
+tion 13.1) to see how information retrieval differs from structured data manage-
+ment. Consider a relation (or table) called HOUSES with the attributes:
+
+HOUSES (Lot#, Address, Square_footage, Listed_price)
+
+This is an example of structured data. We can compare this relation with home-
+buying contract documents, which are examples of unstructured data. These types
+of documents can vary from city to city, and even county to county, within a given
+state in the United States. Typically, a contract document in a particular state will
+have a standard list of clauses described in paragraphs within sections of the docu-
+ment, with some predetermined (fixed) text and some variable areas whose content
+is to be supplied by the specific buyer and seller. Other variable information would
+include interest rate for financing, down-payment amount, closing dates, and so
+on. The documents could also include pictures taken during a home inspection.
+The information content in such documents can be considered unstructured data
+that can be stored ina variety of possible arrangements and formats. By unstructured
+information, we generally mean information that does not have a well-defined
+formal model and corresponding formal language for representation and reason-
+ing, but rather is based on understanding of natural language.
+
+With the advent of the World Wide Web (or Web, for short), the volume of
+unstructured information stored in messages and documents that contain textual
+and multimedia information has exploded. These documents are stored in a variety
+of standard formats, including HTML, XML (see Chapter 13), and several audio
+and video formatting standards. Information retrieval deals with the problems of
+storing, indexing, and retrieving (searching) such information to satisfy the needs
+of users. The problems that IR deals with are exacerbated by the fact that the num-
+ber of Web pages and the number of social interaction events is already in the bil-
+lions and is growing at a phenomenal rate. All forms of unstructured data described
+above are being added at the rates of millions per day, expanding the searchable
+space on the Web at rapidly increasing rates.
+
+Historically, information retrieval is “the discipline that deals with the structure,
+analysis, organization, storage, searching, and retrieval of information” as defined

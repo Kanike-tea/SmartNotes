@@ -1,0 +1,41 @@
+Chapter 1
+a a CT TE SS nee ee le Ee
+
+Directed Graphs and Graphs
+
+The first four chapters of this book are concerned with Graph Theory, 1n this
+chapter we first introduce and illustrate the conepts of directed graphs and
+
+graphs. Then we present some basic material oncerned with graphs and related
+concepts”.
+
+1.1 Directed Graphs
+
+Look at the diagram shown below. This diagram consists of four vertices A, B, C, D and three
+edges AB, CD, CA with directions attached to them, the directions being indicated by arrows.
+Because of attaching directions to the edges, the edge AB has to be interpreted as an edge from
+the vertex A to the vertex B and it cannot be written as BA. Similarly, the edge CD is from C to
+D and cannot be written as DC, and the edge CA is from C to A and cannot be written as AC,
+Thus, here, the edges AB, CD, CA are directed edges**.
+
+A B
+
+Figure 1.1
+
+The directed edge AB is determined by the vertices A and B in that order and may therefore
+be represented by the ordered pair (A, B). Similarly, the directed edges CD and CA may be
+Tepresented by the ordered pairs (C, D) and (C, A) respectively. Thus, the diagram in Figure
+LI consists of a nonempty set of vertices, namely (A, B,C, D}, and a set of directed edges
+Tepresented by ordered pairs of vertices taken from this set, namely {(A, B),(C, D),(C,A)}.
+Such a diagram is called a diagram of a directed graph (or a diagraph for brevity),
+
+The formal definition of a directed graph is given below.
+
+cog Se ee
+In graph theory, the definitions, notation and terminology are not yet standardized; they generally vary from
+°n€ author to the other. The reader has to keep this in mind while using different books.
+
+i one wishes, these edges may also be denoted by AB, CD, CA to emphasize that these are actually directed
+ges,
+
+3

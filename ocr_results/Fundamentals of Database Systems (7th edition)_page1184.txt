@@ -1,0 +1,48 @@
+1154 Chapter 30 Database Security
+
+data mining algorithms minimizes the exchange of data needed to develop globally
+valid models. By modifying, perturbing, and anonymizing data, we can also miti-
+gate privacy risks associated with data mining. This can be done by removing iden-
+tity information from the released data and injecting noise into the data. However,
+by using these techniques, we should pay attention to the quality of the resulting
+data in the database, which may undergo too many modifications. We must be able
+to estimate the errors that may be introduced by these modifications.
+
+Privacy is an important area of ongoing research in database management. It is
+complicated due to its multidisciplinary nature and the issues related to the subjec-
+tivity in the interpretation of privacy, trust, and so on. As an example, consider
+medical and legal records and transactions, which must maintain certain privacy
+requirements. Providing access control and privacy for mobile devices is also
+receiving increased attention. DBMSs need robust techniques for efficient storage
+of security-relevant information on small devices, as well as trust negotiation tech-
+niques. Where to keep information related to user identities, profiles, credentials,
+and permissions and how to use it for reliable user identification remains an impor-
+tant problem. Because large-sized streams of data are generated in such environ-
+ments, efficient techniques for access control must be devised and integrated with
+processing techniques for continuous queries. Finally, the privacy of user location
+data, acquired from sensors and communication networks, must be ensured.
+
+30.9 Challenges to Maintaining
+Database Security
+
+Considering the vast growth in volume and speed of threats to databases and infor-
+mation assets, research efforts need to be devoted to a number of issues: data qual-
+ity, intellectual property rights, and database survivability, to name a few. We
+briefly outline the work required in a few important areas that researchers in data-
+base security are trying to address.
+
+30.9.1 Data Quality
+
+The database community needs techniques and organizational solutions to assess
+and attest to the quality of data. These techniques may include simple mechanisms
+such as quality stamps that are posted on Web sites. We also need techniques that
+provide more effective integrity semantics verification and tools for the assessment
+of data quality, based on techniques such as record linkage. Application-level recov-
+ery techniques are also needed for automatically repairing incorrect data. The ETL
+(extract, transform, load) tools widely used to load data in data warehouses (see
+Section 29.4) are presently grappling with these issues.
+
+30.9.2 Intellectual Property Rights
+
+With the widespread use of the Internet and intranets, legal and informational
+aspects of data are becoming major concerns for organizations. To address these

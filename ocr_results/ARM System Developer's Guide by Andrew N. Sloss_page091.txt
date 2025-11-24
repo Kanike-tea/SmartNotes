@@ -1,0 +1,49 @@
+78 Chapter 3 Introduction to the ARM Instruction Set
+
+The first term, CP15, defines it as coprocessor 15. The second term, after the separating
+colon, is the primary register. The primary register X can have a value between 0 and 15.
+The third term is the secondary or extended register. The secondary register Y can have
+a value between 0 and 15. The last term, opcode2, is an instruction modifier and can have
+a value between 0 and 7. Some operations may also use a nonzero value w of opcodel. We
+write these as CP15:w:cX:cY:Z.
+
+3.6 LOADING CONSTANTS
+
+EXAMPLE
+
+3.28
+
+You might have noticed that there is no ARM instruction to move a 32-bit constant into
+a register. Since ARM instructions are 32 bits in size, they obviously cannot specify a general
+32-bit constant.
+
+To aid programming there are two pseudoinstructions to move a 32-bit value into
+a register.
+
+Syntax: LDR Rd, =constant
+ADR Rd, label
+
+| LDR | load constant pseudoinstruction | Rd= 32-bit constant
+
+| ADR | load address pseudoinstruction Rd= 32-bit relative address
+
+The first pseudoinstruction writes a 32-bit constant to a register using whatever instruc-
+tions are available. It defaults to a memory read if the constant cannot be encoded using
+other instructions.
+
+The second pseudoinstruction writes a relative address into a register, which will be
+encoded using a pe-relative expression.
+
+This example shows an LDR instruction loading a 32-bit constant Oxff00ffff into
+register r0.
+
+LOR 0, [pc, #constant_number-8-{PC}]
+
+constant_number
+DCD — Oxf FOOF FFF
+
+This example involves a memory access to load the constant, which can be expensive for
+time-critical routines.
+
+Example 3.29 shows an alternative method to load the same constant into register r0 by
+using an MVN instruction.

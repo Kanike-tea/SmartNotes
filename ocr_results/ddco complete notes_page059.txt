@@ -1,0 +1,56 @@
+Digital Design and Computer Organization(BCS302)
+
+where S and R stand for set and reset. It can be constructed from a pair of cross-coupled NOR logic gates.
+The stored bit is present on the output marked Q.
+
+While_the S and R inputs are both low, feedback maintains the Q and Q outputs in a constant state,
+with Q the complement of Q. If S (Set) is pulsed high while R (Reset) is held low, then the Q output is forced
+high, and stays high when S returns to low; similarly, if R is pulsed high while S is held low, then the Q output
+is forced low, and stays low when R returns to low.
+
+NWNHY EHOOHOGAQ) FHWNY ROAWORQOAI NONTURRNRUUNRUETE Timing Diagram of SR latch
+
+R
+
+SL
+
+Ol
+
+SR latch with NAND gates
+
+S [ > Q 10/10
+0 0} 1 0 (after §=1,R=0)
+01/01
+00/0 1 (after s=0,R=1)
+11 | 00 (forbidden)
+R re) (b) Function table
+R
+
+SR latch with control input
+
+* |p -
+
+En S$ R | Nextstate of @
+re 0 X X | Nochange
+1 0 0 | Nochange
+101
+114
+— g 1 1 1 | Indeterminate
+ry ——_| SS
+(a) Logic diagram (b) Function table
+
+FIGURE 5.5
+SR latch with control input
+
+It consists of the basic SR latch and two additional NAND gates. The control input En
+acts as an enable signal for the other two inputs. The outputs of the NAND gates stay
+at the logic-1 level as long as the enable signal remains at 0. This is the quiescent
+condition for the SR latch. When the enable input goes to 1, information from the S or
+R input is allowed to affect the latch. The set state is reached with S = 1, R = 0, and
+En = 1 active-high enabled). To change to the reset state, the inputs must be S = 0, R
+= 1, and En = 1. In either case, when En returns to 0, the circuit remains in its
+current state. The control input disables the circuit by applying 0 to En, so that the
+state of the output does not change regardless of the values of S and R . Moreover,
+when En = 1 and both the S and R inputs are equal to 0, the state of the circuit does
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 31

@@ -1,0 +1,54 @@
+126
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+= An attribute Is_a_manager whose value set {‘Yes’, ‘No’} would indicate
+whether an individual employee entity is a manager or not.
+
+4.5.3 Formal Definitions for the EER Model Concepts
+
+We now summarize the EER model concepts and give formal definitions. A class'!
+defines a type of entity and represents a set or collection of entities of that type; this
+includes any of the EER schema constructs that correspond to collections of enti-
+ties, such as entity types, subclasses, superclasses, and categories. A subclass S is a
+class whose entities must always be a subset of the entities in another class, called
+the superclass C of the superclass/subclass (or IS-A) relationship. We denote
+such a relationship by C/S. For such a superclass/subclass relationship, we must
+always have
+
+SoC
+A specialization Z = {S), S), ... , S,} is a set of subclasses that have the same super-
+class G; that is, G/S; is a superclass/subclass relationship for i= 1, 2, ... , n. G is called
+a generalized entity type (or the superclass of the specialization, or a generalization
+of the subclasses {S$}, 52, ... , S,} ). Z is said to be total if we always (at any point in
+time) have
+
+OS=6
+
+i=l
+
+Otherwise, Z is said to be partial. Z is said to be disjoint if we always have
+
+wal 5; = © (empty set) for i#j
+
+Otherwise, Z is said to be overlapping.
+
+A subclass S of Cis said to be predicate-defined if a predicate p on the attributes of
+C is used to specify which entities in C are members of S; that is, S = C[p], where
+C[p] is the set of entities in C that satisfy p. A subclass that is not defined by a
+predicate is called user-defined.
+
+A specialization Z (or generalization G) is said to be attribute-defined if a
+predicate (A = c,;), where A is an attribute of G and c; is a constant value from
+the domain of A, is used to specify membership in each subclass S; in Z. Notice
+that if c; # cj for i #j, and A is a single-valued attribute, then the specialization
+will be disjoint.
+
+A category T is a class that is a subset of the union of n defining superclasses D,, D>,
+...»D,, n> Land is formally specified as follows:
+
+TC(D, UD)... UD,)
+
+''The use of the word class here refers to a collection (set) of entities, which differs from its more
+common use in object-oriented programming languages such as C++. In C++, a class is a structured
+type definition along with its applicable functions (operations).

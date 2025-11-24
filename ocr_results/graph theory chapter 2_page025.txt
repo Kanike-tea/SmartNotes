@@ -1,0 +1,59 @@
+.
+
+2, Planar Graphs and Cojy,
+
+wg Et
+
+Both of G and G" are depicted in Figure 2.32. The vertices of G* are indicateg by
+squares and its edges by dotted lines. Mal}
+
+Some Results
+The results listed below follow from the procedure used in the construction of G*:
+
+1. There is a one-to-one correspondence between the regions of G and the vertices of G
+
+2. There is a one-to-one correspondence between the edges of G and the edges of G*, (te |
+is the edge of G* that corresponds to the edge e of G, then e” is called the dual of ¢), |
+
+3. A pendant edge in G yields a loop in G*.
+
+4. A loop in G yields a pendant edge in G*.
+
+5. Edges that are in series in G yield parallel edges in G.
+
+6. Parallel edges in G yield edges in series inG*.
+
+7. The number of edges which form a boundary of a region R; in G is equal to the degree”
+of the corresponding vertex v? in G*, and vice-versa. |
+;
+
+'
+5
+
+8. Like G, G* is a connected planar graph.
+
+PREMEE Let G be a connected planar graph with n vertices, m edges and r regions, and j
+let its dual G* have n* vertices, m* edges and r* regions. Then show that |
+
+n=r, m=m re=n.
+> From the way G” is constructed, every region of G yields exactly one vertex of Gm! k
+
+G* has no other vertex. Hence the number of regions in G is precisely equal to the numb b
+vertices of G*; that is f |
+. oF
+
+r=n.
+
+Corresponding to every edge e of G, there is exactly one edge e* of G* that crosses ¢¢*
+
+once, and G* has no other edge. Thus G and G* have the same number of edges: tha! s
+
+OF
+
+m =m’.
+
+Now, the Euler’s formula applied to G* and G yields
+r=m'-n'+2
+=m-r+2, using (ii) and (i)
+
+=n.

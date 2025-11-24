@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+The general RENAME operation when applied to a relation R of degree n is denoted by any of the
+following three forms:
+
+1. psi, 82,..., Bn(R) p (tho) - RENAME operator
+2. pS(R) S — new relation name
+3. pyat, 2,....... Bn) (R) B:,By,.....Bn- new attribute names
+
+The first expression renames both the relation and its attributes. Second renames the relation only
+and the third renames the attributes only.If the attributes of R are (Ai, Ao, ..., An) in that order, then
+each Aj is renamed as Bi.
+
+Renaming in SQL is accomplished by aliasing using AS, as in the following example:
+SELECT E.Fname AS First_name,
+E.Lname AS Last_name,
+E.Salary AS Salary
+FROM EMPLOYEE AS E
+WHERE E.Dno=5,
+
+2.3 Relational Algebra Operations from Set Theory
+2.3.1 The UNION, INTERSECTION, and MINUS Operations
+
+= UNION: The result of this operation, denoted by R U S, is a relation that includes all tuples
+that are either in R or in S or in both R and S. Duplicate tuples are eliminated.
+
+= INTERSECTION: The result of this operation, denoted by R 1 S, is a relation that includes
+all tuples that are in both 2 and S.
+
+=» SET DIFFERENCE (or MINUS): The result of this operation, denoted by R — S, is a
+relation that includes all tuples that are in R but not in S.
+
+Example: Consider the the following two relations: STUDENT & INSTRUCTOR
+
+STUDENT INSTRUCTOR
+
+Fn Ln Fname | Lname
+Susan Yao John Smith
+Ramesh | Shah Ricardo | Browne
+Johnny Kohler Susan Yao
+Barbara | Jones Francis | Johnson
+Amy Ford Ramesh | Shah
+Jimmy Wang
+Emest Gilbert
+
+https://vtucode.in Page 20

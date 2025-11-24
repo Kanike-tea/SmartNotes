@@ -1,0 +1,53 @@
+Microcontrollers-BCS402
+
+Exception/interrupt Shorthand Address High address
+Reset RESET 0x00000000 Oxf fff0000
+Undefined instruction UNDEF 0x00000004 Oxffff0004
+Software interrupt swl 0x00000008 Oxf ffF0008
+Prefetch abort PABT 0x0000000c OxfffF000c
+Data abort DABT 0x00000010 Oxffff0010
+Reserved — 0x00000014 Oxf fff0014
+Interrupt request IRQ 0x00000018 Oxf ffF0018
+Fast interrupt request FIQ 0x0000001c Oxf fff001c
+
+When an exception or interrupt occurs, the processor suspends normal execution and starts
+
+loading instructions from the exception vector table as in table 2. Each vector table entry
+
+contains a form of branch instruction pointing to the start of a specific routine:
+
+Reset vector is the location of the first instruction executed by the processor when
+power is applied. This instruction branches to the initialization code.
+
+Undefined instruction vector is used when the processor cannot decode an
+instruction.
+
+Software interrupt vector is called when you execute a SWI instruction. The SWI
+instruction is frequently used as the mechanism to invoke an operating system routine.
+Pre fetch abort vector occurs when the processor attempts to fetch an instruction from
+an address without the correct access permissions. The actual abort occurs in the
+decode stage.
+
+Data abort vector is similar to a pre fetch abort but is raised when an instruction
+attempts to access data memory without the correct access permissions.
+
+Interrupt request vector is used by external hardware to interrupt the normal
+execution flow of the processor. It can only be raised if IRQs are not masked in the
+cpsr.
+
+Fast interrupt request vector is similar to the interrupt request but is reserved for
+hardware requiring faster response times. It can only be raised if FIQs are not masked
+
+in the cpsr.
+
+6. Core Extensions
+
+The hardware extensions are standard components placed next to the ARM core. They
+
+improve performance, manage resources, and provide extra functionality and are designed to
+
+provide flexibility in handling particular applications. Each ARM family has different
+
+extensions available.
+
+Dept. of ECE, GSSSIETW Page 27

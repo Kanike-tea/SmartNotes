@@ -1,0 +1,44 @@
+Digital Design and Computer Organization (BCS302)
+
+If instructions and data reside in the same cache unit, only one instruction can
+proceed and the other instruction is delayed. Many processors use separate
+instruction and data caches to avoid this delay.
+An example of a structural hazard is shown in Figure. This figure shows how the
+load instruction
+Load X(R1),R2
+> The memory address, X+[R1], is computed in stepE2 in cycle 4, then memory
+access takes place in cycle 5. The operand read from memory is written into
+register R2 in cycle 6. This means that the execution step of this instruction
+takes two clock cycles (cycles 4 and 5). It causes the pipeline to stall for one
+cycle, because both instructions I2 and I3 require access to the register file
+in cycle 6.
+> Even though the instructions and their data are all available, the pipeline is
+stalled because one hardware resource, the register file, cannot handle two
+operations at once. If the register file had two input ports, that is, if it allowed
+two simultaneous write operations, the pipeline would not be stalled. In
+general, structural hazards are avoided by providing sufficient hardware
+resources on the processor chip.
+
+—> Time
+Clock cycle 1 2 3 4 5 6 7
+Instruction
+\ Fy D, E, | w,
+1; (Load) F D> | E | M [ W> |
+I F Ds E
+
+3 3 3 W;3
+it Fy Ds E;
+
+Figure 8.5 Effect of a Load instruction on pipeline timing
+
+It is important to understand that pipelining does not result in
+individual instructions being executed faster; rather, it is the
+throughput that increases, where throughput is measured by the rate
+at which instruction execution is completed.
+
+The pipeline stalls, causes degradation in pipeline performance.
+
+We need to identify all hazards that may cause the pipeline to stall
+and to find ways to minimize their impact.
+
+Dr Ajay V G, Dept. of CSE,SVIT

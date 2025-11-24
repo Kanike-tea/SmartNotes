@@ -1,0 +1,51 @@
+12.1 Overview of Object Database Concepts
+
+In the next several sections, we discuss in some detail the main characteristics of
+object databases. Section 12.1.2 discusses object identity; Section 12.1.3 shows
+how the types for complex-structured objects are specified via type constructors;
+Section 12.1.4 discusses encapsulation and persistence; and Section 12.1.5 pres-
+ents inheritance concepts. Section 12.1.6 discusses some additional OO con-
+cepts, and Section 12.1.7 gives a summary of all the OO concepts that we
+introduced. In Section 12.2, we show how some of these concepts have been
+incorporated into the SQL:2008 standard for relational databases. Then in Sec-
+tion 12.3, we show how these concepts are realized in the ODMG 3.0 object data-
+base standard.
+
+12.1.2 Object Identity, and Objects versus Literals
+
+One goal of an ODB is to maintain a direct correspondence between real-world
+and database objects so that objects do not lose their integrity and identity and
+can easily be identified and operated upon. Hence, a unique identity is assigned
+to each independent object stored in the database. This unique identity is typi-
+cally implemented via a unique, system-generated object identifier (OID). The
+value of an OID may not be visible to the external user but is used internally by
+the system to identify each object uniquely and to create and manage interobject
+references. The OID can be assigned to program variables of the appropriate type
+when needed.
+
+The main property required of an OID is that it be immutable; that is, the OID
+value of a particular object should not change. This preserves the identity of the
+real-world object being represented. Hence, an ODMS must have some mechanism
+for generating OIDs and preserving the immutability property. It is also desirable
+that each OID be used only once; that is, even if an object is removed from the data-
+base, its OID should not be assigned to another object. These two properties imply
+that the OID should not depend on any attribute values of the object, since the
+value of an attribute may be changed or corrected. We can compare this with the
+relational model, where each relation must have a primary key attribute whose
+value identifies each tuple uniquely. If the value of the primary key is changed, the
+tuple will have a new identity, even though it may still represent the same real-
+world object. Alternatively, a real-world object may have different names for key
+attributes in different relations, making it difficult to ascertain that the keys repre-
+sent the same real-world object (for example, using the Emp_id of an EMPLOYEE in
+one relation and the Ssn in another).
+
+It is also inappropriate to base the OID on the physical address of the object in stor-
+age, since the physical address can change after a physical reorganization of the
+database. However, some early ODMSs have used the physical address as the OID
+to increase the efficiency of object retrieval. If the physical address of the object
+changes, an indirect pointer can be placed at the former address, which gives the
+new physical location of the object. It is more common to use long integers as OIDs
+and then to use some form of hash table to map the OID value to the current physi-
+cal address of the object in storage.
+
+367

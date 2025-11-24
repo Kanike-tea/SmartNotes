@@ -1,0 +1,39 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+# create choropleth map for the data
+
+# color will be the column to be color-coded
+
+# locations is the column with sppatial coordinates
+
+fig = px.choropleth(data, locations='code',
+locationmode="USA-states",
+
+color='total exports', scope="usa")
+
+fig.show()
+
+OUTPUT
+
+total exports
+16k
+
+12k
+
+10k
+
+Exercise Programs on Time Series and maps using Plotl
+
+Libraries
+
+1. Modify the program to include more data points, customize the appearance of the plot, and
+add appropriate labels.
+
+2. Experiment with different color scales, try a world map instead of country names, and
+customize the map's appearance.
+
+3. Try using your own time series and map data, customize subplot titles, and explore different
+
+configurations for subplotting.
+
+Dept. of CSE 74 GSSSIETW, Mysuru

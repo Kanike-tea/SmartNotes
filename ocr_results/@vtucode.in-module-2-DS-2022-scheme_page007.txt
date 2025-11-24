@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+A 0 A
+
+(BY OY 6
+CO). io) So)
+
+oy
+
+A + + L
+
+rear rear
+
+(a) (b) ©
+
+void addq(element item)
+{ /* add an item to the queue */
+rear = (rear +1) % MAX_QUEUE_SIZE;
+if (front == rear)
+queueFull(rear); /* print error and exit */
+queue [rear] = item;
+
+}
+
+Program: Add to a circular queue
+
+element deleteq()
+{ /* remove front element from the queue */
+element item;
+if (front == rear)
+return queueEmpty( ); /* return an error key */
+front = (front+1)% MAX_QUEUE_SIZE;
+return queue[front];
+
+Program: Delete from a circular queue
+
+vtucode.in 8

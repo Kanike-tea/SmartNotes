@@ -1,0 +1,50 @@
+4.6 Example of Other Notation: Representing Specialization and Generalization in UML Class Diagrams 127
+
+A predicate p; on the attributes of D; can be used to specify the members of each D;
+that are members of T. If a predicate is specified on every Dj, we get
+
+T= (Dlpil V Dalp2] -- V Dal Pnl)
+
+We should now extend the definition of relationship type given in Chapter 3 by
+allowing any class—not only any entity type—to participate in a relationship.
+Hence, we should replace the words entity type with class in that definition. The
+graphical notation of EER is consistent with ER because all classes are represented
+by rectangles.
+
+4.6 Example of Other Notation: Representing
+Specialization and Generalization in UML
+Class Diagrams
+
+We now discuss the UML notation for generalization/specialization and inheri-
+tance. We already presented basic UML class diagram notation and terminology
+in Section 3.8. Figure 4.10 illustrates a possible UML class diagram corresponding
+to the EER diagram in Figure 4.7. The basic notation for specialization/generaliza-
+tion (see Figure 4.10) is to connect the subclasses by vertical lines to a horizontal
+line, which has a triangle connecting the horizontal line through another vertical
+line to the superclass. A blank triangle indicates a specialization/generalization
+with the disjoint constraint, and a filled triangle indicates an overlapping con-
+straint. The root superclass is called the base class, and the subclasses (leaf nodes)
+are called leaf classes.
+
+The preceding discussion and the example in Figure 4.10, as well as the presenta-
+tion in Section 3.8, gave a brief overview of UML class diagrams and terminology.
+We focused on the concepts that are relevant to ER and EER database modeling
+rather than on those concepts that are more relevant to software engineering. In
+UML, there are many details that we have not discussed because they are outside
+the scope of this text and are mainly relevant to software engineering. For example,
+classes can be of various types:
+
+= Abstract classes define attributes and operations but do not have objects
+corresponding to those classes. These are mainly used to specify a set of
+attributes and operations that can be inherited.
+
+= Concrete classes can have objects (entities) instantiated to belong to the
+class.
+
+= Template classes specify a template that can be further used to define
+other classes.
+
+In database design, we are mainly concerned with specifying concrete classes whose
+collections of objects are permanently (or persistently) stored in the database. The
+bibliographic notes at the end of this chapter give some references to books that
+describe complete details of UML.

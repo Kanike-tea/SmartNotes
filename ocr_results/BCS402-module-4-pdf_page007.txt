@@ -1,0 +1,50 @@
+MICROCONTROLLER(BCS402)
+
+---» Interrupt handler
+
+Normal execution Interrupt enabled
+
+Interrupt (1)
+
+Interrupt (2)
+, Interrupt (3)
+
+Return
+
+Figure 4.3 A three-level nested interrupt.
+
+Prioritization
+
+We can program the interrupt controller to ignore interrupts of the same
+or lower priority than the interrupt we are handling presently, so only
+
+a higher-priority task can interrupt our handler. We then re-enable the
+interrupts. The processor spends time in the lower-priority interrupts until
+a higher-priority interupt occurs. Therefore higher-priority interrupts have
+a lower average interrupt latency than the lower-priority interrupts.
+
+It reduces latency by speeding up the completion time on the critical
+time-sensitive interrupts.
+
+4.2.3 IRQ and FIO Exceptions
+
+IRQ and FIQ exceptions only occur when a specific interrupt mask is
+cleared in the cpsr.
+
+The ARM processor will continue executing the current instruction in the
+execution stage of the pipeline before handling the interrupt.
+
+An IRQ or FIQ exception causes the processor hardware to go through a
+standard procedure listed below,
+
+1) The processor changes to a specific interrupt request mode, which
+being raised.
+
+2) The previous mode’s cpsr is saved into the spsr of the new interrupt
+request mode.
+
+3) The pc is saved in the Ir of the new interrupt request mode.
+
+4) Interrupt/s are disabled—either the IRQ or both IRQ and FIQ
+exceptions are disabled in the cpsr. This immediately stops another
+interrupt request of the same type being raised.

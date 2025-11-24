@@ -1,0 +1,59 @@
+162 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.4
+
+Finally, let’s look at an example where we pass more than four parameters. Recall that
+ATPCS places the first four arguments in registers r0 to r3. Subsequent arguments are placed
+
+on the stack.
+
+This example defines a function sumof that can sum any number of integers. The arguments
+are the number of integers to sum followed by a list of the integers. The sumof function is
+written in assembly and can accept any number of arguments. Put the C part of the example
+
+ina filemain4.c:
+
+#include <stdio.h>
+
+/* Nis the number of values to sum in list ... */
+int sumof(int N, ...)5
+
+int main(void)
+
+{
+printf("Empty sum=%d\n", sumof(0));
+printf("1=%d\n", sumof(1,1));
+printf("1+2=%d\n", sumof(2,1,2));
+printf("1+2+3=%d\n", sumof(3,1,2,3))5
+printf("1#2+3+4=%d\n", sumof(4,1,2,3,4))5
+printf("1+2+3+4+5=d\n", sumof(5,1,2,3,4,5)) 5
+printf ("1+2+3+4+5+6=%d\n", sumof(6,1,2,3,4,5,6))5
+
+Next define the sumof function in an assembly file sumof .s:
+
+AREA |.text|, CODE, READONLY
+EXPORT sumof
+
+N RN 0 — ; number of elements to sum
+sum RN 1; current sum
+
+3 int sumof(int N, ...)
+
+sumof
+suBs oN, N, #1 ; do we have one element
+MOVLT sum, #0 3 no elements to sum!
+suBs oN, N, #1 ; do we have two elements
+ADDGE sum, sum, r2
+suBs oN, N, #1 ; do we have three elements
+ADDGE sum, sum, r3
+MOV r2, sp 3 top of stack
+
+loop
+
+suBs oN, N, #1
+LOMGEFD r2!, {r3}
+
+do we have another element
+load from the stack

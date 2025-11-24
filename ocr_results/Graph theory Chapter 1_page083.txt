@@ -1,0 +1,51 @@
+1. Directed Graphs ang
+
+$a i Crp eta
+A i
+
+x
+i
+|
+|
+Figure 1.120
+|
+
+The following Theorems contain some basic properties of Euler graphs.
+
+Th
+
+eorem 1. A connected graph G has an Euler circuit (that is, G is an Euler graph) if ang
+only if all vertices of G are of even degree, s
+Proof: First, suppose that G has an Euler circuit. While tracing this circuit we observe that
+every time the circuit meets a vertex v it goes through two edges incident on v (— with the one
+through which we enter v and the other through which we depart from v). This is true for
+vertices that belong to the circuit. Since the circuit contains all edges, it meets all the vertic
+at least once. Therefore, the degree of every vertex is a multiple of two (i.e. every vertex is
+even degree),
+Conversely, suppose that all the vertices of G are of even degree. Now, we construct
+Circuit starting at an arbitrary vertex v and going through the edges of G such that no edge
+traced more than once. Since every vertex is of even degree, we can depart from every v
+we enter, and the tracing cannot stop at any vertex other than y. In this way, we obtain a ci
+q having v as the initial and final vertex. If this circuit contains all the edges in G, then th
+circuit is an Euler circuit. If not, let us consider the subgraph H obtained by removing fro
+all edges that belong to g. The degrees of vertices in this subgraph are also even. Since
+connected, the circuit q and the subgraph H must have at least one vertex, say v’, in com
+
+Starting from v’, we can Construct a circuit q’ in H as was done in G. The two circuits q
+together constitute a circuit which starts and ends at the vertex v and has more edges than @:
+this circuit contains all the edges in G, then the circuit is an Euler circuit. Otherwise, we
+
+the Process until we get a circuit that starts from v and ends at v and which contains all
+in G. In this way, we obtain an Buler circuit in G,
+
+This completes the Proof of the theorem,
+
+Theorem 2..A connected graph G has an Euler circuit is, Gi
+
+uler circuit (that is, G is an Euler graph
+only if G can be decomposed into edge-disjoint cycles,
+Proof: First, suppose that G can be
+
+aatie of svery veri Posed (partitioned) into edge-disjoint cycl
+
+In 4 cycle is two, it follows that every vertex in G is of even

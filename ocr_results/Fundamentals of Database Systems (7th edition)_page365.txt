@@ -1,0 +1,52 @@
+10.4 Database Stored Procedures and SQL/PSM
+
+programmer can refer to the attributes in the current tuple using various
+get ... functions that depend on the type of each attribute (for example,
+getString, getInteger, getDouble, and so on). The programmer can
+either use the attribute positions (1, 2) or the actual attribute names
+("Lname", "Salary") with the get ... functions. In our examples, we used
+the positional notation in lines 21 and 22.
+
+In general, the programmer can check for SQL exceptions after each JDBC function
+call. We did not do this to simplify the examples.
+
+Notice that JDBC does not distinguish between queries that return single tuples and
+those that return multiple tuples, unlike some of the other techniques. This is justi-
+fiable because a single tuple result set is just a special case.
+
+In example JDBC1, a single tuple is selected by the SQL query, so the loop in lines 20
+to 24 is executed at most once. The example shown in Figure 10.13 illustrates the
+retrieval of multiple tuples. The program segment in JDBC2 reads (inputs) a depart-
+ment number and then retrieves the employees who work in that department. A
+loop then iterates over each employee record, one at a time, and prints the employee’s
+last name and salary. This example also illustrates how we can execute a query
+directly, without having to prepare it as in the previous example. This technique is
+preferred for queries that will be executed only once, since it is simpler to program.
+In line 17 of Figure 10.13, the programmer creates a Statement object (instead of
+PreparedStatement, as in the previous example) without associating it with a
+particular query string. The query string q is passed to the statement object s when
+it is executed in line 18.
+
+This concludes our brief introduction to JDBC. The interested reader is referred to
+the Web site http://java.sun.com/docs/books/tutorial/jdbc/, which contains many
+further details about JDBC.
+
+10.4 Database Stored Procedures
+and SQL/PSM
+
+This section introduces two additional topics related to database programming. In
+Section 10.4.1, we discuss the concept of stored procedures, which are program
+modules that are stored by the DBMS at the database server. Then in Section 10.4.2
+we discuss the extensions to SQL that are specified in the standard to include
+general-purpose programming constructs in SQL. These extensions are known as
+SQL/PSM (SQL/Persistent Stored Modules) and can be used to write stored proce-
+dures. SQL/PSM also serves as an example of a database programming language
+that extends a database model and language—namely, SQL—with programming
+language constructs, such as conditional statements and loops.
+
+10.4.1 Database Stored Procedures and Functions
+
+In our presentation of database programming techniques so far, there was an
+implicit assumption that the database application program was running on a client
+
+335

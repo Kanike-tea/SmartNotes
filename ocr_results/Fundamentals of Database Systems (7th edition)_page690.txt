@@ -1,0 +1,54 @@
+660
+
+Chapter 18 Strategies for Query Processing
+
+In algebra, alternate notations exist. One common notation is shown in the follow-
+ing figure.
+
+Semi-join
+
+D<
+
+Now consider another query:
+
+Q(AJ): SELECT COUNT(+)
+
+FROM EMPLOYEE
+
+WHERE EMPLOYEE.Dno NOT IN (SELECT DEPARTMENT.Dnumber
+FROM DEPARTMENT
+WHERE Zipcode =30332)
+
+The above query counts the number of employees who do not work in departments
+located in zip code 30332. Here, the operation is to find the employee tuples
+whose Dno attribute does not match the value(s) for the Dnumber attribute in
+DEPARTMENT for the given zip code. We are only interested in producing a
+count of such employees, and performing an inner join of the two tables would, of
+course, produce wrong results. In this case, therefore, the anti-join operator is used
+while unnesting this query.
+
+Anti-join is used for unnesting NOT EXISTS, NOT IN, and ALL subqueries. We
+represent anti-join by the following nonstandard syntax: T1.x A = T2.y, where T1 is
+the left table and T2 is the right table of the anti-join. The semantics of anti-join are
+as follows: A row of T1 is rejected as soon as T1.x finds a match with any value
+of T2.y. A row of T1 is returned, only if T1.x does not match with any value of T2.y.
+
+In the following result of unnesting, we show the aforementioned anti-join with the
+nonstandard symbol “A=” in the following:
+
+SELECT COUNT(*)
+FROM EMPLOYEE, DEPARTMENT
+WHERE EMPLOYEE.Dno A= DEPARTMENT AND Zipcode =30332
+
+In algebra, alternate notations exist. One common notation is shown in the follow-
+ing figure.
+
+Anti-join
+
+D<
+
+18.2 Algorithms for External Sorting
+
+Sorting is one of the primary algorithms used in query processing. For example,
+whenever an SQL query specifies an ORDER BY-clause, the query result must be
+sorted. Sorting is also a key component in sort-merge algorithms used for JOIN and

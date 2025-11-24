@@ -1,0 +1,56 @@
+Total time = Tiga x 105 = 0.098 x 10-® s = 98 ns
+
+= 0.038 x 107"
+
+Latency = 38 ns
+
+5
+(133 x 108)
+(b) It takes twice as long to transfer 64 bytes, because two independent 32-byte transfers have to be
+made. The latency is the same, i.e. 38 ns.
+
+Problem 2:
+Give a critique of the following statement: “Using a faster processor chip results in a corresponding
+increase in performance of a computer even if the main-memory speed remains the same.”
+Solution:
+A faster processor chip will result in increased performance, but the amount of increase will not be
+directly proportional to the increase in processor speed, because the cache miss penalty will remain the
+same if the main-memory speed is not improved.
+
+Problem 3:
+A block-set-associative cache consists of a total of 64 blocks, divided into 4-block sets. The main- memory
+contains 4096 blocks, each consisting of 32 words. Assuming a 32-bit byte-addressable address-space,
+(a) how many bits are there in main-memory address
+(b) how many bits are there in each of the Tag, Set, and Word fields?
+Solution:
+(a) 4096 blocks of 128 words each require 12+7 = 19 bits for the main-memory address.
+(b) TAG field is 8 bits. SET field is 4 bits. WORD field is 7 bits.
+
+Problem 5:
+The cache block size in many computers is in the range of 32 to 128 bytes. What would be the main
+advantages and disadvantages of making the size of cache blocks larger or smaller?
+Solution:
+Larger size
+> Fewer misses if most of the data in the block are actually used
+> Wasteful if much of the data are not used before the cache block is ejected from the
+cache Smaller size
+> More misses
+Problem 4:
+Consider a computer system in which the available pages in the physical memory are divided among several
+application programs. The operating system monitors the page transfer activity and dynamically adjusts the
+number of pages allocated to various programs. Suggest a suitable strategy that the operating system can use to
+minimize the overall rate of page transfers.
+Solution:
+The operating system may increase the main-memory pages allocated to a program that has a large
+number of page faults, using space previously allocated to a program with a few page faults
+
+Problem 5:
+In a computer with a virtual-memory system, the execution of an instruction may be interrupted by a page
+fault. What state information has to be saved so that this instruction can be resumed later? Note that bringing a
+new page into the main-memory involves a DMA transfer, which requires execution of other instructions. Is it
+simpler to abandon the interrupted instruction and completely re-execute it later? Can this be done?
+Solution:
+Continuing the execution of an instruction interrupted by a page fault requires saving the entire state of
+the processor, which includes saving all registers that may have been affected by the instruction as
+
+Page 59

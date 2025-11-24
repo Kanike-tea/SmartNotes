@@ -1,0 +1,41 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+CIRCULAR QUEUES USING DYNAMIC ARRAYS
+e Adynamically allocated a
+e ray is used to hold the queue elements. Let capacity be the number of positions in
+the array queue.
+e To add an element to a full queue, first increase the size of this array using a
+
+function realloc.
+
+Consider the full queue of figure (a). This figure shows a queue with seven elements in
+
+an array whose capacity is 8. A circular queue is flatten out the array as in Figure (b).
+
+RN
+ner DW 2 Bw Bem
+
+C;]D|E F 6 [wales
+
+front= 5 t front=5 rear = 4
+rear =4
+(@) A full circular queue (b) Flattened view of circular full queue
+
+Figure (c) shows the array after array doubling by relloc
+
+0) fH) 2) Bl Gl Bl fe) 18) 19) 10) (11) [12] (13) (4) 05)
+C|D IE F G A| B
+
+front= 5 rear =4
+(c) After array doubling
+To get a proper circular queue configuration, slide the elements in the right segment (ie.,
+
+elements A and B) to the right end of the array as in figure (d)
+
+oo 2 of 6 8 9 fo oN 2 03 D4 0
+clo fe le [eo TTT TTT TT] |
+
+front= 13 rear =4
+(d After shifting right segment
+
+vtucode.in 9

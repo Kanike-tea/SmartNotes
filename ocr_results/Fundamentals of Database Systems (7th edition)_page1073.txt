@@ -1,0 +1,49 @@
+27.5 Inverted Indexing
+
+27.5.1 Introduction to Lucene
+
+Lucene is an actively maintained open source indexing/search engine that has
+become popular in both academic and commercial settings. Indexing is the primary
+focus of Lucene, but it uses indexing to facilitate search. The Lucene library is writ-
+ten in Java and comes with out-of-the-box scalable and high-performance capabil-
+ity. Lucene is the engine that powers another widely popular enterprise search
+application called Solr.’° Solr provides many add-on capabilities to Lucene, such as
+providing Web interfaces for indexing many different document formats.
+
+An upcoming book by Moczar (2015) discusses both Lucene and Solr.
+
+Indexing: In Lucene, documents must go through a process of indexing before they
+become available for search. A Lucene document is made up of a set of fields. Fields
+hold the type of data in the index and are loosely comparable to columns in a database
+table. A field can be of type binary, numeric, or text data. Text fields consist of either
+entire chunk of untokenized text or a series of processed lexical units called token
+streams. The token streams are created via application of different types of available
+tokenization and filtering algorithms. For example, StandardTokenizer is one of the
+available tokenizers in Lucene that implements Unicode text segmentation for split-
+ting words apart. There are other tokenizers, such as a WhitespaceTokenizer, that
+divide text at whitespaces. It is also easy to extend these tokenizers and filters in
+Lucene to create custom text analysis algorithms for tokenization and filtering. These
+analysis algorithms are central to achieving desired search results. Lucene provides
+APIs and several implementations for many high-speed and efficient tokenization
+and filtering algorithms. These algorithms have been extended for several different
+languages and domains, and they feature implementations of natural language pro-
+cessing algorithms for stemming, conducting dictionary-driven lemmatization, per-
+forming morphological analysis, conducting phonetic analysis, and so on.
+
+Search: With a powerful search API, queries are matched against documents and a
+ranked list of results is retrieved. Queries are compared against the term vectors in
+inverted indexes to compute relevance scores based on the vector space model (see Sec-
+tion 27.2.2). Lucene provides a highly configurable search API wherein one can create
+queries for wildcard, exact, Boolean, proximity, and range searches. Lucene’s default
+scoring algorithm uses variants of TF-IDF scoring to rank search results. To speed up
+search, Lucene maintains document-dependent normalization factors precomputed at
+index time; these are called norms of term vectors in document fields. These precom-
+puted norms speed up the scoring process in Lucene. The actual query matching algo-
+rithms use functions that do very little computation at query matching time.
+
+Applications: One of the reasons for Lucene’s immense popularity is the ease of
+availability of Lucene applications for handling various document collections and
+
+5See http://lucene.apache.org/solr/
+
+1043

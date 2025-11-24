@@ -1,0 +1,61 @@
+SYNCHRONOUS BUS
+
+———— Time
+
+Bus clock
+
+n by master
+tam
+
+Address and x i
+command
+Data +——____ | >}
+
+tp
+
+Address and
+command X X
+
+Data +———{_ Ty
+
+tps
+
+fo u aR
+Figure 7.4 A detailed timing diagram for the input transfer of Figure 7.3.
+> All devices derive timing-information from a common clock-line.
+> Equally spaced pulses on this line define equal time intervals.
+> During a “bus cycle", one data-transfer can take place.
+
+A sequence of events during a read-operation
+> At time tO, the master (processor)
+= — places the device-address on address-lines &
+= — sends an appropriate command on control-lines (Figure 7.3).
+» The command will
+= — indicate an input operation &
+= = specify the length of the operand to be read.
+Information travels over bus at a speed determined by physical & electrical characteristics.
+Clock pulse width(t1-t0) must be longer than max. propagation-delay b/w devices connected to bus.
+The clock pulse width should be long to allow the devices to decode the address & control signals.
+The slaves take no action or place any data on the bus before t1.
+Information on bus is unreliable during the period tO to t1 because signals are changing state.
+Slave places requested input-data on data-lines at time t1.
+At end of clock cycle (at time t2), master strobes (captures) data on data-lines into its input-buffer
+
+VVVVVV VV
+
+For data to be loaded correctly into a storage device,
+o data must be available at input of that device for a period greater than setup-time of device.
+
+Time
+
+Clock cycle
+
+Bus clock
+Address and
+command
+
+to t b
+
+Figure 7.3 Timing of an input transfer on a synchronous bus.
+
+Page 31

@@ -1,0 +1,47 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+To obtain the configuration as shown in figure (e), follow the steps
+1) Create a new array newQueue of twice the capacity.
+2) Copy the second segment (i.e., the elements queue [front +1] through queue
+[capacity-1]) to positions in newQueue beginning at 0.
+3) Copy the first segment (i.e., the elements queue [0] through queue [rear]) to
+
+positions in newQueue beginning at capacity — front — 1.
+
+oY 2} B) FB) 6) 7) TS) 619) 0) [11] (12) 113) [4) 115)
+A|B C|D/E F G
+
+front= 15 rear = 6
+
+(e) Alternative configuration
+Below program gives the code to add to a circular queue using a dynamically allocated array.
+
+void addq( element item)
+{ /* add an item to the queue
+rear = (rear +1) % capacity;
+if(front == rear)
+queueFull( ); /* double capacity */
+
+queue[rear] = item;
+
+Below program obtains the configuration of figure (e) and gives the code for queueFull.
+
+The function copy (a,b,c) copies elements from locations a through b-1 to locations
+
+beginning at c.
+
+void queueFull( )
+{ /* allocate an array with twice the capacity */
+element *newQueue;
+MALLOC ( newQueue, 2 * capacity * sizeof(* queue));
+/* copy from queue to newQueue */
+int start = ( front + ) % capacity;
+if ( start < 2) /* no wrap around */
+
+copy( queue+start, queue+start+capacity-1 newQueue);
+
+else
+
+{ /* queue wrap around */
+
+vtucode.in

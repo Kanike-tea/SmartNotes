@@ -1,0 +1,108 @@
+8.4 IIR Filters 299
+
+3 (short *y,
+3 short *x,
+
+3 struct { biquad *b; unsigned int M; } *b
+3 unsigned int N);
+
+iir_ql4_arm9m
+STMFD
+LDMIA
+MOV
+
+iir_next_biquad
+LDRSH
+LDRSH
+LDRSH
+LDRSH
+LDRSH
+LDRSH
+STMFD
+
+iir_inner_loop
+3 use a
+3 apply
+MLA
+LDRSH
+MLA
+MLA
+MLA
+ADD
+ADD
+STRH
+3 apply
+MLA
+LDRSH
+MLA
+MLA
+MLA
+ADD
+ADD
+STRH
+SUBS
+BGT
+LOMFD
+STRH
+STRH
+SUB
+MOV
+SUBS
+BGT
+LOMFD
+
+sp!, {r4-rll, Ir}
+b, {b, M}
+round, #1<<13
+
+b], #2
+b], #2
+b], #2
+b], #2
+b], #2
+b], #2
+{b, N, M}
+2x1 block IIR
+biquad to x_0
+
+accO, s_1, a_l, round
+x0, [x], #2
+
+accO, s 2, a2, accO
+accl, s_1, b_1, round
+accl, s 2, b_2, accl
+
+s_2, x0, accO, ASR #14
+x0, s_2, accl, ASR #14
+x0, Ly], #2
+biquad to x_1
+
+accO, s 2, a_l, round
+x1, Dd, #2
+
+accO, s_1, a2, accO
+accl, s_2, b_1, round
+accl, s_1, b_2, accl
+
+s_l, x1, accO, ASR #14
+x1, s_l, accl, ASR #14
+x1, Ly], #2
+
+N,N, #2
+
+iir_inner_loop
+
+sp! {b, N, M}
+
+s_1, [b, #-4]
+
+s2, [b, #-2]
+
+ys ys N, LSL#L
+
+x,y
+
+MM, #1
+iir_next_biquad
+
+sp!, {r4=rl1, pc}

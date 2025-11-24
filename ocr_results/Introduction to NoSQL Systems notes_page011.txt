@@ -1,0 +1,48 @@
+Column-oriented databases are ideal for the following:
+
+Real-Time Analytics: Monitor and analyze data in real time (e.g., user activity, loT
+metrics).
+
+Time-Series Data: Store sensor readings, logs, financial ticks, etc.
+Recommendation Engines: Analyze large amounts of user behavior data.
+
+Social Media Platforms: Handle high volumes of user-generated data with dynamic
+attributes.
+
+Data Warehousing: Serve as a backend for analytical platforms requiring fast access
+to specific fields.
+
+6. Cassandra Example — Data Modeling
+
+Cassandra stores data in a denormalized format. Here's an example of a user orders table:
+
+sql
+
+CopyEdit
+
+CREATE TABLE user_orders (
+
+user_id UUID,
+
+order_id UUID,
+
+order_date timestamp,
+
+product_name text,
+
+PRIMARY KEY (user_id, order_date)
+
+iB
+
+This schema enables partitioning by user_id and ordering by order_date, which is highly
+efficient for time-based queries.
+
+Query Example:
+
+sql
+
+CopyEdit
+
+SELECT * FROM user_orders WHERE user_id = '1234' ORDER BY order_date DESC;
+
+7. Limitations of Wide-Column Stores

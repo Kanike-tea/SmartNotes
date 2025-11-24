@@ -1,0 +1,40 @@
+11.2 Example: Simple Little Operating System 391
+
+The core SWI handler is shown here. The first action of the handler is to store registers r0
+to r12 to the SVC stack.
+
+The next action calculates the address of the SWI instruction and loads that instruction
+into register r10. The SWI number is obtained by masking the top 8 bits. The address of the
+SVC stack is then copied into register r1 and is used as the second parameter when calling
+the SWI C handler.
+
+The spsris then copied to register r2 and stored on the stack. This is only required when
+anested SWI call occurs. The handler then jumps to the code that calls the C handler routine.
+
+coreSWIHandler
+STMFD  sp!,{r0-rl2,r14} —_;_ save context
+LOR rl, [r14, #-4] 3 load SWI instruction
+BIC r10,r10,#0x#000000 ; mask off the MSB 8 bits
+Mov rl,r3 3 copy r13_svc to rl
+MRS r2,spsr 3 copy spsr to r2
+STMFD  r13!,{r2} 3 save r2 onto the stack
+BL swi_jumptable 3 branch to the swi_jumptable
+
+The code that follows the BL instruction returns back to the callee program as shown
+here. This is achieved by restoring the spsr from the stack and loading all the user banked
+registers back, including the pc.
+
+LOMFD r13!, {r2} ; restore the r2 (spsr)
+MSR spsr_cxsf,r2 3 copy r2 back to spsr
+LOMFD r13!,{r0-rl2,pc}” ; restore context and return
+
+The link register has been set in the BL instruction. This code is executed when the SWI
+C handler is complete.
+
+swi_jumptable
+MOV r0,r10 3 move the SWI number to r0
+B eventsSWIHandler ; branch to SWI handler
+
+The C handler, eventsSWIHandler, shown in Figure 11.3, is called with register r0
+containing the SWI number and register r] pointing to the registers stored on the SVC
+stack.

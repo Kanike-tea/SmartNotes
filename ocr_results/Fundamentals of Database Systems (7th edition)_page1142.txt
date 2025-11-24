@@ -1,0 +1,60 @@
+1112 Chapter 29 Overview of Data Warehousing and OLAP
+
+for loads as well as methods to recover from incomplete or incorrect loads
+are required. With the huge volume of data in the warehouse, incremental
+updating is usually the only feasible approach. The refresh policy will prob-
+ably emerge as a compromise that takes into account the answers to the fol-
+lowing questions:
+
+© How up-to-date must the data be?
+
+Can the warehouse go offline, and for how long?
+What are the data interdependencies?
+
+What is the storage availability?
+
+oooa
+
+What are the distribution requirements (such as for replication and parti-
+tioning)?
+
+| What is the loading time (including cleaning, formatting, copying, trans-
+mitting, and overhead such as index rebuilding)?
+
+Data in a warehouse can come from multiple sources, geographies, and/or time
+zones. Data loads, therefore, need to be carefully planned and staged. The order
+in which data is loaded into the warehouse is critical; failure to load data in the
+correct order could lead to integrity constraints or semantic rule violations, both
+of which could cause load failures. For example, master data (whether new or
+changed) such as Customer and Product must be loaded prior to the transactions
+that contain them; and invoice data must be loaded before the billing data that
+references it.
+
+As we have said, databases must strike a balance between efficiency in transaction
+processing and support for query requirements (ad hoc user requests), but a data
+warehouse is typically optimized for access from a decision maker’s needs. Data
+storage in a data warehouse reflects this specialization and involves the following
+processes:
+
+Storing the data according to the data model of the warehouse
+
+Creating and maintaining required data structures
+
+Creating and maintaining appropriate access paths
+
+Providing for time-variant data as new data are added
+
+Supporting the updating of warehouse data
+
+Refreshing the data
+
+Purging data
+
+Although adequate time can be devoted initially to constructing the warehouse, the
+sheer volume of data in the warehouse generally makes it impossible to simply
+reload the warehouse in its entirety later on. Alternatives include selective (partial)
+refreshing of data and separate warehouse versions (which requires double storage
+capacity for the warehouse). When the warehouse uses an incremental data refresh-
+ing mechanism, data may need to be purged periodically; for example, a warehouse
+that maintains data on the previous twelve business quarters may periodically purge
+its data each year, or even each quarter.

@@ -1,0 +1,56 @@
+228
+
+Transform-and-Conquer
+
+the array representation
+
+index 9 1 2 3 4 5 6 7 8 9 0
+value 10)8]7]5|2}1/6}3]5]1
+parents leaves
+
+FIGURE 6.10 Heap and its array representation.
+
+relationship among key values for nodes either on the same level of the tree or,
+more generally, in the left and right subtrees of the same node.
+
+Here is a list of important properties of heaps, which are not difficult to prove
+(check these properties for the heap of Figure 6.10, as an example).
+
+1. There exists exactly one essentially complete binary tree with n nodes. Its
+height is equal to log, nJ.
+
+2. The root of a heap always contains its largest element.
+
+A node of a heap considered with all its descendants is also a heap.
+
+4. A heap can be implemented as an array by recording its elements in the top-
+down, left-to-right fashion. It is convenient to store the heap’s elements in
+positions 1 through nm of such an array, leaving H[0] either unused or putting
+there a sentinel whose value is greater than every element in the heap. In such
+a representation,
+
+a. the parental node keys will be in the first |n/2] positions of the array,
+while the leaf keys will occupy the last [n/2] positions;
+
+b. the children of a key in the array’s parental position i (1 <i < [n/2]) will
+be in positions 2i and 2i + 1, and, correspondingly, the parent of a key in
+position i (2 <i <n) will be in position |i/2].
+
+y
+
+Thus, we could also define a heap as an array H[1..n] in which every element
+in position i in the first half of the array is greater than or equal to the elements
+in positions 2i and 2i + 1, i.e.,
+
+H{i]> max{H[2i}, H[2i+1)) fori =1,..., [n/2).
+
+(Of course, if 2i + 1>n, just H[i] > H[2i] needs to be satisfied.) While the ideas
+behind the majority of algorithms dealing with heaps are easier to understand if
+we think of heaps as binary trees, their actual implementations are usually much
+simpler and more efficient with arrays.
+
+How can we construct a heap for a given list of keys? There are two principal
+alternatives for doing this. The first is the bottom-up heap construction algorithm
+illustrated in Figure 6.11. It initializes the essentially complete binary tree with n
+nodes by placing keys in the order given and then “heapifies” the tree as follows.
+Starting with the last parental node, the algorithm checks whether the parental

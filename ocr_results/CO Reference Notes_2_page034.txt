@@ -1,0 +1,20 @@
+INPUT-INTERFACE-CIRCUIT
+
+RW
+
+Figure 4.30 Circuit for the status flag block in Figure 4.29.
+
+¢ Output-lines of DATAIN are connected to the data-lines of bus by means of 3-state drivers (Fig 4.29).
+Drivers are turned on when
+
+— processor issues a read signal and
+
+— address selects DATAIN.
+¢ SIN signal is generated using a status-flag circuit (Figure 4.30).
+
+SIN signal is connected to line DO of the processor-bus using a 3-state driver.
+¢ Address-decoder selects the input-interface based on bits Al through A31.
+Bit AO determines whether the status or data register is to be read, when Master-ready is active.
+Processor activates the Slave-ready signal, when either the Read-status or Read-data is equal to 1.
+
+Page 35

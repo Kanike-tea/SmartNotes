@@ -1,0 +1,77 @@
+28
+
+Chapter 1 Databases and Database Users
+
+We presented a list of capabilities that should be provided by the DBMS software to
+the DBA, database designers, and end users to help them design, administer, and
+use a database. Then we gave a brief historical perspective on the evolution of data-
+base applications. We pointed out the recent rapid growth of the amounts and types
+of data that must be stored in databases, and we discussed the emergence of new
+systems for handling “big data” applications. Finally, we discussed the overhead
+costs of using a DBMS and discussed some situations in which it may not be advan-
+tageous to use one.
+
+Review Questions
+
+1.1.
+
+1.2.
+1.3.
+
+1.4.
+1.5.
+
+1.6.
+1.7.
+
+Define the following terms: data, database, DBMS, database system, data-
+base catalog, program-data independence, user view, DBA, end user, canned
+transaction, deductive database system, persistent object, meta-data, and
+transaction-processing application.
+
+What four main types of actions involve databases? Briefly discuss each.
+
+Discuss the main characteristics of the database approach and how it differs
+from traditional file systems.
+
+What are the responsibilities of the DBA and the database designers?
+
+What are the different types of database end users? Discuss the main activi-
+ties of each.
+
+Discuss the capabilities that should be provided by a DBMS.
+
+Discuss the differences between database systems and information retrieval
+systems.
+
+Exercises
+
+1.8.
+
+1.9.
+
+1.10.
+
+1.11.
+
+1.12.
+
+1.13.
+
+Identify some informal queries and update operations that you would expect
+to apply to the database shown in Figure 1.2.
+
+What is the difference between controlled and uncontrolled redundancy?
+Illustrate with examples.
+
+Specify all the relationships among the records of the database shown in
+Figure 1.2.
+
+Give some additional views that may be needed by other user groups for the
+database shown in Figure 1.2.
+
+Cite some examples of integrity constraints that you think can apply to the
+database shown in Figure 1.2.
+
+Give examples of systems in which it may make sense to use traditional file
+processing instead of a database approach.

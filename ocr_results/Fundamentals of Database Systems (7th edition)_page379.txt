@@ -1,0 +1,59 @@
+11.2 Overview of Basic Features of PHP
+
+A numeric array associates a numeric index (or position or sequence number) with
+each element in the array. Indexes are integer numbers that start at zero and grow
+incrementally. An element in the array is referenced through its index. An
+associative array provides pairs of (key => value) elements. The value of an element
+is referenced through its key, and all key values in a particular array must be unique.
+The element values can be strings or integers, or they can be arrays themselves, thus
+leading to higher dimensional arrays.
+
+Figure 11.3 gives two examples of array variables: $teaching and $courses. The
+first array $teaching is associative (see line 0 in Figure 11.3), and each element
+associates a course name (as key) with the name of the course instructor (as value).
+There are three elements in this array. Line 1 shows how the array may be updated.
+The first command in line 1 assigns a new instructor to the course ‘Graphics’ by
+updating its value. Since the key value ‘Graphics’ already exists in the array, no new
+element is created but the existing value is updated. The second command creates a
+new element since the key value ‘Data Mining’ did not exist in the array before.
+New elements are added at the end of the array.
+
+If we only provide values (no keys) as array elements, the keys are automatically
+numeric and numbered 0, 1, 2, ... . This is illustrated in line 5 of Figure 11.3, by
+the $courses array. Both associative and numeric arrays have no size limits. If
+some value of another data type, say an integer, is assigned to a PHP variable that
+was holding an array, the variable now holds the integer value and the array con-
+tents are lost. Basically, most variables can be assigned to values of any data type
+at any time.
+
+There are several different techniques for looping through arrays in PHP. We illus-
+trate two of these techniques in Figure 11.3. Lines 3 and 4 show one method of
+looping through all the elements in an array using the foreach construct, and
+printing the key and value of each element on a separate line. Lines 7 through 10
+show how a traditional for-loop construct can be used. A built-in function count
+
+349
+
+Figure 11.3
+Illustrating basic PHP array processing.
+
+0) $teaching = array('Database' => 'Smith', 'OS' => ‘Carrick’,
+‘Graphics’ => 'Kam');
+
+1) $teaching['Graphics'] = 'Benson'; $teaching['Data Mining'] = 'Li';
+
+2) sort($teaching);
+
+3) foreach ($teaching as $key => $value) {
+
+4) print " $key : $value\n";}
+
+5) $courses = array('Database', 'O0S', 'Graphics', ‘Data Mining');
+6) $alt_row_color = array('blue', 'yellow');
+
+7) for ($i = 0, $num = count($courses); i < $num; $i++) {
+
+8) print '<?R bgcolor="' . $alt_row_color[$i % 2] . '">";
+
+9) print "<TD>Course $i is</TD><TD>$course[$i]</TD></TR>\n";
+10) }

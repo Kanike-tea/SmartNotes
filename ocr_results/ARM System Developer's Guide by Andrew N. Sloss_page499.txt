@@ -1,0 +1,43 @@
+486 Chapter 13 Memory Protection Units
+
+#define ENABLEMPU (0x1)
+#define ENABLEDCACHE (0x1<<2)
+#define ENABLEICACHE (0x1<<12)
+#define MASKMPU (0x1)
+#define MASKDCACHE (0x1<<2)
+#define MASKICACHE (0x1 <<12)
+
+void initActiveRegions()
+
+{
+unsigned value,mask;
+confi gRegion(&kernel Region) ;
+confi gRegion(&sharedRegion) ;
+confi gRegion(&peripheral Region) ;
+confi gRegion(&task1Reg ion) ;
+
+value = ENABLEMPU | ENABLEDCACHE | ENABLEICACHE;
+mask = MASKMPU | MASKDCACHE | MASKICACHE;
+controlSet(value, mask) ;
+
+13.3.6 A PROTECTED CONTEXT SWITCH
+
+The demonstration system is now initialized, and the control system has launched its first
+task. At some point, the system will make a context switch to run another task. The RCB
+contains the current task’s region context information, so there is no need to save region
+data from the CP15 registers during the context switch.
+
+To switch to the next task, for example task 2, the operating system would move
+region 3 over the task 2 memory area (see Figure 13.7). We reuse the routine conf igRegion
+to perform this function as part of the setup just prior to executing the code that per-
+forms the context switch between the current task and the next task. The input to
+configRegion would be a pointer to the task2Region. See the following assembly code
+sample:
+
+STMFD  sp!, {r0-r3,r12,1r}
+BL configRegion
+LOMFD sp!, {r0-r3,r12,pc} 3 return
+
+The same call in C is
+
+configReg ion (&task2Region) ;

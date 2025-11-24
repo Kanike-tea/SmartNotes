@@ -1,0 +1,51 @@
+806
+
+Chapter 21 Concurrency Control Techniques
+
+node. However, the search process can still succeed if it follows the pointer (link) in
+the original leaf node to its right sibling, where the desired key has been moved.
+
+Handling the deletion case, where two or more nodes from the index tree merge, is
+also part of the B-link tree concurrency protocol. In this case, locks on the nodes to
+be merged are held as well as a lock on the parent of the two nodes to be merged.
+
+21.7 Other Concurrency Control Issues
+
+In this section, we discuss some other issues relevant to concurrency control. In
+Section 21.7.1, we discuss problems associated with insertion and deletion of
+records and we revisit the phantom problem, which may occur when records are
+inserted. This problem was described as a potential problem requiring a concur-
+rency control measure in Section 20.6. In Section 21.7.2, we discuss problems that
+may occur when a transaction outputs some data to a monitor before it commits,
+and then the transaction is later aborted.
+
+21.7.1 Insertion, Deletion, and Phantom Records
+
+When a new data item is inserted in the database, it obviously cannot be accessed
+until after the item is created and the insert operation is completed. In a locking
+environment, a lock for the item can be created and set to exclusive (write) mode;
+the lock can be released at the same time as other write locks would be released,
+based on the concurrency control protocol being used. For a timestamp-based pro-
+tocol, the read and write timestamps of the new item are set to the timestamp of the
+creating transaction.
+
+Next, consider a deletion operation that is applied on an existing data item. For
+locking protocols, again an exclusive (write) lock must be obtained before the trans-
+action can delete the item. For timestamp ordering, the protocol must ensure that no
+later transaction has read or written the item before allowing the item to be deleted.
+
+A situation known as the phantom problem can occur when a new record that is
+being inserted by some transaction T satisfies a condition that a set of records
+accessed by another transaction T’ must satisfy. For example, suppose that transac-
+tion T is inserting a new EMPLOYEE record whose Dno = 5, whereas transaction T”
+is accessing all EMPLOYEE records whose Dno = 5 (say, to add up all their Salary
+values to calculate the personnel budget for department 5). If the equivalent serial
+order is T followed by T’, then T’ must read the new EMPLOYEE record and include
+its Salary in the sum calculation. For the equivalent serial order T’ followed by T, the
+new salary should not be included. Notice that although the transactions logically
+conflict, in the latter case there is really no record (data item) in common between
+the two transactions, since T’ may have locked all the records with Dno = 5 before T
+inserted the new record. This is because the record that causes the conflict is a
+phantom record that has suddenly appeared in the database on being inserted. If
+other operations in the two transactions conflict, the conflict due to the phantom
+record may not be recognized by the concurrency control protocol.

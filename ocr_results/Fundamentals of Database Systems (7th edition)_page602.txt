@@ -1,0 +1,46 @@
+572 Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Table 16.3 Average Access Times for a File of b Blocks under Basic File Organizations
+
+Average Blocks to Access
+
+Type of Organization Access/Search Method a Specific Record
+Heap (unordered) Sequential scan (linear search) b/2
+Ordered Sequential scan b/2
+Ordered Binary search log, b
+
+This further improves the random access time on the ordering key field. (We dis-
+cuss indexes in Chapter 17.) If the ordering attribute is not a key, the file is called a
+clustered file.
+
+16.8 Hashing Techniques
+
+Another type of primary file organization is based on hashing, which provides very
+fast access to records under certain search conditions. This organization is usually
+called a hash file.'* The search condition must be an equality condition on a single
+field, called the hash field. In most cases, the hash field is also a key field of the file,
+in which case it is called the hash key. The idea behind hashing is to provide a func-
+tion h, called a hash function or randomizing function, which is applied to the
+hash field value of a record and yields the address of the disk block in which the
+record is stored. A search for the record within the block can be carried out in a
+main memory buffer. For most records, we need only a single-block access to
+retrieve that record.
+
+Hashing is also used as an internal search structure within a program whenever
+a group of records is accessed exclusively by using the value of one field. We
+describe the use of hashing for internal files in Section 16.8.1; then we show
+how it is modified to store external files on disk in Section 16.8.2. In Sec-
+tion 16.8.3 we discuss techniques for extending hashing to dynamically growing
+files.
+
+16.8.1 Internal Hashing
+
+For internal files, hashing is typically implemented as a hash table through the use
+of an array of records. Suppose that the array index range is from 0 to M - 1, as
+shown in Figure 16.8(a); then we have M slots whose addresses correspond to the
+array indexes. We choose a hash function that transforms the hash field value into
+an integer between 0 and M — 1. One common hash function is the h(K) = K mod
+M function, which returns the remainder of an integer hash field value K after divi-
+sion by M; this value is then used for the record address.
+
+184 hash file has also been called a direct file.

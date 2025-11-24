@@ -1,0 +1,57 @@
+7.2 Input Enhancement in String Matching 265
+
+50 BCBAB vee Spo
+ll
+
+A
+ll
+A
+
+O-m°o
+w=
+
+ABCBAB
+
+Note that the shift by 6 is correct for the pattern DBCBAB but not for ABCBAB,
+because the latter pattern has the same substring AB as its prefix (beginning part
+of the pattern) and as its suffix (ending part of the pattern). To avoid such an
+erroneous shift based on a suffix of size k, for which there is no other occurrence
+in the pattern not preceded by the same character as in its rightmost occurrence,
+we need to find the longest prefix of size | < k that matches the suffix of the same
+size /. If such a prefix exists, the shift size d) is computed as the distance between
+this prefix and the corresponding suffix; otherwise, d) is set to the pattern’s length
+m. As an example, here is the complete list of the d) values—the good-suffix table
+of the Boyer-Moore algorithm—for the patterm ABCBAB:
+
+k pattern d,
+
+ABCBAB,
+ABCBAB,
+ABCBAB
+ABCBAB
+ABCBAB
+
+WRoONE
+RRR AD
+
+Now we are prepared to summarize the Boyer-Moore algorithm in its entirety.
+
+The Boyer-Moore algorithm
+
+Step 1 For a given pattern and the alphabet used in both the pattern and the
+text, construct the bad-symbol shift table as described earlier.
+
+Step 2 Using the pattern, construct the good-suffix shift table as described
+earlier.
+
+Step 3 Align the pattern against the beginning of the text.
+
+Step 4 Repeat the following step until either a matching substring is found or
+the pattern reaches beyond the last character of the text. Starting with
+the last character in the pattern, compare the corresponding characters
+in the pattern and the text until either all m character pairs are matched
+(then stop) or a mismatching pair is encountered after k > 0 character
+pairs are matched successfully. In the latter case, retrieve the entry
+t(c) from the c’s column of the bad-symbol table where c is the text’s
+mismatched character. If k > 0, also retrieve the corresponding d
+entry from the good-suffix table. Shift the pattern to the right by the

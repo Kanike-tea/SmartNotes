@@ -1,0 +1,59 @@
+MODULE 3
+MEMORY SYSTEM
+
+BASIC CONCEPTS
+
+* Maximum size of memory that can be used in any computer is determined by addressing mode.
+
+Address Memory Locations
+16 Bit 2°=64K
+
+32 Bit 27 = 4G Giga)
+
+40 Bit 2 =TT (Tera)
+
+© If MAR is k-bits long then
+
+Processor-memory interface
+
+Memory
+
+k-bit address
+
+n-bit data
+
+Up to 2* addressable
+locations
+
+Word length = n bits
+
+e Control lines
+‘Ocessol
+eee (R/W, etc.)
+
+Figure 8.1 Connection of the memory to the processor.
+
+¢ Memory may contain upto 2K addressable-locations
+© If MDR is n-bits long, then
+— n-bits of data are transferred between the memory and processor.
+© The data-transfer takes place over the processor-bus (Figure 8.1).
+© The processor-bus has
+1) Address-Line
+2) Data-line &
+3) Control-Line (R/W“, MFC — Memory Function Completed).
+© The Control-Line is used for coordinating data-transfer.
+© The processor reads the data from the memory by
+— loading the address of the required memory-location into MAR and
+— setting the R/W“ line to 1.
+© The memory responds by
+— placing the data from the addressed-location onto the data-lines and
+— confirms this action by asserting MFC signal.
+© Upon receipt of MFC signal, the processor loads the data from the data-lines into MDR.
+© The processor writes the data into the memory-location by
+— loading the address of this location into MAR &
+— setting the R/W“ line to 0.
+* Memory Access Time: It is the time that elapses between
+— initiation of an operation &
+— completion of that operation.
+
+Page 40

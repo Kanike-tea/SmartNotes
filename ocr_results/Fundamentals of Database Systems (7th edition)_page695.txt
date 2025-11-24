@@ -1,0 +1,54 @@
+18.3 Algorithms for SELECT Operation
+
+= S7b—Using a functional index. (See Section 17.5.3.) In OP7, the selection con-
+dition involves the expression ((Salary*Commission_pct) + Salary ).
+If there is a functional index defined as (as shown in Section 17.5.3):
+
+CREATE INDEX income_ix
+ON EMPLOYEE (Salary + (Salary*Commission_pct));
+
+then this index can be used to retrieve employee records that qualify. Note
+that the exact way in which the function is written while creating the index is
+immaterial.
+
+In the next chapter, we discuss how to develop formulas that estimate the access
+cost of these search methods in terms of the number of block accesses and access
+time. Method $1 (linear search) applies to any file, but all the other methods
+depend on having the appropriate access path on the attribute used in the selection
+condition. Method $2 (binary search) requires the file to be sorted on the search
+attribute. The methods that use an index (S3a, $4, $5, and $6) are generally referred
+to as index searches, and they require the appropriate index to exist on the search
+attribute. Methods S4 and S6 can be used to retrieve records in a certain range in
+range queries. Method $7a (bitmap index search) is suitable for retrievals where
+an attribute must match an enumerated set of values. Method $7b (functional
+index search) is suitable when the match is based on a function of one or more
+attributes on which a functional index exists.
+
+18.3.2 Search Methods for Conjunctive Selection
+
+If a condition of a SELECT operation is a conjunctive condition—that is, if it is
+made up of several simple conditions connected with the AND logical connective
+such as OP4 above—the DBMS can use the following additional methods to
+implement the operation:
+
+= $8—Conjunctive selection using an individual index. If an attribute
+involved in any single simple condition in the conjunctive select condition
+has an access path that permits the use of one of the methods S2 to S6, use
+that condition to retrieve the records and then check whether each retrieved
+record satisfies the remaining simple conditions in the conjunctive select
+condition.
+
+= $9—Conjunctive selection using a composite index. If two or more attri-
+butes are involved in equality conditions in the conjunctive select condition
+and a composite index (or hash structure) exists on the combined fields—
+for example, if an index has been created on the composite key (Essn, Pno) of
+the WORKS_ON file for OP5—we can use the index directly.
+
+= $10—Conjunctive selection by intersection of record pointers.’ If second-
+ary indexes (or other access paths) are available on more than one of the
+fields involved in simple conditions in the conjunctive select condition, and if
+
+°A record pointer uniquely identifies a record and provides the address of the record on disk; hence, itis
+also called the record identifier or record id.
+
+665

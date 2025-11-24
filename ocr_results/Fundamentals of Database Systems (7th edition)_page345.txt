@@ -1,0 +1,49 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ 315
+0) int loop ;
+1) EXEC SQL BEGIN DECLARE SECTION ;
+2) varchar dname [16], fname [16], lname [16], address [31] ;
+3) char ssn [10], bdate [11], sex [2], minit [2] ;
+4) float salary, raise ;
+5) int dno, dnumber ; Figure 10.1
+6) int SQLCODE ; char SQLSTATE [6] ; C program variables used in the
+7) EXEC SQL END DECLARE SECTION ; embedded SQL examples E1 and E2.
+
+corresponding database attributes. We will use the C program variables declared
+in Figure 10.1 for all our examples and show C program segments without vari-
+able declarations. Shared variables are declared within a declare section in the
+program, as shown in Figure 10.1 (lines 1 through 7).° A few of the common
+bindings of C types to SQL types are as follows. The SQL types INTEGER, SMALLINT,
+REAL, and DOUBLE are mapped to the C data types long, short, float, and
+double, respectively. Fixed-length and varying-length strings (CHAR [i],
+VARCHAR [i]) in SQL can be mapped to arrays of characters (char [itl],
+varchar [it+1]) in C that are one character longer than the SQL type because
+strings in C are terminated by a NULL character (\0), which is not part of the
+character string itself.° Although varchar is not a standard C data type, it is per-
+mitted when C is used for SQL database programming.
+
+Notice that the only embedded SQL commands in Figure 10.1 are lines 1 and 7,
+which tell the precompiler to take note of the C variable names between BEGIN
+DECLARE and END DECLARE because they can be included in embedded SQL state-
+ments—as long as they are preceded by a colon (:). Lines 2 through 5 are regular C
+program declarations. The C program variables declared in lines 2 through 5 cor-
+respond to the attributes of the EMPLOYEE and DEPARTMENT tables from the
+COMPANY database in Figure 5.5 that was declared by the SQL DDL in Figure 6.1.
+The variables declared in line 6—SQLCODE and SQLSTATE—are called SQL
+communication variables; they are used to communicate errors and exception
+conditions between the database system and the executing program. Line 0 shows a
+program variable loop that will not be used in any embedded SQL statement, so it is
+declared outside the SQL declare section.
+
+Connecting to the Database. The SQL command for establishing a connection
+to a database has the following form:
+
+CONNECT TO <server name>AS <connection name>
+AUTHORIZATION <user account name and password> ;
+
+In general, since a user or program can access several database servers, several con-
+nections can be established, but only one connection can be active at any point in
+
+5We use line numbers in our code segments for easy reference; these numbers are not part of the
+actual code.
+
+®SAL strings can also be mapped to char’ types in C.

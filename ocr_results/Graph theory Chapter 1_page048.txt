@@ -1,0 +1,44 @@
+1.4. Subgraphs
+{basen
+
+51
+The following results are immediate Consequences of the definition of
+; in of a subgraph.
+) Every graph is a subgraph of itself,
+Every simple graph of n vertices is a subgraph of the complete h K
+. graph K,,.
+F If G, is a subgraph of a graph G» andG5 j
+‘Pp of G. 2 18a subgraph of a graph G, then G, is a subgraph
+
+(4) A single vertex in a graph G is a subgraph of G,
+/ (5) A single edge in a graph G, together with its end vertices, is a subgraph of G
+
+Spanning Subgraph
+
+Given a graph G = (V, E), if there is a subgraph G; = (Vi, £1) of G such that V; = V, then
+G, is called a spanning subgraph of G.
+
+In other words, a subgraph G; of a graph G is a spanning subgraph of G whenever Gy
+contains all vertices of G. Thus, a graph and all its spanning subgraphs have the same vertex
+set. Obviously, every graph is its own spanning subgraph.
+
+For example, for the graph shown in Figure 1.69(a), the graph shown in Figure 1.69(b) is a
+spanning subgraph whereas the graph shown in Figure 1.69(c) is a subgraph but not a spanning
+
+subgraph.
+A A
+B Cc B Cc B Cc
+
+D
+
+D D
+
+(a) (b) (c)
+
+Figure 1.69
+duced Subgraph = (Vj, Ei) of G such that every
+
+Given a graph G = (V, E), Suppose there is a subgraph G, : :
+ge (A, B) of G, where A, B € V1 is an edge of G1 also, Then Gy is called an induced subgrap
+
+G (inducd by V;) and is denoted by < Vi >-

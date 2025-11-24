@@ -1,0 +1,43 @@
+480 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+
+(a)
+EMP_PROJ Projs
+Ssn Ename | Pnumber | Hours
+(b)
+EMP_PROJ
+Ssn Ename Pnumber | Hours
+123456789 | Smith, John B. 1 325
+
+Figure 14.10
+Normalizing nested
+relations into 1NF.
+
+(a) Schema of the
+EMP_PROJ relation with
+a nested relation attribute
+PROJS. (b) Sample 888665555 _| Borg, James E. 20 NULL
+extension of the
+EMP_PROJ relation
+
+showing nested relations ©
+
+within each tuple. EMP_PROJ1
+
+(c) Decomposition of —
+
+EMP_PROJ into relations an Ename)
+
+EMP_PROJ1 and
+
+EMP_PROJ2 by EMP_PROJ2
+
+propagating the primary Sen Poumber | Hours
+ey. Ssh eoumber
+
+unnormalized relation schema with many levels of nesting into 1NF relations. As
+an example, consider the following:
+CANDIDATE (Ssn, Name, {JOB_HIST (Company, Highest_position,
+{SAL_HIST (Year, Max_sal)})})
+
+The foregoing describes data about candidates applying for jobs with their job his-
+tory as a nested relation within which the salary history is stored as a deeper nested

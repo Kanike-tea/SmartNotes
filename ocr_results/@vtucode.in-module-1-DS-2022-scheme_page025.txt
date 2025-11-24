@@ -1,0 +1,34 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
++ Disadvantage: This representation wastes a lot of space. For instance, if
+a.degree<<MAX_DEGREE and polynomial is sparse, then we will not need most of the
+positions in a.coef[MAX_DEGREE] (sparse means number of terms with non-zero
+coefficient is small relative to degree of the polynomial).
+
+POLYNOMIAL REPRESENTATION: SECOND METHOD
+
+© A(x)=2x20+1 and B(x)=x*+10x?+3x?+1 can be represented as shown below.
+
+starta finisha starth Sinishb avail
++ + L dl L
+coef 2 1 1 10 3 ~ |
+exp 1000 0 4 3 2 ©
+0 1 2 3 5 6
+Array representation’of two polynomials
+
++ startA & startB give the index of first term of A and B respectively . finishA & finishB give
+the index of the last term of A & B respectively avail gives the index of next free location in
+the array.
+
++ Any polynomial A that has ‘n’ non-zero terms has startA & finishA such that
+finishA=startA+n-1
+
++ Advantage: This representation solves the problem of many 0 terms since A(x)-2x1000+1
+uses only 6 units of storage (one for startA, one for finishA, 2 for the coefficients and 2 for
+the exponents)
+
++ Disadvantage: However, when all the terms are non-zero, the current representation requires
+
+about twice as much space as the first one.
+
+vtucode.in 26

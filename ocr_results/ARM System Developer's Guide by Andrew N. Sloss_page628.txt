@@ -1,0 +1,33 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 615
+
+= If Rdis pc, then <size> must be 4. The value stored is implementation defined.
+= If Rnis pc, then the addressing mode must not update Rn. The value used for Rn is the
+address of the instruction plus eight bytes.
+=~ Rmmust not be pe.
+Examples
+STR rd, [r0] 3 *(int*)r0 = 10;
+STRH 0, [ri], #4 ; *(short*)r1 = r0; r1+=4;
+STRD 2, [rl, #-8]! ; rl-=8; *(int*)rl=r2; *(int*) (r1+4)=r3
+STRB 0, [r2, #55] 3 *(char*) (r2+55) = 05
+STRB 0, [ri], -r2, LSL #8 ; *(char*)rl = 10; r1-=256*r2;
+SUB Subtract two 32-bit values
+1. SUB<cond>{S} Rd, Rn, #<rotated_immed> ARMV1
+2. SUB<cond>{$} Rd, Rn, Rm {, <shift>} ARMV1
+3. SUB Ld, Ln, #<immed3> THUMBv1
+4. SUB Ld, #<immed8> THUMBv1
+5. SUB Ld, Ln, Lm THUMBv1
+6. SUB sp, #<immed7>*4 THUMBv1
+Action Effect on the cpsr
+1. Rd = Rn - <rotated_immed> Updated if S suffix specified
+2. Rd = Rn - <shifted_Rm> Updated if S suffix specified
+3. Ld = Ln - <immed3> Updated (see Notes below)
+4. Ld = Ld - <immed8> Updated (see Notes below)
+5. Ld = Ln - Lm Updated (see Notes below)
+6. sp = sp - <immed7>*4 Preserved
+Notes
+.
+
+If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <NoUnsignedOverflow>, and V = <SignedOverflow>. The carry flag is set this way
+because the subtract x — y is implemented as the add x + ~y + 1. The carry flag is one
+if x + ~~y + 1 overflows. This happens when x > y, when x — y doesn’t overflow.

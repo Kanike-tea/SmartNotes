@@ -1,0 +1,44 @@
+398 Chapter 11 Embedded Operating Systems
+
+3. The IRQ stack is then restored from PCB_IRQStack.
+
+4. The new task is resumed by copying the address held in register rl4 into the pe and
+updating the cpsr.
+
+‘The code for loading the registers from a PCB is
+
+LDR ——r13,=PCB_PtrNextTask ; [2.1] r13=PCB_PtrNextTask
+
+LoR —r13, [r13] 3 r13=mem32[r13] : next PCB
+SUB r13,r13,#0ffset15Regs ; r13-=15*Registers
+
+LOMDB 13, {r0,r14} 3 [2.2] load r0 & ria
+
+MSR spsr_cxsf, 0 3 spsr = r0
+
+LOMIA 13, {r0-r14}~ ; load r0_user-rl4_user
+
+LOR —r13,=PCBLIRQStack —;_ [2.3] r13=IRQ stack addr
+LoR —r3, [r13] 3 r13=mem32[r13] : reset IRQ
+MOVS — pcyrl4 ; [2.4] return to next task
+
+The results of loading the next context are the following:
+
+= The context switch is complete.
+= The next task’s registers are loaded into the user mode registers.
+
+= = The IRQ stack is restored to the original setting before entering the IRQ handler.
+
+11.2.7. DEVICE DRIVER FRAMEWORK
+
+The device driver framework (DDF) is implemented using SWI instructions. The DDF
+protects the operating system from applications accessing hardware directly and provides
+a uniform standard interface for the tasks. For a task to access a particular device it must
+first obtain a unique identification number (UID). This is achieved by calling the open
+macro, or events[ODeviceOpen. This macro is translated directly into a device driver SWI
+instruction. The UID is used to check that another task has not already accessed the same
+device.
+The task code for opening a device driver is
+
+device _treestr *host;
+UID serial;

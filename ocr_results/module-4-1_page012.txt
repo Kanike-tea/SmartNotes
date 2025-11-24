@@ -1,0 +1,41 @@
+Data Structures and Applications (15CS33)
+4. Iterative inorder Traversal:
+Iterative inorder traversal explicitly make use of stack function.
+The left nodes are pushed into stack until a null node is reached, the node is then removed from
+the stack and displayed, and the node’s right child is stacked until a null node is reached. The
+traversal then continues with the left child. The traversal is complete when the stack is empty.
+
+void iterInorder(treePointer node)
+{
+int top = -1; /* initialize stack */
+treePointer stack [MAX-STACK-SIZE};
+for (33) 1
+for(; node; node = node-leftChild)
+push(node); /* add to stack */
+node = pop(); /* delete from stack */
+if (!node) break; empty stack */
+printf("%d", node-sdata);
+node = node-srightChil
+
+)
+
+Program _ : Iterative inorder traversal
+
+5. Level-Order traversal:
+
+Visiting the nodes using the ordering suggested by the node numbering is called level
+ordering traversing.
+
+The nodes in a tree are numbered starting with the root on level 1 and so on.
+
+Firstly visit the root, then the root’s left child, followed by the root’s right child. Thus
+continuing in this manner, visiting the nodes at each new level from the leftmost node to the
+rightmost node.
+
+Level order traversal: 1 23 45
+
+Initially in the code for level order add the root to the queue. The function operates by
+deleting the node at the front of the queue, printing the nodes data field and adding the nodes
+left and right children to the queue.
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

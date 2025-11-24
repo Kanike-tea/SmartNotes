@@ -1,0 +1,35 @@
+COMPLEX VARIABLES" 149
+
+2. Show that f(z) =sinz is analytic and hence find f(z).
+“'s> By data f(z) = sinz
+ie, utiv=sin(xtiy)
+=.sinx cosiy + cosx siniy
+ie, utive sinx cosh y + icosx sinhy
+
+[ We - have used sin(A+B) = sinAcosB + cosAsinB and the results
+sin(i@) = isint 6, cos(i@)'= cosh ]
+
+u = sinx cosh y v = cosx sinhy
+4, = cosx coshy vu, = —sinx sink y
+uy =sinx sity * vy = cos x cosh y
+
+Cauchy-Riemann equations 4 = vy and 2, = —uy are satisfied.
+Thus f(z) = sinz is analytic.
+Also we have, f’(z) = u, + iv,
+f' (2), = cos x cosh y + i(—sinx sinh y)
+Using cosh y = cosiy and isinhy = sin(iy) we have,
+f'(z) = cosxcosiy - sinxsin (iy) = cos(x+iy)
+[ We have used cos A cos B— sinA sinB= cos(A+B) ]
+‘Since z= x+iy , f’(z) = cosz
+3. Show that f(z)= coshz is analytic ‘and hence find f'(z).
+>> By data f(z) = coshz
+ie,  u+iv=cosh(x+iy)
+= cosi(x+iy), since cosh 8 = cosi@
+= cos(ix- y) "ga
+* = cosix cosy + sinix siny
+ie., u+iv=coshx cosy + isinhx siny
+u = coshx cosy v = sinhx siny
+u, = sink x cos y v, = coshx siny
+uy = = cosh x ‘siny vy = sinh x cosy
+
+ Cauchy-Riemann equations u, = v, and v, = —u, are satisfied,

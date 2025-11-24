@@ -1,0 +1,53 @@
+146
+
+Chapter 5 Efficient C Programming
+
+Since n = (n/d)d +r for 0 < r < d—1, the results follow from the equations
+
+_ , ds —2QN+k QNn+k
+
+ns — (nld)2N*# = ns — 5 TyNtk 8 i— + 5 (5.10)
+; ds —2N+k 12N+k
+
+(n+ 1)s— (nla = (np WEE 4 CE (5.11)
+
+For both equations the right-hand side is in the range 0 < x < 2N+*, For a 32-bit unsigned
+integer n, we take N = 32, choose k such that 2* < d < 2+!, and set s = (2N+* + 2*)/d.
+If ds > 28+, then n/d = (ns) > (N + k); otherwise, n/d = (ns + s) > (N +k). Asan
+extra optimization, if dis a power of two, we can replace the division with a shift.
+
+Examece The udiv_by const function tests the algorithm described above. In practice d will be
+
+5.14 a fixed constant rather than a variable. You can precalculate s and k in advance and only
+include the calculations relevant for your particular value of d.
+
+unsigned int udiv_by const(unsigned int n, unsigned int d)
+
+{
+
+unsigned int s,k,q;
+/* We assume d!=0 */
+
+/* first find k such that (1<<k) <= d < (1<<(k+l)) */
+for (k=0; d/2>=(lu<<k); k++);
+
+if (d==lu<<k)
+
+{
+/* we can implement the divide with a shift */
+return n>>k;
+
+}
+
+/* d is in the range (1<<k) < d < (1<<(k+1)) */
+s = (unsigned int) (((1u11 << (32+k))+(1u11 <<k))/d);
+
+if ((unsigned long long)s*d >= (1u11<< (32+k)))
+
+{
+f n/d = (n*s) >> (324k) */
+= (unsigned int) (((unsigned long long)n*s) >> 32);
+return g>>k;
+}
+
+/* n/a = (n*s+s) >> (32+k) */

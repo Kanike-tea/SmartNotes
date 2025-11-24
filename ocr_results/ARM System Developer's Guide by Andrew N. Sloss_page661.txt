@@ -1,0 +1,31 @@
+648 Appendix C Processors and Architecture
+
+Table C.1 Label attributes.
+Attribute Description
+D The ARM core supports debug via the JTAG interface. The D is automatic for ARMvS and
+above.
+E The ARM core supports the Enhanced DSP instruction additions to ARMVv5. The E is
+automatic for ARMv6 and above.
+F The ARM core supports hardware floating point via the Vector Floating Point (VFP)
+architecture.
+I ‘The ARM core supports hardware breakpoints and watchpoints via the EmbeddedICE cell.
+The J is automatic for ARMv5 and above.
+J The ARM core supports the Jazelle Java acceleration architecture.
+M The ARM core supports the long multiply instructions for ARMv3. The M is automatic for
+ARMy4 and above.
+-S The ARM processor uses a synthesizable hardware design.
+T The ARM core supports the Thumb instruction set for ARMv4 and above. The T is
+automatic for ARMv6 and above.
+Table C.2 ARM processor numbering: ARM{x}{y}{z}-
+x yz Description Example
+7 * * ARM7 processor core ARM7TDMI
+9 * * ARM9 processor core ARM926EJ-S
+10 * * ARM10 processor core ARM1026EJ-S
+ll * * ARM11 processor core ARM1136J-S
+* 2 * cache and MMU ARM920T
+* 3. * cache and MMU with physical address tagging ARM1136]-S
+* 4 * cache and an MPU ARM946E-S
+* 6 * write buffer but no cache(s) ARM966E-S
+* * 0 standard cache size ARM920T
+* * 2 reduced cache size ARM922T
+* * 6 __ includes tightly coupled SRAM memory (TCM) — ARM946E-S

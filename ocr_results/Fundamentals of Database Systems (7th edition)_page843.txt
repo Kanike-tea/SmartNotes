@@ -1,0 +1,38 @@
+ne
+
+chapter “4
+
+Database Recovery Techniques
+
+n this chapter, we discuss some of the techniques that
+
+can be used for database recovery in case of system
+failure. In Section 20.1.4 we discussed the different causes of failure, such as system.
+crashes and transaction errors. In Section 20.2, we introduced some of the concepts
+that are used by recovery processes, such as the system log and commit points.
+
+This chapter presents additional concepts that are relevant to recovery protocols
+and provides an overview of the various database recovery algorithms. We start
+in Section 22.1 with an outline of a typical recovery procedure and a categoriza-
+tion of recovery algorithms, and then we discuss several recovery concepts,
+including write-ahead logging, in-place versus shadow updates, and the process
+of rolling back (undoing) the effect of an incomplete or failed transaction. In Sec-
+tion 22.2, we present recovery techniques based on deferred update, also known
+as the NO-UNDO/REDO technique, where the data on disk is not updated until
+after a transaction commits. In Section 22.3, we discuss recovery techniques based
+on immediate update, where data can be updated on disk during transaction exe-
+cution; these include the UNDO/REDO and UNDO/NO-REDO algorithms. In Sec-
+tion 22.4, we discuss the technique known as shadowing or shadow paging, which
+can be categorized as a NO-UNDO/NO-REDO algorithm. An example of a practical
+DBMS recovery scheme, called ARIES, is presented in Section 22.5. Recovery in
+multidatabases is briefly discussed in Section 22.6. Finally, techniques for recov-
+ery from catastrophic failure are discussed in Section 22.7. Section 22.8 summa-
+rizes the chapter.
+
+Our emphasis is on conceptually describing several different approaches to recov-
+ery. For descriptions of recovery features in specific systems, the reader should con-
+sult the bibliographic notes at the end of the chapter and the online and printed
+user manuals for those systems. Recovery techniques are often intertwined with the
+concurrency control mechanisms. Certain recovery techniques are best used with
+
+813

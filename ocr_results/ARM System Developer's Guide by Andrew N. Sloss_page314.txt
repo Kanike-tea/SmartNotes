@@ -1,0 +1,75 @@
+3 void iir_ql4_arm9e
+
+3 (short *y,
+
+3; short *x,
+
+; struct { biquad *b; unsigned int M; } *b,
+
+3 unsigned int N);
+iir_ql4_arme
+
+STMFD  sp!, {r4-ri1, Ir}
+
+LOMIA b, {b, M}
+next_biquad_arm9e
+
+LOMIA b!, {b0_a21, bO_b21}
+
+LORSH bO_s_1, [b], #2
+
+LORSH bO_s_2, [b], #2
+
+LOMIA b!, {bl_a21, b1_b21}
+
+LORSH bi_s_1, [b], #2
+
+LORSH bl_s 2, [b], #2
+
+STMFD  sp!, {b, N, M}
+next_sample_arm9e
+
+3 use a 2x2 block IIR
+
+LORSH x_0, [x], #2
+
+LORSH x_1, [x], #2
+
+suBS oN, N, #2
+
+MOV -x_0, x_0, LSL #14
+
+MOV = xl, x_1, LSL #14
+
+3 apply biquad 0 to sample 0
+
+SMLABB x_0, b0_s_1, bO_a21, x0
+
+SMLABT s_0, bO_s 2, bO_a2l, x0
+
+SMLABB x_0, b0_s_1, bO_b21, s_0
+
+SMLABT x_0, bO_s 2, bO_b21, x0
+
+MOV b0_s_2, s_0, ASR #14
+
+3 apply biquad 0 to sample 1
+
+SMLABB x_1, bO_s 2, bO_a21, x1
+SMLABT s_0, bO_s_1, bO_a2l, x1
+SMLABB x_1, b0_s 2, bO_b21, s_0
+SMLABT x_1, bO_s_1, bO_b21, x1
+
+MOV b0_s_1, s_0, ASR #14
+3 apply biquad 1 to sample 0
+SMLABB x_0, bl_s_1, bl_a2l, x0
+SMLABT s_0, bl_s 2, bl_a2l, x0
+SMLABB x_0, bl_s_1, b1_b21, s_0
+SMLABT x_0, bl_s 2, bl_b21, x0
+MOV bl_s_2, s_0, ASR #14
+3 apply biquad 1 to sample 1
+SMLABB x_1, bl_s 2, bl_a2l, x1
+
+8.4 IIR Filters
+
+301

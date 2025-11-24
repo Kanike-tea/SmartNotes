@@ -1,0 +1,51 @@
+Table 14.1
+
+14.2 How Virtual Memory Works 493
+
+Region attributes from the MPU example.
+
+Region attributes Configuration options
+Type instruction, data
+
+Start address multiple of size
+
+Size 4KBto4GB
+
+Access permissions _read, write, execute
+Cache copyback, writethrough
+Write buffer enabled, disabled
+
+The MPU has dedicated hardware that assigns attributes to regions. The attributes
+assigned to a region are shown in Table 14.1.
+
+In this chapter, we assume the concepts introduced in Chapter 13 regarding memory
+protection are understood and simply show how to configure the protection hardware on
+an MMU.
+
+The primary difference between an MPU and an MMU is the addition of hardware to
+support virtual memory. The MMU hardware also expands the number of available regions
+by moving the region attributes shown in Table 14.1 from CP15 registers to tables held in
+main memory.
+
+14.2 How VIRTUAL MEMORY WORKS
+
+In Chapter 13 we introduced the MPU and showed a multitasking embedded system that
+compiled and ran each task at distinctly different, fixed address areas in main memory. Each
+task ran in only one of the process regions, and none of the tasks could have overlapping
+addresses in main memory. To run a task, a protection region was placed over the fixed
+address program to enable access to an area of memory defined by the region. The placement
+of the protection region allowed the task to execute while the other tasks were protected.
+
+In an MMU, tasks can run even if they are compiled and linked to run in regions with
+overlapping addresses in main memory. The support for virtual memory in the MMU
+enables the construction of an embedded system that has multiple virtual memory maps
+and a single physical memory map. Each task is provided its own virtual memory map for
+the purpose of compiling and linking the code and data, which make up the task. A kernel
+layer then manages the placement of the multiple tasks in physical memory so they have a
+distinct location in physical memory that is different from the virtual location it is designed
+to run in.
+
+To permit tasks to have their own virtual memory map, the MMU hardware performs
+address relocation, translating the memory address output by the processor core before it
+reaches main memory. The easiest way to understand the translation process is to imagine
+a relocation register located in the MMU between the core and main memory.

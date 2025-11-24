@@ -1,0 +1,54 @@
+472 Chapter 13 Memory Protection Units
+
+EXAMPLE
+
+13.2
+
+When using standard AP, each region has two bits in registers CP15:c5:c0:0 and
+CP15:c5:c0:1. CP15:c5:c0:0 sets the AP for data, and CP15:c5:c0:1 sets the instruction
+region.
+
+To read the standard AP for instruction and data memory requires reading two registers.
+The following two MRC instruction sequence places AP information for data region memory
+in core register r] and AP information for instruction region in register r2:
+
+MRC p15, 0, rl, c5, cO, 0 ; Std AP Data Regions
+MRC p15, 0, r2, c5, cO, 1; Std AP Inst Regions
+
+When using extended AP, each region uses four bits in registers CP15:c5:c0:2 and
+CP15:c5:c0:3. The core stores instruction information for the eight regions in a single
+register and the data information in another register. CP15:c5:c0:2 sets the AP for the data
+region, and CP15:c5:c0:3 sets the AP for the instruction region.
+
+Obtaining the instruction and data region extended AP requires reading two registers.
+The following two-instruction sequence places region data AP in core register r3 and region
+instruction AP in register r4:
+
+MRC p15, 0, 13, c5, cO, 2 5 Extended AP Data Regions
+MRC p15, 0, 14, c5, cO, 3 5 Extended AP Inst Regions
+
+We supply two examples to demonstrate using access permissions, one for standard AP
+and the other for extended AP. These examples use the inline assembler to read and write
+to the CP15 registers.
+
+We provide two standard AP routines, regi onSet ISAP and regionSetDSAP, to set the
+standard AP bits for a region. They are called from C using the following function prototype:
+
+void regionSetISAP(unsigned region, unsigned ap);
+void regionSetDSAP(unsigned region, unsigned ap);
+
+‘The first parameter is the region number, and the second is the two-bit value defining the
+standard AP for the instruction or data memory controlled by the region.
+
+The two routines are identical with the exception that they read and write to different
+CP15:c5 secondary registers; one writes to the instruction register, and the other to the data
+register. The routine does a simple read-modify-write operation on the CP15:c5 register to
+set the AP of the specified region, leaving the remaining regions intact.
+
+void regionSetISAP(unsigned region, unsigned ap)
+
+{
+unsigned c5f, shift;
+
+shift = 2*region;
+__asm{ MRC p15, 0, c5f, c5, cO, 1} — /* load standard D AP */

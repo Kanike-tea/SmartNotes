@@ -1,0 +1,47 @@
+© When exception processing is initiated (as a result of errors), processor.
+— suspends program being executed &
+
+— starts an ESR. This routine takes appropriate action to recover from the error.
+
+2. Debugging
+¢ Debugger
+— is used to find errors in a program and
+— uses exceptions to provide 2 important facilities: i) Trace & ii) Breakpoints
+i) Trace
+> When a processor is operating in trace-mode, an exception occurs after execution of every
+instruction (using debugging-program as ESR).
+Debugging-program enables user to examine contents of registers, memory-locations and so on.
+On return from debugging-program,
+
+next instruction in program being debugged is executed, then debugging-program is activated again.
+The trace exception is disabled during the execution of the debugging-program.
+
+Vv wv
+
+v
+
+ii) Breakpoints
+> Here, the program being debugged is interrupted only at specific points selected by user.
+> An instruction called Trap (or Software interrupt) is usually provided for this purpose.
+> When program is executed & reaches breakpoint, the user can examine memory & register contents.
+
+3. Privilege Exception
+> To protect OS from being corrupted by user-programs, Privileged Instructions are executed only while
+processor is in supervisor-mode.
+» For e.g.
+> When processor runs in user-mode, it will not execute instruction that change priority of processor.
+> An attempt to execute privileged-instruction will produce a Privilege Exception.
+> As a result, processor switches to supervisor-mode & begins to execute an appropriate routine in OS.
+
+DIRECT MEMORY ACCESS (DMA)
+¢ The transfer of a block of data directly b/w an external device & main-memory w/o
+continuous involvement by processor is called DMA.
+¢ DMA controller
+— is a control circuit that performs DMA transfers (Figure 8.13).
+— is a part of the I/O device interface.
+— performs the functions that would normally be carried out by processor.
+¢ While a DMA transfer is taking place, the processor can be used to execute another program.
+
+Figure 8.13 Use of DMA controllers in a computer system.
+
+Page 27

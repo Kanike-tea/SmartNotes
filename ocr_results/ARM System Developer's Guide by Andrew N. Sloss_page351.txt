@@ -1,0 +1,70 @@
+338 Chapter 9 Exception and Interrupt Handling
+
+EXAMPLE
+
+9.9
+
+required, the handler may take several actions: reenabling interrupts and/or performing a
+context switch.
+
+Reenabling interrupts involves switching out of IRQ mode to either SVC or system
+mode. Interrupts cannot simply be reenabled when in IRQ mode because this would
+lead to possible link register r14_irq corruption, especially if an interrupt occurred after
+the execution of a BL instruction. This problem will be discussed in more detail in
+Section 9.3.3.
+
+Performing a context switch involves flattening (emptying) the IRQ stack because the
+handler does not perform a context switch while there is data on the IRQ stack. All registers
+saved on the IRQ stack must be transferred to the task’s stack, typically on the SVC stack.
+The remaining registers must then be saved on the task stack. They are transferred to a
+reserved block of memory on the stack called a stack frame.
+
+This nested interrupt handler example is based on the flow diagram in Figure 9.9. The rest
+of this section will walk through the handler and describe in detail the various stages.
+
+Maskmd EQU Ox1f 3 processor mode mask
+
+SVC32md EQU 0x13 3 SVC mode
+
+I Bit EQU 0x80 3 IRQ bit
+
+FRAME_RO EQU 0x00
+
+FRAME_R1 EQU FRAME_RO+4
+
+FRAME_R2 EQU FRAME_R1+4
+
+FRAME_R3 EQU FRAME_R2+4
+
+FRAME_R4 EQU FRAME_R3+4
+
+FRAME_R5 EQU FRAME_R4+4
+
+FRAME_R6 EQU FRAME_R5+4
+
+FRAME_R7 EQU FRAME_R6+4
+
+FRAME_R8& EQU FRAME_R7+4
+
+FRAME_R9 EQU FRAME_R8+4
+
+FRAME_R10 EQU FRAME_R9+4
+
+FRAME_R11 EQU FRAME_R10+4
+
+FRAME_R12 EQU FRAME_R11+4
+
+FRAME_PSR EQU FRAME_R12+4
+
+FRAME_LR EQU FRAME_PSR+4
+
+FRAME_PC EQU FRAME_LR+4
+
+FRAME_SIZE EQU FRAME_PC+4
+
+IRQ_Entry ; instruction state : comment
+SUB 114,114, #4 52:
+STMDB r3!, {r0-r3,r12,r14} 3 2: save context
+
+<service interrupt>
+BL read_RescheduleFlag ; 3 : more processing

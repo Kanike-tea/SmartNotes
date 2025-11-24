@@ -1,0 +1,38 @@
+25.1. Chromatic Polynomials. °. 139
+
+Multiplication Theorem
+The following theorem gives an expression for P(G, A) for a special class of graphs.
+
+Theorem 2 . Ifa graph G has subgraphs Gy ‘and G2 such that G1 UG) = Gand G| NG2 = Ky
+for some positive integer.n, then
+
+PG,A) = AE1 Ad PCat)
+
+where ‘ wae Ne
+a = AA-IA~2)...A=nF 1),
+
+Proof: Since K, = Gj NG and y(K,) = n, it follows that Ky is a subgraph of both G; and G2
+and y(G;) > n and y(G2) > n.
+
+Given A > n number of different colours, there are 1 = A(A=1)(A-1)(A=2) 1. (Aen +1)
+number of proper colourings of K,". For each of these a) proper colourings of K,, the Product
+Rule yields P(G), a)/A™ ways of properly colouring the remaining vertices of Gj. Similarly,
+there are P(G2, a)/A ways of properly colouring the remaining vertices of G3. As such,
+
+P(G1,a) P(G2,a
+PG, a) = P(Ky,a)- aoe ee ti )
+P(G1,a), -P(G2,A)
+AM am
+“PGi, a) + P(G2, A)
+- Aw)
+
+iy ae
+
+This completes the proof of the theorem.
+
+[Example 1| Find the chromatic polynomial for the graph shown in Figure 2.47,
+What is its chromatic number? \
+
+Figure 2.47
+
+Recall that P(K,,n) = A(A— 1A ~2).,.(A- n+ 1) for A> n,

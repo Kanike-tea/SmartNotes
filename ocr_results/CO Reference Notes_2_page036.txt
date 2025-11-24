@@ -1,0 +1,46 @@
+¢ Data-lines P7 through PO can be used for either input or output purposes (Figure 4.34).
+¢ For increased flexibility,
+— some lines can be used as inputs and
+— some lines can be used as outputs.
+¢ The DATAOUT register is connected to data-lines via 3-state drivers that are controlled by a DDR.
+The processor can write any 8-bit pattern into DDR. (DDR > Data DirectionRegister).
+¢ If DDR=1,
+Then, data-line acts as an
+output-line; Otherwise, data-
+line acts as an input-line.
+¢ Two lines, C1 and C2 are used to control the interaction between interface-circuit and 1/0
+device. Two lines, C1 and C2 are also programmable.
+¢ Line C2 is bidirectional to provide different modes of signaling, including the handshake.
+¢ The Ready and Accept lines are the handshake control lines on the processor-bus
+side. Hence, the Ready and Accept lines can be connected to Master-ready and Slave-
+ready.
+¢ The input signal My-address should be connected to the output of an address-
+decoder. The address-decoder recognizes the address assigned to the interface.
+¢ There are 3 register select lines: RSO-RS2.
+Three register select lines allows up to eight registers in the interface.
+¢ An interrupt-request INTR is also provided.
+INTR should be connected to the interrupt-request line on the computer-bus.
+
+STANDARD I/O INTERFACE
+© Consider a computer system using different interface standards.
+Let us look in to Processor bus and Peripheral Component Interconnect (PCI) bus (Figure 4.38).
+© These two buses are interconnected by a circuit called Bridge.
+¢ The bridge translates the signals and protocols of one bus into another.
+¢ The bridge-circuit introduces a small delay in data transfer between processor and the devices.
+
+© The 3 major standard I/O interfaces are:
+
+1) PCI (Peripheral Component Interconnect)
+
+2) SCSI (Small Computer System Interface)
+
+3) USB (Universal Serial Bus)
+© PCI defines an expansion bus on the motherboard.
+¢ SCSI and USB are used for connecting additional devices both inside and outside the computer-box.
+¢ SCSI bus is a high speed parallel bus intended for devices such as disk and video display.
+© USB uses a serial transmission to suit the needs of equipment ranging from keyboard to game
+control to internal connection.
+¢ IDE (Integrated Device Electronics) disk is compatible with ISA which shows the connection to
+an Ethernet.
+
+Page 37

@@ -1,0 +1,52 @@
+270
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+In tuple relational calculus, we first specify the requested attributes t.Bdate and
+t.Address for each selected tuple t. Then we specify the condition for selecting a tuple
+following the bar (|)—namely, that f be a tuple of the EMPLOYEE relation whose
+Frame, Minit, and Lname attribute values are ‘John’, ‘B’, and ‘Smith’, respectively.
+
+8.6.2 Expressions and Formulas in Tuple Relational Calculus
+A general expression of the tuple relational calculus is of the form
+{ty Ajp to-Afy os by-Am | COND( thy toy «5 bs bass ny2s => nvm) }
+
+where fy, f, ... 5 tn tnvis --- » fry are tuple variables, each A; is an attribute of the
+relation on which f; ranges, and COND is a condition or formula’ of the tuple rela-
+tional calculus. A formula is made up of predicate calculus atoms, which can be one
+of the following:
+
+1. An atom of the form R(t;), where R is a relation name and {; is a tuple vari-
+able. This atom identifies the range of the tuple variable f; as the relation
+whose name is R. It evaluates to TRUE if f; is a tuple in the relation R, and
+evaluates to FALSE otherwise.
+
+2. An atom of the form £;.A op ;.B, where op is one of the comparison opera-
+tors in the set {=, <, <, >, >, #}, t; and t; are tuple variables, A is an attribute
+of the relation on which f; ranges, and B is an attribute of the relation on
+which #; ranges.
+
+3. Anatom of the form ¢;.A op c or c op 1.B, where op is one of the comparison
+operators in the set {=, <, <, >, 2, #}, ¢; and #; are tuple variables, A is an attri-
+bute of the relation on which 1; ranges, B is an attribute of the relation on
+which #; ranges, and c is a constant value.
+
+Each of the preceding atoms evaluates to either TRUE or FALSE for a specific combi-
+nation of tuples; this is called the truth value of an atom. In general, a tuple variable
+t ranges over all possible tuples in the universe. For atoms of the form R(t), if t is
+assigned to a tuple that is a member of the specified relation R, the atom is TRUE;
+otherwise, it is FALSE. In atoms of types 2 and 3, if the tuple variables are assigned
+to tuples such that the values of the specified attributes of the tuples satisfy the con-
+dition, then the atom is TRUE.
+
+A formula (Boolean condition) is made up of one or more atoms connected via
+the logical operators AND, OR, and NOT and is defined recursively by Rules 1 and 2
+as follows:
+
+= Rule 1: Every atom isa formula.
+
+= Rule 2: If F, and F are formulas, then so are (F; AND Fy), (F; OR F)), NOT
+(F,), and NOT (F)). The truth values of these formulas are derived from their
+component formulas F; and F) as follows:
+
+'S,lso called a well-formed formula, or WEF, in mathematical logic.

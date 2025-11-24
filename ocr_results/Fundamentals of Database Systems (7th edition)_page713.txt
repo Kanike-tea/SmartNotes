@@ -1,0 +1,51 @@
+18.8 Parallel Algorithms for Query Processing
+
+3. Close(): This method ends the iteration after all tuples that can be generated
+have been generated, or the required/demanded number of tuples have been
+returned. It also calls Close() on the arguments of the iterator.
+
+Each iterator may be regarded as a class for its implementation with the above
+three methods applicable to each instance of that class. If the operator to be imple-
+mented allows a tuple to be completely processed when it is received, it may be
+possible to use the pipelining strategy effectively. However, if the input tuples need
+to be examined over multiple passes, then the input has to be received as a materi-
+alized relation. This becomes tantamount to the Open () method doing most of the
+work and the benefit of pipelining not being fully achieved. Some physical opera-
+tors may not lend themselves to the iterator interface concept and hence may not
+support pipelining.
+
+The iterator concept may also be applied to access methods. Accessing a B*-tree or
+a hash-based index may be regarded as a function that can be implemented as an
+iterator; it produces as output a series of tuples that meet the selection condition
+passed to the Open() method.
+
+18.8 Parallel Algorithms for Query Processing
+
+In Chapter 2, we mentioned several variations of the client/server architectures,
+including two-tier and three-tier architectures. There is another type of architec-
+ture, called parallel database architecture, that is prevalent for data-intensive
+applications. We will discuss it in further detail in Chapter 23 in conjunction with
+distributed databases and the big data and NOSQL emerging technologies.
+
+Three main approaches have been proposed for parallel databases. They corre-
+spond to three different hardware configurations of processors and secondary stor-
+age devices (disks) to support parallelism. In shared-memory architecture,
+multiple processors are attached to an interconnection network and can access a
+common main memory region. Each processor has access to the entire memory
+address space from all machines. The memory access to local memory and local
+cache is faster; memory access to the common memory is slower. This architecture
+suffers from interference because as more processors are added, there is increasing
+contention for the common memory. The second type of architecture is known as
+shared-disk architecture. In this architecture, every processor has its own mem-
+ory, which is not accessible from other processors. However, every machine has
+access to all disks through the interconnection network. Every processor may not
+necessarily have a disk of its own. We discussed two forms of enterprise-level sec-
+ondary storage systems in Section 16.11. Both storage area networks (SANs) and
+network attached storage (NAS) fall into the shared-disk architecture and lend
+themselves to parallel processing. They have different units of data transfer; SANs
+transfer data in units of blocks or pages to and from disks to processors; NAS
+behaves like a file server that transfers files using some file transfer protocol. In
+these systems, as more processors are added, there is more contention for the lim-
+ited network bandwidth.
+
+683

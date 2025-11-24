@@ -1,0 +1,70 @@
+13.3 Demonstration of an MPU system
+
+483
+
+/* Region Number Assignment */
+#define BACKGROUND 0
+
+#define KERNEL 1
+#define TASK 2
+
+#define SHARED 3
+#define PERIPH 4
+
+/* Region Type Assignment */
+
+#define STANDARD
+#define EXTENDED
+#define DISABLE 0
+
+/* Access Permissions */
+
+#define NANA 0
+#define RWNA 1
+#define RWRO 2
+#define RWRW 3
+#define RONA 5
+#define RORO 6
+
+/* Region Size */
+#define SIZE_4G
+#define SIZE_26
+#define SIZE_1G
+#define SIZE_512M
+#define SIZE_256M
+#define SIZE_128M
+#define SIZE_64M
+#define SIZE_32M
+#define SIZE_16M
+#define SIZE_8M
+#define SIZE_4M
+#define SIZE_2M
+#define SIZE_IM
+#define SIZE_512K
+#define SIZE_256K
+#define SIZE_128K
+#define SIZE_64K
+#define SIZE_32k
+
+0
+1
+
+30
+29
+28
+27
+26
+25
+24
+23
+22
+
+20
+19
+18
+17
+16
+15
+14
+
+Figure 13.8 Defined macros used in the demonstration example.

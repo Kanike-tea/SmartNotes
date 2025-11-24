@@ -1,0 +1,52 @@
+810
+
+Chapter 21 Concurrency Control Techniques
+
+21.22. Prove that strict two-phase locking guarantees strict schedules.
+
+21.23. Prove that the wait-die and wound-wait protocols avoid deadlock and
+starvation.
+
+21.24. Prove that cautious waiting avoids deadlock.
+
+21.25. Apply the timestamp ordering algorithm to the schedules in Figures 21.8(b)
+and (c), and determine whether the algorithm will allow the execution of the
+schedules.
+
+21.26. Repeat Exercise 21.25, but use the multiversion timestamp ordering method.
+
+21.27. Why is two-phase locking not used as a concurrency control method for
+indexes such as B*-trees?
+
+21.28. The compatibility matrix in Figure 21.8 shows that IS and IX locks are com-
+patible. Explain why this is valid.
+
+21.29. The MGL protocol states that a transaction T can unlock a node N, only if
+none of the children of node N are still locked by transaction T. Show that
+without this condition, the MGL protocol would be incorrect.
+
+Selected Bibliography
+
+The two-phase locking protocol and the concept of predicate locks were first pro-
+posed by Eswaran et al. (1976). Bernstein et al. (1987), Gray and Reuter (1993), and
+Papadimitriou (1986) focus on concurrency control and recovery. Kumar (1996)
+focuses on performance of concurrency control methods. Locking is discussed in
+Gray et al. (1975), Lien and Weinberger (1978), Kedem and Silbershatz (1980), and
+Korth (1983). Deadlocks and wait-for graphs were formalized by Holt (1972), and
+the wait-wound and wound-die schemes are presented in Rosenkrantz et al. (1978).
+Cautious waiting is discussed in Hsu and Zhang (1992). Helal et al. (1993) com-
+pares various locking approaches.
+
+Timestamp-based concurrency control techniques are discussed in Bernstein and
+Goodman (1980) and Reed (1983). Optimistic concurrency control is discussed in
+Kung and Robinson (1981) and Bassiouni (1988). Papadimitriou and Kanellakis
+(1979) and Bernstein and Goodman (1983) discuss multiversion techniques. Multi-
+version timestamp ordering was proposed in Reed (1979, 1983), and multiversion
+two-phase locking is discussed in Lai and Wilkinson (1984). A method for multiple
+locking granularities was proposed in Gray et al. (1975), and the effects of locking
+granularities are analyzed in Ries and Stonebraker (1977). Bhargava and Reidl
+(1988) presents an approach for dynamically choosing among various concurrency
+control and recovery methods. Concurrency control methods for indexes are pre-
+sented in Lehman and Yao (1981) and in Shasha and Goodman (1988). A perfor-
+mance study of various B*-tree concurrency control algorithms is presented in
+Srinivasan and Carey (1991).

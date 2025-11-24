@@ -1,0 +1,49 @@
+2. Collisions increases as data size grows.
+
+2. Dynamic Hashing:
+
+Dynamically increases the size of the hash table as collision occurs. There are two types:
+
+1) Dynamic hashing using directory or (Extendible hashing) : uses a directory that grows or shrinks
+depending on the data distribution. No overflow buckets
+
+2) Directory less Dynamic hashing or (Linear hashing): No directory. Splits buckets in linear order,
+uses overflow buckets.
+
+Dynamic hashing using directory
+
+¢ Uses a directory of pointers to buckets/bins which are collections of records
+¢ The number of buckets are doubled by doubling the directory, and splitting just the
+bin that overflowed.
+
+¢ Directory much smaller than file, so doubling it is much cheaper.
+
+fe fe CKD
+LO LOO OOO
+Pavan i Loo OO)
+BO LOI OOO
+B11 O11 OO1
+<a Rn Lio oot1
+<2 420 010
+aS ai9so O11
+Ts 110 i o1
+00 —={A0, BO| 0000
+a _-JAT, BI] 0001
+10 {C2 ] 0010
+it = S| 0011
+0100
+0101
+tro | 7 O110
+tA
+au / oll
+= 1000
+1oo1 {Bi
+1010 Je _
+loi | a
+1100 [a |
+1101 |e}
+1110 fe}
+iit fa]
+(a) depth = 2 (b) depth = 3 (c) depth =4
+
+Page 9

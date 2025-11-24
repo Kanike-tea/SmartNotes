@@ -1,0 +1,51 @@
+13.7 XML/SQL: SQL Functions for Creating XML Data
+
+453
+
+STUDENT STUDENT
+SECTION COURSE DEPARTMENT SECTION COURSE DEPARTMENT
+
+INSTRUCTOR INSTRUCTOR INSTRUCTOR1
+
+(a) (b)
+
+M STUDENT
+N N N 1 1 1
+SECTION DEPARTMENT
+
+1 1 N N
+
+INSTRUCTOR COURSE1 INSTRUCTOR1 COURSE
+(©)
+
+Figure 13.15
+Converting a graph with cycles into a hierarchical (tree) structure.
+
+13.6.3 Other Steps for Extracting XML Documents
+from Databases
+
+In addition to creating the appropriate XML hierarchy and corresponding XML
+schema document, several other steps are needed to extract a particular XML docu-
+ment from a database:
+
+1. Itis necessary to create the correct query in SQL to extract the desired infor-
+mation for the XML document.
+
+2. Once the query is executed, its result must be restructured from the flat rela-
+tional form to the XML tree structure.
+
+3. The query can be customized to select either a single object or multiple
+objects into the document. For example, in the view in Figure 13.13, the
+query can select a single student entity and create a document corresponding
+to that single student, or it may select several—or even all—of the students and
+create a document with multiple students.
+
+13.7 XML/SQL: SQL Functions for Creating
+XML Data
+
+In this section, we discuss some of the functions that have been added to the recent
+versions of the SQL standard for the purpose of generating XML data from relational
+databases. These functions can be used to format the results of queries into XML ele-
+ments and documents, and to specify the roots of an XML hierarchy so that nested
+hierarchical data can be created from flat relational data. First we list and briefly
+describe some of the functions that were added to SQL; then we show a few examples.

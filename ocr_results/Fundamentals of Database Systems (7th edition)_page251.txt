@@ -1,0 +1,55 @@
+7.1 More Complex SQL Retrieval Queries
+
+Query 26. For each project on which more than two employees work, retrieve the
+project number, the project name, and the number of employees who work on
+the project.
+
+026: SELECT — Pnumber, Pname, COUNT (*)
+FROM PROJECT, WORKS_ON
+WHERE — Phumber=Pno
+GROUP BY Pnumber, Pname
+HAVING — COUNT (*)>2;
+
+Notice that although selection conditions in the WHERE clause limit the tuples to
+which functions are applied, the HAVING clause serves to choose whole groups. Fig-
+ure 7.1(b) illustrates the use of HAVING and displays the result of Q26.
+
+Query 27. For each project, retrieve the project number, the project name, and
+the number of employees from department 5 who work on the project.
+
+027: SELECT — Pnumber, Pname, COUNT (*)
+FROM PROJECT, WORKS_ON, EMPLOYEE
+WHERE — Phumber=Pno AND Ssn = Essn AND Dno =5
+GROUP BY Pnumber, Pname;
+
+In Q27, we restrict the tuples in the relation (and hence the tuples in each group)
+to those that satisfy the condition specified in the WHERE clause—namely, that
+they work in department number 5. Notice that we must be extra careful when
+two different conditions apply (one to the aggregate function in the SELECT
+clause and another to the function in the HAVING clause). For example, suppose
+that we want to count the total number of employees whose salaries exceed
+$40,000 in each department, but only for departments where more than five
+employees work. Here, the condition (SALARY > 40000) applies only to the
+COUNT function in the SELECT clause. Suppose that we write the following
+incorrect query:
+
+SELECT —Dno, COUNT (*)
+FROM EMPLOYEE
+WHERE Salary>40000
+GROUP BY Dno
+
+HAVING — COUNT (*)>5;
+
+This is incorrect because it will select only departments that have more than five
+employees who each earn more than $40,000. The rule is that the WHERE clause is
+executed first, to select individual tuples or joined tuples; the HAVING clause is
+applied later, to select individual groups of tuples. In the incorrect query, the tuples
+are already restricted to employees who earn more than $40,000 before the function
+in the HAVING clause is applied. One way to write this query correctly is to use a
+nested query, as shown in Query 28.
+
+Query 28. For each department that has more than five employees, retrieve the
+department number and the number of its employees who are making more
+than $40,000.
+
+221

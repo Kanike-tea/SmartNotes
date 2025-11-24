@@ -1,0 +1,41 @@
+Digital Design and Computer Organization(BCS302)
+
+Do = x'y'z!
+
+FIGURE 4.18
+Three-to-eight-line decoder
+
+Decoders with enable inputs can be connected together to form a larger decoder circuit.
+
+Implement 4:16 decoder using 2 3:8 decoder.
+
+two 3-to-8-line decoders with enable inputs connected to form a 4-to-16-line decoder.
+
+When w =0, the top decoder is enabled and the other is disabled. The bottom decoder outputs
+are all 0’s, and the top eight outputs generate minterms 0000 to 0111.
+
+When w =1, the enable conditions are reversed: The bottom decoder outputs generate
+
+minterms 1000 to 1111.
+
+3x8
+
+decoder
+
+3x8
+
+decoder
+E
+
+FIGURE 4.20
+
+4 X 16 decoder constructed with two 3 x 8 decoders
+
+Combinational Logic Implementation
+Dr Ajay V G, Dept. of CSE , SVIT
+
+Dy to D;
+
+Dg to Dis
+
+Page 14

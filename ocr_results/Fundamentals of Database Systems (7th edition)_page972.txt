@@ -1,0 +1,52 @@
+942
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+The scheduler also has the ability to request resources back from an Application if
+needed and can even take back the resources forcibly. Applications, in returning a
+container, can migrate the work to another container, or checkpoint the state and
+restore it on another container. It is important to point out what the Resource man-
+ager is not responsible for: handling the execution of tasks within an application,
+providing any status information about applications, providing history of finished
+jobs, and providing any recovery for failed tasks.
+
+ApplicationMaster (AM). The ApplicationMaster is responsible for coordinating
+the execution of an Application on the cluster. An Application can be a set of pro-
+cesses like an MR Job, or it can be a long-running service like a Hadoop on demand
+(HOD) cluster serving multiple MR jobs. This is left to the Application Writer.
+
+The ApplicationMaster will periodically notify the ResourceManager of its current
+Resource Requirements through a heartbeat mechanism. Resources are handed to
+the ApplicationMaster as Container leases. Resources used by an Application are
+dynamic: they are based on the progress of the application and the state of the clus-
+ter. Consider an example: the MR ApplicationMaster running an MR job will ask
+for a container on each of the m nodes where an InputSplit resides. If it gets a con-
+tainer on one of the nodes, the ApplicationMaster will either remove the request for
+containers on the rest of the m-1 nodes or at least reduce their priority. On the
+other hand, if the map task fails, it is AM that tracks this failure and requests con-
+tainers on other nodes that have a replica of the same InputSplit.
+
+NodeManager. A NodeManager runs on every worker node of the cluster. It
+manages Containers and provides pluggable services for Containers. Based on a
+detailed Container Launch Context specification, a NodeManager can launch a pro-
+cess on its node with the environment and local directories set up. It also monitors to
+make sure the resource utilization does not exceed specifications. It also periodically
+reports on the state of the Containers and the node health. A NodeManager provides
+local services to all Containers running on it. The Log Aggregation service is used to
+upload each task’s standard output and standard error (stdout and stderr) to HDFS.
+A NodeManager may be configured to run a set of pluggable auxillary services. For
+example, the MR Shuffle is provided as a NodeManager service. A Container run-
+ning a Map task produces the Map output and writes to local disk.The output is
+made available to Reducers of the Job via the Shuffle service running on the Node.
+
+Fault tolerance and availability. The RM remains the single point of failure in
+YARN. On restart, the RM can recover its state from a persistent store. It kills all
+containers in the cluster and restarts each ApplicationMaster. There is currently a
+push to provide an active/passive mode for RMs. The failure of an Application-
+Master is not a catastrophic event; it only affects one Application. It is responsible
+for recovering the state of its Application. For example, the MR ApplicationMaster
+will recover its completed task and rerun any running tasks.
+
+Failure of a Container because of issues with the Node or because of Application
+code is tracked by the framework and reported to the ApplicationMaster. It is the
+responsibility of the ApplicationMaster to recover from the failure.

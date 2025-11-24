@@ -1,0 +1,33 @@
+8.1 Representing a Digital Signal 261
+
+0.5
+x{f] = sin(2nt/8)
+
+HO) all] x12) x03]
+
+Figure 8.1 Digitizing an analogue signal.
+
+Figure 8.1 shows a sine wave signal digitized at the sampling points 0, 1, 2, 3, and so on.
+Signals like this are typical in audio processing, where x[t] represents the tth audio sample.
+
+For example, in a CD player, the sampling rate is 44,100 Hz (that is, 44,100 samples
+per second). Therefore t represents the time in units of a sample period of 1/44,100 Hz =
+22.7 microseconds. In this application x[t] represents the signed voltage applied to the
+loudspeaker at time t.
+
+There are two things to worry about when choosing a representation of x[t]:
+
+1. The dynamic range of the signal—the maximum fluctuation in the signal defined by
+Equation (8.1). For a signed signal we are interested in the maximum absolute value M
+possible. For this example, let’s take M = 1 volt.
+
+M = max|x{t]| over all t = 0,1,2,3... (8.1)
+
+2. The accuracy required in the representation, sometimes given as a proportion of the
+maximum range. For example, an accuracy of 100 parts per million means that each
+x[t] needs to be represented within an error of
+
+E=M x 0.0001 = 0.0001 volts (8.2)
+
+Let’s work out the best way of storing x[t] subject to the given dynamic range and accuracy
+constraints.

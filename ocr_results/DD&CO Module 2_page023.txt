@@ -1,0 +1,59 @@
+Dataflow Modeling
+
+Dataflow modeling of combinational logic uses a number of operators that act on binary operands to
+produce a binary result. Dataflow modeling uses continuous assignments and the keyword assign. As
+an example, assuming that the variables were declared, a two-to-one-line multiplexer with scalar data
+inputs A and B, select input S, and output Y is described with the continuous assignment
+
+assign Y = (A && S) || (B && S)
+
+The relationship between Y, A, B, and S is declared by the keyword assign, followed by the target output
+Y and an equals sign.
+
+The next two examples show the dataflow models of the two previous gate-level examples. The dataflow
+description of a two-to-four-line decoder with active-low output enable
+
+// Dataflow description of two-to-four-line decoder
+
+module decoder_2x4_df ( /I Verilog 2001, 2005 syntax
+output = [0: 3] D,
+input A,B,
+enable
+
+\
+assign D0] = !((!A) && (!B) && (!enable)),
+D[1] = !(*1A) && B && (!enable)),
+D[2] = (A && B && (!enable)
+D[3] = !(A && B && (!enable))
+endmodule
+
+/| Dataflow description of four-bit adder
+/I Nerilog 2001, 2005 module port syntax
+
+module binary_adder (
+
+output [3: 0] Sum,
+output C_out,
+input [3: 0] A,B,
+
+put C_in
+)
+
+assign {C_out, Sum} = A + B + C_in;
+endmodule
+
+Behavioral Modeling
+
+Behavioral modeling represents digital circuits at a functional and algorithmic level. It is used mostly to
+describe sequential circuits, but can also be used to describe combinational circuits.
+
+Behavioral descriptions use the keyword always, followed by an optional event control expression and
+a list of procedural assignment statements. The event control expression specifies when the statements
+will execute. The target output of a procedural assignment statement must be of the reg data type.
+Contrary to the wire data type, whereby the target output of an assignment may be continuously updated,
+a reg data type retains its value until a new value is assigned.
+
+HDL Example below shows the behavioral description of a two-to-one-line multiplexer. Since variable
+m_out is a target output, it must be declared as reg data (in addition to the output declaration). The
+procedural assignment statements inside the always block are executed every time there is a change in
+any of the variables listed after the @ symbol. (Note that there is no semicolon (;) at the end of the

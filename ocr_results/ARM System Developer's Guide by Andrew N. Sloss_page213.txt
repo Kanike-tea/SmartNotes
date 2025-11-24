@@ -1,0 +1,52 @@
+200 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE Suppose we want to call method_k when x = 2 for eight possible methods. In other words
+6.29 we want to switch on the values 1, 2, 4, 8, 16, 32, 64, 128. For all other values of x we need to
+call the default method method_d. We look for a hash function formed out of multiplying
+by powers of two minus one (this is an efficient operation on the ARM). By trying different
+multipliers we find that 15 x 31 x x has a different value in bits 9 to 11 for each of the eight
+
+switch values. This means we can use bits 9 to 11 of this product as our hash function.
+The following switch_hash assembly uses this hash function to perform the switch.
+Note that other values that are not powers of two will have the same hashes as the values
+we want to detect. The switch has narrowed the case down to a single power of two that we
+can test for explicitly. If x is not a power of two, then we fall through to the default case of
+
+calling method_d.
+
+x RN O
+hash RN 1
+
+3 int switch_hash(int x)
+switch_hash
+
+RSB_ hash, x, x, LSL#4 3 hash=x*15
+RSB_ hash, hash, hash, LSL#5 ; hash=x*15*31
+
+AND hash, hash, #7<<9 3 mask out the hash value
+ADD pc, pc, hash, LSR#6
+
+NoP
+
+TEQ x, #0x01
+BEQ  method_0
+TEQ x, #0x02
+BEQ  method_1
+TEQ x, #0x40
+BEQ _ method_6
+TEQ x, #0x04
+BEQ _ method_2
+TEQ x, #0x80
+BEQ  method_7
+TEQ x, #0x20
+BEQ — method_5
+TEQ x, #0x10
+BEQ  method_4
+TEQ x, #0x08
+BEQ _ method_3
+B method_d
+
+Summary _ Efficient Switches
+
+= Make sure the switch value is in the range 0 < x < N for some small N. To do this you
+may have to use a hashing function.

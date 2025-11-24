@@ -1,0 +1,52 @@
+112 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+the superclass entity type. A subclass is defined in order to group the entities to
+which these attributes apply. The members of the subclass may still share the
+majority of their attributes with the other members of the superclass. For example,
+in Figure 4.1 the SECRETARY subclass has the specific attribute Typing_speed,
+whereas the ENGINEER subclass has the specific attribute Eng_type, but
+SECRETARY and ENGINEER share their other inherited attributes from the
+EMPLOYEE entity type.
+
+The second reason for using subclasses is that some relationship types may be par-
+ticipated in only by entities that are members of the subclass. For example, if only
+HOURLY_EMPLOYEES can belong to a trade union, we can represent that fact by
+creating the subclass HOURLY_EMPLOYEE of EMPLOYEE and relating the subclass
+to an entity type TRADE_UNION via the BELONGS_TO relationship type, as illus-
+trated in Figure 4.1.
+
+4.2.2 Generalization
+
+We can think of a reverse process of abstraction in which we suppress the differences
+among several entity types, identify their common features, and generalize them
+into a single superclass of which the original entity types are special subclasses. For
+example, consider the entity types CAR and TRUCK shown in Figure 4.3(a). Because
+they have several common attributes, they can be generalized into the entity type
+VEHICLE, as shown in Figure 4.3(b). Both CAR and TRUCK are now subclasses of the
+
+Figure 4.3
+
+Generalization. (a) Two entity types, CAR and TRUCK.
+(b) Generalizing CAR and TRUCK into the superclass VEHICLE.
+
+(a)
+
+No_of_passengers No of aves)
+
+Max_speed __Connage
+
+CAR TRUCK
+
+(b)
+
+Ticense_plate_no License_plate_no
+Ticense_plate_no
+
+VEHICLE
+
+d
+No_of_passengers. Boot ates)
+
+Tonnage
+
+CAR TRUCK

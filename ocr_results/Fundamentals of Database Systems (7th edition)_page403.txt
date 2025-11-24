@@ -1,0 +1,53 @@
+12.1 Overview of Object Database Concepts
+
+Specifying Object Persistence via Naming and Reachability. An ODBS is
+often closely coupled with an object-oriented programming language (OOPL). The
+OOPL is used to specify the method (operation) implementations as well as other
+application code. Not all objects are meant to be stored permanently in the data-
+base. Transient objects exist in the executing program and disappear once the pro-
+gram terminates. Persistent objects are stored in the database and persist after
+program termination. The typical mechanisms for making an object persistent are
+naming and reachability.
+
+The naming mechanism involves giving an object a unique persistent name within
+a particular database. This persistent object name can be given via a specific state-
+ment or operation in the program, as shown in Figure 12.3. The named persistent
+objects are used as entry points to the database through which users and applica-
+tions can start their database access. Obviously, it is not practical to give names to
+all objects in a large database that includes thousands of objects, so most objects are
+made persistent by using the second mechanism, called reachability. The reach-
+ability mechanism works by making the object reachable from some other persis-
+tent object. An object B is said to be reachable from an object A if a sequence of
+references in the database lead from object A to object B.
+
+If we first create a named persistent object N, whose state is a set of objects of some
+class C, we can make objects of C persistent by adding them to the set, thus making
+them reachable from N. Hence, N is a named object that defines a persistent
+collection of objects of class C. In the object model standard, N is called the extent
+of C (see Section 12.3).
+
+For example, we can define a class DEPARTMENT_SET (see Figure 12.3) whose
+objects are of type set(DEPARTMENT).'° We can create an object of type
+DEPARTMENT_SET, and give it a persistent name ALL_DEPARTMENTS, as shown in
+Figure 12.3. Any DEPARTMENT object that is added to the set of ALL_DEPARTMENTS
+by using the add_dept operation becomes persistent by virtue of its being reach-
+able from ALL_DEPARTMENTS. As we will see in Section 12.3, the OOMG ODL
+standard gives the schema designer the option of naming an extent as part of
+class definition.
+
+Notice the difference between traditional database models and ODBs in this respect.
+In traditional database models, such as the relational model, all objects are assumed
+to be persistent. Hence, when a table such as EMPLOYEE is created in a relational
+database, it represents both the type declaration for EMPLOYEE and a persistent set
+of all EMPLOYEE records (tuples). In the OO approach, a class declaration of
+EMPLOYEE specifies only the type and operations for a class of objects. The user
+must separately define a persistent object of type set(EMPLOYEE) whose value is the
+collection of references (OIDs) to all persistent EMPLOYEE objects, if this is desired,
+as shown in Figure 12.3.'! This allows transient and persistent objects to follow the
+
+10s we will see in Section 12.3, the ODMG ODL syntax uses set<DEPARTMENT> instead of
+set(DEPARTMENT).
+
+''Some systems, such as POET, automatically create the extent for a class.
+
+373

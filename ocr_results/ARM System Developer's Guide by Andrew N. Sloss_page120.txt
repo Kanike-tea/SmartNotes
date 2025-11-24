@@ -1,0 +1,50 @@
+5.2 BasicC Data Types 107
+
+Table 5.2 C compiler datatype mappings.
+
+C Data Type Implementation
+
+char unsigned 8-bit byte
+short signed 16-bit halfword
+int signed 32-bit word
+
+long signed 32-bit word
+
+long long signed 64-bit double word
+
+5.2.1 LOCAL VARIABLE TYPES
+
+ARMv4-based processors can efficiently load and store 8-, 16-, and 32-bit data. However,
+most ARM data processing operations are 32-bit only. For this reason, you should use
+a 32-bit datatype, int or long, for local variables wherever possible. Avoid using char and
+short as local variable types, even if you are manipulating an 8- or 16-bit value. The one
+exception is when you want wrap-around to occur. If you require modulo arithmetic of the
+form 255 + 1 = 0, then use the char type.
+
+To see the effect of local variable types, let’s consider a simple example. We'll look in
+detail at a checksum function that sums the values in a data packet. Most communication
+protocols (such as TCP/IP) have a checksum or cyclic redundancy check (CRC) routine to
+check for errors in a data packet.
+
+The following code checksums a data packet containing 64 words. It shows why you
+should avoid using char for local variables.
+
+int checksum_v1(int *data)
+
+{
+char i;
+int sum=0;
+
+for (i=0; i<64; i++)
+
+{
+sum += data[i];
+}
+return sum;
+}
+
+At first sight it looks as though declaring i as a char is efficient. You may be thinking
+that a char uses less register space or less space on the ARM stack than an int. On the
+ARM, both these assumptions are wrong. All ARM registers are 32-bit and all stack entries
+are at least 32-bit. Furthermore, to implement the i++ exactly, the compiler must account
+for the case when i = 255. Any attempt to increment 255 should produce the answer 0.

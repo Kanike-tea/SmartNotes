@@ -1,0 +1,55 @@
+970 Chapter 26 Enhanced Data Models
+
+R1: CREATE TRIGGER T1
+AFTER INSERT ON TABLE1
+FOR EACH ROW
+
+UPDATE TABLE2
+SET Attribute! =
+
+R2: CREATE TRIGGER T2
+
+Figure 26.4
+An example to illustrate AFTER UPDATE OF Attribute! ON TABLE2
+the termination problem FOR EACH ROW
+
+for active rules.
+
+INSERT INTO TABLE1 VALUES (... );
+
+TABLE2. However, rule R2’s triggering event is an UPDATE event on Attribute1 of
+TABLE2, and its action includes an INSERT event on TABLE1. In this example, it is
+easy to see that these two rules can trigger one another indefinitely, leading to non-
+termination. However, if dozens of rules are written, it is very difficult to determine
+whether termination is guaranteed or not.
+
+If active rules are to reach their potential, it is necessary to develop tools for the
+design, debugging, and monitoring of active rules that can help users design and
+debug their rules.
+
+26.1.3 Examples of Statement-Level Active Rules
+in STARBURST
+
+We now give some examples to illustrate how rules can be specified in the STARBURST
+experimental DBMS. This will allow us to demonstrate how statement-level rules can
+be written, since these are the only types of rules allowed in STARBURST.
+
+The three active rules R1S, R2S, and R3S in Figure 26.5 correspond to the first three
+rules in Figure 26.2, but they use STARBURST notation and statement-level seman-
+tics. We can explain the rule structure using rule R1S. The CREATE RULE statement
+specifies a rule name—Total_sal1 for R1S. The ON clause specifies the relation on
+which the rule is specified EMPLOYEE for R1S. The WHEN clause is used to specify
+the events that trigger the rule.* The optional IF clause is used to specify any
+conditions that need to be checked. Finally, the THEN clause is used to specify the
+actions to be taken, which are typically one or more SQL statements.
+
+In STARBURST, the basic events that can be specified for triggering the rules are
+the standard SQL update commands: INSERT, DELETE, and UPDATE. These are
+specified by the keywords INSERTED, DELETED, and UPDATED in STARBURST
+notation. Second, the rule designer needs to have a way to refer to the tuples that
+have been modified. The keywords INSERTED, DELETED, NEW-UPDATED, and
+OLD-UPDATED are used in STARBURST notation to refer to four transition tables
+(relations) that include the newly inserted tuples, the deleted tuples, the updated
+
+8Note that the WHEN keyword specifies events in STARBURST but is used to specify the rule conaltion
+in SOL and Oracle triggers.

@@ -1,0 +1,46 @@
+1, Directed Graphs and Gra,
+
+In this graph:
+(i) The sequence v) €1 V2 € v3 eg V6 is a walk of length 3 (because, this walk contains
+edges: €1, €2, eg). In this walk, no vertex and no edge is repeated.
+
+(ii). The sequence v; €4 Vs €3 V2 7 V3.5 Vs 6 V4 isa walk of length 5. In this walk, the v
+
+vs is repeated, but no edge is repeated.
+(iii) The sequence v 1 v2 €3 Vs €3 V2 €2 V3 is a walk of length 4. In this walk, the edge e
+repeated and the vertex v2 is repeated.
+
+The vertex with which a walk begins is called the initial vertex (or the origin) of the wal}
+and the vertex with which a walk ends is called the final vertex (or the terminus) of the wa k
+The initial vertex and the final vertex of a walk are together called its terminal vertices.
+terminal vertices of a walk need not be distinct. Nonterminal vertices of a walk are called it
+internal vertices.
+
+A walk having u as the initial vertex and v as the final vertex is called a walk from u to v,
+briefly a u-v walk. 4
+
+A walk that begins and ends at the same vertex is called a closed walk. In other word
+closed walk is a walk in which the terminal vertices are coincident.
+
+A walk which is not closed is called an open walk. In other words, an open walk is a
+that begins and ends at two different vertices.
+
+For example, in the graph shown in Figure 1.98, vjeiv2e3vseav1 is a closed walk
+v1e)¥2e2V3esVs5 is an open walk.
+
+Trail and Circuit
+
+‘As mentioned before, in a walk, vertices and/or edges may appear more than once. If in n
+open walk no edge appears more than once, then the walk is called a trail. A closed walk i
+which no edge appears more than once is called a circuit.
+
+Hotton ea aan: fhe walk viervaesvses¥2e2¥3 (shown separately in F
+eit ashe reas ut not a trail (because, in this walk, the edge e3 is repeated) whe
+wea 2V3€5V5e6V4 (Shown separately in Figure 1.99(b)) is an open walk whl
+‘aoa: te alent ue VaeSVSe3V2E2V3E5VSC4V (shown separately in Fig
+VEL V2ESVSESVZETV4EGVSE4Y) eine ie wie ae ae sts rppemted): wheroe? the
+a circuit, parately in Figure 1.100(b)) is a closed walk which
+
+<1 eommerenaeereneteetnaeteee ire
+‘In Figures 1.99 to 1.102, the arrows indi
+cient ndicate the orders in which the vertices and edges in the correspon”

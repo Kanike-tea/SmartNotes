@@ -1,0 +1,52 @@
+578
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+scheme—extendible hashing—stores an access structure in addition to the file, and
+hence is somewhat similar to indexing (see Chapter 17). The main difference is that
+the access structure is based on the values that result after application of the hash
+function to the search field. In indexing, the access structure is based on the values
+of the search field itself. The second technique, called linear hashing, does not
+require additional access structures. Another scheme, called dynamic hashing, uses
+an access structure based on binary tree data structures.
+
+These hashing schemes take advantage of the fact that the result of applying a hash-
+ing function is a nonnegative integer and hence can be represented as a binary
+number. The access structure is built on the binary representation of the hashing
+function result, which is a string of bits. We call this the hash value of a record.
+Records are distributed among buckets based on the values of the leading bits in
+their hash values.
+
+Extendible Hashing. In extendible hashing, proposed by Fagin (1979), a type of
+directory—an array of 24 bucket addresses—is maintained, where d is called the
+global depth of the directory. The integer value corresponding to the first (high-
+order) d bits of a hash value is used as an index to the array to determine a directory
+entry, and the address in that entry determines the bucket in which the correspond-
+ing records are stored. However, there does not have to be a distinct bucket for each
+of the 24 directory locations. Several directory locations with the same first d’ bits
+for their hash values may contain the same bucket address if all the records that
+hash to these locations fit in a single bucket. A local depth d’—stored with each
+bucket—specifies the number of bits on which the bucket contents are based. Fig-
+ure 16.11 shows a directory with global depth d= 3.
+
+The value of d can be increased or decreased by one at a time, thus doubling or
+halving the number of entries in the directory array. Doubling is needed if a bucket,
+whose local depth d’ is equal to the global depth d, overflows. Halving occurs if
+d>d' for all the buckets after some deletions occur. Most record retrievals require
+two block accesses—one to the directory and the other to the bucket.
+
+To illustrate bucket splitting, suppose that a new inserted record causes overflow in
+the bucket whose hash values start with 01—the third bucket in Figure 16.11. The
+records will be distributed between two buckets: the first contains all records whose
+hash values start with 010, and the second all those whose hash values start with 011.
+Now the two directory locations for 010 and 011 point to the two new distinct
+buckets. Before the split, they pointed to the same bucket. The local depth d’ of the
+two new buckets is 3, which is one more than the local depth of the old bucket.
+
+If a bucket that overflows and is split used to have a local depth d’ equal to the
+global depth d of the directory, then the size of the directory must now be doubled
+so that we can use an extra bit to distinguish the two new buckets. For example, if
+the bucket for records whose hash values start with 111 in Figure 16.11 overflows,
+the two new buckets need a directory with global depth d = 4, because the two
+buckets are now labeled 1110 and 1111, and hence their local depths are both 4.
+The directory size is hence doubled, and each of the other original locations in the

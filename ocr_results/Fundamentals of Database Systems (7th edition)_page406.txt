@@ -1,0 +1,52 @@
+376
+
+Chapter 12 Object and Object-Relational Databases
+
+Area is a method that is applied to calculate the area. Reference_point specifies the
+coordinates of a point that determines the object location. Now suppose that we
+want to define a number of subtypes for the GEOMETRY_OBJECT type, as follows:
+
+RECTANGLE subtype-of GEOMETRY_OBJECT: Width, Height
+TRIANGLE S subtype-of GEOMETRY_OBJECT: Side1, Side2, Angle
+CIRCLE subtype-of GEOMETRY_OBJECT: Radius
+
+Notice that the Area operation may be implemented by a different method for each
+subtype, since the procedure for area calculation is different for rectangles, trian-
+gles, and circles. Similarly, the attribute Reference_point may have a different mean-
+ing for each subtype; it might be the center point for RECTANGLE and CIRCLE
+objects, and the vertex point between the two given sides for a TRIANGLE object.
+
+Notice that type definitions describe objects but do not generate objects on their
+own. When an object is created, typically it belongs to one or more of these types
+that have been declared. For example, a circle object is of type CIRCLE and
+GEOMETRY_OBJECT (by inheritance). Each object also becomes a member of one
+or more persistent collections of objects (or extents), which are used to group
+together collections of objects that are persistently stored in the database.
+
+Constraints on Extents Corresponding to a Type Hierarchy. In most ODBs,
+an extent is defined to store the collection of persistent objects for each type or sub-
+type. In this case, the constraint is that every object in an extent that corresponds to
+a subtype must also be a member of the extent that corresponds to its supertype.
+Some OO database systems have a predefined system type (called the ROOT class or
+the OBJECT class) whose extent contains all the objects in the system.'*
+
+Classification then proceeds by assigning objects into additional subtypes that are
+meaningful to the application, creating a type hierarchy (or class hierarchy) for the
+system. All extents for system- and user-defined classes are subsets of the extent
+corresponding to the class OBJECT, directly or indirectly. In the ODMG model (see
+Section 12.3), the user may or may not specify an extent for each class (type),
+depending on the application.
+
+An extent is a named persistent object whose value is a persistent collection that
+holds a collection of objects of the same type that are stored permanently in the
+database. The objects can be accessed and shared by multiple programs. It is also
+possible to create a transient collection, which exists temporarily during the execu-
+tion of a program but is not kept when the program terminates. For example, a
+transient collection may be created in a program to hold the result of a query that
+selects some objects from a persistent collection and copies those objects into the
+transient collection. The program can then manipulate the objects in the transient
+collection, and once the program terminates, the transient collection ceases to exist.
+In general, numerous collections—transient or persistent—may contain objects of
+the same type.
+
+'This is called OBJECT in the ODMG model (see Section 12.3).

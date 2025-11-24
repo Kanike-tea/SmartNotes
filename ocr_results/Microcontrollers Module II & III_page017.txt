@@ -1,0 +1,50 @@
+Microcontrollers — BCS402
+
+Addressing
+
+mode Description Start address End address Rn!
+
+IA increment after Rn Rn+4*N —4 Rn+4*N
+IB increment before Rn+4 Rn+4*N Rn+4°N
+DA decrement after Rn-—4*N+4 Rn Rn-4°N
+DB decrement before Rn—4*N Rn—4 Rn —4*N
+
+Any subset of the current bank of registers can be transferred to memory or fetched from
+memory. The base register Rn determines the source or destination address for a loadstore
+
+multiple instruction. This register can be optionally updated following the transfer.
+
+This occurs when register Rn is followed by the ! character, similar to the single-register
+
+load-store using preindex with writeback.
+
+Example:
+In this example, register r0 is the base register Rn and is followed by !, indicating that the
+
+register is updated after the instruction is executed. Instead the character is used to
+identify a range of registers. In this case the range is from register rl to r3 inclusive.
+
+Each register can also be listed, using a comma to separate each register within “{” and “}”
+brackets.
+
+LDMIA 101, {r 1-13}
+
+PRE mem32[0x80018] = 0x03, mem32[0x80014] = 0x02, mem32[0x80010] = 0x01,
+10 = 0x00080010, rl = 0x00000000, r2 = 0x00000000, r3 = 0x00000000
+POST 10 = 0x000800 1c, rl = 0x00000001, r2 = 0x00000002, r3 = 0x00000003
+
+Figure 3 shows a graphical representation.
+
+Memory
+Address pointer address Data
+0x80020 | 0x00000005
+0x8001c | 0x00000004
+0x80018 | 0x00000003 | r3 = 0x00000000
+
+| 0x80014 | 0x00000002 | 12 = 0x00000000
+0 = 0x80010 —> | 0x80010 | 0x00000001 | r/ = 0x00000000
+0x8000c | 0x00000000
+
+Fig 3: Pre-condition for LDMIA instruction
+
+Dept. of ECE, GSSSIETW Page 18

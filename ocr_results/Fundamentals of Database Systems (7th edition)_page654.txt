@@ -1,0 +1,53 @@
+624
+
+Chapter 17 Indexing Structures for Files and Physical Database Design
+
+The pointers in internal nodes are tree pointers to blocks that are tree nodes, whereas
+the pointers in leaf nodes are data pointers to the data file records or blocks—except
+for the Pyrex: pointer, which is a tree pointer to the next leaf node. By starting at the
+leftmost leaf node, it is possible to traverse leaf nodes as a linked list, using the Pext
+pointers. This provides ordered access to the data records on the indexing field. A
+Pprevious pointer can also be included. For a B*-tree on a nonkey field, an extra level
+of indirection is needed similar to the one shown in Figure 17.5, so the Pr pointers
+are block pointers to blocks that contain a set of record pointers to the actual
+records in the data file, as discussed in option 3 of Section 17.1.3.
+
+Because entries in the internal nodes of a B*-tree include search values and tree
+pointers without any data pointers, more entries can be packed into an internal
+node of a B*-tree than for a similar B-tree. Thus, for the same block (node) size, the
+order p will be larger for the B*-tree than for the B-tree, as we illustrate in Example 6.
+This can lead to fewer B*-tree levels, improving search time. Because the structures
+for internal and for leaf nodes of a B*-tree are different, the order p can be different.
+We will use p to denote the order for internal nodes and p,a¢ to denote the order
+for leaf nodes, which we define as being the maximum number of data pointers in
+a leaf node.
+
+Example 6. To calculate the order p of a B*-tree, suppose that the search key field
+is V = 9 bytes long, the block size is B = 512 bytes, a record pointer is Pr = 7 bytes,
+and a block pointer/tree pointer is P = 6 bytes. An internal node of the B'-tree can
+have up to p tree pointers and p — 1 search field values; these must fit into a single
+block. Hence, we have:
+
+(p* P)+((p-1)* V)<B
+(p* 6) + ((p-1)* 9) $512
+(15 * p) < 512
+
+We can choose p to be the largest value satisfying the above inequality, which gives
+p = 34. This is larger than the value of 23 for the B-tree (it is left to the reader to
+compute the order of the B-tree assuming same size pointers), resulting in a larger
+fan-out and more entries in each internal node of a B*-tree than in the correspond-
+ing B-tree. The leaf nodes of the B*-tree will have the same number of values and
+pointers, except that the pointers are data pointers and a next pointer. Hence, the
+order Pjear for the leaf nodes can be calculated as follows:
+
+(Piear* (Pr + V))+P<B
+(Pleat * (7 +9)) +6 < 512
+(16 * Pieat) < 506
+
+It follows that each leaf node can hold up to pj,a¢ = 31 key value/data pointer combi-
+nations, assuming that the data pointers are record pointers.
+
+As with the B-tree, we may need additional information—to implement the inser-
+tion and deletion algorithms—in each node. This information can include the type
+of node (internal or leaf), the number of current entries q in the node, and pointers
+to the parent and sibling nodes. Hence, before we do the above calculations for p

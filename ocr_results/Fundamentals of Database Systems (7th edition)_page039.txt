@@ -1,0 +1,54 @@
+1.2 An Example
+
+single character from the set {‘A’, ‘B’, ‘C’, ‘D’, ‘F’, ‘}. We may also use a coding
+scheme to represent the values of a data item. For example, in Figure 1.2 we rep-
+resent the Class of a STUDENT as 1 for freshman, 2 for sophomore, 3 for junior,
+4 for senior, and 5 for graduate student.
+
+To construct the UNIVERSITY database, we store data to represent each student,
+course, section, grade report, and prerequisite as a record in the appropriate file.
+Notice that records in the various files may be related. For example, the record for
+Smith in the STUDENT file is related to two records in the GRADE_REPORT file that
+specify Smith’s grades in two sections. Similarly, each record in the PREREQUISITE
+file relates two course records: one representing the course and the other represent-
+ing the prerequisite. Most medium-size and large databases include many types of
+records and have many relationships among the records.
+
+Database manipulation involves querying and updating. Examples of queries are as
+follows:
+
+= Retrieve the transcript—a list of all courses and grades—of ‘Smith’
+
+= List the names of students who took the section of the ‘Database’ course
+offered in fall 2008 and their grades in that section
+
+= List the prerequisites of the ‘Database’ course
+Examples of updates include the following:
+
+= Change the class of ‘Smith’ to sophomore
+= Create a new section for the ‘Database’ course for this semester
+= Enter a grade of ‘A’ for ‘Smith’ in the ‘Database’ section of last semester
+
+These informal queries and updates must be specified precisely in the query lan-
+guage of the DBMS before they can be processed.
+
+At this stage, it is useful to describe the database as part of a larger undertaking
+known as an information system within an organization. The Information Tech-
+nology (IT) department within an organization designs and maintains an informa-
+tion system consisting of various computers, storage systems, application software,
+and databases. Design of a new application for an existing database or design of a
+brand new database starts off with a phase called requirements specification and
+analysis. These requirements are documented in detail and transformed into a
+conceptual design that can be represented and manipulated using some comput-
+erized tools so that it can be easily maintained, modified, and transformed into a
+database implementation. (We will introduce a model called the Entity-Relation-
+ship model in Chapter 3 that is used for this purpose.) The design is then translated
+to a logical design that can be expressed in a data model implemented in a com-
+mercial DBMS. (Various types of DBMSs are discussed throughout the text, with an
+emphasis on relational DBMSs in Chapters 5 through 9.)
+
+The final stage is physical design, during which further specifications are provided for
+storing and accessing the database. The database design is implemented, populated
+with actual data, and continuously maintained to reflect the state of the miniworld.
+
+9

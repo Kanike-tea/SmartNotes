@@ -1,0 +1,72 @@
+536
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+15.24.
+
+15.25.
+
+15.26.
+
+15.27.
+15.28.
+
+15.29.
+
+15.31.
+
+Consider the example of normalizing the LOTS relation in Sections 14.4
+and 14.5. Determine whether the decomposition of LOTS into {LOTS1AX,
+LOTS1AY, LOTS1B, LOTS2} has the lossless join property by applying
+Algorithm 15.3 and also by using the test under property NJB from Sec-
+tion 14.5.1.
+
+Show how the MVDs Ename —» and Ename —» Dname in Figure 14.15(a)
+may arise during normalization into 1NF of a relation, where the attributes
+Pname and Dname are multivalued.
+
+Apply Algorithm 15.2(a) to the relation in Exercise 14.24 to determine a key
+for R. Create a minimal set of dependencies G that is equivalent to F, and apply
+the synthesis algorithm (Algorithm 15.4) to decompose R into 3NF relations.
+
+Repeat Exercise 15.26 for the functional dependencies in Exercise 14.25.
+
+Apply the decomposition algorithm (Algorithm 15.5) to the relation R and
+the set of dependencies F in Exercise 15.24. Repeat for the dependencies G in
+Exercise 15.25.
+
+Apply Algorithm 15.2(a) to the relations in Exercises 14.27 and 14.28 to
+determine a key for R. Apply the synthesis algorithm (Algorithm 15.4) to
+decompose R into 3NF relations and the decomposition algorithm (Algo-
+rithm 15.5) to decompose R into BCNF relations.
+
+Consider the following decompositions for the relation schema R of Exer-
+
+cise 14.24. Determine whether each decomposition has (1) the dependency
+
+preservation property, and (2) the lossless join property, with respect to F.
+
+Also determine which normal form each relation in the decomposition is in.
+
+a. D, = {Rj, Ro, Rs, Ry Rs}; Ry = {A, B, Ch, Ry = {A, D, E}, R3 = {B, Fh,
+Ry={F, G, H}, Rs = {D, 1 J}
+
+b. Dy = {Rj, Ro, R3}; Ry = {A, B, C, D, E}, Ry = {B, F, G, H}, R3 = {D, LJ}
+
+c. Ds = {Ry, Ro, Ry, Ry Rs}; Ry = {A, B, C, D}, Ry = {D, E}, Rs = {B, Fh,
+Ry ={F, G, H}, Rs = {D, LJ}
+
+Laboratory Exercises
+
+Note: These exercises use the DBD (Data Base Designer) system that is described
+in the laboratory manual. The relational schema R and set of functional dependen-
+cies F need to be coded as lists. As an example, R and F for Problem 14.24 are
+
+coded as:
+R=[a, b,c, d,e,f,g,h, i,j]
+F={[fa, b],[el],
+(lal,{4, el],
+({e), (Al,
+(LAL Lg; All,
+
+(4b

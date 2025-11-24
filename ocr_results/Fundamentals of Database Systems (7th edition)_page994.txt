@@ -1,0 +1,55 @@
+964 Chapter 26 Enhanced Data Models
+
+EMPLOYEE
+
+Name | Ssn | Salary | Dno | Supervisor_ssn
+Figure 26.1
+A simplified COMPANY DEPARTMENT
+
+database used for active
+
+rule examples.
+
+Dname | Dno | Total_sal | Manager_ssn
+
+occurs. If a condition is specified, it is first evaluated, and only if it evaluates
+to true will the rule action be executed.
+
+3. The action to be taken: The action is usually a sequence of SQL statements,
+but it could also be a database transaction or an external program that will
+be automatically executed.
+
+Let us consider some examples to illustrate these concepts. The examples are
+based on a much simplified variation of the COMPANY database application
+from Figure 5.5 and are shown in Figure 26.1, with each employee having a
+name (Name), Social Security number (Ssn), salary (Salary), department to
+which she is currently assigned (Dno, a foreign key to DEPARTMENT), and a
+direct supervisor (Supervisor_ssn, a (recursive) foreign key to EMPLOYEE). For
+this example, we assume that NULL is allowed for Dno, indicating that an
+employee may be temporarily unassigned to any department. Each department
+has a name (Dname), number (Dno), the total salary of all employees assigned to
+the department (Total_sal), and a manager (Manager_ssn, which is a foreign key
+to EMPLOYEE).
+
+Notice that the Total_sal attribute is really a derived attribute whose value should be
+the sum of the salaries of all employees who are assigned to the particular depart-
+ment. Maintaining the correct value of such a derived attribute can be done via an
+active rule. First we have to determine the events that may cause a change in the
+value of Total_sal, which are as follows:
+
+1. Inserting (one or more) new employee tuples
+2. Changing the salary of (one or more) existing employees
+
+3. Changing the assignment of existing employees from one department to
+another
+
+4. Deleting (one or more) employee tuples
+
+In the case of event 1, we only need to recompute Total_sal if the new employee is
+immediately assigned to a department—that is, if the value of the Dno attribute for
+the new employee tuple is not NULL (assuming NULL is allowed for Dno). Hence, this
+would be the condition to be checked. A similar condition could be checked for
+event 2 (and 4) to determine whether the employee whose salary is changed (or
+who is being deleted) is currently assigned to a department. For event 3, we will
+always execute an action to maintain the value of Total_sal correctly, so no condition
+is needed (the action is always executed).

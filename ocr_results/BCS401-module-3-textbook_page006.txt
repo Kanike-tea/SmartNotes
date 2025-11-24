@@ -1,0 +1,46 @@
+224
+
+Transform-and-Conquer
+
+2-node 3-node
+
+Ky, Kp
+
+<K >K <K, (Ky, Ko) >
+
+FIGURE 6.7 Two kinds of nodes of a 2-3 tree
+
+subtree if K is, respectively, smaller or larger than the root’s key. If the root is a 3-
+node, we know after no more than two key comparisons whether the search can
+be stopped (if K is equal to one of the root’s keys) or in which of the root’s three
+subtrees it needs to be continued.
+
+Inserting a new key in a 2-3 tree is done as follows. First of all, we always
+insert a new key K in a leaf, except for the empty tree. The appropriate leaf is
+found by performing a search for K. If the leaf in question is a 2-node, we insert
+K there as either the first or the second key, depending on whether K is smaller or
+larger than the node’s old key. If the leaf is a 3-node, we split the leaf in two: the
+smallest of the three keys (two old ones and the new key) is put in the first leaf,
+the largest key is put in the second leaf, and the middle key is promoted to the
+old leaf’s parent. (If the leaf happens to be the tree’s root, a new root is created
+to accept the middle key.) Note that promotion of a middle key to its parent can
+cause the parent’s overflow (if it was a 3-node) and hence can lead to several node
+splits along the chain of the leaf’s ancestors.
+
+An example of a 2-3 tree construction is given in Figure 6.8.
+
+As for any search tree, the efficiency of the dictionary operations depends on
+the tree’s height. So let us first find an upper bound for it. A 2-3 tree of height h
+with the smallest number of keys is a full tree of 2-nodes (such as the final tree in
+Figure 6.8 for h = 2). Therefore, for any 2-3 tree of height h with n nodes, we get
+the inequality
+
+n>1¢24---$2" = 2el_ 4,
+and hence
+h<logn+1)-1.
+
+On the other hand, a 2-3 tree of height h with the largest number of keys is a full
+tree of 3-nodes, each with two keys and three children. Therefore, for any 2-3 tree
+with n nodes,
+
+n<2-142-34---42-3"=20434---43") =3't! 1

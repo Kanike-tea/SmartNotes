@@ -1,0 +1,113 @@
+27.2 Retrieval Models 1029
+
+Di a —
+D wv) Document Corpus <r INTENT
+Document 1 Information
+
+cS Need/Search |
+
+Stopword removal Preprocessing Keywords, Boolean, phrase, Query Formation
+Stemming proximity, wildcard queries, etc.
+Thesaurus t
+Digits, hyphens,
+
+punctuation marks, cases Conversion from humanly Query Processing
+Information extraction
+
+Y Situation assessment
+Modeling Query expansion heuristics
+
+(users's profile, related metadata,
+
+Retrieval models
+
+Type of queries te)
+1 Choice of search strategy Searching
+Indexing (approximate vs. exact matches, Mechanism
+Inverted index construction exhaustive vs. top K)
+
+Index vocabulary
+Document statistics
+
+Type of similarity measure
+
+~1
+|
+|
+|
+|
+|
+|
+|
+|
+understandable to internal format I
+i
+|
+|
+I
+|
+|
+|
+|
+|
+|
+i
+|
+|
+|
+L
+
+|
+|
+I
+|
+|
+|
+I
+|
+|
+|
+|
+|
+| i
+|
+|
+|
+|
+|
+I
+|
+|
+|
+I
+|
+|
+
+Index maintenance |
+1 Ranking results] Document Storing user's | Relevance
+| Showing useful | Retrieval feedback | Feedback
+| —— 4 metadata | ___] Personalization
+>
+— — Pattern analysis
+External data Metadata of relevant
+Le J Integration
+ontologies results
+_J
+
+Legend: Dashed lines indicate next iteration
+
+Figure 27.1
+Generic IR framework.
+
+and the document properties, such as date of creation, author, and type of docu-
+ment—are fetched from the inverted index and compared with the query. This
+comparison results in a ranked list shown to the user. The user can then provide
+feedback on the results that triggers implicit or explicit query modification and
+expansion to fetch results that are more relevant for the user. Most IR systems allow
+for an interactive search in which the query and the results are successively refined.
+
+27.2 Retrieval Models
+
+In this section, we briefly describe the important models of IR. These are the
+three main statistical models—Boolean, vector space, and probabilistic—and the
+semantic model.

@@ -1,0 +1,54 @@
+Q2: {i, k, s, u,v | (Aj)(Gm)(Gn) (Gt) (PROJECT(hijk) AND
+EMPLOYEE(qrstuvwxyz) AND DEPARTMENT(/mno) AND k=m AND
+n=t AND j="Stafford’)}
+
+Query 6. List the names of employees who have no dependents.
+
+Q6: {q, s | (At)(EMPLOYEE(qrstuvwxyz) AND
+(NOT(4I)(DEPENDENT(Imnop) AND t=1)))}
+
+Q6 can be restated using universal quantifiers instead of the existential quantifiers,
+as shown in Q6A:
+
+Q6A: {q, s | (At)(EMPLOYEE(qrstuvwxyz) AND
+((V)(NOT(DEPENDENT(Imnop)) OR NOT(t=!))))}
+
+Query 7. List the names of managers who have at least one dependent.
+
+az: {s, q | (t)(j) (GD (EMPLOYEE(qrstuvwxyz) AND DEPARTMENT(hijk)
+AND DEPENDENT(Imnop) AND t=j AND /=1)}
+
+As we mentioned earlier, it can be shown that any query that can be expressed in
+the basic relational algebra can also be expressed in the domain or tuple relational
+calculus. Also, any safe expression in the domain or tuple relational calculus can be
+expressed in the basic relational algebra.
+
+The QBE language was based on the domain relational calculus, although this was
+realized later, after the domain calculus was formalized. QBE was one of the first
+graphical query languages with minimum syntax developed for database systems. It
+was developed at IBM Research and is available as an IBM commercial product as
+part of the Query Management Facility (QMF) interface option to DB2. The basic
+ideas used in QBE have been applied in several other commercial products. Because
+of its important place in the history of relational languages, we have included an
+overview of QBE in Appendix C.
+
+8.8 Summary
+
+In this chapter we presented two formal languages for the relational model of data.
+They are used to manipulate relations and produce new relations as answers to que-
+ries. We discussed the relational algebra and its operations, which are used to spec-
+ify a sequence of operations to specify a query. Then we introduced two types of
+relational calculi called tuple calculus and domain calculus.
+
+In Sections 8.1 through 8.3, we introduced the basic relational algebra operations
+and illustrated the types of queries for which each is used. First, we discussed the
+unary relational operators SELECT and PROJECT, as well as the RENAME operation.
+Then, we discussed binary set theoretic operations requiring that relations on
+which they are applied be union (or type) compatible; these include UNION,
+INTERSECTION, and SET DIFFERENCE. The CARTESIAN PRODUCT operation is a
+set operation that can be used to combine tuples from two relations, producing
+all possible combinations. It is rarely used in practice; however, we showed how
+
+8.8 Summary
+
+279

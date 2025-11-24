@@ -1,0 +1,53 @@
+Three-State Gates
+
+A three-state gate has a control input that can place the gate into a high-impedance state. The high-
+impedance state is symbolized by z in Verilog. There are four types of three-state gates, as shown in Fig
+below. The bufif] gate behaves like a normal buffer if control = 1. The output goes to a high-impedance
+state z when control = 0. The bufif0 gate behaves in a similar fashion, except that the high-impedance
+state occurs when control = 1. The two notif gates operate in a similar manner, except that the output is
+the complement of the input when the gate is not in a high-impedance state. The gates are instantiated
+with the statement
+
+gate name (output, input, control);
+
+in out in [> out
+
+control
+
+control —1
+bufifl bufifo
+
+in out in out
+
+control control
+
+notifi notif0
+Three-state gates
+In simulation, the output can result in 0, 1, x, or z. Two examples of gate instantiation are
+
+bufifl (OUT, A, control);
+notif0 (Y, B, enable);
+In the first example, input A is transferred to OUT when control = 1. OUT goes to z when control = 0.
+In the second example, output Y = z when enable = | and output Y = Bwhen enable = 0.
+
+The outputs of three-state gates can be connected together to form a common output line. To identify
+such a connection, Verilog HDL uses the keyword tri (for tristate) to indicate that the output has multiple
+drivers. As an example, consider the two-to-one-line multiplexer with three-state gates shown in Fig
+
+below.
+B
+
+select
+
+Two-to-one-line multiplexer with three-state buffers
+
+The HDL description must use a tri data type for the output:
+
+module mux_tri (m_out, A, B, select);
+output m_out;
+input A,B, select;
+tri m_out;
+
+bufif1 (m_out, A, select);
+bufif0 (m_out, B, select);
+endmodule

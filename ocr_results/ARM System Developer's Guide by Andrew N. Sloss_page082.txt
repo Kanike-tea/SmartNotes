@@ -1,0 +1,43 @@
+3.3 Load-Store Instructions 69
+
+; store 32 bytes to destination and update r10 pointer
+STMIA rl0!, {r0-r7} ; and store them
+
+; have we reached the end
+CMP or9, rll
+BNE loop
+
+This routine relies on registers r9, r10, and rl being set up before the code is executed.
+Registers r9 and r11 determine the data to be copied, and register r10 points to the desti-
+nation in memory for the data. LDMIA loads the data pointed to by register r9 into registers
+r0 to 17. It also updates r9 to point to the next block of data to be copied. STMIA copies the
+contents of registers r0 to r7 to the destination memory address pointed to by register r10.
+It also updates r10 to point to the next destination location. CMP and BNE compare pointers
+r9and rll to check whether the end of the block copy has been reached. If the block copy
+is complete, then the routine finishes; otherwise the loop repeats with the updated values
+of register r9 and r10.
+
+The BNE is the branch instruction B with a condition mnemonic NE (not equal). If the
+previous compare instruction sets the condition flags to not equal, the branch instruction
+is executed.
+
+Figure 3.6 shows the memory map of the block memory copy and how the routine
+moves through memory. Theoretically this loop can transfer 32 bytes (8 words) in two
+instructions, for a maximum possible throughput of 46 MB/second being transferred at
+33 MHz. These numbers assume a perfect memory system with fast memory.
+
+High memory
+
+rll
+4 Source
+
+ro
+Copy
+memory
+location
+
+r10 t Destination
+
+Low memory
+
+Figure 3.6 Block memory copy in the memory map.

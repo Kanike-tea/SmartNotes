@@ -1,0 +1,53 @@
+Data Structures and Applications(BCS304) Module 2
+
+Garbage collection is invisible to the user.
+¢ Overflow: When new data has to be inserted in to a data structure and if there is no
+available space in the free storage list , then we call this condition overflow
+¢ Underflow: Refers to a condition when one tries to delete data from a data structure that is
+empty
+
+Operations on Linked List
+Insertion into a linked list
+It is assumed that the following declaration is made globally
+Sruct Node
+{
+int info;
+struct Node * link;
+oe
+typedef struct Node NODE;
+
+Function to insert a node in the front of a linked list
+
+Void insert_front( int item)
+{
+NODE * temp;
+temp=( NODE *)malloc(sizeof(NODE);
+
+if(temp==NULL)
+
+{
+
+printf("No space available\n");
+exit(0);
+}
+
+else
+
+temp->info=item;
+temp->link=first;
+first=temp;
+
+Function to insert a node in the end of a linked list
+void insert_rear(int item)
+{
+NODE *temp, *cur;
+temp=(NODE *)malloc(sizeof(NODE));
+if(temp==NULL)
+{
+printf("No space available\n");
+exit(0);
+}
+
+temp->info=item;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 15

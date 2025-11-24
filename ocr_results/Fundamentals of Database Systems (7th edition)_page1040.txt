@@ -1,0 +1,53 @@
+1010
+
+Chapter 26 Enhanced Data Models
+
+Here, an infinite number of Y values can again be generated, since the variable Y
+appears only in the head of the rule and hence is not limited to a finite set of values.
+To define safe rules more formally, we use the concept of a limited variable. A vari-
+able X is limited in a rule if (1) it appears in a regular (not built-in) predicate in the
+body of the rule; (2) it appears in a predicate of the form X = c or c = X or (c) <= X
+and X <= cy) in the rule body, where c, c), and cz are constant values; or (3) it appears
+ina predicate of the form X = Y or Y = X in the rule body, where Y is a limited vari-
+able. A rule is said to be safe if all its variables are limited.
+
+26.5.7 Use of Relational Operations
+
+It is straightforward to specify many operations of the relational algebra in the form
+of Datalog rules that define the result of applying these operations on the database
+relations (fact predicates). This means that relational queries and views can easily
+be specified in Datalog. The additional power that Datalog provides is in the speci-
+fication of recursive queries, and views based on recursive queries. In this section,
+we show how some of the standard relational operations can be specified as Datalog
+rules. Our examples will use the base relations (fact-defined predicates) REL_ONE,
+REL_TWO, and REL_THREE, whose schemas are shown in Figure 26.16. In Datalog,
+we do not need to specify the attribute names as in Figure 26.16; rather, the arity
+(degree) of each predicate is the important aspect. In a practical system, the domain
+(data type) of each attribute is also important for operations such as UNION,
+INTERSECTION, and JOIN, and we assume that the attribute types are compatible for
+the various operations, as discussed in Chapter 3.
+
+Figure 26.16 illustrates a number of basic relational operations. Notice that if the
+Datalog model is based on the relational model and hence assumes that predicates
+(fact relations and query results) specify sets of tuples, duplicate tuples in the same
+predicate are automatically eliminated. This may or may not be true, depending on
+the Datalog inference engine. However, it is definitely not the case in Prolog, so any
+of the rules in Figure 26.16 that involve duplicate elimination are not correct for
+Prolog. For example, if we want to specify Prolog rules for the UNION operation
+with duplicate elimination, we must rewrite them as follows:
+
+UNION_ONE_TWO(X, Y, Z) :— REL_ONE(X, Y, Z).
+UNION_ONE_TWO(X, Y, Z) :— REL_TWO(X, Y, Z), NOT(REL_ONE(X, Y, Z)).
+
+However, the rules shown in Figure 26.16 should work for Datalog, if duplicates are
+automatically eliminated. Similarly, the rules for the PROJECT operation shown in
+Figure 26.16 should work for Datalog in this case, but they are not correct for Pro-
+log, since duplicates would appear in the latter case.
+
+26.5.8 Evaluation of Nonrecursive Datalog Queries
+
+In order to use Datalog as a deductive database system, it is appropriate to define an
+inference mechanism based on relational database query processing concepts. The
+inherent strategy involves a bottom-up evaluation, starting with base relations; the
+order of operations is kept flexible and subject to query optimization. In this section
+we discuss an inference mechanism based on relational operations that can be

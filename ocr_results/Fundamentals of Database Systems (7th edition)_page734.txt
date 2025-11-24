@@ -1,0 +1,57 @@
+704
+
+Chapter 19 Query Optimization
+
+We repeat the example query shown in Section 18.1. (Note that the IN operator is
+equivalent to the =ANY operator.):
+
+Qs):
+
+SELECT COUNT(*)
+
+FROM DEPARTMENT D
+
+WHERE D.Dnumber IN ( SELECT E.Dno
+FROM EMPLOYEE E
+WHERE E Salary > 200000)
+
+In this case again, there are two options for the optimizer:
+
+1. Evaluate the nested subquery for each outer tuple; it is inefficient to do so.
+
+2. Unnest the subquery using semi-join, which is much more efficient than
+option 1. In Section 18.1, we used this alternative to introduce and define the
+semi-join operator. Note that for unnesting this subquery, which refers to
+expressing it as a single block, inner join cannot be used, since in inner join
+a tuple of DEPARTMENT may match more than one tuple of EMPLOYEE
+and thus produce wrong results. It is easy to see that a nested subquery acts
+as a filter and thus it cannot, unlike inner join, produce more rows than
+there are in the DEPARTMENT table. Semi-join simulates this behavior.
+
+The process we described as unnesting is sometimes called decorrelation. We
+showed another example in Section 18.1 using the connector “NOT IN”, which was
+converted into a single block query using the operation anti-join. Optimization of
+complex nested subqueries is difficult and requires techniques that can be quite
+involved. We illustrate two such techniques in Section 19.2.3 below. Unnesting is a
+powerful optimization technique and is used widely by SQL optimizers.
+
+19.2.3 Subquery (View) Merging Transformation
+
+There are instances where a subquery appears in the FROM clause of a query and
+amounts to including a derived relation, which is similar to a predefined view that
+is involved in the query. This FROM clause subquery is often referred to as an inline
+view. Sometimes, an actual view defined earlier as a separate query is used as one of
+the argument relations in a new query. In such cases, the transformation of the
+query can be referred to as a view-merging or subquery merging transformation.
+The techniques of view merging discussed here apply equally to both inline and
+predefined views,
+
+Consider the following three relations:
+
+EMP (Ssn, Fn, Ln, Dno)
+DEPT (Dno, Dname, Dmgrname, Bldg_id)
+BLDG (Bldg_id, No_storeys, Addr, Phone)
+
+The meaning of the relations is self-explanatory; the last one represents build-
+ings where departments are located; the phone refers to a phone number for the
+building lobby.

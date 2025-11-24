@@ -1,0 +1,46 @@
+np tie rmbt
+
+For a connected simple graph G with n vertices and m edges which has no
+gules of length 3, show that m $ 2n— 4,
+» Inthe given graph, every region must be bounded by four or more edges, so that the total
+number of edges that bound all regions is greater than or equal to 4, where r is the number
+of regions. On the other hand, an edge is in the boundary of at most two regions, Therefore,
+the total number of edges that bound all regions is less than or equal to 2m, Thus, 4r $ 2m, or
+< 2r, Substituting for r from the Euler's formula in this, we get
+
+mez 2(m=n+2),) or ms 2n-4 .
+
+Let G be a connected simple planar graph with n vertices, m edges and r re-
+gions in which every region is bounded by at least k edges. Show that
+
+k(n — 2)
+
+(k= 2)"
+
+>» Since every region in G is bounded by at least k edges, the total number of edges that bound
+all the r regions is greater than or equal to kr. On the other hand, an edge is the boundary of
+at most two regions. Therefore, the total number of edges that bound all regions is less than or
+equal to 2m. Thus,
+
+(ks, and Gi) ms
+
+kr < 2m (i)
+This proves the required result (i).
+Substituting for r from the Euler’s formula in (i), we get
+k(m—n+2) < 2m
+
+k(n — 2)
+a (k—2)m < k(n- 2), eg or ms ao
+
+This proves the required result (ii). D .
+Let G be a connected simple planar graph with fewer than 12 regions in which
+each vertex has degree at least 3. Prove that G has a region bounded by at most four edges.
+> Suppose every region in G is bounded b'at least 5 edges. Then, if G has.n vertices and m
+edges, we should have (by result (i) of Example 13)
+
+Sr<2m, ‘or m2 ($/2)r (i)
+
+‘ Since each vertex has degree at least 3, the sum of the degrees of the vertices is greater than
+“equal to 3n. By virtue of the handshaking property, this means that
+
+2m > 3n or in < (2/3)m (ii)

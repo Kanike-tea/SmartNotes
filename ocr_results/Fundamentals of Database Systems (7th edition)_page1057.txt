@@ -1,0 +1,51 @@
+27.1 Information Retrieval (IR) Concepts
+
+distributed content on the Web. This has spurred the rapid growth in search engine
+technology, where search engines are trying to discover different kinds of real-time
+content found on the Web. The part of a search engine responsible for discovering,
+analyzing, and indexing these new documents is known as a crawler. Other types of
+search engines exist for specific domains of knowledge. For example, the biomedical
+literature search database was started in the 1970s and is now supported by the
+PubMed search engine,” which gives access to over 24 million abstracts.
+
+Although continuous progress is being made to tailor search results to the needs of
+an end user, the challenge remains in providing high-quality, pertinent, and timely
+information that is precisely aligned to the information needs of individual users.
+
+27.1.4 Modes of Interaction in IR Systems
+
+In the beginning of Section 27.1, we defined information retrieval as the process of
+retrieving documents from a collection in response to a query (or a search request)
+by a user. Typically the collection is made up of documents containing unstruc-
+tured data. Other kinds of documents include images, audio recordings, video
+strips, and maps. Data may be scattered nonuniformly in these documents with no
+definitive structure. A query is a set of terms (also referred to as keywords) used by
+the searcher to specify an information need (for example, the terms databases and
+operating systems may be regarded as a query to a computer science bibliographic
+database). An informational request or a search query may also be a natural lan-
+guage phrase or a question (for example, “What is the currency of China?” or “Find
+Italian restaurants in Sarasota, Florida.”).
+
+There are two main modes of interaction with IR systems—retrieval and brows-
+ing—which, although similar in goal, are accomplished through different interac-
+tion tasks. Retrieval is concerned with the extraction of relevant information from
+a repository of documents through an IR query, whereas browsing signifies the
+exploratory activity of a user visiting or navigating through similar or related docu-
+ments based on the user’s assessment of relevance. During browsing, a user’s infor-
+mation need may not be defined a priori and is flexible. Consider the following
+browsing scenario: A user specifies ‘Atlanta’ as a keyword. The information retrieval
+system retrieves links to relevant result documents containing various aspects of
+Atlanta for the user. The user comes across the term ‘Georgia Tech’ in one of the
+returned documents and uses some access technique (such as clicking on the phrase
+‘Georgia Tech’ in a document that has a built-in link) and visits documents about
+Georgia Tech in the same or a different Web site (repository). There the user finds
+an entry for ‘Athletics’ that leads the user to information about various athletic pro-
+grams at Georgia Tech. Eventually, the user ends his search at the Fall schedule for
+the Yellow Jackets football team, which he finds to be of great interest. This user
+activity is known as browsing. Hyperlinks are used to interconnect Web pages and
+are mainly used for browsing. Anchor texts are text phrases within documents used
+to label hyperlinks and are very relevant to browsing.
+
+°See www.ncbinlm.nih.gov/pubmed/
+
+1027

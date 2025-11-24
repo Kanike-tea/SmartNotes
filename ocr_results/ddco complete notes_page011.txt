@@ -1,0 +1,35 @@
+Digital Design and Computer Organization(BCS302)
+
+> Sixteen adjacent squares produce a function that is always equal to No other
+combination of squares can simplify the function.
+
+My4
+
+ms Mg my My
+
+(a) (b)
+
+FIGURE 3.8
+
+Four-variable map
+
+1)Simplify the Boolean function
+
+F (w, x, y, z) = =m (0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)
+
+Since the function has four variables, a four-variable map must be used. The minterms
+listed in the sum are marked by 1’s in the map of Fig. 3.9.
+
+Eight adjacent squares marked with 1’s can be combined to form the one literal
+term y'. The remaining three 1’s on the right cannot be combined to give a simplified
+term; they must be combined as two or four adjacent squares.
+
+The larger the number of squares combined, the smaller is the number of literals
+in the term. In this example, the top two 1’s on the right are combined with the top
+two 1’s on the left to give the term w'z'
+
+These squares make up the two middle rows and the two end columns, giving the term
+xz'. The simplified function is
+
+Page
+12

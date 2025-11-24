@@ -1,0 +1,46 @@
+160 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+or Thumb state according to bit 0 of Ir. Therefore this routine can be called from ARM or
+Thumb. Use BX Ir instead of MOV pc, Ir whenever your processor supports BX (ARMv4T
+and above). Create a new assembly file square2.s as follows:
+
+AREA | .text|, CODE, READONLY
+EXPORT square
+
+3 int square(int i)
+
+square
+MUL rl, r0, rO ; rl = r0 * r0
+MOV 0, rl 3 r0 = rl
+BX Ir 3 return r0
+END
+
+With this example we build the C file using the Thumb C compiler tec. We assemble
+the assembly file with the interworking flag enabled so that the linker will allow the Thumb
+C code to call the ARM assembly code. You can use the following commands to build this
+example:
+
+tcc -c mainl.c
+armasm -apcs /interwork square2.s
+armlink -o main2.axf mainl.o square2.o
+
+Exampce This example shows how to call a subroutine from an assembly routine. We will take
+6.3 Example 6.1 and convert the whole program (including main) into assembly. We will call
+the C library routine printf as a subroutine. Create a new assembly file main3.s with the
+
+following contents:
+
+AREA |.text|, CODE, READONLY
+EXPORT main
+
+INPORT | Lib$$Request$$armlib|, WEAK
+IMPORT main  ; C library entry
+IMPORT printf  ; prints to stdout
+
+i RN 4
+
+3 int main(void)
+
+main
+STMFD sp!, {i, Ir}
+MOV i, #0

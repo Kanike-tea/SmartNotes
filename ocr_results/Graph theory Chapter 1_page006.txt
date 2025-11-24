@@ -1,0 +1,43 @@
+7
+
+1.1. Directed Graphs 9
+
+Let k be the number of vertices with odd in-degrees. Then n — k number of vertices have
+even in-degrees. Without loss of generality, let us take V}, V2,-.. Vg to be the vertices with odd
+
+in-degrees and Ve+1, Ve42,...Vp_ to be the vertices with even in-degrees. Then, expression (ii)
+may be rewritten as
+
+k n
+Dow + Yr wy=m (iii)
+i=l isk+1
+
+Now, the second sum on the left hand side of this expression is even. Also, m is odd.
+Therefore, the first sum must be odd. That is
+
+d (vy) + d-(v2) + +++ +d" (vy) = odd (iv)
+
+But, each of d~(v;), d~(v2),...d7(vg) is odd. Therefore, the number ai in the left
+a
+
+hand side of (iv) must be odd. That is, k is odd. This proves the required result.
+
+Exercises
+
+1. Write down the vertex set and the directed edge set of each of the following digraphs.
+
+4 vy v2
+v3
+V4
+B Cc
+(i) (ii)
+
+Figure 1.9
+
+2. For the digraph shown in Figure 1.6, determine the out-degrees and in-degrees of all the vertices.
+3. For the digraphs of Exercise 1 above, determine the out-degrees and in-degrees of all the vertices.
+4. Let D be the digraph whose vertex set is V = {v), v2, v3, v4, vs} and the directed edge set is
+
+E = ((v1, v4), (V2, v3); (V3, 5), (v4, V2), (Vas V4), (V4, ¥5), (vss v1)}-
+
+Write down a diagram of D and indicate the out-degrees and in-degrees of all the vertices.

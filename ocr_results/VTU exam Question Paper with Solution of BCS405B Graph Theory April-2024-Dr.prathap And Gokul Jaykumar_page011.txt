@@ -1,0 +1,30 @@
+c)
+
+Proof: Consider a cut-set S in graph G (Fig. 4-2). Let the removal of S
+partition the vertices of G into two (mutually exclusive or disjoint) subsets V,
+and V;. Consider a circuit [ in G. If all the vertices in P are entirely within
+vertex set V, (or V2), the number of edges common to S and I is zero; that is,
+
+N(S()T) =0, an even number.
+If, on the other hand, some vertices in are in V,and some in V>, we traverse
+
+back and forth between the sets V, and V as we traverse the circuit (see Fig. 4-
+
+2). Because of the closed nature of a circuit, the number of edges we traverse
+between V, and V> must be even. And since very edge in S has one end in V, and
+
+the other in V,, and no other edge in G has this property (of separating sets
+V,and V>), the number of edges common to S and [ is even. =
+
+6a)
+Proof: Let the number of vertices in a given tree T is n and n>=2. Therefore the number of
+edges in a tree T=n-1 using above theorems.
+summation of (deg(Vi)) = 2*e
+
+2*(n-1)
+=2n-2
+
+The degree sum is to be divided among n vertices. Since a tree T is a connected graph, it
+cannot have a vertex of degree zero. Each vertex contributes at-least one to the above sum.
+Thus there must be at least two vertices of degree 1. Hence every tree with at-least two
+vertices have at-least two pendant vertices.

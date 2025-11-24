@@ -1,0 +1,37 @@
+27.4 Text Preprocessing 1039
+
+Biologic
+Function
+Physiologic Pathologic
+Function Function
+Organism Organ or Cell Molecular Cell or Disease Experimental
+Function Tissue Function Function Molecular or Model of
+Function Dysfunction] | Syndrome Disease
+Mental Genetic Mental or | | Neoplastic
+Process Function Behavioral Process
+Dysfunction
+
+Figure 27.3
+A portion of the UMLS Semantic Network: “Biologic Function” Hierarchy.
+
+Source: UMLS Reference Manual, National Library of Medicine.
+
+WordNet”? is a manually constructed thesaurus that groups words into strict syn-
+onym sets called synsets. These synsets are divided into noun, verb, adjective, and
+adverb categories. Within each category, these synsets are linked together by appro-
+priate relationships such as class/subclass or “is-a” relationships for nouns.
+
+WordNet is based on the idea of using a controlled vocabulary for indexing, thereby
+eliminating redundancies. It is also useful in providing assistance to users with
+locating terms for proper query formulation.
+
+27.4.4 Other Preprocessing Steps: Digits, Hyphens,
+Punctuation Marks, Cases
+
+Digits, dates, phone numbers, e-mail addresses, URLs, and other standard types of
+text may or may not be removed during preprocessing. Web search engines, how-
+ever, index them in order to use this type of information in the document metadata
+to improve precision and recall (see Section 27.6 for detailed definitions of precision
+and recall).
+
+28See Fellbaum (1998) for a detailed description of WordNet.

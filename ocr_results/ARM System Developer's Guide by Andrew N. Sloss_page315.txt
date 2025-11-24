@@ -1,0 +1,52 @@
+302 Chapter 8 Digital Signal Processing
+
+Table 8.8 ARMv5E IIR timings.
+
+SUMMARY
+
+Processor Cycles per loop Cycles per biquad-sample
+ARM9E 32 8.0
+ARMI0E 45 112
+XScale 30 77
+SMLABT s_0, bl_s_1, bl_a2l, x1
+SMLABB x_1, bl_s 2, bl_b21, s_0
+SMLABT x_1, bl_s_1, bl_b2l, x1
+MOV bl_s_1, s_0, ASR #14
+
+MOV -x_0, x_0, ASR #14
+MOV -x_1, x_1, ASR #14
+sTRH x0, [y], #2
+
+stRH = x_l, [y], #2
+
+BGT —_next_sample_arm9e
+LOMFD sp!, {b, N, M}
+STRH  b0_s_1, [b, #-12-4]
+STRH  b0_s_2, [b, #-12-2]
+TRH bl_s_1, [b, #-4]
+STRH  bl_s_2, [b, #-2]
+suB_ sy, y, N, LSL#1
+
+MOV x,y
+
+suBs MM, M, #2
+
+BGT next_biquad_arm9e
+LOMFD sp!, {r4-rl1, pc}
+
+The timings on ARM9E, ARMLIOE, and XScale are shown in Table 8.8.
+
+Implementing 16-bit IIR Filters
+
+Factorize the IIR into a series of biquads. Choose the data precision so there can be no
+overflow during the IIR calculation. To compute the maximum gain of an IIR, apply the
+IIR to an impulse to generate the impulse response. Apply the equations of Section 8.3
+to the impulse response c[j].
+
+Use a block IIR algorithm, dividing the signal to be filtered into large frames.
+
+On each pass of the sample frame, filter by M biquads. Choose M to be the largest
+number of biquads so that you can hold the state and coefficients in the 14 available
+registers on the ARM. Ensure that the total number of biquads is a multiple of M.
+
+As always, schedule code to avoid load and multiply use interlocks.

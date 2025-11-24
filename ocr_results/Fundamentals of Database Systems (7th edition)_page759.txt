@@ -1,0 +1,51 @@
+19.7 Additional Issues Related to Query Optimization
+
+19.7.1 Displaying the System’s Query Execution Plan
+
+Most commercial RDBMSs have a provision to display the execution plan produced
+by the query optimizer so that DBA-level personnel can view such execution plans
+and try to understand the descision made by the optimizer.'® The common syntax
+is some variation of EXPLAIN <query>.
+
+= Oracle uses
+EXPLAIN PLAN FOR
+<SQL Query>
+The query may involve INSERT, DELETE, and UPDATE statements; the output
+goes into a table called PLAN_TABLE. An appropriate SQL query is written to read
+the PLAN_TABLE. Alternately, Oracle provides two scripts UTLXPLS.SQL and
+UTLXPLP.SQL to display the plan table output for serial and parallel execution,
+respectively.
+= IBM DB2 uses
+EXPLAIN PLAN SELECTION [additional options] FOR <SQL-query>
+There is no plan table. The PLAN SELECTION is a command to indicate that the
+explain tables should be loaded with the explanations during the plan selection
+phase. The same statement is also used to explain XQUERY statements.
+
+m SQLSERVER uses
+
+SET SHOWPLAN_TEXT ON or SET SHOWPLAN_XML ON or SET
+SHOWPLAN_ALL ON
+
+The above statements are used before issuing the TRANSACT-SQL, so the plan
+output is presented as text or XML or in a verbose form of text corresponding to the
+above three options.
+
+= PostgreSQL uses
+
+EXPLAIN [set of options] <query>.where the options include ANALYZE,
+VERBOSE, COSTS, BUFFERS, TIMING, etc.
+
+19.7.2 Size Estimation of Other Operations
+
+In Sections 19.4 and 19.5, we discussed the SELECTION and JOIN operations and
+size estimation of the query result when the query involves those operations. Here
+we consider the size estimation of some other operations.
+
+Projection: For projection of the form mj. (R) expressed as SELECT <attribute-
+
+list> FROM R, since SQL treats it as a multiset, the estimated number of tuples in
+the result is |R|. If the DISTINCT option is used, then size of ma (R) is NDV (A, R).
+
+'®We have just illustrated this facility without describing the syntactic details of each system.
+
+729

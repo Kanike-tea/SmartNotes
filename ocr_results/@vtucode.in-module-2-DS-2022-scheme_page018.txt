@@ -1,0 +1,46 @@
+DATA STRUCTURES-BCS304
+
+MODULE 2
+
+LINKED STACKS AND QUEUES
+
+The below figure shows stacks and queues using linked list. Nodes can easily add or delete a node from the
+
+top of the stack. Nodes can easily add a node to the rear of the queue and add or delete a node at the front
+
+data link
+(LK
+{J
+front rear
+| data link |
+(b) Linked queue
+)
+{a) Linked stack
+Linked Stack
+The representation of n << MAX_STACKS
+#define MAX STACKS 10 /* maximum number “of stacks */
+typedef struct {
+
+int key;
+
+/* other! fields */
+element;
+
+typedef struct stack *st@ckPointer;
+typedef struct {
+
+element data;
+
+stackPointer
+link;
+} stack;
+stackPointer top[MAX\STACKS] ;
+The initial condition for the stacks is:
+top[i] = NULL, 0 <
+
+i < MAX_STACKS
+The boundary condition is:
+
+top [i] = NULL iff the ith stack is empty
+
+vtucode.in

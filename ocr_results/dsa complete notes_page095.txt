@@ -1,0 +1,32 @@
+Data Structures and Applications (BCS304) Module III
+
+equal(first-> leftchild ssecond->leftchild) &&
+equal(first->rightchild second->rightchild))
+return true;
+
+return false;
+
+}
+
+The Satisfiability problem
+¢ Conisder the set of formulas that we can construct by taking the variables x1,x2,...... xn and
+operators ~(AND) V v(OR) and = (NOT)
+e The variables can hold any one of the two possible values true or false.
+e The set of expressions that can be formed using these variables and operators is defined by
+the following rules.
+1. A variable is an expression
+2. Ifxand y are expressions then ax, xy, xvy are expressions
+3. Order of evaluation first = then A then v.
+4. Parenthesis can be used to alter the normal order of evaluations.
+
+Defintion: The satisfiability problem for formulas of the propositional calculus asks if there is an
+assignment of values to the variables that causes the value of the expression to be true.
+
+Example: Representation of the expression (x1 A 4x2) v (=x1 A x3) v ax3 as a binary tree
+
+Propositional formula in a binary Tree
+Inorder Traversal of the tree is xl A 4 x2 v 4x1 A x3 v 7x3 this is the infix form of the expression.
+
+Note: The node containing — has only a right branch since — is a unary operator.
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 20

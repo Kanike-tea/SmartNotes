@@ -1,0 +1,60 @@
+15.6 Other Dependencies and Normal Forms
+
+Furthermore, there are no sets of sound and complete inference rules to reason
+about them. In the remaining part of this section, we introduce some other types of
+dependencies that have been identified. Among them, the inclusion dependencies
+and those based on arithmetic or similar functions are used frequently.
+
+15.6.2 Inclusion Dependencies
+
+Inclusion dependencies were defined in order to formalize two types of interrela-
+tional constraints:
+
+= The foreign key (or referential integrity) constraint cannot be specified as a
+functional or multivalued dependency because it relates attributes across
+relations.
+
+= The constraint between two relations that represent a class/subclass rela-
+tionship (see Chapters 4 and 9) also has no formal definition in terms of the
+functional, multivalued, and join dependencies.
+
+Definition. An inclusion dependency R.X < S.Y between two sets of attri-
+butes—X of relation schema R, and Y of relation schema S—specifies the con-
+straint that, at any specific time when r is a relation state of R and s is a relation
+state of S, we must have
+
+Tx(r(R)) & Ty(s(S))
+
+The Cc (subset) relationship does not necessarily have to be a proper subset. Obviously,
+the sets of attributes on which the inclusion dependency is specified—X of R and Y of
+S—must have the same number of attributes. In addition, the domains for each pair of
+corresponding attributes should be compatible. For example, if X = {Aj, Ao, ... , An}
+and Y = {B;, B, ... , B,}, one possible correspondence is to have dom(A;) compatible
+with dom(B)) for 1 < i <n. In this case, we say that A; corresponds to Bj.
+
+For example, we can specify the following inclusion dependencies on the relational
+schema in Figure 14.1:
+
+DEPARTMENT.Dmgr_ssn < EMPLOYEE.Ssn
+
+WORKS_ON.Ssn < EMPLOYEE.Ssn
+
+EMPLOYEE.Dnumber < DEPARTMENT.Dnumber
+
+PROJECT.Dnum < DEPARTMENT.Dnumber
+
+WORKS_ON.Pnumber < PROJECT.Pnumber
+
+DEPT_LOCATIONS.Dnumber < DEPARTMENT.Dnumber
+All the preceding inclusion dependencies represent referential integrity
+constraints. We can also use inclusion dependencies to represent class/subclass
+relationships. For example, in the relational schema of Figure 9.6, we can specify
+the following inclusion dependencies:
+
+EMPLOYEE.Ssn < PERSON.Ssn
+
+ALUMNUS.Ssn < PERSON.Ssn
+
+STUDENT.Ssn < PERSON.Ssn.
+
+531

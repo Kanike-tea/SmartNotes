@@ -1,0 +1,50 @@
+MODULE 2
+
+INPUT/OUTPUT ORGANIZATION
+ACCESSING I/O-DEVICES
+
+¢ A single bus-structure can be used for connecting I/O-devices to a computer (Figure 7.1).
+
+¢ Each I/O device is assigned a unique set of address.
+
+¢ Bus consists of 3 sets of lines to carry address, data & control signals.
+
+© When processor places an address on address-lines, the intended-device responds to the command.
+¢ The processor requests either a read or write-operation.
+
+© The requested-data are transferred over the data-lines.
+
+Memory
+
+Bus
+
+Figure 7.1 A single-bus structure.
+
+There are 2 ways to deal with I/O-devices: 1) Memory-mapped I/O & 2) I/O-mapped I/O.
+1) Memory-Mapped I/O
+>» Memory and I/O-devices share a common address-space.
+> Any data-transfer instruction (like Move, Load) can be used to exchange information.
+> For example,
+Move DATAIN, RO; This instruction sends the contents of location DATAIN to register RO.
+Here, DATAIN > address of the input-buffer of the keyboard.
+2) 1/O-Mapped I/O
+> Memory and I/0 address-spaces are different.
+> A special instructions named IN and OUT are used for data-transfer.
+>» Advantage of separate I/O space: I/O-devices deal with fewer address-lines.
+1/O Interface for an Input Device
+1) Address Decoder: enables the device to recognize its address when this
+address appears on the address-lines (Figure 7.2).
+2) Status Register: contains information relevant to operation of I/O-device.
+3) Data Register: holds data being transferred to or from processor. There are 2 types:
+i) DATAIN > Input-buffer associated with keyboard.
+ii) DATAOUT > Output data buffer of adisplay/printer.
+
+Address lines
+Bus ‘ Data lines
+
+Control lines
+
+Control Data, status, and Vo
+circuits control registers interface
+
+Figure 7.2 —_1/O interface for an input device. Page 20

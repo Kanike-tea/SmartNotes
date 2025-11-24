@@ -1,0 +1,35 @@
+Dryer takes 40 minutes
+
+Role of Cache Memory
+
+Each pipeline stage is expected to complete in one clock cycle.
+The clock period should be long enough to let the slowest pipeline stage to complete.
+Faster stages can only wait for the slowest one to complete.
+
+Since main memory is very slow compared to the execution, if each instruction needs to be fetched from
+main memory, pipeline is almost useless.
+
+Fortunately, we have cache
+
+The previous pipeline is said to have been stalled for two clock cycles.
+Any condition that causes a pipeline to stall is called a hazard.
+
+Data hazard — any condition in which either the source or the destination operands of an instruction are
+not available at the time expected in the pipeline. So some operation has to be delayed, and the pipeline
+stalls.
+
+Instruction (control) hazard — a delay in the availability of an instruction causes the pipeline to stall.
+
+Structural hazard — the situation when two instructions require the use of a given hardware resource at the
+same time.
+
+Again, pipelining does not result in individual instructions being executed faster; rather, it is the
+throughput that increases.
+
+Throughput is measured by the rate at which instruction execution is completed.
+Pipeline stall causes degradation in pipeline performance.
+
+We need to identify all hazards that may cause the pipeline to stall and to find ways to minimize their
+impact.
+
+Page 80

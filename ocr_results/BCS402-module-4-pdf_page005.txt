@@ -1,0 +1,46 @@
+MICROCONTROLLER(BCS402)
+
+Example(1)
+This show the method of returning from an IRQ and FIQ handler is to use
+a SUBS instruction:
+handler
+<handler code>
+
+SUBS pe, rl4, #4 3 pe=rl14-4
+
+Since there is an S at the end of the SUB instruction and the pc is the
+destination register, the cpsr is automatically restored from the spsr
+register.
+Example (2)
+This example shows another method that subtracts the offset from the
+link register r14 at the beginning of the handler.
+handler
+
+SUB rl4, rl4, #4 3 r14-=4
+
+<handler code>
+
+MOVS pe, rl4 3; return
+
+After servicing is complete, return to normal execution occurs by moving
+the link register r14 into the pe and restoring epsr from the spsr.
+
+Example (3)
+The example uses the interrupt stack to store the link register. This
+method first subtracts an offset from the link register and then stores it
+onto the interrupt stack.
+handler
+SUB r14).r14, #4 3 rl4-=4
+
+STMFD r13!,{r0-r3, r14} 3 store context
+<handler code>
+
+LOMFD  _r13!,{r0-r3, pc}* 3 return
+To return to normal execution, the LDM instruction is used to load the pce.
+The * symbol in the instruction forces the cpsr to be restored from the spsr.
+
+4.2 Interrupts
+
+There are two types of interrupts available on the ARM processor. The
+first type of interrupt causes an exception raised by an external
+peripheral—namely, IRQ and FIQ.

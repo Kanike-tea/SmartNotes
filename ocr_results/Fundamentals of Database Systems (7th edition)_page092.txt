@@ -1,0 +1,51 @@
+62
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+step is called conceptual design. The conceptual schema is a concise description of
+the data requirements of the users and includes detailed descriptions of the entity
+types, relationships, and constraints; these are expressed using the concepts pro-
+vided by the high-level data model. Because these concepts do not include imple-
+mentation details, they are usually easier to understand and can be used to
+communicate with nontechnical users. The high-level conceptual schema can also
+be used as a reference to ensure that all users’ data requirements are met and that
+the requirements do not conflict. This approach enables database designers to con-
+centrate on specifying the properties of the data, without being concerned with
+storage and implementation details, which makes it is easier to create a good con-
+ceptual database design.
+
+During or after the conceptual schema design, the basic data model operations can
+be used to specify the high-level user queries and operations identified during
+functional analysis. This also serves to confirm that the conceptual schema meets
+all the identified functional requirements. Modifications to the conceptual schema
+can be introduced if some functional requirements cannot be specified using the
+initial schema.
+
+The next step in database design is the actual implementation of the database, using
+a commercial DBMS. Most current commercial DBMSs use an implementation
+data model—such as the relational (SQL) model—so the conceptual schema is
+transformed from the high-level data model into the implementation data model.
+This step is called logical design or data model mapping; its result is a database
+schema in the implementation data model of the DBMS. Data model mapping is
+often automated or semiautomated within the database design tools.
+
+The last step is the physical design phase, during which the internal storage struc-
+tures, file organizations, indexes, access paths, and physical design parameters for
+the database files are specified. In parallel with these activities, application pro-
+grams are designed and implemented as database transactions corresponding to the
+high-level transaction specifications.
+
+We present only the basic ER model concepts for conceptual schema design in this
+chapter. Additional modeling concepts are discussed in Chapter 4, when we intro-
+duce the EER model.
+
+3.2 A Sample Database Application
+
+In this section we describe a sample database application, called COMPANY, which
+serves to illustrate the basic ER model concepts and their use in schema design. We
+list the data requirements for the database here, and then create its conceptual
+schema step-by-step as we introduce the modeling concepts of the ER model. The
+COMPANY database keeps track of a company’s employees, departments, and
+projects. Suppose that after the requirements collection and analysis phase, the
+database designers provide the following description of the miniworld—the part of
+the company that will be represented in the database.

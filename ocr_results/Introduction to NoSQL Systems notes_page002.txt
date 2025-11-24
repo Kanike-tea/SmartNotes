@@ -1,0 +1,44 @@
+o Use Case: Social media feeds or messaging apps where availability is more
+important than strict consistency.
+
+3. CA (Consistency + Availability)
+
+o Theoretically possible only in non-distributed systems or when there's no
+partition.
+
+o Since network failures are inevitable, CA systems cannot be truly partition-
+tolerant.
+
+o Example: Traditional relational databases running on a single machine.
+
+In a real-world distributed system, partition tolerance is non-negotiable, which means
+system designers are forced to choose between consistency and availability during network
+failures.
+
+4. CAP Theorem and NoSQL Systems
+
+Many NoSQL databases are designed around the constraints of the CAP theorem. Since they
+aim for high scalability and fault tolerance, they favor partition tolerance (P) and then make
+a choice between consistency (C) and availability (A) based on use case:
+
+« AP Systems: Prioritize availability and partition tolerance.
+
+o Return results even during network issues, but data may be eventually
+consistent.
+
+o Example: Cassandra, DynamoDB
+
+« CP Systems: Prioritize consistency and partition tolerance.
+o May become unavailable to maintain data integrity during partitions.
+o Example: HBase, MongoDB (with write concern set for consistency)
+
+Some NoSQL systems offer tunable consistency, allowing developers to adjust the trade-off
+depending on the operation.
+
+5. Example Scenario — Applying CAP
+
+Imagine a globally distributed online shopping platform. If the system is partitioned (some
+servers can't communicate), you face two choices:
+
+e Consistency (CP): Block access or operations until the system regains consistency.
+Customers might see errors or be unable to place orders during this time.

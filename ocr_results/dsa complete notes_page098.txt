@@ -1,0 +1,41 @@
+Data Structures and Applications (BCS304) Module III
+
+root
+
+Threaded Binary Tree
+¢ When we represent the tree in memory, we must be able to distinguish between threads and
+normal pointers.
+e This is done by adding two additional fields to the node structure, leftThread and
+rightThread.
+e Assume that ptr is an arbitrary node in a threaded tree.
+o Ifptr — leftThread = TRUE, then ptr— leftChild contains a thread; otherwise it
+contains a pointer to the left child.
+o Similarly, if ptr + rightThread = TRUE, then ptr — rightChild contains a thread;
+otherwise it contains a pointer to the right child.
+
+This node structure is defined as follows
+struct node{
+short int leftThread;
+struct node * leftChild;
+char data;
+thread node *rightChild;
+short int rightThread;
+B
+typedef struct node ThreadNode;
+
+e In Figure two threads have been left dangling: one in the left child of H, the other in the right
+child of G.
+To avoid loose threads, a header node is assumed for all threaded binary trees.
+The original tree is the left subtree of the header node.
+e Anempty binary tree is represented by its header node as in figure below
+
+leftthread leftchild data Rightchild rightthread
+True I false
+
+|__f
+
+Empty threaded Binary tree
+
+The complete memory representation for the tree is as below
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 23

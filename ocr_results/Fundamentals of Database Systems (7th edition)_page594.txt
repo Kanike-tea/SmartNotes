@@ -1,0 +1,54 @@
+564
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+number of records per block for the file. We can use bfr to calculate the number of
+
+blocks b needed for a file of r records:
+b =I (r/bfr) | blocks
+
+where the [()] (ceiling function) rounds the value x up to the next integer.
+
+16.4.4 Allocating File Blocks on Disk
+
+There are several standard techniques for allocating the blocks of a file on disk. In
+contiguous allocation, the file blocks are allocated to consecutive disk blocks. This
+makes reading the whole file very fast using double buffering, but it makes expanding
+the file difficult. In linked allocation, each file block contains a pointer to the next file
+block. This makes it easy to expand the file but makes it slow to read the whole file. A
+combination of the two allocates clusters of consecutive disk blocks, and the clusters
+are linked. Clusters are sometimes called file segments or extents. Another possibil-
+ity is to use indexed allocation, where one or more index blocks contain pointers to
+the actual file blocks. It is also common to use combinations of these techniques.
+
+16.4.5 File Headers
+
+A file header or file descriptor contains information about a file that is needed by
+the system programs that access the file records. The header includes information
+to determine the disk addresses of the file blocks as well as to record format descrip-
+tions, which may include field lengths and the order of fields within a record for
+fixed-length unspanned records and field type codes, separator characters, and
+
+record type codes for variable-length records.
+
+To search for a record on disk, one or more blocks are copied into main memory
+buffers. Programs then search for the desired record or records within the buffers,
+using the information in the file header. If the address of the block that contains the
+desired record is not known, the search programs must do a linear search through
+the file blocks. Each file block is copied into a buffer and searched until the record
+is located or all the file blocks have been searched unsuccessfully. This can be very
+time-consuming for a large file. The goal of a good file organization is to avoid lin-
+ear search or full scan of the file and to locate the block that contains a desired
+
+record with a minimal number of block transfers.
+
+16.5 Operations on Files
+
+Operations on files are usually grouped into retrieval operations and update
+operations. The former do not change any data in the file, but only locate certain
+records so that their field values can be examined and processed. The latter change
+the file by insertion or deletion of records or by modification of field values. In
+either case, we may have to select one or more records for retrieval, deletion, or
+modification based on a selection condition (or filtering condition), which specifies
+
+criteria that the desired record or records must satisfy.

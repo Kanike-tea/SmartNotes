@@ -1,0 +1,51 @@
+19.2 Choice of Query Execution Plans
+
+6. Identify subtrees that represent groups of operations that can be executed by
+a single algorithm.
+
+In our example, Figure 19.2(b) shows the tree in Figure 19.2(a) after applying steps 1
+and 2 of the algorithm; Figure 19.2(c) shows the tree after step 3; Figure 19.2(d)
+after step 4; and Figure 19.2(e) after step 5. In step 6, we may group together the
+operations in the subtree whose root is the operation Tggs, into a single algorithm.
+We may also group the remaining operations into another subtree, where the tuples
+resulting from the first algorithm replace the subtree whose root is the operation
+Tressn» because the first grouping means that this subtree is executed first.
+
+Summary of Heuristics for Algebraic Optimization. The main heuristic is to
+apply first the operations that reduce the size of intermediate results. This includes
+performing as early as possible SELECT operations to reduce the number of tuples
+and PROJECT operations to reduce the number of attributes—by moving SELECT
+and PROJECT operations as far down the tree as possible. Additionally, the SELECT
+and JOIN operations that are most restrictive—that is, result in relations with the
+fewest tuples or with the smallest absolute size—should be executed before other
+similar operations. The latter rule is accomplished through reordering the leaf
+nodes of the tree among themselves while avoiding Cartesian products, and adjust-
+ing the rest of the tree appropriately.
+
+19.2 Choice of Query Execution Plans
+
+19.2.1 Alternatives for Query Evaluation
+
+An execution plan for a relational algebra expression represented as a query tree
+includes information about the access methods available for each relation as well as
+the algorithms to be used in computing the relational operators represented in the
+tree. Asa simple example, consider query Q1 from Chapter 7, whose corresponding
+relational algebra expression is
+
+TFname, Lname, Address(ODname="Research (DEPARTMENT) b pnumber=Dno EMPLOYEE)
+
+The query tree is shown in Figure 19.3. To convert this into an execution plan, the
+optimizer might choose an index search for the SELECT operation on DEPARTMENT
+(assuming one exists), an index-based nested-loop join algorithm that loops over
+the records in the result of the SELECT operation on DEPARTMENT for the join
+operation (assuming an index exists on the Dno attribute of EMPLOYEE), and a scan
+of the JOIN result for input to the PROJECT operator. Additionally, the approach
+taken for executing the query may specify a materialized or a pipelined evaluation,
+although in general a pipelined evaluation is preferred whenever feasible.
+
+With materialized evaluation, the result of an operation is stored as a temporary
+relation (that is, the result is physically materialized). For instance, the JOIN opera-
+tion can be computed and the entire result stored as a temporary relation, which is
+then read as input by the algorithm that computes the PROJECT operation, which
+
+701

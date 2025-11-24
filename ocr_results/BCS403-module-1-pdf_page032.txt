@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+hierarchical model represents data as hierarchical tree structures. Each hierarchy
+represents a number of related records.
+
+= Native XML DBMS: uses hierarchical tree structures. It combines database
+concepts with concepts from document representation models. Data is represented
+as elements; with the use of tags, data can be nested to create complex hierarchical
+structures.
+
+2. Number of users supported by the system
+= Single-user: support only one user at a time and are mostly used with PCs.
+
+= Multiuser: support concurrent multiple users.
+3. Number of sites over which the database is distributed
+
+= Centralized: data is stored at a single computer site
+= Distributed: can have the actual database and DBMS software distributed over
+many sites, connected by a computer network
+- Homogeneous DDBMSs use the same DBMS software at all the sites
+- Heterogeneous DDBMSs can use different DBMS software at each site
+4. Cost
+= Open source: products like MySQL and PostgreSQL that are supported by third-
+party vendors with additional services.
+= Different types of licensing: Standalone single user versions of some systems like
+Microsoft Access are sold per copy or included in the overall configuration of
+a desktop or laptop. In addition, data warehousing and mining features, as
+wellas support for additional data types, are made available at extra cost.
+
+5. On the basis of the types of access path options for storing files
+- One well-known family of DBMSs is based on inverted file structures.
+
+.6. General purpose or Special purpose
+
+- When performance is a primary consideration, a special-purpose DBMS can be designed
+and built for a specific application; such a system cannot be used for other applications
+without major changes. Many airline reservations and telephone directory systems
+
+developed in the past are special-purpose DBMSs.
+
+Chapter 3: Conceptual Data Modelling using Entities and Relationships
+
+https://vtucode.in Page 33

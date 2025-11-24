@@ -1,0 +1,46 @@
+Data Structures and Applications(BCS304) Module 2
+
+count++;
+temp = temp—link;
+t
+
+return count;
+
+}
+Header Linked List
+
+A header linked list is a linked list which always contains a special NODE, called the header NODE,
+at the beginning of the list. There are two types of header list.
+
+1. A grounded header list: Last NODE contains the null pointer.
+2. Circular header list: Last NODE points back to the header NODE.
+
+Note: Unless stated it is assumed that the linked list is circular header list.
+
+START
+Header
+node
+(a) Grounded header list
+START
+Header
+node
+
+(b) Circular header list
+
+Polynomials Polynomial
+Representation
+
+We should be able to represent any number of different polynomials as long as memory is available.
+
+In general, A polynomial is represented as :
+
+A(X)= Am-1X™! + cece aox’
+where the aj are nonzero coefficients and the e' are nonnegative integer exponents such that
+em-1 >eM-2 >... > el > e020.
+
+We represent each term as a NODE containing coefficient and exponent fields, as well as a pointer
+to the next term. Assuming that the coefficients are integers, the type declarations are:
+
+struct polyNode {int coef;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru. Page 27

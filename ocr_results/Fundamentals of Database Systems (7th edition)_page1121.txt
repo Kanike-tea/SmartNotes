@@ -1,0 +1,50 @@
+28.5 Approaches to Other Data Mining Problems
+
+28.5 Approaches to Other Data
+Mining Problems
+
+28.5.1 Discovery of Sequential Patterns
+
+The discovery of sequential patterns is based on the concept of a sequence of item-
+sets. We assume that transactions such as the supermarket-basket transactions we
+discussed previously are ordered by time of purchase. That ordering yields a
+sequence of itemsets. For example, {milk, bread, juice}, {bread, eggs}, {cookies,
+milk, coffee} may be such a sequence of itemsets based on three visits by the same
+customer to the store. The support for a sequence S of itemsets is the percentage of
+the given set U of sequences of which S is a subsequence. In this example, {milk,
+bread, juice} {bread, eggs} and {bread, eggs} {cookies, milk, coffee} are considered
+subsequences. The problem of identifying sequential patterns, then, is to find all
+subsequences from the given sets of sequences that have a user-defined minimum
+support. The sequence Sj, S3, $3, ... is a predictor of the fact that a customer who
+buys itemset S, is likely to buy itemset S, and then S;, and so on. This prediction is
+based on the frequency (support) of this sequence in the past. Various algorithms
+have been investigated for sequence detection.
+
+28.5.2 Discovery of Patterns in Time Series
+
+Time series are sequences of events; each event may be a given fixed type of a
+transaction. For example, the closing price of a stock or a fund is an event that
+occurs every weekday for each stock and fund. The sequence of these values per
+stock or fund constitutes a time series. For a time series, one may look for a
+variety of patterns by analyzing sequences and subsequences as we did above.
+For example, we might find the period during which the stock rose or held
+steady for n days, or we might find the longest period over which the stock had
+a fluctuation of no more than 1% over the previous closing price, or we might
+find the quarter during which the stock had the most percentage gain or percent-
+age loss. Time series may be compared by establishing measures of similarity to
+identify companies whose stocks behave in a similar fashion. Analysis and min-
+ing of time series is an extended functionality of temporal data management (see
+Chapter 26).
+
+28.5.3 Regression
+
+Regression is a special application of the classification rule. If a classification rule is
+regarded as a function over the variables that maps these variables into a target
+class variable, the rule is called a regression rule. A general application of regres-
+sion occurs when, instead of mapping a tuple of data from a relation to a specific
+class, the value of a variable is predicted based on that tuple. For example, consider
+a relation
+
+LAB_TESTS (patient ID, test 1, test 2, ... , test 1)
+
+1091

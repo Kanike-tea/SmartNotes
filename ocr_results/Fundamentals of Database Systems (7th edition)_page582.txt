@@ -1,0 +1,55 @@
+552
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+read/write head on the correct track. The time required to do this is called the seek
+time. Typical seek times are 5 to 10 msec on desktops and 3 to 8 msec on servers.
+Following that, there is another delay—called the rotational delay or latency—while
+the beginning of the desired block rotates into position under the read/write head. It
+depends on the rpm of the disk. For example, at 15,000 rpm, the time per rotation is
+4 msec and the average rotational delay is the time per half revolution, or 2 msec. At
+10,000 rpm the average rotational delay increases to 3 msec. Finally, some additional
+time is needed to transfer the data; this is called the block transfer time. Hence, the
+total time needed to locate and transfer an arbitrary block, given its address, is the
+sum of the seek time, rotational delay, and block transfer time. The seek time and
+rotational delay are usually much larger than the block transfer time. To make the
+transfer of multiple blocks more efficient, it is common to transfer several consecu-
+tive blocks on the same track or cylinder. This eliminates the seek time and rota-
+tional delay for all but the first block and can result in a substantial saving of time
+when numerous contiguous blocks are transferred. Usually, the disk manufacturer
+provides a bulk transfer rate for calculating the time required to transfer consecu-
+tive blocks. Appendix B contains a discussion of these and other disk parameters.
+
+The time needed to locate and transfer a disk block is in the order of milliseconds,
+usually ranging from 9 to 60 msec. For contiguous blocks, locating the first block
+takes from 9 to 60 msec, but transferring subsequent blocks may take only 0.4
+to 2 msec each. Many search techniques take advantage of consecutive retrieval of
+blocks when searching for data on a disk. In any case, a transfer time in the order of
+milliseconds is considered high compared with the time required to process data in
+main memory by current CPUs. Hence, locating data on disk is a major bottleneck
+in database applications. The file structures we discuss here and in Chapter 17
+attempt to minimize the number of block transfers needed to locate and transfer the
+required data from disk to main memory. Placing “related information” on contig-
+
+uous blocks is the basic goal of any storage organization on disk.
+
+16.2.2 Making Data Access More Efficient on Disk
+
+In this subsection, we list some of the commonly used techniques to make accessing
+
+data more efficient on HDDs.
+
+1. Buffering of data: In order to deal with the incompatibility of speeds
+between a CPU and the electromechanical device such as an HDD, which is
+inherently slower, buffering of data is done in memory so that new data can
+be held in a buffer while old data is processed by an application. We discuss
+the double buffering strategy followed by general issues of buffer manage-
+
+ment and buffer replacement strategies in Section 16.3.
+
+2. Proper organization of data on disk: Given the structure and organization
+of data on disk, it is advantageous to keep related data on contiguous blocks;
+when multiple cylinders are needed by a relation, contiguous cylinders
+should be used. Doing so avoids unnecessary movement of the read/write
+
+arm and related seek times.

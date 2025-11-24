@@ -1,0 +1,52 @@
+82
+
+Chapter 3 Data Modeling Using the Entity-Relationship (ER) Model
+
+3.7.2 Proper Naming of Schema Constructs
+
+When designing a database schema, the choice of names for entity types, attributes,
+relationship types, and (particularly) roles is not always straightforward. One
+should choose names that convey, as much as possible, the meanings attached to
+the different constructs in the schema. We choose to use singular names for entity
+types, rather than plural ones, because the entity type name applies to each indi-
+vidual entity belonging to that entity type. In our ER diagrams, we will use the con-
+vention that entity type and relationship type names are in uppercase letters,
+attribute names have their initial letter capitalized, and role names are in lowercase
+letters. We have used this convention in Figure 3.2.
+
+As a general practice, given a narrative description of the database requirements,
+the nouns appearing in the narrative tend to give rise to entity type names, and the
+verbs tend to indicate names of relationship types. Attribute names generally arise
+from additional nouns that describe the nouns corresponding to entity types.
+
+Another naming consideration involves choosing binary relationship names to
+make the ER diagram of the schema readable from left to right and from top to bot-
+tom. We have generally followed this guideline in Figure 3.2. To explain this nam-
+ing convention further, we have one exception to the convention in Figure 3.2—the
+DEPENDENTS_OF relationship type, which reads from bottom to top. When we
+describe this relationship, we can say that the DEPENDENT entities (bottom entity
+type) are DEPENDENTS_OF (relationship name) an EMPLOYEE (top entity type). To
+change this to read from top to bottom, we could rename the relationship type to
+HAS_DEPENDENTS, which would then read as follows: An EMPLOYEE entity (top
+entity type) HAS_DEPENDENTS (relationship name) of type DEPENDENT (bottom
+entity type). Notice that this issue arises because each binary relationship can be
+described starting from either of the two participating entity types, as discussed in
+the beginning of Section 3.4.
+
+3.7.3 Design Choices for ER Conceptual Design
+
+It is occasionally difficult to decide whether a particular concept in the miniworld
+should be modeled as an entity type, an attribute, or a relationship type. In this
+section, we give some brief guidelines as to which construct should be chosen in
+particular situations.
+
+In general, the schema design process should be considered an iterative refinement
+process, where an initial design is created and then iteratively refined until the most
+suitable design is reached. Some of the refinements that are often used include the
+following:
+
+= A concept may be first modeled as an attribute and then refined into a rela-
+tionship because it is determined that the attribute is a reference to another
+entity type. It is often the case that a pair of such attributes that are inverses of
+one another are refined into a binary relationship. We discussed this type of
+refinement in detail in Section 3.6. It is important to note that in our notation,

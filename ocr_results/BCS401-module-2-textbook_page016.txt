@@ -1,0 +1,38 @@
+5
+
+Divide-and-Conquer
+
+Diviseencconees’ is probably the best-known general algorithm design
+technique. Though its fame may have something to do with its catchy name, it
+is well deserved: quite a few very efficient algorithms are specific implementations
+of this general strategy. Divide-and-conquer algorithms work according to the
+following general plan:
+
+1. A problem is divided into several subproblems of the same type, ideally of
+about equal size.
+
+2. The subproblems are solved (typically recursively, though sometimes a dif-
+ferent algorithm is employed, especially when subproblems become small
+enough).
+
+3._. If necessary, the solutions to the subproblems are combined to get a solution
+to the original problem.
+
+The divide-and-conquer technique is diagrammed in Figure 5.1, which depicts
+the case of dividing a problem into two smaller subproblems, by far the most widely
+occurring case (at least for divide-and-conquer algorithms designed to be executed
+on a single-processor computer).
+
+Asan example, let us consider the problem of computing the sum of n numbers
+do, +- +s d,_1. If n > 1, we can divide the problem into two instances of the same
+problem: to compute the sum of the first [/2] numbers and to compute the sum
+of the remaining [n/2] numbers. (Of course, if n = 1, we simply return ag as the
+answer.) Once each of these two sums is computed by applying the same method
+recursively, we can add their values to get the sum in question:
+
+gH My = (Ag HF Ainj2y) + nay +o + nv)
+
+Is this an efficient way to compute the sum of n numbers? A moment of
+reflection (why could it be more efficient than the brute-force summation?), a
+
+169

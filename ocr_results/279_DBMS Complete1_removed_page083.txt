@@ -1,0 +1,51 @@
+LECTURE-28
+LOSS LESS DECOMPOSITION
+
+A decomposition of a relation scheme R<S,F> into the relation schemes Ri(1<=i<=n) is said to be a
+lossless join decomposition or simply lossless if for every relation R that satisfies the FDs in F, the
+natural join of the projections or R gives the original relation R, i.e,
+
+R=oR(R) Moe RM... Dd rn R)
+If Ris subset of Or R) oe RM... Moe R)
+Then the decomposition is called lossy.
+
+DEPEDENCY PRSERVATION:
+
+Given a relation scheme R<S,F> where F is the associated set of functional dependencies on the
+attributes in S,R is decomposed into the relation schemes R1,R2,...Rn with the fds F1,F2...Fn, then
+this decomposition of R is dependency preserving if the closure of F’ (where F’=F1 U F2 U ... Fn)
+Example:
+Let R(A,B,C) AND F={A—B}. Then the decomposition of R into R1(A,B) and R2(A,C) is lossless
+because the FD { AB} is contained in R1 and the common attribute A is a key of R1.
+
+Example:
+Let R(A,B,C) AND F={A—B}. Then the decomposition of R into R1(A,B) and R2(B,C) is not
+lossless because the common attribute B does not functionally determine either A or C. i.e, it is not
+akey of R1 or R 2.
+
+Example:
+Let R(A,B,C,D) and F={A—B, AC, C-D,}. Then the decomposition of R into R1(A,B,C) with
+the FD Fl={ A>B , AC }and R2(C,D) with FD F2={ C-—D} . In this decomposition all the
+original FDs can be logically derived from Fl and F2, hence the decomposition is dependency
+preserving also . the common attribute C forms a key of R2. The decomposition is lossless.
+
+Example:
+Let R(A,B,C,D) and F={A—B, AC, AD,}. Then the decomposition of R into R1(A,B,D) with
+the FD Fl={ AB , AD }and R2(B,C) with FD F2={ } is lossy because the common attribute B
+is not a candidate key of either RI and R2 .
+
+In addition , the fds AC is not implied by any fds RI or R2. Thus the decomposition is not
+dependency preserving.
+
+Full functional dependency:
+
+Given a relational scheme R and an FD XY .Y is fully functional dependent on X if there is no Z,
+where Z is a proper subset of X such that ZY. The dependency XY is left reduced, there being
+no extraneous attributes attributes in the left hand side of the dependency.
+
+Partial dependency:
+Given a relation dependencies F defined on the attributes of R and K as a candidate key ,if X is a
+
+proper subset of K and if FI= XA, then A is said to be partial dependent on K
+
+Prime attribute and non prime attribute:

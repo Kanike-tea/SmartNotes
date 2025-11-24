@@ -1,0 +1,45 @@
+Index mode
+* The operation is indicated as X(Ri)
+where X=the constant value which defines an offset(also called a displacement).
+Ri=the name of the index register which contains address of a new location.
+* The effective-address of the operand is given by EA=X+[Ri]
+* The contents of the index-register are not changed in the process of generating the effective-
+address.
++ The constant X may be given either
+— as an explicit number or
+— as a symbolic-name representing a numerical value.
+
+(@) Otsetis given as a constant (b) Offset is inthe index register
+Figure 2.13 Indexed oddessng.
+
++ Fig(a) illustrates two ways of using the Index mode. In fig(a), the index register, Rl, contains the
+address of a memory-location, and the value X defines an offset(also called a displacement) from this
+address to the location where the operand is found.
++ To find EA of operand: Eg: Add 20(R1),
+
+R2
+
+EA=>1000+20=1020
+
++ An alternative use is illustrated in fig(b). Here, the constant X corresponds to a memory address, and
+the contents of the index register define the offset to the operand. In either case, the effective-address is
+the sum of two values; one is given explicitly in the instruction, and the other is stored in aregister.
+
+Move #LISTRO
+Clear RI
+Clear R
+Clear R3
+Move NR4
+LOOP Add 4(RO),R1
+Add 8(RO),R2
+Add 124R0),R3
+Add #16,R0
+Decremem 4
+Branch>0 LOOP
+Move Ri,SUMI
+Move R2,SUM2
+‘ Move R3,SUM3
+; Figure 2.15 Indexed addressing used in accessing
+Figure 2.14 A list of students’ marks. test scores in the list in Figure 2.14,
+
+Page 15

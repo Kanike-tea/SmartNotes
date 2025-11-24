@@ -1,0 +1,46 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 599.
+
+Rd[15:08] = sat8(Rn[15:08] - Rm[15:08]);
+Rd[07:00] = sat8(Rn[07:00] - Rm[07:00])
+
+Notes
+
+The operations are signed unless the U prefix is present. For signed operations, satN(x)
+saturates x to the range —2N-! < x < 2N~!. For unsigned operations, satN(x)
+saturates x to the range 0 < x <2.
+
+The cpsr Q-flag is set if saturation occurred; otherwise it is preserved.
+
+Rd, Rn, Rm must not be pe.
+
+The X operations are useful for packed complex numbers. The following examples
+assume bits [15:00] hold the real part and [31:16] the imaginary part.
+
+Examples
+
+QDADD v0, r0, r2 ; add Q30 value r2 to Q31 accumulator rO
+QADDI6 0, rl, r2 ; SIMD saturating add
+
+QADDSUBX 0, rl, r2 ; rO=rl+i*r2 in packed complex arithmetic
+QSUBADDX v0, rl, r2 ; rO=rl-i*r2 in packed complex arithmetic
+
+REV
+
+Reverse bytes within a word or halfword.
+
+1. REV<cond> Rd, Rm ARMv6/THUMBv3
+2. REV16<cond> Rd, Rm ARMv6/THUMBv3
+3. REVSH<cond> Rd, Rm ARMv6/THUMBv3
+Action
+
+1. Rd[31:24] = Rm[07:00]; Rd[23:16] = Rm[15:08];
+Rd[15:08] = Rm[23:16]; Rd[07:00] = Rm[31:24]
+2. Rd [31:24] = Rm[23:16]; Rd [23:16] = Rm[31:24];
+Rd[15:08] = Rm[07:00]; Rd[07:00] = Rm[15:08]
+3. Rd[31:08] = sign-extend(Rm[07:00]); Rd[07:00] = Rm[15:08]
+
+Notes
+
+Rd and Rm must not be pc.
+
+For Thumb, Rd, Rm must be in the range r0 to r7 and <cond> cannot be specified.

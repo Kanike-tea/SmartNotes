@@ -1,0 +1,74 @@
+2.2 Current Program Status Register 27
+
+Table 2.2 ARM and Thumb instruction set features.
+
+ARM (cpsr T= 0)
+
+Thumb (cpsr T= 1)
+
+Instruction size
+
+Core instructions
+
+Conditional execution*
+
+Data processing
+instructions
+
+Program status register
+
+Register usage
+
+32-bit
+
+58
+
+most
+
+access to barrel shifter and
+ALU
+
+read-write in privileged mode
+
+15 general-purpose registers
++pe
+
+16-bit
+
+30
+
+only branch instructions
+
+separate barrel shifter and
+ALU instructions
+
+no direct access
+
+8 general-purpose registers
++7 high registers +pc
+
+® See Section 2.2.6.
+
+Table 2.3 Jazelle instruction set features.
+Jazelle (cpsr T = 0, J = 1)
+Instruction size 8-bit
+Core instructions — Over 60% of the Java bytecodes are implemented in hardware;
+the rest of the codes are implemented in software.
+The Jazelle instruction set is a closed instruction set and is not openly available. Table 2.3
+gives the Jazelle instruction set features.
+2.2.4 INTERRUPT MASKS
+
+Interrupt masks are used to stop specific interrupt requests from interrupting the processor.
+There are two interrupt request levels available on the ARM processor core—interrupt
+request (IRQ) and fast interrupt request (FIQ).
+
+The cpsr has two interrupt mask bits, 7 and 6 (or I and F), which control the masking
+of IRQ and FIQ, respectively. The I bit masks IRQ when set to binary 1, and similarly the
+F bit masks FIQ when set to binary 1.
+
+2.2.5 CONDITION FLAGS
+
+Condition flags are updated by comparisons and the result of ALU operations that specify
+the S instruction suffix. For example, ifa SUBS subtract instruction results in a register value
+of zero, then the Z flag in the cpsr is set. This particular subtract instruction specifically
+updates the cpsr.

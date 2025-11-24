@@ -1,0 +1,53 @@
+3.11 Summary
+
+examples that is used throughout this text. We defined the basic ER model concepts
+of entities and their attributes. Then we discussed NULL values and presented the
+various types of attributes, which can be nested arbitrarily to produce complex
+attributes:
+
+= Simple or atomic
+
+= Composite
+
+= Multivalued
+We also briefly discussed stored versus derived attributes. Then we discussed the
+ER model concepts at the schema or “intension” level:
+Entity types and their corresponding entity sets
+Key attributes of entity types
+Value sets (domains) of attributes
+Relationship types and their corresponding relationship sets
+
+Participation roles of entity types in relationship types
+
+We presented two methods for specifying the structural constraints on relationship
+types. The first method distinguished two types of structural constraints:
+
+= Cardinality ratios (1:1, 1:N, M:N for binary relationships)
+= Participation constraints (total, partial)
+
+We noted that, alternatively, another method of specifying structural constraints is
+to specify minimum and maximum numbers (min, max) on the participation of
+each entity type in a relationship type. We discussed weak entity types and the
+related concepts of owner entity types, identifying relationship types and partial key
+attributes.
+
+Entity-relationship schemas can be represented diagrammatically as ER diagrams.
+We showed how to design an ER schema for the COMPANY database by first defin-
+ing the entity types and their attributes and then refining the design to include rela-
+tionship types. We displayed the ER diagram for the COMPANY database schema.
+We discussed some of the basic concepts of UML class diagrams and how they
+relate to ER modeling concepts. We also described ternary and higher-degree
+relationship types in more detail, and we discussed the circumstances under which
+they are distinguished from binary relationships. Finally, we presented require-
+ments for a UNIVERSITY database schema as another example, and we showed the
+ER schema design.
+
+The ER modeling concepts we have presented thus far—entity types, relationship
+types, attributes, keys, and structural constraints—can model many database appli-
+cations. However, more complex applications—such as engineering design, medi-
+cal information systems, and telecommunications—require additional concepts if
+we want to model them with greater accuracy. We discuss some advanced model-
+ing concepts in Chapter 8 and revisit further advanced data modeling techniques in
+Chapter 26.
+
+95

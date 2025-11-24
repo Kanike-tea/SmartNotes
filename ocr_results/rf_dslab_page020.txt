@@ -1,0 +1,54 @@
+6.Develop a menu driven Program in C for the following operations on Circular QUEUE of Characters
+(Array Implementation of Queue with maximum size MAX)
+la. Insert an Element on to Circular QUEUE
+lb. Delete an Element from Circular QUEUE
+ic. Demonstrate Overflow and Underflow situations on Circular QUEUE
+ld. Display the status of Circular QUEUE
+le. Exit
+‘Support the program with appropriate functions for each of the above operations
+
+#include <stdio.h>
+#define MAX 5
+char cq/MAX];
+int front = -1, rear = -1
+
+void main()
+
+{
+int ch;
+char item;
+while(1)
+{
+printf("\n\nMain Menu");
+printf("\n1. Insertion and Overflow "
+printf("\n 2. Deletion and Underflow
+printf("\n 3. Display");
+printf("\n 4. Exit");
+printf("\nEnter Your Choice: ");
+scanf("%d" , &ch);
+switch(ch)
+{
+case 1: printf("\n\nEnter the element to be inserted: ");
+scanf("%c" , &item);
+insert(item);
+break;
+case 2: delete();
+break;
+case 3: displayQ);
+break;
+case 4: exit(0);
+default: printf("\n\nPlease enter a valid choice");
+i
+3
+
+void insert(char item)
+if(front == (rear+1)%MAX)
+
+printf("\n\nCircular Queue Overflow");
+
+front = rear = 0;
+
+rear = (rear+1)%MAX;
+cq[rear] = item;
+
+20

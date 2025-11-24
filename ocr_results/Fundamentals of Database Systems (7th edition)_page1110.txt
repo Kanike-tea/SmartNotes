@@ -1,0 +1,53 @@
+1080
+
+Chapter 28 Data Mining Concepts
+
+else
+for each item, i, in the header of the tree do
+
+begin
+generate pattern beta = (i U alpha) with support = i.support;
+construct beta’s conditional pattern base;
+construct beta’s conditional FP-tree, beta_tree;
+if beta_tree is not empty then
+
+FP-growth(beta_tree, beta);
+end;
+End;
+
+We illustrate the algorithm using the data in Figure 28.1 and the tree in Figure 28.2.
+The procedure FP-growth is called with the two parameters: the original FP-tree
+and NULL for the variable alpha. Since the original FP-tree has more than a single
+path, we execute the else part of the first if statement. We start with the frequent
+item, juice. We will examine the frequent items in order of lowest support (that is,
+from the last entry in the table to the first). The variable beta is set to juice with sup-
+port equal to 2.
+
+Following the node link in the item header table, we construct the conditional pat-
+tern base consisting of two paths (with juice as suffix). These are (milk, bread, cook-
+ies: 1) and (milk: 1). The conditional FP-tree consists of only a single node, milk: 2.
+This is due to a support of only 1 for node bread and cookies, which is below the
+minimal support of 2. The algorithm is called recursively with an FP-tree of only a
+single node (that is, milk: 2) and a beta value of juice. Since this FP-tree only has
+one path, all combinations of beta and nodes in the path are generated—that is,
+{milk, juice}—with support of 2.
+
+Next, the frequent item, cookies, is used. The variable beta is set to cookies with
+support = 2. Following the node link in the item header table, we construct the con-
+ditional pattern base consisting of two paths. These are (milk, bread: 1) and (bread: 1).
+The conditional FP-tree is only a single node, bread: 2. The algorithm is called
+recursively with an FP-tree of only a single node (that is, bread: 2) and a beta value
+of cookies. Since this FP-tree only has one path, all combinations of beta and nodes
+in the path are generated, that is, {bread, cookies} with support of 2. The frequent
+item, bread, is considered next. The variable beta is set to bread with support = 2.
+Following the node link in the item header table, we construct the conditional pat-
+tern base consisting of one path, which is (milk: 1). The conditional FP-tree is
+empty since the count is less than the minimum support. Since the conditional FP-
+tree is empty, no frequent patterns will be generated.
+
+The last frequent item to consider is milk. This is the top item in the item
+header table and as such has an empty conditional pattern base and empty
+conditional FP-tree. As a result, no frequent patterns are added. The result of
+executing the algorithm is the following frequent patterns (or itemsets) with
+their support: {{milk: 3}, {bread: 2}, {cookies: 2}, {juice: 2}, {milk, juice: 2},
+{bread, cookies: 2}}.

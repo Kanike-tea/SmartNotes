@@ -1,0 +1,54 @@
+182 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.19
+
+SUMMARY
+
+In assembly you can write this using conditional comparisons:
+
+TEQ c, #ta'
+TEQNE cc, #'e'
+TEQNE cc, #'i'
+TEQNE cc, #'o'
+TEQNE cc, #'u'
+
+ADDEQ vowel, vowel, #1
+
+As soon as one of the TEQ comparisons detects a match, the Z flag is set in the cpsr. The
+following TEQNE instructions have no effect as they are conditional on Z = 0.
+
+The next instruction to have effect is the ADDEQ that increments vowel. You can use this
+method whenever all the comparisons in the if statement are of the same type.
+
+Consider the following code that detects if c is a letter:
+
+if ((c>="A" BB c<=!Z") |] (c>=!a" && c<='2"))
+{
+
+lettert+;
+
+}
+
+To implement this efficiently, we can use an addition or subtraction to move each range
+to the form 0 < c < limit. Then we use unsigned comparisons to detect this range and
+conditional comparisons to chain together ranges. The following assembly implements this
+efficiently:
+
+SUB temp, c, #'A"
+CMP temp, #'Z'-'A'
+SUBHI temp, c, #'a'
+CMPHI temp, #'z'~'a!'
+ADDLS letter, letter, #1
+
+For more complicated decisions involving switches, see Section 6.8.
+
+Note that the logical operations AND and OR are related by the standard logical relations
+as shown in Table 6.1. You can invert logical expressions involving OR to get an expression
+involving AND, which can often be useful in simplifying or rearranging logical expressions.
+
+Conditional Execution
+
+= You can implement most if statements with conditional execution. This is more
+efficient than using a conditional branch.

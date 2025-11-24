@@ -1,0 +1,25 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+Consider the sparse matrix, as shown in below figure (2).
+
+2000)
+4.0 0 3)
+0000
+8001)
+
+10 0 6 Of
+
+Figure (2): 4 x 4 sparse matrix a
+Figure (3) shows the linked representation of this matrix. Although we have not
+
+shownthe value of the tag fields, we can easily determine these values from the node
+
+structure.
+
+For each nonzero term of a, have one entry node that is in exactly one row list and one
+
+column list. The header nodes are marked HO-H3. As the figure shows, we use the
+
+rightfield of the header node list header.
+
+vtucode.in 4

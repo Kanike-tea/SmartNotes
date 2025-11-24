@@ -1,0 +1,48 @@
+Suppose we want complete information of the full time employees.
+
+The natural join (Employee ms Fulltime-works),, 1) result into the loss of information for
+
+Suleman and Rehman because they don’t have record in both the tables ( left and right
+
+relation). The outer join will solve the problem.
+
+Three forms of outer join:
+
+o Left outer join): the tuples which doesn’t match while doing natural join from
+left relation are also added in the result putting null values in missing field of right
+relation.
+
+o Right outer join?*): the tuples which doesn’t match while natural join from right
+relation are also added in the result putting null values in missing field of left
+relation.
+
+© Full outer join(?™>): include both of the left and right outer joins ie. adds the
+tuples which did not match either in left relation or right relation and put null in
+place of missing values.
+The result for three forms of outer join are as follows:
+Employee 2 Fulltime-works_
+
+Left join:
+employee- street City branch- salary
+name name
+Ram MG Road Agra Sadar 30000
+Shyam New Mandi | Mathura Sanjay 20000
+Road Place
+Suleman Bhagat Singh | Aligarh Null Null
+Road
+Right join: Employee 4c Fulltime-works_
+employee- street city ranch- salary
+name name
+Ram MG Road Agra Sadar 30000
+Shyam New Mandi | Mathura Sanjay 20000
+Road lace
+Rehman null null Dayalbagh | 40000
+Full join: Employee 3™c Fulltime-works_
+employee- street city ranch- salary
+name name
+Ram MG Road Agra Sadar 30000
+Shyam New Mandi | Mathura Sanjay 20000
+Road lace
+Suleman Bhagat Singh | Aligarh null null
+Road
+Rehman null null Dayalbagh | 40000

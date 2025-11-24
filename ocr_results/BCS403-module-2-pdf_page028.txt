@@ -1,0 +1,40 @@
+Database Management System [BCS403]
+
+In general, the DIVISION operation is applied to two relations R(Z) + S(X), where the attributes of
+R are a subset of the attributes of S; that is, X © Z.Let Y be the set of attributes of R that are not
+attributes of S; that is, Y = Z — X (and hence Z = X U Y). The result of DIVISION is a relation T(Y)
+that includes a tuple t if tuples tr appear in R with tr [Y] =t, and with tr [X] = ts for every tuple ts in
+
+S. This means that, for a tuple t to appear in the result T of t
+
+Figure below illustrates a DIVISION operation where Y= {A}, Y= {B}, and Z = {A, B}.
+
+se s
+Al[.B A
+at bi Pa
+a2 bt a2
+a3 bi
+a4 bt =
+al b2 +d
+a3 b2
+
+| a2 | bs | =
+a3 b3
+a4 b3 ba
+at b4
+
+[ a2 | ba |
+
+a3 | bs
+
+The tuples (values) b1 and 54 appear in R in combination with all three tuples in S; that is why they
+appear in the resulting relation 7. All other values of B in R do not appear with all the tuples in S and
+are not selected: b2 does not appear with a2, and b3 does not appear with al.
+
+The DIVISION operation can be expressed as a sequence of 2, x, and — operations as follows:
+
+Tl —n{R)
+T2 — {Sx T1)—R)
+T< T1-T2
+
+https://vtucode.in Page 29

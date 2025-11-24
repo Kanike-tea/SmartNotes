@@ -1,0 +1,55 @@
+886
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+consistency, so more relaxed forms of consistency known as eventual
+consistency are used. We discuss this in more detail in Section 24.2.
+
+. Replication Models: Two major replication models are used in NOSQL sys-
+
+tems: master-slave and master-master replication. Master-slave replication
+requires one copy to be the master copy; all write operations must be applied
+to the master copy and then propagated to the slave copies, usually using
+eventual consistency (the slave copies will eventually be the same as the mas-
+ter copy). For read, the master-slave paradigm can be configured in various
+ways. One configuration requires all reads to also be at the master copy, so
+this would be similar to the primary site or primary copy methods of distrib-
+uted concurrency control (see Section 23.3.1), with similar advantages and
+disadvantages. Another configuration would allow reads at the slave copies
+but would not guarantee that the values are the latest writes, since writes to
+the slave nodes can be done after they are applied to the master copy. The
+master-master replication allows reads and writes at any of the replicas but
+may not guarantee that reads at nodes that store different copies see the
+same values. Different users may write the same data item concurrently at
+different nodes of the system, so the values of the item will be temporarily
+inconsistent. A reconciliation method to resolve conflicting write operations
+of the same data item at different nodes must be implemented as part of the
+master-master replication scheme.
+
+. Sharding of Files: In many NOSQL applications, files (or collections of data
+
+objects) can have many millions of records (or documents or objects), and
+these records can be accessed concurrently by thousands of users. So it is not
+practical to store the whole file in one node. Sharding (also known as
+horizontal partitioning ; see Section 23.2) of the file records is often
+employed in NOSQL systems. This serves to distribute the load of accessing
+the file records to multiple nodes. The combination of sharding the file
+records and replicating the shards works in tandem to improve load
+balancing as well as data availability. We will discuss some of the sharding
+techniques in Sections 24.3 through 24.6 when we discuss specific systems.
+
+. High-Performance Data Access: In many NOSQL applications, it is neces-
+
+sary to find individual records or objects (data items) from among the mil-
+lions of data records or objects in a file. To achieve this, most systems use
+one of two techniques: hashing or range partitioning on object keys. The
+majority of accesses to an object will be by providing the key value rather
+than by using complex query conditions. The object key is similar to the
+concept of object id (see Section 12.1). In hashing, a hash function h(K) is
+applied to the key K, and the location of the object with key K is determined
+by the value of h(K). In range partitioning, the location is determined via a
+range of key values; for example, location i would hold the objects whose key
+values K are in the range Kimin < K < Kimax. In applications that require
+range queries, where multiple objects within a range of key values are
+retrieved, range partitioned is preferred. Other indexes can also be used to
+locate objects based on attribute conditions different from the key K. We

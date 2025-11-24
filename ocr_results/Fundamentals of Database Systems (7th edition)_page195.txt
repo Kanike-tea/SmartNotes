@@ -1,0 +1,49 @@
+5.3 Update Operations, Transactions, and Dealing with Constraint Violations
+
+the database states. Hence, the DDL includes provisions for specifying the various
+types of constraints so that the DBMS can automatically enforce them. In SQL, the
+CREATE TABLE statement of the SQL DDL allows the definition of primary key,
+unique key, NOT NULL, entity integrity, and referential integrity constraints, among
+other constraints (see Sections 6.1 and 6.2) .
+
+5.2.5 Other Types of Constraints
+
+The preceding integrity constraints are included in the data definition language
+because they occur in most database applications. Another class of general con-
+straints, sometimes called semantic integrity constraints, are not part of the DDL
+and have to be specified and enforced in a different way. Examples of such con-
+straints are the salary of an employee should not exceed the salary of the employee’s
+supervisor and the maximum number of hours an employee can work on all projects
+per week is 56. Such constraints can be specified and enforced within the applica-
+tion programs that update the database, or by using a general-purpose constraint
+specification language. Mechanisms called triggers and assertions can be used in
+SQL, through the CREATE ASSERTION and CREATE TRIGGER statements, to specify
+some of these constraints (see Chapter 7). It is more common to check for these
+types of constraints within the application programs than to use constraint specifi-
+cation languages because the latter are sometimes difficult and complex to use, as
+we discuss in Section 26.1.
+
+The types of constraints we discussed so far may be called state constraints
+because they define the constraints that a valid state of the database must satisfy.
+Another type of constraint, called transition constraints, can be defined to deal
+with state changes in the database.'! An example of a transition constraint is: “the
+salary of an employee can only increase.” Such constraints are typically enforced
+by the application programs or specified using active rules and triggers, as we dis-
+cuss in Section 26.1.
+
+5.3 Update Operations, Transactions,
+and Dealing with Constraint Violations
+
+The operations of the relational model can be categorized into retrievals and
+updates. The relational algebra operations, which can be used to specify retrievals,
+are discussed in detail in Chapter 8. A relational algebra expression forms a new
+relation after applying a number of algebraic operators to an existing set of rela-
+tions; its main use is for querying a database to retrieve information. The user for-
+mulates a query that specifies the data of interest, and a new relation is formed by
+applying relational operators to retrieve this data. The result relation becomes the
+answer to (or result of) the user’s query. Chapter 8 also introduces the language
+
+‘State constraints are sometimes called static constraints, and transition constraints are sometimes
+called dynamic constraints.
+
+165

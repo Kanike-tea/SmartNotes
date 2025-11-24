@@ -1,0 +1,58 @@
+Data staging area is the storage area as well as set of ETL process that extract data from source
+system. It is everything between source systems and Data warehouse.
+
+Data staging are never be used for reporting purpose. Data is extracted from source system and
+stored, cleansed, transformed in staging area to load into data warehouse.
+
+Staging are not necessarily the DBMS. It could be flat files also. Staging area can be structured like
+normalized source systems. It totally depends on choice and need of development process.
+
+Data Presentation Area
+
+Data presentation area is generally called as data warehouse. It’s the place where cleaned,
+transformed data is stored in a dimensionally structured warehouse and made available for analysis
+purpose
+
+Data Access Tools
+
+once data is available in presentation area it is accessed using data access tools like Business
+Objects.
+
+Schema:
+
+(Star schema)
+
+The star schema architecture is the simplest data warehouse schema. It is called a star schema
+because the diagram resembles a star, with points radiating from a center. The center of the star
+consists of fact table and the points of the star are the dimension tables. Usually the fact tables in a
+star schema are in third normal form(3NF) whereas dimensional tables are de-normalized. Despite
+the fact that the star schema is the simplest architecture, it is most commonly used nowadays and is
+recommended by Oracle.
+
+Fact Tables
+
+A fact table typically has two types of columns: foreign keys to dimension tables and measures
+those that contain numeric facts. A fact table can contain fact's data on detail or aggregated level.
+
+> Dimension Tables
+
+A dimension is a structure usually composed of one or more hierarchies that categorizes data. If a
+imension hasn't got a hierarchies and levels it is called flat dimension or list. The primary keys of
+each of the dimension tables are part of the composite primary key of the fact table. Dimensional
+attributes help to describe the dimensional value. They are normally descriptive, textual values.
+Dimension tables are generally small in size then fact table.
+
+Typical fact tables store data about sales while dimension tables data about geographic
+region(markets, cities) , clients, products, times, channels.
+
+The main characteristics of star schema:
+
+1. Simple structure -> easy to understand schema
+
+2. Great query effectives -> small number of tables to join
+
+3. Relatively long time of loading data into dimension tables -> de-normalization,
+redundancy data caused that size of the table could be large.
+
+4. The most commonly used in the data warehouse implementations -> widely
+supported by a large number of business intelligence tools

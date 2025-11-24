@@ -1,0 +1,53 @@
+1168 Appendix B Parameters of Disks
+
+3. Block transfer time (btt). Once the read/write head is at the beginning of
+the required block, some time is needed to transfer the data in the block.
+This block transfer time depends on the block size, track size, and rotational
+speed. If the transfer rate for the disk is tr bytes/msec and the block size is
+B bytes, then
+
+btt = B/tr msec
+
+If we have a track size of 50 Kbytes and p is 3600 rpm, then the transfer rate
+in bytes/msec is
+
+tr = (50 + 1000)/(60 + 1000/3600) = 3000 bytes/msec
+In this case, btt = B/3000 msec, where B is the block size in bytes.
+
+The average time (s) needed to find and transfer a block, given its block address, is
+estimated by
+
+(s+ rd + btt) msec
+
+This holds for either reading or writing a block. The principal method of reducing
+this time is to transfer several blocks that are stored on one or more tracks of the
+same cylinder; then the seek time is required for the first block only. To transfer
+consecutively k noncontiguous blocks that are on the same cylinder, we need
+approximately
+
+s+(k* (rd + btt)) msec
+
+In this case, we need two or more buffers in main storage because we are continu-
+ously reading or writing the k blocks, as we discussed in Chapter 17. The transfer
+time per block is reduced even further when consecutive blocks on the same track or
+cylinder are transferred. This eliminates the rotational delay for all but the first
+block, so the estimate for transferring k consecutive blocks is
+
+s+rd+ (k* btt) msec
+
+A more accurate estimate for transferring consecutive blocks takes into account the
+interblock gap (see Section 17.2.1), which includes the information that enables the
+read/write head to determine which block it is about to read. Usually, the disk man-
+ufacturer provides a bulk transfer rate (btr) that takes the gap size into account
+when reading consecutively stored blocks. If the gap size is G bytes, then
+
+btr = (B/(B + G)) * tr bytes/msec
+
+The bulk transfer rate is the rate of transferring useful bytes in the data blocks. The
+disk read/write head must go over all bytes on a track as the disk rotates, including
+the bytes in the interblock gaps, which store control information but not real data.
+When the bulk transfer rate is used, the time needed to transfer the useful data in
+one block out of several consecutive blocks is B/btr. Hence, the estimated time to
+read k blocks consecutively stored on the same cylinder becomes
+
+st+rd+ (k* (B/btr)) msec

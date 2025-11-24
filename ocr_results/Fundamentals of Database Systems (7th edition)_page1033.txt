@@ -1,0 +1,52 @@
+26.5 Introduction to Deductive Databases
+
+P(41, 49, ... , Ay), Where p is the predicate name and n is the number of arguments
+for predicate p. Different predicate symbols can have different numbers of argu-
+ments, and the number of arguments n of predicate p is sometimes called the arity
+or degree of p. The arguments can be either constant values or variable names. As
+mentioned earlier, we use the convention that constant values either are numeric
+or start with a lowercase character, whereas variable names always start with an
+uppercase character.
+
+A number of built-in predicates are included in Datalog and can also be used to con-
+struct atomic formulas. The built-in predicates are of two main types: the binary com-
+parison predicates < (less), <= (less_or_equal), > (greater), and >= (greater_or_equal)
+over ordered domains; and the comparison predicates = (equal) and /= (not_equal) over
+ordered or unordered domains. These can be used as binary predicates with the same
+functional syntax as other predicates—for example, by writing less(X, 3)—or they can
+be specified by using the customary infix notation X<3. Note that because the domains
+of these predicates are potentially infinite, they should be used with care in rule defini-
+tions. For example, the predicate greater(X, 3), if used alone, generates an infinite set of
+values for X that satisfy the predicate (all integer numbers greater than 3).
+
+A literal is either an atomic formula as defined earlier—called a positive literal—or an
+atomic formula preceded by not. The latter is a negated atomic formula, called a
+negative literal. Datalog programs can be considered to be a subset of the predicate
+calculus formulas, which are somewhat similar to the formulas of the domain relational
+calculus (see Section 6.7). In Datalog, however, these formulas are first converted into
+what is known as clausal form before they are expressed in Datalog, and only formulas
+given ina restricted clausal form, called Horn clauses, can be used in Datalog.
+
+26.5.4 Clausal Form and Horn Clauses
+
+Recall from Section 6.6 that a formula in the relational calculus is a condition that
+includes predicates called atoms (based on relation names). Additionally, a formula
+can have quantifiers—namely, the universal quantifier (for all) and the existential
+quantifier (there exists). In clausal form, a formula must be transformed into
+another formula with the following characteristics:
+
+= All variables in the formula are universally quantified. Hence, it is not neces-
+sary to include the universal quantifiers (for all) explicitly; the quantifiers
+are removed, and all variables in the formula are implicitly quantified by the
+universal quantifier.
+
+= In clausal form, the formula is made up of a number of clauses, where each
+clause is composed of a number of literals connected by OR logical connec-
+tives only. Hence, each clause is a disjunction of literals.
+
+= The clauses themselves are connected by AND logical connectives only, to form
+a formula. Hence, the clausal form of a formula is a conjunction of clauses.
+
+“Named after the mathematician Alfred Horn.
+
+1003

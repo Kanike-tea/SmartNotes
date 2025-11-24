@@ -1,0 +1,54 @@
+388
+
+Chapter 12 Object and Object-Relational Databases
+
+3. The lifetime of an object specifies whether it is a persistent object (that is, a
+database object) or transient object (that is, an object in an executing pro-
+gram that disappears after the program terminates). Lifetimes are indepen-
+dent of classes/types—that is, some objects of a particular class may be
+transient whereas others may be persistent.
+
+4. The structure of an object specifies how the object is constructed by using
+the type constructors. The structure specifies whether an object is atomic or
+not. An atomic object refers to a single object that follows a user-defined
+type, such as Employee or Department. If an object is not atomic, then it will be
+composed of other objects. For example, a collection object is not an atomic
+object, since its state will be a collection of other objects.*! The term atomic
+object is different from how we defined the atom constructor in Sec-
+tion 12.1.3, which referred to all values of built-in data types. In the OOMG
+model, an atomic object is any individual user-defined object. All values of
+the basic built-in data types are considered to be literals.
+
+5. Object creation refers to the manner in which an object can be created. This
+
+is typically accomplished via an operation new for a special Object_Factory
+interface. We shall describe this in more detail later in this section.
+
+In the object model, a literal is a value that does not have an object identifier. How-
+ever, the value may have a simple or complex structure. There are three types of
+literals: atomic, structured, and collection.
+
+1. Atomic literals” correspond to the values of basic data types and are pre-
+defined. The basic data types of the object model include long, short, and
+unsigned integer numbers (these are specified by the keywords long, short,
+unsigned long, and unsigned short in ODL), regular and double precision
+floating-point numbers (float, double), Boolean values (boolean), single
+characters (char), character strings (string), and enumeration types (enum),
+among others.
+
+2. Structured literals correspond roughly to values that are constructed using
+the tuple constructor described in Section 12.1.3. The built-in structured lit-
+erals include Date, Interval, Time, and Timestamp (see Figure 12.5(b)). Addi-
+tional user-defined structured literals can be defined as needed by each
+application.”* User-defined structures are created using the STRUCT key-
+word in ODL, as in the C and C++ programming languages.
+
+21In the ODMG model, atomic objects do not correspond to objects whose values are basic data types.
+
+All basic values (integers, reals, and so on) are considered literals.
+
+?2The use of the word atomic in atomic literal corresponds to the way we used atom constructor in
+Section 12.1.3.
+
+28The structures for Date, Interval, Time, and Timestamp can be used to create either literal values or
+objects with identifiers.

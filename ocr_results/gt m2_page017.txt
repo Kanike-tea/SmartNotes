@@ -1,0 +1,40 @@
+a & ea &3
+
+ZW <eN
+
+& 2
+(a) (b)
+
+Fig. 9-2 Two nonisomorphic digraphs.
+
+Isomorphic Digraphs: Isomorphic graphs were defined such that they have
+identical behavior in terms of graph properties. In other words, if their labels are
+removed, two isomorphic graphs are indistinguishable. For two digraphs to be
+isomorphic not only must their corresponding undirected graphs be isomorphic,
+but the directions of the corresponding edges must also agree. For example, Fig.
+9-2 shows two digraphs that are not isomorphic, although they are orientations
+of the same undirected graph.
+
+Figure 9-2 immediately suggests a problem. What is the number of distinct
+(i.e., nonisomorphic) orientations of a given undirected graph? The problem was
+solved by F. Harary and E. M. Palmer in 1966. Some specific cases are left as an
+exercise (Problem 9-3).
+
+9-2. SOME TYPES OF DIGRAPHS
+
+Like their undirected sisters, digraphs come in many varieties. In fact, due to
+the choice of assigning a direction to each edge, directed graphs have more
+varieties than undirected ones.
+
+Simple Digraphs: A digraph that has no self-loop or parallel edges is called a
+simple digraph (Figs. 9-2 and 9-3, for example).
+
+Asymmetric Digraphs: Digraphs that have at most one directed edge between
+a pair of vertices, but are allowed to have self-loops, are called asymmetric or
+antisymmetric.
+
+Symmetric Digraphs: Digraphs in which for every edge (a, b) (ie., from
+vertex a to b) there is also an edge (b, a).
+
+A digraph that is both simple and symmetric is called a simple symmetric
+digraph. Similarly, a digraph that is both simple and asymmetric is simple

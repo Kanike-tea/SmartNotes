@@ -1,0 +1,49 @@
+1020
+
+Chapter 26 Enhanced Data Models
+
+whereas Levesque (1984) provides a discussion of incomplete knowledge in light of
+logic. Gallaire and Minker (1978) provide an early book on this topic. A detailed
+treatment of logic and databases appears in Ullman (1989, Volume 2), and there is
+a related chapter in Volume 1 (1988). Ceri, Gottlob, and Tanca (1990) present a
+comprehensive yet concise treatment of logic and databases. Das (1992) is a com-
+prehensive book on deductive databases and logic programming. The early history
+of Datalog is covered in Maier and Warren (1988). Clocksin and Mellish (2003) is
+an excellent reference on Prolog language.
+
+Aho and Ullman (1979) provide an early algorithm for dealing with recursive queries,
+using the least fixed-point operator. Bancilhon and Ramakrishnan (1986) give an
+excellent and detailed description of the approaches to recursive query processing,
+with detailed examples of the naive and seminaive approaches. Excellent survey arti-
+cles on deductive databases and recursive query processing include Warren (1992)
+and Ramakrishnan and Ullman (1995). A complete description of the seminaive
+approach based on relational algebra is given in Bancilhon (1985). Other approaches
+to recursive query processing include the recursive query/subquery strategy of Vieille
+(1986), which is a top-down interpreted strategy, and the Henschen-Naqvi (1984)
+top-down compiled iterative strategy. Balbin and Ramamohanrao (1987) discuss an
+extension of the seminaive differential approach for multiple predicates.
+
+The original paper on magic sets is by Bancilhon et al. (1986). Beeri and Ramakrish-
+nan (1987) extend it. Mumick et al. (1990a) show the applicability of magic sets to
+nonrecursive nested SQL queries. Other approaches to optimizing rules without
+rewriting them appear in Vieille (1986, 1987). Kifer and Lozinskii (1986) propose a
+different technique. Bry (1990) discusses how the top-down and bottom-up
+approaches can be reconciled. Whang and Navathe (1992) describe an extended
+disjunctive normal form technique to deal with recursion in relational algebra
+expressions for providing an expert system interface over a relational DBMS.
+
+Chang (1981) describes an early system for combining deductive rules with rela-
+tional databases. The LDL system prototype is described in Chimenti et al. (1990).
+Krishnamurthy and Naqvi (1989) introduce the choice notion in LDL. Zaniolo
+(1988) discusses the language issues for the LDL system. A language overview of
+CORAL is provided in Ramakrishnan et al. (1992), and the implementation is
+described in Ramakrishnan et al. (1993). An extension to support object-oriented
+features, called CORAL++, is described in Srivastava et al. (1993). Ullman (1985)
+provides the basis for the NAIL! system, which is described in Morris et al. (1987).
+Phipps et al. (1991) describe the GLUE-NAIL! deductive database system.
+
+Zaniolo (1990) reviews the theoretical background and the practical importance of
+deductive databases. Nicolas (1997) gives an excellent history of the developments
+leading up to deductive object-oriented database (DOOD) systems. Falcone et al.
+(1997) survey the DOOD landscape. References on the VALIDITY system include
+Friesen et al. (1995), Vieille (1998), and Dietrich et al. (1999).

@@ -1,0 +1,48 @@
+LECTURE-13: INDEX
+Types of Indexes:
+
+e Indexing mechanisms used to speed up access to desired data.
+o E.g., author catalog in library
+e Search Key - attribute to set of attributes used to look up records in a file.
+e An index file consists of records (called index entries) of the form
+e Index files are typically much smaller than the original file
+« Two basic kinds of indices:
+o Ordered indices: search keys are stored in sorted order
+o Hash indices: search keys are distributed uniformly across “buckets” using a “hash
+function”.
+
+Ordered Indices
+Indexing techniques evaluated on basis of:
+1. In an ordered index, index entries are stored sorted on the search key value. E.g.,
+author catalog in library.
+2. Primary index: ina sequentially ordered file, the index whose search key specifies the
+sequential order of the file.
+a. Also called clustering index
+b. The search key of a primary index is usually but not necessarily the primary key.
+3. Secondary index: an index whose search key specifies an order different from the
+sequential order of the file. Also called
+non-clustering index.
+4. Index-sequential file: ordered sequential file with a primary index.
+
+There are two types of ordered indices that we can use:
+Dense index:
+An index record appears for every search-key value in the file. In a dense primary index, the index
+record contains the search-key value and a pointer to the first data record with that search-key
+value. The rest of the records with the same search key-value would be stored sequentially after the
+first record, since, because the index is a primary one, records are sorted on the same search key.
+Dense index implementations may store a list of pointers to all records with the same search-key
+value; doing so is not essential for primary indices.
+
+Sparse index:
+
+An index record appears for only some of the search-key values. As is true in dense indices, each
+index record contains a search-key value and a pointer to the first data record with that search-key
+value. To locate a record, we find the index entry with the largest search-key value that is less than
+or equal to the search-key value for which we are looking. We start at the record pointed to by that
+index entry, and follow the pointers in the file until we find the desired record.
+
+Primary Indexes:
+A primary index is an ordered file whose records are of fixed length with two fields. The first field
+
+is of the same data types as the ordering key filed of the data file and the second field is a pointer to
+a disk block- a block address. The ordering key field is called the primary key of the data file. There

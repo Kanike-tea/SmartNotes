@@ -1,0 +1,54 @@
+8.2 Relational Algebra Operations from Set Theory
+
+The MINUS operation is not commutative; that is, in general,
+R-S#S-R
+
+Figure 8.4(d) shows the names of students who are not instructors, and Fig-
+ure 8.4(e) shows the names of instructors who are not students.
+
+Note that INTERSECTION can be expressed in terms of union and set difference as
+follows:
+
+ROS=((RUS) -(R-S)) = (S=R)
+
+In SQL, there are three operations—UNION, INTERSECT, and EXCEPT—that corre-
+spond to the set operations described here. In addition, there are multiset opera-
+tions (UNION ALL, INTERSECT ALL, and EXCEPT ALL) that do not eliminate
+duplicates (see Section 6.3.4).
+
+8.2.2 The CARTESIAN PRODUCT (CROSS PRODUCT)
+Operation
+
+Next, we discuss the CARTESIAN PRODUCT operation—also known as CROSS
+PRODUCT or CROSS JOIN-which is denoted by x. This is also a binary set opera-
+tion, but the relations on which it is applied do not have to be union compatible. In
+its binary form, this set operation produces a new element by combining every
+member (tuple) from one relation (set) with every member (tuple) from the other
+relation (set). In general, the result of R(Aj, Ap, ..., A) x S(By, By, ... Bm) isa rela-
+tion Q with degree n + m attributes Q(Aj, Ao, ... , A,» By, Bo, ... , By), in that order.
+The resulting relation Q has one tuple for each combination of tuples—one from R
+and one from S. Hence, if R has ng tuples (denoted as |R| = ng), and S has ng tuples,
+then R x S will have np * ng tuples.
+
+The n-ary CARTESIAN PRODUCT operation is an extension of the above concept,
+which produces new tuples by concatenating all possible combinations of tuples
+from n underlying relations. The CARTESIAN PRODUCT operation applied by itself
+is generally meaningless. It is mostly useful when followed by a selection that
+matches values of attributes coming from the component relations. For example,
+suppose that we want to retrieve a list of names of each female employee’s depen-
+dents. We can do this as follows:
+
+FEMALE_EMPS < Og¢,_-7(EMPLOYEE)
+
+EMPNAMES < Tigname, Lname, Ssn(FEMALE_EMPS)
+EMP_DEPENDENTS < EMPNAMES x DEPENDENT
+ACTUAL_DEPENDENTS < Osen-fsen(EMP_DEPENDENTS)
+RESULT © Tigname, Lname, Dependent _name(ACTUAL_DEPENDENTS)
+
+The resulting relations from this sequence of operations are shown in Figure 8.5.
+The EMP_DEPENDENTS relation is the result of applying the CARTESIAN PRODUCT
+operation to EMPNAMES from Figure 8.5 with DEPENDENT from Figure 5.6. In
+EMP_DEPENDENTS, every tuple from EMPNAMES is combined with every tuple
+from DEPENDENT, giving a result that is not very meaningful (every dependent is
+
+249

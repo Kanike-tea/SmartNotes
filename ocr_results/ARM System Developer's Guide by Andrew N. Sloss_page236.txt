@@ -1,0 +1,62 @@
+7.3 Division 223
+
+; _value_in_regs struct { unsigned q, r3 }
+;  udiv_64by32_arm7m(unsigned d, unsigned long long n)
+udiv_64by32_arm7m
+
+cMP t,m 3 if (n >= (d<<32))
+
+BCS overflow_32 3 goto overflow_32;
+
+RSB m, m, #0 ;m=-d
+
+ADDS qr. r 3 { [r.q] = 2*[r,q]-[d,0]5
+
+ADCS r,m, t, LSL#1 ; C= ([r,q]>=0); }
+
+SUBCC rr, m 3 if (C==0) [rq] += [d,0]
+
+GBLA k ; the next 32 steps are the same
+k SETA 1 3 So we generate them using an
+
+WHILE k<32 3 assembler while loop
+
+ADCS a 4,49
+ADCS sor, m, r, LSL#1
+sugcc. or, rm
+
+{ [r.q] = 2*[r,q]+C - [4,0];
+3 C= ([r,q]>=0); }
+3 if (C==0) [rq] += [d,0]
+
+k SETA k+l
+
+WEND
+
+ADCS r0, 4, 4 ; insert final answer bit
+
+Mov pe, Ir 5 return { r0, rl }
+overflow_32
+
+MoV v0, #-1
+
+Mov rl, #-1
+
+Mov pe, Ir 5 return { -1, -1 }
+
+The idea is similar to the 32/15-bit division. After the kth trial subtraction the 64-bit
+value [r, q] contains the remainder in the top 64 — k bits. The bottom k bits contain the
+top k quotient bits. After 32 trial subtractions, r holds the remainder and q the quotient.
+The two ADC instructions shift [r, q] left by one, inserting the last answer bit in the bottom
+and subtracting the denominator from the upper 32 bits. If the subtraction overflows, we
+correct rby adding back the denominator.
+
+7.3.2 UNSIGNED INTEGER NEWTON-RAPHSON DIVISION
+
+Newton-Raphson iteration is a powerful technique for solving equations numerically. Once
+we have a good approximation of a solution to an equation, the iteration converges very
+rapidly on that solution. In fact, convergence is usually quadratic with the number of valid
+fractional bits roughly doubling with each iteration. Newton-Raphson is widely used for
+calculating high-precision reciprocals and square roots. We will use the Newton-Raphson
+method to implement 16- and 32-bit integer and fractional divides, although the ideas we
+will look at generalize to any size of division.

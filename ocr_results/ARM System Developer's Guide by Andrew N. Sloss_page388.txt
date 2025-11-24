@@ -1,0 +1,49 @@
+10.2 Example: Sandstone 375
+
+10.2.2.2 Step 2: Start Initializing the Hardware
+
+The primary phase in initializing hardware is setting up system registers. These registers
+have to be set up before accessing the hardware. For example, the ARM Evaluator-7T has a
+seven-segment display, which we have chosen to be used as a feedback tool to indicate that
+the firmware is active. Before we can set up the segment display, we have to position the
+base address of the system registers to a known location. In this case, we have picked the
+default address 0x03f £0000, since this places all the hardware system registers away from
+both ROM and RAM, separating the peripherals and memory.
+
+Consequently, all the microcontroller memory-mapped registers are located as an offset
+from 0x03f 0000. This is achieved using the following code:
+
+sandstone_initl
+LOR 3, =SYSCFG ; where SYSCFG=0x03f0000
+LOR rd, =0x03FFFFa0
+sTR or, [3]
+
+Register r3 contains the default system register base address and is used to set the new
+default address, as well as other specific attributes such as the cache. Register r4 contains
+the new configuration. The top 16 bits contain the high address of the new system register
+base address 0x03ff, and the lower 16 bits contain the new attribute settings Oxf fa0.
+
+After setting up the system register base address, the segment display can be configured.
+The segment display hardware is used to show Sandstone’s progress. Note that the segment
+display is not shown since it is hardware specific.
+
+The results of executing step 2 are the following:
+
+= The system registers are set from a known base address—0x03ff0000.
+
+= The segment display is configured, so that it can be used to display progress.
+
+10.2.2.3 Step 3: Remap Memory
+
+One of the major activities of hardware initialization is to set up the memory environment.
+Sandstone is designed to initialize SRAM and remap memory. This process occurs fairly
+early on in the initialization of the system. The platform starts in a known memory state,
+as shown in Table 10.4.
+
+‘As you can see, when the platform is powered up, only flash ROM is assigned a location
+in the memory map. The two SRAM banks (0 and 1) have not been initialized and are not
+available. The next stage is to bring in the two SRAM banks and remap flash ROM to anew
+location. This is achieved using the following code:
+
+LOR r14, =sandstone_init2
+LOR r4, =0x01800000 3 mew flash ROM location

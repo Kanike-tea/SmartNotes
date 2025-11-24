@@ -1,0 +1,49 @@
+262 Chapter 8 Digital Signal Processing
+
+We could use a floating-point representation for x[t]. This would certainly meet our
+dynamic range and accuracy constraints, and it would also be easy to manipulate using the
+C type float. However, most ARM cores do not support floating point in hardware, and
+so a floating-point representation would be very slow.
+
+A better choice for fast code is a fixed-point representation. A fixed-point representation
+uses an integer to represent a fractional value by scaling the fraction. For example, for
+a maximum error of 0.0001 volts, we only require a step of 0.0002 volts between each
+representable value. This suggests that we represent x[t] by the integer X[t] defined as
+
+X[t] = round_to_nearest_integer(5000 x x{t]) (8.3)
+
+In practice we would rather scale by a power of two. Then we can implement multipli-
+cation and division by the scale using shifts. In this case, the smallest power of two greater
+than 5000 is 2!5 = 8192. We say that X[f] is a Qk fixed-point representation of x{t] if
+
+X{[t] = round_to_nearest_integer(2*x{t]) (8.4)
+
+In our example we can use a Q13 representation to meet the accuracy required. Since
+x[t] ranges between —1 and +1 volt, X[t] will range between the integers —8192 and +8192.
+This range will fit in a 16-bit C variable of type short. Signals that vary between —1 and +1
+are often stored as Q15 values because this scales them to the maximum range of a short
+type integer: —32,768 to +32,767. Note that +1 does not have an exact representation, and
+we approximate it by +32,767 representing 1 — 2~'5. However, we will see in Section 8.1.2
+that scaling up to the maximum range is not always a good idea. It increases the probability
+of overflow when manipulating the fixed-point representations.
+
+Ina fixed-point representation we represent each signal value by an integer and use the
+same scaling for the whole signal. This differs from a floating-point representation, where
+each signal value x[t] has its own scaling called the exponent dependent upon t.
+
+A common error is to think that floating point is more accurate than fixed point. This is
+false! For the same number of bits, a fixed-point representation gives greater accuracy. The
+floating-point representation gives higher dynamic range at the expense of lower absolute
+accuracy. For example, if you use a 32-bit integer to hold a fixed-point value scaled to
+full range, then the maximum error in a representation is 2~>?. However, single-precision
+32-bit floating-point values give a relative error of 2~**. The single-precision floating-point
+mantissa is 24 bits. The leading 1 of the mantissa is not stored, so 23 bits of storage are
+actually used. For values near the maximum, the fixed-point representation is 232-74 =
+256 times more accurate! The 8-bit floating-point exponent is of little use when you are
+interested in maximum error rather than relative accuracy.
+
+To summarize, a fixed-point representation is best when there is a clear bound to the
+strength of the signal and when maximum error is important. When there is no clear bound
+and you require a large dynamic range, then floating point is better. You can also use the
+other following representations, which give more dynamic range than fixed point while still
+being more efficient to implement than floating point.

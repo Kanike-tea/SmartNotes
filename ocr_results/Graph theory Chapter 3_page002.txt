@@ -1,0 +1,36 @@
+4.1. Trees and their Basic properties 155
+
+Thus, if the theorem is true for a tree with n < k vertices, it is true for a tree with n =k +1
+vertices. Hence, by induction, the theorem is true for >I Positive integers n. °
+
+‘Pheorem 4 . Any connected graph with n vertices andn — 1 edges is a tree.
+
+Cc
+Figure 3.3
+
+Proof: Let G be a connected graph with n vertices and n — 1 edges. Assume that G is aot a
+tree. Then G contains a cycle, say C. Let e be an edge in C. The graph G will not become
+disconnected if e is deleted (see Figure 8.1). Thus, G — e is a connected graph. But, on the
+other hand, G — e has n vertices and n — 2 edges; therefore, it cannot be connected.* This is a
+contradiction. Hence, G must not have a cycle; this means that G must be a tree.
+
+This completes the proof of the theorem. °
+
+Remark: A disconnected graph with n vertices and n — 1:edges need not be a tree; see the
+graph shown below (which is disconnected and has 4 vertices and'3 edges).
+
+0 os
+
+v2 v3
+
+Figure 3.4
+
+Theorems 3 and 4 can be put together in the following combined form: /
+A graph with n vertices is a tree if and only if it is connected and has n —\ edges. UA
+
+(Ms 4
+
+Perens -A connected graph G is a tree if and only ihadding an edge between any two”
+“es in G creates exactly one cycle in G.
+
+Recall Theotem 3, Section 1.7.

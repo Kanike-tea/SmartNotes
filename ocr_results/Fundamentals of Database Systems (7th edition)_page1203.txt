@@ -1,0 +1,41 @@
+Appendix C Overview of the QBE Language 1173
+(a) EMPLOYEE
+Fname {Minit |Lname Ssn Bdate Address Sex| Salary | Super_ssn |Dno
+John | B_| Smith | 123456789 | P_9/1/60 | P_100 Main, Houston, TX | _M | _25000| 123456789 | _3
+(b) EMPLOYEE
+Fname |Minit |Lname Ssn Bdate Address Sex| Salary | Super_ssn Dno
+John B_ | Smith P_9/1/60 | P_100 Main, Houston, TX
+(c) EMPLOYEE
+Fname |Minit |Lname Ssn Bdate Address Sex| Salary | Super_ssn Dno
+John B_ | Smith PX P_Y
+(d) EMPLOYEE
+Fname |Minit |Lname Ssn Bdate Address Sex | Salary | Super_ssn |Dno
+John B_ | Smith P. P.
+Figure C.2
+
+Four ways to specify the query Q0 in QBE.
+
+We can think of each column in a QBE template as an implicit domain variable;
+hence, Fname corresponds to the domain variable q, Minit corresponds to r, ..., and
+Dno corresponds to z. In the QBE query, the columns with P. correspond to vari-
+ables specified to the left of the bar in domain calculus, whereas the columns with
+constant values correspond to tuple variables with equality selection conditions on
+them. The condition EMPLOYEE(qrstuvwxyz) and the existential quantifiers are
+implicit in the QBE query because the template corresponding to the EMPLOYEE
+relation is used.
+
+In QBE, the user interface first allows the user to choose the tables (relations) needed
+to formulate a query by displaying a list of all relation names. Then the templates for
+the chosen relations are displayed. The user moves to the appropriate columns in
+the templates and specifies the query. Special function keys are provided to move
+among templates and perform certain functions.
+
+We now give examples to illustrate basic facilities of QBE. Comparison operators
+other than = (such as > or 2) may be entered in a column before typing a constant
+value. For example, the query QOA: List the social security numbers of employees who
+work more than 20 hours per week on project number 1 can be specified as shown in
+Figure C.3(a). For more complex conditions, the user can ask for a condition box,
+which is created by pressing a particular function key. The user can then type the
+complex condition.!
+
+'Negation with the — symbol is not allowed in a condition box.

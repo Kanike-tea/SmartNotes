@@ -1,0 +1,51 @@
+ee AbASE Management System [BCS403]
+
+Aggregate function operation can be defined by using the symbol 3 (script F) :
+
+<grouping attributes> <5 <function list> (R)
+
+Where ,
+
+<grouping attributes> : list of attributes of the relation specified in R
+
+<function list> : list of (<function> <attribute>) pairs.
+
+<function> - such as SUM, AVERAGE, MAXIMUM, MINIMUM,COUNT
+
+<attribute> is an attribute of the relation specified by R
+The resulting relation has the grouping attributes plus one attribute for each element in the function
+list.
+Example: To retrieve each department number, the number of employees in the department, and
+
+their average salary, while renaming the resulting attributes
+
+PR(Dno, No_of employees, Average_sal)(Dno § COUNT ssn, AVERAGE Salary (EMPLOYEE))
+
+The aggregate function operation.
+
+@ PRiDno, No_of employees, Average sal)(Dno S COUNT SsnpAVERAGE Sdiery(EMPLOYEE)).
+B. dao 3 COUNT Sen, AVERAGE Selary(=MPLOYEE),
+©. 3 COUNT Sen, AVERAGE Salary(EMPLOYEE).
+
+R
+(a) | Dno No_of_employees Average_sal (6) Dno | Count_ssn Average_salary
+5 4 33250 5 4 33250
+4 3 31000 4 3 31000
+1 1 55000 1 1 55000
+
+(©) | Countissn Average_salary
+8 85125
+
+2.5.3 Recursive Closure Operations
+Recursive closure operation is applied to a recursive relationship between tuples of the same type,
+such as the relationship between an employee and a supervisor.
+Example : Retrieve all supervisees of an employee e at all levels—that is, all employees e’ directly
+supervised by e, all employees e’3 directly supervised by each employee e’, all employees e’’’
+directly supervised by each employee e”’ and so on.
+
+BORG_SSN © tigen (GF pame—James’ AND Lname~'Bory’(EMPLOYEE))
+
+SUPERVISION(Ssn1, Ssn2) — Tq, Super <en(=MPLOYEE)
+RESULT1(Ssn) < xg,,; (SUPERVISION P4 <..._¢.,BORG_SSN)
+
+https://vtucode.in Page 33

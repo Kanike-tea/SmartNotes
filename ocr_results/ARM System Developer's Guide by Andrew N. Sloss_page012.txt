@@ -1,0 +1,53 @@
+xii
+
+Preface
+
+and rules for writing C code that will compile efficiently on the ARM architecture, and it
+helps determine which code should be optimized. Chapter 6 details best practices for writing
+and optimizing ARM assembly code—critical for improving performance by reducing
+system power consumption and clock speed.
+
+Because primitives are basic operations used in a wide range of algorithms, it’s worth-
+while to learn how they can be optimized. Chapter 7 discusses how to optimize primitives
+for specific ARM processors. It presents optimized reference implementations of com-
+mon primitives as well as of more complicated mathematical operations for those who
+wish to take a quick reference approach. We have also included the theory behind each
+implementation for those who wish to dig deeper.
+
+Audio and video embedded systems applications are increasingly in demand. They
+require digital signal processing (DSP) capability that until recently would have been pro-
+vided by a separate DSP processor. Now, however, the ARM architecture offers higher
+memory bandwidths and faster multiply accumulate operations, permitting a single ARM.
+core design to support these applications. Chapter 8 examines how to maximize the per-
+formance of the ARM for digital processing applications and how to implement DSP
+algorithms.
+
+At the heart of an embedded system lie the exception handlers. Efficient handlers
+can dramatically improve system performance. Chapter 9 covers the theory and prac-
+tice of handling exceptions and interrupts on the ARM processor through a set of detailed
+examples.
+
+Firmware, an important part of any embedded system, is described in Chapter 10 by
+means of a simple firmware package we designed, called Sandstone. The chapter also reviews
+popular industry firmware packages that are available for the ARM.
+
+Chapter 11 demonstrates the implementation of embedded operating systems through
+an example operating system we designed, called Simple Little Operating System.
+
+Chapters 12, 13, and 14 focus on memory issues. Chapter 12 examines the various
+cache technologies that surround the ARM cores, demonstrating routines for controlling
+the cache on specific cache-enabled ARM processors. Chapter 13 discusses the memory
+protection unit, and Chapter 14 discusses the memory management unit.
+
+Finally, in Chapter 15, we consider the future of the ARM architecture, highlighting
+new directions in the instruction set and new technologies that ARM is implementing in
+the next few years.
+
+The appendices provide detailed references on the instruction sets, cycle timing, and
+specific ARM products.
+
+EXAMPLES ON THE WEB
+
+As we noted earlier, we have created an extensive set of tested practical examples to
+reinforce concepts and methods. These are available on the publisher’s Web site at
+www.mkp.com/companions/1558608745.

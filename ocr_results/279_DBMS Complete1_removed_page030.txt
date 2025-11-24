@@ -1,0 +1,49 @@
+« Mirtual record — contains no data value, only a logical pointer to a particular physical
+record.
+
+« When a record is to be replicated in several database trees, a single copy of that record is
+kept in one of the trees and all other records are replaced with a virtual record.
+
+« Let R be a record type that is replicated in T1, T2,. . ., Tn. Create a new virtual record type
+virtual-R and replace R in each of the n — | trees with a record of type virtual-R.
+
+« Eliminate data replication in the following diagram ; create virtual-customer and virtual-
+account.
+
+« Replace account with virtual-account in the first tree, and replace customer with virtual-
+customer in the second tree.
+
+e Add a dashed line from virtual-customer to customer, and from virtual-account to account,
+to specify the association between a virtual record and its corresponding physical record.
+
+customer-name| custom w\account-number | balance
+
+| r | account
+
+virtual account virtual customer
+
+Network Model:
+= Data are represented by collections of records.
+© similar to an entity in the E-R model
+o Records and their fields are represented as record type
+
+= type customer = record type account = record type
+YP YP YP
+customer-name: string; account-number: integer;
+customer-street: string; balance: integer;
+customer-city: string;
+= end end
+
+= Relationships among data are represented by links
+© similar to a restricted (binary) form of an E-R relationship
+©. restrictions on links depend on whether the relationship is many-to-many, many-to-
+one, or one-to-one.
+
+Data-Structure Diagrams:
+= Schema representing the design of a network database.
+= A data-structure diagram consists of two basic components:
+o Boxes, which correspond to record types.
+o Lines, which correspond to links.
+= Specifies the overall logical structure of the database.
+
+For every E-R diagram, there is a corresponding data-structure diagram.

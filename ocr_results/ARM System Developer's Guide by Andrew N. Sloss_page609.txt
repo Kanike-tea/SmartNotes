@@ -1,0 +1,35 @@
+596 Appendix A ARM and Thumb Assembler Instructions
+
+Notes
+
+If the operation updates the cpsr and Rd is not pc, then N = <Negative>, Z = <Zero>,
+C = <shifter_C> (see Table A.3), and Vis preserved.
+
+If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr, in this case, the cpsr is set
+to the value of the spsr.
+
+If Rn or Rmris pe, then the value used is the address of the instruction plus eight bytes.
+
+Example
+ORR r0, r0,#1 <<13 5 set bit 13 of r0
+PKH Pack 16-bit halfwords into a 32-bit word
+1. PKHBT<cond> Rd, Rn, Rm {, LSL #<0-31>} ARMV6
+2. PKHTB<cond> Rd, Rn, Rm {, ASR #<1-32>} ARMV6
+Action
+1. Rd[15:00] = Rn[15:00]; Rd[31:16]=<shifted_Rm>[31:16]
+2. Rd[31:16] = Rn[31:16]; Rd[15:00]=<shifted_Rm>[15:00]
+Note
+Rd, Rn, Rm must not be pe. cpsr is not affected.
+Examples
+PKHBT 0, rl, r2, LSL¥16 ; rO = (r2[15:00] <<16) | ri[15:00]
+PKHTB 0, r2, rl, ASR#16 ; rO = (r2[31:15] <<16) | ri[31:15]
+PLD Preload hint instruction
+
+1. PLD [Rn {, #{-}<immedi2>}] ARMVS5E
+2. PLD [Rn, {-}Rm {,<imm_shift>}] ARMV5E
+Action
+
+1. Preloads from address (Rn + {{-}<immed12>})
+
+2. Preloads from address (Rn + {-}<shifted_Rm>)

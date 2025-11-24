@@ -1,0 +1,53 @@
+522
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+reader will notice that of the above three relations, relations S; and $3 were produced
+as the BCNF design by the procedure given in Section 14.5 (implying that S) is
+redundant in the presence of S, and $3). However, we cannot eliminate relation S)
+from the set of three 3NF relations above since it is not a projection of either Sj or S.
+It is easy to see that S, is a valid and meaningful relation that has the two candidate
+keys (L, C), and P placed side-by-side. Notice further that S preserves the FD LC > P,
+which is lost if the final design contains only S, and $3. Design Y therefore remains
+as one possible final result of applying Algorithm 15.4 to the given universal relation
+that provides relations in 3NF.
+
+The above two variations of applying Algorithm 15.4 to the same universal relation
+with a given set of FDs have illustrated two things:
+
+= Itis possible to generate alternate 3NF designs by starting from the same set
+of FDs.
+
+= Itis conceivable that in some cases the algorithm actually produces relations
+that satisfy BCNF and may include relations that maintain the dependency
+preservation property as well.
+
+15.3.2 Nonadditive Join Decomposition into BCNF Schemas
+
+The next algorithm decomposes a universal relation schema R = {Aj, Ay, ... , An}
+into a decomposition D = {Rj, R>, ... , R,,} such that each R; is in BCNF and the
+decomposition D has the lossless join property with respect to F. Algorithm 15.5
+utilizes property NJB and claim 2 (preservation of nonadditivity in successive
+decompositions) to create a nonadditive join decomposition D = {R,, Ry, ... , Rm} of
+a universal relation R based on a set of functional dependencies F, such that each R;
+in Dis in BCNF.
+
+Algorithm 15.5. Relational Decomposition into BCNF with Nonadditive
+Join Property
+
+Input: A universal relation R and a set of functional dependencies F on the
+attributes of R.
+
+1. Set D:= {R};
+2. While there is a relation schema Q in D that is not in BCNF do
+{
+
+choose a relation schema Q in D that is not in BCNF;
+find a functional dependency X > Y in Q that violates BCNF;
+replace Q in D by two relation schemas (Q — Y) and (X U Y);
+}s
+Each time through the loop in Algorithm 15.5, we decompose one relation schema
+Q that is not in BCNF into two relation schemas. According to property NJB for
+
+binary decompositions and claim 2, the decomposition D has the nonadditive
+join property. At the end of the algorithm, all relation schemas in D will be in

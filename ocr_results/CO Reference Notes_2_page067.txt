@@ -1,0 +1,53 @@
+Typical cell
+
+Carry-out
+
+(b) Array implementation
+Figure 9.6 = Array multiplication of unsigned binary operands.
+
+ARRAY MULTIPLICATION
+1) The main component in each cell is a full adder(FA)..
+2) The AND gate in each cell determines whether a multiplicand bit mj, is added to the incoming
+partial- product bit, based on the value of the multiplier bit qi (Figure9.6).
+
+SEQUENTIAL CIRCUIT BINARY MULTIPLIER
+Registers A and Q combined hold PPi(partial product)
+
+while the multiplier bit qi generates the signal Add/Noadd.
+¢ The carry-out from the adder is stored in flip-flop C (Figure 9.7).
+¢ Procedure for multiplication:
+1) Multiplier is loaded into register Q, Multiplicand is loaded into register M and
+C & A are cleared to 0.
+2) If qO=1, add M to A and store sum in A. Then C, A and Q are shifted right one bit-
+position. If q0=0, no addition performed and C, A & Q are shifted right one bit-position.
+3) After n cycles, the high-order half of the product is held in register A
+and the low-order half is held in register Q.
+
+Register A. (initially 0)
+
+} Initial configuration
+
+Seat} rnina cyete
+
+o| [0 To1t
+| | Shift right a Tr a a
+ate A | o 1101 1011 Ss eae
+(Es 2 | 0 o1lo 1101 sa of aes
+L Multiplier Q | —
+‘Add/Noadd al | 1 ood 1101 Add {se eer
+control [ o 1001 rid ae Shin Second eyele
+
+1 \
+1 shin if Fourth cycle
+
+e
+
+Product
+
+(b) Muttiplication example
+
+‘Multiplicand M Figure 9.7 Sequential circuit binary multiplier.
+
+(a) Register configuration
+
+Page 68

@@ -1,0 +1,51 @@
+592
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+become a commercial product until Seagate adopted OSDs in its Kinetic Open
+Storage Platform. Currently, Facebook uses an object storage system to store pho-
+tos at the level of over 350 Petabytes of storage; Spotify uses an object storage sys-
+tem for storing songs; and Dropbox uses it for its storage infrastructure. Object
+storage is the choice of many cloud offerings, such as Amazon’s AWS (Amazon
+Web Service) $3, and Microsoft's Azure, which stores files, relations, messages, and
+so on as objects. Other examples of products include Hitachi's HCP, EMC’s Atmos,
+and Scality’s RING. Openstack Swift is an open source project that allows one to
+use HTTP GET and PUT to retrieve and store objects—that’s basically the whole
+API. Openstack Swift uses very cheap hardware, is fully fault resistant, automati-
+cally takes advantage of geographic redundancy, and scales to very large numbers of
+objects. Since object storage forces locking to occur at the object level, it is not
+clear how suitable it is for concurrent transaction processing in high-throughput
+transaction-oriented systems. Therefore, it is still not considered viable for main-
+stream enterprise-level database applications.
+
+16.12 Summary
+
+We began this chapter by discussing the characteristics of memory hierarchies and
+then concentrated on secondary storage devices. In particular, we focused on mag-
+netic disks because they are still the preferred medium to store online database files.
+Table 16.1 presented a perspective on the memory hierarchies and their current
+capacities, access speeds, transfer rates, and costs.
+
+Data on disk is stored in blocks; accessing a disk block is expensive because of the
+seek time, rotational delay, and block transfer time. To reduce the average block
+access time, double buffering can be used when accessing consecutive disk blocks.
+(Other disk parameters are discussed in Appendix B.) We introduced the various
+interface technologies in use today for disk drives and optical devices. We presented
+a list of strategies employed to improve access of data from disks. We also intro-
+duced solid-state drives, which are rapidly becoming popular, and optical drives,
+which are mainly used as tertiary storage. We discussed the working of the buffer
+manager, which is responsible for handling data requests and we presented various
+buffer replacement policies. We presented different ways of storing file records on
+disk. File records are grouped into disk blocks and can be fixed length or variable
+length, spanned or unspanned, and of the same record type or mixed types. We dis-
+cussed the file header, which describes the record formats and keeps track of the disk
+addresses of the file blocks. Information in the file header is used by system software
+accessing the file records.
+
+Then we presented a set of typical commands for accessing individual file records
+and discussed the concept of the current record of a file. We discussed how com-
+plex record search conditions are transformed into simple search conditions that
+are used to locate records in the file.
+
+Three primary file organizations were then discussed: unordered, ordered, and
+hashed. Unordered files require a linear search to locate records, but record

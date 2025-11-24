@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+5.14.1 Multiversion Technique Based on Timestamp Ordering
+
+In this method, several versions X1, X2, ..., Xk of each data item X are maintained.
+
+For each version, the value of version Xi and the following two timestamps are kept:
+
+1. read_TS(Xi). The read timestamp of Xi is the largest of all the timestamps of
+transactions that have successfully read version Xi.
+
+2. write_TS(Xi). The write timestamp of Xi is the timestamp of the transaction
+
+that wrote the value of version Xi.
+
+Whenever a transaction T is allowed to execute a write_item(X) operation, a new
+version Xk+1 of item X is created, with both the write_TS(Xk+1) and the
+read_TS(Xk+1) set to TS(7)
+Correspondingly, when a transaction T is allowed to read the value of version Xi, the
+value of read_TS(Xi) is set to the larger of the current read_TS(Xi) and TS(7).
+
+To ensure serializability, the following rules are used:
+
+1. If transaction T issues a write_item(X) operation, and version i of X has the
+highest write_TS(Xj) of all versions of X that is also: /ess than or equal to TS(T),
+and read_TS(Xi) > TS(7), then abort and roll back transaction T; otherwise,
+create a new version Xj of X with read_TS(X/) = write_TS(X/) = TS(7).
+
+2. If transaction T issues a read_item(X) operation, find the version i of X that has
+the highest write_TS(Xi) of all versions of X that is also Jess than or equal to
+TS(7); then return the value of Xi to transaction T, and set the value of read_TS(
+Xi) to the larger of TS(7) and the current read_TS(Xi).
+
+5.14.2 Multiversion Two-Phase Locking Using Certify Locks
+
+In this multiple-mode locking scheme, there are three locking modes for an item:
+
+read, write, and certify
+
+Hence, the state of LOCK(X) for an item X can be one of read-locked, writelocked,
+
+certify-locked, or unlocked
+
+We can describe the relationship between read and write locks in the standard
+scheme by means of the lock compatibility table shown in Figure 22.6(a)
+An entry of Yes means that if a transaction T holds the type of lock specified in the
+
+column header on item X and if transaction T_ requests the type of lock specified in
+
+https://vtucode.in 37

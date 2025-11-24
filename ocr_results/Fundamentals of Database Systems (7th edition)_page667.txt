@@ -1,0 +1,54 @@
+17.5 Other Types of Indexes
+
+example, for a relation with n rows, suppose a value occurs in 10% of the file records.
+A bitvector would have n bits, having the “1” bit for those Row_ids that contain that
+search value, which is n/8 or 0.125n bytes in size. If the record pointer takes up 4
+bytes (32 bits), then the n/10 record pointers would take up 4 * n/10 or 0.4n bytes.
+Since 0.4n is more than 3 times larger than 0.125n, it is better to store the bitmap
+index rather than the record pointers. Hence for search values that occur more fre-
+quently than a certain ratio (in this case that would be 1/32), it is beneficial to use
+bitmaps as a compressed storage mechanism for representing the record pointers in
+B*-trees that index a nonkey field.
+
+17.5.3 Function-Based Indexing
+
+In this section, we discuss a new type of indexing, called function-based indexing,
+that has been introduced in the Oracle relational DBMS as well as in some other
+commercial products.!®
+
+The idea behind function-based indexing is to create an index such that the value
+that results from applying some function on a field or a collection of fields becomes
+the key to the index. The following examples show how to create and use function-
+based indexes.
+
+Example 1. The following statement creates a function-based index on the
+EMPLOYEE table based on an uppercase representation of the Lname column, which
+can be entered in many ways but is always queried by its uppercase representation.
+
+CREATE INDEX upper_ix ON Employee (UPPER(Lname) );
+
+‘This statement will create an index based on the function UPPER(Lname ), which returns
+the last name in uppercase letters; for example, UPPER('Smith' ) will return ‘SMITH.
+
+Function-based indexes ensure that Oracle Database system will use the index
+rather than perform a full table scan, even when a function is used in the search
+predicate of a query. For example, the following query will use the index:
+
+SELECT First_name, Lname
+FROM Employee
+WHERE UPPER(Lname)= "SMITH".
+
+Without the function-based index, an Oracle Database might perform a full table
+scan, since a B*-tree index is searched only by using the column value directly; the
+use of any function on a column prevents such an index from being used.
+
+Example 2. In this example, the EMPLOYEE table is supposed to contain two
+fields—salary and commission_pct (commission percentage)—and an index is being
+created on the sum of salary and commission based on the commission_pct.
+
+CREATE INDEX income_ix
+ON Employee(Salary + (Salary*Commission_pct));
+
+'8Rafi Ahmed contributed most of this section.
+
+637

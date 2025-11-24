@@ -1,0 +1,49 @@
+15.2 Properties of Relational Decompositions
+
+15.2 Properties of Relational Decompositions
+
+We now turn our attention to the process of decomposition that we used through-
+out Chapter 14 to get rid of unwanted dependencies and achieve higher normal
+forms. In Section 15.2.1, we give examples to show that looking at an individual
+relation to test whether it is in a higher normal form does not, on its own, guarantee
+a good design; rather, a set of relations that together form the relational database
+schema must possess certain additional properties to ensure a good design. In Sec-
+tions 15.2.2 and 15.2.3, we discuss two of these properties: the dependency preser-
+vation property and the nonadditive (or lossless) join property. Section 15.
+discusses binary decompositions, and Section 15.2.5 discusses successive nonaddi-
+tive join decompositions.
+
+15.2.1 Relation Decomposition and Insufficiency
+of Normal Forms
+
+The relational database design algorithms that we present in Section 15.3 start from
+a single universal relation schema R = {Aj, A, ... , A,} that includes all the attri-
+butes of the database. We implicitly make the universal relation assumption,
+which states that every attribute name is unique. The set F of functional dependen-
+cies that should hold on the attributes of R is specified by the database designers
+and is made available to the design algorithms. Using the functional dependencies,
+the algorithms decompose the universal relation schema R into a set of relation
+schemas D = {R;, Ro, ... ; Rm} that will become the relational database schema; D is
+called a decomposition of R.
+
+We must make sure that each attribute in R will appear in at least one relation
+schema R; in the decomposition so that no attributes are lost; formally, we have
+
+Ur=R
+
+This is called the attribute preservation condition of a decomposition.
+
+Another goal is to have each individual relation R; in the decomposition D be in
+BCNF or 3NF. However, this condition is not sufficient to guarantee a good data-
+base design on its own. We must consider the decomposition of the universal rela-
+tion as a whole, in addition to looking at the individual relations. To illustrate this
+point, consider the EMP_LOCS(Ename, Plocation) relation in Figure 14.5, which is in
+3NF and also in BCNF. In fact, any relation schema with only two attributes is auto-
+matically in BCNF.° Although EMP_LOCS is in BCNE, it still gives rise to spurious
+tuples when joined with EMP_PROJ (Ssn, Pnumber, Hours, Pname, Plocation), which is
+not in BCNF (see the partial result of the natural join in Figure 14.6). Hence,
+EMP_LOCS represents a particularly bad relation schema because of its convoluted
+
+®As an exercise, the reader should prove that this statement is true.
+
+513

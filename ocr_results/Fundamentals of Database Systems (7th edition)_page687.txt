@@ -1,0 +1,50 @@
+18.1 Translating SQL Queries into Relational Algebra and Other Operators
+
+We will concentrate on describing query processing and optimization in the context
+of an RDBMS because many of the techniques we describe have also been adapted
+for other types of database management systems, such as ODBMSs.* A relational
+DBMS must systematically evaluate alternative query execution strategies and
+choose a reasonably efficient or near-optimal strategy. Most DBMSs have a number
+of general database access algorithms that implement relational algebra operations
+such as SELECT or JOIN (see Chapter 8) or combinations of these operations. Only
+execution strategies that can be implemented by the DBMS access algorithms and
+that apply to the particular query, as well as to the particular physical database design,
+can be considered by the query optimization module.
+
+This chapter is organized as follows. Section 18.1 starts with a general discussion of
+how SQL queries are typically translated into relational algebra queries and addi-
+tional operations and then optimized. Then we discuss algorithms for implementing
+relational algebra operations in Sections 18.2 through 18.6. In Section 18.7, we dis-
+cuss the strategy for execution called pipelining. Section 18.8 briefly reviews the
+strategy for parallel execution of the operators. Section 18.9 summarizes the chapter.
+
+In the next chapter, we will give an overview of query optimization strategies. There
+are two main techniques of query optimization that we will be discussing. The first
+technique is based on heuristic rules for ordering the operations in a query execu-
+tion strategy that works well in most cases but is not guaranteed to work well in
+every case. The rules typically reorder the operations in a query tree. The second
+technique involves cost estimation of different execution strategies and choosing
+the execution plan that minimizes estimated cost. The topics covered in this chapter
+require that the reader be familiar with the material presented in several earlier chap-
+ters. In particular, the chapters on SQL (Chapters 6 and 7), relational algebra (Chap-
+ter 8), and file structures and indexing (Chapters 16 and 17) are a prerequisite to this
+chapter. Also, it is important to note that the topic of query processing and optimiza-
+tion is vast, and we can only give an introduction to the basic principles and tech-
+niques in this and the next chapter. Several important works are mentioned in the
+Bibliography of this and the next chapter.
+
+18.1 Translating SQL Queries into Relational
+Algebra and Other Operators
+
+In practice, SQL is the query language that is used in most commercial RDBMSs.
+An SQL query is first translated into an equivalent extended relational algebra
+expression—represented as a query tree data structure—that is then optimized.
+Typically, SQL queries are decomposed into query blocks, which form the basic
+units that can be translated into the algebraic operators and optimized. A query
+block contains a single SELECT-FROM-WHERE expression, as well as GROUP BY
+
+There are some query processing and optimization issues and techniques that are pertinent only to
+ODBMSs. However, we do not discuss them here because we give only an introduction to query
+processing in this chapter and we do not discuss query optimization until Chapter 19.
+
+657

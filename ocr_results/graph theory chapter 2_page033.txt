@@ -1,0 +1,54 @@
+ne 2. Planar Graphs and Coy
+
+Suppose we assign a colour @ to all vertices in V; and a different colour £ to all Vertices in
+This will make a proper colouring of V. Hence G is 2-chromatic. .
+
+Uf A(G) is the maximum of the degrees of the vertices of a connected 8raph G
+then prove that
+
+Vy,
+
+x(G) < 1+ AG). fi
+> Suppose G contains n = 2 vertices. Then the degrees of both the vertices is 1, so that
+A(G) = 1, and y(G) = 2. Hence
+
+XG =1+4@)
+
+Thus, the required inequality (i) is verified for n = 2.
+
+Assume that the inequality (i) is true for all connected graphs with k vertices. Consider g
+Connected graph G’ with k + 1 vertices. If we remove any vertex v from G’ then the Tesulting
+graph H will have k vertices and A(H) < AG’).* Since H has k vertices, the inequality (i)
+holds for H (by the assumption made). Therefore, y(H) < 1+ A(H). Since A(H) < A(G’), this
+yields
+
+X(H) <1+A(G’)
+v2 v2
+v3
+
+Va V4
+
+@:G (b): H
+Figure 2.42
+
+Now, a proper colouring of G’ can be achieved b’
+vertices in H and by assigning a colour to y
+vertices adjacent to it.
+
+The colour to be assigned to v can be one of the colours already assigned to a vertex i?
+
+that is not adjacent to v.' Thus, a Proper colouring of G’ can be done without the use of a"
+colour. Hence
+
+Y retaining the colours assigned to t
+that is different from the colours assigned to
+
+MG’) = x(H) $1+AG’)
+
+ener ad
+“See Figures 2.42(a) and 2.42(b), For illustrative purpose, we have taken G to be of order $ so that
+onder 4.
+
+9
+"For example, in Figure 2.42(a), if a colour a is Assigned to the vertex v5, the same colour may be assigned
+as well

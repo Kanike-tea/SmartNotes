@@ -1,0 +1,36 @@
+©)
+chapter )
+
+The Relational Algebra and
+Relational Calculus
+
+n this chapter we discuss the two formal languages for
+
+the relational model: the relational algebra and the
+relational calculus. In contrast, Chapters 6 and 7 described the practical language
+for the relational model, namely the SQL standard. Historically, the relational alge-
+bra and calculus were developed before the SQL language. SQL is primarily based
+on concepts from relational calculus and has been extended to incorporate some
+concepts from relational algebra as well. Because most relational DBMSs use SQL
+as their language, we presented the SQL language first.
+
+Recall from Chapter 2 that a data model must include a set of operations to
+manipulate the database, in addition to the data model’s concepts for defining the
+database’s structure and constraints. We presented the structures and constraints
+of the formal relational model in Chapter 5. The basic set of operations for the
+formal relational model is the relational algebra. These operations enable a user
+to specify basic retrieval requests as relational algebra expressions. The result of a
+retrieval query is a new relation. The algebra operations thus produce new rela-
+tions, which can be further manipulated using operations of the same algebra. A
+sequence of relational algebra operations forms a relational algebra expression,
+whose result will also be a relation that represents the result of a database query
+(or retrieval request).
+
+The relational algebra is very important for several reasons. First, it provides a
+formal foundation for relational model operations. Second, and perhaps more
+important, it is used as a basis for implementing and optimizing queries in the
+query processing and optimization modules that are integral parts of relational
+database management systems (RDBMSs), as we shall discuss in Chapters 18
+and 19. Third, some of its concepts are incorporated into the SQL standard
+
+239

@@ -1,0 +1,33 @@
+chapter “7
+
+Database System Concepts
+and Architecture
+
+‘Tis architecture of DBMS packages has evolved
+from the early monolithic systems, where the whole
+DBMS software package was one tightly integrated system, to the modern DBMS
+packages that are modular in design, with a client/server system architecture. The
+recent growth in the amount of data requiring storage has led to database systems
+with distributed architectures comprised of thousands of computers that manage
+the data stores. This evolution mirrors the trends in computing, where large cen-
+tralized mainframe computers are replaced by hundreds of distributed worksta-
+tions and personal computers connected via communications networks to various
+types of server machines—Web servers, database servers, file servers, application
+servers, and so on. The current cloud computing environments consist of thou-
+sands of large servers managing so-called big data for users on the Web.
+
+Ina basic client/server DBMS architecture, the system functionality is distributed
+between two types of modules.’ A client module is typically designed so that it
+will run on a mobile device, user workstation, or personal computer (PC). Typi-
+cally, application programs and user interfaces that access the database run in the
+client module. Hence, the client module handles user interaction and provides
+the user-friendly interfaces such as apps for mobile devices, or forms- or menu-
+based GUIs (graphical user interfaces) for PCs. The other kind of module, called
+a server module, typically handles data storage, access, search, and other func-
+tions. We discuss client/server architectures in more detail in Section 2.5. First,
+we must study more basic concepts that will give us a better understanding of
+modern database architectures.
+
+‘As we shall see in Section 2.5, there are variations on this simple two-tier client/server architecture.
+
+31

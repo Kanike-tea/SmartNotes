@@ -1,0 +1,46 @@
+378 Chapter 10 Firmware
+
+copy
+LOMIA rl2!,{r0-ri1}
+STMIA r13!,{r0-r11}
+CMP r12,r14
+BLT —_copy
+MOV pc, #0
+
+payload_start_address
+
+DCD startAddress
+payload_end_address
+
+DCD endAddress
+
+Destination register r13 points to the beginning of SRAM, in this case 0x00000000.
+The source register r12 points to the start of the payload, and the source end register r14
+points to the end of the payload. Using these registers, the payload is then copied into
+SRAM.
+
+Control of the pcis then relinquished to the payload by forcing the pcto the entry address
+of the copied payload. For this particular payload the entry point is address 0x00000000.
+The payload now has control of the system.
+
+The results of executing step 5 are the following:
+
+= Payload copied into SRAM, address 0x00000000.
+= Control of the pcis relinquished to the payload; pe = 0x00000000.
+
+= The system is completely booted. The following output is shown on the serial port:
+
+Sandstone Firmware (0.01)
+
+- platform ......... evt
+- status .........4. alive
+- memory .......eeee remapped
+
++ booting payload ...
+
+Simple Little 0S (0.09)
+- initialized ...... ok
+
+= running on ss... e7t
+
+e7t:

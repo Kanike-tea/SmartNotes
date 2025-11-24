@@ -1,0 +1,58 @@
+A.4 ARM Assembler Quick Reference 621
+
+where
+
+= <instruction> is any ARM or Thumb instruction supported by the processor you are
+assembling for. See Section A.3.
+
+=~ </abel> is the name of a symbol to store the address of the instruction.
+
+= = <directive> is an ARM assembler directive. See Section A.4.4.
+
+= ~~ <symbol> is the name of a symbol used by the <directive>.
+
+=~ <macro> is the name of a new directive defined using the MACRO directive.
+
+= = <arg_k> is the kth macro argument.
+
+You must use an AREA directive to define an area before any ARM or Thumb instructions
+appear. All assembly files must finish with the END directive. The following example shows a
+simple assembly file defining a function add that returns the sum of the two input arguments:
+
+add
+
+AREA maths_routines, CODE, READONLY
+
+EXPORT add 3 give the symbol add external linkage
+ADD = r0, 0, rl; add input arguments
+
+MOV pc, Ir 3 return from sub-routine
+
+END
+
+A.4.1 ARM ASSEMBLER VARIABLES
+
+Table A.14
+
+The ARM assembler supports three types of assemble time variables (see Table A.14).
+Variable names are case sensitive and must be declared before use with the directives GBLx
+
+or LCLx.
+
+You can use variables in expressions (see Section A.4.2), or substitute their value at
+assembly time using the $ operator. Specifically, $name. expands to the value of the variable
+
+ARM assembler variable types.
+
+Declare Declare locally Example
+
+Variable type globally to amacro Set value values
+
+Unsigned 32-bit GBLA LCLA SETA 15, Oxab
+integer
+
+ASCII string GBLS LCLS SETS u. "ADD"
+
+Logical GBLL LCLL SETL {TRUE},
+
+{FALSE}

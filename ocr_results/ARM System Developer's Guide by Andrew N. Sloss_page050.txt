@@ -1,0 +1,50 @@
+2.6 Architecture Revisions 37
+
+be added to the standard ARM instruction set to process vector floating-point (VFP)
+operations.
+
+These new instructions are processed in the decode stage of the ARM pipeline. If the
+decode stage sees a coprocessor instruction, then it offers it to the relevant coprocessor.
+But if the coprocessor is not present or doesn’t recognize the instruction, then the ARM
+takes an undefined instruction exception, which allows you to emulate the behavior of the
+coprocessor in software.
+
+2.6 ARCHITECTURE REVISIONS
+
+Every ARM processor implementation executes a specific instruction set architecture (ISA),
+although an ISA revision may have more than one processor implementation.
+
+The ISA has evolved to keep up with the demands of the embedded market. This
+evolution has been carefully managed by ARM, so that code written to execute on an earlier
+architecture revision will also execute on a later revision of the architecture.
+
+Before we go on to explain the evolution of the architecture, we must introduce the ARM
+processor nomenclature. The nomenclature identifies individual processors and provides
+basic information about the feature set.
+
+2.6.1 NOMENCLATURE
+
+ARM uses the nomenclature shown in Figure 2.16 to describe the processor implemen-
+tations. The letters and numbers after the word “ARM” indicate the features a processor
+
+ARM{x}Hy}HzHTHDHMHIHEHJHFH-S}
+
+x—family
+y—memory management/protection unit
+z—cache
+
+T—Thumb 16-bit decoder
+
+D—JTAG debug
+
+M—fast multiplier
+
+I—EmbeddedICE macrocell
+
+E—enhanced instructions (assumes TDMI)
+J—azelle
+
+F—vector floating-point unit
+S—synthesizible version
+
+Figure 2.16 ARM nomenclature.

@@ -1,0 +1,64 @@
+¢ In parallel-port, the connection between the device and the computer uses
+— a multiple-pin connector and
+— acable with as many wires.
+© This arrangement is suitable for devices that are physically close to the computer.
+¢ In serial port, it is much more convenient and cost-effective where longer cables are needed.
+
+Functions of I/O Interface
+1) Provides a storage buffer for at least one word of data.
+
+2) Contains status-flags that can be accessed by the processor to determine whether the buffer
+is full or empty.
+
+3) Contains address-decoding circuitry to determine when it is being addressed by
+
+the processor.
+
+4) Generates the appropriate timing signals required by the bus control scheme.
+
+5) Performs any format conversion that may be necessary to transfer data between the bus and
+the I/O device (such as parallel-serial conversion in the case of a serial port).
+
+PARALLEL-PORT - KEYBOARD INTERFACED TO PROCESSOR
+Input interface
+Data
+
+Address ~ KBD_DATA |
+
+Encoder Keyboard
+
+Processor KBD_STATUS | circuit switches
+
+Master-ready
+
+Slave-ready
+
+Figure 7.10 — Keyboard to processor connection.
+
+¢ The output of the encoder consists of
+
+— bits representing the encoded character and
+
+— one signal called valid, which indicates the key is pressed.
+¢ The information is sent to the interface-circuits (Figure 7.10).
+¢ Interface-circuits contain
+
+1) Data register DATAIN &
+
+2) Status-flag SIN.
+© When a key is pressed, the Valid signal changes from 0
+
+tol. Then, SIN=1 > when ASCII code is loaded
+
+into DATAIN.
+
+SIN = 0 > when processor reads the contents of the DATAIN.
+
+¢ The interface-circuit is connected to the asynchronous bus.
+¢ Data transfers on the bus are controlled using the handshake signals:
+
+1) Master ready &
+
+2) Slave ready.
+
+Page 34

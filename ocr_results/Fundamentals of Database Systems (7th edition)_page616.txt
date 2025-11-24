@@ -1,0 +1,55 @@
+586
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+Another solution to the problem of reliability is to store extra information that is not
+normally needed but that can be used to reconstruct the lost information in case of
+disk failure. The incorporation of redundancy must consider two problems: select-
+ing a technique for computing the redundant information, and selecting a method of
+distributing the redundant information across the disk array. The first problem is
+addressed by using error-correcting codes involving parity bits, or specialized codes
+such as Hamming codes. Under the parity scheme, a redundant disk may be consid-
+ered as having the sum of all the data in the other disks. When a disk fails, the miss-
+
+ing information can be constructed by a process similar to subtraction.
+
+For the second problem, the two major approaches are either to store the redun-
+dant information on a small number of disks or to distribute it uniformly across all
+disks. The latter results in better load balancing. The different levels of RAID choose
+a combination of these options to implement redundancy and improve reliability.
+
+16.10.2 Improving Performance with RAID
+
+The disk arrays employ the technique of data striping to achieve higher transfer
+rates. Note that data can be read or written only one block at a time, so a typical
+transfer contains 512 to 8,192 bytes. Disk striping may be applied at a finer granu-
+larity by breaking up a byte of data into bits and spreading the bits to different
+disks. Thus, bit-level data striping consists of splitting a byte of data and writing
+bit j to the jth disk. With 8-bit bytes, eight physical disks may be considered as one
+logical disk with an eightfold increase in the data transfer rate. Each disk partici-
+pates in each I/O request and the total amount of data read per request is eight
+times as much. Bit-level striping can be generalized to a number of disks that is
+either a multiple or a factor of eight. Thus, in a four-disk array, bit n goes to the disk
+
+which is (n mod 4). Figure 16.13(a) shows bit-level striping of data.
+
+The granularity of data interleaving can be higher than a bit; for example, blocks of
+a file can be striped across disks, giving rise to block-level striping. Figure 16.13(b)
+shows block-level data striping assuming the data file contains four blocks. With
+block-level striping, multiple independent requests that access single blocks (small
+requests) can be serviced in parallel by separate disks, thus decreasing the queuing
+time of I/O requests. Requests that access multiple blocks (large requests) can be
+parallelized, thus reducing their response time. In general, the more the number of
+disks in an array, the larger the potential performance benefit. However, assuming
+independent failures, the disk array of 100 disks collectively has 1/100th the reli-
+ability of a single disk. Thus, redundancy via error-correcting codes and disk mir-
+
+roring is necessary to provide reliability along with high performance.
+
+16.10.3 RAID Organizations and Levels
+
+Different RAID organizations were defined based on different combinations of the
+two factors of granularity of data interleaving (striping) and pattern used to com-
+pute redundant information. In the initial proposal, levels 1 through 5 of RAID
+
+were proposed, and two additional levels—0 and 6—were added later.

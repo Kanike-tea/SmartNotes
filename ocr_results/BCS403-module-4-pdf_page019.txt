@@ -1,0 +1,41 @@
+Database Management System [BCS403]
+
+Example: Trigger vs. Assertion
+
+All new customers opening an account must have opening balance >= $100. However, once the
+account is opened their balance can fall below that amount.
+
+We need triggers, assertions cannot be used Trigger Event: Before Insert
+
+Create Trigger OpeningBal
+
+Before Insert On Customer
+
+For Each Row
+
+Begin
+IF (:new. balance is null or :new.balance < 100) Then
+RAISE_APPLICATION_ERROR(-20004, ‘Balance should be >= $100’);
+End IF;
+
+End;
+
+1.3 Views (Virtual Tables) in SQL
+1.3.1 Concept of a View in SQL
+
+A view in SQL terminology is a single table that is derived from other tables. other tables can be
+base tables or previously defined views. A view does not necessarily exist in physical form; it is
+considered to be a virtual table, in contrast to base tables, whose tuples are always physically
+stored in the database. This limits the possible update operations that can be applied to views, but
+it does not provide any limitations on querying a view. We can think of a view as a way of specifying
+a table that we need to reference frequently, even though it may not exist physically.
+
+For example, referring to the COMPANY database, we may frequently issue queries that retrieve
+the employee name and the project names that the employee works on. Rather than having to
+specify the join of the three tables EMPLOYEE,WORKS_ON, and PROJECT every time we issue
+this query, we can define a view that is specified as the result of these joins. Then we can issue
+queries on the view, which are specified as single table retrievals rather than as retrievals involving
+two joins on three tables. We call the EMPLOYEE,WORKS_ON, and PROJECT tables the defining
+tables of the view.
+
+https://vtucode.in page 37

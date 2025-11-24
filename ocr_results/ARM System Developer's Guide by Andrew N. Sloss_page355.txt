@@ -1,0 +1,49 @@
+342 Chapter 9 Exception and Interrupt Handling
+
+Table 9.9 Complete frame stack.
+
+Label Offset Register
+
+FRAME_RO +0 10
+FRAME.RL +4 rl
+FRAME.R2 +8 = 12
+FRAMER3 +1213
+FRAMER4 +16 rd
+FRAMERS +20 15
+FRAMER6 +24 = 16
+FRAME_R7 = +28 17
+FRAME_R8 +32 = r8
+FRAMERQ +36 19
+FRAME_R10 +40 rl0
+FRAME.R11 +44 = rll
+FRAME_R12 +48 = rl2
+FRAME_PSR +52 — spsr_irq
+FRAME_LR +56 rid
+FRAME_PC +60 = rl4_irq
+
+9.3.3. REENTRANT INTERRUPT HANDLER
+
+A reentrant interrupt handler is a method of handling multiple interrupts where interrupts
+are filtered by priority, which is important if there is a requirement that interrupts with
+higher priority have a lower latency. This type of filtering cannot be achieved using the
+conventional nested interrupt handler.
+
+The basic difference between a reentrant interrupt handler and a nested interrupt han-
+dler is that the interrupts are reenabled early on in the reentrant interrupt handler, which
+can reduce interrupt latency. There are a number of issues relating to reenabling interrupts
+early, which will be described in more detail later on in this section.
+
+All interrupts in a reentrant interrupt handler must be serviced in SVC, system, undefined
+instruction, or abort mode on the ARM processor.
+
+Ifinterrupts are reenabled in an interrupt mode and the interrupt routine performs a BL
+subroutine call instruction, the subroutine return address will be set in the register r14_irq.
+This address would be subsequently destroyed by an interrupt, which would overwrite the
+return address into register r14_irg. To avoid this, the interrupt routine should swap into
+SVCor systemmode. The BL instruction can then use register r14_svc to store the subroutine
+return address. The interrupts must be disabled at the source by setting a bit in the interrupt
+controller before reenabling interrupts via the cpsr.
+
+If interrupts are reenabled in the cpsr before processing is complete and the interrupt
+source is not disabled, an interrupt will be immediately regenerated, leading to an infinite
+interrupt sequence or race condition. Most interrupt controllers have an interrupt mask

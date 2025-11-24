@@ -1,0 +1,50 @@
+Database Management System [BCS403]
+
+Hot Set Method:
+
+= This is useful in queries that have to scan a set of pages repeatedly.
+
+= The hot set method determines for each db processing algorithm the set of disk pages
+that will be accessed repeatedly and it does not replace them until their processing is
+completed.
+
+The DBMIN method:
+
+= uses a model known as QLSM (Query Locality set model), which predetermines the
+
+pattern of page references for each algorithm for a particular db operation
+
+= Depending on the type of access method, the file characteristics, and the algorithm
+
+used the QLSM will estimate the number of main memory buffers needed for each file
+
+involved in the operation.
+
+5.4 Desirable Properties of Transactions
+
+https://vtucode.in
+
+Transactions should possess several.properties, often called the ACID properties
+A Atomicity: a transaction is an atomic unit of processing and it is either performed
+
+entirely or not at all.
+C_ Consistency Preservation: a transaction should be consistency preserving that is it
+must take the database from one consistent state to another.
+| Isolation/Independence: A transaction should appear as though it is being executed
+in isolation from other transactions, even though many transactions are executed
+concurrently.
+D Durability (or Permanency): if a transaction changes the database and is committed,
+the changes must never be lost because of any failure.
+The atomicity property requires that we execute a transaction to completion. It is the
+responsibility of the transaction recovery subsystem of a DBMS to ensure atomicity.
+The preservation of consistency is generally considered to be the responsibility of the
+programmers who write the database programs or of the DBMS module that enforces
+integrity constraints.
+The isolation property is enforced by the concurrency control subsystem of the DBMS.
+If every transaction does not make its updates (write operations) visible to other
+transactions until it is committed, one form of isolation is enforced that solves the
+temporary update problem and eliminates cascading rollbacks
+
+Durability is the responsibility of recovery subsystem.
+
+13

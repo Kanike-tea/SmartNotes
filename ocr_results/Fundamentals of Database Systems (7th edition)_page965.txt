@@ -1,0 +1,52 @@
+25.4 MapReduce: Additional Details
+
+example, the JDBC StorageHandler allows a Hive user to define a table that
+is in fact stored in some relational DBMS and accessed using the JDBC pro-
+tocol (see Chapter 10) during query execution.
+
+Support of SQL and Optimizations in Hive: Hive incorporated the concepts of
+Logical and Physical Optimizations similar to those used in optimization of SQL que-
+ries, which we discussed in Chapters 18 and 19. Early on, there was support for logical
+optimizations such as pruning unneeded columns and pushing selection predicates
+down into the query tree. Physical optimizations of converting sort-merge joins to
+Map-side joins based on user hints and data file sizes have also been incorporated.
+Hive started with support for a subset of SQL-92 that included SELECT, JOIN,
+GROUP BY, and filters based on conditions in the WHERE clause. Hive users can
+express complex SQL commands in Hive. Early in its development, Hive was able to
+run the 22 TPCH benchmark queries (Transaction Processing Performance Council
+benchmark for decision support), although with considerable manual rewriting.
+
+Significant strides have been made in language support and in optimizer and run-
+time techniques. Here is a sampling of those improvements:
+
+= Hive SQL has added many analytic features of SQL, such as subquery predicates,
+Common Table expressions (this is the WITH clause in SQL that allows users to
+name common subquery blocks and reference them multiple times in the query;
+these expressions can be considered query-level views), aggregates over a certain
+window within the data, Rollups (which refer to higher aggregation levels), and
+Grouping sets (this capability allows you to express multiple levels of aggrega-
+tion in one Group By level). Consider, for example, Group By Grouping Sets
+((year, month), (dayofweek)); this expresses aggregates both at the (Year,
+Month) level and also by DayOfWeek. A full set of SQL data types, including
+varchars, numeric types, and dates, is now supported. Hive also supports the
+common Change Data Capture ETL flow via Insert and Update statements. In a
+Data Warehouse, the process of delivering slowly changing Dimensions (e.g.,
+customers in a Retail Data Warehouse) requires a complex dataflow of identi-
+fying new and updated records in that Dimension. This is called the Change
+Data Capture (CDC) process. By adding Insert and Update statements in Hive,
+it is possible to model and execute CDC processes in Hive SQL.
+
+= Hive now hasa greatly expanded set of DDLs for expressing grants and priv-
+ileges in terms of discretionary access control (see Section 30.2).
+
+= Several standard database optimizations have been incorporated, including
+Partition pruning, Join reordering, Index rewrite, and Reducing the number
+of MR jobs. Very large tables, like Fact tables in Data Warehouses, are typi-
+cally partitioned. Time is probably the most common attribute used for parti-
+tioning. With HDFS being used as the storage layer, users tend to retain data
+for long time periods. But a typical Warehouse will only include the most cur-
+rent time periods (e.g., the last quarter or current year). The time periods are
+specified as filters in the Query. Partition Pruning is the technique of extracting
+relevant predicates from the Query filters and translating them to a list of
+
+935

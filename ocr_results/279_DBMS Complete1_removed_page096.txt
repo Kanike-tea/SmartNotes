@@ -1,0 +1,39 @@
+Locking (2-Phase Locking)
+
+2PL protocol locks are applied and removed in two phases:
+
+1. Expanding phase: locks are acquired and no locks are released.
+2. Shrinking phase: locks are released and no locks are acquired.
+
+Locks are of two types:
+
+1. Binary Lock
+2. Share/Exclusive (Read/Write) Lock
+
+>Binary Lock
+A binary lock can have 2 States or values
+
+¢ Locked (or 1) and
+e¢ Unlocked (or 0)
+
+We represent the current state( or value) of the lock associated with data item X as LOCK(X).
+Operations used with Binary Locking
+
+1. lock_item : A transaction request access to an item by first issuing a lock_item(X)
+operation.
+o IfLOCK(X) =1 or L(X): the transaction is forced to wait.
+o IfLOCK(X) =0 or U(x): it is set to 1( the transaction locks the item) and the
+transaction is a load to access item X.
+2. unlock_item : After using the data item the transaction issues an operation unlock(X),
+which sets the operation LOCK (X) to 0 i.e. unlocks the data item so that X may be
+accessed by another transactions.
+
+Transaction Rules for Binary Locks
+
+Every transaction must obey the following rules :
+
+>A transaction T must issue the lock(X) operation before any read(X) or write(X) operations in T.
+>A transaction T must issue the unlock(X) operation after all read(X) and write(X) operations in T.
+If a transaction T already holds the lock on item X, then T will not issue a lock(X) operation.
+
+If a transaction does not holds the lock on item X, then T will not issue an unlock(X) operation.

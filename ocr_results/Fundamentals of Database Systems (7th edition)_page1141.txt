@@ -1,0 +1,54 @@
+29.4 Building a Data Warehouse
+
+29.4 Building a Data Warehouse
+
+In constructing a data warehouse, builders should take a broad view of the antici-
+pated use of the warehouse. There is no way to anticipate all possible queries or
+analyses during the design phase. However, the design should specifically support
+ad hoc querying; that is, accessing data with any combination of values for the
+attributes that would be meaningful in the dimension or fact tables. For example, a
+marketing-intensive consumer-products company would require different ways of
+organizing the data warehouse than would a nonprofit charity focused on fund
+raising. An appropriate schema should be chosen that reflects anticipated usage.
+
+Acquisition of data for the warehouse involves the following steps:
+
+1. The data must be extracted from multiple, heterogeneous sources; for exam-
+ple, databases or other data feeds such as those containing financial market
+data or environmental data.
+
+2. Data must be formatted for consistency within the warehouse. Names,
+meanings, and domains of data from unrelated sources must be reconciled.
+For instance, subsidiary companies of a large corporation may have differ-
+ent fiscal calendars with quarters ending on different dates, making it diffi-
+cult to aggregate financial data by quarter. Various credit cards may report
+their transactions differently, making it difficult to compute all credit sales.
+These format inconsistencies must be resolved.
+
+3. The data must be cleaned to ensure validity. Data cleaning is an involved
+and complex process that has been identified as the largest labor-demanding
+component of data warehouse construction. For input data, cleaning must
+occur before the data is loaded into the warehouse. Since input data must be
+examined and formatted consistently, data warehouse builders should take
+this opportunity to check each input for validity and quality. Recognizing
+erroneous and incomplete data is difficult to automate, and cleaning that
+requires automatic error correction can be even tougher. Some aspects, such
+as domain checking, are easily coded into data cleaning routines, but auto-
+matic recognition of other data problems can be more challenging. (For
+example, one might require that City = ‘San Francisco’ together with State =
+“CT be recognized as an incorrect combination.) After such problems have
+been taken care of, similar data from different sources must be coordinated
+for loading into the warehouse. As data managers in the organization dis-
+cover that their data is being cleaned for input into the warehouse, they will
+likely want to upgrade their data with the cleaned data. The process of
+returning cleaned data to the source is called backflushing (see Figure 29.1).
+
+4. The data must be fitted into the data model of the warehouse. Data from the
+various sources must be represented in the data model of the warehouse.
+Data may have to be converted from relational, object-oriented, or legacy
+databases (network and/or hierarchical) to a multidimensional model.
+
+5. The data must be loaded into the warehouse. The sheer volume of data in
+the warehouse makes loading the data a significant task. Monitoring tools
+
+1111

@@ -1,0 +1,44 @@
+20 Chapter 2. ARM Processor Fundamentals
+
+Figure 2.1
+
+Data
+t Instruction
+decoder
+
+Sign extend
+
+Rd
+
+Result
+
+Register file
+
+ALU
+
+‘Address register }#
+
+| (______+| Incrementer
+
+Address
+
+ARM core dataflow model.
+
+instructions copy data from registers to memory. There are no data processing instructions
+that directly manipulate data in memory. Thus, data processing is carried out solely in
+registers.
+
+Data items are placed in the register file—a storage bank made up of 32-bit registers.
+Since the ARM core is a 32-bit processor, most instructions treat the registers as holding
+signed or unsigned 32-bit values. The sign extend hardware converts signed 8-bit and 16-bit
+numbers to 32-bit values as they are read from memory and placed in a register.
+
+ARM instructions typically have two source registers, Rn and Rm, anda single result or
+destination register, Rd. Source operands are read from the register file using the internal
+buses A and B, respectively.
+
+The ALU (arithmetic logic unit) or MAC (multiply-accumulate unit) takes the regis-
+ter values Rn and Rm from the A and B buses and computes a result. Data processing
+instructions write the result in Rd directly to the register file. Load and store instructions
+use the ALU to generate an address to be held in the address register and broadcast on the
+Address bus.

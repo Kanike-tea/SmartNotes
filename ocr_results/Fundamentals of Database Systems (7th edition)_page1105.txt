@@ -1,0 +1,54 @@
+28.2 Association Rules
+
+support is a major problem if the cardinality of the set of items is very high. A typi-
+cal supermarket has thousands of items. The number of distinct itemsets is 2”,
+where m is the number of items, and counting support for all possible itemsets
+becomes very computation intensive. To reduce the combinatorial search space,
+algorithms for finding association rules utilize the following properties:
+
+= A subset of a large itemset must also be large (that is, each subset of a large
+itemset exceeds the minimum required support).
+
+= Conversely, a superset of a small itemset is also small (implying that it does
+not have enough support).
+
+The first property is referred to as downward closure. The second property, called
+the antimonotonicity property, helps to reduce the search space of possible solu-
+tions. That is, once an itemset is found to be small (not a large itemset), then any
+extension to that itemset, formed by adding one or more items to the set, will also
+yield a small itemset.
+
+28.2.2 Apriori Algorithm
+
+The first algorithm to use the downward closure and antimontonicity properties
+was the apriori algorithm, shown as Algorithm 28.1.
+
+We illustrate Algorithm 28.1 using the transaction data in Figure 28.1 using a mini-
+mum support of 0.5. The candidate 1-itemsets are {milk, bread, juice, cookies, eggs,
+coffee} and their respective supports are 0.75, 0.5, 0.5, 0.5, 0.25, and 0.25. The first
+four items qualify for L; since each support is greater than or equal to 0.5. In the
+first iteration of the repeat-loop, we extend the frequent 1-itemsets to create the
+candidate frequent 2-itemsets, C>. Cy contains {milk, bread}, {milk, juice}, {bread,
+juice}, {milk, cookies}, {bread, cookies}, and {juice, cookies}. Notice, for example,
+that {milk, eggs} does not appear in C) since {eggs} is small (by the antimonotonic-
+ity property) and does not appear in L;. The supports for the six sets contained in
+Cy are 0.25, 0.5, 0.25, 0.25, 0.5, and 0.25 and are computed by scanning the set of
+transactions. Only the second 2-itemset {milk, juice} and the fifth 2-itemset {bread,
+cookies} have support greater than or equal to 0.5. These two 2-itemsets form the
+frequent 2-itemsets, L>.
+
+Algorithm 28.1. Apriori Algorithm for Finding Frequent (Large) Itemsets
+
+Input: Database of m transactions, D, and a minimum support, mins,
+represented as a fraction of m.
+
+Output: Frequent itemsets, L,, L,, ... , Ly
+Begin /* steps or statements are numbered for better readability */
+
+1. Compute support(i;) = count(i;)/m for each individual item, ij, iz, ..., i,
+by scanning the database once and counting the number of transactions
+that item ij appears in (that is, count(i)));
+
+2. The candidate frequent 1-itemset, Cj, will be the set of items i), iz, ..., ins
+
+1075

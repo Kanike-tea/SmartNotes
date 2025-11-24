@@ -1,0 +1,55 @@
+980
+
+Chapter 26 Enhanced Data Models
+
+type is typically TIMESTAMP. This is shown in Figure 26.7(b), where the relations
+have been renamed EMP_TT and DEPT_TT, respectively.
+
+In EMP_TT, each tuple V represents a version of an employee’s information that was
+created at actual time V.Tst and was (logically) removed at actual time V.Tet (because
+the information was no longer correct). In EMP_TT, the current version of each
+employee typically has a special value, uc (Until Changed), as its transaction end
+time, which indicates that the tuple represents correct information until it is
+changed by some other transaction.” A transaction time database has also been
+called a rollback database,'* because a user can logically roll back to the actual
+database state at any past point in time T by retrieving all tuple versions V whose
+transaction time period [V.Tst, V.Tet] includes time point T.
+
+Bitemporal Relations. Some applications require both valid time and transac-
+tion time, leading to bitemporal relations. In our example, Figure 26.7(c) shows
+how the EMPLOYEE and DEPARTMENT nontemporal relations in Figure 26.1 would
+appear as bitemporal relations EMP_BT and DEPT_BT, respectively. Figure 26.9
+shows a few tuples in these relations. In these tables, tuples whose transaction end
+time Tet is uc are the ones representing currently valid information, whereas tuples
+whose Tet is an absolute timestamp are tuples that were valid until (just before) that
+timestamp. Hence, the tuples with uc in Figure 26.9 correspond to the valid time
+tuples in Figure 26.7. The transaction start time attribute Tst in each tuple is the
+timestamp of the transaction that created that tuple.
+
+Now consider how an update operation would be implemented on a bitemporal
+relation. In this model of bitemporal databases,” no attributes are physically changed
+in any tuple except for the transaction end time attribute Tet with a value of uc.?? To
+illustrate how tuples are created, consider the EMP_BT relation. The current version
+V of an employee has uc in its Tet attribute and now in its Vet attribute. If some attri-
+bute—say, Salary—is updated, then the transaction T that performs the update
+should have two parameters: the new value of Salary and the valid time VT when the
+new salary becomes effective (in the real world). Assume that VT— is the time point
+before VT in the given valid time granularity and that transaction T has a timestamp
+TS(T). Then, the following physical changes would be applied to the EMP_BT table:
+
+1. Make a copy V3 of the current version V; set V2.Vet to VT-, V2.Tst to TS(T),
+V>.Tet to uc, and insert V2 in EMP_BT; V> is a copy of the previous current
+version V after it is closed at valid time VT-.
+
+'The uc variable in transaction time relations corresponds to the now variable in valid time relations.
+However, the semantics are slightly different.
+
+'8Here, the term rollback does not have the same meaning as transaction rollback (see Chapter 23)
+during recovery, where the transaction updates are physically undone. Rather, here the updates can be
+logically undone, allowing the user to examine the database as it appeared at a previous time point.
+
+'9There have been many proposed temporal database models. We describe specific models here as
+examples to illustrate the concepts.
+
+2°Some bitemporal models allow the Vet attribute to be changed also, but the interpretations of the
+tuples are different in those models.

@@ -1,0 +1,52 @@
+19.2 Choice of Query Execution Plans
+
+The following query uses an inline view in the FROM clause; it retrieves for employ-
+ees named “John” the last name, address and phone number of building where they
+work:
+
+SELECT E.Ln, V.Addr, V.Phone
+FROM EMP E, ( SELECT D.Dno, D.Dname, B.Addr, B.Phone
+FROM DEPT D, BLDG B
+WHERE D.Bldg_id = B.Bldg_id) V
+WHERE V.Dno = E.Dno AND E.F “John”;
+
+The above query joins the EMP table with a view called V that provides the address
+and phone of the building where the employee works. In turn, the view joins the
+two tables DEPT and BLDG. This query may be executed by first temporarily
+materializing the view and then joining it with the EMP table. The optimizer is
+then constrained to consider the join order E, V or V, E; and for computing the
+view, the join orders possible are D, B and B, D. Thus the total number of join
+order candidates is limited to 4. Also, index-based join on E, V is precluded since
+there is no index on V on the join column Dno. The view-merging operation
+merges the tables in the view with the tables from the outer query block and pro-
+duces the following query:
+
+SELECT E.Ln, B.Addr, B.Phone
+FROM EMP E, DEPT D, BLDG B
+WHERE D.Bldg_id = B.Bldg_id AND D.Dno = E.Dno AND E.Fn = “John”;
+
+With the merged query block above, three tables appear in the FROM clause, thus
+affording eight possible join orders and indexes on Dno in DEPT, and Bldg _id in
+BLDG can be used for index-based nested loop joins that were previously excluded.
+We leave it to the reader to develop execution plans with and without merging to
+see the comparison.
+
+In general, views containing select-project-join operations are considered simple
+views and they can always be subjected to this type of view-merging. Typically, view
+merging enables additional options to be considered and results in an execution
+plan that is better than one without view merging. Sometimes other optimizations
+are enabled, such as dropping a table in the outer query if it is used within the view.
+View-merging may be invalid under certain conditions where the view is more
+complex and involves DISTINCT, OUTER JOIN, AGGREGATION, GROUP BY
+set operations, and so forth. We next consider a possible situation of GROUP-BY
+view-merging.
+
+GROUP-BY View-Merging: When the view has additional constructs besides
+select-project-join as we mentioned above, merging of the view as shown above
+may or may not be desirable. Delaying the Group By operation after performing
+joins may afford the advantage of reducing the data subjected to grouping in case
+the joins have low join selectivity. Alternately, performing early Group By may be
+advantageous by reducing the amount of data subjected to subsequent joins. The
+optimizer would typically consider execution plans with and without merging and
+
+705

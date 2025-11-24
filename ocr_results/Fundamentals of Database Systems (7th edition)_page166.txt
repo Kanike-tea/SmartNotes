@@ -1,0 +1,73 @@
+136
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4.9.
+
+4.10.
+
+4.11.
+
+4.12.
+
+4.13.
+
+4.14.
+
+4.15.
+
+How does a category differ from a regular shared subclass? What is a cate-
+gory used for? Illustrate your answer with examples.
+
+For each of the following UML terms (see Sections 3.8 and 4.6), discuss the
+corresponding term in the EER model, if any: object, class, association, aggre-
+gation, generalization, multiplicity, attributes, discriminator, link, link attri-
+bute, reflexive association, and qualified association.
+
+Discuss the main differences between the notation for EER schema dia-
+grams and UML class diagrams by comparing how common concepts are
+represented in each.
+
+List the various data abstraction concepts and the corresponding modeling
+concepts in the EER model.
+
+What aggregation feature is missing from the EER model? How can the EER
+model be further enhanced to support it?
+
+What are the main similarities and differences between conceptual database
+modeling techniques and knowledge representation techniques?
+
+Discuss the similarities and differences between an ontology and a database
+schema.
+
+Exercises
+
+4.16.
+
+4.17.
+
+4.18.
+
+Design an EER schema for a database application that you are interested in.
+Specify all constraints that should hold on the database. Make sure that the
+schema has at least five entity types, four relationship types, a weak entity
+type, a superclass/subclass relationship, a category, and an n-ary (n > 2) rela-
+tionship type.
+
+Consider the BANK ER schema in Figure 3.21, and suppose that it
+is necessary to keep track of different types of ACCOUNTS
+(SAVINGS_ACCTS, CHECKING_ACCTS, ... ) and LOANS (CAR_LOANS,
+HOME_LOANS, ... ). Suppose that it is also desirable to keep track of
+each ACCOUNT’s TRANSACTIONS (deposits, withdrawals, checks, ... )
+and each LOAN’s PAYMENTS; both of these include the amount, date,
+and time. Modify the BANK schema, using ER and EER concepts of
+specialization and generalization. State any assumptions you make
+about the additional requirements.
+
+The following narrative describes a simplified version of the organization of
+Olympic facilities planned for the summer Olympics. Draw an EER diagram
+that shows the entity types, attributes, relationships, and specializations for
+this application. State any assumptions you make. The Olympic facilities are
+divided into sports complexes. Sports complexes are divided into one-sport
+and multisport types. Multisport complexes have areas of the complex desig-
+nated for each sport with a location indicator (e.g., center, NE corner, and so

@@ -1,0 +1,43 @@
+Clock
+
+V
+
+Input
+
+Figure 9-3 Four-segment pipeline.
+
+The space-time diagram of a four-segment pipeline is demonstrated in Fig. 9-4.
+Where a k-segment pipeline with a clock cycle time t is used to execute n tasks.
+
+o The first task Ti requires a time equal to kt, to complete its operation.
+
+o The remaining n-1 tasks will be completed after a time equal to (n-1)tp
+
+0 Therefore, to complete n tasks using a k-segment pipeline requires k+(n-1)clock cycles.
+Consider a nonpipeline unit that performs the same operation and takes a time equalto ts to
+complete each task.
+
+o The total time required for n tasks is nts.
+
+Figure 9-4 Space-time diagram for"pipelinc.
+
+Clock cycles
+Segment:
+
+The speedup of a pipeline processing over an equivalent nonpipeline processing isdefined by the
+ratio S=ntn/(k+n-1)t.
+
+Ifn becomes much larger than k-1, the speedup becomes S = tn/tp.
+
+If we assume that the time it takes to process a task is the same in the pipeline andnonpipeline
+Circuits, i.e.,tn =ktp, the speedup reduces to S=ktp/tp=k.
+
+This shows that the theoretical maximum speedup that a pipeline can provide is k,where k is the
+number of segments in the pipeline.
+
+To duplicate the theoretical speed advantage of a pipeline process by means of multiple
+functional units, it is necessary to construct k identical units that will beoperating in parallel.
+This is illustrated in Fig. 9-5, where four identical circuits are connected in parallel.
+
+Instead of operating with the input data in sequence as in a pipeline, the parallel circuits accept
+four input data items simultaneously and perform four tasks at thesame time.

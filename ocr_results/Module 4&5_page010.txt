@@ -1,0 +1,50 @@
+Microcontrollers - BCS402
+
+the interrupt handling is complete. Once a nested interrupt has been serviced, then control is
+
+relinquished to the original interrupt service routine.
+
+---» Interrupt handler
+
+Normal execution Interrupt enabled
+
+Interrupt (1)
+
+-
+
+,_Interrupt (2)
+Ss >>_ Interrupt (3)
+ee
+
+Return ~ Ny
+
+Return
+
+Return \
+
+Fig 3: A three-level nested interrupt
+
+The second method involves prioritization. You program the interrupt controller to ignore
+interrupts of the same or lower priority than the interrupt you are handling, so only a higher-
+
+priority task can interrupt your handler. You then reenable interrupts.
+
+The processor spends time in the lower-priority interrupts until a higher-priority interrupt occurs.
+Therefore higher-priority interrupts have a lower average interrupt latency than the lower-
+priority interrupts, which reduces latency by speeding up the completion time on the critical
+
+time-sensitive interrupts.
+
+2.3 IRQ and FIQ Exceptions
+
+IRQ and FIQ exceptions only occur when a specific interrupt mask is cleared in the cpsr. The
+ARM processor will continue executing the current instruction in the execution stage of the
+pipeline before handling the interrupt—an important factor in designing a deterministic interrupt
+
+handler since some instructions require more cycles to complete the execution stage.
+
+An IRQ or FIQ exception causes the processor hardware to go through a standard procedure
+
+(provided the interrupts are not masked):
+
+Dept. of ECE, GSSSIETW, Mysuru Page 11

@@ -1,0 +1,65 @@
+3.30.
+
+Laboratory Exercises
+
+Illustrate the UML diagram for Exercise 3.16. Your UML design should
+observe the following requirements:
+
+a. A student should have the ability to compute his/her GPA and add or
+drop majors and minors.
+
+b. Each department should be able to add or delete courses and hire or ter-
+minate faculty.
+
+c. Each instructor should be able to assign or change a student’s grade for a
+course.
+
+Note: Some of these functions may be spread over multiple classes.
+
+Laboratory Exercises
+
+3.31.
+
+3.32.
+
+3.33.
+
+Consider the UNIVERSITY database described in Exercise 3.16. Build the ER
+schema for this database using a data modeling tool such as ERwin or
+Rational Rose.
+
+Consider a MAIL_ORDER database in which employees take orders for parts
+from customers. The data requirements are summarized as follows:
+
+= The mail order company has employees, each identified by a unique em-
+ployee number, first and last name, and Zip Code.
+
+= Each customer of the company is identified by a unique customer number,
+first and last name, and Zip Code.
+
+= Each part sold by the company is identified by a unique part number, a
+part name, price, and quantity in stock.
+
+= Each order placed by a customer is taken by an employee and is given a
+unique order number. Each order contains specified quantities of one or
+more parts. Each order has a date of receipt as well as an expected ship
+date. The actual ship date is also recorded.
+
+Design an entity-relationship diagram for the mail order database and build
+the design using a data modeling tool such as ERwin or Rational Rose.
+
+Consider a MOVIE database in which data is recorded about the movie
+industry. The data requirements are summarized as follows:
+
+= Each movie is identified by title and year of release. Each movie has a
+length in minutes. Each has a production company, and each is classified
+under one or more genres (such as horror, action, drama, and so forth).
+Each movie has one or more directors and one or more actors appear in it.
+Each movie also has a plot outline. Finally, each movie has zero or more
+quotable quotes, each of which is spoken by a particular actor appearing
+in the movie.
+
+= Actors are identified by name and date of birth and appear in one or more
+movies. Each actor has a role in the movie.
+
+103

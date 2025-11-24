@@ -1,0 +1,53 @@
+904
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+in Section 24.6.1, and give an introduction to the Neo4j querying capabilities in
+Section 24.6.2. Section 24.6.3 gives an overview of the distributed systems and
+some other characteristics of Neo4j.
+
+24.6.1 Neo4j Data Model
+
+The data model in Neo4j organizes data using the concepts of nodes and relation-
+ships. Both nodes and relationships can have properties, which store the data items
+associated with nodes and relationships. Nodes can have labels; the nodes that have
+the same label are grouped into a collection that identifies a subset of the nodes in
+the database graph for querying purposes. A node can have zero, one, or several
+labels. Relationships are directed; each relationship has a start node and end node as
+well as a relationship type, which serves a similar role to a node label by identifying
+similar relationships that have the same relationship type. Properties can be speci-
+fied via a map pattern, which is made of one or more “name: value” pairs enclosed
+in curly brackets; for example {Lname : ‘Smith’, Fname : ‘John’, Minit : ‘B’}.
+
+In conventional graph theory, nodes and relationships are generally called vertices
+and edges. The Neo4j graph data model somewhat resembles how data is repre-
+sented in the ER and EER models (see Chapters 3 and 4) , but with some notable
+differences. Comparing the Neo4j graph model with ER/EER concepts, nodes cor-
+respond to entities, node labels correspond to entity types and subclasses, relation-
+ships correspond to relationship instances, relationship types correspond to
+relationship types, and properties correspond to attributes. One notable difference
+is that a relationship is directed in Neo4j, but is not in ER/EER. Another is that a
+node may have no label in Neo4j, which is not allowed in ER/EER because every
+entity must belong to an entity type. A third crucial difference is that the graph
+model of Neo4j is used as a basis for an actual high-performance distributed data-
+base system whereas the ER/EER model is mainly used for database design.
+
+Figure 24.4(a) shows how a few nodes can be created in Neo4j. There are various
+ways in which nodes and relationships can be created; for example, by calling appro-
+priate Neo4j operations from various Neo4j APIs. We will just show the high-level
+syntax for creating nodes and relationships; to do so, we will use the Neo4j CREATE
+command, which is part of the high-level declarative query language Cypher. Neo4j
+has many options and variations for creating nodes and relationships using various
+scripting interfaces, but a full discussion is outside the scope of our presentation.
+
+= Labels and properties. When a node is created, the node label can be speci-
+fied. It is also possible to create nodes without any labels. In Figure 24.4(a), the
+node labels are EMPLOYEE, DEPARTMENT, PROJECT, and LOCATION,
+and the created nodes correspond to some of the data from the COMPANY
+database in Figure 5.6 with a few modifications; for example, we use Empld
+instead of SSN, and we only include a small subset of the data for illustration
+purposes. Properties are enclosed in curly brackets { ... }. It is possible that
+some nodes have multiple labels; for example the same node can be labeled as
+PERSON and EMPLOYEE and MANAGER by listing all the labels separated
+by the colon symbol as follows: PERSON:EMPLOYEE:MANAGER. Having
+multiple labels is similar to an entity belonging to an entity type (PERSON)

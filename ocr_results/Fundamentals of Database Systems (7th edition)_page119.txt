@@ -1,0 +1,32 @@
+3.9 Relationship Types of Degree Higher thanTwo 89
+
+(a) ‘SUPPLIER PROJECT
+PART
+(b) M N
+SUPPLIER SUPPLIES PROJECT
+M M
+CAN_SUPPLY USES
+Part_no
+N N
+PART
+
+(©)
+
+1 N
+SUPPLIER &:) SUPPLY
+
+am 9
+
+PART
+
+PROJECT
+
+Figure 3.17
+Ternary relationship types. (a) The SUPPLY relationship. (b) Three binary relationships not
+equivalent to SUPPLY. (c) SUPPLY represented as a weak entity type.
+
+broken down into several relationship types of smaller degrees. The designer must
+base this decision on the semantics or meaning of the particular situation being
+represented. The typical solution is to include the ternary relationship plus one or
+more of the binary relationships, if they represent different meanings and if all are
+needed by the application.

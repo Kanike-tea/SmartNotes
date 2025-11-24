@@ -1,0 +1,67 @@
+598 Appendix A ARM and Thumb Assembler Instructions
+
+Rm[31:16]) 5
+Rm[15:00] )
+Rm[15:00]) 5
+Rm[31: 16] )
+Rm[15:00]) 5
+Rm[31: 16] )
+Rm[31:16]) 5
+Rm[15:00] )
+
+3. QSUB<cond> Rd, Rm, Rn
+
+4. QDSUB<cond> Rd, Rm, Rn
+
+5. {U}QADD16<cond> Rd, Rn, Rm
+
+6. {U}QADDSUBX<cond> Rd, Rn, Rm
+
+7. {U}QSUBADDX<cond> Rd, Rn, Rm
+
+8. {U}QSUB16<cond> Rd, Rn, Rm
+
+9. {U}QADD8<cond> — Rd, Rn, Rm
+
+10. {U}QSUB8<cond> Rd, Rn, Rm
+
+Action
+
+1. Rd = sat32(Rm+Rn)
+
+2. Rd = sat32(Rm+sat32(2*Rn))
+
+3. Rd = sat32(Rm-Rn)
+
+4. Rd = sat32(Rm-sat32(2*Rn))
+
+5. Rd[31:16] = sat16(Rn[31:16] +
+Rd[15:00] = sat16(Rn[15:00] +
+
+6. Rd[31:16] = sat16(Rn[31:16] +
+Rd[15:00] = sat16(Rn[15:00] -
+
+7. Rd[31:16] = sat16(Rn[31:16] -
+
+Rd[15:00] = sat16(Rn[15:00] +
+
+8. Rd[31:16] = sat16(Rn[31:16] -
+Rd[15:00] = sat16(Rn[15:00] -
+
+9. Rd[31:24] = sat8(Rn[31:24] + Rm[31:24]);
+Rd[23:16] = sat8(Rn[23:16] + Rm[23:16]);
+Rd[15:08] = sat8(Rn[15:08] + Rm[15:08]);
+Rd[07:00] = sat8(Rn[07:00] + Rm[07:00])
+
+10. Rd [31:24] = sat8(Rn[31:24] - Rm[31:24]);
+Rd[23:16] = sat8(Rn[23:16] - Rm[23:16]);
+
+ARMv5E.
+ARMv5E.
+ARMv6,
+ARMv6,
+ARMv6,
+ARMv6,
+ARMv6,
+
+ARMv6,

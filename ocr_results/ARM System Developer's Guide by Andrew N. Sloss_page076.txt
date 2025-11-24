@@ -1,0 +1,54 @@
+3.3 Load-Store Instructions 63
+
+Table 3.5 Single-register load-store addressing, word or unsigned byte.
+
+Addressing! mode and index method Addressing! syntax
+
+Preindex with immediate offset [Rn, #+/-offset_12]
+
+Preindex with register offset [Rn, +/-Rm]
+
+Preindex with scaled register offset [Rn, +/-Rm, shift #shift_imm]
+Preindex writeback with immediate offset [Rn, #+/-offset_12]!
+
+Preindex writeback with register offset [Rn, +/-Rm] !
+
+Preindex writeback with scaled register offset [Rn, +/-Rm, shift #shift_imm]!
+Immediate postindexed [Rn], #+/-offset_12
+
+Register postindex [Rn], +/-Rm
+
+Scaled register postindex [Rn], +/-Rm, shift #shift_imm
+
+Example 3.15 used a preindex method. This example shows how each indexing method
+effects the address held in register rl, as well as the data loaded into register r0. Each
+instruction shows the result of the index method with the same pre-condition.
+
+‘The addressing modes available with a particular load or store instruction depend on
+the instruction class. Table 3.5 shows the addressing modes available for load and store of
+a 32-bit word or an unsigned byte.
+
+A signed offset or register is denoted by “+/—”, identifying that it is either a positive or
+negative offset from the base address register Rn. The base address register is a pointer to
+a byte in memory, and the offset specifies a number of bytes.
+
+Immediate means the address is calculated using the base address register and a 12-bit
+offset encoded in the instruction. Register means the address is calculated using the base
+address register and a specific register’s contents. Scaled means the address is calculated
+using the base address register and a barrel shift operation.
+
+Table 3.6 provides an example of the different variations of the LDR instruction. Table 3.7
+shows the addressing modes available on load and store instructions using 16-bit halfword
+or signed byte data.
+
+These operations cannot use the barrel shifter. There are no STRSB or STRSH instructions
+since STRH stores both a signed and unsigned halfword; similarly STRB stores signed and
+unsigned bytes. Table 3.8 shows the variations for STRH instructions.
+
+3.3.3 MULTIPLE-REGISTER TRANSFER
+
+Load-store multiple instructions can transfer multiple registers between memory and the
+processor ina single instruction. The transfer occurs from a base address register Rn pointing
+into memory. Multiple-register transfer instructions are more efficient from single-register
+transfers for moving blocks of data around memory and saving and restoring context and
+stacks.

@@ -1,0 +1,60 @@
+Digital Design and Computer Organization(BCS302)
+
+> Removing the bubbles on the gates of (b) produces the circuit of (a). Therefore,
+
+the two diagrams implement the same function and are equivalent.
+
+A—
+
+B— —~
+
+c—4
+
+p—
+
+st . Do
+| I
+
+(b) ©)
+FIGURE 3
+
+Three ways to implement F = AB + CD
+
+> In Fig. 3.18(c), the output NAND gate is redrawn with the AND-invert graphic
+
+symbol. In drawing NAND logic diagrams, the circuit shown in either Fig. 3.18(b)
+or (c) is acceptable.
+
+> The one in Fig. 3.18(b) is in mixed notation and represents a more direct
+
+relationship to the Boolean expression it implements. The NAND implementation
+in Fig. 3.18(c) can be verified algebraically.
+
+> The function it implements can easily be converted to sum-of- products form by
+
+DeMorgan’s theorem:
+
+F = ((AB)'(CD)')' = AB + CD
+
+Implement the following Boolean function with NAND gates:
+
+F (x, y, z) = (1, 2, 3, 4, 5, 7)
+
+21
+
+> The first step is to simplify the function into sum-of-products form. This is done
+by means of the map of Fig. 3.19(a), from which the simplified function is
+obtained:
+
+F=xy't+xy+z
+
+> The two-level NAND implementation is shown in Fig. 3.19(b) in mixed notation.
+Note that input z must have a one-input NAND gate (an inverter) to compensate
+for the bubble in the second-level gate. An alternative way of drawing the logic
+diagram is given in Fig. 3.19(c).
+
+> Here, all the NAND gates are drawn with the same graphic symbol. The inverter
+with input z has been removed, but the input variable is complemented and
+denoted by z'
+
+Page

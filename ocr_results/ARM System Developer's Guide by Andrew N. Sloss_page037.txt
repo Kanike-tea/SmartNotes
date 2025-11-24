@@ -1,0 +1,60 @@
+24 Chapter 2. ARM Processor Fundamentals
+
+Figure 2.4
+
+User and
+system
+
+10
+
+7
+
+72
+
+73
+
+4
+
+7S Fast
+
+7 interrupt
+
+ZF request
+
+78 78_fiq
+
+79 79_fiq
+
+710 710_fiq
+
+7] TI1_fig) imerrupt : ;
+
+=I fig] "atest Supervisor Undefined Abort
+ri3sp | [rl3_fiq| [rising] [rise] [Fisuundef] [713 abr
+ri4ir | | rl4_fiq| | rl4irg 714_undef | | r14_abt
+713 pe
+
+cps
+
+: spsr_fiq| [spsrairq] [spsrasve] [spsraundef] [spsr_abi
+
+Complete ARM register set.
+
+mode; for example, abort mode has banked registers r13_abt, rl4_abt and spsr_abt, Banked
+registers of a particular mode are denoted by an underline character post-fixed to the mode
+mnemonic or _mode.
+
+Every processor mode except user mode can change mode by writing directly to the
+mode bits of the cpsr. All processor modes except system mode have a set of associated
+banked registers that are a subset of the main 16 registers. A banked register maps one-to-
+one onto a user mode register. If you change processor mode, a banked register from the
+new mode will replace an existing register.
+
+For example, when the processor is in the interrupt request mode, the instructions you
+execute still access registers named r13 and r14. However, these registers are the banked
+registers r13_irq and r14_irg. The user mode registers r13_usr and r14_usr are not affected
+by the instruction referencing these registers. A program still has normal access to the other
+registers r0 to r12.
+
+The processor mode can be changed by a program that writes directly to the cpsr (the
+processor core has to be in privileged mode) or by hardware when the core responds to

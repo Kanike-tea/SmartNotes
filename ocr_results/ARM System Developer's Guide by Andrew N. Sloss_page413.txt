@@ -1,0 +1,50 @@
+400 Chapter
+
+11 Embedded Operating Systems
+
+SLOS kernel
+SWI
+Task |_'*ucton | Swi handler
+iFt_User IFt_SVC
+Call
+device
+driver
+
+Device driver
+
+Return from device driver |_/¥!_System
+
+Figure 11.5 Calling a device driver.
+
+11.3 SUMMARY
+
+The fundamental components that make up an embedded operating system executing on
+
+al
+
+n ARM processor are the following:
+
+The initialization sets up all of the internal variables, data structures, and hardware
+devices used by the operating system.
+
+Memory handling organizes the memory to accommodate the kernel plus the various
+applications to be executed.
+
+All interrupts and exceptions require a handler. For unused interrupts and exceptions,
+a dummy handler must be installed.
+
+A periodic timer is required for preemptive operating systems. The timer produces an
+interrupt that causes the scheduler to be called.
+
+A scheduler is an algorithm that determines the new task to be executed.
+
+A context switch saves the state of the current task and loads the state of the next
+task.
+
+These components are exemplified in the operating system called the Simple Little
+
+Operating System (SLOS):
+
+Initialization—The initialization sets up all the functions of SLOS, including the bank
+mode stacks, process control blocks (PCB) for each application, device drivers, and
+so on.

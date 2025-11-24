@@ -1,0 +1,53 @@
+Table 15.1
+
+Table 15.2
+
+15.1 Advanced DSP and SIMD Support in ARMv6 551
+
+8-bit SIMD arithmetic operations.
+
+Instruction Description
+
+SADD8{<cond>} Rd, Rn, Rm Signed 8-bit SIMD add
+
+SSUB8{<cond>} Rd, Rn, Rm Signed 8-bit SIMD subtract
+UADD8{<cond>} Rd, Rn, Rm Unsigned 8-bit SIMD add
+USUB8{<cond>} Rd, Rn, Rm — Unsigned 8-bit SIMD subtract
+QADD8{<cond>} Rd, Rn, Rm _ Signed saturating 8-bit SIMD add
+QSUB8{<cond>} Rd, Rn, Rm _ Signed saturating 8-bit SIMD subtract
+UQADD8{<cond>} Rd, Rn, Rm Unsigned saturating 8-bit SIMD add
+UQSUB8{<cond>} Rd, Rn, Rm Unsigned saturating 8-bit SIMD subtract
+
+16-bit SIMD arithmetic operations.
+
+Instruction Description
+
+SADD16{<cond>} Rd, Rn, Rm Signed add of the 16-bit pairs
+
+SSUB16{<cond>} Rd, Rn, Rm Signed subtract of the 16-bit pairs
+UADD16{<cond>} Rd, Rn, Rm — Unsigned add of the 16-bit pairs
+{
+{
+
+USUB16{<cond>} Rd, Rn, Rm Unsigned subtract of the 16-bit pairs
+QADD16{<cond>} Rd, Rn, Rm Signed saturating add of the 16-bit pairs
+QSUB16{<cond>} Rd, Rn, Rm Signed saturating subtract of the 16-bit pairs
+UQADD16{<cond>} Rd, Rn, Rm Unsigned saturating add of the 16-bit pairs
+UQSUB16{<cond>} Rd, Rn, Rm Unsigned saturating subtract of the 16-bit pairs
+
+Operands for the SIMD instructions are not always found in the correct order within the
+source registers; to improve the efficiency of dealing with these situations, there are 16-bit
+SIMD operations that perform swapping of the 16-bit words of one operand register. These
+operations allow a great deal of flexibility in dealing with halfwords that may be aligned in
+different ways in memory and are particularly useful when working with 16-bit complex
+number pairs that are packed into 32-bit registers. There are signed, unsigned, saturating
+signed, and saturating unsigned versions of these operations, as shown in Table 15.3.
+
+The X in the instruction mnemonic signifies that the two halfwords in Rm are swapped
+before the operations are applied so that operations like the following take place:
+
+Rd[15:0] = Rn[15:0] - Rm[31:16]
+Rd [31:16] = Rn[31:16] + Rm[15:0]
+
+The addition of the SIMD operations means there is nowa need for some way of showing
+an overflow or a carry from each SIMD slice through the datapath. The cpsr as originally

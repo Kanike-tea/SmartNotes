@@ -1,0 +1,46 @@
+268 Chapter 8 Digital Signal Processing
+
+or in integer C:
+Y[t] = isqrt( X[t] << (2*d-n) );
+
+The function i sqrt finds the nearest integer to the square root of the integer. See Section 7.4
+for efficient implementation of square root operations.
+
+8.1.7. SUMMARY: How TO REPRESENT A DIGITAL SIGNAL
+
+To choose a representation for a signal value, use the following criteria:
+
+= Use a floating-point representation for prototyping algorithms. Do not use floating
+point in applications where speed is critical. Most ARM implementations do not include
+hardware floating-point support.
+
+= Usea fixed-point representation for DSP applications where speed is critical with mod-
+erate dynamic range. The ARM cores provide good support for 8-, 16- and 32-bit
+fixed-point DSP.
+
+= For applications requiring speed and high dynamic range, use a block-floating or
+logarithmic representation.
+
+Table 8.2 summarizes how you can implement standard operations in fixed-point
+arithmetic. It assumes there are three signals x{t], c[t], y[t], that have Qn, Qm, Qd
+representations X[t], C[t], Y[t], respectively. In other words:
+
+X(t] = 2"x(t], Ct] = 2™c{e], Y[¢] = 24y[t] (8.19)
+
+to the nearest integer.
+To make the table more concise, we use <<< as shorthand for an operation that is either
+a left or right shift according to the sign of the shift amount. Formally:
+x<<<s r=
+xX<<s if s>=0
+
+Table 8.2 Summary of standard fixed-point operations.
+
+Signal operation Integer fixed-point equivalent
+
+y[t]=x[t] Y[t]=X[t] <<< (d-n) ;
+
+y[t]=x[t]+c[t] Y[t]=(x[t] <<< (d-n))+(C[t] <<< (d-m) )5
+y[t]=x[t]-c[t] Y[t]=(x[t] <<< (d-n))-(C[t] <<< (d-m))5
+y[t]=x[t]*c[t] Y[t]=(X[t]*C[t]) <<< (d-n-m) ;
+ylt]=x[t]/c[t] Y[t]=(X[t] <<< (d-n+m) )/C[t] ;
+ylt]=sqrt(x[t]) — Y[t]=isqrt (X[t] <<< (2*d-n)) 5

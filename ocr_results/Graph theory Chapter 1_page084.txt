@@ -1,0 +1,47 @@
+18 Baler circuits and Euler trails 87
+
+Therefore, by Theorem 1, G has an Euler circuit.
+
+Conversely, suppose G has an Euler circuit. Then, by Theorem 1, every vertex in G is of
+pven degree. Now, consider a vertex ¥; in G. Since v, is of even degree, there are at least two
+adges incident on v;. Choose one of these edges, and let v2 be the other end vertex of this
+chosen) edge. Then v2 is also of even degree, and therefore there must be at least one other
+edge incident on v2. Choose one of such edges, and let v3 be the other end vertex of the edge.
+proceeding like this, we eventually arrive at a vertex that has previously been traversed, thus
+forming a cycle C;. Let us remove C; from G. All vertices in the resulting graph must also be
+of even degree, and in this graph we can construct a cycle C) as was done in G. Remove this
+cycle Cz and proceed as above. The process ends when no edges are left. In this way we get a
+sequence of cycles whose union is G and whose intersection is a null graph. Thus, G has been
+decomposed into edge-disjoint cycles.
+
+This completes the proof of the theorem. °
+
+Find all positive integers n(> 2) for which the complete graph K, contains an
+Euler circuit. For which n does K,, have an Euler trail but not an Euler circuit?
+
+» Form = 2, the graph K,, contains exactly one edge. This edge together with its end vertices
+constitutes an Euler trail. In this case, K, cannot have an Euler circuit. For n > 3, K, contains
+an Euler circuit if and only if m — 1 (which is the degree of every vertex in K,) is even; that is
+if and only if n is odd. s
+(a) Does there exist an Euler graph with even number of vertices and odd
+
+number of edges?
+
+(b) Does there exist an Euler graph with odd number of vertices and even number of edges?
+
+> (a) Yes. Suppose C is a circuit with even number of vertices. Let v be one of these vertices.
+Consider a circuit C’ with odd number of vertices passing through v such that C and C’
+have no edge in common. The circuit q that consists of the edges of C and C’ is an Euler
+
+graph of the desired type.
+
+(®) Yes. In (a), suppose C and C’ are circuits with odd number of vertices. Then g is an
+Euler graph of the desired type. a
+
+Show that a connected graph with exactly two vertices of odd degree has an
+
+Euler trail.
+
+> :
+i Let A and B be the only two vertices of odd degree in a connected graph G. Join these
+“ices by an edge e (even if there is already an edge between them). Then A and B become

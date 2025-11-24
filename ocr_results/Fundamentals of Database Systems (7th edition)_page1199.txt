@@ -1,0 +1,33 @@
+Appendix B Parameters of Disks 1169
+
+Another parameter of disks is the rewrite time. This is useful in cases when we read
+a block from the disk into a main memory buffer, update the buffer, and then write
+the buffer back to the same disk block on which it was stored. In many cases, the
+time required to update the buffer in main memory is less than the time required for
+one disk revolution. If we know that the buffer is ready for rewriting, the system can
+keep the disk heads on the same track, and during the next disk revolution the
+updated buffer is rewritten back to the disk block. Hence, the rewrite time T;,,, is
+usually estimated to be the time needed for one disk revolution:
+
+Ty = 2 * rd msec = 60000/p msec
+
+To summarize, the following is a list of the parameters we have discussed and the
+symbols we use for them:
+
+Seek time: s msec
+
+Rotational delay: rd msec
+
+Block transfer time: btt msec
+
+Rewrite time: Ty msec
+
+Transfer rate: tr bytes/msec
+
+Bulk transfer rate: btr bytes/msec
+
+Block size: B bytes
+
+Interblock gap size: Gbytes
+
+Disk speed: Pp rpm (revolutions per minute)

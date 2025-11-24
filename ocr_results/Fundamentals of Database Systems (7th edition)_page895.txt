@@ -1,0 +1,52 @@
+23.6 Types of Distributed Database Systems
+
+example, consider the query Q: Retrieve the names and hours per week for each
+employee who works on some project controlled by department 5. This can be speci-
+fied in SQL on the schema in Figure 5.5 as follows:
+
+Q: SELECT Fname, Lname, Hours
+FROM EMPLOYEE, PROJECT, WORKS_ON
+WHERE Dnum=5 AND Prumber=Pno AND Essn=Ssn;
+
+Suppose that the query is submitted at site 2, which is where the query result will be
+needed. The DDBMS can determine from the guard condition on PROJS5 and
+WORKS_ONS that all tuples satisfying the conditions (Dnum = 5 AND Pnumber = Pno)
+reside at site 2. Hence, it may decompose the query into the following relational alge-
+bra subqueries:
+
+Ty © Tesen(PROJSS pn umberProWORKS_ONS)
+T2 © Teegsn, Fname, Lname( Ty Essn—SsnEMPLOYEE)
+RESULT < TlFname, Lname, Hours(1* WORKS_ONS)
+
+This decomposition can be used to execute the query by using a semijoin strategy.
+The DDBMS knows from the guard conditions that PROJS5 contains exactly those
+tuples satisfying (Dnum = 5) and that WORKS_ONS contains all tuples to be joined
+with PROJSS5; hence, subquery T, can be executed at site 2, and the projected column.
+Essn can be sent to site 1. Subquery T, can then be executed at site 1, and the result
+can be sent back to site 2, where the final query result is calculated and displayed to
+the user. An alternative strategy would be to send the query Q itself to site 1, which
+includes all the database tuples, where it would be executed locally and from which
+the result would be sent back to site 2. The query optimizer would estimate the costs
+of both strategies and would choose the one with the lower cost estimate.
+
+23.6 Types of Distributed Database Systems
+
+The term distributed database management system can describe various systems
+that differ from one another in many respects. The main thing that all such systems
+have in common is the fact that data and software are distributed over multiple sites
+connected by some form of communication network. In this section, we discuss a
+number of types of DDBMSs and the criteria and factors that make some of these
+systems different.
+
+The first factor we consider is the degree of homogeneity of the DDBMS software. If
+all servers (or individual local DBMSs) use identical software and all users (clients) use
+identical software, the DDBMS is called homogeneous; otherwise, it is called hetero-
+geneous. Another factor related to the degree of homogeneity is the degree of local
+autonomy. If there is no provision for the local site to function as a standalone DBMS,
+then the system has no local autonomy. On the other hand, if direct access by local
+transactions to a server is permitted, the system has some degree of local autonomy.
+
+Figure 23.6 shows classification of DDBMS alternatives along orthogonal axes of
+distribution, autonomy, and heterogeneity. For a centralized database, there is
+
+865

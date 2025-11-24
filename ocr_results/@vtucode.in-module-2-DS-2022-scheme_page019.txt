@@ -1,0 +1,42 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+Functions push and pop add and delete items to/from a stack.
+
+void push(int i, element item)
+{/* add item to the ith stack */
+stackPointer temp;
+MALLOC (temp, sizeof (*temp));
+temp-data = item;
+tempslink = top[i];
+top[i] = temp;
+
+Add to a linked stack
+
+Function push creates a new node, temp, and places item in the data field and top in the link field. The
+variable top is then changed to point to temp. A typical function call to add an element to the ith stack would
+
+be push (i,item).
+
+element pop(int i)
+{ /* remove top element from the ith stack */
+
+stackPointer temp = top[il;
+element item;
+if (! temp)
+return stackEmpty ();
+
+item = temp—data;
+top[i] = temp—links
+free (temp) }%
+
+return item;
+
+Delete from a linked stack
+
+Function pop returns the top element and changes top to point to the address contained in
+
+its link field. The removed node is then returned to system memory. A typical function
+
+call to delete an element from the ith stack would be item = pop (i);
+
+vtucode.in 20

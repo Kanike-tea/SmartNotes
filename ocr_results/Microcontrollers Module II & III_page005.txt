@@ -1,0 +1,47 @@
+Microcontrollers — BCS402
+
+N shift operations Syntax
+
+Immediate #immediate
+
+Register Rm
+
+Logical shift left by immediate Rm, LSL #shift_imm
+Logical shift left by register Rm, LSL Rs
+
+Logical shift right by immediate Rm, LSR #shift_imm
+Logical shift right with register Rm, LSR Rs
+Arithmetic shift right by immediate Rm, ASR #shift_imm
+Arithmetic shift right by register Rm, ASR Rs
+
+Rotate right by immediate Rm, ROR #shift_imm
+Rotate right by register Rm, ROR Rs
+
+Rotate right with extend Rm, RRX
+
+Example:
+
+MOVS r0,r1, LSL #1 ; rl register content left shifted by one position and copied to r0 and
+CPSR register get updated because of suffix S.
+
+PRE cpsr = nzcvqiFt_USER, r0 = 0x00000000, rl = 0x80000004
+POST epsr = nzCvqiFt_USER, r0 = 0x00000008, r1 = 0x80000004
+
+This example of a MOVS instruction shifts register r1 left by one bit. This multiplies register
+rl by a value 2. C flag is updated in the cpsr because the S suffix is present in the instruction
+
+mnemonic.
+
+Table 3 lists the syntax for the different barrel shift operations available on data processing
+instructions. The second operand N can be an immediate constant preceded by #, a register
+
+value Rm, or the value of Rm processed by a shift.
+2.3 Arithmetic Instructions
+
+The arithmetic instructions implement addition and subtraction of 32-bit signed and unsigned
+
+values.
+
+Syntax: <instruction>{<cond>}{S} Rd, Rn, N
+
+Dept. of ECE, GSSSIETW Page 6

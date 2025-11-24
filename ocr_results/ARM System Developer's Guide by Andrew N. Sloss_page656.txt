@@ -1,0 +1,46 @@
+B.2 Thumb Instruction Set Encodings 643
+
+To use the table efficiently, follow this decoding procedure:
+
+Index through the table using the first hex digit of the instruction, bits 12 to 15 (shaded).
+Index on any shaded bits from bits 0 to 11.
+
+Once you have located the correct table entry, look at the bits named op. Concatenate
+these to form a binary number that indexes the | separated instruction list on the left.
+For example, if there are two op bits value 1 and 0, then the binary value 10 indicates
+instruction number 2 in the list (the third instruction).
+
+The instruction operands have the same name as in the instruction description of
+Appendix A.
+
+The table uses the following abbreviations:
+
+register_list is a bit field with bit k set if register Rk appears in the register list.
+Ris 1 if Iris in the register list of PUSH or pcis in the register list of POP.
+
+Table B.5 Thumb instruction decode table.
+Instruction classes (indexed by op) I 4 13 12211109 8 7 6 5 4 32 10
+LSL | LSR 0 0 0 o|op immed5 Lm Ld
+ASR 00 0 1{0 immed Lm Td
+ADD | SUB 0 0 0 I|[1[0 im in Td
+ADD | SUB 00 0 1[1 [1 op | immed3 Ln Ld
+mov | CMP 00 1 0|ep| Ldtn immed8
+ADD | SUB 00 1 1|ep Td immed8
+AND | EOR | LSR 0 1 0 Ofo[0 0 O[ Limfls Id
+ASR | ADC | ROR 0 1 0 O|0[0 0 i[ op Lif Id
+TST | NEG | CMN Oo 1 0 Of0[0 1 0[ o im Ldn
+ORR | MUL | VN 0 1 0 Ofo[o 1 1| o Lm Ld
+cPY Ld, Lm 0 1 0 oO[o{1 1 0[0 0 Lm Td
+ADD | MOV Hm 0 1 0 0O|[0{1 op 0|0 1| Hm&7 Td
+ADD | MOV Lm 0 1 0 0[0{1 op o0|1 0 Lm Ha&7
+ADD | MOV Hm 0 1 0 O[0[1 o 0|1 1| Hm&7 | Hd&7
+0 1 0 O|o{1 0 1|0 1| Hm&7 Tn
+0 1 0 Ofof1 o ifi 0 Lm Hn &7
+0 1 0 0[o0{1 0 1|1 1] Hm&7 | Hn&7
+BLX 0 1 0 O[0|{1 1 1] Rm 00 0
+Ld, [pc #immed*4] 0 i 0 Ofi Td immed
+STRH | STRB | LDRSB pre 0 1 0 1[0[ » im Tn Td
+LDRH | LDRB | LDRSH pre 0 1 0 I|1[ im Tn Td
+LOR Ld, (Ln, #immed*4} 0 1 1 Ole immed Ln Ld
+STRB | LORB (Ln, #immed] 01 1 1 {op imm in Id
+STRH | LORH (Ln, #immed*2] [7 0 0 Of op immed Tn Td

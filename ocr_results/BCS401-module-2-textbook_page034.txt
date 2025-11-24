@@ -1,0 +1,46 @@
+188
+
+Divide-and-Conquer
+
+Now we apply this trick to multiplying two n-digit integers a and b where n is
+a positive even number. Let us divide both numbers in the middle—after all, we
+promised to take advantage of the divide-and-conquer technique. We denote the
+first half of the a’s digits by a; and the second half by ap; for b, the notations are b;
+and bg, respectively. In these notations, a = aay implies that a = a,10"/? + ay and
+b = bybo implies that b = b110"/? + bo. Therefore, taking advantage of the same
+trick we used for two-digit numbers, we get
+
+c=a%b = (a;10" + ag) * (b110"/? + by)
+= (a; * by)10" + (ay * by + ay * b1)10"!? + (ay * bo)
+= e910" + e110" + 9,
+where
+Cy = a, * b, is the product of their first halves,
+Co = dp * bo is the product of their second halves,
+1 = (ay + dg) * (by + bo) — (cp +c) is the product of the sum of the
+a’s halves and the sum of the b’s halves minus the sum of c, and cy.
+If n/2 is even, we can apply the same method for computing the products c, co,
+and c;. Thus, if n is a power of 2, we have a recursive algorithm for computing the
+product of two n-digit integers. In its pure form, the recursion is stopped when n
+becomes 1. It can also be stopped when we deem n small enough to multiply the
+numbers of that size directly.
+How many digit multiplications does this algorithm make? Since multiplica-
+
+tion of n-digit numbers requires three multiplications of n/2-digit numbers, the
+recurrence for the number of multiplications M(n) is
+
+M(n)=3M(n/2) forn>1, M(Q)=1.
+Solving it by backward substitutions for n = 2‘ yields
+M2’) =3M2"- =33M2')] =3M2*)
+=. =3!'Mk-!y) =... = 3k 2k-*) = 3.
+Since k = logy n,
+M(n) = 312" = p!823 w 985,
+
+(On the last step, we took advantage of the following property of logarithms:
+al8s¢ = los.)
+
+But what about additions and subtractions? Have we not decreased the num-
+ber of multiplications by requiring more of those operations? Let A(n) be the
+number of digit additions and subtractions executed by the above algorithm in
+
+multiplying two n-digit decimal integers. Besides 3A(n/2) of these operations
+needed to compute the three products of n/2-digit numbers, the above formulas

@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+the UNION of tuples in two relations R(X, Y) and S(X, Z) that are partially compatible,
+meaning that only some of their attributes, say X, are union compatible.
+The attributes that are union compatible are represented only once in the result, and those
+attributes that are not union compatible from either relation are also kept in the result relation
+T(X, Y, Z). Two tuples f; in R and f in S are said to match if t[X]= m[X]. These will be
+combined (unioned) into a single tuple in ¢. Tuples in either relation that have no matching tuple
+in the other relation are padded with NULL values.
+For example, an OUTER UNION can be applied to two relations whose schemas are:
+STUDENT(Name, Ssn, Department, Advisor)
+INSTRUCTOR(Name, Ssn, Department, Rank)
+Tuples from the two relations are matched based on having the same combination of values of
+the shared attributes—Name, Ssn, Department. All the tuples from both relations are included in
+the result, but tuples with the same (Name, Ssn, Department) combination will appear only once
+in the result. Tuples appearing only in STUDENT will have a NULL for the Rank attribute,
+whereas tuples appearing only in INSTRUCTOR will have a NULL for the Advisor attribute.
+A tuple that exists in both relations, which represent a student who is also an instructor, will
+have values for all its attributes The resulting relation, STUDENT_OR_INSTRUCTOR, will
+have the following attributes:
+STUDENT_OR_INSTRUCTOR(Name, Ssn, Department, Advisor, Rank)
+
+2.6 Examples of Queries in Relational Algebra
+
+Query 1. Retrieve the name and address of all employees who work for the ‘Research’ department.
+
+RESEARCH _DEPT < 6p )3,,.—ineseanse( DEPARTMENT)
+RESEARCH _EMPS © (RESEARCH DEPT P4 9. i.c- ppd
+RESULT © firpame, Lname, Adchese(RESEARCH_EMPS)
+
+Asa singlein-line expression, this query becomes:
+TFname, Lname, Address (ODname='Rescarch' (DEPARTMENT 4 prumber-Dno(EMPLOYEE))
+
+EMPLOYEE)
+
+Query 2. For every project located in ‘Stafford’, list the project number, the controlling department
+
+number, and the department manager’s last name, address, and birth date.
+
+STAFFORD_PROIS & optocation~'stafford’( PROJECT)
+
+CONTR_DEPTS — (STAFFORD_PROJS D4 5. paumbe/EPARTMENT)
+PROJ_DEPT_MGRS < (CONTR_DEPTS 4 iy san-Sen=MPLOYEE)
+RESULT © mpnumber, Dnum, Lname, Address, Bdate(PROJ_DEPT_MGRS)
+
+https://vtucode.in Page 36

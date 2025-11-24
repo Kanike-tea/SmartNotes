@@ -1,0 +1,46 @@
+Digital Design and Computer Organization(BCS302)
+
+Module-2
+Combinational Logic
+
+Syllabus:
+
+Combinational Logic: Introduction, Combinational Circuits, Design Procedure, Binary Adder- Subtractor,
+Decoders, Encoders, Multiplexers. HDL Models of Combinational Circuits — Adder, Multiplexer,
+Encoder. Sequential Logic: Introduction, Sequential Circuits, Storage Elements: Latches, Flip-Flops.
+
+Introduction
+* Logic circuits for digital systems may be combinational or sequential.
+
+* A combinational circuit consists of logic gates whose outputs at any time are
+determined from only the present combination of inputs.
+
+* A combinational circuit performs an operation that can be specified logically by a set
+of Boolean functions.
+
+* sequential circuits employ storage elements in addition to logic gates. Their outputs
+are a function of the inputs and the state of the storage elements
+
+* Because the state of the storage elements is a function of previous inputs, the outputs
+of a sequential circuit depend not only on present values of inputs, but also on past
+inputs, and the circuit behavior must be specified by a time sequence of inputs and
+internal states.
+
+combinational circuit
+A combinational circuit consists of an interconnection of logic gates.
+
+* Combinational logic gates react to the values of the signals at their inputs and
+produce the value of the output signal, transforming binary information from the
+given input data to a required output data.
+
+—_| —
+> Combinational [>
+‘ inal
+ninputs —* oaip [> m outputs
+circuit :
+—, —
+
+FIGURE 4.1
+Block diagram of combinational circuit
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 1

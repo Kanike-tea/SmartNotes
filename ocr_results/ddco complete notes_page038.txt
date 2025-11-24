@@ -1,0 +1,45 @@
+Digital Design and Computer Organization(BCS302)
+
+* Gi is called a carry generate , and it produces a carry of 1 when both Ai and Bi are 1,
+regardless of the input carry Ci .
+
++ Piis called a carry propagate , because it determines whether a carry into stage i will
+propagate into stage i+ 1
+
+Half adder Half adder
+poco tne or _
+Ait Pi | :
+PBC;
+B+ | ; 5,
+I 1 ' Il
+I ' ! I
+I Gi | ' I
+I 4 ! I
+' 1 \ P.C,+ Gi.
+I ! - ! Cr+
+I ' i I
+eet +------___
+C;
+FIGURE 4.10
+
+Full adder with P and G shown
+
+° P, = A;@B; S; = P;®C;
+G; = A,B; Cis = G; + BG;
+
+Binary ADDER-Subtractor
+
+The addition and subtraction operations can be combined into one circuit with one
+common binary adder by including an exclusive-OR gate with each full adder.
+
+A four-bit adder—subtractor circuit is shown in Fig. 4.13 . The mode input M controls the
+operation. When M = 0, the circuit is an adder, and when M = 1, the circuit becomes a
+subtractor. Each exclusive-OR gate receives input M and one of the inputs of B.
+
+When M = 0, we have B 0 = B. The full adders receive the value of B , the input carry is
+O, and the circuit performs A plus B . When M = 1, we have B ® 1 =B’ and CO=1.TheB
+inputs are all complemented and a 1 is added through the input carry. The circuit performs
+the operation A plus the 2’s complement of B . (The exclusive-OR with output V is for
+detecting an overflow.)
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 10

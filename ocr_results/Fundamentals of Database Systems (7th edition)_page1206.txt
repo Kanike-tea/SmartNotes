@@ -1,0 +1,50 @@
+1176 Appendix C Overview of the QBE Language
+
+(a) EMPLOYEE
+
+Fname | Minit | Lname | Ssn | Bdate | Address | Sex | Salary | Super_ssn | Dno
+_FN _LN _Addr _DX
+DEPARTMENT
+
+Dname | Dnumber | Mgrssn | Mgr_start_date
+
+Research _DX
+
+RESULT|
+
+P| _FN [LN | _Addr
+
+(b) EMPLOYEE
+
+Fname | Minit | Lname | Ssn | Bdate | Address | Sex | Salary | Super_ssn | Dno
+Fl _E2 _Xssn
+_S1 _S2 _Xssn
+RESULT|
+P. E1 | £2 | Si] _S2
+Figure C.5
+
+Illustrating JOIN and result relations in QBE. (a) The query Q1. (b) The query Q8.
+
+Figure C.6(a) shows query Q23, which counts the number of distinct salary values
+in the EMPLOYEE relation. Query Q23A (Figure C.6(b) counts all salary values,
+which is the same as counting the number of employees. Figure C.6(c) shows Q24,
+which retrieves each department number and the number of employees and average
+salary within each department; hence, the Dno column is used for grouping as indi-
+cated by the G. function. Several of the operators G., P., and ALL can be specified in
+a single column. Figure C.6(d) shows query Q26, which displays each project name
+and the number of employees working on it for projects on which more than two
+employees work.
+
+QBE has a negation symbol, =, which is used in a manner similar to the NOT EXISTS
+function in SQL. Figure C.7 shows query Q6, which lists the names of employees
+who have no dependents. The negation symbol = says that we will select values of
+the _SX variable from the EMPLOYEE relation only if they do not occur in the
+DEPENDENT relation. The same effect can be produced by placing a > _SX in the
+Essn column.
+
+Although the QBE language as originally proposed was shown to support the
+equivalent of the EXISTS and NOT EXISTS functions of SQL, the QBE implementa-
+tion in QMF (under the DB2 system) does not provide this support. Hence, the
+QMF version of QBE, which we discuss here, is not relationally complete. Queries
+such as Q3: Find employees who work on all projects controlled by department 5
+cannot be specified.

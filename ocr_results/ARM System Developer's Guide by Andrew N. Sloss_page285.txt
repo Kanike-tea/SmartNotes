@@ -1,0 +1,53 @@
+272 Chapter 8 Digital Signal Processing
+
+MLA acc, x_4, ¢_4, acc
+suBs oN, N, #5
+BGT 1oop_7m
+
+MOV. v0, acc
+LOMFD sp!, {r4-rl1, pc}
+
+This code assumes that the number of samples N is a multiple of five. Therefore we
+can use a five-word load multiple to increase data bandwidth. The cost per load is 7/4 =
+1.4 cycles compared to 3 cycles per load if we had used LDR or LDRSH. The inner loop requires
+a worst case of 7 +7 +5 4+ 1+3 = 38 cycles to process each block of 5 products from
+the sum. This gives the ARM7TDMI a DSP rating of 38/5 = 7.6 cycles per tap for a 16-bit
+dot-product. The block filter algorithm of Section 8.3 gives a much better performance per
+tap if you are calculating multiple products.
+
+8.2.2 DSP ON THE ARM9TDMI
+
+SUMMARY
+
+EXAMPLE
+
+8.3
+
+The ARM9TDMI has the same 32-bit by 8-bit per cycle multiplier array with early termina-
+tion as the ARM7TDMI. However, load and store operations are much faster compared to
+the ARM7TDMI. They take one cycle provided that you do not attempt to use the loaded
+value for two cycles after the load instruction. See Section D.3 in Appendix D for cycle
+timings of ARM9TDML instructions.
+
+Writing DSP Code for the ARM9TDMI
+
+= Load instructions are fast as long as you schedule the code to avoid using the loaded
+value for two cycles. There is no advantage to using load multiples. Therefore you
+should store 16-bit data in 16-bit short type arrays. Use the LDRSH instruction to load
+the data.
+
+= The multiply instructions use early termination based on the second operand in the
+product Rs. For predictable performance use the second operand to specify constant
+coefficients or multiples.
+
+= Multiply is the same speed as multiply accumulate. Try to use the MLA instruction rather
+than a separate multiply and add.
+
+= You can often multiply by fixed coefficients faster using arithmetic instructions with
+shifts. For example, 240x = (x « 8) — (x « 4). For any fixed coefficient of the form
+£242 + 2°, ADD and SUB with shift give a faster multiply accumulate than using MLA.
+
+This example shows a 16-bit dot-product optimized for the ARM9TDML. Each MLA takes
+a worst case of four cycles. We store the 16-bit input samples in 16-bit short integers, since
+there is no advantage in using LDM rather than LDRSH, and using LDRSH reduces the memory
+size of the data.

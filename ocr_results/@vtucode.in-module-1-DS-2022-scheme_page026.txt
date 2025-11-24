@@ -1,0 +1,67 @@
+MODULE 1
+
+DATA STRUCTURES-BCS304
+
+POLYNOMIAL ADDITION:
+
+void padd (int starta, int finisha,
+startd, int *finishd)
+
+{
+/* add A(x) and B(x) to obtain D(x) */
+float coefficient;
+
+*startd = avail;
+while (starta <= finisha && startb <= finishb)
+
+{
+switch (COMPARE (terms[starta].expon, terms[startb] .expon) )
+
+{
+case -1: /* a expon < b expon */
+attach (terms[startb] .coef,
+terms[startb].expon); startb++
+break;
+
+case 0: /* equal exponents */
+coefficient = terms[starta].coef +
+terms[startb].coef; if (coefficient)
+attach (coefficient, terms[starta] .expon) ;
+
+startatt+;
+startb++; break;
+
+case 1: /* a expon > b expon */
+attach (terms [starta] .coef,
+terms [starta].expon); startatt+;
+/* add in remaining terms of A(x) */
+for( ; starta <= finisha; starta++)
+attach (terms [starta] .coef,
+terms [starta] .expon) ;
+/* add in remaining terms of B(x) */
+for( ; startb <= finishb; startb++)
+attach (terms[startb] .coef,
+terms [startb].expon);
+
+*finishd =avail -1;
+
+int startb, int finishb,int *
+
+void attach(float coefficient, int exponent)
+{
+/* add a new term to the polynomial */
+if (avail >= MAX_TERMS
+
+{
+fprintf(stderr, “Too many terms in the polynomial\n”);
+
+exit (1);
+}
+terms[avail].coef = coefficient;
+terms [avail++].expon = exponent;
+
+Function to add a new term
+
+vtucode.in
+
+27

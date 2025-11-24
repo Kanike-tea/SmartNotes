@@ -1,0 +1,44 @@
+1.2. Graphs < un
+
+Let G = (V,E) be a simple graph of order \V| = n and size \E| = m. If G is a
+bipartite graph, prove that 4m < nr.
+p Let V; and V2 be the bipartites of G, with |V,| = r and |V2| = s. Since |V| = 7, we should
+haver+s =n, sothatr=n-—sands=n~r.
+The graph G has the maximum number of edges when each of the r vertices in V; is joined
+by an edge to each of the s vertices in V2, and this maximum is equal to rs. This means that
+
+|El=msrs.
+When 7 is even, we may express rs as
+
+rs=rtn-=m-7 =(2) -(r-2)
+
+Evidently, rs is maximum when r = (n/2), the maximum being (n/2)*. Thus, when n is
+n\2
+msrsS\|r]}.-
+ns (3)
+When n is odd, we may express rs as
+
+(n-1)(n+ 1) n-1 n+1
+
+even, we have
+
+rs=r(n-r)=
+
+Evidently, rs is maximum when r = (n — 1)/2 or r = (n + 1)/2, the maximum being
+
+(n—1)(n + 1)/4. Thus, when n is odd, we have
+
+_ @a D+) we =1 a =(%)
+
+sn 4 4-4 \2
+
+Accordingly, in both of the possible cases (n is even or odd), we have
+
+2
+ms (5). or 4m <n’. 2
+
+Show that a simple graph of order n = 4 and size m = 5 cannot be a bipartite
+graph.
+> Here, 4m = 20 and n? = 16, so that 4m > n. Therefore, the given simple graph cannot be
+
+a bipartite graph. 2

@@ -1,0 +1,42 @@
+LECTURE-7: Advanced ER-Diagram:
+
+Abstraction is the simplification mechanism used to hide superfluous details of a set of objects. It
+allows one to concentrate on the properties that are of interest to the application. There are two main
+abstraction mechanism used to model information:
+
+Generalization and specialization:
+
+Generalization is the abstracting process of viewing set of objects as a single general class by
+concentrating on the general characteristics of the constituent sets while suppressing or ignoring
+their differences. It is the union of a number of lower-level entity types for the purpose of
+producing a higher-level entity type. For instance, student is a generalization of graduate or
+undergraduate, full-time or part-time students. Similarly, employee is generalization of the classes
+of objects cook, waiter, and cashier. Generalization is an IS_A relationship; therefore, manager
+IS_AN employee, cook IS_AN employee, waiter IS_AN employee, and so forth.
+
+Specialization is the abstracting process of introducing new characteristics to an existing class of
+objects to create one or more new classes of objects. This involves taking a higher-level, and using
+additional characteristics, generating lower-level entities. The lower-level entities also inherits the,
+characteristics of the higher-level entity. In applying the characteristics size to car we can create a
+full-size, mid-size, compact or subcompact car. Specialization may be seen as the reverse process of
+generalization addition specific properties are introduced at a lower level in a hierarchy of objects.
+
+= ae
+10
+
+wg employee oo,
+Generalization piey Specialization
+
+|
+Full time Part-time
+employee employee
+
+1s 1s Is Is
+
+| |
+
+faculty staff teaching casual
+
+EMPLOYEE(empno,name,dob) Faculty(empno,degree, intrest)
+FULL_TIME_EMPLOYEE(empno,salary) Staff(empno,hour-rate)
+PART_TIME_EMPLOYEE(empno,type) Teaching (empno,stipend)

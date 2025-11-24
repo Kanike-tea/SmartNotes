@@ -1,0 +1,53 @@
+8.3 Binary Relational Operations: JOIN and DIVISION
+
+The result of DIVISION is a relation T(Y) that includes a tuple ¢ if tuples tz appear in
+R with tp [Y] = t, and with tp [X] = ts for every tuple ts in S. This means that, for a
+tuple f to appear in the result T of the DIVISION, the values in ¢ must appear in R in
+combination with every tuple in S. Note that in the formulation of the DIVISION
+operation, the tuples in the denominator relation S restrict the numerator rela-
+tion R by selecting those tuples in the result that match all values present in the
+denominator. It is not necessary to know what those values are as they can be
+computed by another operation, as illustrated in the SMITH_PNOS relation in
+the previous example.
+
+Figure 8.8(b) illustrates a DIVISION operation where X = {A}, Y = {B}, and Z = {A, B}.
+Notice that the tuples (values) b, and b, appear in R in combination with all three
+tuples in S; that is why they appear in the resulting relation T. All other values of B
+in R do not appear with all the tuples in S and are not selected: b does not appear
+with a, and b3 does not appear with a).
+
+The DIVISION operation can be expressed as a sequence of 1, x, and - operations as
+follows:
+
+T1<—my(R)
+T2 <— ty((S x T1) - R)
+T<T1-T2
+
+The DIVISION operation is defined for convenience for dealing with queries that
+involve universal quantification (see Section 8.6.7) or the all condition. Most
+RDBMS implementations with SQL as the primary query language do not directly
+implement division. SQL has a roundabout way of dealing with the type of query
+just illustrated (see Section 7.1.4, queries Q3A and Q3B). Table 8.1 lists the various
+basic relational algebra operations we have discussed.
+
+8.3.5 Notation for Query Trees
+
+In this section we describe a notation typically used in relational DBMSs (RDBMSs)
+to represent queries internally. The notation is called a query tree or sometimes it is
+known as a query evaluation tree or query execution tree. It includes the relational
+algebra operations being executed and is used as a possible data structure for the
+internal representation of the query in an RDBMS.
+
+A query tree is a tree data structure that corresponds to a relational algebra expres-
+sion. It represents the input relations of the query as leaf nodes of the tree, and rep-
+resents the relational algebra operations as internal nodes. An execution of the
+query tree consists of executing an internal node operation whenever its operands
+(represented by its child nodes) are available, and then replacing that internal node
+by the relation that results from executing the operation. The execution terminates
+when the root node is executed and produces the result relation for the query.
+
+Figure 8.9 shows a query tree for Query 2 (see Section 6.3.1): For every project
+located in ‘Stafford’, list the project number, the controlling department number, and
+the department manager’s last name, address, and birth date. This query is specified
+
+257

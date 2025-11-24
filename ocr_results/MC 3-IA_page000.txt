@@ -1,0 +1,49 @@
+1.1 ARM Processor Exceptions and Modes
+
+Table | lists the ARM processor exceptions. Each exception causes the core to enter a specific
+mode. In addition, any of the ARM processor modes can be entered manually by changing the
+
+cpsr.
+
+User and s;
+
+em mode are the only two modes that are not entered by a corresponding exception,
+
+in other words, to enter these modes you must modify the cpsr.
+When an exception causes a mode change, the core automatically
+
+© Saves the cpsr to the spsr of the exception mode
+© Saves the pe to the Ir of the exception mode
+© Sets the cpsr to the exception mode
+
+¢ Sets pc to the address of the exception handler
+
+Dept. of ECE, GSSSIETW, Mysuru Page 2
+
+Microcontrollers - BCS402
+
+Table 1: ARM processor exceptions and associated modes
+
+Exception Mode Main purpose
+Fast Interrupt Request FIQ fast interrupt request handling
+Interrupt Request IRQ interrupt request handling
+SWI and Reset SVC protected mode for operating systems
+Prefetch Abort and Data Abort abort virtual memory and/or memory protection handling
+Undefined Instruction undefined software emulation of hardware coprocessors
+Reset
+Data Abort
+FIQ
+(—1RgQ——}
+[Prefetch Abort
+SWL
+Undefined
+Exceptions * +. vy .
+(Undefined)( 1RQ_)(_ FIQ_)(_ Abon_)(_ svc _)
+
+Modes
+
+Fig 1: Exceptions and associated modes
+
+Figure 1 shows a simplified view of exceptions and associated modes. Note that when an
+
+exception occurs, the ARM processor always switches to ARM state.

@@ -1,0 +1,42 @@
+1.3. Isomorphism
+
+41
+
+Given two graphs G and G’, there is no set precedure for proving or disproving that they
+are isomorphic. It is only by carefully examining the nature of vertices and edges of both G
+and G’ that one can find whether or not they are isomorphic. If G and G’ are not isomorphic, it
+js relatively easy to find it out. If G and G’ are isomorphic, the work involved in proving it is
+quite hard — it gets harder as the orders and sizes of G and G’ get larger.
+
+Jsomorphism of Digraphs
+
+The definition of isomorphism of graphs can be extended to digraphs in a natural way. Two
+digraphs D; and Dz are said to be isomorphic if there is a one-to-one correspondence between
+their vertices and between their edges such that adjacency of vertices along with directions is
+preserved.
+
+[Example 1] Prove that the two graphs shown below are isomorphic.
+
+‘1 v2 v1 v2
+v3 v4 v3 v4
+(a) (b)
+Figure 1.48
+
+> We first observe that both graphs have four vertices and four edges. Consider the following
+one-to-one correspondence between the vertices of the graphs:
+
+uy Vy, U2  V4> U3 © V3, U4 © V2.
+This correspondence gives the following correspondence between the edges:
+
+(uj.U2} @ (vinva}, {un wsh {v1, v3},
+
+(up, us} 2 {v4 V2}, {u3, ug} © {v3, va}
+
+These represent one-to-one correspondence between the edges of the two graphs xe
+Which the adjacent vertices in the first graph correspond to adjacent vertices 1n the secon
+Staph and vice-versa.
+
+: : a
+Accordingly, the two graphs are isomorphic.
+
+eorennenreres

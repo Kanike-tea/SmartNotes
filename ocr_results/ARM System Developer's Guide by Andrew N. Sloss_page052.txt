@@ -1,0 +1,85 @@
+Table 2.7 _ Revision history.
+
+2.7 ARM Processor Families 39
+
+Revision Example core implementation ISA enhancement
+
+ARMv1 ARMI First ARM processor
+26-bit addressing
+
+ARMv2 ARM2 32-bit multiplier
+
+ARMv2a ARM3
+
+ARMv3 ARM6 and ARM7DI
+
+ARMv3M — ARM7M
+ARMv4 StrongARM
+
+ARMv4T ARM/7TDMI and ARM9T
+ARMv5TE = ARM9E and ARM10E
+
+ARMv5TEJ = ARM7EJ and ARM926EJ
+ARMv6 ARMIL
+
+32-bit coprocessor support
+
+On-chip cache
+
+Atomic swap instruction
+
+Coprocessor 15 for cache management
+
+32-bit addressing
+
+Separate cpsr and spsr
+
+New modes—undefined instruction and abort
+
+MMU support—virtual memory
+
+Signed and unsigned long multiply instructions
+
+Load-store instructions for signed and unsigned
+halfwords/bytes
+
+New mode—system
+
+Reserve SWI space for architecturally defined
+operations
+
+26-bit addressing mode no longer supported
+
+Thumb
+
+Superset of the ARMv4T
+
+Extra instructions added for changing state between
+ARM and Thumb
+
+Enhanced multiply instructions
+
+Extra DSP-type instructions
+
+Faster multiply accumulate
+
+Java acceleration
+
+Improved multiprocessor instructions
+
+Unaligned and mixed endian data handling
+
+New multimedia instructions
+
+Within each ARM family, there are a number of variations of memory management,
+
+cache, and TCM processor extensions. ARM continues to expand both the number of
+
+families available and the different variations within each family.
+You can find other processors that execute the ARM ISA such as StrongARM and
+XScale. These processors are unique to a particular semiconductor company, in this case
+
+Intel.
+
+Table 2.10 summarizes the different features of the various processors. The next
+subsections describe the ARM families in more detail, starting with the ARM7 family.

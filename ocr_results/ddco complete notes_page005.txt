@@ -1,0 +1,53 @@
+Digital Design and Computer Organization(BCS302)
+
+> A Boolean function expresses the logical relationship between binary
+
+variables and is evaluated by determining the binary value of the expression
+for all possible values of the variables.
+
+> A Boolean function can be represented in a truth table. The number of
+rows in the truth table is 2n, where n is the number of variables in the
+function.
+
+> Table 1 shown below represents the truth table for the function F1. There are
+eight possible binary combinations for assigning bits to the three variables x,
+y, and z.
+
+> The table shows that the function is equal to 1 when x = 1 or when yz = 01
+and is equal to 0 otherwise.
+
+Truth Tables for F; and F,
+
+y Zz Fy F,
+0) 0 0 0 0
+0 0 1 1 1
+0 1 0 0 0
+0 1 1 0 1
+1 0 0 1 1
+1 0) 1 1 1
+1 1 0 1 0
+1 1 1 0
+Table 1
+
+> A Boolean function can be transformed from an algebraic expression into a
+circuit diagram composed of logic gates connected in a particular structure.
+
+o The logic-circuit diagram for F1 is shown in Fig. 2.1. There is an inverter for
+
+input y to generate its complement. There is an AND gate for the term y'z
+
+and an OR gate that combines x with y'z.
+
+x
+} Don
+
+FIGURE 2.1
+Gate implementation of F, = x + y'z
+
+Consider, for example, the following Boolean function:F2 = x'y'z + x'yz + xy'
+> Aschematic of an implementation of this function with logic gates is shown
+in Fig. 2.2(a).
+> Input variables x and y are complemented with inverters to obtain x' and y'. The
+three terms in the expression are implemented with three AND gates. The OR
+
+Page 6

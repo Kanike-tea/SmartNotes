@@ -1,0 +1,44 @@
+7.8 Random Number Generation 255
+
+7.8 RANDOM NUMBER GENERATION
+
+To generate truly random numbers requires special hardware to act as a source of random
+noise. However, for many computer applications, such as games and modeling, speed
+of generation is more important than statistical purity. These applications usually use
+pseudorandom numbers.
+
+Pseudorandom numbers aren’t actually random at all; a repeating sequence generates
+the numbers. However, the sequence is so long, and so scattered, that the numbers appear
+to be random. Typically we obtain Rj, the kth element of a pseudorandom sequence, by
+iterating a simple function of Ry:
+
+Ry = f(Re-1) (7.56)
+
+For a fast pseudorandom number generator we need to pick a function f(x) that is easy
+to compute and gives random-looking output. The sequence must also be very long before
+it repeats. For a sequence of 32-bit numbers the longest length achievable is clearly 2°.
+
+‘A linear congruence generator uses a function of the following form.
+
+F(x) = (a*xtc) % m5
+
+These functions are studied in detail in Knuth, Seminumerical Algorithms, Sections 3.2.1
+and 3.6. For fast computation, we would like to take m = 277. The theory in Knuth assures
+us that if'a % 8 = 5 and c=a, then the sequence generated has maximum length of 2°? and
+is likely to appear random. For example, suppose that a = 0x91e6d6a5. Then the following
+iteration generates a pseudorandom sequence:
+
+MLA ra, rv, a 3 rk = (a*r_(k-1) + a) mod 2°32
+Since m is a power of two, the low-order bits of the sequence are not very random. Use
+the high-order bits to derive pseudorandom numbers of a smaller range. For example, set
+$= r > 28 to generate a four-bit random number sin the range 0-15. More generally, the
+following code generates a pseudorandom number between 0 and n:
+
+r is the current random seed
+a is the multiplier (eg 0x91E6D6A5)
+; n is the random number range (0...n-1)
+t is a scratch register
+MLA or, ay ry a ; iterate random number generator
+UMULL t, s, r, 7 3s = (rn) /2432
+3 r is the new random seed
+3s is the random result in range 0... n-1

@@ -1,0 +1,51 @@
+DBMS must make sure that the new value refers to an existing tuple in the refer-
+enced relation (or is set to NULL). Similar options exist to deal with referential integ-
+rity violations caused by Update as those options discussed for the Delete operation.
+In fact, when a referential integrity constraint is specified in the DDL, the DBMS will
+allow the user to choose separate options to deal with a violation caused by Delete
+and a violation caused by Update (see Section 6.2).
+
+5.3.4 The Transaction Concept
+
+A database application program running against a relational database typically exe-
+cutes one or more transactions. A transaction is an executing program that includes
+some database operations, such as reading from the database, or applying inser-
+tions, deletions, or updates to the database. At the end of the transaction, it must
+leave the database in a valid or consistent state that satisfies all the constraints spec-
+ified on the database schema. A single transaction may involve any number of
+retrieval operations (to be discussed as part of relational algebra and calculus in
+Chapter 8, and as a part of the language SQL in Chapters 6 and 7) and any number
+of update operations. These retrievals and updates will together form an atomic
+unit of work against the database. For example, a transaction to apply a bank with-
+drawal will typically read the user account record, check if there is a sufficient bal-
+ance, and then update the record by the withdrawal amount.
+
+A large number of commercial applications running against relational databases in
+online transaction processing (OLTP) systems are executing transactions at rates
+that reach several hundred per second. Transaction processing concepts, concur-
+rent execution of transactions, and recovery from failures will be discussed in
+Chapters 20 to 22.
+
+5.4 Summary
+
+In this chapter we presented the modeling concepts, data structures, and constraints
+provided by the relational model of data. We started by introducing the concepts of
+domains, attributes, and tuples. Then, we defined a relation schema as a list of attri-
+butes that describe the structure of a relation. A relation, or relation state, is a set of
+tuples that conforms to the schema.
+
+Several characteristics differentiate relations from ordinary tables or files. The first
+is that a relation is not sensitive to the ordering of tuples. The second involves the
+ordering of attributes in a relation schema and the corresponding ordering of val-
+ues within a tuple. We gave an alternative definition of relation that does not require
+ordering of attributes, but we continued to use the first definition, which requires
+attributes and tuple values to be ordered, for convenience. Then, we discussed val-
+ues in tuples and introduced NULL values to represent missing or unknown infor-
+mation. We emphasized that NULL values should be avoided as much as possible.
+
+We classified database constraints into inherent model-based constraints, explicit
+schema-based constraints, and semantic constraints or business rules. Then, we
+
+5.4 Summary
+
+169

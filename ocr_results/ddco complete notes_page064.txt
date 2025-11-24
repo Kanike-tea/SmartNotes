@@ -1,0 +1,41 @@
+Digital Design and Computer Organization(BCS302)
+
+T Flipflop
+Outputs
+Toggle T
+Pin No change
+
+No change
+Toggle
+
+Clock
+
+) Symbol: T Flip-flop
+
+T Flipflop using JK Flipflop
+
+T = 0 J = K = 0), a clock edge does not change the output. When T = 1 (J = K=1),a
+clock edge complements the output. The complementing flip-flop is useful for
+
+designing binary counters.
+
+—_> Clk
+
+K —
+
+(a) From JK flip-flop Clk
+FIGURE 5.13 ~~ 0 No Change
+
+T flip-flop 1 toggle
+
+Implementation of TFF using DFF
+
+The T flip-flop can be constructed with a D flip-flop and an exclusive-OR gate as
+shown in Fig. (b). The expression for the D input is D = T ® Q = T’Q + TQ’ When T =
+0, D = Q and there is no change in the output. When T = 1, D = Q’ and the output
+
+complements.
+D=T*Q
+D=T’Q+TQ’
+
+Dr Ajay V G, Dept. of CSE , SVIT Page 36

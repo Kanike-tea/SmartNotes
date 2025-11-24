@@ -1,0 +1,57 @@
+178 Chapter 6 Writing and Optimizing ARM Assembly Code
+
+EXAMPLE
+
+6.16
+
+This example shows how to combine a register-specified shift shift and loop counter
+count to shift an array of 40 entries right by shift bits. We define a new variable cntshf
+that combines count and shift:
+
+Bit 31 87 0
+entshf = (count<<8) + shift = count shift
+out RN OQ ; address of the output array
+
+in RN 1 5 address of the input array
+cntshf RN 2  ; count and shift right amount
+x RN 3 5 scratch variable
+
+3 void shift_right(int *out, int *in, unsigned shift);
+shift_right
+
+ADD cntshf, cntshf, #39<<8 ; count = 39
+shift_loop
+
+Lor x, [in], #4
+
+SUBS cntshf, cntshf, #1<<8 ; decrement count
+
+MOV x, x, ASR cntshf 3 shift by shift
+sTR x, [out], #4
+
+BGE — shift_loop ; continue if count>=0
+MOV pc, Ir
+
+Ifyou are dealing with arrays of 8-bit or 16-bit values, it is sometimes possible to manipulate
+multiple values at a time by packing several values into a single 32-bit register. This is called
+single issue multiple data (SIMD) processing.
+
+ARM architecture versions up to ARMv5 do not support SIMD operations explicitly.
+However, there are still areas where you can achieve SIMD type compactness. Section 6.6
+shows how you can store multiple loop values in a single register. Here we look at a graphics
+example of how to process multiple 8-bit pixels in an image using normal ADD and MUL
+instructions to achieve some SIMD operations.
+
+Suppose we want to merge two images X and Y to produce a new image Z. Let Xp) Yn
+and z, denote the nth 8-bit pixel in these images, respectively. Let 0 < a < 256 bea scaling
+factor. To merge the images, we set
+
+2n = (AXq + (256 — a) yn)/256 (6.1)
+
+In other words image Z is image X scaled in intensity by a/256 added to image Y scaled by
+1 — (a/256). Note that
+
+Zn = Wyl256, where Wy = a(Xn — Yn) + 256yn (6.2)
+
+Therefore each pixel requires a subtract, a multiply, a shifted add, and a right
+shift. To process multiple pixels at a time, we load four pixels at once using a

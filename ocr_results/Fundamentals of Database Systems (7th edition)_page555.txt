@@ -1,0 +1,53 @@
+15.4 About Nulls, Dangling Tuples, and Alternative Relational Designs
+
+525
+
+(a) Figure 15.2
+EMPLOYEE Issues with NULL-value
+Ene Sen Bdate gies Drum joins. (a) Some
+‘Smith, John B. 123456789 | 1965-01-09 | 731 Fondren, Houston, TX| 5 NULL tthe iin atinate
+Wong, Franklin T. 333445555 | 1955-12-08 | 638 Voss, Houston, TX 5 Dnum. (b) Result of
+Zelaya, Alicia J. 999887777 | 1968-07-19 | 3321 Castle, Spring, TX 4 applying NATURAL JOIN
+Wallace, Jennifer S. 987654321 | 1941-06-20 | 291 Berry, Bellaire, TX 4 to the EMPLOYEE and
+Narayan, Ramesh K. | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX 5 DEPARTMENT relations.
+English, Joyce A. 453453453 | 1972-07-31 | 5631 Rice, Houston, TX 5 (©) Result of applying
+Jabbar, Ahmad V. 987987987 | 1969-03-29 | 980 Dallas, Houston, TX 4 LEFT OUTER JOIN to
+Borg, James E. 888665555 | 1937-11-10 | 450 Stone, Houston, TX 1 EMPLOYEE and
+: DEPARTMENT.
+
+Berger, Anders C. 999775555 | 1965-04-26 | 6530 Braes, Bellaire, TX NULL
+Benitez, Carlos M. 888664444 | 1963-01-09 | 7654 Beech, Houston, TX NULL
+
+DEPARTMENT
+
+Dname Daum | Dmgr_ssn
+
+Research 5 333445555
+Administration 4 987654321
+Headquarters 1 888665555
+
+(b)
+
+Ename Ssn. Bdate Address Dnum Dname Dmgr_ssn
+Smith, John B. 123456789 | 1965-01-09 | 731 Fondren, Houston, TX 5 Research 333445555,
+Wong, Franklin T. 333445555 | 1955-12-08 | 638 Voss, Houston, TX 5 Research 333445555,
+Zelaya, Alicia J. 999887777 | 1968-07-19 | 3321 Castle, Spring, TX 4 Administration | 987654321
+Wallace, Jennifer S. | 987654321 | 1941-06-20 | 291 Berry, Bellaire, TX 4 Administration | 987654321
+Narayan, Ramesh K. | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX 5 Research 333445555,
+English, Joyce A. 453453453 | 1972-07-31 | 5631 Rice, Houston, TX 5 Research 333445555,
+Jabbar, Ahmad V. 987987987 | 1969-03-29 | 980 Dallas, Houston, TX 4 Administration | 987654321
+Borg, James E. 888665555 | 1937-11-10 | 450 Stone, Houston, TX 1 Headquarters | 888665555
+
+©
+
+Ename Ssn. Bdate Address Dnum Dname Dmgr_ssn
+Smith, John B. 123456789 | 1965-01-09 | 731 Fondren, Houston, TX 5 Research 333445555,
+Wong, Franklin T. 333445555 | 1955-12-08 | 638 Voss, Houston, TX 5 Research 333445555,
+Zelaya, Alicia J. 999887777 | 1968-07-19 | 3321 Castle, Spring, TX 4 Administration | 987654321
+Wallace, Jennifer S. | 987654321 | 1941-06-20 | 291 Berry, Bellaire, TX 4 Administration | 987654321
+Narayan, Ramesh K. | 666884444 | 1962-09-15 | 975 Fire Oak, Humble, TX 5 Research 333445555,
+English, Joyce A. 453453453 | 1972-07-31 | 5631 Rice, Houston, TX 5 Research 333445555,
+Jabbar, Ahmad V. 987987987 | 1969-03-29 | 980 Dallas, Houston, TX 4 Administration | 987654321
+Borg, James E. 888665555 | 1937-11-10 | 450 Stone, Houston, TX 1 Headquarters | 888665555
+Berger, Anders C. | 999775555 | 1965-04-26 | 6530 Braes, Bellaire, TX NULL | NULL NULL
+Benitez, Carlos M. | 888665555 | 1963-01-09 | 7654 Beech, Houston, TX [NULL | NULL NULL

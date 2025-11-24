@@ -1,0 +1,37 @@
+412 Chapter 12. Caches
+
+4KB,
+direct-mapped
+unified cache
+
+OxFFF
+Data array 0x00002480
+0x00002000 >
+Routine B }{2x00001480__ 0x480
+0x00001000 a
+RoutineA 0x00000480
+0x00000000 0x000
+Main memory Cache memory
+do
+{
+
+rout ineA() ;
+rout ineB() ;
+Xoo5
+} while (x>0)
+
+Software procedure
+
+Figure 12.6 Thrashing: two functions replacing each other in a direct-mapped cache.
+
+Repeated cache misses result in continuous eviction of the routine that not running. This
+is cache thrashing.
+
+12.2.4 SET ASSOCIATIVITY
+
+Some caches include an additional design feature to reduce the frequency of thrashing (see
+Figure 12.7). This structural design feature is a change that divides the cache memory into
+smaller equal units, called ways. Figure 12.7 is still a four KB cache; however, the set index
+now addresses more than one cache line—it points to one cache line in each way. Instead
+of one way of 256 lines, the cache has four ways of 64 lines. The four cache lines with the
+same set index are said to be in the same set, which is the origin of the name “set index.”

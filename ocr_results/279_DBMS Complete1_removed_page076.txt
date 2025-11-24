@@ -1,0 +1,68 @@
+LECTURE-25
+
+Query by Example (QBE)
+
+Query by Example (QBE) is a method of query creation that allows the user to search for
+documents based on an example in the form of a selected text string or in the form of a document
+name or a list of documents. Because the QBE system formulates the actual query, QBE is easier to
+learn than formal query languages, such as the standard Structured Query Language (SQL), while
+still enabling powerful searches.
+
+Selections in QBE
+QBE uses skeleton tables to represent table name and fieldnames like:
+
+Table name Field1 Field2 ne
+
+For selection, P operator along with variable name/constant name is used to display one or more
+fields.
+
+Example 1:
+
+Consider the relation: student (name, roll, marks)
+
+The following query can be represented as:
+
+SQL: select name from student where marks>50;
+
+student name roll marks
+P.X >50
+
+Here X is a constant; alternatively we can use _X as a variable.
+
+Example 2:
+
+For the relation given above
+The following query can be represented as:
+
+SQL: select * from student where marks>50 and marks <80;
+student name roll marks
+P. _X
+CONDITION
+_X>50 A _X<80
+
+We can use condition box to represent complex conditions.
+Example 3:
+
+For the relation given above
+
+The following query can be represented as:
+
+SQL: select name, roll from student where marks<50 or marks >80;
+
+student name roll marks
+PA PB <50
+PA PB >80
+
+OR operation retrieves results in multiple rows.
+
+Example 4:
+
+(Joins in QBE)
+
+Consider the following tables:
+
+Student (name, roll, marks)
+
+Grades (roll, grade)
+
+The following query can be represented as:

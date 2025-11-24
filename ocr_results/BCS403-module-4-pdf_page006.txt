@@ -1,0 +1,47 @@
+Database Management System [BCS403]
+
+1.1.6 Joined Tables in SQL and Outer Joins
+
+An SQL join clause combines records from two or more tables in a database. It creates a set that
+can be saved as a table or used as is. A JOIN is a means for combining fields from two tables by
+using values common to each. SQL specifies four types of JOIN
+
+1. INNER,
+
+2. OUTER
+
+3. EQUIJOIN and
+
+4. NATURAL JOIN
+
+INNER JOIN
+
+An inner join is the most common join operation used in applications and can be regarded as the
+default join-type. Inner join creates a new result table by combining column values of two tables (A
+and B) based upon the join- predicate (the condition). The result.of the join can be defined as the
+outcome of first taking the Cartesian product (or Cross join) of all records in the tables (combining
+every record in table A with every record in table B)—then return all records which satisfy the join
+predicate
+
+Example: SELECT * FROM employee
+
+INNER JOIN department ON
+
+employee.dno = department.dnumber;
+
+EQUIJOIN and NATURAL JOIN
+An EQUIJOIN is a specific type of comparator-based join that uses only equality comparisons in the
+join-predicate. Using other comparison operators (such as <) disqualifies a join as an equijoin.
+
+NATURAL JOIN is a type of EQUIJOIN where the join predicate arises implicitly by comparing all
+columns in both tables that have the same column-names in the joined tables. The resulting joined
+table contains only one column for each pair of equally named columns.
+
+SELECT Fname, Lname, Address
+
+FROM EMPLOYEE) NATURAL JOIN
+DEPARTMENT
+
+WHERE Dname=‘Research ;
+
+Page 24

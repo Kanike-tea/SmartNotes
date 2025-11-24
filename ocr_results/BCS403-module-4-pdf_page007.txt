@@ -1,0 +1,48 @@
+Database Management System [BCS403]
+
+If the names of the join attributes are not the same in the base relations, it is possible to rename the
+attributes so that they match, and then to apply NATURAL JOIN. In this case, the AS construct can
+be used to rename a relation and all its attributes in the FROM clause.
+
+CROSS JOIN returns the Cartesian product of rows from tables in the join. In other words, it will
+produce rows which combine each row from the first table with each row from the second table.
+
+OUTER JOIN
+An outer join does not require each record in the two joined tables to have a matching record. The
+joined table retains each record-even if no other matching record exists. Outer joins subdivide
+further into
+
++ — Left outer joins
+
++ — Right outer joins
+
++ Full outer joins
+No implicit join-notation for outer joins exists in standard SQL.
+
+» LEFT OUTER JOIN
+
+Every tuple in left table must appear in result
+
+If no matching tuple
+Padded with NULL values for attributes of right table
+
+only employees who have a
+
+Q8A; SELECT E.Lname AS Employee _name, S.Lname AS Supervisor_name scan are tachiided ia the
+
+FROM EMPLOYEE AS E, EMPLOYEE AS S result; an EMPLOYEE nuple
+f wh val
+WHERE E:Super_ssn=S.Ssn; Implici join hepa ta &
+
+If the user requires that all
+employees be included, an
+
+088 ee E.Lname AS Employee_name, OUTER JOIN must be used
+S.Lname AS Supervisor_name explicitly
+
+EMPLOYEE AS &| LEFT OUTER JOIN|EMPLOYEE AS S
+[ON|E.Super_ssn=S.Ssn);
+
+FROM
+
+https://vtucode.| page 25

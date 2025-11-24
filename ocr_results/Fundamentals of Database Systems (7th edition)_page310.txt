@@ -1,0 +1,51 @@
+280
+
+Chapter 8 The Relational Algebra and Relational Calculus
+
+CARTESIAN PRODUCT followed by SELECT can be used to define matching tuples
+from two relations and leads to the JOIN operation. Different JOIN operations called
+THETA JOIN, EQUUOIN, and NATURAL JOIN were introduced. Query trees were intro-
+duced as a graphical representation of relational algebra queries, which can also be used
+as the basis for internal data structures that the DBMS can use to represent a query.
+
+We discussed some important types of queries that cannot be stated with the basic
+relational algebra operations but are important for practical situations. We intro-
+duced GENERALIZED PROJECTION to use functions of attributes in the projection
+list and the AGGREGATE FUNCTION operation to deal with aggregate types of statis-
+tical requests that summarize the information in the tables. We discussed recursive
+queries, for which there is no direct support in the algebra but which can be han-
+dled in a step-by-step approach, as we demonstrated. Then we presented the OUTER
+JOIN and OUTER UNION operations, which extend JOIN and UNION and allow all
+information in source relations to be preserved in the result.
+
+The last two sections described the basic concepts behind relational calculus, which
+is based on the branch of mathematical logic called predicate calculus. There are
+two types of relational calculi: (1) the tuple relational calculus, which uses tuple
+variables that range over tuples (rows) of relations, and (2) the domain relational
+calculus, which uses domain variables that range over domains (columns of rela-
+tions). In relational calculus, a query is specified in a single declarative statement,
+without specifying any order or method for retrieving the query result. Hence, rela-
+tional calculus is often considered to be a higher-level declarative language than the
+relational algebra, because a relational calculus expression states what we want to
+retrieve regardless of how the query may be executed.
+
+We introduced query graphs as an internal representation for queries in relational
+calculus. We also discussed the existential quantifier (4) and the universal quanti-
+fier (V). We discussed the problem of specifying safe queries whose results are
+finite. We also discussed rules for transforming universal into existential quantifi-
+ers, and vice versa. It is the quantifiers that give expressive power to the relational
+calculus, making it equivalent to the basic relational algebra. There is no analog to
+grouping and aggregation functions in basic relational calculus, although some
+extensions have been suggested.
+
+Review Questions
+8.1. List the operations of relational algebra and the purpose of each.
+
+8.2. What is union compatibility? Why do the UNION, INTERSECTION, and
+DIFFERENCE operations require that the relations on which they are
+applied be union compatible?
+
+8.3. Discuss some types of queries for which renaming of attributes is necessary
+in order to specify the query unambiguously.
+
+8.4. Discuss the various types of inner join operations. Why is theta join required?

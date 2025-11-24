@@ -1,0 +1,55 @@
+618 — Chapter 17 Indexing Structures for Files and Physical Database Design
+
+higher-capacity indexes. In the DBMSs prevalent in the market today, the common
+structure used for indexing is B*-trees.
+
+17.3.1 Search Trees and B-Trees
+
+A search tree is a special type of tree that is used to guide the search for a record,
+given the value of one of the record’s fields. The multilevel indexes discussed in Sec-
+tion 17.2 can be thought of as a variation of a search tree; each node in the multi-
+level index can have as many as fo pointers and fo key values, where fo is the index
+fan-out. The index field values in each node guide us to the next node, until we
+reach the data file block that contains the required records. By following a pointer,
+we restrict our search at each level to a subtree of the search tree and ignore all
+nodes not in this subtree.
+
+Search Trees. A search tree is slightly different from a multilevel index. A
+search tree of order p is a tree such that each node contains at most p — 1 search
+values and p pointers in the order <P), Ky, Po, Ky, ... , Pg-1s Kq-1, Pq>s where q < p.
+Each P; is a pointer to a child node (or a NULL pointer), and each K; is a search
+value from some ordered set of values. All search values are assumed to be
+unique.* Figure 17.8 illustrates a node in a search tree. Two constraints must hold
+at all times on the search tree:
+
+1. Within each node, K; < Ky <... < Ky.
+
+2. For all values X in the subtree pointed at by P;, we have Kj_; < X < K; for
+1 <i<q;X<Kjfori=1; and Kj < X fori = q (see Figure 17.8).
+
+Whenever we search for a value X, we follow the appropriate pointer P; according
+to the formulas in condition 2 above. Figure 17.9 illustrates a search tree of order
+p =3and integer search values. Notice that some of the pointers P; in a node may be
+NULL pointers.
+
+We can use a search tree as a mechanism to search for records stored in a disk file.
+The values in the tree can be the values of one of the fields of the file, called the
+
+Figure 17.8
+
+A node in a search
+tree with pointers to
+subtrees below it.
+
+BLK [kale 1K [| Kal ®
+
+iN
+
+X<K, KiaSX<K, K,
+
+qt
+
+<x
+
+8This restriction can be relaxed. If the index is on a nonkey field, duplicate search values may exist and
+the node structure and the navigation rules for the tree may be modified

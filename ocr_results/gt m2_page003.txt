@@ -1,0 +1,32 @@
+Fig. 2-13 Unicursal graph.
+
+It is clear that by adding an edge between the initial and final vertices of a
+unicursal line we shall get an Euler line. Thus a connected graph is unicursal if
+and only if it has exactly two vertices of odd degree. This observation can be
+generalized as follows:
+
+THEOREM 2-5
+
+In a connected graph G with exactly 2k odd vertices, there exist k edge-
+disjoint subgraphs such that they together contain all edges of G and that each is
+a unicursal graph.
+
+Proof: Let the odd vertices of the given graph G be named vy, v9, ... , Vis Wy,
+Wp, ..-., W;, in any arbitrary order. Add k edges to G between the vertex pairs (v,,
+W), (Vo, Wo), - + + » (Vs Wy) to form anew graph G’.
+
+Since every vertex of G’ is of even degree, G' consists of an Euler line p. Now
+if we remove from p the k edges we just added (no two of these edges are
+incident on the same vertex), p will be split into k walks, each of which is a
+unicursal line: The first removal will leave a single unicursal line; the second
+removal will split that into two unicursal lines; and each successive removal will
+split a unicursal line into two unicursal lines, until there are k of them. Thus the
+theorem. =
+
+We shall interrupt our study of Euler graphs to define some commonly used
+graph-theoretic operations. One of these operations is required immediately in
+the next section; others will be needed later.
+
+2-7. OPERATIONS ON GRAPHS
+
+As is the case with most mathematical entities, it is convenient to consider a

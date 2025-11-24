@@ -1,0 +1,51 @@
+850
+
+Chapter 23 Distributed Database Concepts
+
+also improves performance of retrieval (read performance) for global queries
+because the results of such queries can be obtained locally from any one site; hence,
+a retrieval query can be processed at the local site where it is submitted, if that site
+includes a server module. The disadvantage of full replication is that it can slow
+down update operations (write performance) drastically, since a single logical
+update must be performed on every copy of the database to keep the copies consis-
+tent. This is especially true if many copies of the database exist. Full replication
+makes the concurrency control and recovery techniques more expensive than they
+would be if there was no replication, as we will see in Section 23.3.
+
+The other extreme from full replication involves having no replication—that is,
+each fragment is stored at exactly one site. In this case, all fragments must be dis-
+joint, except for the repetition of primary keys among vertical (or mixed) frag-
+ments. This is also called nonredundant allocation.
+
+Between these two extremes, we have a wide spectrum of partial replication of
+the data—that is, some fragments of the database may be replicated whereas oth-
+ers may not. The number of copies of each fragment can range from one up to
+the total number of sites in the distributed system. A special case of partial repli-
+cation is occurring heavily in applications where mobile workers—such as sales
+forces, financial planners, and claims adjustors—carry partially replicated data-
+bases with them on laptops and PDAs and synchronize them periodically with
+the server database. A description of the replication of fragments is sometimes
+called a replication schema.
+
+Each fragment—or each copy of a fragment—must be assigned to a particular site in
+the distributed system. This process is called data distribution (or data allocation).
+The choice of sites and the degree of replication depend on the performance and
+availability goals of the system and on the types and frequencies of transactions
+submitted at each site. For example, if high availability is required, transactions can
+be submitted at any site, and most transactions are retrieval only, a fully replicated
+database is a good choice. However, if certain transactions that access particular
+parts of the database are mostly submitted at a particular site, the corresponding set
+of fragments can be allocated at that site only. Data that is accessed at multiple sites
+can be replicated at those sites. If many updates are performed, it may be useful to
+limit replication. Finding an optimal or even a good solution to distributed data
+allocation is a complex optimization problem.
+
+23.2.3 Example of Fragmentation, Allocation, and Replication
+
+We now consider an example of fragmenting and distributing the company data-
+base in Figures 5.5 and 5.6. Suppose that the company has three computer sites—
+one for each current department. Sites 2 and 3 are for departments 5 and 4,
+respectively. At each of these sites, we expect frequent access to the EMPLOYEE and
+PROJECT information for the employees who work in that department and the
+projects controlled by that department. Further, we assume that these sites mainly
+access the Name, Ssn, Salary, and Super_ssn attributes of EMPLOYEE. Site 1 is used

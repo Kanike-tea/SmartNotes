@@ -1,0 +1,52 @@
+Eg:
+Consider 4 blocks/set in set associative cache.
+> 2 bit counter can be used for each block.
+> When a ‘hit’ occurs, then block counter=0; The counter with values originally lower than the
+referenced one are incremented by | & all others remain unchanged.
+> When a ‘miss’ occurs & if the set is full, the blocks with the counter value 3 is removed, the
+
+new block is put in its place & its counter is set to “O" and other block counters are incremented
+by 1.
+
+PERFORMANCE CONSIDERATION
+¢ Two key factors in the commercial success are 1) performance & 2) cost.
+¢ In other words, the best possible performance at low cost.
+¢ A common measure of success is called the Pricel Performance ratio.
+¢ Performance depends on
+— how fast the machine instructions are brought to the processor &
+— how fast the machine instructions are executed.
+¢ To achieve parallelism, interleaving is used.
+¢ Parallelism means both the slow and fast units are accessed in the same manner.
+
+INTERLEAVING
+¢ The main-memory of a computer is structured as a collection of physically separate modules.
+¢ Each module has its own
+1) ABR (address buffer register) &
+2) DBR (data buffer register).
+¢ So, memory access operations may proceed in more than one module at the same time (Fig 5.25).
+¢ Thus, the aggregate-rate of transmission of words to/from the main-memory can be increased.
+
+= k bits -» <—— m bits ——» — mbits ——> = k bits»
+
+| Module | Address in module | MM address Address in module Ka MM adress
+
+(a) Consecutive words in a module (b) Consecutive words in consecutive modules
+Figure 5.25 Addressing multiple-module memory systems.
+
+© The low-order k-bits of the memory-address select a module.
+
+While the high-order m-bits name a location within the module.
+
+In this way, consecutive addresses are located in successive modules.
+
+© Thus, any component of the system can keep several modules busy at any one time T.
+¢ This results in both
+
+— faster access to a block of data and
+
+— higher average utilization of the memory-system as a whole.
+© To implement the interleaved-structure, there must be 2k modules;
+
+Otherwise, there will be gaps of non-existent locations in the address-space.
+
+Page 55

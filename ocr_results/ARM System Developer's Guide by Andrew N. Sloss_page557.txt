@@ -1,0 +1,51 @@
+544 Chapter 14 Memory Management Units
+
+residing in the L1 master page table and is activated when the master L1 table is actived.
+The third part is completed by activating the first task that runs after the system is enabled
+with a call to mmuAttachPT. In the demo, the first task to run is Task 1.
+
+The fourth part in initializing the MMU is to set domain access by calling
+domainAccessSet. All regions are assigned to Domain 3 and the domain access for Domain
+3 set to client access.
+
+The mmuInit completes part five by calling controlSet to enable the MMU and
+caches.
+
+When the routine mmuInit completes, the MMU is initialized and enabled. The final
+task in setting up the multitasking demonstration system is to define the procedural steps
+needed to perform a context switch between two tasks.
+
+14.10.7. STEP 7: ESTABLISH A CONTEXT SWITCH PROCEDURE
+
+A context switch in the demonstration system is relatively simple. There are six parts to
+performing a context switch:
+
+. Save the active task context and place the task in a dormant state.
+. Flush the caches; possibly clean the D-cache if using a writeback policy.
+
+. Flush the TLB to remove translations for the retiring task.
+
+aw Ny
+
+. Configure the MMU to use new page tables translating the common virtual memory
+execution area to the awakening task’s location in physical memory.
+
+w
+
+. Restore the context of the awakening task.
+
+6. Resume execution of the restored task.
+
+The routines to perform all the parts just listed have been presented in previous sections.
+We list the procedure here. Parts 1, 5, and 6 were provided in Chapter 11; refer to that
+chapter for more details. Parts 2, 3, and 4 are the additions needed to support a context
+switch using an MMU and are shown here with the arguments needed to switch from task
+1 to task 2 in the demonstration.
+
+SAVE retiring task context; /* part 1 shown in Chapter 11 */
+flushCache(); /* part 2 shown in Chapter 12 */
+FlushTLB() ; /* part 3 shown in Example 14.2 */
+mmuAttachPT(&task2PT) ; /* part 4 shown in Example 14.10 */
+
+RESTORE awakening task context /* part 5 shown in Chapter 11 */
+RESUME execution of restored task /* part 6 shown in Chapter 11 */

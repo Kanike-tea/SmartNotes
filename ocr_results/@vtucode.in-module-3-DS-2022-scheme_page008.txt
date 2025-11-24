@@ -1,0 +1,46 @@
+DATA STRUCTURES-BCS304 MODULE 3
+
+In a tree data structure, the first node is called as Root Node. Every tree must have root node.
+We can say that root node is the origin of tree data structure. In any tree, there must be only
+one root node. We never have multiple root nodes in a tree. Ex: ‘A’ in the above tree
+
+2. Edge
+
+In a tree data structure, the connecting link between any two nodes is called as EDGE. In a tree
+with 'N' number of nodes there will be a maximum of 'N-1' number of edges. Ex: Line between
+two nodes.
+
+In a tree data structure, the node which is predecessor of any node is called as PARENT NODE.
+In simple words, the node which has branch from it to any other node is called as parent node.
+Parent node can also be defined as "The node which has child / children".
+
+Ex: A,B,C.E & G are parent nodes
+
+In a tree data structure, the node which is descendant of any node is called as CHILD Node. In
+simple words, the node which has a link from its parent node is called as child node. In a tree,
+any parent node can have any number of child nodes. In a tree, all the nodes except root are
+child nodes.Ex: B & C are children of A, G & H are children of C and K child of G
+
+In a tree data structure, nodes which belong to same Parent are called as SIBLINGS. In simple
+words, the nodes with same parent are called as Sibling nodes.Ex: B & C are siblings, D, E and
+Fare siblings, G & H are siblings, I & J are siblings
+
+6. Leaf
+
+In a tree data structure, the node which does not have a child is called as LEAF Node. In simple
+words, a leaf is a node with no child. In a tree data structure, the leaf nodes are also called as
+External Nodes. External node is also a node with no child. In a tree, leaf node is also called as
+'Terminal' node.Ex: D,I.J,F,K AND Hare leaf nodes
+
+7. Internal Nodes
+
+In a tree data structure, the node which has atleast one child is called as INTERNAL Node. In
+simple words, an internal node is a node with atleast one child.
+
+In a tree data structure, nodes other than leaf nodes are called as Internal Nodes. The root node
+is also said to be Internal Node if the tree has more than one node. Internal nodes are also called
+as 'Non-Terminal' nodes.
+
+Ex: A,BCE&G
+
+vtucode.in 9

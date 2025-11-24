@@ -1,0 +1,58 @@
+Database Management System [BCS403]
+
+Transaction Processing
+
+The concept of transaction provides a mechanism for describing logical units of database
+processing. Transaction processing systems are systems with large databases and hundreds of
+concurrent users executing database transactions. Examples:
+
+* airline reservations
+
++ banking
+
+* credit card processing,
+
+* online retail purchasing,
+
++ Stock markets, supermarket checkouts, and many other applications
+These systems require high availability and fast response time for hundreds of concurrent
+users. A transaction is typically implemented by a computer program, which includes database
+
+commands such as retrievals, insertions, deletions, and updates.
+
+5.1 Objectives
+
+“+ To study transaction properties
+
+RY
+
+“To study creation of schedule and maintaining schedule equivalence.
+
+&
+
+:¢ To check whether the given schedule is serailizable or not.
+
+ec
+
++ To study protocols used for locking objects
+
+&
+
++ Differentiating between 2PL and Strict 2PL
+
+5.2 Introduction to Transaction Processing
+5.2.1 Sifigle-Userversus Multiuser Systems
+
+= One criterion for classifying a database system is according to the number of users who
+can use the system concurrently
+Single-User versus Multiuser Systems
+= ADBMS is
++ single-user
+- at most one user at a time can use the system
+- Eg: Personal Computer System
++ multiuser
+- many users can use the system and hence access the database concurrently
+
+- Eg: Airline reservation database
+
+https://vtucode.in 3

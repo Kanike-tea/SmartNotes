@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+2, Adding Polynomials
+To add two polynomials, examine their terms starting at the nodes pointed to by a and b.
+
+elf the exponents of the two terms are equal, then add the two coefficients and create a new
+term for the result, and also move the pointers to the next nodes in a and b.
+
+elf the exponent of the current term in a is less than the exponent of the current term inb,
+then create a duplicate term of b, attach this term to the result, called c, and advance the
+pointer to the next term in b.
+
+elf the exponent of the current term in b is less than the exponent of the current term ina,
+then create a duplicate term of a, attach this term to the result, called c, and advance the
+pointer to the next term ina
+
+Below figure illustrates this process for the polynomials addition.
+
+3 | 14 | _.{ 2 8 | A Cea |
+
+~
+
+b a
+
+(i) a > expon == b> expon
+3 [14] |_>| 2 Veal “Se 1 | 0 | 0
+> Ye : :
+b a
+>
+Sap 145 a | S23] 10 | {10} 6] 0
+c[ 11 Maem -~[-3 7 10] 0
+Gi) a > expon < b — expon
+[3 [14 J_=f 27 8 | + 1]O0]70
+a b
+= +— “Xv
+8 [a4] —) =! -37] to —_| =110] 6 oO |
+efi1 [14] —}+—s/-37 107 -— =| 2/8 ]0
+
+(iii) a > expon > b + expon
+
+Figure: Generating the first three terms of c= a+b
+
+vtucode.in 23

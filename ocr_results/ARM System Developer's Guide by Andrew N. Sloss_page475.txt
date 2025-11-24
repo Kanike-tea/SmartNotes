@@ -1,0 +1,53 @@
+462 Chapter 13 Memory Protection Units
+
+the port. The undesirable use of the resource could be unintentional, or it could be hostile in
+nature.
+
+In contrast, a protected system has dedicated hardware to check and restrict access to
+system resources. It can enforce resource ownership. Tasks are required to behave by a set
+of rules defined by the operating environment and enforced by hardware, which grants
+special privileges to the programs that monitor and control resources at the hardware
+level. A protected system is proactive in preventing one task from using the resources of
+another. The use of hardware to actively monitor the system provides better protection
+than cooperatively enforced software routines.
+
+ARM provides several processors equipped with hardware that actively protects system
+resources, either through a memory protection unit (MPU) or a memory management
+unit (MMU). A processor core with an MPU, the subject of this chapter, provides hardware
+protection over several software-designated regions. A processor core with an MMU, the
+subject of the next chapter, provides hardware protection and adds a virtual memory
+capability.
+
+In a protected system, there are two major classes of resource that need monitoring:
+the memory system and peripheral devices. Since ARM peripherals are generally memory
+mapped, the MPU uses the same method to protect both resources.
+
+An ARM MPU uses regions to manage system protection. A region is a set of attributes
+associated with an area of memory. The processor core holds these attributes in several
+CP15 registers and identifies each region by a number, which ranges between zero and
+seven.
+
+A region’s memory boundaries are configured using two attributes, the starting address
+and its length, which can be any power of two between 4 KB and 4 GB. In addition, the
+operation system assigns additional attributes to these regions: access rights and the cache
+and write buffer policies. The access to a region in memory is set as read-write, read-only,
+or no access and is subject to additional rights based on the current processor mode, which
+is either privileged or user. A region also has a cache write policy, which controls cache
+and write buffer attributes. For example, one region can be set to access memory using a
+writethrough policy, while another operates as noncached and nonbuffered.
+
+When the processor accesses a region in main memory, the MPU compares the region’s
+access permission attributes with the current processor mode to determine what action it
+will take. If the request satisfies the region access criteria, the core is allowed to read or write
+to main memory. However, if the memory request results in a memory access violation,
+the MPU will generate an abort signal.
+
+The abort signal is routed to the processor core, where it responds to the abort signal by
+taking an exception and vectoring to the abort handler. The abort handler then determines
+the abort type as either a prefetch or data abort, and based on the abort type the handler
+branches to the appropriate service routine.
+
+To implement a protected system, the control system defines several regions to different
+areas in main memory. A region may be created once and last for the life of the embedded
+system or may be created temporarily to satisfy the needs of a specific operation and then
+removed. How to assign and create regions is the subject of the next section.

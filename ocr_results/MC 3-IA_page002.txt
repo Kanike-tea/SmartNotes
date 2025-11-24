@@ -1,0 +1,54 @@
+2.2 Interrupt Latency
+
+Interrupt latency—the interval of time from an external interrupt request signal being raised to
+
+the first fetch of an instruction of a specific interrupt service routine (ISR).
+
+Interrupt latency depends on a combination of hardware and software. System architects must
+balance the system design to handle multiple simultaneous interrupt sources and minimize
+interrupt latency. If the interrupts are not handled in a timely manner, then the system will
+
+exhibit slow response times.
+
+Software handlers have two main methods to minimize interrupt latency. The first method is to
+
+use a nested interrupt handler, which allows further interrupts to occur even when currently
+
+servicing an existing interrupt (see Figure 3). This
+
+s achieved by re enabling the interrupts as
+
+soon as the interrupt source has been serviced (so it won’t generate more interrupts) but before
+
+Dept. of ECE, GSSSIETW, Mysuru Page 10
+
+Microcontrollers - BCS402
+
+the interrupt handling is complete. Once a nested interrupt has been serviced, then control is
+
+relinquished to the original interrupt service routine.
+
+Interrupt handler
+
+Normal execution Intecrapt saabled
+
+Interrupt (1)
+
+,_Anterrupt (2)
+
+Return Sy
+
+Return
+
+Fig 3: A three-level nested interrupt
+
+The second method involves prioritization. You program the interrupt controller to ignore
+interrupts of the same or lower priority than the interrupt you are handling, so only a higher-
+
+priority task can interrupt your handler. You then reenable interrupts.
+
+The processor spends time in the lower-priority interrupts until a higher-priority interrupt occurs.
+Therefore higher-priority interrupts have a lower average interrupt latency than the lower-
+priority interrupts, which reduces latency by speeding up the completion time on the critical
+
+time-sensitive interrupts.

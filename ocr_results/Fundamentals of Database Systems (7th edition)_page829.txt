@@ -1,0 +1,51 @@
+21.4 Validation (Optimistic) Techniques and Snapshot Isolation Concurrency Control 799
+
+phase is reached. If there is little interference among transactions, most will be vali-
+dated successfully. However, if there is much interference, many transactions that
+execute to completion will have their results discarded and must be restarted later;
+under such circumstances, optimistic techniques do not work well. The techniques
+are called optimistic because they assume that little interference will occur and hence
+most transaction will be validated successfully, so that there is no need to do check-
+ing during transaction execution. This assumption is generally true in many transac-
+tion processing workloads.
+
+The optimistic protocol we describe uses transaction timestamps and also requires
+that the write_sets and read_sets of the transactions be kept by the system. Addition-
+ally, start and end times for the three phases need to be kept for each transaction.
+Recall that the write_set of a transaction is the set of items it writes, and the read_set
+is the set of items it reads. In the validation phase for transaction T;, the protocol
+checks that T; does not interfere with any recently committed transactions or with
+any other concurrent transactions that have started their validation phase. The vali-
+dation phase for T; checks that, for each such transaction T; that is either recently
+committed or is in its validation phase, one of the following conditions holds:
+
+1. Transaction T; completes its write phase before T; starts its read phase.
+
+2. T; starts its write phase after T; completes its write phase, and the read_set of
+T; has no items in common with the write_set of Tj.
+
+3. Both the read_set and write_set of T; have no items in common with the
+write_set of Tj, and T; completes its read phase before T; completes its
+read phase.
+
+When validating transaction T; against each one of the transactions T;, the first
+condition is checked first since (1) is the simplest condition to check. Only if
+condition 1 is false is condition 2 checked, and only if (2) is false is condition 3—the
+most complex to evaluate—checked. If any one of these three conditions holds with
+each transaction T;, there is no interference and T; is validated successfully. If none
+of these three conditions holds for any one T;, the validation of transaction T; fails
+(because T; and T; may violate serializability) and so T; is aborted and restarted later
+because interference with T; may have occurred.
+
+21.4.2 Concurrency Control Based on Snapshot Isolation
+
+As we discussed in Section 20.6, the basic definition of snapshot isolation is that a
+transaction sees the data items that it reads based on the committed values of the
+items in the database snapshot (or database state) when the transaction starts. Snap-
+shot isolation will ensure that the phantom record problem does not occur, since
+the database transaction, or, in some cases, the database statement, will only see the
+records that were committed in the database at the time the transaction started.
+Any insertions, deletions, or updates that occur after the transaction starts will not
+be seen by the transaction. In addition, snapshot isolation does not allow the prob-
+lems of dirty read and nonrepeatable read to occur. However, certain anomalies
+that violate serializability can occur when snapshot isolation is used as the basis for

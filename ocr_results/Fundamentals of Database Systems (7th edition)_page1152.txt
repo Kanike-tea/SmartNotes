@@ -1,0 +1,55 @@
+1122
+
+Chapter 30 Database Security
+
+30.1 Introduction to Database Security Issues!
+
+30.1.1 Types of Security
+
+Database security is a broad area that addresses many issues, including the following:
+
+= Various legal and ethical issues regarding the right to access certain infor-
+mation—for example, some information may be deemed to be private and
+cannot be accessed legally by unauthorized organizations or persons. In the
+United States, there are numerous laws governing privacy of information.
+
+= Policy issues at the governmental, institutional, or corporate level regarding
+what kinds of information should not be made publicly available—for
+example, credit ratings and personal medical records.
+
+= System-related issues such as the system levels at which various security
+functions should be enforced—for example, whether a security function
+should be handled at the physical hardware level, the operating system level,
+or the DBMS level.
+
+= The need in some organizations to identify multiple security levels and to
+categorize the data and users based on these classifications—for example,
+top secret, secret, confidential, and unclassified. The security policy of the
+organization with respect to permitting access to various classifications of
+data must be enforced.
+
+Threats to Databases. Threats to databases can result in the loss or degradation
+of some or all of the following commonly accepted security goals: integrity, avail-
+ability, and confidentiality.
+
+= Loss of integrity. Database integrity refers to the requirement that informa-
+tion be protected from improper modification. Modification of data includes
+creating, inserting, and updating data; changing the status of data; and delet-
+ing data. Integrity is lost if unauthorized changes are made to the data by
+either intentional or accidental acts. If the loss of system or data integrity is
+not corrected, continued use of the contaminated system or corrupted data
+could result in inaccuracy, fraud, or erroneous decisions.
+
+= Loss of availability. Database availability refers to making objects available to a
+human user or a program who/which has a legitimate right to those data objects.
+Loss of availability occurs when the user or program cannot access these objects.
+
+= Loss of confidentiality. Database confidentiality refers to the protection of
+data from unauthorized disclosure. The impact of unauthorized disclosure
+of confidential information can range from violation of the Data Privacy Act
+to the jeopardization of national security. Unauthorized, unanticipated, or
+unintentional disclosure could result in loss of public confidence, embar-
+rassment, or legal action against the organization.
+
+'The substantial contributions of Fariborz Farahmand, Bharath Rengarajan, and Frank Rietta to this and
+subsequent sections of this chapter is much appreciated.

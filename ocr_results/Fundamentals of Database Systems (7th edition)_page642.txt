@@ -1,0 +1,47 @@
+612 Chapter 17 Indexing Structures for Files and Physical Database Design
+
+Data file
+(Indexing field)
+Dept_number | Name | Ssn | Job [Birth_date| Salary
+——> 3
+Blocks of _— 5
+record
+pointers a 1
+> 6
+[i]s] -
+: = 2
+> 3
+ele] > 4
+Index file < r)
+(<K(i), P(i)> entries) :
+Field Block ety. > 6
+value _ pointer a < 3
+1 - 7 < 7z
+2 : > 1
+3 : [4]-
+4 . A
+5 * ‘ _ 6
+6 : f > 5
+3 Lpftyiye
+- > 2
+H — 5
+m[ J] dye
+Ts > 5
+Figure 17.5 r = 1
+A secondary index + > 6
+(with record pointers) =lelele > 3
+on a nonkey field
+implemented using H
+one level of indirection ~ 6
+so that index entries 3
+are of fixed length 3
+and have unique =
+field values. OO 3
+
+17.1.4 Summary
+
+To conclude this section, we summarize the discussion of index types in two tables.
+Table 17.1 shows the index field characteristics of each type of ordered single-level
+index discussed—primary, clustering, and secondary. Table 17.2 summarizes the
+properties of each type of index by comparing the number of index entries and
+specifying which indexes are dense and which use block anchors of the data file.

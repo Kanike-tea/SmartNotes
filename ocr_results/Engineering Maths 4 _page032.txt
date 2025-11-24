@@ -1,0 +1,36 @@
+v
+_ NUMERICAL METHODS - 1 sgh 25
+
+20. Use fourth order Runge- “Kutta method to find y atx = 0.1 given that
+a = Se + 2y, y(0) =0 and h = 0.1
+
+>> i, f(%Y) = 3e* + 2y, x) = 0,4) =0, h = 01
+We shall first compute Ky Koy kay k
+k, = hf (ay Yq) = (0.1) f(0,0) = (0.1)[3e? + 2x0] = 03
+hy 5 :
+ky = hfl x9 + 5, Yo + > | = (0-1) f( 0.05, 0.15 )
+
+ky = (0.1) [3e™ +.2(0.15)] = 0.3454
+
+ky me [- + 5, Yt 2) = (0.1) (0.05, 0.1727)
+"ky = (0.1) [3° + 2(0.1727)] = 03499
+‘iE, = Hf Gig +h “Yo. + ky ) = (0.1) f(04, 0.3499)
+k = (0.1) [31+ 2(03499)] = 0.4015
+"We have, yi +h) = ¥ +5 (hy + 2ky + 2kgit ky)
+y(01)=0 +2 [03 + 2 (0.3454) + 2(03499) + 0.4015 |
+
+Thus y(0.1) = 0,3487
+
+P d 3
+21.- Use fourth order Runge-Kutta method to compute y(1.1) given that pe =sxy,
+
+y(1)=1 |
+SB = 714 =4 =1
+y data f(x,y) = xy, X= 1M
+
+We need to compute y(1.1). Thisimpliesthat x +h=11°.. h=01 -
+
+We shall first compute kj, ky, ky ky.
+, k, = If (xy %)
+
+kj = (0.1) f(11) = (0.1)[(1)(1)9] = 04

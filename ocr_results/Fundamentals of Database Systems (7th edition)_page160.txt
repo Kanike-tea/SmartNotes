@@ -1,0 +1,52 @@
+130
+
+Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4.7.1 Classification and Instantiation
+
+The process of classification involves systematically assigning similar objects/enti-
+ties to object classes/entity types. We can now describe (in DB) or reason about (in
+KR) the classes rather than the individual objects. Collections of objects that share
+the same types of attributes, relationships, and constraints are classified into classes
+in order to simplify the process of discovering their properties. Instantiation is the
+inverse of classification and refers to the generation and specific examination of
+distinct objects of a class. An object instance is related to its object class by the
+IS-AN-INSTANCE-OF or IS-A-MEMBER-OF relationship. Although EER dia-
+grams do not display instances, the UML diagrams allow a form of instantiation by
+permitting the display of individual objects. We did not describe this feature in our
+introduction to UML class diagrams.
+
+In general, the objects of a class should have a similar type structure. However,
+some objects may display properties that differ in some respects from the other
+objects of the class; these exception objects also need to be modeled, and KR
+schemes allow more varied exceptions than do database models. In addition, cer-
+tain properties apply to the class as a whole and not to the individual objects; KR
+schemes allow such class properties. UML diagrams also allow specification of
+class properties.
+
+In the EER model, entities are classified into entity types according to their basic
+attributes and relationships. Entities are further classified into subclasses and cat-
+egories based on additional similarities and differences (exceptions) among them.
+Relationship instances are classified into relationship types. Hence, entity types,
+subclasses, categories, and relationship types are the different concepts that are
+used for classification in the EER model. The EER model does not provide
+explicitly for class properties, but it may be extended to do so. In UML, objects
+are classified into classes, and it is possible to display both class properties and
+individual objects.
+
+Knowledge representation models allow multiple classification schemes in
+which one class is an instance of another class (called a meta-class). Notice that
+this cannot be represented directly in the EER model, because we have only two
+levels—classes and instances. The only relationship among classes in the EER
+model is a superclass/subclass relationship, whereas in some KR schemes an
+additional class/instance relationship can be represented directly in a class
+hierarchy. An instance may itself be another class, allowing multiple-level
+classification schemes.
+
+4.7.2 |dentification
+
+Identification is the abstraction process whereby classes and objects are made
+uniquely identifiable by means of some identifier. For example, a class name uniquely
+identifies a whole class within a schema. An additional mechanism is necessary for
+telling distinct object instances apart by means of object identifiers. Moreover, it is
+necessary to identify multiple manifestations in the database of the same real-world

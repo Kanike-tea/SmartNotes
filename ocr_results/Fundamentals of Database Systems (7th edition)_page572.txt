@@ -1,0 +1,53 @@
+542
+
+Chapter 16 Disk Storage, Basic File Structures, Hashing, and Modern Storage Architectures
+
+describes RAID (redundant arrays of inexpensive (or independent) disks)—a data
+storage system architecture that is commonly used in large organizations for better
+reliability and performance. Finally, in Section 16.11 we describe modern develop-
+ments in the storage architectures that are important for storing enterprise data:
+storage area networks (SANs), network-attached storage (NAS), iSCSI (Internet
+SCSI—small computer system interface), and other network-based storage proto-
+cols, which make storage area networks more affordable without the use of the
+Fibre Channel infrastructure and hence are becoming widely accepted in industry.
+We also discuss storage tiering and object-based storage. Section 16.12 summarizes
+the chapter. In Chapter 17 we discuss techniques for creating auxiliary data struc-
+tures, called indexes, which speed up the search for and retrieval of records. These
+techniques involve storage of auxiliary data, called index files, in addition to the file
+records themselves.
+
+Chapters 16 and 17 may be browsed through or even omitted by readers who have
+already studied file organizations and indexing in a separate course. The material
+covered here, in particular Sections 16.1 through 16.8, is necessary for understand-
+ing Chapters 18 and 19, which deal with query processing and optimization, as well
+as database tuning for improving performance of queries.
+
+16.1 Introduction
+
+The collection of data that makes up a computerized database must be stored phys-
+ically on some computer storage medium. The DBMS software can then retrieve,
+update, and process this data as needed. Computer storage media form a storage
+hierarchy that includes two main categories:
+
+= Primary storage. This category includes storage media that can be operated
+on directly by the computer's central processing unit (CPU), such as the
+computer’s main memory and smaller but faster cache memories. Primary
+storage usually provides fast access to data but is of limited storage capacity.
+Although main memory capacities have been growing rapidly in recent
+years, they are still more expensive and have less storage capacity than
+demanded by typical enterprise-level databases. The contents of main mem-
+ory are lost in case of power failure or a system crash.
+
+= Secondary storage. The primary choice of storage medium for online stor-
+age of enterprise databases has been magnetic disks. However, flash memo-
+ries are becoming a common medium of choice for storing moderate
+amounts of permanent data. When used as a substitute for a disk drive, such
+memory is called a solid-state drive (SSD).
+
+= Tertiary storage. Optical disks (CD-ROMs, DVDs, and other similar stor-
+age media) and tapes are removable media used in today’s systems as offline
+storage for archiving databases and hence come under the category called
+tertiary storage. These devices usually have a larger capacity, cost less, and
+provide slower access to data than do primary storage devices. Data in sec-
+ondary or tertiary storage cannot be processed directly by the CPU; first it
+must be copied into primary storage and then processed by the CPU.

@@ -1,0 +1,53 @@
+9.2 Mapping EER Model Constructs to Relations
+
+= Option 8A: Multiple relations—superclass and subclasses. Create a
+relation L for C with attributes Attrs(L) = {k, ay, ... , an} and PK(L) =k.
+Create a relation L; for each subclass S;, 1 < i < m, with the attributes
+Attrs(L;) = {k} U {attributes of $;} and PK(L;) = k. This option works for any
+specialization (total or partial, disjoint or overlapping).
+
+= Option 8B: Multiple relations—subclass relations only. Create a
+relation L; for each subclass S;, 1 < i < m, with the attributes
+Attrs(L;) = {attributes of $}} U {k, a), ... , ay} and PK(L;) = k. This option only
+works for a specialization whose subclasses are total (every entity in the
+superclass must belong to (at least) one of the subclasses). Additionally, it is
+only recommended if the specialization has the disjointedness constraint (see
+Section 4.3.1). If the specialization is overlapping, the same entity may be
+duplicated in several relations.
+
+= Option 8C: Single relation with one type attribute. Create a single relation
+L with attributes Attrs(L) = {k, a), ..., a,} U {attributes of S)} U ... U f{attri-
+butes of S,,} U {tf} and PK(L) = k. The attribute ¢ is called a type (or
+discriminating) attribute whose value indicates the subclass to which each
+tuple belongs, if any. This option works only for a specialization whose sub-
+classes are disjoint, and has the potential for generating many NULL values if
+many specific (local) attributes exist in the subclasses.
+
+= Option 8D: Single relation with multiple type attributes. Create a single
+relation schema L with attributes Attrs(L) = {k, aj, ..., a,} U {attributes
+of S,} U... U {attributes of S,,} U {t, ty .... tn} and PK(L) = k. Each tj,
+1 <i<m, is a Boolean type attribute indicating whether or not a tuple
+belongs to subclass S;. This option is used for a specialization whose sub-
+classes are overlapping (but will also work for a disjoint specialization).
+
+Options 8A and 8B are the multiple-relation options, whereas options 8C and 8D are
+the single-relation options. Option 8A creates a relation L for the superclass C and its
+attributes, plus a relation L; for each subclass S;; each L; includes the specific (local)
+attributes of S;, plus the primary key of the superclass C, which is propagated to L; and
+becomes its primary key. It also becomes a foreign key to the superclass relation. An
+EQUUOIN operation on the primary key between any L; and L produces all the specific
+and inherited attributes of the entities in S;. This option is illustrated in Figure 9.5(a)
+for the EER schema in Figure 4.4. Option 8A works for any constraints on the special-
+ization: disjoint or overlapping, total or partial. Notice that the constraint
+
+Teck>(Li) S Mex>(L)
+must hold for each L;. This specifies a foreign key from each L; to L.
+
+In option 8B, the EQUIJOIN operation between each subclass and the superclass is
+built into the schema and the superclass relation L is done away with, as illustrated
+in Figure 9.5(b) for the EER specialization in Figure 4.3(b). This option works well
+only when both the disjoint and total constraints hold. If the specialization is not
+total, an entity that does not belong to any of the subclasses S; is lost. If the special-
+ization is not disjoint, an entity belonging to more than one subclass will have its
+
+299

@@ -1,0 +1,52 @@
+18.4 Implementing the JOIN Operation
+
+If the result file of the join operation has bpgs disk blocks, each block is written once
+to disk, so an additional brgs block accesses (writes) should be added to the preced-
+ing formulas in order to estimate the total cost of the join operation. The same
+holds for the formulas developed later for other join algorithms. As this example
+shows, it is advantageous to use the file with fewer blocks as the outer-loop file in the
+nested-loop join.
+
+18.4.3 How the Join Selection Factor Affects
+Join Performance
+
+Another factor that affects the performance of a join, particularly the single-loop
+method J2, is the fraction of records in one file that will be joined with records in
+the other file. We call this the join selection factor’? of a file with respect to an
+equijoin condition with another file. This factor depends on the particular equijoin
+condition between the two files. To illustrate this, consider the operation OP7,
+which joins each DEPARTMENT record with the EMPLOYEE record for the manager
+of that department. Here, each DEPARTMENT record (there are 50 such records in
+our example) will be joined with a single EMPLOYEE record, but many EMPLOYEE
+records (the 5,950 of them that do not manage a department) will not be joined
+with any record from DEPARTMENT.
+
+Suppose that secondary indexes exist on both the attributes Ssn of EMPLOYEE and
+Mgr_ssn of DEPARTMENT, with the number of index levels xgg, = 4 and Xwgr_ssn= 25
+respectively. We have two options for implementing method J2. The first retrieves
+each EMPLOYEE record and then uses the index on Mgr_ssn of DEPARTMENT to find
+a matching DEPARTMENT record. In this case, no matching record will be found for
+employees who do not manage a department. The number of block accesses for this
+case is approximately:
+
+be + (re * (Xyigr_ssn + 1)) = 2000 + (6000 * 3) = 20,000 block accesses
+
+The second option retrieves each DEPARTMENT record and then uses the index on
+Ssn of EMPLOYEE to find a matching manager EMPLOYEE record. In this case, every
+DEPARTMENT record will have one matching EMPLOYEE record. The number of
+block accesses for this case is approximately:
+
+bp + (rp * (Xgsn + 1)) = 10 + (50 * 5) = 260 block accesses
+
+The second option is more efficient because the join selection factor of DEPARTMENT
+with respect to the join condition Ssn = Mgr_ssn is 1 (every record in DEPARTMENT
+will be joined), whereas the join selection factor of EMPLOYEE with respect to the
+same join condition is (50/6,000), or 0.008 (only 0.8% of the records in EMPLOYEE
+will be joined). For method J2, either the smaller file or the file that has a match for
+every record (that is, the file with the high join selection factor) should be used in
+the (single) join loop. It is also possible to create an index specifically for perform-
+ing the join operation if one does not already exist.
+
+'3This is different from the join selectivity, which we will discuss in Chapter 19.
+
+673

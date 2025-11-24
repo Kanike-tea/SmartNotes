@@ -1,0 +1,54 @@
+16.1 Introduction
+
+We first give an overview of the various storage devices used for primary, second-
+ary, and tertiary storage in Section 16.1.1, and in Section 16.1.2 we discuss how
+databases are typically handled in the storage hierarchy.
+
+16.1.1 Memory Hierarchies and Storage Devices!
+
+Ina modern computer system, data resides and is transported throughout a hierar-
+chy of storage media. The highest-speed memory is the most expensive and is
+therefore available with the least capacity. The lowest-speed memory is offline tape
+storage, which is essentially available in indefinite storage capacity.
+
+At the primary storage level, the memory hierarchy includes, at the most expensive
+end, cache memory, which is a static RAM (random access memory). Cache mem-
+ory is typically used by the CPU to speed up execution of program instructions
+using techniques such as prefetching and pipelining. The next level of primary stor-
+age is DRAM (dynamic RAM), which provides the main work area for the CPU for
+keeping program instructions and data. It is popularly called main memory. The
+advantage of DRAM is its low cost, which continues to decrease; the drawback is its
+volatility? and lower speed compared with static RAM.
+
+At the secondary and tertiary storage level, the hierarchy includes magnetic disks;
+mass storage in the form of CD-ROM (compact disk-read-only memory) and
+DVD (digital video disk or digital versatile disk) devices; and finally tapes at the
+least expensive end of the hierarchy. The storage capacity is measured in kilobytes
+(Kbyte or 1,000 bytes), megabytes (MB or 1 million bytes), gigabytes (GB or 1 bil-
+lion bytes), and even terabytes (1,000 GB). The word petabyte (1,000 terabytes or
+10**15 bytes) is now becoming relevant in the context of very large repositories of
+data in physics, astronomy, earth sciences, and other scientific applications.
+
+Programs reside and execute in dynamic random-access memory ( DRAM ). Gen-
+erally, large permanent databases reside on secondary storage (magnetic disks), and
+portions of the database are read into and written from buffers in main memory as
+needed. Nowadays, personal computers and workstations have large main memo-
+ries of hundreds of megabytes of RAM and DRAM, so it is becoming possible to
+load a large part of the database into main memory. Eight to sixteen GB of main
+memory is becoming commonplace on laptops, and servers with 256 GB capacity
+are not uncommon. In some cases, entire databases can be kept in main memory
+(with a backup copy on magnetic disk), which results in main memory databases;
+these are particularly useful in real-time applications that require extremely fast
+response times. An example is telephone switching applications, which store data-
+bases that contain routing and line information in main memory.
+
+Flash Memory. Between DRAM and magnetic disk storage, another form of
+memory, flash memory, is becoming common, particularly because it is nonvolatile.
+
+'The authors appreciate the valuable input of Dan Forsyth regarding the current status of storage
+systems in enterprises. The authors also wish to thank Satish Damle for his suggestions.
+
+Volatile memory typically loses its contents in case of a power outage, whereas nonvolatile memory
+does not.
+
+543

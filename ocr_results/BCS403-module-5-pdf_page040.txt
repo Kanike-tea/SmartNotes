@@ -1,0 +1,51 @@
+24.6 NOSQL Graph Databases and Neo4j
+
+24.5.2 Hbase CRUD Operations
+
+Hbase has low-level CRUD (create, read, update, delete) operations, as in many of
+the NOSQL systems. The formats of some of the basic CRUD operations in Hbase
+are shown in Figure 24.3(c).
+
+Hbase only provides low-level CRUD operations. It is the responsibility of the
+application programs to implement more complex operations, such as joins
+between rows in different tables. The create operation creates a new table and spec-
+ifies one or more column families associated with that table, but it does not specify
+the column qualifiers, as we discussed earlier. The put operation is used for insert-
+ing new data or new versions of existing data items. The get operation is for retriev-
+ing the data associated with a single row in a table, and the scan operation retrieves
+all the rows.
+
+24.5.3 Hbase Storage and Distributed System Concepts
+
+Each Hbase table is divided into a number of regions, where each region will hold a
+range of the row keys in the table; this is why the row keys must be lexicographically
+ordered. Each region will have a number of stores, where each column family is
+assigned to one store within the region. Regions are assigned to region servers
+(storage nodes) for storage. A master server (master node) is responsible for moni-
+toring the region servers and for splitting a table into regions and assigning regions
+to region servers.
+
+Hbase uses the Apache Zookeeper open source system for services related to man-
+aging the naming, distribution, and synchronization of the Hbase data on the dis-
+tributed Hbase server nodes, as well as for coordination and replication services.
+Hbase also uses Apache HDFS (Hadoop Distributed File System) for distributed
+file services. So Hbase is built on top of both HDFS and Zookeeper. Zookeeper can
+itself have several replicas on several nodes for availability, and it keeps the data it
+needs in main memory to speed access to the master servers and region servers.
+
+We will not cover the many additional details about the distributed system architecture
+and components of Hbase; a full discussion is outside the scope of our presentation. Full
+documentation of Hbase is available online (see the bibliographic notes).
+
+24.6 NOSQL Graph Databases and Neo4j
+
+Another category of NOSQL systems is known as graph databases or graph-
+oriented NOSQL systems. The data is represented as a graph, which is a collection
+of vertices (nodes) and edges. Both nodes and edges can be labeled to indicate the
+types of entities and relationships they represent, and it is generally possible to
+store data associated with both individual nodes and individual edges. Many sys-
+tems can be categorized as graph databases. We will focus our discussion on one
+particular system, Neo4j, which is used in many applications. Neo4j is an open
+source system, and it is implemented in Java. We will discuss the Neo4j data model
+
+903

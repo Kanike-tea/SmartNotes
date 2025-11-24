@@ -1,0 +1,45 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 06 (a)
+6a) Write a Python program to illustrate Linear Plotting using Matplotlib.
+Aim: Demonstration of how to draw a liner plotting using Matplotlib.
+PROGRAM EXPLANATION
+
+The below program demonstrates how to draw a linear plotting using Matplotlib. Make sure you
+have Matplotlib installed before running this code. You can install it using pip if you haven't
+already:
+pip install matplotlib
+1. ‘import matplotlib.pyplot as plt’: This line imports the ‘matplotlib.pyplot’ module and
+assigns it the alias ‘plt’. This module provides a collection of functions for creating
+various types of plots and charts.
+2. Sample data for the linear plot:
+
+e ‘x’: A list of x-axis data points representing the independent variable.
+
+e ‘y’: A list of y-axis data points representing the dependent variable. Each y-value
+corresponds to an x-value.
+
+3. Creating the linear plot:
+
+e ‘plt.plot(x, y, marker='o', linestyle='-')’: This line creates a line plot using the plot
+function. It takes x and y as arguments to specify the data to be plotted. The
+marker='o' argument adds circular markers at each data point, and the linestyle='-'
+argument specifies that the line connecting the data points should be a solid line.
+This will result in a line chart that connects the data points with a solid line and
+places circular markers at each data point.
+
+4. Adding labels and a title:
+
+e  ‘plt.xlabel('X-Axis')’ and ‘plt.ylabel("Y-Axis')’: These two lines add labels to the
+x-axis and y-axis, respectively. In this code, 'X-Axis' is used as the x-axis label,
+and 'Y-Axis' is used as the y-axis label.
+
+e  ‘pit.title(‘Linear Plot Example')’: This line adds a title to the plot. In this code, the
+title is set to 'Linear Plot Example’.
+5. Displaying the plot:
+
+. t.grid()’: This line adds a grid to the plot for better readability. The grid lines
+
+help in visually estimating values more accurately.
+
+Dept. of CSE 45 GSSSIETW, Mysuru

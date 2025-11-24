@@ -1,0 +1,53 @@
+1014 Chapter 26 Enhanced Data Models
+
+still remains a challenging problem. We also commented on the analysis of audio
+data sources in Section 26.4.4.
+
+We concluded the chapter with an introduction to deductive databases in Section 26.5.
+We introduced deductive databases in Section 26.5.1, and gave an overview of Prolog
+and Datalog notation in Sections 26.5.2 and 26.5.3. We discussed the clausal form of
+formulas in Section 26.5.4. Datalog rules are restricted to Horn clauses, which contain
+at most one positive literal. We discussed the proof-theoretic and model-theoretic
+interpretation of rules in Section 26.5.5. We briefly discussed the safety of Datalog rules
+in Section 26.5.6 and the ways of expressing relational operators using Datalog rules in
+Section 26.5.7. Finally, we discussed an inference mechanism based on relational oper-
+ations that can be used to evaluate nonrecursive Datalog queries using relational query
+optimization techniques in Section 26.5.8. Although Datalog has been a popular lan-
+guage with some applications, implementations of deductive database systems such as
+LDL or VALIDITY have not become widely commercially available.
+
+Review Questions
+26.1. What are the differences between row-level and statement-level active rules?
+
+26.2. What are the differences among immediate, deferred, and detached consid-
+eration of active rule conditions?
+
+26.3. What are the differences among immediate, deferred, and detached execu-
+tion of active rule actions?
+
+26.4. Briefly discuss the consistency and termination problems when designing a
+set of active rules.
+
+26.5. Discuss some applications of active databases.
+
+26.6. Discuss how time is represented in temporal databases and compare the dif-
+ferent time dimensions.
+
+26.7. What are the differences among valid time, transaction time, and bitempo-
+ral relations?
+
+26.8. Describe how the insert, delete, and update commands should be imple-
+mented on a valid time relation.
+
+26.9. Describe how the insert, delete, and update commands should be imple-
+mented on a bitemporal relation.
+
+26.10. Describe how the insert, delete, and update commands should be imple-
+mented on a transaction time relation.
+
+26.11. What are the main differences between tuple versioning and attribute
+versioning?
+
+26.12. How do spatial databases differ from regular databases?
+
+26.13. What are the different types of spatial data?

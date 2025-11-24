@@ -1,0 +1,44 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+LAB PROGRAM 9
+9) Write a Python program to draw 3D Plots using Plotly Libraries.
+Aim: Demonstration of how to draw 3D plots using Plotly libraries.
+
+PROGRAM EXPLANATION
+
+To draw 3D plots using the Plotly library in Python, you first need to install the Plotly library:
+
+pip install plotly
+
+Plotly is a powerful library for creating interactive and visually appealing 3D plots. This Python
+program uses the Plotly library to create a 3D scatter plot based on data from a PUBG
+
+(PlayerUnknown's Battlegrounds) dataset. Let's break down the code step by step:
+
+1. Import necessary libraries: The program imports the required modules:
+plotly.graph_objects for creating the 3D scatter plot, plotly.offline for offline plotting,
+and pandas for data manipulation.
+
+2. Read and preprocess PUBG dataset: The code reads a PUBG dataset from a CSV file,
+converts the data to numeric format, and creates a new DataFrame (df_new_pubg)
+containing the first 10 rows of the dataset.
+
+3. Select relevant data for the 3D scatter plot: The program selects specific columns
+(‘solo_Wins', 'solo_TimeSurvived', and 'solo_RoundsPlayed') from the dataset to be used
+as x, y, and z coordinates for the 3D scatter plot.
+
+4. Create a 3D scatter plot trace: A Scatter3d trace is created with the specified x, y, and z
+coordinates. The marker parameter is used to customize the appearance of the markers,
+including their size, color based on the 'solo_RoundsPlayed' values, and opacity.
+
+5. Create data and layout objects: The data for the plot is organized into a list (data), which
+contains the tracel created earlier. The layout is defined with minimal margins to remove
+unnecessary padding around the plot.
+
+6. Create a Figure and plot it: A Plotly Figure is created using the data and layout objects.
+The pyo.plot function is then used to generate an HTML file named '3d-pubg-plot.html'
+and open it in a web browser. The 3D scatter plot should be interactive and viewable in
+
+the browser.
+
+Dept. of CSE 66 GSSSIETW, Mysuru

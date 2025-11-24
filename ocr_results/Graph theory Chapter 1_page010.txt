@@ -1,0 +1,44 @@
+1.2. Graphs 13
+
+The definition of a graph/digraph does not impose any upper limits for the number of
+vertices and the number of edges. Thus, a graph/digraph can have infinitely many vertices
+and/or infinitely many edges. A graph/digraph with only a finite number of vertices as well
+as only a finite number of edges is called a finite graph/digraph; otherwise, it is called an
+infinite graph/digraph. In what follows, we will be concerned only with finite graphs/digraphs.
+Accordingly, by a graph/digraph we will mean only a finite graph/digraph.
+
+In the following discussions (in this Chapter and in Chapters 2 — 4), our major interest will
+be towards graphs. Only when it is needed, a digraph will be brought in. All the definitions and
+results that hold for graphs can be extended to digraphs, but with appropriate modifications in
+terminology.
+
+Order and Size
+
+[The number of vertices in a (finite) graph is called the order of the graph and the number
+of edges in it is called its size. In other words, for a graph G = (V, E), the cardinality of the set
+V, namely |V|, is called the order of G and the cardinality of the set E, namely |E], is called the
+size of G. A graph of order n and size m is called a (n, m) graph. Thus, the h depicted in
+Figure 1.15(a) is a (4.5) graph. A null graph with n vertices is a (n, 0) woh]
+End vertices, loop, multiple edges
+
+Generally, the vertices of a graph are denoted by A, B, C, etc., or v1, v2, v3, etc. When it
+
+is convenient, we denote the edges of a graph by 1, é2, ¢3, and so on. If v; and v; denote two
+vertices of a graph and if e, denotes an edge joining v; and v;, then v; and v; are called the end
+vertices (or end points) of ex. This is symbolically written as e, = {vj, vj} = vivj. For example,
+in the graph shown in Figure 1.15(a), suppose we denote the edges AB, BC, AC, AD and DC
+by ¢}, €2, €3, eg and es respectively. Then e joins A and B; that is, e, = {A, B} = AB so that A
+and B are the end vertices of e,. Similarly, e joins B and C; that is, e2 = {B,C} = BC, so that
+Band C are the end vertices of e2, and so on.
+Now,{consider the graph shown in Figure 1.16. We note that this graph consists of four
+vertices v1, v2, v3, v4, and six edges €1, €2, €3, €4, 5, &6- Although the edges e2 and e3 seem
+to intersect (cross over) in the figure,” their point of intersection (even when it exists) is not
+a vertex of the graph. We observe that the edges e1, 2, e3 have distinct end vertices, but the
+edge e4 has the same vertex v3 as both of its end vertices; that is, eg = {v3,¥3}. An edge such
+
+a8 e4 is called a loop. We also observe that both of the edges es and eg have the same end
+_ Vertices vy, v4; that is, es = {v1, v4} and e6 = {v1, v4}. Edges such as these are called parallel
+edges. If in a graph there are two or more edges with the same end vertices, the edges are called
+multiple eee. |
+
+If the vertices are in different planes, e2 and e; may not intersect.

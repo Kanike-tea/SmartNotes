@@ -1,0 +1,48 @@
+136 Chapter 5 Efficient C Programming
+
+stages & ~STAGEB; /* disable stage B */
+stages “= STAGEC; /* toggle stage C */
+
+These bit set, clear, and toggle operations take only one ARM instruction each, using ORR,
+BIC, and EOR instructions, respectively. Another advantage is that you can now manipulate
+several bit-fields at the same time, using one instruction. For example:
+
+stages |= (STAGEA | STAGEB); /* enable stages A and B */
+stages & ~(STAGEA | STAGEC); /* disable stages A and C */
+
+Summary _ Bit-fields
+
+= Avoid using bit-fields. Instead use #def ine or enum to define mask values.
+
+= Test, toggle, and set bit-fields using integer logical AND, OR, and exclusive OR oper-
+ations with the mask values. These operations compile efficiently, and you can test,
+toggle, or set multiple fields at the same time.
+
+5.9 UNALIGNED DATA AND ENDIANNESS
+
+Unaligned data and endianness are two issues that can complicate memory accesses and
+portability. Is the array pointer aligned? Is the ARM configured for a big-endian or little-
+endian memory system?
+
+The ARM load and store instructions assume that the address is a multiple of the type
+you are loading or storing. If you load or store to an address that is not aligned to its type,
+then the behavior depends on the particular implementation. The core may generate a data
+abort or load a rotated value. For well-written, portable code you should avoid unaligned
+accesses.
+
+C compilers assume that a pointer is aligned unless you say otherwise. If a pointer isn’t
+aligned, then the program may give unexpected results. This is sometimes an issue when you
+are porting code to the ARM from processors that do allow unaligned accesses. For armcc,
+the __ packed directive tells the compiler that a data item can be positioned at any byte
+alignment. This is useful for porting code, but using _ packed will impact performance.
+
+To illustrate this, look at the following simple routine, readint. It returns the integer at
+the address pointed to by data. We’ve used __ packed to tell the compiler that the integer
+may possibly not be aligned.
+
+int readint(_packed int *data)
+{
+
+return *data;
+
+}

@@ -1,0 +1,48 @@
+7.Develop a menu driven Program in C for the following operations on Singly Linked List (SLL) of
+[Student Data with the fields: USN, Name, Programme, Sem,PhNo
+la. Create a SLL of N Students Data by using front insertion.
+lb. Display the status of SLL and count the number of nodes in it
+\c. Perform Insertion / Deletion at End of SLL
+id. Perform Insertion / Deletion at Front of SLL(Demonstration of stack)
+le. Exit.
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+
+char usn[25],name[25],branch[25];
+int sem;
+long int phone;
+struct node *link;
+cf
+typedef struct node * NODE;
+
+NODE start = NULL;
+int count=0;
+
+NODE create()
+{
+NODE snode;
+snode = (NODE) malloc(sizeof(struct node));
+
+if(snode == NULL)
+
+printf("\nMemory is not available");
+exit(1);
+
+printf("\nEnter the usn,Name,Branch, sem,PhoneNo of the student:");
+
+scanf("%s %s %s Yod %ld" snode->usn, snode->name, snode->branch, &snode->sem, &snode->phone);
+snode->link=NULL;
+
+count++;
+
+return snode;
+
+}
+
+NODE insertfront()
+{
+NODE temp;
+temp = create();

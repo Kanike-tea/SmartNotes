@@ -1,0 +1,76 @@
+820 Chapter 22 Database Recovery Techniques
+
+@ iA iA Ts
+
+read_item(A) read_item(B) read_item(C)
+
+read_item(D) write_item(B) write_item(B)
+
+write_item(D) read_item(D) read_item(A)
+
+write_item(D) write_item(A)
+
+(b) AlB |c|D
+30 | 15 | 40 | 20
+
+[start_transaction, 7]
+[read_item, Tz,C]
+
+[write_item,7,B,15,12] 12
+[start_transaction, T>]
+[read_item, 7,,B]
+
+[write_item,T,,B,12,18] 18
+[start_transaction,7;]
+[
+[
+[
+[
+[
+[
+
+read_item,;,Al
+read_item,T;,D]
+
+iwrite_item,T;,D,20,25] 25
+read_item,,D]
+“ iwrite_item,T,,D,25,26] 26
+
+read_item,T,,A]
+
+<—__ ystem crash
+
+Figure 22.1
+
+Illustrating cascading rollback
+(a process that never occurs
+in strict or cascadeless
+schedules). (a) The read and
+write operations of three
+transactions. (b) System log at
+point of crash. (c) Operations
+before the crash.
+
+* Ty is rolled back because it
+did not reach its commit point.
+
+* Ty is rolled back because it
+reads the value of item B written by Ts.
+
+(©) READ(C) WRITE(8) READ(A)
+nt |_| !
+“Td
+BEGIN
+
+READ(B) WRITE(B) READ(D) WRITE(D)
+|_| | | |
+1.
+|
+BEGIN
+READ(A) READ(D) WRITE(D)
+|_| | |
+r
+‘Td
+BEGIN Time
+
+System crash +

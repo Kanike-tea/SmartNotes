@@ -1,0 +1,33 @@
+2.5. Graph Colouring
+
+Thus, if the inequality (i) holds for all connected graphs with k vertices, it holds for a
+connected graph with k+1 vertices. Hence, by induction, it follows that the inequality (i) holds
+for all connected graphs. .
+Example 7 Mga that every connected simple planar graph G is 6-colourable.
+; p The result is trivially true if G has upto 6 vertices. (Six or less than six vertices can definitely
+be properly coloured with six colours in hand). Thus, the result is true for n = 6 (or less than
+_ 6), where ” is the number of vertices of G, as usual.
+
+‘Assume that the result is true for all connected simple planar graphs with n = k vertices.
+Consider a connected simple planar graph G’ with k + 1 vertices. Then, by virtue of the Euler's
+theorem, G” contains a vertex v of degree at most 5 +. Consider the graph G’ —v. This graph has
+k vertices and therefore, by the induction assumption made, is 6-colourable. Since v has at most
+5 neighbours in G’, five colours can be assigned to these 5 neighbours and the sixth colour can
+be assigned to v. Thus, G’ can be properly coloured with 6 colours. Thus, a connected simple
+graph with n = k + 1 vertices is 6-colourable if a connected simple graph with n = k vertices is
+
+6-colourable. Hence, by induction, the result is true for any positive integer 7. .
+
+Exercises
+
+ee
+
+1. Find the chromatic numbers of the following graphs.
+
+Paes SS
+
+Figure 2.43
+
+2. Show that the chromatic number of the following graph is 4.
+
+MSce Section 22, Corollary

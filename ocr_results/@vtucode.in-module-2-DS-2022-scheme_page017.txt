@@ -1,0 +1,37 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+first first x
+
+Inserting into an empty or nonempty list
+
+4. Deletion from the list:
+e Deletion depends on the location of the nodes.
+e We have three pointers:
+o first points to start of the list,
+© xX points to the node that we have to delete
+
+o. trail points to the node the precedes to x.
+
+void delete(listPointer *first, listPointer trail, listPointer x)
+{
+
+if (trail)
+trail->link=x->link;
+else
+*first=(*first) ->link;
+free (x);
+
+Deletion from list
+
+5. Printing out a ist
+
+void printList(listPointer first)
+{
+printf(“The list contains”);
+for (;first;first=first->link)
+Printf (“%4d”, first->data) ;
+printf (“\n”);
+
+Printing list
+
+vtucode.in

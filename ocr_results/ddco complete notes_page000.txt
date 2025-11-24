@@ -1,0 +1,57 @@
+Digital Design and Computer Organization(BCS302)
+MODULE-1
+
+Introduction to Digital Design
+
+Syllabus
+
+Introduction to Digital Design: Binary Logic, Basic Theorems And Properties Of
+Boolean Algebra, Boolean Functions, Digital Logic Gates, Introduction, The Map
+Method, Four-Variable Map, Don’t-Care Conditions, NAND and NOR Implementation,
+Other Hardware Description Language — Verilog Model of a simple circuit. Text book 1:
+1.9, 2.4, 2.5, 2.8, 3.1, 3.2, 3.3, 3.5, 3.6, 3.9
+
+Text book 1: M. Morris Mano & Michael D. Ciletti, Digital Design With an
+Introduction to Verilog Design, Se, Pearson Education.
+
+BINARY LOGIC
+
+Definition of Binary Logic
+
+> Binary logic consists of binary variables and a set of logical operations. The
+variables are designated by letters of the alphabet, such as A, B, C, x, y, z, etc.,
+with each variable having two distinct possible values: 1 and 0.
+
+There are three basic logical operations: AND, OR, and NOT. Each operation produces
+a binary result, denoted by z.
+
+1. AND: This operation is represented by a dot or by the absence of an operator.
+Example, x.y = z or xy = zis read “x AND y is equal to z.”
+
+If z= 1 if and only if x = 1 and y = 1; otherwise z = O. The result of the operation x
+wisz.
+
+x, y, and z are binary variables and can be equal either to 1 or O
+
+2. OR: This operation is represented by a plus sign. For example, x + y = z is read “x OR
+
+y is equal to z,” meaning that z = 1 if x = 1 or if y = 1 or if both x = 1 and y = 1. If
+both x = O and y = O, then z = 0.
+
+3. NOT: This operation is represented by a prime (or by an overbar).
+For example, x= z (or x = z) is read “not x is equal to z,”.
+
+If x = 1, then z = O, and if x = O, then z = 1. The NOT operation is also referred to as
+the complement operation, since it changes a 1 to O anda Oto 1.
+
+Truth table
+
+> A truth table is a table of all possible combinations of the variables, showing the
+relation between the values that the variables may take and the result of the
+operation.
+
+> The truth tables for the operations AND and OR with variables x and y are
+obtained by listing all possible values that the variables may have when
+combined in pairs.
+
+Page 1

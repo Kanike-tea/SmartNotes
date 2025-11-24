@@ -1,0 +1,46 @@
+Database Management System [BCS403]
+
+The result of the JOIN is a relation Q with n + m attributes Q(A1, Ay, ..., An,Bi, Ba, ..., Bm in that
+order.Q has one tuple for each combination of tuples—one from R and one from S—whenever the
+combination satisfies the join condition. This is the main difference between CARTESIAN
+PRODUCT and JOIN. In JOIN, only combinations of tuples satisfying the join condition appear
+in the result, whereas in the CARTESIAN PRODUCT all combinations of tuples are included in
+the result. The join condition is specified on attributes from the two relations R and S and is
+
+evaluated for each combination of tuples.
+
+Each tuple combination for which the join condition evaluates to TRUE is included in the resulting
+
+relation Q as a single combined tuple. A general join condition is of the form
+<condition> AND <condition> AND...AND <condition>
+
+where each <condition> is of the form Aj 0 B;, Ai is an attribute of R, B is an attribute of S, Ai
+
+and Bj have the same domain, and 6 (theta) is one of the comparison operators. {=, < <>, >, #}.A
+JOIN operation with such a general join condition is called'a THETA JOIN. Tuples whose join
+
+attributes are NULL or for which the join condition is FALSE do not appear in the result.
+
+2.4.2 Variations of JOIN: The EQUIJOIN and NATURAL JOIN
+The most common use of JOIN involves join conditions with equality comparisons only. Such a
+JOIN, where the only comparison operator used is =, is called an EQUIJOIN.In the result of an
+
+EQUIJOIN we always have one or more pairs of attributes that have identical values in every tuple.
+
+For example the values of the attributes Mgr_ssn and Ssn are identical in every tuple of
+DEPT_MGR (the EQUIJOIN tesult) because the equality join condition specified on these two
+
+attributes requires the values to be identical in every tuple in the result.
+
+The standard definition of NATURAL JOIN requires that the two join attributes (or each pair of
+join attributes) have the same name in both relations. If this is not the case, a renaming operation is
+applied first. Suppose we want to combine each PROJECT tuple with the DEPARTMENT tuple that
+controls the project.first we rename the Dnumber attribute of DEPARTMENT to Dnum—so that it
+
+has the same name as the Dnum attribute in PROJECT—and then we apply NATURAL JOIN:
+PROJ_DEPT <— PROJECT * pcname, Daum, Mgr_ssn, Mgr_start_date) (DEPARTMENT)
+The same query can be done in two steps by creating an intermediate table DEPT as follows:
+
+DEPT <— poname, Daum, Mgr_ssn,Mgr_start_date)( DEPARTMENT)
+
+https:/ivtucode.in Page 25

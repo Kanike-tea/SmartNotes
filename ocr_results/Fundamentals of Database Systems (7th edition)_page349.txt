@@ -1,0 +1,55 @@
+10.2 Embedded SQL, Dynamic SQL, and SQLJ
+
+that appropriate C program variables have been declared as in Figure 10.1. The pro-
+gram segment in E2 reads (inputs) a department name (line 0), retrieves the
+matching department number from the database (lines 1 to 3), and then retrieves
+the employees who work in that department via the declared EMP cursor. A loop
+(lines 10 to 18) iterates over each record in the query result, one at a time, and
+prints the employee name, then reads (inputs) a raise amount for that employee
+(line 12) and updates the employee’s salary in the database by the raise amount
+(lines 14 to 16).
+
+This example also illustrates how the programmer can update database records.
+When a cursor is defined for rows that are to be modified (updated), we must add
+the clause FOR UPDATE OF in the cursor declaration and list the names of any attri-
+butes that will be updated by the program. This is illustrated in line 7 of code seg-
+ment E2. If rows are to be deleted, the keywords FOR UPDATE must be added
+without specifying any attributes. In the embedded UPDATE (or DELETE) command,
+the condition WHERE CURRENT OF <cursor name> specifies that the current tuple
+referenced by the cursor is the one to be updated (or deleted), as in line 16 of E2.
+
+There is no need to include the FOR UPDATE OF clause in line 7 of E2 if the results
+of the query are to be used for retrieval purposes only (no update or delete).
+
+General Options for a Cursor Declaration. Several options can be specified
+when declaring a cursor. The general form of a cursor declaration is as follows:
+
+DECLARE <cursor name> [ INSENSITIVE ] [ SCROLL ] CURSOR
+[WITH HOLD ] FOR <query specification>
+
+[ ORDER BY <ordering specification> }
+
+[FOR READ ONLY | FOR UPDATE [ OF <attribute list> ] ] ;
+
+We already briefly discussed the options listed in the last line. The default is that the
+query is for retrieval purposes (FOR READ ONLY). If some of the tuples in the query
+result are to be updated, we need to specify FOR UPDATE OF <attribute list> and list
+the attributes that may be updated. If some tuples are to be deleted, we need to
+specify FOR UPDATE without any attributes listed.
+
+When the optional keyword SCROLL is specified in a cursor declaration, it is pos-
+sible to position the cursor in other ways than for purely sequential access. A fetch
+orientation can be added to the FETCH command, whose value can be one of NEXT,
+PRIOR, FIRST, LAST, ABSOLUTE i, and RELATIVE i. In the latter two commands, i
+must evaluate to an integer value that specifies an absolute tuple position within the
+query result (for ABSOLUTE i), or a tuple position relative to the current cursor
+position (for RELATIVE i). The default fetch orientation, which we used in our
+examples, is NEXT. The fetch orientation allows the programmer to move the cursor
+around the tuples in the query result with greater flexibility, providing random
+access by position or access in reverse order. When SCROLL is specified on the cur-
+sor, the general form of a FETCH command is as follows, with the parts in square
+brackets being optional:
+
+FETCH [ [ <fetch orientation> ] FROM ] <cursor name> INTO <fetch target list>;
+
+319

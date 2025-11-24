@@ -1,0 +1,56 @@
+130 Chapter 5 Efficient C Programming
+
+SUMMARY
+
+Avoiding Pointer Aliasing
+
+= Do not rely on the compiler to eliminate common subexpressions involving memory
+accesses. Instead create new local variables to hold the expression. This ensures the
+expression is evaluated only once.
+
+= Avoid taking the address of local variables. The variable may be inefficient to access
+from then on.
+
+5.7 STRUCTURE ARRANGEMENT
+
+Table 5.4
+
+The way you lay out a frequently used structure can have a significant impact on its perfor-
+mance and code density. There are two issues concerning structures on the ARM: alignment
+of the structure entries and the overall size of the structure.
+
+For architectures up to and including ARMvSTE, load and store instructions are only
+guaranteed to load and store values with address aligned to the size of the access width.
+Table 5.4 summarizes these restrictions.
+
+For this reason, ARM compilers will automatically align the start address of a structure
+to a multiple of the largest access width used within the structure (usually four or eight
+bytes) and align entries within structures to their access width by inserting padding.
+
+For example, consider the structure
+
+struct {
+char a;
+int b;
+char c3
+short d;
+}
+
+For a little-endian memory system the compiler will lay this out adding padding to ensure
+that the next object is aligned to the size of that object:
+
+Address +3 +2 +1 +0
++0] — pad pad pad a
++4 | b[31,24] | b[23,16] | b[15,8] | b[7,0]
++8 | d[15,8] | [7,0] pad c
+
+Load and store alignment restrictions for ARMvS5TE.
+
+Transfer size Instruction Byte address
+
+1 byte LDRB, LDRSB, STRB any byte address alignment
+2 bytes LDRH, LDRSH, STRH multiple of 2 bytes
+
+4 bytes LDR, STR multiple of 4 bytes
+
+8 bytes LORD, STRD multiple of 8 bytes

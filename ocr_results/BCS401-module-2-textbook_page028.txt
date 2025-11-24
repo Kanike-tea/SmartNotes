@@ -1,0 +1,19 @@
+5.3
+
+Binary Tree Traversals and Related Properties
+
+In this section, we see how the divide-and-conquer technique can be applied to
+binary trees. A binary tree T is defined as a finite set of nodes that is either empty
+or consists of a root and two disjoint binary trees 7, and Tp called, respectively, the
+left and right subtree of the root. We usually think of a binary tree as a special case
+of an ordered tree (Figure 5.4). (This standard interpretation was an alternative
+definition of a binary tree in Section 1.4.)
+
+Since the definition itself divides a binary tree into two smaller structures of
+the same type, the left subtree and the right subtree, many problems about binary
+trees can be solved by applying the divide-and-conquer technique. As an example,
+let us consider a recursive algorithm for computing the height of a binary tree.
+Recall that the height is defined as the length of the longest path from the root to
+a leaf. Hence, it can be computed as the maximum of the heights of the root’s left
+
+FIGURE 5.4 Standard representation of a binary tree.

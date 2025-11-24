@@ -1,0 +1,51 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 601
+
+because the subtract x — y is implemented as the add x + ~y + 1. The carry flag is one
+if x + ~~y + 1 overflows. This happens when x > y, when x — y doesn’t overflow.
+
+= If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr in this case, the cpsr is set
+to the value of the spsr.
+
+= If Rnor Rmis pe, then the value used is the address of the instruction plus eight bytes.
+Examples
+
+RSB rd, r0, #0 3 r0 = -r0
+RSB ro, rl, rl, LSL#3 3 70 = 7*rl
+
+RSC
+
+Reverse subtract with carry of two 32-bit integers
+
+1. RSC<cond>{S} Rd, Rn, #<rotated_immed> ARMV1
+2. RSC<cond>{S} Rd, Rn, Rm {, <shift>} ARMV1
+
+Action Effect on the cpsr
+
+1. Rd = <rotated_immed> - Rn - (~C) Updated if S suffix present
+2. Rd = <shifted_Rm> - Rn - (~C) Updated if S suffix present
+
+Notes
+
+= Ifthe operation updates the cpsrand Rdis not pc, then N = <Negative>, Z=<Zero>, C=
+<NoUnsignedOverflow>, V = <SignedOverflow>. The carry flag is set this way because
+the subtract x — y— ~Cis implemented as the add x + ~y + C. The carry flag is one if
+x+~y + Coverflows. This happens when x — y — ~C doesn’t overflow.
+
+= If Rdis pc, then the instruction effects a jump to the calculated address. If the operation
+updates the cpsr, then the processor mode must have an spsr; in this case the cpsr is set
+to the value of the spsr.
+
+= If Rnor Rmis pe, then the value used is the address of the instruction plus eight bytes.
+
+The following example negates a 64-bit integer where r0 is the low 32 bits and r/ the high
+32 bits.
+
+RsBS 0, r0, #0 3 70 = -r0 C=NOT(borrow)
+Rsc rl, rl, #0 3 rl = -rl-borrow
+
+SADD
+
+Parallel modulo add and subtract operations
+
+1. {S|UJADD16<cond> Rd, Rn, Rm ARMV6

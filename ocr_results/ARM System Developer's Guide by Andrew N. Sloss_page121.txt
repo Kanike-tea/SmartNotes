@@ -1,0 +1,95 @@
+108 Chapter 5 Efficient C Programming
+
+Consider the compiler output for this function. We’ve added labels and comments to
+
+make the assembly clear.
+
+checksum_v1
+
+Mov r2,r0
+
+Mov 10, #0
+
+Mov r1,#0
+checksum_v1_loop
+
+LOR r3,[r2,r1,LSL #2]
+
+ADD rl,rl,#l
+
+AND rly rl, #0xff
+
+cmp 1, #0x40
+
+ADD 10,73, r0
+
+BCC checksum_v1_loop
+
+Mov pe, rl4
+
+r2 = data
+sum = 0
+
+i=0
+
+r3 = dataLi]
+rl = itl
+
+i= (char)ri
+compare i, 64
+sum += 13
+
+if (i<64) loop
+return sum
+
+Now compare this to the compiler output where instead we declare i as an unsigned int.
+
+checksum_v2
+
+Mov r2,r0
+
+Mov 10, #0
+
+Mov r1,#0
+checksum_v2_loop
+
+LOR r3,[r2,r1,LSL #2]
+
+ADD rl,rl,#l
+
+cmp 1, #0x40
+
+ADD 10,73, r0
+
+BCC checksum_v2_loop
+
+Mov pe, rl4
+
+r3 = dataLi]
+
+rit
+
+compare i, 64
+
+sum += 13
+
+if (i<64) goto loop
+return sum
+
+In the first case, the compiler inserts an extra AND instruction to reduce i to the range 0 to
+
+255 before the comparison with 64. This instruction disappears in the second case.
+
+Next, suppose the data packet contains 16-bit values and we need a 16-bit checksum. It
+is tempting to write the following C code:
+
+short checksum_v3(short *data)
+
+{
+unsigned int i;
+short sum=0;
+
+for (1=0; 1<64; i++)
+{
+
+sum = (short) (sum + data[i]);

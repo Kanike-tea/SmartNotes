@@ -1,0 +1,44 @@
+8.5 The Discrete Fourier Transform 303
+
+8.5 THE DISCRETE FOURIER TRANSFORM
+
+The Discrete Fourier Transform (DFT) converts a time domain signal x, to a frequency
+domain signal y;. The associated inverse transform (IDFT) reconstructs the time domain
+signal from the frequency domain signal. This tool is heavily used in signal analysis and
+compression. It is particularly powerful because there is an algorithm, the Fast Fourier
+Transform (FFT), that implements the DFT very efficiently. In this section we will look at
+some efficient ARM implementations of the FFT.
+
+The DFT acts on a frame of N complex time samples, converting them into N complex
+frequency coefficients. We will use Equations (8.37) and (8.38) as the definition. You may
+see slightly different equations in different texts because some authors may use a different
+scaling or a different definition of which is the forward and which the inverse transform.
+This doesn’t affect any of the important properties of the transform.
+
+N-1
+y = DFTN(x) means yy, = u x,wkt, where wy = e27/N (8.37)
+
+N-1
+x = IDFTN(y) means x; = vo yewht, where wy = e7!/N (8.38)
+
+As you can see, the transforms are the same except for scaling and choice of wy.
+Therefore we'll only look at the forward transform. In fact the Fast Fourier Transform
+algorithm works for any wy such that wi) = 1. The algorithm is only invertible for
+principal roots of unity where wk, # 1 for k< N.
+
+8.5.1 THE FAST FOURIER TRANSFORM
+
+The idea of the FFT is to break down the transform by factorizing N. Suppose for example
+that N = R x S. Split the output into § blocks of size R and the input into R blocks of
+size S. In other words:
+
+k=nR+m_ forn=0,1,...,S—1 and m=0,1,...,R-1 (8.39)
+t=rS+s forr=0,1,...,.R—1 and s=0,1,...,S—1 (8.40)
+Then,
+R-1S-1
+yLnR + m] = Y> So xfs + sys) (8.41)
+r=0 s=0
+
+S-1 R-1
+ylaR + m] = Swi wp (x x[rS + sm) (8.42)
+s=0 r=0

@@ -1,0 +1,42 @@
+1.2 An Example
+
+Users/Programmers
+Database
+System Y
+Application Programs/Queries
+DBMS
+Software Software to Process
+Queries/Programs
+
+y
+
+Software to Access
+Stored Data
+
+Stored Database
+Definition Stored Database
+(Meta-Data)
+
+Figure 1.1
+A simplified database
+system environment.
+
+stores data records of the same type.* The STUDENT file stores data on each stu-
+dent, the COURSE file stores data on each course, the SECTION file stores data on
+each section of a course, the GRADE_REPORT file stores the grades that students
+receive in the various sections they have completed, and the PREREQUISITE file
+stores the prerequisites of each course.
+
+To define this database, we must specify the structure of the records of each file by
+specifying the different types of data elements to be stored in each record. In
+Figure 1.2, each STUDENT record includes data to represent the student’s Name,
+Student_number, Class (such as freshman or ‘1’, sophomore or ‘2’, and so forth),
+and Major (such as mathematics or ‘MATH’ and computer science or CS’); each
+COURSE record includes data to represent the Course_name, Course_number,
+Credit_hours, and Department (the department that offers the course), and so
+on. We must also specify a data type for each data element within a record. For
+example, we can specify that Name of STUDENT is a string of alphabetic characters,
+Student_number of STUDENT is an integer, and Grade of GRADE_REPORT is a
+
+3We use the term file informally here. At a conceptual level, a file is a collection of records that may or
+may not be ordered.

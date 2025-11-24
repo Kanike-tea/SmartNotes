@@ -1,0 +1,59 @@
+LECTURE-S: ER-MODEL
+
+Data Model:
+The data model describes the structure of a database. It is a collection of conceptual tools for
+describing data, data relationships and consistency constraints and various types of data models
+such as
+
+1. Object based logical model
+
+2. Record based logical model
+
+3. Physical model
+
+Types of data model:
+1. Object based logical model
+a. ER-model
+
+b. Functional model
+c. Object oriented model
+d. Semantic model
+2. Record based logical model
+a. Hierarchical database model
+b. Network model
+c. Relational model
+3. Physical model
+
+Entity Relationship Model (ER Model
+
+The entity-relationship data model perceives the real world as consisting of basic objects, called
+entities and relationships among these objects. It was developed to facilitate database design by
+allowing specification of an enterprise schema which represents the overall logical structure of a
+data base.
+
+Main Features of ER-MODEL:
+
+e Entity relationship model is a high level conceptual model
+
+e It allows us to describe the data involved in a real world enterprise in terms of objects and
+their relationships.
+
+e It is widely used to develop an initial design of a database
+
+e It provides a set of useful concepts that make it convenient for a developer to move from a
+basic set of information to a detailed and description of information that can be easily
+implemented in a database system
+
+e It describes data as a collection of entities, relationships and attributes.
+
+Basic Concepts:
+The E-R data model employs three basic notions : entity sets, relationship sets and attributes.
+
+Entity Sets:
+
+An entity is a “thing” or “object” in the real world that is distinguishable from all other objects. For
+example, each person in an enterprise is an entity. An entity has a set properties and the values for
+some set of properties may uniquely identify an entity. BOOK is entity and its properties (called as
+attributes) bookcode, booktitle, price etc.
+
+An entity set is a set of entities of the same type that share the same properties, or attributes. The set

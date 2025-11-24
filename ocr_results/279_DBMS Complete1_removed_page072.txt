@@ -1,0 +1,57 @@
+(select branch-name, customer-name
+from Borrower, Loan
+where Borrower.loan-number = Loan.loan-number)
+
+> The attributes names may be specified explicitly within a set of round bracket after the name
+of view.
+» (The view names may be used as relations in subsequent queries. Using the view
+Allcustomer
+Find all customers of Sadar branch
+select customer-name
+from All-customer
+where branch-name= “Sadar”
+» Acreate-view clause creates a view definition in the database which stays until a command
+- drop view view-name - is executed.
+Modification of Database
+Deletion
+“+ In SQL we can delete only whole tuple and not the values on any particular
+attributes. The command is as follows:
+
+delete from r where P.
+where P is a predicate and r is a relation.
+“delete command operates on only one relation at a time. Examples are as follows:
+* Delete all tuples from the Loan relation
+delete from Loan
+o Delete all of the Smith’s account record
+delete from Depositor
+where customer-name = “Smith”
+o Delete all loans with loan amounts between Rs 1300 and Rs 1500.
+delete from Loan
+where amount between 1300 and 1500
+o Delete the records of all accounts with balances below the average at the bank
+delete from Account
+where balance < ( select avg(balance)
+from Account)
+
+Insertion
+
+In SQL we either specify a tuple to be inserted or write a query whose result is a
+set of tuples to be inserted. Examples are as follows:
+
+Insert an account of account number A-9732 at the Sadar branch having balance
+of Rs 1200
+
+insert into Account
+
+values(“Sadar”, “A-9732”, 1200)
+
+the values are specified in the order in which the corresponding attributes are
+listed in the relation schema.
+
+SQL allows the attributes to be specified as part of the insert statement
+
+insert into Account(account-number, branch-name, balance)
+
+values(“A-9732”, “Sadar”, 1200)
+
+insert into Account(branch-name, account-number, balance)

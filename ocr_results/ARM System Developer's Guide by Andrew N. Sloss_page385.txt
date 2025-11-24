@@ -1,0 +1,48 @@
+372 Chapter 10 Firmware
+
+=) Flash ROM memory management—provides a set of filing system routines that can
+download, update, and erase images in flash ROM. In addition, the images can either
+be compressed or uncompressed.
+
+= Full operating system support—supports the loading and booting of Embedded Linux,
+Red Hat eCos, and many other popular operating systems. For Embedded Linux,
+RedBoot supports the ability to define parameters that are passed directly to the kernel
+upon booting.
+
+10.2 EXAMPLE: SANDSTONE
+
+We have designed Sandstone to be a minimal system. It carries out only the following tasks:
+set up target platform environment, load a bootable image into memory, and relinquish
+control to an operating system. It is, however, still a real working example.
+
+The implementation is specific to the ARM Evaluator-7T platform, which includes an
+ARM7TDMI processor. This example shows you exactly how a simple platform can be set
+up and a software payload can be loaded into memory and booted. The payload can either
+be an application or operating system image. Sandstone is a static design and cannot be
+configured after the build process is complete. Table 10.2 lists the basic characteristics of
+Sandstone.
+
+We will walk you through the directory layout and code structure. The directory layout
+shows you where the source code is located and where the different build files are placed.
+The code structure focuses more on the actual initialization and boot process.
+
+Note that Sandstone is written entirely in ARM assembler and is a working piece of code
+that can be used to intialize target hardware and boot any piece of software, within reason,
+on the ARM Evaluator-7T.
+
+10.2.1 SANDSTONE DIRECTORY LAYOUT
+
+Sandstone can be found on our Web site. If you take a look at Sandstone, you will see that
+the directory structure is as shown in Figure 10.1. The structure follows a standard style
+
+Table 10.2 Summary of Sandstone.
+
+Feature Configuration
+
+Code ARM instructions only
+Tool chain ARM Developer Suite 1.2
+Image size 700 bytes
+
+Source 17 KB
+
+Memory _ remapped

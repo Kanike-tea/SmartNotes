@@ -1,0 +1,47 @@
+Microcontrollers — BCS402
+
+The address pointed to by the semaphore either contains the value 0 or 1. When the
+semaphore equals 1, then the service in question is being used by another process. The
+routine will continue to loop around until the service is released by the other process—in
+
+other words, when the semaphore address location contains the value 0.
+
+4. Software Interrupt Instruction
+
+A software interrupt instruction (SWI) causes a software interrupt exception, which provides
+
+a mechanism for applications to call operating system routines.
+
+Syntax: SWI {<cond>} SWI_number
+
+SWI | software interrupt | /r_sve=address of instruction following the SWI
+
+cpsr mode =SVC
+
+cpsr 1 =1( mask IRQ interrupts)
+
+When the processor executes an SWI instruction, it sets the program counter pc to the offset
+
+Ox8 in the vector table.
+
+The instruction also forces the processor mode to SVC, which allows an operating system
+
+routine to be called in a privileged mode.
+
+Each SWI instruction has an associated SWI number, which is used to represent a particular
+
+function call or feature.
+Example 1: 0x00008000 SWI 0x123456
+PRE: cpsr = nzcVqift_USER, pc = 0x00008000, Ir = Ox003fffff; Ir = 114, r0 = 0x12
+
+POST: cpsr = nzcVqIft_SVC, spsr = nzcVqift_USER, pe = 0x00000008, Ir = 0x00008004, r0
+= 0x12
+
+Since SWI instructions are used to call operating system routines, you need some form of
+parameter passing. This is achieved using registers. In this example, register r0 is used to pass
+
+the parameter 0x12. The return values are also passed back via registers.
+
+Code called the SWI handler is required to process the SWI call. The handler obtains the
+
+Dept. of ECE, GSSSIETW Page 26

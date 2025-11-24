@@ -1,0 +1,69 @@
+DATA STRUCTURES-BCS304
+MODULE 2
+
+jypoanter cpadd(polyPointer a, polyPointer b)
+
+0 ; .
+
+iD ph a and b are singly linked circular lists
+with 4 eader node. Return a polynomial which i
+
+the sum of a and b */ ie
+
+polyPointer startA, c, lastC;
+
+jnt sum, done = FALSE;
+
+/* record start of a */
+
+gtartA = a7
+
+a= aclink; /* skip header node for 4 and b*/
+b= polink;
+
+c= getNode(); /* get a header node for sum */
+caexpon = -1; lastC = c;
+
+do {
+
+switch (COMPARE (a—expon, b-expon)) {
+case -1: /* a7expon < boexpon */
+
+attach (b>coef, b>expon, &lastC);
+
+b = bolink;
+
+break;
+
+/* a-expon = b-expon =f
+
+case 0:
+a) done = TRUE;
+
+if (startA
+
+else {
+sum = avcoef +
+if (sum) attach (sum,
+a= acalink; b= bolink;
+
+bocoef;
+aexpon, &lastC)#
+
+}
+break;
+
+casei: /* anrexPon
+attach (a7coet,
+a= aclink;
+
+> bewexpon */
+acexpon, &lastC)i
+
+)
+) while (!done);
+lastClink = cf
+return c;
+
+vtucode.in
+28

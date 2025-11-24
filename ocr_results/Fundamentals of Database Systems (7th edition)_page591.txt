@@ -1,0 +1,53 @@
+16.4 Placing File Records on Disk
+
+a pointer to the BLOB is included in the record. For storing free text, some DBMSs
+(e.g., Oracle, DB2, etc.) provide a data type called CLOB (character large object);
+some DBMSs call this data type text.
+
+16.4.2 Files, Fixed-Length Records,
+and Variable-Length Records
+
+A file is a sequence of records. In many cases, all records in a file are of the same
+record type. If every record in the file has exactly the same size (in bytes), the file is
+said to be made up of fixed-length records. If different records in the file have dif-
+ferent sizes, the file is said to be made up of variable-length records. A file may
+have variable-length records for several reasons:
+
+= The file records are of the same record type, but one or more of the fields are
+of varying size (variable-length fields). For example, the Name field of
+EMPLOYEE can be a variable-length field.
+
+= The file records are of the same record type, but one or more of the fields may
+have multiple values for individual records; such a field is called a repeating
+field and a group of values for the field is often called a repeating group.
+
+= The file records are of the same record type, but one or more of the fields are
+optional; that is, they may have values for some but not all of the file records
+(optional fields).
+
+= The file contains records of different record types and hence of varying size
+(mixed file). This would occur if related records of different types were clustered
+(placed together) on disk blocks; for example, the GRADE_REPORT records of
+a particular student may be placed following that STUDENT’s record.
+
+The fixed-length EMPLOYEE records in Figure 16.5(a) have a record size of 71 bytes.
+Every record has the same fields, and field lengths are fixed, so the system can iden-
+tify the starting byte position of each field relative to the starting position of the
+record. This facilitates locating field values by programs that access such files.
+Notice that it is possible to represent a file that logically should have variable-length
+records as a fixed-length records file. For example, in the case of optional fields, we
+could have every field included in every file record but store a special NULL value if
+no value exists for that field. For a repeating field, we could allocate as many spaces
+in each record as the maximum possible number of occurrences of the field. In either
+case, space is wasted when certain records do not have values for all the physical
+spaces provided in each record. Now we consider other options for formatting
+records of a file of variable-length records.
+
+For variable-length fields, each record has a value for each field, but we do not know
+the exact length of some field values. To determine the bytes within a particular
+record that represent each field, we can use special separator characters (such as ?
+or % or $)—which do not appear in any field value—to terminate variable-length
+fields, as shown in Figure 16.5(b), or we can store the length in bytes of the field in
+the record, preceding the field value.
+
+561

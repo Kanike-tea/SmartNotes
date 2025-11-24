@@ -1,0 +1,60 @@
+1104 Chapter 29 Overview of Data Warehousing and OLAP
+
+data warehousing more generally as a collection of decision-support technologies
+aimed at enabling the knowledge worker (executive, manager, analyst) to make better
+and faster decisions.’ Figure 29.1 gives an overview of the conceptual structure of a
+data warehouse. It shows the entire data warehousing process, which includes pos-
+sible cleaning and reformatting of data before loading it into the warehouse. This
+process is handled by tools known as ETL (extraction, transformation, and loading)
+tools. At the back end of the process, OLAP, data mining, and DSS may generate
+new relevant information such as rules (or additional meta-data); this information is
+shown in Figure 29.1 as going back as additional data inputs into the warehouse. The
+figure also shows that data sources may include files.
+
+The important characteristics of data warehouses that accompanied the defini-
+tion of the term OLAP in 1993 included the following, and they are applicable
+even today:>
+
+Multidimensional conceptual view
+
+Unlimited dimensions and aggregation levels
+
+Unrestricted cross-dimensional operations
+
+Dynamic sparse matrix handling
+
+Client/server architecture
+
+Multiuser support
+
+Accessibility
+
+Transparency
+
+Intuitive data manipulation
+
+Inductive and deductive analysis
+
+Flexible distributed reporting
+
+Because they encompass large volumes of data, data warehouses are generally an
+order of magnitude (sometimes two orders of magnitude) larger than the source
+databases. The sheer volume of data (likely to be in terabytes or even petabytes) is
+an issue that has been dealt with through enterprise-wide data warehouses, virtual
+data warehouses, logical data warehouses, and data marts:
+
+= Enterprise-wide data warehouses are huge projects requiring massive
+investment of time and resources.
+
+= Virtual data warehouses provide views of operational databases that are
+materialized for efficient access.
+
+= Logical data warehouses use data federation, distribution, and virtualiza-
+tion techniques.
+
+= Data marts generally are targeted to a subset of the organization, such as a
+department, and are more tightly focused.
+
+Chaudhuri and Dayal (1997) provide an excellent tutorial on the topic, with this as a starting definition.
+
+Codd and Salley (1993) coined the term OLAP and mentioned the characteristics listed here.

@@ -1,0 +1,54 @@
+14.11
+
+14.12
+
+14.12 Summary 545
+
+THE DEMONSTRATION AS MMUSLOS
+
+Many of the concepts and the examples from the MMU demonstration code have been
+incorporated into a functional control system we call mmuSLOS. It is an extension of the
+control system called SLOS presented in Chapter 11.
+
+mpuSLOS is the memory protection unit extension to SLOS, and was described in
+Chapter 13. We use the mpuSLOS variant as the base source code for mmuSLOS. All three
+variants can be found on the publisher’s Web site. We changed three major parts of the
+mpuSLOS code:
+
+= = The MMU tables are created during the mmuSLOS initialization stage.
+
+= The application tasks are built to execute at 0x400000, but are loaded at a different
+physical addresses. Each application task executes in a virtual memory starting at the
+execution address. The top of the stack is located as an 32 KB offset from the execution
+address.
+
+= Each time the scheduler is called, the active 32 KB page in the MMU table is changed
+to reflect the new active application/task.
+
+SUMMARY
+
+The chapter presented the basics of memory management and virtual memory systems.
+A key service of an MMU is the ability to manage tasks as independent programs running
+in their own private virtual memory space.
+
+An important feature of a virtual memory system is address relocation. Address reloca-
+tion is the translation of the address issued by the processor core to a different address in
+main memory. The translation is done by the MMU hardware.
+
+In a virtual memory system, virtual memory is commonly divided into parts as fixed
+areas and dynamic areas. In fixed areas the translation data mapped in a page table does not
+change during normal operation; in dynamic areas the memory mapping between virtual
+and physical memory frequently changes.
+
+Page tables contain descriptions of virtual page information. A page table entry (PTE)
+translates a page in virtual memory to a page frame in physical memory. Page table entries
+are organized by virtual address and contain the translation data to map a page to a page
+frame.
+
+The functions of an ARM MMU are to:
+
+= read level 1 and level 2 page tables and load them into the TLB
+= store recent virtual-to-physical memory address translations in the TLB
+= perform virtual-to-physical address translation
+
+= enforce access permission and configure the cache and write buffer

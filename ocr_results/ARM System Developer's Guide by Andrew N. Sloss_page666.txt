@@ -1,0 +1,56 @@
+D.2 ARM7TDMI Instruction Cycle Timings 653
+
+Table D.2 Pipeline behavior statements.
+
+Statement
+
+Meaning
+
+Rdis not available for k cycles.
+
+Rnis required k cycles early.
+
+Rnis not required until the
+kth cycle,
+
+You cannot start a type X
+instruction for k cycles.
+
+The result register Rd of the instruction is not available as the input to
+another instruction for k cycles after the end of the instruction. If you
+attempt to use Rd earlier, then the core will stall until the k cycles have
+elapsed.
+
+The input register Rn of the instruction must be available k cycles before
+the start of the instruction. If it was the result of a later operation,
+
+then the core will stall until this condition is met.
+
+The input register Rn is not read on the first cycle of the instruction.
+Instead it is read on the kth cycle of the instruction. Therefore the core
+will not stall if Rn is available by this point.
+
+The instruction uses a resource also used by type X instructions.
+Moreover the instruction continues to use this resource for k cycles after
+the last cycle of the instruction. If you attempt to execute a type X
+instruction before k cycles have elapsed, then the core will stall until k
+cycles have elapsed.
+
+D.2 ARM7TDMI INSTRUCTION CYCLE TIMINGS
+
+The ARM7TDMI core is based on a three-stage pipeline with a single execute stage. The
+number of cycles an instruction takes does not usually depend on preceding or following
+
+instructions. The multiplier circuit uses a 32-bit by 8-bit multiplier array with early ter-
+
+mination. The number of multiply iteration cycles M depends on the value of register Rs
+according to Table D.3. Table D.4 gives the ARM7TDMI instruction cycle timings.
+
+Table D.3. ARM7TDMI multiplier early termination.
+
+M_Rsrange (use the first applicable range) Rs bitmap s = sign bit x = wildcard-bit
+
+1 -28<x<2 SSSSSSSS SSSSSSSS SSSSSSSS_XXXXXXXX
+2 26 <x<2!6 SSSSSSSS SSSSSSSS XXXXXXXX XXXXXXXX
+30 -24<x<2% SSSSSSSS XXXXXXXX XXXXXXXX XXXXXXXX
+4 remaining x XXXXXXXX XXXXXXXX AXXXXXXXKX XXXXXXXKX

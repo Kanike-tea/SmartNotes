@@ -1,0 +1,51 @@
+776
+
+Chapter 20 Introduction to Transaction Processing Concepts and Theory
+
+the database transaction, or in some cases the database statement, will only see the
+records that were committed in the database at the time the transaction starts. Any
+insertions, deletions, or updates that occur after the transaction starts will not be
+seen by the transaction. We will discuss a concurrency control protocol based on
+this concept in Chapter 21.
+
+20.7 Summary
+
+In this chapter, we discussed DBMS concepts for transaction processing. We intro-
+duced the concept of a database transaction and the operations relevant to transac-
+tion processing in Section 20.1. We compared single-user systems to multiuser
+systems and then presented examples of how uncontrolled execution of concurrent
+transactions in a multiuser system can lead to incorrect results and database values
+in Section 20.1.1. We also discussed the various types of failures that may occur
+during transaction execution in Section 20.1.4.
+
+Next, in Section 20.2, we introduced the typical states that a transaction passes
+through during execution, and discussed several concepts that are used in recovery
+and concurrency control methods. The system log (Section 20.2.2) keeps track of
+database accesses, and the system uses this information to recover from failures. A
+transaction can succeed and reach its commit point, or it can fail and has to be
+rolled back. A committed transaction (Section 20.2.3) has its changes permanently
+recorded in the database. In Section 20.3, we presented an overview of the desirable
+properties of transactions—atomicity, consistency preservation, isolation, and
+durability—which are often referred to as the ACID properties.
+
+Then we defined a schedule (or history) as an execution sequence of the opera-
+tions of several transactions with interleaving in Section 20.4.1. We character-
+ized schedules in terms of their recoverability in Section 20.4.2. Recoverable
+schedules ensure that, once a transaction commits, it never needs to be undone.
+Cascadeless schedules add an additional condition to ensure that no aborted
+transaction requires the cascading abort of other transactions. Strict schedules
+provide an even stronger condition that allows a simple recovery scheme con-
+sisting of restoring the old values of items that have been changed by an aborted
+transaction.
+
+Then in Section 20.5 we defined the equivalence of schedules and saw that a serial-
+izable schedule is equivalent to some serial schedule. We defined the concepts of
+conflict equivalence and view equivalence. A serializable schedule is considered
+correct. We presented an algorithm for testing the (conflict) serializability of a
+schedule in Section 20.5.2. We discussed why testing for serializability is impracti-
+cal in a real system, although it can be used to define and verify concurrency con-
+trol protocols in Section 20.5.3, and we briefly mentioned less restrictive definitions
+of schedule equivalence in Sections 20.5.4 and 20.5.5. Finally, in Section 20.6, we
+gave a brief overview of how transaction concepts are used in practice within SQL,
+and we introduced the concept of snapshot isolation, which is used in several com-
+mercial DBMSs.

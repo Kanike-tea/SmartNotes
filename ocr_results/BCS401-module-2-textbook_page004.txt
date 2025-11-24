@@ -1,0 +1,47 @@
+3.4 Exhaustive Search 119
+
+similar problems in less than exponential time. Alternatively, we can use one of
+many approximation algorithms, such as those described in Section 12.3.
+
+Assignment Problem
+
+In our third example of a problem that can be solved by exhaustive search, there
+are n people who need to be assigned to execute n jobs, one person per job. (That
+is, each person is assigned to exactly one job and each job is assigned to exactly
+one person.) The cost that would accrue if the ith person is assigned to the jth job
+is a known quantity C[i, j] for each pair i, j = 1, 2, .. ., 2. The problem is to find
+an assignment with the minimum total cost.
+
+A small instance of this problem follows, with the table entries representing
+the assignment costs C[i, j]:
+
+Job1 Job2 Job3 Job4
+
+Person 1 9 2 7 8
+Person2 6 4 3 7
+Person 3 5 8 1 8
+Person 4 7 6 9 4
+
+It is easy to see that an instance of the assignment problem is completely
+specified by its cost matrix C. In terms of this matrix, the problem is to select one
+element in each row of the matrix so that all selected elements are in different
+columns and the total sum of the selected elements is the smallest possible. Note
+that no obvious strategy for finding a solution works here. For example, we cannot
+select the smallest element in each row, because the smallest elements may happen
+to be in the same column. In fact, the smallest element in the entire matrix need
+not be a component of an optimal solution. Thus, opting for the exhaustive search
+may appear as an unavoidable evil.
+
+We can describe feasible solutions to the assignment problem as n-tuples
+(it, +++ Jn) in which the ith component, i = 1, ..., n, indicates the column of the
+element selected in the ith row (i.e., the job number assigned to the ith person).
+For example, for the cost matrix above, (2, 3, 4, 1) indicates the assignment of
+Person 1 to Job 2, Person 2 to Job 3, Person 3 to Job 4, and Person 4 to Job 1.
+The requirements of the assignment problem imply that there is a one-to-one
+correspondence between feasible assignments and permutations of the first n
+integers. Therefore, the exhaustive-search approach to the assignment problem
+would require generating all the permutations of integers 1, 2,..., n, computing
+the total cost of each assignment by summing up the corresponding elements of
+the cost matrix, and finally selecting the one with the smallest sum. A few first
+iterations of applying this algorithm to the instance given above are shown in
+Figure 3.9; you are asked to complete it in the exercises.

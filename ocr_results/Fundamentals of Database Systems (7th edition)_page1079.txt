@@ -1,0 +1,52 @@
+27.7 Web Search and Analysis
+
+Web-based applications and services (such as click-through monitoring,
+eyeball tracking, explicit or implicit user profile learning, and dynamic ser-
+vice composition using Web APIs) are used for service adaptation and per-
+sonalization. A personalization engine typically has algorithms that make
+use of the user’s personalization information—collected by various tools—
+to generate user-specific search results. The Web has become a rich land-
+scape where people leave traces as they navigate, click, like, comment, and
+buy things in this virtual space. This information is of high commercial
+value, and many companies in all kinds of consumer goods mine and sell
+this information for customer targeting.
+
+= Finding information of social value. With more than 1 billion downloads
+of the Facebook app on various Android devices, one can imagine how pop-
+ular the various social networks have become in recent times. People build
+what is called social capital in these virtual worlds such as Twitter and Face-
+book. Social capital refers to features of social organizations, such as net-
+works, norms, and social trust, that facilitate coordination and cooperation
+for mutual benefit. Social scientists are studying social capital and how to
+harness this rich resource to benefit society in various ways. We briefly
+touch upon aspects of social search in Section 27.8.2.
+
+Web analysis can be further classified into three categories: Web structure analysis,
+which discovers knowledge from hyperlinks that represent the structure of the Web;
+Web content analysis, which deals with extracting useful information/knowledge
+from Web page contents; and Web usage analysis, which mines user access patterns
+from usage logs that record the activity of every user.
+
+27.7.2 Web Structure Analysis
+
+The World Wide Web is a huge corpus of information, but locating resources that
+are both high quality and relevant to the needs of the user is very difficult. The set of
+Web pages taken as a whole has almost no unifying structure, with variability in
+authoring style and content; this variability makes it difficult to precisely locate
+needed information. Index-based search engines have been one of the primary
+tools by which users search for information on the Web. Web search engines crawl
+the Web and create an index to the Web for searching purposes. When a user spec-
+ifies her need for information by supplying keywords, these Web search engines
+query their repository of indexes and produce links or URLs with abbreviated con-
+tent as search results. There may be thousands of pages relevant to a particular
+query. A problem arises when only a few most relevant results are returned to the
+user. Our discussions of querying and relevance-based ranking in IR systems in (see
+Sections 27.2 and 27.3) is applicable to Web search engines. These ranking algo-
+rithms explore the link structure of the Web.
+
+Web pages, unlike standard text collections, contain connections to other Web
+pages or documents (via the use of hyperlinks), allowing users to browse from page
+to page. A hyperlink has two components: a destination page and an anchor text
+that describes the link. For example, a person can link to the Yahoo Web site on her
+
+1049

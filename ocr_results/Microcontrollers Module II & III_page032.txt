@@ -1,0 +1,47 @@
+Microcontrollers — BCS402
+
+Efficient C Programming
+
+1. Overview of C Compilers and Optimization
+
+Optimizing code takes time and reduces source code readability. Usually, it’s only worth
+optimizing functions that are frequently executed and important for performance. To find the
+frequently executed functions a performance profiling tool, found in most ARM simulators is
+
+used.
+
+C compilers have to translate C function literally into assembler so that it works for all
+possible inputs. In practice, many of the input combinations are not possible or won’t occur.
+Let’s start by looking at an example of the problems the compiler faces. The memelr function
+
+clears N bytes of memory at address data.
+
+void memclr(char *data, int N)
+{
+for (; N>O; N--)
+{
+*data=0;
+datat ;
+}
+}
+
+No matter how advanced the compiler, it does not know whether N can be 0 on input or not.
+Therefore the compiler needs to test for this case explicitly before the first iteration of the
+
+loop.
+
+The compiler doesn’t know whether the data array pointer is four-byte aligned or not. If it is
+four-byte aligned, then the compiler can clear four bytes at a time using an int store rather
+
+than a
+
+Char store. Nor does it know whether N is a multiple of four or not. If N is a multiple of four,
+then the compiler can repeat the loop body four times or store four bytes at a time using an int
+
+store.
+
+The compiler must be conservative and assume all possible values for N and all possible
+
+alignments for data.
+
+Dept. of ECE, GSSSIETW Page 33

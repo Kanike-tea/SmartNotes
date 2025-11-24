@@ -1,0 +1,27 @@
+4,
+er
+
+>The given graph has 6 vertices. Therefore, a minimal spanning tree thereof has 5 eg ese
+first prepare the following table of weights of edges:
+
+Now, we examine the A-row and pick the smallest entry 2 which corresponds to two edges
+{A, B} and {A, F}. Let us choose the first of these, namely {A, B}. By examining the A- and B.
+tows, we find that the vertex other than A and B which corresponds to the smallest entry is C.
+Let us connect C to {A, B} at B.
+
+Next, we examine the C-row and pick the smallest entry 1 which corresponds to edges
+{C, B} and {C, F}. Since the edge {C, B} has already been chosen, let us choose the edge {C, F}.
+By examining the C- and F- rows, we find that the vertex other than C and F which corresponds
+to the smallest entry and which does not produce a cycle is D or E. Let us choose D and connect
+Dto{C, F} at C. .
+
+The construction at this stage shows that the edges {A, B), {B,C}, {C, F}, {C, D} belong toa
+minimal tree. The vertex left over is E which is Joined to B, C, D, F in the given graph. Among
+the edges that contain E, the edges EC and ED‘have equal minimum weights, 3. Therefore,
+we can include either of these edges in the minimal spanning tree.
+
+Thus, for the given graph we get two minimal spanning trees shown in Figures 4.16(a), (0)
+
+Figure 4.16
+
+We note that the weight of each of the above trees is 10 units

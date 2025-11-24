@@ -1,0 +1,47 @@
+Explain directoryless dynamic hashing ( Appeared in Dec. 2016/Jan 2017)- 5 Marks
+Directory less Dynamic hashing
+
+Basic Idea:
+¢ Pages are split when overflows occur — but not necessarily the page with the overflow.
+
+¢ Directory avoided in Linear hashing by using overflow pages. (chaining approach)
+¢ Splitting occurs in turn, in a round robin fashion.one by one from the first bucket to
+the last bucket.
+¢ Use a family of hash functions hO, h1, h2, ...
+
+* Each function’s range is twice that of its predecessor.
+¢ When all the pages at one level (the current hash function) have been split, a new
+level is applied.
+¢ Insert in Order using linear hashing: 1,7,3,8,12,4,11,2,10
+
+¢ After insertion till 12:
+
+s => 0}
+
+rs)
+
+r
+
+3173]
+iy Sea 7
+
+2 |_ 37]
+
+U
+
+—h
+
+* When 4 inserted overflow occurred. So we split the bucket (no matter it is full or partially
+empty). And increment pointer.
+
+* So we split bucket 0 and rehashed all keys in it. Placed 3 to new bucket as hl (3 mod 6 = 3 ) and (12
+mod 6=0 ). Then 11 and 2 are inserted. And now overflow. s is pointing to bucket 1, hence split bucket 1
+by re- hashing it.
+
+ee | ~ || Tee 4
+- .
+2 8] lls 2
+\ |
+3 ~ 3
+
+Page 10

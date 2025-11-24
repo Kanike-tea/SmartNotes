@@ -1,0 +1,50 @@
+16.8 Hashing Techniques 581
+
+. Data File Buckets
+us internal directory node
+
+LAFZI leat directory node
+
+Directory
+
+Figure 16.12
+Structure of the dynamic hashing scheme.
+
+Bucket for records
+whose hash values
+start with 000
+
+Bucket for records
+whose hash values
+start with 001
+
+Bucket for records
+whose hash values
+start with 01
+
+Bucket for records
+whose hash values
+start with 10
+
+Bucket for records
+whose hash values
+start with 110
+
+Bucket for records
+whose hash values
+start with 111
+
+based on hj will hash to either bucket 0 or bucket M based on hj; this is necessary
+for linear hashing to work.
+
+As further collisions lead to overflow records, additional buckets are split in the
+linear order 1, 2, 3, ... . If enough overflows occur, all the original file buckets 0, 1,
+..., M-—1 will have been split, so the file now has 2M instead of M buckets, and all
+buckets use the hash function h;,,. Hence, the records in overflow are eventually
+redistributed into regular buckets, using the function h;,, via a delayed split of their
+buckets. There is no directory; only a value n—which is initially set to 0 and is
+incremented by 1 whenever a split occurs—is needed to determine which buckets
+have been split. To retrieve a record with hash key value K, first apply the function
+h; to K; if h,(K) < n, then apply the function h;,; on K because the bucket is already
+split. Initially, n = 0, indicating that the function h; applies to all buckets; n grows
+linearly as buckets are split.

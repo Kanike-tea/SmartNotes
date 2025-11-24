@@ -1,0 +1,39 @@
+Digital Design &Computer Organization(BCS302) Module -4
+
+1) Address Decoder:
+
+o Its function is to decode the address, in-order to recognize the input device
+whose address isavailable on the unidirectional address bus.
+
+o The recognition of input device is done first, and then the control and data
+registers becomes active.
+
+o The unidirectional address bus of system bus is connected to input of the
+address decoder asshown in figure
+
+2) Control Circuit:
+o The control bus of system bus is connected to control circuit as shown in the
+fig.
+o The processor sends commands to the I/O system through the control bus.
+o It controls the read write operations with respect to I/O device.
+
+3) Status & Data register:
+
+o It specifies type of operation (either read or write operation) to be performed
+on I/O device. Itspecifies the position of operation.
+
+4) Data Register:
+
+o The data bus carries the data from the I/O devices to or from the processor.
+The data bus isconnected to the data/ status register.
+o The data register stores the data, read from input device or the data, to be
+written into outputdevice. There are 2 types:
+DATAIN - Input-buffer associated with keyboard.
+DATAOUT -Output data buffer of a display/printer.
+
+Data buffering is an essential task of an I/O interface. Data transfer rates of
+processor and memory are high, when compared with the I/O devices, hence the
+data are buffered at the I/O interface circuit and then forwarded to output device,
+or forwarded to processor in case of input devices.
+
+Dr.Ajay V G, Dept. of CSE 5

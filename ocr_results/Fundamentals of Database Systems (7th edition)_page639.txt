@@ -1,0 +1,52 @@
+17.1 Types of Single-Level Ordered Indexes
+
+17.1.3 Secondary Indexes
+
+A secondary index provides a secondary means of accessing a data file for which
+some primary access already exists. The data file records could be ordered, unor-
+dered, or hashed. The secondary index may be created on a field that is a candidate
+key and has a unique value in every record, or on a nonkey field with duplicate
+values. The index is again an ordered file with two fields. The first field is of the
+same data type as some nonordering field of the data file that is an indexing field.
+The second field is either a block pointer or a record pointer. Many secondary
+indexes (and hence, indexing fields) can be created for the same file—each repre-
+sents an additional means of accessing that file based on some specific field.
+
+First we consider a secondary index access structure on a key (unique) field that has a
+distinct value for every record. Such a field is sometimes called a secondary key; in the
+relational model, this would correspond to any UNIQUE key attribute or to the primary
+key attribute of a table. In this case there is one index entry for each record in the data
+file, which contains the value of the field for the record and a pointer either to the block
+in which the record is stored or to the record itself. Hence, such an index is dense.
+
+Again we refer to the two field values of index entry i as <K(i), P(i)>. The entries are
+ordered by value of K(i), so we can perform a binary search. Because the records of
+the data file are not physically ordered by values of the secondary key field, we cannot
+use block anchors. That is why an index entry is created for each record in the data
+file, rather than for each block, as in the case of a primary index. Figure 17.4 illustrates
+a secondary index in which the pointers P(i) in the index entries are block pointers,
+not record pointers. Once the appropriate disk block is transferred to a main memory
+buffer, a search for the desired record within the block can be carried out.
+
+A secondary index usually needs more storage space and longer search time than
+does a primary index, because of its larger number of entries. However, the improve-
+ment in search time for an arbitrary record is much greater for a secondary index
+than for a primary index, since we would have to do a linear search on the data file
+if the secondary index did not exist. For a primary index, we could still use a binary
+search on the main file, even if the index did not exist. Example 3 illustrates the
+improvement in number of blocks accessed.
+
+Example 3. Consider the file of Example 1 with r = 300,000 fixed-length records
+of size R = 100 bytes stored on a disk with block size B = 4,096 bytes. The file has
+b = 7,500 blocks, as calculated in Example 1. Suppose we want to search for a record
+with a specific value for the secondary key—a nonordering key field of the file that is
+V =9 bytes long. Without the secondary index, to do a linear search on the file would
+require b/2 = 7,500/2 = 3,750 block accesses on the average. Suppose that we con-
+struct a secondary index on that nonordering key field of the file. As in Example 1, a
+block pointer is P = 6 bytes long, so each index entry is R; = (9 + 6) = 15 bytes, and the
+blocking factor for the index is bfr; = L(BIR)J = |(4,096/15) | = 273 index entries per
+block. In a dense secondary index such as this, the total number of index entries r; is
+equal to the number of records in the data file, which is 300,000. The number of blocks
+needed for the index is hence b; =| (r;/bfr;) | =[(300,000/273) |= 1,099 blocks.
+
+609

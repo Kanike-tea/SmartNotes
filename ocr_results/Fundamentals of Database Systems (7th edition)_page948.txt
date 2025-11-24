@@ -1,0 +1,52 @@
+918
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+of data in billions of Web pages and with the data spread over thousands of
+machines, the execution task was nontrivial. Issues of program control and data
+management, data distribution, parallelization of computation, and handling of
+failures became critically important.
+
+The MapReduce programming model and runtime environment was designed to
+cope with the above complexity. The abstraction is inspired by the map and reduce
+primitives present in LISP and many other functional languages. An underlying
+model of data is assumed; this model treats an object of interest in the form of a
+unique key that has associated content or value. This is the key-value pair. Surpris-
+ingly, many computations can be expressed as applying a map operation to each
+logical “record” that produces a set of intermediate key-value pairs and then apply-
+ing a reduce operation to all the values that shared the same key (the purpose of
+sharing is to combine the derived data). This model allows the infrastructure to
+parallelize large computations easily and to use re-execution as the primary mecha-
+nism for fault tolerance. The idea of providing a restricted programming model so
+that the runtime can parallelize computations automatically is not new. MapReduce
+is the enhancement of those existing ideas. As it is understood today, MapReduce is
+a fault-tolerant implementation and a runtime environment that scales to thousands
+of processors. The programmer is spared the worry of handling failures. In sub-
+sequent sections, we will abbreviate MapReduce as MR.
+
+The MapReduce Programming Model In the following description, we use the
+formalism and description as it was originally described by Dean and Ghemawat
+(2010).!* The map and reduce functions have the following general form:
+
+map[K1,V1] which is (key, value) : List{K2,V2] and
+reduce(K2, List[V2]) : List{K3,V3]
+
+Map is a generic function that takes a key of type K1 and a value of type V1 and
+returns a list of key-value pairs of type K2 and V2. Reduce is a generic function that
+takes a key of type K2 and a list of values of type V2 and returns pairs of type
+(K3,V3). In general, the types K1, K2, K3, etc., are different, with the only require-
+ment that the output types from the Map function must match the input type of the
+Reduce function.
+
+The basic execution workflow of MapReduce is shown in Figure 25.1.
+
+Assume that we have a document and we want to make a list of words in it with
+their corresponding frequencies. This ubiquitous word count example quoted
+directly from Dean and Ghemawat (2004) above goes as follows in pseudocode:
+Map (String key, String value):
+for each word w in value Emitintermediate (w, “1”);
+
+Here key is the document name, and value is the text content of the document.
+
+'2Jeffrey Dean and Sanjay Ghemawat, “MapReduce: Simplified Data Processing on Large Clusters’ in
+OSDI (2004).

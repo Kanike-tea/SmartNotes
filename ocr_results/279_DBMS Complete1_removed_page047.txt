@@ -1,0 +1,45 @@
+4. Leaf nodes are still required to be half full.
+5. Insertion and deletion are handled in the same way as insertion and deletion of entries in a
+
+B+-tree index.
+
+ACE K||[M
+
+(AA)] (88) ial
+
+B-Tree Index Files
+1. Similar to B+-tree, but B-tree allows search-key values to appear only once; eliminates
+redundant storage of search keys.
+2. Search keys in non leaf nodes appear nowhere else in the B-tree; an additional pointer field
+for each search key in a non leaf node must be included.
+3. Generalized B-tree leaf node
+
+ALK IP |. Pua {Kua | Pn
+
+(Ns)
+
+Pry Br Ki | Pp | Be | Ke ~] Pmt | Bret | Ket | Pn
+
+(b)
+4. Non leaf node — pointers Bi are the bucket or file record pointers.
+
+B-Tree Index File Example:
+
+[Pom pon]
+
+Downtown/ Redwood
+
+a |
+
+(oe — fe [Po
+
+Brighton Clearview Mianus —_Perryridge Round Hill
+bucket bucket bucket bucket bucket
+
+Advantages of B-Tree indices:
+> May use less tree nodes than a corresponding B+-Tree.
+> Sometimes possible to find search-key value before reaching leaf node.
+Disadvantages of B-Tree indices:
+> Only small fraction of all search-key values are found early
+> Non-leaf nodes are larger, so fan-out is reduced. Thus, B-Trees typically have
+greater depth than corresponding B+-Tree

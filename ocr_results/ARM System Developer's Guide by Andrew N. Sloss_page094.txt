@@ -1,0 +1,57 @@
+Table 3.14
+
+EXAMPLE
+
+3.32
+
+3.7 ARMv5E Extensions
+
+ADDS v0, rl, r2
+
+POST cpsr = NzcVqiFt_SVC
+10 = Oxefffffff (negative)
+
+81
+
+In the example, registers r1 and r2 contain positive numbers. Register r2 is equal to
+Ox7ffFfFFF, which is the maximum positive value you can store in 32 bits. In a per-
+fect world adding these numbers together would result in a large positive number. Instead
+
+the value becomes negative and the overflow flag, V, is set.
+
+In contrast, using the ARMv5E instructions you can saturate the result—once the highest
+number is exceeded the results remain at the maximum value of 0x7 fffffff. This avoids
+the requirement for any additional code to check for possible overflows. Table 3.14 lists all
+
+the ARMv5E saturation instructions.
+Saturation instructions.
+
+Instruction Saturated calculation
+
+QADD Rd=Rn+Rm
+QDADD Rd = Rn + (Rm*2)
+QSUB Rd=Rn— Rm
+
+QDSUB nn — (Rm*2)
+
+This example shows the same data being passed into the QADD instruction.
+
+PRE cpsr = nzcvqiFt_SVC
+r0 = 0x00000000
+rl = 0x70000000 (positive)
+r2 = Ox7fffffff (positive)
+
+QADD =r, ri, r2
+
+POST cpsr = nzcvQiFt_SVC
+vO = Ox7ffffffT
+
+You will notice that the saturated number is returned in register r0. Also the Q bit (bit 27
+of the cpsr) has been set, indicating saturation has occurred. The Q flag is sticky and will
+
+remain set until explicitly cleared.
+
+3.7.3. ARMV5E MULTIPLY INSTRUCTIONS
+
+Table 3.15 shows a complete list of the ARMv5E multiply instructions. In the table,
+x and y select which 16 bits of a 32-bit register are used for the first and second

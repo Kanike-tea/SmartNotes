@@ -1,0 +1,52 @@
+786
+
+Chapter 21 Concurrency Control Techniques
+
+4. A transaction T will not issue a read_lock(X) operation if it already holds a
+read (shared) lock or a write (exclusive) lock on item X. This rule may be
+relaxed for downgrading of locks, as we discuss shortly.
+
+5. A transaction T will not issue a write_lock(X) operation if it already holds a
+read (shared) lock or write (exclusive) lock on item X. This rule may also be
+relaxed for upgrading of locks, as we discuss shortly.
+
+6. A transaction T will not issue an unlock(X) operation unless it already holds
+a read (shared) lock or a write (exclusive) lock on item X.
+
+Conversion (Upgrading, Downgrading) of Locks. It is desirable to relax con-
+ditions 4 and 5 in the preceding list in order to allow lock conversion; that is, a
+transaction that already holds a lock on item X is allowed under certain conditions
+to convert the lock from one locked state to another. For example, it is possible for
+a transaction T to issue a read_lock(X) and then later to upgrade the lock by issuing
+a write_lock(X) operation. If T is the only transaction holding a read lock on X at the
+time it issues the write_lock(X) operation, the lock can be upgraded; otherwise, the
+transaction must wait. It is also possible for a transaction T to issue a write_lock(X)
+and then later to downgrade the lock by issuing a read_lock(X) operation. When
+upgrading and downgrading of locks is used, the lock table must include transac-
+tion identifiers in the record structure for each lock (in the locking_transaction(s)
+field) to store the information on which transactions hold locks on the item. The
+descriptions of the read_lock(X) and write_lock(X) operations in Figure 21.2 must be
+changed appropriately to allow for lock upgrading and downgrading. We leave this
+as an exercise for the reader.
+
+Using binary locks or read/write locks in transactions, as described earlier, does not
+guarantee serializability of schedules on its own. Figure 21.3 shows an example
+where the preceding locking rules are followed but a nonserializable schedule may
+result. This is because in Figure 21.3(a) the items Y in T; and X in T, were unlocked
+too early. This allows a schedule such as the one shown in Figure 21.3(c) to occur,
+which is not a serializable schedule and hence gives incorrect results. To guarantee
+serializability, we must follow an additional protocol concerning the positioning of
+locking and unlocking operations in every transaction. The best-known protocol,
+two-phase locking, is described in the next section.
+
+21.1.2 Guaranteeing Serializability by Two-Phase Locking
+
+A transaction is said to follow the two-phase locking protocol if all locking opera-
+tions (read_lock, write_lock) precede the first unlock operation in the transaction.*
+Such a transaction can be divided into two phases: an expanding or growing
+(first) phase, during which new locks on items can be acquired but none can be
+released; and a shrinking (second) phase, during which existing locks can be
+released but no new locks can be acquired. If lock conversion is allowed, then
+upgrading of locks (from read-locked to write-locked) must be done during the
+
+‘This is unrelated to the two-phase commit protocol for recovery in distributed databases (see Chapter 28).

@@ -1,0 +1,70 @@
+Data Structures and Applications/BCS304 Module-1
+
+Storing Strings
+Strings are stored in three types of structures
+1. Fixed Length structure
+2. Variable Length structure with fixed maximums
+3. Linked structures
+
+1. Fixed length Storage, record oriented: In this structure each line of text is viewed as a record
+where all records have the same length or have the same number of characters
+
+Example: Assuming our record has a maximum of 12 characters per record the strings are stored as
+follows
+
+0| 7 >DIA|TIA
+
+1 | +S |T/R|U/C|T/U|R/E|S
+2) + +»AIN{D
+
+3 | +H AIPI[PILIL IIT |C{/A|TI|I JOIN
+4| >>
+
+5/ >
+
+Advantages:
+e Ease of accessing data from any given record
+e Ease of updating data in any given record( provided the length of the new data does not exceed
+the record length
+
+Disadvantages
+e Time is wasted reading an entire record if most of the storage consist of in essential blank
+spaces
+
+e Certain records may require more space or data than available
+e When the correction consist of more or fewer characters than original text, updation requires
+the entire record to be changed( the disadvantage can be resolved by using array of pointers)
+
+2. Variable Length storage with fixed maximum: The storage of variable length strings in memory
+cells wth fixed lengths can be done in two ways
+
+e Use a marker such as ($) to mark the end of the string
+
+e List the length of the string as an additional field in the pointer array
+
+Example :
+
+Pat abe)
+UZ) 4p >
+NO) A}4
+cyeic}>
+als
+|
+aq
+Rn
+res]
+n
+Fi
+
+tity
+
+URWNRO
+N
+n
+
+3. Linked storage: Linked list is an ordered sequence of memory cells called nodes, where each node
+stores two information the data and also stores the address of the next node in the list. Strings may be
+stored in linked list as each node storing one character or a fixed number of characters and a link
+containing the address of the node containing the next group of characters.
+
+SUNIL G L, Department of CSE(DS), RNSIT, Bengaluru Page 26

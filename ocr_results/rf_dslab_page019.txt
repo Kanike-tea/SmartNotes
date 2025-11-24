@@ -1,0 +1,46 @@
+Program (b):
+
+#include<stdio.h>
+#include<math.h>
+int nx;
+void tower(int n,char a,char b,char c)
+{
+
+if(m==1)
+
+printf("Move disk from %c to %c\n" a,c);
+i
+tower(n-1 ,a,c,b);
+printf("Move disk from %c to Yc\n" a,c);
+tower(n-1,b,a,c);
+
+void main()
+
+{
+
+printf("Enter number of disks\n");
+scanf("%d" ,&n);
+
+tower(n,'A','B''C’);
+
+x=pow(2,n)-1;
+
+printf("Number of moves = %d\n" x);
+
+}
+
+Output:
+
+Enter the number of disks
+3
+
+Move disk from A to C
+Move disk from A to B
+Move disk from C to B
+Move disk from A to C
+Move disk from B to A
+Move disk from B to C
+Move disk from A to C
+Number of moves= 7
+
+19

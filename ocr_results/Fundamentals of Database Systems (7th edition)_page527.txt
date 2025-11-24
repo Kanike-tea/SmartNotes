@@ -1,0 +1,78 @@
+14.7.
+
+14.8.
+
+14.9.
+
+14.10.
+
+14.11.
+
+14.12.
+
+14.13.
+
+14.14,
+
+14.15.
+14.16.
+14.17.
+
+14.18.
+
+What does the term unnormalized relation refer to? How did the normal forms
+develop historically from first normal form up to Boyce-Codd normal form?
+
+Define first, second, and third normal forms when only primary keys are
+considered. How do the general definitions of 2NF and 3NF, which consider
+all keys of a relation, differ from those that consider only primary keys?
+
+What undesirable dependencies are avoided when a relation is in 2NF?
+What undesirable dependencies are avoided when a relation is in 3NF?
+
+In what way do the generalized definitions of 2NF and 3NF extend the defi-
+nitions beyond primary keys?
+
+Define Boyce-Codd normal form. How does it differ from 3NF? Why is it
+considered a stronger form of 3NF?
+
+What is multivalued dependency? When does it arise?
+
+Does a relation with two or more columns always have an MVD? Show with
+an example.
+
+Define fourth normal form. When is it violated? When is it typically applicable?
+Define join dependency and fifth normal form.
+Why is 5NF also called project-join normal form (PJNF)?
+
+Why do practical database designs typically aim for BCNF and not aim for
+higher normal forms?
+
+Exercises
+
+14.19.
+
+Suppose that we have the following requirements for a university database
+
+that is used to keep track of students’ transcripts:
+
+a. The university keeps track of each student’s name (Sname), student num-
+ber (Snum), Social Security number (Ssn), current address (Sc_addr) and
+phone (Sc_phone), permanent address (Sp_addr) and phone (Sp_phone),
+birth date (Bdate), sex (Sex), class (Class) (‘freshman’, ‘sophomore’, ... ,
+“‘graduate’), major department (Major_code), minor department
+(Minor_code) (if any), and degree program (Prog) (‘b.a.’, ‘b.s.’, ... , ‘ph.d.’).
+Both Ssn and student number have unique values for each student.
+
+b. Each department is described by a name (Dname), department code
+(Dcode), office number (Doffice), office phone (Dphone), and college
+(Dcollege). Both name and code have unique values for each department.
+
+c. Each course has a course name (Cname), description (Cdesc), course
+number (Cnum), number of semester hours (Credit), level (Level), and
+offering department (Cdept). The course number is unique for each
+course.
+
+Exercises
+
+497

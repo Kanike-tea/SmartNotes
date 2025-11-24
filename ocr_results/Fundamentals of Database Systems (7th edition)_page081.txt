@@ -1,0 +1,51 @@
+2.6 Classification of Database Management Systems
+
+accounts for the front-end modules (clients) communicating with a number of
+back-end databases (servers).
+
+Advances in encryption and decryption technology make it safer to transfer sensi-
+tive data from server to client in encrypted form, where it will be decrypted. The
+latter can be done by the hardware or by advanced software. This technology gives
+higher levels of data security, but the network security issues remain a major con-
+cern. Various technologies for data compression also help to transfer large amounts
+of data from servers to clients over wired and wireless networks.
+
+2.6 Classification of Database
+Management Systems
+
+Several criteria can be used to classify DBMSs. The first is the data model on
+which the DBMS is based. The main data model used in many current commercial
+DBMSs is the relational data model, and the systems based on this model are
+known as SQL systems. The object data model has been implemented in some
+commercial systems but has not had widespread use. Recently, so-called big data
+systems, also known as key-value storage systems and NOSQL systems, use vari-
+ous data models: document-based, graph-based, column-based, and key-value
+data models. Many legacy applications still run on database systems based on the
+hierarchical and network data models.
+
+The relational DBMSs are evolving continuously, and, in particular, have been
+incorporating many of the concepts that were developed in object databases. This
+has led to a new class of DBMSs called object-relational DBMSs. We can catego-
+rize DBMSs based on the data model: relational, object, object-relational, NOSQL,
+key-value, hierarchical, network, and other.
+
+Some experimental DBMSs are based on the XML (eXtended Markup Language)
+model, which is a tree-structured data model. These have been called native XML
+DBMSs. Several commercial relational DBMSs have added XML interfaces and
+storage to their products.
+
+The second criterion used to classify DBMSs is the number of users supported by
+the system. Single-user systems support only one user at a time and are mostly
+used with PCs. Multiuser systems, which include the majority of DBMSs, support
+concurrent multiple users.
+
+The third criterion is the number of sites over which the database is distributed. A
+DBMS is centralized if the data is stored at a single computer site. A centralized
+DBMS can support multiple users, but the DBMS and the database reside totally at
+a single computer site. A distributed DBMS (DDBMS) can have the actual database
+and DBMS software distributed over many sites connected by a computer network.
+Big data systems are often massively distributed, with hundreds of sites. The data is
+often replicated on multiple sites so that failure of a site will not make some data
+unavailable.
+
+51

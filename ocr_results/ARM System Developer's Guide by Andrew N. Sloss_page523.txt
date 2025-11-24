@@ -1,0 +1,51 @@
+510 Chapter 14 Memory Management Units
+
+Exampce Here isa small C routine that invalidates the TLB.
+14.2
+void flushTLB(void)
+{
+unsigned int c8format = 0;
+__asm{MCR p15, 0, c8format, c8, c7, 0} /* flush TLB */
+}
+
+14.5.4 TLB LocKDOWN
+
+The ARM920T, ARM922T, ARM926EJ-S, ARM1022E, and ARM1026E)J-S support locking
+translations in the TLB. If a line is locked in the TLB, it remains in the TLB when a TLB
+flush command is issued. We list the available lockdown commands for the various ARM.
+cores in Table 14.4. The format of the core register Rd used in the MCR instruction that locks
+data in the TLB in shown in Figure 14.11.
+
+14.6 DOMAINS AND MEMORY ACCESS PERMISSION
+
+There are two different controls to manage a task’s access permission to memory: The
+primary control is the domain, and a secondary control is the access permission set in the
+page tables.
+
+Domains control basic access to virtual memory by isolating one area of memory from
+another when sharing a common virtual memory map. There are 16 different domains that
+
+Table 14.4 Commands to access the TLB lockdown registers.
+
+Command — MCRinstruction Value in Rd Core support
+
+Read DTLB MRC p15,0,Rd,c10,c0,0 TLBlockdown ARM920T, ARM922T, ARM926EJ-S,
+
+lockdown ARM1022E, ARM1026EJ-S, StrongARM,
+XScale
+
+Write DTLB MCR p15,0,Rd,cl0,c0,0 TLBlockdown ARM920T, ARM922T, ARM926EJ-S,
+
+lockdown ARM1022E, ARM1026EJ-S, StrongARM,
+XScale
+
+ReadITLB MRC p15,0,Rd,c10,c0,1 TLBlockdown ARM920T, ARM922T, ARM926EJ-S,
+
+lockdown ARM1022E, ARM1026EJ-S, StrongARM,
+XScale
+
+WriteITLB MCR p15,0,Rd,cl0,c0,1 TLBlockdown ARM920T, ARM922T,ARM926EJ-S,
+
+lockdown ARM1022E,ARM1026EJ-S, StrongARM,
+
+XScale

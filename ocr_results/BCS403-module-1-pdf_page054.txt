@@ -1,0 +1,34 @@
+Database Management System [BCS403]
+
+3.8 Specialization and Generalization
+
+3.8.1 Specialization
+
+For example, the set of subclasses {SECRETARY, ENGINEER, TECHNICIAN} is a
+specialization of the superclass EMPLOYEE that distinguishes among employee entities based on
+the job type of each employee entity. We may have several specializations of the:same entity type
+based on different distinguishing characteristics. For example, another specialization of the
+EMPLOYEE entity type may yield the set of subclasses {SALARIED EMPLOYEE,
+HOURLY_EMPLOYEE}; this specialization distinguishes among employees based on the method
+
+of pay.
+Fname > C Minit > Clname
+Name Birth _date> Gaddress >
+____ etovee
+Y
+ping speed) gad) Erg bps> Z, Pay sea
+i sci
+SECRETARY,| [TECHNICIAN || ENGINEER) |[ MANAGER ‘Salary [HOURLY_EMPLOYEE
+SALARIED_EMPLOYEE
+MANAGES) BELONGS TO
+PROJECT TRADE_UNION
+
+Figure 3.8.1(a): EER diagram notation to represent subclasses and specialization.
+Figure 3.8.1(a) shows how we represent a specialization diagrammatically in an EER diagram. The
+subclasses that define a specialization are attached by lines to a circle that represents the
+specialization, which is connected in turn to the superclass. The subset symbol on each line
+connecting a subclass to the circle indicates the direction of the superclass/subclass relationship.5
+
+Attributes that apply only to entities of a particular subclass—such as TypingSpeed of
+
+https://vtucode.in Page 55

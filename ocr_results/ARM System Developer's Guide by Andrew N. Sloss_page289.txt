@@ -1,0 +1,51 @@
+276 Chapter 8 Digital Signal Processing
+
+EXAMPLE
+
+8.5
+
+= The multiply operations do not early terminate. Therefore you should only use MUL and
+MLA for multiplying 32-bit integers. For 16-bit values use SMULxy and SMLAxy.
+
+= Multiply is the same speed as multiply accumulate. Try to use the SMLAxy instruction
+rather than a separate multiply and add.
+
+This example shows the dot-product for the ARM9E. It assumes that the ARM is configured
+for a little-endian memory system. If the ARM is configured for a big-endian memory
+system, then you need to swap the B and T instruction suffixes. You can use macros to do
+this for you automatically as in Example 8.11. We use the naming convention x_10 to mean
+that the top 16 bits of the register holds x; and the bottom 16 bits xo.
+
+x RN O input array x{]
+
+RN 1; input array c[]
+N RN 2; number of samples (a multiple of 8)
+acc RN 3; accumulator
+x10 RN4 — ; packed elements from array x(]
+x32 RNS
+c_10  RN9 — ; packed elements from array c[]
+c_32 RN 10
+
+3 int dot_léby16 arm9e(short *x, short *c, unsigned N)
+dot_16by16_arme
+STMFD sp!, {r4-r5, r9-r10, Ir}
+MOV acc, #0
+LOR x10, [x], #4
+LOR c10, [c], #4
+loop_9e ; accumulate 8 products
+SUBS N,N, #8
+LOR x32, [x], #4
+SMLABB acc, x_10, c_10, acc
+LOR 32, [c], #4
+SMLATT acc, x_10, c_10, acc
+LOR x10, [x], #4
+SMLABB acc, x_32, c_32, acc
+LOR c10, [c], #4
+SMLATT acc, x_32, c 32, acc
+LOR x32, [x], #4
+SMLABB acc, x_10, c_10, acc
+LOR 32, [cl, #4
+SMLATT acc, x_10, c_10, acc
+LORGT x10, [x], #4
+SMLABB acc, x_32, c_32, acc
+LORGT c_10, [c], #4

@@ -1,0 +1,52 @@
+36 Chapter 2. ARM Processor Fundamentals
+
+ARM core )
+
+Logic and control )
+
+AMBA bus interface unit
+
+D I
+
+D ! Data Instruction
+cache cache
+
+Data Instruction
+TCM TCM
+D I
+
+D+iI
+
+On-chip AMBA bus
+
+Figure 2.15 A simplified Harvard architecture with caches and TCMs.
+
+MPUs employ a simple system that uses a limited number of memory regions. These
+regions are controlled with a set of special coprocessor registers, and each region is
+defined with specific access permissions. This type of memory management is used
+for systems that require memory protection but don’t have a complex memory map.
+The MPU is explained in Chapter 13.
+
+MMUsare the most comprehensive memory management hardware available on the
+ARM. The MMU uses a set of translation tables to provide fine-grained control over
+memory. These tables are stored in main memory and provide a virtual-to-physical
+address map as well as access permissions. MMUs are designed for more sophisti-
+cated platform operating systems that support multitasking. The MMU is explained in
+Chapter 14.
+
+2.5.3 COPROCESSORS
+
+Coprocessors can be attached to the ARM processor. A coprocessor extends the processing
+features of a core by extending the instruction set or by providing configuration reg-
+isters. More than one coprocessor can be added to the ARM core via the coprocessor
+interface.
+
+‘The coprocessor can be accessed through a group of dedicated ARM instructions
+
+that provide a load-store type interface. Consider, for example, coprocessor 15: The
+ARM processor uses coprocessor 15 registers to control the cache, TCMs, and memory
+management.
+
+‘The coprocessor can also extend the instruction set by providing a specialized group
+
+of new instructions. For example, there are a set of specialized instructions that can

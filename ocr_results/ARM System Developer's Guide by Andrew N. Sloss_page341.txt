@@ -1,0 +1,47 @@
+328 Chapter 9 Exception and Interrupt Handling
+
+Table 9.5
+
+Table 9.6
+
+Changing to FIQ mode means there is no requirement to save registers r8 to r12 since
+these registers are banked in FIQ mode. These registers can be used to hold temporary
+data, such as buffer pointers or counters. This makes FIQ ideal for servicing a single-source,
+high-priority, low-latency interrupt.
+
+9.2.3.1 _ Enabling and Disabling FIQ and IRQ Exceptions
+‘The ARM processor core has a simple procedure to manually enable and disable interrupts
+that involves modifying the cpsr when the processor is in a privileged mode.
+
+Table 9.5 shows how IRQ and FIQ interrupts are enabled. The procedure uses three
+ARM instructions.
+
+The first instruction MRS copies the contents of the cpsr into register rl. The second
+instruction clears the IRQ or FIQ mask bit. The third instruction then copies the updated
+contents in register r] back into the cpsr, enabling the interrupt request. The postfix _c iden-
+tifies that the bit field being updated is the control field bit [7:0] of the cpsr. (For more details
+see Chapter 2.) Table 9.6 shows a similar procedure to disable or mask an interrupt request.
+
+It is important to understand that the interrupt request is either enabled or disabled
+only once the MSR instruction has completed the execution stage of the pipeline. Interrupts
+can still be raised or masked prior to the MSR completing this stage.
+
+Enabling an interrupt.
+
+cpsrvalue IRQ FIQ
+Pre nzcvqjlFt_SVC nzcvqjlFt_SVC
+Code enable irq enable fig
+MRS rl, cpsr MRS rl, cpsr
+BIC rl, rl, #0x80 BIC rl, rl, #0x40
+MSR cpsr_c, rl MSR cpsr_c, rl
+Post nzcvgjiFt_ SVC nzcvgjlft_ SVC
+
+Disabling an interrupt.
+
+cpsr_ IRQ FIQ
+Pre —_nzcvajift_SVC nzcvajift_SVC
+Code disable_irg disable fig
+MRS rl, cpsr MRS rl, cpsr
+ORR rl, rl, #0x80 ORR rl, rl, #0x40
+MSR cpsr_c, rl MSR cpsr_c, rl
+Post —nzevqjlft_ SVC ~ nzcvgjiFt_ SVC —

@@ -1,0 +1,82 @@
+438
+
+Chapter 13. XML: Extensible Markup Language
+
+Figure 13.5 (continued)
+An XML schema file called company.
+
+<xsd:keyref name="employeeDepartmentNumberKeyRef"
+refer="departmentNumberKey”>
+<xsd:selector xpath=“employee” />
+<xsd/field xpath="employeeDepartmentNumber” />
+
+</xsd:keyref>
+
+<xsd:keyref name="employeeSupervisorSSNKeyRef" refer="employeeSSNKey">
+<xsd:selector xpath="employee” />
+<xsd/field xpath="employeeSupervisorSSN” />
+
+</xsd:keyref>
+
+<xsd:keyref name="projectDepartmentNumberKeyRef" refer=“departmentNumberKey">
+<xsd:selector xpath="project” />
+<xsd/field xpath="projectDepartmentNumber” />
+
+</xsd:keyref>
+
+<xsd:keyref name=projectWorkerSSNKeyRef” refer="employeeSSNKey">
+<xsd:selector xpath="project/projectWorker" />
+<xsd/:field xpath="SSN" />
+
+</xsd:keyref>
+
+<xsd:keyref name="employeeWorksOnProjectNumberKeyRef”
+refer="projectNumberKey">
+<xsd:selector xpath="employee/employeeWorksOn” />
+<xsd/:field xpath="projectNumber" />
+
+</xsd:keyref>
+
+<Ixsd:element>
+<xsd:complexType name="Department">
+
+<xsd:sequence>
+
+<xsd:element name=“departmentName” type="xsd:string” />
+
+<xsd:element name=“departmentNumber” type="xsd:string” />
+
+<xsd:element name=“departmentManagerSSN” type="xsd:string” />
+
+<xsd:element name=“departmentManagerStartDate” type="xsd:date” />
+
+<xsd:element name="departmentLocation” type="xsd:string” minOccurs="0" maxOccurs="unbounded” />
+</xsd:sequence>
+
+<Ixsd:complexType>
+<xsd:complexType name="Employee”>
+
+<xsd:sequence>
+
+<xsd:element name=“employeeName" type="Name"” />
+
+<xsd:element name=“employeeSSN” type="xsd:string” />
+
+<xsd:element name=“employeeSex” type="xsd:string” />
+
+<xsd:element name=“employeeSalary” type="xsd:unsignedint” />
+
+<xsd:element name=“employeeBirthDate” type="xsd:date” />
+
+<xsd:element name=“employeeDepartmentNumber” type="xsd:string” />
+
+<xsd:element name=“employeeSupervisorSSN” type="xsd:string” />
+
+<xsd:element name=“employeeAddress” type="Address” />
+
+<xsd:element name="employeeWorksOn” type="WorksOn” minOccurs="1" maxOccurs="unbounded" />
+
+<xsd:element name="employeeDependent” type="Dependent” minOccurs="0" maxOccurs="unbounded!” />
+</xsd:sequence>
+
+<Ixsd:complexType>

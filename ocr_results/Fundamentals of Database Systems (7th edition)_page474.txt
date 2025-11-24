@@ -1,0 +1,59 @@
+444 — Chapter 13 XML: Extensible Markup Language
+
+Figure 13.6
+
+Some examples of
+XPath expressions
+on XML documents
+that follow the XML
+schema file company
+in Figure 13.5.
+
+1. Icompany
+2. Icompany/department
+
+3. /lemployee [employeeSalary gt 70000]/employeeName
+
+4. Icompany/employee [employeeSalary gt 70000]/employeeName
+
+5. /company/project/projectWorker [hours ge 20.0]
+
+The second example in Figure 13.6 returns all department nodes (elements) and
+their descendant subtrees. Note that the nodes (elements) in an XML document are
+ordered, so the XPath result that returns multiple nodes will do so in the same order
+in which the nodes are ordered in the document tree.
+
+The third XPath expression in Figure 13.6 illustrates the use of //, which is conve-
+nient to use if we do not know the full path name we are searching for, but we do
+know the name of some tags of interest within the XML document. This is particu-
+larly useful for schemaless XML documents or for documents with many nested
+levels of nodes.®
+
+The expression returns all employeeName nodes that are direct children of an
+employee node, such that the employee node has another child element employeeSalary
+whose value is greater than 70000. This illustrates the use of qualifier conditions,
+which restrict the nodes selected by the XPath expression to those that satisfy the
+condition. XPath has a number of comparison operations for use in qualifier condi-
+tions, including standard arithmetic, string, and set comparison operations.
+
+The fourth XPath expression in Figure 13.6 should return the same result as the pre-
+vious one, except that we specified the full path name in this example. The fifth
+expression in Figure 13.6 returns all projectWorker nodes and their descendant
+nodes that are children under a path /company/project and have a child node, hours,
+with a value greater than 20.0 hours.
+
+When we need to include attributes in an XPath expression, the attribute name is
+prefixed by the @ symbol to distinguish it from element (tag) names. It is also pos-
+sible to use the wildcard symbol *, which stands for any element, as in the following
+example, which retrieves all elements that are child elements of the root, regardless
+of their element type. When wildcards are used, the result can be a sequence of dif-
+ferent types of elements.
+
+/company/*
+
+The examples above illustrate simple XPath expressions, where we can only move
+down in the tree structure from a given node. A more general model for path
+expressions has been proposed. In this model, it is possible to move in multiple
+directions from the current node in the path expression. These are known as the
+
+We use the terms node, tag, and element interchangeably here.

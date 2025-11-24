@@ -1,0 +1,58 @@
+142 Chapter 4 The Enhanced Entity—Relationship (EER) Model
+
+4.25.
+
+4.26.
+
+3. The players are assigned a color of black or white at the start of the game.
+
+4. Each player starts with the following pieces (traditionally called
+chessmen):
+
+king
+
+. queen
+
+. 2 rooks
+
+. 2 bishops
+
+. 2 knights
+
+8 pawns
+
+-oeaooD
+
+5. Every piece has its own initial position.
+
+6. Every piece has its own set of legal moves based on the state of the game.
+You do not need to worry about which moves are or are not legal except
+for the following issues:
+
+a. A piece may move to an empty square or capture an opposing piece.
+
+b. Ifa piece is captured, it is removed from the board.
+
+c. Ifa pawn moves to the last row, it is “promoted” by converting it to
+another piece (queen, rook, bishop, or knight).
+
+Note: Some of these functions may be spread over multiple classes.
+Draw an EER diagram for a game of chess as described in Exercise 4. 24. Focus
+
+on persistent storage aspects of the system. For example, the system would
+need to retrieve all the moves of every game played in sequential order.
+
+Which of the following EER diagrams is/are incorrect and why? State clearly
+any assumptions you make.
+
+a.
+
+E1
+IE R N E3
+CO
+E2
+b. Al
+1
+‘2 R
+
+E2

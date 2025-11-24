@@ -1,0 +1,67 @@
+A Detailed Timing Diagram for the Read-operation
+
+¢ The picture shows two views of the signal except the clock (Figure 7.4).
+
+© One view shows the signal seen by the master & the other is seen by the salve.
+
+¢ Master sends the address & command signals on the rising edge at the beginning of clock period (tO).
+These signals do not actually appear on the bus until tam.
+
+¢ Sometimes later, at tAS the signals reach the slave.
+
+The slave decodes the address.
+
+¢ At tl, the slave sends the requested-data.
+
+¢ At t2, the master loads the data into its input-buffer.
+
+¢ Hence the period t2,tDM is the setup time for the master’s input-buffer.
+
+¢ The data must be continued to be valid after t2, for a period equal to the hold time of that buffers.
+
+Disadvantages
+© The device does not respond.
+¢ The error will not be detected.
+
+Multiple Cycle Transfer for Read-operation
+
+Time
+
+1 2 3 4
+
+Address 4 \
+Command \ \
+Data ——_———~—_f--
+
+Slave-ready I |
+
+Figure 7.5 An input transfer using multiple clock cycles.
+
+During, clock cycle-1, master sends address/command info the bus requesting a “read“ operation.
+The slave receives & decodes address/command information (Figure 7.5).
+
+¢ At the active edge of the clock i.e. the beginning of clock cycle-2, it makes accession to
+
+respond immediately.
+
+© The data become ready & are placed in the bus at clock cycle-3.
+
+¢ At the same times, the slave asserts a control signal called slave-ready.
+
+¢ The master strobes the data to its input-buffer at the end of clock cycle-3.
+
+¢ The bus transfer operation is now complete.
+
+¢ And the master sends a new address to start a new transfer in clock cycle4.
+
+¢ The slave-ready signal is an acknowledgement from the slave to the master.
+
+ASYNCHRONOUS BUS
+¢ This method uses handshake-signals between master and slave for coordinating data-transfers.
+There are 2 control-lines:
+
+1) Master-Ready (MR) is used to indicate that master is ready for a transaction.
+
+2) Slave-Ready (SR) is used to indicate that slave is ready for a transaction.
+
+Page 32

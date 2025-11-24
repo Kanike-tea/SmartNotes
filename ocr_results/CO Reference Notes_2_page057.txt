@@ -1,0 +1,40 @@
+Virtual address from processor
+
+Virtual page number Off
+
+Virtual page Control
+number
+
+’
+Physical address in main memory
+Figure 8.26 Use of an associative-mapped TLB.
+
+* When OS changes contents of page-table, the control-bit will invalidate corresponding entry inTLB.
+© Given a virtual-address, the MMU looks in TLB for the referenced-page.
+If page-table entry for this page is found in TLB, the physical-address is obtained immediately.
+Otherwise, the required entry is obtained from the page-table & TLB is updated.
+
+Page Faults
+
+© Page-fault occurs when a program generates an access request to a page that is not in memory.
+¢ When MMU detects a page-fault, the MMU asks the OS to generate an interrupt.
+¢ The OS
+— suspends the execution of the task that caused the page-fault and
+— begins execution of another task whose pages are in memory.
+© When the task resumes the interrupted instruction must continue from the point of interruption.
+¢ If anew page is brought from disk when memory is full, disk must replace one of the resident pages. In
+this case, LRU algorithm is used to remove the least referenced page from memory.
+« A modified page has to be written back to the disk before it is removed from the memory. In
+this case, Write-Through Protocol is used.
+
+Problem 1:
+Consider a main-memory built with SDRAM chips. Data are transferred in bursts & the burst length is
+8. Assume that 32 bits of data are transferred in parallel. If a 400-MHz clock is used, how much time does
+it take to transfer:
+(a) 32 bytes of data
+(b) 64 bytes of data
+What is the latency in each case?
+Solution:
+(a) It takes 5 + 8 = 13 clock cycles.
+
+Page 58

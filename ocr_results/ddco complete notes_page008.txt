@@ -1,0 +1,39 @@
+Digital Design and Computer Organization(BCS302)
+
+DIGITAL LOGIC GATES
+
+>
+
+Since Boolean functions are expressed in terms of AND, OR, and NOT operations,
+it is easier to implement a Boolean function with these type of gates.
+
+Factors to be weighed in considering the construction of other types of logic
+gates are (1) the feasibility and economy of producing the gate with physical
+components, (2) the possibility of extending the gate to more than two inputs, (3)
+the basic properties of the binary operator, such as commutativity and
+associativity, and (4) the ability of the gate to implement Boolean functions alone
+or in conjunction with other gates.
+
+The graphic symbols and truth tables of the eight gates are shown in Fig. 2.5.
+Each gate has one or two binary input variables, designated by x and y, and one
+binary output variable, designated by F.
+
+The inverter circuit inverts the logic sense of a binary variable, producing the
+NOT, or complement, function. The small circle in the output of the graphic
+symbol of an inverter (referred to as a bubble) designates the logic complement.
+The NAND function is the complement of the AND function, as indicated by a
+graphic symbol that consists of an AND graphic symbol followed by a small circle.
+The NOR function is the complement of the OR function and uses an OR graphic
+symbol followed by a small circle.
+
+NAND and NOR gates are used extensively as standard logic gates and are in fact
+
+far more popular than the AND and OR gates. This is because NAND and NOR
+gates are easily constructed with transistor circuits and because digital circuits
+can be easily implemented with them.
+The exclusive-OR gate has a graphic symbol similar to that of the OR gate,
+except for the additional curved line on the input side. The equivalence, or
+exclusive-NOR, gate is the complement of the exclusive-OR, as indicated by the
+small circle on the output side of the graphic symbol.
+
+Page 9

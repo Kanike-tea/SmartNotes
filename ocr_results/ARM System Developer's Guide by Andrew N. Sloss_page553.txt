@@ -1,0 +1,58 @@
+540 Chapter 14 Memory Management Units
+
+#if defined(_ TARGET_CPU_ARM920T)
+case FINE:
+{
+/* PTE = addr L2 PT | domain | FINE PT type*/
+PTE = (pt->ptAddress & Oxfffff000) ;
+PTE |= pt->dom<<5;
+
+PTE |= 0x13;
+ttb[offset] = PTE;
+break;
+}
+fendif
+default:
+{
+printf ("UNKNOWN page table type\n");
+return -1;
+}
+}
+return 05
+
+}
+
+The first thing the routine does is prepare two variables, the base address of the master
+LI page table, tb, and an offset into the L1 page table, offset. The offset variable is created
+from the virtual address of the page table. To calculate the offset, it takes the virtual address
+and divides it by 1 MB by shifting the virtual address right by 20 bits. Adding this offset
+to the master L1 base address generates a pointer to the address within the L1 master table
+
+that represents the translation for the 1 MB section.
+
+The procedure attaches the page table to the MMU hardware using the Pagetable type
+pt->type variable to switch to the case that attaches the page table. The three possible cases
+
+are described below.
+
+The Master case attaches the master L1 page table. The routine attaches this special table
+
+using an assembly language MCR instruction to set the CP15:c2:c0 register.
+
+The Coarse case attaches a coarse page table to the master L1 page table. This case takes
+the address of the L2 page table stored in the Pagetable structure and combines it with
+the Domain and the coarse table type, to build a PTE. The PTE is then written into the L1
+page table using the previously calculated offset. The format of the coarse PTE is shown in
+
+Figure 14.6.
+
+The Fine case attaches a fine L2 page table to the master L1 page table. This routine takes
+the address of the L2 page table stored in the Pagetable structure and combines it with the
+Domain and fine table type to build a PTE. The PTE is then written into the L1 page table
+
+using the previously calculated offset.
+
+The previous sections presented the routines that condition, load, and activate the page
+tables while initializing the MMU. The last two parts set the domain access rights and enable
+
+the MMU.

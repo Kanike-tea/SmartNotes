@@ -1,0 +1,38 @@
+478 Chapter 14 Basics of Functional Dependencies and Normalization for Relational Databases
+(a)
+DEPARTMENT
+Dname | Dnumber | Dmgr_ssn | Dlocations
+(b)
+DEPARTMENT
+Dname | Dnumber | Dmgr_ssn Diocations
+Research 5 333445555 | (Bellaire, Sugarland, Houston}
+Administration] 4 987654321 | (Stafford)
+Headquarters 1 888665555 | {Houston}
+©
+DEPARTMENT
+Dname | Dnumber | Dmgr_ssn | Dlocation
+Figure 14.9 Research 5 333445555 | Bellaire
+Normalization into 1NF. (a) A
+relation schema that is not in Research 5 333445555 | Sugarland
+INF. (b) Sample state of Research 5 333445555 | Houston
+relation DEPARTMENT. Administration 4 987654321 | Stafford
+(c) 1NF version of the same
+relation with redundancy, Headquarters | 1 888665555 | Houston
+
+= The domain of Dlocations contains sets of values and hence is nonatomic. In
+this case, Dnumber — Dlocations because each set is considered a single mem-
+ber of the attribute domain.'°
+
+In either case, the DEPARTMENT relation in Figure 14.9 is not in 1NF; in fact, it does
+not even qualify as a relation according to our definition of relation in Section 3.1.
+There are three main techniques to achieve first normal form for such a relation:
+
+1. Remove the attribute Dlocations that violates 1NF and place it in a separate
+relation DEPT_LOCATIONS along with the primary key Dnumber of
+DEPARTMENT. The primary key of this newly formed relation is the combi-
+nation {Dnumber, Dlocation}, as shown in Figure 14.2. A distinct tuple in
+DEPT_LOCATIONS exists for each location of a department. This decom-
+poses the non-1NF relation into two 1NF relations.
+
+'ln this case we can consider the domain of Dlocations to be the power set of the set of single
+locations; that is, the domain is made up of all possible subsets of the set of single locations

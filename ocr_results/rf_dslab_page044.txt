@@ -1,0 +1,64 @@
+b=b->link;
+break;
+case 0: if(a->zexp > b->zexp)
+head3 = attach(a->coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+break;
+
+else if(a->zexp < b->zexp)
+
+head3 = attach(b->coef, b->xexp, b->yexp, b->zexp, head3);
+
+b =b->link;
+break;
+
+case 1: head3 = attach(a->coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+break;
+}
+break;
+i
+
+if(a->zexp!=0 Il b->zexp!=0)
+
+switch(COMPARE(a->zexp.b->zexp))
+
+{
+case -1: head3 = attach(b->coef.b->xexp,b->yexp,b->zexp,head3);
+b=b->link;
+break;
+case 1: head3 = attach(a->coef, a->xexp, a->yexp, a->zexp, head3);
+a=a->link;
+break;
+}
+break;
+
+}
+while(a!= head1)
+
+head3 = attach(a->coef,a->xexp,a->yexp,a->zexp,head3);
+a=a->link;
+
+}
+while(b!= head2)
+
+head3 = attach(b->coef,b->xexp,b->yexp,b->zexp,head3);
+b =b->link;
+
+return head3;
+
+i
+void main()
+
+NODE head, head 1, head2, head3;
+
+int res, ch;
+
+hea getnode();  /* For polynomial evalaution */
+/* To hold POLY! */
+
+/* To hold POLY2 */
+
+head3 = getnode();_ /* To hold POLYSUM */
+
+44

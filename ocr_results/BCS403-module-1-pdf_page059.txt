@@ -1,0 +1,54 @@
+Database Management System [BCS403]
+
+22. Discuss the naming conventions used for ER schema diagrams.
+23. Explain with an example specialization and generalization.
+24. Design an ER diagram for an insurance company. Assume suitable entity types like
+CUSTOMER, AGENT, BRANCH, POLICY, PAYEMENT and the relationship between
+them.
+25. Design an ER - diagram for the Movie - database considering the following requirements:
+i) Each Movie is identifies by its title and year of release, it has length in minutes and can
+have zero of more quotes, language.
+
+ii) Production companies are identified by Name, they have address, and each production
+company can produce one or more movies.
+
+iii) Actors are identified by Name and Date of Birth, they can act in one or more,movies
+
+and
+each actor has a role in a movie.
+
+iv) Directors are identified by Name and Date of Birth, so each Director can direct one or
+more movie and each movie can be directed by one or more Directors.
+
+v) Each movie belongs to anyone category like Horror, action, Drama, etc.
+
+26. Design an Entity Relationship (ER) model for a college database . Say we have the
+
+following statements.
+
+A college contains many departments
+
+Each department can offer any number of courses
+Many instructors can work in a department
+
+An instructor can work only in one department
+For each department there is a Head
+
+An instructor can be head of only one department
+Each instructor can take any number of courses
+
+A course can be taken by only one instructor
+
+~~ o> gee Fr PN
+
+A student can enroll for any number of courses
+10. Each course can have any number of students
+
+27.Consider the following set of requirements fora UNIVERSITY database that is used to
+keep track of students’ transcripts
+a. The university keeps track of each student’s name, student number, Social Security
+number, current address and phone number, permanent address and phone number, birth
+
+date, sex, class (freshman, sophomore, ..., graduate), major department, minor department
+
+https://vtucode.in Page 60

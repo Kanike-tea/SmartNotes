@@ -1,0 +1,34 @@
+chapter 1 ‘) §g
+
+Query Optimization
+
+n this chapter,! we will assume that the reader is
+
+already familiar with the strategies for query process-
+ing in relational DBMSs that we discussed in the previous chapter. The goal of
+query optimization is to select the best possible strategy for query evaluation. As we
+said before, the term optimization is a misnomer because the chosen execution plan
+may not always be the most optimal plan possible. The primary goal is to arrive at
+the most efficient and cost-effective plan using the available information about the
+schema and the content of relations involved, and to do so in a reasonable amount
+of time. Thus a proper way to describe query optimization would be that it is an
+activity conducted by a query optimizer in a DBMS to select the best available strat-
+egy for executing the query.
+
+This chapter is organized as follows. In Section 19.1 we describe the notation for
+mapping of the queries from SQL into query trees and graphs. Most RDBMSs use
+an internal representation of the query as a tree. We present heuristics to transform
+the query into a more efficient equivalent form followed by a general procedure for
+applying those heuristics. In Section 19.2, we discuss the conversion of queries into
+execution plans. We discuss nested subquery optimization. We also present exam-
+ples of query transformation in two cases: merging of views in Group By queries
+and transformation of Star Schema queries that arise in data warehouses. We also
+briefly discuss materialized views. Section 19.3 is devoted to a discussion of selectiv-
+ity and result-size estimation and presents a cost-based approach to optimization.
+We revisit the information in the system catalog that we presented in Section 18.3.4
+earlier and present histograms. Cost models for selection and join operation are
+presented in Sections 19.4 and 19.5. We discuss the join ordering problem, which is
+a critical one, in some detail in Section 19.5.3. Section 19.6 presents an example of
+cost-based optimization. Section 19.7 discusses some additional issues related to
+
+'The substantial contribution of Rafi Ahmed to this chapter is appreciated. 691

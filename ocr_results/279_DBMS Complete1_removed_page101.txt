@@ -1,0 +1,58 @@
+Timestamp Ordering
+
+The timestamp-ordering protocol ensures serializability among transactions in their conflicting read
+and write operations. This is the responsibility of the protocol system that the conflicting pair of
+tasks should be executed according to the timestamp values of the transactions.
+
+¢ The timestamp of transaction T; is denoted as TS(Ti).
+¢ Read time-stamp of data-item X is denoted by R-timestamp(X).
+¢ Write time-stamp of data-item X is denoted by W-timestamp(X).
+
+Timestamp ordering protocol works as follows —
+
+e Ifa transaction Ti issues a read(X) operation —
+o IfTS(Ti) < W-timestamp(X)
+
+= Operation rejected.
+
+o IfTS(Ti) >= W-timestamp(X)
+
+* Operation executed.
+o All data-item timestamps updated.
+
+e Ifa transaction Ti issues a write(X) operation —
+o IfTS(Ti) < R-timestamp(X)
+
+= Operation rejected.
+
+o IfTS(Ti) < W-timestamp(X)
+
+= Operation rejected and Ti rolled back.
+
+o Otherwise, operation executed.
+
+Avoiding deadlock:
+
+A major disadvantage of locking is deadlock which can be avoided using timestamp ordering as
+follows:
+
+There are two algorithms for deadlock avoidance.
+
+¢ = Wait/Die
+¢ =Wound/Wait
+
+Here is the table representation of resource allocation for each algorithm. Both of these algorithms
+take process age into consideration while determining the best possible way of resource allocation
+for deadlock avoidance.
+
+Wait/Die Wound/Wait
+
+Older process needs a resource held by younger Older process waits Younger process dies
+
+process
+‘Younger process needs a resource held by older Younger process Younger process
+process dies waits
+
+Wait-Die Scheme
+In this scheme, if a transaction requests to lock a resource (data item), which is already held with a
+conflicting lock by another transaction, then one of the two possibilities may occur —

@@ -1,0 +1,50 @@
+-
+
+2.2. Euler's formula 113
+
+Hence, by induction, it follows that the result (1) is true for all non-negative integers m.
+This completes the proof of the theorem. i
+
+Note: For simplicity in terminology, a region determined by a diagram of a planar graph will
+be referred to as a region of the graph.
+
+Corollary 1 . If G is a connected, simple planar graph with n (> 3) vertices, m (> 2) edges and
+rregions, then / =.
+3
+@ m>= an and (ii) m<3n-6.
+Proof: Since the graph G is simple; it has no multiple edges and no loops. As such, every
+segion of G must be bounded by three or more edges. Therefore, the total number of edges that
+bound all regions is greater than or equal to 3r. On the other hand, an edge is in the boundary
+of at most two regions. Therefore, the total number of edges that bound all regions is less than
+or equal to 2m. Thus, 37 < 2m. or
+m2 >r.
+This-is the required result (i). \
+Now, substituting for r from the Euler’s formula in the result just proved, we get
+
+m> 5(m—n+2) >
+
+4%
+
+which simplifies to m < 3n — 6. This is the required result Os ea ; e
+Corollary 2 . Kuratowski’s first grph, Ks, is non-planar. (
+
+SSS ie ee ee
+
+Proof: The graph Ks is simple, connected and has n = 5 vertices and m = 10 edges; see Figure
+2.4. If this graph is planar, then by result (ii) of Corollary 1, we should have m <3n—6; that
+
+is 10 < 15 — 6, which is not true. Therefore, Ks is non-planar. en e
+
+Corollary 3 . Kuratowski’s second graph, K3,3, is non-plapar.
+Proof: We first note that K3,3 is simple, connected and has n = 6 vertices and m = 9 edges; see
+Figure 2.6,
+
+Suppose K3,3 is planar. By examining Figure 2.6, we note,that K3,3 has no cycles of length
+3. Therefore, by result (iii) of Corollary 1, we should have m < 2n — 4; that is, 9 < 12-4,
+Which is not true. Hence, K3,3 is non-planar. e
+Corollary 4 . Every connected simple planar graph G contains a vertex of degree less than.
+ae Suppose every vertex of G is of degree greater than or equal to 6. Then, if di, d2,.--4n
+
+degrees of the n vertices of G, we have d; > 6, dz > 6,...dn 2 6. Adding these, we get
+
+dy + dz,+ +++ + dy = 6n:

@@ -1,0 +1,55 @@
+8.1 Unary Relational Operations: SELECT and PROJECT
+
+In general, the result of a SELECT operation can be determined as follows. The
+<selection condition> is applied independently to each individual tuple t in R. This
+is done by substituting each occurrence of an attribute A; in the selection condition
+with its value in the tuple ¢[Aj]. If the condition evaluates to TRUE, then tuple t is
+selected. All the selected tuples appear in the result of the SELECT operation. The
+Boolean conditions AND, OR, and NOT have their normal interpretation, as follows:
+
+= (cond1 AND cond2) is TRUE if both (cond1) and (cond2) are TRUE; other-
+wise, it is FALSE.
+
+= (cond1 OR cond2) is TRUE if either (cond1) or (cond2) or both are TRUE;
+otherwise, it is FALSE.
+
+= (NOT cond) is TRUE if cond is FALSE; otherwise, it is FALSE.
+
+The SELECT operator is unary; that is, it is applied to a single relation. Moreover,
+the selection operation is applied to each tuple individually; hence, selection condi-
+tions cannot involve more than one tuple. The degree of the relation resulting from
+a SELECT operation—its number of attributes—is the same as the degree of R. The
+number of tuples in the resulting relation is always less than or equal to the number
+of tuples in R. That is, |oc (R)| < |R| for any condition C. The fraction of tuples
+selected by a selection condition is referred to as the selectivity of the condition.
+
+Notice that the SELECT operation is commutative; that is,
+
+G<condi>(G<conda>(R)) = G.<conda>(G<condi>(R))
+
+Hence, a sequence of SELECTs can be applied in any order. In addition, we can
+always combine a cascade (or sequence) of SELECT operations into a single SELECT
+operation with a conjunctive (AND) condition; that is,
+
+G <condi >(O <conda>(- (Gcondn>(R)) --)) = O<cond1> AND<cond2> AND..AND <condn>(R)
+
+In SQL, the SELECT condition is typically specified in the WHERE clause of a query.
+For example, the following operation:
+
+Opno=4 AND Salary>25000 (EMPLOYEE)
+would correspond to the following SQL query:
+
+SELECT *
+FROM EMPLOYEE
+WHERE Dno=4 AND Salary>25000;
+
+8.1.2 The PROJECT Operation
+
+If we think of a relation as a table, the SELECT operation chooses some of the rows
+from the table while discarding other rows. The PROJECT operation, on the other
+hand, selects certain columns from the table and discards the other columns. If we
+are interested in only certain attributes of a relation, we use the PROJECT operation
+to project the relation over these attributes only. Therefore, the result of the PROJECT
+operation can be visualized as a vertical partition of the relation into two relations:
+
+243

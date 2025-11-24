@@ -1,0 +1,52 @@
+950
+
+Chapter 25 Big Data Technologies Based on MapReduce and Hadoop
+
+The Hadoop v1 model was the federation model: although HDFS was the storage
+layer for the enterprise, processing was a mixture of MapReduce and other engines.
+One alternative was to extract data from HDFS store to engines running outside
+the cluster in their own silos; such data was moved to graph engines, machine
+learning analytical applications, and so forth. The same machines as those used for
+the Hadoop cluster were being used for entirely different applications, such as
+stream processing outside of Hadoop. This scenario was far from ideal since phys-
+ical resources had to be divvied up in a static manner and it was difficult to migrate
+and upgrade to new versions when multiple frameworks ran on the same machines.
+With YARN, the above issues are addressed. Traditional services are taking advan-
+tage of the YARN ResourceManager and are providing their service on the same
+Hadoop cluster where the data resides.
+
+Whereas support for SQL in Hadoop was promised by multiple vendors, the actual
+support has been less than completely desirable. Some vendors required the HDFS
+data to be moved out to another database to run SQL; some required wrappers to
+read the HDFS data before an SQL query ran on it. A new trend among RDBMSs
+and traditional database systems considers a YARN cluster as a viable platform.
+One example is Actian’s analytics platform, which provides SQL in Hadoop* and
+which is claimed to be a complete and robust implementation of SQL using the
+Actian Vectorwise columnar database (which runs as a YARN application). IBM’s
+Big SQL 3.0°! is a project that makes an existing IBM shared-nothing DBMS run
+ona YARN cluster.
+
+Apache Storm is a distributed scalable streaming engine that allows users to pro-
+cess real-time data feeds. It is widely used by Twitter. Storm on YARN (http://
+hortonworks.com/labs/storm/) and SAS on YARN (http://hortonworks.com/
+partner/sas/) are applications that treat Storm (a distributed stream processing
+application) and SAS (statistical analysis software) as applications on the YARN
+platform. As we discussed previously, Giraph and HBase Hoya are ongoing efforts
+that are rapidly adopting YARN. A wide range of application systems uses the
+Hadoop cluster for storage; examples include services like streaming, machine
+learning/statistics, graph processing, OLAP, and key-value stores. These services
+go well beyond MapReduce. The goal/promise of YARN is for these services to
+coexist on the same cluster and take advantage of the locality of data in HDFS
+while YARN orchestrates their use of cluster resources.
+
+25.6.5 Challenges Faced by Big Data Technologies
+
+In a recent article,** several database experts voiced their concerns about the
+impending challenges faced by big data technologies when such technologies
+
+3°Current documentation is available at http://www.actian.com/about-us/blog/sql-hadoop-real-deal/
+
+3"Current information is available at: http://wwwslideshare.net/Hadoop_
+Summit/w-325p230-azubirigrayatv4
+
+?See Jagadish et al, (2014).

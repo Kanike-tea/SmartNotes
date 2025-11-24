@@ -1,0 +1,53 @@
+LECTURE-26
+
+RELATIONAL DATABASE DEGIN
+
+Database design is a process in which you create a logical data model for a database, which store
+data of a company. It is performed after initial database study phase in the database life cycle. You
+use normalization technique to create the logical data model for a database and eliminate data
+redundancy.
+
+Normalization also allows you to organize data efficiently in a database and reduce anomalies
+during data operation. Various normal forms, such as first, second and third can be applied to create
+a logical data model for a database. The second and third normal forms are based on partial
+dependency and transitivity dependency. Partial dependency occurs when a row of table is uniquely
+identified by one column that is a part of a primary key. A transitivity dependency occurs when a
+non key column is uniquely identified by values in another non-key column of a table.
+
+Database Design Process:
+We can identify six main phases of the database design process:
+
+1. Requirement collection and analysis
+Conceptual database design
+
+Choice of a DBMS
+
+Data model mapping(logical database design)
+Physical database design
+
+Database system implementation and tuning
+
+AAPYN
+
+1. Requirement Collection and Analysis
+Before we can effectively design a data base we must know and analyze the expectation of
+the users and the intended uses of the database in as much as detail.
+
+2. Conceptual Database Design
+The goal for this phase is to produce a conceptual schema for the database that is
+independent of a specific DBMS.
+> We often use a high level data model such ER-model during this phase
+> We specify as many of known database application on transactions as possible using a
+notation that is independent of any specific dbms.
+> Often the dbms choice is already made for the organization the intent of conceptual
+design still to keep , it as free as possible from implementation consideration.
+
+3. Choice of a DBMS
+The choice of dbms is governed by a no. of factors some technical other economic and still
+other concerned with the politics of the organization.
+The economics and organizational factors that offer the choice of the dbms are:
+Software cost, maintenance cost, hardware cost, database creation and conversion cost,
+personnel cost, training cost, operating cost.
+
+4. Data model mapping (logical database design)
+During this phase, we map the conceptual schema from the high level data model used on

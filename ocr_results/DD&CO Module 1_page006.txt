@@ -1,0 +1,49 @@
+Simplify the following Boolean functions to a minimum number of literals.
+
+X(x' + y) = xx! + xy =0 + xy = xy.
+
+1.
+2xtxy=H(xtx)\xty)=laxty)=xty.
+3. (x + yx ty’) =x t+xytxy’ + yy’ =x tyty’) =x.
+4. xy +x'z t+ yz =xy + x'z + yz(x + x’)
+
+=xy +x'z + xyz + x'yz
+y(1 +z) + x'z(1 + y)
+
+=xy t+ x'z.
+
+5. (x + y)(x' + z)(y + z) = (v + y)(X' + Z), by duality from function 4.
+
+Complement of a Function
+
+The complement of a function F is F and is obtained from an interchange of 0’s for 1’s and 1’s for 0’s
+in the value of F. The complement of a function may be derived algebraically through DeMorgan’s
+theorems. The three-variable form of the first DeMorgan’s theorem is derived as follows, from postulates
+
+and theorems listed
+
+(A+B+O)'=(A+x)' letB+C=x
+= A'x' by theorem 5(a) (DeMorgan)
+= A'(B + C)’ substitute B + C =x
+= A'(B'C') by theorem 5(a) (DeMorgan)
+= A'B'C' by theorem 4(b) (associative)
+
+«Find the complement of the functions “i = x'yz’ + x'y'z and F, = x(y’z' + yz). py applying
+
+DeMorgan’s theorems
+Digital Logic gates
+
+Since Boolean functions are expressed in terms of AND, OR, and NOT operations, it is easier to
+implement a Boolean function with these type of gates. Factors to be weighed in considering the
+
+construction of other types of logic gates are:
+
+(1) The feasibility and economy of producing the gate with physical components,
+(2) The possibility of extending the gate to more than two inputs,
+(3) The basic properties of the binary operator, such as commutativity and associativity, and
+
+(4) The ability of the gate to implement Boolean functions alone or in conjunction with other gates
+
+The NAND function is the complement of the AND function, as indicated by a graphic symbol that
+consists of an AND graphic symbol followed by a small circle. The NOR function is the complement of
+the OR function and uses an OR graphic symbol followed by a small circle. NAND and NOR gates are

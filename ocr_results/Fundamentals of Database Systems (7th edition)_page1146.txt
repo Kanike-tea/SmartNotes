@@ -1,0 +1,51 @@
+1116
+
+Chapter 29 Overview of Data Warehousing and OLAP
+
+29.7 Difficulties of Implementing
+Data Warehouses
+
+Some significant operational issues arise with data warehousing: construction,
+administration, and quality control. Project management—the design, construc-
+tion, and implementation of the warehouse—is an important and challenging
+consideration that should not be underestimated. The building of an enterprise-
+wide warehouse in a large organization is a major undertaking, potentially taking
+years from conceptualization to implementation. Because of the difficulty and
+amount of lead time required for such an undertaking, the widespread develop-
+ment and deployment of data marts may provide an attractive alternative, espe-
+cially to those organizations with urgent needs for OLAP, DSS, and/or data
+mining support.
+
+The administration of a data warehouse is an intensive enterprise, proportional to
+the size and complexity of the warehouse. An organization that attempts to admin-
+ister a data warehouse must realistically understand the complex nature of its
+administration. Although designed for read access, a data warehouse is no more a
+static structure than any of its information sources. Source databases can be
+expected to evolve. The warehouse’s schema and acquisition component must be
+expected to be updated to handle these evolutions.
+
+A significant issue in data warehousing is the quality control of data. Both quality
+and consistency of data—especially as it relates to dimension data, which in turn
+affects master data management—are major concerns. Although the data passes
+through a cleaning function during acquisition, quality and consistency remain sig-
+nificant issues for the database administrator and designer alike. Melding data from
+heterogeneous and disparate sources is a major challenge given differences in nam-
+ing, domain definitions, identification numbers, and the like. Every time a source
+database changes, the data warehouse administrator must consider the possible
+interactions with other elements of the warehouse.
+
+Usage projections should be estimated conservatively prior to construction of the
+data warehouse and should be revised continually to reflect current requirements.
+As utilization patterns become clear and change over time, storage and access paths
+can be tuned to remain optimized for support of the organization’s use of its ware-
+house. This activity should continue throughout the life of the warehouse in order
+to remain ahead of the demand. The warehouse should also be designed to accom-
+modate the addition and attrition of data sources without major redesign. Sources
+and source data will evolve, and the warehouse must accommodate such change.
+Fitting the available source data into the data model of the warehouse will be a con-
+tinual challenge, a task that is as much art as science. Because there is continual
+rapid change in technologies, both the requirements and capabilities of the ware-
+house will change considerably over time. Additionally, data warehousing technol-
+ogy itself will continue to evolve for some time, so component structures and
+functionalities will continually be upgraded. This certain change is an excellent
+motivation for fully modular design of components.

@@ -1,0 +1,53 @@
+520
+
+Chapter 15 Relational Database Design Algorithms and Further Dependencies
+
+Step 3 of Algorithm 15.4 involves identifying a key K of R. Algorithm 15.2(a) can be
+used to identify a key K of R based on the set of given functional dependencies F.
+Notice that the set of functional dependencies used to determine a key in Algo-
+rithm 15.2(a) could be either F or G, since they are equivalent.
+
+Example 1 of Algorithm 15.4. Consider the following universal relation:
+U (Emp_ssn, Pno, Esal, Ephone, Dno, Pname, Plocation)
+
+Emp_ssn, Esal, and Ephone refer to the Social Security number, salary, and phone
+number of the employee. Pno, Pname, and Plocation refer to the number, name, and
+location of the project. Dno is the department number.
+
+‘The following dependencies are present:
+FD1: Emp_ssn > {Esal, Ephone, Dno}
+FD2: Pno — { Pname, Plocation}
+FD3: Emp_ssn, Pno — {Esal, Ephone, Dno, Pname, Plocation}
+
+By virtue of FD3, the attribute set {Emp_ssn, Pno} represents a key of the universal
+relation. Hence F, the set of given FDs, includes {Emp_ssn — Esal, Ephone, Dno;
+Pno — Pname, Plocation; Emp_ssn, Pno — Esal, Ephone, Dno, Pname, Plocation}.
+
+By applying the minimal cover Algorithm 15.2, in step 3 we see that Pno is an extra-
+neous attribute in Emp_ssn, Pno > Esal, Ephone, Dno. Moreover, Emp_ssn is extrane-
+ous in Emp_ssn, Pno — Pname, Plocation. Hence the minimal cover consists of FD1
+and FD2 only (FD3 being completely redundant) as follows (if we group attributes
+with the same left-hand side into one FD):
+
+Minimal cover G: {Emp_ssn > Esal, Ephone, Dno; Pho — Pname, Plocation}
+‘The second step of Algorithm 15.4 produces relations R, and R, as:
+
+R, (Emp_ssn, Esal, Ephone, Dno)
+
+Ry (Pno, Pname, Plocation)
+
+In step 3, we generate a relation corresponding to the key {Emp_ssn, Pno} of U.
+Hence, the resulting design contains:
+
+R, (Emp_ssn, Esal, Ephone, Dno)
+R, (Pno, Pname, Plocation)
+R3 (Emp_ssn, Pno)
+
+‘This design achieves both the desirable properties of dependency preservation and
+nonadditive join.
+
+Example 2 of Algorithm 15.4 (Case X). Consider the relation schema LOTS1A
+shown in Figure 14.13(a).
+
+Assume that this relation is given as a universal relation U (Property_id, County, Lot#,
+Area) with the following functional dependencies:

@@ -1,0 +1,65 @@
+LECTURE-4: Elements of DBMS
+
+Elements of DBMS:
+
+DML Pre-Compiler:
+
+It converts DML statements embedded in an application program to normal procedure calls in the
+host language. The pre-complier must interact with the query processor in order to generate the
+
+appropriate code.
+
+DDL Compiler:
+
+The DDL compiler converts the data definition statements into a set of tables. These tables contains
+
+information concerning the database and are in a form
+dbms.
+
+File Manager:
+File manager manages the allocation of space on
+
+represent information stored on disk.
+
+Database Manager:
+
+that can be used by other components of the
+
+isk storage and the data structure used to
+
+A database manager is a program module which provides the interface between the low level data
+
+stored in the database and the application programs an
+
+The responsibilities of database manager are:
+
+queries submitted to the system.
+
+Interaction with File Manager: The data is stored on the disk using the file system which
+is provided by operating system. The database manager translate the different DML
+statements into low-level file system commands so the database manager is responsible for
+the actual storing, retrieving and updating of data in the database.
+
+Integrity Enforcement: The data values stored in the database must satisfy certain
+constraints (eg: the age of a person can't be less then zero). These constraints are specified
+by DBA. Data manager checks the constraints and if it satisfies then it stores the data in the
+database.
+
+Security Enforcement: Data manager checks the security measures for database from
+unauthorized users.
+
+Backup and Recovery: Database manager detects the failures occur due to different
+causes (like disk failure, power failure, deadlock, software error) and restores the database
+to original state of the database.
+
+Concurrency Control: When several users access the same database file simultaneously,
+there may be possibilities of data inconsistency. It is responsible of database manager to
+control the problems occur for concurrent transactions.
+
+Query Processor:
+
+The query processor used to interpret to online user’s query and convert it into an efficient series of
+
+operations in a form capable of being sent to the data
+
+manager for execution. The query processor

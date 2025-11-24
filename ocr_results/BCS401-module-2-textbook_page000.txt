@@ -1,0 +1,47 @@
+4.
+
+MODULE-2
+
+Exhaustive Search
+
+> Traveling Salesman Problem
+> Knapsack Problem
+
+> Assignment Problem
+
+Insertion Sort
+
+4.2 Topological Sorting
+
+5.
+
+Mergesort
+
+5.2 Quicksort
+
+5.3 Binary Tree Traversals and Related Properties
+
+54
+
+Multiplication of Large Integers and Strassen’s Matrix Multiplication
+
+> Multiplication of Large Integers
+> Strassen’s Matrix Multiplication
+
+3.4 Exhaustive Search
+
+Many important problems require finding an element with a special property ina
+domain that grows exponentially (or faster) with an instance size. Typically, such
+problems arise in situations that involve—explicitly or implicitly—combinatorial
+objects such as permutations, combinations, and subsets of a given set. Many such
+problems are optimization problems: they ask to find an element that maximizes
+or minimizes some desired characteristic such as a path length or an assignment
+cost.
+
+Exhaustive search is simply a brute-force approach to combinatorial prob-
+lems. It suggests generating each and every element of the problem domain, se-
+lecting those of them that satisfy all the constraints, and then finding a desired
+element (e.g., the one that optimizes some objective function). Note that although
+the idea of exhaustive search is quite straightforward, its implementation typically
+requires an algorithm for generating certain combinatorial objects. We delay a dis-
+cussion of such algorithms until the next chapter and assume here that they exist.

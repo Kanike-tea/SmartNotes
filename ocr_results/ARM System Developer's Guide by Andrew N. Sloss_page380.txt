@@ -1,0 +1,34 @@
+CHAPTER
+
+FIRMWARE
+
+This chapter discusses firmware for ARM-based embedded systems. Firmware is an impor-
+tant part of any embedded system since it is frequently the first code to be ported and
+executed on a new platform. Firmware can vary from being a complete software embedded
+system to just a simple initialization and bootloader routine. We have divided this chapter
+into two sections.
+
+The first section introduces firmware. In this section we define the term firmware
+and describe two popular industry standard firmware packages available for the ARM
+processor—ARM Firmware Suite and Red Hat’s RedBoot. These firmware packages are
+general purpose and can be ported to different ARM platforms relatively easily and quickly.
+
+The second section focuses on just the initialization and bootloader process. To help
+with this, we have developed a simple example called Sandstone. Sandstone is designed to
+initialize hardware, load an image into memory, and relinquish control of the pe over to
+that image.
+
+We start by first discussing firmware and introduce the two common ARM firmware
+packages.
+
+10.1 FIRMWARE AND BOOTLOADER
+
+We realize that the use of terms may differ among engineers, but we will use the following
+definitions:
+
+= The firmware is the deeply embedded, low-level software that provides an interface
+between the hardware and the application/operating system level software. It resides
+in the ROM and executes when power is applied to the embedded hardware
+system. Firmware can remain active after system initialization and supports basic
+
+367

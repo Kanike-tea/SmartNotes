@@ -1,0 +1,53 @@
+8.6 The Tuple Relational Calculus
+
+We want to make sure that a selected employee e works on all the projects con-
+trolled by department 5, but the definition of universal quantifier says that to
+make the quantified formula TRUE, the inner formula must be TRUE for all tuples
+in the universe. The trick is to exclude from the universal quantification all tuples
+that we are not interested in by making the condition TRUE for all such tuples.
+This is necessary because a universally quantified tuple variable, such as x in Q3,
+must evaluate to TRUE for every possible tuple assigned to it to make the quantified
+formula TRUE.
+
+The first tuples to exclude (by making them evaluate automatically to TRUE) are
+those that are not in the relation R of interest. In Q3, using the expression
+NOT(PROJECT(x)) inside the universally quantified formula evaluates to TRUE all
+tuples x that are not in the PROJECT relation. Then we exclude the tuples we are not
+interested in from R itself. In Q3, using the expression NOT(x.Dnum=5) evaluates to
+TRUE all tuples x that are in the PROJECT relation but are not controlled by depart-
+ment 5. Finally, we specify a condition F, that must hold on all the remaining tuples
+in R. Hence, we can explain Q3 as follows:
+
+1. For the formula F’ = (Vx)(F) to be TRUE, we must have the formula F be
+TRUE for all tuples in the universe that can be assigned to x. However, in Q3
+we are only interested in F being TRUE for all tuples of the PROJECT relation
+that are controlled by department 5. Hence, the formula F is of the form
+(NOT(PROJECT(x)) OR F,). The ‘NOT (PROJECT(x)) OR ...’ condition is
+TRUE for all tuples not in the PROJECT relation and has the effect of elimi-
+nating these tuples from consideration in the truth value of F,. For every
+tuple in the PROJECT relation, F; must be TRUE if F’ is to be TRUE.
+
+2. Using the same line of reasoning, we do not want to consider tuples in the
+PROJECT relation that are not controlled by department number 5, since we
+are only interested in PROJECT tuples whose Dnum=5. Therefore, we can
+write:
+
+IF (x.Dnum=5) THEN F>,
+which is equivalent to
+(NOT (x.Dnum=5) OR F)
+
+3. Formula Fj, hence, is of the form NOT(x.Dnum=5) OR F. In the context of
+Q3, this means that, for a tuple x in the PROJECT relation, either its Dnaum#5
+or it must satisfy F,.
+
+4. Finally, F, gives the condition that we want to hold for a selected EMPLOYEE
+tuple: that the employee works on every PROJECT tuple that has not been
+excluded yet. Such employee tuples are selected by the query.
+
+In English, Q3 gives the following condition for selecting an EMPLOYEE tuple e:
+For every tuple x in the PROJECT relation with x.Dnum=5, there must exist a tuple
+win WORKS_ON such that w.Essn=e.Ssn and w.Pno=x.Pnumber. This is equivalent
+to saying that EMPLOYEE e works on every PROJECT x in DEPARTMENT number 5.
+(Whew!)
+
+275

@@ -1,0 +1,51 @@
+66 Chapter 3 Introduction to the ARM Instruction Set
+
+mem32[0x80010] = 0x01
+r0 = 0x00080010
+rl = 0x00000000
+r2 = 0x00000000
+r3 = 0x00000000
+
+LOMIA r0!, {r1-r3}
+
+POST 0 = 0x0008001c
+rl = 0x00000001
+r2 = 0x00000002
+r3 = 0x00000003
+
+Figure 3.3 shows a graphical representation.
+
+The base register r0 points to memory address 0x80010 in the PRE condition. Memory
+addresses 0x80010, 0x80014, and 0x80018 contain the values 1, 2, and 3 respectively. After
+the load multiple instruction executes registers rl, r2, and r3 contain these values as shown
+in Figure 3.4. The base register r0 now points to memory address 0x8001c after the last
+loaded word.
+
+Now replace the LDMIA instruction with a load multiple and increment before LDMIB
+instruction and use the same PRE conditions. The first word pointed to by register r0 is
+ignored and register r1 is loaded from the next memory location as shown in Figure 3.5.
+
+After execution, register r0 now points to the last loaded memory location. This is in
+contrast with the LDMIA example, which pointed to the next memory location.
+
+The decrement versions DA and DB of the load-store multiple instructions decrement the
+start address and then store to ascending memory locations. This is equivalent to descending
+memory but accessing the register list in reverse order. With the increment and decrement
+load multiples, you can access arrays forwards or backwards. They also allow for stack push
+and pull operations, illustrated later in this section.
+
+Memory
+Address pointer address Data
+
+0x80020 | 0x00000005
+Ox8001¢ | 0x00000004
+0x80018 | 0x00000003
+0x80014 | 0x00000002
+0 = 0x80010 —> | 0x80010 | 000000001
+0x8000c | 0x00000000
+
+0x00000000
+00000000
+0x00000000
+
+Figure 3.3. Pre-condition for LDMIA instruction.

@@ -1,0 +1,101 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
+THE STRING ABSTRACT DATA TYPE
+
+The string, whose component elements are characters. As an ADT, we define a string to have
+the form, S = So, .. . , where Si are characters taken from the character set of the
+programming language. If n = 0, then S is an empty or null string.There are several useful
+
+operations we could specify for strings.
+
+structure String is
+objects: a finite set of zero or more characters.
+functions:
+for all s, t€ String. i,j, m © non-negative integers
+
+String Null) return a string whose maximum length is
+m characters, but is initially set to NULL
+We write NULL as "".
+if s equals ¢
+return 0
+else if s precedes 1
+return -f
+else return +1
+
+Boolean IsNull(s) n= if (Compare(s, NULL)
+
+return FALSE
+
+else return TRUE
+Integer Length(s) = if (Compare(s, NULL)
+return the number of characters in »
+else return 0.
+if (Compare(t, NULL))
+return a string whose elements are those
+of s followed by those of ¢
+else return s.
+if (G > 0) && (i +j—1) < Length(s)
+return the string containing, the characters
+of sat positions i, 71, +++ pf +j-1.
+else return NULL.
+
+Integer Compare(s. 1)
+
+String Concat(s, t)
+
+String Substr(s, i,j)
+
+we represent strings as character arrays terminated with the null character \0.
+
+#define MAX-SIZE 100 /*maximum size of string */
+char s[MAX—SIZE] =) {"dog"};
+char t(MAX-SIZE] = {"house"};
+
+Function
+char *sireai(char *dest, char *src)
+
+Char *strneat(char “dest, char "sre. int n)
+
+char *swemp(char *strl, char *str2) compare two StFIngS:
+return <0 if str] < str2;
+
+O if strd = 8172;
+
+> if serd > sir2
+
+| char “steRegpp(char “sir? char =i, far h) | compare first m characters
+return < O if serd <str2:
+Oi sir? = st
+> Lif sert >
+s from src
+
+char *sirepyehar “dest, char *sre)
+char *strncpy(char *dest, char *sre, int A)
+
+tstrlen(char *s) - _) return the fength of as
+
+| char *swrehr(char *s, inte) | i to the first
+
+return NULL if not present
+
+to last occurrence of |
+
+token from
+surrounded by delimiters
+
+return pointer to start of
+
+ters in spanser,
+
+return length of span
+
+‘Size—1 strespn(char *s, char *spanset) sean s for characters not in spanser
+return length of span
+
+char *strpbrk(char *s, char *spanset) sean « for characters in spanser
+urn pointer to first Occurrence
+Of a character from spanset
+
+Figure 2.7: € string functions
+
+vtucode.in 34

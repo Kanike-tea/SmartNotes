@@ -1,0 +1,46 @@
+264 Chapter 8 Digital Signal Processing
+
+8.1.2) OPERATING ON VALUES STORED IN FIXED-POINT FORMAT
+
+Figure 8.2
+
+Suppose now that we have chosen a Qk fixed-point representation for the signal x[t].
+In other words, we have an array of integers X[t] such that
+
+X[t] = the closet integer to (2'xt«l) (8.8)
+
+Equivalently, if we write the integer X[t] in binary notation, and insert a binary point
+between bits k and k—1, then we have the value of x[t]. For example, in Figure 8.2, the
+fixed-point value 0x6000 at Q15 represents 0.11 in binary, or 3/4 = 0.75 in decimal.
+
+The following subsections cover the basic operations of addition, subtraction, multipli-
+cation, division, and square root as applied to fixed-point signals. There are several concepts
+that apply to all fixed-point operations:
+
+= Rounding on right shift. When you perform a right shift to divide by a power of two,
+the shift rounds towards —oo rather than rounding to the nearest integer. For a more
+accurate answer use the operation y = (x + (1 « (shift — 1))) > shift instead. This
+will round to the nearest integer with 0.5 rounded up. To implement this efficiently,
+see Section 7.7.3.
+
+= Rounding on divide. For an unsigned divide, calculate y = (x + (d >> 1))/d rather than
+y = x/d. This gives a rounded result.
+
+=~ Headroom. The headroom of a fixed point representation is the ratio of the maximum
+magnitude that can be stored in the integer to the maximum magnitude that will occur.
+For example, suppose you use a 16-bit integer to store a Q13 representation of an audio
+signal that can range between —1 and +1. Then there is a headroom of four times or
+two bits. You can double a sample value twice without risk of overflowing the 16-bit
+container integer.
+
+=~ Conversion of Q representation. If X[t] is a Qn representation of x[t], then
+X[t] « kis a Q(n + k) representation of x[t] (8.9)
+X[t] > k isa Q(n — k) representation of x[t] (8.10)
+
+For the following sections we fix signals x[t], c[t], and y[t]. Let X[t], C[t], Y[t] denote
+their Qn, Qm, Qd fixed-point representations, respectively.
+
+Bit 15 14 13 12 1110 9 8 765 43 2 1 (0
+ox6o000 = 0. 1 100000000000 0 0
+
+Representation of 3/4 in Q15 fixed-point arithmetic.

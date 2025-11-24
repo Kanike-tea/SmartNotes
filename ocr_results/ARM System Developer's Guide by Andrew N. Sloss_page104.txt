@@ -1,0 +1,51 @@
+EXAMPLE
+
+4.1
+
+4.2 ARM-Thumb Interworking 91
+
+BX Thumb version branch exchange pe=Rn & Oxf fffftfe
+T =Rn{0]
+BLX | Thumb version of the branch exchange | Ir=(instruction address after the BLX) + 1
+with link pe=label, T = 0
+po=Rm & Oxfffffffe, T=Rml0]
+
+Unlike the ARM version, the Thumb BX instruction cannot be conditionally executed.
+
+This example shows a small code fragment that uses both the ARM and Thumb versions of
+the BX instruction. You can see that the branch address into Thumb has the lowest bit set.
+This sets the T bit in the cpsr to Thumb state.
+
+The return address is not automatically preserved by the BX instruction. Rather the code
+sets the return address explicitly using a MOV instruction prior to the branch:
+
+3 ARM code
+CODE32 3 word aligned
+LOR 0, =thumbCode+1 ; +1 to enter Thumb state
+MOV. Ir, pc 3 set the return address
+BX r0 ; branch to Thumb code & mode
+
+; continue here
+; Thumb code
+
+CODEI6 ; halfword aligned
+thumbCode
+
+ADD rl, #1
+
+BX or ; return to ARM code & state
+
+A branch exchange instruction can also be used as an absolute branch providing bit 0
+isn’t used to force a state change:
+
+3 address(thumbCode) = 0x00010000
+
+3 cpsr = nzcvgIFt_SVC
+3 r0 = 0x00000000
+
+0x00009000 LDR v0, =thumbCode+1
+
+3 cpsr = nzcvgIFt_SVC
+3 r0 = 0x00010001
+
+0x00009008 BX rd

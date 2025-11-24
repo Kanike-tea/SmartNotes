@@ -1,0 +1,52 @@
+25.4 MapReduce: Additional Details
+
+background thread partitions the buffered rows based on the number of Reduc-
+ers in the job and the Partitioner. The Partitioner is a pluggable interface that is
+asked to choose a Reducer for a given Key value and the number of reducers in
+the Job. The partitioned rows are sorted on their key values. They can further be
+sorted on a provided Comparator so that rows with the same key have a stable
+sort order. This is used for Joins to ensure that for rows with the same key value,
+rows from the same table are bunched together. Another interface that can be
+plugged in is the Combiner interface. This is used to reduce the number of rows
+output per key from a mapper and is done by applying a reduce operation on
+each Mapper for all rows with the same key. During the Map phase, several
+iterations of partitioning, sorting, and combining may happen. The end result is
+a single local file per reducer that is sorted on the Key.
+
+Copy phase: The Reducers pull their files from all the Mappers as they become
+available. These are provided by the JobTracker in Heartbeat responses. Each
+Mapper has a set of listener threads that service Reducer requests for these files.
+
+Reduce phase: The Reducer reads all its files from the Mappers. All files are
+merged before streaming them to the Reduce function. There may be multiple
+stages of merging, depending on how the Mapper files become available. The
+Reducer will avoid unnecessary merges; for example, the last N files will be
+merged as the rows are being streamed to the Reduce function.
+
+. Job Scheduling
+
+‘The JobTracker in MR 1.0 is responsible for scheduling work on cluster nodes.
+Clients’ submitted jobs are added to the Job Queue of the JobTracker. The initial
+versions of Hadoop used a FIFO scheduler that scheduled jobs sequentially as
+they were submitted. At any given time, the cluster would run the tasks of a
+single Job. This caused undue delays for short jobs like ad-hoc hive queries if
+they had to wait for long-running machine learning-type jobs. The wait times
+would exceed runtimes, and the throughput on the cluster would suffer. Addi-
+tionally, the cluster also would remain underutilized. We briefly describe two
+other types of schedulers, called the Fair Scheduler and Capacity Scheduler, that
+alleviate this situation.
+
+Fair Scheduler: The goal of Fair Scheduler is to provide fast response time to
+small jobs in a Hadoop shared cluster. For this scheduler, jobs are grouped into
+Pools. The capacity of the cluster is evenly shared among the Pools. At any given
+time the resources of the cluster are evenly divided among the Pools, thereby
+utilizing the capacity of the cluster evenly. A typical way to set up Pools is to
+assign each user a Pool and assign certain Pools a minimum number of slots.
+
+Capacity Scheduler: The Capacity Scheduler is geared to meet the needs of
+large Enterprise customers. It is designed to allow multiple tenants to share
+resources of a large Hadoop cluster by allocating resources in a timely manner
+under a given set of capacity constraints. In large enterprises, individual depart-
+ments are apprehensive of using one centralized Hadoop cluster for concerns
+
+929

@@ -1,0 +1,74 @@
+Review Questions
+
+6.1.
+
+6.2.
+6.3.
+
+6.4.
+
+How do the relations (tables) in SQL differ from the relations defined for-
+mally in Chapter 3? Discuss the other differences in terminology. Why does
+SQL allow duplicate tuples in a table or in a query result?
+
+List the data types that are allowed for SQL attributes.
+
+How does SQL allow implementation of the entity integrity and referential
+integrity constraints described in Chapter 3? What about referential trig-
+gered actions?
+
+Describe the four clauses in the syntax of a simple SQL retrieval query. Show
+what type of constructs can be specified in each of the clauses. Which are
+required and which are optional?
+
+Exercises
+
+6.5.
+
+6.6.
+
+6.7.
+
+6.8.
+
+6.9.
+
+Consider the database shown in Figure 1.2, whose schema is shown in Fig-
+ure 2.1. What are the referential integrity constraints that should hold on the
+schema? Write appropriate SQL DDL statements to define the database.
+
+Repeat Exercise 6.5, but use the AIRLINE database schema of Figure 5.8.
+
+Consider the LIBRARY relational database schema shown in Figure 6.6.
+Choose the appropriate action (reject, cascade, set to NULL, set to default) for
+each referential integrity constraint, both for the deletion of a referenced
+tuple and for the update of a primary key attribute value in a referenced
+tuple. Justify your choices.
+
+Write appropriate SQL DDL statements for declaring the LIBRARY relational
+database schema of Figure 6.6. Specify the keys and referential triggered
+actions.
+
+How can the key and foreign key constraints be enforced by the DBMS? Is
+the enforcement technique you suggest difficult to implement? Can the con-
+straint checks be executed efficiently when updates are applied to the data-
+base?
+
+. Specify the following queries in SQL on the COMPANY relational database
+
+schema shown in Figure 5.5. Show the result of each query if it is applied to
+
+the COMPANY database in Figure 5.6.
+
+a. Retrieve the names of all employees in department 5 who work more
+than 10 hours per week on the ProductX project.
+
+b. List the names of all employees who have a dependent with the same first
+name as themselves.
+
+c. Find the names of all employees who are directly supervised by ‘Franklin
+Wong’.
+
+Exercises
+
+203

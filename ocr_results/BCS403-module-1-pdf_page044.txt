@@ -1,0 +1,23 @@
+Database Management System [BCS403]
+
+miniworld situation that the relationships represent.For example, if the company has a rule that each
+employee must work for exactly one department, then we would like to describe this constraint in the
+schema. Two main types of binary relationship constraints:
+
+1. cardinality ratio
+
+2. participation.
+
+Cardinality Ratios for Binary Relationships
+
+Example of a 1:1 binary relationship
+® MANAGES which relates a department entity to the employee who manages that department
+© This represents the miniworld constraints that—at any point in time—an employee can manage one
+
+department only and a department can have one manager only
+
+EMPLOYEE
+
+MANAGES DEPARTMENT
+
+https://vtucode.in Page 45

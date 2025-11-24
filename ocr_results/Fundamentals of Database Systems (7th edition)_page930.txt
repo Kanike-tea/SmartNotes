@@ -1,0 +1,49 @@
+900
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+Redis key-value cache and store. Redis differs from the other systems dis-
+cussed here because it caches its data in main memory to further improve perfor-
+mance. It offers master-slave replication and high availability, and it also offers
+persistence by backing up the cache to disk.
+
+Apache Cassandra. Cassandra is a NOSQL system that is not easily categorized
+into one category; it is sometimes listed in the column-based NOSQL category (see
+Section 24.5) or in the key-value category. If offers features from several NOSQL
+categories and is used by Facebook as well as many other customers.
+
+24.5 Column-Based or Wide Column
+NOSQL Systems
+
+Another category of NOSQL systems is known as column-based or wide column
+systems. The Google distributed storage system for big data, known as BigTable, is
+a well-known example of this class of NOSQL systems, and it is used in many
+Google applications that require large amounts of data storage, such as Gmail. Big-
+Table uses the Google File System (GFS) for data storage and distribution. An
+open source system known as Apache Hbase is somewhat similar to Google Big-
+Table, but it typically uses HDFS (Hadoop Distributed File System) for data stor-
+age. HDFS is used in many cloud computing applications, as we shall discuss in
+Chapter 25. Hbase can also use Amazon’s Simple Storage System (known as $3)
+for data storage. Another well-known example of column-based NOSQL systems is
+Cassandra, which we discussed briefly in Section 24.4.3 because it can also be char-
+acterized as a key-value store. We will focus on Hbase in this section as an example
+of this category of NOSQL systems.
+
+BigTable (and Hbase) is sometimes described as a sparse multidimensional distrib-
+uted persistent sorted map, where the word map means a collection of (key, value)
+pairs (the key is mapped to the value). One of the main differences that distinguish
+column-based systems from key-value stores (see Section 24.4) is the nature of the
+key. In column-based systems such as Hbase, the key is multidimensional and so
+has several components: typically, a combination of table name, row key, column,
+and timestamp. As we shall see, the column is typically composed of two compo-
+nents: column family and column qualifier. We discuss these concepts in more
+detail next as they are realized in Apache Hbase.
+
+24.5.1 Hbase Data Model and Versioning
+
+Hbase data model. The data model in Hbase organizes data using the concepts
+of namespaces, tables, column families, column qualifiers, columns, rows, and data
+cells. A column is identified by a combination of (column family:column qualifier).
+Data is stored in a self-describing form by associating columns with data values,
+where data values are strings. Hbase also stores multiple versions of a data item,
+with a timestamp associated with each version, so versions and timestamps are also

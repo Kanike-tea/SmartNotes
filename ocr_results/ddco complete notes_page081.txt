@@ -1,0 +1,56 @@
+COMPUTER ORGANIZATION (21¢s34) Module 3
+
+DIFFERENCES MULTIPROCESSOR AND MULTICOMPUTER
+
+MULTIPROCESSOR
+
+MULTICOMPUTER
+
+1. It is a process of interconnection of two or
+more processors by means of system bus.
+
+It is a process of interconnection of two or
+more computers by means of system bus.
+
+2. It uses common memory to hold the data
+and instructions.
+
+It has its own memory to store data and
+instructions.
+
+3. Complexity in hardware design.
+
+Not much complexity in hardware design.
+
+4. Difficult to program for multiprocessor
+
+Easy to program for multiprocessor system
+
+system.
+
+4. MEMORY LOCATIONS AND ADDRESSES
+
+1. Memory is a storage device. It is used to store character operands, data operands and
+instructions.
+De It consists of number of semiconductor cells and each cell holds | bit of information. A
+
+group of 8 bits is called as,byte and a group of 16 on,32 or 64 bits is called as word.
+World length = 16 for 16 bit CPU and World length = 32 for 32 bit CPU. Word length is defined
+as number of bits in a word.
+e Memory is organized in terms of bytes or words.
+e The organization of memory for 32 bit processor is as shown in the fig.
+
+-—— nbis ———+
+
+first word
+
+second word
+
+ith word
+
+last word
+
+The contents of memory location can be accessed for read and write operation. The memory is
+accessed either by specifying address of the memory location or by name of the memory location.
+
+Dr. Ajay V G, Dept. of CSE, SVIT 14

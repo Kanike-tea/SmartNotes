@@ -1,0 +1,55 @@
+Lab Manual BCS358D-Data Visualization with Python Laboratory
+
+e  plt.title(Linear Plot with Line Formatting'): This line adds a title to the plot. In
+
+this code, the title is set to 'Linear Plot with Line Formatting’.
+5. Adding a legend:
+
+e plt.legend(): This line adds a legend to the plot. The legend will display the label
+specified in the plot function, which is 'Data Points' in this case. The legend helps
+in identifying different data series when multiple lines are present on the plot.
+
+6. Displaying the plot:
+
+e  plt.grid(): This line adds a grid to the plot for better readability.
+
+e  plt.show(): This function is called to display the linear plot on the screen. After
+calling this function, the plot will appear in a graphical window with the specified
+
+labels, title, legend, and formatting options.
+
+When you run this program, it will generate a linear plot with the provided data points. The x
+and y values are connected by a dashed blue line with circular markers at each data point. The x-
+axis and y-axis are labeled as 'X-Axis' and 'Y-Axis,' respectively, and a title 'Linear Plot with
+Line Formatting' is displayed at the top of the chart. A legend is also added to the plot to identify
+the data series as 'Data Points.’ The grid lines are included for improved readability. This
+program demonstrates how to create and customize a linear plot with various formatting options
+
+using Matplotlib in Python.
+
+PROGRAM
+import matplotlib.pyplot as plt
+
+# Sample data for the linear plot
+x= (1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+# Create a linear plot with line formatting
+plt.plot(x, y, marker='o', color='blue', linestyle='--', linewidth=2,
+markersize=8, label='Data Points')
+
+# Add labels and a title
+
+plt.xlabel ('X-Axis')
+
+plt.ylabel ('Y-Axis')
+
+plt.title('Linear Plot with Line Formatting')
+
+# Add a legend
+plt.legend()
+
+# Show the plot
+plt.grid()
+
+Dept. of CSE 49 GSSSIETW, Mysuru

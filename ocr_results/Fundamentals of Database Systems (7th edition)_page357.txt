@@ -1,0 +1,69 @@
+9)
+10)
+
+10.3 Database Programming with Function Calls and Class Libraries: SQL/CLI and JDBC 327
+
+//Program CLI
+
+#include sqlcli.h ;
+
+void printSal() {
+
+SQLHSTMT stmtl ;
+
+SQLHDBC conl ;
+
+SQLHENV envl ;
+
+SQLRETURN retl, ret2, ret3, ret4 ;
+
+retl = SQLAllocHandle(SQL_HANDLE_ENV, SQL _NULL_HANDLE, senvl) ;
+
+if (!retl) ret2 = SQLAllocHandle(SQL_HANDLE DBC, envl, &conl) else exit ;
+
+if (!ret2) ret3 = SQLConnect(conl, "dbs", SQL_NTS, "js", SQL_NTS, "xyz",
+SQL_NTS) else exit ;
+
+if (!ret3) ret4 = SQLAllocHandle(SQL_HANDLE_STMT, conl, &stmtl) else exit ;
+
+sQLPrepare(stmtl, "select Lname, Salary from EMPLOYEE where Ssn = ?",
+SOL_NTS) ;
+
+11) prompt("Enter a Social Security Number: ", ssn) ;
+
+12) SQLBindParameter(stmt1, 1, SQL CHAR, &ssn, 9, &fetchlenl) ;
+13) retl = SQLExecute(stmt1l) ;
+
+14) if (!retl) {
+
+15)  SQLBindCol(stmt1, 1, SQL CHAR, &lname, 15, &fetchlenl) ;
+16)  SQLBindCol(stmtl, 2, SQL FLOAT, &salary, 4, &fetchlen2) ;
+17) ret2 = SQLFetch(stmtl) ;
+
+18) if (!ret2) printf£(ssn, lname, salary)
+
+19) else printf("Social Security Number does not exist: ", ssn) ;
+20) }
+
+21) }
+
+Figure 10.10
+
+Program segment CLI1, a C program segment with SQL/CLI.
+
+Handles to environment, connection, statement, and description
+records. When using SQL/CLI, the SQL statements are dynamically created and
+passed as string parameters in the function calls. Hence, it is necessary to keep track
+of the information about host program interactions with the database in runtime
+data structures because the database commands are processed at runtime. The
+information is kept in four types of records, represented as structs in C data types.
+An environment record is used as a container to keep track of one or more data-
+base connections and to set environment information. A connection record keeps
+track of the information needed for a particular database connection. A statement
+record keeps track of the information needed for one SQL statement. A
+description record keeps track of the information about tuples or parameters—for
+example, the number of attributes and their types in a tuple, or the number and
+types of parameters in a function call. This is needed when the programmer does
+not know this information about the query when writing the program. In our
+examples, we assume that the programmer knows the exact query, so we do not
+show any description records.

@@ -1,0 +1,42 @@
+2) Multiple Bus Structure
+> Systems that contain multiple buses achieve more concurrency in operations.
+
+> Two or more transfers can be carried out at the same time.
+> Advantage: Better performance.
+
+> Disadvantage: Increased cost.
+
+me] | om | Lee | Lm |
+
+Figure 1.3 Single-bus structure.
+
+¢ The devices connected to a bus vary widely in their speed of operation.
+
+¢ To synchronize their operational-speed, buffer-registers can be used.
+
+¢ Buffer Registers
+— are included with the devices to hold the information during transfers.
+— prevent a high-speed processor from being locked to a slow I/O device during data
+transfers.
+
+PERFORMANCE
+¢ The most important measure of performance of a computer is how quickly it can execute programs.
+¢ The speed of a computer is affected by the design of
+1) Instruction-set.
+2) Hardware & the technology in which the hardware is implemented.
+3) Software including the operating system.
+¢ Because programs are usually written in a HLL, performance is also affected by the compiler
+that translates programs into machine language. (HLL High Level Language).
+¢ For best performance, it is necessary to design the compiler, machine instruction set and hardware in
+a co-ordinated way.
+
+Figure 1.5 The processor cache.
+Let examine the flow of program instructions and data between the memory & the processor.
+At the start of execution, all program instructions are stored in the main-memory.
+As execution proceeds, instructions are fetched into the processor, and a copy is placed in the cache.
+¢ Later, if the same instruction is needed a second time, it is read directly from the cache.
+¢ A program will be executed faster
+if movement of instruction/data between the main-memory and the processor is minimized which
+is achieved by using the cache.
+
+Page 4

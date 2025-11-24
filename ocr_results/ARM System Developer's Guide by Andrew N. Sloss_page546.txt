@@ -1,0 +1,55 @@
+EXAMPLE
+
+14.7
+
+14.10 Demonstration: A Small Virtual Memory System 533
+
+{
+mmuMapCoarseTab] eRegion(region) ;
+break;
+}
+#if defined(_ TARGET_CPU_ARM920T)
+case FINE: /* map PTE to point to FINE L2 PT */
+{
+mmuMapFineTableRegion(region) ;
+break;
+}
+#endif
+default:
+{
+printf ("UNKNOWN page table type\n");
+return -1;
+}
+}
+return 0;
+
+}
+
+Within the Region is a pointer to a Pagetable in which the region translation data
+resides. The routine determines the page table type region->PT->type and calls a routine
+that maps the Region into the page table in the format of the specified page table type.
+
+There is a separate procedure for each of the three types of page table, section
+(LI master), coarse, and fine (refer to Section 14.4).
+
+Here is the first of the three routines that convert the region data to page table entries:
+
+void mnuMapSectionTableRegion(Region *region)
+{
+
+int i;
+
+unsigned int *PTEptr, PTE;
+
+PTEptr = (unsigned int *)region->PT->ptAddress; /* base addr PT */
+PTEptr += region->vAddress>>20; /* set to first PTE in region */
+PTEptr += region->numPages - 1; /* set to last PTE in region */
+
+PTE = region->pAddress & Oxfff00000; /* set physical address */
+
+PTE |= (region->AP & 0x3) <<10; /* set Access Permissions */
+PTE |= region->PT->dom <<5; /* set Domain for section */
+PTE |= (region->CB & 0x3) <<2; /* set Cache & WB attributes */
+PTE |= 0x12; /* set as section entry */
+
+for (i =region->numPages - 1; i >* 03 i--) /* fill PTE in region */

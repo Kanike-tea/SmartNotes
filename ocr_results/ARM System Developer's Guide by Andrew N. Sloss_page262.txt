@@ -1,0 +1,61 @@
+7.6 Endian Reversal and Bit Operations 249
+
+MVN om, #0x0000FFOO ;
+EOR —t, ny ny ROR #16 ; [a%c, b*d, a%c, b*d ]
+AND = ty m, t, LSR#B 5 t=[ 0, a%c, 0, a% ]
+EOR on, t, n, RR# ;n=[ d, c, b, a J
+
+= [OxFF,OxFF,0x00,0xFF J
+
+MOV pc, Ir
+
+byte_reverse_2reg pe » b,c dj
+EOR —t, n, n, RORFI6 ; t = [a%c, bAd, arc, bAd J
+MOV t, t, LSR#8 3
+
+BIC t,t, #OxFFOO ;
+EOR on, t, n, ROR #8 3 n=
+MOV pc, Ir
+
+ac, 0, a%c J
+
+> ¢, bs, a |
+
+a
+A
+0, a%c, bd, a%c ]
+0
+d
+
+Halfword reversing within a word is provided free by the ARM barrel shifter since it is
+the same as a rotate right by 16 places.
+
+7.6.2 BIT PERMUTATIONS
+
+The byte reversal of Section 7.6.1 is a special case of a bit permutation. There are many
+other important bit permutations that you might come across (see Table 7.3):
+
+= Bit reversal, Exchanging the value of bits k and 31 — k.
+
+= Bit spreading. Spacing out the bits so that bit k moves to bit 2k for k < 16 and bit 2k —31
+fork > 16.
+
+= DES initial permutation. DES stands for the Data Encryption Standard, a common
+algorithm for bulk data encryption. The algorithm applies a 64-bit permutation to the
+data before and after the encryption rounds.
+
+Writing optimized code to implement such permutations is simple when you have at
+hand a toolbox of bit permutation primitives like the ones we will develop in this section
+(see Table 7.4). They are much faster than a loop that examines each bit in turn, since they
+process 32 bits at a time.
+
+Table 7.3 Table of common permutations.
+
+Permutation name Permutation action
+
+Byte reversal [b4, b3,b2, bi, bo] > [1 — b4, 1 — 03, bp, bi, bo]
+
+Bit reversal [b4, b3,b2, bi, bo] > [1 — ba, 1 — b3,1 — ba, 1 — by, 1 — bo]
+Bit spread [b4, b3,b2, bi, bo] > [b3, bo, bi, bo, bal
+
+DES permutation [bs, ba, b3,b2, bi, bo] > [1 — bo, bz, by, 1 — bs, 1 — by, 1 — bs]

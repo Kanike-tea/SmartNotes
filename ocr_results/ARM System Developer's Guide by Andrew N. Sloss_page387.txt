@@ -1,0 +1,51 @@
+374 Chapter 10 Firmware
+
+We will take you through these steps, trying to avoid as much as possible the platform-
+specific parts. You should note that some specific parts are unavoidable (for example,
+configuring system registers and memory remapping).
+
+The initial goal of Sandstone is to set up the target platform environment so that it can
+provide some form of feedback to indicate that the firmware is running and has control of
+the platform.
+
+10.2.2.1 Step 1: Take the Reset Exception
+
+Execution begins with a Reset exception. Only the reset vector entry is required in the
+default vector table. It is the very first instruction executed. You can see from the code
+here that all the vectors, apart from the reset vector, branch to a unique dummy handler—a
+branch instruction that causes an infinite loop. It is assumed that no exception or interrupt
+will occur during the operation of Sandstone. The reset vector is used to move the execution
+flow to the second stage.
+
+AREA start,CODE,READONLY
+ENTRY
+
+sandstone_start
+B sandstone_initl 3 reset vector
+
+B ex_und 3 undefined vector
+B ex_swi 3 swi vector
+B ex_pabt 3 prefetch abort vector
+B ex_dabt 3 data abort vector
+NoP 3 not used...
+B int_irq 3 irq vector
+B int_fiq 3 fig vector
+
+ex_und B ex_und 3 loop forever
+
+ex_swi B ex_swi 3 loop forever
+
+ex_dabt B ex_dabt 3 loop forever
+
+ex_pabt B ex_pabt 3 loop forever
+
+int_irg B int_irq 3 loop forever
+
+int_fiq B int_fiq 3 loop forever
+
+sandstone_start is located at address 0x00000000.
+The results of executing step 1 are the following:
+
+= Dummy handlers are set up.
+
+= Control is passed to code to initialize the hardware.

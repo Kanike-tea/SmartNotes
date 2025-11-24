@@ -1,0 +1,50 @@
+814
+
+Chapter 22 Database Recovery Techniques
+
+specific concurrency control methods. We will discuss recovery concepts indepen-
+dently of concurrency control mechanisms.
+
+22.1 Recovery Concepts
+
+22.1.1 Recovery Outline and Categorization
+of Recovery Algorithms
+
+Recovery from transaction failures usually means that the database is restored to
+the most recent consistent state before the time of failure. To do this, the system
+must keep information about the changes that were applied to data items by the
+various transactions. This information is typically kept in the system log, as we
+discussed in Section 21.2.2. A typical strategy for recovery may be summarized
+informally as follows:
+
+1. If there is extensive damage to a wide portion of the database due to cata-
+strophic failure, such as a disk crash, the recovery method restores a past
+copy of the database that was backed up to archival storage (typically tape or
+other large capacity offline storage media) and reconstructs a more current
+state by reapplying or redoing the operations of committed transactions
+from the backed-up log, up to the time of failure.
+
+2. When the database on disk is not physically damaged, and a noncatastrophic
+failure of types 1 through 4 in Section 21.1.4 has occurred, the recovery
+strategy is to identify any changes that may cause an inconsistency in the
+database. For example, a transaction that has updated some database items
+on disk but has not been committed needs to have its changes reversed by
+undoing its write operations. It may also be necessary to redo some opera-
+tions in order to restore a consistent state of the database; for example, if a
+transaction has committed but some of its write operations have not yet
+been written to disk. For noncatastrophic failure, the recovery protocol does
+not need a complete archival copy of the database. Rather, the entries kept in
+the online system log on disk are analyzed to determine the appropriate
+actions for recovery.
+
+Conceptually, we can distinguish two main policies for recovery from non-
+catastrophic transaction failures: deferred update and immediate update. The
+deferred update techniques do not physically update the database on disk until after
+a transaction commits; then the updates are recorded in the database. Before reach-
+ing commit, all transaction updates are recorded in the local transaction workspace
+or in the main memory buffers that the DBMS maintains (the DBMS main memory
+cache; see Section 20.2.4). Before commit, the updates are recorded persistently in
+the log file on disk, and then after commit, the updates are written to the database
+from the main memory buffers. If a transaction fails before reaching its commit
+point, it will not have changed the database on disk in any way, so UNDO is not
+needed. It may be necessary to REDO the effect of the operations of a committed

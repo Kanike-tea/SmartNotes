@@ -1,0 +1,49 @@
+424 Chapter 12. Caches
+
+Changing the memory configuration of a system may require cleaning or flushing a
+cache. The need to clean or flush a cache results directly from actions like changing the
+access permission, cache, and buffer policy, or remapping virtual addresses.
+
+The cache may also need cleaning or flushing before the execution of self-modifying
+code ina split cache. Self-modifying code includes a simple copy of code from one location
+to another. The need to clean or flush arises from two possible conditions: First, the self-
+modifying code may be held in the D-cache and therefore be unavailable to load from
+main memory as an instruction. Second, existing instructions in the I-cache may mask new
+instructions written to main memory.
+
+Ifa cache is using a writeback policy and self-modifying code is written to main memory,
+the first step is to write the instructions as a block of data to a location in main memory. At
+a later time, the program will branch to this memory and begin executing from that area of
+memory as an instruction stream. During the first write of code to main memory as data, it
+may be written to cache memory instead; this occurs in an ARM cache if valid cache lines
+exist in cache memory representing the location where the self-modifying code is written.
+The cache lines are copied to the D-cache and not to main memory. If this is the case, then
+when the program branches to the location where the self-modifying code should be, it will
+execute old instructions still present because the self-modifying code is still in the D-cache.
+To prevent this, clean the cache, which forces the instructions stored as data into main
+memory, where they can be read as an instruction stream.
+
+Ifthe D-cache has been cleaned, new instructions are present in main memory. However,
+the I-cache may have valid cache lines stored for the addresses where the new data (code)
+was written. Consequently, a fetch of the instruction at the address of the copied code would
+retrieve the old code from the I-cache and not the new code from main memory. Flush the
+I-cache to prevent this from happening.
+
+12.5.1 FLUSHING ARM CACHED CORES
+
+Flushing a cache invalidates the contents ofa cache. If the cache is using a writeback policy,
+care should be taken to clean the cache before flushing so data is not lost as a result of the
+flushing process.
+
+There are three CP15:c7 commands that perform flush operations on a cache. The first
+flushes the entire cache, the second flushes just the I-cache, and the third just the D-cache.
+The commands and cores that support them are shown in Table 12.3. The value of the
+processor core register Rd should be zero for all three MCR instructions.
+
+We provide Example 12.2 to show how to flush caches using these instructions. The
+example can be used “as is” or customized to suit the requirements of the system. The
+example contains a macro that produces three routines (for information on using macros,
+see Appendix A):
+
+m= flushICache flushes the I-cache.
+m= flushDCache flushes the D-cache.

@@ -1,0 +1,51 @@
+LECTURE-12: FILE ORGANISATION
+
+FILE ORGANISATION AND ITS TYPES:
+
+A file organization is a technique to organize data in the secondary memory. File organization is a
+way of arranging the records in a file when the file is stored on the disk. Data files are organized so
+as to facilitate access to records and to ensure their efficient storage. A DBMS supports several file
+organization techniques.
+
+One access key ?
+
+Yes Lo
+No
+
+Sequential Multi key
+Access only? organization
+Yes ™. No “™
+Sequential Direct Inverted file Multi list file
+File organization Access only? structure structure
+Yes “™ No
+Direct file Index sequential
+organization
+
+‘.
+‘
+
+/
+Direct file Binary B + tree
+
+organization search tree
+
+(File organization techniques)
+Heap files (unordered file)
+
+Basically these files are unordered file. It is the simplest and most basic type. These files consist of
+randomly ordered records. The records will have no particular order.The operations we can perform
+on the records are insert , retrieve and delete. The features of the heap file organization are:
+e New records can be inserted in any empty space that can accommodate them.
+« When old records are deleted, the occupied space becomes empty and available for any new
+insertion.
+e Ifupdated records grow, they may need to be relocated to a new empty space. This needs to
+keep a list of empty space.
+
+Advantage of heap files:
+1. This is a simple file organization method
+2. Insertion is somehow efficient
+3. Good for bulk-lading data into a table.
+4. Best if file scans are common or insertions are frequent
+Disadvantages of heap files:
+
+1. Retrieval requires a linear search and is inefficient

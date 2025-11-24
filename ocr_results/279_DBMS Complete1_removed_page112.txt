@@ -1,0 +1,53 @@
+Sequential patterns: Data is mined to anticipate behavior patterns and trends. For example,
+an outdoor equipment retailer could predict the likelihood of a backpack being purchased
+based on a consumer's purchase of sleeping bags and hiking shoes.
+
+Data mining consists of five major elements:
+
+Extract, transform, and load transaction data onto the data warehouse system.
+Store and manage the data in a multidimensional database system.
+
+Provide data access to business analysts and information technology professionals.
+Analyze the data by application software.
+
+Present the data in a useful format, such as a graph or table.
+
+Techniques used in data mining:
+
+Association
+
+Association is one of the best-known data mining technique. In association, a pattern is
+discovered based on a relationship between items in the same transaction. That’s is the
+reason why association technique is also known as relation technique. The association
+technique is used in market basket analysis to identify a set of products that customers
+frequently purchase together.
+
+Retailers are using association technique to research customer’s buying habits. Based on
+historical sale data, retailers might find out that customers always buy crisps when they buy
+beers, and, therefore, they can put beers and crisps next to each other to save time for
+customer and increase sales.
+
+Classification
+
+Classification is a classic data mining technique based on machine learning. Basically,
+classification is used to classify each item in a set of data into one of a predefined set of
+classes or groups. Classification method makes use of mathematical techniques such as
+decision trees, linear programming, neural network and statistics. In classification, we
+develop the software that can learn how to classify the data items into groups. For example,
+we can apply classification in the application that “given all records of employees who left
+the company, predict who will probably leave the company in a future period.” In this case,
+we divide the records of employees into two groups that named “leave” and “stay”. And
+then we can ask our data mining software to classify the employees into separate groups.
+
+Clustering
+
+Clustering is a data mining technique that makes a meaningful or useful cluster of objects
+which have similar characteristics using the automatic technique. The clustering technique
+defines the classes and puts objects in each class, while in the classification techniques,
+objects are assigned into predefined classes. To make the concept clearer, we can take book
+management in the library as an example. In a library, there is a wide range of books on
+various topics available. The challenge is how to keep those books in a way that readers can
+take several books on a particular topic without hassle. By using the clustering technique,
+we can keep books that have some kinds of similarities in one cluster or one shelf and label
+it with a meaningful name. If readers want to grab books in that topic, they would only have
+to go to that shelf instead of looking for the entire library.

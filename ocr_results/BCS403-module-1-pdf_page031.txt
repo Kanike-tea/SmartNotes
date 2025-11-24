@@ -1,0 +1,43 @@
+Database Management System [BCS403]
+
+- displays information to the user and allows data entry
+= The business logic layer
+- handles intermediate rules and constraints before data is passed up to the user or down
+to the DBMS
+- can also act as a Web server, which retrieves query results from the database server and
+formats them into dynamic Web pages that are viewed by the Web browser at the client
+side
+= The bottom layer
+- includes all data management services
+
+2.5.5 N-tier Architecture
+
+It is possible to divide the layers between the user and the stored data further into finer
+components, thereby giving rise to n-tier architectures; where n may be four or five tiers. The
+business logic layer is divided into multiple layers
+= Advantage
+
+- any one tier can run on an appropriate processor or operating system platform and can be
+
+handled independently.
+
+Vendors of ERP (enterprise resource planning) and CRM (customer relationship management)
+packages often use a middleware layer, which accounts for the front-end modules (clients)
+
+communicating witha number of back-end databases (servers).
+
+2.6 Classification of Database Management Systems
+
+Criteria used to classify DBMSs are
+1. Data model on which the DBMS is based
+= Relational: represents a database as a collection of tables, where each table can be
+stored as a separate file.
+= Object: defines a database in terms of objects, their properties, and their operations.
+Objects with the same structure and behavior belong to a class, and classes are
+organized into hierarchies (or acyclic graphs). The operations of each class are
+specified in terms of predefined procedures called methods.
+= Hierarchical and network (legacy): The network model represents data as record
+
+types and also represents a limited type of 1:N relationship, called a set type. The
+
+https://vtucode.in Page 32

@@ -1,0 +1,52 @@
+876
+
+Chapter 23 Distributed Database Concepts
+
+23.9 Summary
+
+In this chapter, we provided an introduction to distributed databases. This is a very
+broad topic, and we discussed only some of the basic techniques used with distrib-
+uted databases. First in Section 23.1 we discussed the reasons for distribution and
+DDB concepts in Section 23.1.1. Then we defined the concept of distribution trans-
+parency and the related concepts of fragmentation transparency and replication
+transparency in Section 23.1.2. We discussed the concepts of distributed availability
+and reliability in Section 23.1.3, and gave an overview of scalability and partition
+tolerance issues in Section 23.1.4. We discussed autonomy of nodes in a distributed
+system in Section 23.1.5 and the potential advantages of distributed databases over
+centralized system in Section 23.1.6.
+
+In Section 23.2, we discussed the design issues related to data fragmentation,
+replication, and distribution. We distinguished between horizontal fragmenta-
+tion (sharding) and vertical fragmentation of relations in Section 23.2.1. We
+then discussed in Section 23.2.2 the use of data replication to improve system
+reliability and availability. In Section 23.3, we briefly discussed the concur-
+rency control and recovery techniques used in DDBMSs, and then reviewed
+some of the additional problems that must be dealt with in a distributed envi-
+ronment that do not appear in a centralized environment. Then in Section 23.4
+we discussed transaction management, including different commit protocols
+(2-phase commit, 3-phase commit) and operating system support for transac-
+tion management.
+
+We then illustrated some of the techniques used in distributed query processing in
+Section 23.5, and discussed the cost of communication among sites, which is con-
+sidered a major factor in distributed query optimization. We compared the differ-
+ent techniques for executing joins, and we then presented the semijoin technique
+for joining relations that reside on different sites in Section 23.5.3.
+
+Following that, in Section 23.6, we categorized DDBMSs by using criteria such as
+the degree of homogeneity of software modules and the degree of local autonomy.
+In Section 23.7 we distinguished between parallel and distributed system architec-
+tures and then introduced the generic architecture of distributed databases from
+both a component as well as a schematic architectural perspective. In Section 23.7.3
+we discussed in some detail issues of federated database management, and we
+focused on the needs of supporting various types of autonomies and dealing with
+semantic heterogeneity. We also reviewed the client/server architecture concepts
+and related them to distributed databases in Section 23.7.4. We reviewed catalog
+management in distributed databases and summarized their relative advantages
+and disadvantages in Section 23.8.
+
+Chapters 24 and 25 will describe recent advances in distributed databases and dis-
+tributed computing related to big data. Chapter 24 describes the so-called NOSQL
+systems, which are highly scalable, distributed database systems that handle large
+volumes of data. Chapter 25 discusses cloud computing and distributed computing
+technologies that are needed to process big data.

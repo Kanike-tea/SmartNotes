@@ -1,0 +1,57 @@
+220 Chapter 7 Optimized Primitives
+
+ADC q, 4,9 3 g=(q<<1)+C;
+
+RSBS t, d, r, LSR#1 3 if ((r>>1)>=d) C=1; else C=0;
+
+suBcs r, r, d, LSL#1 3 if (C) r-= d<<l;
+
+ADC q, 4,9 3 g=(q<<1)+C;
+
+RSBS t.dr 3 if (r>=d) C=1; else C=0;
+
+suBcs rer, d 3 if (C) r=
+
+ADCs q. 4.4 3 q=(q<<1)#C; C=old q bit 31;
+div_next
+
+BCS div_loop ; loop if more quotient bits
+
+MoV r0, q 3 r0 = quotient; rl=remainder;
+
+MoV pe, Ir 3 return { r0, rl } structure;
+div_by_0
+
+Mov 10, #-1
+
+MoV rl, #-1
+
+MoV pe, Ir 3 return { -1, -1 } structure;
+
+To see how this routine works, first look at the code between the labels div_8bits and
+div_next. This calculates the 8-bit quotient r/d, leaving the remainder in r and inserting
+the 8 bits of the quotient into the lower bits of g. The code works by using a trial subtraction
+algorithm. It attempts to subtract 128d, 64d, 32d, 16d, 8d, 4d, 2d, and d in turn from r. For
+each subtract it sets carry to one if the subtract is possible and zero otherwise. This carry
+forms the next bit of the result to insert into q.
+
+Next note that we can jump into this code at div_4bits or div_3bits if we only want
+to perform a 4-bit or 3-bit divide, respectively.
+
+Now look at the beginning of the routine. We want to calculate r/d, leaving the remain-
+der in rand writing the quotient to q. We first check to see if the quotient q will fit into 3 or
+8 bits. If so, we can jump directly to div_3bits or div_8bits, respectively to calculate the
+answer. This early termination is useful in C where quotients are often small. If the quotient
+requires more than 8 bits, then we multiply d by 256 until r/d fits into 8 bits. We record
+how many times we have multiplied d by 256 using the high bits of q, setting 8 bits for each
+multiply. This means that after we have calculated the 8-bit r/d, we loop back to div_loop
+and divide d by 256 for each multiply we performed earlier. In this way we reduce the divide
+toa series of 8-bit divides.
+
+7.3.1.2. Unsigned 32/15-Bit Divide by Trial Subtraction
+
+In the 32/32 divide of Section 7.3.1.1, each trial subtraction takes three cycles per bit of
+quotient. However, if we restrict the denominator and quotient to 15 bits, we can do a trial
+subtraction in only two cycles per bit of quotient. You will find this operation useful for
+16-bit DSP, where the division of two positive Q15 numbers requires a 30/15-bit integer
+division (see Section 8.1.5).

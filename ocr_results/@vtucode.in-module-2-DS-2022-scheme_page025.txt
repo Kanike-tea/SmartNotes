@@ -1,0 +1,43 @@
+DATA STRUCTURES-BCS304 MODULE 2
+
+3 [14 +—_{2_ [es [| +—42_[o [) -—iast
+
+Circular representation of 3x!4+2x'+1
+
+e We can free the nodes that are no longer used and can reuse the nodes later by maintain
+a list called freed. When new node is needed we examine the this list. If the list is not
+empty then we may use one of the nodes. Only when list is empty we need to create a
+node using malloc.
+
+e Let avial be a variable of type polyPointer that points to first node in our list.of freed
+nodes. We call this list as available space list or avail list.
+
+e Initially set avail to NULL.instead of using malloc or free we use getNode and retNode.
+
+e Erase circular list in a fxed amount of time independent of number of nodes in list using
+
+cerase
+
+polyPointer getNode (void)
+{
+polyPointer node;
+if (avail)
+{
+node=avail;
+avail=avail->link;
+}
+else
+malloc(node, sizeof (*node));
+return node
+
+Program:getNode function
+
+void retNode(polyPointer node)
+{
+
+node->link=avail;
+avail=node;
+
+Program: retNode function
+
+vtucode.in 26

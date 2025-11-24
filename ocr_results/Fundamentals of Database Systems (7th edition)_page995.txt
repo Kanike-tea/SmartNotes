@@ -1,0 +1,54 @@
+26.1 Active Database Concepts and Triggers
+
+The action for events 1, 2, and 4 is to automatically update the value of Total_sal for
+the employee’s department to reflect the newly inserted, updated, or deleted
+employee’s salary. In the case of event 3, a twofold action is needed: one to update
+the Total_sal of the employee’s old department and the other to update the Total_sal
+of the employee’s new department.
+
+The four active rules (or triggers) R1, R2, R3, and R4—corresponding to the above
+situation—can be specified in the notation of the Oracle DBMS as shown in Fig-
+ure 26.2(a). Let us consider rule R1 to illustrate the syntax of creating triggers in
+Oracle. The CREATE TRIGGER statement specifies a trigger (or active rule) name—
+Total_sal1 for R1. The AFTER clause specifies that the rule will be triggered after the
+events that trigger the rule occur. The triggering events—an insert of a new
+employee in this example—are specified following the AFTER keyword.*
+
+The ON clause specifies the relation on which the rule is specified EMPLOYEE for
+R1. The optional keywords FOR EACH ROW specify that the rule will be triggered
+once for each row that is affected by the triggering event.*
+
+The optional WHEN clause is used to specify any conditions that need to be checked
+after the rule is triggered, but before the action is executed. Finally, the action(s) to
+be taken is (are) specified as a PL/SQL block, which typically contains one or more
+SQL statements or calls to execute external procedures.
+
+The four triggers (active rules) R1, R2, R3, and Ré illustrate a number of features of
+active rules. First, the basic events that can be specified for triggering the rules are the
+standard SQL update commands: INSERT, DELETE, and UPDATE. They are specified by
+the keywords INSERT, DELETE, and UPDATE in Oracle notation. In the case of UPDATE,
+one may specify the attributes to be updated—for example, by writing UPDATE OF
+Salary, Dno. Second, the rule designer needs to have a way to refer to the tuples that have
+been inserted, deleted, or modified by the triggering event. The keywords NEW and OLD
+are used in Oracle notation; NEW is used to refer to a newly inserted or newly updated
+tuple, whereas OLD is used to refer to a deleted tuple or to a tuple before it was updated.
+
+Thus, rule R1 is triggered after an INSERT operation is applied to the EMPLOYEE
+relation. In R1, the condition (NEW.Dno IS NOT NULL) is checked, and if it evaluates
+to true, meaning that the newly inserted employee tuple is related to a department,
+then the action is executed. The action updates the DEPARTMENT tuple(s) related to
+the newly inserted employee by adding their salary (NEW.Salary) to the Total_sal
+attribute of their related department.
+
+Rule R2 is similar to R1, but it is triggered by an UPDATE operation that updates the
+SALARY of an employee rather than by an INSERT. Rule R3 is triggered by an update
+to the Dno attribute of EMPLOYEE, which signifies changing an employee’s assign-
+ment from one department to another. There is no condition to check in R3, so the
+
+3,As we will see, itis also possible to specify BEFORE instead of AFTER, which indicates that the rule is
+triggered before the triggering event is executed.
+
+“Again, we will see that an alternative is to trigger the rule only once even if multiple rows (tuples) are
+affected by the triggering event.
+
+965

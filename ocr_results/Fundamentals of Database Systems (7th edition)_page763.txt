@@ -1,0 +1,54 @@
+19.9 Overview of Query Optimization in Oracle
+
+The following operations are performed in Q2STAR in order to access and join the
+FACT table.
+
+1. By iterating over the key values coming from a dimension subquery, the
+bitmaps are retrieved for a given key value from a bitmap index on the
+FACT table.
+
+2. For a subquery, the bitmaps retrieved for various key values are merged
+(OR-ed).
+
+3. The merged bitmaps for each dimension subqueries are AND-ed; that is, a
+conjunction of the joins is performed.
+
+4. From the final bitmap, the corresponding tuple-ids for the FACT table are
+generated.
+
+5. The FACT table rows are directly retrieved using the tuple-ids.
+
+Joining Back: The subquery bitmap trees filter the fact table based on the filter
+predicates on the dimension tables; therefore, it may still be necessary to join the
+dimension tables back to the relevant rows in the fact table using the original join
+predicates. The join back of a dimension table can be avoided if the column(s)
+selected from the subquery are unique and the columns of the dimension table are
+not referenced in the SELECT and GROUP-BY clauses. Note that in Q2STAR, the
+table DIM3 is not joined back to the FACT table, since it is not referenced in the
+SELECT and GROUP-BY clauses, and DIM3.Pk is unique.
+
+19.9 Overview of Query Optimization in Oracle'®
+
+This section provides a broad overview of various features in Oracle query process-
+ing, including query optimization, execution, and analytics.'”
+
+19.9.1 Physical Optimizer
+
+The Oracle physical optimizer is cost based and was introduced in Oracle 7.1. The
+scope of the physical optimizer is a single query block. The physical optimizer
+examines alternative table and index access paths, operator algorithms, join order-
+ings, join methods, parallel execution distribution methods, and so on. It chooses
+the execution plan with the lowest estimated cost. The estimated query cost is a
+relative number proportional to the expected elapsed time needed to execute the
+query with the given execution plan.
+
+The physical optimizer calculates this cost based on object statistics (such as table
+cardinalities, number of distinct values in a column, column high and low values,
+data distribution of column values), the estimated usage of resources (such as I/O
+and CPU time), and memory needed. Its estimated cost is an internal metric that
+
+18This section is contributed by Rafi Ahmed of Oracle Corporation.
+
+'9Support for analytics was introduced in Oracle 10.2.
+
+733

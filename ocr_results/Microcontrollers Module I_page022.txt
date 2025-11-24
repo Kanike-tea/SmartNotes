@@ -1,0 +1,60 @@
+Microcontrollers-BCS402
+
+The above example shown in following figure, the C flag is the only condition flag set. The
+rest nzvq flags are all clear. The processor is inARMstate because neither the Jazelle j or
+
+Thumb t bits are set. The IRQ interrupts are enabled, and FIQ interrupts are disabled.
+
+Conditional Execution:
+
+Conditional execution controls whether or not the core will execute an instruction. Most
+instructions have a condition attribute that determines if the core will execute it based on the
+setting of the condition flags. Prior to execution, the processor compares the condition
+attribute with the condition flags in the cpsr. If they match, then the instruction is executed;
+otherwise the instruction is ignored.
+
+Condition mnemonics.
+
+Mnemonic Name Condition flags
+EQ equal Z
+
+NE not equal z
+
+cS HS carry set/unsigned higher or same Cc
+
+cc LO carry clear/unsigned lower c
+
+MI minus/negative N
+
+PL plus/positive or zero n
+
+VS overflow Vv
+
+vc no overflow v
+
+HI unsigned higher
+
+LS unsigned lower or same Zore
+
+GE signed greater than or equal NVor nv
+LT signed less than vor nV
+
+GT signed greater than izV or nzv
+LE signed less than or equal Zor Nvor nV
+AL always (unconditional) ignored
+
+The condition attribute is post fixed to the instruction mnemonic, which is encoded into the
+instruction. The above table lists the conditional execution code mnemonics. When a
+
+condition mnemonic is not present, the default behavior is to set it to always (AL) execute.
+
+4. Pipeline
+
+A pipeline is the mechanism a RISC processor uses to execute instructions. Using a pipeline
+speeds up execution by fetching the next instruction while other instructions are being
+
+decoded and executed. Figure 4 shows a three-stage pipeline:
+
+Figure 4: A Three-Stage Pipeline
+
+Dept. of ECE, GSSSIETW Page 23

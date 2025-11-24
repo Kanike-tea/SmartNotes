@@ -1,0 +1,66 @@
+7.1 Double-Precision Integer Multiplication 209
+
+bO RNO 5b bits [31:00]  (b low)
+
+bl RN1  ; b bits [63:32]  (b high)
+
+c0 RN2 5c bits [31:00]  (c low)
+
+cl RN3 5c bits [63:32]  (c high)
+
+a0 RN4 5 a bits [31:00] (a low-low)
+al RN5 a bits [63:32] (a low-high)
+a2 RN 12 ; a bits [95:64] (a high-low)
+a3 RNIr ; a bits [127:96] (a high-high)
+
+3 long long mul_64t064 (long long b, long long c)
+mul_64t064
+
+STMFD sp!, {r4,r5,1r}
+
+3 64-bit a = 64-bit b * 64-bit c
+
+UMULL a_0, al, b_0, c_0 3 low*low
+MLA al, b0,cl,al 3 low*high
+MLA al, b1,c0,al 3 high*low
+3 return wrapper
+
+Mov. r0, a0
+
+MoV. orl, al
+
+LOMFD sp!, {r4,r5,pc}
+
+7.1.2 UNSIGNED 64-BIT BY 64-BIT MULTIPLY
+WITH 128-BIT RESULT
+
+There are two slightly different implementations for an unsigned 64- by 64-bit multiply
+with 128-bit result. The first is faster on an ARM7M. Here multiply accumulate instruc-
+tions take an extra cycle compared to the nonaccumulating version. The ARM7M version
+requires four long multiplies and six adds, a worst-case performance of 30 cycles.
+
+; _value_in_regs struct { unsigned a0,al,a2,a3; }
+
+3 umul_64to128_arm/m(unsigned long long b,
+
+3 unsigned long long c)
+umul_64t0128_arm7m
+STMFD  sp!, {r4,r5,1r}
+3 unsigned 128-bit a =
+UMULL a0, al,
+UMULL a2, a3,
+UMULL cl, b_0,
+apDsS al, al,
+Apes a2, a3,
+ADC a3, b0, #0
+UMULL c0, b0, bi, c0O ; high*low
+
+64-bit b  * 64-bit c
+0, c0 5 low*low
+
+10, cl 3 low*high
+1, cl 3 high*high
+2
+1
+
+op oos s

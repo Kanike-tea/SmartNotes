@@ -1,0 +1,31 @@
+CHAPTER
+
+THE FUTURE
+OF THE
+ARCHITECTURE
+
+JOHN RAYFIELD
+
+In October 1999, ARM began to consider the future direction of the architecture that would
+eventually become ARMV6, first implemented in a new product called ARM1136J-S. By this
+time, ARM already had designs for many different applications, and the future requirements
+of each of those designs needed to be evaluated, as well as the new application areas for
+which ARM would be used in the future.
+
+As system-on-chip designs have become more sophisticated, ARM processors have
+become the central processors in systems with multiple processing elements and subsystems.
+In particular, the portable and mobile computing markets were introducing new software
+and performance challenges for ARM. Areas that needed addressing were digital signal
+processing (DSP) and video performance for portable devices, interworking mixed-endian
+systems such as TCP/IP, and efficient synchronization in multiprocessing environments.
+The challenge for ARM was to address all of these market requirements and yet maintain
+its competitive advantage in computational efficiency (computing power per mW) as the
+best in the industry.
+
+This chapter describes the components within ARMvé6 introduced by ARM to address
+these market requirements, including enhanced DSP support and support for a multi-
+processing environment. The chapter also introduces the first high-performance ARMv6
+implementations and, in addition to the ARMvé6 technologies, one of ARM’s latest
+technologies—TrustZone.
+
+549

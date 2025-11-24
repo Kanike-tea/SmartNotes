@@ -1,0 +1,67 @@
+Data Structures and Applications (BCS304) Module III
+
+If the root is NULL, the search tree contains no nodes and the search is unsuccessful.
+
+we compare k with the key in root. If k equals the root's key, then the search terminates
+successfully.
+
+Ifk is less than root's key, then, we search the left subtree of the root.
+
+Ifk is larger than root's key value, we search the right subtree of the root.
+
+Structure of the node can be defined as follows
+
+struct node
+
+{
+Struct node *Ichild;
+
+struct
+
+{
+
+int item; /* Itype represents the data type of the element*/
+int key;
+
+}data;
+
+Struct node *rchild;
+
+aa
+
+Typedef struct node TreeNode;
+
+Recursive search of a binary search tree: Return a pointer to the element whose key is k, if there
+is no such element, return NULL. We assume that the data field of the element is of type elemenet
+and it has two components key and item.
+
+Treenode * search(TreeNode * tree, int k)
+
+{
+
+}
+
+if (tree==NULL) return NULL;
+if (k == tree—data.key)
+return (tree);
+if (k < treedata.key)
+return search(tree—leftChild, k);
+return search(tree—rightChild, k);
+
+Iterative search of a Binary Search tree
+
+Treenode* iterSearch(TreeNode * tree, int k)
+
+{
+while (tree!=null)
+{
+if (k == treedata.key)
+return (tree);
+if (k < tree—data.key)
+tree = tree—leftChild;
+else
+tree = treerightChild;
+}
+return NULL;
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 26

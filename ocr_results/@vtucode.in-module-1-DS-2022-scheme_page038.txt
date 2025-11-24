@@ -1,0 +1,56 @@
+DATA STRUCTURES-BCS304 MODULE 1
+
++ Anew stack-frame is then
+
+— created for the invoked-function &
+
+— placed on top of the system-stack
++ When this function terminates, its stack-frame is removed (and processing of the invoking-
+function, which is again on top of the stack, continues).
+
++ Frame-pointer(fp) is a pointer to the current stack-frame.
+
+old frame pointer |+ fp
+
+return address al
+
+local variables
+
+[| old frane pointer | « fp old frane pointer
+4 | teturn address main ¢ return address
+fa rs)
+
+System stack after function call
+
+ARRAY REPRESENTATION OF STACKS
+
+e Stacks may be represented in the computer in various ways such as one-way
+linked list (Singly linked list) or linear array.
+
+e Stacks are maintained by the two variables such as TOP and MAX_STACK_ SIZE.
+
+¢ TOP which contains the location of the top element in the stack. If TOP=-1,
+then it indicates stack is empty.
+
+e MAX_STACK_ SIZE which gives maximum number of elements that can be
+stored in stack.
+
+Stack can represented using linear array as shown below
+
+atetc] | | |
+0 1
+
+=
+
+t
+
+P MAX_STACK_SIZE
+
+iv)
+a
+a
+a
+
+o—n
+
+vtucode.in 39

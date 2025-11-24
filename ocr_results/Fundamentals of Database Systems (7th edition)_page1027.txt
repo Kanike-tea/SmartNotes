@@ -1,0 +1,51 @@
+26.4 Multimedia Database Concepts
+
+related to the perceptual aspects of image content. These features are easy to extract
+and represent, and it is convenient to design similarity measures based on their
+statistical properties.
+
+Color is one of the most widely used visual features in content-based image retrieval
+since it does not depend upon image size or orientation. Retrieval based on color
+similarity is mainly done by computing a color histogram for each image that iden-
+tifies the proportion of pixels within an image for the three color channels (red,
+green, blue—RGB). However, RGB representation is affected by the orientation of
+the object with respect to illumination and camera direction. Therefore, current
+image retrieval techniques compute color histograms using competing invariant
+representations such as HSV (hue, saturation, value). HSV describes colors as
+points in a cylinder whose central axis ranges from black at the bottom to white at
+the top with neutral colors between them. The angle around the axis corresponds to
+the hue, the distance from the axis corresponds to the saturation, and the distance
+along the axis corresponds to the value (brightness).
+
+Texture refers to the patterns in an image that present the properties of homogene-
+ity that do not result from the presence of a single color or intensity value. Examples
+of texture classes are rough and silky. Examples of textures that can be identified
+include pressed calf leather, straw matting, cotton canvas, and so on. Just as pictures
+are represented by arrays of pixels (picture elements), textures are represented by
+arrays of texels (texture elements). These textures are then placed into a number of
+sets, depending on how many textures are identified in the image. These sets not only
+contain the texture definition but also indicate where in the image the texture is
+located. Texture identification is primarily done by modeling it as a two-dimensional,
+gray-level variation. The relative brightness of pairs of pixels is computed to estimate
+the degree of contrast, regularity, coarseness, and directionality.
+
+Shape refers to the shape of a region within an image. It is generally determined by
+applying segmentation or edge detection to an image. Segmentation is a region-
+based approach that uses an entire region (sets of pixels), whereas edge detection is
+a boundary-based approach that uses only the outer boundary characteristics of
+entities. Shape representation is typically required to be invariant to translation,
+rotation, and scaling. Some well-known methods for shape representation include
+Fourier descriptors and moment invariants.
+
+26.4.2 Object Recognition in Images
+
+Object recognition is the task of identifying real-world objects in an image or a
+video sequence. The system must be able to identify the object even when the
+images of the object vary in viewpoints, size, scale, or even when they are rotated
+or translated. Some approaches have been developed to divide the original image
+into regions based on similarity of contiguous pixels. Thus, in a given image
+showing a tiger in the jungle, a tiger subimage may be detected against the back-
+ground of the jungle, and when compared with a set of training images, it may be
+tagged as a tiger.
+
+997

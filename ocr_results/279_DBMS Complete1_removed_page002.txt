@@ -1,0 +1,51 @@
+LECTURE-2: DBMS
+
+Database:
+A database is organized collection of related data of an organization stored in formatted way which
+is shared by multiple users.
+
+The main feature of data in a database are:
+1. It must be well organized
+2. Itis related
+3. It is accessible in a logical order without any difficulty
+4. Itis stored only once
+
+For example consider the roll no, name, address of a student stored in a student file. It is collection
+of related data with an implicit meaning. Data in the database may be persistent, integrated and
+shared.
+
+Persistent:
+If data is removed from database due to some explicit request from user to remove.
+
+Integrated:
+A database can be a collection of data from different files and when any redundancy among those
+files are removed from database is said to be integrated data.
+
+Sharing Data:
+The data stored in the database can be shared by multiple users simultaneously without affecting the
+correctness of data.
+
+Why Database:
+
+In order to overcome the limitation of a file system, a new approach was required. Hence a database
+approach emerged. A database is a persistent collection of logically related data. The initial attempts
+were to provide a centralized collection of data. A database has a self describing nature. It contains
+not only the data sharing and integration of data of an organization in a single database.
+
+A small database can be handled manually but for a large database and having multiple users it is
+difficult to maintain it. In that case a computerized database is useful.
+The advantages of database system over traditional, paper based methods of record keeping are:
+
+e@ Compactness: No need for large amount of paper files
+
+e@ Speed: The machine can retrieve and modify the data more faster way then human being
+
+e@ Less drudgery: Much of the maintenance of files by hand is eliminated
+
+e Accuracy: Accurate, up-to-date information is fetched as per requirement of the user at any
+
+time.
+
+Database Management System (DBMS):
+A database management system consists of collection of related data and refers to a set of programs
+for defining, creation, maintenance and manipulation of a database.

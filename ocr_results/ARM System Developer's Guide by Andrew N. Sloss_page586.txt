@@ -1,0 +1,55 @@
+A.3 Alphabetical List of ARM and Thumb Instructions 573
+
+Table A.3 Barrel shifter circuit outputs for different shift types.
+
+Shift k range <shifted_Rm> <shifter_C>
+LSL k k=0 Rm C (from cpsr)
+LSL k l<k<3l Rm<<k Rm[32-k]
+LSL k k= 32 0 Rm[0]
+
+LSL k k > 33 0 0
+
+LSR k k=0 Rm c
+
+LSR k 1<k<31 (unsigned) Rm>>k Rm[k-1]
+
+LSR k k= 32 0 Rm[31]
+
+LSR k k > 33 0 0
+
+ASR k k=0 Rm c
+
+ASR k 1<k<31 (signed) Rm>>k Rm[k-1]
+
+ASR k k > 32 —Rm[31] Rm[31]
+
+ROR k k=0 Rm c
+
+ROR k 1<k<31 ((unsigned) Rm>>k) | (Rm<< (32-k)) Rm[k-1]
+
+ROR k k > 32 Rm ROR (k & 31) Rm[(k-1)&31]
+RRX (C<<31) | ((unsigned)Rm>> 1) Rm[0]
+
+= <shifter_C> is shorthand for the carry value output by the shifting circuit. See
+Table A.3.
+
+A.3 ALPHABETICAL LIST OF ARM
+AND THUMB INSTRUCTIONS
+
+Instructions are listed in alphabetical order. However, where signed and unsigned variants
+
+of the same operation exist, the main entry is under the signed variant.
+
+ADC Add two 32-bit values and carry
+1. ADC<cond>{S} Rd, Rn, #<rotated_immed>
+2. ADC<cond>{$} Rd, Rn, Rm {, <shift>}
+3. ADC Ld, Lm
+Action Effect on the cpsr
+1. Rd = Rn + <rotated_immed> + C
+
+ARMv1
+ARMv1
+
+THUMBv 1
+
+Updated if S suffix specified

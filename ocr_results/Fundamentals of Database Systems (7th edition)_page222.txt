@@ -1,0 +1,53 @@
+192
+
+Chapter 6 Basic SQL
+
+In this case, we are required to declare alternative relation names E and §, called
+aliases or tuple variables, for the EMPLOYEE relation. An alias can follow the key-
+word AS, as shown in Q8, or it can directly follow the relation name—for example,
+by writing EMPLOYEE E, EMPLOYEE S in the FROM clause of 8. It is also possible
+to rename the relation attributes within the query in SQL by giving them aliases.
+For example, if we write
+
+EMPLOYEE AS E(Fn, Mi, Ln, Ssn, Bd, Addr, Sex, Sal, Sssn, Dno)
+
+in the FROM clause, Fn becomes an alias for Fname, Mi for Minit, Ln for Lname, and
+so on.
+
+In Q8, we can think of E and S as two different copies of the EMPLOYEE relation; the
+first, E, represents employees in the role of supervisees or subordinates; the second,
+S, represents employees in the role of supervisors. We can now join the two copies.
+Of course, in reality there is only one EMPLOYEE relation, and the join condition is
+meant to join the relation with itself by matching the tuples that satisfy the join
+condition E.Super_ssn = S.Ssn. Notice that this is an example of a one-level recur-
+sive query, as we will discuss in Section 8.4.2. In earlier versions of SQL, it was not
+possible to specify a general recursive query, with an unknown number of levels, in
+a single SQL statement. A construct for specifying recursive queries has been incor-
+porated into SQL:1999 (see Chapter 7).
+
+The result of query Q8 is shown in Figure 6.3(d). Whenever one or more aliases
+are given to a relation, we can use these names to represent different references
+to that same relation. This permits multiple references to the same relation
+within a query.
+
+We can use this alias-naming or renaming mechanism in any SQL query to specify
+tuple variables for every table in the WHERE clause, whether or not the same rela-
+tion needs to be referenced more than once. In fact, this practice is recommended
+since it results in queries that are easier to comprehend. For example, we could
+specify query Q1 as in Q1B:
+
+Q1B: SELECT — E.Fname, E.LName, E.Address
+FROM EMPLOYEE AS E, DEPARTMENT AS D
+WHERE —_D.DName = ‘Research’ AND D.Dnumber = E.Dno;
+
+6.3.3 Unspecified WHERE Clause and Use of the Asterisk
+
+We discuss two more features of SQL here. A missing WHERE clause indicates
+no condition on tuple selection; hence, all tuples of the relation specified in the
+FROM clause qualify and are selected for the query result. If more than one rela-
+tion is specified in the FROM clause and there is no WHERE clause, then the
+CROSS PRODUCT—all possible tuple combinations—of these relations is
+selected. For example, Query 9 selects all EMPLOYEE Ssns (Figure 6.3(e)), and
+Query 10 selects all combinations of an EMPLOYEE Ssn and a DEPARTMENT
+Dname, regardless of whether the employee works for the department or not
+(Figure 6.3(f)).

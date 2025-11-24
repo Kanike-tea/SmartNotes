@@ -1,0 +1,51 @@
+2.3 Database Languages and Interfaces
+
+allow users to login using their account name and password; the apps then provide
+a limited menu of options for mobile access to the user data, as well as options such
+as paying bills (for banks) or making reservations (for reservation Web sites).
+
+Forms-based Interfaces. A forms-based interface displays a form to each user.
+Users can fill out all of the form entries to insert new data, or they can fill out only
+certain entries, in which case the DBMS will retrieve matching data for the remain-
+ing entries. Forms are usually designed and programmed for naive users as inter-
+faces to canned transactions. Many DBMSs have forms specification languages,
+which are special languages that help programmers specify such forms. SQL* Forms
+is a form-based language that specifies queries using a form designed in conjunc-
+tion with the relational database schema. Oracle Forms is a component of the Ora-
+cle product suite that provides an extensive set of features to design and build
+applications using forms. Some systems have utilities that define a form by letting
+the end user interactively construct a sample form on the screen.
+
+Graphical User Interfaces. A GUI typically displays a schema to the user in dia-
+grammatic form. The user then can specify a query by manipulating the diagram.
+In many cases, GUIs utilize both menus and forms.
+
+Natural Language Interfaces. These interfaces accept requests written in Eng-
+lish or some other language and attempt to understand them. A natural language
+interface usually has its own schema, which is similar to the database conceptual
+schema, as well as a dictionary of important words. The natural language interface
+refers to the words in its schema, as well as to the set of standard words in its dic-
+tionary, that are used to interpret the request. If the interpretation is successful, the
+interface generates a high-level query corresponding to the natural language request
+and submits it to the DBMS for processing; otherwise, a dialogue is started with the
+user to clarify the request.
+
+Keyword-based Database Search. These are somewhat similar to Web search
+engines, which accept strings of natural language (like English or Spanish) words
+and match them with documents at specific sites (for local search engines) or Web
+pages on the Web at large (for engines like Google or Ask). They use predefined
+indexes on words and use ranking functions to retrieve and present resulting docu-
+ments in a decreasing degree of match. Such “free form” textual query interfaces are
+not yet common in structured relational databases, although a research area called
+keyword-based querying has emerged recently for relational databases.
+
+Speech Input and Output. Limited use of speech as an input query and speech
+as an answer to a question or result of a request is becoming commonplace. Appli-
+cations with limited vocabularies, such as inquiries for telephone directory, flight
+arrival/departure, and credit card account information, are allowing speech for
+input and output to enable customers to access this information. The speech input
+is detected using a library of predefined words and used to set up the parameters
+that are supplied to the queries. For output, a similar conversion from text or num-
+bers into speech takes place.
+
+a

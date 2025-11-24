@@ -1,0 +1,44 @@
+Data Structures and Applications (15CS33)
+
+MODULE 4: TREES
+
+DEFINITION
+
+A tree is a finite set of one or more nodes such that
+
+There is a specially designated node called root.
+The remaining nodes are partitioned into n >= 0 disjoint set Ti,...,T,, where each of
+these sets is a tree. T),...,Tn are called the subtrees of the root.
+
+5 ©
+
+Every node in the tree is the root of some subtree
+
+TERMINOLOGY
+
+Node: The item of information plus the branches to other nodes
+
+Degree: The number of subtrees of a node
+
+Degree of a tree: The maximum of the degree of the nodes in the tree.
+
+Terminal nodes (or leaf): nodes that have degree zero or node with no successor
+Nonterminal nodes: nodes that don’t belong to terminal nodes.
+
+Parent and Children: Suppose N is a node in T with left successor S1 and right
+successor 82, then N is called the Parent (or father) of S1 and S2. Here, S1 is called
+left child (or Son) and S2 is called right child (or Son) of N.
+
+Siblings: Children of the same parent are said to be siblings.
+
+Edge: A line drawn from node N ofa T to a successor is called an edge
+
+Path: A sequence of consecutive edges from node N to a node M is called a path.
+Ancestors of a node: All the nodes along the path from the root to that node.
+
+The level of a node: defined by letting the root be at level zero. If a node is at level 1,
+then it children are at level 1+1.
+
+Height (or depth): The maximum level of any node in the tree
+
+Deepak D. Assistant Professor, Dept. of CS&E, Canara Engineering College, Mangaluru

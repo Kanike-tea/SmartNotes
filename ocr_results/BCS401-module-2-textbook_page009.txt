@@ -1,0 +1,31 @@
+134
+
+4.1
+
+Decrease-and-Conquer
+
+Though the value of the second argument is always smaller on the right-hand side
+than on the left-hand side, it decreases neither by a constant nor by a constant
+factor. A few other examples of such algorithms appear in Section 4.5.
+
+Insertion Sort
+
+In this section, we consider an application of the decrease-by-one technique to
+sorting an array A[0..n — 1]. Following the technique’s idea, we assume that the
+smaller problem of sorting the array A[0..n — 2] has already been solved to give
+us a sorted array of size n — 1: A[0] <-- - < A[n — 2]. How can we take advantage
+of this solution to the smaller problem to get a solution to the original problem
+by taking into account the element A[n — 1]? Obviously, all we need is to find an
+appropriate position for A[n — 1] among the sorted elements and insert it there.
+This is usually done by scanning the sorted subarray from right to left until the
+first element smaller than or equal to A[n —1] is encountered to insert A[n — 1]
+right after that element. The resulting algorithm is called straight insertion sort
+or simply insertion sort.
+
+Though insertion sort is clearly based on a recursive idea, it is more efficient
+to implement this algorithm bottom up, ie., iteratively. As shown in Figure 4.3,
+starting with A[1] and ending with A[n — 1], A[i]is inserted in its appropriate place
+among the first i elements of the array that have been already sorted (but, unlike
+selection sort, are generally not in their final positions).
+
+Here is pseudocode of this algorithm.

@@ -1,0 +1,54 @@
+9.3 Interrupt Handling Schemes 335
+
+interrupt_handler
+
+SUB. rl4,r14,#4 3 adjust Ir
+STMFD r13!,{r0-r3,r12,r14} 3 save context
+<interrupt service routine>
+
+LOMFD r13!, {r0-r3,r12,pc}* 3 return
+
+The first instruction sets the link register r14_irq to return back to the correct location
+in the interrupted task or process. As described in Section 9.1.4, due to the pipeline, on
+entry to an IRQ handler the link register points four bytes beyond the return address, so the
+handler must subtract four from the link register to account for this discrepancy. The link
+register is stored on the stack. To return to the interrupted task, the link register contents
+are restored from the stack and moved into the pe.
+
+Notice registers r0 to r3 and register r12 are also preserved because of the ATPCS. This
+allows an ATPCS-compliant subroutine to be called within the handler.
+
+The STMFD instruction saves the context by placing a subset of the registers onto the
+stack. To reduce interrupt latency we save a minimum number of registers because the
+time taken to execute an STMFD or LDMFD instruction is proportional to the number of
+registers being transferred. The registers are saved to the stack pointed to by the register
+r13_{interrupt request mode}.
+
+If you are using a high-level language within your system it is important to understand
+the compiler’s procedure calling convention because it will influence both the registers saved
+and the order they are saved onto the stack. For instance, the ARM compilers preserves
+registers r4 to rl] within a subroutine call so there is no need to preserve them unless they
+will be used by the interrupt handler. If no C routines are called, it may not be necessary
+to save all of the registers. It is safe to call a C function only when the registers have been
+saved onto the interrupt stack.
+
+Within a nonnested interrupt handler, it is not necessary to save the spsr because it will
+not be destroyed by any subsequent interrupt.
+
+At the end of the handler the LDMFD instruction will restore the context and return from
+the interrupt handler. The * at the end of the LDMFD instruction means that the cpsr will be
+restored from the spsr, which is only valid if the pc is loaded at the same time. If the pc is
+not loaded, then * will restore the user bank registers.
+
+In this handler all processing is handled within the interrupt handler, which returns
+directly to the application.
+
+Once the interrupt handler has been entered and the context has been saved, the handler
+must determine the interrupt source. The following code shows a simple example of how
+to determine the interrupt source. IRQStatus is the address of the interrupt status register.
+If the interrupt source is not determined, then control can pass to another handler. In
+this example we pass control to the debug monitor. Alternatively we could just ignore the
+interrupt.
+
+interrupt_handler
+SUB. rl4,r14,#4 3 rld-=4

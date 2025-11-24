@@ -1,0 +1,54 @@
+908
+
+Chapter 24 NOSQL Databases and Big Data Storage Systems
+
+Empid = 2 works on. Query 3, on the other hand, returns the employees and hours
+per week who work on the project with Pno = 2. Query 4 illustrates the ORDER BY
+clause and returns all employees and the projects they work on, sorted by Ename. It
+is also possible to limit the number of returned results by using the LIMIT clause as
+in query 5, which only returns the first 10 answers.
+
+Query 6 illustrates the use of WITH and aggregation, although the WITH clause can
+be used to separate clauses in a query even if there is no aggregation. Query 6 also illus-
+trates the WHERE clause to specify additional conditions, and the query returns the
+employees who work on more than two projects, as well as the number of projects each
+employee works on. It is also common to return the nodes and relationships them-
+selves in the query result, rather than the property values of the nodes as in the previ-
+ous queries. Query 7 is similar to query 5 but returns the nodes and relationships only,
+and so the query result can be displayed as a graph using Neo4j’s visualization tool. It is
+also possible to add or remove labels and properties from nodes. Query 8 shows how to
+add more properties to a node by adding a Job property to an employee node.
+
+The above gives a brief flavor for the Cypher query language of Neo4j. The full lan-
+guage manual is available online (see the bibliographic notes).
+
+24.6.3 Neo4j Interfaces and Distributed System Characteristics
+
+Neo4j has other interfaces that can be used to create, retrieve, and update nodes and
+relationships in a graph database. It also has two main versions: the enterprise edi-
+tion, which comes with additional capabilities, and the community edition. We dis-
+cuss some of the additional features of Neo4j in this subsection.
+
+= Enterprise edition vs. community edition. Both editions support the Neo4j
+graph data model and storage system, as well as the Cypher graph query
+language, and several other interfaces, including a high-performance native
+API, language drivers for several popular programming languages, such as
+Java, Python, PHP, and the REST (Representational State Transfer) API. In
+addition, both editions support ACID properties. The enterprise edition
+supports additional features for enhancing performance, such as caching
+and clustering of data and locking.
+
+= Graph visualization interface. Neo4j has a graph visualization interface, so
+that a subset of the nodes and edges in a database graph can be displayed as a
+graph. This tool can be used to visualize query results in a graph representation.
+
+= Master-slave replication. Neo4j can be configured on a cluster of distrib-
+uted system nodes (computers), where one node is designated the master
+node. The data and indexes are fully replicated on each node in the cluster.
+Various ways of synchronizing the data between master and slave nodes can
+be configured in the distributed cluster.
+
+= Caching. A main memory cache can be configured to store the graph data
+for improved performance.
+
+= Logical logs. Logs can be maintained to recover from failures.

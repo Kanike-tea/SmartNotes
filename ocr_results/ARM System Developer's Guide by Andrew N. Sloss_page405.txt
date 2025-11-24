@@ -1,0 +1,55 @@
+392 Chapter 11 Embedded Operating Systems
+
+void eventsSWIHandler(int swi_number, SwiRegs *r)
+
+{
+
+if (swi_number==SLOS)
+
+{
+if (r->r[0]==Event_10DeviceInit)
+{
+/* do not enable IRQ interrupts .... */
+io_initialize drivers ();
+}
+else
+{
+
+/* if not initializing change to system mode
+and enable IRQs */
+if (STATE!=1) {modifyControlCPSR (SYSTEM|IRQON) ; }
+
+switch (r->r[0])
+
+{
+case /* SWI */ Event_I0DeviceOpen:
+r->r[0] =
+(unsigned int) io_open_driver
+(
+/*int *ID */ (UID *)r->r[1],
+/*unsigned major_device */ r->r[2],
+/*unsigned minor_device */ r->r[3]
+)s
+break;
+
+case /* SWI */ Event_I0DeviceClose:
+/* call io_open_driver */
+break;
+
+case /* SWI */ Event_I0DeviceWriteByte:
+/* call io_writebyte_driver */
+break;
+
+case /* SWI */ Event_I0DeviceReadByte:
+/* call io_readbyte_driver */
+break;
+
+case /* SWI */ Event_I0DeviceWriteBit:
+/* call io_writebit_driver */
+break;
+
+case /* SWI */ Event_I0DeviceReadBit:
+/* call io_readbit_driver */
+break;
+
+Figure 11.3. SWIC handler.

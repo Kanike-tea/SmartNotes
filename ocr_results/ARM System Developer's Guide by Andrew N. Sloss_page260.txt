@@ -1,0 +1,131 @@
+7.5. Transcendental Functions: log, exp, sin, cos
+
+SMULL ot, ny ry s
+LOR t, =0xd5555556
+suB n, s,m, ASR#1
+SMULL ty s, r,t
+ADD nn, q
+
+Mov t, #0
+
+SMLAL tt, ny qu s
+Mov pc, Ir
+
+sin_32; int sin_32(int n)
+
+AND s, n, #1<<31
+
+MOVS n,n, LSL#L
+
+RSBMI n,n, #0
+
+CMP n, #1<<30
+
+BCC sin_core
+
+SUBEQ n,n, #1
+
+RSBHI n,n, #1<<31
+cos_core
+
+MOV q, n, LSR#25
+
+SUB n,n, qs LSL#25
+
+SUB n,n, #1<<24
+
+LOR t, =0x6487ed51
+
+MOV r, n, LSL#3
+
+SMULL t,n,r,t
+
+ADR t, cossin_tab
+
+LOR q, [t, q, LSL#3]!
+
+LOR t, [t, #4]
+
+EOR qs qd. S, ASR#31
+
+EOR s, t, S, ASR#31
+
+SMULL t,r,n,n
+
+SMULL t, s,n, 5
+
+SMULL t, ny r, q
+
+LOR t, =Ox2aaaaaab
+
+SUB n, q, n, ASR#L
+
+SMULL ot, q, r,t
+
+SUB n,n, s
+
+MOV t, #0
+
+SMLAL t,n,s,q
+
+MoV pc, Ir
+cossin_tab
+
+; table[2*i]
+
+247
+
+n&2*s(a) at Q30
+round (-2"32/6)
+s(a)*(1-n2/2) at Q30
+
+n=
+
+s=-n2/6 at 932
+n #= c(a)*n at 930
+n #= -c(a)*n43/6 at 30
+
+return n
+
+sin is -ve in quadrants 2,3
+angle in revolutions at Q33
+in range 0-1/4 of a revolution
+if angle < 1/8 revolution
+take sine
+
+otherwise take cosine of
+(1/4 revolution) -(angle)
+take cosine of Q33 angle n
+approximation a=(q+0.5) /32
+n = n-(q/32) at Q33
+
+n = n-(1/64) at Q33
+
+round (2*P1*228)
+
+=n at Q26
+
+= (x-a)*PI/2%31 at Q32
+
+35
+
+c(a) at Q30
+
+s(a) at Q30
+correct c(a) sign
+correct s(a) sign
+n2 at Q32
+n*s(a) at _Q30
+n®2*c(a) at Q30
+round(+2*23/6)
+
+n = c(a)*(1-n%2/2) at Q30
+n2/6 at Q32
+n += -sin*n at Q30
+
+n += sin*n’3/6 at Q30
+return n
+
+=round(2*30*cos(a)) where a=(PI/4)*(i+0.5) /32
+
+; table[2*i+1]=round(2"30*sin(a)) and 0 <= i < 32

@@ -1,0 +1,52 @@
+18.6 Implementing Aggregate Operations and Different Types of JOINs
+
+root to the rightmost leaf. That node would include the largest Salary value as its
+last entry. In most cases, this would be more efficient than a full table scan of
+EMPLOYEE, since no actual records need to be retrieved. The MIN function can be
+handled in a similar manner, except that the leftmost pointer in the index is fol-
+lowed from the root to leftmost leaf. That node would include the smallest Salary
+value as its first entry.
+
+The index could also be used for the AVERAGE and SUM aggregate functions,
+but only if it is a dense index—that is, if there is an index entry for every record
+in the main file. In this case, the associated computation would be applied to
+the values in the index. For a nondense index, the actual number of records
+associated with each index value must be used for a correct computation. This
+can be done if the number of records associated with each value in the index is
+stored in each index entry. For the COUNT aggregate function, the number of
+values can be also computed from the index in a similar manner. If a COUNT(*+)
+function is applied to a whole relation, the number of records currently in each
+relation are typically stored in the catalog, and so the result can be retrieved
+directly from the catalog.
+
+When a GROUP BY clause is used in a query, the aggregate operator must be applied
+separately to each group of tuples as partitioned by the grouping attribute. Hence,
+the table must first be partitioned into subsets of tuples, where each partition
+(group) has the same value for the grouping attributes. In this case, the computa-
+tion is more complex. Consider the following query:
+
+SELECT Dno, AVG(Salary)
+FROM EMPLOYEE
+GROUP BY no;
+
+The usual technique for such queries is to first use either sorting or hashing on the
+grouping attributes to partition the file into the appropriate groups. Then the algo-
+rithm computes the aggregate function for the tuples in each group, which have the
+same grouping attribute(s) value. In the sample query, the set of EMPLOYEE tuples
+for each department number would be grouped together in a partition and the
+average salary computed for each group.
+
+Notice that ifa clustering index (see Chapter 17) exists on the grouping attribute(s),
+then the records are already partitioned (grouped) into the appropriate subsets. In
+this case, it is only necessary to apply the computation to each group.
+
+18.6.2 Implementing Different Types of JOINs
+
+In addition to the standard JOIN (also called INNER JOIN in SQL), there are varia-
+tions of JOIN that are frequently used. Let us briefly consider three of them below:
+outer joins, semi-joins, and anti-joins.
+
+Outer Joins. In Section 6.4, we discussed the outer join operation, with its three
+variations: left outer join, right outer join, and full outer join. In Chapter 5, we
+
+679

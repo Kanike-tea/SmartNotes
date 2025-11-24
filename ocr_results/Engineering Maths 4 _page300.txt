@@ -1,0 +1,33 @@
+. = PROBABILITY DISTRIBUTIONS. 294
+—...ss— SOS
+
+WORKED PROBLEMS
+. 16. Find the binomial probability distribution which has mean 2 and variance 4/3.
+>> We know that for the binomial distribution. mean = np and variance = 1 Pq
+Hence np = 2 and npq = 4/3 by using the data. ;
+Further 2q = 4/3 or q = 2/3 “ p=1-q=17
++ Since np = 2, wehave n(1/3)=2 »« n=6
+The binomial probability function P(x) = mc p*q"~* becomes
+x
+
+P(x) = 6 (1/3)*(2/3)8-*
+
+The distribution of probabilities is as follows.
+al 2
+
+17 When a coin is tossed 4 times, find the probability of getting
+(i) exactly one head (ii) atmost 3 heads (iti) ‘atleast 2 heads
+
+>> p=P(H) =1/2=05,q=05;n=4
+We know that the probability of x successes out of n trials is given by
+P(x) = 1 prq'* :
+x
+(i) P(1 head) = P(x =1)= 4o, (05)! (05)? = 0.25
+
+Gi) P (at most 3 heads) = P(x = 0)+P(x = 1)+P(x = 2)+P(x=3)
+3
+= 4c, (05)? (05) +4¢ (05)! (05) +4e, (05) (05) +4c, (05) (05)
+= (0.5)4(14+4+64+4) = 0.9375
+
+(iii) Clea Shana ~~ [P(x =0)+P(x =1)]
+=1-[(05)4 4c (0.5) (0.5)°] = 0.6875

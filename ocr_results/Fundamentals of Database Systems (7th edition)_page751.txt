@@ -1,0 +1,45 @@
+19.5 Cost Functions for the JOIN Operation
+
+per block. We can estimate the worst-case costs for the JOIN operation OP6 using
+the applicable methods J1 and J2 as follows:
+
+1. Using method J1 with EMPLOYEE as outer loop:
+Cy = be + (bg * bp) + ((jsore * re* rp)/bfrep)
+= 2,000 + (2,000 * 13) + (((1/125) * 10,000 * 125)/4) = 30,500
+2. Using method J1 with DEPARTMENT as outer loop:
+Cy = bp + (be* bp) + ((jsops* re* rpy/bfrep)
+= 13+ (13 * 2,000) + (((1/125) * 10,000 * 125/4) = 28,513
+3. Using method J2 with EMPLOYEE as outer loop:
+Cyc = be + (re * (XDnumbert 1) + ((jSope * Te * Tp)/bfrep
+= 2,000 + (10,000 * 2) + (((1/125) * 10,000 * 125/4) = 24,500
+4. Using method J2 with DEPARTMENT as outer loop:
+Cha = bp + (tp * (Xdno + Sdno)) + (( jSope * Te * Tp)/bfr gp)
+= 13 + (125 * (2+ 80)) + (((1/125) * 10,000 * 125/4) = 12,763
+5. Using method Jé4 gives:
+Cys =3* (bp + be) + ((jsore * te * tp)/bfrgp)
+= 3* (13+2,000) + 2,500 = 8,539
+Case 5 has the lowest cost estimate and will be chosen. Notice that in case 2 above,
+if 15 memory buffer blocks (or more) were available for executing the join instead
+of just 3, 13 of them could be used to hold the entire DEPARTMENT relation (outer
+loop relation) in memory, one could be used as buffer for the result, and one would
+be used to hold one block at a time of the EMPLOYEE file (inner loop file), and the
+cost for case 2 could be drastically reduced to just bg + bp + ((jsope * re * rp)/bfrep)
+or 4,513, as discussed in Section 18.4. If some other number of main memory buf-
+fers was available, say ng = 10, then the cost for case 2 would be calculated as fol-
+lows, which would also give better performance than case 4:
+Cy = bp + (bp l(og - 2) 1* bp) + (Gs * [RI * [S))/bfras)
+= 13 + (13/81 * 2,000) + (((1/125) * 10,000 * 125/4) = 28,513
+= 13+ (2 * 2,000) + 2,500 = 6,513
+
+As an exercise, the reader should perform a similar analysis for OP7.
+
+19.5.3 Multirelation Queries and JOIN Ordering Choices
+
+The algebraic transformation rules in Section 19.1.2 include a commutative rule
+and an associative rule for the join operation. With these rules, many equivalent
+join expressions can be produced. As a result, the number of alternative query trees
+grows very rapidly as the number of joins in a query increases. A query block that
+joins n relations will often have n — 1 join operations, and hence can have a large
+number of different join orders. In general, for a query block that has n relations,
+
+721

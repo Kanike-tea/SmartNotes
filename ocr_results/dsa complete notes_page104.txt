@@ -1,0 +1,46 @@
+Data Structures and Applications (BCS304) Module III
+
+Example: Deleting Node 66 with NO children
+
+oN om
+25 75 a 76
+—~ / - a-~
+15 50 66 Deleting node 15 50
+
+/ /
+
+33 33
+
+\ \
+
+\
+
+44
+
+Case 2: If N has exactly one child. Then N is deleted from T by replacing the location of N in Parent
+(N) by the location of the only child of N.
+
+Example: Deleting Node 75 with exactly one children
+
+5 75 28 a
+4 =e ya Deleting node 75 / \
+15 50 66 15 50
+A /
+33 33
+\ \
+44 44
+
+Case 3: N has Two children. Let S(N) denote the inorder successor of N(S(N) does not have a left
+child).Then N is deleted from T by first deleting S(N) from T (by using casel or cae 2) and then
+replacing node N in T by the node S(N).
+
+Example: Deleting Node 25 with two children
+
+25 75 P eo * ”
+Ss AT To delete node 25,
+te) po 66 first delete its / \ /
+aa inorder successor 15 50 66
+\ 33
+‘a “4
+
+SUNIL G L, Dept. of CSE(DS), RNSIT, Bengaluru Page 29

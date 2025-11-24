@@ -1,0 +1,50 @@
+1028 Chapter 27 Introduction to Information Retrieval and Web Search
+
+Web search combines both aspects—browsing and retrieval—and is one of the
+main applications of information retrieval today. Web pages are analogous to docu-
+ments. Web search engines maintain an indexed repository of Web pages, usually
+using the technique of inverted indexing (see Section 27.5). They retrieve the most
+relevant Web pages for the user in response to the user’s search request with a pos-
+sible ranking in descending order of relevance. The rank of a Web page in a
+retrieved set is the measure of its relevance to the query that generated the result set.
+
+27.1.5 Generic IR Pipeline
+
+As we mentioned earlier, documents are made up of unstructured natural language
+text composed of character strings from English and other languages. Common
+examples of documents include newswire services (such as AP or Reuters), corporate
+manuals and reports, government notices, Web page articles, blogs, tweets, books,
+and journal papers. There are two main approaches to IR: statistical and semantic.
+
+Ina statistical approach, documents are analyzed and broken down into chunks of
+text (words, phrases, or n-grams, which are all subsequences of length n characters
+in a text or document) and each word or phrase is counted, weighted, and mea-
+sured for relevance or importance. These words and their properties are then com-
+pared with the query terms for potential degree of match to produce a ranked list of
+resulting documents that contain the words. Statistical approaches are further clas-
+sified based on the method employed. The three main statistical approaches are
+Boolean, vector space, and probabilistic (see Section 27.2).
+
+Semantic approaches to IR use knowledge-based techniques of retrieval that
+broadly rely on the syntactic, lexical, sentential, discourse-based, and pragmatic
+levels of knowledge understanding. In practice, semantic approaches also apply
+some form of statistical analysis to improve the retrieval process.
+
+Figure 27.1 shows the various stages involved in an IR processing system. The steps
+shown on the left in Figure 27.1 are typically offline processes, which prepare a set of
+documents for efficient retrieval; these are document preprocessing, document
+modeling, and indexing. The right side of Figure 27.1 deals with the process of a user
+interacting with the IR system either during a querying, browsing, or searching. It
+shows the steps involved; namely, query formation, query processing, searching
+mechanism, document retrieval, and relevance feedback, In each box, we highlight
+the important concepts and issues. The rest of this chapter describes some of the
+concepts involved in the various tasks within the IR process shown in Figure 27.1.
+
+Figure 27.2 shows a simplified IR processing pipeline. In order to perform retrieval
+on documents, the documents are first represented in a form suitable for retrieval.
+The significant terms and their properties are extracted from the documents and
+are represented in a document index where the words/terms and their properties
+are stored in a matrix that contains each individual document in a row and each
+row contains the references to the words contained in those documents. This index
+is then converted into an inverted index (see Figure 27.4) of a word/term versus
+document matrix. Given the query words, the documents containing these words—

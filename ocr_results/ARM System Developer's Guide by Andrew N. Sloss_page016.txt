@@ -1,0 +1,27 @@
+CHAPTER
+
+ARM EMBEDDED
+SYSTEMS
+
+The ARM processor core is a key component of many successful 32-bit embedded systems.
+You probably own one yourself and may not even realize it! ARM cores are widely used in
+mobile phones, handheld organizers, and a multitude of other everyday portable consumer
+devices.
+
+ARM’s designers have come a long way from the first ARM1 prototype in 1985. Over
+one billion ARM processors had been shipped worldwide by the end of 2001. The ARM
+company bases their success on a simple and powerful original design, which continues
+to improve today through constant technical innovation. In fact, the ARM core is not
+a single core, but a whole family of designs sharing similar design principles and a common
+instruction set.
+
+For example, one of ARM’s most successful cores is the ARM7TDML It provides up to
+120 Dhrystone MIPS! and is known for its high code density and low power consumption,
+making it ideal for mobile embedded devices.
+
+In this first chapter we discuss how the RISC (reduced instruction set computer) design
+philosophy was adapted by ARM to create a flexible embedded processor. We then introduce
+an example embedded device and discuss the typical hardware and software technologies
+that surround an ARM processor.
+
+1, Dhrystone MIPS version 2.1 is a small benchmarking program.
