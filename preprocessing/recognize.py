@@ -65,31 +65,70 @@ class OCRRecognizer:
     # Preprocess single line
     # --------------------------
     def preprocess_line(self, img):
-        img = cv2.resize(img, (128, 32))
-        img = img / 255.0
-        img = torch.tensor(img).float().unsqueeze(0).unsqueeze(0)
-        return img.to(self.device)
+        """Enhanced preprocessing with CLAHE and denoising."""
+        # Apply CLAHE for better contrast
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        enhanced = clahe.apply(img)
+        
+        # Denoise
+        denoised = cv2.fastNlMeansDenoising(enhanced, h=10, templateWindowSize=7, searchWindowSize=21)
+        
+        # Resize
+        resized = cv2.resize(denoised, (128, 32))
+        
+        # Normalize
+        normalized = resized / 255.0
+        
+        # Convert to tensor
+        tensor = torch.tensor(normalized).float().unsqueeze(0).unsqueeze(0)
+        return tensor.to(self.device)
 
     # --------------------------
-    # Predict a single line
+    # Predict text from single line image
     # --------------------------
-    def predict_line(self, line_img):
-
-        img = self.preprocess_line(line_img)
-
-        with torch.no_grad():
-            preds = self.model(img)
-            preds = preds.permute(1, 0, 2).cpu()
-            probs = torch.softmax(preds, dim=2).numpy()
-
-        # LM decoding
-        if self.use_lm and self.decoder is not None:
-            log_probs = np.log(probs[0] + 1e-9)
-            return self.decoder.decode(log_probs).strip()  # type: ignore
-
-        # Greedy decoding
-        seq = torch.argmax(preds[0], dim=1).numpy()
-        return self.tokenizer.decode(seq).strip()
+    def predict_line(self, line_image):
+        """
+        Predict text from a single line image
+        
+        Args:
+            line_image: Preprocessed line image (numpy array or PIL Image)
+            
+        Returns:
+            Predicted text string
+        """
+        try:
+            # Convert PIL Image to numpy array if needed
+            if hasattr(line_image, 'tobytes'):
+                # PIL Image
+                img_array = np.array(line_image.convert('L'))
+            else:
+                # Already numpy array
+                img_array = line_image if isinstance(line_image, np.ndarray) else np.array(line_image)
+            
+            # Preprocess
+            tensor = self.preprocess_line(img_array)
+            
+            # Predict
+            with torch.no_grad():
+                logits = self.model(tensor)
+            
+            # Decode
+            pred_indices = torch.argmax(logits, dim=2)[0].cpu().numpy()
+            
+            # Convert indices to characters
+            text = ""
+            prev_idx = -1
+            for idx in pred_indices:
+                if idx != 0 and idx != prev_idx:  # Skip blank (0) and duplicates
+                    if idx - 1 < len(self.tokenizer.chars):
+                        text += self.tokenizer.chars[idx - 1]
+                prev_idx = idx
+            
+            return text.strip()
+        
+        except Exception as e:
+            print(f"[ERROR] predict_line failed: {e}")
+            return ""
 
     # --------------------------
     # Full page OCR

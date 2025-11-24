@@ -2,10 +2,12 @@
 subject_classifier.py
 
 VTU CSE - 5th Semester subject keywords (Scheme 2022 / effective 2023-24)
-Returns:
-    subject (str): best matched subject (or "Unknown Subject")
-    keywords_matched (list[str]): list of matched keywords found in text
-    confidence (float): simple confidence score in [0.0, 1.0]
+
+UPDATED VERSION with:
+- Expanded Biology keywords (23 → 50+ terms)
+- Weighted scoring (multi-word phrases count more)
+- Domain conflict detection (Biology vs CS)
+- Minimum confidence threshold
 """
 
 import re
@@ -77,12 +79,20 @@ VTU_SUBJECT_KEYWORDS = {
         "waste management", "environment", "recycling", "hazardous waste",
         "ecology", "conservation", "climate", "green"
     ],
-    # Adding common college subject patterns for better fallback
+    # EXPANDED Biology keywords (50+ terms)
     "Biology": [
         "cell", "dna", "protein", "organism", "biology", "genetic", "mutation",
         "evolution", "photosynthesis", "respiration", "reproduction", "enzyme",
         "tissue", "organ", "system", "nervous", "digestive", "circulatory",
-        "metabolism", "taxonomy", "ecology", "biosphere", "ecosystem"
+        "metabolism", "taxonomy", "ecology", "biosphere", "ecosystem",
+        "mitochondria", "nucleus", "chromosome", "rna", "amino acid",
+        "bacteria", "virus", "fungi", "prokaryote", "eukaryote",
+        "mitosis", "meiosis", "gene", "allele", "genotype", "phenotype",
+        "heredity", "biodiversity", "species", "population", "community",
+        "biomolecule", "carbohydrate", "lipid", "nucleic acid",
+        "homeostasis", "osmosis", "diffusion", "active transport",
+        "cellular respiration", "glycolysis", "krebs cycle", "electron transport",
+        "chloroplast", "chlorophyll", "stomata", "xylem", "phloem"
     ],
     "Chemistry": [
         "atom", "molecule", "chemical", "reaction", "element", "compound",
@@ -133,7 +143,13 @@ def classify_subject(text):
     """
     Given OCR text (string), return a tuple:
       (best_subject:str, keywords_matched:list[str], confidence:float)
-    Confidence is computed as: matched_count / number_of_keywords_for_subject (clamped to 1.0)
+    
+    ENHANCED with:
+    - Weighted scoring (core keywords count more)
+    - Penalty for conflicting domain matches
+    - Minimum confidence threshold
+    
+    Confidence is computed as: matched_weight / total_weight (clamped to 1.0)
     If no subject matches, returns ("Unknown Subject", [], 0.0)
     """
     text = _clean_text(text)
@@ -143,23 +159,63 @@ def classify_subject(text):
     subject_scores = []
     text_for_search = text.lower()
 
-    # Count matches per subject
+    # Count matches per subject with weighted scoring
     for subj, patterns in _KEYWORD_PATTERNS.items():
         matched = []
+        total_weight = 0
+        matched_weight = 0
+        
         for kw, pat in patterns:
+            # Assign weights: longer/more specific keywords get higher weight
+            weight = len(kw.split())  # Multi-word phrases are more important
+            total_weight += weight
+            
             if pat.search(text_for_search):
                 matched.append(kw)
+                matched_weight += weight
+        
         if matched:
-            # confidence: fraction of keywords matched (simple heuristic)
-            conf = len(matched) / max(1, len(VTU_SUBJECT_KEYWORDS[subj]))
+            # Weighted confidence
+            conf = matched_weight / max(1, total_weight)
             subject_scores.append((subj, matched, conf))
 
     if not subject_scores:
         return "Unknown Subject", [], 0.0
 
-    # Choose subject with highest confidence; tie-breaker by most matches
-    subject_scores.sort(key=lambda x: (x[2], len(x[1])), reverse=True)
-    best_subj, best_matched, best_conf = subject_scores[0]
+    # Check for domain conflicts (e.g., Biology vs Computer Science)
+    # If we detect Biology keywords, penalize CS subjects
+    bio_indicator_count = sum(1 for w in ['cell', 'dna', 'protein', 'organism', 
+                                           'tissue', 'enzyme', 'metabolism', 'gene']
+                              if w in text_for_search)
+    
+    cs_indicator_count = sum(1 for w in ['algorithm', 'network', 'code', 'software',
+                                          'computer', 'programming', 'database']
+                             if w in text_for_search)
+    
+    # Apply domain penalty
+    adjusted_scores = []
+    for subj, matched, conf in subject_scores:
+        adjusted_conf = conf
+        
+        # If strong biology indicators and this is a CS subject, reduce confidence
+        if bio_indicator_count >= 3:
+            if any(cs_term in subj for cs_term in ['BCS', 'Computer', 'Network', 'Software', 'AI']):
+                adjusted_conf *= 0.3  # Heavy penalty
+        
+        # If strong CS indicators and this is biology, reduce confidence
+        if cs_indicator_count >= 3:
+            if 'Biology' in subj:
+                adjusted_conf *= 0.3
+        
+        adjusted_scores.append((subj, matched, adjusted_conf))
+    
+    # Sort by adjusted confidence
+    adjusted_scores.sort(key=lambda x: (x[2], len(x[1])), reverse=True)
+    best_subj, best_matched, best_conf = adjusted_scores[0]
+    
+    # Apply minimum confidence threshold
+    if best_conf < 0.1:
+        return "Unknown Subject", [], 0.0
 
     # Round confidence to 2 decimals for readability
     return best_subj, best_matched, round(best_conf, 2)
