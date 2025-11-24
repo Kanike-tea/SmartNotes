@@ -5,6 +5,7 @@ A deep learning-powered Optical Character Recognition (OCR) system designed to a
 ## Table of Contents
 
 - [Quick Start (End-to-End)](#quick-start-end-to-end)
+- [Setup & Diagnostics](#setup--diagnostics)
 - [Features](#features)
 - [System Architecture](#system-architecture)
 - [Installation](#installation)
@@ -17,6 +18,34 @@ A deep learning-powered Optical Character Recognition (OCR) system designed to a
 - [Performance](#performance)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Setup & Diagnostics
+
+**New to SmartNotes?** Start here:
+
+1. **Check your system setup:**
+   ```bash
+   python system_check.py
+   ```
+   Validates Python version, dependencies, models, and datasets. Get a complete status report before running OCR.
+
+2. **Test OCR on a single image:**
+   ```bash
+   python quick_test.py path/to/image.png
+   ```
+   4-step test that shows: image loading → model loading → preprocessing → text recognition
+
+3. **Detailed troubleshooting:**
+   ```bash
+   python diagnostics.py --image path/to/image.png --verbose
+   ```
+   See exactly what's happening at each step. Use when quick_test doesn't work.
+
+**See [`SETUP_GUIDE.md`](SETUP_GUIDE.md) for:**
+- Complete troubleshooting workflow
+- Common issues & solutions
+- Detailed diagnostic workflow
+- Performance optimization tips
 
 ## Quick Start (End-to-End)
 

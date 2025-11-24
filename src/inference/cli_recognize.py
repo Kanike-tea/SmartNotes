@@ -16,7 +16,10 @@ import json
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 from src.inference.recognize import OCRLMInference
 from utils import get_logger

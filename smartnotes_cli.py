@@ -19,8 +19,10 @@ from pathlib import Path
 from typing import Optional, List
 from datetime import datetime
 
-# Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+# Setup imports
+from smartnotes.paths import setup_imports, get_project_root
+
+setup_imports()
 
 from src.inference.pdf_processor import PDFProcessor, PDFProcessingResult
 from config import Config

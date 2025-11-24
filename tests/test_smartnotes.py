@@ -14,9 +14,11 @@ import torch
 import numpy as np
 from pathlib import Path
 
-# Add parent directory to path
+# Setup imports
 import sys
-sys.path.insert(0, str(Path(__file__).parent.parent))
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 from src.model.ocr_model import CRNN
 from src.dataloader.ocr_dataloader import TextTokenizer, clean_text

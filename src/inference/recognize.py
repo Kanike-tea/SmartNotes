@@ -13,7 +13,10 @@ from pathlib import Path
 from typing import Optional, List, Tuple
 from tqdm import tqdm
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 from config import Config
 from utils import get_logger, get_device, calculate_cer, calculate_wer

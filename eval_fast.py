@@ -9,7 +9,10 @@ from pathlib import Path
 from tqdm import tqdm
 from typing import Optional
 
-sys.path.insert(0, '/Users/kanike/Desktop/SmartNotes/SmartNotes')
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 from src.model.ocr_model import CRNN
 from src.dataloader.ocr_dataloader import TextTokenizer

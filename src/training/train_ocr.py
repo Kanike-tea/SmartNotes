@@ -14,15 +14,17 @@ import sys
 from pathlib import Path
 from typing import Optional, Tuple
 
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import contextlib
-
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from config import Config, TrainingConfig
 from utils import get_logger, get_device, log_config, log_error, ensure_path_exists

@@ -8,10 +8,12 @@ import sys
 import os
 from pathlib import Path
 
-# Set working directory to SmartNotes root
-smartnotes_root = Path(__file__).parent.parent
+# Setup imports using path utilities
+from smartnotes.paths import setup_imports, get_project_root
+
+setup_imports()
+smartnotes_root = get_project_root()
 os.chdir(smartnotes_root)
-sys.path.insert(0, str(smartnotes_root))
 
 print("\n" + "=" * 70)
 print("SmartNotes Gradio Interface - Starting")

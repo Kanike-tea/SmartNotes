@@ -8,8 +8,10 @@ import numpy as np
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Subset
 
-# Add to path
-sys.path.insert(0, '/Users/kanike/Desktop/SmartNotes/SmartNotes')
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 from src.dataloader.ocr_dataloader import SmartNotesOCRDataset, collate_fn
 from src.model.ocr_model import CRNN

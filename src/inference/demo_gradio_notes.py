@@ -17,7 +17,10 @@ import sys
 import os
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+# Setup imports
+from smartnotes.paths import setup_imports
+
+setup_imports()
 
 import gradio as gr
 import torch
