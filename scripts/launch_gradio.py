@@ -8,16 +8,15 @@ import sys
 import os
 from pathlib import Path
 
-# Setup imports using path utilities
-from smartnotes.paths import setup_imports, get_project_root
-
-setup_imports()
-smartnotes_root = get_project_root()
+# FIXED: Set working directory to SmartNotes root
+smartnotes_root = Path(__file__).parent.parent.resolve()
 os.chdir(smartnotes_root)
+sys.path.insert(0, str(smartnotes_root))
 
 print("\n" + "=" * 70)
 print("SmartNotes Gradio Interface - Starting")
 print("=" * 70)
+print(f"Working directory: {smartnotes_root}")
 print("\nFeatures:")
 print("   ✓ Upload handwritten or printed notes")
 print("   ✓ Extract text using OCR (CRNN + BiLSTM)")
@@ -34,6 +33,7 @@ try:
 except ImportError as e:
     print(f"✗ Missing dependency: {e}")
     print("\nInstall with: pip install -r requirements.txt")
+    print("Also install: pip install gradio")
     sys.exit(1)
 
 # Launch interface
