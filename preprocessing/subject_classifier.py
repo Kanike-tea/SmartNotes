@@ -22,11 +22,38 @@ VTU_SUBJECT_KEYWORDS = {
         "development", "deployment", "team", "planning"
     ],
     "BCS502 - Computer Networks": [
-        "computer networks", "tcp", "udp", "routing", "ip", "switching",
-        "osi model", "network layer", "transport layer", "congestion",
-        "arp", "dhcp", "dns", "mac", "ethernet", "socket", "tcp/ip",
-        "three-way handshake", "congestion control", "protocol", "bandwidth",
-        "gateway", "firewall", "vpn", "network security", "port"
+        # Core networking terms
+        "computer networks", "bcs502", "network", "networking",
+        
+        # Protocols
+        "tcp", "udp", "ip", "routing", "protocol", "http", "ftp", "smtp",
+        "arp", "dhcp", "dns", "icmp", "tcp/ip", "ipv4", "ipv6",
+        
+        # Network layers (OSI model)
+        "osi model", "network layer", "transport layer", "application layer",
+        "data link layer", "physical layer", "presentation layer", "session layer",
+        
+        # Data link layer concepts (YOUR TEXT CONTAINS THESE!)
+        "data link", "framing", "frame", "error detection", "error correction",
+        "flow control", "media access control", "mac", "ethernet",
+        "collision detection", "csma", "token ring", "llc",
+        
+        # Error handling
+        "crc", "checksum", "parity", "hamming code", "burst error",
+        "single bit error", "redundancy", "fec", "arq",
+        
+        # Network concepts
+        "switching", "congestion", "bandwidth", "throughput",
+        "latency", "packet", "datagram", "segment",
+        "three-way handshake", "congestion control",
+        
+        # Hardware
+        "router", "switch", "gateway", "bridge", "hub", "modem",
+        "nic", "repeater",
+        
+        # Additional terms
+        "socket", "port", "subnet", "firewall", "vpn",
+        "wireless", "lan", "wan", "internet"
     ],
     "BCS503 - Theory of Computation": [
         "automata", "finite automata", "dfa", "nfa", "regular expression",
@@ -143,31 +170,33 @@ def classify_subject(text):
     """
     Given OCR text (string), return a tuple:
       (best_subject:str, keywords_matched:list[str], confidence:float)
-    
-    ENHANCED with:
-    - Weighted scoring (core keywords count more)
-    - Penalty for conflicting domain matches
-    - Minimum confidence threshold
-    
-    Confidence is computed as: matched_weight / total_weight (clamped to 1.0)
-    If no subject matches, returns ("Unknown Subject", [], 0.0)
     """
     text = _clean_text(text)
     if not text:
         return "Unknown Subject", [], 0.0
 
-    subject_scores = []
     text_for_search = text.lower()
+    
+    # PRIORITY 1: Check for explicit course code (BCS501, BCS502, etc.)
+    import re
+    course_code_match = re.search(r'\b(BCS\d{3}[A-Z]?)\b', text, re.IGNORECASE)
+    if course_code_match:
+        code = course_code_match.group(1).upper()
+        for subject_name in VTU_SUBJECT_KEYWORDS.keys():
+            if code in subject_name:
+                print(f"[CLASSIFIER] Explicit course code detected: {code}")
+                return subject_name, [code.lower()], 0.95
+    
+    # PRIORITY 2: Keyword matching
+    subject_scores = []
 
-    # Count matches per subject with weighted scoring
     for subj, patterns in _KEYWORD_PATTERNS.items():
         matched = []
         total_weight = 0
         matched_weight = 0
         
         for kw, pat in patterns:
-            # Assign weights: longer/more specific keywords get higher weight
-            weight = len(kw.split())  # Multi-word phrases are more important
+            weight = len(kw.split())
             total_weight += weight
             
             if pat.search(text_for_search):
@@ -175,59 +204,17 @@ def classify_subject(text):
                 matched_weight += weight
         
         if matched:
-            # Weighted confidence
             conf = matched_weight / max(1, total_weight)
             subject_scores.append((subj, matched, conf))
 
     if not subject_scores:
         return "Unknown Subject", [], 0.0
 
-    # Check for domain conflicts (e.g., Biology vs Computer Science)
-    # If we detect Biology keywords, penalize CS subjects
-    bio_indicator_count = sum(1 for w in ['cell', 'dna', 'protein', 'organism', 
-                                           'tissue', 'enzyme', 'metabolism', 'gene']
-                              if w in text_for_search)
+    # Sort and return best match
+    subject_scores.sort(key=lambda x: (x[2], len(x[1])), reverse=True)
+    best_subj, best_matched, best_conf = subject_scores[0]
     
-    cs_indicator_count = sum(1 for w in ['algorithm', 'network', 'code', 'software',
-                                          'computer', 'programming', 'database']
-                             if w in text_for_search)
-    
-    # Apply domain penalty
-    adjusted_scores = []
-    for subj, matched, conf in subject_scores:
-        adjusted_conf = conf
-        
-        # If strong biology indicators and this is a CS subject, reduce confidence
-        if bio_indicator_count >= 3:
-            if any(cs_term in subj for cs_term in ['BCS', 'Computer', 'Network', 'Software', 'AI']):
-                adjusted_conf *= 0.3  # Heavy penalty
-        
-        # If strong CS indicators and this is biology, reduce confidence
-        if cs_indicator_count >= 3:
-            if 'Biology' in subj:
-                adjusted_conf *= 0.3
-        
-        adjusted_scores.append((subj, matched, adjusted_conf))
-    
-    # Sort by adjusted confidence
-    adjusted_scores.sort(key=lambda x: (x[2], len(x[1])), reverse=True)
-    best_subj, best_matched, best_conf = adjusted_scores[0]
-    
-    # Apply minimum confidence threshold
     if best_conf < 0.1:
         return "Unknown Subject", [], 0.0
 
-    # Round confidence to 2 decimals for readability
     return best_subj, best_matched, round(best_conf, 2)
-
-
-# Simple helper wrapper to preserve previous single-value API if needed
-def classify_subject_simple(text):
-    subj, matched, conf = classify_subject(text)
-    return subj
-
-
-# Example usage (for quick local test):
-# if __name__ == "__main__":
-#     s, k, c = classify_subject("Explain TCP three-way handshake and congestion control")
-#     print(s, k, c)
