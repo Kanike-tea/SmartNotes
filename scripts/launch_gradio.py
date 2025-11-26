@@ -18,8 +18,9 @@ print("SmartNotes Gradio Interface - Starting")
 print("=" * 70)
 print(f"Working directory: {smartnotes_root}")
 print("\nFeatures:")
-print("   ✓ Upload handwritten or printed notes")
+print("   ✓ Upload handwritten or printed notes (IMAGE or PDF)")
 print("   ✓ Extract text using OCR (CRNN + BiLSTM)")
+print("   ✓ Auto-process multi-page PDFs")
 print("   ✓ Classify subject automatically")
 print("   ✓ Show classification confidence\n")
 
@@ -29,7 +30,18 @@ try:
     import torch
     from preprocessing.subject_classifier import classify_subject
     from preprocessing.recognize import OCRRecognizer
-    print("✓ All dependencies available\n")
+    print("✓ Core dependencies available")
+    
+    # Check PDF support
+    try:
+        from pdf2image import convert_from_path
+        print("✓ PDF support available (pdf2image)")
+    except ImportError:
+        print("⚠ PDF support disabled (install: pip install pdf2image)")
+        print("⚠ Also install poppler: brew install poppler (macOS)")
+    
+    print()
+    
 except ImportError as e:
     print(f"✗ Missing dependency: {e}")
     print("\nInstall with: pip install -r requirements.txt")
