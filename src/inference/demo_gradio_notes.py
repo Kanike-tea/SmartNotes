@@ -420,7 +420,7 @@ def create_gradio_interface():
                 gr.Markdown(
                     """
                     **Supported Formats:**
-                    - Images: PNG, JPG, JPEG, BMP, TIFF
+                    - Images: PNG, JPG, JPEG
                     - Documents: PDF (single/multi-page)
                     
                     **Tips:**
@@ -500,7 +500,6 @@ def create_gradio_interface():
                 - BCS503 - Theory of Computation
                 - BCSL504 - Web Technology Lab
                 - BCS515A-D - Professional Electives
-                - BCS586 - Mini Project
                 - BRMK557 - Research Methodology and IPR
                 - BCS508 - Environmental Studies
                 - General: Biology, Chemistry, Physics, Mathematics

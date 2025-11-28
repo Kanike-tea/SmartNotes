@@ -92,10 +92,6 @@ VTU_SUBJECT_KEYWORDS = {
         "clock synchronization", "cap theorem", "cluster", "parallel",
         "message passing", "coordination", "fault tolerance"
     ],
-    "BCS586 - Mini Project": [
-        "mini project", "project", "prototype", "implementation",
-        "report", "presentation", "demo", "mini-project", "development"
-    ],
     "BRMK557 - Research Methodology and IPR": [
         "research methodology", "ipr", "patent", "literature review",
         "research design", "ethics", "plagiarism", "citation", "bibliography",
